@@ -12,7 +12,9 @@
         "claude",
         "cursor",
         "antigravity",
-        "codebuddy"
+        "codebuddy",
+        "joycode",
+        "qwen"
       ],
       "dependencies": [],
       "defaultInstall": true,
@@ -33,7 +35,9 @@
         "cursor",
         "antigravity",
         "codex",
-        "codebuddy"
+        "codebuddy",
+        "joycode",
+        "qwen"
       ],
       "dependencies": [],
       "defaultInstall": true,
@@ -52,7 +56,9 @@
         "cursor",
         "antigravity",
         "opencode",
-        "codebuddy"
+        "codebuddy",
+        "joycode",
+        "qwen"
       ],
       "dependencies": [],
       "defaultInstall": true,
@@ -89,6 +95,7 @@
         ".cursor",
         ".gemini",
         ".opencode",
+        ".qwen",
         "mcp-configs",
         "scripts/auto-update.js",
         "scripts/setup-package-manager.js"
@@ -100,7 +107,9 @@
         "codex",
         "gemini",
         "opencode",
-        "codebuddy"
+        "codebuddy",
+        "joycode",
+        "qwen"
       ],
       "dependencies": [],
       "defaultInstall": true,
@@ -113,11 +122,13 @@
       "description": "Core framework, language, and application-engineering skills.",
       "paths": [
         "skills/android-clean-architecture",
+        "skills/angular-developer",
         "skills/api-design",
         "skills/backend-patterns",
         "skills/coding-standards",
         "skills/compose-multiplatform-patterns",
         "skills/csharp-testing",
+        "skills/fsharp-testing",
         "skills/cpp-coding-standards",
         "skills/cpp-testing",
         "skills/dart-flutter-patterns",
@@ -126,8 +137,11 @@
         "skills/django-verification",
         "skills/dotnet-patterns",
         "skills/fastapi-patterns",
+        "skills/frontend-design-direction",
         "skills/frontend-patterns",
         "skills/frontend-slides",
+        "skills/make-interfaces-feel-better",
+        "skills/motion-ui",
         "skills/golang-patterns",
         "skills/golang-testing",
         "skills/java-coding-standards",
@@ -146,6 +160,9 @@
         "skills/perl-testing",
         "skills/python-patterns",
         "skills/python-testing",
+        "skills/quarkus-patterns",
+        "skills/quarkus-tdd",
+        "skills/quarkus-verification",
         "skills/rust-patterns",
         "skills/rust-testing",
         "skills/springboot-patterns",
@@ -159,7 +176,9 @@
         "antigravity",
         "codex",
         "opencode",
-        "codebuddy"
+        "codebuddy",
+        "joycode",
+        "qwen"
       ],
       "dependencies": [
         "rules-core",
@@ -180,7 +199,8 @@
         "skills/database-migrations",
         "skills/jpa-patterns",
         "skills/mysql-patterns",
-        "skills/postgres-patterns"
+        "skills/postgres-patterns",
+        "skills/prisma-patterns"
       ],
       "targets": [
         "claude",
@@ -188,7 +208,9 @@
         "antigravity",
         "codex",
         "opencode",
-        "codebuddy"
+        "codebuddy",
+        "joycode",
+        "qwen"
       ],
       "dependencies": [
         "platform-configs"
@@ -211,15 +233,18 @@
         "skills/continuous-learning-v2",
         "skills/council",
         "skills/e2e-testing",
+        "skills/error-handling",
         "skills/eval-harness",
         "skills/hookify-rules",
         "skills/iterative-retrieval",
         "skills/plankton-code-quality",
         "skills/production-audit",
+        "skills/skill-scout",
         "skills/skill-stocktake",
         "skills/strategic-compact",
         "skills/tdd-workflow",
-        "skills/verification-loop"
+        "skills/verification-loop",
+        "skills/windows-desktop-e2e"
       ],
       "targets": [
         "claude",
@@ -227,7 +252,9 @@
         "antigravity",
         "codex",
         "opencode",
-        "codebuddy"
+        "codebuddy",
+        "joycode",
+        "qwen"
       ],
       "dependencies": [
         "platform-configs"
@@ -249,6 +276,7 @@
         "skills/llm-trading-agent-security",
         "skills/nodejs-keccak256",
         "skills/perl-security",
+        "skills/quarkus-security",
         "skills/security-review",
         "skills/security-scan",
         "skills/security-bounty-hunter",
@@ -262,7 +290,9 @@
         "antigravity",
         "codex",
         "opencode",
-        "codebuddy"
+        "codebuddy",
+        "joycode",
+        "qwen"
       ],
       "dependencies": [
         "workflow-quality"
@@ -280,6 +310,8 @@
         "skills/exa-search",
         "skills/research-ops",
         "skills/scientific-db-pubmed-database",
+        "skills/scientific-db-uspto-database",
+        "skills/scientific-pkg-gget",
         "skills/scientific-thinking-literature-review",
         "skills/scientific-thinking-scholar-evaluation"
       ],
@@ -289,7 +321,9 @@
         "antigravity",
         "codex",
         "opencode",
-        "codebuddy"
+        "codebuddy",
+        "joycode",
+        "qwen"
       ],
       "dependencies": [
         "platform-configs"
@@ -320,7 +354,9 @@
         "antigravity",
         "codex",
         "opencode",
-        "codebuddy"
+        "codebuddy",
+        "joycode",
+        "qwen"
       ],
       "dependencies": [
         "platform-configs"
@@ -337,6 +373,7 @@
         "skills/automation-audit-ops",
         "skills/api-connector-builder",
         "skills/connections-optimizer",
+        "skills/cost-tracking",
         "skills/customer-billing-ops",
         "skills/dashboard-builder",
         "skills/ecc-tools-cost-audit",
@@ -358,7 +395,9 @@
         "antigravity",
         "codex",
         "opencode",
-        "codebuddy"
+        "codebuddy",
+        "joycode",
+        "qwen"
       ],
       "dependencies": [
         "platform-configs"
@@ -381,7 +420,9 @@
         "antigravity",
         "codex",
         "opencode",
-        "codebuddy"
+        "codebuddy",
+        "joycode",
+        "qwen"
       ],
       "dependencies": [
         "business-content"
@@ -407,7 +448,9 @@
         "cursor",
         "codex",
         "opencode",
-        "codebuddy"
+        "codebuddy",
+        "joycode",
+        "qwen"
       ],
       "dependencies": [
         "platform-configs"
@@ -461,7 +504,9 @@
         "antigravity",
         "codex",
         "opencode",
-        "codebuddy"
+        "codebuddy",
+        "joycode",
+        "qwen"
       ],
       "dependencies": [
         "platform-configs"
@@ -475,8 +520,10 @@
       "kind": "skills",
       "description": "Agentic engineering, autonomous loops, agent harness construction, and LLM pipeline optimization skills.",
       "paths": [
+        "skills/agent-architecture-audit",
         "skills/agent-harness-construction",
         "skills/agentic-engineering",
+        "skills/agentic-os",
         "skills/ai-first-engineering",
         "skills/autonomous-loops",
         "skills/blueprint",
@@ -500,7 +547,9 @@
         "antigravity",
         "codex",
         "opencode",
-        "codebuddy"
+        "codebuddy",
+        "joycode",
+        "qwen"
       ],
       "dependencies": [
         "platform-configs"
@@ -517,6 +566,7 @@
         "skills/cisco-ios-patterns",
         "skills/deployment-patterns",
         "skills/docker-patterns",
+        "skills/homelab-network-readiness",
         "skills/homelab-network-setup",
         "skills/netmiko-ssh-automation",
         "skills/network-bgp-diagnostics",
@@ -529,7 +579,9 @@
         "antigravity",
         "codex",
         "opencode",
-        "codebuddy"
+        "codebuddy",
+        "joycode",
+        "qwen"
       ],
       "dependencies": [
         "platform-configs"
@@ -537,6 +589,34 @@
       "defaultInstall": false,
       "cost": "medium",
       "stability": "stable"
+    },
+    {
+      "id": "machine-learning",
+      "kind": "skills",
+      "description": "Production machine-learning engineering workflows for data contracts, reproducible training, evaluation, deployment, monitoring, and rollback.",
+      "paths": [
+        "skills/mle-workflow"
+      ],
+      "targets": [
+        "claude",
+        "cursor",
+        "antigravity",
+        "codex",
+        "opencode",
+        "codebuddy",
+        "joycode",
+        "qwen"
+      ],
+      "dependencies": [
+        "framework-language",
+        "workflow-quality",
+        "database",
+        "devops-infra",
+        "security"
+      ],
+      "defaultInstall": false,
+      "cost": "medium",
+      "stability": "beta"
     },
     {
       "id": "supply-chain-domain",
@@ -558,7 +638,9 @@
         "antigravity",
         "codex",
         "opencode",
-        "codebuddy"
+        "codebuddy",
+        "joycode",
+        "qwen"
       ],
       "dependencies": [
         "platform-configs"
@@ -581,7 +663,9 @@
         "antigravity",
         "codex",
         "opencode",
-        "codebuddy"
+        "codebuddy",
+        "joycode",
+        "qwen"
       ],
       "dependencies": [
         "platform-configs"

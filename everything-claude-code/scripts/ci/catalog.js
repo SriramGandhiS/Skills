@@ -101,6 +101,19 @@ function parseReadmeExpectations(readmeContent) {
     { category: 'commands', mode: 'exact', expected: Number(quickStartMatch[3]), source: 'README.md quick-start summary' }
   );
 
+  const releaseNoteMatch = readmeContent.match(
+    /actual OSS surface:\s+(\d+)\s+agents,\s+(\d+)\s+skills,\s+and\s+(\d+)\s+legacy command shims/i
+  );
+  if (!releaseNoteMatch) {
+    throw new Error('README.md is missing the rc.1 release-note catalog summary');
+  }
+
+  expectations.push(
+    { category: 'agents', mode: 'exact', expected: Number(releaseNoteMatch[1]), source: 'README.md rc.1 release-note summary' },
+    { category: 'skills', mode: 'exact', expected: Number(releaseNoteMatch[2]), source: 'README.md rc.1 release-note summary' },
+    { category: 'commands', mode: 'exact', expected: Number(releaseNoteMatch[3]), source: 'README.md rc.1 release-note summary' }
+  );
+
   const projectTreeAgentsMatch = readmeContent.match(/^\|\s*--\s*agents\/\s*#\s*(\d+)\s+specialized subagents for delegation\s*$/im);
   if (!projectTreeAgentsMatch) {
     throw new Error('README.md project tree is missing the agents count');
@@ -136,17 +149,17 @@ function parseReadmeExpectations(readmeContent) {
   const parityPatterns = [
     {
       category: 'agents',
-      regex: /^\|\s*(?:\*\*)?Agents(?:\*\*)?\s*\|\s*(\d+)\s*\|\s*Shared\s*\(AGENTS\.md\)\s*\|\s*Shared\s*\(AGENTS\.md\)\s*\|\s*12\s*\|$/im,
+      regex: /^\|\s*(?:\*\*)?Agents(?:\*\*)?\s*\|\s*(\d+)\s*\|\s*Shared\s*\(AGENTS\.md\)\s*\|\s*Shared\s*\(AGENTS\.md\)\s*\|\s*12\s*\|(?:\s*N\/A\s*\|)?$/im,
       source: 'README.md parity table'
     },
     {
       category: 'commands',
-      regex: /^\|\s*(?:\*\*)?Commands(?:\*\*)?\s*\|\s*(\d+)\s*\|\s*Shared\s*\|\s*Instruction-based\s*\|\s*31\s*\|$/im,
+      regex: /^\|\s*(?:\*\*)?Commands(?:\*\*)?\s*\|\s*(\d+)\s*\|\s*Shared\s*\|\s*Instruction-based\s*\|\s*\d+\s*\|(?:\s*\d+\s+prompts\s*\|)?$/im,
       source: 'README.md parity table'
     },
     {
       category: 'skills',
-      regex: /^\|\s*(?:\*\*)?Skills(?:\*\*)?\s*\|\s*(\d+)\s*\|\s*Shared\s*\|\s*10\s*\(native format\)\s*\|\s*37\s*\|$/im,
+      regex: /^\|\s*(?:\*\*)?Skills(?:\*\*)?\s*\|\s*(\d+)\s*\|\s*Shared\s*\|\s*10\s*\(native format\)\s*\|\s*37\s*\|(?:\s*Via instructions\s*\|)?$/im,
       source: 'README.md parity table'
     }
   ];
@@ -223,7 +236,7 @@ function parseZhDocsReadmeExpectations(readmeContent) {
     },
     {
       category: 'commands',
-      regex: /^\|\s*(?:\*\*)?命令(?:\*\*)?\s*\|\s*(\d+)\s*\|\s*共享\s*\|\s*基于指令\s*\|\s*31\s*\|$/im,
+      regex: /^\|\s*(?:\*\*)?命令(?:\*\*)?\s*\|\s*(\d+)\s*\|\s*共享\s*\|\s*基于指令\s*\|\s*\d+\s*\|$/im,
       source: 'docs/zh-CN/README.md parity table'
     },
     {
@@ -417,6 +430,13 @@ function syncEnglishReadme(content, catalog) {
   );
   nextContent = replaceOrThrow(
     nextContent,
+    /(actual OSS surface:\s+)(\d+)(\s+agents,\s+)(\d+)(\s+skills,\s+and\s+)(\d+)(\s+legacy command shims)/i,
+    (_, prefix, __, agentsSuffix, ___, skillsSuffix, ____, commandsSuffix) =>
+      `${prefix}${catalog.agents.count}${agentsSuffix}${catalog.skills.count}${skillsSuffix}${catalog.commands.count}${commandsSuffix}`,
+    'README.md rc.1 release-note summary'
+  );
+  nextContent = replaceOrThrow(
+    nextContent,
     /^(\|\s*--\s*agents\/\s*#\s*)(\d+)(\s+specialized subagents for delegation\s*)$/im,
     (_, prefix, __, suffix) => `${prefix}${catalog.agents.count}${suffix}`,
     'README.md project tree (agents)'
@@ -441,19 +461,19 @@ function syncEnglishReadme(content, catalog) {
   );
   nextContent = replaceOrThrow(
     nextContent,
-    /^(\|\s*(?:\*\*)?Agents(?:\*\*)?\s*\|\s*)(\d+)(\s*\|\s*Shared\s*\(AGENTS\.md\)\s*\|\s*Shared\s*\(AGENTS\.md\)\s*\|\s*12\s*\|)$/im,
+    /^(\|\s*(?:\*\*)?Agents(?:\*\*)?\s*\|\s*)(\d+)(\s*\|\s*Shared\s*\(AGENTS\.md\)\s*\|\s*Shared\s*\(AGENTS\.md\)\s*\|\s*12\s*\|(?:\s*N\/A\s*\|)?)$/im,
     (_, prefix, __, suffix) => `${prefix}${catalog.agents.count}${suffix}`,
     'README.md parity table (agents)'
   );
   nextContent = replaceOrThrow(
     nextContent,
-    /^(\|\s*(?:\*\*)?Commands(?:\*\*)?\s*\|\s*)(\d+)(\s*\|\s*Shared\s*\|\s*Instruction-based\s*\|\s*31\s*\|)$/im,
+    /^(\|\s*(?:\*\*)?Commands(?:\*\*)?\s*\|\s*)(\d+)(\s*\|\s*Shared\s*\|\s*Instruction-based\s*\|\s*\d+\s*\|(?:\s*\d+\s+prompts\s*\|)?)$/im,
     (_, prefix, __, suffix) => `${prefix}${catalog.commands.count}${suffix}`,
     'README.md parity table (commands)'
   );
   nextContent = replaceOrThrow(
     nextContent,
-    /^(\|\s*(?:\*\*)?Skills(?:\*\*)?\s*\|\s*)(\d+)(\s*\|\s*Shared\s*\|\s*10\s*\(native format\)\s*\|\s*37\s*\|)$/im,
+    /^(\|\s*(?:\*\*)?Skills(?:\*\*)?\s*\|\s*)(\d+)(\s*\|\s*Shared\s*\|\s*10\s*\(native format\)\s*\|\s*37\s*\|(?:\s*Via instructions\s*\|)?)$/im,
     (_, prefix, __, suffix) => `${prefix}${catalog.skills.count}${suffix}`,
     'README.md parity table (skills)'
   );
@@ -539,7 +559,7 @@ function syncZhDocsReadme(content, catalog) {
   );
   nextContent = replaceOrThrow(
     nextContent,
-    /^(\|\s*(?:\*\*)?命令(?:\*\*)?\s*\|\s*)(\d+)(\s*\|\s*共享\s*\|\s*基于指令\s*\|\s*31\s*\|)$/im,
+    /^(\|\s*(?:\*\*)?命令(?:\*\*)?\s*\|\s*)(\d+)(\s*\|\s*共享\s*\|\s*基于指令\s*\|\s*\d+\s*\|)$/im,
     (_, prefix, __, suffix) => `${prefix}${catalog.commands.count}${suffix}`,
     'docs/zh-CN/README.md parity table (commands)'
   );
