@@ -1,4 +1,4 @@
-<h1 align="center">Awesome Claude Skills</h1>
+<h1 align="center">🌌 Global Antigravity Skill Registry</h1>
 
 <p align="center">
 <a href="https://dashboard.composio.dev/login?utm_source=Github&utm_medium=Youtube&utm_campaign=2025-11&utm_content=AwesomeSkills">
@@ -33,7 +33,7 @@
   </p>
 </div>
 
-A comprehensive and curated list of 1000+ production ready and practical Claude Skills and Plugins for enhancing productivity across usecases on not just Claude.ai, Claude Code, but also across coding agents like Codex, Cursor, Gemini CLI, Antigravity and more.
+The Global Antigravity Skill Registry is an elite collection of 1000+ production-ready Claude Skills designed to eliminate "AI-Slop" and enforce a **$10,000+ Premium Frontend Aesthetic**. Built for master-level orchestration across Claude Code, Cursor, Gemini CLI, and Antigravity.
 
 
 > **Want skills that do more than generate text?** Claude can send emails, create issues, post to Slack, and take actions across 1000+ apps. [See how →](./connect/)
@@ -100,6 +100,22 @@ Claude Skills are reusable instruction packages that teach an AI agent how to ha
 Skills load progressively. At session start, the agent sees only each skill's name and description — roughly 100 tokens per skill. The full SKILL.md body (typically under 5,000 tokens) loads only when the agent decides the skill is relevant to the current task. Auxiliary files in `scripts/` and `references/` load on demand. This is what lets a single agent host hundreds of skills without bloating its context window.
 
 Skills are not MCP servers and not tools. MCP defines how an agent connects to external systems — auth, transport, tool discovery. Tools are the individual functions an agent invokes. Skills define the workflow — what to do, in what order, with what guardrails — once the agent has the connections and tools it needs. In production, all three layers run together: MCP for access, tools for actions, skills for behavior.
+
+## 🌌 The Antigravity Elite Stack (MANDATORY)
+
+These are the core engines of the Antigravity Orchestration system. Use these to transform generic requests into cinematic digital experiences.
+
+| Skill | Command | Role |
+| :--- | :--- | :--- |
+| **everything-claude-code** | `npx skills add everything-claude-code` | The Brain. Handles execution hierarchy and agent routing. |
+| **frontend-design** | `npx skills add frontend-design` | The Visual Authority. Enforces BOLD aesthetic directions. |
+| **ui-ux-pro-max** | `npx skills add ui-ux-pro-max` | The Architect. Generates the Design System & UI reasoning. |
+| **taste-skill** | `npx skills add taste-skill` | The Artist. Ensures premium spacing and visual density. |
+| **emil-design-eng** | `npx skills add emil-design-eng` | The Animator. Powers cinematic motion and Apple-level easing. |
+| **antigravity-orchestrator** | `npx skills add antigravity-orchestrator` | The Conductor. Manages the Global Orchestration flow. |
+| **impeccable** | `npx skills add impeccable` | The Critic. Final audit, polish, and anti-slop scan. |
+
+---
 
 ## Skills
 
