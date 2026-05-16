@@ -1,3 +1,14 @@
+<!-- ANTIGRAVITY ENGINE ACTIVE -->
+# 🛡️ THE INDELIBLE MASTER PROTOCOL
+This project is rooted in the Global Antigravity Registry at d:\eeeee\skills-repo.
+
+### 🌌 ELITE TASK HANDSHAKE
+Before starting ANY task, the AI must explicitly state:
+"🌌 Antigravity Engine Active. Engaging [Skill Names] (e.g. Taste, UI-UX Pro Max) for this task."
+
+### 🛠️ MANDATORY SKILLS
+Mandatory Skills: ui-ux-pro-max, taste-skill, everything-claude-code.
+
 # CLAUDE.md
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
