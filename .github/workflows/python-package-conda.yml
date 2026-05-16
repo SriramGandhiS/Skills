@@ -32,5 +32,7 @@ jobs:
       env:
         OPENAI_API_KEY: sk-dummy
         ANTHROPIC_API_KEY: sk-dummy
+        ASTRAFLOW_API_KEY: sk-dummy
+        ASTRAFLOW_CN_API_KEY: sk-dummy
       run: |
         pytest
