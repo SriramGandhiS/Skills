@@ -29,5 +29,8 @@ jobs:
         # exit-zero treats all other errors as warnings.
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: Test with pytest
+      env:
+        OPENAI_API_KEY: sk-dummy
+        ANTHROPIC_API_KEY: sk-dummy
       run: |
         pytest
