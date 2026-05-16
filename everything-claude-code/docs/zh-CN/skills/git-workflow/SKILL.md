@@ -144,7 +144,8 @@ git commit -m "fix(api): 在 503 服务不可用时重试请求
 # # 类型：feat, fix, docs, style, refactor, test, chore, perf, ci, revert
 # 范围：api, ui, db, auth 等
 # 主题：祈使语气，无句号，最多50个字符
-# # [可选正文] - 解释原因，而非内容
+#
+# [可选正文] - 解释原因，而非内容
 # [可选脚注] - 破坏性变更，关闭 #issue
 ```
 

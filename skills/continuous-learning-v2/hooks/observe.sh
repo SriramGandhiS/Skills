@@ -1,10 +1,13 @@
 #!/bin/bash
 # Continuous Learning v2 - Observation Hook
-# # Captures tool use events for pattern analysis.
+#
+# Captures tool use events for pattern analysis.
 # Claude Code passes hook data via stdin as JSON.
-# # v2.1: Project-scoped observations — detects current project context
-# and writes observations to project-specific directory.
-# # Registered via plugin hooks/hooks.json (auto-loaded when plugin is enabled).
+#
+# v2.1: Project-scoped observations — detects current project context
+#       and writes observations to project-specific directory.
+#
+# Registered via plugin hooks/hooks.json (auto-loaded when plugin is enabled).
 # Can also be registered manually in ~/.claude/settings.json.
 
 set -e
@@ -119,7 +122,8 @@ fi
 # ─────────────────────────────────────────────
 # Lightweight config and automated session guards
 # ─────────────────────────────────────────────
-# # IMPORTANT: keep these guards above detect-project.sh.
+#
+# IMPORTANT: keep these guards above detect-project.sh.
 # Sourcing detect-project.sh creates project-scoped directories and updates
 # projects.json, so automated sessions must return before that point.
 
@@ -136,9 +140,9 @@ if [ -n "${CLV2_CONFIG:-}" ] && [ -f "$(dirname "$CLV2_CONFIG")/disabled" ]; the
 fi
 
 # Prevent observe.sh from firing on non-human sessions to avoid:
-# - ECC observing its own Haiku observer sessions (self-loop)
-# - ECC observing other tools' automated sessions
-# - automated sessions creating project-scoped homunculus metadata
+#   - ECC observing its own Haiku observer sessions (self-loop)
+#   - ECC observing other tools' automated sessions
+#   - automated sessions creating project-scoped homunculus metadata
 
 # Layer 1: entrypoint. Only interactive terminal sessions should continue.
 # sdk-ts: Agent SDK sessions can be human-interactive (e.g. via Happy).

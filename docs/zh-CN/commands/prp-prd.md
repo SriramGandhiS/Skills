@@ -199,7 +199,7 @@ argument-hint: "[feature/product idea] (blank = start with questions)"
 ### PRD 模板
 
 ```markdown
-## {产品/功能名称}
+# {产品/功能名称}
 
 ## 问题陈述
 

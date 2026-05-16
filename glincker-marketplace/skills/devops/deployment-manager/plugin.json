@@ -1,9 +1,0 @@
-{
-  "name": "deployment-manager",
-  "description": "Automated deployment orchestration with rollback, blue-green, and canary deployment strategies",
-  "version": "1.0.0",
-  "author": "GLINCKER Team",
-  "license": "Apache-2.0",
-  "keywords": ["deployment", "automation", "rollback", "blue-green", "canary", "orchestration"],
-  "skills": ["./SKILL.md"]
-}

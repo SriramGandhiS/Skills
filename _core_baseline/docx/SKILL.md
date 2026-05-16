@@ -142,11 +142,11 @@ const doc = new Document({
 ### Lists (NEVER use unicode bullets)
 
 ```javascript
-// FAIL: WRONG - never manually insert bullet characters
+// ❌ WRONG - never manually insert bullet characters
 new Paragraph({ children: [new TextRun("• Item")] })  // BAD
 new Paragraph({ children: [new TextRun("\u2022 Item")] })  // BAD
 
-// PASS: CORRECT - use numbering config with LevelFormat.BULLET
+// ✅ CORRECT - use numbering config with LevelFormat.BULLET
 const doc = new Document({
   numbering: {
     config: [
@@ -168,7 +168,7 @@ const doc = new Document({
   }]
 });
 
-// WARNING: Each reference creates INDEPENDENT numbering
+// ⚠️ Each reference creates INDEPENDENT numbering
 // Same reference = continues (1,2,3 then 4,5,6)
 // Different reference = restarts (1,2,3 then 1,2,3)
 ```

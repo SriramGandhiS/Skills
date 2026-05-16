@@ -17,11 +17,11 @@ export default {
   after: `
     <div style="width: 100%; max-width: 240px; display: flex; flex-direction: column; align-items: center; gap: 16px; position: relative;">
       <div style="position: absolute; top: -20px; left: 50%; transform: translateX(-50%); display: flex; gap: 4px;">
-        <span style="animation: confettiFall 1s ease-out 0.0s both; font-size: 16px;"></span>
-        <span style="animation: confettiFall 1s ease-out 0.1s both; font-size: 14px;"></span>
-        <span style="animation: confettiFall 1s ease-out 0.2s both; font-size: 16px;"></span>
-        <span style="animation: confettiFall 1s ease-out 0.15s both; font-size: 14px;"></span>
-        <span style="animation: confettiFall 1s ease-out 0.25s both; font-size: 16px;"></span>
+        <span style="animation: confettiFall 1s ease-out 0.0s both; font-size: 16px;">🎊</span>
+        <span style="animation: confettiFall 1s ease-out 0.1s both; font-size: 14px;">✨</span>
+        <span style="animation: confettiFall 1s ease-out 0.2s both; font-size: 16px;">🎉</span>
+        <span style="animation: confettiFall 1s ease-out 0.15s both; font-size: 14px;">✨</span>
+        <span style="animation: confettiFall 1s ease-out 0.25s both; font-size: 16px;">🎊</span>
       </div>
       <div style="text-align: center; animation: celebratePop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) both;">
         <div style="font-size: 0.6875rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-accent); margin-bottom: 8px; font-weight: 600;">Milestone unlocked!</div>
@@ -29,7 +29,7 @@ export default {
         <div style="font-size: 0.875rem; color: var(--color-ash); margin-top: 4px;">tasks completed</div>
       </div>
       <div style="display: flex; align-items: center; gap: 6px; padding: 8px 16px; background: color-mix(in oklch, var(--color-accent) 10%, var(--color-paper)); border-radius: 20px; animation: badgeSlide 0.5s ease-out 0.3s both;">
-        <span style="font-size: 14px;"></span>
+        <span style="font-size: 14px;">🏆</span>
         <span style="font-size: 0.75rem; font-weight: 600; color: var(--color-accent);">Centurion Badge Earned</span>
       </div>
     </div>

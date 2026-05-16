@@ -12,15 +12,19 @@ assignees: ''
 
 ## Steps to reproduce
 
-1. 2. 3. ## Expected behavior
+1. 
+2. 
+3. 
+
+## Expected behavior
 
 <!-- What did you expect to happen? -->
 
 ## Provider & environment
 
 - **Provider** (Cursor / Claude Code / Gemini CLI / Codex / Copilot / Kiro / OpenCode):
-- **Provider version**:
-- **OS**:
+- **Provider version**: 
+- **OS**: 
 
 ## Additional context
 

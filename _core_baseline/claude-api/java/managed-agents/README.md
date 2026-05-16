@@ -44,7 +44,7 @@ System.out.println("Environment ID: " + environment.id()); // env_...
 
 ## Create an Agent (required first step)
 
-> WARNING: **There is no inline agent config.** Model, system, and tools live on the agent object, not the session. Always start with `client.beta().agents().create()` — the session takes either `.agent(agent.id())` or the typed `BetaManagedAgentsAgentParams.builder()...build()`.
+> ⚠️ **There is no inline agent config.** Model, system, and tools live on the agent object, not the session. Always start with `client.beta().agents().create()` — the session takes either `.agent(agent.id())` or the typed `BetaManagedAgentsAgentParams.builder()...build()`.
 
 ### Minimal
 
@@ -116,7 +116,7 @@ client.beta().sessions().events().send(session.id(), EventSendParams.builder()
     .build());
 ```
 
-> **Stream-first:** Open the stream *before* (or concurrently with) sending the message. The stream only delivers events that occur after it opens — stream-after-send means early events arrive buffered in one batch. See [Steering Patterns](../../shared/managed-agents-events.md#steering-patterns).
+> 💡 **Stream-first:** Open the stream *before* (or concurrently with) sending the message. The stream only delivers events that occur after it opens — stream-after-send means early events arrive buffered in one batch. See [Steering Patterns](../../shared/managed-agents-events.md#steering-patterns).
 
 ---
 
@@ -184,7 +184,7 @@ try (var stream = client.beta().sessions().events().streamStreaming(session.id()
 
 ## Provide Custom Tool Result
 
-> The Java managed-agents bindings for `user.custom_tool_result` are not yet documented in this skill or in the apps source examples. Refer to `shared/managed-agents-events.md` for the wire format and the `anthropic-java` repository for the corresponding params types.
+> ℹ️ The Java managed-agents bindings for `user.custom_tool_result` are not yet documented in this skill or in the apps source examples. Refer to `shared/managed-agents-events.md` for the wire format and the `anthropic-java` repository for the corresponding params types.
 
 ---
 
@@ -261,7 +261,7 @@ client.beta().sessions().resources().delete(resource.id(), ResourceDeleteParams.
 
 ## List and Download Session Files
 
-> Listing and downloading files an agent wrote during a session is not yet documented for Java in this skill or in the apps source examples. See `shared/managed-agents-events.md` and the `anthropic-java` repository for the file list/download bindings.
+> ℹ️ Listing and downloading files an agent wrote during a session is not yet documented for Java in this skill or in the apps source examples. See `shared/managed-agents-events.md` and the `anthropic-java` repository for the file list/download bindings.
 
 ---
 

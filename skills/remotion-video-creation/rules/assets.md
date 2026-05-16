@@ -13,7 +13,7 @@ Place assets in the `public/` folder at your project root.
 
 ## Using staticFile()
 
-You MUST use `staticFile()` to reference files from the`public/` folder:
+You MUST use `staticFile()` to reference files from the `public/` folder:
 
 ```tsx
 import {Img, staticFile} from 'remotion';
@@ -74,5 +74,5 @@ Remote URLs can be used directly without `staticFile()`:
 
 ## Important notes
 
-- Remotion components (`<Img>`,`<Video>`,`<Audio>`) ensure assets are fully loaded before rendering
-- Special characters in filenames (`#`,`?`,`&`) are automatically encoded
+- Remotion components (`<Img>`, `<Video>`, `<Audio>`) ensure assets are fully loaded before rendering
+- Special characters in filenames (`#`, `?`, `&`) are automatically encoded

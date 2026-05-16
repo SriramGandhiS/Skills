@@ -233,6 +233,7 @@ import hashlib
 from dataclasses import dataclass
 from pathlib import Path
 
+
 @dataclass(frozen=True)
 class TrainingConfig:
     dataset_uri: str
@@ -240,6 +241,7 @@ class TrainingConfig:
     seed: int
     learning_rate: float
     batch_size: int
+
 
 def artifact_name(config: TrainingConfig, code_sha: str) -> str:
     config_key = f"{config.dataset_uri}:{config.seed}:{config.learning_rate}:{config.batch_size}"
@@ -265,6 +267,7 @@ PROMOTION_GATES = {
     "calibration_error": ("max", 0.04),
     "p95_latency_ms": ("max", 80),
 }
+
 
 def assert_promotion_ready(metrics: dict[str, float]) -> None:
     missing = sorted(name for name in PROMOTION_GATES if name not in metrics)

@@ -260,7 +260,8 @@ Immutable per-mutation snapshots (`memver_...`) — the audit and rollback surfa
 ```
 
 > The `agent` field accepts only a string ID or `{type: "agent", id, version}` — `model`/`system`/`tools` live on the agent, not here.
-> > **`checkout`** accepts `{type: "branch", name: "..."}` or `{type: "commit", sha: "..."}`. Omit for the repo's default branch.
+>
+> **`checkout`** accepts `{type: "branch", name: "..."}` or `{type: "commit", sha: "..."}`. Omit for the repo's default branch.
 
 ### CreateEnvironment Request Body
 

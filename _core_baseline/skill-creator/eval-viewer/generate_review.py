@@ -320,7 +320,7 @@ class ReviewHandler(BaseHTTPRequestHandler):
         previous: dict[str, dict],
         benchmark_path: Path | None,
         *args,
-**kwargs,
+        **kwargs,
     ):
         self.workspace = workspace
         self.skill_name = skill_name

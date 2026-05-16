@@ -241,10 +241,14 @@ npx ecc consult "security reviews" --target claude
 ### Шаг 2: Установите правила (обязательно)
 
 > ПРЕДУПРЕЖДЕНИЕ: **Важно:** плагины Claude Code не могут автоматически распространять `rules`.
-> > Если вы уже установили ECC через `/plugin install`, **не запускайте после этого `./install.sh --profile full`, `.\install.ps1 --profile full` или `npx ecc-install --profile full`**. Плагин уже загружает навыки, команды и хуки ECC. Запуск полного установщика после установки плагина скопирует те же компоненты в пользовательские директории и может создать дублирующиеся навыки и дублирующееся runtime-поведение.
-> > Для установки через плагин вручную скопируйте только нужные директории `rules/` в `~/.claude/rules/ecc/`. Начните с `rules/common` плюс один языковой или framework-пакет, который вы действительно используете. Не копируйте все директории правил, если явно не хотите весь этот контекст в Claude.
-> > Используйте полный установщик только если делаете полностью ручную установку ECC вместо пути через плагин.
-> > Если ваша локальная установка Claude была очищена или сброшена, это не значит, что нужно повторно покупать ECC. Начните с `node scripts/ecc.js list-installed`, затем запустите `node scripts/ecc.js doctor` и `node scripts/ecc.js repair` перед любой переустановкой. Обычно это восстанавливает файлы, управляемые ECC, без пересборки всей настройки. Если проблема связана с аккаунтом или marketplace-доступом к ECC Tools, восстановление billing/account нужно делать отдельно.
+>
+> Если вы уже установили ECC через `/plugin install`, **не запускайте после этого `./install.sh --profile full`, `.\install.ps1 --profile full` или `npx ecc-install --profile full`**. Плагин уже загружает навыки, команды и хуки ECC. Запуск полного установщика после установки плагина скопирует те же компоненты в пользовательские директории и может создать дублирующиеся навыки и дублирующееся runtime-поведение.
+>
+> Для установки через плагин вручную скопируйте только нужные директории `rules/` в `~/.claude/rules/ecc/`. Начните с `rules/common` плюс один языковой или framework-пакет, который вы действительно используете. Не копируйте все директории правил, если явно не хотите весь этот контекст в Claude.
+>
+> Используйте полный установщик только если делаете полностью ручную установку ECC вместо пути через плагин.
+>
+> Если ваша локальная установка Claude была очищена или сброшена, это не значит, что нужно повторно покупать ECC. Начните с `node scripts/ecc.js list-installed`, затем запустите `node scripts/ecc.js doctor` и `node scripts/ecc.js repair` перед любой переустановкой. Обычно это восстанавливает файлы, управляемые ECC, без пересборки всей настройки. Если проблема связана с аккаунтом или marketplace-доступом к ECC Tools, восстановление billing/account нужно делать отдельно.
 
 ```bash
 # Сначала клонируйте репозиторий
@@ -367,12 +371,16 @@ python3 ./ecc_dashboard.py
 ### Мультимодельные команды требуют дополнительной настройки
 
 > ПРЕДУПРЕЖДЕНИЕ: команды `multi-*` **не** покрываются базовой установкой плагина/правил выше.
-> > Чтобы использовать `/multi-plan`, `/multi-execute`, `/multi-backend`, `/multi-frontend` и `/multi-workflow`, нужно также установить runtime `ccg-workflow`.
-> > Инициализируйте его через `npx ccg-workflow`.
-> > Этот runtime предоставляет внешние зависимости, которых ожидают эти команды, включая:
+>
+> Чтобы использовать `/multi-plan`, `/multi-execute`, `/multi-backend`, `/multi-frontend` и `/multi-workflow`, нужно также установить runtime `ccg-workflow`.
+>
+> Инициализируйте его через `npx ccg-workflow`.
+>
+> Этот runtime предоставляет внешние зависимости, которых ожидают эти команды, включая:
 > - `~/.claude/bin/codeagent-wrapper`
 > - `~/.claude/.ccg/prompts/*`
-> > Без `ccg-workflow` эти `multi-*` команды не будут работать корректно.
+>
+> Без `ccg-workflow` эти `multi-*` команды не будут работать корректно.
 
 ---
 
@@ -782,17 +790,20 @@ Duplicate hooks file detected: ./hooks/hooks.json resolves to already-loaded fil
 Это сразу даёт доступ ко всем командам, агентам, навыкам и хукам.
 
 > **Примечание:** система плагинов Claude Code не поддерживает распространение `rules` через плагины ([ограничение upstream](https://code.claude.com/docs/en/plugins-reference)). Правила нужно установить вручную:
-> > ```bash
+>
+> ```bash
 > # Сначала клонируйте репозиторий
 > git clone https://github.com/affaan-m/everything-claude-code.git
-> > # Вариант A: правила user-level (применяются ко всем проектам)
+>
+> # Вариант A: правила user-level (применяются ко всем проектам)
 > mkdir -p ~/.claude/rules/ecc
 > cp -r everything-claude-code/rules/common ~/.claude/rules/ecc/
 > cp -r everything-claude-code/rules/typescript ~/.claude/rules/ecc/   # выберите свой стек
 > cp -r everything-claude-code/rules/python ~/.claude/rules/ecc/
 > cp -r everything-claude-code/rules/golang ~/.claude/rules/ecc/
 > cp -r everything-claude-code/rules/php ~/.claude/rules/ecc/
-> > # Вариант B: правила project-level (применяются только к текущему проекту)
+>
+> # Вариант B: правила project-level (применяются только к текущему проекту)
 > mkdir -p .claude/rules/ecc
 > cp -r everything-claude-code/rules/common .claude/rules/ecc/
 > cp -r everything-claude-code/rules/typescript .claude/rules/ecc/     # выберите свой стек

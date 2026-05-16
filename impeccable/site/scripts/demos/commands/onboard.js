@@ -5,7 +5,7 @@ export default {
 
   before: `
     <div style="width: 100%; max-width: 260px; padding: 24px; background: #f5f5f5; border: 1px solid #ddd; border-radius: 6px; text-align: center;">
-      <div style="font-size: 32px; opacity: 0.3; margin-bottom: 8px;"></div>
+      <div style="font-size: 32px; opacity: 0.3; margin-bottom: 8px;">📁</div>
       <div style="font-size: 14px; color: #999;">No items found</div>
     </div>
   `,
@@ -13,7 +13,7 @@ export default {
   after: `
     <div style="width: 100%; max-width: 280px; padding: 24px; background: var(--color-paper); border: 1px solid var(--color-mist); border-radius: 12px; text-align: center;">
       <div style="width: 64px; height: 64px; margin: 0 auto 16px; background: color-mix(in oklch, var(--color-accent) 15%, var(--color-paper)); border-radius: 16px; display: flex; align-items: center; justify-content: center;">
-        <span style="font-size: 28px;"></span>
+        <span style="font-size: 28px;">✨</span>
       </div>
       <div style="font-family: var(--font-display); font-size: 1.25rem; font-weight: 400; color: var(--color-ink); margin-bottom: 8px;">Create your first project</div>
       <div style="font-size: 0.8125rem; color: var(--color-ash); line-height: 1.5; margin-bottom: 20px;">Projects help you organize your work. Start with a template or blank canvas.</div>

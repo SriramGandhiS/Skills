@@ -7,7 +7,7 @@ metadata:
 
 # Using calculateMetadata
 
-Use `calculateMetadata` on a`<Composition>` to dynamically set duration, dimensions, and transform props before rendering.
+Use `calculateMetadata` on a `<Composition>` to dynamically set duration, dimensions, and transform props before rendering.
 
 ```tsx
 <Composition id="MyComp" component={MyComponent} durationInFrames={300} fps={30} width={1920} height={1080} defaultProps={{videoSrc: 'https://remotion.media/video.mp4'}} calculateMetadata={calculateMetadata} />

@@ -14,11 +14,11 @@ Managed Agents is built around four core concepts:
 ```
                        ┌─────────────────────────────────────┐
                        │  Anthropic orchestration layer      │
-Agent (config) ───────│  (agent loop: Claude + tool calls)  │
+Agent (config) ───────▶│  (agent loop: Claude + tool calls)  │
                        └──────────────┬──────────────────────┘
                                       │ tool calls
                                       ▼
-Environment (template) ── Container (tool execution workspace)
+Environment (template) ──▶ Container (tool execution workspace)
                                  │
                          Session ─┤
                                  ├── Resources (files, repos, memory stores — attached at startup)
@@ -33,7 +33,7 @@ Environment (template) ── Container (tool execution workspace)
 ## Session Lifecycle
 
 ```
-rescheduling → running  idle → terminated
+rescheduling → running ↔ idle → terminated
 ```
 
 | Status         | Description                                                        |
@@ -198,7 +198,7 @@ Each `POST /v1/agents/{id}` (update) creates a new immutable version (numeric ti
 | Update           | `POST`   | `/v1/agents/{id}`                     |
 | Archive          | `POST`   | `/v1/agents/{id}/archive`             |
 
-> WARNING: **Archive is permanent.** Archiving makes the agent read-only: existing sessions continue to run, but **new sessions cannot reference it**, and there is no unarchive. Since agents have no `delete`, this is the terminal lifecycle state. Never archive a production agent as routine cleanup — confirm with the user first.
+> ⚠️ **Archive is permanent.** Archiving makes the agent read-only: existing sessions continue to run, but **new sessions cannot reference it**, and there is no unarchive. Since agents have no `delete`, this is the terminal lifecycle state. Never archive a production agent as routine cleanup — confirm with the user first.
 
 ### Using an Agent in a Session
 

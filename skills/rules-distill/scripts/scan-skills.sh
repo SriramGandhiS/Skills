@@ -2,12 +2,14 @@
 # scan-skills.sh — enumerate skill files, extract frontmatter and UTC mtime
 # Usage: scan-skills.sh [CWD_SKILLS_DIR]
 # Output: JSON to stdout
-# # When CWD_SKILLS_DIR is omitted, defaults to $PWD/.claude/skills so the
+#
+# When CWD_SKILLS_DIR is omitted, defaults to $PWD/.claude/skills so the
 # script always picks up project-level skills without relying on the caller.
-# # Environment:
-# RULES_DISTILL_GLOBAL_DIR   Override ~/.claude/skills (for testing only;
-# do not set in production — intended for bats tests)
-# RULES_DISTILL_PROJECT_DIR  Override project dir detection (for testing only)
+#
+# Environment:
+#   RULES_DISTILL_GLOBAL_DIR   Override ~/.claude/skills (for testing only;
+#                              do not set in production — intended for bats tests)
+#   RULES_DISTILL_PROJECT_DIR  Override project dir detection (for testing only)
 
 set -euo pipefail
 

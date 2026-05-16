@@ -1,9 +1,11 @@
 #!/usr/bin/env bash
 # save-results.sh — merge evaluated skills into results.json with correct UTC timestamp
 # Usage: save-results.sh RESULTS_JSON <<< "$EVAL_JSON"
-# # stdin format:
-# { "skills": {...}, "mode"?: "full"|"quick", "batch_progress"?: {...} }
-# # Always sets evaluated_at to current UTC time via `date -u`.
+#
+# stdin format:
+#   { "skills": {...}, "mode"?: "full"|"quick", "batch_progress"?: {...} }
+#
+# Always sets evaluated_at to current UTC time via `date -u`.
 # Merges stdin .skills into existing results.json (new entries override old).
 # Optionally updates .mode and .batch_progress if present in stdin.
 
@@ -35,7 +37,8 @@ fi
 
 # Merge: new .skills override existing ones; old skills not in input_json are kept.
 # Optionally update .mode and .batch_progress if provided.
-# # Use mktemp for a collision-safe temp file (concurrent runs on the same RESULTS_JSON
+#
+# Use mktemp for a collision-safe temp file (concurrent runs on the same RESULTS_JSON
 # would race on a predictable ".tmp" suffix; random suffix prevents silent overwrites).
 tmp=$(mktemp "${RESULTS_JSON}.XXXXXX")
 trap 'rm -f "$tmp"' EXIT

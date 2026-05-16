@@ -13,7 +13,7 @@ When using an existing presentation as a template:
 
 2. **Plan slide mapping**: For each content section, choose a template slide.
 
-   WARNING: **USE VARIED LAYOUTS** — monotonous presentations are a common failure mode. Don't default to basic title + bullet slides. Actively seek out:
+   ⚠️ **USE VARIED LAYOUTS** — monotonous presentations are a common failure mode. Don't default to basic title + bullet slides. Actively seek out:
    - Multi-column layouts (2-column, 3-column)
    - Image + text combinations
    - Full-bleed images with text overlay
@@ -22,7 +22,7 @@ When using an existing presentation as a template:
    - Stat/number callouts
    - Icon grids or icon + text rows
 
-**Avoid:** Repeating the same text-heavy layout for every slide.
+   **Avoid:** Repeating the same text-heavy layout for every slide.
 
    Match content type to layout style (e.g., key points → bullet slide, team info → multi-column, testimonials → quote slide).
 
@@ -35,7 +35,7 @@ When using an existing presentation as a template:
    - **Complete all structural changes before step 5**
 
 5. **Edit content**: Update text in each `slide{N}.xml`.
-**Use subagents here if available** — slides are separate XML files, so subagents can edit in parallel.
+   **Use subagents here if available** — slides are separate XML files, so subagents can edit in parallel.
 
 6. **Clean**: `python scripts/clean.py unpacked/`
 
@@ -156,14 +156,14 @@ When replacing text with different length content:
 
 If source has multiple items (numbered lists, multiple sections), create separate `<a:p>` elements for each — **never concatenate into one string**.
 
-**FAIL: WRONG** — all items in one paragraph:
+**❌ WRONG** — all items in one paragraph:
 ```xml
 <a:p>
   <a:r><a:rPr .../><a:t>Step 1: Do the first thing. Step 2: Do the second thing.</a:t></a:r>
 </a:p>
 ```
 
-**PASS: CORRECT** — separate paragraphs with bold headers:
+**✅ CORRECT** — separate paragraphs with bold headers:
 ```xml
 <a:p>
   <a:pPr algn="l"><a:lnSpc><a:spcPts val="3919"/></a:lnSpc></a:pPr>

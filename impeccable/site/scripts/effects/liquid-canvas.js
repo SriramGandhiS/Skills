@@ -66,7 +66,7 @@ export function initHeroEffect() {
 		canvas.width = width * dpr;
 		canvas.height = height * dpr;
 		ctx.scale(dpr, dpr);
-
+		
 		initGrid();
 	}
 
@@ -74,7 +74,7 @@ export function initHeroEffect() {
 		points = [];
 		// Responsive gap
 		gap = width < 768 ? 40 : 50;
-
+		
 		const cols = Math.ceil(width / gap);
 		const rows = Math.ceil(height / gap);
 
@@ -87,7 +87,7 @@ export function initHeroEffect() {
 
 	function draw() {
 		ctx.clearRect(0, 0, width, height);
-
+		
 		// Update points
 		points.forEach(p => p.update());
 
@@ -97,10 +97,10 @@ export function initHeroEffect() {
 		ctx.lineWidth = 1;
 
 		const cols = Math.ceil(width / gap) + 1;
-
+		
 		for (let i = 0; i < points.length; i++) {
 			const p = points[i];
-
+			
 			// Draw Horizontal
 			if ((i + 1) % cols !== 0 && i + 1 < points.length) {
 				const next = points[i + 1];
@@ -108,7 +108,7 @@ export function initHeroEffect() {
 				const xc = (p.x + next.x) / 2;
 				const yc = (p.y + next.y) / 2;
 				ctx.moveTo(p.x, p.y);
-				// ctx.quadraticCurveTo(p.x, p.y, xc, yc); // Slightly more expensive but smoother?
+				// ctx.quadraticCurveTo(p.x, p.y, xc, yc); // Slightly more expensive but smoother? 
 				// Actually straight lines with high enough density look fine and are faster.
 				// Let's stick to lineTo for performance, the points themselves move smoothly.
 				ctx.lineTo(next.x, next.y);
@@ -131,7 +131,7 @@ export function initHeroEffect() {
 		mouse.x = e.clientX - rect.left;
 		mouse.y = e.clientY - rect.top;
 	}
-
+	
 	function handleMouseLeave() {
 		mouse.x = -1000;
 		mouse.y = -1000;

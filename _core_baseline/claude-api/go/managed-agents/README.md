@@ -54,7 +54,7 @@ fmt.Println(environment.ID) // env_...
 
 ## Create an Agent (required first step)
 
-> WARNING: **There is no inline agent config.** `Model`/`System`/`Tools` live on the agent object, not the session. Always start with `Beta.Agents.New()` — the session only takes `Agent: anthropic.BetaSessionNewParamsAgentUnion{OfString: anthropic.String(agent.ID)}` (or the typed `OfBetaManagedAgentsAgents` variant when you need a specific version).
+> ⚠️ **There is no inline agent config.** `Model`/`System`/`Tools` live on the agent object, not the session. Always start with `Beta.Agents.New()` — the session only takes `Agent: anthropic.BetaSessionNewParamsAgentUnion{OfString: anthropic.String(agent.ID)}` (or the typed `OfBetaManagedAgentsAgents` variant when you need a specific version).
 
 ### Minimal
 
@@ -149,7 +149,7 @@ if err != nil {
 }
 ```
 
-> **Stream-first:** Open the stream *before* (or concurrently with) sending the message. The stream only delivers events that occur after it opens — stream-after-send means early events arrive buffered in one batch. See [Steering Patterns](../../shared/managed-agents-events.md#steering-patterns).
+> 💡 **Stream-first:** Open the stream *before* (or concurrently with) sending the message. The stream only delivers events that occur after it opens — stream-after-send means early events arrive buffered in one batch. See [Steering Patterns](../../shared/managed-agents-events.md#steering-patterns).
 
 ---
 
@@ -241,7 +241,7 @@ if err := stream.Err(); err != nil {
 
 ## Provide Custom Tool Result
 
-> The Go managed-agents bindings for `user.custom_tool_result` are not yet documented in this skill or in the apps source examples. Refer to `shared/managed-agents-events.md` for the wire format and the `github.com/anthropics/anthropic-sdk-go` repository for the corresponding Go params types.
+> ℹ️ The Go managed-agents bindings for `user.custom_tool_result` are not yet documented in this skill or in the apps source examples. Refer to `shared/managed-agents-events.md` for the wire format and the `github.com/anthropics/anthropic-sdk-go` repository for the corresponding Go params types.
 
 ---
 
@@ -333,7 +333,7 @@ if _, err := client.Beta.Sessions.Resources.Delete(ctx, resource.ID, anthropic.B
 
 ## List and Download Session Files
 
-> Listing and downloading files an agent wrote during a session is not yet documented for Go in this skill or in the apps source examples. See `shared/managed-agents-events.md` and the `github.com/anthropics/anthropic-sdk-go` repository for the `Beta.Files.List` and `Beta.Files.Download` Go params types.
+> ℹ️ Listing and downloading files an agent wrote during a session is not yet documented for Go in this skill or in the apps source examples. See `shared/managed-agents-events.md` and the `github.com/anthropics/anthropic-sdk-go` repository for the `Beta.Files.List` and `Beta.Files.Download` Go params types.
 
 ---
 

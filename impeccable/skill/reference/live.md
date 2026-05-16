@@ -520,9 +520,11 @@ On every `live.mjs` boot, after inject, the project is scanned for HTML files un
 When `configDrift` is present, surface it to the user once per session before entering the poll loop:
 
 > Noticed N HTML file(s) in the project that aren't in `config.files`:
-> > - `public/new-section/index.html`
+>
+> - `public/new-section/index.html`
 > - `public/docs/new-command.html`
-> > Add them, or switch `files` to a glob like `["public/**/*.html"]` and let it track new pages automatically?
+>
+> Add them, or switch `files` to a glob like `["public/**/*.html"]` and let it track new pages automatically?
 
 Don't auto-update the config; let the user decide. `configDrift` is `null` when there's no drift.
 
@@ -553,11 +555,13 @@ Output: `{ shape, signals }` where `shape` is one of `append-arrays`, `append-st
 Use this phrasing so the experience is consistent across agents:
 
 > **CSP patch needed.** I detected a Content Security Policy in your project that blocks `http://localhost:8400`: the live picker won't load without an allowance. Here's the change I'd make:
-> > ```diff
+>
+> ```diff
 > [file: <patchTarget>]
 > [exact diff, 2–5 lines]
 > ```
-> > It's guarded by `NODE_ENV === "development"` so the extra entry only appears in dev and never reaches production. You can remove it any time by reverting this file. Apply? [y/n]
+>
+> It's guarded by `NODE_ENV === "development"` so the extra entry only appears in dev and never reaches production. You can remove it any time by reverting this file. Apply? [y/n]
 
 On "no": skip the patch, mention live won't work until the user adds the allowance manually, still write `cspChecked: true` (the question's been asked).
 

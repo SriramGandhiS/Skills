@@ -13,17 +13,17 @@ Run before PRs, after major changes, and pre-deploy.
 - Before opening a pull request for a Quarkus service
 - After major refactoring or dependency upgrades
 - Pre-deployment verification for staging or production
-- Running full build â†’ lint â†’ test â†’ security scan â†’ native compilation pipeline
+- Running full build → lint → test → security scan → native compilation pipeline
 - Validating test coverage meets thresholds (80%+)
 - Testing native image compatibility
 
 ## Phase 1: Build
 
 ```bash
-## Maven
+# Maven
 mvn clean verify -DskipTests
 
-## Gradle
+# Gradle
 ./gradlew clean assemble -x test
 ```
 
@@ -56,16 +56,16 @@ mvn sonar:sonar \
 ## Phase 3: Tests + Coverage
 
 ```bash
-## Run all tests
+# Run all tests
 mvn clean test
 
-## Generate coverage report
+# Generate coverage report
 mvn jacoco:report
 
-## Enforce coverage threshold (80%)
+# Enforce coverage threshold (80%)
 mvn jacoco:check
 
-## Or with Gradle
+# Or with Gradle
 ./gradlew test jacocoTestReport jacocoTestCoverageVerification
 ```
 
@@ -84,7 +84,7 @@ class UserServiceTest {
   void createUser_validInput_returnsUser() {
     var dto = new CreateUserDto("Alice", "alice@example.com");
 
-    // Panache persist() is void â€” use doNothing + verify
+    // Panache persist() is void — use doNothing + verify
     doNothing().when(userRepository).persist(any(User.class));
 
     User result = userService.create(dto);
@@ -176,10 +176,10 @@ Review `target/dependency-check-report.html` for CVEs.
 ### Quarkus Security Audit
 
 ```bash
-## Check vulnerable extensions
+# Check vulnerable extensions
 mvn quarkus:audit
 
-## List all extensions
+# List all extensions
 mvn quarkus:list-extensions
 ```
 
@@ -187,7 +187,7 @@ mvn quarkus:list-extensions
 
 ```bash
 docker run -t owasp/zap2docker-stable zap-api-scan.py \
-  -t <http://localhost:8080/q/openapi> \
+  -t http://localhost:8080/q/openapi \
   -f openapi
 ```
 
@@ -207,18 +207,18 @@ docker run -t owasp/zap2docker-stable zap-api-scan.py \
 Test GraalVM native image compatibility:
 
 ```bash
-## Build native executable
+# Build native executable
 mvn package -Dnative
 
-## Or with container
+# Or with container
 mvn package -Dnative -Dquarkus.native.container-build=true
 
-## Test native executable
+# Test native executable
 ./target/*-runner
 
-## Run basic smoke tests
-curl <http://localhost:8080/q/health/live>
-curl <http://localhost:8080/q/health/ready>
+# Run basic smoke tests
+curl http://localhost:8080/q/health/live
+curl http://localhost:8080/q/health/ready
 ```
 
 ### Native Image Troubleshooting
@@ -276,17 +276,17 @@ k6 run load-test.js
 ## Phase 7: Health Checks
 
 ```bash
-## Liveness
-curl <http://localhost:8080/q/health/live>
+# Liveness
+curl http://localhost:8080/q/health/live
 
-## Readiness
-curl <http://localhost:8080/q/health/ready>
+# Readiness
+curl http://localhost:8080/q/health/ready
 
-## All health checks
-curl <http://localhost:8080/q/health>
+# All health checks
+curl http://localhost:8080/q/health
 
-## Metrics (if enabled)
-curl <http://localhost:8080/q/metrics>
+# Metrics (if enabled)
+curl http://localhost:8080/q/metrics
 ```
 
 Expected responses:
@@ -305,38 +305,38 @@ Expected responses:
 ## Phase 8: Container Image Build
 
 ```bash
-## Build container image
+# Build container image
 mvn package -Dquarkus.container-image.build=true
 
-## Or with specific registry
+# Or with specific registry
 mvn package \
   -Dquarkus.container-image.build=true \
   -Dquarkus.container-image.registry=docker.io \
   -Dquarkus.container-image.group=myorg \
   -Dquarkus.container-image.tag=1.0.0
 
-## Test container
+# Test container
 docker run -p 8080:8080 myorg/my-quarkus-app:1.0.0
 ```
 
 ### Container Security Scan
 
 ```bash
-## Trivy
+# Trivy
 trivy image myorg/my-quarkus-app:1.0.0
 
-## Grype
+# Grype
 grype myorg/my-quarkus-app:1.0.0
 ```
 
 ## Phase 9: Configuration Validation
 
 ```bash
-## Check all configuration properties
+# Check all configuration properties
 mvn quarkus:info
 
-## List all config sources
-curl <http://localhost:8080/q/dev/io.quarkus.quarkus-vertx-http/config>
+# List all config sources
+curl http://localhost:8080/q/dev/io.quarkus.quarkus-vertx-http/config
 ```
 
 ### Environment-Specific Checks
@@ -358,7 +358,7 @@ curl <http://localhost:8080/q/dev/io.quarkus.quarkus-vertx-http/config>
 
 Generate OpenAPI spec:
 ```bash
-curl <http://localhost:8080/q/openapi> -o openapi.json
+curl http://localhost:8080/q/openapi -o openapi.json
 ```
 
 ## Verification Checklist
@@ -371,7 +371,7 @@ curl <http://localhost:8080/q/openapi> -o openapi.json
 
 ### Testing
 - [ ] All tests pass
-- [ ] Code coverage â‰¥ 80%
+- [ ] Code coverage ≥ 80%
 - [ ] Integration tests with real database
 - [ ] Security tests pass
 - [ ] Performance within acceptable limits
@@ -437,28 +437,28 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-
+      
       - name: Set up JDK 21
         uses: actions/setup-java@v3
         with:
           java-version: '21'
           distribution: 'temurin'
-
+      
       - name: Cache Maven packages
         uses: actions/cache@v3
         with:
           path: ~/.m2
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
-
+      
       - name: Build
         run: mvn clean verify -DskipTests
-
+      
       - name: Test with Coverage
         run: mvn test jacoco:report jacoco:check
-
+      
       - name: Security Scan
         run: mvn org.owasp:dependency-check-maven:check
-
+      
       - name: Upload Coverage
         uses: codecov/codecov-action@v3
         with:

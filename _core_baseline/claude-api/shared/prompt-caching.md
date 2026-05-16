@@ -145,12 +145,12 @@ Not every parameter change invalidates everything. The API has three cache tiers
 
 | Change | Tools cache | System cache | Messages cache |
 |---|:---:|:---:|:---:|
-| Tool definitions (add/remove/reorder) | FAIL: | FAIL: | FAIL: |
-| Model switch | FAIL: | FAIL: | FAIL: |
-| `speed`, web-search, citations toggle | PASS: | FAIL: | FAIL: |
-| System prompt content | PASS: | FAIL: | FAIL: |
-| `tool_choice`, images, `thinking` enable/disable | PASS: | PASS: | FAIL: |
-| Message content | PASS: | PASS: | FAIL: |
+| Tool definitions (add/remove/reorder) | ❌ | ❌ | ❌ |
+| Model switch | ❌ | ❌ | ❌ |
+| `speed`, web-search, citations toggle | ✅ | ❌ | ❌ |
+| System prompt content | ✅ | ❌ | ❌ |
+| `tool_choice`, images, `thinking` enable/disable | ✅ | ✅ | ❌ |
+| Message content | ✅ | ✅ | ❌ |
 
 Implication: you can change `tool_choice` per-request or toggle `thinking` without losing the tools+system cache. Don't over-worry about these — only tool-definition and model changes force a full rebuild.
 

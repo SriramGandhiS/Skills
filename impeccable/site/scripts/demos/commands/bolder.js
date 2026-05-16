@@ -2,7 +2,7 @@
 export default {
   id: 'bolder',
   caption: 'Timid design → Bold, confident design',
-
+  
   before: `
     <div style="text-align: center; padding: var(--spacing-md); max-width: 280px;">
       <div style="font-size: 1.125rem; font-weight: 500; margin-bottom: 8px; color: var(--color-charcoal);">Introducing Our Product</div>
@@ -10,7 +10,7 @@ export default {
       <button style="padding: 8px 16px; background: var(--color-mist); color: var(--color-charcoal); border: none; border-radius: 4px; font-size: 0.875rem;">Learn More</button>
     </div>
   `,
-
+  
   after: `
     <div style="text-align: center; padding: var(--spacing-lg); max-width: 320px;">
       <div style="font-family: var(--font-display); font-size: 2.5rem; font-weight: 300; font-style: italic; margin-bottom: 12px; color: var(--color-ink); line-height: 1;">Introducing Our Product</div>

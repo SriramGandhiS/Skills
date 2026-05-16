@@ -2,8 +2,9 @@
 # scan-rules.sh — enumerate rule files and extract H2 heading index
 # Usage: scan-rules.sh [RULES_DIR]
 # Output: JSON to stdout
-# # Environment:
-# RULES_DISTILL_DIR  Override ~/.claude/rules (for testing only)
+#
+# Environment:
+#   RULES_DISTILL_DIR  Override ~/.claude/rules (for testing only)
 
 set -euo pipefail
 

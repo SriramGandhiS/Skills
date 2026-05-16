@@ -38,9 +38,9 @@ const CardDescription = styled.p`
 `;
 
 const features = [
-  { icon: "", title: "Blazing Fast", description: "Optimized for speed with edge-first architecture." },
-  { icon: "", title: "Secure by Default", description: "Enterprise-grade security with zero configuration." },
-  { icon: "", title: "Modular Design", description: "Pick and choose only what you need. No bloat." },
+  { icon: "⚡", title: "Blazing Fast", description: "Optimized for speed with edge-first architecture." },
+  { icon: "🔒", title: "Secure by Default", description: "Enterprise-grade security with zero configuration." },
+  { icon: "📦", title: "Modular Design", description: "Pick and choose only what you need. No bloat." },
 ];
 
 export function FeatureGrid() {

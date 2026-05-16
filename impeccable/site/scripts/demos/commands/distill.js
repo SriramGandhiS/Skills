@@ -8,9 +8,9 @@ export default {
       <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; padding-bottom: 8px; border-bottom: 1px solid #ddd;">
         <span style="font-size: 12px; color: #666;">Dashboard</span>
         <div style="display: flex; gap: 4px;">
-          <button style="padding: 2px 6px; font-size: 10px; background: #e0e0e0; border: none; border-radius: 2px;"></button>
-          <button style="padding: 2px 6px; font-size: 10px; background: #e0e0e0; border: none; border-radius: 2px;"></button>
-          <button style="padding: 2px 6px; font-size: 10px; background: #e0e0e0; border: none; border-radius: 2px;"></button>
+          <button style="padding: 2px 6px; font-size: 10px; background: #e0e0e0; border: none; border-radius: 2px;">⚙️</button>
+          <button style="padding: 2px 6px; font-size: 10px; background: #e0e0e0; border: none; border-radius: 2px;">🔔</button>
+          <button style="padding: 2px 6px; font-size: 10px; background: #e0e0e0; border: none; border-radius: 2px;">❓</button>
           <button style="padding: 2px 6px; font-size: 10px; background: #e0e0e0; border: none; border-radius: 2px;">⋮</button>
         </div>
       </div>
@@ -20,8 +20,8 @@ export default {
         <div style="padding: 8px; background: white; border: 1px solid #e0e0e0; border-radius: 4px; font-size: 10px; color: #666;">Growth<br><b>+12%</b></div>
         <div style="padding: 8px; background: white; border: 1px solid #e0e0e0; border-radius: 4px; font-size: 10px; color: #666;">Bounce<br><b>32%</b></div>
       </div>
-      <div style="margin-top: 8px; padding: 8px; background: #e3f2fd; border-radius: 4px; font-size: 10px; color: #1976d2;"> View detailed analytics →</div>
-      <div style="margin-top: 4px; padding: 8px; background: #fff3e0; border-radius: 4px; font-size: 10px; color: #e65100;"> Set up goals →</div>
+      <div style="margin-top: 8px; padding: 8px; background: #e3f2fd; border-radius: 4px; font-size: 10px; color: #1976d2;">📊 View detailed analytics →</div>
+      <div style="margin-top: 4px; padding: 8px; background: #fff3e0; border-radius: 4px; font-size: 10px; color: #e65100;">🎯 Set up goals →</div>
     </div>
   `,
 

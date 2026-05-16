@@ -1,21 +1,24 @@
 #!/bin/bash
 # gan-harness.sh — GAN-Style Generator-Evaluator Harness Orchestrator
-# # Inspired by Anthropic's "Harness Design for Long-Running Application Development"
+#
+# Inspired by Anthropic's "Harness Design for Long-Running Application Development"
 # https://www.anthropic.com/engineering/harness-design-long-running-apps
-# # Usage:
-# ./scripts/gan-harness.sh "Build a music streaming dashboard"
-# GAN_MAX_ITERATIONS=10 GAN_PASS_THRESHOLD=8.0 ./scripts/gan-harness.sh "Build a Kanban board"
-# # Environment Variables:
-# GAN_MAX_ITERATIONS  — Max generator-evaluator cycles (default: 15)
-# GAN_PASS_THRESHOLD  — Weighted score to pass, 1-10 (default: 7.0)
-# GAN_PLANNER_MODEL   — Model for planner (default: opus)
-# GAN_GENERATOR_MODEL — Model for generator (default: opus)
-# GAN_EVALUATOR_MODEL — Model for evaluator (default: opus)
-# GAN_DEV_SERVER_PORT — Port for live app (default: 3000)
-# GAN_DEV_SERVER_CMD  — Command to start dev server (default: "npm run dev")
-# GAN_PROJECT_DIR     — Working directory (default: current dir)
-# GAN_SKIP_PLANNER    — Set to "true" to skip planner phase
-# GAN_EVAL_MODE       — playwright, screenshot, or code-only (default: playwright)
+#
+# Usage:
+#   ./scripts/gan-harness.sh "Build a music streaming dashboard"
+#   GAN_MAX_ITERATIONS=10 GAN_PASS_THRESHOLD=8.0 ./scripts/gan-harness.sh "Build a Kanban board"
+#
+# Environment Variables:
+#   GAN_MAX_ITERATIONS  — Max generator-evaluator cycles (default: 15)
+#   GAN_PASS_THRESHOLD  — Weighted score to pass, 1-10 (default: 7.0)
+#   GAN_PLANNER_MODEL   — Model for planner (default: opus)
+#   GAN_GENERATOR_MODEL — Model for generator (default: opus)
+#   GAN_EVALUATOR_MODEL — Model for evaluator (default: opus)
+#   GAN_DEV_SERVER_PORT — Port for live app (default: 3000)
+#   GAN_DEV_SERVER_CMD  — Command to start dev server (default: "npm run dev")
+#   GAN_PROJECT_DIR     — Working directory (default: current dir)
+#   GAN_SKIP_PLANNER    — Set to "true" to skip planner phase
+#   GAN_EVAL_MODE       — playwright, screenshot, or code-only (default: playwright)
 
 set -euo pipefail
 

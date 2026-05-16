@@ -13,16 +13,16 @@ surfaces, or posting announcements.
 | `docs/HERMES-SETUP.md` | Public Hermes operator topology | No raw workspace export, credentials, private account names, or local-only operator state |
 | `skills/hermes-imports/SKILL.md` | Sanitized Hermes-to-ECC import workflow | Includes import rules, sanitization checklist, conversion pattern, and output contract |
 | `docs/architecture/cross-harness.md` | Shared substrate model for Claude Code, Codex, OpenCode, Cursor, Gemini, Hermes, and terminal-only use | Names portability boundaries and does not claim unsupported native parity |
-| `docs/architecture/harness-adapter-compliance.md`| Adapter matrix and scorecard | Verified by `npm run harness:adapters -- --check` |
-| `docs/architecture/observability-readiness.md`| Local operator-readiness gate | Verified by `npm run observability:ready` |
-| `docs/architecture/progress-sync-contract.md`| GitHub, Linear, handoff, roadmap, and work-item sync boundary | Checked by `node scripts/platform-audit.js --format json --allow-untracked docs/drafts/` |
+| `docs/architecture/harness-adapter-compliance.md` | Adapter matrix and scorecard | Verified by `npm run harness:adapters -- --check` |
+| `docs/architecture/observability-readiness.md` | Local operator-readiness gate | Verified by `npm run observability:ready` |
+| `docs/architecture/progress-sync-contract.md` | GitHub, Linear, handoff, roadmap, and work-item sync boundary | Checked by `node scripts/platform-audit.js --format json --allow-untracked docs/drafts/` |
 | `docs/releases/2.0.0-rc.1/release-notes.md` | GitHub release copy source | Must be refreshed with final live release/package/plugin URLs before publication |
 | `docs/releases/2.0.0-rc.1/quickstart.md` | Clone-to-first-workflow path | Covers clone, install, verify, first skill, and harness switch |
 | `docs/releases/2.0.0-rc.1/launch-checklist.md` | Operator launch checklist | Must remain approval-gated for release, package, plugin, and announcement actions |
 | `docs/releases/2.0.0-rc.1/publication-readiness.md` | Release gate | Requires fresh evidence from the exact release commit |
-| `docs/releases/2.0.0-rc.1/publication-evidence-2026-05-15.md`| Current May 15 queue, roadmap, security, supply-chain watch, no-lifecycle CI install hardening, AgentShield #86 evidence-pack provenance, ECC Tools billing-gate, Actions cache purge, and `ecc2` test evidence through PR #1941 | Must be superseded by a final clean-checkout evidence file before real publication |
-| `docs/releases/2.0.0-rc.1/publication-evidence-2026-05-16.md`| Current May 16 queue cleanup, recsys skill merge, GateGuard triage, PR #1947 supply-chain protection, AgentShield #87 plugin-cache confidence evidence, dashboard refresh, and combined Node/Rust/release-surface gate evidence through`6c8e909d` | Must still be repeated from a strict clean checkout before real publication |
-| `docs/releases/2.0.0-rc.1/naming-and-publication-matrix.md`| Naming, slug, and publication-path decision record | Keeps`Everything Claude Code / ECC`, npm`ecc-universal`, and plugin slug`ecc` for rc.1 |
+| `docs/releases/2.0.0-rc.1/publication-evidence-2026-05-15.md` | Current May 15 queue, roadmap, security, supply-chain watch, no-lifecycle CI install hardening, AgentShield #86 evidence-pack provenance, ECC Tools billing-gate, Actions cache purge, and `ecc2` test evidence through PR #1941 | Must be superseded by a final clean-checkout evidence file before real publication |
+| `docs/releases/2.0.0-rc.1/publication-evidence-2026-05-16.md` | Current May 16 queue cleanup, recsys skill merge, GateGuard triage, PR #1947 supply-chain protection, AgentShield #87 plugin-cache confidence evidence, AgentShield #88 evidence-pack inspect/readback, AgentShield #89 evidence-pack fleet routing, AgentShield #90 fleet review items, ECC-Tools #76 fleet-summary consumption, ECC-Tools #77 hosted finding evidence paths, ECC-Tools #78 harness policy-route linking, dashboard refresh, and combined Node/Rust/release-surface gate evidence through the May 16 mirror | Must still be repeated from a strict clean checkout before real publication |
+| `docs/releases/2.0.0-rc.1/naming-and-publication-matrix.md` | Naming, slug, and publication-path decision record | Keeps `Everything Claude Code / ECC`, npm `ecc-universal`, and plugin slug `ecc` for rc.1 |
 | `docs/releases/2.0.0-rc.1/x-thread.md` | X launch draft | Must replace placeholders with live URLs after release/package/plugin publication |
 | `docs/releases/2.0.0-rc.1/linkedin-post.md` | LinkedIn launch draft | Must replace placeholders with live URLs after release/package/plugin publication |
 | `docs/releases/2.0.0-rc.1/article-outline.md` | Longform launch outline | Must stay release-candidate framed until GA evidence exists |
@@ -84,7 +84,7 @@ The preview pack is assembled, but publication is still blocked until these live
 surfaces exist and are recorded in a final evidence file:
 
 - GitHub prerelease `v2.0.0-rc.1`;
-- npm `ecc-universal@2.0.0-rc.1` on the`next` dist-tag;
+- npm `ecc-universal@2.0.0-rc.1` on the `next` dist-tag;
 - Claude plugin tag / marketplace propagation for `ecc@ecc`;
 - Codex repo-marketplace distribution evidence plus official Plugin Directory
   availability status;

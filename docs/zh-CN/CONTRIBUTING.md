@@ -58,20 +58,20 @@
 ## 快速开始
 
 ```bash
-## 1. Fork and clone
+# 1. Fork and clone
 gh repo fork affaan-m/everything-claude-code --clone
 cd everything-claude-code
 
-## 2. Create a branch
+# 2. Create a branch
 git checkout -b feat/my-contribution
 
-## 3. Add your contribution (see sections below)
+# 3. Add your contribution (see sections below)
 
-## 4. Test locally
+# 4. Test locally
 cp -r skills/my-skill ~/.claude/skills/  # for skills
-## Then test with Claude Code
+# Then test with Claude Code
 
-## 5. Submit PR
+# 5. Submit PR
 git add . && git commit -m "feat: add my-skill" && git push -u origin feat/my-contribution
 ```
 
@@ -98,7 +98,7 @@ description: Brief description shown in skill list
 origin: ECC
 ---
 
-## 你的技能标题
+# 你的技能标题
 
 简要概述此技能涵盖的内容。
 
@@ -190,10 +190,10 @@ model: sonnet
 
 | 字段 | 描述 | 选项 |
 |-------|-------------|---------|
-| `name`| 小写，连字符连接 |`code-reviewer` |
+| `name` | 小写，连字符连接 | `code-reviewer` |
 | `description` | 用于决定何时调用 | 请具体说明！ |
-| `tools`| 仅包含必需内容 |`Read, Write, Edit, Bash, Grep, Glob, WebFetch, Task`，或当智能体使用 MCP 时的 MCP 工具名称（例如`mcp__context7__resolve-library-id`,`mcp__context7__query-docs`） |
-| `model`| 复杂度级别 |`haiku`（简单），`sonnet`（编码），`opus`（复杂） |
+| `tools` | 仅包含必需内容 | `Read, Write, Edit, Bash, Grep, Glob, WebFetch, Task`，或当智能体使用 MCP 时的 MCP 工具名称（例如 `mcp__context7__resolve-library-id`, `mcp__context7__query-docs`） |
+| `model` | 复杂度级别 | `haiku`（简单），`sonnet`（编码），`opus`（复杂） |
 
 ### 智能体示例
 
@@ -291,7 +291,7 @@ tool == "Bash" && tool_input.command matches "git push"
 
 * \[ ] 匹配器具体（不过于宽泛）
 * \[ ] 包含清晰的错误/信息消息
-* \[ ] 使用正确的退出代码 (`exit 1`阻止,`exit 0` 允许)
+* \[ ] 使用正确的退出代码 (`exit 1` 阻止, `exit 0` 允许)
 * \[ ] 经过充分测试
 * \[ ] 有描述
 
@@ -314,7 +314,7 @@ commands/your-command.md
 description: 在 /help 中显示的简要描述
 ---
 
-## 命令名称
+# 命令名称
 
 ## 目的
 
@@ -326,6 +326,7 @@ description: 在 /help 中显示的简要描述
 
 /your-command [args]
 ```
+
 
 ## 工作流程
 
@@ -354,10 +355,10 @@ description: 在 /help 中显示的简要描述
 
 技能和智能体可以使用 **MCP（模型上下文协议）** 工具来获取最新数据，而不仅仅是依赖训练数据。这对于文档尤其有用。
 
-* **Context7** 是一个暴露 `resolve-library-id`和`query-docs` 的 MCP 服务器。当用户询问库、框架或 API 时，请使用它，以便答案能反映最新的文档和代码示例。
+* **Context7** 是一个暴露 `resolve-library-id` 和 `query-docs` 的 MCP 服务器。当用户询问库、框架或 API 时，请使用它，以便答案能反映最新的文档和代码示例。
 * 在贡献依赖于实时文档的**技能**时（例如设置、API 使用），请描述如何使用相关的 MCP 工具（例如，解析库 ID，然后查询文档），并指向 `documentation-lookup` 技能或 Context7 作为参考模式。
-* 在贡献能回答文档/API 问题的**智能体**时，请在智能体的工具中包含 Context7 MCP 工具名称（例如 `mcp__context7__resolve-library-id`,`mcp__context7__query-docs`），并记录解析 → 查询的工作流程。
-* **mcp-configs/mcp-servers.json** 包含一个 Context7 条目；用户在其工具链（例如 Claude Code, Cursor）中启用它，以使用文档查找技能（位于 `skills/documentation-lookup/`）和`/docs` 命令。
+* 在贡献能回答文档/API 问题的**智能体**时，请在智能体的工具中包含 Context7 MCP 工具名称（例如 `mcp__context7__resolve-library-id`, `mcp__context7__query-docs`），并记录解析 → 查询的工作流程。
+* **mcp-configs/mcp-servers.json** 包含一个 Context7 条目；用户在其工具链（例如 Claude Code, Cursor）中启用它，以使用文档查找技能（位于 `skills/documentation-lookup/`）和 `/docs` 命令。
 
 ***
 
@@ -367,20 +368,20 @@ description: 在 /help 中显示的简要描述
 
 ECC 为其他平台提供了技能子集：
 
-* **Codex:** `.agents/skills/`—`agents/openai.yaml` 中列出的技能会被 Codex 加载。
+* **Codex:** `.agents/skills/` — `agents/openai.yaml` 中列出的技能会被 Codex 加载。
 * **Cursor:** `.cursor/skills/` — 为 Cursor 打包了一个技能子集。
 
 当您**添加一个新技能**，并且希望它在 Codex 或 Cursor 上可用时：
 
 1. 像往常一样，在 `skills/your-skill-name/` 下添加该技能。
-2. 如果它应该在 **Codex** 上可用，请将其添加到 `.agents/skills/`（复制技能目录或添加引用），并在需要时确保它在`agents/openai.yaml` 中被引用。
+2. 如果它应该在 **Codex** 上可用，请将其添加到 `.agents/skills/`（复制技能目录或添加引用），并在需要时确保它在 `agents/openai.yaml` 中被引用。
 3. 如果它应该在 **Cursor** 上可用，请根据 Cursor 的布局，将其添加到 `.cursor/skills/` 下。
 
 请参考这些目录中现有技能的结构。保持这些子集同步是手动操作；如果您更新了它们，请在您的 PR 中说明。
 
 ### 翻译
 
-翻译文件位于 `docs/`下（例如`docs/zh-CN`、`docs/zh-TW`、`docs/ja-JP`）。如果您更改了已被翻译的智能体、命令或技能，请考虑更新相应的翻译文件，或创建一个问题，以便维护者或翻译人员可以更新它们。
+翻译文件位于 `docs/` 下（例如 `docs/zh-CN`、`docs/zh-TW`、`docs/ja-JP`）。如果您更改了已被翻译的智能体、命令或技能，请考虑更新相应的翻译文件，或创建一个问题，以便维护者或翻译人员可以更新它们。
 
 ***
 
@@ -449,7 +450,7 @@ docs: 完善贡献指南
 ## 文件命名
 
 * 使用小写和连字符：`python-reviewer.md`
-* 描述性要强：`tdd-workflow.md`而不是`workflow.md`
+* 描述性要强：`tdd-workflow.md` 而不是 `workflow.md`
 * 名称与文件名匹配
 
 ***

@@ -9,7 +9,7 @@ description: Use when creating new skills, editing existing skills, or verifying
 
 **Writing skills IS Test-Driven Development applied to process documentation.**
 
-**Personal skills live in agent-specific directories (`~/.claude/skills` for Claude Code, `~/.agents/skills/` for Codex)**
+**Personal skills live in agent-specific directories (`~/.claude/skills` for Claude Code, `~/.agents/skills/` for Codex)** 
 
 You write test cases (pressure scenarios with subagents), watch them fail (baseline behavior), write the skill (documentation), watch tests pass (agents comply), and refactor (close loopholes).
 
@@ -70,6 +70,7 @@ Way of thinking about problems (flatten-with-flags, test-invariants)
 API docs, syntax guides, tool documentation (office docs)
 
 ## Directory Structure
+
 
 ```
 skills/
@@ -135,6 +136,7 @@ What goes wrong + fixes
 Concrete results
 ```
 
+
 ## Claude Search Optimization (CSO)
 
 **Critical for discovery:** Future Claude needs to FIND your skill
@@ -156,16 +158,16 @@ When the description was changed to just "Use when executing implementation plan
 **The trap:** Descriptions that summarize workflow create a shortcut Claude will take. The skill body becomes documentation Claude skips.
 
 ```yaml
-# FAIL: BAD: Summarizes workflow - Claude may follow this instead of reading skill
+# ❌ BAD: Summarizes workflow - Claude may follow this instead of reading skill
 description: Use when executing plans - dispatches subagent per task with code review between tasks
 
-# FAIL: BAD: Too much process detail
+# ❌ BAD: Too much process detail
 description: Use for TDD - write test first, watch it fail, write minimal code, refactor
 
-# PASS: GOOD: Just triggering conditions, no workflow summary
+# ✅ GOOD: Just triggering conditions, no workflow summary
 description: Use when executing implementation plans with independent tasks in the current session
 
-# PASS: GOOD: Triggering conditions only
+# ✅ GOOD: Triggering conditions only
 description: Use when implementing any feature or bugfix, before writing implementation code
 ```
 
@@ -178,19 +180,19 @@ description: Use when implementing any feature or bugfix, before writing impleme
 - **NEVER summarize the skill's process or workflow**
 
 ```yaml
-# FAIL: BAD: Too abstract, vague, doesn't include when to use
+# ❌ BAD: Too abstract, vague, doesn't include when to use
 description: For async testing
 
-# FAIL: BAD: First person
+# ❌ BAD: First person
 description: I can help you with async tests when they're flaky
 
-# FAIL: BAD: Mentions technology but skill isn't specific to it
+# ❌ BAD: Mentions technology but skill isn't specific to it
 description: Use when tests use setTimeout/sleep and are flaky
 
-# PASS: GOOD: Starts with "Use when", describes problem, no workflow
+# ✅ GOOD: Starts with "Use when", describes problem, no workflow
 description: Use when tests have race conditions, timing dependencies, or pass/fail inconsistently
 
-# PASS: GOOD: Technology-specific skill with explicit trigger
+# ✅ GOOD: Technology-specific skill with explicit trigger
 description: Use when using React Router and handling authentication redirects
 ```
 
@@ -205,8 +207,8 @@ Use words Claude would search for:
 ### 3. Descriptive Naming
 
 **Use active voice, verb-first:**
-- PASS: `creating-skills` not `skill-creation`
-- PASS: `condition-based-waiting` not `async-test-helpers`
+- ✅ `creating-skills` not `skill-creation`
+- ✅ `condition-based-waiting` not `async-test-helpers`
 
 ### 4. Token Efficiency (Critical)
 
@@ -221,31 +223,31 @@ Use words Claude would search for:
 
 **Move details to tool help:**
 ```bash
-# FAIL: BAD: Document all flags in SKILL.md
+# ❌ BAD: Document all flags in SKILL.md
 search-conversations supports --text, --both, --after DATE, --before DATE, --limit N
 
-# PASS: GOOD: Reference --help
+# ✅ GOOD: Reference --help
 search-conversations supports multiple modes and filters. Run --help for details.
 ```
 
 **Use cross-references:**
 ```markdown
-# FAIL: BAD: Repeat workflow details
+# ❌ BAD: Repeat workflow details
 When searching, dispatch subagent with template...
 [20 lines of repeated instructions]
 
-# PASS: GOOD: Reference other skill
+# ✅ GOOD: Reference other skill
 Always use subagents (50-100x context savings). REQUIRED: Use [other-skill-name] for workflow.
 ```
 
 **Compress examples:**
 ```markdown
-# FAIL: BAD: Verbose example (42 words)
+# ❌ BAD: Verbose example (42 words)
 your human partner: "How did we handle authentication errors in React Router before?"
 You: I'll search past conversations for React Router authentication patterns.
 [Dispatch subagent with search query: "React Router authentication error handling 401"]
 
-# PASS: GOOD: Minimal example (20 words)
+# ✅ GOOD: Minimal example (20 words)
 Partner: "How did we handle auth errors in React Router?"
 You: Searching...
 [Dispatch subagent → synthesis]
@@ -264,10 +266,10 @@ wc -w skills/path/SKILL.md
 ```
 
 **Name by what you DO or core insight:**
-- PASS: `condition-based-waiting` > `async-test-helpers`
-- PASS: `using-skills` not `skill-usage`
-- PASS: `flatten-with-flags` > `data-structure-refactoring`
-- PASS: `root-cause-tracing` > `debugging-techniques`
+- ✅ `condition-based-waiting` > `async-test-helpers`
+- ✅ `using-skills` not `skill-usage`
+- ✅ `flatten-with-flags` > `data-structure-refactoring`
+- ✅ `root-cause-tracing` > `debugging-techniques`
 
 **Gerunds (-ing) work well for processes:**
 - `creating-skills`, `testing-skills`, `debugging-with-logs`
@@ -278,10 +280,10 @@ wc -w skills/path/SKILL.md
 **When writing documentation that references other skills:**
 
 Use skill name only, with explicit requirement markers:
-- PASS: Good: `**REQUIRED SUB-SKILL:** Use superpowers:test-driven-development`
-- PASS: Good: `**REQUIRED BACKGROUND:** You MUST understand superpowers:systematic-debugging`
-- FAIL: Bad: `See skills/testing/test-driven-development` (unclear if required)
-- FAIL: Bad: `@skills/testing/test-driven-development/SKILL.md` (force-loads, burns context)
+- ✅ Good: `**REQUIRED SUB-SKILL:** Use superpowers:test-driven-development`
+- ✅ Good: `**REQUIRED BACKGROUND:** You MUST understand superpowers:systematic-debugging`
+- ❌ Bad: `See skills/testing/test-driven-development` (unclear if required)
+- ❌ Bad: `@skills/testing/test-driven-development/SKILL.md` (force-loads, burns context)
 
 **Why no @ links:** `@` syntax force-loads files immediately, consuming 200k+ context before you need them.
 
@@ -559,22 +561,22 @@ Agent found new rationalization? Add explicit counter. Re-test until bulletproof
 
 ## Anti-Patterns
 
-### FAIL: Narrative Example
+### ❌ Narrative Example
 "In session 2025-10-03, we found empty projectDir caused..."
 **Why bad:** Too specific, not reusable
 
-### FAIL: Multi-Language Dilution
+### ❌ Multi-Language Dilution
 example-js.js, example-py.py, example-go.go
 **Why bad:** Mediocre quality, maintenance burden
 
-### FAIL: Code in Flowcharts
+### ❌ Code in Flowcharts
 ```dot
 step1 [label="import fs"];
 step2 [label="read file"];
 ```
 **Why bad:** Can't copy-paste, hard to read
 
-### FAIL: Generic Labels
+### ❌ Generic Labels
 helper1, helper2, step3, pattern4
 **Why bad:** Labels should have semantic meaning
 

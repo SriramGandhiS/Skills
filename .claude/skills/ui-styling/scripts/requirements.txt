@@ -10,7 +10,8 @@ pytest-mock>=3.12.0
 
 # Note: This skill works with shadcn/ui and Tailwind CSS
 # Requires Node.js and package managers:
-# - Node.js 18+: https://nodejs.org/
-# - npm (comes with Node.js)
-# # shadcn/ui CLI is installed per-project:
-# npx shadcn-ui@latest init
+#   - Node.js 18+: https://nodejs.org/
+#   - npm (comes with Node.js)
+#
+# shadcn/ui CLI is installed per-project:
+#   npx shadcn-ui@latest init

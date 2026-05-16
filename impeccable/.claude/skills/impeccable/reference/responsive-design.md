@@ -73,7 +73,8 @@ body {
   "
   sizes="(max-width: 768px) 100vw, 50vw"
   alt="Hero image"
-> ```
+>
+```
 
 **How it works**:
 - `srcset` lists available images with their actual widths (`w` descriptors)

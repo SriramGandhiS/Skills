@@ -23,7 +23,7 @@ pnpm exec remotion add @remotion/captions # If project uses pnpm
 
 ## Creating pages
 
-Use `createTikTokStyleCaptions()` to group captions into pages. The`combineTokensWithinMilliseconds` option controls how many words appear at once:
+Use `createTikTokStyleCaptions()` to group captions into pages. The `combineTokensWithinMilliseconds` option controls how many words appear at once:
 
 ```tsx
 import {useMemo} from 'react';

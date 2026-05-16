@@ -119,7 +119,8 @@ List recommended commands in priority order (P0 first, then P1, then P2):
 After presenting the summary, tell the user:
 
 > You can ask me to run these one at a time, all at once, or in any order you prefer.
-> > Re-run `$impeccable audit` after fixes to see your score improve.
+>
+> Re-run `$impeccable audit` after fixes to see your score improve.
 
 **IMPORTANT**: Be thorough but actionable. Too many P3 issues creates noise. Focus on what actually matters.
 

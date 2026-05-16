@@ -10,7 +10,7 @@
 - [ ] Bug fix
 - [ ] Documentation update
 - [ ] Build system / tooling
-- [ ] Other:
+- [ ] Other: 
 
 ## Checklist
 

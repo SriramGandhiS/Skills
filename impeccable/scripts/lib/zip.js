@@ -21,7 +21,7 @@ export async function createProviderZip(providerDir, distDir, providerName) {
   const zipPath = path.join(distDir, zipFileName);
 
   if (!existsSync(providerDir)) {
-    console.warn(`WARNING:  Provider directory not found: ${providerDir}`);
+    console.warn(`⚠️  Provider directory not found: ${providerDir}`);
     return;
   }
 
@@ -44,9 +44,9 @@ export async function createProviderZip(providerDir, distDir, providerName) {
 
     const stats = statSync(zipPath);
     const sizeMB = (stats.size / 1024 / 1024).toFixed(2);
-    console.log(`   ${zipFileName} (${sizeMB} MB)`);
+    console.log(`  📦 ${zipFileName} (${sizeMB} MB)`);
   } catch (error) {
-    console.error(`  FAIL: Failed to create ${zipFileName}:`, error.message);
+    console.error(`  ❌ Failed to create ${zipFileName}:`, error.message);
   }
 }
 
@@ -55,7 +55,7 @@ export async function createProviderZip(providerDir, distDir, providerName) {
  * @param {string} distDir - Path to dist directory
  */
 export async function createAllZips(distDir) {
-  console.log('\n Creating ZIP bundles...');
+  console.log('\n📦 Creating ZIP bundles...');
 
   await createProviderZip(path.join(distDir, 'universal'), distDir, 'universal');
 }

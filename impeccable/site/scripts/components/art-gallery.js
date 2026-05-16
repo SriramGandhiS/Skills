@@ -46,7 +46,7 @@ function renderFrame(skill, index) {
                         </div>
                     </div>
                     <p class="gallery-desc">${skill.description}</p>
-
+                    
                     ${
 											focusAreas.length > 0
 												? `

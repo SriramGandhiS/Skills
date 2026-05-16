@@ -66,11 +66,13 @@ from app.config import settings
 from app.db.session import close_db, init_db
 from app.exceptions import register_exception_handlers
 
+
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     await init_db()
     yield
     await close_db()
+
 
 def create_app() -> FastAPI:
     app = FastAPI(
@@ -92,6 +94,7 @@ def create_app() -> FastAPI:
     app.include_router(users.router, prefix="/api/v1/users", tags=["users"])
     return app
 
+
 app = create_app()
 ```
 
@@ -108,16 +111,20 @@ from uuid import UUID
 
 from pydantic import BaseModel, ConfigDict, EmailStr, Field
 
+
 class UserBase(BaseModel):
     email: EmailStr
     full_name: Annotated[str, Field(min_length=1, max_length=100)]
 
+
 class UserCreate(UserBase):
     password: Annotated[str, Field(min_length=12, max_length=128)]
+
 
 class UserUpdate(BaseModel):
     email: EmailStr | None = None
     full_name: Annotated[str | None, Field(min_length=1, max_length=100)] = None
+
 
 class UserResponse(UserBase):
     model_config = ConfigDict(from_attributes=True)
@@ -145,7 +152,9 @@ from app.core.security import decode_token
 from app.db.session import session_factory
 from app.models.user import User
 
+
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/api/v1/auth/login")
+
 
 async def get_db() -> AsyncIterator[AsyncSession]:
     async with session_factory() as session:
@@ -155,6 +164,7 @@ async def get_db() -> AsyncIterator[AsyncSession]:
         except Exception:
             await session.rollback()
             raise
+
 
 async def get_current_user(
     token: str = Depends(oauth2_scheme),
@@ -183,7 +193,9 @@ from app.dependencies import get_current_user, get_db
 from app.models.user import User
 from app.schemas.user import UserResponse
 
+
 router = APIRouter()
+
 
 @router.get("/", response_model=list[UserResponse])
 async def list_users(
@@ -198,7 +210,7 @@ async def list_users(
     return result.scalars().all()
 ```
 
-Use `httpx.AsyncClient` for external HTTP calls from async handlers. Do not call`requests` in an async route.
+Use `httpx.AsyncClient` for external HTTP calls from async handlers. Do not call `requests` in an async route.
 
 ## Error Handling
 
@@ -208,11 +220,13 @@ Centralize domain exceptions and keep response shapes stable.
 from fastapi import FastAPI, Request
 from fastapi.responses import JSONResponse
 
+
 class ApiError(Exception):
     def __init__(self, status_code: int, code: str, message: str):
         self.status_code = status_code
         self.code = code
         self.message = message
+
 
 def register_exception_handlers(app: FastAPI) -> None:
     @app.exception_handler(ApiError)
@@ -230,6 +244,7 @@ Assign the custom OpenAPI callable to `app.openapi`; do not just call the functi
 ```python
 from fastapi import FastAPI
 from fastapi.openapi.utils import get_openapi
+
 
 def install_openapi(app: FastAPI) -> None:
     def custom_openapi():
@@ -257,6 +272,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.dependencies import get_db
 from app.main import create_app
 
+
 @pytest.fixture
 async def client(test_session: AsyncSession):
     app = create_app()
@@ -275,7 +291,7 @@ async def client(test_session: AsyncSession):
 
 ## Security Checklist
 
-- Hash passwords with `argon2-cffi`,`bcrypt`, or a current passlib-compatible hasher.
+- Hash passwords with `argon2-cffi`, `bcrypt`, or a current passlib-compatible hasher.
 - Validate JWT issuer, audience, expiry, and signing algorithm.
 - Keep CORS origins environment-specific.
 - Put rate limits on auth and write-heavy endpoints.
@@ -298,7 +314,7 @@ async def client(test_session: AsyncSession):
 Use these examples as patterns, not as project-wide templates:
 
 - Application factory: configure middleware and routers once in `create_app`.
-- Schema split: `UserCreate`,`UserUpdate`, and `UserResponse` have different responsibilities.
+- Schema split: `UserCreate`, `UserUpdate`, and `UserResponse` have different responsibilities.
 - Dependency override: tests override `get_db` directly.
 - OpenAPI customization: assign `app.openapi = custom_openapi`.
 

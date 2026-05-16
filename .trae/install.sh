@@ -1,12 +1,17 @@
 #!/bin/bash
-# # ECC Trae Installer
+#
+# ECC Trae Installer
 # Installs Everything Claude Code workflows into a Trae project.
-# # Usage:
-# ./install.sh              # Install to current directory
-# ./install.sh ~            # Install globally to ~/.trae/ or ~/.trae-cn/
-# # Environment:
-# TRAE_ENV=cn              # Force use .trae-cn directory
-# set -euo pipefail
+#
+# Usage:
+#   ./install.sh              # Install to current directory
+#   ./install.sh ~            # Install globally to ~/.trae/ or ~/.trae-cn/
+#
+# Environment:
+#   TRAE_ENV=cn              # Force use .trae-cn directory
+#
+
+set -euo pipefail
 
 # When globs match nothing, expand to empty list instead of the literal pattern
 shopt -s nullglob

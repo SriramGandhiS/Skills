@@ -109,10 +109,10 @@ Every operation produces playable stream URLs. Embed in web players, share direc
 
 | Goal | VideoDB Approach |
 |------|------------------|
-| Find moments in video | Index spoken words/scenes â†’ Search â†’ Compile clips |
-| Create highlights | Search multiple topics â†’ Build timeline â†’ Generate stream |
-| Add subtitles | Index spoken words â†’ Add subtitle overlay |
-| Record screen + AI | Start capture â†’ Run AI pipelines â†’ Export video |
-| Monitor live streams | Connect RTSP â†’ Index scenes â†’ Create alerts |
+| Find moments in video | Index spoken words/scenes → Search → Compile clips |
+| Create highlights | Search multiple topics → Build timeline → Generate stream |
+| Add subtitles | Index spoken words → Add subtitle overlay |
+| Record screen + AI | Start capture → Run AI pipelines → Export video |
+| Monitor live streams | Connect RTSP → Index scenes → Create alerts |
 | Reformat for social | Reframe to target aspect ratio |
-| Combine clips | Build timeline with multiple assets â†’ Generate stream |
+| Combine clips | Build timeline with multiple assets → Generate stream |

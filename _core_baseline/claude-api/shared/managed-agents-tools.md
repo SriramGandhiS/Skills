@@ -59,9 +59,9 @@ Override defaults for individual tools. This example enables everything except b
 
 | Field | Required | Description |
 |---|---|---|
-| `type` | PASS: | `"agent_toolset_20260401"` |
-| `default_config` | FAIL: | Applied to all tools. `{ "enabled": bool, "permission_policy": {...} }` |
-| `configs` | FAIL: | Per-tool overrides: `[{ "name": "...", "enabled": bool, "permission_policy": {...} }]` |
+| `type` | ✅ | `"agent_toolset_20260401"` |
+| `default_config` | ❌ | Applied to all tools. `{ "enabled": bool, "permission_policy": {...} }` |
+| `configs` | ❌ | Per-tool overrides: `[{ "name": "...", "enabled": bool, "permission_policy": {...} }]` |
 
 ### Permission Policies
 
@@ -155,9 +155,9 @@ This keeps secrets out of reusable agent definitions. Each vault credential is t
 
 | Field | Required | Description |
 |---|---|---|
-| `type` | PASS: | `"url"` |
-| `name` | PASS: | Unique name — referenced by `mcp_toolset.mcp_server_name` |
-| `url` | PASS: | The MCP server's endpoint URL (Streamable HTTP transport) |
+| `type` | ✅ | `"url"` |
+| `name` | ✅ | Unique name — referenced by `mcp_toolset.mcp_server_name` |
+| `url` | ✅ | The MCP server's endpoint URL (Streamable HTTP transport) |
 
 ```json
 {
@@ -180,9 +180,9 @@ This keeps secrets out of reusable agent definitions. Each vault credential is t
 }
 ```
 
-> **Per-tool enablement (empirical):** `mcp_toolset` has been observed accepting `default_config: {enabled: false}` + `configs: [{name, enabled: true}]` for an allowlist pattern. The API ref shows only the minimal `{type, mcp_server_name}` form.
+> 💡 **Per-tool enablement (empirical):** `mcp_toolset` has been observed accepting `default_config: {enabled: false}` + `configs: [{name, enabled: true}]` for an allowlist pattern. The API ref shows only the minimal `{type, mcp_server_name}` form.
 
-> WARNING: **MCP auth tokens ≠ REST API tokens.** Hosted MCP servers (`mcp.notion.com`, `mcp.linear.app`, etc.) typically require **OAuth bearer tokens**, not the service's native API keys. A Notion `ntn_` integration token authenticates against Notion's REST API but will **not** work as a vault credential for the Notion MCP server. These are different auth systems.
+> ⚠️ **MCP auth tokens ≠ REST API tokens.** Hosted MCP servers (`mcp.notion.com`, `mcp.linear.app`, etc.) typically require **OAuth bearer tokens**, not the service's native API keys. A Notion `ntn_` integration token authenticates against Notion's REST API but will **not** work as a vault credential for the Notion MCP server. These are different auth systems.
 
 ### Vaults — the MCP credential store
 
@@ -241,7 +241,7 @@ The `refresh` block is what enables auto-refresh — `token_endpoint` is where A
 
 Omit `refresh` entirely if you only have an access token with no refresh capability — it'll work until it expires, then the agent loses access.
 
-> **Getting an OAuth token.** How you obtain the initial access and refresh tokens depends on the MCP server — consult its documentation. Once you have them, store them in a vault credential using the shape above; Anthropic auto-refreshes via the `refresh.token_endpoint` from there.
+> 💡 **Getting an OAuth token.** How you obtain the initial access and refresh tokens depends on the MCP server — consult its documentation. Once you have them, store them in a vault credential using the shape above; Anthropic auto-refreshes via the `refresh.token_endpoint` from there.
 
 **Scoping:** Vaults are workspace-scoped. Anyone with developer+ role in the API workspace can create, read (metadata only — secrets are write-only), and attach vaults. `vault_ids` can be set at session **create** time but not via session update (the SDK docstring says "Not yet supported; requests setting this field are rejected").
 

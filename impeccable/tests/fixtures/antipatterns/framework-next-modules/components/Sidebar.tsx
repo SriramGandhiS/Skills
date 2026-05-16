@@ -1,10 +1,10 @@
 import styles from "./Sidebar.module.css";
 
 const navItems = [
-  { label: "Overview", icon: "" },
-  { label: "Analytics", icon: "" },
-  { label: "Customers", icon: "" },
-  { label: "Settings", icon: "" },
+  { label: "Overview", icon: "📊" },
+  { label: "Analytics", icon: "📈" },
+  { label: "Customers", icon: "👥" },
+  { label: "Settings", icon: "⚙️" },
 ];
 
 export function Sidebar() {

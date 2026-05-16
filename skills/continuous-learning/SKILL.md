@@ -114,11 +114,11 @@ Homunculus v2 takes a more sophisticated approach:
 | Analysis | Main context | Background agent (Haiku) |
 | Granularity | Full skills | Atomic "instincts" |
 | Confidence | None | 0.3-0.9 weighted |
-| Evolution | Direct to skill | Instincts â†’ cluster â†’ skill/command/agent |
+| Evolution | Direct to skill | Instincts → cluster → skill/command/agent |
 | Sharing | None | Export/import instincts |
 
 **Key insight from homunculus:**
-> "v1 relied on skills to observe. Skills are probabilisticâ€”they fire ~50-80% of the time. v2 uses hooks for observation (100% reliable) and instincts as the atomic unit of learned behavior."
+> "v1 relied on skills to observe. Skills are probabilistic—they fire ~50-80% of the time. v2 uses hooks for observation (100% reliable) and instincts as the atomic unit of learned behavior."
 
 ### Potential v2 Enhancements
 

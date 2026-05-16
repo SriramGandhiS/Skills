@@ -2,6 +2,7 @@
 
 Find the unclear, confusing, or poorly written interface text and rewrite it. Vague copy creates support tickets and abandonment; specific copy gets users through the task.
 
+
 ---
 
 ## Assess Current Copy

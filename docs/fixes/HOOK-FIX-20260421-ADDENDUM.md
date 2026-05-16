@@ -13,11 +13,11 @@
 
 ## 夜 追加検証で判明したこと
 
-Node.js の `child_process.spawn`で`.sh` ファイルを直接実行すると Windows では
+Node.js の `child_process.spawn` で `.sh` ファイルを直接実行すると Windows では
 **EFTYPE** で失敗する：
 
 ```js
-spawn('C:/Users/sugig/.claude/skills/continuous-learning/hooks/observe-wrapper.sh',
+spawn('C:/Users/sugig/.claude/skills/continuous-learning/hooks/observe-wrapper.sh', 
       ['post'], {stdio:['pipe','pipe','pipe']});
 // → Error: spawn EFTYPE (errno -4028)
 ```
@@ -70,8 +70,8 @@ spawn('bash "C:/Users/sugig/.claude/skills/continuous-learning/hooks/observe-wra
 
 ```bash
 "C:\Program Files\Git\bin\bash.exe" "C:\Program Files\Git\bin\bash.exe"
-## stderr: "C:\Program Files\Git\bin\bash.exe: C:\Program Files\Git\bin\bash.exe: cannot execute binary file"
-## exit: 126
+# stderr: "C:\Program Files\Git\bin\bash.exe: C:\Program Files\Git\bin\bash.exe: cannot execute binary file"
+# exit: 126
 ```
 
 bash は argv[1] を script とみなし読み込もうとする。argv[1] が bash.exe 自身なら

@@ -1,16 +1,19 @@
 # Simple patcher for settings.local.json - CL v2 hooks (argv-dup safe)
-# # No Japanese literals - keeps the file ASCII-only so PowerShell parses it
+#
+# No Japanese literals - keeps the file ASCII-only so PowerShell parses it
 # regardless of the active code page.
-# # argv-dup bug workaround (Claude Code v2.1.116):
-# - Use PATH-resolved `bash` (no quoted .exe) as the first argv token.
-# - Point the hook at observe-wrapper.sh (not observe.sh).
-# - Pass `pre` / `post` as explicit positional arguments so PreToolUse and
-# PostToolUse are registered as distinct commands.
-# - Normalize the wrapper path to forward slashes to keep MSYS/Git Bash
-# happy and write the JSON with LF endings only.
-# # References:
-# - PR #1524 (settings.local.json argv-dup fix)
-# - PR #1540 (install_hook_wrapper.ps1 argv-dup fix)
+#
+# argv-dup bug workaround (Claude Code v2.1.116):
+#   - Use PATH-resolved `bash` (no quoted .exe) as the first argv token.
+#   - Point the hook at observe-wrapper.sh (not observe.sh).
+#   - Pass `pre` / `post` as explicit positional arguments so PreToolUse and
+#     PostToolUse are registered as distinct commands.
+#   - Normalize the wrapper path to forward slashes to keep MSYS/Git Bash
+#     happy and write the JSON with LF endings only.
+#
+# References:
+#   - PR #1524 (settings.local.json argv-dup fix)
+#   - PR #1540 (install_hook_wrapper.ps1 argv-dup fix)
 $ErrorActionPreference = "Stop"
 
 $SettingsPath = "$env:USERPROFILE\.claude\settings.local.json"

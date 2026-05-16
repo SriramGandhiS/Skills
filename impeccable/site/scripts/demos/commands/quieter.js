@@ -5,7 +5,7 @@ export default {
 
   before: `
     <div style="width: 100%; max-width: 280px; padding: 16px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 8px; text-align: center;">
-      <div style="font-size: 24px; margin-bottom: 8px;"></div>
+      <div style="font-size: 24px; margin-bottom: 8px;">🎉✨🚀</div>
       <div style="font-size: 18px; font-weight: 800; color: #ffeb3b; text-transform: uppercase; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); margin-bottom: 8px;">AMAZING DEAL!</div>
       <div style="font-size: 14px; color: white; margin-bottom: 12px;">Don't miss out on this INCREDIBLE opportunity!!!</div>
       <div style="display: flex; gap: 8px; justify-content: center;">

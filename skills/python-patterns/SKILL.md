@@ -22,12 +22,13 @@ Idiomatic Python patterns and best practices for building robust, efficient, and
 Python prioritizes readability. Code should be obvious and easy to understand.
 
 ```python
-## Good: Clear and readable
+# Good: Clear and readable
 def get_active_users(users: list[User]) -> list[User]:
     """Return only active users from the provided list."""
     return [user for user in users if user.is_active]
 
-## Bad: Clever but confusing
+
+# Bad: Clever but confusing
 def get_active_users(u):
     return [x for x in u if x.a]
 ```
@@ -37,7 +38,7 @@ def get_active_users(u):
 Avoid magic; be clear about what your code does.
 
 ```python
-## Good: Explicit configuration
+# Good: Explicit configuration
 import logging
 
 logging.basicConfig(
@@ -45,7 +46,7 @@ logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
 )
 
-## Bad: Hidden side effects
+# Bad: Hidden side effects
 import some_module
 some_module.setup()  # What does this do?
 ```
@@ -55,14 +56,14 @@ some_module.setup()  # What does this do?
 Python prefers exception handling over checking conditions.
 
 ```python
-## Good: EAFP style
+# Good: EAFP style
 def get_value(dictionary: dict, key: str) -> Any:
     try:
         return dictionary[key]
     except KeyError:
         return default_value
 
-## Bad: LBYL (Look Before You Leap) style
+# Bad: LBYL (Look Before You Leap) style
 def get_value(dictionary: dict, key: str) -> Any:
     if key in dictionary:
         return dictionary[key]
@@ -91,11 +92,11 @@ def process_user(
 ### Modern Type Hints (Python 3.9+)
 
 ```python
-## Python 3.9+ - Use built-in types
+# Python 3.9+ - Use built-in types
 def process_items(items: list[str]) -> dict[str, int]:
     return {item: len(item) for item in items}
 
-## Python 3.8 and earlier - Use typing module
+# Python 3.8 and earlier - Use typing module
 from typing import List, Dict
 
 def process_items(items: List[str]) -> Dict[str, int]:
@@ -107,13 +108,13 @@ def process_items(items: List[str]) -> Dict[str, int]:
 ```python
 from typing import TypeVar, Union
 
-## Type alias for complex types
+# Type alias for complex types
 JSON = Union[dict[str, Any], list[Any], str, int, float, bool, None]
 
 def parse_json(data: str) -> JSON:
     return json.loads(data)
 
-## Generic types
+# Generic types
 T = TypeVar('T')
 
 def first(items: list[T]) -> T | None:
@@ -140,7 +141,7 @@ def render_all(items: list[Renderable]) -> str:
 ### Specific Exception Handling
 
 ```python
-## Good: Catch specific exceptions
+# Good: Catch specific exceptions
 def load_config(path: str) -> Config:
     try:
         with open(path) as f:
@@ -150,7 +151,7 @@ def load_config(path: str) -> Config:
     except json.JSONDecodeError as e:
         raise ConfigError(f"Invalid JSON in config: {path}") from e
 
-## Bad: Bare except
+# Bad: Bare except
 def load_config(path: str) -> Config:
     try:
         with open(path) as f:
@@ -185,7 +186,7 @@ class NotFoundError(AppError):
     """Raised when a requested resource is not found."""
     pass
 
-## Usage
+# Usage
 def get_user(user_id: str) -> User:
     user = db.find_user(user_id)
     if not user:
@@ -198,12 +199,12 @@ def get_user(user_id: str) -> User:
 ### Resource Management
 
 ```python
-## Good: Using context managers
+# Good: Using context managers
 def process_file(path: str) -> str:
     with open(path, 'r') as f:
         return f.read()
 
-## Bad: Manual resource management
+# Bad: Manual resource management
 def process_file(path: str) -> str:
     f = open(path, 'r')
     try:
@@ -225,7 +226,7 @@ def timer(name: str):
     elapsed = time.perf_counter() - start
     print(f"{name} took {elapsed:.4f} seconds")
 
-## Usage
+# Usage
 with timer("data processing"):
     process_large_dataset()
 ```
@@ -248,7 +249,7 @@ class DatabaseTransaction:
             self.connection.rollback()
         return False  # Don't suppress exceptions
 
-## Usage
+# Usage
 with DatabaseTransaction(conn):
     user = conn.create_user(user_data)
     conn.create_profile(user.id, profile_data)
@@ -259,20 +260,20 @@ with DatabaseTransaction(conn):
 ### List Comprehensions
 
 ```python
-## Good: List comprehension for simple transformations
+# Good: List comprehension for simple transformations
 names = [user.name for user in users if user.is_active]
 
-## Bad: Manual loop
+# Bad: Manual loop
 names = []
 for user in users:
     if user.is_active:
         names.append(user.name)
 
-## Complex comprehensions should be expanded
-## Bad: Too complex
+# Complex comprehensions should be expanded
+# Bad: Too complex
 result = [x * 2 for x in items if x > 0 if x % 2 == 0]
 
-## Good: Use a generator function
+# Good: Use a generator function
 def filter_and_transform(items: Iterable[int]) -> list[int]:
     result = []
     for x in items:
@@ -284,10 +285,10 @@ def filter_and_transform(items: Iterable[int]) -> list[int]:
 ### Generator Expressions
 
 ```python
-## Good: Generator for lazy evaluation
+# Good: Generator for lazy evaluation
 total = sum(x * x for x in range(1_000_000))
 
-## Bad: Creates large intermediate list
+# Bad: Creates large intermediate list
 total = sum([x * x for x in range(1_000_000)])
 ```
 
@@ -300,7 +301,7 @@ def read_large_file(path: str) -> Iterator[str]:
         for line in f:
             yield line.strip()
 
-## Usage
+# Usage
 for line in read_large_file("huge.txt"):
     process(line)
 ```
@@ -322,7 +323,7 @@ class User:
     created_at: datetime = field(default_factory=datetime.now)
     is_active: bool = True
 
-## Usage
+# Usage
 user = User(
     id="123",
     name="Alice",
@@ -360,7 +361,7 @@ class Point(NamedTuple):
     def distance(self, other: 'Point') -> float:
         return ((self.x - other.x) ** 2 + (self.y - other.y) ** 2) ** 0.5
 
-## Usage
+# Usage
 p1 = Point(0, 0)
 p2 = Point(3, 4)
 print(p1.distance(p2))  # 5.0
@@ -389,7 +390,7 @@ def timer(func: Callable) -> Callable:
 def slow_function():
     time.sleep(1)
 
-## slow_function() prints: slow_function took 1.0012s
+# slow_function() prints: slow_function took 1.0012s
 ```
 
 ### Parameterized Decorators
@@ -411,7 +412,7 @@ def repeat(times: int):
 def greet(name: str) -> str:
     return f"Hello, {name}!"
 
-## greet("Alice") returns ["Hello, Alice!", "Hello, Alice!", "Hello, Alice!"]
+# greet("Alice") returns ["Hello, Alice!", "Hello, Alice!", "Hello, Alice!"]
 ```
 
 ### Class-Based Decorators
@@ -433,7 +434,7 @@ class CountCalls:
 def process():
     pass
 
-## Each call to process() prints the call count
+# Each call to process() prints the call count
 ```
 
 ## Concurrency Patterns
@@ -503,33 +504,33 @@ async def fetch_all(urls: list[str]) -> dict[str, str]:
 
 ```
 myproject/
-â”œâ”€â”€ src/
-â”‚   â””â”€â”€ mypackage/
-â”‚       â”œâ”€â”€ __init__.py
-â”‚       â”œâ”€â”€ main.py
-â”‚       â”œâ”€â”€ api/
-â”‚       â”‚   â”œâ”€â”€ __init__.py
-â”‚       â”‚   â””â”€â”€ routes.py
-â”‚       â”œâ”€â”€ models/
-â”‚       â”‚   â”œâ”€â”€ __init__.py
-â”‚       â”‚   â””â”€â”€ user.py
-â”‚       â””â”€â”€ utils/
-â”‚           â”œâ”€â”€ __init__.py
-â”‚           â””â”€â”€ helpers.py
-â”œâ”€â”€ tests/
-â”‚   â”œâ”€â”€ __init__.py
-â”‚   â”œâ”€â”€ conftest.py
-â”‚   â”œâ”€â”€ test_api.py
-â”‚   â””â”€â”€ test_models.py
-â”œâ”€â”€ pyproject.toml
-â”œâ”€â”€ README.md
-â””â”€â”€ .gitignore
+├── src/
+│   └── mypackage/
+│       ├── __init__.py
+│       ├── main.py
+│       ├── api/
+│       │   ├── __init__.py
+│       │   └── routes.py
+│       ├── models/
+│       │   ├── __init__.py
+│       │   └── user.py
+│       └── utils/
+│           ├── __init__.py
+│           └── helpers.py
+├── tests/
+│   ├── __init__.py
+│   ├── conftest.py
+│   ├── test_api.py
+│   └── test_models.py
+├── pyproject.toml
+├── README.md
+└── .gitignore
 ```
 
 ### Import Conventions
 
 ```python
-## Good: Import order - stdlib, third-party, local
+# Good: Import order - stdlib, third-party, local
 import os
 import sys
 from pathlib import Path
@@ -540,19 +541,19 @@ from fastapi import FastAPI
 from mypackage.models import User
 from mypackage.utils import format_name
 
-## Good: Use isort for automatic import sorting
-## pip install isort
+# Good: Use isort for automatic import sorting
+# pip install isort
 ```
 
 ### __init__.py for Package Exports
 
 ```python
-## mypackage/__init__.py
+# mypackage/__init__.py
 """mypackage - A sample Python package."""
 
 __version__ = "1.0.0"
 
-## Export main classes/functions at package level
+# Export main classes/functions at package level
 from mypackage.models import User, Post
 from mypackage.utils import format_name
 
@@ -564,13 +565,13 @@ __all__ = ["User", "Post", "format_name"]
 ### Using __slots__ for Memory Efficiency
 
 ```python
-## Bad: Regular class uses __dict__ (more memory)
+# Bad: Regular class uses __dict__ (more memory)
 class Point:
     def __init__(self, x: float, y: float):
         self.x = x
         self.y = y
 
-## Good: __slots__ reduces memory usage
+# Good: __slots__ reduces memory usage
 class Point:
     __slots__ = ['x', 'y']
 
@@ -582,12 +583,12 @@ class Point:
 ### Generator for Large Data
 
 ```python
-## Bad: Returns full list in memory
+# Bad: Returns full list in memory
 def read_lines(path: str) -> list[str]:
     with open(path) as f:
         return [line.strip() for line in f]
 
-## Good: Yields lines one at a time
+# Good: Yields lines one at a time
 def read_lines(path: str) -> Iterator[str]:
     with open(path) as f:
         for line in f:
@@ -597,15 +598,15 @@ def read_lines(path: str) -> Iterator[str]:
 ### Avoid String Concatenation in Loops
 
 ```python
-## Bad: O(nÂ²) due to string immutability
+# Bad: O(n²) due to string immutability
 result = ""
 for item in items:
     result += str(item)
 
-## Good: O(n) using join
+# Good: O(n) using join
 result = "".join(str(item) for item in items)
 
-## Good: Using StringIO for building
+# Good: Using StringIO for building
 from io import StringIO
 
 buffer = StringIO()
@@ -619,24 +620,24 @@ result = buffer.getvalue()
 ### Essential Commands
 
 ```bash
-## Code formatting
+# Code formatting
 black .
 isort .
 
-## Linting
+# Linting
 ruff check .
 pylint mypackage/
 
-## Type checking
+# Type checking
 mypy .
 
-## Testing
+# Testing
 pytest --cov=mypackage --cov-report=html
 
-## Security scanning
+# Security scanning
 bandit -r .
 
-## Dependency management
+# Dependency management
 pip-audit
 safety check
 ```
@@ -699,47 +700,47 @@ addopts = "--cov=mypackage --cov-report=term-missing"
 ## Anti-Patterns to Avoid
 
 ```python
-## Bad: Mutable default arguments
+# Bad: Mutable default arguments
 def append_to(item, items=[]):
     items.append(item)
     return items
 
-## Good: Use None and create new list
+# Good: Use None and create new list
 def append_to(item, items=None):
     if items is None:
         items = []
     items.append(item)
     return items
 
-## Bad: Checking type with type()
+# Bad: Checking type with type()
 if type(obj) == list:
     process(obj)
 
-## Good: Use isinstance
+# Good: Use isinstance
 if isinstance(obj, list):
     process(obj)
 
-## Bad: Comparing to None with ==
+# Bad: Comparing to None with ==
 if value == None:
     process()
 
-## Good: Use is
+# Good: Use is
 if value is None:
     process()
 
-## Bad: from module import *
+# Bad: from module import *
 from os.path import *
 
-## Good: Explicit imports
+# Good: Explicit imports
 from os.path import join, exists
 
-## Bad: Bare except
+# Bad: Bare except
 try:
     risky_operation()
 except:
     pass
 
-## Good: Specific exception
+# Good: Specific exception
 try:
     risky_operation()
 except SpecificError as e:

@@ -73,7 +73,7 @@ pnpm exec remotion add @remotion/fonts # If project uses pnpm
 
 ### Loading a local font
 
-Place your font file in the `public/`folder and use`loadFont()`:
+Place your font file in the `public/` folder and use `loadFont()`:
 
 ```tsx
 import { loadFont } from "@remotion/fonts";

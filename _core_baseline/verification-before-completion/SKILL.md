@@ -77,32 +77,32 @@ Skip any step = lying, not verifying
 
 **Tests:**
 ```
-PASS: [Run test command] [See: 34/34 pass] "All tests pass"
-FAIL: "Should pass now" / "Looks correct"
+✅ [Run test command] [See: 34/34 pass] "All tests pass"
+❌ "Should pass now" / "Looks correct"
 ```
 
 **Regression tests (TDD Red-Green):**
 ```
-PASS: Write → Run (pass) → Revert fix → Run (MUST FAIL) → Restore → Run (pass)
-FAIL: "I've written a regression test" (without red-green verification)
+✅ Write → Run (pass) → Revert fix → Run (MUST FAIL) → Restore → Run (pass)
+❌ "I've written a regression test" (without red-green verification)
 ```
 
 **Build:**
 ```
-PASS: [Run build] [See: exit 0] "Build passes"
-FAIL: "Linter passed" (linter doesn't check compilation)
+✅ [Run build] [See: exit 0] "Build passes"
+❌ "Linter passed" (linter doesn't check compilation)
 ```
 
 **Requirements:**
 ```
-PASS: Re-read plan → Create checklist → Verify each → Report gaps or completion
-FAIL: "Tests pass, phase complete"
+✅ Re-read plan → Create checklist → Verify each → Report gaps or completion
+❌ "Tests pass, phase complete"
 ```
 
 **Agent delegation:**
 ```
-PASS: Agent reports success → Check VCS diff → Verify changes → Report actual state
-FAIL: Trust agent report
+✅ Agent reports success → Check VCS diff → Verify changes → Report actual state
+❌ Trust agent report
 ```
 
 ## Why This Matters

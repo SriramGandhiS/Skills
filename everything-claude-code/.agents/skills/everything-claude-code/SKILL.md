@@ -44,6 +44,7 @@ Follow these commit message conventions based on 500 analyzed commits.
 - Keep first line concise and descriptive
 - Use imperative mood ("Add feature" not "Added feature")
 
+
 *Commit message example*
 
 ```text
@@ -135,6 +136,7 @@ This project uses **hybrid** module organization.
 
 ### Export Style: Mixed Style
 
+
 *Preferred import style*
 
 ```typescript
@@ -160,9 +162,11 @@ No specific test framework detected — use the repository's existing test patte
 
 This project has coverage reporting configured. Aim for 80%+ coverage.
 
+
 ## Error Handling
 
 ### Error Handling Style: Try-Catch Blocks
+
 
 *Standard error handling pattern*
 
@@ -414,6 +418,7 @@ Edit SKILL.md, agent, or command files to address reviewer comments
 Update examples, headings, or configuration as requested
 Iterate until all review feedback is resolved
 ```
+
 
 ## Best Practices
 

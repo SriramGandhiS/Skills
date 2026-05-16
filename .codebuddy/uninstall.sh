@@ -1,10 +1,14 @@
 #!/bin/bash
-# # ECC CodeBuddy Uninstaller
+#
+# ECC CodeBuddy Uninstaller
 # Uninstalls Everything Claude Code workflows from a CodeBuddy project.
-# # Usage:
-# ./uninstall.sh              # Uninstall from current directory
-# ./uninstall.sh ~            # Uninstall globally from ~/.codebuddy/
-# set -euo pipefail
+#
+# Usage:
+#   ./uninstall.sh              # Uninstall from current directory
+#   ./uninstall.sh ~            # Uninstall globally from ~/.codebuddy/
+#
+
+set -euo pipefail
 
 # Resolve the directory where this script lives
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"

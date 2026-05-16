@@ -257,4 +257,5 @@ List recommended commands in priority order, based on the user's answers:
 After presenting the summary, tell the user:
 
 > You can ask me to run these one at a time, all at once, or in any order you prefer.
-> > Re-run `$impeccable critique` after fixes to see your score improve.
+>
+> Re-run `$impeccable critique` after fixes to see your score improve.

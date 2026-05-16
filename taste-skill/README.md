@@ -39,8 +39,8 @@ Taste Skill has no official token, coin, or crypto project. Any token using my n
 
 We would love your feedback. Suggestions and bug reports:
 
-- Open a Pull Request or Issue on GitHub
-- DM [@lexnlin](https://x.com/lexnlin) or [@blueemi99](https://x.com/blueemi99)
+- Open a Pull Request or Issue on GitHub  
+- DM [@lexnlin](https://x.com/lexnlin) or [@blueemi99](https://x.com/blueemi99)  
 - Email us at [hello@tasteskill.dev](mailto:hello@tasteskill.dev)
 
 ## Installing
@@ -74,7 +74,7 @@ The `Install name` column is the exact value you pass to `--skill`.
 | **soft-skill** | `high-end-visual-design` | Polished, calm, expensive UI with softer contrast, whitespace, premium fonts, spring motion. |
 | **output-skill** | `full-output-enforcement` | When the model ships half-finished work: full output, no placeholder comments. |
 | **minimalist-skill** | `minimalist-ui` | Editorial product UI (Notion/Linear vibes), restrained palette, crisp structure. |
-| **brutalist-skill** | `industrial-brutalist-ui` | WARNING: `BETA` Hard mechanical language: Swiss type, sharp contrast, experimental layout. |
+| **brutalist-skill** | `industrial-brutalist-ui` | ⚠️ `BETA` Hard mechanical language: Swiss type, sharp contrast, experimental layout. |
 | **stitch-skill** | `stitch-design-taste` | Google Stitch-compatible rules, including optional `DESIGN.md` export format. |
 
 ### Image generation skills
@@ -89,12 +89,12 @@ These produce design images only (no code). Use with ChatGPT Images, Codex image
 
 ### Which one should I use?
 
-- Start with **taste-skill** for the safest general default.
-- Use **gpt-taste** when you want the stricter GPT/Codex-oriented rules and motion/layout enforcement.
-- Use **image-to-code-skill** for image → analyze → code website workflows.
-- Use **redesign-skill** to improve an existing codebase instead of greenfield styling.
-- Add **soft-skill**, **minimalist-skill**, or **brutalist-skill** when the visual direction is already chosen.
-- Add **output-skill** if the agent keeps truncating output.
+- Start with **taste-skill** for the safest general default.  
+- Use **gpt-taste** when you want the stricter GPT/Codex-oriented rules and motion/layout enforcement.  
+- Use **image-to-code-skill** for image → analyze → code website workflows.  
+- Use **redesign-skill** to improve an existing codebase instead of greenfield styling.  
+- Add **soft-skill**, **minimalist-skill**, or **brutalist-skill** when the visual direction is already chosen.  
+- Add **output-skill** if the agent keeps truncating output.  
 - Use **imagegen-frontend-web**, **imagegen-frontend-mobile**, or **brandkit** when the deliverable is **images** (comps, flows, identity boards), then pass results to your coding agent.
 
 ### Image-first tip
@@ -155,16 +155,16 @@ Background writing that shaped these skills lives in [`research/`](research/).
 
 ## Common Questions
 
-**How is this different from other AI design skills?**
+**How is this different from other AI design skills?**  
 Multiple specialized variants, adjustable dials in key skills, anti-repetition rules informed by dedicated research. All are framework agnostic across major coding agents.
 
-**Does it work with React, Vue, Svelte?**
+**Does it work with React, Vue, Svelte?**  
 Yes. Rules target design intent, not a single framework API.
 
-**What is SKILL.md?**
+**What is SKILL.md?**  
 A portable instruction file agents can load automatically; install via `npx skills add` or by copying into a repo or conversation.
 
-**Do image-generation skills install with `npx skills add`?**
+**Do image-generation skills install with `npx skills add`?**  
 Yes. They live under `skills/` alongside the code skills so the same CLI discovers them.
 
 ## License

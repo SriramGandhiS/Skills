@@ -1,24 +1,27 @@
 #!/bin/bash
 # Strategic Compact Suggester
 # Runs on PreToolUse or periodically to suggest manual compaction at logical intervals
-# # Why manual over auto-compact:
+#
+# Why manual over auto-compact:
 # - Auto-compact happens at arbitrary points, often mid-task
 # - Strategic compacting preserves context through logical phases
 # - Compact after exploration, before execution
 # - Compact after completing a milestone, before starting next
-# # Hook config (in ~/.claude/settings.json):
+#
+# Hook config (in ~/.claude/settings.json):
 # {
-# "hooks": {
-# "PreToolUse": [{
-# "matcher": "Edit|Write",
-# "hooks": [{
-# "type": "command",
-# "command": "~/.claude/skills/strategic-compact/suggest-compact.sh"
-# }]
-# }]
+#   "hooks": {
+#     "PreToolUse": [{
+#       "matcher": "Edit|Write",
+#       "hooks": [{
+#         "type": "command",
+#         "command": "~/.claude/skills/strategic-compact/suggest-compact.sh"
+#       }]
+#     }]
+#   }
 # }
-# }
-# # Criteria for suggesting compact:
+#
+# Criteria for suggesting compact:
 # - Session has been running for extended period
 # - Large number of tool calls made
 # - Transitioning from research/exploration to implementation

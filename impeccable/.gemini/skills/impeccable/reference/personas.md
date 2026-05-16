@@ -8,6 +8,7 @@ Test the interface through the eyes of 5 distinct user archetypes. Each persona 
 
 ## 1. Impatient Power User: "Alex"
 
+
 **Profile**: Expert with similar products. Expects efficiency, hates hand-holding. Will find shortcuts or leave.
 
 **Behaviors**:

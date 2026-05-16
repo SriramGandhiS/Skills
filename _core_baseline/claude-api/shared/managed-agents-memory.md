@@ -63,8 +63,8 @@ session = client.beta.sessions.create(
 
 | Field | Required | Notes |
 | --- | --- | --- |
-| `type` | PASS: | `"memory_store"` |
-| `memory_store_id` | PASS: | `memstore_...` |
+| `type` | ✅ | `"memory_store"` |
+| `memory_store_id` | ✅ | `memstore_...` |
 | `access` | — | `"read_write"` (default) or `"read_only"` — enforced at the filesystem level on the mount |
 | `instructions` | — | Session-specific guidance for this store, in addition to the store's `name`/`description`. ≤ 4,096 chars. |
 

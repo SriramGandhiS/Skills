@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
 # Shared continuous-learning-v2 data-directory resolver.
-# # Resolution precedence:
-# 1. CLV2_HOMUNCULUS_DIR, when absolute
-# 2. XDG_DATA_HOME/ecc-homunculus, when XDG_DATA_HOME is absolute
-# 3. HOME/.local/share/ecc-homunculus
+#
+# Resolution precedence:
+#   1. CLV2_HOMUNCULUS_DIR, when absolute
+#   2. XDG_DATA_HOME/ecc-homunculus, when XDG_DATA_HOME is absolute
+#   3. HOME/.local/share/ecc-homunculus
 
 _ecc_resolve_homunculus_dir() {
   if [ -n "${CLV2_HOMUNCULUS_DIR:-}" ]; then

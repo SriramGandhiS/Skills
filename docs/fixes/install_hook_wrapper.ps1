@@ -2,14 +2,15 @@
 # No Japanese literals - uses $PSScriptRoot instead
 # argv-dup bug workaround: use `bash` (PATH-resolved) as first token and
 # normalize wrapper path to forward slashes. See PR #1524.
-# # PowerShell 5.1 compatibility:
-# - `ConvertFrom-Json -AsHashtable` is PS 7+ only; fall back to a manual
-# PSCustomObject -> Hashtable conversion on Windows PowerShell 5.1.
-# - PS 5.1 `ConvertTo-Json` collapses single-element arrays inside
-# Hashtables into bare objects. Normalize the hook buckets
-# (PreToolUse / PostToolUse) and their inner `hooks` arrays as
-# `System.Collections.ArrayList` before serialization to preserve
-# array shape.
+#
+# PowerShell 5.1 compatibility:
+#   - `ConvertFrom-Json -AsHashtable` is PS 7+ only; fall back to a manual
+#     PSCustomObject -> Hashtable conversion on Windows PowerShell 5.1.
+#   - PS 5.1 `ConvertTo-Json` collapses single-element arrays inside
+#     Hashtables into bare objects. Normalize the hook buckets
+#     (PreToolUse / PostToolUse) and their inner `hooks` arrays as
+#     `System.Collections.ArrayList` before serialization to preserve
+#     array shape.
 $ErrorActionPreference = "Stop"
 
 $SkillHooks   = "$env:USERPROFILE\.claude\skills\continuous-learning\hooks"

@@ -56,12 +56,12 @@ For each art direction option:
 
 2. **Generate visual elements** with `ai-artist` + `ai-multimodal` skills
 
-**a) Search prompt inspiration** (6000+ examples in ai-artist):
+   **a) Search prompt inspiration** (6000+ examples in ai-artist):
    ```bash
    python3 .claude/skills/ai-artist/scripts/search.py "<banner style keywords>"
    ```
 
-**b) Generate with Standard model** (fast, good for backgrounds/patterns):
+   **b) Generate with Standard model** (fast, good for backgrounds/patterns):
    ```bash
    .claude/skills/.venv/bin/python3 .claude/skills/ai-multimodal/scripts/gemini_batch_process.py \
      --task generate --model gemini-2.5-flash-image \
@@ -69,7 +69,7 @@ For each art direction option:
      --size 2K --output assets/banners/
    ```
 
-**c) Generate with Pro model** (4K, complex illustrations/hero visuals):
+   **c) Generate with Pro model** (4K, complex illustrations/hero visuals):
    ```bash
    .claude/skills/.venv/bin/python3 .claude/skills/ai-multimodal/scripts/gemini_batch_process.py \
      --task generate --model gemini-3-pro-image-preview \
@@ -77,7 +77,7 @@ For each art direction option:
      --size 4K --output assets/banners/
    ```
 
-**When to use which model:**
+   **When to use which model:**
    | Use Case | Model | Quality |
    |----------|-------|---------|
    | Backgrounds, gradients, patterns | Standard (Flash) | 2K, fast |
@@ -85,10 +85,10 @@ For each art direction option:
    | Photorealistic scenes, complex art | Pro | 4K, best quality |
    | Quick iterations, A/B variants | Standard (Flash) | 2K, fast |
 
-**Aspect ratios:** `1:1`, `16:9`, `9:16`, `3:4`, `4:3`, `2:3`, `3:2`
+   **Aspect ratios:** `1:1`, `16:9`, `9:16`, `3:4`, `4:3`, `2:3`, `3:2`
    Match to platform - e.g., Twitter header = `3:1` (use `3:2` closest), Instagram story = `9:16`
 
-**Pro model prompt tips** (see `ai-artist` references/nano-banana-pro-examples.md):
+   **Pro model prompt tips** (see `ai-artist` references/nano-banana-pro-examples.md):
    - Be descriptive: style, lighting, mood, composition, color palette
    - Include art direction: "minimalist flat design", "cyberpunk neon", "editorial photography"
    - Specify no-text: "no text, no letters, no words" (text overlaid in HTML step)

@@ -56,13 +56,13 @@ Check Point Research, Claude Code bulgularını 25 Şubat 2026'da yayınladı. S
 
 **CVE-2025-59536.** Proje içeren kod, güven diyaloğu kabul edilmeden önce çalışabiliyordu. NVD ve GitHub'ın tavsiyesi ikisi de bunu `1.0.111` öncesi sürümlerle ilişkilendiriyor.
 
-**CVE-2026-21852.** Saldırgan tarafından kontrol edilen bir proje `ANTHROPIC_BASE_URL`'i geçersiz kılabilir, API trafiğini yönlendirebilir ve güven onayı öncesinde API anahtarını sızdırabilirdi. NVD manuel güncelleyicilerin`2.0.65` veya sonrasında olması gerektiğini söylüyor.
+**CVE-2026-21852.** Saldırgan tarafından kontrol edilen bir proje `ANTHROPIC_BASE_URL`'i geçersiz kılabilir, API trafiğini yönlendirebilir ve güven onayı öncesinde API anahtarını sızdırabilirdi. NVD manuel güncelleyicilerin `2.0.65` veya sonrasında olması gerektiğini söylüyor.
 
 **MCP onay kötüye kullanımı.** Check Point ayrıca repo tarafından kontrol edilen MCP yapılandırması ve ayarlarının, kullanıcı dizine anlamlı şekilde güvenmeden önce proje MCP server'larını otomatik onaylayabildiğini gösterdi.
 
 Proje yapılandırması, hook'lar, MCP ayarları ve ortam değişkenlerinin artık yürütme yüzeyinin bir parçası olduğu açık.
 
-Anthropic'in kendi dokümanları bu gerçeği yansıtıyor. Proje ayarları `.claude/`içinde yaşıyor. Proje kapsamlı MCP server'ları`.mcp.json` içinde yaşıyor. Kaynak kontrol aracılığıyla paylaşılıyorlar. Bir güven sınırı tarafından korunmaları gerekiyor. Bu güven sınırı tam olarak saldırganların peşine düşeceği şey.
+Anthropic'in kendi dokümanları bu gerçeği yansıtıyor. Proje ayarları `.claude/` içinde yaşıyor. Proje kapsamlı MCP server'ları `.mcp.json` içinde yaşıyor. Kaynak kontrol aracılığıyla paylaşılıyorlar. Bir güven sınırı tarafından korunmaları gerekiyor. Bu güven sınırı tam olarak saldırganların peşine düşeceği şey.
 
 ## Son Bir Yılda Ne Değişti
 
@@ -204,10 +204,10 @@ Görünmez Unicode karakterleri, insanlar onları kaçırdığı ve model'ler ka
 Ucuz ilk geçiş taramaları:
 
 ```bash
-## sıfır genişlikli ve bidi kontrol karakterleri
+# sıfır genişlikli ve bidi kontrol karakterleri
 rg -nP '[\x{200B}\x{200C}\x{200D}\x{2060}\x{FEFF}\x{202A}-\x{202E}]'
 
-## html yorumları veya şüpheli gizli bloklar
+# html yorumları veya şüpheli gizli bloklar
 rg -n '<!--|<script|data:text/html|base64,'
 ```
 
@@ -295,7 +295,7 @@ Başlamak için yapılandırılmış loglar yeterlidir:
   "timestamp": "2026-03-15T06:40:00Z",
   "session_id": "abc123",
   "tool": "Bash",
-  "command": "curl -X POST <https://example.com>",
+  "command": "curl -X POST https://example.com",
   "approval": "blocked",
   "risk_score": 0.94
 }
@@ -307,7 +307,7 @@ Unit 42'nin dolaylı prompt injection üzerine çalışması ve OpenAI'nin en so
 
 ## Kill Switch'ler
 
-Zarif ve sert kill'ler arasındaki farkı bilin. `SIGTERM`sürecine temizlik için bir şans verir.`SIGKILL` onu hemen durdurur. İkisi de önemlidir.
+Zarif ve sert kill'ler arasındaki farkı bilin. `SIGTERM` sürecine temizlik için bir şans verir. `SIGKILL` onu hemen durdurur. İkisi de önemlidir.
 
 Ayrıca, sadece parent'ı değil, süreç grubunu kill edin. Sadece parent'ı kill ederseniz, çocuklar çalışmaya devam edebilir. (bu aynı zamanda bazen sabah ghostty sekmelerinize baktığınızda bir şekilde 100GB RAM tükettiğinizi ve bilgisayarınızda sadece 64GB varken sürecin duraklatıldığını görmenizin nedenidir, bir sürü çocuk süreç kapandığını düşündüğünüzde kontrolden çıkmış)
 

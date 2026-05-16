@@ -29,6 +29,7 @@ from flask import Flask, request
 client = anthropic.Anthropic()  # reads ANTHROPIC_WEBHOOK_SIGNING_KEY from env
 app = Flask(__name__)
 
+
 @app.route("/webhook", methods=["POST"])
 def webhook():
     try:
