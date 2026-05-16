@@ -20,7 +20,8 @@ surfaces, or posting announcements.
 | `docs/releases/2.0.0-rc.1/quickstart.md` | Clone-to-first-workflow path | Covers clone, install, verify, first skill, and harness switch |
 | `docs/releases/2.0.0-rc.1/launch-checklist.md` | Operator launch checklist | Must remain approval-gated for release, package, plugin, and announcement actions |
 | `docs/releases/2.0.0-rc.1/publication-readiness.md` | Release gate | Requires fresh evidence from the exact release commit |
-| `docs/releases/2.0.0-rc.1/publication-evidence-2026-05-15.md` | Current May 15 queue, roadmap, security, and AgentShield evidence | Must be superseded by a final clean-checkout evidence file before real publication |
+| `docs/releases/2.0.0-rc.1/publication-evidence-2026-05-15.md` | Current May 15 queue, roadmap, security, supply-chain watch, no-lifecycle CI install hardening, AgentShield #86 evidence-pack provenance, ECC Tools billing-gate, Actions cache purge, and `ecc2` test evidence through PR #1941 | Must be superseded by a final clean-checkout evidence file before real publication |
+| `docs/releases/2.0.0-rc.1/publication-evidence-2026-05-16.md` | Current May 16 queue cleanup, recsys skill merge, GateGuard triage, PR #1947 supply-chain protection, AgentShield #87 plugin-cache confidence evidence, dashboard refresh, and combined Node/Rust/release-surface gate evidence through `6c8e909d` | Must still be repeated from a strict clean checkout before real publication |
 | `docs/releases/2.0.0-rc.1/naming-and-publication-matrix.md` | Naming, slug, and publication-path decision record | Keeps `Everything Claude Code / ECC`, npm `ecc-universal`, and plugin slug `ecc` for rc.1 |
 | `docs/releases/2.0.0-rc.1/x-thread.md` | X launch draft | Must replace placeholders with live URLs after release/package/plugin publication |
 | `docs/releases/2.0.0-rc.1/linkedin-post.md` | LinkedIn launch draft | Must replace placeholders with live URLs after release/package/plugin publication |
@@ -70,7 +71,7 @@ npm run harness:adapters -- --check
 npm run harness:audit -- --format json
 npm run observability:ready
 npm run security:ioc-scan
-npm audit --audit-level=high
+npm audit --audit-level=moderate
 npm audit signatures
 node tests/docs/ecc2-release-surface.test.js
 node tests/run-all.js
@@ -85,7 +86,8 @@ surfaces exist and are recorded in a final evidence file:
 - GitHub prerelease `v2.0.0-rc.1`;
 - npm `ecc-universal@2.0.0-rc.1` on the `next` dist-tag;
 - Claude plugin tag / marketplace propagation for `ecc@ecc`;
-- Codex plugin publication or owner-approved manual submission path;
+- Codex repo-marketplace distribution evidence plus official Plugin Directory
+  availability status;
 - final announcement URLs in X, LinkedIn, GitHub release, and longform copy;
 - ECC Tools billing/product readiness evidence before any native-payments
   announcement copy is published.
