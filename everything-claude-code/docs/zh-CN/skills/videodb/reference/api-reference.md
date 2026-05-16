@@ -380,8 +380,7 @@ results = video.search(
 ```
 
 > **注意：** `filter` 是 `video.search()` 中的一个显式命名参数。`scene_index_id` 通过 `**kwargs` 传递给 API。
->
-> **重要：** `video.search()` 在没有匹配项时会引发 `InvalidRequestError`，并附带消息 `"No results found"`。请始终将搜索调用包装在 try/except 中。对于场景搜索，请使用 `score_threshold=0.3` 或更高值来过滤低相关性的噪声。
+> > **重要：** `video.search()` 在没有匹配项时会引发 `InvalidRequestError`，并附带消息 `"No results found"`。请始终将搜索调用包装在 try/except 中。对于场景搜索，请使用 `score_threshold=0.3` 或更高值来过滤低相关性的噪声。
 
 对于场景搜索，请使用 `search_type=SearchType.semantic` 并设置 `index_type=IndexType.scene`。当针对特定场景索引时，传递 `scene_index_id`。详情请参阅 [search.md](search.md)。
 
