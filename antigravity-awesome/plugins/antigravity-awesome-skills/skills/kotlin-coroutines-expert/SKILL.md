@@ -29,7 +29,7 @@ Always launch coroutines within a defined `CoroutineScope`. Use `coroutineScope`
 suspend fun loadDashboardData(): DashboardData = coroutineScope {
     val userDeferred = async { userRepo.getUser() }
     val settingsDeferred = async { settingsRepo.getSettings() }
-    
+
     DashboardData(
         user = userDeferred.await(),
         settings = settingsDeferred.await()
@@ -76,11 +76,11 @@ val uiState: StateFlow<UiState> = _uiState.asStateFlow()
 
 ```kotlin
 suspend fun fetchDataWithErrorHandling() = supervisorScope {
-    val task1 = async { 
-        try { api.fetchA() } catch (e: Exception) { null } 
+    val task1 = async {
+        try { api.fetchA() } catch (e: Exception) { null }
     }
     val task2 = async { api.fetchB() }
-    
+
     // If task2 fails, task1 is NOT cancelled because of supervisorScope
     val result1 = task1.await()
     val result2 = task2.await() // May throw
@@ -89,11 +89,11 @@ suspend fun fetchDataWithErrorHandling() = supervisorScope {
 
 ## Best Practices
 
-- ✅ **Do:** Use `Dispatchers.IO` for blocking I/O operations.
-- ✅ **Do:** Cancel scopes when they are no longer needed (e.g., `ViewModel.onCleared`).
-- ✅ **Do:** Use `TestScope` and `runTest` for unit testing coroutines.
-- ❌ **Don't:** Use `GlobalScope`. It breaks structured concurrency and can lead to leaks.
-- ❌ **Don't:** Catch `CancellationException` unless you rethrow it.
+- PASS: **Do:** Use `Dispatchers.IO` for blocking I/O operations.
+- PASS: **Do:** Cancel scopes when they are no longer needed (e.g., `ViewModel.onCleared`).
+- PASS: **Do:** Use `TestScope` and `runTest` for unit testing coroutines.
+- FAIL: **Don't:** Use `GlobalScope`. It breaks structured concurrency and can lead to leaks.
+- FAIL: **Don't:** Catch `CancellationException` unless you rethrow it.
 
 ## Troubleshooting
 

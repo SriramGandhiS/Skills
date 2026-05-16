@@ -28,7 +28,7 @@ npx eslint . --plugin security
 ## İnceleme İş Akışı
 
 ### 1. İlk Tarama
-- `npm audit`, `eslint-plugin-security` çalıştırın, sabit kodlanmış secret'ları arayın
+- `npm audit`,`eslint-plugin-security` çalıştırın, sabit kodlanmış secret'ları arayın
 - Yüksek riskli alanları inceleyin: auth, API endpoint'leri, DB sorguları, dosya yüklemeleri, ödemeler, webhook'lar
 
 ### 2. OWASP Top 10 Kontrolü
@@ -51,7 +51,7 @@ Bu kalıpları hemen işaretleyin:
 | Sabit kodlanmış secret'lar | CRITICAL | `process.env` kullan |
 | Kullanıcı girdili shell komutu | CRITICAL | Güvenli API'ler veya execFile kullan |
 | String-birleştirilmiş SQL | CRITICAL | Parameterize edilmiş sorgular |
-| `innerHTML = userInput` | HIGH | `textContent` veya DOMPurify kullan |
+| `innerHTML = userInput`| HIGH |`textContent` veya DOMPurify kullan |
 | `fetch(userProvidedUrl)` | HIGH | İzin verilen domainleri whitelist'e al |
 | Plaintext parola karşılaştırması | CRITICAL | `bcrypt.compare()` kullan |
 | Route'da auth kontrolü yok | CRITICAL | Authentication middleware ekle |

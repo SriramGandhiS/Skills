@@ -1,4 +1,4 @@
-﻿---
+---
 name: eval-harness
 description: Formal evaluation framework for Claude Code sessions implementing eval-driven development (EDD) principles
 origin: ECC
@@ -56,13 +56,13 @@ Result: X/Y passed (previously Y/Y)
 ### 1. Code-Based Grader
 Deterministic checks using code:
 ```bash
-# Check if file contains expected pattern
+## Check if file contains expected pattern
 grep -q "export function handleAuth" src/auth.ts && echo "PASS" || echo "FAIL"
 
-# Check if tests pass
+## Check if tests pass
 npm test -- --testPathPattern="auth" && echo "PASS" || echo "FAIL"
 
-# Check if build succeeds
+## Check if build succeeds
 npm run build && echo "PASS" || echo "FAIL"
 ```
 
@@ -129,13 +129,13 @@ Write code to pass the defined evals.
 
 ### 3. Evaluate
 ```bash
-# Run capability evals
+## Run capability evals
 [Run each capability eval, record PASS/FAIL]
 
-# Run regression evals
+## Run regression evals
 npm test -- --testPathPattern="existing"
 
-# Generate report
+## Generate report
 ```
 
 ### 4. Report

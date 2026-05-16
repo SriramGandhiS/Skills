@@ -1,4 +1,4 @@
-﻿---
+---
 name: network-interface-health
 description: Diagnose interface errors, drops, CRCs, duplex mismatches, flapping, speed negotiation issues, and counter trends on routers, switches, and Linux hosts.
 origin: community
@@ -15,7 +15,7 @@ port, cable, transceiver, duplex setting, or congested interface.
 - A switch or router interface shows CRCs, runts, giants, drops, resets, or flaps.
 - You need to compare both ends of a link before replacing hardware.
 - A change window needs before/after interface counter evidence.
-- Monitoring reports rising `ifInErrors`, `ifOutErrors`, or `ifOutDiscards`.
+- Monitoring reports rising `ifInErrors`,`ifOutErrors`, or`ifOutDiscards`.
 
 ## How It Works
 

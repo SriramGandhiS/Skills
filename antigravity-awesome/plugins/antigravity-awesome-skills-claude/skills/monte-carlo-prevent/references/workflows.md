@@ -60,7 +60,7 @@ When the user is creating a new .sql dbt model file (not editing an existing one
    "Your new model references N upstream tables. Here's their current health:"
    - List each with: last updated, active alerts (if any), key asset flag
 4. Flag any upstream table with active alerts as a risk:
-   "⚠️ <table_name> has <N> active alerts — your new model will inherit this data quality issue"
+   "WARNING: <table_name> has <N> active alerts — your new model will inherit this data quality issue"
 
 Skip getAssetLineage for new models — they have no downstream dependents yet.
 Skip Workflow 4 for new models — there is no existing blast radius to assess.
@@ -103,7 +103,7 @@ Then run the appropriate sequence:
    - createMetricMonitorMac(mcon, description, metric, operator) → returns YAML
    - createComparisonMonitorMac(source_table, target_table, metric) → returns YAML
    - createCustomSqlMonitorMac(mcon, description, sql) → returns YAML
-   ⚠ If createValidationMonitorMac fails (e.g. column doesn't exist yet in the live table),
+   WARNING: If createValidationMonitorMac fails (e.g. column doesn't exist yet in the live table),
      fall back to createCustomSqlMonitorMac with an explicit SQL query instead.
 3. Save the YAML to <project>/monitors/<table_name>.yml
 4. Run: montecarlo monitors apply --dry-run (to preview)
@@ -208,7 +208,7 @@ When the user is about to rename or drop a column, change a join condition, alte
    - Search the local models/ directory for ref('<table_name>') (single-hop only)
    - Compare results against getAssetLineage output from step 2
    - If any local models reference this table but are NOT in MC's lineage results:
-     "⚠️ Found N local model(s) referencing this table not yet in MC's lineage: [list]"
+     "WARNING: Found N local model(s) referencing this table not yet in MC's lineage: [list]"
    - If no models/ directory exists in the current project, skip silently
    - MC lineage remains the authoritative source — local grep is supplementary only
 
@@ -220,9 +220,9 @@ When the user is about to rename or drop a column, change a join condition, alte
 
 | Tier | Conditions |
 |---|---|
-| 🔴 High | Key asset downstream, OR active alerts already firing, OR >50 reads/day |
-| 🟡 Medium | Non-key assets downstream, OR monitors on affected columns, OR moderate query volume |
-| 🟢 Low | No downstream dependents, no active alerts, low query volume |
+|  High | Key asset downstream, OR active alerts already firing, OR >50 reads/day |
+|  Medium | Non-key assets downstream, OR monitors on affected columns, OR moderate query volume |
+|  Low | No downstream dependents, no active alerts, low query volume |
 
 ### Multi-model changes
 
@@ -245,7 +245,7 @@ Highest risk table: timeseries_detector_routing (22 downstream refs)"
 ```
 ## Change Impact: <table_name>
 
-Risk: 🔴 High / 🟡 Medium / 🟢 Low
+Risk:  High /  Medium /  Low
 
 Downstream blast radius:
   - <N> tables depend on this model
@@ -260,7 +260,7 @@ Column exposure (for columns being changed):
 Monitor coverage:
   - <monitor name> watches <metric> — will be affected by this change
   - If zero custom monitors exist → append:
-    "⚠️ No custom monitors on this table. After making your changes,
+    "WARNING: No custom monitors on this table. After making your changes,
     I'll suggest a monitor for the new logic — or say 'add a monitor'
     to do it now."
 
@@ -269,7 +269,7 @@ Recommendation:
      "Coordinate with the freshness alert owner", "Add a monitor for the new column">
 ```
 
-If risk is 🔴 High:
+If risk is  High:
 1. Call `getAudiences()` to retrieve configured notification audiences
 2. Include in the recommendation: "Notify: <audience names / channels>"
 3. Proactively suggest:
@@ -303,7 +303,7 @@ Explicitly connect each key finding to a specific recommendation:
 - New output column or logic being added:
   → Always offer Workflow 2 after the impact assessment, regardless
     of existing monitor coverage
-  → Do not skip this step even if risk tier is 🟢 Low
+  → Do not skip this step even if risk tier is  Low
   → Say explicitly: "This adds new output logic — would you like me
     to generate a monitor for it? I can add a null check, range
     validation, or custom SQL rule."

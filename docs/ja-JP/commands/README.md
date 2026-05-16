@@ -81,7 +81,7 @@ Claude：実行 → `/plan` コマンド
 
 カスタムコマンドを作成するには：
 
-1. `commands/` に `.md` ファイルを作成
+1. `commands/`に`.md` ファイルを作成
 2. Frontmatter を追加：
 
 ```markdown
@@ -89,7 +89,7 @@ Claude：実行 → `/plan` コマンド
 description: Brief description shown in /help
 ---
 
-# Command Name
+## Command Name
 
 ## Purpose
 

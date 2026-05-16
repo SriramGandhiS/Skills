@@ -50,13 +50,13 @@ const [stripeKey, sendgridKey] = await Promise.all([
   env.SENDGRID_KEY.get()
 ]);
 
-// ❌ Missing .get()
+// FAIL: Missing .get()
 const key = env.API_KEY;
 
-// ❌ Module-level cache
+// FAIL: Module-level cache
 const CACHED_KEY = await env.API_KEY.get(); // Fails
 
-// ✅ Request-scope cache
+// PASS: Request-scope cache
 const key = await env.API_KEY.get(); // OK - reuse within request
 ```
 

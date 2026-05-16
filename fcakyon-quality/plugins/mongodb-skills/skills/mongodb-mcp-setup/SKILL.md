@@ -120,19 +120,19 @@ Walk them through the key steps:
 2. **Go to Access Manager** → **Service Accounts** → **Create Service Account**
 3. **Set Permissions** — Grant Organization Member or Project Owner (see docs for exact permission mappings)
 4. **Generate Credentials** — Create Client ID and Secret
-   - ⚠️ The **Client Secret is shown only once** — save it immediately before leaving the page
+   - WARNING: The **Client Secret is shown only once** — save it immediately before leaving the page
 5. **Note both values** — you'll need Client ID and Client Secret for Step 5
 
 ### 3b.2: API Access List Configuration
 
-⚠️ **CRITICAL**: The user MUST add their IP address to the service account's API Access List, or all Atlas Admin API operations will fail.
+WARNING: **CRITICAL**: The user MUST add their IP address to the service account's API Access List, or all Atlas Admin API operations will fail.
 
 Steps:
 
 1. On the service account details page, find **API Access List**
 2. Click **Add Access List Entry**
 3. Add your current IP address. Use a specific IP or CIDR range whenever possible.
-   - ⚠️ **`0.0.0.0/0` allows access from any IP — this is a significant security risk.** Only use it as a last resort for temporary testing and remove it immediately afterward. It should never be used in production.
+   - WARNING: **`0.0.0.0/0` allows access from any IP — this is a significant security risk.** Only use it as a last resort for temporary testing and remove it immediately afterward. It should never be used in production.
 4. Save changes
 
 This is more secure than global Network Access settings as it only affects API access, not database connections.

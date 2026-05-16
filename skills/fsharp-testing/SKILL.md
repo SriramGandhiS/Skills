@@ -1,4 +1,4 @@
-﻿---
+---
 name: fsharp-testing
 description: F# testing patterns with xUnit, FsUnit, Unquote, FsCheck property-based testing, integration tests, and test organization best practices.
 origin: ECC
@@ -250,7 +250,7 @@ tests/
 |---|---|
 | Testing implementation details | Test behavior and outcomes |
 | Mutable shared test state | Fresh state per test |
-| `Thread.Sleep` in async tests | Use `Task.Delay` with timeout, or polling helpers |
+| `Thread.Sleep`in async tests | Use`Task.Delay` with timeout, or polling helpers |
 | Asserting on `sprintf` output | Assert on typed values and pattern matches |
 | Ignoring `CancellationToken` | Always pass and verify cancellation |
 | Skipping property-based tests | Use FsCheck for any function with clear invariants |
@@ -263,18 +263,18 @@ tests/
 ## Running Tests
 
 ```bash
-# Run all tests
+## Run all tests
 dotnet test
 
-# Run with coverage
+## Run with coverage
 dotnet test --collect:"XPlat Code Coverage"
 
-# Run specific project
+## Run specific project
 dotnet test tests/MyApp.Tests/
 
-# Filter by test name
+## Filter by test name
 dotnet test --filter "FullyQualifiedName~OrderService"
 
-# Watch mode during development
+## Watch mode during development
 dotnet watch test --project tests/MyApp.Tests/
 ```

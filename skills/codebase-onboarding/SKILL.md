@@ -1,4 +1,4 @@
-﻿---
+---
 name: codebase-onboarding
 description: Analyze an unfamiliar codebase and generate a structured onboarding guide with architecture map, key entry points, conventions, and a starter CLAUDE.md. Use when joining a new project or setting up Claude Code for the first time in a repo.
 origin: ECC
@@ -90,7 +90,7 @@ Identify patterns the codebase already follows:
 **Naming Conventions**
 - File naming: kebab-case, camelCase, PascalCase, snake_case
 - Component/class naming patterns
-- Test file naming: `*.test.ts`, `*.spec.ts`, `*_test.go`
+- Test file naming: `*.test.ts`,`*.spec.ts`,`*_test.go`
 
 **Code Patterns**
 - Error handling style: try/catch, Result types, error codes
@@ -111,7 +111,7 @@ Produce two outputs:
 #### Output 1: Onboarding Guide
 
 ```markdown
-# Onboarding Guide: [Project Name]
+## Onboarding Guide: [Project Name]
 
 ## Overview
 [2-3 sentences: what this project does and who it serves]
@@ -172,7 +172,7 @@ Produce two outputs:
 Generate or update a project-specific CLAUDE.md based on detected conventions. If `CLAUDE.md` already exists, read it first and enhance it â€” preserve existing project-specific instructions and clearly call out what was added or changed.
 
 ```markdown
-# Project Instructions
+## Project Instructions
 
 ## Tech Stack
 [Detected stack summary]

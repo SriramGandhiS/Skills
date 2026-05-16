@@ -26,7 +26,7 @@ Yerel dosya yollarından veya HTTP(S) URL'lerinden içgüdüleri içe aktar.
 
 ```
 /instinct-import team-instincts.yaml
-/instinct-import https://raw.githubusercontent.com/org/repo/main/instincts.yaml
+/instinct-import <https://raw.githubusercontent.com/org/repo/main/instincts.yaml>
 /instinct-import team-instincts.yaml --dry-run
 /instinct-import team-instincts.yaml --scope global --force
 ```
@@ -96,7 +96,7 @@ project_name: "my-project"
 - `--dry-run`: İçe aktarmadan önizle
 - `--force`: Onay istemini atla
 - `--min-confidence <n>`: Sadece eşiğin üzerindeki içgüdüleri içe aktar
-- `--scope <project|global>`: Hedef kapsamı seç (varsayılan: `project`)
+- `--scope <project|global>`: Hedef kapsamı seç (varsayılan:`project`)
 
 ## Çıktı
 

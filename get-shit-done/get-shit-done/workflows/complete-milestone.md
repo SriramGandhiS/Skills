@@ -116,7 +116,7 @@ Requirements: {N}/{M} v1 requirements checked off
 **If requirements incomplete** (N < M):
 
 ```
-⚠ Unchecked Requirements:
+WARNING: Unchecked Requirements:
 
 - [ ] {REQ-ID}: {description} (Phase {X})
 - [ ] {REQ-ID}: {description} (Phase {Y})
@@ -140,7 +140,7 @@ cat .planning/config.json 2>/dev/null || true
 <if mode="yolo">
 
 ```
-⚡ Auto-approved: Milestone scope verification
+ Auto-approved: Milestone scope verification
 [Show breakdown summary without prompting]
 Proceeding to stats gathering...
 ```
@@ -246,16 +246,16 @@ cat .planning/phases/*-*/*-SUMMARY.md
 
 3. **Requirements audit:**
 
-   **Validated section:**
+**Validated section:**
    - All Active requirements shipped this milestone → Move to Validated
    - Format: `- ✓ [Requirement] — v[X.Y]`
 
-   **Active section:**
+**Active section:**
    - Remove requirements moved to Validated
    - Add new requirements for next milestone
    - Keep unaddressed requirements
 
-   **Out of Scope audit:**
+**Out of Scope audit:**
    - Review each item — reasoning still valid?
    - Remove irrelevant items
    - Add requirements invalidated during milestone
@@ -268,7 +268,7 @@ cat .planning/phases/*-*/*-SUMMARY.md
 5. **Key Decisions audit:**
    - Extract all decisions from milestone phase summaries
    - Add to Key Decisions table with outcomes
-   - Mark ✓ Good, ⚠️ Revisit, or — Pending
+   - Mark ✓ Good, WARNING: Revisit, or — Pending
 
 6. **Constraints check:**
    - Any constraints changed during development? Update as needed
@@ -372,14 +372,14 @@ Update `.planning/ROADMAP.md` — group completed milestone phases:
 
 ## Milestones
 
-- ✅ **v1.0 MVP** — Phases 1-4 (shipped YYYY-MM-DD)
-- 🚧 **v1.1 Security** — Phases 5-6 (in progress)
-- 📋 **v2.0 Redesign** — Phases 7-10 (planned)
+- PASS: **v1.0 MVP** — Phases 1-4 (shipped YYYY-MM-DD)
+- **v1.1 Security** — Phases 5-6 (in progress)
+- **v2.0 Redesign** — Phases 7-10 (planned)
 
 ## Phases
 
 <details>
-<summary>✅ v1.0 MVP (Phases 1-4) — SHIPPED YYYY-MM-DD</summary>
+<summary>PASS: v1.0 MVP (Phases 1-4) — SHIPPED YYYY-MM-DD</summary>
 
 - [x] Phase 1: Foundation (2/2 plans) — completed YYYY-MM-DD
 - [x] Phase 2: Authentication (2/2 plans) — completed YYYY-MM-DD
@@ -388,7 +388,7 @@ Update `.planning/ROADMAP.md` — group completed milestone phases:
 
 </details>
 
-### 🚧 v[Next] [Name] (In Progress / Planned)
+### v[Next] [Name] (In Progress / Planned)
 
 - [ ] Phase 5: [Name] ([N] plans)
 - [ ] Phase 6: [Name] ([N] plans)
@@ -425,10 +425,9 @@ The CLI handles:
 
 Extract from result: `version`, `date`, `phases`, `plans`, `tasks`, `accomplishments`, `archived`.
 
-Verify: `✅ Milestone archived to .planning/milestones/`
+Verify: `PASS: Milestone archived to .planning/milestones/`
 
 **Phase archival (optional):** After archival completes, ask the user:
-
 
 **Text mode (`workflow.text_mode: true` in config or `--text` flag):** Set `TEXT_MODE=true` if `--text` is present in `$ARGUMENTS` OR `text_mode` from init JSON is `true`. When TEXT_MODE is active, replace every `AskUserQuestion` call with a plain-text numbered list and ask the user to type their choice number. This is required for non-Claude runtimes (OpenAI Codex, Gemini CLI, etc.) where `AskUserQuestion` is not available.
 AskUserQuestion(header="Archive Phases", question="Archive phase directories to milestones/?", options: "Yes — move to milestones/v[X.Y]-phases/" | "Skip — keep phases in place")
@@ -439,7 +438,7 @@ mkdir -p .planning/milestones/v[X.Y]-phases
 # For each phase directory in .planning/phases/:
 mv .planning/phases/{phase-dir} .planning/milestones/v[X.Y]-phases/
 ```
-Verify: `✅ Phase directories archived to .planning/milestones/v[X.Y]-phases/`
+Verify: `PASS: Phase directories archived to .planning/milestones/v[X.Y]-phases/`
 
 If "Skip": Phase directories remain in `.planning/phases/` as raw execution history. Use `/gsd-cleanup` later to archive retroactively.
 
@@ -473,13 +472,13 @@ If `$BACKLOG_SECTION` is empty, there is no Backlog section — skip silently.
 
 ## Milestones
 
-- ✅ **v1.0 MVP** — Phases 1-4 (shipped YYYY-MM-DD)
-- 🚧 **v1.1 Security** — Phases 5-6 (in progress)
+- PASS: **v1.0 MVP** — Phases 1-4 (shipped YYYY-MM-DD)
+- **v1.1 Security** — Phases 5-6 (in progress)
 
 ## Phases
 
 <details>
-<summary>✅ v1.0 MVP (Phases 1-4) — SHIPPED YYYY-MM-DD</summary>
+<summary>PASS: v1.0 MVP (Phases 1-4) — SHIPPED YYYY-MM-DD</summary>
 
 - [x] Phase 1: Foundation (2/2 plans) — completed YYYY-MM-DD
 - [x] Phase 2: Authentication (2/2 plans) — completed YYYY-MM-DD
@@ -765,7 +764,7 @@ Confirm: "Committed: chore: remove REQUIREMENTS.md for v[X.Y] milestone"
 <step name="offer_next">
 
 ```
-✅ Milestone v[X.Y] [Name] complete
+PASS: Milestone v[X.Y] [Name] complete
 
 Shipped:
 - [N] phases ([M] plans, [P] tasks)
@@ -780,7 +779,7 @@ Tag: v[X.Y]
 
 ---
 
-## ▶ Next Up — [${PROJECT_CODE}] ${PROJECT_TITLE}
+## Next Up — [${PROJECT_CODE}] ${PROJECT_TITLE}
 
 **Start Next Milestone** — questioning → research → requirements → roadmap
 

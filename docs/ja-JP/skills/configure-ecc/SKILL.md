@@ -28,7 +28,7 @@ Everything Claude Code プロジェクトのインタラクティブなステッ
 
 ```bash
 rm -rf /tmp/everything-claude-code
-git clone https://github.com/affaan-m/everything-claude-code.git /tmp/everything-claude-code
+git clone <https://github.com/affaan-m/everything-claude-code.git> /tmp/everything-claude-code
 ```
 
 以降のすべてのコピー操作のソースとして `ECC_ROOT=/tmp/everything-claude-code` を設定します。
@@ -65,7 +65,7 @@ mkdir -p $TARGET/skills $TARGET/rules
 
 ### 2a: スキルカテゴリの選択
 
-31個のスキルが4つのカテゴリに分類されています。`multiSelect: true` で `AskUserQuestion` を使用します：
+31個のスキルが4つのカテゴリに分類されています。`multiSelect: true`で`AskUserQuestion` を使用します：
 
 ```
 Question: "どのスキルカテゴリをインストールしますか？"
@@ -137,10 +137,10 @@ Options:
 選択された各スキルについて、正しいソースルートからスキルディレクトリ全体をコピーします：
 
 ```bash
-# コアスキルは .agents/skills/ 配下にあります
+## コアスキルは .agents/skills/ 配下にあります
 cp -R "$ECC_ROOT/.agents/skills/<skill-name>" "$TARGET/skills/"
 
-# ニッチスキルは skills/ 配下にあります
+## ニッチスキルは skills/ 配下にあります
 cp -R "$ECC_ROOT/skills/<skill-name>" "$TARGET/skills/"
 ```
 
@@ -150,13 +150,13 @@ glob で取得したソースディレクトリを処理するときは、traili
 cp -R "${src%/}" "$TARGET/skills/$(basename "${src%/}")"
 ```
 
-注: `continuous-learning` と `continuous-learning-v2` には追加ファイル（config.json、フック、スクリプト）があります — SKILL.md だけでなく、ディレクトリ全体がコピーされることを確認してください。
+注: `continuous-learning`と`continuous-learning-v2` には追加ファイル（config.json、フック、スクリプト）があります — SKILL.md だけでなく、ディレクトリ全体がコピーされることを確認してください。
 
 ---
 
 ## ステップ 3: ルールの選択とインストール
 
-`multiSelect: true` で `AskUserQuestion` を使用します：
+`multiSelect: true`で`AskUserQuestion` を使用します：
 
 ```
 Question: "どのルールセットをインストールしますか？"
@@ -169,10 +169,10 @@ Options:
 
 インストールを実行：
 ```bash
-# 共通ルール
+## 共通ルール
 cp -r $ECC_ROOT/rules/common $TARGET/rules/common
 
-# 言語固有のルール（言語別ディレクトリを保持）
+## 言語固有のルール（言語別ディレクトリを保持）
 cp -r $ECC_ROOT/rules/typescript $TARGET/rules/typescript   # 選択された場合
 cp -r $ECC_ROOT/rules/python $TARGET/rules/python            # 選択された場合
 cp -r $ECC_ROOT/rules/golang $TARGET/rules/golang            # 選択された場合
@@ -206,17 +206,17 @@ grep -rn "skills/" $TARGET/skills/
 
 **プロジェクトレベルのインストールの場合**、`~/.claude/` パスへの参照をフラグします：
 - スキルが `~/.claude/settings.json` を参照している場合 — これは通常問題ありません（設定は常にユーザーレベルです）
-- スキルが `~/.claude/skills/` または `~/.claude/rules/` を参照している場合 — プロジェクトレベルのみにインストールされている場合、これは壊れている可能性があります
+- スキルが `~/.claude/skills/`または`~/.claude/rules/` を参照している場合 — プロジェクトレベルのみにインストールされている場合、これは壊れている可能性があります
 - スキルが別のスキルを名前で参照している場合 — 参照されているスキルもインストールされているか確認します
 
 ### 4c: スキル間の相互参照のチェック
 
 一部のスキルは他のスキルを参照します。これらの依存関係を検証します：
-- `django-tdd` は `django-patterns` を参照する可能性があります
-- `springboot-tdd` は `springboot-patterns` を参照する可能性があります
-- `continuous-learning-v2` は `~/.claude/homunculus/` ディレクトリを参照します
-- `python-testing` は `python-patterns` を参照する可能性があります
-- `golang-testing` は `golang-patterns` を参照する可能性があります
+- `django-tdd`は`django-patterns` を参照する可能性があります
+- `springboot-tdd`は`springboot-patterns` を参照する可能性があります
+- `continuous-learning-v2`は`~/.claude/homunculus/` ディレクトリを参照します
+- `python-testing`は`python-patterns` を参照する可能性があります
+- `golang-testing`は`golang-patterns` を参照する可能性があります
 - 言語固有のルールは `common/` の対応物を参照します
 
 ### 4d: 問題の報告
@@ -305,9 +305,9 @@ rm -rf /tmp/everything-claude-code
 - プロジェクトレベルの場合: `.claude/skills/<skill-name>/SKILL.md` が存在するか確認します
 
 ### "ルールが機能しません"
-- ルールはフラットファイルで、サブディレクトリにはありません: `$TARGET/rules/coding-style.md`（正しい） vs `$TARGET/rules/common/coding-style.md`（フラットインストールでは不正）
+- ルールはフラットファイルで、サブディレクトリにはありません: `$TARGET/rules/coding-style.md`（正しい） vs`$TARGET/rules/common/coding-style.md`（フラットインストールでは不正）
 - ルールをインストール後、Claude Code を再起動します
 
 ### "プロジェクトレベルのインストール後のパス参照エラー"
 - 一部のスキルは `~/.claude/` パスを前提としています。ステップ4の検証を実行してこれらを見つけて修正します。
-- `continuous-learning-v2` の場合、`~/.claude/homunculus/` ディレクトリは常にユーザーレベルです — これは想定されており、エラーではありません。
+- `continuous-learning-v2`の場合、`~/.claude/homunculus/` ディレクトリは常にユーザーレベルです — これは想定されており、エラーではありません。

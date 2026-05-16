@@ -30,7 +30,7 @@ def run_command(args):
     elif benchmark_type == "storage":
         run_storage_benchmark(runner, config)
     else:
-        print(f"❌ Unknown benchmark type: {benchmark_type}")
+        print(f"FAIL: Unknown benchmark type: {benchmark_type}")
         sys.exit(1)
 
 
@@ -132,21 +132,21 @@ def compare_command(args):
 
     comparison = runner.compare(baseline_path=Path(args.baseline), current_path=Path(args.current))
 
-    print(f"\n📊 Comparison: {comparison.name}\n")
+    print(f"\n Comparison: {comparison.name}\n")
     print(f"Overall: {comparison.overall_improvement}\n")
 
     if comparison.improvements:
-        print("✅ Improvements:")
+        print("PASS: Improvements:")
         for improvement in comparison.improvements:
             print(f"   • {improvement}")
 
     if comparison.regressions:
-        print("\n⚠️  Regressions:")
+        print("\nWARNING:  Regressions:")
         for regression in comparison.regressions:
             print(f"   • {regression}")
 
     if args.fail_on_regression and comparison.has_regressions:
-        print("\n❌ Benchmark failed: regressions detected")
+        print("\nFAIL: Benchmark failed: regressions detected")
         sys.exit(1)
 
 
@@ -160,7 +160,7 @@ def list_command(args):
         print("No benchmarks found")
         return
 
-    print(f"\n📊 Saved benchmarks ({len(benchmarks)}):\n")
+    print(f"\n Saved benchmarks ({len(benchmarks)}):\n")
 
     for bench in benchmarks:
         print(f"• {bench['name']}")
@@ -180,22 +180,22 @@ def show_command(args):
     print(f"\n{report.summary}\n")
 
     if report.timings:
-        print("⏱️  Timings:")
+        print("  Timings:")
         for timing in sorted(report.timings, key=lambda t: t.duration, reverse=True):
             print(f"   • {timing.operation}: {timing.duration:.2f}s")
 
     if report.memory:
-        print("\n💾 Memory:")
+        print("\n Memory:")
         for mem in sorted(report.memory, key=lambda m: m.peak_mb, reverse=True):
             print(f"   • {mem.operation}: {mem.peak_mb:.0f}MB peak ({mem.allocated_mb:+.0f}MB)")
 
     if report.metrics:
-        print("\n📈 Metrics:")
+        print("\n Metrics:")
         for metric in report.metrics:
             print(f"   • {metric.name}: {metric.value:.2f} {metric.unit}")
 
     if report.recommendations:
-        print("\n💡 Recommendations:")
+        print("\n Recommendations:")
         for rec in report.recommendations:
             print(f"   • {rec}")
 
@@ -206,7 +206,7 @@ def cleanup_command(args):
 
     runner.cleanup_old(keep_latest=args.keep)
 
-    print("✅ Cleanup complete")
+    print("PASS: Cleanup complete")
 
 
 def main():
@@ -292,7 +292,7 @@ Examples:
         elif args.command == "cleanup":
             cleanup_command(args)
     except Exception as e:
-        print(f"\n❌ Error: {e}", file=sys.stderr)
+        print(f"\nFAIL: Error: {e}", file=sys.stderr)
         sys.exit(1)
 
 

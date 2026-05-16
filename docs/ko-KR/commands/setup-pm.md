@@ -10,16 +10,16 @@ disable-model-invocation: true
 ## 사용법
 
 ```bash
-# 현재 패키지 매니저 감지
+## 현재 패키지 매니저 감지
 node scripts/setup-package-manager.js --detect
 
-# 전역 설정
+## 전역 설정
 node scripts/setup-package-manager.js --global pnpm
 
-# 프로젝트 설정
+## 프로젝트 설정
 node scripts/setup-package-manager.js --project bun
 
-# 사용 가능한 패키지 매니저 목록
+## 사용 가능한 패키지 매니저 목록
 node scripts/setup-package-manager.js --list
 ```
 
@@ -64,10 +64,10 @@ node scripts/setup-package-manager.js --list
 `CLAUDE_PACKAGE_MANAGER`를 설정하면 다른 모든 감지 방법을 무시합니다:
 
 ```bash
-# Windows (PowerShell)
+## Windows (PowerShell)
 $env:CLAUDE_PACKAGE_MANAGER = "pnpm"
 
-# macOS/Linux
+## macOS/Linux
 export CLAUDE_PACKAGE_MANAGER=pnpm
 ```
 

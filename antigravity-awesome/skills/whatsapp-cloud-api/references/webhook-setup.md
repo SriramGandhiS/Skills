@@ -404,7 +404,7 @@ def validate_webhook_signature(f):
 # @app.route('/webhook', methods=['POST'])
 # @validate_webhook_signature
 # def receive_webhook():
-#     ...
+# ...
 ```
 
 ### Erro classico: usar body parseado

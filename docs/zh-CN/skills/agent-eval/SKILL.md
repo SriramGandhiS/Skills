@@ -19,7 +19,7 @@ tools: Read, Write, Edit, Bash, Grep, Glob
 ## 安装
 
 ```bash
-# pinned to v0.1.0 — latest stable commit
+## pinned to v0.1.0 — latest stable commit
 pip install git+https://github.com/joaquinhuigomez/agent-eval.git@6d062a2f5cda6ea443bf5d458d361892c04e749b
 ```
 
@@ -68,7 +68,7 @@ commit: "abc1234"  # pin to specific commit for reproducibility
 
 ```bash
 mkdir tasks
-# Write task definitions (see template above)
+## Write task definitions (see template above)
 ```
 
 ### 2. 运行代理

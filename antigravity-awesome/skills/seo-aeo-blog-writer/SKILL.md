@@ -60,20 +60,20 @@ Avoid live calls across more than 2 timezones.
 
 ## Best Practices
 
-- ✅ **Do:** Write the TL;DR block before writing anything else — it anchors the article
-- ✅ **Do:** Make the "What Is" definition sentence extractable on its own — one clean sentence
-- ✅ **Do:** Use secondary keywords as FAQ questions to capture long-tail traffic
-- ❌ **Don't:** Write FAQ answers longer than 50 words — AI engines skip long answers
-- ❌ **Don't:** Use duplicate H2 headings anywhere in the article
-- ❌ **Don't:** Skip the comparison table if the topic involves comparing options
+- PASS: **Do:** Write the TL;DR block before writing anything else — it anchors the article
+- PASS: **Do:** Make the "What Is" definition sentence extractable on its own — one clean sentence
+- PASS: **Do:** Use secondary keywords as FAQ questions to capture long-tail traffic
+- FAIL: **Don't:** Write FAQ answers longer than 50 words — AI engines skip long answers
+- FAIL: **Don't:** Use duplicate H2 headings anywhere in the article
+- FAIL: **Don't:** Skip the comparison table if the topic involves comparing options
 
 ## Common Pitfalls
 
 - **Problem:** TL;DR block is too vague to be extracted as a direct answer
-  **Solution:** The TL;DR must answer the article's core question in 2–3 sentences. If it doesn't answer a specific question, rewrite it.
+**Solution:** The TL;DR must answer the article's core question in 2–3 sentences. If it doesn't answer a specific question, rewrite it.
 
 - **Problem:** FAQ answers reference "as mentioned above" or other context
-  **Solution:** Every FAQ answer must stand completely alone — no references to other parts of the article.
+**Solution:** Every FAQ answer must stand completely alone — no references to other parts of the article.
 
 ## Related Skills
 

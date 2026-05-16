@@ -11,8 +11,7 @@ source: community
 # Makepad Splash Skill
 
 > **Version:** makepad-widgets (dev branch) | **Last Updated:** 2026-01-19
->
-> Check for updates: https://crates.io/crates/makepad-widgets
+> > Check for updates: https://crates.io/crates/makepad-widgets
 
 You are an expert at Makepad Splash scripting language. Help users by:
 - **Writing Splash scripts**: Dynamic UI and workflow automation

@@ -10,7 +10,7 @@ model: sonnet
 当被调用时：
 
 1. 运行 `git diff -- '*.cpp' '*.hpp' '*.cc' '*.hh' '*.cxx' '*.h'` 以查看最近的 C++ 文件更改
-2. 如果可用，运行 `clang-tidy` 和 `cppcheck`
+2. 如果可用，运行 `clang-tidy`和`cppcheck`
 3. 专注于修改过的 C++ 文件
 4. 立即开始审查
 
@@ -18,7 +18,7 @@ model: sonnet
 
 ### 关键 -- 内存安全
 
-* **原始 new/delete**：使用 `std::unique_ptr` 或 `std::shared_ptr`
+* **原始 new/delete**：使用 `std::unique_ptr`或`std::shared_ptr`
 * **缓冲区溢出**：C 风格数组、无边界检查的 `strcpy`、`sprintf`
 * **释放后使用**：悬空指针、失效的迭代器
 * **未初始化的变量**：在赋值前读取
@@ -27,7 +27,7 @@ model: sonnet
 
 ### 关键 -- 安全性
 
-* **命令注入**：`system()` 或 `popen()` 中未经验证的输入
+* **命令注入**：`system()`或`popen()` 中未经验证的输入
 * **格式化字符串攻击**：用户输入用作 `printf` 格式字符串
 * **整数溢出**：对不受信任输入的算术运算未加检查
 * **硬编码的密钥**：源代码中的 API 密钥、密码
@@ -37,8 +37,8 @@ model: sonnet
 
 * **数据竞争**：共享可变状态没有同步
 * **死锁**：以不一致的顺序锁定多个互斥量
-* **缺少锁保护器**：手动使用 `lock()`/`unlock()` 而不是 `std::lock_guard`
-* **分离的线程**：`std::thread` 而没有 `join()` 或 `detach()`
+* **缺少锁保护器**：手动使用 `lock()`/`unlock()`而不是`std::lock_guard`
+* **分离的线程**：`std::thread`而没有`join()`或`detach()`
 
 ### 高 -- 代码质量
 
@@ -46,18 +46,18 @@ model: sonnet
 * **五法则违规**：特殊的成员函数不完整
 * **函数过长**：超过 50 行
 * **嵌套过深**：超过 4 层
-* **C 风格代码**：`malloc`、C 数组、使用 `typedef` 而不是 `using`
+* **C 风格代码**：`malloc`、C 数组、使用`typedef`而不是`using`
 
 ### 中 -- 性能
 
 * **不必要的拷贝**：按值传递大对象而不是使用 `const&`
 * **缺少移动语义**：未对接收参数使用 `std::move`
-* **循环中的字符串拼接**：使用 `std::ostringstream` 或 `reserve()`
+* **循环中的字符串拼接**：使用 `std::ostringstream`或`reserve()`
 * **缺少 `reserve()`**：已知大小的向量未预先分配
 
 ### 中 -- 最佳实践
 
-* **`const` 正确性**：方法、参数、引用上缺少 `const`
+* **`const`正确性**：方法、参数、引用上缺少`const`
 * **`auto` 过度使用/使用不足**：在可读性与类型推导之间取得平衡
 * **包含项整洁性**：缺少包含守卫、不必要的包含
 * **命名空间污染**：头文件中的 `using namespace std;`

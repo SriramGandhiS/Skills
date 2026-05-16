@@ -1,4 +1,4 @@
-﻿---
+---
 name: blueprint
 description: >-
   Turn a one-line objective into a step-by-step construction plan for
@@ -68,7 +68,7 @@ Produces a plan with parallel steps where possible (e.g., "implement Anthropic p
 - **Branch/PR/CI workflow** â€” Built into every step. Degrades gracefully to direct mode when git/gh is absent.
 - **Parallel step detection** â€” Dependency graph identifies steps with no shared files or output dependencies.
 - **Plan mutation protocol** â€” Steps can be split, inserted, skipped, reordered, or abandoned with formal protocols and audit trail.
-- **Zero runtime risk** â€” Pure Markdown skill. The entire repository contains only `.md` files â€” no hooks, no shell scripts, no executable code, no `package.json`, no build step. Nothing runs on install or invocation beyond Claude Code's native Markdown skill loader.
+- **Zero runtime risk** â€” Pure Markdown skill. The entire repository contains only `.md`files â€” no hooks, no shell scripts, no executable code, no`package.json`, no build step. Nothing runs on install or invocation beyond Claude Code's native Markdown skill loader.
 
 ## Installation
 
@@ -93,7 +93,7 @@ git checkout <reviewed-full-sha>          # pin to a specific reviewed commit
 
 ### Vendored standalone install
 
-If you are vendoring only this skill outside the full ECC install, copy the reviewed file from the ECC repository into `~/.claude/skills/blueprint/SKILL.md`. Vendored copies do not have a git remote, so update them by re-copying the file from a reviewed ECC commit rather than running `git pull`.
+If you are vendoring only this skill outside the full ECC install, copy the reviewed file from the ECC repository into `~/.claude/skills/blueprint/SKILL.md`. Vendored copies do not have a git remote, so update them by re-copying the file from a reviewed ECC commit rather than running`git pull`.
 
 ## Requirements
 

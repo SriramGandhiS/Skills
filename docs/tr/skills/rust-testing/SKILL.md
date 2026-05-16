@@ -19,7 +19,7 @@ TDD metodolojisini takip ederek güvenilir, bakım yapılabilir testler yazmak i
 ## Nasıl Çalışır
 
 1. **Hedef kodu tanımla** — Test edilecek fonksiyon, trait veya modülü bul
-2. **Bir test yaz** — `#[cfg(test)]` modülünde `#[test]` kullan, parametreli testler için rstest veya property-based testler için proptest
+2. **Bir test yaz** — `#[cfg(test)]`modülünde`#[test]` kullan, parametreli testler için rstest veya property-based testler için proptest
 3. **Bağımlılıkları mock'la** — Test altındaki birimi izole etmek için mockall kullan
 4. **Testleri çalıştır (RED)** — Testin beklenen hata ile başarısız olduğunu doğrula
 5. **Uygula (GREEN)** — Geçmek için minimal kod yaz
@@ -390,7 +390,7 @@ pub fn parse_config(input: &str) -> Result<Config, ParseError> {
 ## Criterion ile Benchmark'lama
 
 ```toml
-# Cargo.toml
+## Cargo.toml
 [dev-dependencies]
 criterion = { version = "0.5", features = ["html_reports"] }
 
@@ -423,7 +423,7 @@ criterion_main!(benches);
 ### Kapsamı Çalıştırma
 
 ```bash
-# Kurulum: cargo install cargo-llvm-cov (veya CI'da taiki-e/install-action kullan)
+## Kurulum: cargo install cargo-llvm-cov (veya CI'da taiki-e/install-action kullan)
 cargo llvm-cov                    # Özet
 cargo llvm-cov --html             # HTML raporu
 cargo llvm-cov --lcov > lcov.info # CI için LCOV formatı
@@ -459,21 +459,21 @@ cargo test -- --ignored           # Yok sayılan testleri çalıştır
 - Unit testler için `#[cfg(test)]` modülleri kullanın
 - Implementasyon değil, davranışı test edin
 - Senaryoyu açıklayan açıklayıcı test isimleri kullanın
-- Daha iyi hata mesajları için `assert!` yerine `assert_eq!` tercih edin
-- Daha temiz hata çıktısı için `Result` döndüren testlerde `?` kullanın
+- Daha iyi hata mesajları için `assert!`yerine`assert_eq!` tercih edin
+- Daha temiz hata çıktısı için `Result`döndüren testlerde`?` kullanın
 - Testleri bağımsız tutun — paylaşılan mutable state yok
 
 **YAPMAYIN:**
-- `Result::is_err()` test edebiliyorsanız `#[should_panic]` kullanmayın
+- `Result::is_err()`test edebiliyorsanız`#[should_panic]` kullanmayın
 - Her şeyi mock'lamayın — mümkün olduğunda entegrasyon testlerini tercih edin
 - Kararsız testleri yok saymayın — düzeltin veya karantinaya alın
-- Testlerde `sleep()` kullanmayın — channel'lar, barrier'lar veya `tokio::time::pause()` kullanın
+- Testlerde `sleep()`kullanmayın — channel'lar, barrier'lar veya`tokio::time::pause()` kullanın
 - Hata yolu testini atlamayın
 
 ## CI Entegrasyonu
 
 ```yaml
-# GitHub Actions
+## GitHub Actions
 test:
   runs-on: ubuntu-latest
   steps:

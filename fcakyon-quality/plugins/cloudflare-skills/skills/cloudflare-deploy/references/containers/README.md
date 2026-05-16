@@ -6,7 +6,7 @@ Use when working with Cloudflare Containers: deploying containerized apps on Wor
 
 ## Beta Status
 
-⚠️ Containers is currently in **beta**. API may change without notice. No SLA guarantees. Custom instance types added Jan 2026.
+WARNING: Containers is currently in **beta**. API may change without notice. No SLA guarantees. Custom instance types added Jan 2026.
 
 ## Core Concepts
 

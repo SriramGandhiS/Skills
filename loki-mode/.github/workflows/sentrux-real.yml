@@ -1,18 +1,15 @@
 name: Sentrux Real-Binary Integration
 
 # v7.5.15: Gated workflow for tests/integration/test_sentrux_real.sh.
-#
-# This workflow is INTENTIONALLY not part of the default CI matrix because:
-#   1. Downloading the real sentrux binary on every push is expensive.
-#   2. sentrux v0.5.7 may not have a stable release-asset URL on Linux yet.
-#   3. The unit tests in tests/test-sentrux-gate.sh (run by test.yml shell-tests)
-#      already cover the parser/contract layer with a fake on-PATH binary.
-#
-# Trigger options:
-#   - workflow_dispatch: manual run from the Actions tab.
-#   - schedule: nightly at 04:17 UTC (off-peak, low contention).
-#
-# This workflow does NOT block any other workflow and is informational only.
+# # This workflow is INTENTIONALLY not part of the default CI matrix because:
+# 1. Downloading the real sentrux binary on every push is expensive.
+# 2. sentrux v0.5.7 may not have a stable release-asset URL on Linux yet.
+# 3. The unit tests in tests/test-sentrux-gate.sh (run by test.yml shell-tests)
+# already cover the parser/contract layer with a fake on-PATH binary.
+# # Trigger options:
+# - workflow_dispatch: manual run from the Actions tab.
+# - schedule: nightly at 04:17 UTC (off-peak, low contention).
+# # This workflow does NOT block any other workflow and is informational only.
 
 on:
   workflow_dispatch:

@@ -39,7 +39,7 @@ origin: ECC
 
 ### 步骤1：建模用例边界
 
-定义具有清晰输入和输出DTO的单个用例。将传输细节（Express `req`、GraphQL `context`、任务负载包装器）保持在此边界之外。
+定义具有清晰输入和输出DTO的单个用例。将传输细节（Express `req`、GraphQL`context`、任务负载包装器）保持在此边界之外。
 
 ### 步骤2：首先定义出站端口
 

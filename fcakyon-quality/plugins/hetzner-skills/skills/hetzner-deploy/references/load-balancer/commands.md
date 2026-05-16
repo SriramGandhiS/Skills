@@ -31,7 +31,6 @@ hcloud load-balancer add-label [--overwrite] <load-balancer> <label>...
 
 * [hcloud load-balancer](hcloud_load-balancer.md)	 - Manage Load Balancers
 
-
 ---
 
 ## hcloud load-balancer add-service
@@ -85,7 +84,6 @@ hcloud load-balancer add-service [options] (--protocol http | --protocol tcp --l
 
 * [hcloud load-balancer](hcloud_load-balancer.md)	 - Manage Load Balancers
 
-
 ---
 
 ## hcloud load-balancer add-target
@@ -124,7 +122,6 @@ hcloud load-balancer add-target [options] (--server <server> | --label-selector 
 
 * [hcloud load-balancer](hcloud_load-balancer.md)	 - Manage Load Balancers
 
-
 ---
 
 ## hcloud load-balancer attach-to-network
@@ -162,7 +159,6 @@ hcloud load-balancer attach-to-network [--ip <ip>] --network <network> <load-bal
 
 * [hcloud load-balancer](hcloud_load-balancer.md)	 - Manage Load Balancers
 
-
 ---
 
 ## hcloud load-balancer change-algorithm
@@ -198,7 +194,6 @@ hcloud load-balancer change-algorithm --algorithm-type <round_robin|least_connec
 
 * [hcloud load-balancer](hcloud_load-balancer.md)	 - Manage Load Balancers
 
-
 ---
 
 ## hcloud load-balancer change-type
@@ -232,7 +227,6 @@ hcloud load-balancer change-type <load-balancer> <load-balancer-type>
 ### SEE ALSO
 
 * [hcloud load-balancer](hcloud_load-balancer.md)	 - Manage Load Balancers
-
 
 ---
 
@@ -277,7 +271,6 @@ hcloud load-balancer create [options] --name <name> --type <type>
 
 * [hcloud load-balancer](hcloud_load-balancer.md)	 - Manage Load Balancers
 
-
 ---
 
 ## hcloud load-balancer delete-service
@@ -313,7 +306,6 @@ hcloud load-balancer delete-service --listen-port <1-65535> <load-balancer>
 
 * [hcloud load-balancer](hcloud_load-balancer.md)	 - Manage Load Balancers
 
-
 ---
 
 ## hcloud load-balancer delete
@@ -347,7 +339,6 @@ hcloud load-balancer delete <load-balancer>...
 ### SEE ALSO
 
 * [hcloud load-balancer](hcloud_load-balancer.md)	 - Manage Load Balancers
-
 
 ---
 
@@ -385,7 +376,6 @@ hcloud load-balancer describe [options] <load-balancer>
 
 * [hcloud load-balancer](hcloud_load-balancer.md)	 - Manage Load Balancers
 
-
 ---
 
 ## hcloud load-balancer detach-from-network
@@ -421,7 +411,6 @@ hcloud load-balancer detach-from-network --network <network> <load-balancer>
 
 * [hcloud load-balancer](hcloud_load-balancer.md)	 - Manage Load Balancers
 
-
 ---
 
 ## hcloud load-balancer disable-protection
@@ -455,7 +444,6 @@ hcloud load-balancer disable-protection <load-balancer> delete
 ### SEE ALSO
 
 * [hcloud load-balancer](hcloud_load-balancer.md)	 - Manage Load Balancers
-
 
 ---
 
@@ -491,7 +479,6 @@ hcloud load-balancer disable-public-interface <load-balancer>
 
 * [hcloud load-balancer](hcloud_load-balancer.md)	 - Manage Load Balancers
 
-
 ---
 
 ## hcloud load-balancer enable-protection
@@ -526,7 +513,6 @@ hcloud load-balancer enable-protection <load-balancer> delete
 
 * [hcloud load-balancer](hcloud_load-balancer.md)	 - Manage Load Balancers
 
-
 ---
 
 ## hcloud load-balancer enable-public-interface
@@ -560,7 +546,6 @@ hcloud load-balancer enable-public-interface <load-balancer>
 ### SEE ALSO
 
 * [hcloud load-balancer](hcloud_load-balancer.md)	 - Manage Load Balancers
-
 
 ---
 
@@ -621,7 +606,6 @@ hcloud load-balancer list [options]
 
 * [hcloud load-balancer](hcloud_load-balancer.md)	 - Manage Load Balancers
 
-
 ---
 
 ## hcloud load-balancer metrics
@@ -660,7 +644,6 @@ hcloud load-balancer metrics [options] (--type <open_connections|connections_per
 
 * [hcloud load-balancer](hcloud_load-balancer.md)	 - Manage Load Balancers
 
-
 ---
 
 ## hcloud load-balancer remove-label
@@ -695,7 +678,6 @@ hcloud load-balancer remove-label <load-balancer> (--all | <label>...)
 ### SEE ALSO
 
 * [hcloud load-balancer](hcloud_load-balancer.md)	 - Manage Load Balancers
-
 
 ---
 
@@ -734,7 +716,6 @@ hcloud load-balancer remove-target [options] <load-balancer>
 
 * [hcloud load-balancer](hcloud_load-balancer.md)	 - Manage Load Balancers
 
-
 ---
 
 ## hcloud load-balancer set-rdns
@@ -771,7 +752,6 @@ hcloud load-balancer set-rdns [--ip <ip>] (--hostname <hostname> | --reset) <loa
 ### SEE ALSO
 
 * [hcloud load-balancer](hcloud_load-balancer.md)	 - Manage Load Balancers
-
 
 ---
 
@@ -825,7 +805,6 @@ hcloud load-balancer update-service [options] --listen-port <1-65535> <load-bala
 ### SEE ALSO
 
 * [hcloud load-balancer](hcloud_load-balancer.md)	 - Manage Load Balancers
-
 
 ---
 

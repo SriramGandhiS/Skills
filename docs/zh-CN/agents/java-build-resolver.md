@@ -52,36 +52,36 @@ model: sonnet
 | `method X in class Y cannot be applied to given types` | 参数类型或数量错误 | 修复参数或检查重载方法 |
 | `variable X might not have been initialized` | 局部变量未初始化 | 在使用前初始化变量 |
 | `non-static method X cannot be referenced from a static context` | 实例方法被静态调用 | 创建实例或将方法设为静态 |
-| `reached end of file while parsing` | 缺少闭合括号 | 添加缺失的 `}` |
-| `package X does not exist` | 缺少依赖或导入错误 | 将依赖添加到 `pom.xml`/`build.gradle` |
+| `reached end of file while parsing`| 缺少闭合括号 | 添加缺失的`}` |
+| `package X does not exist`| 缺少依赖或导入错误 | 将依赖添加到`pom.xml`/`build.gradle` |
 | `error: cannot access X, class file not found` | 缺少传递性依赖 | 添加显式依赖 |
 | `Annotation processor threw uncaught exception` | Lombok/MapStruct 配置错误 | 检查注解处理器设置 |
 | `Could not resolve: group:artifact:version` | 缺少仓库或版本错误 | 在 POM 中添加仓库或修复版本 |
-| `The following artifacts could not be resolved` | 私有仓库或网络问题 | 检查仓库凭据或 `settings.xml` |
-| `COMPILATION ERROR: Source option X is no longer supported` | Java 版本不匹配 | 更新 `maven.compiler.source` / `targetCompatibility` |
+| `The following artifacts could not be resolved`| 私有仓库或网络问题 | 检查仓库凭据或`settings.xml` |
+| `COMPILATION ERROR: Source option X is no longer supported`| Java 版本不匹配 | 更新`maven.compiler.source`/`targetCompatibility` |
 
 ## Maven 故障排除
 
 ```bash
-# Check dependency tree for conflicts
+## Check dependency tree for conflicts
 ./mvnw dependency:tree -Dverbose
 
-# Force update snapshots and re-download
+## Force update snapshots and re-download
 ./mvnw clean install -U
 
-# Analyse dependency conflicts
+## Analyse dependency conflicts
 ./mvnw dependency:analyze
 
-# Check effective POM (resolved inheritance)
+## Check effective POM (resolved inheritance)
 ./mvnw help:effective-pom
 
-# Debug annotation processors
+## Debug annotation processors
 ./mvnw compile -X 2>&1 | grep -i "processor\|lombok\|mapstruct"
 
-# Skip tests to isolate compile errors
+## Skip tests to isolate compile errors
 ./mvnw compile -DskipTests
 
-# Check Java version in use
+## Check Java version in use
 ./mvnw --version
 java -version
 ```
@@ -89,35 +89,35 @@ java -version
 ## Gradle 故障排除
 
 ```bash
-# Check dependency tree for conflicts
+## Check dependency tree for conflicts
 ./gradlew dependencies --configuration runtimeClasspath
 
-# Force refresh dependencies
+## Force refresh dependencies
 ./gradlew build --refresh-dependencies
 
-# Clear Gradle build cache
+## Clear Gradle build cache
 ./gradlew clean && rm -rf .gradle/build-cache/
 
-# Run with debug output
+## Run with debug output
 ./gradlew build --debug 2>&1 | tail -50
 
-# Check dependency insight
+## Check dependency insight
 ./gradlew dependencyInsight --dependency <name> --configuration runtimeClasspath
 
-# Check Java toolchain
+## Check Java toolchain
 ./gradlew -q javaToolchains
 ```
 
 ## Spring Boot 特定问题
 
 ```bash
-# Verify Spring Boot application context loads
+## Verify Spring Boot application context loads
 ./mvnw spring-boot:run -Dspring-boot.run.arguments="--spring.profiles.active=test"
 
-# Check for missing beans or circular dependencies
+## Check for missing beans or circular dependencies
 ./mvnw test -Dtest=*ContextLoads* -q
 
-# Verify Lombok is configured as annotation processor (not just dependency)
+## Verify Lombok is configured as annotation processor (not just dependency)
 grep -A5 "annotationProcessorPaths\|annotationProcessor" pom.xml build.gradle
 ```
 
@@ -129,7 +129,7 @@ grep -A5 "annotationProcessorPaths\|annotationProcessor" pom.xml build.gradle
 * **始终**在每次修复后运行构建以验证
 * 修复根本原因而非抑制症状
 * 优先添加缺失的导入而非更改逻辑
-* 在运行命令前，检查 `pom.xml`、`build.gradle` 或 `build.gradle.kts` 以确认构建工具
+* 在运行命令前，检查 `pom.xml`、`build.gradle`或`build.gradle.kts` 以确认构建工具
 
 ## 停止条件
 

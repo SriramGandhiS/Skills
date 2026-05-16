@@ -2,7 +2,7 @@
 
 **Trackio** is an experiment tracking library that provides real-time metrics visualization for remote training on Hugging Face Jobs infrastructure.
 
-⚠️ **IMPORTANT**: For Jobs training (remote cloud GPUs):
+WARNING: **IMPORTANT**: For Jobs training (remote cloud GPUs):
 - Training happens on ephemeral cloud runners (not your local machine)
 - Trackio syncs metrics to a Hugging Face Space for real-time monitoring
 - Without a Space, metrics are lost when the job completes
@@ -14,8 +14,8 @@
 ```python
 # /// script
 # dependencies = [
-#     "trl>=0.12.0",
-#     "trackio",  # Required!
+# "trl>=0.12.0",
+# "trackio",  # Required!
 # ]
 # ///
 ```
@@ -62,12 +62,12 @@ trackio.finish()  # Ensures final metrics are synced
 ## What Trackio Tracks
 
 Trackio automatically logs:
-- ✅ Training loss
-- ✅ Learning rate
-- ✅ GPU utilization
-- ✅ Memory usage
-- ✅ Training throughput
-- ✅ Custom metrics
+- PASS: Training loss
+- PASS: Learning rate
+- PASS: GPU utilization
+- PASS: Memory usage
+- PASS: Training throughput
+- PASS: Custom metrics
 
 ## How It Works with Jobs
 

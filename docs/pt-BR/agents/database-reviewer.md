@@ -36,8 +36,8 @@ psql -c "SELECT indexrelname, idx_scan, idx_tup_read FROM pg_stat_user_indexes O
 - Verificar ordem das colunas em índices compostos (igualdade primeiro, depois range)
 
 ### 2. Design de Schema (ALTO)
-- Usar tipos adequados: `bigint` para IDs, `text` para strings, `timestamptz` para timestamps, `numeric` para dinheiro, `boolean` para flags
-- Definir restrições: PK, FK com `ON DELETE`, `NOT NULL`, `CHECK`
+- Usar tipos adequados: `bigint`para IDs,`text`para strings,`timestamptz`para timestamps,`numeric`para dinheiro,`boolean` para flags
+- Definir restrições: PK, FK com `ON DELETE`,`NOT NULL`,`CHECK`
 - Usar identificadores `lowercase_snake_case` (sem mixed-case com aspas)
 
 ### 3. Segurança (CRÍTICO)
@@ -52,16 +52,16 @@ psql -c "SELECT indexrelname, idx_scan, idx_tup_read FROM pg_stat_user_indexes O
 - **Usar índices parciais** — `WHERE deleted_at IS NULL` para soft deletes
 - **Índices cobrindo** — `INCLUDE (col)` para evitar lookups na tabela
 - **SKIP LOCKED para filas** — 10x throughput para padrões de workers
-- **Paginação por cursor** — `WHERE id > $last` em vez de `OFFSET`
-- **Inserts em lote** — `INSERT` multi-linha ou `COPY`, nunca inserts individuais em loops
+- **Paginação por cursor** — `WHERE id > $last`em vez de`OFFSET`
+- **Inserts em lote** — `INSERT`multi-linha ou`COPY`, nunca inserts individuais em loops
 - **Transações curtas** — Nunca segurar locks durante chamadas de API externas
 - **Ordem consistente de locks** — `ORDER BY id FOR UPDATE` para prevenir deadlocks
 
 ## Anti-Padrões a Sinalizar
 
 - `SELECT *` em código de produção
-- `int` para IDs (usar `bigint`), `varchar(255)` sem motivo (usar `text`)
-- `timestamp` sem timezone (usar `timestamptz`)
+- `int`para IDs (usar`bigint`),`varchar(255)`sem motivo (usar`text`)
+- `timestamp`sem timezone (usar`timestamptz`)
 - UUIDs aleatórios como PKs (usar UUIDv7 ou IDENTITY)
 - Paginação com OFFSET em tabelas grandes
 - Queries não parametrizadas (risco de SQL injection)
@@ -82,7 +82,7 @@ psql -c "SELECT indexrelname, idx_scan, idx_tup_read FROM pg_stat_user_indexes O
 
 ## Referência
 
-Para padrões detalhados de índices, exemplos de design de schema, gerenciamento de conexões, estratégias de concorrência, padrões JSONB e full-text search, veja skills: `postgres-patterns` e `database-migrations`.
+Para padrões detalhados de índices, exemplos de design de schema, gerenciamento de conexões, estratégias de concorrência, padrões JSONB e full-text search, veja skills: `postgres-patterns`e`database-migrations`.
 
 ---
 

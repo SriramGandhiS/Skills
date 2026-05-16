@@ -10,23 +10,23 @@
 
 | Agent | Transport | Auto-Detected | Config Path (macOS) |
 |-------|-----------|---------------|---------------------|
-| Claude Code | stdio | ✅ | `~/.claude.json` |
-| Cursor | HTTP | ✅ | `~/Library/Application Support/Cursor/mcp_settings.json` |
-| Windsurf | HTTP | ✅ | `~/Library/Application Support/Windsurf/mcp_config.json` |
-| VS Code + Cline | stdio | ✅ | `~/Library/Application Support/Code/User/globalStorage/saoudrizwan.claude-dev/settings/cline_mcp_settings.json` |
-| IntelliJ IDEA | HTTP | ✅ | `~/Library/Application Support/JetBrains/IntelliJIdea2024.3/mcp.xml` |
+| Claude Code | stdio | PASS: | `~/.claude.json` |
+| Cursor | HTTP | PASS: | `~/Library/Application Support/Cursor/mcp_settings.json` |
+| Windsurf | HTTP | PASS: | `~/Library/Application Support/Windsurf/mcp_config.json` |
+| VS Code + Cline | stdio | PASS: | `~/Library/Application Support/Code/User/globalStorage/saoudrizwan.claude-dev/settings/cline_mcp_settings.json` |
+| IntelliJ IDEA | HTTP | PASS: | `~/Library/Application Support/JetBrains/IntelliJIdea2024.3/mcp.xml` |
 
 ## Setup Steps
 
-1. ✅ **Check Python** (3.10+ recommended)
-2. ✅ **Verify repo path**
-3. ✅ **Install dependencies** (with venv option)
-4. ✅ **Test transports** (stdio + HTTP)
-5. ✅ **Detect agents** (automatic!)
-6. ✅ **Configure agents** (with merging)
-7. ✅ **Start HTTP server** (if needed)
-8. ✅ **Test configs** (validate JSON)
-9. ✅ **Show instructions** (next steps)
+1. PASS: **Check Python** (3.10+ recommended)
+2. PASS: **Verify repo path**
+3. PASS: **Install dependencies** (with venv option)
+4. PASS: **Test transports** (stdio + HTTP)
+5. PASS: **Detect agents** (automatic!)
+6. PASS: **Configure agents** (with merging)
+7. PASS: **Start HTTP server** (if needed)
+8. PASS: **Test configs** (validate JSON)
+9. PASS: **Show instructions** (next steps)
 
 ## Common Workflows
 

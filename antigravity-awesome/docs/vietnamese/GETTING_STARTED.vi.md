@@ -4,18 +4,18 @@
 
 ---
 
-## 🤔 "Skills" (Kỹ năng) là gì?
+## "Skills" (Kỹ năng) là gì?
 
-Các trợ lý AI (như **Claude Code**, **Gemini**, **Cursor**) rất thông minh, nhưng chúng thiếu kiến thức cụ thể về các công cụ và quy trình làm việc của bạn.  
+Các trợ lý AI (như **Claude Code**, **Gemini**, **Cursor**) rất thông minh, nhưng chúng thiếu kiến thức cụ thể về các công cụ và quy trình làm việc của bạn.
 **Skills** là các hướng dẫn sử dụng chuyên biệt (dưới dạng file markdown) dạy cho AI của bạn cách thực hiện các tác vụ cụ thể một cách hoàn hảo trong mọi lần thực hiện.
 
 **Một phép so sánh:** AI của bạn là một thực tập sinh xuất sắc. **Skills** là các SOP (Quy trình vận hành tiêu chuẩn) biến họ thành một Kỹ sư cao cấp.
 
 ---
 
-## ⚡️ Khởi động nhanh: Các "Gói khởi đầu" (Starter Packs)
+## Khởi động nhanh: Các "Gói khởi đầu" (Starter Packs)
 
-Đừng lo lắng về con số hơn 560 kỹ năng. Bạn không cần dùng tất cả chúng cùng một lúc.  
+Đừng lo lắng về con số hơn 560 kỹ năng. Bạn không cần dùng tất cả chúng cùng một lúc.
 Chúng tôi đã tuyển chọn các **Gói khởi đầu** để bạn có thể bắt đầu sử dụng ngay lập tức.
 
 ### 1. Cài đặt Repository
@@ -40,7 +40,7 @@ Tìm gói kỹ năng phù hợp với vị trí của bạn (xem [BUNDLES.md](BU
 
 ---
 
-## 🚀 Cách sử dụng một Skill
+## Cách sử dụng một Skill
 
 Sau khi cài đặt, bạn chỉ cần trò chuyện với AI một cách tự nhiên.
 
@@ -64,44 +64,44 @@ Sau khi cài đặt, bạn chỉ cần trò chuyện với AI một cách tự n
 
 ---
 
-## 🔌 Các công cụ được hỗ trợ
+## Các công cụ được hỗ trợ
 
 | Công cụ          | Trạng thái      | Đường dẫn         |
 | :--------------- | :-------------- | :---------------- |
-| **Claude Code**  | ✅ Hỗ trợ đầy đủ | `.claude/skills/` |
-| **Gemini CLI**   | ✅ Hỗ trợ đầy đủ | `.gemini/skills/` |
-| **Antigravity**  | ✅ Hỗ trợ gốc   | `.agent/skills/`  |
-| **Cursor**       | ✅ Hỗ trợ gốc   | `.cursor/skills/` |
-| **Copilot**      | ⚠️ Chỉ văn bản  | Copy-paste thủ công |
+| **Claude Code**  | PASS: Hỗ trợ đầy đủ | `.claude/skills/` |
+| **Gemini CLI**   | PASS: Hỗ trợ đầy đủ | `.gemini/skills/` |
+| **Antigravity**  | PASS: Hỗ trợ gốc   | `.agent/skills/`  |
+| **Cursor**       | PASS: Hỗ trợ gốc   | `.cursor/skills/` |
+| **Copilot**      | WARNING: Chỉ văn bản  | Copy-paste thủ công |
 
 ---
 
-## 🛡️ Sự tin cậy & An toàn (Mới trong bản V4)
+## Sự tin cậy & An toàn (Mới trong bản V4)
 
 Chúng tôi phân loại các kỹ năng để bạn biết mình đang chạy những gì:
 
-- 🟣 **Official (Chính thức)**: Được duy trì bởi Anthropic/Google/Nhà cung cấp (Độ tin cậy cao).
-- 🔵 **Safe (An toàn)**: Các kỹ năng cộng đồng không gây hại (Chỉ đọc/Lập kế hoạch).
-- 🔴 **Risk (Rủi ro)**: Các kỹ năng sửa đổi hệ thống hoặc thực hiện kiểm thử bảo mật (Sử dụng khi được cấp phép).
+- **Official (Chính thức)**: Được duy trì bởi Anthropic/Google/Nhà cung cấp (Độ tin cậy cao).
+- **Safe (An toàn)**: Các kỹ năng cộng đồng không gây hại (Chỉ đọc/Lập kế hoạch).
+- **Risk (Rủi ro)**: Các kỹ năng sửa đổi hệ thống hoặc thực hiện kiểm thử bảo mật (Sử dụng khi được cấp phép).
 
 _Kiểm tra [Danh mục Skill (Skill Catalog)](../CATALOG.vi.md) để xem danh sách đầy đủ._
 
 ---
 
-## ❓ FAQ
+## FAQ
 
-**H: Tôi có cần cài đặt tất cả 560 kỹ năng không?**  
+**H: Tôi có cần cài đặt tất cả 560 kỹ năng không?**
 Đ: Bạn tải toàn bộ repo về, nhưng AI của bạn chỉ _đọc_ những kỹ năng bạn yêu cầu (hoặc những kỹ năng có liên quan). Nó rất nhẹ!
 
-**H: Tôi có thể tự tạo kỹ năng cho riêng mình không?**  
+**H: Tôi có thể tự tạo kỹ năng cho riêng mình không?**
 Đ: Có! Sử dụng kỹ năng **@skill-creator** để tự xây dựng.
 
-**H: Nó có miễn phí không?**  
+**H: Nó có miễn phí không?**
 Đ: Có, Giấy phép MIT. Mã nguồn mở mãi mãi.
 
 ---
 
-## ⏭️ Các bước tiếp theo
+## SKIPPED: Các bước tiếp theo
 
 1. [Duyệt qua các Gói kỹ năng (Bundles)](BUNDLES.vi.md)
 2. [Xem các Ví dụ thực tế (Examples)](EXAMPLES.vi.md)

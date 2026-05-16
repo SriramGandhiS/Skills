@@ -2,17 +2,15 @@
 #===============================================================================
 # Wire-in tests for the sentrux architectural-drift gate hooks in
 # autonomy/run.sh (v7.5.15).
-#
-# These tests verify that:
-#   - When LOKI_SENTRUX_GATE=1 and a fake `sentrux` is on PATH, the
-#     start-hook writes <target>/.sentrux/baseline.json and the end-hook
-#     emits a Finding JSON file when the gate verdict is DEGRADED.
-#   - When LOKI_SENTRUX_GATE is unset, neither hook touches the filesystem
-#     (no .sentrux/ directory created, no findings file).
-#   - The Finding JSON has the exact shape required by the spec:
-#       {type, iteration, before, after, verdict, timestamp, source}.
-#
-# We do NOT exercise the full run_autonomous() loop (too expensive). Instead
+# # These tests verify that:
+# - When LOKI_SENTRUX_GATE=1 and a fake `sentrux` is on PATH, the
+# start-hook writes <target>/.sentrux/baseline.json and the end-hook
+# emits a Finding JSON file when the gate verdict is DEGRADED.
+# - When LOKI_SENTRUX_GATE is unset, neither hook touches the filesystem
+# (no .sentrux/ directory created, no findings file).
+# - The Finding JSON has the exact shape required by the spec:
+# {type, iteration, before, after, verdict, timestamp, source}.
+# # We do NOT exercise the full run_autonomous() loop (too expensive). Instead
 # we extract the helper functions _loki_sentrux_iteration_start /
 # _loki_sentrux_iteration_end from autonomy/run.sh by sourcing the file with
 # guards that prevent the runner from auto-executing.
@@ -52,7 +50,7 @@ fi
 
 #-------------------------------------------------------------------------------
 # 1. Build a tmp project + fake sentrux binary that emits canned outputs.
-#    Mirrors the pattern from tests/test-sentrux-gate.sh.
+# Mirrors the pattern from tests/test-sentrux-gate.sh.
 #-------------------------------------------------------------------------------
 TMPROOT=$(mktemp -d -t loki-sentrux-wireup.XXXXXX)
 FAKE_BIN_DIR="$TMPROOT/bin"
@@ -108,9 +106,9 @@ chmod +x "$FAKE_BIN_DIR/sentrux"
 
 #-------------------------------------------------------------------------------
 # 2. Extract the two wire-in functions from run.sh into a sourceable file.
-#    We use awk to copy from the function-start lines to the matching end so
-#    we can source ONLY the helpers (run.sh is 12k+ lines and would execute
-#    things we don't want in test scope).
+# We use awk to copy from the function-start lines to the matching end so
+# we can source ONLY the helpers (run.sh is 12k+ lines and would execute
+# things we don't want in test scope).
 #-------------------------------------------------------------------------------
 EXTRACTED="$TMPROOT/wireup.sh"
 awk '
@@ -159,7 +157,7 @@ fi
 
 #-------------------------------------------------------------------------------
 # 4. With LOKI_SENTRUX_GATE=1 and the fake sentrux on PATH, the start hook
-#    must write baseline.json.
+# must write baseline.json.
 #-------------------------------------------------------------------------------
 PROJ_ON="$TMPROOT/proj-on"
 mkdir -p "$PROJ_ON/src"

@@ -11,7 +11,7 @@ model: sonnet
 
 ## 核心职责
 
-1. 诊断 `dart analyze` 和 `flutter analyze` 错误
+1. 诊断 `dart analyze`和`flutter analyze` 错误
 2. 修复 Dart 类型错误、空安全违规和缺失的导入
 3. 解决 `pubspec.yaml` 依赖冲突和版本约束
 4. 修复 `build_runner` 代码生成失败
@@ -22,18 +22,18 @@ model: sonnet
 按顺序执行：
 
 ```bash
-# Check Dart/Flutter analysis errors
+## Check Dart/Flutter analysis errors
 flutter analyze 2>&1
-# or for pure Dart projects
+## or for pure Dart projects
 dart analyze 2>&1
 
-# Check pub dependency resolution
+## Check pub dependency resolution
 flutter pub get 2>&1
 
-# Check if code generation is stale
+## Check if code generation is stale
 dart run build_runner build --delete-conflicting-outputs 2>&1
 
-# Flutter build for target platform
+## Flutter build for target platform
 flutter build apk 2>&1           # Android
 flutter build ipa --no-codesign 2>&1  # iOS (CI without signing)
 flutter build web 2>&1           # Web
@@ -53,38 +53,38 @@ flutter build web 2>&1           # Web
 
 | 错误 | 原因 | 修复 |
 |-------|-------|------|
-| `The name 'X' isn't defined` | 缺少导入或拼写错误 | 添加正确的 `import` 或修正名称 |
-| `A value of type 'X?' can't be assigned to type 'X'` | 空安全 — 未处理可空类型 | 添加 `!`、`?? default` 或空检查 |
+| `The name 'X' isn't defined`| 缺少导入或拼写错误 | 添加正确的`import` 或修正名称 |
+| `A value of type 'X?' can't be assigned to type 'X'`| 空安全 — 未处理可空类型 | 添加`!`、`?? default` 或空检查 |
 | `The argument type 'X' can't be assigned to 'Y'` | 类型不匹配 | 修复类型、添加显式转换或修正 API 调用 |
-| `Non-nullable instance field 'x' must be initialized` | 缺少初始化器 | 添加初始化器、标记为 `late` 或设为可空 |
+| `Non-nullable instance field 'x' must be initialized`| 缺少初始化器 | 添加初始化器、标记为`late` 或设为可空 |
 | `The method 'X' isn't defined for type 'Y'` | 类型错误或导入错误 | 检查类型和导入 |
-| `'await' applied to non-Future` | 对非异步值使用 await | 移除 `await` 或将函数设为异步 |
+| `'await' applied to non-Future`| 对非异步值使用 await | 移除`await` 或将函数设为异步 |
 | `Missing concrete implementation of 'X'` | 抽象接口未完全实现 | 添加缺失的方法实现 |
-| `The class 'X' doesn't implement 'Y'` | 缺少 `implements` 或缺失方法 | 添加方法或修正类签名 |
-| `Because X depends on Y >=A and Z depends on Y <B, version solving failed` | Pub 版本冲突 | 调整版本约束或添加 `dependency_overrides` |
+| `The class 'X' doesn't implement 'Y'`| 缺少`implements` 或缺失方法 | 添加方法或修正类签名 |
+| `Because X depends on Y >=A and Z depends on Y <B, version solving failed`| Pub 版本冲突 | 调整版本约束或添加`dependency_overrides` |
 | `Could not find a file named "pubspec.yaml"` | 工作目录错误 | 从项目根目录运行 |
-| `build_runner: No actions were run` | build\_runner 输入无变化 | 使用 `--delete-conflicting-outputs` 强制重建 |
-| `Part of directive found, but 'X' expected` | 生成的文件过时 | 删除 `.g.dart` 文件并重新运行 build\_runner |
+| `build_runner: No actions were run`| build\_runner 输入无变化 | 使用`--delete-conflicting-outputs` 强制重建 |
+| `Part of directive found, but 'X' expected`| 生成的文件过时 | 删除`.g.dart` 文件并重新运行 build\_runner |
 
 ## Pub 依赖故障排除
 
 ```bash
-# Show full dependency tree
+## Show full dependency tree
 flutter pub deps
 
-# Check why a specific package version was chosen
+## Check why a specific package version was chosen
 flutter pub deps --style=compact | grep <package>
 
-# Upgrade packages to latest compatible versions
+## Upgrade packages to latest compatible versions
 flutter pub upgrade
 
-# Upgrade specific package
+## Upgrade specific package
 flutter pub upgrade <package_name>
 
-# Clear pub cache if metadata is corrupted
+## Clear pub cache if metadata is corrupted
 flutter pub cache repair
 
-# Verify pubspec.lock is consistent
+## Verify pubspec.lock is consistent
 flutter pub get --enforce-lockfile
 ```
 
@@ -125,44 +125,44 @@ final ids = (jsonList as List).cast<String>();
 ## build\_runner 故障排除
 
 ```bash
-# Clean and regenerate all files
+## Clean and regenerate all files
 dart run build_runner clean
 dart run build_runner build --delete-conflicting-outputs
 
-# Watch mode for development
+## Watch mode for development
 dart run build_runner watch --delete-conflicting-outputs
 
-# Check for missing build_runner dependencies in pubspec.yaml
-# Required: build_runner, json_serializable / freezed / riverpod_generator (as dev_dependencies)
+## Check for missing build_runner dependencies in pubspec.yaml
+## Required: build_runner, json_serializable / freezed / riverpod_generator (as dev_dependencies)
 ```
 
 ## Android 构建故障排除
 
 ```bash
-# Clean Android build cache
+## Clean Android build cache
 cd android && ./gradlew clean && cd ..
 
-# Invalidate Flutter tool cache
+## Invalidate Flutter tool cache
 flutter clean
 
-# Rebuild
+## Rebuild
 flutter pub get && flutter build apk
 
-# Check Gradle/JDK version compatibility
+## Check Gradle/JDK version compatibility
 cd android && ./gradlew --version
 ```
 
 ## iOS 构建故障排除
 
 ```bash
-# Update CocoaPods
+## Update CocoaPods
 cd ios && pod install --repo-update && cd ..
 
-# Clean iOS build
+## Clean iOS build
 flutter clean && cd ios && pod deintegrate && pod install && cd ..
 
-# Check for platform version mismatches in Podfile
-# Ensure ios platform version >= minimum required by all pods
+## Check for platform version mismatches in Podfile
+## Ensure ios platform version >= minimum required by all pods
 ```
 
 ## 关键原则
@@ -188,7 +188,7 @@ flutter clean && cd ios && pod deintegrate && pod install && cd ..
 ```text
 [已修复] lib/features/cart/data/cart_repository_impl.dart:42
 错误：类型为 'String?' 的值无法分配给类型 'String'
-修复：将 `final id = response.id` 改为 `final id = response.id ?? ''`
+修复：将 `final id = response.id`改为`final id = response.id ?? ''`
 剩余错误：2
 
 [已修复] pubspec.yaml

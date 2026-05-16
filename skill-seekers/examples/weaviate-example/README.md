@@ -51,10 +51,10 @@ This script will:
 
 **Expected Output:**
 ```
-✅ Weaviate data packaged successfully!
-📦 Output: output/react-weaviate.json
-📊 Total objects: 21
-📂 Categories: overview (1), guides (8), api (12)
+PASS: Weaviate data packaged successfully!
+ Output: output/react-weaviate.json
+ Total objects: 21
+ Categories: overview (1), guides (8), api (12)
 ```
 
 **What's in the JSON?**
@@ -113,17 +113,17 @@ This script will:
 
 **Expected Output:**
 ```
-🔗 Connecting to Weaviate at http://localhost:8080...
-✅ Weaviate is ready!
+ Connecting to Weaviate at http://localhost:8080...
+PASS: Weaviate is ready!
 
-📊 Creating schema: React
-✅ Schema created successfully!
+ Creating schema: React
+PASS: Schema created successfully!
 
-📤 Uploading 21 objects in batches...
-✅ Batch 1/1 uploaded (21 objects)
+ Uploading 21 objects in batches...
+PASS: Batch 1/1 uploaded (21 objects)
 
-✅ Successfully uploaded 21 documents to Weaviate
-🔍 Class 'React' now contains 21 objects
+PASS: Successfully uploaded 21 documents to Weaviate
+ Class 'React' now contains 21 objects
 ```
 
 ### Step 3: Query and Search

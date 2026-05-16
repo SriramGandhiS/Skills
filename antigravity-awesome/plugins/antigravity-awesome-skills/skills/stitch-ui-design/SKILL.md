@@ -33,7 +33,7 @@ Create a dashboard
 
 **Effective prompt:**
 ```
-Member dashboard with course modules grid, progress tracking bar, 
+Member dashboard with course modules grid, progress tracking bar,
 and community feed sidebar using purple theme and card-based layout
 ```
 
@@ -51,8 +51,8 @@ Always include color schemes, design aesthetics, and visual direction to avoid g
 
 **Example:**
 ```
-E-commerce product page with hero image gallery, add-to-cart CTA, 
-reviews section, and related products carousel. Use clean minimalist 
+E-commerce product page with hero image gallery, add-to-cart CTA,
+reviews section, and related products carousel. Use clean minimalist
 design with sage green accents and generous white space.
 ```
 
@@ -79,7 +79,7 @@ Indicate whether the design is for mobile, tablet, desktop, or responsive web.
 ```
 Mobile app login screen (iOS style) with email/password fields and social auth buttons
 
-Responsive landing page that adapts from mobile (320px) to desktop (1440px) 
+Responsive landing page that adapts from mobile (320px) to desktop (1440px)
 with collapsible navigation
 ```
 
@@ -186,7 +186,7 @@ Add featured products section with 4-column grid and hover effects
 
 **Refinement 2:**
 ```
-Update color scheme to earth tones (terracotta, sage, cream) 
+Update color scheme to earth tones (terracotta, sage, cream)
 and add promotional banner at top
 ```
 
@@ -293,44 +293,44 @@ Stitch provides multiple export formats:
 
 ## Anti-Patterns to Avoid
 
-### ❌ Vague Prompts
+### FAIL: Vague Prompts
 ```
 Make a nice website
 ```
 
-### ✅ Specific Prompts
+### PASS: Specific Prompts
 ```
-Portfolio website for photographer with full-screen image gallery, 
-project case studies, and contact form. Minimalist black and white 
+Portfolio website for photographer with full-screen image gallery,
+project case studies, and contact form. Minimalist black and white
 aesthetic with serif typography.
 ```
 
 ---
 
-### ❌ Missing Context
+### FAIL: Missing Context
 ```
 Create a login page
 ```
 
-### ✅ Context-Rich Prompts
+### PASS: Context-Rich Prompts
 ```
-Login page for healthcare portal with email/password fields, 
-"Remember me" checkbox, "Forgot password" link, and SSO options 
-(Google, Microsoft). Professional, trustworthy design with 
+Login page for healthcare portal with email/password fields,
+"Remember me" checkbox, "Forgot password" link, and SSO options
+(Google, Microsoft). Professional, trustworthy design with
 blue medical theme.
 ```
 
 ---
 
-### ❌ No Visual Direction
+### FAIL: No Visual Direction
 ```
 Design an app for task management
 ```
 
-### ✅ Clear Visual Direction
+### PASS: Clear Visual Direction
 ```
-Task management app with kanban board layout, drag-and-drop cards, 
-priority labels, and due date indicators. Modern, productivity-focused 
+Task management app with kanban board layout, drag-and-drop cards,
+priority labels, and due date indicators. Modern, productivity-focused
 design with purple/teal gradient accents and dark mode support.
 ```
 

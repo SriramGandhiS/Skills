@@ -47,7 +47,7 @@ async def test_mcp_validate_unified_config():
     config_path = "configs/react_unified.json"
 
     if not Path(config_path).exists():
-        print(f"  ⚠️  Skipping: {config_path} not found")
+        print(f"  WARNING:  Skipping: {config_path} not found")
         return
 
     args = {"config_path": config_path}
@@ -55,11 +55,11 @@ async def test_mcp_validate_unified_config():
 
     # Check result
     text = result[0].text
-    assert "✅" in text, f"Expected success, got: {text}"
+    assert "PASS:" in text, f"Expected success, got: {text}"
     assert "Unified" in text, f"Expected unified format detected, got: {text}"
     assert "Sources:" in text, f"Expected sources count, got: {text}"
 
-    print("  ✅ MCP correctly validates unified config")
+    print("  PASS: MCP correctly validates unified config")
 
 
 @pytest.mark.skipif(not MCP_AVAILABLE, reason="MCP package not installed")
@@ -88,7 +88,7 @@ async def test_mcp_validate_legacy_config():
         text = result[0].text
         assert "LEGACY" in text.upper(), f"Expected legacy format detected, got: {text}"
 
-        print("  ✅ MCP correctly detects legacy config format")
+        print("  PASS: MCP correctly detects legacy config format")
     finally:
         os.unlink(config_path)
 
@@ -136,7 +136,7 @@ async def test_mcp_scrape_docs_detection():
 
         is_unified = "sources" in config and isinstance(config["sources"], list)
         assert is_unified, "Should detect unified format"
-        print("  ✅ Unified format detected correctly")
+        print("  PASS: Unified format detected correctly")
 
         # Test legacy detection
         with open(legacy_config_path) as f:
@@ -144,7 +144,7 @@ async def test_mcp_scrape_docs_detection():
 
         is_unified = "sources" in config and isinstance(config["sources"], list)
         assert not is_unified, "Should detect legacy format"
-        print("  ✅ Legacy format detected correctly")
+        print("  PASS: Legacy format detected correctly")
 
     finally:
         # Cleanup
@@ -178,7 +178,7 @@ async def test_mcp_merge_mode_override():
 
         # Check that args has merge_mode
         assert args.get("merge_mode") == "claude-enhanced"
-        print("  ✅ Merge mode override supported")
+        print("  PASS: Merge mode override supported")
 
     finally:
         Path(config_path).unlink(missing_ok=True)
@@ -197,14 +197,14 @@ async def run_all_tests():
         await test_mcp_merge_mode_override()
 
         print("\n" + "=" * 60)
-        print("✅ All MCP integration tests passed!")
+        print("PASS: All MCP integration tests passed!")
         print("=" * 60)
 
     except AssertionError as e:
-        print(f"\n❌ Test failed: {e}")
+        print(f"\nFAIL: Test failed: {e}")
         sys.exit(1)
     except Exception as e:
-        print(f"\n❌ Unexpected error: {e}")
+        print(f"\nFAIL: Unexpected error: {e}")
         import traceback
 
         traceback.print_exc()

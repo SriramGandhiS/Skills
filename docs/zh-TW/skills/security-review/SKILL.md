@@ -218,7 +218,7 @@ const securityHeaders = [
       style-src 'self' 'unsafe-inline';
       img-src 'self' data: https:;
       font-src 'self';
-      connect-src 'self' https://api.example.com;
+      connect-src 'self' <https://api.example.com;>
     `.replace(/\s{2,}/g, ' ').trim()
   }
 ]
@@ -391,25 +391,25 @@ async function verifyTransaction(transaction: Transaction) {
 
 #### 定期更新
 ```bash
-# 檢查漏洞
+## 檢查漏洞
 npm audit
 
-# 自動修復可修復的問題
+## 自動修復可修復的問題
 npm audit fix
 
-# 更新依賴
+## 更新依賴
 npm update
 
-# 檢查過時套件
+## 檢查過時套件
 npm outdated
 ```
 
 #### Lock 檔案
 ```bash
-# 總是 commit lock 檔案
+## 總是 commit lock 檔案
 git add package-lock.json
 
-# 在 CI/CD 中使用以獲得可重現的建置
+## 在 CI/CD 中使用以獲得可重現的建置
 npm ci  # 而非 npm install
 ```
 

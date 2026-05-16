@@ -83,7 +83,6 @@ No gaps → skip to Step 6, set `nyquist_compliant: true`.
 
 ## 4. Present Gap Plan
 
-
 **Text mode (`workflow.text_mode: true` in config or `--text` flag):** Set `TEXT_MODE=true` if `--text` is present in `$ARGUMENTS` OR `text_mode` from init JSON is `true`. When TEXT_MODE is active, replace every `AskUserQuestion` call with a plain-text numbered list and ask the user to type their choice number. This is required for non-Claude runtimes (OpenAI Codex, Gemini CLI, etc.) where `AskUserQuestion` is not available.
 Call AskUserQuestion with gap table and options:
 1. "Fix all gaps" → Step 5
@@ -148,14 +147,14 @@ gsd-sdk query commit "docs(phase-${PHASE}): add/update validation strategy"
 ```
 GSD > PHASE {N} IS NYQUIST-COMPLIANT
 All requirements have automated verification.
-▶ Next: /gsd-audit-milestone ${GSD_WS}
+ Next: /gsd-audit-milestone ${GSD_WS}
 ```
 
 **Partial:**
 ```
 GSD > PHASE {N} VALIDATED (PARTIAL)
 {M} automated, {K} manual-only.
-▶ Retry: /gsd-validate-phase {N} ${GSD_WS}
+ Retry: /gsd-validate-phase {N} ${GSD_WS}
 ```
 
 Display `/clear` reminder.

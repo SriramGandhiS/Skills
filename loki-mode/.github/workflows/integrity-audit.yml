@@ -141,8 +141,8 @@ jobs:
           cat > /tmp/audit-issue-body.md <<ISSUE_EOF
           ## Weekly Integrity Audit Failure
 
-          **Commit:** ${{ github.sha }}
-          **Workflow run:** ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+**Commit:** ${{ github.sha }}
+**Workflow run:** ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
 
           ### Step Results
 

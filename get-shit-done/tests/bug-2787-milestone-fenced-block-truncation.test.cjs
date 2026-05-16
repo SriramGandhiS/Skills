@@ -35,10 +35,10 @@ describe('extractCurrentMilestone — fenced code block boundary (#2787)', () =>
     const roadmap = [
       '# Project Roadmap',
       '',
-      '## ✅ v1.0: Foundation',
+      '## PASS: v1.0: Foundation',
       '',
       '<details>',
-      '<summary>✅ v1.0 Foundation — SHIPPED</summary>',
+      '<summary>PASS: v1.0 Foundation — SHIPPED</summary>',
       '',
       '### Phase 1: Bootstrap',
       '**Goal:** Bootstrap the project',

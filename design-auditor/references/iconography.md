@@ -83,8 +83,8 @@ Icons are not the same as text — they don't sit on the baseline. Aligning them
 Most icons have invisible padding baked into their bounding box. The actual visual weight sits in the center, but the bounding box is square (24×24px). This means:
 
 ```
-❌ Bad: align icon bounding box to text baseline → icon looks high
-✅ Good: align icon to optical center of adjacent text
+FAIL: Bad: align icon bounding box to text baseline → icon looks high
+PASS: Good: align icon to optical center of adjacent text
 ```
 
 In CSS, use `vertical-align: middle` or flexbox with `align-items: center`:
@@ -111,8 +111,8 @@ A 24px icon used as an interactive button is too small to tap comfortably. You n
 ```
 Icon size + padding = touch target
 
-24px icon + 10px padding each side = 44px touch target ✅
-16px icon + 14px padding each side = 44px touch target ✅
+24px icon + 10px padding each side = 44px touch target PASS:
+16px icon + 14px padding each side = 44px touch target PASS:
 ```
 
 In CSS:
@@ -135,24 +135,24 @@ In CSS:
 These are understood cross-culturally and don't need a visible label (but a tooltip is still good practice):
 - ✕ or × — Close
 - ☰ — Menu / hamburger
-- ⌕ / 🔍 — Search
-- ⬆ ⬇ ← → — Directional arrows
+- ⌕ /  — Search
+- ← → — Directional arrows
 - + — Add
 - ✓ — Confirm / checked
 
 ### Ambiguous Icons (Always need a label)
 These mean different things in different contexts and should always have a visible label:
 - ★ — Could mean favourite, rating, or featured
-- 🔔 — Could mean notifications, alerts, or reminders
-- ⚙ — Could mean settings, configuration, or preferences
-- 📁 — Could mean files, projects, or categories
-- 🏠 — Could mean home page, dashboard, or main menu
+- — Could mean notifications, alerts, or reminders
+- — Could mean settings, configuration, or preferences
+- — Could mean files, projects, or categories
+- — Could mean home page, dashboard, or main menu
 
 ### The Meaning Consistency Rule
 Once an icon has a meaning in your product, that meaning must be consistent everywhere.
 
-❌ Bad: Using ★ for "favourite" on the home page and ★ for "rating" in the review section  
-✅ Good: Using ★ for "favourite" everywhere, and a separate ⭐ filled style for ratings
+FAIL: Bad: Using ★ for "favourite" on the home page and ★ for "rating" in the review section
+PASS: Good: Using ★ for "favourite" everywhere, and a separate  filled style for ratings
 
 ---
 

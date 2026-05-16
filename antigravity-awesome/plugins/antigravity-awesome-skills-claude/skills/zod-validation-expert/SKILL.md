@@ -89,7 +89,7 @@ const ActionSchema = z.discriminatedUnion("type", [
 ```typescript
 const schema = z.string().email();
 
-// ❌ parse: Throws a ZodError if validation fails
+// FAIL: parse: Throws a ZodError if validation fails
 try {
   const email = schema.parse("invalid-email");
 } catch (err) {
@@ -98,12 +98,12 @@ try {
   }
 }
 
-// ✅ safeParse: Returns a result object (No try/catch needed)
+// PASS: safeParse: Returns a result object (No try/catch needed)
 const result = schema.safeParse("user@example.com");
 
 if (!result.success) {
   // TypeScript narrows result to SafeParseError
-  console.log(result.error.format()); 
+  console.log(result.error.format());
   // Early return or throw domain error
 } else {
   // TypeScript narrows result to SafeParseSuccess
@@ -213,15 +213,15 @@ const createPostSchema = z.object({
 export async function createPost(prevState: any, formData: FormData) {
   // Convert FormData to standard object using Object.fromEntries
   const rawData = Object.fromEntries(formData.entries());
-  
+
   const validatedFields = createPostSchema.safeParse(rawData);
-  
+
   if (!validatedFields.success) {
     return {
       errors: validatedFields.error.flatten().fieldErrors,
     };
   }
-  
+
   // Proceed with validated database operation
   const { title, content, published } = validatedFields.data;
   // ...
@@ -250,13 +250,13 @@ export default env;
 
 ## Best Practices
 
-- ✅ **Do:** Co-locate schemas alongside the components or API routes that use them to maintain separation of concerns.
-- ✅ **Do:** Use `z.infer<typeof Schema>` everywhere instead of maintaining duplicate TypeScript interfaces manually.
-- ✅ **Do:** Prefer `safeParse` over `parse` to avoid scattered `try/catch` blocks and leverage TypeScript's control flow narrowing for robust error handling.
-- ✅ **Do:** Use `z.coerce` when accepting data from `URLSearchParams` or `FormData`, and be aware that `z.coerce.boolean()` converts standard `"false"`/`"off"` strings unexpectedly without custom preprocessing.
-- ✅ **Do:** Use `.flatten()` or `.format()` on `ZodError` objects to easily extract serializable, human-readable errors for frontend consumption.
-- ❌ **Don't:** Rely exclusively on `.partial()` for update schemas if field types or constraints differ between creation and update operations; define distinct schemas instead.
-- ❌ **Don't:** Forget to pass the `path` option in `.refine()` or `.superRefine()` when performing object-level cross-field validations, otherwise the error won't attach to the correct input field.
+- PASS: **Do:** Co-locate schemas alongside the components or API routes that use them to maintain separation of concerns.
+- PASS: **Do:** Use `z.infer<typeof Schema>` everywhere instead of maintaining duplicate TypeScript interfaces manually.
+- PASS: **Do:** Prefer `safeParse` over `parse` to avoid scattered `try/catch` blocks and leverage TypeScript's control flow narrowing for robust error handling.
+- PASS: **Do:** Use `z.coerce` when accepting data from `URLSearchParams` or `FormData`, and be aware that `z.coerce.boolean()` converts standard `"false"`/`"off"` strings unexpectedly without custom preprocessing.
+- PASS: **Do:** Use `.flatten()` or `.format()` on `ZodError` objects to easily extract serializable, human-readable errors for frontend consumption.
+- FAIL: **Don't:** Rely exclusively on `.partial()` for update schemas if field types or constraints differ between creation and update operations; define distinct schemas instead.
+- FAIL: **Don't:** Forget to pass the `path` option in `.refine()` or `.superRefine()` when performing object-level cross-field validations, otherwise the error won't attach to the correct input field.
 
 ## Troubleshooting
 

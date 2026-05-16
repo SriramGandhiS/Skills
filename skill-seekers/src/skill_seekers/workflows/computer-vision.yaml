@@ -20,7 +20,7 @@ stages:
     enabled: true
     prompt: >
       Analyze the computer vision framework and models.
-      
+
       Identify:
       1. CV library/framework (OpenCV, Pillow, torchvision, etc.)
       2. Model architecture (YOLO, ResNet, ViT, etc.)
@@ -28,7 +28,7 @@ stages:
       4. Model serving approach (on-device, API, edge)
       5. Hardware acceleration (GPU, TPU, NPU)
       6. Model format (ONNX, TensorRT, Core ML)
-      
+
       Output JSON with:
       - "library": CV framework
       - "architecture": model architecture
@@ -44,7 +44,7 @@ stages:
     enabled: true
     prompt: >
       Document image preprocessing and augmentation.
-      
+
       Cover:
       1. Image loading and format handling
       2. Resizing and normalization
@@ -52,7 +52,7 @@ stages:
       4. Batch processing
       5. Quality optimization
       6. EXIF data handling
-      
+
       Output JSON with:
       - "loading": image I/O
       - "preprocessing": transformations
@@ -68,7 +68,7 @@ stages:
     enabled: true
     prompt: >
       Document inference and prediction patterns.
-      
+
       Include:
       1. Single image inference
       2. Batch inference optimization
@@ -76,7 +76,7 @@ stages:
       4. Confidence thresholds
       5. NMS (Non-Maximum Suppression)
       6. Multi-stage pipelines
-      
+
       Output JSON with:
       - "single_inference": one image
       - "batch_inference": multiple images
@@ -92,7 +92,7 @@ stages:
     enabled: true
     prompt: >
       Document CV model deployment strategies.
-      
+
       Cover:
       1. Cloud API deployment
       2. Edge/device deployment
@@ -100,7 +100,7 @@ stages:
       4. Model optimization (pruning, distillation)
       5. Containerized deployment
       6. Serverless inference
-      
+
       Output JSON with:
       - "cloud_api": API deployment
       - "edge": device deployment
@@ -116,7 +116,7 @@ stages:
     enabled: true
     prompt: >
       Document specific computer vision use cases implemented.
-      
+
       Include:
       1. Object detection
       2. Image classification
@@ -124,7 +124,7 @@ stages:
       4. OCR (text extraction)
       5. Image segmentation
       6. Similarity search
-      
+
       Output JSON with:
       - "object_detection": detection details
       - "classification": classification setup

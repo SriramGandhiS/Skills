@@ -27,11 +27,11 @@ date_added: "2026-02-27"
 
 | Project Type | i18n Needed? |
 |--------------|--------------|
-| Public web app | ✅ Yes |
-| SaaS product | ✅ Yes |
-| Internal tool | ⚠️ Maybe |
-| Single-region app | ⚠️ Consider future |
-| Personal project | ❌ Optional |
+| Public web app | PASS: Yes |
+| SaaS product | PASS: Yes |
+| Internal tool | WARNING: Maybe |
+| Single-region app | WARNING: Consider future |
+| Personal project | FAIL: Optional |
 
 ---
 
@@ -89,7 +89,7 @@ locales/
 
 ## 5. Best Practices
 
-### DO ✅
+### DO PASS:
 
 - Use translation keys, not raw text
 - Namespace translations by feature
@@ -98,7 +98,7 @@ locales/
 - Plan for RTL from the start
 - Use ICU message format for complex strings
 
-### DON'T ❌
+### DON'T FAIL:
 
 - Hardcode strings in components
 - Concatenate translated strings

@@ -47,13 +47,13 @@ Eval 驅動開發將 evals 視為「AI 開發的單元測試」：
 ### 1. 基於程式碼的評分器
 使用程式碼的確定性檢查：
 ```bash
-# 檢查檔案是否包含預期模式
+## 檢查檔案是否包含預期模式
 grep -q "export function handleAuth" src/auth.ts && echo "PASS" || echo "FAIL"
 
-# 檢查測試是否通過
+## 檢查測試是否通過
 npm test -- --testPathPattern="auth" && echo "PASS" || echo "FAIL"
 
-# 檢查建置是否成功
+## 檢查建置是否成功
 npm run build && echo "PASS" || echo "FAIL"
 ```
 
@@ -120,13 +120,13 @@ npm run build && echo "PASS" || echo "FAIL"
 
 ### 3. 評估
 ```bash
-# 執行能力 evals
+## 執行能力 evals
 [執行每個能力 eval，記錄 PASS/FAIL]
 
-# 執行回歸 evals
+## 執行回歸 evals
 npm test -- --testPathPattern="existing"
 
-# 產生報告
+## 產生報告
 ```
 
 ### 4. 報告

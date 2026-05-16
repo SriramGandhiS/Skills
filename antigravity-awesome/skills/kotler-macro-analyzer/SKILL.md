@@ -38,9 +38,9 @@ Macro-trends are mapped to Opportunities and Threats, while internal user data i
 "Analyze the current macro-environment for a retail chain in Ukraine. Identify threats from inflation and opportunities from shifting consumer displacement trends."
 
 ## Best Practices
-- ✅ Always use search tools to verify specific economic indicators (e.g., current central bank rates).
-- ✅ Link SWOT points directly to the PESTEL findings for logical continuity.
-- ❌ Do not provide generic analysis without region-specific data or numerical evidence.
+- PASS: Always use search tools to verify specific economic indicators (e.g., current central bank rates).
+- PASS: Link SWOT points directly to the PESTEL findings for logical continuity.
+- FAIL: Do not provide generic analysis without region-specific data or numerical evidence.
 
 ## Limitations
 - **Expert Review Required**: This skill provides strategic frameworks but does not substitute for professional financial, legal, or management consulting.

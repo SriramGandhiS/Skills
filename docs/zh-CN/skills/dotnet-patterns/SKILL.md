@@ -311,11 +311,11 @@ public async Task<ProcessResult> ProcessPaymentAsync(
 
 | 反模式 | 修复方案 |
 |---|---|
-| `async void` 方法 | 返回 `Task`（事件处理程序除外） |
-| `.Result` 或 `.Wait()` | 使用 `await` |
+| `async void`方法 | 返回`Task`（事件处理程序除外） |
+| `.Result`或`.Wait()`| 使用`await` |
 | `catch (Exception) { }` | 处理或带上下文重新抛出 |
 | 构造函数中的 `new Service()` | 使用构造函数注入 |
 | `public` 字段 | 使用带适当访问器的属性 |
 | 业务逻辑中的 `dynamic` | 使用泛型或显式类型 |
-| 可变的 `static` 状态 | 使用依赖注入作用域或 `ConcurrentDictionary` |
-| 循环中的 `string.Format` | 使用 `StringBuilder` 或内插字符串处理程序 |
+| 可变的 `static`状态 | 使用依赖注入作用域或`ConcurrentDictionary` |
+| 循环中的 `string.Format`| 使用`StringBuilder` 或内插字符串处理程序 |

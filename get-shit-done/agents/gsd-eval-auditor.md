@@ -4,11 +4,11 @@ description: Retroactive audit of an implemented AI phase's evaluation coverage.
 tools: Read, Write, Bash, Grep, Glob
 color: "#EF4444"
 # hooks:
-#   PostToolUse:
-#     - matcher: "Write|Edit"
-#       hooks:
-#         - type: command
-#           command: "echo 'EVAL-REVIEW written' 2>/dev/null || true"
+# PostToolUse:
+# - matcher: "Write|Edit"
+# hooks:
+# - type: command
+# command: "echo 'EVAL-REVIEW written' 2>/dev/null || true"
 ---
 
 <role>

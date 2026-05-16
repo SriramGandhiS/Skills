@@ -175,7 +175,7 @@ Not "set up some form of lift testing." A template like:
 > - Metric: newsletter signups (daily count pulled from Supabase)
 > - Duration: April 20 – May 18
 > - Decision threshold: continue spend only if Budapest signups are at least 1.8× the
->   difference-in-differences delta vs. spend cost. Stop if delta is within noise.
+> difference-in-differences delta vs. spend cost. Stop if delta is within noise.
 
 Specificity is the whole point. A vague measurement plan is no measurement plan.
 

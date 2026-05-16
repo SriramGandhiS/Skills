@@ -134,7 +134,7 @@ Map ACTIONS, not buttons:
 
 ## 6. Anti-Patterns
 
-| ❌ Don't | ✅ Do |
+| FAIL: Don't | PASS: Do |
 |----------|-------|
 | Choose engine by hype | Choose by project needs |
 | Ignore platform guidelines | Study certification requirements |

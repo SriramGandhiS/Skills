@@ -80,10 +80,10 @@ Design templates that produce unique, valuable pages:
 
 | Metric | Threshold | Action |
 |--------|-----------|--------|
-| Pages without content review | 100+ | ⚠️ WARNING: require content audit before publishing |
-| Pages without justification | 500+ | 🛑 HARD STOP: require explicit user approval and thin content audit |
-| Unique content per page | <40% | ❌ Flag as thin content (likely penalty risk) |
-| Word count per page | <300 | ⚠️ Flag for review (may lack sufficient value) |
+| Pages without content review | 100+ | WARNING: WARNING: require content audit before publishing |
+| Pages without justification | 500+ |  HARD STOP: require explicit user approval and thin content audit |
+| Unique content per page | <40% | FAIL: Flag as thin content (likely penalty risk) |
+| Word count per page | <300 | WARNING: Flag for review (may lack sufficient value) |
 
 ### Scaled Content Abuse: Enforcement Context (2025-2026)
 
@@ -103,18 +103,18 @@ Google's Scaled Content Abuse policy (introduced March 2024) saw major enforceme
 > **Recommendation:** The WARNING gate at `<40% unique content` remains appropriate. Consider a HARD STOP at `<30%` unique content to prevent scaled content abuse risk.
 
 ### Safe Programmatic Pages (OK at scale)
-✅ Integration pages (with real setup docs, API details, screenshots)
-✅ Template/tool pages (with downloadable content, usage instructions)
-✅ Glossary pages (200+ word definitions with examples, related terms)
-✅ Product pages (unique specs, reviews, comparison data)
-✅ Data-driven pages (unique statistics, charts, analysis per record)
+PASS: Integration pages (with real setup docs, API details, screenshots)
+PASS: Template/tool pages (with downloadable content, usage instructions)
+PASS: Glossary pages (200+ word definitions with examples, related terms)
+PASS: Product pages (unique specs, reviews, comparison data)
+PASS: Data-driven pages (unique statistics, charts, analysis per record)
 
 ### Penalty Risk (avoid at scale)
-❌ Location pages with only city name swapped in identical text
-❌ "Best [tool] for [industry]" without industry-specific value
-❌ "[Competitor] alternative" without real comparison data
-❌ AI-generated pages without human review and unique value-add
-❌ Pages where >60% of content is shared template boilerplate
+FAIL: Location pages with only city name swapped in identical text
+FAIL: "Best [tool] for [industry]" without industry-specific value
+FAIL: "[Competitor] alternative" without real comparison data
+FAIL: AI-generated pages without human review and unique value-add
+FAIL: Pages where >60% of content is shared template boilerplate
 
 ### Uniqueness Calculation
 Unique content % = (words unique to this page) / (total words on page) × 100
@@ -155,12 +155,12 @@ Measure against all other pages in the programmatic set. Shared headers, footers
 ### Assessment Summary
 | Category | Status | Score |
 |----------|--------|-------|
-| Data Quality | ✅/⚠️/❌ | XX/100 |
-| Template Uniqueness | ✅/⚠️/❌ | XX/100 |
-| URL Structure | ✅/⚠️/❌ | XX/100 |
-| Internal Linking | ✅/⚠️/❌ | XX/100 |
-| Thin Content Risk | ✅/⚠️/❌ | XX/100 |
-| Index Management | ✅/⚠️/❌ | XX/100 |
+| Data Quality | PASS:/WARNING:/FAIL: | XX/100 |
+| Template Uniqueness | PASS:/WARNING:/FAIL: | XX/100 |
+| URL Structure | PASS:/WARNING:/FAIL: | XX/100 |
+| Internal Linking | PASS:/WARNING:/FAIL: | XX/100 |
+| Thin Content Risk | PASS:/WARNING:/FAIL: | XX/100 |
+| Index Management | PASS:/WARNING:/FAIL: | XX/100 |
 
 ### Critical Issues (fix immediately)
 ### High Priority (fix within 1 week)

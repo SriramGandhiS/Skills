@@ -10,7 +10,7 @@
 
 ## 步骤 2：生成代码地图
 
-在 `docs/CODEMAPS/`（或 `.reports/codemaps/`）中创建或更新代码地图：
+在 `docs/CODEMAPS/`（或`.reports/codemaps/`）中创建或更新代码地图：
 
 | 文件 | 内容 |
 |------|----------|
@@ -25,7 +25,7 @@
 每个代码地图应为简洁风格 —— 针对 AI 上下文消费进行优化：
 
 ```markdown
-# 后端架构
+## 后端架构
 
 ## 路由
 POST /api/users → UserController.create → UserService.create → UserRepo.insert

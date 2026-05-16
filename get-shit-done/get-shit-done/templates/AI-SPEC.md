@@ -14,11 +14,7 @@
 
 **Critical Failure Modes:**
 <!-- The 3-5 behaviors that absolutely cannot go wrong in this system -->
-1.
-2.
-3.
-
----
+1. 2. 3. ---
 
 ## 1b. Domain Context
 
@@ -99,11 +95,7 @@
 
 ### Common Pitfalls
 <!-- Gotchas specific to this framework and system type — from docs, issues, and community reports -->
-1.
-2.
-3.
-
-### Recommended Project Structure
+1. 2. 3. ### Recommended Project Structure
 ```
 project/
 ├── # Framework-specific folder layout

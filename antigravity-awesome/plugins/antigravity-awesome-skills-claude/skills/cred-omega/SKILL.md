@@ -365,7 +365,7 @@ Estrutura de pastas na VPS:
       auth.js          # JWT/session validation
       rateLimit.js     # Rate limiting por rota/usuario
       quota.js         # Quotas por ambiente/usuario
-    
+
 
 ## Fase 5 — Governanca Continua
 

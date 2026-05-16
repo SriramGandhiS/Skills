@@ -1,6 +1,6 @@
 ---
 name: azure-communication-callingserver-java
-description: "⚠️ DEPRECATED: This SDK has been renamed to Call Automation. For new projects, use azure-communication-callautomation instead. This skill is for maintaining legacy code only."
+description: "WARNING: DEPRECATED: This SDK has been renamed to Call Automation. For new projects, use azure-communication-callautomation instead. This skill is for maintaining legacy code only."
 risk: safe
 source: community
 date_added: "2026-02-27"
@@ -8,7 +8,7 @@ date_added: "2026-02-27"
 
 # Azure Communication CallingServer (Java) - DEPRECATED
 
-> **⚠️ DEPRECATED**: This SDK has been renamed to **Call Automation**. For new projects, use `azure-communication-callautomation` instead. This skill is for maintaining legacy code only.
+> **WARNING: DEPRECATED**: This SDK has been renamed to **Call Automation**. For new projects, use `azure-communication-callautomation` instead. This skill is for maintaining legacy code only.
 
 ## Migration to Call Automation
 
@@ -76,7 +76,7 @@ client.stopRecording(recordingId);
 
 ## For New Development
 
-**Do not use this SDK for new projects.** 
+**Do not use this SDK for new projects.**
 
 See the `azure-communication-callautomation-java` skill for:
 - Making outbound calls

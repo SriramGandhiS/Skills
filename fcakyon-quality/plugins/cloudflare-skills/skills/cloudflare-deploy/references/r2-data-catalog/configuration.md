@@ -20,7 +20,7 @@ npx wrangler r2 bucket catalog enable <BUCKET_NAME>
 
 **Output:**
 ```
-✅ Data Catalog enabled for bucket 'my-bucket'
+PASS: Data Catalog enabled for bucket 'my-bucket'
    Catalog URI: https://<account-id>.r2.cloudflarestorage.com/iceberg/my-bucket
    Warehouse: my-bucket
 ```
@@ -74,7 +74,7 @@ Warehouse: my-bucket
 npx wrangler r2 bucket catalog disable <BUCKET_NAME>
 ```
 
-⚠️ **Warning:** Disabling does NOT delete tables/data. Files remain in bucket. Metadata becomes inaccessible until re-enabled.
+WARNING: **Warning:** Disabling does NOT delete tables/data. Files remain in bucket. Metadata becomes inaccessible until re-enabled.
 
 ## API Token Creation
 

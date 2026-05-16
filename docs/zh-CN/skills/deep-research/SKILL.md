@@ -20,10 +20,10 @@ origin: ECC
 
 至少需要以下之一：
 
-* **firecrawl** — `firecrawl_search`, `firecrawl_scrape`, `firecrawl_crawl`
-* **exa** — `web_search_exa`, `web_search_advanced_exa`, `crawling_exa`
+* **firecrawl** — `firecrawl_search`,`firecrawl_scrape`,`firecrawl_crawl`
+* **exa** — `web_search_exa`,`web_search_advanced_exa`,`crawling_exa`
 
-两者结合可提供最佳覆盖范围。在 `~/.claude.json` 或 `~/.codex/config.toml` 中配置。
+两者结合可提供最佳覆盖范围。在 `~/.claude.json`或`~/.codex/config.toml` 中配置。
 
 ## 工作流程
 
@@ -94,7 +94,7 @@ crawling_exa(url: "<url>", tokensNum: 5000)
 构建报告结构：
 
 ```markdown
-# [主题]：研究报告
+## [主题]：研究报告
 *生成日期：[date] | 来源数量：[N] | 置信度：[高/中/低]*
 
 ## 执行摘要

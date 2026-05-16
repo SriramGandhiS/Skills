@@ -44,7 +44,7 @@ domain → core (或无依赖)
 core → (无依赖)
 ```
 
-**关键**：`domain` 绝不能依赖 `data`、`presentation` 或任何框架。它仅包含纯 Kotlin 代码。
+**关键**：`domain`绝不能依赖`data`、`presentation` 或任何框架。它仅包含纯 Kotlin 代码。
 
 ## 领域层
 
@@ -329,7 +329,7 @@ plugins { id("kmp-library") }
 * 在 `domain` 中导入 Android 框架类——保持其为纯 Kotlin
 * 向 UI 层暴露数据库实体或 DTO——始终映射到领域模型
 * 将业务逻辑放在 ViewModels 中——提取到 UseCases
-* 使用 `GlobalScope` 或非结构化协程——使用 `viewModelScope` 或结构化并发
+* 使用 `GlobalScope`或非结构化协程——使用`viewModelScope` 或结构化并发
 * 臃肿的仓库实现——拆分为专注的 DataSources
 * 循环模块依赖——如果 A 依赖 B，则 B 绝不能依赖 A
 

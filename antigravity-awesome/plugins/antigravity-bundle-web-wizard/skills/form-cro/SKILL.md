@@ -36,7 +36,7 @@ It prevents:
 
 ---
 
-## 🔢 Form Health & Friction Index
+## Form Health & Friction Index
 
 ### Total Score: **0–100**
 

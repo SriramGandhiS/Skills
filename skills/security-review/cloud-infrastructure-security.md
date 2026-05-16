@@ -1,4 +1,4 @@
-﻿| name | description |
+| name | description |
 |------|-------------|
 | cloud-infrastructure-security | Use this skill when deploying to cloud platforms, configuring infrastructure, managing IAM policies, setting up logging/monitoring, or implementing CI/CD pipelines. Provides cloud security checklist aligned with best practices. |
 
@@ -24,7 +24,7 @@ This skill ensures cloud infrastructure, CI/CD pipelines, and deployment configu
 #### Principle of Least Privilege
 
 ```yaml
-# PASS: CORRECT: Minimal permissions
+## PASS: CORRECT: Minimal permissions
 iam_role:
   permissions:
     - s3:GetObject  # Only read access
@@ -32,7 +32,7 @@ iam_role:
   resources:
     - arn:aws:s3:::my-bucket/*  # Specific bucket only
 
-# FAIL: WRONG: Overly broad permissions
+## FAIL: WRONG: Overly broad permissions
 iam_role:
   permissions:
     - s3:*  # All S3 actions
@@ -43,7 +43,7 @@ iam_role:
 #### Multi-Factor Authentication (MFA)
 
 ```bash
-# ALWAYS enable MFA for root/admin accounts
+## ALWAYS enable MFA for root/admin accounts
 aws iam enable-mfa-device \
   --user-name admin \
   --serial-number arn:aws:iam::123456789:mfa/admin \
@@ -79,7 +79,7 @@ const apiKey = process.env.API_KEY; // Not rotated, not audited
 #### Secrets Rotation
 
 ```bash
-# Set up automatic rotation for database credentials
+## Set up automatic rotation for database credentials
 aws secretsmanager rotate-secret \
   --secret-id prod/db-password \
   --rotation-lambda-arn arn:aws:lambda:region:account:function:rotate \
@@ -99,7 +99,7 @@ aws secretsmanager rotate-secret \
 #### VPC and Firewall Configuration
 
 ```terraform
-# PASS: CORRECT: Restricted security group
+## PASS: CORRECT: Restricted security group
 resource "aws_security_group" "app" {
   name = "app-sg"
 
@@ -118,7 +118,7 @@ resource "aws_security_group" "app" {
   }
 }
 
-# FAIL: WRONG: Open to the internet
+## FAIL: WRONG: Open to the internet
 resource "aws_security_group" "bad" {
   ingress {
     from_port   = 0
@@ -177,7 +177,7 @@ const logSecurityEvent = async (event: SecurityEvent) => {
 #### Secure Pipeline Configuration
 
 ```yaml
-# PASS: CORRECT: Secure GitHub Actions workflow
+## PASS: CORRECT: Secure GitHub Actions workflow
 name: Deploy
 
 on:
@@ -260,11 +260,11 @@ export default {
 #### WAF Rules
 
 ```bash
-# Enable Cloudflare WAF managed rules
-# - OWASP Core Ruleset
-# - Cloudflare Managed Ruleset
-# - Rate limiting rules
-# - Bot protection
+## Enable Cloudflare WAF managed rules
+## - OWASP Core Ruleset
+## - Cloudflare Managed Ruleset
+## - Rate limiting rules
+## - Bot protection
 ```
 
 #### Verification Steps
@@ -281,7 +281,7 @@ export default {
 #### Automated Backups
 
 ```terraform
-# PASS: CORRECT: Automated RDS backups
+## PASS: CORRECT: Automated RDS backups
 resource "aws_db_instance" "main" {
   allocated_storage     = 20
   engine               = "postgres"
@@ -327,10 +327,10 @@ Before ANY production cloud deployment:
 ### S3 Bucket Exposure
 
 ```bash
-# FAIL: WRONG: Public bucket
+## FAIL: WRONG: Public bucket
 aws s3api put-bucket-acl --bucket my-bucket --acl public-read
 
-# PASS: CORRECT: Private bucket with specific access
+## PASS: CORRECT: Private bucket with specific access
 aws s3api put-bucket-acl --bucket my-bucket --acl private
 aws s3api put-bucket-policy --bucket my-bucket --policy file://policy.json
 ```
@@ -338,12 +338,12 @@ aws s3api put-bucket-policy --bucket my-bucket --policy file://policy.json
 ### RDS Public Access
 
 ```terraform
-# FAIL: WRONG
+## FAIL: WRONG
 resource "aws_db_instance" "bad" {
   publicly_accessible = true  # NEVER do this!
 }
 
-# PASS: CORRECT
+## PASS: CORRECT
 resource "aws_db_instance" "good" {
   publicly_accessible = false
   vpc_security_group_ids = [aws_security_group.db.id]

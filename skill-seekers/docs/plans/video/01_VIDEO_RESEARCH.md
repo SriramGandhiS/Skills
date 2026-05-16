@@ -478,7 +478,6 @@ def extract_frames_at_timestamps(
     cap.release()
     return frame_paths
 
-
 def classify_frame(image_path: str) -> str:
     """Classify frame as code/slide/terminal/webcam/other.
 

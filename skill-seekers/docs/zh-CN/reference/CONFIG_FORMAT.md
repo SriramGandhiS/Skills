@@ -1,7 +1,7 @@
 # Config Format Reference - Skill Seekers
 
-> **Version:** 3.1.0  
-> **Last Updated:** 2026-02-16  
+> **Version:** 3.1.0
+> **Last Updated:** 2026-02-16
 > **Complete JSON configuration specification**
 
 ---
@@ -45,28 +45,28 @@ For scraping documentation websites.
   "name": "react",
   "base_url": "https://react.dev/",
   "description": "React - JavaScript library for building UIs",
-  
+
   "start_urls": [
     "https://react.dev/learn",
     "https://react.dev/reference/react"
   ],
-  
+
   "selectors": {
     "main_content": "article",
     "title": "h1",
     "code_blocks": "pre code"
   },
-  
+
   "url_patterns": {
     "include": ["/learn/", "/reference/"],
     "exclude": ["/blog/", "/community/"]
   },
-  
+
   "categories": {
     "getting_started": ["learn", "tutorial", "intro"],
     "api": ["reference", "api", "hooks"]
   },
-  
+
   "rate_limit": 0.5,
   "max_pages": 300,
   "merge_mode": "claude-enhanced"
@@ -102,23 +102,23 @@ For analyzing GitHub repositories.
   "type": "github",
   "repo": "facebook/react",
   "description": "React GitHub repository analysis",
-  
+
   "enable_codebase_analysis": true,
   "code_analysis_depth": "deep",
-  
+
   "fetch_issues": true,
   "max_issues": 100,
   "issue_labels": ["bug", "enhancement"],
-  
+
   "fetch_releases": true,
   "max_releases": 20,
-  
+
   "fetch_changelog": true,
   "analyze_commit_history": true,
-  
+
   "file_patterns": ["*.js", "*.ts", "*.tsx"],
   "exclude_patterns": ["*.test.js", "node_modules/**"],
-  
+
   "rate_limit": 1.0
 }
 ```
@@ -155,19 +155,19 @@ For extracting content from PDF files.
   "type": "pdf",
   "pdf_path": "docs/manual.pdf",
   "description": "Product documentation manual",
-  
+
   "enable_ocr": false,
   "password": "",
-  
+
   "extract_images": true,
   "image_output_dir": "output/images/",
-  
+
   "extract_tables": true,
   "table_format": "markdown",
-  
+
   "page_range": [1, 100],
   "split_by_chapters": true,
-  
+
   "chunk_size": 1000,
   "chunk_overlap": 100
 }
@@ -204,19 +204,19 @@ For analyzing local codebases.
   "type": "local",
   "directory": "./my-project",
   "description": "Local project analysis",
-  
+
   "languages": ["Python", "JavaScript"],
   "file_patterns": ["*.py", "*.js"],
   "exclude_patterns": ["*.pyc", "node_modules/**", ".git/**"],
-  
+
   "analysis_depth": "comprehensive",
-  
+
   "extract_api": true,
   "extract_patterns": true,
   "extract_test_examples": true,
   "extract_how_to_guides": true,
   "extract_config_patterns": true,
-  
+
   "include_comments": true,
   "include_docstrings": true,
   "include_readme": true
@@ -255,7 +255,7 @@ Combine multiple sources into one skill with conflict detection.
   "name": "react-complete",
   "description": "React docs + GitHub + examples",
   "merge_mode": "claude-enhanced",
-  
+
   "sources": [
     {
       "type": "docs",
@@ -285,7 +285,7 @@ Combine multiple sources into one skill with conflict detection.
       "directory": "./react-examples"
     }
   ],
-  
+
   "conflict_detection": {
     "enabled": true,
     "rules": [
@@ -295,7 +295,7 @@ Combine multiple sources into one skill with conflict detection.
       }
     ]
   },
-  
+
   "output_structure": {
     "group_by_source": false,
     "cross_reference": true
@@ -381,7 +381,7 @@ Map URL patterns to content categories:
 {
   "categories": {
     "getting_started": [
-      "intro", "tutorial", "quickstart", 
+      "intro", "tutorial", "quickstart",
       "installation", "getting-started"
     ],
     "core_concepts": [

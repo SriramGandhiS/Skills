@@ -350,7 +350,7 @@ Exit.
 
 You're ahead of the latest release — this looks like a dev install.
 
-If you see a "⚠ dev install — re-run installer to sync hooks" warning in
+If you see a "WARNING: dev install — re-run installer to sync hooks" warning in
 your statusline, your hook files are older than your VERSION file. Fix it
 by re-running the local installer from your dev branch:
 
@@ -391,7 +391,7 @@ Exit.
 
 ────────────────────────────────────────────────────────────
 
-⚠️  **Note:** The installer performs a clean install of GSD folders:
+WARNING:  **Note:** The installer performs a clean install of GSD folders:
 - `commands/gsd/` will be wiped and replaced
 - `get-shit-done/` will be wiped and replaced
 - `agents/gsd-*` files will be replaced
@@ -408,7 +408,6 @@ Your custom files in other locations are preserved:
 
 If you've modified any GSD files directly, they'll be automatically backed up to `gsd-local-patches/` and can be reapplied with `/gsd-update --reapply` after the update.
 ```
-
 
 **Text mode (`workflow.text_mode: true` in config or `--text` flag):** Set `TEXT_MODE=true` if `--text` is present in `$ARGUMENTS` OR `text_mode` from init JSON is `true`. When TEXT_MODE is active, replace every `AskUserQuestion` call with a plain-text numbered list and ask the user to type their choice number. This is required for non-Claude runtimes (OpenAI Codex, Gemini CLI, etc.) where `AskUserQuestion` is not available.
 Use AskUserQuestion:
@@ -503,7 +502,7 @@ JSEOF
 Then inform the user:
 
 ```
-⚠️  Found N custom file(s) inside GSD-managed directories.
+WARNING:  Found N custom file(s) inside GSD-managed directories.
     These have been backed up to gsd-user-files-backup/ before the update.
     Restore them after the update if needed.
 ```
@@ -588,7 +587,7 @@ done
 
 # Clear the shared tool-agnostic cache written by gsd-check-update.js hook (#2784).
 # The hook uses ~/.cache/gsd/gsd-update-check.json regardless of runtime; clear it
-# so the statusline stops showing the stale "⬆ /gsd-update" indicator after update.
+# so the statusline stops showing the stale " /gsd-update" indicator after update.
 rm -f "$HOME/.cache/gsd/gsd-update-check.json"
 ```
 
@@ -603,12 +602,11 @@ Format completion message (changelog was already shown in confirmation step):
 ║  GSD Updated: v1.5.10 → v1.5.15                           ║
 ╚═══════════════════════════════════════════════════════════╝
 
-⚠️  Restart your runtime to pick up the new commands.
+WARNING:  Restart your runtime to pick up the new commands.
 
 [View full changelog](https://github.com/gsd-build/get-shit-done/blob/main/CHANGELOG.md)
 ```
 </step>
-
 
 <step name="check_local_patches">
 After update completes, check if the installer detected and backed up any locally modified files:

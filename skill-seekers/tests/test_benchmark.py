@@ -624,4 +624,4 @@ class TestBenchmarkModels:
         improvement = comparison.overall_improvement
 
         assert "100.0% faster" in improvement
-        assert "✅" in improvement
+        assert "PASS:" in improvement

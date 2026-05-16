@@ -89,7 +89,7 @@ def format_confirmation_message(params: dict[str, str]) -> str:
     # Resolve assignee
     assignee = resolve_username(params["assignee"]) if params["assignee"] else "None"
 
-    lines = ["📝 Create Pull Request?", "", f"Title: {params['title']}", ""]
+    lines = [" Create Pull Request?", "", f"Title: {params['title']}", ""]
 
     if body:
         lines.extend(["Body:", body, ""])

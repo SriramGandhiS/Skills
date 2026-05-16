@@ -339,40 +339,40 @@ junit.jupiter.execution.parallel.config.fixed.parallelism=4
 
 ## Best Practices
 
-- ✅ Use `ThreadLocal<Page>` for every parallel-safe test suite
-- ✅ Declare all `Locator` fields at the top of the Page Object class
-- ✅ Return the next Page Object from navigation methods (fluent chaining)
-- ✅ Use `assertThat(locator)` — it auto-retries until timeout
-- ✅ Use `getByRole`, `getByLabel`, `getByTestId` as first-choice locators
-- ✅ Start tracing in `@BeforeEach` and stop with a file path in `@AfterEach`
-- ✅ Use `SoftAssertions` when validating multiple fields on a single page
-- ✅ Set up saved auth state (`storageState`) to skip login across test classes
-- ❌ Never use `Thread.sleep()` — replace with `waitFor()` or `waitForResponse()`
-- ❌ Never hardcode base URLs — always use `ConfigReader.getBaseUrl()`
-- ❌ Never create a `Playwright` instance inside a Page Object
-- ❌ Never use XPath for dynamic or frequently changing elements
+- PASS: Use `ThreadLocal<Page>` for every parallel-safe test suite
+- PASS: Declare all `Locator` fields at the top of the Page Object class
+- PASS: Return the next Page Object from navigation methods (fluent chaining)
+- PASS: Use `assertThat(locator)` — it auto-retries until timeout
+- PASS: Use `getByRole`, `getByLabel`, `getByTestId` as first-choice locators
+- PASS: Start tracing in `@BeforeEach` and stop with a file path in `@AfterEach`
+- PASS: Use `SoftAssertions` when validating multiple fields on a single page
+- PASS: Set up saved auth state (`storageState`) to skip login across test classes
+- FAIL: Never use `Thread.sleep()` — replace with `waitFor()` or `waitForResponse()`
+- FAIL: Never hardcode base URLs — always use `ConfigReader.getBaseUrl()`
+- FAIL: Never create a `Playwright` instance inside a Page Object
+- FAIL: Never use XPath for dynamic or frequently changing elements
 
 ---
 
 ## Common Pitfalls
 
 - **Problem:** Tests fail randomly in parallel mode
-  **Solution:** Ensure every test creates its own `Playwright → Browser → BrowserContext → Page` chain via `ThreadLocal`. Never share a `Page` across threads.
+**Solution:** Ensure every test creates its own `Playwright → Browser → BrowserContext → Page` chain via `ThreadLocal`. Never share a `Page` across threads.
 
 - **Problem:** `assertThat(locator).isVisible()` times out even when the element appears
-  **Solution:** Increase timeout with `.setTimeout(10_000)` or raise `context.setDefaultTimeout()` in `BaseTest`.
+**Solution:** Increase timeout with `.setTimeout(10_000)` or raise `context.setDefaultTimeout()` in `BaseTest`.
 
 - **Problem:** `Thread.sleep(2000)` was added but tests are still flaky
-  **Solution:** Replace with `page.waitForResponse("**/api/endpoint", () -> action())` or `assertThat(locator).hasText("Done")` which polls automatically.
+**Solution:** Replace with `page.waitForResponse("**/api/endpoint", () -> action())` or `assertThat(locator).hasText("Done")` which polls automatically.
 
 - **Problem:** Playwright trace zip is empty or missing
-  **Solution:** Ensure `tracing().start()` is called before test actions and `tracing().stop()` is in `@AfterEach` — not `@AfterAll`.
+**Solution:** Ensure `tracing().start()` is called before test actions and `tracing().stop()` is in `@AfterEach` — not `@AfterAll`.
 
 - **Problem:** Allure report is blank or missing steps
-  **Solution:** Add the AspectJ agent to `maven-surefire-plugin` `<argLine>` in `pom.xml` — see `references/config.md` for the exact snippet.
+**Solution:** Add the AspectJ agent to `maven-surefire-plugin` `<argLine>` in `pom.xml` — see `references/config.md` for the exact snippet.
 
 - **Problem:** `storageState` auth file is stale and tests redirect to login
-  **Solution:** Re-run `AuthSetup` to regenerate `target/auth/user-state.json` before the suite, or add a `@BeforeAll` that conditionally refreshes it.
+**Solution:** Re-run `AuthSetup` to regenerate `target/auth/user-state.json` before the suite, or add a `@BeforeAll` that conditionally refreshes it.
 
 ---
 

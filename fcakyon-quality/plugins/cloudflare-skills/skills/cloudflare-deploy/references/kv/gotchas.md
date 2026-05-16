@@ -4,15 +4,15 @@
 
 ### "Stale Read After Write"
 
-**Cause:** Eventual consistency means writes may not be immediately visible in other regions  
+**Cause:** Eventual consistency means writes may not be immediately visible in other regions
 **Solution:** Don't read immediately after write; return confirmation without reading or use the local value you just wrote. Writes visible immediately in same location, ≤60s globally
 
 ```typescript
-// ❌ BAD: Read immediately after write
+// FAIL: BAD: Read immediately after write
 await env.KV.put("key", "value");
 const value = await env.KV.get("key"); // May be null in other regions!
 
-// ✅ GOOD: Use the value you just wrote
+// PASS: GOOD: Use the value you just wrote
 const newValue = "value";
 await env.KV.put("key", newValue);
 return new Response(newValue); // Don't re-read
@@ -20,7 +20,7 @@ return new Response(newValue); // Don't re-read
 
 ### "429 Rate Limit on Concurrent Writes"
 
-**Cause:** Multiple concurrent writes to same key exceeding 1 write/second limit  
+**Cause:** Multiple concurrent writes to same key exceeding 1 write/second limit
 **Solution:** Use sequential writes, unique keys for concurrent operations, or implement retry with exponential backoff
 
 ```typescript
@@ -50,24 +50,24 @@ async function putWithRetry(
 
 ### "Inefficient Multiple Gets"
 
-**Cause:** Making multiple individual get() calls instead of bulk operation  
+**Cause:** Making multiple individual get() calls instead of bulk operation
 **Solution:** Use bulk get with array of keys: `env.USERS.get(["user:1", "user:2", "user:3"])` to reduce to 1 operation
 
 ### "Null Reference Error"
 
-**Cause:** Attempting to use value without checking for null when key doesn't exist  
+**Cause:** Attempting to use value without checking for null when key doesn't exist
 **Solution:** Always handle null returns - KV returns `null` for missing keys, not undefined
 
 ```typescript
-// ❌ BAD: Assumes value exists
+// FAIL: BAD: Assumes value exists
 const config = await env.KV.get("config", "json");
 return config.theme; // TypeError if null!
 
-// ✅ GOOD: Null checks
+// PASS: GOOD: Null checks
 const config = await env.KV.get("config", "json");
 return config?.theme ?? "default";
 
-// ✅ GOOD: Early return
+// PASS: GOOD: Early return
 const config = await env.KV.get("config", "json");
 if (!config) return new Response("Not found", { status: 404 });
 return new Response(config.theme);
@@ -75,7 +75,7 @@ return new Response(config.theme);
 
 ### "Negative Lookup Caching"
 
-**Cause:** Keys that don't exist are cached as "not found" for up to 60s  
+**Cause:** Keys that don't exist are cached as "not found" for up to 60s
 **Solution:** Creating a key after checking won't be visible until cache expires
 
 ```typescript
@@ -103,9 +103,9 @@ const value = await env.KV.get("key") ?? "default-value";
 ## Cost Examples
 
 **Free tier:**
-- 100K reads/day = 3M/month ✅
-- 1K writes/day = 30K/month ✅
-- 1GB storage ✅
+- 100K reads/day = 3M/month PASS:
+- 1K writes/day = 30K/month PASS:
+- 1GB storage PASS:
 
 **Example paid workload:**
 - 10M reads/month = $5.00

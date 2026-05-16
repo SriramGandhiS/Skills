@@ -1,6 +1,6 @@
 # Saving Results to Hugging Face Hub
 
-**⚠️ CRITICAL:** Job environments are ephemeral. ALL results are lost when a job completes unless persisted to the Hub or external storage.
+**WARNING: CRITICAL:** Job environments are ephemeral. ALL results are lost when a job completes unless persisted to the Hub or external storage.
 
 ## Why Persistence is Required
 
@@ -73,7 +73,7 @@ requests.post("https://your-api.com/results", json=results)
 ```python
 hf_jobs("uv", {
     "script": "your_script.py",
-    "secrets": {"HF_TOKEN": "$HF_TOKEN"}  # ✅ Required for Hub operations
+    "secrets": {"HF_TOKEN": "$HF_TOKEN"}  # PASS: Required for Hub operations
 })
 ```
 
@@ -120,7 +120,7 @@ dataset = Dataset.from_dict(data)
 
 # Push to Hub
 dataset.push_to_hub("username/my-dataset")
-print("✅ Dataset pushed!")
+print("PASS: Dataset pushed!")
 """,
     "flavor": "cpu-basic",
     "timeout": "30m",
@@ -151,7 +151,7 @@ tokenizer = AutoTokenizer.from_pretrained("base-model")
 # Push to Hub
 model.push_to_hub("username/my-model")
 tokenizer.push_to_hub("username/my-model")
-print("✅ Model pushed!")
+print("PASS: Model pushed!")
 """,
     "flavor": "a10g-large",
     "timeout": "2h",
@@ -189,7 +189,7 @@ df.to_csv("results.csv", index=False)
 api = HfApi()
 api.upload_file("results.json", "results.json", "username/results", repo_type="dataset")
 api.upload_file("results.csv", "results.csv", "username/results", repo_type="dataset")
-print("✅ Results pushed!")
+print("PASS: Results pushed!")
 """,
     "flavor": "cpu-basic",
     "timeout": "30m",
@@ -341,7 +341,7 @@ for log in fetch_job_logs(job_id="your-job-id"):
 ```
 Pushing to username/repo-name...
 Upload file results.json: 100%
-✅ Push successful
+PASS: Push successful
 ```
 
 ## Key Takeaway

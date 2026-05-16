@@ -122,7 +122,7 @@ class PineconeAdaptor(SkillAdaptor):
             skill_dir: Path to skill directory
             metadata: Skill metadata
             enable_chunking: Enable intelligent chunking for large documents
-            **kwargs: Additional chunking parameters
+**kwargs: Additional chunking parameters
 
         Returns:
             JSON string containing Pinecone-compatible data
@@ -160,7 +160,7 @@ class PineconeAdaptor(SkillAdaptor):
                         {
                             "id": self._generate_id(chunk_text, chunk_meta),
                             "metadata": {
-                                **chunk_meta,
+**chunk_meta,
                                 "text": self._truncate_text_for_metadata(chunk_text),
                             },
                         }
@@ -217,7 +217,7 @@ class PineconeAdaptor(SkillAdaptor):
                         {
                             "id": self._generate_id(chunk_text, chunk_meta),
                             "metadata": {
-                                **chunk_meta,
+**chunk_meta,
                                 "text": self._truncate_text_for_metadata(chunk_text),
                             },
                         }
@@ -281,14 +281,14 @@ class PineconeAdaptor(SkillAdaptor):
 
         output_path.write_text(pinecone_json, encoding="utf-8")
 
-        print(f"\n✅ Pinecone data packaged successfully!")
-        print(f"📦 Output: {output_path}")
+        print(f"\nPASS: Pinecone data packaged successfully!")
+        print(f" Output: {output_path}")
 
         data = json.loads(pinecone_json)
-        print(f"📊 Total vectors: {len(data['vectors'])}")
-        print(f"🗂️  Index name: {data['index_name']}")
-        print(f"📁 Namespace: {data['namespace']}")
-        print(f"📐 Default dimension: {data['dimension']} (auto-detected at upload time)")
+        print(f" Total vectors: {len(data['vectors'])}")
+        print(f"  Index name: {data['index_name']}")
+        print(f" Namespace: {data['namespace']}")
+        print(f" Default dimension: {data['dimension']} (auto-detected at upload time)")
 
         # Show category breakdown
         categories: dict[str, int] = {}
@@ -296,7 +296,7 @@ class PineconeAdaptor(SkillAdaptor):
             cat = vec["metadata"].get("category", "unknown")
             categories[cat] = categories.get(cat, 0) + 1
 
-        print("📁 Categories:")
+        print(" Categories:")
         for cat, count in sorted(categories.items()):
             print(f"   - {cat}: {count}")
 
@@ -309,7 +309,7 @@ class PineconeAdaptor(SkillAdaptor):
         Args:
             package_path: Path to packaged JSON
             api_key: Pinecone API key (or uses PINECONE_API_KEY env var)
-            **kwargs:
+**kwargs:
                 index_name: Override index name from JSON
                 namespace: Override namespace from JSON
                 dimension: Embedding dimension (default: 1536)
@@ -384,7 +384,7 @@ class PineconeAdaptor(SkillAdaptor):
             existing_indexes = [idx.name for idx in pc.list_indexes()]
             if index_name not in existing_indexes:
                 print(
-                    f"🔧 Creating Pinecone index: {index_name} (dimension={dimension}, metric={metric})"
+                    f" Creating Pinecone index: {index_name} (dimension={dimension}, metric={metric})"
                 )
                 pc.create_index(
                     name=index_name,
@@ -392,9 +392,9 @@ class PineconeAdaptor(SkillAdaptor):
                     metric=metric,
                     spec=ServerlessSpec(cloud=cloud, region=region),
                 )
-                print(f"✅ Index '{index_name}' created")
+                print(f"PASS: Index '{index_name}' created")
             else:
-                print(f"ℹ️  Using existing index: {index_name}")
+                print(f"  Using existing index: {index_name}")
 
             index = pc.Index(index_name)
 
@@ -411,14 +411,14 @@ class PineconeAdaptor(SkillAdaptor):
                 )
 
             total = len(vectors_to_upsert)
-            print(f"🔄 Upserting {total} vectors to Pinecone...")
+            print(f" Upserting {total} vectors to Pinecone...")
 
             for i in range(0, total, batch_size):
                 batch = vectors_to_upsert[i : i + batch_size]
                 index.upsert(vectors=batch, namespace=namespace)
                 print(f"  ✓ Upserted {min(i + batch_size, total)}/{total}")
 
-            print(f"✅ Uploaded {total} vectors to Pinecone index '{index_name}'")
+            print(f"PASS: Uploaded {total} vectors to Pinecone index '{index_name}'")
 
             return {
                 "success": True,
@@ -446,7 +446,7 @@ class PineconeAdaptor(SkillAdaptor):
 
     def enhance(self, _skill_dir: Path, _api_key: str) -> bool:
         """Pinecone format doesn't support enhancement."""
-        print("❌ Pinecone format does not support enhancement")
+        print("FAIL: Pinecone format does not support enhancement")
         print("   Enhance before packaging:")
         print("   skill-seekers enhance output/skill/ --mode LOCAL")
         print("   skill-seekers package output/skill/ --target pinecone")

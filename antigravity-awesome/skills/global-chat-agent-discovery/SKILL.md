@@ -107,10 +107,10 @@ Agent (via Global Chat MCP): 4 registries carry Kubernetes-related agents (23 to
 ## Common Pitfalls
 
 - **Problem:** Search returns too many results
-  **Solution:** Add protocol or registry filters to narrow the scope
+**Solution:** Add protocol or registry filters to narrow the scope
 
 - **Problem:** MCP server not connecting
-  **Solution:** Ensure `npx` is available and run `npx -y @global-chat/mcp-server` manually first to verify
+**Solution:** Ensure `npx` is available and run `npx -y @global-chat/mcp-server` manually first to verify
 
 ## Related Skills
 

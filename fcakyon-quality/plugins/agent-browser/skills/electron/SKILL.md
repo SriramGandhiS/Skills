@@ -114,8 +114,8 @@ agent-browser connect 9222
 # List targets -- webviews appear alongside pages
 agent-browser tab
 # Example output:
-#   0: [page]    Slack - Main Window     https://app.slack.com/
-#   1: [webview] Embedded Content        https://example.com/widget
+# 0: [page]    Slack - Main Window     https://app.slack.com/
+# 1: [webview] Embedded Content        https://example.com/widget
 
 # Switch to a webview
 agent-browser tab 1

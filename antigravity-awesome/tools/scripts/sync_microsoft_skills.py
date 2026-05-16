@@ -21,7 +21,7 @@ ATTRIBUTION_FILE = DOCS_DIR / "microsoft-skills-attribution.json"
 
 def clone_repo(temp_dir: Path):
     """Clone Microsoft skills repository (shallow)."""
-    print("🔄 Cloning Microsoft Skills repository...")
+    print(" Cloning Microsoft Skills repository...")
     subprocess.run(
         ["git", "clone", "--depth", "1", MS_REPO, str(temp_dir)],
         check=True,
@@ -31,14 +31,14 @@ def clone_repo(temp_dir: Path):
 def cleanup_previous_sync():
     """Remove skill directories from a previous sync using the attribution manifest."""
     if not ATTRIBUTION_FILE.exists():
-        print("  ℹ️  No previous attribution file found — skipping cleanup.")
+        print("    No previous attribution file found — skipping cleanup.")
         return 0
 
     try:
         with open(ATTRIBUTION_FILE) as f:
             attribution = json.load(f)
     except (json.JSONDecodeError, OSError) as e:
-        print(f"  ⚠️  Could not read attribution file: {e}")
+        print(f"  WARNING:  Could not read attribution file: {e}")
         return 0
 
     previous_skills = attribution.get("skills", [])
@@ -61,7 +61,7 @@ def cleanup_previous_sync():
             removed_count += 1
 
     print(
-        f"  🗑️  Removed {removed_count} previously synced skill directories.")
+        f"    Removed {removed_count} previously synced skill directories.")
     return removed_count
 
 
@@ -265,7 +265,7 @@ def sync_skills_flat(source_dir: Path, target_dir: Path):
             pass
 
     all_skill_entries = find_skills_in_directory(source_dir)
-    print(f"  📂 Found {len(all_skill_entries)} skills in skills/ directory")
+    print(f"   Found {len(all_skill_entries)} skills in skills/ directory")
 
     synced_count = 0
     skill_metadata = []
@@ -279,13 +279,13 @@ def sync_skills_flat(source_dir: Path, target_dir: Path):
 
         if skill_name == fallback_name:
             print(
-                f"  ⚠️  No frontmatter name for {entry['relative_path']}, using fallback: {skill_name}")
+                f"  WARNING:  No frontmatter name for {entry['relative_path']}, using fallback: {skill_name}")
 
         # Internal collision detection (two Microsoft skills with same name)
         if skill_name in used_names:
             original = used_names[skill_name]
             print(
-                f"  ⚠️  Name collision '{skill_name}': {entry['relative_path']} vs {original}")
+                f"  WARNING:  Name collision '{skill_name}': {entry['relative_path']} vs {original}")
             lang = entry["relative_path"].parts[0] if entry["relative_path"].parts else "unknown"
             skill_name = f"{skill_name}-{lang}"
             print(f"       Resolved to: {skill_name}")
@@ -296,7 +296,7 @@ def sync_skills_flat(source_dir: Path, target_dir: Path):
             original_name = skill_name
             skill_name = f"{skill_name}-ms"
             print(
-                f"  ⚠️  '{original_name}' exists as a non-Microsoft skill, using: {skill_name}")
+                f"  WARNING:  '{original_name}' exists as a non-Microsoft skill, using: {skill_name}")
 
         used_names[skill_name] = str(entry["relative_path"])
 
@@ -317,7 +317,7 @@ def sync_skills_flat(source_dir: Path, target_dir: Path):
         })
 
         synced_count += 1
-        print(f"  ✅ {entry['relative_path']} → skills/{skill_name}/")
+        print(f"  PASS: {entry['relative_path']} → skills/{skill_name}/")
 
     # Collect all source directory names already synced (for dedup)
     synced_names = set(used_names.keys())
@@ -328,7 +328,7 @@ def sync_skills_flat(source_dir: Path, target_dir: Path):
     plugin_entries = find_plugin_skills(source_dir, already_synced_dir_names)
 
     if plugin_entries:
-        print(f"\n  📦 Found {len(plugin_entries)} additional plugin skills")
+        print(f"\n   Found {len(plugin_entries)} additional plugin skills")
         for entry in plugin_entries:
             skill_name = sanitize_flat_name(
                 extract_skill_name(entry["skill_md"]), entry["source_dir"].name)
@@ -343,7 +343,7 @@ def sync_skills_flat(source_dir: Path, target_dir: Path):
                 skill_name = f"{skill_name}-ms"
                 target_skill_dir = target_dir / skill_name
                 print(
-                    f"  ⚠️  '{original_name}' exists as a non-Microsoft skill, using: {skill_name}")
+                    f"  WARNING:  '{original_name}' exists as a non-Microsoft skill, using: {skill_name}")
 
             synced_names.add(skill_name)
             already_synced_dir_names.add(entry["source_dir"].name)
@@ -361,7 +361,7 @@ def sync_skills_flat(source_dir: Path, target_dir: Path):
             })
 
             synced_count += 1
-            print(f"  ✅ {entry['relative_path']} → skills/{skill_name}/")
+            print(f"  PASS: {entry['relative_path']} → skills/{skill_name}/")
 
     # Sync skills in .github/skills/ not reachable via the skills/ symlink tree
     github_skill_entries = find_github_skills(
@@ -384,7 +384,7 @@ def sync_skills_flat(source_dir: Path, target_dir: Path):
                 skill_name = f"{skill_name}-ms"
                 target_skill_dir = target_dir / skill_name
                 print(
-                    f"  ⚠️  '{original_name}' exists as a non-Microsoft skill, using: {skill_name}")
+                    f"  WARNING:  '{original_name}' exists as a non-Microsoft skill, using: {skill_name}")
 
             synced_names.add(skill_name)
 
@@ -401,7 +401,7 @@ def sync_skills_flat(source_dir: Path, target_dir: Path):
             })
 
             synced_count += 1
-            print(f"  ✅ {entry['relative_path']} → skills/{skill_name}/")
+            print(f"  PASS: {entry['relative_path']} → skills/{skill_name}/")
 
     return synced_count, skill_metadata
 
@@ -430,7 +430,7 @@ def copy_license(source_dir: Path):
 
 def main():
     """Main sync function."""
-    print("🚀 Microsoft Skills Sync Script v4 (Flat Structure)")
+    print(" Microsoft Skills Sync Script v4 (Flat Structure)")
     print("=" * 55)
 
     with tempfile.TemporaryDirectory() as temp_dir:
@@ -441,19 +441,19 @@ def main():
 
             TARGET_DIR.mkdir(parents=True, exist_ok=True)
 
-            print("\n🧹 Cleaning up previous sync...")
+            print("\n Cleaning up previous sync...")
             cleanup_previous_sync()
 
-            print("\n🔗 Resolving symlinks and flattening into skills/<name>/...")
+            print("\n Resolving symlinks and flattening into skills/<name>/...")
             count, metadata = sync_skills_flat(temp_path, TARGET_DIR)
 
-            print("\n📄 Saving attribution...")
+            print("\n Saving attribution...")
             save_attribution(metadata)
             copy_license(temp_path)
 
             print(
-                f"\n✨ Success! Synced {count} Microsoft skills (flat structure)")
-            print(f"📁 Location: {TARGET_DIR}/")
+                f"\n Success! Synced {count} Microsoft skills (flat structure)")
+            print(f" Location: {TARGET_DIR}/")
 
             # Show summary of languages
             languages = set()
@@ -462,16 +462,16 @@ def main():
                 if len(parts) >= 1 and parts[0] != "plugins":
                     languages.add(parts[0])
 
-            print(f"\n📊 Organization:")
+            print(f"\n Organization:")
             print(f"  Total skills: {count}")
             print(f"  Languages: {', '.join(sorted(languages))}")
 
-            print("\n📋 Next steps:")
+            print("\n Next steps:")
             print("1. Run: npm run build")
             print("2. Commit changes and create PR")
 
         except Exception as e:
-            print(f"\n❌ Error: {e}")
+            print(f"\nFAIL: Error: {e}")
             import traceback
             traceback.print_exc()
             return 1

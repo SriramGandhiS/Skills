@@ -31,7 +31,6 @@ hcloud server add-label [--overwrite] <server> <label>...
 
 * [hcloud server](hcloud_server.md)	 - Manage Servers
 
-
 ---
 
 ## hcloud server add-to-placement-group
@@ -67,7 +66,6 @@ hcloud server add-to-placement-group --placement-group <placement-group> <server
 
 * [hcloud server](hcloud_server.md)	 - Manage Servers
 
-
 ---
 
 ## hcloud server attach-iso
@@ -101,7 +99,6 @@ hcloud server attach-iso <server> <iso>
 ### SEE ALSO
 
 * [hcloud server](hcloud_server.md)	 - Manage Servers
-
 
 ---
 
@@ -141,7 +138,6 @@ hcloud server attach-to-network [options] --network <network> <server>
 
 * [hcloud server](hcloud_server.md)	 - Manage Servers
 
-
 ---
 
 ## hcloud server change-alias-ips
@@ -179,7 +175,6 @@ hcloud server change-alias-ips [options] --network <network> <server>
 
 * [hcloud server](hcloud_server.md)	 - Manage Servers
 
-
 ---
 
 ## hcloud server change-type
@@ -214,7 +209,6 @@ hcloud server change-type [--keep-disk] <server> <server-type>
 ### SEE ALSO
 
 * [hcloud server](hcloud_server.md)	 - Manage Servers
-
 
 ---
 
@@ -252,7 +246,6 @@ hcloud server create-image [options] --type <snapshot|backup> <server>
 ### SEE ALSO
 
 * [hcloud server](hcloud_server.md)	 - Manage Servers
-
 
 ---
 
@@ -317,7 +310,6 @@ hcloud server create [options] --name <name> --type <server-type> --image <image
 
 * [hcloud server](hcloud_server.md)	 - Manage Servers
 
-
 ---
 
 ## hcloud server delete
@@ -351,7 +343,6 @@ hcloud server delete <server>...
 ### SEE ALSO
 
 * [hcloud server](hcloud_server.md)	 - Manage Servers
-
 
 ---
 
@@ -388,7 +379,6 @@ hcloud server describe [options] <server>
 
 * [hcloud server](hcloud_server.md)	 - Manage Servers
 
-
 ---
 
 ## hcloud server detach-from-network
@@ -424,7 +414,6 @@ hcloud server detach-from-network --network <network> <server>
 
 * [hcloud server](hcloud_server.md)	 - Manage Servers
 
-
 ---
 
 ## hcloud server detach-iso
@@ -458,7 +447,6 @@ hcloud server detach-iso <server>
 ### SEE ALSO
 
 * [hcloud server](hcloud_server.md)	 - Manage Servers
-
 
 ---
 
@@ -494,7 +482,6 @@ hcloud server disable-backup <server>
 
 * [hcloud server](hcloud_server.md)	 - Manage Servers
 
-
 ---
 
 ## hcloud server disable-protection
@@ -529,7 +516,6 @@ hcloud server disable-protection <server> (delete|rebuild)...
 
 * [hcloud server](hcloud_server.md)	 - Manage Servers
 
-
 ---
 
 ## hcloud server disable-rescue
@@ -563,7 +549,6 @@ hcloud server disable-rescue <server>
 ### SEE ALSO
 
 * [hcloud server](hcloud_server.md)	 - Manage Servers
-
 
 ---
 
@@ -600,7 +585,6 @@ hcloud server enable-backup <server>
 
 * [hcloud server](hcloud_server.md)	 - Manage Servers
 
-
 ---
 
 ## hcloud server enable-protection
@@ -634,7 +618,6 @@ hcloud server enable-protection <server> (delete|rebuild)...
 ### SEE ALSO
 
 * [hcloud server](hcloud_server.md)	 - Manage Servers
-
 
 ---
 
@@ -672,7 +655,6 @@ hcloud server enable-rescue [options] <server>
 
 * [hcloud server](hcloud_server.md)	 - Manage Servers
 
-
 ---
 
 ## hcloud server ip
@@ -707,7 +689,6 @@ hcloud server ip [--ipv6] <server>
 ### SEE ALSO
 
 * [hcloud server](hcloud_server.md)	 - Manage Servers
-
 
 ---
 
@@ -779,7 +760,6 @@ hcloud server list [options]
 
 * [hcloud server](hcloud_server.md)	 - Manage Servers
 
-
 ---
 
 ## hcloud server metrics
@@ -818,7 +798,6 @@ hcloud server metrics [options] (--type <cpu|disk|network>)... <server>
 
 * [hcloud server](hcloud_server.md)	 - Manage Servers
 
-
 ---
 
 ## hcloud server poweroff
@@ -852,7 +831,6 @@ hcloud server poweroff <server>
 ### SEE ALSO
 
 * [hcloud server](hcloud_server.md)	 - Manage Servers
-
 
 ---
 
@@ -888,7 +866,6 @@ hcloud server poweron <server>
 
 * [hcloud server](hcloud_server.md)	 - Manage Servers
 
-
 ---
 
 ## hcloud server reboot
@@ -922,7 +899,6 @@ hcloud server reboot <server>
 ### SEE ALSO
 
 * [hcloud server](hcloud_server.md)	 - Manage Servers
-
 
 ---
 
@@ -961,7 +937,6 @@ hcloud server rebuild [options] --image <image> <server>
 
 * [hcloud server](hcloud_server.md)	 - Manage Servers
 
-
 ---
 
 ## hcloud server remove-from-placement-group
@@ -995,7 +970,6 @@ hcloud server remove-from-placement-group <server>
 ### SEE ALSO
 
 * [hcloud server](hcloud_server.md)	 - Manage Servers
-
 
 ---
 
@@ -1032,7 +1006,6 @@ hcloud server remove-label <server> (--all | <label>...)
 
 * [hcloud server](hcloud_server.md)	 - Manage Servers
 
-
 ---
 
 ## hcloud server request-console
@@ -1067,7 +1040,6 @@ hcloud server request-console [options] <server>
 ### SEE ALSO
 
 * [hcloud server](hcloud_server.md)	 - Manage Servers
-
 
 ---
 
@@ -1104,7 +1076,6 @@ hcloud server reset-password [options] <server>
 
 * [hcloud server](hcloud_server.md)	 - Manage Servers
 
-
 ---
 
 ## hcloud server reset
@@ -1138,7 +1109,6 @@ hcloud server reset [options] <server>
 ### SEE ALSO
 
 * [hcloud server](hcloud_server.md)	 - Manage Servers
-
 
 ---
 
@@ -1176,7 +1146,6 @@ hcloud server set-rdns [--ip <ip>] (--hostname <hostname> | --reset) <server>
 ### SEE ALSO
 
 * [hcloud server](hcloud_server.md)	 - Manage Servers
-
 
 ---
 
@@ -1218,7 +1187,6 @@ hcloud server shutdown [options] <server>
 
 * [hcloud server](hcloud_server.md)	 - Manage Servers
 
-
 ---
 
 ## hcloud server ssh
@@ -1255,7 +1223,6 @@ hcloud server ssh [options] <server> [--] [ssh options] [command [argument...]]
 ### SEE ALSO
 
 * [hcloud server](hcloud_server.md)	 - Manage Servers
-
 
 ---
 

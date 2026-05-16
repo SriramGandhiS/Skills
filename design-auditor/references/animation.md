@@ -19,7 +19,7 @@ Every animation falls into one of these categories. If it doesn't, it's decorati
 | **Attention** | Draws the eye to something important | New notification badge pulses once |
 | **Progress** | Shows work is happening | Loading bar, skeleton shimmer |
 
-❌ Pure decoration: "logo spins on load because it looks cool" — remove.
+FAIL: Pure decoration: "logo spins on load because it looks cool" — remove.
 
 ---
 
@@ -76,9 +76,9 @@ Figma's Smart Animate transitions work by matching layer names across frames. Fo
 ```
 ComponentName/Variant/State
 
-Button/Primary/Default   →   Button/Primary/Hover    ✅ Smart Animate works
-button-default           →   button-hover             ✅ Works (if exact names match)
-Rectangle 12             →   Rectangle 12             ❌ Accidental match possible
+Button/Primary/Default   →   Button/Primary/Hover    PASS: Smart Animate works
+button-default           →   button-hover             PASS: Works (if exact names match)
+Rectangle 12             →   Rectangle 12             FAIL: Accidental match possible
 ```
 
 **Smart Animate checklist:**
@@ -94,7 +94,7 @@ When reviewing a Figma prototype with animations:
 - Check variant layer names match exactly if Smart Animate is expected
 - Check that Delay is 0ms unless a stagger is intentional and < 50ms per item
 - Check that prototype connections use the right animation type for the context
-- Flag any animation with duration > 400ms as 🟡 Warning, > 600ms as 🔴 Critical
+- Flag any animation with duration > 400ms as  Warning, > 600ms as  Critical
 
 ---
 
@@ -115,7 +115,7 @@ The `prefers-reduced-motion` media query is not optional. Some users have vestib
 ```
 
 ### In Figma:
-There is no built-in reduced motion support in Figma prototypes. Flag this as a 🟡 Warning on any Figma audit — note that developers must implement it in code. If the file has a `Motion: Reduced` page or variant, mark it ✅.
+There is no built-in reduced motion support in Figma prototypes. Flag this as a  Warning on any Figma audit — note that developers must implement it in code. If the file has a `Motion: Reduced` page or variant, mark it PASS:.
 
 ### What still works at reduced motion:
 - **Opacity changes**: Fading is generally acceptable (not physical movement)
@@ -160,7 +160,7 @@ Item 2: delay 40ms
 Item 3: delay 80ms
 Item 4: delay 120ms (total: 120ms + duration ≈ fine)
 Item 8: delay 280ms (total: 280ms + duration ≈ borderline)
-Item 15: delay 560ms (total: 560ms + duration ≈ 🔴 too slow)
+Item 15: delay 560ms (total: 560ms + duration ≈  too slow)
 ```
 
 ---
@@ -182,15 +182,15 @@ Item 15: delay 560ms (total: 560ms + duration ≈ 🔴 too slow)
 
 | Issue | Severity |
 |---|---|
-| No reduced motion support (code) | 🔴 Critical |
-| Animation > 600ms | 🔴 Critical |
-| Infinite autoplay loop with no pause | 🟡 Warning |
-| Wrong easing (ease-in on entrance) | 🟡 Warning |
-| Animation with no purpose (pure decoration) | 🟡 Warning |
-| Total stagger > 400ms | 🟡 Warning |
-| Animation > 300ms (shorter than 600ms) | 🟢 Tip |
-| Spring easing used too liberally | 🟢 Tip |
-| No Smart Animate naming convention | 🟢 Tip (Figma only) |
+| No reduced motion support (code) |  Critical |
+| Animation > 600ms |  Critical |
+| Infinite autoplay loop with no pause |  Warning |
+| Wrong easing (ease-in on entrance) |  Warning |
+| Animation with no purpose (pure decoration) |  Warning |
+| Total stagger > 400ms |  Warning |
+| Animation > 300ms (shorter than 600ms) |  Tip |
+| Spring easing used too liberally |  Tip |
+| No Smart Animate naming convention |  Tip (Figma only) |
 
 ---
 
@@ -207,7 +207,7 @@ Detection:
   → Search for useReducedMotion() hook (Framer Motion), or equivalent
 
 If any transition: or animation: declaration exists AND no reduced-motion query found:
-  → 🔴 Critical
+  →  Critical
 
 Correct global pattern:
   @media (prefers-reduced-motion: reduce) {
@@ -230,49 +230,49 @@ Also acceptable (targeted, not global):
 ```
 Collect all transition-duration and animation-duration values in ms.
 
-> 600ms on any UI interaction → 🔴 Critical (feels broken/sluggish)
-300–600ms on UI interaction → 🟡 Warning (check if intentional for page-level)
-150–300ms on UI interaction → ✅ ideal range
-< 100ms on any transition → 🟢 Tip (may be imperceptible — intentional?)
+> 600ms on any UI interaction →  Critical (feels broken/sluggish)
+300–600ms on UI interaction →  Warning (check if intentional for page-level)
+150–300ms on UI interaction → PASS: ideal range
+< 100ms on any transition →  Tip (may be imperceptible — intentional?)
 
-Page transitions (route changes): 300–500ms → ✅
-Loading/progress animations: any duration → ✅ (exempt from UI duration rule)
+Page transitions (route changes): 300–500ms → PASS:
+Loading/progress animations: any duration → PASS: (exempt from UI duration rule)
 ```
 
 ### Easing
 ```
 Collect all transition-timing-function and animation-timing-function values.
 
-linear on any interactive element transition → 🟡
+linear on any interactive element transition →
   (linear feels mechanical — use ease-out for entrances, ease-in for exits)
 
-ease-in on entrance animations → 🟡
+ease-in on entrance animations →
   (starts slow, speeds up — feels like it arrives late)
 
-ease-out on entrance animations → ✅
-ease-in on exit animations → ✅
-ease-in-out on transitions → ✅ (symmetric — fine for hover states)
+ease-out on entrance animations → PASS:
+ease-in on exit animations → PASS:
+ease-in-out on transitions → PASS: (symmetric — fine for hover states)
 
 cubic-bezier values: check if they approximate ease-in or ease-out
-  → cubic-bezier(0, 0, 0.2, 1)  = ease-out → ✅
-  → cubic-bezier(0.4, 0, 1, 1)  = ease-in  → ✅ for exits
-  → cubic-bezier(0, 0, 1, 1)    = linear   → 🟡
+  → cubic-bezier(0, 0, 0.2, 1)  = ease-out → PASS:
+  → cubic-bezier(0.4, 0, 1, 1)  = ease-in  → PASS: for exits
+  → cubic-bezier(0, 0, 1, 1)    = linear   →
 ```
 
 ### Infinite loops
 ```
 animation-iteration-count: infinite:
-  → On a background/decorative element with no user control → 🟡 Warning
-  → On a loading spinner → ✅ (expected)
-  → On a skeleton shimmer → ✅ (expected)
-  → On a marquee/ticker → 🟡 (distraction — should pause on hover/focus)
+  → On a background/decorative element with no user control →  Warning
+  → On a loading spinner → PASS: (expected)
+  → On a skeleton shimmer → PASS: (expected)
+  → On a marquee/ticker →  (distraction — should pause on hover/focus)
 
-animation-play-state: paused on :hover / :focus → ✅ (infinite loop with pause = acceptable)
+animation-play-state: paused on :hover / :focus → PASS: (infinite loop with pause = acceptable)
 ```
 
 ### transition: all
 ```
-transition: all [duration] → 🟡 Warning
+transition: all [duration] →  Warning
   Reason: Animates every CSS property including layout properties (width, height, padding),
   which causes expensive layout recalculations and jank.
 
@@ -281,20 +281,20 @@ Preferred: specify only the properties you need:
   transition: transform 250ms ease-out, opacity 250ms ease-out;
 
 High-performance properties (GPU-composited, no layout cost):
-  transform, opacity → ✅ always prefer these
-  color, background-color, box-shadow, border-color → ✅ acceptable (paint only)
-  width, height, padding, margin, top, left → 🟡 (trigger layout — avoid animating)
+  transform, opacity → PASS: always prefer these
+  color, background-color, box-shadow, border-color → PASS: acceptable (paint only)
+  width, height, padding, margin, top, left →  (trigger layout — avoid animating)
 ```
 
 ### Framer Motion / React Spring specific
 ```
 If Framer Motion detected (import { motion } from 'framer-motion'):
-  → Check for useReducedMotion() hook used to conditionally disable animations → ✅
-  → AnimatePresence without reduced motion fallback → 🟡
-  → variants with duration > 0.6s → 🟡 (same threshold in seconds)
-  → staggerChildren > 0.1s × item count > 400ms total → 🟡
+  → Check for useReducedMotion() hook used to conditionally disable animations → PASS:
+  → AnimatePresence without reduced motion fallback →
+  → variants with duration > 0.6s →  (same threshold in seconds)
+  → staggerChildren > 0.1s × item count > 400ms total →
 
 If React Spring detected:
-  → config.slow or tension < 100 (slow animations) → 🟡 check intent
-  → No reduced motion handling → 🟡
+  → config.slow or tension < 100 (slow animations) →  check intent
+  → No reduced motion handling →
 ```

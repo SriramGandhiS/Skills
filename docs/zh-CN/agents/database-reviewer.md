@@ -38,7 +38,7 @@ psql -c "SELECT indexrelname, idx_scan, idx_tup_read FROM pg_stat_user_indexes O
 
 ### 2. 模式设计（高）
 
-* 使用正确的类型：`bigint` 用于 ID，`text` 用于字符串，`timestamptz` 用于时间戳，`numeric` 用于货币，`boolean` 用于标志
+* 使用正确的类型：`bigint`用于 ID，`text`用于字符串，`timestamptz`用于时间戳，`numeric`用于货币，`boolean` 用于标志
 * 定义约束：主键，带有 `ON DELETE`、`NOT NULL`、`CHECK` 的外键
 * 使用 `lowercase_snake_case` 标识符（不使用引号包裹的大小写混合名称）
 
@@ -55,16 +55,16 @@ psql -c "SELECT indexrelname, idx_scan, idx_tup_read FROM pg_stat_user_indexes O
 * **使用部分索引** — `WHERE deleted_at IS NULL` 用于软删除
 * **覆盖索引** — `INCLUDE (col)` 以避免表查找
 * **队列使用 SKIP LOCKED** — 对于工作模式，吞吐量提升 10 倍
-* **游标分页** — `WHERE id > $last` 而不是 `OFFSET`
-* **批量插入** — 多行 `INSERT` 或 `COPY`，切勿在循环中进行单行插入
+* **游标分页** — `WHERE id > $last`而不是`OFFSET`
+* **批量插入** — 多行 `INSERT`或`COPY`，切勿在循环中进行单行插入
 * **短事务** — 在进行外部 API 调用期间绝不持有锁
 * **一致的锁顺序** — `ORDER BY id FOR UPDATE` 以防止死锁
 
 ## 需要标记的反模式
 
 * `SELECT *` 出现在生产代码中
-* `int` 用于 ID（应使用 `bigint`），无理由使用 `varchar(255)`（应使用 `text`）
-* 使用不带时区的 `timestamp`（应使用 `timestamptz`）
+* `int`用于 ID（应使用`bigint`），无理由使用`varchar(255)`（应使用`text`）
+* 使用不带时区的 `timestamp`（应使用`timestamptz`）
 * 使用随机 UUID 作为主键（应使用 UUIDv7 或 IDENTITY）
 * 在大表上使用 OFFSET 分页
 * 未参数化的查询（SQL 注入风险）
@@ -85,7 +85,7 @@ psql -c "SELECT indexrelname, idx_scan, idx_tup_read FROM pg_stat_user_indexes O
 
 ## 参考
 
-有关详细的索引模式、模式设计示例、连接管理、并发策略、JSONB 模式和全文搜索，请参阅技能：`postgres-patterns` 和 `database-migrations`。
+有关详细的索引模式、模式设计示例、连接管理、并发策略、JSONB 模式和全文搜索，请参阅技能：`postgres-patterns`和`database-migrations`。
 
 ***
 

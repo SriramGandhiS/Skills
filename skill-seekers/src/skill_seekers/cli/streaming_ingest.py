@@ -266,7 +266,7 @@ class StreamingIngester:
                 self.progress.processed_documents += 1
 
             except Exception as e:
-                print(f"⚠️  Warning: Failed to process {filename}: {e}")
+                print(f"WARNING:  Warning: Failed to process {filename}: {e}")
                 self.progress.failed_chunks += 1
                 continue
 
@@ -342,7 +342,7 @@ class StreamingIngester:
             checkpoint_data = json.loads(checkpoint_path.read_text())
             return checkpoint_data.get("state")
         except Exception as e:
-            print(f"⚠️  Warning: Failed to load checkpoint: {e}")
+            print(f"WARNING:  Warning: Failed to load checkpoint: {e}")
             return None
 
     def format_progress(self) -> str:
@@ -358,7 +358,7 @@ class StreamingIngester:
         p = self.progress
 
         lines = [
-            f"📊 Progress: {p.progress_percent:.1f}% complete",
+            f" Progress: {p.progress_percent:.1f}% complete",
             f"   Documents: {p.processed_documents}/{p.total_documents}",
             f"   Chunks: {p.processed_chunks}/{p.total_chunks}",
             f"   Rate: {p.chunks_per_second:.1f} chunks/sec",
@@ -369,7 +369,7 @@ class StreamingIngester:
             lines.append(f"   ETA: {p.eta_seconds:.1f}s")
 
         if p.failed_chunks > 0:
-            lines.append(f"   ⚠️  Failed: {p.failed_chunks} chunks")
+            lines.append(f"   WARNING:  Failed: {p.failed_chunks} chunks")
 
         return "\n".join(lines)
 
@@ -408,7 +408,7 @@ def main():
     # Stream input
     input_path = Path(args.input)
     if not input_path.exists():
-        print(f"❌ Error: Path not found: {input_path}")
+        print(f"FAIL: Error: Path not found: {input_path}")
         return 1
 
     if input_path.is_dir():
@@ -451,7 +451,7 @@ def main():
 
     # Final progress
     print("\n" + ingester.format_progress())
-    print(f"\n✅ Processed {len(all_chunks)} total chunks")
+    print(f"\nPASS: Processed {len(all_chunks)} total chunks")
     return 0
 
 

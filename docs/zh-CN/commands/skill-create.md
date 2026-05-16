@@ -29,13 +29,13 @@ allowed_tools: ["Bash", "Read", "Write", "Grep", "Glob"]
 ### 步骤 1：收集 Git 数据
 
 ```bash
-# Get recent commits with file changes
+## Get recent commits with file changes
 git log --oneline -n ${COMMITS:-200} --name-only --pretty=format:"%H|%s|%ad" --date=short
 
-# Get commit frequency by file
+## Get commit frequency by file
 git log --oneline -n 200 --name-only | grep -v "^$" | grep -v "^[a-f0-9]" | sort | uniq -c | sort -rn | head -20
 
-# Get commit message patterns
+## Get commit message patterns
 git log --oneline -n 200 | cut -d' ' -f2- | head -50
 ```
 
@@ -64,7 +64,7 @@ source: local-git-analysis
 analyzed_commits: {count}
 ---
 
-# {Repo Name} 模式
+## {Repo Name} 模式
 
 ## 提交规范
 {detected commit message patterns}
@@ -93,7 +93,7 @@ domain: git
 source: local-repo-analysis
 ---
 
-# Use Conventional Commits
+## Use Conventional Commits
 
 ## Action
 Prefix commits with: feat:, fix:, chore:, docs:, test:, refactor:
@@ -116,7 +116,7 @@ source: local-git-analysis
 analyzed_commits: 150
 ---
 
-# My App 模式
+## My App 模式
 
 ## 提交约定
 
@@ -152,7 +152,7 @@ src/
 
 ## 测试模式
 
-- 测试文件：`__tests__/` 目录或 `.test.ts` 后缀
+- 测试文件：`__tests__/`目录或`.test.ts` 后缀
 - 覆盖率目标：80%+
 - 框架：Vitest
 ```

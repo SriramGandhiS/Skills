@@ -687,19 +687,19 @@ kover {
 #### 覆盖率命令
 
 ```bash
-# Run tests with coverage
+## Run tests with coverage
 ./gradlew koverHtmlReport
 
-# Verify coverage thresholds
+## Verify coverage thresholds
 ./gradlew koverVerify
 
-# XML report for CI
+## XML report for CI
 ./gradlew koverXmlReport
 
-# View HTML report (use the command for your OS)
-# macOS:   open build/reports/kover/html/index.html
-# Linux:   xdg-open build/reports/kover/html/index.html
-# Windows: start build/reports/kover/html/index.html
+## View HTML report (use the command for your OS)
+## macOS:   open build/reports/kover/html/index.html
+## Linux:   xdg-open build/reports/kover/html/index.html
+## Windows: start build/reports/kover/html/index.html
 ```
 
 #### 覆盖率目标
@@ -751,28 +751,28 @@ class ApiRoutesTest : FunSpec({
 ### 测试命令
 
 ```bash
-# Run all tests
+## Run all tests
 ./gradlew test
 
-# Run specific test class
+## Run specific test class
 ./gradlew test --tests "com.example.UserServiceTest"
 
-# Run specific test
+## Run specific test
 ./gradlew test --tests "com.example.UserServiceTest.getUser returns user when found"
 
-# Run with verbose output
+## Run with verbose output
 ./gradlew test --info
 
-# Run with coverage
+## Run with coverage
 ./gradlew koverHtmlReport
 
-# Run detekt (static analysis)
+## Run detekt (static analysis)
 ./gradlew detekt
 
-# Run ktlint (formatting check)
+## Run ktlint (formatting check)
 ./gradlew ktlintCheck
 
-# Continuous testing
+## Continuous testing
 ./gradlew test --continuous
 ```
 
@@ -792,7 +792,7 @@ class ApiRoutesTest : FunSpec({
 
 * 混合使用测试框架（选择 Kotest 并坚持使用）
 * 模拟数据类（使用真实实例）
-* 在协程测试中使用 `Thread.sleep()`（改用 `advanceTimeBy`）
+* 在协程测试中使用 `Thread.sleep()`（改用`advanceTimeBy`）
 * 跳过 TDD 中的红色阶段
 * 直接测试私有函数
 * 忽略不稳定的测试
@@ -800,7 +800,7 @@ class ApiRoutesTest : FunSpec({
 ### 与 CI/CD 集成
 
 ```yaml
-# GitHub Actions example
+## GitHub Actions example
 test:
   runs-on: ubuntu-latest
   steps:

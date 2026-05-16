@@ -1,8 +1,7 @@
 # Autonomous Coding Agents Comparison (2025-2026)
 
 > Last Updated: January 25, 2026 (v2.36.9)
->
-> A comprehensive comparison of Loki Mode against major autonomous coding agents and AI IDEs in the market.
+> > A comprehensive comparison of Loki Mode against major autonomous coding agents and AI IDEs in the market.
 > Deep-dive comparisons validated by Opus feedback loops.
 
 ---

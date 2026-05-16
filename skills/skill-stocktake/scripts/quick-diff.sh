@@ -2,14 +2,12 @@
 # quick-diff.sh — compare skill file mtimes against results.json evaluated_at
 # Usage: quick-diff.sh RESULTS_JSON [CWD_SKILLS_DIR]
 # Output: JSON array of changed/new files to stdout (empty [] if no changes)
-#
-# When CWD_SKILLS_DIR is omitted, defaults to $PWD/.claude/skills so the
+# # When CWD_SKILLS_DIR is omitted, defaults to $PWD/.claude/skills so the
 # script always picks up project-level skills without relying on the caller.
-#
-# Environment:
-#   SKILL_STOCKTAKE_GLOBAL_DIR   Override ~/.claude/skills (for testing only;
-#                                do not set in production — intended for bats tests)
-#   SKILL_STOCKTAKE_PROJECT_DIR  Override project dir detection (for testing only)
+# # Environment:
+# SKILL_STOCKTAKE_GLOBAL_DIR   Override ~/.claude/skills (for testing only;
+# do not set in production — intended for bats tests)
+# SKILL_STOCKTAKE_PROJECT_DIR  Override project dir detection (for testing only)
 
 set -euo pipefail
 

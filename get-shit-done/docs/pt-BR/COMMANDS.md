@@ -1,6 +1,6 @@
 # Referência de Comandos do GSD
 
-Este documento descreve os comandos principais do GSD em Português.  
+Este documento descreve os comandos principais do GSD em Português.
 Para detalhes completos de flags avançadas e mudanças recentes, consulte também a [versão em inglês](../COMMANDS.md).
 
 ---

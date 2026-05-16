@@ -47,9 +47,9 @@ def main() -> int:
     if args.json:
         print(json.dumps(summary, indent=2))
     elif summary["within_budget"]:
-        print(f"✅ Validation warnings within budget: {summary['actual']}/{summary['max']}")
+        print(f"PASS: Validation warnings within budget: {summary['actual']}/{summary['max']}")
     else:
-        print(f"❌ Validation warnings exceed budget: {summary['actual']}/{summary['max']}")
+        print(f"FAIL: Validation warnings exceed budget: {summary['actual']}/{summary['max']}")
 
     return 0 if summary["within_budget"] else 1
 

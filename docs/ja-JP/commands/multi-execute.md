@@ -21,7 +21,7 @@ $ARGUMENTS
 **呼び出し構文**(並列: `run_in_background: true`を使用):
 
 ```
-# セッション再開呼び出し(推奨) - 実装プロトタイプ
+## セッション再開呼び出し(推奨) - 実装プロトタイプ
 Bash({
   command: "~/.claude/bin/codeagent-wrapper {{LITE_MODE_FLAG}}--backend <codex|gemini> {{GEMINI_MODEL_FLAG}}resume <SESSION_ID> - \"$PWD\" <<'EOF'
 ROLE_FILE: <ロールプロンプトパス>
@@ -36,7 +36,7 @@ EOF",
   description: "簡潔な説明"
 })
 
-# 新規セッション呼び出し - 実装プロトタイプ
+## 新規セッション呼び出し - 実装プロトタイプ
 Bash({
   command: "~/.claude/bin/codeagent-wrapper {{LITE_MODE_FLAG}}--backend <codex|gemini> {{GEMINI_MODEL_FLAG}}- \"$PWD\" <<'EOF'
 ROLE_FILE: <ロールプロンプトパス>
@@ -78,14 +78,14 @@ EOF",
 ```
 
 **モデルパラメータの注意事項**:
-- `{{GEMINI_MODEL_FLAG}}`: `--backend gemini`を使用する場合、`--gemini-model gemini-3-pro-preview`で置き換える(末尾のスペースに注意); codexの場合は空文字列を使用
+- `{{GEMINI_MODEL_FLAG}}`:`--backend gemini`を使用する場合、`--gemini-model gemini-3-pro-preview`で置き換える(末尾のスペースに注意); codexの場合は空文字列を使用
 
 **ロールプロンプト**:
 
 | フェーズ | Codex | Gemini |
 |-------|-------|--------|
-| 実装 | `~/.claude/.ccg/prompts/codex/architect.md` | `~/.claude/.ccg/prompts/gemini/frontend.md` |
-| レビュー | `~/.claude/.ccg/prompts/codex/reviewer.md` | `~/.claude/.ccg/prompts/gemini/reviewer.md` |
+| 実装 | `~/.claude/.ccg/prompts/codex/architect.md`|`~/.claude/.ccg/prompts/gemini/frontend.md` |
+| レビュー | `~/.claude/.ccg/prompts/codex/reviewer.md`|`~/.claude/.ccg/prompts/gemini/reviewer.md` |
 
 **セッション再利用**: `/ccg:plan`がSESSION_IDを提供した場合、`resume <SESSION_ID>`を使用してコンテキストを再利用します。
 
@@ -156,7 +156,7 @@ mcp__ace-tool__search_context({
 1. **Glob**: 計画の「キーファイル」テーブルから対象ファイルを検索 (例: `Glob("src/components/**/*.tsx")`)
 2. **Grep**: キーシンボル、関数名、型定義をコードベース全体で検索
 3. **Read**: 発見したファイルを読み取り、完全なコンテキストを収集
-4. **Task (Explore エージェント)**: より広範な探索が必要な場合、`Task` を `subagent_type: "Explore"` で使用
+4. **Task (Explore エージェント)**: より広範な探索が必要な場合、`Task`を`subagent_type: "Explore"` で使用
 
 **取得後**:
 - 取得したコードスニペットを整理
@@ -180,7 +180,7 @@ mcp__ace-tool__search_context({
 3. OUTPUT: `統一差分パッチのみ。実際の変更を厳格に禁止。`
 4. **Geminiはフロントエンドデザインの権威であり、そのCSS/React/Vueプロトタイプは最終的なビジュアルベースライン**
 5. **警告**: Geminiのバックエンドロジック提案を無視
-6. 計画に`GEMINI_SESSION`が含まれている場合: `resume <GEMINI_SESSION>`を優先
+6. 計画に`GEMINI_SESSION`が含まれている場合:`resume <GEMINI_SESSION>`を優先
 
 #### ルート B: バックエンド/ロジック/アルゴリズム → Codex
 
@@ -188,7 +188,7 @@ mcp__ace-tool__search_context({
 2. 入力: 計画内容 + 取得したコンテキスト + 対象ファイル
 3. OUTPUT: `統一差分パッチのみ。実際の変更を厳格に禁止。`
 4. **Codexはバックエンドロジックの権威であり、その論理的推論とデバッグ機能を活用**
-5. 計画に`CODEX_SESSION`が含まれている場合: `resume <CODEX_SESSION>`を優先
+5. 計画に`CODEX_SESSION`が含まれている場合:`resume <CODEX_SESSION>`を優先
 
 #### ルート C: フルスタック → 並列呼び出し
 
@@ -299,10 +299,10 @@ mcp__ace-tool__search_context({
 ## 使用方法
 
 ```bash
-# 計画ファイルを実行
+## 計画ファイルを実行
 /ccg:execute .claude/plan/feature-name.md
 
-# タスクを直接実行(コンテキストで既に議論された計画の場合)
+## タスクを直接実行(コンテキストで既に議論された計画の場合)
 /ccg:execute 前の計画に基づいてユーザー認証を実装
 ```
 

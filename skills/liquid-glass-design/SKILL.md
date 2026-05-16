@@ -1,4 +1,4 @@
-﻿---
+---
 name: liquid-glass-design
 description: iOS 26 Liquid Glass design system â€” dynamic glass material with blur, reflection, and interactive morphing for SwiftUI, UIKit, and WidgetKit.
 ---
@@ -41,7 +41,7 @@ Key customization options:
 - `.regular` â€” standard glass effect
 - `.tint(Color)` â€” add color tint for prominence
 - `.interactive()` â€” react to touch and pointer interactions
-- Shape: `.capsule` (default), `.rect(cornerRadius:)`, `.circle`
+- Shape: `.capsule`(default),`.rect(cornerRadius:)`,`.circle`
 
 ### Glass Button Styles
 
@@ -246,7 +246,7 @@ VStack { /* content */ }
 |----------|-----------|
 | GlassEffectContainer wrapping | Performance optimization, enables morphing between glass elements |
 | `spacing` parameter | Controls merge distance â€” fine-tune how close elements must be to blend |
-| `@Namespace` + `glassEffectID` | Enables smooth morphing transitions on view hierarchy changes |
+| `@Namespace`+`glassEffectID` | Enables smooth morphing transitions on view hierarchy changes |
 | `interactive()` modifier | Explicit opt-in for touch/pointer reactions â€” not all glass should respond |
 | UIGlassContainerEffect in UIKit | Same container pattern as SwiftUI for consistency |
 | Accented rendering mode in widgets | System applies tinted glass when user selects tinted Home Screen |

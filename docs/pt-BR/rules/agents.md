@@ -30,13 +30,13 @@ Sem necessidade de prompt do usuário:
 SEMPRE use execução paralela de Task para operações independentes:
 
 ```markdown
-# BOM: Execução paralela
+## BOM: Execução paralela
 Iniciar 3 agentes em paralelo:
 1. Agente 1: Análise de segurança do módulo de autenticação
 2. Agente 2: Revisão de desempenho do sistema de cache
 3. Agente 3: Verificação de tipos dos utilitários
 
-# RUIM: Sequencial quando desnecessário
+## RUIM: Sequencial quando desnecessário
 Primeiro agente 1, depois agente 2, depois agente 3
 ```
 

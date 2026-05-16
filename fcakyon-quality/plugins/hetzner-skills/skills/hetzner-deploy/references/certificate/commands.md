@@ -31,7 +31,6 @@ hcloud certificate add-label [--overwrite] <certificate> <label>...
 
 * [hcloud certificate](hcloud_certificate.md)	 - Manage Certificates
 
-
 ---
 
 ## hcloud certificate create
@@ -73,7 +72,6 @@ hcloud certificate create [options] --name <name> (--type managed --domain <doma
 
 * [hcloud certificate](hcloud_certificate.md)	 - Manage Certificates
 
-
 ---
 
 ## hcloud certificate delete
@@ -107,7 +105,6 @@ hcloud certificate delete <certificate>...
 ### SEE ALSO
 
 * [hcloud certificate](hcloud_certificate.md)	 - Manage Certificates
-
 
 ---
 
@@ -143,7 +140,6 @@ hcloud certificate describe [options] <certificate>
 ### SEE ALSO
 
 * [hcloud certificate](hcloud_certificate.md)	 - Manage Certificates
-
 
 ---
 
@@ -204,7 +200,6 @@ hcloud certificate list [options]
 
 * [hcloud certificate](hcloud_certificate.md)	 - Manage Certificates
 
-
 ---
 
 ## hcloud certificate remove-label
@@ -240,7 +235,6 @@ hcloud certificate remove-label <certificate> (--all | <label>...)
 
 * [hcloud certificate](hcloud_certificate.md)	 - Manage Certificates
 
-
 ---
 
 ## hcloud certificate retry
@@ -274,7 +268,6 @@ hcloud certificate retry <certificate>
 ### SEE ALSO
 
 * [hcloud certificate](hcloud_certificate.md)	 - Manage Certificates
-
 
 ---
 

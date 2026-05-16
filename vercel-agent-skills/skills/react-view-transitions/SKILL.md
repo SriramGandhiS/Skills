@@ -142,8 +142,7 @@ Pass an object to map types to CSS classes. Works on `enter`, `exit`, **and** `s
   exit={{ 'nav-forward': 'slide-to-left', 'nav-back': 'slide-to-right', default: 'none' }}
   share={{ 'nav-forward': 'morph-forward', 'nav-back': 'morph-back', default: 'morph' }}
   default="none"
->
-  <Page />
+> <Page />
 </ViewTransition>
 ```
 
@@ -154,8 +153,7 @@ Pass an object to map types to CSS classes. Works on `enter`, `exit`, **and** `s
   enter={{ 'nav-forward': 'fade-in', 'nav-back': 'fade-in', default: 'none' }}
   exit={{ 'nav-forward': 'nav-forward', 'nav-back': 'nav-back', default: 'none' }}
   default="none"
->
-```
+> ```
 
 **TypeScript:** `ViewTransitionClassPerType` requires a `default` key in the object.
 

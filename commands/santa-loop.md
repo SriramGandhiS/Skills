@@ -64,7 +64,7 @@ The verdict gate (Step 4) maps these to NICE/NAUGHTY: both PASS → NICE, either
 
 #### Reviewer A: Claude Agent (always runs)
 
-Launch an Agent (subagent_type: `code-reviewer`, model: `opus`) with the full rubric + all files under review. The prompt must include:
+Launch an Agent (subagent_type: `code-reviewer`, model:`opus`) with the full rubric + all files under review. The prompt must include:
 - The complete rubric
 - All file contents under review
 - "You are an independent quality reviewer. You have NOT seen any other review. Your job is to find problems, not to approve."
@@ -100,8 +100,8 @@ gemini -p "$(cat "$PROMPT_FILE")" -m gemini-2.5-pro
 rm -f "$PROMPT_FILE"
 ```
 
-**Claude Agent fallback** (only if neither `codex` nor `gemini` is installed)
-Launch a second Claude Agent (subagent_type: `code-reviewer`, model: `opus`). Log a warning that both reviewers share the same model family — true model diversity was not achieved but context isolation is still enforced.
+**Claude Agent fallback** (only if neither `codex`nor`gemini` is installed)
+Launch a second Claude Agent (subagent_type: `code-reviewer`, model:`opus`). Log a warning that both reviewers share the same model family — true model diversity was not achieved but context isolation is still enforced.
 
 In all cases, the reviewer must return the same structured JSON verdict as Reviewer A.
 

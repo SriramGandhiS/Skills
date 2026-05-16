@@ -16,4 +16,4 @@ paths:
 
 ## Uyarılar
 
-- Düzenlenen dosyalarda `print()` ifadeleri hakkında uyar (bunun yerine `logging` modülü kullan)
+- Düzenlenen dosyalarda `print()`ifadeleri hakkında uyar (bunun yerine`logging` modülü kullan)

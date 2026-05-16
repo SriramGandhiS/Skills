@@ -52,7 +52,7 @@ class ScreenViewModel(private val useCase: GetItemsUseCase) : ViewModel() {
 
 ## 仓库模式
 
-* `suspend` 函数返回 `Result<T>` 或自定义错误类型
+* `suspend`函数返回`Result<T>` 或自定义错误类型
 * 对于响应式流使用 `Flow`
 * 协调本地和远程数据源
 
@@ -111,7 +111,7 @@ actual class SecureStorage {
 
 ## 协程模式
 
-* 在 ViewModels 中使用 `viewModelScope`，对于结构化的子工作使用 `coroutineScope`
+* 在 ViewModels 中使用 `viewModelScope`，对于结构化的子工作使用`coroutineScope`
 * 对于来自冷流的 StateFlow 使用 `stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), initialValue)`
 * 当子任务失败应独立处理时使用 `supervisorScope`
 

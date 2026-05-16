@@ -64,9 +64,9 @@ box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
 For a grounded, realistic shadow: **blur ≈ 2× offset-y**
 
 ```
-offset-y: 4px → blur: 8px  ✅ grounded
-offset-y: 4px → blur: 40px ❌ looks like a glow, not a shadow
-offset-y: 4px → blur: 4px  ❌ looks harsh and pixelated
+offset-y: 4px → blur: 8px  PASS: grounded
+offset-y: 4px → blur: 40px FAIL: looks like a glow, not a shadow
+offset-y: 4px → blur: 4px  FAIL: looks harsh and pixelated
 ```
 
 ### Layered Shadows
@@ -175,34 +175,34 @@ When auditing CSS/styled-components/Tailwind for elevation consistency, check th
 
 ### Hardcoded vs tokenized shadows
 ```css
-/* ❌ Hardcoded — flag as 🟡 Warning */
+/* FAIL: Hardcoded — flag as  Warning */
 box-shadow: 0 3px 7px rgba(0,0,0,0.11);
 box-shadow: 0 2px 4px #00000020;
 
-/* ✅ Tokenized */
+/* PASS: Tokenized */
 box-shadow: var(--shadow-md);
 box-shadow: var(--shadow-card);
 ```
-Rule: Any `box-shadow` value not referencing a CSS variable → 🟡 Warning (unless it's the token definition file itself).
+Rule: Any `box-shadow` value not referencing a CSS variable →  Warning (unless it's the token definition file itself).
 
 ### Ratio rule check (blur ≈ 2× offset-y)
 ```
 Extract offset-y and blur-radius from each box-shadow.
 ratio = blur / offset-y
 
-  ratio < 1.5 → 🟡 harsh/pixelated shadow (e.g. 0 4px 4px)
-  ratio 1.5–3 → ✅ grounded, realistic
-  ratio > 5   → 🟡 glow effect, not a shadow (e.g. 0 2px 40px)
+  ratio < 1.5 →  harsh/pixelated shadow (e.g. 0 4px 4px)
+  ratio 1.5–3 → PASS: grounded, realistic
+  ratio > 5   →  glow effect, not a shadow (e.g. 0 2px 40px)
 
 Example:
-  0 4px 8px → ratio 2.0 → ✅
-  0 4px 40px → ratio 10.0 → 🟡 looks like a glow
-  0 1px 1px → ratio 1.0 → 🟡 harsh
+  0 4px 8px → ratio 2.0 → PASS:
+  0 4px 40px → ratio 10.0 →  looks like a glow
+  0 1px 1px → ratio 1.0 →  harsh
 ```
 
 ### Pure black shadow detection
 ```
-Patterns to flag as 🟡:
+Patterns to flag as :
   rgba(0, 0, 0, 1)   — fully opaque black
   rgba(0, 0, 0, 0.9) — near-opaque
   #000000            — hex black in shadow
@@ -218,7 +218,7 @@ Cards:    should all share the same shadow value
 Modals:   should all share the same shadow value (stronger than cards)
 Tooltips: should all share the same shadow value (stronger than modals)
 
-If card A uses --shadow-sm and card B uses --shadow-lg → 🟡 inconsistent elevation
+If card A uses --shadow-sm and card B uses --shadow-lg →  inconsistent elevation
 Detect by collecting all box-shadow values on elements with similar class names
 (card, panel, modal, dialog, tooltip, popover, dropdown)
 ```
@@ -227,12 +227,12 @@ Detect by collecting all box-shadow values on elements with similar class names
 ```
 If @media (prefers-color-scheme: dark) or [data-theme="dark"] exists:
   → Check if box-shadow values are still present in dark mode context
-  → Shadows on dark backgrounds are invisible → 🟡 Warning
+  → Shadows on dark backgrounds are invisible →  Warning
   → Preferred fix: remove shadows in dark mode, use surface color elevation instead
 
 Look for:
-  .dark .card { box-shadow: var(--shadow-md); } → 🟡 shadow in dark mode
-  .dark .card { background: var(--surface-1); } → ✅ surface elevation
+  .dark .card { box-shadow: var(--shadow-md); } →  shadow in dark mode
+  .dark .card { background: var(--surface-1); } → PASS: surface elevation
 ```
 
 ### Tailwind shadow classes
@@ -246,4 +246,4 @@ Look for:
 | shadow-2xl | 0 25px 50px | Overlays |
 | shadow-none | none | Flat / dark mode |
 
-Mixing Tailwind shadow classes inconsistently across same-type elements → 🟡 Warning.
+Mixing Tailwind shadow classes inconsistently across same-type elements →  Warning.

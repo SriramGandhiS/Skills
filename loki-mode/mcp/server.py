@@ -309,7 +309,7 @@ def _emit_tool_event_async(tool_name: str, action: str, **kwargs) -> None:
     Args:
         tool_name: Name of the MCP tool being called
         action: 'start' or 'complete'
-        **kwargs: Additional payload fields (parameters, result_status, error)
+**kwargs: Additional payload fields (parameters, result_status, error)
     """
     import time
 
@@ -343,7 +343,7 @@ def _emit_tool_event_async(tool_name: str, action: str, **kwargs) -> None:
             payload = {
                 'action': action,
                 'tool_name': tool_name,
-                **kwargs
+**kwargs
             }
             event = LokiEvent(
                 type=EventType.COMMAND,
@@ -2250,8 +2250,7 @@ Use loki_state_get and loki_task_queue_list to gather data."""
 
 # ============================================================
 # MANAGED MEMORY TOOLS (PII redaction, read proxy)
-#
-# The actual implementation lives in mcp/managed_tools.py so unit tests can
+# # The actual implementation lives in mcp/managed_tools.py so unit tests can
 # import the core redact function without booting the FastMCP runtime.
 # loki_memory_redact appears below for grep-ability and is a thin wrapper.
 # ============================================================

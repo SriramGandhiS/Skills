@@ -240,9 +240,9 @@ def main() -> int:
             print("[readme-credits] No changed skill files detected.")
 
         for warning in report["warnings"]:
-            print(f"⚠️  {warning}")
+            print(f"WARNING:  {warning}")
         for error in report["errors"]:
-            print(f"❌ {error}")
+            print(f"FAIL: {error}")
 
     return 0 if not report["errors"] else 1
 
@@ -251,5 +251,5 @@ if __name__ == "__main__":
     try:
         sys.exit(main())
     except RuntimeError as exc:
-        print(f"❌ {exc}", file=sys.stderr)
+        print(f"FAIL: {exc}", file=sys.stderr)
         sys.exit(1)

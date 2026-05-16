@@ -5,14 +5,14 @@
 ### "Missing compatibility date"
 **Cause:** Compatibility date not set
 **Solution:**
-❌ Wrong:
+FAIL: Wrong:
 ```capnp
 const worker :Workerd.Worker = (
   serviceWorkerScript = embed "worker.js"
 )
 ```
 
-✅ Correct:
+PASS: Correct:
 ```capnp
 const worker :Workerd.Worker = (
   serviceWorkerScript = embed "worker.js",
@@ -92,7 +92,7 @@ bindings = [(name = "API", service = (external = (address = "api.com:443", http 
 
 **Problem:** V8 flags cause crashes
 **Cause:** Unsafe V8 flags
-**Solution:** ⚠️ V8 flags unsupported in production. Test thoroughly before use.
+**Solution:** WARNING: V8 flags unsupported in production. Test thoroughly before use.
 
 ## Security Issues
 

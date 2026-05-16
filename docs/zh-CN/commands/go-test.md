@@ -40,7 +40,7 @@ REPEAT  → 下一个测试用例
 用户: /go-test 我需要一个验证电子邮箱地址的函数
 
 代理:
-# TDD 会话: 电子邮件验证器
+## TDD 会话: 电子邮件验证器
 
 ## 步骤 1: 定义接口
 
@@ -219,19 +219,19 @@ func setupTestDB(t *testing.T) *sql.DB {
 ## 覆盖率命令
 
 ```bash
-# Basic coverage
+## Basic coverage
 go test -cover ./...
 
-# Coverage profile
+## Coverage profile
 go test -coverprofile=coverage.out ./...
 
-# View in browser
+## View in browser
 go tool cover -html=coverage.out
 
-# Coverage by function
+## Coverage by function
 go tool cover -func=coverage.out
 
-# With race detection
+## With race detection
 go test -race -cover ./...
 ```
 

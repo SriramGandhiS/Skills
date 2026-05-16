@@ -13,19 +13,19 @@
 
 ### Rust 규칙
 
-- 라이브러리 오류에 `thiserror`, 바이너리 크레이트나 테스트에서만 `anyhow` 사용
-- 프로덕션 코드에서 `.unwrap()`이나 `.expect()` 사용 금지 — `?`로 오류 전파
-- 함수 매개변수에 `String`보다 `&str` 선호; 소유권 이전 시 `String` 반환
-- `#![deny(clippy::all, clippy::pedantic)]`과 함께 `clippy` 사용 — 모든 경고 수정
-- 모든 공개 타입에 `Debug` derive; `Clone`, `PartialEq`는 필요할 때만 derive
-- `// SAFETY:` 주석으로 정당화하지 않는 한 `unsafe` 블록 사용 금지
+- 라이브러리 오류에 `thiserror`, 바이너리 크레이트나 테스트에서만`anyhow` 사용
+- 프로덕션 코드에서 `.unwrap()`이나`.expect()`사용 금지 —`?`로 오류 전파
+- 함수 매개변수에 `String`보다`&str`선호; 소유권 이전 시`String` 반환
+- `#![deny(clippy::all, clippy::pedantic)]`과 함께`clippy` 사용 — 모든 경고 수정
+- 모든 공개 타입에 `Debug`derive;`Clone`,`PartialEq`는 필요할 때만 derive
+- `// SAFETY:`주석으로 정당화하지 않는 한`unsafe` 블록 사용 금지
 
 ### 데이터베이스
 
-- 모든 쿼리에 SQLx `query!` 또는 `query_as!` 매크로 사용 — 스키마에 대해 컴파일 타임에 검증
-- 마이그레이션은 `migrations/`에 `sqlx migrate` 사용 — 데이터베이스를 직접 변경하지 않기
+- 모든 쿼리에 SQLx `query!`또는`query_as!` 매크로 사용 — 스키마에 대해 컴파일 타임에 검증
+- 마이그레이션은 `migrations/`에`sqlx migrate` 사용 — 데이터베이스를 직접 변경하지 않기
 - 공유 상태로 `sqlx::Pool<Postgres>` 사용 — 요청마다 커넥션을 생성하지 않기
-- 모든 쿼리에 parameterized placeholder (`$1`, `$2`) 사용 — 문자열 포매팅 사용 금지
+- 모든 쿼리에 parameterized placeholder (`$1`,`$2`) 사용 — 문자열 포매팅 사용 금지
 
 ```rust
 // 나쁜 예: 문자열 보간 (SQL injection 위험)
@@ -41,7 +41,7 @@ let user = sqlx::query_as!(User, "SELECT * FROM users WHERE id = $1", id)
 
 - 모듈별로 `thiserror`를 사용한 도메인 오류 enum 정의
 - `IntoResponse`를 통해 오류를 HTTP 응답으로 매핑 — 내부 세부 정보를 노출하지 않기
-- 구조화된 로깅에 `tracing` 사용 — `println!`이나 `eprintln!` 사용 금지
+- 구조화된 로깅에 `tracing`사용 —`println!`이나`eprintln!` 사용 금지
 
 ```rust
 use thiserror::Error;
@@ -85,12 +85,12 @@ impl IntoResponse for AppError {
 - 각 소스 파일 내의 `#[cfg(test)]` 모듈에서 단위 테스트
 - `tests/` 디렉토리에서 실제 PostgreSQL을 사용한 통합 테스트 (Testcontainers 또는 Docker)
 - 자동 마이그레이션과 롤백이 포함된 데이터베이스 테스트에 `#[sqlx::test]` 사용
-- 외부 서비스 모킹에 `mockall` 또는 `wiremock` 사용
+- 외부 서비스 모킹에 `mockall`또는`wiremock` 사용
 
 ### 코드 스타일
 
 - 최대 줄 길이: 100자 (rustfmt에 의해 강제)
-- import 그룹화: `std`, 외부 크레이트, `crate`/`super` — 빈 줄로 구분
+- import 그룹화: `std`, 외부 크레이트,`crate`/`super` — 빈 줄로 구분
 - 모듈: 모듈당 파일 하나, `mod.rs`는 re-export용으로만 사용
 - 타입: PascalCase, 함수/변수: snake_case, 상수: UPPER_SNAKE_CASE
 
@@ -227,65 +227,65 @@ async fn test_create_user_duplicate_email() {
 ## 환경 변수
 
 ```bash
-# 서버
+## 서버
 HOST=0.0.0.0
 PORT=8080
 RUST_LOG=info,tower_http=debug
 
-# 데이터베이스
+## 데이터베이스
 DATABASE_URL=postgres://user:pass@localhost:5432/myapp
 
-# 인증
+## 인증
 JWT_SECRET=your-secret-key-min-32-chars
 JWT_EXPIRY_HOURS=24
 
-# 선택 사항
+## 선택 사항
 CORS_ALLOWED_ORIGINS=http://localhost:3000
 ```
 
 ## 테스트 전략
 
 ```bash
-# 전체 테스트 실행
+## 전체 테스트 실행
 cargo test
 
-# 출력과 함께 실행
+## 출력과 함께 실행
 cargo test -- --nocapture
 
-# 특정 테스트 모듈 실행
+## 특정 테스트 모듈 실행
 cargo test api_users
 
-# 커버리지 확인 (cargo-llvm-cov 필요)
+## 커버리지 확인 (cargo-llvm-cov 필요)
 cargo llvm-cov --html
 open target/llvm-cov/html/index.html
 
-# 린트
+## 린트
 cargo clippy -- -D warnings
 
-# 포맷 검사
+## 포맷 검사
 cargo fmt -- --check
 ```
 
 ## ECC 워크플로우
 
 ```bash
-# 계획 수립
+## 계획 수립
 /plan "Add order fulfillment with Stripe payment"
 
-# TDD로 개발
+## TDD로 개발
 /tdd                    # cargo test 기반 TDD 워크플로우
 
-# 리뷰
+## 리뷰
 /code-review            # Rust 전용 코드 리뷰
 /security-scan          # 의존성 감사 + unsafe 스캔
 
-# 검증
+## 검증
 /verify                 # 빌드, clippy, 테스트, 보안 스캔
 ```
 
 ## Git 워크플로우
 
-- `feat:` 새 기능, `fix:` 버그 수정, `refactor:` 코드 변경
+- `feat:`새 기능,`fix:`버그 수정,`refactor:` 코드 변경
 - `main`에서 feature 브랜치 생성, PR 필수
-- CI: `cargo fmt --check`, `cargo clippy`, `cargo test`, `cargo audit`
-- 배포: `scratch` 또는 `distroless` 베이스를 사용한 Docker 멀티스테이지 빌드
+- CI: `cargo fmt --check`,`cargo clippy`,`cargo test`,`cargo audit`
+- 배포: `scratch`또는`distroless` 베이스를 사용한 Docker 멀티스테이지 빌드

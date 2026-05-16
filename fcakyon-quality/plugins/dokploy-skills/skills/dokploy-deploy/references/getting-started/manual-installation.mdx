@@ -72,16 +72,16 @@ install_dokploy() {
 
     get_ip() {
         local ip=""
-        
+
         # Try IPv4 first
         # First attempt: ifconfig.io
         ip=$(curl -4s --connect-timeout 5 https://ifconfig.io 2>/dev/null)
-        
+
         # Second attempt: icanhazip.com
         if [ -z "$ip" ]; then
             ip=$(curl -4s --connect-timeout 5 https://icanhazip.com 2>/dev/null)
         fi
-        
+
         # Third attempt: ipecho.net
         if [ -z "$ip" ]; then
             ip=$(curl -4s --connect-timeout 5 https://ipecho.net/plain 2>/dev/null)
@@ -91,12 +91,12 @@ install_dokploy() {
         if [ -z "$ip" ]; then
             # Try IPv6 with ifconfig.io
             ip=$(curl -6s --connect-timeout 5 https://ifconfig.io 2>/dev/null)
-            
+
             # Try IPv6 with icanhazip.com
             if [ -z "$ip" ]; then
                 ip=$(curl -6s --connect-timeout 5 https://icanhazip.com 2>/dev/null)
             fi
-            
+
             # Try IPv6 with ipecho.net
             if [ -z "$ip" ]; then
                 ip=$(curl -6s --connect-timeout 5 https://ipecho.net/plain 2>/dev/null)
@@ -117,7 +117,7 @@ install_dokploy() {
     echo "Using advertise address: $advertise_addr"
 
     docker swarm init --advertise-addr $advertise_addr
-    
+
      if [ $? -ne 0 ]; then
         echo "Error: Failed to initialize Docker Swarm" >&2
         exit 1
@@ -136,10 +136,10 @@ install_dokploy() {
 
     # Generate secure random password for Postgres
     POSTGRES_PASSWORD=$(openssl rand -base64 32 | tr -d "=+/" | cut -c1-32)
-    
+
     # Store password as Docker Secret (encrypted and secure)
     echo "$POSTGRES_PASSWORD" | docker secret create dokploy_postgres_password - 2>/dev/null || true
-    
+
     echo "Generated secure database credentials (stored in Docker Secrets)"
 
     docker service create \
@@ -230,7 +230,7 @@ install_dokploy() {
 
 update_dokploy() {
     echo "Updating Dokploy..."
-    
+
     # Pull the latest image
     docker pull dokploy/dokploy:latest
 
@@ -253,7 +253,7 @@ This script includes checks for common pitfalls, installs Docker if it’s not a
 
 This structured format clearly lays out the prerequisites, steps, and post-installation information, making it user-friendly and accessible for those performing manual installations.
 
-## Customize install 
+## Customize install
 #### Customize swarm advertise address
 
 The --advertise-addr parameter in the docker swarm init command specifies the IP address or interface that the Docker Swarm manager node should advertise to other nodes in the Swarm. This address is used by other nodes to communicate with the manager.
@@ -268,7 +268,7 @@ To customize the --advertise-addr parameter, replace the line: `advertise_addr=$
 
 ## Proxmox LXC Considerations
 
-If you're installing Dokploy in a Proxmox LXC container, the installation script automatically detects the environment and adds `--endpoint-mode dnsrr` to Docker services for compatibility. 
+If you're installing Dokploy in a Proxmox LXC container, the installation script automatically detects the environment and adds `--endpoint-mode dnsrr` to Docker services for compatibility.
 
 For manual installations in LXC, add this flag to your service creation commands:
 
@@ -280,7 +280,7 @@ docker service create \
 ```
 
 <Callout type='warn'>
-  **Note:** The `--endpoint-mode dnsrr` flag is required for Docker services to work properly in Proxmox LXC containers due to networking limitations.
+**Note:** The `--endpoint-mode dnsrr` flag is required for Docker services to work properly in Proxmox LXC containers due to networking limitations.
 </Callout>
 
 ## Existing Docker swarm
@@ -401,5 +401,5 @@ docker network connect dokploy-network dokploy-traefik
 ```
 
 <Callout type='warn'>
-  **Breaking changes:** Some Traefik versions introduce breaking changes that may not be compatible with the configuration and structure Dokploy uses. Before upgrading, check the [Traefik release notes](https://github.com/traefik/traefik/releases) and [Dokploy releases](https://github.com/Dokploy/dokploy/releases) for any announced breaking changes. Using an incompatible version can cause routing issues (e.g. 404s for applications using domains).
+**Breaking changes:** Some Traefik versions introduce breaking changes that may not be compatible with the configuration and structure Dokploy uses. Before upgrading, check the [Traefik release notes](https://github.com/traefik/traefik/releases) and [Dokploy releases](https://github.com/Dokploy/dokploy/releases) for any announced breaking changes. Using an incompatible version can cause routing issues (e.g. 404s for applications using domains).
 </Callout>

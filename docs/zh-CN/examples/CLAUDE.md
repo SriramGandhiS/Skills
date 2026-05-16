@@ -86,11 +86,11 @@ try {
 ## 环境变量
 
 ```bash
-# Required
+## Required
 DATABASE_URL=
 API_KEY=
 
-# Optional
+## Optional
 DEBUG=false
 ```
 
@@ -103,7 +103,7 @@ DEBUG=false
 
 ## Git 工作流
 
-- 约定式提交：`feat:`, `fix:`, `refactor:`, `docs:`, `test:`
+- 约定式提交：`feat:`,`fix:`,`refactor:`,`docs:`,`test:`
 - 切勿直接提交到主分支
 - 合并请求需要审核
 - 合并前所有测试必须通过

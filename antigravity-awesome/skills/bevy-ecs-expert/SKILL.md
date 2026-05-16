@@ -103,7 +103,7 @@ fn setup(mut commands: Commands, asset_server: Res<AssetServer>) {
     commands.spawn((
         Player,
         Velocity { x: 10.0, y: 0.0 },
-        Sprite::from_image(asset_server.load("player.png")), 
+        Sprite::from_image(asset_server.load("player.png")),
     ));
 }
 ```
@@ -124,11 +124,11 @@ fn enemy_behavior(
 
 ## Best Practices
 
-- ✅ **Do:** Use `Query` filters (`With`, `Without`, `Changed`) to reduce iteration count.
-- ✅ **Do:** Prefer `Res` over `ResMut` when read-only access is sufficient to allow parallel execution.
-- ✅ **Do:** Use `Bundle` to spawn complex entities atomically.
-- ❌ **Don't:** Store heavy logic inside Components; keep them as pure data.
-- ❌ **Don't:** Use `RefCell` or interior mutability inside components; let the ECS handle borrowing.
+- PASS: **Do:** Use `Query` filters (`With`, `Without`, `Changed`) to reduce iteration count.
+- PASS: **Do:** Prefer `Res` over `ResMut` when read-only access is sufficient to allow parallel execution.
+- PASS: **Do:** Use `Bundle` to spawn complex entities atomically.
+- FAIL: **Don't:** Store heavy logic inside Components; keep them as pure data.
+- FAIL: **Don't:** Use `RefCell` or interior mutability inside components; let the ECS handle borrowing.
 
 ## Troubleshooting
 

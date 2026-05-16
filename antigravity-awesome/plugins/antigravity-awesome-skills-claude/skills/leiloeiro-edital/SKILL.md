@@ -86,9 +86,9 @@ Data/Hora: ___________
 - Vaga de garagem inclusa (se sim, matrícula própria ou vinculada?)
 
 **Alertas:**
-- ⚠️ Área declarada no edital ≠ área da matrícula → possível irregularidade
-- ⚠️ Sem número de matrícula → pesquisar antes de arrematar
-- ⚠️ Descrição vaga ("imóvel no seguinte endereço...") → solicitar laudo de avaliação
+- WARNING: Área declarada no edital ≠ área da matrícula → possível irregularidade
+- WARNING: Sem número de matrícula → pesquisar antes de arrematar
+- WARNING: Descrição vaga ("imóvel no seguinte endereço...") → solicitar laudo de avaliação
 
 ---
 
@@ -109,10 +109,10 @@ Avaliador responsável:             _______________
 - Deságio real (comparado ao valor de mercado estimado): ____%
 
 **Alertas:**
-- ⚠️ Avaliação com mais de 12 meses → risco de defasagem — pedir reavaliação possível (Art. 873 CPC)
-- ⚠️ VAN muito abaixo do mercado → investigar laudos ou favorecimento
-- ⚠️ VAN muito acima do mercado → leilão não vai arrematar no 1º; aguardar 2º
-- ⚠️ Leilão extrajudicial 2º: lance mínimo = dívida → pode ser MUITO abaixo do valor de mercado (ótima oportunidade)
+- WARNING: Avaliação com mais de 12 meses → risco de defasagem — pedir reavaliação possível (Art. 873 CPC)
+- WARNING: VAN muito abaixo do mercado → investigar laudos ou favorecimento
+- WARNING: VAN muito acima do mercado → leilão não vai arrematar no 1º; aguardar 2º
+- WARNING: Leilão extrajudicial 2º: lance mínimo = dívida → pode ser MUITO abaixo do valor de mercado (ótima oportunidade)
 
 ---
 
@@ -122,7 +122,7 @@ Avaliador responsável:             _______________
 - [ ] Imóvel desocupado (pronto para uso)
 - [ ] Imóvel ocupado pelo executado/devedor
 - [ ] Imóvel ocupado por terceiro (locatário ou invasor)
-- [ ] Situação omissa no edital (⚠️ RISCO)
+- [ ] Situação omissa no edital (WARNING: RISCO)
 
 **Impacto da Ocupação:**
 
@@ -265,10 +265,10 @@ Lance arrematado:                  R$ _____________
 ```
 SCORE DE RISCO: ____ / 14
 
-0-2: BAIXO RISCO ✅
-3-6: MÉDIO RISCO ⚠️
-7-10: ALTO RISCO 🔴
-11-14: MUITO ALTO RISCO ❌
+0-2: BAIXO RISCO PASS:
+3-6: MÉDIO RISCO WARNING:
+7-10: ALTO RISCO
+11-14: MUITO ALTO RISCO FAIL:
 ```
 
 ## Veredicto Final Do Edital
@@ -287,12 +287,12 @@ VALOR DE MERCADO ESTIMADO: R$ ___________
 MARGEM DE SEGURANÇA: R$ ___________
 
 PRINCIPAIS PONTOS POSITIVOS:
-✅ _______________
-✅ _______________
+PASS: _______________
+PASS: _______________
 
 PRINCIPAIS ALERTAS:
-⚠️ _______________
-⚠️ _______________
+WARNING: _______________
+WARNING: _______________
 
 AÇÃO RECOMENDADA:
 [ ] ARREMATAR — Oportunidade clara

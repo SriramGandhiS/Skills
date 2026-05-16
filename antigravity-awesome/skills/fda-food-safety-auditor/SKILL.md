@@ -53,10 +53,10 @@ Required Actions:
 
 ## Best Practices
 
-- ✅ **Do:** Provide exact monitoring logs with temperatures, pH values, or times.
-- ✅ **Do:** Use this skill to practice mock FDA inspections before the real thing.
-- ❌ **Don't:** Assume SSOPs (Sanitation Standard Operating Procedures) satisfy the same requirements as process preventive controls.
-- ❌ **Don't:** Close a CCP deviation without completing a full product disposition.
+- PASS: **Do:** Provide exact monitoring logs with temperatures, pH values, or times.
+- PASS: **Do:** Use this skill to practice mock FDA inspections before the real thing.
+- FAIL: **Don't:** Assume SSOPs (Sanitation Standard Operating Procedures) satisfy the same requirements as process preventive controls.
+- FAIL: **Don't:** Close a CCP deviation without completing a full product disposition.
 
 ## Limitations
 - Use this skill only when the task clearly matches the scope described above.

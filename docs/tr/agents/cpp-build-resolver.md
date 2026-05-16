@@ -45,10 +45,10 @@ cppcheck --enable=all src/ 2>/dev/null || echo "cppcheck not available"
 | `undefined reference to X` | Eksik uygulama veya kütüphane | Kaynak dosya ekle veya kütüphaneye bağla |
 | `no matching function for call` | Yanlış argüman türleri | Türleri düzelt veya overload ekle |
 | `expected ';'` | Sözdizimi hatası | Sözdizimini düzelt |
-| `use of undeclared identifier` | Eksik include veya yazım hatası | `#include` ekle veya adı düzelt |
-| `multiple definition of` | Yinelenen sembol | `inline` kullan, .cpp'ye taşı veya include guard ekle |
+| `use of undeclared identifier`| Eksik include veya yazım hatası |`#include` ekle veya adı düzelt |
+| `multiple definition of`| Yinelenen sembol |`inline` kullan, .cpp'ye taşı veya include guard ekle |
 | `cannot convert X to Y` | Tür uyuşmazlığı | Cast ekle veya türleri düzelt |
-| `incomplete type` | Tam tür gerektiği yerde forward declaration kullanımı | `#include` ekle |
+| `incomplete type`| Tam tür gerektiği yerde forward declaration kullanımı |`#include` ekle |
 | `template argument deduction failed` | Yanlış template argümanları | Template parametrelerini düzelt |
 | `no member named X in Y` | Yazım hatası veya yanlış sınıf | Üye adını düzelt |
 | `CMake Error` | Yapılandırma sorunu | CMakeLists.txt'yi düzelt |

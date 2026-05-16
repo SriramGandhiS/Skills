@@ -2,8 +2,7 @@
 #===============================================================================
 # Loki Mode - Dogfooding Statistics
 # Calculates what percentage of loki-mode code was written by loki-mode itself
-#
-# Usage: ./scripts/dogfood-stats.sh [--json]
+# # Usage: ./scripts/dogfood-stats.sh [--json]
 #===============================================================================
 
 set -euo pipefail

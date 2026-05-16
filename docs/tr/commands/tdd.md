@@ -52,7 +52,7 @@ TEKRARLA: Bir sonraki özellik/senaryo
 Kullanıcı: /tdd Piyasa likidite skorunu hesaplamak için bir fonksiyona ihtiyacım var
 
 Agent (tdd-guide):
-# TDD Oturumu: Piyasa Likidite Skoru Hesaplayıcı
+## TDD Oturumu: Piyasa Likidite Skoru Hesaplayıcı
 
 ## Adım 1: Interface Tanımla (SCAFFOLD)
 

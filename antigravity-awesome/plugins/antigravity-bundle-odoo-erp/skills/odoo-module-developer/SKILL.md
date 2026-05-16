@@ -86,13 +86,13 @@ class HospitalPatient(models.Model):
 
 ## Best Practices
 
-- ✅ **Do:** Always prefix your model `_name` with a namespace (e.g., `hospital.patient`).
-- ✅ **Do:** Use `_inherit = ['mail.thread']` to add chatter/logging automatically.
-- ✅ **Do:** Specify `version` in manifest as `{odoo_version}.{major}.{minor}.{patch}`.
-- ✅ **Do:** Set `'author'` and `'website'` in `__manifest__.py` so your module is identifiable in the Apps list.
-- ❌ **Don't:** Modify core Odoo model files directly — always use `_inherit`.
-- ❌ **Don't:** Forget to add new models to `ir.model.access.csv` or users will get access errors.
-- ❌ **Don't:** Use spaces or uppercase in folder names — Odoo requires snake_case module names.
+- PASS: **Do:** Always prefix your model `_name` with a namespace (e.g., `hospital.patient`).
+- PASS: **Do:** Use `_inherit = ['mail.thread']` to add chatter/logging automatically.
+- PASS: **Do:** Specify `version` in manifest as `{odoo_version}.{major}.{minor}.{patch}`.
+- PASS: **Do:** Set `'author'` and `'website'` in `__manifest__.py` so your module is identifiable in the Apps list.
+- FAIL: **Don't:** Modify core Odoo model files directly — always use `_inherit`.
+- FAIL: **Don't:** Forget to add new models to `ir.model.access.csv` or users will get access errors.
+- FAIL: **Don't:** Use spaces or uppercase in folder names — Odoo requires snake_case module names.
 
 ## Limitations
 

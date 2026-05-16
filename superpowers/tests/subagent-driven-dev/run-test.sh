@@ -3,8 +3,8 @@
 # Usage: ./run-test.sh <test-name> [--plugin-dir <path>]
 #
 # Example:
-#   ./run-test.sh go-fractals
-#   ./run-test.sh svelte-todo --plugin-dir /path/to/superpowers
+# ./run-test.sh go-fractals
+# ./run-test.sh svelte-todo --plugin-dir /path/to/superpowers
 
 set -e
 

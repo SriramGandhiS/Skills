@@ -75,7 +75,7 @@ Created TestWavDecoderStereoChannelHandling which shows:
 
 Despite extensive investigation with o3, Gemini Pro, continuous thinking, and multiple approaches:
 - Fixed the obvious stereo bug - made it worse
-- Fixed buffer calculations - no improvement  
+- Fixed buffer calculations - no improvement
 - Tried streaming like malgo example - still crackling
 - The fundamental issue remains unidentified
 
@@ -121,7 +121,7 @@ The key question: Why would two completely different approaches (pre-loaded memo
 playback.go:307:     device, err := malgo.InitDevice(...)
 playback.go:352:     device.Uninit()
 
-streaming_player.go:108: device, err := malgo.InitDevice(...)  
+streaming_player.go:108: device, err := malgo.InitDevice(...)
 streaming_player.go:112: defer device.Uninit()
 ```
 

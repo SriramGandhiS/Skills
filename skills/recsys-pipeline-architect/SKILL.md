@@ -1,4 +1,4 @@
-﻿---
+---
 name: recsys-pipeline-architect
 description: Design composable recommendation, ranking, and feed pipelines using the six-stage Sourceâ†’Hydratorâ†’Filterâ†’Scorerâ†’Selectorâ†’SideEffect framework popularized by xAI's open-sourced For You algorithm. Use this skill whenever the user is building any system that picks "the top K items for a (user, context)" â€” social feeds, content CMSs, RAG rerankers, task prioritizers, notification triage, search reranking, ad ranking.
 origin: community
@@ -8,7 +8,7 @@ origin: community
 
 A spec-and-scaffold skill for building composable recommendation, ranking, and feed pipelines. It encodes the **six-stage pattern** â€” Source â†’ Hydrator â†’ Filter â†’ Scorer â†’ Selector â†’ SideEffect â€” popularized by xAI's open-sourced [For You algorithm](https://github.com/xai-org/x-algorithm) (Apache 2.0). This skill is an independent reimplementation of the pattern (MIT) â€” no code copied from the original.
 
-Upstream: https://github.com/mturac/recsys-pipeline-architect
+Upstream: <https://github.com/mturac/recsys-pipeline-architect>
 
 ## When to Use
 
@@ -100,7 +100,7 @@ Default to isolation. Joint only when there's a specific reason (e.g., explicit 
 
 ## Upstream contents
 
-The upstream repository at https://github.com/mturac/recsys-pipeline-architect ships:
+The upstream repository at <https://github.com/mturac/recsys-pipeline-architect> ships:
 
 - Full `SKILL.md` with the complete 8-step workflow
 - 5 load-on-demand reference docs: interfaces in 4 languages (TS/Go/Python/Rust), multi-action scoring pattern, candidate isolation, filter cookbook (12 patterns), scorer cookbook (weighted sum, MMR, diversity penalty, position debiasing)

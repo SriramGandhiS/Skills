@@ -1,10 +1,8 @@
 #!/usr/bin/env bash
 # Test learning signal emission from bash helper
-#
-# This test verifies that the learning/emit.sh helper correctly
+# # This test verifies that the learning/emit.sh helper correctly
 # emits signals via the Python learning emitter.
-#
-# Run: ./tests/test-learning-emit.sh
+# # Run: ./tests/test-learning-emit.sh
 
 set -euo pipefail
 

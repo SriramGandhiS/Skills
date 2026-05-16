@@ -4,8 +4,7 @@
 # PRD paths and issue URLs. If T3 has not landed, this test confirms the
 # existing separate `loki start` (PRD) and `loki run` (issue) commands still
 # exist and respond to --help without crashing.
-#
-# We do not actually execute a full loki run because that requires a provider,
+# # We do not actually execute a full loki run because that requires a provider,
 # an API key, and network access. We check dispatch-level behavior only.
 
 set -u

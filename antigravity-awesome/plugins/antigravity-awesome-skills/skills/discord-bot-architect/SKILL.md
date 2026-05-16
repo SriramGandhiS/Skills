@@ -335,9 +335,9 @@ module.exports = {
           .setMinValues(1)
           .setMaxValues(3)
           .addOptions([
-            { label: 'Developer', value: 'dev', emoji: '💻' },
-            { label: 'Designer', value: 'design', emoji: '🎨' },
-            { label: 'Community', value: 'community', emoji: '🎉' }
+            { label: 'Developer', value: 'dev', emoji: '' },
+            { label: 'Designer', value: 'design', emoji: '' },
+            { label: 'Community', value: 'community', emoji: '' }
           ])
       );
 
@@ -452,8 +452,8 @@ async def confirm_cmd(ctx: discord.ApplicationContext):
 class RoleSelect(discord.ui.Select):
     def __init__(self):
         options = [
-            discord.SelectOption(label="Developer", value="dev", emoji="💻"),
-            discord.SelectOption(label="Designer", value="design", emoji="🎨"),
+            discord.SelectOption(label="Developer", value="dev", emoji=""),
+            discord.SelectOption(label="Designer", value="design", emoji=""),
         ]
         super().__init__(
             placeholder="Select roles...",

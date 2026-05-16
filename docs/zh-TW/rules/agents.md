@@ -29,13 +29,13 @@
 對獨立操作總是使用平行 Task 執行：
 
 ```markdown
-# 好：平行執行
+## 好：平行執行
 平行啟動 3 個 agents：
 1. Agent 1：auth.ts 的安全性分析
 2. Agent 2：快取系統的效能審查
 3. Agent 3：utils.ts 的型別檢查
 
-# 不好：不必要的循序
+## 不好：不必要的循序
 先 agent 1，然後 agent 2，然後 agent 3
 ```
 

@@ -28,13 +28,13 @@ try:
     import weaviate
     from weaviate.auth import AuthApiKey
 except ImportError:
-    print("❌ weaviate-client not installed!")
+    print("FAIL: weaviate-client not installed!")
     print("Install it with: pip install weaviate-client")
     sys.exit(1)
 
 def connect_to_weaviate(url: str, api_key: str = None):
     """Connect to Weaviate instance."""
-    print(f"\n🔗 Connecting to Weaviate at {url}...")
+    print(f"\n Connecting to Weaviate at {url}...")
 
     try:
         if api_key:
@@ -50,15 +50,15 @@ def connect_to_weaviate(url: str, api_key: str = None):
 
         # Check if ready
         if client.is_ready():
-            print("✅ Weaviate is ready!\n")
+            print("PASS: Weaviate is ready!\n")
             return client
         else:
-            print("❌ Weaviate is not ready")
+            print("FAIL: Weaviate is not ready")
             sys.exit(1)
 
     except Exception as e:
-        print(f"❌ Connection failed: {e}")
-        print("\n💡 Tips:")
+        print(f"FAIL: Connection failed: {e}")
+        print("\n Tips:")
         print("  - For local: Ensure Docker is running (docker ps | grep weaviate)")
         print("  - For cloud: Check your URL and API key")
         sys.exit(1)
@@ -68,7 +68,7 @@ def load_skill_data(filepath: str = "output/react-weaviate.json"):
     path = Path(filepath)
 
     if not path.exists():
-        print(f"❌ Skill file not found: {filepath}")
+        print(f"FAIL: Skill file not found: {filepath}")
         print("Run '1_generate_skill.py' first!")
         sys.exit(1)
 
@@ -79,32 +79,32 @@ def create_schema(client, schema: dict):
     """Create Weaviate schema (class + properties)."""
     class_name = schema["class"]
 
-    print(f"📊 Creating schema: {class_name}")
+    print(f" Creating schema: {class_name}")
 
     # Check if class already exists
     existing_schema = client.schema.get()
     class_exists = any(c["class"] == class_name for c in existing_schema.get("classes", []))
 
     if class_exists:
-        print(f"⚠️  Class '{class_name}' already exists")
+        print(f"WARNING:  Class '{class_name}' already exists")
         response = input("Delete and recreate? [y/N]: ")
         if response.lower() == "y":
             client.schema.delete_class(class_name)
-            print(f"🗑️  Deleted existing class")
+            print(f"  Deleted existing class")
         else:
             print("Skipping schema creation")
             return
 
     # Create the class
     client.schema.create_class(schema)
-    print("✅ Schema created successfully!\n")
+    print("PASS: Schema created successfully!\n")
 
 def upload_objects(client, class_name: str, objects: list):
     """Batch upload objects to Weaviate."""
     total = len(objects)
     batch_size = 100
 
-    print(f"📤 Uploading {total} objects in batches...")
+    print(f" Uploading {total} objects in batches...")
 
     with client.batch as batch:
         batch.batch_size = batch_size
@@ -120,21 +120,21 @@ def upload_objects(client, class_name: str, objects: list):
             # Print progress
             if (i + 1) % batch_size == 0:
                 batch_num = (i + 1) // batch_size
-                print(f"✅ Batch {batch_num} uploaded ({i + 1}/{total} objects)")
+                print(f"PASS: Batch {batch_num} uploaded ({i + 1}/{total} objects)")
 
     # Final batch
     final_count = total % batch_size
     if final_count > 0:
         batch_num = (total // batch_size) + 1
-        print(f"✅ Batch {batch_num} uploaded ({final_count} objects)")
+        print(f"PASS: Batch {batch_num} uploaded ({final_count} objects)")
 
-    print(f"\n✅ Successfully uploaded {total} documents to Weaviate")
+    print(f"\nPASS: Successfully uploaded {total} documents to Weaviate")
 
 def verify_upload(client, class_name: str):
     """Verify objects were uploaded correctly."""
     result = client.query.aggregate(class_name).with_meta_count().do()
     count = result["data"]["Aggregate"][class_name][0]["meta"]["count"]
-    print(f"🔍 Class '{class_name}' now contains {count} objects")
+    print(f" Class '{class_name}' now contains {count} objects")
 
 def main():
     parser = argparse.ArgumentParser(description="Upload skill to Weaviate")
@@ -179,7 +179,7 @@ def main():
     # Verify
     verify_upload(client, data["class_name"])
 
-    print("\n✅ Upload complete! Next step: python 3_query_example.py")
+    print("\nPASS: Upload complete! Next step: python 3_query_example.py")
 
 if __name__ == "__main__":
     main()

@@ -46,12 +46,12 @@ public static class TokenEnrichmentFunction
         [WebJobsAuthenticationEventsTrigger] WebJobsTokenIssuanceStartRequest request,
         ILogger log)
     {
-        log.LogInformation("Token issuance event for user: {UserId}", 
+        log.LogInformation("Token issuance event for user: {UserId}",
             request.Data?.AuthenticationContext?.User?.Id);
 
         // Create response with custom claims
         var response = new WebJobsTokenIssuanceStartResponse();
-        
+
         // Add claims to the token
         response.Actions.Add(new WebJobsProvideClaimsForToken
         {
@@ -91,7 +91,7 @@ public static class TokenEnrichmentWithExternalData
         ILogger log)
     {
         string? userId = request.Data?.AuthenticationContext?.User?.Id;
-        
+
         if (string.IsNullOrEmpty(userId))
         {
             log.LogWarning("No user ID in request");
@@ -100,7 +100,7 @@ public static class TokenEnrichmentWithExternalData
 
         // Fetch user data from external API
         var userProfile = await GetUserProfileAsync(userId);
-        
+
         var response = new WebJobsTokenIssuanceStartResponse();
         response.Actions.Add(new WebJobsProvideClaimsForToken
         {
@@ -194,7 +194,7 @@ public static class AttributeCollectionSubmitFunction
 
         // Access submitted attributes
         var attributes = request.Data?.UserSignUpInfo?.Attributes;
-        
+
         string? email = attributes?["email"]?.ToString();
         string? displayName = attributes?["displayName"]?.ToString();
 
@@ -273,7 +273,7 @@ public static class CustomOtpFunction
         {
             // Send OTP via your SMS provider
             await SendSmsAsync(phoneNumber, $"Your verification code is: {otp}");
-            
+
             response.Actions.Add(new WebJobsOnOtpSendSuccess());
             log.LogInformation("OTP sent successfully to {PhoneNumber}", phoneNumber);
         }
@@ -415,7 +415,7 @@ public static WebJobsAuthenticationEventResponse Run(
     catch (Exception ex)
     {
         log.LogError(ex, "Error processing token issuance event");
-        
+
         // Return empty response - authentication continues without custom claims
         // Do NOT throw - this would fail the authentication
         return new WebJobsTokenIssuanceStartResponse();

@@ -1,4 +1,4 @@
-﻿---
+---
 name: healthcare-eval-harness
 description: Patient safety evaluation harness for healthcare application deployments. Automated test suites for CDSS accuracy, PHI exposure, clinical workflow integrity, and integration compliance. Blocks deployments on safety failures.
 origin: Health1 Super Speciality Hospitals â€” contributed by Dr. Keyur Patel
@@ -24,7 +24,7 @@ Automated verification system for healthcare application deployments. A single C
 
 The eval harness runs five test categories in order. The first three (CDSS Accuracy, PHI Exposure, Data Integrity) are CRITICAL gates requiring 100% pass rate â€” a single failure blocks deployment. The remaining two (Clinical Workflow, Integration) are HIGH gates requiring 95%+ pass rate.
 
-Each category maps to a Jest test path pattern. The CI pipeline runs CRITICAL gates with `--bail` (stop on first failure) and enforces coverage thresholds with `--coverage --coverageThreshold`.
+Each category maps to a Jest test path pattern. The CI pipeline runs CRITICAL gates with `--bail`(stop on first failure) and enforces coverage thresholds with`--coverage --coverageThreshold`.
 
 ### Eval Categories
 
@@ -184,7 +184,7 @@ jq '{
   total: (.numTotalTests // 0),
   rate: (if (.numTotalTests // 0) == 0 then 0 else ((.numPassedTests // 0) / (.numTotalTests // 1) * 100) end)
 }' "$tmp_json"
-# Expected: { "passed": 21, "total": 22, "rate": 95.45 }
+## Expected: { "passed": 21, "total": 22, "rate": 95.45 }
 ```
 
 ### Example 3: Eval Report

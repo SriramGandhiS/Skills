@@ -13,19 +13,19 @@
 
 ### Rust 约定
 
-* 库错误使用 `thiserror`，仅在二进制 crate 或测试中使用 `anyhow`
-* 生产代码中不使用 `.unwrap()` 或 `.expect()` — 使用 `?` 传播错误
-* 函数参数中优先使用 `&str` 而非 `String`；所有权转移时返回 `String`
-* 使用 `clippy` 和 `#![deny(clippy::all, clippy::pedantic)]` — 修复所有警告
-* 在所有公共类型上派生 `Debug`；仅在需要时派生 `Clone`、`PartialEq`
-* 除非有 `// SAFETY:` 注释说明理由，否则不使用 `unsafe` 块
+* 库错误使用 `thiserror`，仅在二进制 crate 或测试中使用`anyhow`
+* 生产代码中不使用 `.unwrap()`或`.expect()`— 使用`?` 传播错误
+* 函数参数中优先使用 `&str`而非`String`；所有权转移时返回`String`
+* 使用 `clippy`和`#![deny(clippy::all, clippy::pedantic)]` — 修复所有警告
+* 在所有公共类型上派生 `Debug`；仅在需要时派生`Clone`、`PartialEq`
+* 除非有 `// SAFETY:`注释说明理由，否则不使用`unsafe` 块
 
 ### 数据库
 
-* 所有查询使用 SQLx 的 `query!` 或 `query_as!` 宏 — 针对模式进行编译时验证
-* 在 `migrations/` 中使用 `sqlx migrate` 进行迁移 — 切勿直接修改数据库
+* 所有查询使用 SQLx 的 `query!`或`query_as!` 宏 — 针对模式进行编译时验证
+* 在 `migrations/`中使用`sqlx migrate` 进行迁移 — 切勿直接修改数据库
 * 使用 `sqlx::Pool<Postgres>` 作为共享状态 — 切勿为每个请求创建连接
-* 所有查询使用参数化占位符 (`$1`, `$2`) — 切勿使用字符串格式化
+* 所有查询使用参数化占位符 (`$1`,`$2`) — 切勿使用字符串格式化
 
 ```rust
 // BAD: String interpolation (SQL injection risk)
@@ -41,7 +41,7 @@ let user = sqlx::query_as!(User, "SELECT * FROM users WHERE id = $1", id)
 
 * 为每个模块使用 `thiserror` 定义一个领域错误枚举
 * 通过 `IntoResponse` 将错误映射到 HTTP 响应 — 切勿暴露内部细节
-* 使用 `tracing` 进行结构化日志记录 — 切勿使用 `println!` 或 `eprintln!`
+* 使用 `tracing`进行结构化日志记录 — 切勿使用`println!`或`eprintln!`
 
 ```rust
 use thiserror::Error;
@@ -79,7 +79,7 @@ impl IntoResponse for AppError {
 * 单元测试放在每个源文件内的 `#[cfg(test)]` 模块中
 * 集成测试放在 `tests/` 目录中，使用真实的 PostgreSQL (Testcontainers 或 Docker)
 * 使用 `#[sqlx::test]` 进行数据库测试，包含自动迁移和回滚
-* 使用 `mockall` 或 `wiremock` 模拟外部服务
+* 使用 `mockall`或`wiremock` 模拟外部服务
 
 ### 代码风格
 
@@ -221,65 +221,65 @@ async fn test_create_user_duplicate_email() {
 ## 环境变量
 
 ```bash
-# Server
+## Server
 HOST=0.0.0.0
 PORT=8080
 RUST_LOG=info,tower_http=debug
 
-# Database
+## Database
 DATABASE_URL=postgres://user:pass@localhost:5432/myapp
 
-# Auth
+## Auth
 JWT_SECRET=your-secret-key-min-32-chars
 JWT_EXPIRY_HOURS=24
 
-# Optional
+## Optional
 CORS_ALLOWED_ORIGINS=http://localhost:3000
 ```
 
 ## 测试策略
 
 ```bash
-# Run all tests
+## Run all tests
 cargo test
 
-# Run with output
+## Run with output
 cargo test -- --nocapture
 
-# Run specific test module
+## Run specific test module
 cargo test api_users
 
-# Check coverage (requires cargo-llvm-cov)
+## Check coverage (requires cargo-llvm-cov)
 cargo llvm-cov --html
 open target/llvm-cov/html/index.html
 
-# Lint
+## Lint
 cargo clippy -- -D warnings
 
-# Format check
+## Format check
 cargo fmt -- --check
 ```
 
 ## ECC 工作流
 
 ```bash
-# Planning
+## Planning
 /plan "Add order fulfillment with Stripe payment"
 
-# Development with TDD
+## Development with TDD
 /tdd                    # cargo test-based TDD workflow
 
-# Review
+## Review
 /code-review            # Rust-specific code review
 /security-scan          # Dependency audit + unsafe scan
 
-# Verification
+## Verification
 /verify                 # Build, clippy, test, security scan
 ```
 
 ## Git 工作流
 
-* `feat:` 新功能，`fix:` 错误修复，`refactor:` 代码变更
+* `feat:`新功能，`fix:`错误修复，`refactor:` 代码变更
 * 从 `main` 创建功能分支，需要 PR
 * CI：`cargo fmt --check`、`cargo clippy`、`cargo test`、`cargo audit`
-* 部署：使用 `scratch` 或 `distroless` 基础镜像的 Docker 多阶段构建
+* 部署：使用 `scratch`或`distroless` 基础镜像的 Docker 多阶段构建

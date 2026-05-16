@@ -38,7 +38,7 @@ schedule   summarises Sheets /
 
 | 层级 | 工具 | 原因 |
 |---|---|---|
-| **抓取** | `requests` + `BeautifulSoup` | 无成本，覆盖80%的公共网站 |
+| **抓取** | `requests`+`BeautifulSoup` | 无成本，覆盖80%的公共网站 |
 | **JS渲染的网站** | `playwright` (免费) | 当HTML抓取失败时使用 |
 | **AI丰富** | 通过REST API的Gemini Flash | 500次请求/天，100万令牌/天 — 免费 |
 | **存储** | Notion API | 免费层级，用于审查的优秀UI |
@@ -61,11 +61,11 @@ gemini-flash-lite-latest (fallback)
 切勿为每个项目单独调用LLM。始终批量处理：
 
 ```python
-# BAD: 33 API calls for 33 items
+## BAD: 33 API calls for 33 items
 for item in items:
     result = call_ai(item)  # 33 calls → hits rate limit
 
-# GOOD: 7 API calls for 33 items (batch size 5)
+## GOOD: 7 API calls for 33 items (batch size 5)
 for batch in chunks(items, size=5):
     results = call_ai(batch)  # 7 calls → stays within free tier
 ```
@@ -138,7 +138,7 @@ my-agent/
 适用于任何数据源的模板：
 
 ```python
-# scraper/sources/my_source.py
+## scraper/sources/my_source.py
 """
 [Source Name] — scrapes [what] from [where].
 Method: [REST API / HTML scraping / RSS feed]
@@ -206,7 +206,7 @@ for item in root.findall(".//item"):
 ### 步骤 4: 构建Gemini AI客户端
 
 ````python
-# ai/client.py
+## ai/client.py
 import os, json, time, requests
 
 _last_call = 0.0
@@ -278,7 +278,7 @@ def _parse(resp) -> dict:
 ### 步骤 5: 构建AI管道（批量）
 
 ```python
-# ai/pipeline.py
+## ai/pipeline.py
 import json
 import yaml
 from pathlib import Path
@@ -323,18 +323,18 @@ def _build_prompt(batch, context, preference_prompt, config):
 
     return f"""Analyse these {len(batch)} items and return a JSON object.
 
-# Items
+## Items
 {items_text}
 
-# User Context
+## User Context
 {context[:800] if context else "Not provided"}
 
-# User Priorities
+## User Priorities
 {chr(10).join(f"- {p}" for p in priorities)}
 
 {preference_prompt}
 
-# Instructions
+## Instructions
 Return: {{"analyses": [{{"score": <0-100>, "summary": "<2 sentences>", "notes": "<why this matches or doesn't>"}} for each item in order]}}
 Be concise. Score 90+=excellent match, 70-89=good, 50-69=ok, <50=weak."""
 ```
@@ -344,7 +344,7 @@ Be concise. Score 90+=excellent match, 70-89=good, 50-69=ok, <50=weak."""
 ### 步骤 6: 构建反馈学习系统
 
 ```python
-# ai/memory.py
+## ai/memory.py
 """Learn from user decisions to improve future scoring."""
 import json
 from pathlib import Path
@@ -386,7 +386,7 @@ def build_preference_prompt(feedback: dict, max_examples: int = 15) -> str:
 ### 步骤 7: 构建存储（Notion示例）
 
 ```python
-# storage/notion_sync.py
+## storage/notion_sync.py
 import os
 from notion_client import Client
 from notion_client.errors import APIResponseError
@@ -453,7 +453,7 @@ def sync(db_id: str, items: list[dict]) -> tuple[int, int]:
 ### 步骤 8: 在 main.py 中编排
 
 ```python
-# scraper/main.py
+## scraper/main.py
 import os, sys, yaml
 from pathlib import Path
 from dotenv import load_dotenv
@@ -462,9 +462,9 @@ load_dotenv()
 
 from scraper.sources import my_source          # add your sources
 
-# NOTE: This example uses Notion. If storage.provider is "sheets" or "supabase",
-# replace this import with storage.sheets_sync or storage.supabase_sync and update
-# the env var and sync() call accordingly.
+## NOTE: This example uses Notion. If storage.provider is "sheets" or "supabase",
+## replace this import with storage.sheets_sync or storage.supabase_sync and update
+## the env var and sync() call accordingly.
 from storage.notion_sync import sync
 
 SOURCES = [
@@ -533,7 +533,7 @@ if __name__ == "__main__":
 ### 步骤 9: GitHub Actions工作流
 
 ```yaml
-# .github/workflows/scraper.yml
+## .github/workflows/scraper.yml
 name: Data Scraper Agent
 
 on:
@@ -584,28 +584,28 @@ jobs:
 ### 步骤 10: config.yaml 模板
 
 ```yaml
-# Customise this file — no code changes needed
+## Customise this file — no code changes needed
 
-# What to collect (pre-filter before AI)
+## What to collect (pre-filter before AI)
 filters:
   required_keywords: []      # item must contain at least one
   blocked_keywords: []       # item must not contain any
 
-# Your priorities — AI uses these for scoring
+## Your priorities — AI uses these for scoring
 priorities:
   - "example priority 1"
   - "example priority 2"
 
-# Storage
+## Storage
 storage:
   provider: "notion"         # notion | sheets | supabase | sqlite
 
-# Feedback learning
+## Feedback learning
 feedback:
   positive_statuses: ["Saved", "Applied", "Interested"]
   negative_statuses: ["Skip", "Rejected", "Not relevant"]
 
-# AI settings
+## AI settings
 ai:
   enabled: true
   model: "gemini-2.5-flash"
@@ -718,7 +718,7 @@ lxml==5.1.0
 python-dotenv==1.0.1
 pyyaml==6.0.2
 notion-client==2.2.1   # 如需使用 Notion
-# playwright==1.40.0   # 针对 JS 渲染的站点，请取消注释
+## playwright==1.40.0   # 针对 JS 渲染的站点，请取消注释
 ```
 
 ***
@@ -733,7 +733,7 @@ notion-client==2.2.1   # 如需使用 Notion
 * \[ ] Gemini客户端具有模型后备链（4个模型）
 * \[ ] 批量大小 ≤ 每个API调用5个项目
 * \[ ] `maxOutputTokens` ≥ 2048
-* \[ ] `.env` 在 `.gitignore` 中
+* \[ ] `.env`在`.gitignore` 中
 * \[ ] 提供了用于入门的 `.env.example`
 * \[ ] `setup.py` 在首次运行时创建数据库模式
 * \[ ] `enrich_existing.py` 回填旧行的AI分数

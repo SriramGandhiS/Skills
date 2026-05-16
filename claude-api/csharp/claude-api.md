@@ -223,7 +223,6 @@ using NonBeta = Anthropic.Models.Messages;  // only if you also need non-beta ty
 // Now: MessageCreateParams, BetaMessageParam, Role (beta's), NonBeta.Role (if needed)
 ```
 
-
 `BetaMessage.Content` is `IReadOnlyList<BetaContentBlock>` — a 15-variant discriminated union. Narrow with `TryPick*`. **Response `BetaContentBlock` is NOT assignable to param `BetaContentBlockParam`** — there's no `.ToParam()` in C#. Round-trip by converting each block:
 
 ```csharp

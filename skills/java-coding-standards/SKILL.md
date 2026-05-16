@@ -1,4 +1,4 @@
-﻿---
+---
 name: java-coding-standards
 description: "Java coding standards for Spring Boot and Quarkus services: naming, immutability, Optional usage, streams, exceptions, generics, CDI, reactive patterns, and project layout. Automatically applies framework-specific conventions."
 origin: ECC
@@ -286,8 +286,8 @@ src/test/java/... (mirrors main)
 - Magic numbers â†’ named constants
 - Static mutable state â†’ prefer dependency injection
 - Silent catch blocks â†’ log and act or rethrow
-- **[QUARKUS]**: `@Singleton` where `@ApplicationScoped` is intended â€” breaks proxying and interception
-- **[QUARKUS]**: Mixing `quarkus-resteasy-reactive` and `quarkus-resteasy` (classic) â€” pick one stack
+- **[QUARKUS]**: `@Singleton`where`@ApplicationScoped` is intended â€” breaks proxying and interception
+- **[QUARKUS]**: Mixing `quarkus-resteasy-reactive`and`quarkus-resteasy` (classic) â€” pick one stack
 - **[QUARKUS]**: Panache active-record + repository pattern in the same bounded context â€” pick one
 
 ## Logging
@@ -310,9 +310,9 @@ Logger log; // CDI-injected, scoped to declaring class
 
 ## Null Handling
 
-- Accept `@Nullable` only when unavoidable; otherwise use `@NonNull`
-- Use Bean Validation (`@NotNull`, `@NotBlank`) on inputs
-- **[QUARKUS]**: Apply `@Valid` on `@BeanParam`, `@RestForm`, and request body parameters
+- Accept `@Nullable`only when unavoidable; otherwise use`@NonNull`
+- Use Bean Validation (`@NotNull`,`@NotBlank`) on inputs
+- **[QUARKUS]**: Apply `@Valid`on`@BeanParam`,`@RestForm`, and request body parameters
 
 ## Configuration
 
@@ -341,7 +341,7 @@ int maxPageSize;
 - Favor deterministic tests; no hidden sleeps
 
 ### [SPRING]
-- `@WebMvcTest` for controller slices, `@DataJpaTest` for repository slices
+- `@WebMvcTest`for controller slices,`@DataJpaTest` for repository slices
 - `@SpringBootTest` reserved for full integration tests
 - `@MockBean` for replacing beans in Spring context
 

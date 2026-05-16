@@ -1,4 +1,4 @@
-﻿---
+---
 name: ios-icon-gen
 description: Generate iOS app icons as PNG imagesets for Xcode asset catalogs from SF Symbols (5000+ Apple-native) or Iconify API (275k+ open source icons from 200+ collections). Use when generating icons, creating icon assets, adding icons to asset catalog, or searching for icons for iOS projects.
 origin: community
@@ -48,7 +48,7 @@ Determine icon needs: what the icon represents, preferred style, target color, a
 
 If the project already has icons, check existing style:
 ```bash
-# Check dimensions of existing icon
+## Check dimensions of existing icon
 sips -g pixelWidth -g pixelHeight path/to/existing@2x.png
 ```
 
@@ -56,13 +56,13 @@ sips -g pixelWidth -g pixelHeight path/to/existing@2x.png
 
 **Iconify API (recommended for wide selection):**
 ```bash
-# Search all collections
+## Search all collections
 $SKILL_DIR/scripts/iconify_gen.sh search "receipt"
 
-# Search within a specific collection
+## Search within a specific collection
 $SKILL_DIR/scripts/iconify_gen.sh search "business card" --prefix mdi
 
-# List available collections
+## List available collections
 $SKILL_DIR/scripts/iconify_gen.sh collections
 ```
 
@@ -71,17 +71,17 @@ Browse the SF Symbols app or reference common names:
 
 | Use Case | Symbol Name |
 |----------|-------------|
-| Document | `doc.text`, `doc.fill` |
-| Receipt | `doc.text.below.ecg`, `receipt` |
-| Person | `person.crop.rectangle`, `person.text.rectangle` |
-| Camera | `camera`, `camera.fill` |
-| Scan | `doc.viewfinder`, `qrcode.viewfinder` |
-| Settings | `gearshape`, `slider.horizontal.3` |
+| Document | `doc.text`,`doc.fill` |
+| Receipt | `doc.text.below.ecg`,`receipt` |
+| Person | `person.crop.rectangle`,`person.text.rectangle` |
+| Camera | `camera`,`camera.fill` |
+| Scan | `doc.viewfinder`,`qrcode.viewfinder` |
+| Settings | `gearshape`,`slider.horizontal.3` |
 
 ### Step 3: Preview (Optional)
 
 ```bash
-# Iconify preview
+## Iconify preview
 $SKILL_DIR/scripts/iconify_gen.sh preview mdi:receipt-text-outline
 ```
 
@@ -89,25 +89,25 @@ $SKILL_DIR/scripts/iconify_gen.sh preview mdi:receipt-text-outline
 
 **Iconify API:**
 ```bash
-# Basic generation
+## Basic generation
 $SKILL_DIR/scripts/iconify_gen.sh mdi:receipt-text-outline editTool_expenseReport
 
-# Custom color and output location
+## Custom color and output location
 $SKILL_DIR/scripts/iconify_gen.sh mdi:receipt-text-outline myIcon --color 007AFF --output ./Assets.xcassets/icons
 ```
 
-Options: `--size <pt>` (default: 68), `--color <hex>` (default: 8E8E93), `--output <dir>` (default: /tmp/icons)
+Options: `--size <pt>`(default: 68),`--color <hex>`(default: 8E8E93),`--output <dir>` (default: /tmp/icons)
 
 **SF Symbols:**
 ```bash
-# Basic generation
+## Basic generation
 swift $SKILL_DIR/scripts/generate_icons.swift doc.text.below.ecg editTool_expenseReport
 
-# Custom color, weight, and output
+## Custom color, weight, and output
 swift $SKILL_DIR/scripts/generate_icons.swift person.crop.rectangle myIcon --color 007AFF --weight regular --output ./Assets.xcassets/icons
 ```
 
-Options: `--size <pt>` (default: 68), `--color <hex>` (default: 8E8E93), `--weight <name>` (default: thin), `--output <dir>` (default: /tmp/icons)
+Options: `--size <pt>`(default: 68),`--color <hex>`(default: 8E8E93),`--weight <name>`(default: thin),`--output <dir>` (default: /tmp/icons)
 
 ### Step 5: Verify and Integrate
 
@@ -137,8 +137,8 @@ Browse all: <https://icon-sets.iconify.design/>
 
 | Script | Source | Path |
 |--------|--------|------|
-| `iconify_gen.sh` | Iconify API (275k+ icons) | `$SKILL_DIR/scripts/iconify_gen.sh` |
-| `generate_icons.swift` | SF Symbols (5k+ icons) | `$SKILL_DIR/scripts/generate_icons.swift` |
+| `iconify_gen.sh`| Iconify API (275k+ icons) |`$SKILL_DIR/scripts/iconify_gen.sh` |
+| `generate_icons.swift`| SF Symbols (5k+ icons) |`$SKILL_DIR/scripts/generate_icons.swift` |
 
 ## Best Practices
 

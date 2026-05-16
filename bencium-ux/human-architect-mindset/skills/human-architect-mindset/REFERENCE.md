@@ -665,9 +665,9 @@ Use when: Tasks have dependencies
 
 **Parallel:**
 ```
-Task A ↘
+Task A
 Task B → Verify All → Integrate
-Task C ↗
+Task C
 ```
 Use when: Tasks are independent
 

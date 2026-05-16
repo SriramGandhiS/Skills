@@ -87,7 +87,7 @@ class RateLimitHandler:
             True if check passed, False if should abort
         """
         if not self.token:
-            print("\n💡 Tip: GitHub API limit is 60 requests/hour without a token.")
+            print("\n Tip: GitHub API limit is 60 requests/hour without a token.")
             print("   Set up a GitHub token for 5000 requests/hour:")
             print("   $ skill-seekers config --github")
             print()
@@ -95,7 +95,7 @@ class RateLimitHandler:
             if self.interactive:
                 response = input("Continue without token? [Y/n]: ").strip().lower()
                 if response in ["n", "no"]:
-                    print("\n✅ Run 'skill-seekers config --github' to set up a token.\n")
+                    print("\nPASS: Run 'skill-seekers config --github' to set up a token.\n")
                     return False
 
             return True
@@ -107,7 +107,7 @@ class RateLimitHandler:
             limit = rate_info.get("limit", 5000)
 
             if remaining == 0:
-                print(f"\n⚠️  Warning: GitHub rate limit already exhausted (0/{limit})")
+                print(f"\nWARNING:  Warning: GitHub rate limit already exhausted (0/{limit})")
                 reset_time = rate_info.get("reset_time")
                 if reset_time:
                     wait_minutes = (reset_time - datetime.now()).total_seconds() / 60
@@ -116,19 +116,19 @@ class RateLimitHandler:
                 if self.interactive:
                     return self.handle_rate_limit(rate_info)
                 else:
-                    print("\n❌ Cannot proceed: Rate limit exhausted (non-interactive mode)\n")
+                    print("\nFAIL: Cannot proceed: Rate limit exhausted (non-interactive mode)\n")
                     return False
 
             # Show friendly status
             if remaining < 100:
-                print(f"⚠️  GitHub API: {remaining}/{limit} requests remaining")
+                print(f"WARNING:  GitHub API: {remaining}/{limit} requests remaining")
             else:
-                print(f"✅ GitHub API: {remaining}/{limit} requests available")
+                print(f"PASS: GitHub API: {remaining}/{limit} requests available")
 
             return True
 
         except Exception as e:
-            print(f"⚠️  Could not check rate limit status: {e}")
+            print(f"WARNING:  Could not check rate limit status: {e}")
             print("   Proceeding anyway...")
             return True
 
@@ -231,7 +231,7 @@ class RateLimitHandler:
         remaining = rate_info.get("remaining", 0)
         limit = rate_info.get("limit", 0)
 
-        print("\n⚠️  GitHub Rate Limit Reached")
+        print("\nWARNING:  GitHub Rate Limit Reached")
         print(f"   Profile: {self.profile_name or 'default'}")
         print(f"   Limit: {remaining}/{limit} requests")
 
@@ -247,7 +247,7 @@ class RateLimitHandler:
 
         # Strategy-based handling
         if self.strategy == "fail":
-            print("❌ Strategy: fail - Aborting immediately")
+            print("FAIL: Strategy: fail - Aborting immediately")
             if not self.interactive:
                 raise RateLimitError("Rate limit exceeded (fail strategy)")
             return False
@@ -258,7 +258,7 @@ class RateLimitHandler:
             if new_profile:
                 return True
             else:
-                print("⚠️  No alternative profiles available")
+                print("WARNING:  No alternative profiles available")
                 # Fall through to other strategies
 
         if self.strategy == "wait":
@@ -289,7 +289,7 @@ class RateLimitHandler:
 
         next_name, next_token = next_profile_data
 
-        print(f"🔄 Switching to profile: {next_name}")
+        print(f" Switching to profile: {next_name}")
 
         # Check if new profile has quota
         try:
@@ -301,16 +301,16 @@ class RateLimitHandler:
             limit = rate_info.get("limit", 0)
 
             if remaining > 0:
-                print(f"✅ Profile '{next_name}' has {remaining}/{limit} requests available")
+                print(f"PASS: Profile '{next_name}' has {remaining}/{limit} requests available")
                 self.profile_name = next_name
                 return True
             else:
-                print(f"⚠️  Profile '{next_name}' also exhausted ({remaining}/{limit})")
+                print(f"WARNING:  Profile '{next_name}' also exhausted ({remaining}/{limit})")
                 self.token = old_token  # Restore old token
                 return False
 
         except Exception as e:
-            print(f"❌ Failed to switch profiles: {e}")
+            print(f"FAIL: Failed to switch profiles: {e}")
             self.token = old_token  # Restore old token
             return False
 
@@ -327,14 +327,14 @@ class RateLimitHandler:
         """
         # Check timeout
         if wait_minutes > self.timeout_minutes:
-            print(f"⚠️  Wait time ({wait_minutes}m) exceeds timeout ({self.timeout_minutes}m)")
+            print(f"WARNING:  Wait time ({wait_minutes}m) exceeds timeout ({self.timeout_minutes}m)")
             return False
 
         if wait_seconds <= 0:
-            print("✅ Rate limit should be reset now")
+            print("PASS: Rate limit should be reset now")
             return True
 
-        print(f"⏳ Waiting {wait_minutes} minutes for rate limit reset...")
+        print(f" Waiting {wait_minutes} minutes for rate limit reset...")
         print("   Press Ctrl+C to cancel\n")
 
         try:
@@ -343,11 +343,11 @@ class RateLimitHandler:
             else:
                 time.sleep(wait_seconds)
 
-            print("\n✅ Rate limit reset! Continuing...\n")
+            print("\nPASS: Rate limit reset! Continuing...\n")
             return True
 
         except KeyboardInterrupt:
-            print("\n\n⏸️  Wait interrupted by user")
+            print("\n\n  Wait interrupted by user")
             return False
 
     def show_countdown_timer(self, total_seconds: float):
@@ -364,7 +364,7 @@ class RateLimitHandler:
             minutes, seconds = divmod(remaining, 60)
 
             # Print countdown on same line
-            sys.stdout.write(f"\r⏱️  Resuming in {minutes:02d}:{seconds:02d}...")
+            sys.stdout.write(f"\r  Resuming in {minutes:02d}:{seconds:02d}...")
             sys.stdout.flush()
 
             time.sleep(1)
@@ -404,22 +404,22 @@ class RateLimitHandler:
                 if self.try_switch_profile():
                     return True
                 else:
-                    print("⚠️  Profile switching failed. Choose another option.")
+                    print("WARNING:  Profile switching failed. Choose another option.")
                     continue
 
             elif choice == "t":
-                print("\n💡 Opening GitHub token setup...")
+                print("\n Opening GitHub token setup...")
                 print("   Run this command in another terminal:")
                 print("   $ skill-seekers config --github\n")
                 print("   Then restart your scraping job.\n")
                 return False
 
             elif choice == "c":
-                print("\n⏸️  Operation cancelled by user\n")
+                print("\n  Operation cancelled by user\n")
                 return False
 
             else:
-                print("❌ Invalid choice. Please enter w, s, t, or c.")
+                print("FAIL: Invalid choice. Please enter w, s, t, or c.")
 
 
 def create_github_headers(token: str | None = None) -> dict[str, str]:

@@ -65,10 +65,10 @@ e consistente. Execute CADA item — nao pule nenhum.
 
 Apos completar a extracao, fazer estas verificacoes cruzadas:
 
-1. **Arquivo ↔ Decisao**: toda modificacao de arquivo corresponde a uma decisao?
-2. **Bug ↔ Correcao ↔ Arquivo**: todo bug tem correcao e arquivo afetado?
-3. **Tarefa ↔ Progresso**: tarefas completas batem com o progresso reportado?
-4. **Dependencia ↔ Codigo**: dependencias criticas estao refletidas no codigo?
+1. **Arquivo  Decisao**: toda modificacao de arquivo corresponde a uma decisao?
+2. **Bug  Correcao  Arquivo**: todo bug tem correcao e arquivo afetado?
+3. **Tarefa  Progresso**: tarefas completas batem com o progresso reportado?
+4. **Dependencia  Codigo**: dependencias criticas estao refletidas no codigo?
 
 ## Verificacao de Redundancia Tripla
 

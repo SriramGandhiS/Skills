@@ -14,11 +14,11 @@
 ### "Response body already read"
 
 ```javascript
-// ❌ Body consumed twice
+// FAIL: Body consumed twice
 const body = await request.text();
 await fetch(url, { body: request.body }); // Error!
 
-// ✅ Clone first
+// PASS: Clone first
 const clone = request.clone();
 const body = await request.text();
 await fetch(url, { body: clone.body });
@@ -29,7 +29,7 @@ await fetch(url, { body: clone.body });
 **Limit:** 10ms (free), 30s default / 5min max (paid)
 
 ```javascript
-// ✅ Move slow work to background
+// PASS: Move slow work to background
 ctx.waitUntil(fetch('https://analytics.example.com', {...}));
 return new Response('OK'); // Return immediately
 ```
@@ -39,8 +39,8 @@ return new Response('OK'); // Return immediately
 **Limit:** 50 (free), 1000 (paid)
 
 ```javascript
-// ❌ 100 individual fetches
-// ✅ Batch into single API call
+// FAIL: 100 individual fetches
+// PASS: Batch into single API call
 await fetch('https://api.example.com/batch', {
   body: JSON.stringify({ ids: [...] })
 });
@@ -74,10 +74,10 @@ try { ... } catch (e) {
 
 | Browser | Status |
 |---------|--------|
-| Chrome | ✅ Recommended |
-| Firefox | ✅ Works |
-| Edge | ✅ Works |
-| Safari | ❌ Broken |
+| Chrome | PASS: Recommended |
+| Firefox | PASS: Works |
+| Edge | PASS: Works |
+| Safari | FAIL: Broken |
 
 ## Debugging
 

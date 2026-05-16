@@ -383,7 +383,7 @@ def main():
             {
                 "OPENAI_API_KEY": "mock",
                 "XAI_API_KEY": "mock",
-                **config,
+**config,
             },
             mock_openai_models,
             mock_xai_models,

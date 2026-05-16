@@ -1,6 +1,6 @@
 /**
  * Regression tests for Gemini namespacing (PR #2768)
- * 
+ *
  * Verifies that slash commands are correctly converted to colon format (/gsd:)
  * while preserving URLs, file paths, and agent names.
  */

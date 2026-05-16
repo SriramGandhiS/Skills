@@ -129,8 +129,7 @@ const ErrorState = ({ error, onRetry, title }: ErrorStateProps) => (
   onClick={handleSubmit}
   isLoading={isSubmitting}
   disabled={!isValid || isSubmitting}
->
-  Submit
+> Submit
 </Button>
 ```
 
@@ -144,8 +143,7 @@ const ErrorState = ({ error, onRetry, title }: ErrorStateProps) => (
   disabled={isSubmitting}
   isLoading={isSubmitting}
   onClick={handleSubmit}
->
-  Submit
+> Submit
 </Button>
 
 // WRONG - User can tap multiple times

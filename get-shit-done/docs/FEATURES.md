@@ -461,7 +461,6 @@
 - REQ-MILE-08: New milestone MUST follow same flow as new-project (questions → research → requirements → roadmap)
 - REQ-MILE-09: New milestone MUST NOT reset existing workflow configuration
 
-
 ---
 
 ## Planning Features
@@ -1047,7 +1046,7 @@ fix(03-01): correct auth token expiry
 
 **Statusline Display:**
 ```text
-[⬆ /gsd-update │] model │ [current task │] directory [█████░░░░░ 50%]
+[ /gsd-update │] model │ [current task │] directory [█████░░░░░ 50%]
 ```
 
 Color coding: <50% green, <65% yellow, <80% orange, ≥80% red with skull emoji

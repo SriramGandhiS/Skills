@@ -105,7 +105,7 @@ Repo work:
   readiness gate.
 - Define a versioned HUD/status JSON contract that both ECC2 and ECC Tools can
   consume.
-- Add sample exports from `loop-status`, `session-inspect`, harness audit, and
+- Add sample exports from `loop-status`,`session-inspect`, harness audit, and
   risk ledger into a fixture directory before building visual UI.
 
 Verification:

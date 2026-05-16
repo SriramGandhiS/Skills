@@ -1,17 +1,15 @@
 #!/bin/bash
 #===============================================================================
 # Record Full Loki Mode End-to-End Demo
-#
-# This script:
+# # This script:
 # 1. Creates a fresh demo workspace
 # 2. Starts screen recording
 # 3. Runs Loki Mode with a PRD
 # 4. Opens dashboard in browser
 # 5. Records until completion or timeout
 # 6. Outputs final video
-#
-# Usage:
-#   ./demo/record-full-demo.sh [simple-todo|static-landing]
+# # Usage:
+# ./demo/record-full-demo.sh [simple-todo|static-landing]
 #===============================================================================
 
 set -uo pipefail

@@ -7,7 +7,7 @@ try:
     from qdrant_client import QdrantClient
     from qdrant_client.models import Distance, VectorParams, PointStruct
 except ImportError:
-    print("❌ Run: pip install qdrant-client")
+    print("FAIL: Run: pip install qdrant-client")
     sys.exit(1)
 
 parser = argparse.ArgumentParser()
@@ -19,9 +19,9 @@ print("Step 2: Upload to Qdrant")
 print("=" * 60)
 
 # Connect
-print(f"\n🔗 Connecting to Qdrant at {args.url}...")
+print(f"\n Connecting to Qdrant at {args.url}...")
 client = QdrantClient(url=args.url)
-print("✅ Connected!")
+print("PASS: Connected!")
 
 # Load data
 with open("output/django-qdrant.json") as f:
@@ -30,7 +30,7 @@ with open("output/django-qdrant.json") as f:
 collection_name = data["collection_name"]
 config = data["config"]
 
-print(f"\n📦 Creating collection: {collection_name}")
+print(f"\n Creating collection: {collection_name}")
 
 # Recreate collection if exists
 try:
@@ -45,11 +45,11 @@ client.create_collection(
         distance=Distance.COSINE
     )
 )
-print("✅ Collection created!")
+print("PASS: Collection created!")
 
 # Upload points (without vectors for demo)
-print(f"\n📤 Uploading {len(data['points'])} points...")
-print("⚠️  Note: Vectors are None - you'll need to add embeddings for real use")
+print(f"\n Uploading {len(data['points'])} points...")
+print("WARNING:  Note: Vectors are None - you'll need to add embeddings for real use")
 
 points = []
 for point in data["points"]:
@@ -63,5 +63,5 @@ for point in data["points"]:
 client.upsert(collection_name=collection_name, points=points)
 
 info = client.get_collection(collection_name)
-print(f"✅ Uploaded! Collection has {info.points_count} points")
+print(f"PASS: Uploaded! Collection has {info.points_count} points")
 print("\nNext: Add embeddings, then python 3_query_example.py")

@@ -2,8 +2,7 @@
 # tests/integration/test_sigint_propagation.sh
 # v7.5.12: Verify Ctrl+C (SIGINT) propagates from the loki run.sh parent to
 # the running provider subprocess and both exit within 5 seconds.
-#
-# Background: prior to v7.5.12 the perpetual-mode trap silently ignored
+# # Background: prior to v7.5.12 the perpetual-mode trap silently ignored
 # SIGINT, so a user pressing Ctrl+C 9 times had no effect. The fix kills
 # the active provider pipeline on the first Ctrl+C and exits on the
 # second one within 2 seconds (double-Ctrl+C escape).
@@ -19,10 +18,8 @@ FAIL=0
 ok()  { echo "PASS [$1]"; PASS=$((PASS + 1)); }
 bad() { echo "FAIL [$1] $2"; FAIL=$((FAIL + 1)); }
 
-#
-# Test 1: kill_provider_child function reaps a long-running child.
-#
-test_kill_provider_child() {
+# # Test 1: kill_provider_child function reaps a long-running child.
+# test_kill_provider_child() {
     local name="kill_provider_child reaps direct child within ~2s"
     # Launch a subshell that sources only the function definition so we can
     # exercise it in isolation without booting the full runner.
@@ -106,13 +103,11 @@ EOF
     fi
 }
 
-#
-# Test 2: SIGINT to a parent shell propagates to and kills the child.
+# # Test 2: SIGINT to a parent shell propagates to and kills the child.
 # Simulates: user presses Ctrl+C in their terminal while `loki start` is
 # running a provider subprocess. The terminal's SIGINT is delivered to the
 # foreground process group, so both parent and child should exit within 5s.
-#
-test_sigint_process_group() {
+# test_sigint_process_group() {
     local name="SIGINT to parent kills both parent and provider child within 5s"
     local script
     script=$(mktemp -t loki-sigint-pg-XXXXXX.sh)
@@ -239,10 +234,8 @@ EOF
     rm -f "$script" "$child_pid_file"
 }
 
-#
-# Test 3: Verify run.sh defines the new helper and globals.
-#
-test_run_sh_has_helper() {
+# # Test 3: Verify run.sh defines the new helper and globals.
+# test_run_sh_has_helper() {
     local name="autonomy/run.sh defines kill_provider_child and LOKI_PROVIDER_ACTIVE"
     if grep -q "^kill_provider_child()" "$REPO_ROOT/autonomy/run.sh" \
         && grep -q "^LOKI_PROVIDER_ACTIVE=" "$REPO_ROOT/autonomy/run.sh"; then
@@ -252,10 +245,8 @@ test_run_sh_has_helper() {
     fi
 }
 
-#
-# Test 4: bash -n clean.
-#
-test_bash_n() {
+# # Test 4: bash -n clean.
+# test_bash_n() {
     local name="autonomy/run.sh passes bash -n"
     if bash -n "$REPO_ROOT/autonomy/run.sh" 2>/dev/null; then
         ok "$name"

@@ -49,13 +49,13 @@ npx eslint . --ext .ts,.tsx,.js,.jsx
 | 错误 | 修复 |
 |-------|-----|
 | `implicitly has 'any' type` | 添加类型注解 |
-| `Object is possibly 'undefined'` | 可选链 `?.` 或空值检查 |
-| `Property does not exist` | 添加到接口或使用可选 `?` |
+| `Object is possibly 'undefined'`| 可选链`?.` 或空值检查 |
+| `Property does not exist`| 添加到接口或使用可选`?` |
 | `Cannot find module` | 检查 tsconfig 路径、安装包或修复导入路径 |
 | `Type 'X' not assignable to 'Y'` | 解析/转换类型或修复类型 |
-| `Generic constraint` | 添加 `extends { ... }` |
+| `Generic constraint`| 添加`extends { ... }` |
 | `Hook called conditionally` | 将钩子移到顶层 |
-| `'await' outside async` | 添加 `async` 关键字 |
+| `'await' outside async`| 添加`async` 关键字 |
 
 ## 做与不做
 
@@ -88,13 +88,13 @@ npx eslint . --ext .ts,.tsx,.js,.jsx
 ## 快速恢复
 
 ```bash
-# Nuclear option: clear all caches
+## Nuclear option: clear all caches
 rm -rf .next node_modules/.cache && npm run build
 
-# Reinstall dependencies
+## Reinstall dependencies
 rm -rf node_modules package-lock.json && npm install
 
-# Fix ESLint auto-fixable
+## Fix ESLint auto-fixable
 npx eslint . --fix
 ```
 

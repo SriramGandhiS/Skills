@@ -1,11 +1,9 @@
 #!/usr/bin/env bash
 # Apply ECC hook fix to ~/.claude/settings.local.json.
-#
-# - Creates a timestamped backup next to the original.
+# # - Creates a timestamped backup next to the original.
 # - Rewrites the file as UTF-8 (no BOM), LF line endings.
 # - Routes hook commands directly at observe-wrapper.sh with a "pre"/"post" arg.
-#
-# Related fix doc: docs/fixes/HOOK-FIX-20260421.md
+# # Related fix doc: docs/fixes/HOOK-FIX-20260421.md
 
 set -euo pipefail
 

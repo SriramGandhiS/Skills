@@ -1,4 +1,4 @@
-﻿# Route Guards
+# Route Guards
 
 Route guards control whether a user can navigate to or leave a route.
 
@@ -7,7 +7,7 @@ Route guards control whether a user can navigate to or leave a route.
 - **`CanActivate`**: Can the user access this route? (e.g., Auth check).
 - **`CanActivateChild`**: Can the user access children of this route?
 - **`CanDeactivate`**: Can the user leave this route? (e.g., Unsaved changes).
-- **`CanMatch`**: Should this route even be considered for matching? (e.g., Feature flags). If it returns `false`, the router continues checking other routes.
+- **`CanMatch`**: Should this route even be considered for matching? (e.g., Feature flags). If it returns`false`, the router continues checking other routes.
 
 ## Creating a Guard
 
@@ -43,9 +43,9 @@ Add them to the route configuration as an array. They execute in order.
 
 ## Return Values
 
-- `boolean`: `true` to allow, `false` to block.
-- `UrlTree` or `RedirectCommand`: Redirect to a different route.
-- `Observable` or `Promise`: Resolves to the above types.
+- `boolean`:`true`to allow,`false` to block.
+- `UrlTree`or`RedirectCommand`: Redirect to a different route.
+- `Observable`or`Promise`: Resolves to the above types.
 
 ## Security Note
 

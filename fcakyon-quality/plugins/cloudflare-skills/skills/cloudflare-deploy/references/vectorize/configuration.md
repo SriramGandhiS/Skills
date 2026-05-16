@@ -6,7 +6,7 @@
 npx wrangler vectorize create my-index --dimensions=768 --metric=cosine
 ```
 
-**⚠️ Dimensions and metric are immutable** - cannot change after creation.
+**WARNING: Dimensions and metric are immutable** - cannot change after creation.
 
 ## Worker Binding
 
@@ -71,10 +71,10 @@ wrangler vectorize delete-metadata-index <index-name> --property-name=field
 
 Bucket high-cardinality data:
 ```typescript
-// ❌ Millisecond timestamps
+// FAIL: Millisecond timestamps
 metadata: { timestamp: Date.now() }
 
-// ✅ 5-minute buckets
+// PASS: 5-minute buckets
 metadata: { timestamp_bucket: Math.floor(Date.now() / 300000) * 300000 }
 ```
 

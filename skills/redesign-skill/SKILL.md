@@ -1,4 +1,4 @@
-﻿---
+---
 name: redesign-existing-projects
 description: Upgrades existing websites and apps to premium quality. Audits current design, identifies generic AI patterns, and applies high-end design standards without breaking functionality. Works with any CSS framework or vanilla CSS.
 ---
@@ -19,18 +19,18 @@ When applied to an existing project, follow this sequence:
 
 Check for these problems and fix them:
 
-- **Browser default fonts or Inter everywhere.** Replace with a font that has character. Good options: `Geist`, `Outfit`, `Cabinet Grotesk`, `Satoshi`. For editorial/creative projects, pair a serif header with a sans-serif body.
+- **Browser default fonts or Inter everywhere.** Replace with a font that has character. Good options: `Geist`,`Outfit`,`Cabinet Grotesk`,`Satoshi`. For editorial/creative projects, pair a serif header with a sans-serif body.
 - **Headlines lack presence.** Increase size for display text, tighten letter-spacing, reduce line-height. Headlines should feel heavy and intentional.
 - **Body text too wide.** Limit paragraph width to roughly 65 characters. Increase line-height for readability.
 - **Only Regular (400) and Bold (700) weights used.** Introduce Medium (500) and SemiBold (600) for more subtle hierarchy.
 - **Numbers in proportional font.** Use a monospace font or enable tabular figures (`font-variant-numeric: tabular-nums`) for data-heavy interfaces.
 - **Missing letter-spacing adjustments.** Use negative tracking for large headers, positive tracking for small caps or labels.
 - **All-caps subheaders everywhere.** Try lowercase italics, sentence case, or small-caps instead.
-- **Orphaned words.** Single words sitting alone on the last line. Fix with `text-wrap: balance` or `text-wrap: pretty`.
+- **Orphaned words.** Single words sitting alone on the last line. Fix with `text-wrap: balance`or`text-wrap: pretty`.
 
 ### Color and Surfaces
 
-- **Pure `#000000` background.** Replace with off-black, dark charcoal, or tinted dark (`#0a0a0a`, `#121212`, or a dark navy).
+- **Pure `#000000`background.** Replace with off-black, dark charcoal, or tinted dark (`#0a0a0a`,`#121212`, or a dark navy).
 - **Oversaturated accent colors.** Keep saturation below 80%. Desaturate accents so they blend with neutrals instead of screaming.
 - **More than one accent color.** Pick one. Remove the rest. Consistency beats variety.
 - **Mixing warm and cool grays.** Stick to one gray family. Tint all grays with a consistent hue (warm or cool, not both).
@@ -46,7 +46,7 @@ Check for these problems and fix them:
 
 - **Everything centered and symmetrical.** Break symmetry with offset margins, mixed aspect ratios, or left-aligned headers over centered content.
 - **Three equal card columns as feature row.** This is the most generic AI layout. Replace with a 2-column zig-zag, asymmetric grid, horizontal scroll, or masonry layout.
-- **Using `height: 100vh` for full-screen sections.** Replace with `min-height: 100dvh` to prevent layout jumping on mobile browsers (iOS Safari viewport bug).
+- **Using `height: 100vh`for full-screen sections.** Replace with`min-height: 100dvh` to prevent layout jumping on mobile browsers (iOS Safari viewport bug).
 - **Complex flexbox percentage math.** Replace with CSS Grid for reliable multi-column structures.
 - **No max-width container.** Add a container constraint (around 1200-1440px) with auto margins so content doesn't stretch edge-to-edge on wide screens.
 - **Cards of equal height forced by flexbox.** Allow variable heights or use masonry when content varies in length.
@@ -63,7 +63,7 @@ Check for these problems and fix them:
 ### Interactivity and States
 
 - **No hover states on buttons.** Add background shift, slight scale, or translate on hover.
-- **No active/pressed feedback.** Add a subtle `scale(0.98)` or `translateY(1px)` on press to simulate a physical click.
+- **No active/pressed feedback.** Add a subtle `scale(0.98)`or`translateY(1px)` on press to simulate a physical click.
 - **Instant transitions with zero duration.** Add smooth transitions (200-300ms) to all interactive elements.
 - **Missing focus ring.** Ensure visible focus indicators for keyboard navigation. This is an accessibility requirement, not optional.
 - **No loading states.** Replace generic circular spinners with skeleton loaders that match the layout shape.
@@ -72,12 +72,12 @@ Check for these problems and fix them:
 - **Dead links.** Buttons that link to `#`. Either link to real destinations or visually disable them.
 - **No indication of current page in navigation.** Style the active nav link differently so users know where they are.
 - **Scroll jumping.** Anchor clicks jump instantly. Add `scroll-behavior: smooth`.
-- **Animations using `top`, `left`, `width`, `height`.** Switch to `transform` and `opacity` for GPU-accelerated, smooth animation.
+- **Animations using `top`,`left`,`width`,`height`.** Switch to`transform`and`opacity` for GPU-accelerated, smooth animation.
 
 ### Content
 
 - **Generic names like "John Doe" or "Jane Smith".** Use diverse, realistic-sounding names.
-- **Fake round numbers like `99.99%`, `50%`, `$100.00`.** Use organic, messy data: `47.2%`, `$99.00`, `+1 (312) 847-1928`.
+- **Fake round numbers like `99.99%`,`50%`,`$100.00`.** Use organic, messy data:`47.2%`,`$99.00`,`+1 (312) 847-1928`.
 - **Placeholder company names like "Acme Corp", "Nexus", "SmartFlow".** Invent contextual, believable brand names.
 - **AI copywriting cliches.** Never use "Elevate", "Seamless", "Unleash", "Next-Gen", "Game-changer", "Delve", "Tapestry", or "In the world of...". Write plain, specific language.
 - **Exclamation marks in success messages.** Remove them. Be confident, not loud.
@@ -111,14 +111,14 @@ Check for these problems and fix them:
 
 ### Code Quality
 
-- **Div soup.** Use semantic HTML: `<nav>`, `<main>`, `<article>`, `<aside>`, `<section>`.
+- **Div soup.** Use semantic HTML: `<nav>`,`<main>`,`<article>`,`<aside>`,`<section>`.
 - **Inline styles mixed with CSS classes.** Move all styling to the project's styling system.
-- **Hardcoded pixel widths.** Use relative units (`%`, `rem`, `em`, `max-width`) for flexible layouts.
-- **Missing alt text on images.** Describe image content for screen readers. Never leave `alt=""` or `alt="image"` on meaningful images.
+- **Hardcoded pixel widths.** Use relative units (`%`,`rem`,`em`,`max-width`) for flexible layouts.
+- **Missing alt text on images.** Describe image content for screen readers. Never leave `alt=""`or`alt="image"` on meaningful images.
 - **Arbitrary z-index values like `9999`.** Establish a clean z-index scale in the theme/variables.
 - **Commented-out dead code.** Remove all debug artifacts before shipping.
 - **Import hallucinations.** Check that every import actually exists in `package.json` or the project dependencies.
-- **Missing meta tags.** Add proper `<title>`, `description`, `og:image`, and social sharing meta tags.
+- **Missing meta tags.** Add proper `<title>`,`description`,`og:image`, and social sharing meta tags.
 
 ### Strategic Omissions (What AI Typically Forgets)
 

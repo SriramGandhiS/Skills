@@ -129,23 +129,23 @@ def process(order: dict) -> dict:
 
 ## Best Practices
 
-- ✅ Use `@clean-code` for naming, functions, comments, and formatting; use this skill for architecture, boundaries, SOLID, smells, and process.
-- ✅ In review, name the smell or principle (e.g., "Dependency Rule violation: use case imports from the web framework").
-- ✅ Suggest at least one concrete refactor per review (extract, rename, invert dependency).
-- ✅ Run the project linter and formatter separately; this skill does not replace them.
-- ❌ Do not use this skill to enforce syntax or style; that is the linter's job.
-- ❌ Do not add design patterns without a clear duplication or variation reason.
+- PASS: Use `@clean-code` for naming, functions, comments, and formatting; use this skill for architecture, boundaries, SOLID, smells, and process.
+- PASS: In review, name the smell or principle (e.g., "Dependency Rule violation: use case imports from the web framework").
+- PASS: Suggest at least one concrete refactor per review (extract, rename, invert dependency).
+- PASS: Run the project linter and formatter separately; this skill does not replace them.
+- FAIL: Do not use this skill to enforce syntax or style; that is the linter's job.
+- FAIL: Do not add design patterns without a clear duplication or variation reason.
 
 ## Common Pitfalls
 
-- **Problem:** Treating every class as needing a Factory or Strategy.  
-  **Solution:** Introduce patterns only when you have a real design need (third duplication, second axis of change).
+- **Problem:** Treating every class as needing a Factory or Strategy.
+**Solution:** Introduce patterns only when you have a real design need (third duplication, second axis of change).
 
-- **Problem:** Review only listing "violates SOLID" without saying where or how.  
-  **Solution:** Point to the file/function and which principle (e.g., "SRP: this function parses and persists; split into parse and persist").
+- **Problem:** Review only listing "violates SOLID" without saying where or how.
+**Solution:** Point to the file/function and which principle (e.g., "SRP: this function parses and persists; split into parse and persist").
 
-- **Problem:** Skipping the project linter because "we applied Uncle Bob."  
-  **Solution:** This skill is about craft and design; always run the project's lint and format.
+- **Problem:** Skipping the project linter because "we applied Uncle Bob."
+**Solution:** This skill is about craft and design; always run the project's lint and format.
 
 ## Related Skills
 

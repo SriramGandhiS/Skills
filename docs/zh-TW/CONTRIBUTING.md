@@ -60,7 +60,7 @@
 ### 1. Fork 儲存庫
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/everything-claude-code.git
+git clone <https://github.com/YOUR_USERNAME/everything-claude-code.git>
 cd everything-claude-code
 ```
 
@@ -98,7 +98,7 @@ Instructions here...
 **技能**應清晰且可操作：
 
 ```markdown
-# Skill Name
+## Skill Name
 
 ## When to Use
 
@@ -120,7 +120,7 @@ Instructions here...
 description: Brief description of command
 ---
 
-# Command Name
+## Command Name
 
 Detailed instructions...
 ```
@@ -177,7 +177,7 @@ git push origin add-python-reviewer
 ## 檔案命名
 
 - 使用小寫加連字號：`python-reviewer.md`
-- 具描述性：`tdd-workflow.md` 而非 `workflow.md`
+- 具描述性：`tdd-workflow.md`而非`workflow.md`
 - 將代理程式/技能名稱與檔名對應
 
 ---

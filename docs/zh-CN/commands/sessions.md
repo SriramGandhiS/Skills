@@ -4,7 +4,7 @@ description: 管理Claude Code会话历史、别名和会话元数据。
 
 # Sessions 命令
 
-管理 Claude Code 会话历史 - 列出、加载、设置别名和编辑存储在 `~/.claude/session-data/` 中的会话，同时兼容读取旧的 `~/.claude/sessions/` 文件。
+管理 Claude Code 会话历史 - 列出、加载、设置别名和编辑存储在 `~/.claude/session-data/`中的会话，同时兼容读取旧的`~/.claude/sessions/` 文件。
 
 ## 用法
 
@@ -291,8 +291,8 @@ if (aliases.length === 0) {
 
 ## 操作员笔记
 
-* 会话文件在头部持久化 `Project`、`Branch` 和 `Worktree`，以便 `/sessions info` 可以区分并行 tmux/工作树运行。
-* 对于指挥中心式监控，请结合使用 `/sessions info`、`git diff --stat` 以及由 `scripts/hooks/cost-tracker.js` 发出的成本指标。
+* 会话文件在头部持久化 `Project`、`Branch`和`Worktree`，以便`/sessions info` 可以区分并行 tmux/工作树运行。
+* 对于指挥中心式监控，请结合使用 `/sessions info`、`git diff --stat`以及由`scripts/hooks/cost-tracker.js` 发出的成本指标。
 
 ## 参数
 
@@ -305,7 +305,7 @@ $ARGUMENTS:
 * `load <id|alias>` - 加载会话内容
 * `alias <id> <name>` - 为会话创建别名
 * `alias --remove <name>` - 移除别名
-* `unalias <name>` - 与 `--remove` 相同
+* `unalias <name>`- 与`--remove` 相同
 * `info <id|alias>` - 显示会话统计信息
 * `aliases` - 列出所有别名
 * `help` - 显示此帮助信息
@@ -313,28 +313,28 @@ $ARGUMENTS:
 ## 示例
 
 ```bash
-# List all sessions
+## List all sessions
 /sessions list
 
-# Create an alias for today's session
+## Create an alias for today's session
 /sessions alias 2026-02-01 today
 
-# Load session by alias
+## Load session by alias
 /sessions load today
 
-# Show session info
+## Show session info
 /sessions info today
 
-# Remove alias
+## Remove alias
 /sessions alias --remove today
 
-# List all aliases
+## List all aliases
 /sessions aliases
 ```
 
 ## 备注
 
-* 会话以 Markdown 文件形式存储在 `~/.claude/session-data/`，并继续兼容读取旧的 `~/.claude/sessions/`
+* 会话以 Markdown 文件形式存储在 `~/.claude/session-data/`，并继续兼容读取旧的`~/.claude/sessions/`
 * 别名存储在 `~/.claude/session-aliases.json`
 * 会话 ID 可以缩短（通常前 4-8 个字符就足够唯一）
 * 为经常引用的会话使用别名

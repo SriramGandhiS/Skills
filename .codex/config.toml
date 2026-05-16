@@ -1,11 +1,9 @@
 #:schema https://developers.openai.com/codex/config-schema.json
 
 # Everything Claude Code (ECC) — Codex Reference Configuration
-#
-# Copy this file to ~/.codex/config.toml for global defaults, or keep it in
+# # Copy this file to ~/.codex/config.toml for global defaults, or keep it in
 # the project root as .codex/config.toml for project-local settings.
-#
-# Official docs:
+# # Official docs:
 # - https://developers.openai.com/codex/config-reference
 # - https://developers.openai.com/codex/multi-agent
 
@@ -72,16 +70,13 @@ startup_timeout_sec = 30
 # [mcp_servers.supabase]
 # command = "npx"
 # args = ["-y", "supabase-mcp-server@latest", "--read-only"]
-#
-# [mcp_servers.firecrawl]
+# # [mcp_servers.firecrawl]
 # command = "npx"
 # args = ["-y", "firecrawl-mcp"]
-#
-# [mcp_servers.fal-ai]
+# # [mcp_servers.fal-ai]
 # command = "npx"
 # args = ["-y", "fal-ai-mcp-server"]
-#
-# [mcp_servers.cloudflare]
+# # [mcp_servers.cloudflare]
 # command = "npx"
 # args = ["-y", "@cloudflare/mcp-server-cloudflare"]
 

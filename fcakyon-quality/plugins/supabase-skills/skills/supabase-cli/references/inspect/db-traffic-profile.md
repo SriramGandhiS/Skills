@@ -2,7 +2,6 @@
 
 This command analyzes table I/O patterns to show read/write activity ratios based on block-level operations. It combines data from PostgreSQL's `pg_stat_user_tables` (for tuple operations) and `pg_statio_user_tables` (for block I/O) to categorize each table's workload profile.
 
-
 The command classifies tables into categories:
 - **Read-Heavy** - Read operations are more than 5x write operations (e.g., 1:10, 1:50)
 - **Write-Heavy** - Write operations are more than 20% of read operations (e.g., 1:2, 1:4, 2:1, 10:1)

@@ -70,7 +70,7 @@ When a user requests file organization help:
 
    Based on the files, determine logical groupings:
 
-   **By Type**:
+**By Type**:
 
    - Documents (PDFs, DOCX, TXT)
    - Images (JPG, PNG, SVG)
@@ -80,7 +80,7 @@ When a user requests file organization help:
    - Spreadsheets (XLSX, CSV)
    - Presentations (PPTX, KEY)
 
-   **By Purpose**:
+**By Purpose**:
 
    - Work vs. Personal
    - Active vs. Archive
@@ -88,7 +88,7 @@ When a user requests file organization help:
    - Reference materials
    - Temporary/scratch files
 
-   **By Date**:
+**By Date**:
 
    - Current year/month
    - Previous years
@@ -177,7 +177,7 @@ When a user requests file organization help:
    # Example: "YYYY-MM-DD - Description.ext"
    ```
 
-   **Important Rules**:
+**Important Rules**:
 
    - Always confirm before deleting anything
    - Log all moves for potential undo
@@ -190,7 +190,7 @@ When a user requests file organization help:
    After organizing:
 
    ```markdown
-   # Organization Complete! ✨
+   # Organization Complete!
 
    ## What Changed
 

@@ -59,7 +59,7 @@ project_id: "a1b2c3d4e5f6"
 project_name: "my-react-app"
 ---
 
-# Prefer Functional Style
+## Prefer Functional Style
 
 ## Action
 Use functional patterns over classes when appropriate.
@@ -74,7 +74,7 @@ Use functional patterns over classes when appropriate.
 - **신뢰도 가중치** -- 0.3 = 잠정적, 0.9 = 거의 확실
 - **도메인 태그** -- code-style, testing, git, debugging, workflow 등
 - **증거 기반** -- 어떤 관찰이 이를 생성했는지 추적
-- **범위 인식** -- `project` (기본값) 또는 `global`
+- **범위 인식** -- `project`(기본값) 또는`global`
 
 ## 작동 방식
 
@@ -131,7 +131,7 @@ Use functional patterns over classes when appropriate.
 3. **`git rev-parse --show-toplevel`** -- 저장소 경로를 사용한 폴백 (머신별)
 4. **전역 폴백** -- 프로젝트가 감지되지 않으면 본능은 전역 범위로 이동
 
-각 프로젝트는 12자 해시 ID를 받습니다 (예: `a1b2c3d4e5f6`). `~/.claude/homunculus/projects.json`의 레지스트리 파일이 ID를 사람이 읽을 수 있는 이름에 매핑합니다.
+각 프로젝트는 12자 해시 ID를 받습니다 (예: `a1b2c3d4e5f6`).`~/.claude/homunculus/projects.json`의 레지스트리 파일이 ID를 사람이 읽을 수 있는 이름에 매핑합니다.
 
 ## 빠른 시작
 
@@ -141,11 +141,11 @@ Use functional patterns over classes when appropriate.
 
 **플러그인으로 설치한 경우** (권장):
 
-`~/.claude/settings.json`에 추가 hook 블록을 넣지 마세요. Claude Code v2.1+가 플러그인의 `hooks/hooks.json`을 자동으로 로드하며, `observe.sh`는 이미 그곳에 등록되어 있습니다.
+`~/.claude/settings.json`에 추가 hook 블록을 넣지 마세요. Claude Code v2.1+가 플러그인의`hooks/hooks.json`을 자동으로 로드하며,`observe.sh`는 이미 그곳에 등록되어 있습니다.
 
-이전에 `observe.sh`를 `~/.claude/settings.json`에 복사했다면 중복된 `PreToolUse` / `PostToolUse` 블록을 제거하세요. 중복 등록은 이중 실행과 `${CLAUDE_PLUGIN_ROOT}` 해석 오류를 일으킵니다. 이 변수는 플러그인 소유 `hooks/hooks.json` 항목에서만 확장됩니다.
+이전에 `observe.sh`를`~/.claude/settings.json`에 복사했다면 중복된`PreToolUse`/`PostToolUse`블록을 제거하세요. 중복 등록은 이중 실행과`${CLAUDE_PLUGIN_ROOT}`해석 오류를 일으킵니다. 이 변수는 플러그인 소유`hooks/hooks.json` 항목에서만 확장됩니다.
 
-**수동으로 `~/.claude/skills`에 설치한 경우**, 아래 내용을 `~/.claude/settings.json`에 추가하세요:
+**수동으로 `~/.claude/skills`에 설치한 경우**, 아래 내용을`~/.claude/settings.json`에 추가하세요:
 
 ```json
 {
@@ -173,10 +173,10 @@ Use functional patterns over classes when appropriate.
 시스템은 첫 사용 시 자동으로 디렉터리를 생성하지만, 수동으로도 생성할 수 있습니다:
 
 ```bash
-# Global directories
+## Global directories
 mkdir -p ~/.claude/homunculus/{instincts/{personal,inherited},evolved/{agents,skills,commands},projects}
 
-# Project directories are auto-created when the hook first runs in a git repo
+## Project directories are auto-created when the hook first runs in a git repo
 ```
 
 ### 3. 본능 명령어 사용
@@ -218,11 +218,11 @@ mkdir -p ~/.claude/homunculus/{instincts/{personal,inherited},evolved/{agents,sk
 
 | 키 | 기본값 | 설명 |
 |-----|---------|-------------|
-| `observer.enabled` | `false` | 백그라운드 관찰자 에이전트 활성화 |
-| `observer.run_interval_minutes` | `5` | 관찰자가 관찰 결과를 분석하는 빈도 |
-| `observer.min_observations_to_analyze` | `20` | 분석 실행 전 최소 관찰 횟수 |
+| `observer.enabled`|`false` | 백그라운드 관찰자 에이전트 활성화 |
+| `observer.run_interval_minutes`|`5` | 관찰자가 관찰 결과를 분석하는 빈도 |
+| `observer.min_observations_to_analyze`|`20` | 분석 실행 전 최소 관찰 횟수 |
 
-기타 동작 (관찰 캡처, 본능 임계값, 프로젝트 범위, 승격 기준)은 `instinct-cli.py`와 `observe.sh`의 코드 기본값으로 구성됩니다.
+기타 동작 (관찰 캡처, 본능 임계값, 프로젝트 범위, 승격 기준)은 `instinct-cli.py`와`observe.sh`의 코드 기본값으로 구성됩니다.
 
 ## 파일 구조
 
@@ -277,13 +277,13 @@ mkdir -p ~/.claude/homunculus/{instincts/{personal,inherited},evolved/{agents,sk
 **승격 방법:**
 
 ```bash
-# Promote a specific instinct
+## Promote a specific instinct
 python3 instinct-cli.py promote prefer-explicit-errors
 
-# Auto-promote all qualifying instincts
+## Auto-promote all qualifying instincts
 python3 instinct-cli.py promote
 
-# Preview without changes
+## Preview without changes
 python3 instinct-cli.py promote --dry-run
 ```
 

@@ -107,10 +107,10 @@ describe.skip('Smoke Tests - Generated Files', () => {
 
     it('should include helpful examples for TypeScript convenience', () => {
       expect(indexContent).to.include("payload.tool_name === 'Edit'")
-      expect(indexContent).to.include('📝 Claude is editing:')
-      expect(indexContent).to.include('🚀 Running command:')
-      expect(indexContent).to.include('💬 User prompt:')
-      expect(indexContent).to.include('🗜️  Compact triggered:')
+      expect(indexContent).to.include(' Claude is editing:')
+      expect(indexContent).to.include(' Running command:')
+      expect(indexContent).to.include(' User prompt:')
+      expect(indexContent).to.include('  Compact triggered:')
       expect(indexContent).to.include('// Add your custom logic here!')
     })
 

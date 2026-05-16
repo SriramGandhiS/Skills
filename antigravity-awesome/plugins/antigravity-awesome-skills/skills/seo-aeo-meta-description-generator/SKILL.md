@@ -53,28 +53,28 @@ Title V2: Manage Remote Teams Without the Chaos | Syncro
 Description V1 (Benefit Lead):
 Ship faster with your distributed team. Syncro centralises
 tasks, async updates, and sprints in one tool. Start free today.
-(141 chars) ✅
+(141 chars) PASS:
 Description V2 (Question Hook):
 Struggling to keep your remote team aligned? Syncro replaces
 scattered tools with one async-first workspace. Try it free.
-(140 chars) ✅
+(140 chars) PASS:
 
 ## Best Practices
 
-- ✅ **Do:** Write 3 variants — always give the user options to test
-- ✅ **Do:** Keep OG and Twitter descriptions more conversational than SERP versions
-- ✅ **Do:** Verify character count on every variant before outputting
-- ❌ **Don't:** Use the same exact-match anchor or keyword more than once per description
-- ❌ **Don't:** Copy-paste the meta description into the OG description
-- ❌ **Don't:** Let any description end mid-sentence near the character limit
+- PASS: **Do:** Write 3 variants — always give the user options to test
+- PASS: **Do:** Keep OG and Twitter descriptions more conversational than SERP versions
+- PASS: **Do:** Verify character count on every variant before outputting
+- FAIL: **Don't:** Use the same exact-match anchor or keyword more than once per description
+- FAIL: **Don't:** Copy-paste the meta description into the OG description
+- FAIL: **Don't:** Let any description end mid-sentence near the character limit
 
 ## Common Pitfalls
 
 - **Problem:** Description truncates mid-word in search results
-  **Solution:** Always trim a clause rather than letting natural truncation cut the sentence.
+**Solution:** Always trim a clause rather than letting natural truncation cut the sentence.
 
 - **Problem:** All 3 variants sound identical
-  **Solution:** Each variant must use a genuinely different CTR mechanic — not just rearranged words.
+**Solution:** Each variant must use a genuinely different CTR mechanic — not just rearranged words.
 
 ## Related Skills
 

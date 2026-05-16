@@ -1,6 +1,6 @@
 # Workflows Guide
 
-> **Skill Seekers v3.2.0**  
+> **Skill Seekers v3.2.0**
 > **Enhancement workflow presets for specialized analysis**
 
 ---
@@ -10,7 +10,7 @@
 Workflows are **multi-stage AI enhancement pipelines** that apply specialized analysis to your skills:
 
 ```
-Basic Skill ──▶ Workflow: Security-Focus ──▶ Security-Enhanced Skill
+Basic Skill ── Workflow: Security-Focus ── Security-Enhanced Skill
                     Stage 1: Overview
                     Stage 2: Vulnerability Analysis
                     Stage 3: Best Practices
@@ -80,13 +80,13 @@ description: Security analysis workflow
 stages:
   - name: security-overview
     prompt: Analyze security features and mechanisms...
-    
+
   - name: vulnerability-analysis
     prompt: Identify common vulnerabilities...
-    
+
   - name: best-practices
     prompt: Document security best practices...
-    
+
   - name: compliance
     prompt: Map to security standards...
 ```
@@ -136,13 +136,13 @@ stages:
 stages:
   - name: security-overview
     prompt: Identify and document security features...
-    
+
   - name: vulnerability-analysis
     prompt: Analyze potential vulnerabilities...
-    
+
   - name: security-best-practices
     prompt: Document security best practices...
-    
+
   - name: compliance-mapping
     prompt: Map to OWASP, CWE, and other standards...
 ```
@@ -169,22 +169,22 @@ skill-seekers create oauth2-server --enhance-workflow security-focus
 stages:
   - name: system-overview
     prompt: Document high-level architecture...
-    
+
   - name: component-analysis
     prompt: Analyze key components...
-    
+
   - name: data-flow
     prompt: Document data flow patterns...
-    
+
   - name: integration-points
     prompt: Identify external integrations...
-    
+
   - name: scalability
     prompt: Document scalability considerations...
-    
+
   - name: deployment
     prompt: Document deployment patterns...
-    
+
   - name: maintenance
     prompt: Document operational concerns...
 ```
@@ -212,10 +212,10 @@ skill-seekers create kubernetes/kubernetes \
 stages:
   - name: endpoint-catalog
     prompt: Catalog all API endpoints...
-    
+
   - name: request-response
     prompt: Document request/response formats...
-    
+
   - name: error-handling
     prompt: Document error codes and handling...
 ```
@@ -243,10 +243,10 @@ skill-seekers create https://api.example.com/docs \
 stages:
   - name: source-alignment
     prompt: Align and deduplicate content from different source types...
-    
+
   - name: cross-reference
     prompt: Build cross-references between sources...
-    
+
   - name: unified-synthesis
     prompt: Synthesize a unified narrative from all sources...
 ```
@@ -308,7 +308,7 @@ stages:
       - Benchmark results
       - Optimization opportunities
       - Scalability limits
-    
+
   - name: optimization-guide
     type: custom
     uses_history: true
@@ -316,7 +316,7 @@ stages:
       Based on the previous analysis, create an optimization guide.
       Target latency: {target_latency}
       Target throughput: {target_throughput}
-      
+
       Previous results: {previous_results}
 ```
 
@@ -422,15 +422,15 @@ Stages:
   1. security-overview
      - Will analyze security features
      - Target: skill_md
-     
+
   2. vulnerability-analysis
      - Will identify vulnerabilities
      - Target: skill_md
-     
+
   3. best-practices
      - Will document best practices
      - Target: skill_md
-     
+
   4. compliance
      - Will map to standards
      - Target: skill_md
@@ -567,25 +567,25 @@ Workflows are supported by **all 17 source types** in Skill Seekers:
 
 | Scraper | Command | Workflow Support |
 |---------|---------|------------------|
-| Documentation | `scrape` | ✅ Full support |
-| GitHub | `github` | ✅ Full support |
-| Local Codebase | `analyze` | ✅ Full support |
-| PDF | `pdf` | ✅ Full support |
-| Word | `word` | ✅ Full support |
-| EPUB | `epub` | ✅ Full support |
-| Video | `video` | ✅ Full support |
-| Jupyter Notebook | `jupyter` | ✅ Full support |
-| Local HTML | `html` | ✅ Full support |
-| OpenAPI/Swagger | `openapi` | ✅ Full support |
-| AsciiDoc | `asciidoc` | ✅ Full support |
-| PowerPoint | `pptx` | ✅ Full support |
-| RSS/Atom | `rss` | ✅ Full support |
-| Man Pages | `manpage` | ✅ Full support |
-| Confluence | `confluence` | ✅ Full support |
-| Notion | `notion` | ✅ Full support |
-| Slack/Discord | `chat` | ✅ Full support |
-| Unified/Multi-Source | `unified` | ✅ Full support |
-| Create (Auto-detect) | `create` | ✅ Full support |
+| Documentation | `scrape` | PASS: Full support |
+| GitHub | `github` | PASS: Full support |
+| Local Codebase | `analyze` | PASS: Full support |
+| PDF | `pdf` | PASS: Full support |
+| Word | `word` | PASS: Full support |
+| EPUB | `epub` | PASS: Full support |
+| Video | `video` | PASS: Full support |
+| Jupyter Notebook | `jupyter` | PASS: Full support |
+| Local HTML | `html` | PASS: Full support |
+| OpenAPI/Swagger | `openapi` | PASS: Full support |
+| AsciiDoc | `asciidoc` | PASS: Full support |
+| PowerPoint | `pptx` | PASS: Full support |
+| RSS/Atom | `rss` | PASS: Full support |
+| Man Pages | `manpage` | PASS: Full support |
+| Confluence | `confluence` | PASS: Full support |
+| Notion | `notion` | PASS: Full support |
+| Slack/Discord | `chat` | PASS: Full support |
+| Unified/Multi-Source | `unified` | PASS: Full support |
+| Create (Auto-detect) | `create` | PASS: Full support |
 
 ### Using Workflows with Different Sources
 

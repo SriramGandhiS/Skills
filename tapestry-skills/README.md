@@ -14,10 +14,9 @@ Are you a founder of a tech company? Check out [Tapestry](https://GrowWithTapest
 | [Session Log](#4-session-log) | Summarize your session and append it to a weekly agent-log file. |
 | [Unblock Action](#5-unblock-action) | Turn a vague stuck task into a concrete next action in under 2 minutes. |
 
-
 ## Skills Included
 
-### 0. Learn This ⭐
+### 0. Learn This
 The unified workflow that orchestrates everything. Just say `learn-this <URL>` and it:
 1. Detects content type (YouTube, article, PDF)
 2. Extracts clean content
@@ -320,20 +319,20 @@ The skill will:
 User: "learn-this https://www.youtube.com/watch?v=dQw4w9WgXcQ"
 
 Claude:
-🧵 Learn This Workflow Starting...
-📍 Detected: youtube
-📺 Extracting YouTube transcript...
+ Learn This Workflow Starting...
+ Detected: youtube
+ Extracting YouTube transcript...
 ✓ Saved transcript: Never Gonna Give You Up.txt
 
-🚀 Creating action plan...
+ Creating action plan...
 ✓ Quest: Master Video Production Techniques
 ✓ Saved plan: Ship-Learn-Next Plan - Master Video Production.md
 
-✅ Learn This Complete!
-📥 Content: Never Gonna Give You Up.txt
-📋 Plan: Ship-Learn-Next Plan - Master Video Production.md
+PASS: Learn This Complete!
+ Content: Never Gonna Give You Up.txt
+ Plan: Ship-Learn-Next Plan - Master Video Production.md
 
-🎯 Rep 1 (This Week): Film and edit a 60-second video
+ Rep 1 (This Week): Film and edit a 60-second video
 When will you ship Rep 1?
 ```
 

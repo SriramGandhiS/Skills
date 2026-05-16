@@ -36,7 +36,7 @@ The Feasibility Index answers one question:
 
 ---
 
-## 🔢 Programmatic SEO Feasibility Index
+## Programmatic SEO Feasibility Index
 
 ### Total Score: **0–100**
 

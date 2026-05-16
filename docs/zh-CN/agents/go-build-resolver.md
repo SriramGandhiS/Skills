@@ -13,7 +13,7 @@ model: sonnet
 
 1. 诊断 Go 编译错误
 2. 修复 `go vet` 警告
-3. 解决 `staticcheck` / `golangci-lint` 问题
+3. 解决 `staticcheck`/`golangci-lint` 问题
 4. 处理模块依赖问题
 5. 修复类型错误和接口不匹配
 
@@ -49,12 +49,12 @@ go mod tidy -v
 | `cannot use X as type Y` | 类型不匹配、指针/值 | 类型转换或解引用 |
 | `X does not implement Y` | 缺少方法 | 使用正确的接收器实现方法 |
 | `import cycle not allowed` | 循环依赖 | 将共享类型提取到新包中 |
-| `cannot find package` | 缺少依赖项 | `go get pkg@version` 或 `go mod tidy` |
+| `cannot find package`| 缺少依赖项 |`go get pkg@version`或`go mod tidy` |
 | `missing return` | 控制流不完整 | 添加返回语句 |
 | `declared but not used` | 未使用的变量/导入 | 删除或使用空白标识符 |
-| `multiple-value in single-value context` | 未处理的返回值 | `result, err := func()` |
+| `multiple-value in single-value context`| 未处理的返回值 |`result, err := func()` |
 | `cannot assign to struct field in map` | 映射值修改 | 使用指针映射或复制-修改-重新赋值 |
-| `invalid type assertion` | 对非接口进行断言 | 仅从 `interface{}` 进行断言 |
+| `invalid type assertion`| 对非接口进行断言 | 仅从`interface{}` 进行断言 |
 
 ## 模块故障排除
 

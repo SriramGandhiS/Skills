@@ -110,7 +110,7 @@ confirmed_components = set of Figma components with a code mapping
 all_components = set of all named components in get_design_context layer tree
 
 unmapped = all_components - confirmed_components
-If unmapped is non-empty → flag as 🟡 Warning in Cat 5:
+If unmapped is non-empty → flag as  Warning in Cat 5:
   "N Figma components have no code equivalent: [list]"
 ```
 
@@ -170,10 +170,10 @@ Look for:
 ### Component Health Checks
 ```
 Look for:
-- Layer names like "Frame 12", "Group 7", "Rectangle" → unnamed 🔴
-- Layer names like "Button/Primary/Hover" → named component instance ✅
-- Layer names like "Header", "Card Item" (frames, not components) → named frame ⚠️
-- Nodes with no componentId → detached instance or raw layer 🟡
+- Layer names like "Frame 12", "Group 7", "Rectangle" → unnamed
+- Layer names like "Button/Primary/Hover" → named component instance PASS:
+- Layer names like "Header", "Card Item" (frames, not components) → named frame WARNING:
+- Nodes with no componentId → detached instance or raw layer
 
 Tally all non-hidden layers in the frame:
   component_pct  = (named component instances / total) × 100
@@ -181,17 +181,17 @@ Tally all non-hidden layers in the frame:
   detached_count = number of detached instances
 
 Thresholds:
-  component_pct ≥ 60% → ✅ Healthy
-  component_pct 30–59% → 🟡 Partial
-  component_pct < 30%  → 🔴 Low coverage
+  component_pct ≥ 60% → PASS: Healthy
+  component_pct 30–59% →  Partial
+  component_pct < 30%  →  Low coverage
 
 Always show in report header:
   "Component health: [N]% coverage · [N] detached · [N] unnamed layers"
 
 Issue flags:
-  unnamed_pct > 20%     → 🟡 Warning
-  detached_count > 0    → 🟡 Warning
-  component_pct < 30%   → 🔴 Critical
+  unnamed_pct > 20%     →  Warning
+  detached_count > 0    →  Warning
+  component_pct < 30%   →  Critical
 ```
 
 ---
@@ -308,7 +308,7 @@ name: "Button/Primary/Default"
 
 ---
 
-### ⚠️ Component Instance Caveat
+### WARNING: Component Instance Caveat
 
 **You cannot directly edit layers inside a component instance.** If a node ID belongs to a layer inside an instance (not the main component), `perform_editing_operations` will fail or have no effect.
 
@@ -347,7 +347,7 @@ Button/Secondary/Disabled
 Icon/Arrow/Right
 ```
 
-When auditing, note if components follow this pattern. If they don't, flag it as a 🟡 Warning — it means the design won't scale well and handoff to developers will be harder.
+When auditing, note if components follow this pattern. If they don't, flag it as a  Warning — it means the design won't scale well and handoff to developers will be harder.
 
 ---
 
@@ -355,15 +355,15 @@ When auditing, note if components follow this pattern. If they don't, flag it as
 
 | Issue | Figma Signal | Severity |
 |---|---|---|
-| No components used | All layers are "Frame", "Rectangle", "Group" | 🟡 |
-| Detached components | Layer shows "⚠ Detached" | 🟡 |
-| Inconsistent text styles | No shared text styles defined | 🟡 |
-| Inconsistent color styles | No shared color styles defined | 🟡 |
-| Missing auto-layout | Fixed-position elements that should flex | 🟢 |
-| No grids defined | Layout grid not applied to frames | 🟢 |
-| Unlabeled frames | Frames named "Frame 1", "Frame 2" | 🟢 |
-| Missing variants | Component has no hover/disabled states | 🟡 |
-| Images not masked | Raw image fills without mask shapes | 🟢 |
+| No components used | All layers are "Frame", "Rectangle", "Group" |  |
+| Detached components | Layer shows "WARNING: Detached" |  |
+| Inconsistent text styles | No shared text styles defined |  |
+| Inconsistent color styles | No shared color styles defined |  |
+| Missing auto-layout | Fixed-position elements that should flex |  |
+| No grids defined | Layout grid not applied to frames |  |
+| Unlabeled frames | Frames named "Frame 1", "Frame 2" |  |
+| Missing variants | Component has no hover/disabled states |  |
+| Images not masked | Raw image fills without mask shapes |  |
 
 ---
 

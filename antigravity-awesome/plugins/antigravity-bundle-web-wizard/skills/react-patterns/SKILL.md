@@ -187,7 +187,7 @@ date_added: "2026-02-27"
 
 ## 10. Anti-Patterns
 
-| ❌ Don't | ✅ Do |
+| FAIL: Don't | PASS: Do |
 |----------|-------|
 | Prop drilling deep | Use context |
 | Giant components | Split smaller |

@@ -105,7 +105,7 @@ Registro no Cartório de Imóveis
 | Art. 896 | Garantia do leiloeiro |
 | Art. 897 | Preferência na arrematação |
 | Art. 898 | Desfazimento da arrematação |
-| Art. 901 | Auto de 
+| Art. 901 | Auto de
 
 ### 1.2 Leilão Extrajudicial — Alienação Fiduciária (Lei 9.514/97)
 
@@ -210,7 +210,7 @@ Mas o risco existe — avaliar caso a caso.
 
 | Ônus | Acompanha? | Base Legal |
 |------|-----------|-----------|
-| Hipoteca anterior à penhora | ⚠️ Pode acompanhar | Depende da ordem e purga |
+| Hipoteca anterior à penhora | WARNING: Pode acompanhar | Depende da ordem e purga |
 | Hipoteca posterior à penhora | Não acompanha | Art. 908 CPC |
 | IPTU atrasado | Sim — propter rem | Art. 130 CTN |
 | Condomínio atrasado | Sim — propter rem | Art. 1.336 CC + Súmula STJ |

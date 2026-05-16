@@ -20,9 +20,9 @@ Bu skill'i şu durumlarda çağır:
 
 ### Faz 1: Build Doğrulaması
 ```bash
-# Projenin build olup olmadığını kontrol et
+## Projenin build olup olmadığını kontrol et
 npm run build 2>&1 | tail -20
-# VEYA
+## VEYA
 pnpm build 2>&1 | tail -20
 ```
 
@@ -30,10 +30,10 @@ Build başarısız olursa, devam etmeden önce DUR ve düzelt.
 
 ### Faz 2: Tip Kontrolü
 ```bash
-# TypeScript projeleri
+## TypeScript projeleri
 npx tsc --noEmit 2>&1 | head -30
 
-# Python projeleri
+## Python projeleri
 pyright . 2>&1 | head -30
 ```
 
@@ -41,20 +41,20 @@ Tüm tip hatalarını raporla. Devam etmeden önce kritik olanları düzelt.
 
 ### Faz 3: Lint Kontrolü
 ```bash
-# JavaScript/TypeScript
+## JavaScript/TypeScript
 npm run lint 2>&1 | head -30
 
-# Python
+## Python
 ruff check . 2>&1 | head -30
 ```
 
 ### Faz 4: Test Paketi
 ```bash
-# Testleri coverage ile çalıştır
+## Testleri coverage ile çalıştır
 npm run test -- --coverage 2>&1 | tail -50
 
-# Coverage eşiğini kontrol et
-# Hedef: minimum %80
+## Coverage eşiğini kontrol et
+## Hedef: minimum %80
 ```
 
 Rapor:
@@ -65,17 +65,17 @@ Rapor:
 
 ### Faz 5: Güvenlik Taraması
 ```bash
-# Secret'ları kontrol et
+## Secret'ları kontrol et
 grep -rn "sk-" --include="*.ts" --include="*.js" . 2>/dev/null | head -10
 grep -rn "api_key" --include="*.ts" --include="*.js" . 2>/dev/null | head -10
 
-# console.log kontrol et
+## console.log kontrol et
 grep -rn "console.log" --include="*.ts" --include="*.tsx" src/ 2>/dev/null | head -10
 ```
 
 ### Faz 6: Diff İncelemesi
 ```bash
-# Neyin değiştiğini göster
+## Neyin değiştiğini göster
 git diff --stat
 git diff HEAD~1 --name-only
 ```

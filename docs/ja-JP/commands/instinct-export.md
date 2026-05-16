@@ -35,10 +35,10 @@ command: /instinct-export
 YAMLファイルを作成します:
 
 ```yaml
-# Instincts Export
-# Generated: 2025-01-22
-# Source: personal
-# Count: 12 instincts
+## Instincts Export
+## Generated: 2025-01-22
+## Source: personal
+## Count: 12 instincts
 
 version: "2.0"
 exported_by: "continuous-learning-v2"

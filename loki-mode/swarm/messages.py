@@ -640,7 +640,7 @@ class PubSubMessageBus:
             except Exception as e:
                 with self._lock:
                     self._dead_letter.append({
-                        **envelope,
+**envelope,
                         "error": str(e),
                         "subscriber": sub["id"],
                     })

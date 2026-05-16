@@ -120,11 +120,11 @@ jobs:
       - name: Check all results
         run: |
           if [ "${{ needs.lint.result }}" != "success" ]; then
-            echo "❌ Code quality checks failed!"
+            echo "FAIL: Code quality checks failed!"
             exit 1
           fi
           if [ "${{ needs.test.result }}" != "success" ]; then
-            echo "❌ Tests failed!"
+            echo "FAIL: Tests failed!"
             exit 1
           fi
-          echo "✅ All checks passed!"
+          echo "PASS: All checks passed!"

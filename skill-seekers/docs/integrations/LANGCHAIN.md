@@ -2,11 +2,11 @@
 
 **Last Updated:** February 5, 2026
 **Status:** Production Ready
-**Difficulty:** Easy ⭐
+**Difficulty:** Easy
 
 ---
 
-## 🎯 The Problem
+## The Problem
 
 Building RAG (Retrieval-Augmented Generation) applications with LangChain requires high-quality, structured documentation for your vector stores. Manually scraping and chunking documentation is:
 
@@ -19,7 +19,7 @@ Building RAG (Retrieval-Augmented Generation) applications with LangChain requir
 
 ---
 
-## ✨ The Solution
+## The Solution
 
 Use Skill Seekers as **essential preprocessing** before LangChain:
 
@@ -33,7 +33,7 @@ Skill Seekers outputs JSON files with LangChain Document format, ready to load d
 
 ---
 
-## 🚀 Quick Start (5 Minutes)
+## Quick Start (5 Minutes)
 
 ### Prerequisites
 - Python 3.10+
@@ -94,7 +94,7 @@ for doc in results:
 
 ---
 
-## 📖 Detailed Setup Guide
+## Detailed Setup Guide
 
 ### Step 1: Choose Your Documentation Source
 
@@ -125,23 +125,23 @@ skill-seekers package output/react --target langchain
 # Output structure:
 # output/react-langchain.json
 # [
-#   {
-#     "page_content": "...",
-#     "metadata": {
-#       "source": "react",
-#       "category": "hooks",
-#       "file": "hooks.md",
-#       "type": "reference"
-#     }
-#   }
+# {
+# "page_content": "...",
+# "metadata": {
+# "source": "react",
+# "category": "hooks",
+# "file": "hooks.md",
+# "type": "reference"
+# }
+# }
 # ]
 ```
 
 **What You Get:**
-- ✅ Pre-chunked documents (semantic boundaries preserved)
-- ✅ Rich metadata (source, category, file, type)
-- ✅ Clean markdown (code blocks preserved)
-- ✅ Ready for embeddings
+- PASS: Pre-chunked documents (semantic boundaries preserved)
+- PASS: Rich metadata (source, category, file, type)
+- PASS: Clean markdown (code blocks preserved)
+- PASS: Ready for embeddings
 
 ### Step 3: Load into Vector Store
 
@@ -169,7 +169,7 @@ vectorstore = Chroma.from_documents(
     persist_directory="./chroma_db"
 )
 
-print(f"✅ {len(documents)} documents loaded into Chroma")
+print(f"PASS: {len(documents)} documents loaded into Chroma")
 ```
 
 **Option 2: FAISS (Fast, In-Memory)**
@@ -193,7 +193,7 @@ vectorstore = FAISS.from_documents(documents, embeddings)
 # Save for later use
 vectorstore.save_local("faiss_index")
 
-print(f"✅ {len(documents)} documents loaded into FAISS")
+print(f"PASS: {len(documents)} documents loaded into FAISS")
 ```
 
 **Option 3: Pinecone (Cloud, Scalable)**
@@ -228,7 +228,7 @@ vectorstore = LangChainPinecone.from_documents(
     index_name=index_name
 )
 
-print(f"✅ {len(documents)} documents uploaded to Pinecone")
+print(f"PASS: {len(documents)} documents uploaded to Pinecone")
 ```
 
 ### Step 4: Build RAG Chain
@@ -264,7 +264,7 @@ for doc in result['source_documents']:
 
 ---
 
-## 🎨 Advanced Usage
+## Advanced Usage
 
 ### Filter by Metadata
 
@@ -312,12 +312,12 @@ for source in sources:
 
 # Create unified vector store
 vectorstore = Chroma.from_documents(all_documents, embeddings)
-print(f"✅ Loaded {len(all_documents)} documents from {len(sources)} sources")
+print(f"PASS: Loaded {len(all_documents)} documents from {len(sources)} sources")
 ```
 
 ---
 
-## 💡 Best Practices
+## Best Practices
 
 ### 1. Start with Presets
 Use tested configurations to avoid scraping issues:
@@ -359,7 +359,7 @@ print(f"Estimated tokens: {total_tokens * 1.3:.0f}")  # Rough estimate
 
 ---
 
-## 🔥 Real-World Example
+## Real-World Example
 
 ### Building a React Documentation Chatbot
 
@@ -399,7 +399,7 @@ vectorstore = Chroma.from_documents(
     persist_directory="./react_chroma"
 )
 
-print(f"✅ Loaded {len(documents)} React documentation chunks")
+print(f"PASS: Loaded {len(documents)} React documentation chunks")
 ```
 
 **Step 3: Build Conversational RAG**
@@ -439,7 +439,7 @@ while True:
 
 ---
 
-## 🐛 Troubleshooting
+## Troubleshooting
 
 ### Issue: Too Many Documents
 **Solution:** Filter by category or split into multiple indexes
@@ -474,7 +474,7 @@ pip install faiss-cpu  # For FAISS
 
 ---
 
-## 📊 Before vs After Comparison
+## Before vs After Comparison
 
 | Aspect | Manual Process | With Skill Seekers |
 |--------|---------------|-------------------|
@@ -487,7 +487,7 @@ pip install faiss-cpu  # For FAISS
 
 ---
 
-## 🤝 Community & Support
+## Community & Support
 
 - **Questions:** [GitHub Discussions](https://github.com/yusufkaraaslan/Skill_Seekers/discussions)
 - **Issues:** [GitHub Issues](https://github.com/yusufkaraaslan/Skill_Seekers/issues)
@@ -496,7 +496,7 @@ pip install faiss-cpu  # For FAISS
 
 ---
 
-## 📚 Related Guides
+## Related Guides
 
 - [LlamaIndex Integration](./LLAMA_INDEX.md)
 - [Pinecone Integration](./PINECONE.md)
@@ -504,7 +504,7 @@ pip install faiss-cpu  # For FAISS
 
 ---
 
-## 📖 Next Steps
+## Next Steps
 
 1. **Try the Quick Start** above
 2. **Explore other vector stores** (Pinecone, Weaviate, Qdrant)

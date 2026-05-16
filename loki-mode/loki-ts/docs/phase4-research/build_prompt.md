@@ -1,8 +1,8 @@
 # build_prompt() Function Analysis
 
 **Phase 4 Research Deliverable B2**
-**Repository:** loki-mode  
-**Date:** 2025-04-25  
+**Repository:** loki-mode
+**Date:** 2025-04-25
 **Scope:** Bash-to-TypeScript/Bun migration parity verification
 
 ## 1. Function Location and Size
@@ -267,7 +267,7 @@ All are read-only wrappers.
 
 **Total Typical Range:** 6,900-35,600 bytes (all contexts present) / ~7,000 bytes (minimal)
 
-**Token Estimate (claude-3.5-sonnet):** 
+**Token Estimate (claude-3.5-sonnet):**
 - ~1.3 tokens per 4 bytes (UTF-8 ASCII)
 - Minimal: ~1,800 tokens
 - Maximal: ~9,200 tokens (with all contexts)

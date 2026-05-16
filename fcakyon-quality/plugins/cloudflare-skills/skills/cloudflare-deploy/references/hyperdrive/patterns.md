@@ -70,7 +70,7 @@ const sql = postgres(env.HYPERDRIVE.connectionString, {prepare: true});
 
 // Tenant-scoped queries cached separately
 const docs = await sql`
-  SELECT * FROM documents 
+  SELECT * FROM documents
   WHERE tenant_id = ${tenantId} AND deleted_at IS NULL
   ORDER BY updated_at DESC LIMIT 50
 `;
@@ -125,33 +125,33 @@ Operates in **transaction mode**: connection acquired per transaction, `RESET` o
 
 **SET statements:**
 ```typescript
-// ✅ Within transaction
+// PASS: Within transaction
 await client.query("BEGIN");
 await client.query("SET work_mem = '256MB'");
 await client.query("SELECT * FROM large_table");  // Uses SET
 await client.query("COMMIT");  // RESET after
 
-// ✅ Single statement
+// PASS: Single statement
 await client.query("SET work_mem = '256MB'; SELECT * FROM large_table");
 
-// ❌ Across queries (may get different connection)
+// FAIL: Across queries (may get different connection)
 await client.query("SET work_mem = '256MB'");
 await client.query("SELECT * FROM large_table");  // SET not applied
 ```
 
 **Best practices:**
 ```typescript
-// ❌ Long transactions block pooling
+// FAIL: Long transactions block pooling
 await client.query("BEGIN");
 await processThousands();  // Connection held entire time
 await client.query("COMMIT");
 
-// ✅ Short transactions
+// PASS: Short transactions
 await client.query("BEGIN");
 await client.query("UPDATE users SET status = $1 WHERE id = $2", [status, id]);
 await client.query("COMMIT");
 
-// ✅ SET LOCAL within transaction
+// PASS: SET LOCAL within transaction
 await client.query("BEGIN");
 await client.query("SET LOCAL work_mem = '256MB'");
 await client.query("SELECT * FROM large_table");
@@ -176,13 +176,13 @@ const sql = postgres(connectionString, {
 
 **Write cache-friendly queries:**
 ```typescript
-// ✅ Cacheable (deterministic)
+// PASS: Cacheable (deterministic)
 await sql`SELECT * FROM products WHERE category = 'electronics' LIMIT 10`;
 
-// ❌ Not cacheable (volatile NOW())
+// FAIL: Not cacheable (volatile NOW())
 await sql`SELECT * FROM logs WHERE created_at > NOW()`;
 
-// ✅ Cacheable (parameterized timestamp)
+// PASS: Cacheable (parameterized timestamp)
 const ts = Date.now();
 await sql`SELECT * FROM logs WHERE created_at > ${ts}`;
 ```

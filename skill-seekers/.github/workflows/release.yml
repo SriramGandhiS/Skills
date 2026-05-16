@@ -74,7 +74,7 @@ jobs:
           echo "::error::Version mismatch! Tag=$TAG_VERSION but pyproject.toml has=$TOML_VERSION"
           exit 1
         fi
-        echo "✅ All versions match: $TAG_VERSION"
+        echo "PASS: All versions match: $TAG_VERSION"
 
     - name: Create Release Notes
       id: release_notes
@@ -116,7 +116,7 @@ jobs:
     - name: Skip Release Creation
       if: steps.check_release.outputs.exists == 'true'
       run: |
-        echo "ℹ️  Release ${{ github.ref_name }} already exists, skipping creation"
+        echo "  Release ${{ github.ref_name }} already exists, skipping creation"
         echo "View at: https://github.com/${{ github.repository }}/releases/tag/${{ github.ref_name }}"
 
     - name: Build package

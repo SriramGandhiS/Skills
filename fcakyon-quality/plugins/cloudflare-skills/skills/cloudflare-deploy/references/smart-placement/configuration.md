@@ -73,8 +73,8 @@
 
 Smart Placement is fundamentally limited to Workers with default `fetch` handlers. This is a key architectural constraint.
 
-- ✅ **Affects:** `fetch` event handlers ONLY (the default export's fetch method)
-- ❌ **Does NOT affect:** 
+- PASS: **Affects:** `fetch` event handlers ONLY (the default export's fetch method)
+- FAIL: **Does NOT affect:**
   - RPC methods (Service Bindings with `WorkerEntrypoint` - see example below)
   - Named entrypoints (exports other than `default`)
   - Workers without `fetch` handlers
@@ -82,7 +82,7 @@ Smart Placement is fundamentally limited to Workers with default `fetch` handler
 
 **Example - Smart Placement ONLY affects `fetch`:**
 ```typescript
-// ✅ Smart Placement affects this:
+// PASS: Smart Placement affects this:
 export default {
   async fetch(request: Request, env: Env): Promise<Response> {
     // This runs close to backend when Smart Placement enabled
@@ -91,9 +91,9 @@ export default {
   }
 }
 
-// ❌ Smart Placement DOES NOT affect these:
+// FAIL: Smart Placement DOES NOT affect these:
 export class MyRPC extends WorkerEntrypoint {
-  async myMethod() { 
+  async myMethod() {
     // This ALWAYS runs at edge, Smart Placement has NO EFFECT
     const data = await this.env.DATABASE.prepare('SELECT * FROM users').all();
     return data;
@@ -119,13 +119,13 @@ Smart Placement automatically routes 1% of requests WITHOUT optimization as base
 - Choose either Smart Placement OR explicit placement, not both
 
 ```jsonc
-// ✅ Valid - Smart Placement
+// PASS: Valid - Smart Placement
 { "placement": { "mode": "smart" } }
 
-// ✅ Valid - Explicit Placement (different feature)
+// PASS: Valid - Explicit Placement (different feature)
 { "placement": { "region": "us-east1" } }
 
-// ❌ Invalid - Cannot combine
+// FAIL: Invalid - Cannot combine
 { "placement": { "mode": "smart", "region": "us-east1" } }
 ```
 
@@ -166,14 +166,14 @@ export default {
 3. Use `assets.run_worker_first = false` (serves assets first, bypasses Worker for static content)
 
 ```jsonc
-// ❌ BAD - Degrades asset performance by 2-5x
+// FAIL: BAD - Degrades asset performance by 2-5x
 {
   "name": "pages-app",
   "placement": { "mode": "smart" },
   "assets": { "run_worker_first": true }
 }
 
-// ✅ GOOD - Frontend at edge, backend optimized
+// PASS: GOOD - Frontend at edge, backend optimized
 // frontend-worker/wrangler.jsonc
 {
   "name": "frontend",

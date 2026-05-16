@@ -22,7 +22,7 @@ filters: { column: "folder", operator: "gte", value: "docs/api/" } // Matches ne
 
 **OR restriction example:**
 ```typescript
-// ✅ Valid: same column, eq only
+// PASS: Valid: same column, eq only
 { operator: "or", filters: [
   { column: "folder", operator: "eq", value: "docs/" },
   { column: "folder", operator: "eq", value: "guides/" }

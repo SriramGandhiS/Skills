@@ -309,7 +309,6 @@ try:
 except ImportError:
     HAS_WHISPER = False
 
-
 def get_transcript(video_info, config):
     """Get transcript using best available method."""
 
@@ -357,7 +356,6 @@ try:
 except ImportError:
     HAS_EASYOCR = False
 
-
 def check_visual_dependencies() -> None:
     """Check visual extraction dependencies."""
     missing = []
@@ -373,7 +371,6 @@ def check_visual_dependencies() -> None:
             f"Visual extraction requires: {', '.join(missing)}\n"
             f"Install with: pip install skill-seekers[video-full]"
         )
-
 
 def check_ffmpeg() -> bool:
     """Check if FFmpeg is available."""
@@ -393,21 +390,19 @@ skill-seekers config --check-video
 
 # Output:
 # Video Dependencies:
-#   yt-dlp              ✅ 2025.01.15
-#   youtube-transcript-api ✅ 1.2.3
-#   faster-whisper      ❌ Not installed (pip install skill-seekers[video-full])
-#   opencv-python-headless ❌ Not installed
-#   scenedetect         ❌ Not installed
-#   easyocr             ❌ Not installed
-#
-# System Dependencies:
-#   FFmpeg              ✅ 6.1.1
-#   GPU (CUDA)          ❌ Not available (CPU mode will be used)
-#
-# Available modes:
-#   Transcript only     ✅ YouTube captions available
-#   Whisper fallback    ❌ Install faster-whisper
-#   Visual extraction   ❌ Install video-full dependencies
+# yt-dlp              PASS: 2025.01.15
+# youtube-transcript-api PASS: 1.2.3
+# faster-whisper      FAIL: Not installed (pip install skill-seekers[video-full])
+# opencv-python-headless FAIL: Not installed
+# scenedetect         FAIL: Not installed
+# easyocr             FAIL: Not installed
+# # System Dependencies:
+# FFmpeg              PASS: 6.1.1
+# GPU (CUDA)          FAIL: Not available (CPU mode will be used)
+# # Available modes:
+# Transcript only     PASS: YouTube captions available
+# Whisper fallback    FAIL: Install faster-whisper
+# Visual extraction   FAIL: Install video-full dependencies
 ```
 
 ---

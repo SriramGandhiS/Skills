@@ -1,11 +1,9 @@
-> ⚠️ **DEPRECATED**: This document uses outdated CLI patterns (`python3 cli/X.py`).
-> 
-> For up-to-date documentation, please see:
+> WARNING: **DEPRECATED**: This document uses outdated CLI patterns (`python3 cli/X.py`).
+> > For up-to-date documentation, please see:
 > - [CLI Reference](../reference/CLI_REFERENCE.md) - Complete command reference
 > - [User Guides](../user-guide/) - Common tasks and workflows
 > - [Documentation Hub](../README.md) - All documentation
->
-> *This file is kept for historical reference only.*
+> > *This file is kept for historical reference only.*
 
 ---
 
@@ -221,35 +219,35 @@ python3 cli/estimate_pages.py configs/django.json --timeout 60
 ### Output Example
 
 ```
-🔍 Estimating pages for: react
-📍 Base URL: https://react.dev/
-🎯 Start URLs: 6
-⏱️  Rate limit: 0.5s
-🔢 Max discovery: 1000
+ Estimating pages for: react
+ Base URL: https://react.dev/
+ Start URLs: 6
+  Rate limit: 0.5s
+ Max discovery: 1000
 
-⏳ Discovered: 180 pages (1.3 pages/sec)
+ Discovered: 180 pages (1.3 pages/sec)
 
 ======================================================================
-📊 ESTIMATION RESULTS
+ ESTIMATION RESULTS
 ======================================================================
 
 Config: react
 Base URL: https://react.dev/
 
-✅ Pages Discovered: 180
-⏳ Pages Pending: 50
-📈 Estimated Total: 230
+PASS: Pages Discovered: 180
+ Pages Pending: 50
+ Estimated Total: 230
 
-⏱️  Time Elapsed: 140.5s
-⚡ Discovery Rate: 1.28 pages/sec
+  Time Elapsed: 140.5s
+ Discovery Rate: 1.28 pages/sec
 
 ======================================================================
-💡 RECOMMENDATIONS
+ RECOMMENDATIONS
 ======================================================================
 
-✅ Current max_pages (300) is sufficient
+PASS: Current max_pages (300) is sufficient
 
-⏱️  Estimated full scrape time: 1.9 minutes
+  Estimated full scrape time: 1.9 minutes
    (Based on rate_limit: 0.5s)
 ```
 
@@ -494,12 +492,12 @@ python3 cli/package_skill.py output/my-docs/
 python3 cli/doc_scraper.py --interactive
 
 # 2. Answer prompts:
-#    - Name: my-framework
-#    - URL: https://framework.dev/
-#    - Description: My favorite framework
-#    - Selectors: (uses defaults)
-#    - Rate limit: 0.5
-#    - Max pages: 100
+# - Name: my-framework
+# - URL: https://framework.dev/
+# - Description: My favorite framework
+# - Selectors: (uses defaults)
+# - Rate limit: 0.5
+# - Max pages: 100
 
 # 3. Enhance
 python3 cli/enhance_skill_local.py output/my-framework/
@@ -819,4 +817,4 @@ python3 cli/package_skill.py output/react/
 # Upload output/react.zip to Claude!
 ```
 
-Happy skill creating! 🚀
+Happy skill creating!

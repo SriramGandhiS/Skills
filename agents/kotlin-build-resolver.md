@@ -54,9 +54,9 @@ Run these in order:
 | `Unresolved reference: X` | Missing import, typo, missing dependency | Add import or dependency |
 | `Type mismatch: Required X, Found Y` | Wrong type, missing conversion | Add conversion or fix type |
 | `None of the following candidates is applicable` | Wrong overload, wrong argument types | Fix argument types or add explicit cast |
-| `Smart cast impossible` | Mutable property or concurrent access | Use local `val` copy or `let` |
-| `'when' expression must be exhaustive` | Missing branch in sealed class `when` | Add missing branches or `else` |
-| `Suspend function can only be called from coroutine` | Missing `suspend` or coroutine scope | Add `suspend` modifier or launch coroutine |
+| `Smart cast impossible`| Mutable property or concurrent access | Use local`val`copy or`let` |
+| `'when' expression must be exhaustive`| Missing branch in sealed class`when`| Add missing branches or`else` |
+| `Suspend function can only be called from coroutine`| Missing`suspend`or coroutine scope | Add`suspend` modifier or launch coroutine |
 | `Cannot access 'X': it is internal in 'Y'` | Visibility issue | Change visibility or use public API |
 | `Conflicting declarations` | Duplicate definitions | Remove duplicate or rename |
 | `Could not resolve: group:artifact:version` | Missing repository or wrong version | Add repository or fix version |
@@ -65,22 +65,22 @@ Run these in order:
 ## Gradle Troubleshooting
 
 ```bash
-# Check dependency tree for conflicts
+## Check dependency tree for conflicts
 ./gradlew dependencies --configuration runtimeClasspath
 
-# Force refresh dependencies
+## Force refresh dependencies
 ./gradlew build --refresh-dependencies
 
-# Clear project-local Gradle build cache
+## Clear project-local Gradle build cache
 ./gradlew clean && rm -rf .gradle/build-cache/
 
-# Check Gradle version compatibility
+## Check Gradle version compatibility
 ./gradlew --version
 
-# Run with debug output
+## Run with debug output
 ./gradlew build --debug 2>&1 | tail -50
 
-# Check for dependency conflicts
+## Check for dependency conflicts
 ./gradlew dependencyInsight --dependency <name> --configuration runtimeClasspath
 ```
 

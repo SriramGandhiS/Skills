@@ -140,9 +140,9 @@ echo ""
 
 # Test 4: Reviewer did NOT approve (found issues)
 echo "Test 4: Reviewer verdict..."
-if grep -qi "Issues Found\|❌\|not approved\|issues found" "$OUTPUT_FILE"; then
+if grep -qi "Issues Found\|FAIL:\|not approved\|issues found" "$OUTPUT_FILE"; then
     echo "  [PASS] Reviewer correctly found issues (not approved)"
-elif grep -qi "Approved\|✅" "$OUTPUT_FILE" && ! grep -qi "Issues Found\|❌" "$OUTPUT_FILE"; then
+elif grep -qi "Approved\|PASS:" "$OUTPUT_FILE" && ! grep -qi "Issues Found\|FAIL:" "$OUTPUT_FILE"; then
     echo "  [FAIL] Reviewer incorrectly approved spec with errors"
     FAILED=$((FAILED + 1))
 else

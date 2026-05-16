@@ -30,13 +30,13 @@ Kullanıcı istemi gerekmez:
 Bağımsız işlemler için DAIMA paralel Task yürütme kullan:
 
 ```markdown
-# İYİ: Paralel yürütme
+## İYİ: Paralel yürütme
 3 agent'ı paralel başlat:
 1. Agent 1: Auth modülü güvenlik analizi
 2. Agent 2: Cache sistemi performans incelemesi
 3. Agent 3: Utilities tip kontrolü
 
-# KÖTÜ: Gereksiz sıralı yürütme
+## KÖTÜ: Gereksiz sıralı yürütme
 Önce agent 1, sonra agent 2, sonra agent 3
 ```
 

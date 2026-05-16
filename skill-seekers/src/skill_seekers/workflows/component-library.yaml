@@ -20,7 +20,7 @@ stages:
     enabled: true
     prompt: >
       Analyze the component library architecture.
-      
+
       Identify:
       1. Component organization (atomic design, feature-based)
       2. Component categories (primitives, composites, layouts)
@@ -28,7 +28,7 @@ stages:
       4. Component composition patterns
       5. TypeScript interfaces and prop definitions
       6. Component documentation standards
-      
+
       Output JSON with:
       - "organization": folder structure
       - "categories": component types
@@ -44,7 +44,7 @@ stages:
     enabled: true
     prompt: >
       Document Storybook configuration and patterns.
-      
+
       Cover:
       1. Storybook setup and addons
       2. Story writing patterns (CSF, MDX)
@@ -53,7 +53,7 @@ stages:
       5. Component documentation template
       6. Design token integration
       7. Viewport and theme configuration
-      
+
       Output JSON with:
       - "setup": Storybook configuration
       - "story_patterns": story writing
@@ -69,7 +69,7 @@ stages:
     enabled: true
     prompt: >
       Document component API design patterns.
-      
+
       Include:
       1. Props naming and typing conventions
       2. Compound component patterns
@@ -78,7 +78,7 @@ stages:
       5. Event handler naming (onX vs handleX)
       6. Children and slot patterns
       7. Polymorphic components (as prop)
-      
+
       Output JSON with:
       - "props": prop conventions
       - "compound": compound patterns
@@ -94,7 +94,7 @@ stages:
     enabled: true
     prompt: >
       Document component styling approaches.
-      
+
       Cover:
       1. CSS-in-JS libraries (Styled Components, Emotion)
       2. CSS Modules
@@ -103,7 +103,7 @@ stages:
       5. Theming and dark mode
       6. Style overrides and customization
       7. Responsive design within components
-      
+
       Output JSON with:
       - "approach": styling methodology
       - "tokens": design tokens
@@ -118,7 +118,7 @@ stages:
     enabled: true
     prompt: >
       Document component accessibility patterns.
-      
+
       Include:
       1. ARIA attributes and roles
       2. Keyboard navigation support
@@ -127,7 +127,7 @@ stages:
       5. Color contrast requirements
       6. Reduced motion support
       7. Accessibility testing
-      
+
       Output JSON with:
       - "aria": ARIA implementation
       - "keyboard": keyboard support
@@ -143,7 +143,7 @@ stages:
     enabled: true
     prompt: >
       Document component testing strategies.
-      
+
       Cover:
       1. Unit testing with React Testing Library
       2. Snapshot testing best practices
@@ -152,7 +152,7 @@ stages:
       5. Accessibility testing (jest-axe)
       6. Mocking strategies
       7. Test coverage requirements
-      
+
       Output JSON with:
       - "unit_tests": component testing
       - "snapshots": snapshot guidelines

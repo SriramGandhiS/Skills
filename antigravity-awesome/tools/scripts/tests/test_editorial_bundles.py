@@ -122,7 +122,7 @@ class EditorialBundlesTests(unittest.TestCase):
                         "id": "../../outside",
                         "name": "Safe Bundle",
                         "group": "Security",
-                        "emoji": "🛡️",
+                        "emoji": "",
                         "tagline": "Test bundle",
                         "audience": "Testers",
                         "description": "Testers",

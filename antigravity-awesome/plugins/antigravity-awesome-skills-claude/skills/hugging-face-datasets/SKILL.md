@@ -210,7 +210,7 @@ uv run scripts/sql_manager.py query \
 For complex queries or joining datasets:
 ```bash
 uv run scripts/sql_manager.py raw --sql "
-  SELECT a.*, b.* 
+  SELECT a.*, b.*
   FROM 'hf://datasets/dataset1@~parquet/default/train/*.parquet' a
   JOIN 'hf://datasets/dataset2@~parquet/default/train/*.parquet' b
   ON a.id = b.id
@@ -285,7 +285,7 @@ regexp_replace(col, '\n', '')     -- Regex replace
 regexp_matches(col, 'pattern')    -- Regex match
 LOWER(col), UPPER(col)           -- Case conversion
 
--- Array functions  
+-- Array functions
 choices[0]                        -- Array indexing (0-based)
 array_length(choices)             -- Array length
 unnest(choices)                   -- Expand array to rows

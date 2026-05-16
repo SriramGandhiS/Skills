@@ -86,11 +86,11 @@ try {
 ## Environment Variable'lar
 
 ```bash
-# Gerekli
+## Gerekli
 DATABASE_URL=
 API_KEY=
 
-# Opsiyonel
+## Opsiyonel
 DEBUG=false
 ```
 
@@ -103,7 +103,7 @@ DEBUG=false
 
 ## Git İş Akışı
 
-- Conventional commit'ler: `feat:`, `fix:`, `refactor:`, `docs:`, `test:`
+- Conventional commit'ler: `feat:`,`fix:`,`refactor:`,`docs:`,`test:`
 - Asla doğrudan main'e commit yapmayın
 - PR'lar review gerektirir
 - Merge'den önce tüm testler geçmeli

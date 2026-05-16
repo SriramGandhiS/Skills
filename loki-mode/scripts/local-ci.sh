@@ -1,19 +1,14 @@
 #!/usr/bin/env bash
-#
-# local-ci.sh
-#
-# Mirrors EVERY GitHub Actions workflow check locally. Run this before
+# # local-ci.sh
+# # Mirrors EVERY GitHub Actions workflow check locally. Run this before
 # every push or release. If anything here fails, do not push.
-#
-# Per the user-mandated rule (CLAUDE.md "Local CI before push"):
+# # Per the user-mandated rule (CLAUDE.md "Local CI before push"):
 # every change is validated on this Mac before it reaches the remote.
-#
-# Usage:
-#   bash scripts/local-ci.sh              # full run
-#   bash scripts/local-ci.sh --fast       # skip mutation + docker
-#   bash scripts/local-ci.sh --verbose    # show full output
-#
-# Exit code 0 = green; nonzero = at least one check failed (printed loudly).
+# # Usage:
+# bash scripts/local-ci.sh              # full run
+# bash scripts/local-ci.sh --fast       # skip mutation + docker
+# bash scripts/local-ci.sh --verbose    # show full output
+# # Exit code 0 = green; nonzero = at least one check failed (printed loudly).
 
 set -uo pipefail
 

@@ -21,22 +21,22 @@ PostgreSQL 最佳實務快速參考。詳細指南請使用 `database-reviewer` 
 
 | 查詢模式 | 索引類型 | 範例 |
 |---------|---------|------|
-| `WHERE col = value` | B-tree（預設） | `CREATE INDEX idx ON t (col)` |
-| `WHERE col > value` | B-tree | `CREATE INDEX idx ON t (col)` |
-| `WHERE a = x AND b > y` | 複合 | `CREATE INDEX idx ON t (a, b)` |
-| `WHERE jsonb @> '{}'` | GIN | `CREATE INDEX idx ON t USING gin (col)` |
-| `WHERE tsv @@ query` | GIN | `CREATE INDEX idx ON t USING gin (col)` |
+| `WHERE col = value`| B-tree（預設） |`CREATE INDEX idx ON t (col)` |
+| `WHERE col > value`| B-tree |`CREATE INDEX idx ON t (col)` |
+| `WHERE a = x AND b > y`| 複合 |`CREATE INDEX idx ON t (a, b)` |
+| `WHERE jsonb @> '{}'`| GIN |`CREATE INDEX idx ON t USING gin (col)` |
+| `WHERE tsv @@ query`| GIN |`CREATE INDEX idx ON t USING gin (col)` |
 | 時間序列範圍 | BRIN | `CREATE INDEX idx ON t USING brin (col)` |
 
 ### 資料類型快速參考
 
 | 使用情況 | 正確類型 | 避免 |
 |---------|---------|------|
-| IDs | `bigint` | `int`、隨機 UUID |
-| 字串 | `text` | `varchar(255)` |
-| 時間戳 | `timestamptz` | `timestamp` |
-| 金額 | `numeric(10,2)` | `float` |
-| 旗標 | `boolean` | `varchar`、`int` |
+| IDs | `bigint`|`int`、隨機 UUID |
+| 字串 | `text`|`varchar(255)` |
+| 時間戳 | `timestamptz`|`timestamp` |
+| 金額 | `numeric(10,2)`|`float` |
+| 旗標 | `boolean`|`varchar`、`int` |
 
 ### 常見模式
 

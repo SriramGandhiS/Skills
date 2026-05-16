@@ -558,7 +558,7 @@ public class DocumentCacheService {
 ## YAML Yapılandırması
 
 ```yaml
-# application.yml (uygulama yapılandırması)
+## application.yml (uygulama yapılandırması)
 "%dev":
   quarkus:
     datasource:
@@ -602,7 +602,7 @@ public class DocumentCacheService {
     username: ${RABBITMQ_USER}
     password: ${RABBITMQ_PASSWORD}
 
-# Camel yapılandırması
+## Camel yapılandırması
 camel:
   rabbitmq:
     queue:

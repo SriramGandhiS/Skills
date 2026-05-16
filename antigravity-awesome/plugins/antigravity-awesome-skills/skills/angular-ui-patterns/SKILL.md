@@ -205,8 +205,7 @@ export class ErrorStateComponent {
   (click)="handleSubmit()"
   [disabled]="isSubmitting() || !form.valid"
   class="btn-primary"
->
-  @if (isSubmitting()) {
+> @if (isSubmitting()) {
   <app-spinner size="small" class="mr-2" />
   Saving... } @else { Save Changes }
 </button>

@@ -106,7 +106,7 @@ Page<MarketEntity> markets = repo.findByStatus(MarketStatus.ACTIVE, page);
 - 一般的なフィルタ（`status`、`slug`、外部キー）にインデックスを追加
 - クエリパターンに一致する複合インデックスを使用（`status, created_at`）
 - `select *` を避け、必要な列のみを投影
-- `saveAll` と `hibernate.jdbc.batch_size` でバッチ書き込み
+- `saveAll`と`hibernate.jdbc.batch_size` でバッチ書き込み
 
 ## コネクションプーリング（HikariCP）
 
@@ -136,6 +136,6 @@ spring.jpa.properties.hibernate.jdbc.lob.non_contextual_creation=true
 ## データアクセステスト
 
 - 本番環境を反映するために、Testcontainersを使用した `@DataJpaTest` を優先
-- ログを使用してSQL効率をアサート: パラメータ値には `logging.level.org.hibernate.SQL=DEBUG` と `logging.level.org.hibernate.orm.jdbc.bind=TRACE` を設定
+- ログを使用してSQL効率をアサート: パラメータ値には `logging.level.org.hibernate.SQL=DEBUG`と`logging.level.org.hibernate.orm.jdbc.bind=TRACE` を設定
 
 **注意**: エンティティを軽量に保ち、クエリを意図的にし、トランザクションを短く保ちます。フェッチ戦略とプロジェクションでN+1を防ぎ、読み取り/書き込みパスにインデックスを作成します。

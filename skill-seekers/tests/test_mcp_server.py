@@ -130,7 +130,7 @@ class TestGenerateConfigTool(unittest.IsolatedAsyncioTestCase):
         self.assertIsInstance(result, list)
         self.assertGreater(len(result), 0)
         self.assertIsInstance(result[0], TextContent)
-        self.assertIn("✅", result[0].text)
+        self.assertIn("PASS:", result[0].text)
 
         # Verify config file was created
         config_path = Path("configs/test-framework.json")
@@ -498,7 +498,7 @@ class TestValidateConfigTool(unittest.IsolatedAsyncioTestCase):
         result = await skill_seeker_server.validate_config_tool(args)
 
         self.assertIsInstance(result, list)
-        self.assertIn("✅", result[0].text)
+        self.assertIn("PASS:", result[0].text)
         self.assertIn("valid", result[0].text.lower())
 
     async def test_validate_invalid_config(self):
@@ -519,7 +519,7 @@ class TestValidateConfigTool(unittest.IsolatedAsyncioTestCase):
         result = await skill_seeker_server.validate_config_tool(args)
 
         # Should show error for invalid source type
-        self.assertIn("❌", result[0].text)
+        self.assertIn("FAIL:", result[0].text)
 
     async def test_validate_nonexistent_config(self):
         """Test validating a nonexistent config"""
@@ -568,12 +568,12 @@ class TestMCPServerIntegration(unittest.IsolatedAsyncioTestCase):
                 "description": "Workflow test skill",
             }
             result1 = await skill_seeker_server.generate_config_tool(generate_args)
-            self.assertIn("✅", result1[0].text)
+            self.assertIn("PASS:", result1[0].text)
 
             # Step 2: Validate config
             validate_args = {"config_path": "configs/workflow-test.json"}
             result2 = await skill_seeker_server.validate_config_tool(validate_args)
-            self.assertIn("✅", result2[0].text)
+            self.assertIn("PASS:", result2[0].text)
 
             # Step 3: List configs
             result3 = await skill_seeker_server.list_configs_tool({})
@@ -644,7 +644,7 @@ class TestSubmitConfigTool(unittest.IsolatedAsyncioTestCase):
 
         result = await skill_seeker_server.submit_config_tool(args)
         # Should reject with helpful error message
-        self.assertIn("❌", result[0].text)
+        self.assertIn("FAIL:", result[0].text)
         self.assertIn("LEGACY CONFIG FORMAT DETECTED", result[0].text)
         self.assertIn("sources", result[0].text)  # Should mention unified format with sources array
 

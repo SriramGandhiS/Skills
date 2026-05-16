@@ -34,7 +34,7 @@ This skill transforms a raw game concept into a fully structured Unity developme
 Execute these phases in order. Each phase produces concrete deliverables before advancing.
 
 ```
-PHASE 1: IDEATION ──▶ PHASE 2: BLUEPRINT ──▶ PHASE 3: GENERATION ──▶ PHASE 4: ASSEMBLY ──▶ PHASE 5: DEPLOYMENT
+PHASE 1: IDEATION ── PHASE 2: BLUEPRINT ── PHASE 3: GENERATION ── PHASE 4: ASSEMBLY ── PHASE 5: DEPLOYMENT
   Game Brief            GDD + Scenes           AI Prompts + Assets     Project Setup          Build + Store
   Genre Analysis        Architecture           Scripts + Audio         Core Systems           QA + Submit
   Scope Assessment      Scene Blueprints       Voice + UI              Polish + Juice         Analytics
@@ -252,16 +252,16 @@ App icon, feature graphic, screenshots, promotional video, descriptions, keyword
 
 ## Best Practices
 
-- ✅ **Start with the core loop** — Nail the 30-second cycle before anything else
-- ✅ **Profile before optimizing** — Use Unity Profiler to find real bottlenecks
-- ✅ **Use ScriptableObjects for data** — Decouple data from logic for flexibility
-- ✅ **Generate multiple AI asset variations** — Pick the best from 3–5 generations
-- ✅ **Test on real devices early** — Emulators miss platform-specific issues
-- ✅ **Version control from day one** — Git + LFS, commit often
-- ❌ **Don't hardcode tool choices** — Always present alternatives to the user
-- ❌ **Don't skip the GDD** — Even solo projects benefit from written design
-- ❌ **Don't optimize prematurely** — Make it work, make it right, make it fast
-- ❌ **Don't ship AI assets without review** — Check licensing terms for each tool
+- PASS: **Start with the core loop** — Nail the 30-second cycle before anything else
+- PASS: **Profile before optimizing** — Use Unity Profiler to find real bottlenecks
+- PASS: **Use ScriptableObjects for data** — Decouple data from logic for flexibility
+- PASS: **Generate multiple AI asset variations** — Pick the best from 3–5 generations
+- PASS: **Test on real devices early** — Emulators miss platform-specific issues
+- PASS: **Version control from day one** — Git + LFS, commit often
+- FAIL: **Don't hardcode tool choices** — Always present alternatives to the user
+- FAIL: **Don't skip the GDD** — Even solo projects benefit from written design
+- FAIL: **Don't optimize prematurely** — Make it work, make it right, make it fast
+- FAIL: **Don't ship AI assets without review** — Check licensing terms for each tool
 
 ## Limitations
 
@@ -280,16 +280,16 @@ App icon, feature graphic, screenshots, promotional video, descriptions, keyword
 ## Common Pitfalls
 
 - **Problem:** User provides a vague idea like "make a game"
-  **Solution:** Ask 2–3 targeted questions (genre, platform, scope) before generating the first draft
+**Solution:** Ask 2–3 targeted questions (genre, platform, scope) before generating the first draft
 
 - **Problem:** Scope creep — trying to build everything at once
-  **Solution:** Use the scope calibration table and feature priority matrix (Must/Should/Could/Won't)
+**Solution:** Use the scope calibration table and feature priority matrix (Must/Should/Could/Won't)
 
 - **Problem:** AI-generated assets don't match the art style
-  **Solution:** Always include the GDD's art direction keywords in every asset prompt for consistency
+**Solution:** Always include the GDD's art direction keywords in every asset prompt for consistency
 
 - **Problem:** Performance issues on target platform
-  **Solution:** Set platform-specific budgets early and profile against them weekly
+**Solution:** Set platform-specific budgets early and profile against them weekly
 
 ## Related Skills
 

@@ -1,4 +1,4 @@
-﻿---
+---
 name: imagegen-frontend-web
 description: Elite frontend image-direction skill for generating premium, conversion-aware website design references. CRITICAL OUTPUT RULE â€” generate ONE separate horizontal image FOR EVERY section. A landing page with 8 sections produces 8 images. Never compress multiple sections into one image. Enforces composition variety (not always left-text / right-image), background-image freedom, varied CTAs, varied hero scales (giant / mid / mini minimalist), narrative concept spine, second-read moments, and a single consistent palette across all images. Optimized for landing pages, marketing sites, and product comps that developers or coding models can accurately recreate.
 ---
@@ -22,7 +22,7 @@ This rule overrides any model default that wants to collapse output into a singl
 
 ---
 
-# HERO COMPOSITION BIAS â€” READ FIRST
+## HERO COMPOSITION BIAS â€” READ FIRST
 
 The default **left-text / right-image hero is the most overused AI pattern**. It is allowed, but it should not be your first instinct.
 
@@ -41,7 +41,7 @@ Use left-text / right-image only when it is genuinely the strongest choice â€
 
 ---
 
-# CORE DIRECTIVE: AWWWARDS-LEVEL IMAGE ART DIRECTION
+## CORE DIRECTIVE: AWWWARDS-LEVEL IMAGE ART DIRECTION
 You are an elite frontend image art director.
 
 Your job is not to generate generic AI art.

@@ -61,7 +61,7 @@ project_id: "a1b2c3d4e5f6"
 project_name: "my-react-app"
 ---
 
-# Prefer Functional Style
+## Prefer Functional Style
 
 ## Action
 Use functional patterns over classes when appropriate.
@@ -77,7 +77,7 @@ Use functional patterns over classes when appropriate.
 * **置信度加权** -- 0.3 = 试探性，0.9 = 几乎确定
 * **领域标记** -- 代码风格、测试、git、调试、工作流等
 * **有证据支持** -- 追踪是哪些观察创建了它
-* **作用域感知** -- `project` (默认) 或 `global`
+* **作用域感知** -- `project`(默认) 或`global`
 
 ## 工作原理
 
@@ -144,11 +144,11 @@ Use functional patterns over classes when appropriate.
 
 **如果作为插件安装**（推荐）：
 
-不需要在 `~/.claude/settings.json` 中额外添加 hooks。Claude Code v2.1+ 会自动加载插件的 `hooks/hooks.json`，其中已经注册了 `observe.sh`。
+不需要在 `~/.claude/settings.json`中额外添加 hooks。Claude Code v2.1+ 会自动加载插件的`hooks/hooks.json`，其中已经注册了`observe.sh`。
 
-如果您之前把 `observe.sh` 复制到了 `~/.claude/settings.json`，请删除重复的 `PreToolUse` / `PostToolUse` 配置。重复注册会导致重复执行，并触发 `${CLAUDE_PLUGIN_ROOT}` 解析错误，因为该变量只会在插件自己的 `hooks/hooks.json` 中展开。
+如果您之前把 `observe.sh`复制到了`~/.claude/settings.json`，请删除重复的`PreToolUse`/`PostToolUse`配置。重复注册会导致重复执行，并触发`${CLAUDE_PLUGIN_ROOT}`解析错误，因为该变量只会在插件自己的`hooks/hooks.json` 中展开。
 
-**如果手动安装**到 `~/.claude/skills`，请将以下内容添加到 `~/.claude/settings.json`：
+**如果手动安装**到 `~/.claude/skills`，请将以下内容添加到`~/.claude/settings.json`：
 
 ```json
 {
@@ -176,10 +176,10 @@ Use functional patterns over classes when appropriate.
 系统会在首次使用时自动创建目录，但您也可以手动创建：
 
 ```bash
-# Global directories
+## Global directories
 mkdir -p ~/.claude/homunculus/{instincts/{personal,inherited},evolved/{agents,skills,commands},projects}
 
-# Project directories are auto-created when the hook first runs in a git repo
+## Project directories are auto-created when the hook first runs in a git repo
 ```
 
 ### 3. 使用本能命令
@@ -221,11 +221,11 @@ mkdir -p ~/.claude/homunculus/{instincts/{personal,inherited},evolved/{agents,sk
 
 | 键 | 默认值 | 描述 |
 |-----|---------|-------------|
-| `observer.enabled` | `false` | 启用后台观察器代理 |
-| `observer.run_interval_minutes` | `5` | 观察器分析观察结果的频率 |
-| `observer.min_observations_to_analyze` | `20` | 运行分析所需的最小观察次数 |
+| `observer.enabled`|`false` | 启用后台观察器代理 |
+| `observer.run_interval_minutes`|`5` | 观察器分析观察结果的频率 |
+| `observer.min_observations_to_analyze`|`20` | 运行分析所需的最小观察次数 |
 
-其他行为 (观察捕获、本能阈值、项目作用域、提升标准) 通过 `instinct-cli.py` 和 `observe.sh` 中的代码默认值进行配置。
+其他行为 (观察捕获、本能阈值、项目作用域、提升标准) 通过 `instinct-cli.py`和`observe.sh` 中的代码默认值进行配置。
 
 ## 文件结构
 
@@ -282,13 +282,13 @@ mkdir -p ~/.claude/homunculus/{instincts/{personal,inherited},evolved/{agents,sk
 **如何提升：**
 
 ```bash
-# Promote a specific instinct
+## Promote a specific instinct
 python3 instinct-cli.py promote prefer-explicit-errors
 
-# Auto-promote all qualifying instincts
+## Auto-promote all qualifying instincts
 python3 instinct-cli.py promote
 
-# Preview without changes
+## Preview without changes
 python3 instinct-cli.py promote --dry-run
 ```
 

@@ -114,7 +114,6 @@ def prepare_task_prompt(task, model):
 
     return base_prompt  # No repetition for reasoning models
 
-
 def is_structured_task(task):
     """Determine if task benefits from prompt repetition."""
     structured_keywords = [
@@ -122,7 +121,6 @@ def is_structured_task(task):
         "extract", "categorize", "count", "filter"
     ]
     return any(kw in task.description.lower() for kw in structured_keywords)
-
 
 def requires_position_accuracy(task):
     """Check if task requires precise position/order handling."""

@@ -499,12 +499,10 @@ AI-generated frontends are visually inconsistent not because Claude Code is bad 
 
 ### Commands
 
-
 | Command              | Description                                              |
 | -------------------- | -------------------------------------------------------- |
 | `/gsd-ui-phase [N]`  | Generate UI-SPEC.md design contract for a frontend phase |
 | `/gsd-ui-review [N]` | Retroactive 6-pillar visual audit of implemented UI      |
-
 
 ### Workflow: `/gsd-ui-phase`
 
@@ -541,12 +539,10 @@ AI-generated frontends are visually inconsistent not because Claude Code is bad 
 
 ### Configuration
 
-
 | Setting                   | Default | Description                                                 |
 | ------------------------- | ------- | ----------------------------------------------------------- |
 | `workflow.ui_phase`       | `true`  | Generate UI design contracts for frontend phases            |
 | `workflow.ui_safety_gate` | `true`  | plan-phase prompts to run /gsd-ui-phase for frontend phases |
-
 
 Both follow the absent=enabled pattern. Disable via `/gsd-settings`.
 
@@ -682,14 +678,12 @@ Workstreams let you work on multiple milestone areas concurrently without state 
 
 ### Commands
 
-
 | Command                            | Purpose                                              |
 | ---------------------------------- | ---------------------------------------------------- |
 | `/gsd-workstreams create <name>`   | Create a new workstream with isolated planning state |
 | `/gsd-workstreams switch <name>`   | Switch active context to a different workstream      |
 | `/gsd-workstreams list`            | Show all workstreams and which is active             |
 | `/gsd-workstreams complete <name>` | Mark a workstream as done and archive its state      |
-
 
 ### How It Works
 
@@ -1012,13 +1006,11 @@ The gate is non-blocking: any internal failure logs and the phase continues.
 
 ### Speed vs Quality Presets
 
-
 | Scenario    | Mode          | Granularity | Profile    | Research | Plan Check | Verifier |
 | ----------- | ------------- | ----------- | ---------- | -------- | ---------- | -------- |
 | Prototyping | `yolo`        | `coarse`    | `budget`   | off      | off        | off      |
 | Normal dev  | `interactive` | `standard`  | `balanced` | on       | on         | on       |
 | Production  | `interactive` | `fine`      | `quality`  | on       | on         | on       |
-
 
 **Skipping discuss-phase in autonomous mode:** When running in `yolo` mode with well-established preferences already captured in PROJECT.md, set `workflow.skip_discuss: true` via `/gsd-settings`. This bypasses the discuss-phase entirely and writes a minimal CONTEXT.md derived from the ROADMAP phase goal. Useful when your PROJECT.md and conventions are comprehensive enough that discussion adds no new information.
 
@@ -1496,7 +1488,6 @@ If the installer crashes with `EPERM: operation not permitted, scandir` on Windo
 
 ## Recovery Quick Reference
 
-
 | Problem                              | Solution                                                                 |
 | ------------------------------------ | ------------------------------------------------------------------------ |
 | Lost context / new session           | `/gsd-resume-work` or `/gsd-progress`                                    |
@@ -1512,7 +1503,6 @@ If the installer crashes with `EPERM: operation not permitted, scandir` on Windo
 | Want session summary for stakeholder | `/gsd-pause-work --report`                                                    |
 | Don't know what step is next         | `/gsd-progress --next`                                                              |
 | Parallel execution build errors      | Update GSD or set `parallelization.enabled: false`                       |
-
 
 ---
 

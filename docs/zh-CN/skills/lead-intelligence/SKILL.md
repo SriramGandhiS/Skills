@@ -22,7 +22,7 @@ origin: ECC
 ### 必需
 
 * **Exa MCP** — 用于人员、公司和信号的深度网络搜索（`web_search_exa`）
-* **X API** — 关注者/关注图谱、共同联系人分析、近期活动（`X_BEARER_TOKEN`，以及写上下文凭据，如 `X_CONSUMER_KEY`、`X_CONSUMER_SECRET`、`X_ACCESS_TOKEN`、`X_ACCESS_TOKEN_SECRET`）
+* **X API** — 关注者/关注图谱、共同联系人分析、近期活动（`X_BEARER_TOKEN`，以及写上下文凭据，如`X_CONSUMER_KEY`、`X_CONSUMER_SECRET`、`X_ACCESS_TOKEN`、`X_ACCESS_TOKEN_SECRET`）
 
 ### 可选（增强结果）
 
@@ -44,7 +44,7 @@ origin: ECC
 
 不要从通用的销售文案中起草外联信息。
 
-当用户的语气很重要时，首先运行 `brand-voice`。在此技能中重复使用其 `VOICE PROFILE`，而不是临时重新推导风格。
+当用户的语气很重要时，首先运行 `brand-voice`。在此技能中重复使用其`VOICE PROFILE`，而不是临时重新推导风格。
 
 如果实时X访问可用，在起草前拉取最近的原创帖子。如果不可用，则使用提供的示例或最佳的仓库/网站材料。
 
@@ -64,12 +64,12 @@ origin: ECC
 ### 信号搜索方法
 
 ```python
-# Step 1: Define target parameters
+## Step 1: Define target parameters
 target_verticals = ["prediction markets", "AI tooling", "developer tools"]
 target_roles = ["founder", "CEO", "CTO", "VP Engineering", "investor", "partner"]
 target_locations = ["San Francisco", "New York", "London", "remote"]
 
-# Step 2: Exa deep search for people
+## Step 2: Exa deep search for people
 for vertical in target_verticals:
     results = web_search_exa(
         query=f"{vertical} {role} founder CEO",
@@ -78,12 +78,12 @@ for vertical in target_verticals:
     )
     # Score each result
 
-# Step 3: X API search for active voices
+## Step 3: X API search for active voices
 x_search = search_recent_tweets(
     query="prediction markets OR AI tooling OR developer tools",
     max_results=100
 )
-# Extract and score unique authors
+## Extract and score unique authors
 ```
 
 ## 阶段 2：共同联系人排名
@@ -281,7 +281,7 @@ R(m) = B_ext(m) · (1 + β · engagement(m))
 用户应设置以下环境变量：
 
 ```bash
-# Required
+## Required
 export X_BEARER_TOKEN="..."
 export X_ACCESS_TOKEN="..."
 export X_ACCESS_TOKEN_SECRET="..."
@@ -289,7 +289,7 @@ export X_CONSUMER_KEY="..."
 export X_CONSUMER_SECRET="..."
 export EXA_API_KEY="..."
 
-# Optional
+## Optional
 export LINKEDIN_COOKIE="..." # For browser-use LinkedIn access
 export APOLLO_API_KEY="..."  # For Apollo enrichment
 ```

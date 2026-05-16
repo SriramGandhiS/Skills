@@ -145,7 +145,7 @@ class WorkflowEngine:
             try:
                 pkg_ref = importlib_files("skill_seekers.workflows").joinpath(bare_name)
                 yaml_text = pkg_ref.read_text(encoding="utf-8")
-                logger.info(f"📋 Loading bundled workflow: {bare_name}")
+                logger.info(f" Loading bundled workflow: {bare_name}")
             except (FileNotFoundError, TypeError, ModuleNotFoundError) as exc:
                 raise FileNotFoundError(
                     f"Workflow '{yaml_ref.stem}' not found. "
@@ -153,7 +153,7 @@ class WorkflowEngine:
                 ) from exc
 
         if resolved_path is not None:
-            logger.info(f"📋 Loading workflow: {resolved_path}")
+            logger.info(f" Loading workflow: {resolved_path}")
             with open(resolved_path, encoding="utf-8") as f:
                 data = yaml.safe_load(f)
         else:
@@ -242,8 +242,8 @@ class WorkflowEngine:
             "remove_sections": child_post.get("remove_sections", parent_post.remove_sections),
             "reorder_sections": child_post.get("reorder_sections", parent_post.reorder_sections),
             "add_metadata": {
-                **parent_post.add_metadata,
-                **child_post.get("add_metadata", {}),
+**parent_post.add_metadata,
+**child_post.get("add_metadata", {}),
             },
             "custom_transforms": parent_post.custom_transforms
             + child_post.get("custom_transforms", []),
@@ -262,7 +262,7 @@ class WorkflowEngine:
         Returns:
             Enhanced results after all stages
         """
-        logger.info(f"🚀 Starting workflow: {self.workflow.name}")
+        logger.info(f" Starting workflow: {self.workflow.name}")
         logger.info(f"   Description: {self.workflow.description}")
         logger.info(f"   Stages: {len(self.workflow.stages)}")
 
@@ -275,10 +275,10 @@ class WorkflowEngine:
         # Run each stage
         for idx, stage in enumerate(self.workflow.stages, 1):
             if not stage.enabled:
-                logger.info(f"⏭️  Skipping disabled stage: {stage.name}")
+                logger.info(f"SKIPPED:  Skipping disabled stage: {stage.name}")
                 continue
 
-            logger.info(f"🔄 Running stage {idx}/{len(self.workflow.stages)}: {stage.name}")
+            logger.info(f" Running stage {idx}/{len(self.workflow.stages)}: {stage.name}")
 
             # Build stage context
             stage_context = self._build_stage_context(stage, current_results, context)
@@ -302,18 +302,18 @@ class WorkflowEngine:
                     current_results, stage_results, stage.target
                 )
 
-                logger.info(f"   ✅ Stage complete: {stage.name}")
+                logger.info(f"   PASS: Stage complete: {stage.name}")
 
             except Exception as e:
-                logger.error(f"   ❌ Stage failed: {stage.name} - {e}")
+                logger.error(f"   FAIL: Stage failed: {stage.name} - {e}")
                 # Continue with next stage (optional: make this configurable)
                 continue
 
         # Post-processing
-        logger.info("🔧 Running post-processing...")
+        logger.info(" Running post-processing...")
         final_results = self._post_process(current_results)
 
-        logger.info(f"✅ Workflow complete: {self.workflow.name}")
+        logger.info(f"PASS: Workflow complete: {self.workflow.name}")
         return final_results
 
     def _build_stage_context(
@@ -322,7 +322,7 @@ class WorkflowEngine:
         """Build context for a stage (includes history if needed)."""
         context = {
             "current_results": current_results,
-            **base_context,
+**base_context,
         }
 
         if stage.uses_history and self.history:
@@ -358,7 +358,7 @@ class WorkflowEngine:
                 enhanced_patterns = enhancer.enhance_patterns(current["patterns"])
                 return {"patterns": enhanced_patterns}
             else:
-                logger.info(f"   ℹ️  No {stage.target} data available, skipping builtin stage")
+                logger.info(f"     No {stage.target} data available, skipping builtin stage")
                 return {}
 
         elif stage.target == "examples":
@@ -367,7 +367,7 @@ class WorkflowEngine:
                 enhanced_examples = enhancer.enhance_examples(current["examples"])
                 return {"examples": enhanced_examples}
             else:
-                logger.info(f"   ℹ️  No {stage.target} data available, skipping builtin stage")
+                logger.info(f"     No {stage.target} data available, skipping builtin stage")
                 return {}
 
         else:
@@ -394,7 +394,7 @@ class WorkflowEngine:
             formatted_prompt = stage.prompt
 
         # Call AI with custom prompt
-        logger.info(f"   🤖 Running custom AI prompt...")
+        logger.info(f"    Running custom AI prompt...")
         # Use call() (agent-agnostic) with _call_claude() as fallback for older enhancers
         if hasattr(self.enhancer, "call"):
             response = self.enhancer.call(formatted_prompt, max_tokens=3000)
@@ -402,7 +402,7 @@ class WorkflowEngine:
             response = self.enhancer._call_claude(formatted_prompt, max_tokens=3000)
 
         if not response:
-            logger.warning(f"   ⚠️  No response from AI")
+            logger.warning(f"   WARNING:  No response from AI")
             return {}
 
         # Try to parse as JSON first, fallback to plain text
@@ -431,7 +431,7 @@ class WorkflowEngine:
         # Remove sections
         for section in config.remove_sections:
             if section in results:
-                logger.info(f"   🗑️  Removing section: {section}")
+                logger.info(f"     Removing section: {section}")
                 del results[section]
 
         # Add metadata
@@ -439,17 +439,17 @@ class WorkflowEngine:
             if "metadata" not in results:
                 results["metadata"] = {}
             results["metadata"].update(config.add_metadata)
-            logger.info(f"   📝 Added metadata: {list(config.add_metadata.keys())}")
+            logger.info(f"    Added metadata: {list(config.add_metadata.keys())}")
 
         # Reorder sections (for SKILL.md generation)
         if config.reorder_sections and "skill_md_sections" in results:
-            logger.info(f"   🔄 Reordering sections...")
+            logger.info(f"    Reordering sections...")
             # This will be used during SKILL.md generation
             results["section_order"] = config.reorder_sections
 
         # Custom transforms (extensibility)
         for transform in config.custom_transforms:
-            logger.info(f"   ⚙️  Applying transform: {transform.get('name', 'unknown')}")
+            logger.info(f"     Applying transform: {transform.get('name', 'unknown')}")
             # TODO: Implement custom transform system
 
         return results
@@ -469,7 +469,7 @@ class WorkflowEngine:
         with open(output_path, "w", encoding="utf-8") as f:
             json.dump(history_data, f, indent=2)
 
-        logger.info(f"💾 Saved workflow history: {output_path}")
+        logger.info(f" Saved workflow history: {output_path}")
 
 
 def list_bundled_workflows() -> list[str]:

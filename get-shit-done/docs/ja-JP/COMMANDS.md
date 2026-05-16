@@ -412,7 +412,6 @@
 /gsd-discuss-phase --assumptions 2       # フェーズ2の前提を確認
 ```
 
-
 ### `/gsd-plan-phase --research-phase`
 
 詳細なエコシステム調査のみを実行します（単体機能 — 通常は `/gsd-plan-phase` を使用してください）。

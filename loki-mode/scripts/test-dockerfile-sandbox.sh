@@ -1,20 +1,16 @@
 #!/usr/bin/env bash
 # test-dockerfile-sandbox.sh
-#
-# Smoke test for Dockerfile.sandbox: builds the image and runs `loki version`
+# # Smoke test for Dockerfile.sandbox: builds the image and runs `loki version`
 # inside it. Asserts that the build succeeds and the resulting binary prints
 # a version-like string.
-#
-# Intended to be invoked manually or from a future CI workflow. NOT wired
+# # Intended to be invoked manually or from a future CI workflow. NOT wired
 # into CI today (macos-latest GitHub runners do not have Docker by default
 # and we explicitly skip rather than fail when docker is missing).
-#
-# Exit codes:
-#   0  success (or skipped because docker is not available)
-#   1  build failed
-#   2  run produced unexpected output
-#
-# Cleanup: best-effort `docker rmi` on the test image, even on failure.
+# # Exit codes:
+# 0  success (or skipped because docker is not available)
+# 1  build failed
+# 2  run produced unexpected output
+# # Cleanup: best-effort `docker rmi` on the test image, even on failure.
 
 set -euo pipefail
 

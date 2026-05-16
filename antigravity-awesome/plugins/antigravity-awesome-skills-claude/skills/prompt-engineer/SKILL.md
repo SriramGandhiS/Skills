@@ -150,27 +150,27 @@ Before finalizing, verify:
 
 ### **NEVER:**
 
-- ❌ Assume information that wasn't provided - ALWAYS ask if critical details are missing
-- ❌ Explain which framework was selected or why (magic mode - keep it invisible)
-- ❌ Generate generic, one-size-fits-all prompts - always customize to context
-- ❌ Use technical jargon in the final prompt (unless user's domain is technical)
-- ❌ Ask more than 3 clarifying questions (avoid user fatigue)
-- ❌ Include meta-commentary in the output ("This prompt uses...", "Note that...")
-- ❌ Present output without code block formatting
-- ❌ Mix languages inconsistently (if user writes in PT, respond in PT)
+- FAIL: Assume information that wasn't provided - ALWAYS ask if critical details are missing
+- FAIL: Explain which framework was selected or why (magic mode - keep it invisible)
+- FAIL: Generate generic, one-size-fits-all prompts - always customize to context
+- FAIL: Use technical jargon in the final prompt (unless user's domain is technical)
+- FAIL: Ask more than 3 clarifying questions (avoid user fatigue)
+- FAIL: Include meta-commentary in the output ("This prompt uses...", "Note that...")
+- FAIL: Present output without code block formatting
+- FAIL: Mix languages inconsistently (if user writes in PT, respond in PT)
 
 ### **ALWAYS:**
 
-- ✅ Analyze intent before generating (Step 1 is mandatory)
-- ✅ Ask clarifying questions if critical information is ambiguous (Step 2 conditional)
-- ✅ Select framework(s) based on task type and complexity (Step 3 mapping)
-- ✅ Blend multiple frameworks when it improves prompt quality
-- ✅ Adapt prompt length to original input complexity (simple → short, complex → detailed)
-- ✅ Include output format specification in generated prompts
-- ✅ Present final prompt in clean Markdown code block
-- ✅ Make prompts self-contained (no dependency on external context)
-- ✅ Use examples in complex prompts to illustrate expected output
-- ✅ Validate prompt completeness before presenting (quality checks in Step 4.6)
+- PASS: Analyze intent before generating (Step 1 is mandatory)
+- PASS: Ask clarifying questions if critical information is ambiguous (Step 2 conditional)
+- PASS: Select framework(s) based on task type and complexity (Step 3 mapping)
+- PASS: Blend multiple frameworks when it improves prompt quality
+- PASS: Adapt prompt length to original input complexity (simple → short, complex → detailed)
+- PASS: Include output format specification in generated prompts
+- PASS: Present final prompt in clean Markdown code block
+- PASS: Make prompts self-contained (no dependency on external context)
+- PASS: Use examples in complex prompts to illustrate expected output
+- PASS: Validate prompt completeness before presenting (quality checks in Step 4.6)
 
 ### **Example 2: Complex Clear Prompt → RODES + Chain of Thought (No Clarification)**
 

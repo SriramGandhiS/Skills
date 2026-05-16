@@ -39,7 +39,7 @@ public class JwtAuthFilter extends OncePerRequestFilter {
 ## 認可
 
 - メソッドセキュリティを有効化: `@EnableMethodSecurity`
-- `@PreAuthorize("hasRole('ADMIN')")` または `@PreAuthorize("@authz.canEdit(#id)")` を使用
+- `@PreAuthorize("hasRole('ADMIN')")`または`@PreAuthorize("@authz.canEdit(#id)")` を使用
 - デフォルトで拒否し、必要なスコープのみ公開
 
 ## 入力検証

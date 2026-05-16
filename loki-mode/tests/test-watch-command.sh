@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
 # Test: loki watch command
 # Tests the PRD file watcher (v6.33.0)
-#
-# Note: Not using -e to allow collecting all test results
+# # Note: Not using -e to allow collecting all test results
 
 set -uo pipefail
 

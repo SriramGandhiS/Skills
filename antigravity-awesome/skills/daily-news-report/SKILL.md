@@ -284,8 +284,7 @@ Task Call:
 
 > Curated from N sources today, containing 20 high-quality items
 > Generation Time: X min | Version: v3.0
->
-> **Warning**: Sub-agent 'worker' not detected. Running in generic mode (Serial Execution). Performance might be degraded.
+> > **Warning**: Sub-agent 'worker' not detected. Running in generic mode (Serial Execution). Performance might be degraded.
 
 ---
 
@@ -298,7 +297,7 @@ Task Call:
   3. Point three
 - **Source**: Link
 - **Keywords**: `keyword1` `keyword2` `keyword3`
-- **Score**: ⭐⭐⭐⭐⭐ (5/5)
+- **Score**:  (5/5)
 
 ---
 
@@ -313,13 +312,13 @@ Task Call:
 
 ## Constraints & Principles
 
-1.  **Quality over Quantity**: Low-quality content does not enter the report.
-2.  **Early Stop**: Stop scraping once 20 high-quality items are reached.
-3.  **Parallel First**: SubAgents in the same batch execute in parallel.
-4.  **Fault Tolerance**: Failure of a single source does not affect the whole process.
-5.  **Cache Reuse**: Avoid re-scraping the same content.
-6.  **Main Agent Control**: All decisions are made by the Main Agent.
-7.  **Fallback Awareness**: Detect sub-agent availability, gracefully degrade if unavailable.
+1. **Quality over Quantity**: Low-quality content does not enter the report.
+2. **Early Stop**: Stop scraping once 20 high-quality items are reached.
+3. **Parallel First**: SubAgents in the same batch execute in parallel.
+4. **Fault Tolerance**: Failure of a single source does not affect the whole process.
+5. **Cache Reuse**: Avoid re-scraping the same content.
+6. **Main Agent Control**: All decisions are made by the Main Agent.
+7. **Fallback Awareness**: Detect sub-agent availability, gracefully degrade if unavailable.
 
 ## Expected Performance
 
@@ -342,16 +341,16 @@ Task Call:
 
 To ensure usability across different Agent environments, the following checks must be performed:
 
-1.  **Environment Check**:
+1. **Environment Check**:
     -   In Phase 1 initialization, attempt to detect if `worker` sub-agent exists.
     -   If not exists (or plugin not installed), automatically switch to **Serial Execution Mode**.
 
-2.  **Serial Execution Mode**:
+2. **Serial Execution Mode**:
     -   Do not use parallel block.
     -   Main Agent executes scraping tasks for each source sequentially.
     -   Slower, but guarantees basic functionality.
 
-3.  **User Alert**:
+3. **User Alert**:
     -   MUST include a clear warning in the generated report header indicating the current degraded mode.
 
 ## When to Use

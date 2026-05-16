@@ -26,17 +26,17 @@ description: Fix Go build errors, go vet warnings, and linter issues incremental
 ## 執行的診斷指令
 
 ```bash
-# 主要建置檢查
+## 主要建置檢查
 go build ./...
 
-# 靜態分析
+## 靜態分析
 go vet ./...
 
-# 擴展 linting（如果可用）
+## 擴展 linting（如果可用）
 staticcheck ./...
 golangci-lint run
 
-# 模組問題
+## 模組問題
 go mod verify
 go mod tidy -v
 ```
@@ -51,7 +51,7 @@ go mod tidy -v
 | `X does not implement Y` | 新增缺少的方法 |
 | `import cycle` | 重組套件 |
 | `declared but not used` | 移除或使用變數 |
-| `cannot find package` | `go get` 或 `go mod tidy` |
+| `cannot find package`|`go get`或`go mod tidy` |
 
 ## 修復策略
 

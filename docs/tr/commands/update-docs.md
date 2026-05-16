@@ -10,11 +10,11 @@ Dokümanları codebase ile senkronize et, truth-of-source dosyalarından oluştu
 | `.env.example` | Environment variable dokümanı |
 | `openapi.yaml` / route dosyaları | API endpoint referansı |
 | Kaynak kod export'ları | Public API dokümanı |
-| `Dockerfile` / `docker-compose.yml` | Altyapı kurulum dokümanları |
+| `Dockerfile`/`docker-compose.yml` | Altyapı kurulum dokümanları |
 
 ## Adım 2: Script Referansı Oluştur
 
-1. `package.json`'ı oku (veya `Makefile`, `Cargo.toml`, `pyproject.toml`)
+1. `package.json`'ı oku (veya`Makefile`,`Cargo.toml`,`pyproject.toml`)
 2. Tüm script'leri/komutları açıklamalarıyla birlikte çıkar
 3. Bir referans tablosu oluştur:
 
@@ -28,7 +28,7 @@ Dokümanları codebase ile senkronize et, truth-of-source dosyalarından oluştu
 
 ## Adım 3: Environment Dokümanı Oluştur
 
-1. `.env.example`'ı oku (veya `.env.template`, `.env.sample`)
+1. `.env.example`'ı oku (veya`.env.template`,`.env.sample`)
 2. Tüm değişkenleri amaçlarıyla birlikte çıkar
 3. Zorunlu vs isteğe bağlı olarak kategorize et
 4. Beklenen format ve geçerli değerleri dokümante et
@@ -36,8 +36,8 @@ Dokümanları codebase ile senkronize et, truth-of-source dosyalarından oluştu
 ```markdown
 | Variable | Required | Description | Example |
 |----------|----------|-------------|---------|
-| `DATABASE_URL` | Yes | PostgreSQL bağlantı string'i | `postgres://user:pass@host:5432/db` |
-| `LOG_LEVEL` | No | Log detay seviyesi (varsayılan: info) | `debug`, `info`, `warn`, `error` |
+| `DATABASE_URL`| Yes | PostgreSQL bağlantı string'i |`postgres://user:pass@host:5432/db` |
+| `LOG_LEVEL`| No | Log detay seviyesi (varsayılan: info) |`debug`,`info`,`warn`,`error` |
 ```
 
 ## Adım 4: Contributing Guide'ı Güncelle

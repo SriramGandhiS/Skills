@@ -1,6 +1,6 @@
 # Quick Start Guide
 
-> **Skill Seekers v3.2.0**  
+> **Skill Seekers v3.2.0**
 > **Create your first skill in 3 commands**
 
 ---
@@ -54,7 +54,7 @@ The `create` command auto-detects your source (17 source types supported):
 skill-seekers create https://react.dev/
 skill-seekers package output/react --target claude
 
-# Django documentation  
+# Django documentation
 skill-seekers create https://docs.djangoproject.com/
 skill-seekers package output/django --target claude
 ```

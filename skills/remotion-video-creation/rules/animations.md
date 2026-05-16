@@ -1,4 +1,4 @@
-﻿---
+---
 name: animations
 description: Fundamental animation skills for Remotion
 metadata:
@@ -6,7 +6,7 @@ metadata:
 ---
 
 All animations MUST be driven by the `useCurrentFrame()` hook.
-Write animations in seconds and multiply them by the `fps` value from `useVideoConfig()`.
+Write animations in seconds and multiply them by the `fps`value from`useVideoConfig()`.
 
 ```tsx
 import { useCurrentFrame } from "remotion";

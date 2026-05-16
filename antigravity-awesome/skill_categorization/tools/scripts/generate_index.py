@@ -192,9 +192,9 @@ def parse_frontmatter(content):
     fm_match = re.search(r'^---\s*\n(.*?)\n---', content, re.DOTALL)
     if not fm_match:
         return {}
-    
+
     yaml_text = fm_match.group(1)
-    
+
     # Process line by line to handle values containing @ and commas
     sanitized_lines = []
     for line in yaml_text.splitlines():
@@ -209,33 +209,33 @@ def parse_frontmatter(content):
                 safe_val = val_s.replace('"', '\\"')
                 line = f'{key}: "{safe_val}"'
         sanitized_lines.append(line)
-    
+
     sanitized_yaml = '\n'.join(sanitized_lines)
-    
+
     try:
         parsed = yaml.safe_load(sanitized_yaml) or {}
         parsed = normalize_yaml_value(parsed)
         if not isinstance(parsed, Mapping):
-            print("⚠️ YAML frontmatter must be a mapping/object")
+            print("WARNING: YAML frontmatter must be a mapping/object")
             return {}
         return dict(parsed)
     except yaml.YAMLError as e:
-        print(f"⚠️ YAML parsing error: {e}")
+        print(f"WARNING: YAML parsing error: {e}")
         return {}
 
 def generate_index(skills_dir, output_file):
-    print(f"🏗️ Generating index from: {skills_dir}")
+    print(f" Generating index from: {skills_dir}")
     skills = []
 
     for root, dirs, files in os.walk(skills_dir):
         # Skip .disabled or hidden directories
         dirs[:] = [d for d in dirs if not d.startswith('.')]
-        
+
         if "SKILL.md" in files:
             skill_path = os.path.join(root, "SKILL.md")
             dir_name = os.path.basename(root)
             parent_dir = os.path.basename(os.path.dirname(root))
-            
+
             # Default values
             rel_path = os.path.relpath(root, os.path.dirname(skills_dir))
             # Force forward slashes for cross-platform JSON compatibility
@@ -251,12 +251,12 @@ def generate_index(skills_dir, output_file):
                 "source": "unknown",
                 "date_added": None
             }
-            
+
             try:
                 with open(skill_path, 'r', encoding='utf-8') as f:
                     content = f.read()
             except Exception as e:
-                print(f"⚠️ Error reading {skill_path}: {e}")
+                print(f"WARNING: Error reading {skill_path}: {e}")
                 continue
 
             # Parse Metadata
@@ -266,7 +266,7 @@ def generate_index(skills_dir, output_file):
             fm_match = re.search(r'^---\s*\n(.*?)\n---', content, re.DOTALL)
             if fm_match:
                 body = content[fm_match.end():].strip()
-            
+
             # Merge Metadata (frontmatter takes priority)
             name = coerce_metadata_text(metadata.get("name"))
             description = coerce_metadata_text(metadata.get("description"))
@@ -287,13 +287,13 @@ def generate_index(skills_dir, output_file):
                 skill_info["date_added"] = date_added
             if category is not None:
                 skill_info["category"] = category
-            
+
             # Category: prefer frontmatter, then folder structure, then default
             inferred_category, confidence, reason = infer_category(skill_info, metadata, body)
             skill_info["category"] = inferred_category or "uncategorized"
             skill_info["category_confidence"] = confidence
             skill_info["category_reason"] = reason
-            
+
             # Fallback for description if missing in frontmatter (legacy support)
             if not skill_info["description"]:
                 # Simple extraction of first non-header paragraph
@@ -304,7 +304,7 @@ def generate_index(skills_dir, output_file):
                         if desc_lines: break
                         continue
                     desc_lines.append(line.strip())
-                
+
                 if desc_lines:
                     skill_info["description"] = " ".join(desc_lines)[:250].strip()
 
@@ -315,8 +315,8 @@ def generate_index(skills_dir, output_file):
 
     with open(output_file, 'w', encoding='utf-8', newline='\n') as f:
         json.dump(skills, f, indent=2)
-    
-    print(f"✅ Generated rich index with {len(skills)} skills at: {output_file}")
+
+    print(f"PASS: Generated rich index with {len(skills)} skills at: {output_file}")
     return skills
 
 if __name__ == "__main__":

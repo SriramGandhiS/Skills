@@ -53,11 +53,11 @@ Output: Milestone archived (roadmap + requirements), PROJECT.md evolved, git tag
    ## Pre-flight Check
 
    {If no v{{version}}-MILESTONE-AUDIT.md:}
-   ⚠ No milestone audit found. Run `/gsd-audit-milestone` first to verify
+   WARNING: No milestone audit found. Run `/gsd-audit-milestone` first to verify
    requirements coverage, cross-phase integration, and E2E flows.
 
    {If audit has gaps:}
-   ⚠ Milestone audit found gaps. The audit output already enumerates the
+   WARNING: Milestone audit found gaps. The audit output already enumerates the
    unsatisfied requirements, cross-phase issues, and broken flows — insert
    a closure phase per gap with `/gsd-phase --insert <N>` and run the
    standard `/gsd-discuss-phase` → `/gsd-plan-phase` → `/gsd-execute-phase`

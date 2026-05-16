@@ -10,7 +10,7 @@
  * (e.g. ~/.claude/cache/gsd-update-check.json) but the SessionStart hook
  * (hooks/gsd-check-update.js) writes to the shared tool-agnostic path
  * ~/.cache/gsd/gsd-update-check.json. After a successful update, the statusline
- * kept showing the stale "⬆ /gsd-update" indicator because the actual cache
+ * kept showing the stale " /gsd-update" indicator because the actual cache
  * file was never deleted.
  *
  * Fix: add `rm -f "$HOME/.cache/gsd/gsd-update-check.json"` to the

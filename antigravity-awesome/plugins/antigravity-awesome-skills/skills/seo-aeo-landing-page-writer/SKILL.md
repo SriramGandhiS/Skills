@@ -70,21 +70,21 @@ users. A 14-day free trial is available — no credit card required.
 
 ## Best Practices
 
-- ✅ **Do:** Write the problem section before mentioning the product — empathy first
-- ✅ **Do:** Place the AEO extraction sentence in a blockquote immediately after H1
-- ✅ **Do:** Write FAQ answers as standalone — each must make sense without context
-- ✅ **Do:** Include at least one honest point in the comparison table where the alternative wins
-- ❌ **Don't:** Use "revolutionary", "game-changing", or "best-in-class" anywhere
-- ❌ **Don't:** Use "Submit" or "Click Here" as CTA button text
-- ❌ **Don't:** Write paragraphs longer than 4 lines
+- PASS: **Do:** Write the problem section before mentioning the product — empathy first
+- PASS: **Do:** Place the AEO extraction sentence in a blockquote immediately after H1
+- PASS: **Do:** Write FAQ answers as standalone — each must make sense without context
+- PASS: **Do:** Include at least one honest point in the comparison table where the alternative wins
+- FAIL: **Don't:** Use "revolutionary", "game-changing", or "best-in-class" anywhere
+- FAIL: **Don't:** Use "Submit" or "Click Here" as CTA button text
+- FAIL: **Don't:** Write paragraphs longer than 4 lines
 
 ## Common Pitfalls
 
 - **Problem:** Product mentioned in the pain section
-  **Solution:** The pain section exists to build empathy. Save the product introduction for the solution section.
+**Solution:** The pain section exists to build empathy. Save the product introduction for the solution section.
 
 - **Problem:** FAQ answers are too long to be extracted by AI engines
-  **Solution:** Every FAQ answer must be under 50 words and self-contained.
+**Solution:** Every FAQ answer must be under 50 words and self-contained.
 
 ## Related Skills
 

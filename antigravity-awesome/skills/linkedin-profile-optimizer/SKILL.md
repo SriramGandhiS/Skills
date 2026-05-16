@@ -76,13 +76,13 @@ Critically evaluate the existing profile like a global recruiter, high-level inv
 
 #### 1. Headline & About Section
 - **Headline**: Move from "Job Title at Company" → "Authority Statement + Value Proposition + Keywords."
-- **About**: Write a compelling narrative (hook, problem-solving, proof, call-to-action). 
+- **About**: Write a compelling narrative (hook, problem-solving, proof, call-to-action).
     - **SEO Intent Check**: Ensure primary keywords are in the first 2-3 lines.
     - **Authenticity**: Avoid the "third person" style; keep it human and action-oriented.
 
 #### 2. Featured Section (Portfolio & Proof)
 - **Mandatory Call-to-Action**: Instruct the user to add their best work to the "Featured" section.
-- **Link & Post Integration**: 
+- **Link & Post Integration**:
     - **Broken Link Check**: Ensure every link in the "Featured" section is active and leads to the correct destination.
     - Add links to Portfolio, GitHub, or Case Studies.
     - Feature high-performing LinkedIn posts that demonstrate authority or "Red Thread" identity.
@@ -139,10 +139,10 @@ Critically evaluate the existing profile like a global recruiter, high-level inv
 
 ## Best Practices
 
-- ✅ **Quantify Impact**: Use numbers, percentages, and dollar amounts wherever possible.
-- ✅ **Unify the Brand**: Find the "Red Thread" that connects diverse roles.
-- ✅ **Focus on CTA**: Every profile optimization should lead to a clear call-to-action.
-- ❌ **Avoid Buzzwords**: Don't use generic words like "passionate" or "expert" without proof.
+- PASS: **Quantify Impact**: Use numbers, percentages, and dollar amounts wherever possible.
+- PASS: **Unify the Brand**: Find the "Red Thread" that connects diverse roles.
+- PASS: **Focus on CTA**: Every profile optimization should lead to a clear call-to-action.
+- FAIL: **Avoid Buzzwords**: Don't use generic words like "passionate" or "expert" without proof.
 
 ## Common Pitfalls
 

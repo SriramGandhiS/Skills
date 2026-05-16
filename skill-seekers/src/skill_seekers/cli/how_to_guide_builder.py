@@ -667,7 +667,7 @@ class GuideGenerator:
 
             # Common pitfall warning
             if step.common_pitfall:
-                lines.append(f"⚠️ **Common Pitfall:** {step.common_pitfall}")
+                lines.append(f"WARNING: **Common Pitfall:** {step.common_pitfall}")
                 lines.append("")
 
         return "\n".join(lines)
@@ -863,10 +863,10 @@ class HowToGuideBuilder:
                 from .guide_enhancer import GuideEnhancer
 
                 enhancer = GuideEnhancer(mode=ai_mode)
-                logger.info(f"✨ AI enhancement enabled (mode: {enhancer.mode})")
+                logger.info(f" AI enhancement enabled (mode: {enhancer.mode})")
             except Exception as e:
-                logger.warning(f"⚠️  AI enhancement unavailable: {e}")
-                logger.info("📝 Falling back to basic guide generation")
+                logger.warning(f"WARNING:  AI enhancement unavailable: {e}")
+                logger.info(" Falling back to basic guide generation")
 
         # Filter to workflow examples only
         workflows = self._extract_workflow_examples(examples)
@@ -904,7 +904,7 @@ class HowToGuideBuilder:
         if output_dir:
             self._save_guides_to_files(collection, output_dir)
 
-        logger.info(f"✅ Generated {len(guides)} how-to guides")
+        logger.info(f"PASS: Generated {len(guides)} how-to guides")
         return collection
 
     def _extract_workflow_examples(self, examples: list[dict]) -> list[dict]:
@@ -1070,7 +1070,7 @@ class HowToGuideBuilder:
         if "use_cases" in enhanced_data:
             guide.use_cases = enhanced_data["use_cases"]
 
-        logger.info(f"✨ Enhanced guide '{guide.title}' with comprehensive AI improvements")
+        logger.info(f" Enhanced guide '{guide.title}' with comprehensive AI improvements")
 
     def _enhance_guide_with_ai_basic(self, guide: HowToGuide, ai_analysis: dict):
         """
@@ -1146,7 +1146,7 @@ class HowToGuideBuilder:
         index_markdown = self.generator.generate_index(collection.guides)
         (output_dir / "index.md").write_text(index_markdown, encoding="utf-8")
 
-        logger.info(f"✅ Saved {collection.total_guides} guides + index to {output_dir}")
+        logger.info(f"PASS: Saved {collection.total_guides} guides + index to {output_dir}")
 
 
 # ============================================================================
@@ -1227,7 +1227,7 @@ Grouping Strategies:
 
     if not input_path:
         parser.print_help()
-        print("\n❌ Error: No input provided")
+        print("\nFAIL: Error: No input provided")
         print("   Provide either a directory or --input JSON file")
         sys.exit(1)
 
@@ -1246,18 +1246,18 @@ Grouping Strategies:
             elif isinstance(data, list):
                 examples = data
             else:
-                print(f"❌ Error: Invalid JSON format in {input_path}")
+                print(f"FAIL: Error: Invalid JSON format in {input_path}")
                 sys.exit(1)
 
     elif input_path.is_dir():
         # Extract from directory using test example extractor
-        print("⚠️  Directory input requires test example extractor")
+        print("WARNING:  Directory input requires test example extractor")
         print("   Please use test_examples.json output from C3.2")
         print(f"   Or run: skill-seekers extract-test-examples {input_path} --json > examples.json")
         sys.exit(1)
 
     else:
-        print(f"❌ Error: Input path not found: {input_path}")
+        print(f"FAIL: Error: Input path not found: {input_path}")
         sys.exit(1)
 
     # Build guides
@@ -1290,8 +1290,8 @@ Grouping Strategies:
             print(f"  - {use_case}: {len(guides)} guides")
         print()
         if output_dir:
-            print(f"📁 Output directory: {output_dir}")
-            print(f"📄 Index file: {output_dir}/index.md")
+            print(f" Output directory: {output_dir}")
+            print(f" Index file: {output_dir}/index.md")
             print()
 
     sys.exit(0)

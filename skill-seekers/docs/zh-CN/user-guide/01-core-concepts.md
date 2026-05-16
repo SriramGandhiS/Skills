@@ -1,6 +1,6 @@
 # Core Concepts
 
-> **Skill Seekers v3.1.0**  
+> **Skill Seekers v3.1.0**
 > **Understanding how Skill Seekers works**
 
 ---
@@ -174,7 +174,7 @@ skill-seekers analyze --directory ./my-project
 
 ```
 ┌─────────────┐     ┌──────────────┐
-│   Source    │────▶│   Scraper    │
+│   Source    │────│   Scraper    │
 │ (URL/repo/  │     │ (extracts    │
 │  PDF/local) │     │  content)    │
 └─────────────┘     └──────────────┘
@@ -191,7 +191,7 @@ skill-seekers analyze --directory ./my-project
 
 ```
 ┌──────────────┐     ┌──────────────┐
-│   Raw Data   │────▶│   Builder    │
+│   Raw Data   │────│   Builder    │
 │ (pages/files/│     │ (organizes   │
 │  commits)    │     │  by category)│
 └──────────────┘     └──────────────┘
@@ -208,7 +208,7 @@ skill-seekers analyze --directory ./my-project
 
 ```
 ┌──────────────┐     ┌──────────────┐
-│   SKILL.md   │────▶│  Enhancer    │
+│   SKILL.md   │────│  Enhancer    │
 │  (basic)     │     │ (AI improves │
 │              │     │  quality)    │
 └──────────────┘     └──────────────┘
@@ -229,7 +229,7 @@ skill-seekers analyze --directory ./my-project
 
 ```
 ┌──────────────┐     ┌──────────────┐
-│   Skill Dir  │────▶│   Packager   │
+│   Skill Dir  │────│   Packager   │
 │ (structured  │     │ (creates     │
 │  content)    │     │  platform    │
 │              │     │  format)     │
@@ -247,7 +247,7 @@ skill-seekers analyze --directory ./my-project
 
 ```
 ┌──────────────┐     ┌──────────────┐
-│   Package    │────▶│   Platform   │
+│   Package    │────│   Platform   │
 │ (.zip/.tar)  │     │ (Claude/     │
 │              │     │  Gemini/etc) │
 └──────────────┘     └──────────────┘

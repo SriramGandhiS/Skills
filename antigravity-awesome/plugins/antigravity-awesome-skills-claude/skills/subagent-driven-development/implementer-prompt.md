@@ -24,7 +24,7 @@ Task tool (general-purpose):
     - Dependencies or assumptions
     - Anything unclear in the task description
 
-    **Ask them now.** Raise any concerns before starting work.
+**Ask them now.** Raise any concerns before starting work.
 
     ## Your Job
 
@@ -38,29 +38,29 @@ Task tool (general-purpose):
 
     Work from: [directory]
 
-    **While you work:** If you encounter something unexpected or unclear, **ask questions**.
+**While you work:** If you encounter something unexpected or unclear, **ask questions**.
     It's always OK to pause and clarify. Don't guess or make assumptions.
 
     ## Before Reporting Back: Self-Review
 
     Review your work with fresh eyes. Ask yourself:
 
-    **Completeness:**
+**Completeness:**
     - Did I fully implement everything in the spec?
     - Did I miss any requirements?
     - Are there edge cases I didn't handle?
 
-    **Quality:**
+**Quality:**
     - Is this my best work?
     - Are names clear and accurate (match what things do, not how they work)?
     - Is the code clean and maintainable?
 
-    **Discipline:**
+**Discipline:**
     - Did I avoid overbuilding (YAGNI)?
     - Did I only build what was requested?
     - Did I follow existing patterns in the codebase?
 
-    **Testing:**
+**Testing:**
     - Do tests actually verify behavior (not just mock behavior)?
     - Did I follow TDD if required?
     - Are tests comprehensive?

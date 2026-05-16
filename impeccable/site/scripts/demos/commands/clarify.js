@@ -10,7 +10,7 @@ export default {
         <div style="font-size: 12px; color: #666;">Your request is being processed. Please wait while we complete the operation. This may take some time depending on various factors.</div>
       </div>
       <div style="padding: 12px; background: #fff8e1; border-radius: 6px;">
-        <div style="font-size: 13px; font-weight: 600; margin-bottom: 4px;">⚠️ Warning</div>
+        <div style="font-size: 13px; font-weight: 600; margin-bottom: 4px;">WARNING: Warning</div>
         <div style="font-size: 12px; color: #666;">Proceeding with this action may result in irreversible consequences to your data and settings configuration.</div>
       </div>
       <button style="padding: 10px; background: #333; color: white; border: none; border-radius: 4px; font-size: 13px;">Submit Request</button>

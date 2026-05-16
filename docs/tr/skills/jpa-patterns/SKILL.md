@@ -113,10 +113,10 @@ Cursor benzeri sayfalama için, sıralama ile birlikte JPQL'de `id > :lastId` ek
 
 ## İndeksleme ve Performans
 
-- Yaygın filtreler için indeksler ekle (`status`, `slug`, foreign key'ler)
+- Yaygın filtreler için indeksler ekle (`status`,`slug`, foreign key'ler)
 - Sorgu kalıplarına uyan composite indeksler kullan (`status, created_at`)
 - `select *` kullanmaktan kaçın; sadece gerekli sütunları project et
-- `saveAll` ve `hibernate.jdbc.batch_size` ile yazmaları batch'le
+- `saveAll`ve`hibernate.jdbc.batch_size` ile yazmaları batch'le
 
 ## Connection Pooling (HikariCP)
 
@@ -146,6 +146,6 @@ spring.jpa.properties.hibernate.jdbc.lob.non_contextual_creation=true
 ## Veri Erişimi Testi
 
 - Üretimi yansıtmak için Testcontainers ile `@DataJpaTest` tercih et
-- Logları kullanarak SQL verimliliğini assert et: parametre değerleri için `logging.level.org.hibernate.SQL=DEBUG` ve `logging.level.org.hibernate.orm.jdbc.bind=TRACE` ayarla
+- Logları kullanarak SQL verimliliğini assert et: parametre değerleri için `logging.level.org.hibernate.SQL=DEBUG`ve`logging.level.org.hibernate.orm.jdbc.bind=TRACE` ayarla
 
 **Hatırla**: Entity'leri yalın, sorguları kasıtlı ve transaction'ları kısa tut. Fetch stratejileri ve projections ile N+1'i önle, ve okuma/yazma yolların için indeksle.

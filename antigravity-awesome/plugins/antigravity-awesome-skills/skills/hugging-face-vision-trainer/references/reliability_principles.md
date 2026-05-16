@@ -43,13 +43,13 @@ hub_repo_details(["org/model-name"], repo_type="model")
 **Examples that would have caught errors:**
 
 ```python
-# ❌ WRONG: Assumed dataset exists
+# FAIL: WRONG: Assumed dataset exists
 hf_jobs("uv", {
     "script": """...""",
     "env": {"DATASET": "trl-lib/argilla-dpo-mix-7k"}  # Doesn't exist!
 })
 
-# ✅ CORRECT: Verify first
+# PASS: CORRECT: Verify first
 dataset_search({"query": "argilla dpo", "author": "trl-lib"})
 # Would show: "trl-lib/ultrafeedback_binarized" is the correct name
 
@@ -64,7 +64,7 @@ hub_repo_details(["trl-lib/ultrafeedback_binarized"], repo_type="dataset")
 - [ ] Check for recent updates/renames of resources
 - [ ] Check for dataset format
 
-**Time cost:** 5-10 seconds  
+**Time cost:** 5-10 seconds
 **Time saved:** Hours of failed job time + debugging
 
 ---
@@ -85,7 +85,7 @@ hub_repo_details(["trl-lib/ultrafeedback_binarized"], repo_type="dataset")
 **Choose reliability:**
 
 ```python
-# ❌ RISKY: Aggressive optimization that may fail
+# FAIL: RISKY: Aggressive optimization that may fail
 TrainingArguments(
     torch_compile=True,  # Can fail on T4, A10G GPUs
     optim="adamw_bnb_8bit",  # Requires specific setup
@@ -93,7 +93,7 @@ TrainingArguments(
     ...
 )
 
-# ✅ SAFE: Proven defaults
+# PASS: SAFE: Proven defaults
 TrainingArguments(
     # torch_compile=True,  # Commented with note: "Enable on H100 for 20% speedup"
     optim="adamw_torch",  # Standard, always works
@@ -122,7 +122,7 @@ TrainingArguments(
 - [ ] Document known incompatibilities
 - [ ] Provide "safe" and "fast" variants when needed
 
-**Performance loss:** 10-20% in best case  
+**Performance loss:** 10-20% in best case
 **Reliability gain:** 95%+ success rate vs 60-70%
 
 ---
@@ -143,27 +143,27 @@ TrainingArguments(
 **Complete dependency specifications:**
 
 ```python
-# ❌ INCOMPLETE: "Simplified" by removing dependencies
+# FAIL: INCOMPLETE: "Simplified" by removing dependencies
 # /// script
 # dependencies = [
-#     "transformers",
-#     "torch",
-#     "datasets",
+# "transformers",
+# "torch",
+# "datasets",
 # ]
 # ///
 
-# ✅ COMPLETE: All dependencies explicit
+# PASS: COMPLETE: All dependencies explicit
 # /// script
 # dependencies = [
-#     "transformers>=5.2.0",
-#     "accelerate>=1.1.0",
-#     "albumentations>=1.4.16",  # Required for augmentation + bbox handling
-#     "timm",                     # Required for vision backbones
-#     "datasets>=4.0",
-#     "torchmetrics",             # Required for mAP/mAR computation
-#     "pycocotools",              # Required for COCO evaluation
-#     "trackio",                  # Required for metrics monitoring
-#     "huggingface_hub",
+# "transformers>=5.2.0",
+# "accelerate>=1.1.0",
+# "albumentations>=1.4.16",  # Required for augmentation + bbox handling
+# "timm",                     # Required for vision backbones
+# "datasets>=4.0",
+# "torchmetrics",             # Required for mAP/mAR computation
+# "pycocotools",              # Required for COCO evaluation
+# "trackio",                  # Required for metrics monitoring
+# "huggingface_hub",
 # ]
 # ///
 ```
@@ -188,7 +188,7 @@ TrainingArguments(
 - [ ] Test scripts in clean environment
 - [ ] Document why each dependency is needed
 
-**Complexity:** Slightly longer scripts  
+**Complexity:** Slightly longer scripts
 **Reliability:** Scripts "just work" every time
 
 ---
@@ -202,10 +202,10 @@ TrainingArguments(
 **Wrap subprocess calls:**
 
 ```python
-# ❌ UNCLEAR: Silent failure
+# FAIL: UNCLEAR: Silent failure
 subprocess.run([...], check=True, capture_output=True)
 
-# ✅ CLEAR: Shows what failed
+# PASS: CLEAR: Shows what failed
 try:
     result = subprocess.run(
         [...],
@@ -217,7 +217,7 @@ try:
     if result.stderr:
         print("Warnings:", result.stderr)
 except subprocess.CalledProcessError as e:
-    print(f"❌ Command failed!")
+    print(f"FAIL: Command failed!")
     print("STDOUT:", e.stdout)
     print("STDERR:", e.stderr)
     raise
@@ -226,19 +226,19 @@ except subprocess.CalledProcessError as e:
 **Validate inputs:**
 
 ```python
-# ❌ UNCLEAR: Fails later with cryptic error
+# FAIL: UNCLEAR: Fails later with cryptic error
 model = load_model(MODEL_NAME)
 
-# ✅ CLEAR: Fails fast with clear message
+# PASS: CLEAR: Fails fast with clear message
 if not MODEL_NAME:
     raise ValueError("MODEL_NAME environment variable not set!")
 
 print(f"Loading model: {MODEL_NAME}")
 try:
     model = load_model(MODEL_NAME)
-    print(f"✅ Model loaded successfully")
+    print(f"PASS: Model loaded successfully")
 except Exception as e:
-    print(f"❌ Failed to load model: {MODEL_NAME}")
+    print(f"FAIL: Failed to load model: {MODEL_NAME}")
     print(f"Error: {e}")
     print("Hint: Check that model exists on Hub")
     raise
@@ -249,7 +249,7 @@ except Exception as e:
 - [ ] Wrap external calls with try/except
 - [ ] Print stdout/stderr on failure
 - [ ] Validate environment variables early
-- [ ] Add progress indicators (✅, ❌, 🔄)
+- [ ] Add progress indicators (PASS:, FAIL:, )
 - [ ] Include hints for common failures
 - [ ] Log configuration at start
 

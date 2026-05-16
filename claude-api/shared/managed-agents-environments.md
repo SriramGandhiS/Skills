@@ -114,11 +114,11 @@ Repositories are attached for the lifetime of the session — to change which re
 
 | Field | Required | Notes |
 |---|---|---|
-| `type` | ✅ | `"github_repository"` |
-| `url` | ✅ | The GitHub repository URL |
-| `authorization_token` | ✅ | GitHub Personal Access Token with repository access. **Never echoed in API responses.** |
-| `mount_path` | ❌ | Path where the repository will be cloned. Defaults to `/workspace/<repo-name>`. |
-| `checkout` | ❌ | `{type: "branch", name: "..."}` or `{type: "commit", sha: "..."}`. Defaults to the repo's default branch. |
+| `type` | PASS: | `"github_repository"` |
+| `url` | PASS: | The GitHub repository URL |
+| `authorization_token` | PASS: | GitHub Personal Access Token with repository access. **Never echoed in API responses.** |
+| `mount_path` | FAIL: | Path where the repository will be cloned. Defaults to `/workspace/<repo-name>`. |
+| `checkout` | FAIL: | `{type: "branch", name: "..."}` or `{type: "commit", sha: "..."}`. Defaults to the repo's default branch. |
 
 **Token permission levels** (fine-grained PATs):
 - `Contents: Read` — clone only
@@ -126,7 +126,7 @@ Repositories are attached for the lifetime of the session — to change which re
 
 **How auth works:** `authorization_token` is never placed inside the container. `git pull` / `git push` and GitHub REST calls against the attached repository are routed through an Anthropic-side git proxy that injects the token after the request leaves the sandbox. Code running in the container — including anything the agent writes — cannot read or exfiltrate it.
 
-> ‼️ **To generate pull requests** you also need GitHub **MCP server** access — the `github_repository` resource gives filesystem + git access only. See `shared/managed-agents-tools.md` → MCP Servers. The PR workflow is: edit files in the mounted repo → push branch via `bash` (authenticated via the git proxy using `authorization_token`) → create PR via the MCP `create_pull_request` tool (authenticated via the vault).
+> **To generate pull requests** you also need GitHub **MCP server** access — the `github_repository` resource gives filesystem + git access only. See `shared/managed-agents-tools.md` → MCP Servers. The PR workflow is: edit files in the mounted repo → push branch via `bash` (authenticated via the git proxy using `authorization_token`) → create PR via the MCP `create_pull_request` tool (authenticated via the vault).
 
 **TypeScript:**
 

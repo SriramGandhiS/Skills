@@ -70,7 +70,7 @@ Detaylı yönergeler `~/.claude/rules/` içinde:
 - Tipik olarak 200-400 satır, dosya başına maksimum 800 satır
 
 ### Git
-- Conventional commit'ler: `feat:`, `fix:`, `refactor:`, `docs:`, `test:`
+- Conventional commit'ler: `feat:`,`fix:`,`refactor:`,`docs:`,`test:`
 - Commit'lemeden önce her zaman yerel olarak test et
 - Küçük, odaklanmış commit'ler
 

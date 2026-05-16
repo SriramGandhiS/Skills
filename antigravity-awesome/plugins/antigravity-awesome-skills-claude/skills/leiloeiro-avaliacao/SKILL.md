@@ -235,12 +235,12 @@ Quando receber um laudo de avaliação para análise, verificar:
 - [ ] Cálculo final claro
 
 **Sinais de laudo fraco/suspeito:**
-- ⚠️ Menos de 3 amostras (Grau I insuficiente para leilão relevante)
-- ⚠️ Amostras de bairros muito distantes ou diferentes
-- ⚠️ Sem data de vistoria (quando foi o imóvel visitado?)
-- ⚠️ Valor muito distante do mercado sem justificativa
-- ⚠️ Laudo copiado de processo anterior sem atualização
-- ⚠️ Avaliador sem CREA/CAU válido no estado do imóvel
+- WARNING: Menos de 3 amostras (Grau I insuficiente para leilão relevante)
+- WARNING: Amostras de bairros muito distantes ou diferentes
+- WARNING: Sem data de vistoria (quando foi o imóvel visitado?)
+- WARNING: Valor muito distante do mercado sem justificativa
+- WARNING: Laudo copiado de processo anterior sem atualização
+- WARNING: Avaliador sem CREA/CAU válido no estado do imóvel
 
 ---
 

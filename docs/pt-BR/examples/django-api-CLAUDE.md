@@ -14,26 +14,26 @@
 ### Convenções Python
 
 - Type hints em todas as assinaturas de função — use `from __future__ import annotations`
-- Sem `print()` statements — use `logging.getLogger(__name__)`
-- f-strings para formatação, nunca `%` ou `.format()`
-- Use `pathlib.Path` e não `os.path` para operações de arquivo
+- Sem `print()`statements — use`logging.getLogger(__name__)`
+- f-strings para formatação, nunca `%`ou`.format()`
+- Use `pathlib.Path`e não`os.path` para operações de arquivo
 - Imports ordenados com isort: stdlib, third-party, local (enforced by ruff)
 
 ### Banco de Dados
 
 - Todas as queries usam Django ORM — SQL bruto só com `.raw()` e queries parametrizadas
 - Migrations versionadas no git — nunca use `--fake` em produção
-- Use `select_related()` e `prefetch_related()` para prevenir queries N+1
-- Todos os models devem ter auto-fields `created_at` e `updated_at`
-- Índices em qualquer campo usado em `filter()`, `order_by()` ou cláusulas `WHERE`
+- Use `select_related()`e`prefetch_related()` para prevenir queries N+1
+- Todos os models devem ter auto-fields `created_at`e`updated_at`
+- Índices em qualquer campo usado em `filter()`,`order_by()`ou cláusulas`WHERE`
 
 ```python
-# BAD: N+1 query
+## BAD: N+1 query
 orders = Order.objects.all()
 for order in orders:
     print(order.customer.name)  # hits DB for each order
 
-# GOOD: Single query with join
+## GOOD: Single query with join
 orders = Order.objects.select_related("customer").all()
 ```
 
@@ -46,7 +46,7 @@ orders = Order.objects.select_related("customer").all()
 
 ### Serializers
 
-- Use `ModelSerializer` para CRUD simples, `Serializer` para validação complexa
+- Use `ModelSerializer`para CRUD simples,`Serializer` para validação complexa
 - Separe serializers de leitura e escrita quando input/output diferirem
 - Valide no nível de serializer, não na view — views devem ser enxutas
 
@@ -76,7 +76,7 @@ class OrderDetailSerializer(serializers.ModelSerializer):
 - Nunca exponha detalhes internos de erro para clientes
 
 ```python
-# core/exceptions.py
+## core/exceptions.py
 from rest_framework.exceptions import APIException
 
 class InsufficientStockError(APIException):
@@ -137,7 +137,7 @@ core/
 ### Camada de Serviço
 
 ```python
-# apps/orders/services.py
+## apps/orders/services.py
 from django.db import transaction
 
 def create_order(*, customer, product_id: uuid.UUID, quantity: int) -> Order:
@@ -165,7 +165,7 @@ def create_order(*, customer, product_id: uuid.UUID, quantity: int) -> Order:
 ### Padrão de View
 
 ```python
-# apps/orders/views.py
+## apps/orders/views.py
 class OrderViewSet(viewsets.ModelViewSet):
     permission_classes = [IsAuthenticated]
     pagination_class = StandardPagination
@@ -195,7 +195,7 @@ class OrderViewSet(viewsets.ModelViewSet):
 ### Padrão de Teste (pytest + Factory Boy)
 
 ```python
-# apps/orders/tests/factories.py
+## apps/orders/tests/factories.py
 import factory
 from apps.accounts.tests.factories import UserFactory
 from apps.products.tests.factories import ProductFactory
@@ -209,7 +209,7 @@ class OrderFactory(factory.django.DjangoModelFactory):
     quantity = 1
     total = factory.LazyAttribute(lambda o: o.product.price * o.quantity)
 
-# apps/orders/tests/test_views.py
+## apps/orders/tests/test_views.py
 import pytest
 from rest_framework.test import APIClient
 
@@ -246,22 +246,22 @@ class TestCreateOrder:
 ## Variáveis de Ambiente
 
 ```bash
-# Django
+## Django
 SECRET_KEY=
 DEBUG=False
 ALLOWED_HOSTS=api.example.com
 
-# Database
+## Database
 DATABASE_URL=postgres://user:pass@localhost:5432/myapp
 
-# Redis (Celery broker + cache)
+## Redis (Celery broker + cache)
 REDIS_URL=redis://localhost:6379/0
 
-# JWT
+## JWT
 JWT_ACCESS_TOKEN_LIFETIME=15       # minutes
 JWT_REFRESH_TOKEN_LIFETIME=10080   # minutes (7 days)
 
-# Email
+## Email
 EMAIL_BACKEND=django.core.mail.backends.smtp.EmailBackend
 EMAIL_HOST=smtp.example.com
 ```
@@ -269,40 +269,40 @@ EMAIL_HOST=smtp.example.com
 ## Estratégia de Teste
 
 ```bash
-# Run all tests
+## Run all tests
 pytest --cov=apps --cov-report=term-missing
 
-# Run specific app tests
+## Run specific app tests
 pytest apps/orders/tests/ -v
 
-# Run with parallel execution
+## Run with parallel execution
 pytest -n auto
 
-# Only failing tests from last run
+## Only failing tests from last run
 pytest --lf
 ```
 
 ## Workflow ECC
 
 ```bash
-# Planning
+## Planning
 /plan "Add order refund system with Stripe integration"
 
-# Development with TDD
+## Development with TDD
 /tdd                    # pytest-based TDD workflow
 
-# Review
+## Review
 /python-review          # Python-specific code review
 /security-scan          # Django security audit
 /code-review            # General quality check
 
-# Verification
+## Verification
 /verify                 # Build, lint, test, security scan
 ```
 
 ## Fluxo Git
 
-- `feat:` novas features, `fix:` correções de bug, `refactor:` mudanças de código
+- `feat:`novas features,`fix:`correções de bug,`refactor:` mudanças de código
 - Branches de feature a partir da `main`, PRs obrigatórios
 - CI: ruff (lint + format), mypy (types), pytest (tests), safety (dep check)
 - Deploy: imagem Docker, gerenciada via Kubernetes ou Railway

@@ -112,7 +112,7 @@ skill-seekers upload react-openai.zip --target openai --api-key sk-proj-...
 
 **Output:**
 ```
-✅ Upload successful!
+PASS: Upload successful!
 Assistant ID: asst_abc123xyz
 URL: https://platform.openai.com/assistants/asst_abc123xyz
 Message: Assistant created with 15 knowledge files
@@ -305,11 +305,11 @@ result = openai_adaptor.upload(
 )
 
 if result['success']:
-    print(f"✅ Assistant created!")
+    print(f"PASS: Assistant created!")
     print(f"ID: {result['skill_id']}")
     print(f"URL: {result['url']}")
 else:
-    print(f"❌ Upload failed: {result['message']}")
+    print(f"FAIL: Upload failed: {result['message']}")
 ```
 
 ## OpenAI-Specific Features
@@ -495,13 +495,13 @@ skill-seekers upload react-openai.zip --target openai
 
 ## Next Steps
 
-1. ✅ Install OpenAI support: `pip install skill-seekers[openai]`
-2. ✅ Get API key from OpenAI Platform
-3. ✅ Scrape your documentation
-4. ✅ Enhance with GPT-4o
-5. ✅ Package for OpenAI
-6. ✅ Upload and create Assistant
-7. ✅ Test in Playground
+1. PASS: Install OpenAI support: `pip install skill-seekers[openai]`
+2. PASS: Get API key from OpenAI Platform
+3. PASS: Scrape your documentation
+4. PASS: Enhance with GPT-4o
+5. PASS: Package for OpenAI
+6. PASS: Upload and create Assistant
+7. PASS: Test in Playground
 
 ## Resources
 

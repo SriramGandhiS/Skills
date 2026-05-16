@@ -4,7 +4,6 @@ description: "Use when tasks involve reading, creating, or reviewing PDF files w
 license: MIT
 ---
 
-
 # PDF Skill
 
 ## When to use

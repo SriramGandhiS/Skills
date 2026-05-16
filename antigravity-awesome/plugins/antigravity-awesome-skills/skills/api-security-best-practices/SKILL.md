@@ -99,60 +99,60 @@ const bcrypt = require('bcrypt');
 app.post('/api/auth/login', async (req, res) => {
   try {
     const { email, password } = req.body;
-    
+
     // Validate input
     if (!email || !password) {
-      return res.status(400).json({ 
-        error: 'Email and password are required' 
+      return res.status(400).json({
+        error: 'Email and password are required'
       });
     }
-    
+
     // Find user
-    const user = await db.user.findUnique({ 
-      where: { email } 
+    const user = await db.user.findUnique({
+      where: { email }
     });
-    
+
     if (!user) {
       // Don't reveal if user exists
-      return res.status(401).json({ 
-        error: 'Invalid credentials' 
+      return res.status(401).json({
+        error: 'Invalid credentials'
       });
     }
-    
+
     // Verify password
     const validPassword = await bcrypt.compare(
-      password, 
+      password,
       user.passwordHash
     );
-    
+
     if (!validPassword) {
-      return res.status(401).json({ 
-        error: 'Invalid credentials' 
+      return res.status(401).json({
+        error: 'Invalid credentials'
       });
     }
-    
+
     // Generate JWT token
     const token = jwt.sign(
-      { 
+      {
         userId: user.id,
         email: user.email,
         role: user.role
       },
       process.env.JWT_SECRET,
-      { 
+      {
         expiresIn: '1h',
         issuer: 'your-app',
         audience: 'your-app-users'
       }
     );
-    
+
     // Generate refresh token
     const refreshToken = jwt.sign(
       { userId: user.id },
       process.env.JWT_REFRESH_SECRET,
       { expiresIn: '7d' }
     );
-    
+
     // Store refresh token in database
     await db.refreshToken.create({
       data: {
@@ -161,17 +161,17 @@ app.post('/api/auth/login', async (req, res) => {
         expiresAt: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000)
       }
     });
-    
+
     res.json({
       token,
       refreshToken,
       expiresIn: 3600
     });
-    
+
   } catch (error) {
     console.error('Login error:', error);
-    res.status(500).json({ 
-      error: 'An error occurred during login' 
+    res.status(500).json({
+      error: 'An error occurred during login'
     });
   }
 });
@@ -187,33 +187,33 @@ function authenticateToken(req, res, next) {
   // Get token from header
   const authHeader = req.headers['authorization'];
   const token = authHeader && authHeader.split(' ')[1]; // Bearer TOKEN
-  
+
   if (!token) {
-    return res.status(401).json({ 
-      error: 'Access token required' 
+    return res.status(401).json({
+      error: 'Access token required'
     });
   }
-  
+
   // Verify token
   jwt.verify(
-    token, 
+    token,
     process.env.JWT_SECRET,
-    { 
+    {
       issuer: 'your-app',
       audience: 'your-app-users'
     },
     (err, user) => {
       if (err) {
         if (err.name === 'TokenExpiredError') {
-          return res.status(401).json({ 
-            error: 'Token expired' 
+          return res.status(401).json({
+            error: 'Token expired'
           });
         }
-        return res.status(403).json({ 
-          error: 'Invalid token' 
+        return res.status(403).json({
+          error: 'Invalid token'
         });
       }
-      
+
       // Attach user to request
       req.user = user;
       next();
@@ -241,7 +241,7 @@ app.get('/api/user/profile', authenticateToken, async (req, res) => {
         // Don't return passwordHash
       }
     });
-    
+
     res.json(user);
   } catch (error) {
     res.status(500).json({ error: 'Server error' });
@@ -254,20 +254,20 @@ app.get('/api/user/profile', authenticateToken, async (req, res) => {
 \`\`\`javascript
 app.post('/api/auth/refresh', async (req, res) => {
   const { refreshToken } = req.body;
-  
+
   if (!refreshToken) {
-    return res.status(401).json({ 
-      error: 'Refresh token required' 
+    return res.status(401).json({
+      error: 'Refresh token required'
     });
   }
-  
+
   try {
     // Verify refresh token
     const decoded = jwt.verify(
-      refreshToken, 
+      refreshToken,
       process.env.JWT_REFRESH_SECRET
     );
-    
+
     // Check if refresh token exists in database
     const storedToken = await db.refreshToken.findFirst({
       where: {
@@ -276,20 +276,20 @@ app.post('/api/auth/refresh', async (req, res) => {
         expiresAt: { gt: new Date() }
       }
     });
-    
+
     if (!storedToken) {
-      return res.status(403).json({ 
-        error: 'Invalid refresh token' 
+      return res.status(403).json({
+        error: 'Invalid refresh token'
       });
     }
-    
+
     // Generate new access token
     const user = await db.user.findUnique({
       where: { id: decoded.userId }
     });
-    
+
     const newToken = jwt.sign(
-      { 
+      {
         userId: user.id,
         email: user.email,
         role: user.role
@@ -297,15 +297,15 @@ app.post('/api/auth/refresh', async (req, res) => {
       process.env.JWT_SECRET,
       { expiresIn: '1h' }
     );
-    
+
     res.json({
       token: newToken,
       expiresIn: 3600
     });
-    
+
   } catch (error) {
-    res.status(403).json({ 
-      error: 'Invalid refresh token' 
+    res.status(403).json({
+      error: 'Invalid refresh token'
     });
   }
 });
@@ -313,14 +313,14 @@ app.post('/api/auth/refresh', async (req, res) => {
 
 ### Security Best Practices
 
-- ✅ Use strong JWT secrets (256-bit minimum)
-- ✅ Set short expiration times (1 hour for access tokens)
-- ✅ Implement refresh tokens for long-lived sessions
-- ✅ Store refresh tokens in database (can be revoked)
-- ✅ Use HTTPS only
-- ✅ Don't store sensitive data in JWT payload
-- ✅ Validate token issuer and audience
-- ✅ Implement token blacklisting for logout
+- PASS: Use strong JWT secrets (256-bit minimum)
+- PASS: Set short expiration times (1 hour for access tokens)
+- PASS: Implement refresh tokens for long-lived sessions
+- PASS: Store refresh tokens in database (can be revoked)
+- PASS: Use HTTPS only
+- PASS: Don't store sensitive data in JWT payload
+- PASS: Validate token issuer and audience
+- PASS: Implement token blacklisting for logout
 ```
 
 ### Example 2: Input Validation and SQL Injection Prevention
@@ -330,16 +330,16 @@ app.post('/api/auth/refresh', async (req, res) => {
 
 ### The Problem
 
-**❌ Vulnerable Code:**
+**FAIL: Vulnerable Code:**
 \`\`\`javascript
 // NEVER DO THIS - SQL Injection vulnerability
 app.get('/api/users/:id', async (req, res) => {
   const userId = req.params.id;
-  
+
   // Dangerous: User input directly in query
   const query = \`SELECT * FROM users WHERE id = '\${userId}'\`;
   const user = await db.query(query);
-  
+
   res.json(user);
 });
 
@@ -353,29 +353,29 @@ app.get('/api/users/:id', async (req, res) => {
 #### 1. Use Parameterized Queries
 
 \`\`\`javascript
-// ✅ Safe: Parameterized query
+// PASS: Safe: Parameterized query
 app.get('/api/users/:id', async (req, res) => {
   const userId = req.params.id;
-  
+
   // Validate input first
   if (!userId || !/^\d+$/.test(userId)) {
-    return res.status(400).json({ 
-      error: 'Invalid user ID' 
+    return res.status(400).json({
+      error: 'Invalid user ID'
     });
   }
-  
+
   // Use parameterized query
   const user = await db.query(
     'SELECT id, email, name FROM users WHERE id = $1',
     [userId]
   );
-  
+
   if (!user) {
-    return res.status(404).json({ 
-      error: 'User not found' 
+    return res.status(404).json({
+      error: 'User not found'
     });
   }
-  
+
   res.json(user);
 });
 \`\`\`
@@ -383,16 +383,16 @@ app.get('/api/users/:id', async (req, res) => {
 #### 2. Use ORM with Proper Escaping
 
 \`\`\`javascript
-// ✅ Safe: Using Prisma ORM
+// PASS: Safe: Using Prisma ORM
 app.get('/api/users/:id', async (req, res) => {
   const userId = parseInt(req.params.id);
-  
+
   if (isNaN(userId)) {
-    return res.status(400).json({ 
-      error: 'Invalid user ID' 
+    return res.status(400).json({
+      error: 'Invalid user ID'
     });
   }
-  
+
   const user = await prisma.user.findUnique({
     where: { id: userId },
     select: {
@@ -402,13 +402,13 @@ app.get('/api/users/:id', async (req, res) => {
       // Don't select sensitive fields
     }
   });
-  
+
   if (!user) {
-    return res.status(404).json({ 
-      error: 'User not found' 
+    return res.status(404).json({
+      error: 'User not found'
     });
   }
-  
+
   res.json(user);
 });
 \`\`\`
@@ -452,15 +452,15 @@ function validateRequest(schema) {
 }
 
 // Use validation
-app.post('/api/users', 
+app.post('/api/users',
   validateRequest(createUserSchema),
   async (req, res) => {
     // Input is validated at this point
     const { email, password, name, age } = req.body;
-    
+
     // Hash password
     const passwordHash = await bcrypt.hash(password, 10);
-    
+
     // Create user
     const user = await prisma.user.create({
       data: {
@@ -470,7 +470,7 @@ app.post('/api/users',
         age
       }
     });
-    
+
     // Don't return password hash
     const { passwordHash: _, ...userWithoutPassword } = user;
     res.status(201).json(userWithoutPassword);
@@ -485,27 +485,27 @@ const DOMPurify = require('isomorphic-dompurify');
 
 app.post('/api/comments', authenticateToken, async (req, res) => {
   const { content } = req.body;
-  
+
   // Validate
   if (!content || content.length > 1000) {
-    return res.status(400).json({ 
-      error: 'Invalid comment content' 
+    return res.status(400).json({
+      error: 'Invalid comment content'
     });
   }
-  
+
   // Sanitize HTML to prevent XSS
   const sanitizedContent = DOMPurify.sanitize(content, {
     ALLOWED_TAGS: ['b', 'i', 'em', 'strong', 'a'],
     ALLOWED_ATTR: ['href']
   });
-  
+
   const comment = await prisma.comment.create({
     data: {
       content: sanitizedContent,
       userId: req.user.userId
     }
   });
-  
+
   res.status(201).json(comment);
 });
 \`\`\`
@@ -597,7 +597,7 @@ const expensiveLimiter = rateLimit({
   }
 });
 
-app.post('/api/reports/generate', 
+app.post('/api/reports/generate',
   authenticateToken,
   expensiveLimiter,
   async (req, res) => {
@@ -616,19 +616,19 @@ function createTieredRateLimiter() {
     pro: { windowMs: 60 * 60 * 1000, max: 1000 },
     enterprise: { windowMs: 60 * 60 * 1000, max: 10000 }
   };
-  
+
   return async (req, res, next) => {
     const user = req.user;
     const tier = user?.tier || 'free';
     const limit = limits[tier];
-    
+
     const key = \`rl:user:\${user.userId}\`;
     const current = await redis.incr(key);
-    
+
     if (current === 1) {
       await redis.expire(key, limit.windowMs / 1000);
     }
-    
+
     if (current > limit.max) {
       return res.status(429).json({
         error: 'Rate limit exceeded',
@@ -637,14 +637,14 @@ function createTieredRateLimiter() {
         reset: await redis.ttl(key)
       });
     }
-    
+
     // Set rate limit headers
     res.set({
       'X-RateLimit-Limit': limit.max,
       'X-RateLimit-Remaining': limit.max - current,
       'X-RateLimit-Reset': await redis.ttl(key)
     });
-    
+
     next();
   };
 }
@@ -694,7 +694,7 @@ Retry-After: 900
 
 ## Best Practices
 
-### ✅ Do This
+### PASS: Do This
 
 - **Use HTTPS Everywhere** - Never send sensitive data over HTTP
 - **Implement Authentication** - Require authentication for protected endpoints
@@ -709,7 +709,7 @@ Retry-After: 900
 - **Use Security Headers** - Implement Helmet.js
 - **Sanitize Error Messages** - Don't leak sensitive information
 
-### ❌ Don't Do This
+### FAIL: Don't Do This
 
 - **Don't Store Passwords in Plain Text** - Always hash passwords
 - **Don't Use Weak Secrets** - Use strong, random JWT secrets
@@ -728,10 +728,10 @@ Retry-After: 900
 **Symptoms:** JWT secret hardcoded or committed to Git
 **Solution:**
 \`\`\`javascript
-// ❌ Bad
+// FAIL: Bad
 const JWT_SECRET = 'my-secret-key';
 
-// ✅ Good
+// PASS: Good
 const JWT_SECRET = process.env.JWT_SECRET;
 if (!JWT_SECRET) {
   throw new Error('JWT_SECRET environment variable is required');
@@ -767,29 +767,29 @@ if (result.score < 3) {
 **Symptoms:** Users can access resources they shouldn't
 **Solution:**
 \`\`\`javascript
-// ❌ Bad: Only checks authentication
+// FAIL: Bad: Only checks authentication
 app.delete('/api/posts/:id', authenticateToken, async (req, res) => {
   await prisma.post.delete({ where: { id: req.params.id } });
   res.json({ success: true });
 });
 
-// ✅ Good: Checks both authentication and authorization
+// PASS: Good: Checks both authentication and authorization
 app.delete('/api/posts/:id', authenticateToken, async (req, res) => {
   const post = await prisma.post.findUnique({
     where: { id: req.params.id }
   });
-  
+
   if (!post) {
     return res.status(404).json({ error: 'Post not found' });
   }
-  
+
   // Check if user owns the post or is admin
   if (post.userId !== req.user.userId && req.user.role !== 'admin') {
-    return res.status(403).json({ 
-      error: 'Not authorized to delete this post' 
+    return res.status(403).json({
+      error: 'Not authorized to delete this post'
     });
   }
-  
+
   await prisma.post.delete({ where: { id: req.params.id } });
   res.json({ success: true });
 });
@@ -799,7 +799,7 @@ app.delete('/api/posts/:id', authenticateToken, async (req, res) => {
 **Symptoms:** Error messages reveal system details
 **Solution:**
 \`\`\`javascript
-// ❌ Bad: Exposes database details
+// FAIL: Bad: Exposes database details
 app.post('/api/users', async (req, res) => {
   try {
     const user = await prisma.user.create({ data: req.body });
@@ -810,22 +810,22 @@ app.post('/api/users', async (req, res) => {
   }
 });
 
-// ✅ Good: Generic error message
+// PASS: Good: Generic error message
 app.post('/api/users', async (req, res) => {
   try {
     const user = await prisma.user.create({ data: req.body });
     res.json(user);
   } catch (error) {
     console.error('User creation error:', error); // Log full error
-    
+
     if (error.code === 'P2002') {
-      return res.status(400).json({ 
-        error: 'Email already exists' 
+      return res.status(400).json({
+        error: 'Email already exists'
       });
     }
-    
-    res.status(500).json({ 
-      error: 'An error occurred while creating user' 
+
+    res.status(500).json({
+      error: 'An error occurred while creating user'
     });
   }
 });

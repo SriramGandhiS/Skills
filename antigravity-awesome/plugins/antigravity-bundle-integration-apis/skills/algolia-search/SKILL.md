@@ -170,8 +170,7 @@ import { simple } from 'instantsearch.js/es/lib/stateMappings';
     }),
     stateMapping: simple(),
   }}
->
-  {/* widgets */}
+> {/* widgets */}
 </InstantSearchNext>
 
 ### Anti_patterns

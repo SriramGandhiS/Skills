@@ -88,7 +88,7 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord) {
     vec2 uv = (fragCoord - 0.5 * iResolution.xy) / iResolution.y;
     vec3 ro = vec3(0.0, 0.0, -3.0); // Ray Origin
     vec3 rd = normalize(vec3(uv, 1.0)); // Ray Direction
-    
+
     float t = 0.0;
     for(int i = 0; i < 64; i++) {
         vec3 p = ro + rd * t;
@@ -96,25 +96,25 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord) {
         if(d < 0.001) break;
         t += d;
     }
-    
+
     vec3 col = vec3(0.0);
     if(t < 10.0) {
         vec3 p = ro + rd * t;
         vec3 normal = normalize(p);
         col = normal * 0.5 + 0.5; // Color by normal
     }
-    
+
     fragColor = vec4(col, 1.0);
 }
 ```
 
 ## Best Practices
 
-- ✅ **Do:** Use `mix()` for linear interpolation instead of manual math.
-- ✅ **Do:** Use `step()` and `smoothstep()` for thresholding and soft edges (avoid `if` branches).
-- ✅ **Do:** Pack data into vectors (`vec4`) to minimize memory access.
-- ❌ **Don't:** Use heavy branching (`if-else`) inside loops if possible; it hurts GPU parallelism.
-- ❌ **Don't:** Calculate constant values inside the shader; pre-calculate them on the CPU (uniforms).
+- PASS: **Do:** Use `mix()` for linear interpolation instead of manual math.
+- PASS: **Do:** Use `step()` and `smoothstep()` for thresholding and soft edges (avoid `if` branches).
+- PASS: **Do:** Pack data into vectors (`vec4`) to minimize memory access.
+- FAIL: **Don't:** Use heavy branching (`if-else`) inside loops if possible; it hurts GPU parallelism.
+- FAIL: **Don't:** Calculate constant values inside the shader; pre-calculate them on the CPU (uniforms).
 
 ## Troubleshooting
 

@@ -1,4 +1,4 @@
-﻿---
+---
 name: mysql-patterns
 description: MySQL and MariaDB schema, query, indexing, transaction, replication, and connection-pool patterns for production backends.
 origin: ECC
@@ -32,7 +32,7 @@ SHOW VARIABLES LIKE 'version_comment';
 Keep MySQL and MariaDB guidance separate when syntax differs:
 
 - MySQL documents row aliases as the replacement for `VALUES(col)` in
-  `ON DUPLICATE KEY UPDATE`; `VALUES(col)` is deprecated there.
+  `ON DUPLICATE KEY UPDATE`;`VALUES(col)` is deprecated there.
 - MariaDB documents `VALUES(col)` as the supported way to reference inserted
   values in `ON DUPLICATE KEY UPDATE`; use it for cross-engine compatibility.
 - `SKIP LOCKED` is appropriate for queue-like work only. It skips locked rows
@@ -60,13 +60,13 @@ Default choices:
 
 | Use Case | Prefer | Avoid |
 | --- | --- | --- |
-| Surrogate primary keys | `BIGINT UNSIGNED AUTO_INCREMENT` | `INT` for tables that can grow beyond 2B rows |
-| UUID lookup keys | `BINARY(16)` with conversion helpers | `VARCHAR(36)` primary keys on hot tables |
-| Money and exact quantities | `DECIMAL(p, s)` | `FLOAT` or `DOUBLE` |
-| User-facing text | `utf8mb4` tables and indexes | MySQL `utf8` / `utf8mb3` defaults |
-| Application timestamps | `DATETIME` with UTC managed by the app | Assuming `DATETIME` stores time zone metadata |
+| Surrogate primary keys | `BIGINT UNSIGNED AUTO_INCREMENT`|`INT` for tables that can grow beyond 2B rows |
+| UUID lookup keys | `BINARY(16)`with conversion helpers |`VARCHAR(36)` primary keys on hot tables |
+| Money and exact quantities | `DECIMAL(p, s)`|`FLOAT`or`DOUBLE` |
+| User-facing text | `utf8mb4`tables and indexes | MySQL`utf8`/`utf8mb3` defaults |
+| Application timestamps | `DATETIME`with UTC managed by the app | Assuming`DATETIME` stores time zone metadata |
 | Soft deletes | `deleted_at DATETIME NULL` plus scoped indexes | Filtering soft-deleted rows without an index |
-| Extensible status values | lookup table or constrained `VARCHAR` | `ENUM` when values change often |
+| Extensible status values | lookup table or constrained `VARCHAR`|`ENUM` when values change often |
 
 ## Indexing
 
@@ -101,10 +101,10 @@ Signals to investigate:
 
 | Field | Risk Signal |
 | --- | --- |
-| `type` | `ALL` on a large table |
-| `key` | `NULL` when a selective predicate exists |
+| `type`|`ALL` on a large table |
+| `key`|`NULL` when a selective predicate exists |
 | `rows` | Very high row estimate for an interactive path |
-| `Extra` | `Using temporary`, `Using filesort`, or broad `Using where` |
+| `Extra`|`Using temporary`,`Using filesort`, or broad`Using where` |
 
 Avoid adding indexes blindly. Each index increases write cost, migration time,
 backup size, and buffer-pool pressure.
@@ -211,7 +211,7 @@ Deadlock and lock-wait checklist:
 
 - Lock rows in a deterministic order across code paths.
 - Do external API calls before opening the transaction, not inside it.
-- Add indexes for predicates used in `UPDATE`, `DELETE`, and locking reads.
+- Add indexes for predicates used in `UPDATE`,`DELETE`, and locking reads.
 - On deadlock, roll back and retry the whole transaction with a bounded retry
   budget.
 - Capture `SHOW ENGINE INNODB STATUS\G` soon after a deadlock; it is overwritten
@@ -281,7 +281,7 @@ const [rows] = await pool.execute(
 ```
 
 Keep application pool recycling below the server `wait_timeout`. If the server
-uses `wait_timeout = 300`, a `pool_recycle` around 240 seconds is coherent;
+uses `wait_timeout = 300`, a`pool_recycle` around 240 seconds is coherent;
 `pool_pre_ping` still helps recover from network and failover events.
 
 ## Diagnostics
@@ -342,7 +342,7 @@ DROP USER IF EXISTS ''@'%';
 
 Security review points:
 
-- Do not grant `ALL PRIVILEGES` or `*.*` to application users.
+- Do not grant `ALL PRIVILEGES`or`*.*` to application users.
 - Require TLS for application users when traffic crosses hosts or networks.
 - Store credentials in the platform secret manager, not in examples, scripts, or
   repository files.
@@ -387,7 +387,7 @@ hardware, backup policy, and recovery objectives.
 | Deep `OFFSET` pagination | Linear scans and slow pages | Keyset pagination |
 | No index on foreign-key joins | Slow joins and lock-heavy deletes | Index FK columns intentionally |
 | Long transactions | Lock waits and large undo history | Commit small units of work |
-| Direct DML against `mysql.user` | Grant-table corruption risk | Use `CREATE USER`, `ALTER USER`, `DROP USER` |
+| Direct DML against `mysql.user`| Grant-table corruption risk | Use`CREATE USER`,`ALTER USER`,`DROP USER` |
 | Application user with admin grants | High blast radius | Least-privilege runtime user |
 | Pool recycle above `wait_timeout` | Stale pooled connections | Recycle below timeout and pre-ping |
 | Replica reads after writes | Stale user-facing state | Pin read-after-write flows to primary |

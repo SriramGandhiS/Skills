@@ -30,7 +30,7 @@ Backend odaklı iş akışı (Research → Ideation → Plan → Execute → Opt
 **Çağrı Sözdizimi**:
 
 ```
-# Yeni session çağrısı
+## Yeni session çağrısı
 Bash({
   command: "~/.claude/bin/codeagent-wrapper {{LITE_MODE_FLAG}}--backend codex - \"$PWD\" <<'EOF'
 ROLE_FILE: <role prompt path>
@@ -45,7 +45,7 @@ EOF",
   description: "Brief description"
 })
 
-# Session devam ettirme çağrısı
+## Session devam ettirme çağrısı
 Bash({
   command: "~/.claude/bin/codeagent-wrapper {{LITE_MODE_FLAG}}--backend codex resume <SESSION_ID> - \"$PWD\" <<'EOF'
 ROLE_FILE: <role prompt path>
@@ -69,13 +69,13 @@ EOF",
 | Planning | `~/.claude/.ccg/prompts/codex/architect.md` |
 | Review | `~/.claude/.ccg/prompts/codex/reviewer.md` |
 
-**Session Reuse**: Her çağrı `SESSION_ID: xxx` döndürür, sonraki fazlar için `resume xxx` kullan. Phase 2'de `CODEX_SESSION` kaydet, Phase 3 ve 5'te `resume` kullan.
+**Session Reuse**: Her çağrı `SESSION_ID: xxx`döndürür, sonraki fazlar için`resume xxx`kullan. Phase 2'de`CODEX_SESSION`kaydet, Phase 3 ve 5'te`resume` kullan.
 
 ---
 
 ## İletişim Yönergeleri
 
-1. Yanıtlara mode etiketi `[Mode: X]` ile başla, ilk `[Mode: Research]`
+1. Yanıtlara mode etiketi `[Mode: X]`ile başla, ilk`[Mode: Research]`
 2. Katı sıra takip et: `Research → Ideation → Plan → Execute → Optimize → Review`
 3. Gerektiğinde kullanıcı etkileşimi için `AskUserQuestion` tool kullan (örn., onay/seçim/approval)
 
@@ -85,13 +85,13 @@ EOF",
 
 ### Phase 0: Prompt Enhancement (İsteğe Bağlı)
 
-`[Mode: Prepare]` - ace-tool MCP mevcutsa, `mcp__ace-tool__enhance_prompt` çağır, **orijinal $ARGUMENTS'ı sonraki Codex çağrıları için enhanced sonuçla değiştir**. Mevcut değilse, `$ARGUMENTS`'ı olduğu gibi kullan.
+`[Mode: Prepare]`- ace-tool MCP mevcutsa,`mcp__ace-tool__enhance_prompt`çağır, **orijinal $ARGUMENTS'ı sonraki Codex çağrıları için enhanced sonuçla değiştir**. Mevcut değilse,`$ARGUMENTS`'ı olduğu gibi kullan.
 
 ### Phase 1: Research
 
 `[Mode: Research]` - Requirement'ları anla ve context topla
 
-1. **Code Retrieval** (ace-tool MCP mevcutsa): Mevcut API'leri, veri modellerini, servis mimarisini almak için `mcp__ace-tool__search_context` çağır. Mevcut değilse, built-in tool'ları kullan: dosya keşfi için `Glob`, sembol/API araması için `Grep`, context toplama için `Read`, daha derin keşif için `Task` (Explore agent).
+1. **Code Retrieval** (ace-tool MCP mevcutsa): Mevcut API'leri, veri modellerini, servis mimarisini almak için `mcp__ace-tool__search_context`çağır. Mevcut değilse, built-in tool'ları kullan: dosya keşfi için`Glob`, sembol/API araması için`Grep`, context toplama için`Read`, daha derin keşif için`Task` (Explore agent).
 2. Requirement tamamlılık skoru (0-10): >=7 devam et, <7 dur ve tamamla
 
 ### Phase 2: Ideation

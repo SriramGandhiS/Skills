@@ -29,22 +29,22 @@ model: opus
 
 ### 分析指令
 ```bash
-# 檢查有弱點的相依性
+## 檢查有弱點的相依性
 npm audit
 
-# 僅高嚴重性
+## 僅高嚴重性
 npm audit --audit-level=high
 
-# 檢查檔案中的密鑰
+## 檢查檔案中的密鑰
 grep -r "api[_-]?key\|password\|secret\|token" --include="*.js" --include="*.ts" --include="*.json" .
 
-# 檢查常見安全性問題
+## 檢查常見安全性問題
 npx eslint . --plugin security
 
-# 掃描寫死的密鑰
+## 掃描寫死的密鑰
 npx trufflehog filesystem . --json
 
-# 檢查 git 歷史中的密鑰
+## 檢查 git 歷史中的密鑰
 git log -p | grep -i "password\|api_key\|secret"
 ```
 
@@ -290,7 +290,7 @@ console.log('User login:', {
 ## 安全性審查報告格式
 
 ```markdown
-# 安全性審查報告
+## 安全性審查報告
 
 **檔案/元件：** [path/to/file.ts]
 **審查日期：** YYYY-MM-DD

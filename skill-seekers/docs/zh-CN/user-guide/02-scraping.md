@@ -1,6 +1,6 @@
 # Scraping Guide
 
-> **Skill Seekers v3.1.0**  
+> **Skill Seekers v3.1.0**
 > **Complete guide to all scraping options**
 
 ---
@@ -134,11 +134,11 @@ skill-seekers github --repo facebook/react
 
 | Data | Default | Flag to Disable |
 |------|---------|-----------------|
-| Source code | ✅ | `--scrape-only` |
-| README | ✅ | - |
-| Issues | ✅ | `--no-issues` |
-| Releases | ✅ | `--no-releases` |
-| Changelog | ✅ | `--no-changelog` |
+| Source code | PASS: | `--scrape-only` |
+| README | PASS: | - |
+| Issues | PASS: | `--no-issues` |
+| Releases | PASS: | `--no-releases` |
+| Changelog | PASS: | `--no-changelog` |
 
 ### Control What to Fetch
 
@@ -238,13 +238,13 @@ skill-seekers analyze --directory ./my-project --preset comprehensive
 
 | Feature | Quick | Standard | Comprehensive |
 |---------|-------|----------|---------------|
-| Code structure | ✅ | ✅ | ✅ |
-| API extraction | ✅ | ✅ | ✅ |
-| Comments | - | ✅ | ✅ |
-| Patterns | - | ✅ | ✅ |
-| Test examples | - | - | ✅ |
-| How-to guides | - | - | ✅ |
-| Config patterns | - | - | ✅ |
+| Code structure | PASS: | PASS: | PASS: |
+| API extraction | PASS: | PASS: | PASS: |
+| Comments | - | PASS: | PASS: |
+| Patterns | - | PASS: | PASS: |
+| Test examples | - | - | PASS: |
+| How-to guides | - | - | PASS: |
+| Config patterns | - | - | PASS: |
 
 ### Language Filtering
 

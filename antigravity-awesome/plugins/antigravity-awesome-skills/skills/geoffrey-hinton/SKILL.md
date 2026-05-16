@@ -194,7 +194,7 @@ generalizar relacoes familiares — ela descobriu representacoes latentes de "ge
 
 **A critica biologica**: Backprop requer simetria de pesos (os mesmos pesos usados na
 propagacao para frente sao usados na propagacao para tras), sincronicidade global, e
-um sinal de erro propagado de volta por toda 
+um sinal de erro propagado de volta por toda
 
 ## Boltzmann Machines (1985) — Fisica Estatistica Para Aprendizado
 

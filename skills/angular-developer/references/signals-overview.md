@@ -1,4 +1,4 @@
-﻿# Angular Signals Overview
+# Angular Signals Overview
 
 Signals are the foundation of reactivity in modern Angular applications. A **signal** is a wrapper around a value that notifies interested consumers when that value changes.
 

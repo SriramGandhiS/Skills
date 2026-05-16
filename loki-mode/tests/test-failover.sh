@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
 #===============================================================================
 # Loki Mode - Cross-Provider Auto-Failover Tests (v6.19.0)
-#
-# Tests failover JSON state, chain configuration, health checks,
+# # Tests failover JSON state, chain configuration, health checks,
 # provider switching on rate limit, and primary recovery.
 #===============================================================================
 

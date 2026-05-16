@@ -6,7 +6,7 @@ origin: ECC
 
 # 文档查询 (Context7)
 
-当用户询问库、框架或 API 时，通过 Context7 MCP（工具 `resolve-library-id` 和 `query-docs`）获取最新文档，而非依赖训练数据。
+当用户询问库、框架或 API 时，通过 Context7 MCP（工具 `resolve-library-id`和`query-docs`）获取最新文档，而非依赖训练数据。
 
 ## 核心概念
 
@@ -34,7 +34,7 @@ origin: ECC
 * **libraryName**: 从用户问题中提取的库或产品名称（例如 `Next.js`、`Prisma`、`Supabase`）。
 * **query**: 用户的完整问题。这有助于提高结果的相关性排名。
 
-在查询文档之前，必须获取 Context7 兼容的库 ID（格式为 `/org/project` 或 `/org/project/version`）。如果没有从此步骤获得有效的库 ID，请勿调用 query-docs。
+在查询文档之前，必须获取 Context7 兼容的库 ID（格式为 `/org/project`或`/org/project/version`）。如果没有从此步骤获得有效的库 ID，请勿调用 query-docs。
 
 ### 步骤 2：选择最佳匹配
 
@@ -74,7 +74,7 @@ origin: ECC
 1. 使用 `libraryName: "Prisma"`、`query: "How do I query with relations?"` 调用 **resolve-library-id**。
 2. 选择官方的 Prisma 库 ID（例如 `/prisma/prisma`）。
 3. 使用该 `libraryId` 和查询调用 **query-docs**。
-4. 返回 Prisma Client 模式（例如 `include` 或 `select`）并附上文档中的简短代码片段。
+4. 返回 Prisma Client 模式（例如 `include`或`select`）并附上文档中的简短代码片段。
 
 ### 示例：Supabase 认证方法
 

@@ -35,7 +35,6 @@ hcloud config add <key> <value>...
 
 * [hcloud config](hcloud_config.md)	 - Manage configuration
 
-
 ---
 
 ## hcloud config get
@@ -76,7 +75,6 @@ hcloud config get <key>
 
 * [hcloud config](hcloud_config.md)	 - Manage configuration
 
-
 ---
 
 ## hcloud config list
@@ -114,7 +112,6 @@ hcloud config list
 ### SEE ALSO
 
 * [hcloud config](hcloud_config.md)	 - Manage configuration
-
 
 ---
 
@@ -155,7 +152,6 @@ hcloud config remove <key> <value>...
 
 * [hcloud config](hcloud_config.md)	 - Manage configuration
 
-
 ---
 
 ## hcloud config set
@@ -194,7 +190,6 @@ hcloud config set <key> <value>...
 ### SEE ALSO
 
 * [hcloud config](hcloud_config.md)	 - Manage configuration
-
 
 ---
 
@@ -235,7 +230,6 @@ hcloud config unset <key>
 
 * [hcloud config](hcloud_config.md)	 - Manage configuration
 
-
 ---
 
 ## hcloud context active
@@ -269,7 +263,6 @@ hcloud context active
 ### SEE ALSO
 
 * [hcloud context](hcloud_context.md)	 - Manage contexts
-
 
 ---
 
@@ -306,7 +299,6 @@ hcloud context create [--token-from-env] <name>
 
 * [hcloud context](hcloud_context.md)	 - Manage contexts
 
-
 ---
 
 ## hcloud context delete
@@ -340,7 +332,6 @@ hcloud context delete <context>
 ### SEE ALSO
 
 * [hcloud context](hcloud_context.md)	 - Manage contexts
-
 
 ---
 
@@ -390,7 +381,6 @@ hcloud context list [options]
 
 * [hcloud context](hcloud_context.md)	 - Manage contexts
 
-
 ---
 
 ## hcloud context rename
@@ -425,7 +415,6 @@ hcloud context rename <context> <name>
 
 * [hcloud context](hcloud_context.md)	 - Manage contexts
 
-
 ---
 
 ## hcloud context unset
@@ -459,7 +448,6 @@ hcloud context unset
 ### SEE ALSO
 
 * [hcloud context](hcloud_context.md)	 - Manage contexts
-
 
 ---
 

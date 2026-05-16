@@ -90,7 +90,7 @@ function generateCounts(rootDir, skills, buildDir) {
       const num = parseInt(match[1]);
       // Allow 1 (for "1 skill") and the correct count
       if (num !== commandCount && num !== 1) {
-        console.error(`  ❌ ${relPath}: found "${match[0]}" but active command count is ${commandCount}`);
+        console.error(`  FAIL: ${relPath}: found "${match[0]}" but active command count is ${commandCount}`);
         errors++;
       }
     }
@@ -102,14 +102,14 @@ function generateCounts(rootDir, skills, buildDir) {
     for (const match of strippedContent.matchAll(detectPattern)) {
       const num = parseInt(match[1]);
       if (num !== detectionCount && num > 10) { // ignore small numbers like "3 patterns"
-        console.error(`  ❌ ${relPath}: found "${match[0]}" but detection count is ${detectionCount}`);
+        console.error(`  FAIL: ${relPath}: found "${match[0]}" but detection count is ${detectionCount}`);
         errors++;
       }
     }
   }
 
   if (errors > 0) {
-    console.error(`\n❌ ${errors} stale count reference(s) found. Update them to match source of truth.`);
+    console.error(`\nFAIL: ${errors} stale count reference(s) found. Update them to match source of truth.`);
   }
 
   console.log(`✓ Generated counts: ${commandCount} commands, ${detectionCount} detection rules`);
@@ -121,7 +121,7 @@ function validateSkillFrontmatter(skills) {
 
   for (const skill of skills) {
     if (skill.description && skill.description.length > 1024) {
-      console.error(`❌ ${skill.filePath}: invalid description: exceeds maximum length of 1024 characters (${skill.description.length})`);
+      console.error(`FAIL: ${skill.filePath}: invalid description: exceeds maximum length of 1024 characters (${skill.description.length})`);
       errors++;
     }
   }
@@ -183,7 +183,7 @@ function validateProse(rootDir) {
   const checkLine = (line, rel, lineNum) => {
     for (const re of emDashPatterns) {
       if (re.test(line)) {
-        console.error(`  ❌ ${rel}:${lineNum}: em dash → ${line.trim().slice(0, 120)}`);
+        console.error(`  FAIL: ${rel}:${lineNum}: em dash → ${line.trim().slice(0, 120)}`);
         console.error(`        Use commas, colons, semicolons, periods, or parentheses.`);
         errors++;
         re.lastIndex = 0;
@@ -192,14 +192,14 @@ function validateProse(rootDir) {
       re.lastIndex = 0;
     }
     if (/ -- /.test(line)) {
-      console.error(`  ❌ ${rel}:${lineNum}: \` -- \` em-dash substitute → ${line.trim().slice(0, 120)}`);
+      console.error(`  FAIL: ${rel}:${lineNum}: \` -- \` em-dash substitute → ${line.trim().slice(0, 120)}`);
       console.error(`        Worse than the em dash. Pick real punctuation.`);
       errors++;
     }
     for (const rule of phraseRules) {
       if (rule.re.test(line)) {
         const matched = line.match(rule.re)?.[0] ?? '';
-        console.error(`  ❌ ${rel}:${lineNum}: "${matched}" → ${line.trim().slice(0, 120)}`);
+        console.error(`  FAIL: ${rel}:${lineNum}: "${matched}" → ${line.trim().slice(0, 120)}`);
         console.error(`        ${rule.rationale}`);
         errors++;
       }
@@ -228,7 +228,7 @@ function validateProse(rootDir) {
   if (errors === 0) {
     console.log(`✓ Prose validator: no AI tells in user-facing copy`);
   } else {
-    console.error(`\n❌ ${errors} prose issue(s) in user-facing copy. See STYLE.md for the rules.`);
+    console.error(`\nFAIL: ${errors} prose issue(s) in user-facing copy. See STYLE.md for the rules.`);
   }
   return errors;
 }
@@ -273,7 +273,7 @@ function validateSkillProse(rootDir) {
   const checkLine = (line, rel, lineNum) => {
     for (const re of emDashPatterns) {
       if (re.test(line)) {
-        console.error(`  ❌ ${rel}:${lineNum}: em dash → ${line.trim().slice(0, 120)}`);
+        console.error(`  FAIL: ${rel}:${lineNum}: em dash → ${line.trim().slice(0, 120)}`);
         console.error(`        Use commas, colons, semicolons, periods, or parentheses.`);
         errors++;
         re.lastIndex = 0;
@@ -282,14 +282,14 @@ function validateSkillProse(rootDir) {
       re.lastIndex = 0;
     }
     if (/ -- /.test(line)) {
-      console.error(`  ❌ ${rel}:${lineNum}: \` -- \` em-dash substitute → ${line.trim().slice(0, 120)}`);
+      console.error(`  FAIL: ${rel}:${lineNum}: \` -- \` em-dash substitute → ${line.trim().slice(0, 120)}`);
       console.error(`        Worse than the em dash. Pick real punctuation.`);
       errors++;
     }
     for (const rule of phraseRules) {
       if (rule.re.test(line)) {
         const matched = line.match(rule.re)?.[0] ?? '';
-        console.error(`  ❌ ${rel}:${lineNum}: "${matched}" → ${line.trim().slice(0, 120)}`);
+        console.error(`  FAIL: ${rel}:${lineNum}: "${matched}" → ${line.trim().slice(0, 120)}`);
         console.error(`        ${rule.rationale}`);
         errors++;
       }
@@ -316,7 +316,7 @@ function validateSkillProse(rootDir) {
   if (errors === 0) {
     console.log(`✓ Skill prose validator: skill/ is clean`);
   } else {
-    console.error(`\n❌ ${errors} prose issue(s) in skill/. See STYLE.md.`);
+    console.error(`\nFAIL: ${errors} prose issue(s) in skill/. See STYLE.md.`);
   }
   return errors;
 }
@@ -592,7 +592,7 @@ function generateCFConfig(buildDir) {
  * Main build process
  */
 async function build() {
-  console.log('🔨 Building cross-provider design skills...\n');
+  console.log(' Building cross-provider design skills...\n');
 
   // Sub-page generation, HTML bundling, and static-asset copying are now
   // handled by Astro (bun run build:site). This script focuses on skills,
@@ -613,7 +613,7 @@ async function build() {
   const { skills } = readSourceFiles(ROOT_DIR);
   const patterns = readPatterns(ROOT_DIR);
   const userInvocableCount = skills.filter(s => s.userInvocable).length;
-  console.log(`📖 Read ${skills.length} skills (${userInvocableCount} user-invocable) and ${patterns.patterns.length + patterns.antipatterns.length} pattern categories\n`);
+  console.log(` Read ${skills.length} skills (${userInvocableCount} user-invocable) and ${patterns.patterns.length + patterns.antipatterns.length} pattern categories\n`);
 
   const frontmatterErrors = validateSkillFrontmatter(skills);
   if (frontmatterErrors > 0) {
@@ -694,7 +694,7 @@ async function build() {
     }
   }
 
-  console.log(`📋 Synced skills to: ${syncConfigs.map(p => p.configDir).join(', ')}`);
+  console.log(` Synced skills to: ${syncConfigs.map(p => p.configDir).join(', ')}`);
 
   // Build the Claude Code plugin subtree at ./plugin/.
   // The Claude Code marketplace is configured with `source: "./plugin"`, so
@@ -744,7 +744,7 @@ async function build() {
     copyDirSync(claudeAgentsSrc, pluginAgentsDir);
   }
 
-  console.log('📦 Built Claude Code plugin subtree at ./plugin/');
+  console.log(' Built Claude Code plugin subtree at ./plugin/');
 
   // Generate authoritative counts and validate references
   const countErrors = generateCounts(ROOT_DIR, skills, buildDir);
@@ -763,7 +763,7 @@ async function build() {
     process.exit(1);
   }
 
-  console.log('\n✨ Build complete!');
+  console.log('\n Build complete!');
 }
 
 // Run the build

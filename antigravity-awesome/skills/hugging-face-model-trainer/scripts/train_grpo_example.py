@@ -2,10 +2,10 @@
 # /// script
 # requires-python = ">=3.10"
 # dependencies = [
-#     "trl>=0.12.0",
-#     "transformers>=4.36.0",
-#     "accelerate>=0.24.0",
-#     "trackio",
+# "trl>=0.12.0",
+# "transformers>=4.36.0",
+# "accelerate>=0.24.0",
+# "trackio",
 # ]
 # ///
 
@@ -37,7 +37,7 @@ from trl import GRPOTrainer, GRPOConfig
 
 # Load dataset (GRPO uses prompt-only format)
 dataset = load_dataset("trl-lib/math_shepherd", split="train")
-print(f"✅ Dataset loaded: {len(dataset)} prompts")
+print(f"PASS: Dataset loaded: {len(dataset)} prompts")
 
 # Training configuration
 config = GRPOConfig(
@@ -78,12 +78,12 @@ trainer = GRPOTrainer(
     args=config,
 )
 
-print("🚀 Starting GRPO training...")
+print(" Starting GRPO training...")
 trainer.train()
 
-print("💾 Pushing to Hub...")
+print(" Pushing to Hub...")
 trainer.push_to_hub()
 
 
-print("✅ Complete! Model at: https://huggingface.co/username/qwen-grpo-math")
-print("📊 View metrics at: https://huggingface.co/spaces/username/trackio")
+print("PASS: Complete! Model at: https://huggingface.co/username/qwen-grpo-math")
+print(" View metrics at: https://huggingface.co/spaces/username/trackio")

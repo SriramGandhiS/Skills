@@ -62,7 +62,7 @@ CUTOFF_DATE=$(date -d '90 days ago' --iso-8601)
 aws ec2 describe-snapshots --owner-ids self \
   --query "Snapshots[?StartTime<='$CUTOFF_DATE'].[SnapshotId,StartTime,VolumeSize]" \
   --output text | while read snap_id start_time size; do
-  
+
   echo "Snapshot: $snap_id (Created: $start_time, Size: ${size}GB)"
   # Uncomment to delete:
   # aws ec2 delete-snapshot --snapshot-id $snap_id
@@ -76,7 +76,7 @@ done
 aws ec2 describe-addresses \
   --query 'Addresses[?AssociationId==null].[AllocationId,PublicIp]' \
   --output text | while read alloc_id public_ip; do
-  
+
   echo "Would release: $public_ip ($alloc_id)"
   # Uncomment to release:
   # aws ec2 release-address --allocation-id $alloc_id
@@ -162,15 +162,15 @@ from datetime import datetime, timedelta
 
 def lambda_handler(event, context):
     ec2 = boto3.client('ec2')
-    
+
     # Delete unattached volumes older than 7 days
     volumes = ec2.describe_volumes(
         Filters=[{'Name': 'status', 'Values': ['available']}]
     )
-    
+
     cutoff = datetime.now() - timedelta(days=7)
     deleted = 0
-    
+
     for vol in volumes['Volumes']:
         create_time = vol['CreateTime'].replace(tzinfo=None)
         if create_time < cutoff:
@@ -180,7 +180,7 @@ def lambda_handler(event, context):
                 print(f"Deleted volume: {vol['VolumeId']}")
             except Exception as e:
                 print(f"Error deleting {vol['VolumeId']}: {e}")
-    
+
     return {
         'statusCode': 200,
         'body': f'Deleted {deleted} volumes'
@@ -243,7 +243,7 @@ def lambda_handler(event, context):
 # Run cleanup across multiple accounts
 for account in $(aws organizations list-accounts \
   --query 'Accounts[*].Id' --output text); do
-  
+
   echo "Checking account: $account"
   aws ec2 describe-volumes \
     --filters Name=status,Values=available \

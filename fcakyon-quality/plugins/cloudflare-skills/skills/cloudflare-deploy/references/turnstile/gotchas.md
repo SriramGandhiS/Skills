@@ -2,7 +2,7 @@
 
 ## Critical Rules
 
-### ❌ Skipping Server-Side Validation
+### FAIL: Skipping Server-Side Validation
 **Problem:** Client-only validation is easily bypassed.
 
 **Solution:** Always validate on server.
@@ -14,17 +14,17 @@ app.post('/submit', async (req, res) => {
     method: 'POST',
     body: JSON.stringify({ secret: SECRET, response: token })
   }).then(r => r.json());
-  
+
   if (!validation.success) return res.status(403).json({ error: 'CAPTCHA failed' });
 });
 ```
 
-### ❌ Exposing Secret Key
+### FAIL: Exposing Secret Key
 **Problem:** Secret key leaked in client-side code.
 
 **Solution:** Server-side validation only. Never send secret to client.
 
-### ❌ Reusing Tokens (Single-Use Rule)
+### FAIL: Reusing Tokens (Single-Use Rule)
 **Problem:** Tokens are single-use. Revalidation fails with `timeout-or-duplicate`.
 
 **Solution:** Generate new token for each submission. Reset widget on error.
@@ -32,7 +32,7 @@ app.post('/submit', async (req, res) => {
 if (!response.ok) window.turnstile.reset(widgetId);
 ```
 
-### ❌ Not Handling Token Expiry
+### FAIL: Not Handling Token Expiry
 **Problem:** Tokens expire after 5 minutes.
 
 **Solution:** Handle expiry callback or use auto-refresh.
@@ -63,7 +63,7 @@ window.turnstile.render('#container', {
 function TurnstileWidget({ onToken }) {
   const containerRef = useRef(null);
   const widgetIdRef = useRef(null);
-  
+
   useEffect(() => {
     if (containerRef.current && !widgetIdRef.current) {
       widgetIdRef.current = window.turnstile.render(containerRef.current, {
@@ -78,7 +78,7 @@ function TurnstileWidget({ onToken }) {
       }
     };
   }, []);
-  
+
   return <div ref={containerRef} />;
 }
 ```
@@ -122,8 +122,8 @@ useEffect(() => () => window.turnstile.remove(widgetId), []);
 
 **Solution:** Add CSP directives.
 ```html
-<meta http-equiv="Content-Security-Policy" 
-      content="script-src 'self' https://challenges.cloudflare.com; 
+<meta http-equiv="Content-Security-Policy"
+      content="script-src 'self' https://challenges.cloudflare.com;
                frame-src https://challenges.cloudflare.com;">
 ```
 
@@ -160,8 +160,8 @@ window.turnstile.render('#container', {
   sitekey: 'YOUR_SITE_KEY',
   callback: (token) => console.log('✓ Token:', token),
   'error-callback': (code) => console.error('✗ Error:', code),
-  'expired-callback': () => console.warn('⏱ Expired'),
-  'timeout-callback': () => console.warn('⏱ Timeout')
+  'expired-callback': () => console.warn(' Expired'),
+  'timeout-callback': () => console.warn(' Timeout')
 });
 ```
 

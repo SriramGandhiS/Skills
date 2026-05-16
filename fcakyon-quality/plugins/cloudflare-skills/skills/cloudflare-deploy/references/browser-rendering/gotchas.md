@@ -35,11 +35,11 @@ try {
 ## Optimize Concurrency
 
 ```typescript
-// ❌ 3 sessions (hits free tier limit)
+// FAIL: 3 sessions (hits free tier limit)
 const browser1 = await puppeteer.launch(env.MYBROWSER);
 const browser2 = await puppeteer.launch(env.MYBROWSER);
 
-// ✅ 1 session, multiple pages
+// PASS: 1 session, multiple pages
 const browser = await puppeteer.launch(env.MYBROWSER);
 const page1 = await browser.newPage();
 const page2 = await browser.newPage();
@@ -58,11 +58,11 @@ const page2 = await browser.newPage();
 ## page.evaluate() Gotchas
 
 ```typescript
-// ❌ Outer scope not available
+// FAIL: Outer scope not available
 const selector = "h1";
 await page.evaluate(() => document.querySelector(selector));
 
-// ✅ Pass as argument
+// PASS: Pass as argument
 await page.evaluate((sel) => document.querySelector(sel)?.textContent, selector);
 ```
 

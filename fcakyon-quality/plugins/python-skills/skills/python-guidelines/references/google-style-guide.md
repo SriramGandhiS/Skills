@@ -36,7 +36,6 @@ def foo(a, b=None):
     if b is None:
         b = []
 
-
 # No
 def foo(a, b=[]): ...
 def foo(a, b=time.time()): ...

@@ -112,7 +112,7 @@ Create detailed steps with:
 Here is a complete plan showing the level of detail expected:
 
 ```markdown
-# Implementation Plan: Stripe Subscription Billing
+## Implementation Plan: Stripe Subscription Billing
 
 ## Overview
 Add subscription billing with free/pro/enterprise tiers. Users upgrade via

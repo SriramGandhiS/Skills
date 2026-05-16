@@ -737,7 +737,7 @@ class TestMCPToolsE2E:
         )
 
         assert len(add_result) == 1
-        assert "✅" in add_result[0].text
+        assert "PASS:" in add_result[0].text
         assert "mcp-test-source" in add_result[0].text
 
         # List sources
@@ -750,7 +750,7 @@ class TestMCPToolsE2E:
         remove_result = await remove_config_source_tool({"name": "mcp-test-source"})
 
         assert len(remove_result) == 1
-        assert "✅" in remove_result[0].text
+        assert "PASS:" in remove_result[0].text
         assert "removed" in remove_result[0].text.lower()
 
     @pytest.mark.asyncio
@@ -778,7 +778,7 @@ class TestMCPToolsE2E:
         )
 
         assert len(result) == 1
-        assert "✅" in result[0].text
+        assert "PASS:" in result[0].text
         assert "test-framework" in result[0].text
 
         # Verify config was saved
@@ -815,7 +815,7 @@ class TestMCPToolsE2E:
         )
 
         assert len(result) == 1
-        assert "✅" in result[0].text
+        assert "PASS:" in result[0].text
         assert "test-framework" in result[0].text
 
         # Verify config was saved
@@ -839,17 +839,17 @@ class TestMCPToolsE2E:
 
         # Test 1: Add source without name
         result = await add_config_source_tool({"git_url": git_url})
-        assert "❌" in result[0].text
+        assert "FAIL:" in result[0].text
         assert "name" in result[0].text.lower()
 
         # Test 2: Add source without git_url
         result = await add_config_source_tool({"name": "test"})
-        assert "❌" in result[0].text
+        assert "FAIL:" in result[0].text
         assert "git_url" in result[0].text.lower()
 
         # Test 3: Remove non-existent source
         result = await remove_config_source_tool({"name": "non-existent"})
-        assert "❌" in result[0].text or "not found" in result[0].text.lower()
+        assert "FAIL:" in result[0].text or "not found" in result[0].text.lower()
 
         # Test 4: Fetch config from non-existent source
         dest_dir = Path(config_dir) / "configs"
@@ -858,7 +858,7 @@ class TestMCPToolsE2E:
         result = await fetch_config_tool(
             {"config_name": "test", "source": "non-existent-source", "destination": str(dest_dir)}
         )
-        assert "❌" in result[0].text or "not found" in result[0].text.lower()
+        assert "FAIL:" in result[0].text or "not found" in result[0].text.lower()
 
         # Test 5: Fetch non-existent config from valid source
         await add_config_source_tool(
@@ -872,7 +872,7 @@ class TestMCPToolsE2E:
                 "destination": str(dest_dir),
             }
         )
-        assert "❌" in result[0].text or "not found" in result[0].text.lower()
+        assert "FAIL:" in result[0].text or "not found" in result[0].text.lower()
 
 
 if __name__ == "__main__":

@@ -47,7 +47,7 @@ To ensure a smooth experience with Dokploy, your server should have at least 2GB
 import { Callout } from "fumadocs-ui/components/callout";
 
 <Callout>
-  **Suggestion:** For cost efficiency with reliable service, we recommend
+**Suggestion:** For cost efficiency with reliable service, we recommend
   Hetzner as the best value-for-money VPS provider.
 </Callout>
 
@@ -60,7 +60,7 @@ Before installing Dokploy, ensure the following ports are available on your serv
 - **Port 3000**: Dokploy web interface
 
 <Callout type='warn'>
-  **Important:** The installation will fail if any of these ports are already in use. Make sure to stop any services using these ports before running the installation script.
+**Important:** The installation will fail if any of these ports are already in use. Make sure to stop any services using these ports before running the installation script.
 </Callout>
 
 ### Docker
@@ -147,7 +147,7 @@ After running the installation script, Dokploy and its dependencies will be set 
 Open your web browser and navigate to `http://your-ip-from-your-vps:3000`. You will be directed to the initial setup page where you can configure the administrative account for Dokploy.
 
 <Callout type='warn'>
-    **Important:** Ensure that your server's firewall allows traffic on port
+**Important:** Ensure that your server's firewall allows traffic on port
     3000 to access the Dokploy web interface.
 </Callout>
 
@@ -170,11 +170,11 @@ After setting up your admin account, it's crucial to secure your Dokploy install
 
 To configure a domain with SSL/TLS certificates for your Dokploy panel, please refer to the [Domains](/docs/core/domains) section where you'll find detailed instructions for different SSL configurations including Let's Encrypt, Cloudflare, and custom certificates.
 
-### Disable access via ip:port (Optional but Recommended) 
+### Disable access via ip:port (Optional but Recommended)
 To enhance security, it's advisable to restrict access to Dokploy via the server's IP address and port.
 
 <Callout type='warn'>
-    **Important:** Before disabling IP:port access, make sure you have configured a domain with HTTPS working properly. Otherwise, you will lose access to your Dokploy installation. See the [Domains](/docs/core/domains) section to set this up first.
+**Important:** Before disabling IP:port access, make sure you have configured a domain with HTTPS working properly. Otherwise, you will lose access to your Dokploy installation. See the [Domains](/docs/core/domains) section to set this up first.
 </Callout>
 
 Once you have verified that your domain is working correctly, you can disable IP:port access by running this command on the server:

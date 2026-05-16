@@ -311,14 +311,14 @@ async def research_and_write(topic: str) -> BlogPost:
 
 ## Best Practices
 
-- ✅ Always define `result_type` with a Pydantic model — avoid returning raw strings in production
-- ✅ Use `deps_type` with a dataclass for dependency injection — makes agents testable
-- ✅ Use `TestModel` in unit tests — never hit a real LLM in CI
-- ✅ Add `@agent.result_validator` for business-logic checks beyond Pydantic validation
-- ✅ Use `run_stream` for long outputs in user-facing applications to show progressive results
-- ❌ Don't put secrets (API keys) in `Agent()` arguments — use environment variables
-- ❌ Don't share a single `Agent` instance across async tasks if deps differ — create per-request instances or use `agent.run()` with per-call `deps`
-- ❌ Don't catch `ValidationError` broadly — let PydanticAI retry with `ModelRetry` for recoverable LLM output errors
+- PASS: Always define `result_type` with a Pydantic model — avoid returning raw strings in production
+- PASS: Use `deps_type` with a dataclass for dependency injection — makes agents testable
+- PASS: Use `TestModel` in unit tests — never hit a real LLM in CI
+- PASS: Add `@agent.result_validator` for business-logic checks beyond Pydantic validation
+- PASS: Use `run_stream` for long outputs in user-facing applications to show progressive results
+- FAIL: Don't put secrets (API keys) in `Agent()` arguments — use environment variables
+- FAIL: Don't share a single `Agent` instance across async tasks if deps differ — create per-request instances or use `agent.run()` with per-call `deps`
+- FAIL: Don't catch `ValidationError` broadly — let PydanticAI retry with `ModelRetry` for recoverable LLM output errors
 
 ## Security & Safety Notes
 
@@ -331,16 +331,16 @@ async def research_and_write(topic: str) -> BlogPost:
 ## Common Pitfalls
 
 - **Problem:** `ValidationError` on every LLM response — structured output never validates
-  **Solution:** Simplify `result_type` fields. Use `Optional` and `default` where appropriate. The model may struggle with overly strict schemas.
+**Solution:** Simplify `result_type` fields. Use `Optional` and `default` where appropriate. The model may struggle with overly strict schemas.
 
 - **Problem:** Tool is never called by the LLM
-  **Solution:** Write a clear, specific docstring for the tool function — PydanticAI sends the docstring as the tool description to the LLM.
+**Solution:** Write a clear, specific docstring for the tool function — PydanticAI sends the docstring as the tool description to the LLM.
 
 - **Problem:** `RunContext` dependency is `None` inside a tool
-  **Solution:** Pass `deps=` when calling `agent.run()` or `agent.run_sync()`. Dependencies are not set globally.
+**Solution:** Pass `deps=` when calling `agent.run()` or `agent.run_sync()`. Dependencies are not set globally.
 
 - **Problem:** `asyncio.run()` error when calling `agent.run()` inside FastAPI
-  **Solution:** Use `await agent.run()` directly in async FastAPI route handlers — don't wrap in `asyncio.run()`.
+**Solution:** Use `await agent.run()` directly in async FastAPI route handlers — don't wrap in `asyncio.run()`.
 
 ## Related Skills
 

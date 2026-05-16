@@ -32,10 +32,10 @@ class ConfigSplitter:
             with open(self.config_path) as f:
                 return json.load(f)
         except FileNotFoundError:
-            print(f"❌ Error: Config file not found: {self.config_path}")
+            print(f"FAIL: Error: Config file not found: {self.config_path}")
             sys.exit(1)
         except json.JSONDecodeError as e:
-            print(f"❌ Error: Invalid JSON in config file: {e}")
+            print(f"FAIL: Error: Invalid JSON in config file: {e}")
             sys.exit(1)
 
     def is_unified_config(self) -> bool:
@@ -49,19 +49,19 @@ class ConfigSplitter:
             if self.strategy == "auto":
                 num_sources = len(self.config.get("sources", []))
                 if num_sources <= 1:
-                    print("ℹ️  Single source unified config - no splitting needed")
+                    print("  Single source unified config - no splitting needed")
                     return "none"
                 else:
                     print(
-                        f"ℹ️  Multi-source unified config ({num_sources} sources) - source split recommended"
+                        f"  Multi-source unified config ({num_sources} sources) - source split recommended"
                     )
                     return "source"
             # For unified configs, only 'source' and 'none' strategies are valid
             elif self.strategy in ["source", "none"]:
                 return self.strategy
             else:
-                print(f"⚠️  Warning: Strategy '{self.strategy}' not supported for unified configs")
-                print("ℹ️  Using 'source' strategy instead")
+                print(f"WARNING:  Warning: Strategy '{self.strategy}' not supported for unified configs")
+                print("  Using 'source' strategy instead")
                 return "source"
 
         # Check if strategy is defined in config (documentation configs)
@@ -75,18 +75,18 @@ class ConfigSplitter:
             max_pages = self.config.get("max_pages", DEFAULTS["scraping"]["max_pages"])
 
             if max_pages < 5000:
-                print(f"ℹ️  Small documentation ({max_pages} pages) - no splitting needed")
+                print(f"  Small documentation ({max_pages} pages) - no splitting needed")
                 return "none"
             elif max_pages < 10000 and "categories" in self.config:
-                print(f"ℹ️  Medium documentation ({max_pages} pages) - category split recommended")
+                print(f"  Medium documentation ({max_pages} pages) - category split recommended")
                 return "category"
             elif "categories" in self.config and len(self.config["categories"]) >= 3:
                 print(
-                    f"ℹ️  Large documentation ({max_pages} pages) - router + categories recommended"
+                    f"  Large documentation ({max_pages} pages) - router + categories recommended"
                 )
                 return "router"
             else:
-                print(f"ℹ️  Large documentation ({max_pages} pages) - size-based split")
+                print(f"  Large documentation ({max_pages} pages) - size-based split")
                 return "size"
 
         return self.strategy
@@ -94,7 +94,7 @@ class ConfigSplitter:
     def split_by_category(self, create_router: bool = False) -> list[dict[str, Any]]:
         """Split config by categories"""
         if "categories" not in self.config:
-            print("❌ Error: No categories defined in config")
+            print("FAIL: Error: No categories defined in config")
             sys.exit(1)
 
         categories = self.config["categories"]
@@ -142,13 +142,13 @@ class ConfigSplitter:
 
             configs.append(new_config)
 
-        print(f"✅ Created {len(configs)} category-based configs")
+        print(f"PASS: Created {len(configs)} category-based configs")
 
         # Optionally create router config
         if create_router:
             router_config = self.create_router_config(configs)
             configs.insert(0, router_config)
-            print(f"✅ Created router config: {router_config['name']}")
+            print(f"PASS: Created router config: {router_config['name']}")
 
         return configs
 
@@ -156,7 +156,7 @@ class ConfigSplitter:
         """Split config by size (page count)"""
         max_pages = self.config.get("max_pages", DEFAULTS["scraping"]["max_pages"])
         if max_pages is None or max_pages < 0:
-            print("ℹ️  Unlimited max_pages — cannot split by size")
+            print("  Unlimited max_pages — cannot split by size")
             return [self.config.copy()]
         num_splits = (max_pages + self.target_pages - 1) // self.target_pages
 
@@ -179,18 +179,18 @@ class ConfigSplitter:
 
             configs.append(new_config)
 
-        print(f"✅ Created {len(configs)} size-based configs ({self.target_pages} pages each)")
+        print(f"PASS: Created {len(configs)} size-based configs ({self.target_pages} pages each)")
         return configs
 
     def split_by_source(self) -> list[dict[str, Any]]:
         """Split unified config by source type"""
         if not self.is_unified_config():
-            print("❌ Error: Config is not a unified config (missing 'sources' key)")
+            print("FAIL: Error: Config is not a unified config (missing 'sources' key)")
             sys.exit(1)
 
         sources = self.config.get("sources", [])
         if not sources:
-            print("❌ Error: No sources defined in unified config")
+            print("FAIL: Error: No sources defined in unified config")
             sys.exit(1)
 
         configs = []
@@ -214,11 +214,11 @@ class ConfigSplitter:
 
             configs.append(new_config)
 
-        print(f"✅ Created {len(configs)} source-based configs")
+        print(f"PASS: Created {len(configs)} source-based configs")
 
         # Show breakdown by source type
         for source_type, count in source_type_counts.items():
-            print(f"   📄 {count}x {source_type}")
+            print(f"    {count}x {source_type}")
 
         return configs
 
@@ -257,7 +257,7 @@ class ConfigSplitter:
         print("")
 
         if strategy == "none":
-            print("ℹ️  No splitting required")
+            print("  No splitting required")
             return [self.config]
 
         elif strategy == "source":
@@ -274,7 +274,7 @@ class ConfigSplitter:
             return self.split_by_size()
 
         else:
-            print(f"❌ Error: Unknown strategy: {strategy}")
+            print(f"FAIL: Error: Unknown strategy: {strategy}")
             sys.exit(1)
 
     def save_configs(self, configs: list[dict[str, Any]], output_dir: Path = None) -> list[Path]:
@@ -295,7 +295,7 @@ class ConfigSplitter:
                 json.dump(config, f, indent=2)
 
             saved_files.append(filepath)
-            print(f"  💾 Saved: {filepath}")
+            print(f"   Saved: {filepath}")
 
         return saved_files
 
@@ -372,7 +372,7 @@ Config Types:
         for cfg in configs:
             is_router = cfg.get("_router", False)
             router_marker = " (ROUTER)" if is_router else ""
-            print(f"  📄 {cfg['name']}.json{router_marker}")
+            print(f"   {cfg['name']}.json{router_marker}")
     else:
         print(f"\n{'=' * 60}")
         print("SAVING CONFIGS")

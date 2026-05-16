@@ -1,4 +1,4 @@
-﻿---
+---
 name: rust-patterns
 description: Idiomatic Rust patterns, ownership, error handling, traits, concurrency, and best practices for building safe, performant applications.
 origin: ECC
@@ -17,7 +17,7 @@ Idiomatic Rust patterns and best practices for building safe, performant, and ma
 
 ## How It Works
 
-This skill enforces idiomatic Rust conventions across six key areas: ownership and borrowing to prevent data races at compile time, `Result`/`?` error propagation with `thiserror` for libraries and `anyhow` for applications, enums and exhaustive pattern matching to make illegal states unrepresentable, traits and generics for zero-cost abstraction, safe concurrency via `Arc<Mutex<T>>`, channels, and async/await, and minimal `pub` surfaces organized by domain.
+This skill enforces idiomatic Rust conventions across six key areas: ownership and borrowing to prevent data races at compile time, `Result`/`?`error propagation with`thiserror`for libraries and`anyhow`for applications, enums and exhaustive pattern matching to make illegal states unrepresentable, traits and generics for zero-cost abstraction, safe concurrency via`Arc<Mutex<T>>`, channels, and async/await, and minimal`pub` surfaces organized by domain.
 
 ## Core Principles
 
@@ -59,7 +59,7 @@ fn normalize(input: &str) -> Cow<'_, str> {
 
 ## Error Handling
 
-### Use `Result` and `?` â€” Never `unwrap()` in Production
+### Use `Result`and`?`â€” Never`unwrap()` in Production
 
 ```rust
 // Good: Propagate errors with context
@@ -80,7 +80,7 @@ fn load_config_bad(path: &str) -> Config {
 }
 ```
 
-### Library Errors with `thiserror`, Application Errors with `anyhow`
+### Library Errors with `thiserror`, Application Errors with`anyhow`
 
 ```rust
 // Library code: structured, typed errors
@@ -368,7 +368,7 @@ async fn fetch_all(urls: Vec<String>) -> Vec<Result<String>> {
 ```rust
 // Acceptable: FFI boundary with documented invariants (Rust 2024+)
 /// # Safety
-/// `ptr` must be a valid, aligned pointer to an initialized `Widget`.
+/// `ptr`must be a valid, aligned pointer to an initialized`Widget`.
 unsafe fn widget_from_raw<'a>(ptr: *const Widget) -> &'a Widget {
     // SAFETY: caller guarantees ptr is valid and aligned
     unsafe { &*ptr }
@@ -434,24 +434,24 @@ pub fn internal_helper() {} // Should be pub(crate) or private
 ### Essential Commands
 
 ```bash
-# Build and check
+## Build and check
 cargo build
 cargo check              # Fast type checking without codegen
 cargo clippy             # Lints and suggestions
 cargo fmt                # Format code
 
-# Testing
+## Testing
 cargo test
 cargo test -- --nocapture    # Show println output
 cargo test --lib             # Unit tests only
 cargo test --test integration # Integration tests only
 
-# Dependencies
+## Dependencies
 cargo audit              # Security audit
 cargo tree               # Dependency tree
 cargo update             # Update dependencies
 
-# Performance
+## Performance
 cargo bench              # Run benchmarks
 ```
 
@@ -461,14 +461,14 @@ cargo bench              # Run benchmarks
 |-------|-------------|
 | Borrow, don't clone | Pass `&T` instead of cloning unless ownership is needed |
 | Make illegal states unrepresentable | Use enums to model valid states only |
-| `?` over `unwrap()` | Propagate errors, never panic in library/production code |
+| `?`over`unwrap()` | Propagate errors, never panic in library/production code |
 | Parse, don't validate | Convert unstructured data to typed structs at the boundary |
 | Newtype for type safety | Wrap primitives in newtypes to prevent argument swaps |
 | Prefer iterators over loops | Declarative chains are clearer and often faster |
 | `#[must_use]` on Results | Ensure callers handle return values |
 | `Cow` for flexible ownership | Avoid allocations when borrowing suffices |
 | Exhaustive matching | No wildcard `_` for business-critical enums |
-| Minimal `pub` surface | Use `pub(crate)` for internal APIs |
+| Minimal `pub`surface | Use`pub(crate)` for internal APIs |
 
 ## Anti-Patterns to Avoid
 
@@ -496,4 +496,4 @@ async fn bad_async() {
 }
 ```
 
-**Remember**: If it compiles, it's probably correct â€” but only if you avoid `unwrap()`, minimize `unsafe`, and let the type system work for you.
+**Remember**: If it compiles, it's probably correct â€” but only if you avoid `unwrap()`, minimize`unsafe`, and let the type system work for you.

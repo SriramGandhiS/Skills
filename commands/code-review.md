@@ -13,7 +13,7 @@ argument-hint: [pr-number | pr-url | blank for local review]
 
 ## Mode Selection
 
-If `$ARGUMENTS` contains a PR number, PR URL, or `--pr`:
+If `$ARGUMENTS`contains a PR number, PR URL, or`--pr`:
 → Jump to **PR Review Mode** below.
 
 Otherwise:
@@ -98,8 +98,8 @@ If PR not found, stop with error. Store PR metadata for later phases.
 
 Build review context:
 
-1. **Project rules** — Read `CLAUDE.md`, `.claude/docs/`, and any contributing guidelines
-2. **Planning artifacts** — Check `.claude/prds/`, `.claude/plans/`, `.claude/reviews/`, and legacy `.claude/PRPs/{prds,plans,reports,reviews}/` for context related to this PR
+1. **Project rules** — Read `CLAUDE.md`,`.claude/docs/`, and any contributing guidelines
+2. **Planning artifacts** — Check `.claude/prds/`,`.claude/plans/`,`.claude/reviews/`, and legacy`.claude/PRPs/{prds,plans,reports,reviews}/` for context related to this PR
 3. **PR intent** — Parse PR description for goals, linked issues, test plans
 4. **Changed files** — List all modified files and categorize by type (source, test, config, docs)
 
@@ -139,7 +139,7 @@ Assign severity to each finding:
 
 Run available validation commands:
 
-Detect the project type from config files (`package.json`, `Cargo.toml`, `go.mod`, `pyproject.toml`, etc.), then run the appropriate commands:
+Detect the project type from config files (`package.json`,`Cargo.toml`,`go.mod`,`pyproject.toml`, etc.), then run the appropriate commands:
 
 **Node.js / TypeScript** (has `package.json`):
 ```bash
@@ -163,7 +163,7 @@ go test ./...   # Tests
 go build ./...  # Build
 ```
 
-**Python** (has `pyproject.toml` / `setup.py`):
+**Python** (has `pyproject.toml`/`setup.py`):
 ```bash
 pytest  # Tests
 ```
@@ -184,14 +184,14 @@ Form recommendation based on findings:
 Special cases:
 - Draft PR → Always use **COMMENT** (not approve/block)
 - Only docs/config changes → Lighter review, focus on correctness
-- Explicit `--approve` or `--request-changes` flag → Override decision (but still report all findings)
+- Explicit `--approve`or`--request-changes` flag → Override decision (but still report all findings)
 
 ### Phase 6 — REPORT
 
-Create review artifact at `.claude/reviews/pr-<NUMBER>-review.md` unless the repo already uses legacy `.claude/PRPs/reviews/` for this workstream:
+Create review artifact at `.claude/reviews/pr-<NUMBER>-review.md`unless the repo already uses legacy`.claude/PRPs/reviews/` for this workstream:
 
 ```markdown
-# PR Review: #<NUMBER> — <TITLE>
+## PR Review: #<NUMBER> — <TITLE>
 
 **Reviewed**: <date>
 **Author**: <author>
@@ -233,13 +233,13 @@ Create review artifact at `.claude/reviews/pr-<NUMBER>-review.md` unless the rep
 Post the review to GitHub:
 
 ```bash
-# If APPROVE
+## If APPROVE
 gh pr review <NUMBER> --approve --body "<summary of review>"
 
-# If REQUEST CHANGES
+## If REQUEST CHANGES
 gh pr review <NUMBER> --request-changes --body "<summary with required fixes>"
 
-# If COMMENT only (draft PR or informational)
+## If COMMENT only (draft PR or informational)
 gh pr review <NUMBER> --comment --body "<summary>"
 ```
 

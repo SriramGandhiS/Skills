@@ -6,15 +6,15 @@ Cloudflare Workers Playground is a browser-based sandbox for instantly experimen
 
 **URL:** [workers.cloudflare.com/playground](https://workers.cloudflare.com/playground)
 
-## ⚠️ Playground Constraints
+## WARNING: Playground Constraints
 
 **Playground is NOT production-equivalent:**
-- ✅ Real Workers runtime, instant testing, shareable URLs
-- ❌ No TypeScript (JavaScript only)
-- ❌ No bindings (KV, D1, R2, Durable Objects)
-- ❌ No environment variables or secrets
-- ❌ ES modules only (no Service Worker format)
-- ⚠️ Safari broken (use Chrome/Firefox)
+- PASS: Real Workers runtime, instant testing, shareable URLs
+- FAIL: No TypeScript (JavaScript only)
+- FAIL: No bindings (KV, D1, R2, Durable Objects)
+- FAIL: No environment variables or secrets
+- FAIL: ES modules only (no Service Worker format)
+- WARNING: Safari broken (use Chrome/Firefox)
 
 **For production:** Use `wrangler` CLI. Playground is for rapid prototyping.
 

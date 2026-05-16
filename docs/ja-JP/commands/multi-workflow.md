@@ -31,10 +31,10 @@
 
 ## マルチモデル呼び出し仕様
 
-**呼び出し構文**(並列: `run_in_background: true`、順次: `false`):
+**呼び出し構文**(並列: `run_in_background: true`、順次:`false`):
 
 ```
-# 新規セッション呼び出し
+## 新規セッション呼び出し
 Bash({
   command: "~/.claude/bin/codeagent-wrapper {{LITE_MODE_FLAG}}--backend <codex|gemini> {{GEMINI_MODEL_FLAG}}- \"$PWD\" <<'EOF'
 ROLE_FILE: <ロールプロンプトパス>
@@ -49,7 +49,7 @@ EOF",
   description: "簡潔な説明"
 })
 
-# セッション再開呼び出し
+## セッション再開呼び出し
 Bash({
   command: "~/.claude/bin/codeagent-wrapper {{LITE_MODE_FLAG}}--backend <codex|gemini> {{GEMINI_MODEL_FLAG}}resume <SESSION_ID> - \"$PWD\" <<'EOF'
 ROLE_FILE: <ロールプロンプトパス>
@@ -66,17 +66,17 @@ EOF",
 ```
 
 **モデルパラメータの注意事項**:
-- `{{GEMINI_MODEL_FLAG}}`: `--backend gemini`を使用する場合、`--gemini-model gemini-3-pro-preview`で置き換える(末尾のスペースに注意); codexの場合は空文字列を使用
+- `{{GEMINI_MODEL_FLAG}}`:`--backend gemini`を使用する場合、`--gemini-model gemini-3-pro-preview`で置き換える(末尾のスペースに注意); codexの場合は空文字列を使用
 
 **ロールプロンプト**:
 
 | フェーズ | Codex | Gemini |
 |-------|-------|--------|
-| 分析 | `~/.claude/.ccg/prompts/codex/analyzer.md` | `~/.claude/.ccg/prompts/gemini/analyzer.md` |
-| 計画 | `~/.claude/.ccg/prompts/codex/architect.md` | `~/.claude/.ccg/prompts/gemini/architect.md` |
-| レビュー | `~/.claude/.ccg/prompts/codex/reviewer.md` | `~/.claude/.ccg/prompts/gemini/reviewer.md` |
+| 分析 | `~/.claude/.ccg/prompts/codex/analyzer.md`|`~/.claude/.ccg/prompts/gemini/analyzer.md` |
+| 計画 | `~/.claude/.ccg/prompts/codex/architect.md`|`~/.claude/.ccg/prompts/gemini/architect.md` |
+| レビュー | `~/.claude/.ccg/prompts/codex/reviewer.md`|`~/.claude/.ccg/prompts/gemini/reviewer.md` |
 
-**セッション再利用**: 各呼び出しは`SESSION_ID: xxx`を返し、後続のフェーズでは`resume xxx`サブコマンドを使用します(注意: `resume`、`--resume`ではない)。
+**セッション再利用**: 各呼び出しは`SESSION_ID: xxx`を返し、後続のフェーズでは`resume xxx`サブコマンドを使用します(注意:`resume`、`--resume`ではない)。
 
 **並列呼び出し**: `run_in_background: true`で開始し、`TaskOutput`で結果を待ちます。**次のフェーズに進む前にすべてのモデルが結果を返すまで待つ必要があります**。
 
@@ -112,7 +112,7 @@ TaskOutput({ task_id: "<task_id>", block: true, timeout: 600000 })
 `[Mode: Research]` - 要件の理解とコンテキストの収集:
 
 1. **プロンプト強化**(ace-tool MCPが利用可能な場合): `mcp__ace-tool__enhance_prompt`を呼び出し、**後続のすべてのCodex/Gemini呼び出しのために元の$ARGUMENTSを強化結果で置き換える**。利用できない場合は`$ARGUMENTS`をそのまま使用。
-2. **コンテキスト取得**(ace-tool MCPが利用可能な場合): `mcp__ace-tool__search_context`を呼び出す。利用できない場合は組み込みツールを使用: `Glob`でファイル検索、`Grep`でシンボル検索、`Read`でコンテキスト収集、`Task`(Exploreエージェント)でより深い探索。
+2. **コンテキスト取得**(ace-tool MCPが利用可能な場合): `mcp__ace-tool__search_context`を呼び出す。利用できない場合は組み込みツールを使用:`Glob`でファイル検索、`Grep`でシンボル検索、`Read`でコンテキスト収集、`Task`(Exploreエージェント)でより深い探索。
 3. **要件完全性スコア**(0-10):
    - 目標の明確性(0-3)、期待される結果(0-3)、スコープの境界(0-2)、制約(0-2)
    - ≥7: 継続 | <7: 停止、明確化の質問を尋ねる

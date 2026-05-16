@@ -100,7 +100,7 @@ df.to_excel('output.xlsx', index=False)
 
 **Always use Excel formulas instead of calculating values in Python and hardcoding them.** This ensures the spreadsheet remains dynamic and updateable.
 
-### ❌ WRONG - Hardcoding Calculated Values
+### FAIL: WRONG - Hardcoding Calculated Values
 ```python
 # Bad: Calculating in Python and hardcoding result
 total = df['Sales'].sum()
@@ -115,7 +115,7 @@ avg = sum(values) / len(values)
 sheet['D20'] = avg  # Hardcodes 42.5
 ```
 
-### ✅ CORRECT - Using Excel Formulas
+### PASS: CORRECT - Using Excel Formulas
 ```python
 # Good: Let Excel calculate the sum
 sheet['B10'] = '=SUM(B2:B9)'
@@ -138,7 +138,7 @@ This applies to ALL calculations - totals, percentages, ratios, differences, etc
    ```bash
    python scripts/recalc.py output.xlsx
    ```
-6. **Verify and fix any errors**: 
+6. **Verify and fix any errors**:
    - The script returns JSON with error details
    - If `status` is `errors_found`, check `error_summary` for specific error types and locations
    - Fix the identified errors and recalculate again
@@ -235,7 +235,7 @@ Quick checks to ensure formulas work correctly:
 
 ### Common Pitfalls
 - [ ] **NaN handling**: Check for null values with `pd.notna()`
-- [ ] **Far-right columns**: FY data often in columns 50+ 
+- [ ] **Far-right columns**: FY data often in columns 50+
 - [ ] **Multiple matches**: Search all occurrences, not just first
 - [ ] **Division by zero**: Check denominators before using `/` in formulas (#DIV/0!)
 - [ ] **Wrong references**: Verify all cell references point to intended cells (#REF!)

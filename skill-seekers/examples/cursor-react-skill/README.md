@@ -4,10 +4,10 @@ Complete example showing how to use Skill Seekers to generate Cursor rules for R
 
 ## What This Example Does
 
-- ✅ Generates React documentation skill
-- ✅ Creates `.cursorrules` for Cursor IDE
-- ✅ Shows AI-powered React code completion
-- ✅ Includes sample React project
+- PASS: Generates React documentation skill
+- PASS: Creates `.cursorrules` for Cursor IDE
+- PASS: Shows AI-powered React code completion
+- PASS: Includes sample React project
 
 ## Quick Start
 
@@ -87,7 +87,6 @@ import subprocess
 import sys
 from pathlib import Path
 
-
 def run_command(cmd: list, description: str) -> bool:
     """Run a shell command and return success status."""
     print(f"\n{'='*60}")
@@ -97,15 +96,14 @@ def run_command(cmd: list, description: str) -> bool:
     result = subprocess.run(cmd, capture_output=True, text=True)
 
     if result.returncode != 0:
-        print(f"❌ Error: {result.stderr}")
+        print(f"FAIL: Error: {result.stderr}")
         return False
 
-    print(f"✅ Success!")
+    print(f"PASS: Success!")
     if result.stdout:
         print(result.stdout)
 
     return True
-
 
 def main():
     """Run the automation workflow."""
@@ -139,30 +137,29 @@ def main():
     target = Path("example-project/.cursorrules")
 
     if not source.exists():
-        print(f"❌ Error: {source} not found")
+        print(f"FAIL: Error: {source} not found")
         sys.exit(1)
 
     target.parent.mkdir(parents=True, exist_ok=True)
     target.write_text(source.read_text())
 
-    print(f"\n✅ Copied rules to {target}")
+    print(f"\nPASS: Copied rules to {target}")
 
     # Success summary
     print("\n" + "=" * 60)
-    print("✅ Cursor rules generated successfully!")
+    print("PASS: Cursor rules generated successfully!")
     print("=" * 60)
-    print(f"\n📁 Rules file: {target.absolute()}")
-    print("\n🚀 Next steps:")
+    print(f"\n Rules file: {target.absolute()}")
+    print("\n Next steps:")
     print("   1. Open example-project/ in Cursor")
     print("   2. Try the example prompts in the README")
     print("   3. Compare AI suggestions before/after")
-
 
 if __name__ == "__main__":
     try:
         main()
     except KeyboardInterrupt:
-        print("\n\n⚠️  Interrupted by user")
+        print("\n\nWARNING:  Interrupted by user")
         sys.exit(0)
 ```
 

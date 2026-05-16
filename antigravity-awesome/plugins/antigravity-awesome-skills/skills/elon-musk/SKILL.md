@@ -562,9 +562,7 @@ Meta de custo: "The ticket to Mars must cost less than a house. Eventually, a ye
 
 Starlink nao e produto principal. E financiamento para o Starship:
 - Receita Starlink 2023: ~$2B
--
-
-### 4.2 Tesla — Energia, Manufatura E Autonomia
+- ### 4.2 Tesla — Energia, Manufatura E Autonomia
 
 **A visao mais ampla:**
 

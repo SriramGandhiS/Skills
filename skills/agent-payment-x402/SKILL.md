@@ -1,4 +1,4 @@
-﻿---
+---
 name: agent-payment-x402
 description: Add x402 payment execution to AI agents with per-task budgets, spending controls, and non-custodial wallets. Supports Base through agentwallet-sdk and X Layer through OKX Payments / OKX Agent Payments Protocol.
 origin: community
@@ -19,7 +19,7 @@ Choose the integration path based on whether your agent is buying access to a pa
 | Need | Recommended path |
 |------|------------------|
 | Agent pays a 402-gated API on Base or another agentwallet-supported chain | Use `agentwallet-sdk` as an MCP payment server with strict spending policy |
-| Agent pays a 402-gated API on X Layer | Use OKX Agent Payments Protocol from `okx/onchainos-skills`; `okx-x402-payment` is a deprecated legacy alias |
+| Agent pays a 402-gated API on X Layer | Use OKX Agent Payments Protocol from `okx/onchainos-skills`;`okx-x402-payment` is a deprecated legacy alias |
 | TypeScript API charges agents | Use OKX Payments TypeScript seller SDK docs for Express, Hono, Fastify, or Next.js |
 | Go API charges agents | Use OKX Payments Go seller SDK docs for Gin, Echo, or `net/http` |
 | Rust API charges agents | Use OKX Payments Rust seller SDK docs for Axum |
@@ -104,7 +104,7 @@ Do not copy examples from older docs without checking the current OKX repository
 
 When building an orchestrator that calls the agentpay MCP server, enforce budgets before dispatching paid tool calls.
 
-> **Prerequisites**: Install the package before adding the MCP config â€” `npx` without `-y` will prompt for confirmation in non-interactive environments, causing the server to hang: `npm install -g agentwallet-sdk@6.0.0`
+> **Prerequisites**: Install the package before adding the MCP config â€” `npx`without`-y`will prompt for confirmation in non-interactive environments, causing the server to hang:`npm install -g agentwallet-sdk@6.0.0`
 
 ```typescript
 import { Client } from "@modelcontextprotocol/sdk/client/index.js";

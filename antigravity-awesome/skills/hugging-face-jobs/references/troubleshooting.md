@@ -183,10 +183,10 @@ FileNotFoundError: script.py not found
 
 **Correct approaches:**
 ```python
-# ✅ Inline code
+# PASS: Inline code
 hf_jobs("uv", {"script": "# /// script\n# dependencies = [...]\n# ///\n\n<code>"})
 
-# ✅ From URL
+# PASS: From URL
 hf_jobs("uv", {"script": "https://huggingface.co/user/repo/resolve/main/script.py"})
 ```
 
@@ -259,9 +259,9 @@ Repository not found
 ```python
 try:
     dataset.push_to_hub("username/dataset")
-    print("✅ Push successful")
+    print("PASS: Push successful")
 except Exception as e:
-    print(f"❌ Push failed: {e}")
+    print(f"FAIL: Push failed: {e}")
     raise
 ```
 

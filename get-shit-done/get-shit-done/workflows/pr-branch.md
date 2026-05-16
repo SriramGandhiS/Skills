@@ -132,7 +132,7 @@ PR_COMMITS=$(git rev-list --count "$TARGET".."$PR_BRANCH")
 
 Display results:
 ```
-✅ PR branch created: {PR_BRANCH}
+PASS: PR branch created: {PR_BRANCH}
 
 Original: {AHEAD} commits, {ORIGINAL_FILES} files
 PR branch: {PR_COMMITS} commits, {TOTAL_FILES} files

@@ -278,12 +278,12 @@ def _try_llms_txt(self) -> bool:
     Returns:
         True if llms.txt was found and processed successfully
     """
-    print(f"\n🔍 Checking for llms.txt at {self.base_url}...")
+    print(f"\n Checking for llms.txt at {self.base_url}...")
 
     # Check for explicit config URL first
     explicit_url = self.config.get('llms_txt_url')
     if explicit_url:
-        print(f"\n📌 Using explicit llms_txt_url from config: {explicit_url}")
+        print(f"\n Using explicit llms_txt_url from config: {explicit_url}")
 
         downloader = LlmsTxtDownloader(explicit_url)
         content = downloader.download()
@@ -296,7 +296,7 @@ def _try_llms_txt(self) -> bool:
 
             with open(filepath, 'w', encoding='utf-8') as f:
                 f.write(content)
-            print(f"  💾 Saved {filename} ({len(content)} chars)")
+            print(f"   Saved {filename} ({len(content)} chars)")
 
             # Parse and save pages
             parser = LlmsTxtParser(content)
@@ -316,10 +316,10 @@ def _try_llms_txt(self) -> bool:
     variants = detector.detect_all()
 
     if not variants:
-        print("ℹ️  No llms.txt found, using HTML scraping")
+        print("  No llms.txt found, using HTML scraping")
         return False
 
-    print(f"✅ Found {len(variants)} llms.txt variant(s)")
+    print(f"PASS: Found {len(variants)} llms.txt variant(s)")
 
     # Download ALL variants
     downloaded = {}
@@ -327,7 +327,7 @@ def _try_llms_txt(self) -> bool:
         url = variant_info['url']
         variant = variant_info['variant']
 
-        print(f"  📥 Downloading {variant}...")
+        print(f"   Downloading {variant}...")
         downloader = LlmsTxtDownloader(url)
         content = downloader.download()
 
@@ -341,7 +341,7 @@ def _try_llms_txt(self) -> bool:
             print(f"     ✓ {filename} ({len(content)} chars)")
 
     if not downloaded:
-        print("⚠️  Failed to download any variants, falling back to HTML scraping")
+        print("WARNING:  Failed to download any variants, falling back to HTML scraping")
         return False
 
     # Save ALL variants to references/
@@ -351,17 +351,17 @@ def _try_llms_txt(self) -> bool:
         filepath = os.path.join(self.skill_dir, "references", data['filename'])
         with open(filepath, 'w', encoding='utf-8') as f:
             f.write(data['content'])
-        print(f"  💾 Saved {data['filename']}")
+        print(f"   Saved {data['filename']}")
 
     # Parse LARGEST variant for skill building
     largest = max(downloaded.items(), key=lambda x: x[1]['size'])
-    print(f"\n📄 Parsing {largest[1]['filename']} for skill building...")
+    print(f"\n Parsing {largest[1]['filename']} for skill building...")
 
     parser = LlmsTxtParser(largest[1]['content'])
     pages = parser.parse()
 
     if not pages:
-        print("⚠️  Failed to parse llms.txt, falling back to HTML scraping")
+        print("WARNING:  Failed to parse llms.txt, falling back to HTML scraping")
         return False
 
     print(f"  ✓ Parsed {len(pages)} sections")
@@ -464,10 +464,10 @@ Expected: FAIL - content contains "[Content truncated]" or "..."
 # cli/doc_scraper.py (modify create_reference_file method, lines 712-731)
 
 # OLD (line 714-716):
-#     if page.get('content'):
-#         content = page['content'][:2500]
-#         if len(page['content']) > 2500:
-#             content += "\n\n*[Content truncated]*"
+# if page.get('content'):
+# content = page['content'][:2500]
+# if len(page['content']) > 2500:
+# content += "\n\n*[Content truncated]*"
 
 # NEW (replace with):
     if page.get('content'):
@@ -476,9 +476,9 @@ Expected: FAIL - content contains "[Content truncated]" or "..."
         lines.append("")
 
 # OLD (line 728-730):
-#     lines.append(code[:600])
-#     if len(code) > 600:
-#         lines.append("...")
+# lines.append(code[:600])
+# if len(code) > 600:
+# lines.append("...")
 
 # NEW (replace with):
     lines.append(code)  # NO TRUNCATION
@@ -539,7 +539,7 @@ git commit -m "feat: remove content truncation in reference files"
 ```markdown
 # docs/plans/2025-10-24-active-skills-design.md (update header)
 
-**Status:** Phase 1 Implemented ✅
+**Status:** Phase 1 Implemented PASS:
 ```
 
 **Step 2: Add CHANGELOG entry**
@@ -586,12 +586,12 @@ Run: `source .venv/bin/activate && python3 cli/doc_scraper.py --config configs/h
 
 **Expected output:**
 ```
-🔍 Checking for llms.txt at https://hono.dev/docs...
-📌 Using explicit llms_txt_url from config: https://hono.dev/llms-full.txt
-  💾 Saved llms-full.md (319000 chars)
-📄 Parsing llms-full.md for skill building...
+ Checking for llms.txt at https://hono.dev/docs...
+ Using explicit llms_txt_url from config: https://hono.dev/llms-full.txt
+   Saved llms-full.md (319000 chars)
+ Parsing llms-full.md for skill building...
   ✓ Parsed 93 sections
-✅ Used llms.txt (explicit) - skipping HTML scraping
+PASS: Used llms.txt (explicit) - skipping HTML scraping
 ```
 
 **Step 2: Verify all 3 files exist with correct extensions**
@@ -641,16 +641,16 @@ Expected: All tests pass (201+)
 ## Success Criteria
 
 **Technical:**
-- ✅ All 3 variants downloaded when available
-- ✅ Files saved with .md extension (not .txt)
-- ✅ 0% content truncation (was 36%)
-- ✅ All existing tests pass
-- ✅ New tests cover all changes
+- PASS: All 3 variants downloaded when available
+- PASS: Files saved with .md extension (not .txt)
+- PASS: 0% content truncation (was 36%)
+- PASS: All existing tests pass
+- PASS: New tests cover all changes
 
 **User Experience:**
-- ✅ Hono skill has all 3 files: llms-full.md, llms.md, llms-small.md
-- ✅ Reference files contain complete documentation
-- ✅ No "[Content truncated]" messages in output
+- PASS: Hono skill has all 3 files: llms-full.md, llms.md, llms-small.md
+- PASS: Reference files contain complete documentation
+- PASS: No "[Content truncated]" messages in output
 
 ---
 

@@ -1,6 +1,6 @@
 # Multi-Source Scraping Guide
 
-> **Skill Seekers v3.2.0**  
+> **Skill Seekers v3.2.0**
 > **Combine 17 source types into one unified skill**
 
 ---
@@ -18,7 +18,7 @@ Combine multiple sources into a single, comprehensive skill. Skill Seekers suppo
 │ (Source code) │  │
 ├──────────────┤  │     ┌──────────────────┐
 │ PDF / Word / │  │     │  Unified Skill   │
-│ EPUB / PPTX  │──┼────▶│  (Single source  │
+│ EPUB / PPTX  │──┼────│  (Single source  │
 ├──────────────┤  │     │   of truth)      │
 │ Video /      │  │     └──────────────────┘
 │ Jupyter / HTML│  │
@@ -71,7 +71,7 @@ Combine multiple sources into a single, comprehensive skill. Skill Seekers suppo
   "name": "my-framework-complete",
   "description": "Complete documentation and code",
   "merge_mode": "claude-enhanced",
-  
+
   "sources": [
     {
       "type": "docs",
@@ -285,7 +285,7 @@ Combine multiple sources into a single, comprehensive skill. Skill Seekers suppo
   "name": "react-complete",
   "description": "React - docs, source, and guides",
   "merge_mode": "claude-enhanced",
-  
+
   "sources": [
     {
       "type": "docs",
@@ -313,7 +313,7 @@ Combine multiple sources into a single, comprehensive skill. Skill Seekers suppo
       "pdf_path": "downloads/react-patterns.pdf"
     }
   ],
-  
+
   "conflict_detection": {
     "enabled": true,
     "rules": [
@@ -327,7 +327,7 @@ Combine multiple sources into a single, comprehensive skill. Skill Seekers suppo
       }
     ]
   },
-  
+
   "output_structure": {
     "group_by_source": false,
     "cross_reference": true

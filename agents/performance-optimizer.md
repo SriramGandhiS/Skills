@@ -30,24 +30,24 @@ You are an expert performance specialist focused on identifying bottlenecks and 
 ## Analysis Commands
 
 ```bash
-# Bundle analysis
+## Bundle analysis
 npx bundle-analyzer
 npx source-map-explorer build/static/js/*.js
 
-# Lighthouse performance audit
-npx lighthouse https://your-app.com --view
+## Lighthouse performance audit
+npx lighthouse <https://your-app.com> --view
 
-# Node.js profiling
+## Node.js profiling
 node --prof your-app.js
 node --prof-process isolate-*.log
 
-# Memory analysis
+## Memory analysis
 node --inspect your-app.js  # Then use Chrome DevTools
 
-# React profiling (in browser)
-# React DevTools > Profiler tab
+## React profiling (in browser)
+## React DevTools > Profiler tab
 
-# Network analysis
+## Network analysis
 npx webpack-bundle-analyzer
 ```
 
@@ -145,13 +145,13 @@ const sortedItems = useMemo(
 **Bundle Analysis Checklist:**
 
 ```bash
-# Analyze bundle composition
+## Analyze bundle composition
 npx webpack-bundle-analyzer build/static/js/*.js
 
-# Check for duplicate dependencies
+## Check for duplicate dependencies
 npx duplicate-package-checker-analyzer
 
-# Find largest files
+## Find largest files
 du -sh node_modules/* | sort -hr | head -20
 ```
 
@@ -317,17 +317,17 @@ useEffect(() => {
 **Memory Leak Detection:**
 
 ```bash
-# Chrome DevTools Memory tab:
-# 1. Take heap snapshot
-# 2. Perform action
-# 3. Take another snapshot
-# 4. Compare to find objects that shouldn't exist
-# 5. Look for detached DOM nodes, event listeners, closures
+## Chrome DevTools Memory tab:
+## 1. Take heap snapshot
+## 2. Perform action
+## 3. Take another snapshot
+## 4. Compare to find objects that shouldn't exist
+## 5. Look for detached DOM nodes, event listeners, closures
 
-# Node.js memory debugging
+## Node.js memory debugging
 node --inspect app.js
-# Open chrome://inspect
-# Take heap snapshots and compare
+## Open chrome://inspect
+## Take heap snapshots and compare
 ```
 
 ## Performance Testing
@@ -335,14 +335,14 @@ node --inspect app.js
 ### Lighthouse Audits
 
 ```bash
-# Run full lighthouse audit
-npx lighthouse https://your-app.com --view --preset=desktop
+## Run full lighthouse audit
+npx lighthouse <https://your-app.com> --view --preset=desktop
 
-# CI mode for automated checks
-npx lighthouse https://your-app.com --output=json --output-path=./lighthouse.json
+## CI mode for automated checks
+npx lighthouse <https://your-app.com> --output=json --output-path=./lighthouse.json
 
-# Check specific metrics
-npx lighthouse https://your-app.com --only-categories=performance
+## Check specific metrics
+npx lighthouse <https://your-app.com> --only-categories=performance
 ```
 
 ### Performance Budgets
@@ -375,7 +375,7 @@ getTTFB(console.log); // Time to First Byte
 ## Performance Report Template
 
 ````markdown
-# Performance Audit Report
+## Performance Audit Report
 
 ## Executive Summary
 - **Overall Score**: X/100

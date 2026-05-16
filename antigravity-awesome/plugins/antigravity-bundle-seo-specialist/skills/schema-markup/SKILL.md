@@ -36,7 +36,7 @@ The index answers:
 
 ---
 
-## 🔢 Schema Eligibility & Impact Index
+## Schema Eligibility & Impact Index
 
 ### Total Score: **0–100**
 

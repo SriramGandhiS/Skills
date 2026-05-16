@@ -8,8 +8,8 @@ description: 全面的 C++ 代码审查，涵盖内存安全、现代 C++ 惯用
 
 ## 此命令的作用
 
-1. **识别 C++ 变更**：通过 `git diff` 查找已修改的 `.cpp`、`.hpp`、`.cc`、`.h` 文件
-2. **运行静态分析**：执行 `clang-tidy` 和 `cppcheck`
+1. **识别 C++ 变更**：通过 `git diff`查找已修改的`.cpp`、`.hpp`、`.cc`、`.h` 文件
+2. **运行静态分析**：执行 `clang-tidy`和`cppcheck`
 3. **内存安全检查**：检查原始 new/delete、缓冲区溢出、释放后使用
 4. **并发审查**：分析线程安全性、互斥锁使用情况、数据竞争
 5. **现代 C++ 检查**：验证代码是否遵循 C++17/20 约定和最佳实践
@@ -39,7 +39,7 @@ description: 全面的 C++ 代码审查，涵盖内存安全、现代 C++ 惯用
 ### 高（应该修复）
 
 * 五法则违规
-* 缺少 `std::lock_guard` / `std::scoped_lock`
+* 缺少 `std::lock_guard`/`std::scoped_lock`
 * 分离的线程没有正确的生命周期管理
 * 使用 C 风格强制转换而非 `static_cast`/`dynamic_cast`
 * 缺少 `const` 正确性
@@ -55,20 +55,20 @@ description: 全面的 C++ 代码审查，涵盖内存安全、现代 C++ 惯用
 ## 运行的自动化检查
 
 ```bash
-# Static analysis
+## Static analysis
 clang-tidy --checks='*,-llvmlibc-*' src/*.cpp -- -std=c++17
 
-# Additional analysis
+## Additional analysis
 cppcheck --enable=all --suppress=missingIncludeSystem src/
 
-# Build with warnings
+## Build with warnings
 cmake --build build -- -Wall -Wextra -Wpedantic
 ```
 
 ## 使用示例
 
 ````text
-# C++ 代码审查报告
+## C++ 代码审查报告
 
 ## 已审查文件
 - src/handler/user.cpp (已修改)
@@ -82,7 +82,7 @@ cmake --build build -- -Wall -Wextra -Wpedantic
 
 [严重] 内存泄漏
 文件: src/service/auth.cpp:45
-问题: 使用了原始的 `new` 而没有匹配的 `delete`
+问题: 使用了原始的 `new`而没有匹配的`delete`
 ```cpp
 auto* session = new Session(userId);  // 内存泄漏！
 cache[userId] = session;
@@ -136,5 +136,5 @@ void processUser(const User& user) {
 ## 相关
 
 - 代理：`agents/cpp-reviewer.md`
-- 技能：`skills/cpp-coding-standards/`, `skills/cpp-testing/`
+- 技能：`skills/cpp-coding-standards/`,`skills/cpp-testing/`
 ```

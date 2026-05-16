@@ -54,10 +54,10 @@ cppcheck --enable=all src/ 2>/dev/null || echo "cppcheck not available"
 | `undefined reference to X` | Missing implementation or library | Add source file or link library |
 | `no matching function for call` | Wrong argument types | Fix types or add overload |
 | `expected ';'` | Syntax error | Fix syntax |
-| `use of undeclared identifier` | Missing include or typo | Add `#include` or fix name |
-| `multiple definition of` | Duplicate symbol | Use `inline`, move to .cpp, or add include guard |
+| `use of undeclared identifier`| Missing include or typo | Add`#include` or fix name |
+| `multiple definition of`| Duplicate symbol | Use`inline`, move to .cpp, or add include guard |
 | `cannot convert X to Y` | Type mismatch | Add cast or fix types |
-| `incomplete type` | Forward declaration used where full type needed | Add `#include` |
+| `incomplete type`| Forward declaration used where full type needed | Add`#include` |
 | `template argument deduction failed` | Wrong template args | Fix template parameters |
 | `no member named X in Y` | Typo or wrong class | Fix member name |
 | `CMake Error` | Configuration issue | Fix CMakeLists.txt |

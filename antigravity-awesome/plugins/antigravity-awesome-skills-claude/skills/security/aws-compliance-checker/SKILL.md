@@ -73,7 +73,7 @@ aws iam get-credential-report --output text | \
       close(cmd)
       now = systime()
       days = (now - last_used) / 86400
-      if (days > 90) print "  ⚠️  " $1 ": " int(days) " days inactive"
+      if (days > 90) print "  WARNING:  " $1 ": " int(days) " days inactive"
     }
   }'
 
@@ -87,7 +87,7 @@ while read user; do
   while read key_id create_date; do
     age_days=$(( ($(date +%s) - $(date -d "$create_date" +%s)) / 86400 ))
     if [ $age_days -gt 90 ]; then
-      echo "  ⚠️  $user: Key $key_id is $age_days days old"
+      echo "  WARNING:  $user: Key $key_id is $age_days days old"
     fi
   done
 done
@@ -96,7 +96,7 @@ done
 echo "1.5-1.11: Checking password policy..."
 policy=$(aws iam get-account-password-policy 2>&1)
 if echo "$policy" | grep -q "NoSuchEntity"; then
-  echo "  ❌ No password policy configured"
+  echo "  FAIL: No password policy configured"
 else
   echo "  ✓ Password policy exists"
   echo "$policy" | jq '.PasswordPolicy | {
@@ -113,7 +113,7 @@ fi
 # 1.12-1.14: MFA for IAM users
 echo "1.12-1.14: Checking IAM user MFA..."
 aws iam get-credential-report --output text | \
-  awk -F, 'NR>1 && $4=="false" {print "  ⚠️  " $1 ": No MFA"}'
+  awk -F, 'NR>1 && $4=="false" {print "  WARNING:  " $1 ": No MFA"}'
 ```
 
 ### Logging (2.x)
@@ -131,13 +131,13 @@ trails=$(aws cloudtrail describe-trails \
   --output text)
 
 if [ -z "$trails" ]; then
-  echo "  ❌ No CloudTrail configured"
+  echo "  FAIL: No CloudTrail configured"
 else
   echo "$trails" | while read name multi_region validation; do
     echo "  Trail: $name"
     echo "    Multi-region: $multi_region"
     echo "    Log validation: $validation"
-    
+
     # Check if logging
     status=$(aws cloudtrail get-trail-status --name "$name" \
       --query 'IsLogging' --output text)
@@ -151,7 +151,7 @@ aws cloudtrail describe-trails \
   --query 'trailList[?LogFileValidationEnabled==`false`].Name' \
   --output text | \
 while read trail; do
-  echo "  ⚠️  $trail: Log validation disabled"
+  echo "  WARNING:  $trail: Log validation disabled"
 done
 
 # 2.3: S3 bucket for CloudTrail
@@ -162,7 +162,7 @@ while read bucket; do
   public=$(aws s3api get-bucket-acl --bucket "$bucket" 2>&1 | \
     grep -c "AllUsers")
   if [ "$public" -gt 0 ]; then
-    echo "  ❌ $bucket: Publicly accessible"
+    echo "  FAIL: $bucket: Publicly accessible"
   else
     echo "  ✓ $bucket: Not public"
   fi
@@ -175,7 +175,7 @@ aws cloudtrail describe-trails \
   --output text | \
 while read name log_group; do
   if [ "$log_group" = "None" ]; then
-    echo "  ⚠️  $name: Not integrated with CloudWatch Logs"
+    echo "  WARNING:  $name: Not integrated with CloudWatch Logs"
   else
     echo "  ✓ $name: Integrated with CloudWatch"
   fi
@@ -187,7 +187,7 @@ recorders=$(aws configservice describe-configuration-recorders \
   --query 'ConfigurationRecorders[*].name' --output text)
 
 if [ -z "$recorders" ]; then
-  echo "  ❌ AWS Config not enabled"
+  echo "  FAIL: AWS Config not enabled"
 else
   echo "  ✓ AWS Config enabled: $recorders"
 fi
@@ -198,7 +198,7 @@ aws s3api list-buckets --query 'Buckets[*].Name' --output text | \
 while read bucket; do
   logging=$(aws s3api get-bucket-logging --bucket "$bucket" 2>&1)
   if ! echo "$logging" | grep -q "LoggingEnabled"; then
-    echo "  ⚠️  $bucket: Access logging disabled"
+    echo "  WARNING:  $bucket: Access logging disabled"
   fi
 done
 
@@ -210,7 +210,7 @@ while read vpc; do
     --filter "Name=resource-id,Values=$vpc" \
     --query 'FlowLogs[*].FlowLogId' --output text)
   if [ -z "$flow_logs" ]; then
-    echo "  ⚠️  $vpc: No flow logs enabled"
+    echo "  WARNING:  $vpc: No flow logs enabled"
   else
     echo "  ✓ $vpc: Flow logs enabled"
   fi
@@ -248,19 +248,19 @@ log_group=$(aws cloudtrail describe-trails \
   --output text | cut -d: -f7)
 
 if [ -z "$log_group" ] || [ "$log_group" = "None" ]; then
-  echo "  ❌ CloudTrail not integrated with CloudWatch Logs"
+  echo "  FAIL: CloudTrail not integrated with CloudWatch Logs"
 else
   echo "Checking metric filters for log group: $log_group"
-  
+
   existing_filters=$(aws logs describe-metric-filters \
     --log-group-name "$log_group" \
     --query 'metricFilters[*].filterName' --output text)
-  
+
   for filter in "${required_filters[@]}"; do
     if echo "$existing_filters" | grep -q "$filter"; then
       echo "  ✓ $filter: Configured"
     else
-      echo "  ⚠️  $filter: Missing"
+      echo "  WARNING:  $filter: Missing"
     fi
   done
 fi
@@ -279,18 +279,18 @@ echo "4.1: Checking SSH access (port 22)..."
 aws ec2 describe-security-groups \
   --query 'SecurityGroups[*].[GroupId,GroupName,IpPermissions]' \
   --output json | \
-jq -r '.[] | select(.[2][]? | 
-  select(.FromPort == 22 and .IpRanges[]?.CidrIp == "0.0.0.0/0")) | 
-  "  ⚠️  \(.[0]): \(.[1]) allows SSH from 0.0.0.0/0"'
+jq -r '.[] | select(.[2][]? |
+  select(.FromPort == 22 and .IpRanges[]?.CidrIp == "0.0.0.0/0")) |
+  "  WARNING:  \(.[0]): \(.[1]) allows SSH from 0.0.0.0/0"'
 
 # 4.2: No security groups allow 0.0.0.0/0 ingress to port 3389
 echo "4.2: Checking RDP access (port 3389)..."
 aws ec2 describe-security-groups \
   --query 'SecurityGroups[*].[GroupId,GroupName,IpPermissions]' \
   --output json | \
-jq -r '.[] | select(.[2][]? | 
-  select(.FromPort == 3389 and .IpRanges[]?.CidrIp == "0.0.0.0/0")) | 
-  "  ⚠️  \(.[0]): \(.[1]) allows RDP from 0.0.0.0/0"'
+jq -r '.[] | select(.[2][]? |
+  select(.FromPort == 3389 and .IpRanges[]?.CidrIp == "0.0.0.0/0")) |
+  "  WARNING:  \(.[0]): \(.[1]) allows RDP from 0.0.0.0/0"'
 
 # 4.3: Default security group restricts all traffic
 echo "4.3: Checking default security groups..."
@@ -298,8 +298,8 @@ aws ec2 describe-security-groups \
   --filters Name=group-name,Values=default \
   --query 'SecurityGroups[*].[GroupId,IpPermissions,IpPermissionsEgress]' \
   --output json | \
-jq -r '.[] | select((.[1] | length) > 0 or (.[2] | length) > 1) | 
-  "  ⚠️  \(.[0]): Default SG has rules"'
+jq -r '.[] | select((.[1] | length) > 0 or (.[2] | length) > 1) |
+  "  WARNING:  \(.[0]): Default SG has rules"'
 ```
 
 ## PCI-DSS Compliance Checks
@@ -312,13 +312,13 @@ import boto3
 
 def check_pci_compliance():
     """Check PCI-DSS requirements"""
-    
+
     ec2 = boto3.client('ec2')
     rds = boto3.client('rds')
     s3 = boto3.client('s3')
-    
+
     issues = []
-    
+
     # Requirement 1: Network security
     sgs = ec2.describe_security_groups()
     for sg in sgs['SecurityGroups']:
@@ -326,19 +326,19 @@ def check_pci_compliance():
             for ip_range in perm.get('IpRanges', []):
                 if ip_range.get('CidrIp') == '0.0.0.0/0':
                     issues.append(f"PCI 1.2: {sg['GroupId']} open to internet")
-    
+
     # Requirement 2: Secure configurations
     # Check for default passwords, etc.
-    
+
     # Requirement 3: Protect cardholder data
     volumes = ec2.describe_volumes()
     for vol in volumes['Volumes']:
         if not vol['Encrypted']:
             issues.append(f"PCI 3.4: Volume {vol['VolumeId']} not encrypted")
-    
+
     # Requirement 4: Encrypt transmission
     # Check for SSL/TLS on load balancers
-    
+
     # Requirement 8: Access controls
     iam = boto3.client('iam')
     users = iam.list_users()
@@ -346,27 +346,27 @@ def check_pci_compliance():
         mfa = iam.list_mfa_devices(UserName=user['UserName'])
         if not mfa['MFADevices']:
             issues.append(f"PCI 8.3: {user['UserName']} no MFA")
-    
+
     # Requirement 10: Logging
     cloudtrail = boto3.client('cloudtrail')
     trails = cloudtrail.describe_trails()
     if not trails['trailList']:
         issues.append("PCI 10.1: No CloudTrail enabled")
-    
+
     return issues
 
 if __name__ == "__main__":
     print("PCI-DSS Compliance Check")
     print("=" * 50)
-    
+
     issues = check_pci_compliance()
-    
+
     if not issues:
         print("✓ No PCI-DSS issues found")
     else:
         print(f"Found {len(issues)} issues:\n")
         for issue in issues:
-            print(f"  ⚠️  {issue}")
+            print(f"  WARNING:  {issue}")
 ```
 
 ## HIPAA Compliance Checks
@@ -380,14 +380,14 @@ echo "=== HIPAA Compliance Checks ==="
 # Access Controls (164.308(a)(3))
 echo "Access Controls:"
 aws iam get-credential-report --output text | \
-  awk -F, 'NR>1 && $4=="false" {print "  ⚠️  " $1 ": No MFA (164.312(a)(2)(i))"}'
+  awk -F, 'NR>1 && $4=="false" {print "  WARNING:  " $1 ": No MFA (164.312(a)(2)(i))"}'
 
 # Audit Controls (164.312(b))
 echo ""
 echo "Audit Controls:"
 trails=$(aws cloudtrail describe-trails --query 'trailList[*].Name' --output text)
 if [ -z "$trails" ]; then
-  echo "  ❌ No CloudTrail (164.312(b))"
+  echo "  FAIL: No CloudTrail (164.312(b))"
 else
   echo "  ✓ CloudTrail enabled"
 fi
@@ -399,14 +399,14 @@ aws ec2 describe-volumes \
   --query 'Volumes[?Encrypted==`false`].VolumeId' \
   --output text | \
 while read vol; do
-  echo "  ⚠️  $vol: Not encrypted (164.312(a)(2)(iv))"
+  echo "  WARNING:  $vol: Not encrypted (164.312(a)(2)(iv))"
 done
 
 aws rds describe-db-instances \
   --query 'DBInstances[?StorageEncrypted==`false`].DBInstanceIdentifier' \
   --output text | \
 while read db; do
-  echo "  ⚠️  $db: Not encrypted (164.312(a)(2)(iv))"
+  echo "  WARNING:  $db: Not encrypted (164.312(a)(2)(iv))"
 done
 
 # Transmission Security (164.312(e)(1))
@@ -427,7 +427,7 @@ from datetime import datetime
 
 def generate_compliance_report(framework='cis'):
     """Generate comprehensive compliance report"""
-    
+
     report = {
         'framework': framework,
         'generated': datetime.now().isoformat(),
@@ -439,7 +439,7 @@ def generate_compliance_report(framework='cis'):
             'score': 0
         }
     }
-    
+
     # Run all checks based on framework
     if framework == 'cis':
         checks = run_cis_checks()
@@ -447,13 +447,13 @@ def generate_compliance_report(framework='cis'):
         checks = run_pci_checks()
     elif framework == 'hipaa':
         checks = run_hipaa_checks()
-    
+
     report['checks'] = checks
     report['summary']['total'] = len(checks)
     report['summary']['passed'] = sum(1 for c in checks if c['status'] == 'PASS')
     report['summary']['failed'] = report['summary']['total'] - report['summary']['passed']
     report['summary']['score'] = (report['summary']['passed'] / report['summary']['total']) * 100
-    
+
     return report
 
 def run_cis_checks():
@@ -471,15 +471,15 @@ def run_hipaa_checks():
 if __name__ == "__main__":
     import sys
     framework = sys.argv[1] if len(sys.argv) > 1 else 'cis'
-    
+
     report = generate_compliance_report(framework)
-    
+
     print(f"\n{framework.upper()} Compliance Report")
     print("=" * 50)
     print(f"Score: {report['summary']['score']:.1f}%")
     print(f"Passed: {report['summary']['passed']}/{report['summary']['total']}")
     print(f"Failed: {report['summary']['failed']}/{report['summary']['total']}")
-    
+
     # Save to file
     with open(f'compliance-{framework}-{datetime.now().strftime("%Y%m%d")}.json', 'w') as f:
         json.dump(report, f, indent=2)

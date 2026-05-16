@@ -1003,9 +1003,9 @@ loki metrics --port 8080
 
 # Use with Prometheus (add to prometheus.yml)
 # - job_name: 'loki-mode'
-#   static_configs:
-#     - targets: ['localhost:57374']
-#   metrics_path: '/api/metrics'
+# static_configs:
+# - targets: ['localhost:57374']
+# metrics_path: '/api/metrics'
 ```
 
 **Available Metrics:**

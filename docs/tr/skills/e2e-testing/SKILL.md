@@ -225,7 +225,7 @@ use: {
 ## CI/CD Entegrasyonu
 
 ```yaml
-# .github/workflows/e2e.yml
+## .github/workflows/e2e.yml
 name: E2E Tests
 on: [push, pull_request]
 
@@ -253,7 +253,7 @@ jobs:
 ## Test Raporu Şablonu
 
 ```markdown
-# E2E Test Raporu
+## E2E Test Raporu
 
 **Tarih:** YYYY-MM-DD HH:MM
 **Süre:** Xd Ys

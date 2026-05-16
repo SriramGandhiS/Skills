@@ -28,12 +28,12 @@ rules/
 ### オプション 1: インストールスクリプト（推奨）
 
 ```bash
-# common + 1つ以上の言語固有ルールセットをインストール
+## common + 1つ以上の言語固有ルールセットをインストール
 ./install.sh typescript
 ./install.sh python
 ./install.sh golang
 
-# 複数の言語を一度にインストール
+## 複数の言語を一度にインストール
 ./install.sh typescript python
 ```
 
@@ -45,21 +45,21 @@ rules/
 > 言語固有ファイルが使用する相対パス `../common/` の参照が壊れます。
 
 ```bash
-# common ルールをインストール（すべてのプロジェクトに必須）
+## common ルールをインストール（すべてのプロジェクトに必須）
 cp -r rules/common ~/.claude/rules/common
 
-# プロジェクトの技術スタックに応じて言語固有ルールをインストール
+## プロジェクトの技術スタックに応じて言語固有ルールをインストール
 cp -r rules/typescript ~/.claude/rules/typescript
 cp -r rules/python ~/.claude/rules/python
 cp -r rules/golang ~/.claude/rules/golang
 
-# 注意！実際のプロジェクト要件に応じて設定してください。ここでの設定は参考例です。
+## 注意！実際のプロジェクト要件に応じて設定してください。ここでの設定は参考例です。
 ```
 
 ## ルール vs スキル
 
 - **ルール** は広範に適用される標準、規約、チェックリストを定義します（例: 「80% テストカバレッジ」、「ハードコードされたシークレットなし」）。
-- **スキル** （`skills/` ディレクトリ）は特定のタスクに対する詳細で実行可能な参考資料を提供します（例: `python-patterns`、`golang-testing`）。
+- **スキル** （`skills/`ディレクトリ）は特定のタスクに対する詳細で実行可能な参考資料を提供します（例:`python-patterns`、`golang-testing`）。
 
 言語固有のルールファイルは必要に応じて関連するスキルを参照します。ルールは *何を* するかを示し、スキルは *どのように* するかを示します。
 

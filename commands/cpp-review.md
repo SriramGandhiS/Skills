@@ -8,8 +8,8 @@ This command invokes the **cpp-reviewer** agent for comprehensive C++-specific c
 
 ## What This Command Does
 
-1. **Identify C++ Changes**: Find modified `.cpp`, `.hpp`, `.cc`, `.h` files via `git diff`
-2. **Run Static Analysis**: Execute `clang-tidy` and `cppcheck`
+1. **Identify C++ Changes**: Find modified `.cpp`,`.hpp`,`.cc`,`.h`files via`git diff`
+2. **Run Static Analysis**: Execute `clang-tidy`and`cppcheck`
 3. **Memory Safety Scan**: Check for raw new/delete, buffer overflows, use-after-free
 4. **Concurrency Review**: Analyze thread safety, mutex usage, data races
 5. **Modern C++ Check**: Verify code follows C++17/20 conventions and best practices
@@ -36,7 +36,7 @@ Use `/cpp-review` when:
 
 ### HIGH (Should Fix)
 - Rule of Five violations
-- Missing `std::lock_guard` / `std::scoped_lock`
+- Missing `std::lock_guard`/`std::scoped_lock`
 - Detached threads without proper lifetime management
 - C-style casts instead of `static_cast`/`dynamic_cast`
 - Missing `const` correctness
@@ -51,13 +51,13 @@ Use `/cpp-review` when:
 ## Automated Checks Run
 
 ```bash
-# Static analysis
+## Static analysis
 clang-tidy --checks='*,-llvmlibc-*' src/*.cpp -- -std=c++17
 
-# Additional analysis
+## Additional analysis
 cppcheck --enable=all --suppress=missingIncludeSystem src/
 
-# Build with warnings
+## Build with warnings
 cmake --build build -- -Wall -Wextra -Wpedantic
 ```
 
@@ -67,7 +67,7 @@ cmake --build build -- -Wall -Wextra -Wpedantic
 User: /cpp-review
 
 Agent:
-# C++ Code Review Report
+## C++ Code Review Report
 
 ## Files Reviewed
 - src/handler/user.cpp (modified)
@@ -81,7 +81,7 @@ Agent:
 
 [CRITICAL] Memory Leak
 File: src/service/auth.cpp:45
-Issue: Raw `new` without matching `delete`
+Issue: Raw `new`without matching`delete`
 ```cpp
 auto* session = new Session(userId);  // Memory leak!
 cache[userId] = session;
@@ -129,4 +129,4 @@ Recommendation: FAIL: Block merge until CRITICAL issue is fixed
 ## Related
 
 - Agent: `agents/cpp-reviewer.md`
-- Skills: `skills/cpp-coding-standards/`, `skills/cpp-testing/`
+- Skills: `skills/cpp-coding-standards/`,`skills/cpp-testing/`

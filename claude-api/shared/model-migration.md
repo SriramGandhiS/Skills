@@ -39,8 +39,7 @@ Surface this as a single clarifying question so the user can answer in one turn.
 > 1. Every `.py` file in the working directory
 > 2. Just the files under `src/` (production code)
 > 3. A specific subdirectory or list of files you name
->
-> Which one?
+> > Which one?
 
 Then wait for the answer. The same applies to *"Migrate to Opus 4.7"* and bare *"Help me upgrade to Sonnet 4.6"* — ask before editing.
 
@@ -83,7 +82,6 @@ When migrating tests specifically: breaking parameters (`temperature`, `top_p`, 
 Code examples in this guide are Python. **The same fields exist in every official Anthropic SDK** — Stainless generates all 7 from the same OpenAPI spec, so JSON field names map 1:1 with only case-convention differences. Use the rows below to translate the Python examples to the SDK you are migrating.
 
 > **Verify type and method names against the SDK source before writing them into customer code.** WebFetch the relevant repository from the SDK source-code table in `shared/live-sources.md` (one row per SDK) and confirm the exact symbol — particularly for typed SDKs (Go, Java, C#) where union/builder names can differ from the JSON shape. Do not guess type names that aren't in the table below or in `<lang>/claude-api/README.md`.
-
 
 ### `thinking` — `budget_tokens` → adaptive
 

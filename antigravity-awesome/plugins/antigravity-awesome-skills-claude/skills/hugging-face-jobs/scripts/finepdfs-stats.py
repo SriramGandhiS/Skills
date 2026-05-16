@@ -1,10 +1,10 @@
 # /// script
 # requires-python = ">=3.12"
 # dependencies = [
-#     "polars>=1.31.0",
-#     "huggingface-hub",
-#     "datasets",
-#     "ascii-graph",
+# "polars>=1.31.0",
+# "huggingface-hub",
+# "datasets",
+# "ascii-graph",
 # ]
 # ///
 """

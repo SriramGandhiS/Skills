@@ -71,14 +71,14 @@ Incoming:
 
 ---
 
-## 🔴 Active Incidents
+## Active Incidents
 
 ### None currently active
 No active incidents at handoff time.
 
 ---
 
-## 🟡 Ongoing Investigations
+## Ongoing Investigations
 
 ### 1. Intermittent API Timeouts (ENG-1234)
 **Status**: Investigating
@@ -120,7 +120,7 @@ No active incidents at handoff time.
 
 ---
 
-## 🟢 Resolved This Shift
+## Resolved This Shift
 
 ### Payment Service Outage (2024-01-19)
 - **Duration**: 23 minutes
@@ -131,7 +131,7 @@ No active incidents at handoff time.
 
 ---
 
-## 📋 Recent Changes
+## Recent Changes
 
 ### Deployments
 | Service | Version | Time | Notes |
@@ -150,7 +150,7 @@ No active incidents at handoff time.
 
 ---
 
-## ⚠️ Known Issues & Workarounds
+## WARNING: Known Issues & Workarounds
 
 ### 1. Slow Dashboard Loading
 **Issue**: Grafana dashboards slow on Monday mornings
@@ -164,7 +164,7 @@ No active incidents at handoff time.
 
 ---
 
-## 📅 Upcoming Events
+## Upcoming Events
 
 | Date | Event | Impact | Contact |
 |------|-------|--------|---------|
@@ -174,7 +174,7 @@ No active incidents at handoff time.
 
 ---
 
-## 📞 Escalation Reminders
+## Escalation Reminders
 
 | Issue Type | First Escalation | Second Escalation |
 |------------|------------------|-------------------|
@@ -185,7 +185,7 @@ No active incidents at handoff time.
 
 ---
 
-## 🔧 Quick Reference
+## Quick Reference
 
 ### Common Commands
 ```bash

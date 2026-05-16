@@ -441,19 +441,19 @@ kover {
 ### Coverage Komutları
 
 ```bash
-# Testleri coverage ile çalıştır
+## Testleri coverage ile çalıştır
 ./gradlew koverHtmlReport
 
-# Coverage eşiklerini doğrula
+## Coverage eşiklerini doğrula
 ./gradlew koverVerify
 
-# CI için XML raporu
+## CI için XML raporu
 ./gradlew koverXmlReport
 
-# HTML raporunu görüntüle (OS'nize göre komutu kullanın)
-# macOS:   open build/reports/kover/html/index.html
-# Linux:   xdg-open build/reports/kover/html/index.html
-# Windows: start build/reports/kover/html/index.html
+## HTML raporunu görüntüle (OS'nize göre komutu kullanın)
+## macOS:   open build/reports/kover/html/index.html
+## Linux:   xdg-open build/reports/kover/html/index.html
+## Windows: start build/reports/kover/html/index.html
 ```
 
 ### Coverage Hedefleri
@@ -505,28 +505,28 @@ class ApiRoutesTest : FunSpec({
 ## Test Komutları
 
 ```bash
-# Tüm testleri çalıştır
+## Tüm testleri çalıştır
 ./gradlew test
 
-# Belirli test class'ını çalıştır
+## Belirli test class'ını çalıştır
 ./gradlew test --tests "com.example.UserServiceTest"
 
-# Belirli testi çalıştır
+## Belirli testi çalıştır
 ./gradlew test --tests "com.example.UserServiceTest.getUser returns user when found"
 
-# Verbose çıktı ile çalıştır
+## Verbose çıktı ile çalıştır
 ./gradlew test --info
 
-# Coverage ile çalıştır
+## Coverage ile çalıştır
 ./gradlew koverHtmlReport
 
-# Detekt çalıştır (statik analiz)
+## Detekt çalıştır (statik analiz)
 ./gradlew detekt
 
-# Ktlint çalıştır (formatlama kontrolü)
+## Ktlint çalıştır (formatlama kontrolü)
 ./gradlew ktlintCheck
 
-# Sürekli test
+## Sürekli test
 ./gradlew test --continuous
 ```
 
@@ -544,7 +544,7 @@ class ApiRoutesTest : FunSpec({
 **YAPILMAMASI GEREKENLER:**
 - Test framework'lerini karıştırma (Kotest seç ve ona sadık kal)
 - Data class'ları mock'lama (gerçek instance'lar kullan)
-- Coroutine testlerinde `Thread.sleep()` kullanma (`advanceTimeBy` kullan)
+- Coroutine testlerinde `Thread.sleep()`kullanma (`advanceTimeBy` kullan)
 - TDD'de RED fazını atlama
 - Private fonksiyonları doğrudan test etme
 - Kararsız testleri görmezden gelme
@@ -552,7 +552,7 @@ class ApiRoutesTest : FunSpec({
 ## CI/CD ile Entegrasyon
 
 ```yaml
-# GitHub Actions örneği
+## GitHub Actions örneği
 test:
   runs-on: ubuntu-latest
   steps:

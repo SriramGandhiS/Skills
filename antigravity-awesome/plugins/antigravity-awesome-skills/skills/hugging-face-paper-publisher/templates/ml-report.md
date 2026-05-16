@@ -288,9 +288,9 @@ Key takeaways from the experiment.
 
 | Objective | Status | Notes |
 |-----------|--------|-------|
-| Objective 1 | ✅ Met | Achieved target |
-| Objective 2 | ⚠️ Partial | Close to target |
-| Objective 3 | ❌ Not Met | Needs more work |
+| Objective 1 | PASS: Met | Achieved target |
+| Objective 2 | WARNING: Partial | Close to target |
+| Objective 3 | FAIL: Not Met | Needs more work |
 
 ### 9.3 Lessons Learned
 

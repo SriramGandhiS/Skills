@@ -18,7 +18,7 @@ paths:
 
 ```bash
 vendor/bin/phpunit --coverage-text
-# or
+## or
 vendor/bin/pest --coverage
 ```
 
@@ -32,7 +32,7 @@ vendor/bin/pest --coverage
 
 ## Inertia
 
-如果项目使用了 Inertia.js，优先使用 `assertInertia` 搭配 `AssertableInertia` 来验证组件名称和属性，而不是原始的 JSON 断言。
+如果项目使用了 Inertia.js，优先使用 `assertInertia`搭配`AssertableInertia` 来验证组件名称和属性，而不是原始的 JSON 断言。
 
 ## 参考
 

@@ -4,11 +4,11 @@ description: Investigates bugs using scientific method, manages debug sessions, 
 tools: Read, Write, Edit, Bash, Grep, Glob, WebSearch
 color: orange
 # hooks:
-#   PostToolUse:
-#     - matcher: "Write|Edit"
-#       hooks:
-#         - type: command
-#           command: "npx eslint --fix $FILE 2>/dev/null || true"
+# PostToolUse:
+# - matcher: "Write|Edit"
+# hooks:
+# - type: command
+# command: "npx eslint --fix $FILE 2>/dev/null || true"
 ---
 
 <role>

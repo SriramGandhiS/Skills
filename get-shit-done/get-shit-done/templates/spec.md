@@ -78,7 +78,7 @@ No "should feel good", "looks reasonable", or "generally works" — those are no
 | Acceptance Criteria|       | 0.70 |        |                                    |
 | **Ambiguity**      |       | ≤0.20|        |                                    |
 
-Status: ✓ = met minimum, ⚠ = below minimum (planner treats as assumption)
+Status: ✓ = met minimum, WARNING: = below minimum (planner treats as assumption)
 
 ## Interview Log
 
@@ -291,7 +291,7 @@ No backup tooling exists. The project uses PostgreSQL. Developers currently use 
 - Target: the concrete change — not "improve X" but "X becomes Y"
 - Acceptance: the falsifiable check — how does a verifier confirm this?
 
-**Ambiguity Report must reflect the actual interview.** If a dimension is below minimum, mark it ⚠ — the planner knows to treat it as an assumption rather than a locked requirement.
+**Ambiguity Report must reflect the actual interview.** If a dimension is below minimum, mark it WARNING: — the planner knows to treat it as an assumption rather than a locked requirement.
 
 **Interview Log is evidence of rigor.** Don't skip it. It shows that requirements came from discovery, not assumption.
 

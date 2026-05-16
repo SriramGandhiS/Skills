@@ -1,6 +1,6 @@
 # Referência de Configuração do GSD
 
-Configurações do projeto ficam em `.planning/config.json`.  
+Configurações do projeto ficam em `.planning/config.json`.
 Esta versão resume os parâmetros principais em Português. Para schema completo, veja [inglês](../CONFIGURATION.md).
 
 ---

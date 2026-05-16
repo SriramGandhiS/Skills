@@ -1,4 +1,4 @@
-﻿---
+---
 name: laravel-tdd
 description: Test-driven development for Laravel with PHPUnit and Pest, factories, database testing, fakes, and coverage targets.
 origin: ECC
@@ -41,7 +41,7 @@ Choose layers based on scope:
 - `DatabaseTransactions` when the schema is already migrated and you only need per-test rollback
 - `DatabaseMigrations` when you need a full migrate/fresh for every test and can afford the cost
 
-Use `RefreshDatabase` as the default for tests that touch the database: for databases with transaction support, it runs migrations once per test run (via a static flag) and wraps each test in a transaction; for `:memory:` SQLite or connections without transactions, it migrates before each test. Use `DatabaseTransactions` when the schema is already migrated and you only need per-test rollbacks.
+Use `RefreshDatabase`as the default for tests that touch the database: for databases with transaction support, it runs migrations once per test run (via a static flag) and wraps each test in a transaction; for`:memory:`SQLite or connections without transactions, it migrates before each test. Use`DatabaseTransactions` when the schema is already migrated and you only need per-test rollbacks.
 
 ### Testing Framework Choice
 
@@ -186,7 +186,7 @@ final class ProjectRepositoryTest extends TestCase
 
 - `Bus::fake()` for jobs
 - `Queue::fake()` for queued work
-- `Mail::fake()` and `Notification::fake()` for notifications
+- `Mail::fake()`and`Notification::fake()` for notifications
 - `Event::fake()` for domain events
 
 ```php
@@ -228,7 +228,7 @@ $response->assertOk();
 ### Coverage Targets
 
 - Enforce 80%+ coverage for unit + feature tests
-- Use `pcov` or `XDEBUG_MODE=coverage` in CI
+- Use `pcov`or`XDEBUG_MODE=coverage` in CI
 
 ### Test Commands
 
@@ -238,7 +238,7 @@ $response->assertOk();
 
 ### Test Configuration
 
-- Use `phpunit.xml` to set `DB_CONNECTION=sqlite` and `DB_DATABASE=:memory:` for fast tests
+- Use `phpunit.xml`to set`DB_CONNECTION=sqlite`and`DB_DATABASE=:memory:` for fast tests
 - Keep separate env for tests to avoid touching dev/prod data
 
 ### Authorization Tests

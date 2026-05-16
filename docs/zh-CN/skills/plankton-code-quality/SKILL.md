@@ -55,37 +55,37 @@ Plankton（作者：@alxfazio）的集成参考，这是一个用于 Claude Code
 
 ### 配置保护（防御规则博弈）
 
-LLM 会修改 `.ruff.toml` 或 `biome.json` 来禁用规则，而不是修复代码。Plankton 通过三层防御阻止这种行为：
+LLM 会修改 `.ruff.toml`或`biome.json` 来禁用规则，而不是修复代码。Plankton 通过三层防御阻止这种行为：
 
 1. **PreToolUse 钩子** — `protect_linter_configs.sh` 在编辑发生前阻止对所有 linter 配置的修改
-2. **Stop 钩子** — `stop_config_guardian.sh` 在会话结束时通过 `git diff` 检测配置更改
-3. **受保护文件列表** — `.ruff.toml`, `biome.json`, `.shellcheckrc`, `.yamllint`, `.hadolint.yaml` 等
+2. **Stop 钩子** — `stop_config_guardian.sh`在会话结束时通过`git diff` 检测配置更改
+3. **受保护文件列表** — `.ruff.toml`,`biome.json`,`.shellcheckrc`,`.yamllint`,`.hadolint.yaml` 等
 
 ### 包管理器强制执行
 
 Bash 上的 PreToolUse 钩子会阻止遗留包管理器：
 
-* `pip`, `pip3`, `poetry`, `pipenv` → 被阻止（使用 `uv`）
-* `npm`, `yarn`, `pnpm` → 被阻止（使用 `bun`）
-* 允许的例外：`npm audit`, `npm view`, `npm publish`
+* `pip`,`pip3`,`poetry`,`pipenv`→ 被阻止（使用`uv`）
+* `npm`,`yarn`,`pnpm`→ 被阻止（使用`bun`）
+* 允许的例外：`npm audit`,`npm view`,`npm publish`
 
 ## 设置
 
 ### 快速开始
 
 ```bash
-# Clone Plankton into your project (or a shared location)
-# Note: Plankton is by @alxfazio
-git clone https://github.com/alexfazio/plankton.git
+## Clone Plankton into your project (or a shared location)
+## Note: Plankton is by @alxfazio
+git clone <https://github.com/alexfazio/plankton.git>
 cd plankton
 
-# Install core dependencies
+## Install core dependencies
 brew install jaq ruff uv
 
-# Install Python linters
+## Install Python linters
 uv sync --all-extras
 
-# Start Claude Code — hooks activate automatically
+## Start Claude Code — hooks activate automatically
 claude
 ```
 
@@ -97,16 +97,16 @@ claude
 
 1. 将 `.claude/hooks/` 目录复制到你的项目
 2. 复制 `.claude/settings.json` 钩子配置
-3. 复制 linter 配置文件（`.ruff.toml`, `biome.json` 等）
+3. 复制 linter 配置文件（`.ruff.toml`,`biome.json` 等）
 4. 为你使用的语言安装 linter
 
 ### 语言特定依赖
 
 | 语言 | 必需 | 可选 |
 |----------|----------|----------|
-| Python | `ruff`, `uv` | `ty`（类型）, `vulture`（死代码）, `bandit`（安全） |
-| TypeScript/JS | `biome` | `oxlint`, `semgrep`, `knip`（死导出） |
-| Shell | `shellcheck`, `shfmt` | — |
+| Python | `ruff`,`uv`|`ty`（类型）,`vulture`（死代码）,`bandit`（安全） |
+| TypeScript/JS | `biome`|`oxlint`,`semgrep`,`knip`（死导出） |
+| Shell | `shellcheck`,`shfmt` | — |
 | YAML | `yamllint` | — |
 | Markdown | `markdownlint-cli2` | — |
 | Dockerfile | `hadolint` (>= 2.12.0) | — |
@@ -220,7 +220,7 @@ export ECC_QUALITY_GATE_STRICT=true
 
 在质量强制执行期间，标记同一迭代中对配置文件的更改：
 
-* `biome.json`, `.eslintrc*`, `prettier.config*`, `tsconfig.json`, `pyproject.toml`
+* `biome.json`,`.eslintrc*`,`prettier.config*`,`tsconfig.json`,`pyproject.toml`
 
 如果配置被更改以抑制违规，则要求在合并前进行明确审查。
 

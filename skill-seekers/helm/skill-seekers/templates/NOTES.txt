@@ -1,7 +1,7 @@
-🎉 Skill Seekers {{ .Chart.AppVersion }} has been installed!
+ Skill Seekers {{ .Chart.AppVersion }} has been installed!
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📦 DEPLOYMENT SUMMARY
+ DEPLOYMENT SUMMARY
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Release Name:      {{ .Release.Name }}
@@ -10,11 +10,11 @@ Chart Version:     {{ .Chart.Version }}
 App Version:       {{ .Chart.AppVersion }}
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🚀 SERVICES DEPLOYED
+ SERVICES DEPLOYED
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 {{- if .Values.mcpServer.enabled }}
-✅ MCP Server ({{ .Values.mcpServer.replicaCount }} replicas)
+PASS: MCP Server ({{ .Values.mcpServer.replicaCount }} replicas)
    - Port: {{ .Values.mcpServer.service.port }}
    {{- if .Values.mcpServer.autoscaling.enabled }}
    - Autoscaling: {{ .Values.mcpServer.autoscaling.minReplicas }}-{{ .Values.mcpServer.autoscaling.maxReplicas }} replicas
@@ -22,7 +22,7 @@ App Version:       {{ .Chart.AppVersion }}
 {{- end }}
 
 {{- if .Values.vectorDatabases.weaviate.enabled }}
-✅ Weaviate Vector Database
+PASS: Weaviate Vector Database
    - Port: {{ .Values.vectorDatabases.weaviate.service.port }}
    {{- if .Values.vectorDatabases.weaviate.persistence.enabled }}
    - Storage: {{ .Values.vectorDatabases.weaviate.persistence.size }}
@@ -30,7 +30,7 @@ App Version:       {{ .Chart.AppVersion }}
 {{- end }}
 
 {{- if .Values.vectorDatabases.qdrant.enabled }}
-✅ Qdrant Vector Database
+PASS: Qdrant Vector Database
    - HTTP Port: {{ .Values.vectorDatabases.qdrant.service.httpPort }}
    - gRPC Port: {{ .Values.vectorDatabases.qdrant.service.grpcPort }}
    {{- if .Values.vectorDatabases.qdrant.persistence.enabled }}
@@ -39,7 +39,7 @@ App Version:       {{ .Chart.AppVersion }}
 {{- end }}
 
 {{- if .Values.vectorDatabases.chroma.enabled }}
-✅ Chroma Vector Database
+PASS: Chroma Vector Database
    - Port: {{ .Values.vectorDatabases.chroma.service.port }}
    {{- if .Values.vectorDatabases.chroma.persistence.enabled }}
    - Storage: {{ .Values.vectorDatabases.chroma.persistence.size }}
@@ -47,7 +47,7 @@ App Version:       {{ .Chart.AppVersion }}
 {{- end }}
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🔗 ACCESSING YOUR SERVICES
+ ACCESSING YOUR SERVICES
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 {{- if .Values.mcpServer.enabled }}
@@ -74,7 +74,7 @@ Ingress:
 {{- end }}
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📊 MONITORING
+ MONITORING
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 # View pod status
@@ -92,11 +92,11 @@ kubectl get hpa -n {{ .Release.Namespace }} {{ include "skill-seekers.fullname" 
 {{- end }}
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🔧 CONFIGURATION
+ CONFIGURATION
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 {{- if not .Values.secrets.anthropicApiKey }}
-⚠️  WARNING: ANTHROPIC_API_KEY not set
+WARNING:  WARNING: ANTHROPIC_API_KEY not set
    Set it with:
    helm upgrade {{ .Release.Name }} skill-seekers/skill-seekers \
      --set secrets.anthropicApiKey="sk-ant-..." \
@@ -112,7 +112,7 @@ Update configuration:
     --reuse-values
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📚 NEXT STEPS
+ NEXT STEPS
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 1. Configure API Keys (if not already set):
@@ -134,11 +134,11 @@ Update configuration:
      skill-seekers package /data/myskill --target weaviate
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📖 DOCUMENTATION
+ DOCUMENTATION
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 - Project: https://github.com/yourusername/skill-seekers
 - Docs:    https://skillseekersweb.com
 - Issues:  https://github.com/yourusername/skill-seekers/issues
 
-Happy skill seeking! 🚀
+Happy skill seeking!

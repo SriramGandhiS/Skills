@@ -1,4 +1,4 @@
-﻿---
+---
 name: import-srt-captions
 description: Importing .srt subtitle files into Remotion using @remotion/captions
 metadata:
@@ -7,7 +7,7 @@ metadata:
 
 # Importing .srt subtitles into Remotion
 
-If you have an existing `.srt` subtitle file, you can import it into Remotion using `parseSrt()` from `@remotion/captions`.
+If you have an existing `.srt`subtitle file, you can import it into Remotion using`parseSrt()`from`@remotion/captions`.
 
 ## Prerequisites
 
@@ -23,7 +23,7 @@ pnpm exec remotion add @remotion/captions # If project uses pnpm
 
 ## Reading an .srt file
 
-Use `staticFile()` to reference an `.srt` file in your `public` folder, then fetch and parse it:
+Use `staticFile()`to reference an`.srt`file in your`public` folder, then fetch and parse it:
 
 ```tsx
 import {useState, useEffect, useCallback} from 'react';
@@ -60,8 +60,8 @@ export const MyComponent: React.FC = () => {
 };
 ```
 
-Remote URLs are also supported - you can `fetch()` a remote file via URL instead of using `staticFile()`.
+Remote URLs are also supported - you can `fetch()`a remote file via URL instead of using`staticFile()`.
 
 ## Using imported captions
 
-Once parsed, the captions are in the `Caption` format and can be used with all `@remotion/captions` utilities.
+Once parsed, the captions are in the `Caption`format and can be used with all`@remotion/captions` utilities.

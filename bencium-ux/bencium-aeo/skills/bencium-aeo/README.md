@@ -367,9 +367,9 @@ Run these prompts across ChatGPT, Claude, and Gemini:
 
 | Intent | Engine | Mentioned? | Linked? | Accurate? | Evidence Quoted? | Notes |
 |--------|--------|------------|---------|-----------|------------------|-------|
-| What is X | ChatGPT | ✅ Yes | ✅ Yes | ✅ Yes | ❌ No | Generic description |
-| Compare X vs Y | Claude | ❌ No | ❌ No | N/A | N/A | Doesn't know us yet |
-| Best [category] | Gemini | ✅ Yes | ❌ No | ✅ Yes | ✅ Yes | Cited our benchmark |
+| What is X | ChatGPT | PASS: Yes | PASS: Yes | PASS: Yes | FAIL: No | Generic description |
+| Compare X vs Y | Claude | FAIL: No | FAIL: No | N/A | N/A | Doesn't know us yet |
+| Best [category] | Gemini | PASS: Yes | FAIL: No | PASS: Yes | PASS: Yes | Cited our benchmark |
 
 ### Success Criteria
 
@@ -413,15 +413,15 @@ Run these prompts across ChatGPT, Claude, and Gemini:
 
 | Mistake | Fix |
 |---------|-----|
-| ❌ FAQ answers too long | ✅ Keep to 30-50 words |
-| ❌ Missing dates | ✅ Add "Last updated" everywhere |
-| ❌ Vague claims | ✅ Include specific data, methods, dates |
-| ❌ No schema markup | ✅ FAQPage schema is essential |
-| ❌ Marketing speak | ✅ Use factual, specific language |
-| ❌ Buried answers | ✅ Front-load the answer, details second |
-| ❌ Pronoun ambiguity | ✅ Say "the product" not "it" |
-| ❌ Missing evidence | ✅ Add methodology for all claims |
-| ❌ Stale content | ✅ Update within 10 months or lose visibility |
+| FAIL: FAQ answers too long | PASS: Keep to 30-50 words |
+| FAIL: Missing dates | PASS: Add "Last updated" everywhere |
+| FAIL: Vague claims | PASS: Include specific data, methods, dates |
+| FAIL: No schema markup | PASS: FAQPage schema is essential |
+| FAIL: Marketing speak | PASS: Use factual, specific language |
+| FAIL: Buried answers | PASS: Front-load the answer, details second |
+| FAIL: Pronoun ambiguity | PASS: Say "the product" not "it" |
+| FAIL: Missing evidence | PASS: Add methodology for all claims |
+| FAIL: Stale content | PASS: Update within 10 months or lose visibility |
 
 ---
 

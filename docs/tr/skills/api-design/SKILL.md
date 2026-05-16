@@ -22,7 +22,7 @@ Tutarlı, geliştirici dostu REST API'leri tasarlamak için konvansiyonlar ve en
 ### URL Yapısı
 
 ```
-# Kaynaklar isim, çoğul, küçük harf, kebab-case
+## Kaynaklar isim, çoğul, küçük harf, kebab-case
 GET    /api/v1/users
 GET    /api/v1/users/:id
 POST   /api/v1/users
@@ -30,11 +30,11 @@ PUT    /api/v1/users/:id
 PATCH  /api/v1/users/:id
 DELETE /api/v1/users/:id
 
-# İlişkiler için alt kaynaklar
+## İlişkiler için alt kaynaklar
 GET    /api/v1/users/:id/orders
 POST   /api/v1/users/:id/orders
 
-# CRUD'a uymayan aksiyonlar (fiilleri dikkatli kullanın)
+## CRUD'a uymayan aksiyonlar (fiilleri dikkatli kullanın)
 POST   /api/v1/orders/:id/cancel
 POST   /api/v1/auth/login
 POST   /api/v1/auth/refresh
@@ -43,12 +43,12 @@ POST   /api/v1/auth/refresh
 ### İsimlendirme Kuralları
 
 ```
-# İYİ
+## İYİ
 /api/v1/team-members          # çok sözcüklü kaynaklar için kebab-case
 /api/v1/orders?status=active  # filtreleme için query parametreleri
 /api/v1/users/123/orders      # sahiplik için iç içe kaynaklar
 
-# KÖTÜ
+## KÖTÜ
 /api/v1/getUsers              # URL'de fiil
 /api/v1/user                  # tekil (çoğul kullanın)
 /api/v1/team_members          # URL'lerde snake_case
@@ -72,12 +72,12 @@ POST   /api/v1/auth/refresh
 ### Durum Kodu Referansı
 
 ```
-# Başarı
+## Başarı
 200 OK                    — GET, PUT, PATCH (yanıt body'si ile)
 201 Created               — POST (Location header ekleyin)
 204 No Content            — DELETE, PUT (yanıt body'si yok)
 
-# İstemci Hataları
+## İstemci Hataları
 400 Bad Request           — Validasyon hatası, hatalı JSON
 401 Unauthorized          — Eksik veya geçersiz kimlik doğrulama
 403 Forbidden             — Kimlik doğrulandı ama yetkilendirilmedi
@@ -86,7 +86,7 @@ POST   /api/v1/auth/refresh
 422 Unprocessable Entity  — Semantik olarak geçersiz (geçerli JSON, kötü veri)
 429 Too Many Requests     — Hız limiti aşıldı
 
-# Sunucu Hataları
+## Sunucu Hataları
 500 Internal Server Error — Beklenmeyen hata (detayları açığa çıkarmayın)
 502 Bad Gateway           — Upstream servis başarısız
 503 Service Unavailable   — Geçici aşırı yük, Retry-After ekleyin
@@ -95,18 +95,18 @@ POST   /api/v1/auth/refresh
 ### Yaygın Hatalar
 
 ```
-# KÖTÜ: Her şey için 200
+## KÖTÜ: Her şey için 200
 { "status": 200, "success": false, "error": "Not found" }
 
-# İYİ: HTTP durum kodlarını semantik olarak kullanın
+## İYİ: HTTP durum kodlarını semantik olarak kullanın
 HTTP/1.1 404 Not Found
 { "error": { "code": "not_found", "message": "User not found" } }
 
-# KÖTÜ: Validasyon hataları için 500
-# İYİ: Alan düzeyinde detaylarla 400 veya 422
+## KÖTÜ: Validasyon hataları için 500
+## İYİ: Alan düzeyinde detaylarla 400 veya 422
 
-# KÖTÜ: Oluşturulan kaynaklar için 200
-# İYİ: Location header ile 201
+## KÖTÜ: Oluşturulan kaynaklar için 200
+## İYİ: Location header ile 201
 HTTP/1.1 201 Created
 Location: /api/v1/users/abc-123
 ```
@@ -202,7 +202,7 @@ interface ApiError {
 ```
 GET /api/v1/users?page=2&per_page=20
 
-# Implementasyon
+## Implementasyon
 SELECT * FROM users
 ORDER BY created_at DESC
 LIMIT 20 OFFSET 20;
@@ -216,7 +216,7 @@ LIMIT 20 OFFSET 20;
 ```
 GET /api/v1/users?cursor=eyJpZCI6MTIzfQ&limit=20
 
-# Implementasyon
+## Implementasyon
 SELECT * FROM users
 WHERE id > :cursor_id
 ORDER BY id ASC
@@ -250,44 +250,44 @@ LIMIT 21;  -- has_next belirlemek için bir fazla getir
 ### Filtreleme
 
 ```
-# Basit eşitlik
+## Basit eşitlik
 GET /api/v1/orders?status=active&customer_id=abc-123
 
-# Karşılaştırma operatörleri (köşeli parantez notasyonu kullanın)
+## Karşılaştırma operatörleri (köşeli parantez notasyonu kullanın)
 GET /api/v1/products?price[gte]=10&price[lte]=100
 GET /api/v1/orders?created_at[after]=2025-01-01
 
-# Çoklu değerler (virgülle ayrılmış)
+## Çoklu değerler (virgülle ayrılmış)
 GET /api/v1/products?category=electronics,clothing
 
-# İç içe alanlar (nokta notasyonu)
+## İç içe alanlar (nokta notasyonu)
 GET /api/v1/orders?customer.country=US
 ```
 
 ### Sıralama
 
 ```
-# Tek alan (azalan için - öneki)
+## Tek alan (azalan için - öneki)
 GET /api/v1/products?sort=-created_at
 
-# Çoklu alanlar (virgülle ayrılmış)
+## Çoklu alanlar (virgülle ayrılmış)
 GET /api/v1/products?sort=-featured,price,-created_at
 ```
 
 ### Tam Metin Arama
 
 ```
-# Arama query parametresi
+## Arama query parametresi
 GET /api/v1/products?q=wireless+headphones
 
-# Alana özel arama
+## Alana özel arama
 GET /api/v1/users?email=alice
 ```
 
 ### Seyrek Fieldset'ler
 
 ```
-# Sadece belirtilen alanları döndür (payload'ı azaltır)
+## Sadece belirtilen alanları döndür (payload'ı azaltır)
 GET /api/v1/users?fields=id,name,email
 GET /api/v1/orders?fields=id,total,status&include=customer.name
 ```
@@ -297,11 +297,11 @@ GET /api/v1/orders?fields=id,total,status&include=customer.name
 ### Token-Tabanlı Auth
 
 ```
-# Authorization header'da Bearer token
+## Authorization header'da Bearer token
 GET /api/v1/users
 Authorization: Bearer eyJhbGciOiJIUzI1NiIs...
 
-# API key (sunucudan sunucuya)
+## API key (sunucudan sunucuya)
 GET /api/v1/data
 X-API-Key: sk_live_abc123
 ```
@@ -334,7 +334,7 @@ X-RateLimit-Limit: 100
 X-RateLimit-Remaining: 95
 X-RateLimit-Reset: 1640000000
 
-# Aşıldığında
+## Aşıldığında
 HTTP/1.1 429 Too Many Requests
 Retry-After: 60
 {

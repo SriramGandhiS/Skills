@@ -47,7 +47,7 @@ Auri: assistente de voz inteligente (Alexa + Claude claude-opus-4-20250805). Vis
 
 ## Auri - Core Product Skill
 
->  A voz que pensa com voce.
+> A voz que pensa com voce.
 
 Auri e um assistente de voz de nova geracao construido sobre Amazon Alexa + Claude claude-opus-4-20250805.
 Enquanto a Alexa tradicional executa comandos, a Auri conduz conversas reais e raciocina sobre contexto.

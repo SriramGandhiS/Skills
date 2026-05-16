@@ -36,7 +36,7 @@ user-invocable: false
 origin: auto-extracted
 ---
 
-# [Açıklayıcı Desen Adı]
+## [Açıklayıcı Desen Adı]
 
 **Çıkarıldı:** [Tarih]
 **Bağlam:** [Bunun ne zaman geçerli olduğunun kısa açıklaması]
@@ -57,7 +57,7 @@ origin: auto-extracted
 
    Taslağı değerlendirmeden önce **tümünü** yürüt:
 
-   - [ ] İçerik örtüşmesini kontrol etmek için anahtar kelimeyle `~/.claude/skills/` ve ilgili proje `.claude/skills/` dosyalarını Grep ile ara
+   - [ ] İçerik örtüşmesini kontrol etmek için anahtar kelimeyle `~/.claude/skills/`ve ilgili proje`.claude/skills/` dosyalarını Grep ile ara
    - [ ] Örtüşme için MEMORY.md'yi kontrol et (hem proje hem de global)
    - [ ] Mevcut bir skill'e eklemenin yeterli olup olmayacağını düşün
    - [ ] Bunun yeniden kullanılabilir bir desen olduğunu, tek seferlik bir düzeltme olmadığını onayla

@@ -26,18 +26,18 @@ Instead of using `#7c3aed` directly in a component, you reference `color.primary
 Naming tokens after their appearance breaks when values change:
 
 ```
-❌ color.purple = #7c3aed   → What if purple becomes blue? The name is now wrong.
-❌ color.red-500 = #ef4444  → Is this always used for danger? Or sometimes for decoration?
+FAIL: color.purple = #7c3aed   → What if purple becomes blue? The name is now wrong.
+FAIL: color.red-500 = #ef4444  → Is this always used for danger? Or sometimes for decoration?
 ```
 
 ### Best Practice: Semantic Names
 Name tokens by their **purpose**, not their **value**:
 
 ```
-✅ color.brand.primary = #7c3aed     → The main brand color, whatever it is
-✅ color.feedback.danger = #ef4444   → Used for error states everywhere
-✅ color.text.secondary = #6b7280    → Secondary text color
-✅ color.background.surface = #f9fafb → Card/panel backgrounds
+PASS: color.brand.primary = #7c3aed     → The main brand color, whatever it is
+PASS: color.feedback.danger = #ef4444   → Used for error states everywhere
+PASS: color.text.secondary = #6b7280    → Secondary text color
+PASS: color.background.surface = #f9fafb → Card/panel backgrounds
 ```
 
 ### Two-Tier Token System (Industry Best Practice)
@@ -180,7 +180,7 @@ Components use `var(--color-background-page)` — they don't need to know which 
 
 **Red flags in CSS/code:**
 ```css
-/* ❌ Hardcoded values — no token */
+/* FAIL: Hardcoded values — no token */
 color: #7c3aed;
 margin: 13px;
 font-size: 15px;
@@ -189,7 +189,7 @@ box-shadow: 0 3px 7px rgba(0,0,0,0.11);
 ```
 
 ```css
-/* ✅ Tokenized */
+/* PASS: Tokenized */
 color: var(--color-brand-primary);
 margin: var(--spacing-3);
 font-size: var(--font-size-md);
@@ -268,10 +268,10 @@ Check 5 areas, each worth 20 points:
 
 | Score | Health Level | What It Means |
 |---|---|---|
-| **90–100** | ✅ Excellent | System is production-grade, scalable, and maintainable |
-| **70–89** | 🟡 Good | Minor gaps, easy to clean up |
-| **50–69** | 🟠 Needs Work | Significant hardcoding, inconsistent adoption |
-| **< 50** | 🔴 Broken | Tokens exist in name only — no real system |
+| **90–100** | PASS: Excellent | System is production-grade, scalable, and maintainable |
+| **70–89** |  Good | Minor gaps, easy to clean up |
+| **50–69** |  Needs Work | Significant hardcoding, inconsistent adoption |
+| **< 50** |  Broken | Tokens exist in name only — no real system |
 
 ### Quick Audit Command
 Run this to get a rough hardcoded value count in a codebase:

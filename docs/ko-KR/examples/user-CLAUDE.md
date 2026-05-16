@@ -70,7 +70,7 @@
 - 일반적으로 200-400줄, 파일당 최대 800줄
 
 ### Git
-- Conventional commits: `feat:`, `fix:`, `refactor:`, `docs:`, `test:`
+- Conventional commits: `feat:`,`fix:`,`refactor:`,`docs:`,`test:`
 - 커밋 전 항상 로컬에서 테스트
 - 작고 집중된 커밋
 

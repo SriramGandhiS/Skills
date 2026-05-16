@@ -6,11 +6,11 @@ Skill Seekers supports multiple LLM platforms through a clean adaptor system. Th
 
 | Platform | Status | Format | Upload | Enhancement | API Key Required |
 |----------|--------|--------|--------|-------------|------------------|
-| **Claude AI** | ✅ Full Support | ZIP + YAML | ✅ Automatic | ✅ Yes | ANTHROPIC_API_KEY |
-| **Google Gemini** | ✅ Full Support | tar.gz | ✅ Automatic | ✅ Yes | GOOGLE_API_KEY |
-| **OpenAI ChatGPT** | ✅ Full Support | ZIP + Vector Store | ✅ Automatic | ✅ Yes | OPENAI_API_KEY |
-| **MiniMax AI** | ✅ Full Support | ZIP | ✅ Validation | ✅ Yes | MINIMAX_API_KEY |
-| **Generic Markdown** | ✅ Export Only | ZIP | ❌ Manual | ❌ No | None |
+| **Claude AI** | PASS: Full Support | ZIP + YAML | PASS: Automatic | PASS: Yes | ANTHROPIC_API_KEY |
+| **Google Gemini** | PASS: Full Support | tar.gz | PASS: Automatic | PASS: Yes | GOOGLE_API_KEY |
+| **OpenAI ChatGPT** | PASS: Full Support | ZIP + Vector Store | PASS: Automatic | PASS: Yes | OPENAI_API_KEY |
+| **MiniMax AI** | PASS: Full Support | ZIP | PASS: Validation | PASS: Yes | MINIMAX_API_KEY |
+| **Generic Markdown** | PASS: Export Only | ZIP | FAIL: Manual | FAIL: No | None |
 
 ## Quick Start
 
@@ -84,9 +84,9 @@ skill-seekers enhance output/react/ --target openai
 skill-seekers package output/react/ --target markdown
 
 # Output: react-markdown.zip with:
-#   - README.md
-#   - references/*.md
-#   - DOCUMENTATION.md (combined)
+# - README.md
+# - references/*.md
+# - DOCUMENTATION.md (combined)
 ```
 
 **Use case:** Export for any LLM, documentation hosting, or manual distribution

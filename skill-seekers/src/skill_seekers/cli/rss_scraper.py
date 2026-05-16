@@ -164,7 +164,7 @@ class RssToSkillConverter(SkillConverter):
         _check_feedparser_deps()
 
         source = self.feed_url or self.feed_path
-        print(f"\n🔍 Extracting RSS/Atom feed: {source}")
+        print(f"\n Extracting RSS/Atom feed: {source}")
 
         # Parse the feed
         parsed = self._parse_feed()
@@ -189,7 +189,7 @@ class RssToSkillConverter(SkillConverter):
 
         # Optionally scrape full article content
         if self.follow_links:
-            print(f"\n🌐 Following article links (max {len(articles)})...")
+            print(f"\n Following article links (max {len(articles)})...")
             scraped_count = 0
             for i, article in enumerate(articles):
                 link = article.get("link", "")
@@ -226,16 +226,16 @@ class RssToSkillConverter(SkillConverter):
         with open(self.data_file, "w", encoding="utf-8") as f:
             json.dump(result_data, f, indent=2, ensure_ascii=False, default=str)
 
-        print(f"\n💾 Saved extracted data to: {self.data_file}")
+        print(f"\n Saved extracted data to: {self.data_file}")
         self.extracted_data = result_data
         print(
-            f"✅ Extracted {len(articles)} articles ({len(all_categories)} unique categories/tags)"
+            f"PASS: Extracted {len(articles)} articles ({len(all_categories)} unique categories/tags)"
         )
         return True
 
     def load_extracted_data(self, json_path: str) -> bool:
         """Load previously extracted data from a JSON file."""
-        print(f"\n📂 Loading extracted data from: {json_path}")
+        print(f"\n Loading extracted data from: {json_path}")
         if not os.path.exists(json_path):
             raise FileNotFoundError(f"Extracted data file not found: {json_path}")
 
@@ -245,12 +245,12 @@ class RssToSkillConverter(SkillConverter):
         total = self.extracted_data.get(
             "total_articles", len(self.extracted_data.get("articles", []))
         )
-        print(f"✅ Loaded {total} articles")
+        print(f"PASS: Loaded {total} articles")
         return True
 
     def categorize_content(self) -> dict[str, dict[str, Any]]:
         """Categorize articles by their feed categories/tags."""
-        print("\n📋 Categorizing content by feed tags...")
+        print("\n Categorizing content by feed tags...")
 
         if not self.extracted_data:
             raise RuntimeError("No extracted data available. Call extract_feed() first.")
@@ -285,7 +285,7 @@ class RssToSkillConverter(SkillConverter):
                 "articles": articles,
             }
 
-        print(f"✅ Created {len(categorized)} categories")
+        print(f"PASS: Created {len(categorized)} categories")
         for cat_key, cat_data in categorized.items():
             print(f"   - {cat_data['title']}: {len(cat_data['articles'])} articles")
 
@@ -293,7 +293,7 @@ class RssToSkillConverter(SkillConverter):
 
     def build_skill(self) -> None:
         """Build complete skill structure from extracted data."""
-        print(f"\n🏗️  Building skill: {self.name}")
+        print(f"\n  Building skill: {self.name}")
 
         if not self.extracted_data:
             raise RuntimeError("No extracted data available. Call extract_feed() first.")
@@ -307,7 +307,7 @@ class RssToSkillConverter(SkillConverter):
         categorized = self.categorize_content()
 
         # Generate reference files
-        print("\n📝 Generating reference files...")
+        print("\n Generating reference files...")
         for cat_key, cat_data in categorized.items():
             self._generate_reference_file(cat_key, cat_data)
 
@@ -317,8 +317,8 @@ class RssToSkillConverter(SkillConverter):
         # Generate SKILL.md
         self._generate_skill_md(categorized)
 
-        print(f"\n✅ Skill built successfully: {self.skill_dir}/")
-        print(f"\n📦 Next step: Package with: skill-seekers package {self.skill_dir}/")
+        print(f"\nPASS: Skill built successfully: {self.skill_dir}/")
+        print(f"\n Next step: Package with: skill-seekers package {self.skill_dir}/")
 
     # ──────────────────────────────────────────────────────────────────────
     # Feed parsing internals
@@ -717,7 +717,7 @@ class RssToSkillConverter(SkillConverter):
             f.write(f"{self.description}\n\n")
 
             # Feed Information
-            f.write("## 📡 Feed Information\n\n")
+            f.write("##  Feed Information\n\n")
             f.write(f"**Feed Title:** {feed_title}\n\n")
             f.write(f"**Feed Type:** {feed_type}\n\n")
             if feed_meta.get("link"):
@@ -735,7 +735,7 @@ class RssToSkillConverter(SkillConverter):
                 f.write(f"**Rights:** {feed_meta['rights']}\n\n")
 
             # When to Use
-            f.write("## 💡 When to Use This Skill\n\n")
+            f.write("##  When to Use This Skill\n\n")
             f.write("Use this skill when you need to:\n")
             f.write(f"- Reference articles and content from {feed_title}\n")
             f.write("- Look up specific topics covered in the feed\n")
@@ -745,7 +745,7 @@ class RssToSkillConverter(SkillConverter):
 
             # Article Overview
             total_articles = self.extracted_data.get("total_articles", 0)
-            f.write("## 📖 Article Overview\n\n")
+            f.write("##  Article Overview\n\n")
             f.write(f"**Total Articles:** {total_articles}\n\n")
 
             # Category breakdown
@@ -759,7 +759,7 @@ class RssToSkillConverter(SkillConverter):
             articles = self.extracted_data.get("articles", [])
             recent = articles[:10]
             if recent:
-                f.write("## 📰 Recent Articles\n\n")
+                f.write("##  Recent Articles\n\n")
                 for article in recent:
                     title = article.get("title", "Untitled")
                     published = article.get("published", "")
@@ -787,7 +787,7 @@ class RssToSkillConverter(SkillConverter):
             # Authors
             author_counts = self._count_authors()
             if author_counts:
-                f.write(f"## ✍️ Authors ({len(author_counts)})\n\n")
+                f.write(f"##  Authors ({len(author_counts)})\n\n")
                 for author, count in sorted(
                     author_counts.items(), key=lambda x: x[1], reverse=True
                 )[:15]:
@@ -797,14 +797,14 @@ class RssToSkillConverter(SkillConverter):
             # All categories/tags
             all_cats = self.extracted_data.get("all_categories", [])
             if all_cats:
-                f.write(f"## 🏷️ Tags ({len(all_cats)})\n\n")
+                f.write(f"##  Tags ({len(all_cats)})\n\n")
                 f.write(", ".join(f"`{cat}`" for cat in all_cats[:50]))
                 if len(all_cats) > 50:
                     f.write(f" ... and {len(all_cats) - 50} more")
                 f.write("\n\n")
 
             # Statistics
-            f.write("## 📊 Feed Statistics\n\n")
+            f.write("##  Feed Statistics\n\n")
             f.write(f"- **Total Articles**: {total_articles}\n")
             f.write(f"- **Feed Type**: {feed_type}\n")
             f.write(f"- **Categories/Tags**: {len(all_cats)}\n")
@@ -818,7 +818,7 @@ class RssToSkillConverter(SkillConverter):
                 f.write(f"- **Date Range**: {date_range[0]} to {date_range[1]}\n\n")
 
             # Navigation
-            f.write("## 🗺️ Navigation\n\n")
+            f.write("##  Navigation\n\n")
             f.write("**Reference Files:**\n\n")
             for cat_key, cat_data in sorted(categorized.items()):
                 safe_name = self._sanitize_filename(cat_data["title"])

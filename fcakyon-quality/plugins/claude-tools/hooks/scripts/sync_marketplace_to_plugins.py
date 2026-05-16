@@ -30,7 +30,7 @@ def sync_marketplace_to_plugins():
     try:
         marketplace = json.loads(marketplace_path.read_text())
     except (json.JSONDecodeError, OSError) as e:
-        print(f"❌ Failed to read marketplace.json: {e}", file=sys.stderr)
+        print(f"FAIL: Failed to read marketplace.json: {e}", file=sys.stderr)
         return 2
 
     plugins = marketplace.get("plugins", [])

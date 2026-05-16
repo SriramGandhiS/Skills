@@ -14,26 +14,26 @@
 ### Python 규칙
 
 - 모든 함수 시그니처에 type hints 사용 — `from __future__ import annotations` 사용
-- `print()` 문 사용 금지 — `logging.getLogger(__name__)` 사용
-- 문자열 포매팅은 f-strings 사용, `%`나 `.format()`은 사용 금지
-- 파일 작업에 `os.path` 대신 `pathlib.Path` 사용
+- `print()`문 사용 금지 —`logging.getLogger(__name__)` 사용
+- 문자열 포매팅은 f-strings 사용, `%`나`.format()`은 사용 금지
+- 파일 작업에 `os.path`대신`pathlib.Path` 사용
 - isort로 import 정렬: stdlib, third-party, local 순서 (ruff에 의해 강제)
 
 ### 데이터베이스
 
 - 모든 쿼리는 Django ORM 사용 — raw SQL은 `.raw()`와 parameterized 쿼리로만 사용
 - 마이그레이션은 git에 커밋 — 프로덕션에서 `--fake` 사용 금지
-- N+1 쿼리 방지를 위해 `select_related()`와 `prefetch_related()` 사용
-- 모든 모델에 `created_at`과 `updated_at` 자동 필드 필수
-- `filter()`, `order_by()`, 또는 `WHERE` 절에 사용되는 모든 필드에 인덱스 추가
+- N+1 쿼리 방지를 위해 `select_related()`와`prefetch_related()` 사용
+- 모든 모델에 `created_at`과`updated_at` 자동 필드 필수
+- `filter()`,`order_by()`, 또는`WHERE` 절에 사용되는 모든 필드에 인덱스 추가
 
 ```python
-# 나쁜 예: N+1 쿼리
+## 나쁜 예: N+1 쿼리
 orders = Order.objects.all()
 for order in orders:
     print(order.customer.name)  # 각 주문마다 DB를 조회함
 
-# 좋은 예: join을 사용한 단일 쿼리
+## 좋은 예: join을 사용한 단일 쿼리
 orders = Order.objects.select_related("customer").all()
 ```
 
@@ -46,7 +46,7 @@ orders = Order.objects.select_related("customer").all()
 
 ### Serializers
 
-- 간단한 CRUD에는 `ModelSerializer`, 복잡한 유효성 검증에는 `Serializer` 사용
+- 간단한 CRUD에는 `ModelSerializer`, 복잡한 유효성 검증에는`Serializer` 사용
 - 입력/출력 형태가 다를 때는 읽기와 쓰기 serializer를 분리
 - 유효성 검증은 serializer 레벨에서 — 뷰는 얇게 유지
 
@@ -76,7 +76,7 @@ class OrderDetailSerializer(serializers.ModelSerializer):
 - 클라이언트에 내부 오류 세부 정보를 노출하지 않기
 
 ```python
-# core/exceptions.py
+## core/exceptions.py
 from rest_framework.exceptions import APIException
 
 class InsufficientStockError(APIException):
@@ -137,7 +137,7 @@ core/
 ### Service 레이어
 
 ```python
-# apps/orders/services.py
+## apps/orders/services.py
 from django.db import transaction
 
 def create_order(*, customer, product_id: uuid.UUID, quantity: int) -> Order:
@@ -165,7 +165,7 @@ def create_order(*, customer, product_id: uuid.UUID, quantity: int) -> Order:
 ### View 패턴
 
 ```python
-# apps/orders/views.py
+## apps/orders/views.py
 class OrderViewSet(viewsets.ModelViewSet):
     permission_classes = [IsAuthenticated]
     pagination_class = StandardPagination
@@ -195,7 +195,7 @@ class OrderViewSet(viewsets.ModelViewSet):
 ### 테스트 패턴 (pytest + Factory Boy)
 
 ```python
-# apps/orders/tests/factories.py
+## apps/orders/tests/factories.py
 import factory
 from apps.accounts.tests.factories import UserFactory
 from apps.products.tests.factories import ProductFactory
@@ -209,7 +209,7 @@ class OrderFactory(factory.django.DjangoModelFactory):
     quantity = 1
     total = factory.LazyAttribute(lambda o: o.product.price * o.quantity)
 
-# apps/orders/tests/test_views.py
+## apps/orders/tests/test_views.py
 import pytest
 from rest_framework.test import APIClient
 
@@ -246,22 +246,22 @@ class TestCreateOrder:
 ## 환경 변수
 
 ```bash
-# Django
+## Django
 SECRET_KEY=
 DEBUG=False
 ALLOWED_HOSTS=api.example.com
 
-# 데이터베이스
+## 데이터베이스
 DATABASE_URL=postgres://user:pass@localhost:5432/myapp
 
-# Redis (Celery broker + 캐시)
+## Redis (Celery broker + 캐시)
 REDIS_URL=redis://localhost:6379/0
 
-# JWT
+## JWT
 JWT_ACCESS_TOKEN_LIFETIME=15       # 분
 JWT_REFRESH_TOKEN_LIFETIME=10080   # 분 (7일)
 
-# 이메일
+## 이메일
 EMAIL_BACKEND=django.core.mail.backends.smtp.EmailBackend
 EMAIL_HOST=smtp.example.com
 ```
@@ -269,40 +269,40 @@ EMAIL_HOST=smtp.example.com
 ## 테스트 전략
 
 ```bash
-# 전체 테스트 실행
+## 전체 테스트 실행
 pytest --cov=apps --cov-report=term-missing
 
-# 특정 앱 테스트 실행
+## 특정 앱 테스트 실행
 pytest apps/orders/tests/ -v
 
-# 병렬 실행
+## 병렬 실행
 pytest -n auto
 
-# 마지막 실행에서 실패한 테스트만 실행
+## 마지막 실행에서 실패한 테스트만 실행
 pytest --lf
 ```
 
 ## ECC 워크플로우
 
 ```bash
-# 계획 수립
+## 계획 수립
 /plan "Add order refund system with Stripe integration"
 
-# TDD로 개발
+## TDD로 개발
 /tdd                    # pytest 기반 TDD 워크플로우
 
-# 리뷰
+## 리뷰
 /python-review          # Python 전용 코드 리뷰
 /security-scan          # Django 보안 감사
 /code-review            # 일반 품질 검사
 
-# 검증
+## 검증
 /verify                 # 빌드, 린트, 테스트, 보안 스캔
 ```
 
 ## Git 워크플로우
 
-- `feat:` 새 기능, `fix:` 버그 수정, `refactor:` 코드 변경
+- `feat:`새 기능,`fix:`버그 수정,`refactor:` 코드 변경
 - `main`에서 feature 브랜치 생성, PR 필수
 - CI: ruff (린트 + 포맷), mypy (타입), pytest (테스트), safety (의존성 검사)
 - 배포: Docker 이미지, Kubernetes 또는 Railway로 관리

@@ -1,10 +1,7 @@
 #!/usr/bin/env bash
-#
-# Test Multi-Provider Embedding System
+# # Test Multi-Provider Embedding System
 # Tests: providers, chunking, quality scoring, caching, deduplication
-#
-
-set -uo pipefail
+# set -uo pipefail
 # Note: Not using -e to allow collecting all test results
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"

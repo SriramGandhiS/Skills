@@ -49,22 +49,22 @@ Kullanıcı seviyesi konfigürasyon dosyası örneği. Bu, tüm projelerinizde g
 
 ### Proje Seviyesi Konfigürasyon
 ```bash
-# Proje kök dizininize kopyalayın
+## Proje kök dizininize kopyalayın
 cp docs/tr/examples/CLAUDE.md ./CLAUDE.md
-# İçeriği projenize göre düzenleyin
+## İçeriği projenize göre düzenleyin
 ```
 
 ### Kullanıcı Seviyesi Konfigürasyon
 ```bash
-# Ana dizininize kopyalayın
+## Ana dizininize kopyalayın
 mkdir -p ~/.claude
 cp docs/tr/examples/user-CLAUDE.md ~/.claude/CLAUDE.md
-# Kişisel tercihlerinize göre düzenleyin
+## Kişisel tercihlerinize göre düzenleyin
 ```
 
 ### Status Line Konfigürasyonu
 ```bash
-# settings.json dosyanıza ekleyin
+## settings.json dosyanıza ekleyin
 cat docs/tr/examples/statusline.json >> ~/.claude/settings.json
 ```
 

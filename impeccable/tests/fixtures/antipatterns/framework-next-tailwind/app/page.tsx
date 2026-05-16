@@ -23,17 +23,17 @@ export default function Home() {
           <FeatureCard
             title="Fast"
             description="Lightning-fast performance out of the box"
-            icon="⚡"
+            icon=""
           />
           <FeatureCard
             title="Scalable"
             description="Grows with your business needs"
-            icon="📈"
+            icon=""
           />
           <FeatureCard
             title="Secure"
             description="Enterprise-grade security built in"
-            icon="🔒"
+            icon=""
           />
         </div>
 

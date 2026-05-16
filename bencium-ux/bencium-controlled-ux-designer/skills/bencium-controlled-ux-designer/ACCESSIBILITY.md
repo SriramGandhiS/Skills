@@ -68,7 +68,7 @@ Content must be robust enough to be interpreted by a wide variety of user agents
 **Incorrect (skips levels):**
 ```tsx
 <h1>Page Title</h1>
-  <h4>Section 1</h4>  // ❌ Skips h2 and h3
+  <h4>Section 1</h4>  // FAIL: Skips h2 and h3
 ```
 
 ## Keyboard Navigation
@@ -86,8 +86,7 @@ Content must be robust enough to be interpreted by a wide variety of user agents
     rounded-lg
   "
   tabIndex={0}
->
-  Accessible Button
+> Accessible Button
 </button>
 
 // Custom interactive elements need tabindex
@@ -101,8 +100,7 @@ Content must be robust enough to be interpreted by a wide variety of user agents
     }
   }}
   className="cursor-pointer focus:ring-4 focus:ring-blue-500"
->
-  Custom Button
+> Custom Button
 </div>
 ```
 
@@ -139,8 +137,7 @@ Content must be robust enough to be interpreted by a wide variety of user agents
     focus:bg-blue-600 focus:text-white
     focus:rounded-lg
   "
->
-  Skip to main content
+> Skip to main content
 </a>
 
 <main id="main-content">
@@ -217,8 +214,7 @@ Content must be robust enough to be interpreted by a wide variety of user agents
   aria-expanded={isOpen}
   aria-controls="dropdown-menu"
   onClick={() => setIsOpen(!isOpen)}
->
-  Menu {isOpen ? <ChevronUp /> : <ChevronDown />}
+> Menu {isOpen ? <ChevronUp /> : <ChevronDown />}
 </button>
 <div id="dropdown-menu" hidden={!isOpen}>
   {/* Dropdown content */}
@@ -228,8 +224,7 @@ Content must be robust enough to be interpreted by a wide variety of user agents
 <button
   aria-pressed={isPressed}
   onClick={() => setIsPressed(!isPressed)}
->
-  {isPressed ? 'Pressed' : 'Not Pressed'}
+> {isPressed ? 'Pressed' : 'Not Pressed'}
 </button>
 
 // aria-selected for selectable items
@@ -243,8 +238,7 @@ Content must be robust enough to be interpreted by a wide variety of user agents
   aria-checked={isChecked}
   tabIndex={0}
   onClick={() => setIsChecked(!isChecked)}
->
-  Custom Checkbox
+> Custom Checkbox
 </div>
 ```
 
@@ -256,8 +250,7 @@ Content must be robust enough to be interpreted by a wide variety of user agents
   role="status"
   aria-live="polite"
   aria-atomic="true"
->
-  {statusMessage}
+> {statusMessage}
 </div>
 
 // For urgent announcements
@@ -265,8 +258,7 @@ Content must be robust enough to be interpreted by a wide variety of user agents
   role="alert"
   aria-live="assertive"
   aria-atomic="true"
->
-  {errorMessage}
+> {errorMessage}
 </div>
 
 // For form validation
@@ -314,17 +306,17 @@ Content must be robust enough to be interpreted by a wide variety of user agents
 ### Poor Contrast Examples (Avoid)
 
 ```tsx
-// ❌ Insufficient contrast
+// FAIL: Insufficient contrast
 <p className="text-gray-400 bg-white">
   Poor contrast (2.8:1) - fails WCAG AA
 </p>
 
-// ❌ Don't rely on color alone
+// FAIL: Don't rely on color alone
 <button className="bg-red-500 text-white">
   Error Button (color alone indicates state)
 </button>
 
-// ✅ Better: Use icons + color
+// PASS: Better: Use icons + color
 <button className="bg-red-500 text-white flex items-center gap-2">
   <AlertCircle size={20} />
   Error: Fix Issues
@@ -562,8 +554,7 @@ import { MagnifyingGlass, Bell, User } from '@phosphor-icons/react';
     focus:ring-2 focus:ring-blue-500
     focus:rounded
   "
->
-  Link Text
+> Link Text
 </a>
 
 // Focus within containers
@@ -708,8 +699,7 @@ test('should have no accessibility violations', async () => {
   aria-labelledby="modal-title"
   aria-describedby="modal-description"
   className="fixed inset-0 z-50 flex items-center justify-center"
->
-  <div className="fixed inset-0 bg-black/50" onClick={onClose} />
+> <div className="fixed inset-0 bg-black/50" onClick={onClose} />
   <div className="relative bg-white rounded-lg p-6 max-w-md">
     <h2 id="modal-title" className="text-xl font-bold mb-2">
       Confirm Action

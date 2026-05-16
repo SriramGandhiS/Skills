@@ -247,7 +247,7 @@ PUT    /api/markets/:id          # Marketi güncelle (tam)
 PATCH  /api/markets/:id          # Marketi güncelle (kısmi)
 DELETE /api/markets/:id          # Marketi sil
 
-# Filtreleme için query parametreleri
+## Filtreleme için query parametreleri
 GET /api/markets?status=active&limit=10&offset=0
 ```
 

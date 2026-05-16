@@ -29,13 +29,13 @@ allowed_tools: ["Bash", "Read", "Write", "Grep", "Glob"]
 ### ステップ1: Gitデータの収集
 
 ```bash
-# ファイル変更を含む最近のコミットを取得
+## ファイル変更を含む最近のコミットを取得
 git log --oneline -n ${COMMITS:-200} --name-only --pretty=format:"%H|%s|%ad" --date=short
 
-# ファイル別のコミット頻度を取得
+## ファイル別のコミット頻度を取得
 git log --oneline -n 200 --name-only | grep -v "^$" | grep -v "^[a-f0-9]" | sort | uniq -c | sort -rn | head -20
 
-# コミットメッセージのパターンを取得
+## コミットメッセージのパターンを取得
 git log --oneline -n 200 | cut -d' ' -f2- | head -50
 ```
 
@@ -64,7 +64,7 @@ source: local-git-analysis
 analyzed_commits: {count}
 ---
 
-# {Repo Name} Patterns
+## {Repo Name} Patterns
 
 ## コミット規約
 {検出されたコミットメッセージパターン}
@@ -92,7 +92,7 @@ domain: git
 source: local-repo-analysis
 ---
 
-# Conventional Commitsを使用
+## Conventional Commitsを使用
 
 ## Action
 コミットにプレフィックス: feat:, fix:, chore:, docs:, test:, refactor:
@@ -115,7 +115,7 @@ source: local-git-analysis
 analyzed_commits: 150
 ---
 
-# My App Patterns
+## My App Patterns
 
 ## コミット規約
 

@@ -1,4 +1,4 @@
-﻿---
+---
 name: quarkus-patterns
 description: Quarkus 3.x LTS architecture patterns with Camel for messaging, RESTful API design, CDI services, data access with Panache, and async processing. Use for Java Quarkus backend work with event-driven architectures.
 origin: ECC
@@ -502,7 +502,7 @@ public class DocumentCacheService {
 ## Configuration as YAML
 
 ```yaml
-# application.yml
+## application.yml
 "%dev":
   quarkus:
     datasource:
@@ -546,7 +546,7 @@ public class DocumentCacheService {
     username: ${RABBITMQ_USER}
     password: ${RABBITMQ_PASSWORD}
 
-# Camel configuration
+## Camel configuration
 camel:
   rabbitmq:
     queue:

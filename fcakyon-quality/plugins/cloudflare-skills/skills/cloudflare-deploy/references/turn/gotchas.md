@@ -40,53 +40,53 @@ Exceeding limits results in **packet drops**.
 ### Setting TTL > 48 hours
 
 ```typescript
-// ❌ BAD: API will reject
+// FAIL: BAD: API will reject
 const creds = await generate({ ttl: 604800 });  // 7 days
 
-// ✅ GOOD:
+// PASS: GOOD:
 const creds = await generate({ ttl: 86400 });   // 24 hours
 ```
 
 ### Hardcoding IPs without monitoring
 
 ```typescript
-// ❌ BAD: IPs can change with 14-day notice
+// FAIL: BAD: IPs can change with 14-day notice
 const iceServers = [{ urls: 'turn:141.101.90.1:3478' }];
 
-// ✅ GOOD: Use DNS
+// PASS: GOOD: Use DNS
 const iceServers = [{ urls: 'turn:turn.cloudflare.com:3478' }];
 ```
 
 ### Using port 53 in browsers
 
 ```typescript
-// ❌ BAD: Blocked by Chrome/Firefox
+// FAIL: BAD: Blocked by Chrome/Firefox
 urls: ['turn:turn.cloudflare.com:53']
 
-// ✅ GOOD: Filter port 53
+// PASS: GOOD: Filter port 53
 urls: urls.filter(url => !url.includes(':53'))
 ```
 
 ### Not handling credential expiry
 
 ```typescript
-// ❌ BAD: Credentials expire but call continues → connection drops
+// FAIL: BAD: Credentials expire but call continues → connection drops
 const creds = await fetchCreds();
 const pc = new RTCPeerConnection({ iceServers: creds });
 
-// ✅ GOOD: Refresh before expiry
+// PASS: GOOD: Refresh before expiry
 setInterval(() => refreshCredentials(pc), 3000000);  // 50 min
 ```
 
 ### Missing ICE restart support
 
 ```typescript
-// ❌ BAD: No recovery from TURN maintenance
+// FAIL: BAD: No recovery from TURN maintenance
 pc.addEventListener('iceconnectionstatechange', () => {
   console.log('State changed:', pc.iceConnectionState);
 });
 
-// ✅ GOOD: Implement ICE restart
+// PASS: GOOD: Implement ICE restart
 pc.addEventListener('iceconnectionstatechange', async () => {
   if (pc.iceConnectionState === 'failed') {
     await refreshCredentials(pc);
@@ -98,13 +98,13 @@ pc.addEventListener('iceconnectionstatechange', async () => {
 ### Exposing TURN key secret client-side
 
 ```typescript
-// ❌ BAD: Secret exposed to client
+// FAIL: BAD: Secret exposed to client
 const secret = 'your-turn-key-secret';
 const response = await fetch(`https://rtc.live.cloudflare.com/v1/turn/...`, {
   headers: { 'Authorization': `Bearer ${secret}` }
 });
 
-// ✅ GOOD: Generate credentials server-side
+// PASS: GOOD: Generate credentials server-side
 const response = await fetch('/api/turn-credentials');
 ```
 
@@ -121,7 +121,7 @@ Implement in all production apps:
 
 ```typescript
 pc.addEventListener('iceconnectionstatechange', async () => {
-  if (pc.iceConnectionState === 'failed' || 
+  if (pc.iceConnectionState === 'failed' ||
       pc.iceConnectionState === 'disconnected') {
     await refreshTURNCredentials(pc);
     pc.restartIce();
@@ -184,7 +184,7 @@ if (ttl > 172800) {
 
 **Cause**: Credentials expired (48hr max)
 
-**Solution**: 
+**Solution**:
 - Set TTL to expected session duration
 - Implement credential refresh with setConfiguration()
 - Use ICE restart if connection fails
@@ -211,7 +211,7 @@ const filtered = urls.filter(url => !url.includes(':53'));
 
 **Cause**: Cloudflare changed IP addresses (14-day notice)
 
-**Solution**: 
+**Solution**:
 - Use DNS hostnames (`turn.cloudflare.com`)
 - Monitor DNS changes with automated alerts
 - Update allowlists within 14 days if using IP allowlisting

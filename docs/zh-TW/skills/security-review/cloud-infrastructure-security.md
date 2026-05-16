@@ -24,7 +24,7 @@
 #### 最小權限原則
 
 ```yaml
-# PASS: 正確：最小權限
+## PASS: 正確：最小權限
 iam_role:
   permissions:
     - s3:GetObject  # 只有讀取存取
@@ -32,7 +32,7 @@ iam_role:
   resources:
     - arn:aws:s3:::my-bucket/*  # 只有特定 bucket
 
-# FAIL: 錯誤：過於廣泛的權限
+## FAIL: 錯誤：過於廣泛的權限
 iam_role:
   permissions:
     - s3:*  # 所有 S3 動作
@@ -43,7 +43,7 @@ iam_role:
 #### 多因素認證（MFA）
 
 ```bash
-# 總是為 root/admin 帳戶啟用 MFA
+## 總是為 root/admin 帳戶啟用 MFA
 aws iam enable-mfa-device \
   --user-name admin \
   --serial-number arn:aws:iam::123456789:mfa/admin \
@@ -79,7 +79,7 @@ const apiKey = process.env.API_KEY; // 未輪換、未稽核
 #### 密鑰輪換
 
 ```bash
-# 為資料庫憑證設定自動輪換
+## 為資料庫憑證設定自動輪換
 aws secretsmanager rotate-secret \
   --secret-id prod/db-password \
   --rotation-lambda-arn arn:aws:lambda:region:account:function:rotate \
@@ -99,7 +99,7 @@ aws secretsmanager rotate-secret \
 #### VPC 和防火牆設定
 
 ```terraform
-# PASS: 正確：限制的安全群組
+## PASS: 正確：限制的安全群組
 resource "aws_security_group" "app" {
   name = "app-sg"
 
@@ -118,7 +118,7 @@ resource "aws_security_group" "app" {
   }
 }
 
-# FAIL: 錯誤：對網際網路開放
+## FAIL: 錯誤：對網際網路開放
 resource "aws_security_group" "bad" {
   ingress {
     from_port   = 0
@@ -177,7 +177,7 @@ const logSecurityEvent = async (event: SecurityEvent) => {
 #### 安全管線設定
 
 ```yaml
-# PASS: 正確：安全的 GitHub Actions 工作流程
+## PASS: 正確：安全的 GitHub Actions 工作流程
 name: Deploy
 
 on:
@@ -260,11 +260,11 @@ export default {
 #### WAF 規則
 
 ```bash
-# 啟用 Cloudflare WAF 管理規則
-# - OWASP 核心規則集
-# - Cloudflare 管理規則集
-# - 速率限制規則
-# - Bot 保護
+## 啟用 Cloudflare WAF 管理規則
+## - OWASP 核心規則集
+## - Cloudflare 管理規則集
+## - 速率限制規則
+## - Bot 保護
 ```
 
 #### 驗證步驟
@@ -281,7 +281,7 @@ export default {
 #### 自動備份
 
 ```terraform
-# PASS: 正確：自動 RDS 備份
+## PASS: 正確：自動 RDS 備份
 resource "aws_db_instance" "main" {
   allocated_storage     = 20
   engine               = "postgres"
@@ -327,10 +327,10 @@ resource "aws_db_instance" "main" {
 ### S3 Bucket 暴露
 
 ```bash
-# FAIL: 錯誤：公開 bucket
+## FAIL: 錯誤：公開 bucket
 aws s3api put-bucket-acl --bucket my-bucket --acl public-read
 
-# PASS: 正確：私有 bucket 並有特定存取
+## PASS: 正確：私有 bucket 並有特定存取
 aws s3api put-bucket-acl --bucket my-bucket --acl private
 aws s3api put-bucket-policy --bucket my-bucket --policy file://policy.json
 ```
@@ -338,12 +338,12 @@ aws s3api put-bucket-policy --bucket my-bucket --policy file://policy.json
 ### RDS 公開存取
 
 ```terraform
-# FAIL: 錯誤
+## FAIL: 錯誤
 resource "aws_db_instance" "bad" {
   publicly_accessible = true  # 絕不這樣做！
 }
 
-# PASS: 正確
+## PASS: 正確
 resource "aws_db_instance" "good" {
   publicly_accessible = false
   vpc_security_group_ids = [aws_security_group.db.id]

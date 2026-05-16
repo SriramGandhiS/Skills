@@ -1,10 +1,7 @@
 #!/usr/bin/env bash
-#
-# Test Memory Engine Core Functionality
+# # Test Memory Engine Core Functionality
 # Tests: initialization, episode storage, pattern storage, skill storage, retrieval
-#
-
-set -uo pipefail
+# set -uo pipefail
 # Note: Not using -e to allow collecting all test results
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"

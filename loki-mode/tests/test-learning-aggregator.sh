@@ -1,13 +1,11 @@
 #!/usr/bin/env bash
 # Test learning signal aggregation
-#
-# This test verifies that the learning aggregator correctly:
+# # This test verifies that the learning aggregator correctly:
 # - Reads signals from .loki/learning/signals/
 # - Aggregates by type, source, and time window
 # - Identifies patterns across signals
 # - Saves aggregated learnings to .loki/learning/aggregated/
-#
-# Run: ./tests/test-learning-aggregator.sh
+# # Run: ./tests/test-learning-aggregator.sh
 
 set -euo pipefail
 

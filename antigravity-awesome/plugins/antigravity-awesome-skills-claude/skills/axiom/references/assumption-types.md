@@ -23,7 +23,7 @@ Most first-principles tools skip classification and jump straight to "question e
 
 ---
 
-### 🔵 Type 1: Physical Fact / 物理事实
+### Type 1: Physical Fact / 物理事实
 
 **Definition / 定义:**
 Laws of nature, mathematical truths, verified scientific constants, and logical tautologies. These cannot be changed by human will, policy, or belief.
@@ -43,7 +43,7 @@ Laws of nature, mathematical truths, verified scientific constants, and logical 
 
 **Examples / 示例:**
 
-| ✅ Genuine Physical Facts | ❌ Often Misclassified As Facts |
+| PASS: Genuine Physical Facts | FAIL: Often Misclassified As Facts |
 |---------------------------|-------------------------------|
 | Gravity exists (9.8 m/s²) | "Housing always appreciates" (convention) |
 | Entropy increases over time | "You need 8 hours of sleep" (convention — varies by person) |
@@ -53,11 +53,11 @@ Laws of nature, mathematical truths, verified scientific constants, and logical 
 **Common Misclassification Trap:**
 People often classify **social patterns** or **statistical trends** as physical facts. "The economy always recovers" is a historical pattern, not a law of physics. "People resist change" is a tendency, not a constant.
 
-> ⚠️ 常见误分类：把**社会规律**或**统计趋势**当成物理事实。"经济总会复苏"是历史规律，不是物理定律。
+> WARNING: 常见误分类：把**社会规律**或**统计趋势**当成物理事实。"经济总会复苏"是历史规律，不是物理定律。
 
 ---
 
-### 🟡 Type 2: Historical Convention / 历史惯例
+### Type 2: Historical Convention / 历史惯例
 
 **Definition / 定义:**
 Practices, rules, or beliefs that were once valid and widely adopted but originated in a specific context. The context may have changed, making the convention obsolete or optional.
@@ -89,16 +89,16 @@ Practices, rules, or beliefs that were once valid and widely adopted but origina
 
 **Cross-Cultural Note / 跨文化注意:**
 Some conventions are deeply culture-specific:
-- 🇨🇳 "35岁是职业分水岭" — This is a Chinese labor market convention, virtually unknown in the West
-- 🇺🇸 "You should change jobs every 2-3 years" — This is an American tech industry convention, unusual in Japan or Germany
-- 🇨🇳 "有房才能结婚" — Chinese marriage convention, not a global reality
-- 🇺🇸 "Follow your passion" — American cultural narrative, less common in collectivist cultures
+- "35岁是职业分水岭" — This is a Chinese labor market convention, virtually unknown in the West
+- "You should change jobs every 2-3 years" — This is an American tech industry convention, unusual in Japan or Germany
+- "有房才能结婚" — Chinese marriage convention, not a global reality
+- "Follow your passion" — American cultural narrative, less common in collectivist cultures
 
 > 有些惯例是文化特有的。"35岁危机"几乎只存在于中国劳动力市场。"Follow your passion"主要是美国文化叙事。
 
 ---
 
-### 🔴 Type 3: Subjective Belief / 主观信念
+### Type 3: Subjective Belief / 主观信念
 
 **Definition / 定义:**
 Conclusions drawn from personal experience, projected as general truths. The person genuinely believes them, but they are shaped by a narrow sample of experiences, cognitive biases, and emotional associations.
@@ -131,11 +131,11 @@ Conclusions drawn from personal experience, projected as general truths. The per
 **Red Flag — Belief Disguised As Fact:**
 If someone says "That's just how it is" or "Everyone knows that" about something that isn't a physical law, it's almost certainly a belief or convention that has been promoted to "fact" status in their mind.
 
-> 🚩 如果有人说"就是这样的"或"大家都知道"，但说的不是物理定律，那几乎肯定是信念或惯例被提升成了"事实"。
+> 如果有人说"就是这样的"或"大家都知道"，但说的不是物理定律，那几乎肯定是信念或惯例被提升成了"事实"。
 
 ---
 
-### ⚫ Type 4: Interest-Driven / 利益驱动
+### Type 4: Interest-Driven / 利益驱动
 
 **Definition / 定义:**
 Assumptions that someone (an industry, company, influencer, or social group) actively propagates because they benefit from you believing them. This doesn't mean the claim is always false — but its truth is incidental to why it's being promoted.
@@ -168,8 +168,8 @@ Assumptions that someone (an industry, company, influencer, or social group) act
 | "Growth hacking is essential for startups" | Growth consultancies, SaaS tools |
 
 **Cross-Cultural Note:**
-- 🇨🇳 Chinese internet is saturated with interest-driven assumptions from: 知识付费 platforms, 房产中介, 保险销售, 创业导师, 消费主义 KOL
-- 🇺🇸 American media is saturated with: VC-backed startup mythology, credentialism pushed by universities, lifestyle inflation pushed by advertising
+- Chinese internet is saturated with interest-driven assumptions from: 知识付费 platforms, 房产中介, 保险销售, 创业导师, 消费主义 KOL
+- American media is saturated with: VC-backed startup mythology, credentialism pushed by universities, lifestyle inflation pushed by advertising
 
 > 中国互联网充满了知识付费、房产中介、保险销售的利益驱动假设。美国媒体充满了 VC 支持的创业神话和大学推动的学历主义。
 
@@ -187,10 +187,10 @@ Many real-world assumptions are **hybrids**. When you encounter one:
 
 | Assumption | Primary | Secondary | Why |
 |-----------|---------|-----------|-----|
-| "现在是创业的好时机" | 🟡 Convention | ⚫ Interest-driven | The "good timing" narrative is a convention, but startup media amplifies it for clicks and funding |
-| "A college degree pays for itself" | 🟡 Convention | ⚫ Interest-driven | Was true statistically, but universities have incentive to promote it regardless |
-| "房价只涨不跌" | 🔴 Belief | 🟡 Convention | Personal experience from a specific era, reinforced by industry-wide convention |
-| "Remote workers are less productive" | 🔴 Belief | 🟡 Convention | Manager's personal bias, reinforced by traditional management convention |
+| "现在是创业的好时机" |  Convention |  Interest-driven | The "good timing" narrative is a convention, but startup media amplifies it for clicks and funding |
+| "A college degree pays for itself" |  Convention |  Interest-driven | Was true statistically, but universities have incentive to promote it regardless |
+| "房价只涨不跌" |  Belief |  Convention | Personal experience from a specific era, reinforced by industry-wide convention |
+| "Remote workers are less productive" |  Belief |  Convention | Manager's personal bias, reinforced by traditional management convention |
 
 ---
 
@@ -213,15 +213,15 @@ Many real-world assumptions are **hybrids**. When you encounter one:
 ## Quick Reference Card / 快速参考卡
 
 ```
-🔵 PHYSICAL FACT     → Can you find ANY counterexample? → No  → Accept it
-🟡 HISTORICAL CONV.  → When did this rule form?         → Check if context changed
-🔴 SUBJECTIVE BELIEF → Who told you this?               → Seek counter-evidence
-⚫ INTEREST-DRIVEN   → Who profits from this?           → Follow the money
+ PHYSICAL FACT     → Can you find ANY counterexample? → No  → Accept it
+ HISTORICAL CONV.  → When did this rule form?         → Check if context changed
+ SUBJECTIVE BELIEF → Who told you this?               → Seek counter-evidence
+ INTEREST-DRIVEN   → Who profits from this?           → Follow the money
 ```
 
 ```
-🔵 物理事实  → 能找到反例吗？       → 不能 → 接受
-🟡 历史惯例  → 这个规则什么时候形成的？ → 检查环境是否已变
-🔴 主观信念  → 谁告诉你的？          → 寻找反面证据
-⚫ 利益驱动  → 谁因此获利？          → 追踪利益链
+ 物理事实  → 能找到反例吗？       → 不能 → 接受
+ 历史惯例  → 这个规则什么时候形成的？ → 检查环境是否已变
+ 主观信念  → 谁告诉你的？          → 寻找反面证据
+ 利益驱动  → 谁因此获利？          → 追踪利益链
 ```

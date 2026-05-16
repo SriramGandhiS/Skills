@@ -52,7 +52,7 @@ REPEAT:   Next feature/scenario
 Usuário: /tdd Preciso de uma função para calcular a pontuação de liquidez do mercado
 
 Agent (tdd-guide):
-# Sessão TDD: Calculadora de Pontuação de Liquidez de Mercado
+## Sessão TDD: Calculadora de Pontuação de Liquidez de Mercado
 
 ## Etapa 1: Definir Interface (SCAFFOLD)
 

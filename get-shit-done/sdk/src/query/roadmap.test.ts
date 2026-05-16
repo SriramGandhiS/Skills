@@ -117,10 +117,10 @@ describe('stripShippedMilestones', () => {
     expect(stripShippedMilestones('no details here')).toBe('no details here');
   });
 
-  // Bug #2496: inline ✅ SHIPPED heading sections must be stripped
-  it('strips ## heading sections marked ✅ SHIPPED', () => {
+  // Bug #2496: inline PASS: SHIPPED heading sections must be stripped
+  it('strips ## heading sections marked PASS: SHIPPED', () => {
     const content = [
-      '## Milestone v1.0: MVP — ✅ SHIPPED 2026-01-15',
+      '## Milestone v1.0: MVP — PASS: SHIPPED 2026-01-15',
       '',
       'Phase 1, Phase 2',
       '',
@@ -137,11 +137,11 @@ describe('stripShippedMilestones', () => {
 
   it('strips multiple inline SHIPPED sections and leaves non-shipped content', () => {
     const content = [
-      '## Milestone v1.0: Alpha — ✅ SHIPPED 2026-01-01',
+      '## Milestone v1.0: Alpha — PASS: SHIPPED 2026-01-01',
       '',
       'Old content',
       '',
-      '## Milestone v1.5: Beta — ✅ SHIPPED 2026-02-01',
+      '## Milestone v1.5: Beta — PASS: SHIPPED 2026-02-01',
       '',
       'More old content',
       '',
@@ -157,9 +157,9 @@ describe('stripShippedMilestones', () => {
   });
 
   // Bug #2508 follow-up: ### headings must be stripped too
-  it('strips ### heading sections marked ✅ SHIPPED', () => {
+  it('strips ### heading sections marked PASS: SHIPPED', () => {
     const content = [
-      '### Milestone v1.0: MVP — ✅ SHIPPED 2026-01-15',
+      '### Milestone v1.0: MVP — PASS: SHIPPED 2026-01-15',
       '',
       'Phase 1, Phase 2',
       '',
@@ -194,7 +194,7 @@ describe('getMilestoneInfo', () => {
   });
 
   it('extracts from yellow-circle in-flight marker (GSD ROADMAP template)', async () => {
-    const roadmap = '- 🟡 **v3.1 Upstream Landing** — Phase 15 (in flight)';
+    const roadmap = '-  **v3.1 Upstream Landing** — Phase 15 (in flight)';
     await writeFile(join(tmpDir, '.planning', 'ROADMAP.md'), roadmap);
     const info = await getMilestoneInfo(tmpDir);
     expect(info.version).toBe('v3.1');
@@ -204,9 +204,9 @@ describe('getMilestoneInfo', () => {
   it('uses last **vX.Y Title** in milestone list before ## Phases when no emoji match', async () => {
     const roadmap = `## Milestones
 
-- ✅ **v1.0 A**
-- ✅ **v3.0 B**
-- ✅ **v3.1 Current Name**
+- PASS: **v1.0 A**
+- PASS: **v3.0 B**
+- PASS: **v3.1 Current Name**
 
 ## Phases
 `;
@@ -235,7 +235,7 @@ describe('getMilestoneInfo', () => {
   // Bug #2495: STATE.md must take priority over ROADMAP heading matching
   it('prefers STATE.md milestone over ROADMAP heading match', async () => {
     const roadmap = [
-      '## Milestone v1.0: Shipped — ✅ SHIPPED 2026-01-01',
+      '## Milestone v1.0: Shipped — PASS: SHIPPED 2026-01-01',
       '',
       'Phase 1',
       '',
@@ -274,7 +274,7 @@ describe('getMilestoneInfo', () => {
   it('returns correct milestone from STATE.md even when ROADMAP inline-SHIPPED stripping would fix it', async () => {
     // ROADMAP with an unstripped shipped milestone heading (pre-fix state)
     const roadmap = [
-      '## Milestone v1.0: Old — ✅ SHIPPED 2026-01-01',
+      '## Milestone v1.0: Old — PASS: SHIPPED 2026-01-01',
       '',
       'Old phases',
       '',
@@ -319,7 +319,7 @@ describe('extractCurrentMilestone', () => {
 ### Phase 999.1: Parking lot item A
 ### Phase 999.2: Parking lot item B
 
-### 🚧 v2.0 My Milestone (In Progress)
+### v2.0 My Milestone (In Progress)
 - [ ] **Phase 100: Real work**
 
 ## v2.0 Phase Details
@@ -349,7 +349,7 @@ describe('extractCurrentMilestone', () => {
 
 ## Phases
 
-### 🚧 v1.1 Launch-Ready (In Progress)
+### v1.1 Launch-Ready (In Progress)
 
 ### Phase 11: Structured Logging
 **Goal**: Add structured logging
@@ -381,7 +381,7 @@ describe('extractCurrentMilestone', () => {
 
 ## Phases
 
-### 🚧 v1.1 Launch-Ready (In Progress)
+### v1.1 Launch-Ready (In Progress)
 
 ### PHASE 11: Structured Logging
 **Goal**: Add structured logging
@@ -415,13 +415,13 @@ describe('extractCurrentMilestone', () => {
     const roadmapWithActiveDetails = `# Roadmap
 
 ## Milestones
-- ✅ **v0.8 Foundation** — shipped
-- 📋 **v0.9 Local-First Bus** — active
+- PASS: **v0.8 Foundation** — shipped
+- **v0.9 Local-First Bus** — active
 
 ## Phases
 
 <details>
-<summary>✅ v0.8 Foundation — SHIPPED 2026-04-15</summary>
+<summary>PASS: v0.8 Foundation — SHIPPED 2026-04-15</summary>
 
 ### Phase 1: Old phase
 **Goal:** Old goal.
@@ -792,7 +792,7 @@ Detail
   it('bug-2422: does not truncate at same-version sub-heading (## v2.0 Phase Details)', async () => {
     const roadmapWithDetails = `# ROADMAP
 
-### 🚧 v2.0 My Milestone (In Progress)
+### v2.0 My Milestone (In Progress)
 - [ ] **Phase 100: Real work**
 
 ## v2.0 Phase Details
@@ -865,7 +865,7 @@ describe('roadmapGetPhase', () => {
     const roadmap = `# Roadmap
 
 ## Milestones
-- 📋 **v0.9 Local-First Bus** — active
+- **v0.9 Local-First Bus** — active
 
 <details>
 <summary>v0.9 Local-First Bus (active) — Phase Details</summary>
@@ -984,7 +984,7 @@ describe('roadmapAnalyze', () => {
     const roadmap = `# Roadmap
 
 ## Milestones
-- 📋 **v0.9 Local-First Bus** — active
+- **v0.9 Local-First Bus** — active
 
 <details>
 <summary>v0.9 Local-First Bus (active) — Phase Details</summary>
@@ -1050,7 +1050,7 @@ describe('extractNextMilestoneSection', () => {
   const MULTI = [
     '# Roadmap',
     '',
-    '## Milestone v1.0: Old — ✅ SHIPPED 2026-01-01',
+    '## Milestone v1.0: Old — PASS: SHIPPED 2026-01-01',
     '',
     'Shipped stuff.',
     '',

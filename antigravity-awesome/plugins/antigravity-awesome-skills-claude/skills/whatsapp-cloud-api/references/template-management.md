@@ -135,7 +135,7 @@ await create_template(
     components=[
         {
             "type": "BODY",
-            "text": "Ola {{1}}, bem-vindo a nossa loja! 🎉\n\nConfira nossas ofertas exclusivas.",
+            "text": "Ola {{1}}, bem-vindo a nossa loja! \n\nConfira nossas ofertas exclusivas.",
             "example": {"body_text": [["Maria"]]}
         },
         {

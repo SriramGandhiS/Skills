@@ -298,7 +298,7 @@ jobs:
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         run: |
           if ! git diff --quiet || [ -n "$(git ls-files --others --exclude-standard)" ]; then
-            echo "❌ Detected leftover drift after the canonical bot sync."
+            echo "FAIL: Detected leftover drift after the canonical bot sync."
             echo
             echo "The bot may only commit managed canonical files and must leave a clean tree."
             echo "To fix locally, run the canonical maintainer flow:"

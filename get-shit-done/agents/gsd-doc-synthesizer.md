@@ -4,11 +4,11 @@ description: Synthesizes classified planning docs into a single consolidated con
 tools: Read, Write, Grep, Glob, Bash
 color: orange
 # hooks:
-#   PostToolUse:
-#     - matcher: "Write|Edit"
-#       hooks:
-#         - type: command
-#           command: "true"
+# PostToolUse:
+# - matcher: "Write|Edit"
+# hooks:
+# - type: command
+# command: "true"
 ---
 
 <role>

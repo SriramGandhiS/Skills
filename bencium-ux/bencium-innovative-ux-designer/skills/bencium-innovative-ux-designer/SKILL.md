@@ -87,7 +87,7 @@ Choose a clear aesthetic direction and execute with precision:
    - Cards can use borders, background differentiation, OR dramatic shadows for depth
    - Animations follow real-world physics principles adapted to digital responsiveness
 
-   **Examples:**
+**Examples:**
    - Clickable: Use distinct colors, hover state changes, cursor feedback, subtle lift effects
    - Containers: Use borders, background shifts, generous padding, OR shadow depth
    - Hierarchy: Use scale, weight, spacing, AND elevation when it serves the aesthetic
@@ -362,7 +362,6 @@ Reduce hierarchy levels on small screens (fewer distinct sizes)
 
 ## Interaction Design
 
-
 **Motion Specification:**
 
 For detailed motion specs, see MOTION-SPEC.md (easing curves, duration tables, state-specific animations, implementation patterns).
@@ -427,19 +426,19 @@ For detailed motion specs, see MOTION-SPEC.md (easing curves, duration tables, s
 
    Prioritize natural language interaction where appropriate:
 
-   **Four types:**
+**Four types:**
    - **Pure chat**: Full conversation (AI assistants, support bots)
    - **Command palette**: Text-based shortcuts (Cmd+K, search everywhere)
    - **Smart search**: Natural language queries (search "meetings next week" vs filtering)
    - **Form alternatives**: Conversational data collection ("What's your name?" vs form fields)
 
-   **When to use:**
+**When to use:**
    - Complex searches with multiple variables
    - Task guidance (wizards, onboarding)
    - Contextual help
    - Quick actions (command palette)
 
-   **When NOT to use:**
+**When NOT to use:**
    - Simple forms (just use inputs)
    - Precise control interfaces (design tools, dashboards)
    - High-frequency repetitive tasks
@@ -618,8 +617,7 @@ import { ArrowRight } from "@phosphor-icons/react";
 
 <Button
   className="bg-slate-800 hover:bg-slate-700 text-white px-6 py-3 rounded-lg transition-colors duration-200"
->
-  Get Started
+> Get Started
   <ArrowRight className="ml-2" />
 </Button>
 ```
@@ -677,7 +675,7 @@ Which direction feels right for your brand?
 
 ## Common Patterns to Avoid
 
-❌ **NEVER:**
+FAIL: **NEVER:**
 - Use Inter, Roboto, Arial, Space Grotesk as primary fonts
 - Use generic SaaS blue (#3B82F6) or purple gradients on white
 - Copy Apple's design language or use glass morphism
@@ -687,7 +685,7 @@ Which direction feels right for your brand?
 - Use animations that delay user actions
 - Create cluttered interfaces where elements compete
 
-✅ **ALWAYS:**
+PASS: **ALWAYS:**
 - Ask about purpose, tone, constraints, differentiation FIRST
 - Then commit BOLDLY to a distinctive aesthetic direction
 - Use unexpected, characterful typography choices

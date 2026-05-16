@@ -2,53 +2,47 @@
 #===============================================================================
 # Loki Mode - Autonomous Runner
 # Single script that handles prerequisites, setup, and autonomous execution
-#
-# Usage:
-#   ./autonomy/run.sh [PRD_PATH]
-#   ./autonomy/run.sh ./docs/requirements.md
-#   ./autonomy/run.sh                          # Interactive mode
-#
-# Environment Variables:
-#   LOKI_MAX_RETRIES    - Max retry attempts (default: 50)
-#   LOKI_BASE_WAIT      - Base wait time in seconds (default: 60)
-#   LOKI_MAX_WAIT       - Max wait time in seconds (default: 3600)
-#   LOKI_SKIP_PREREQS   - Skip prerequisite checks (default: false)
-#   LOKI_DASHBOARD      - Enable web dashboard (default: true)
-#   LOKI_DASHBOARD_PORT - Dashboard port (default: 57374)
-#
-# Resource Monitoring (prevents system overload):
-#   LOKI_RESOURCE_CHECK_INTERVAL - Check resources every N seconds (default: 300 = 5min)
-#   LOKI_RESOURCE_CPU_THRESHOLD  - CPU % threshold to warn (default: 80)
-#   LOKI_RESOURCE_MEM_THRESHOLD  - Memory % threshold to warn (default: 80)
-#
-# Security & Autonomy Controls (Enterprise):
-#   LOKI_STAGED_AUTONOMY    - Require approval before execution (default: false)
-#   LOKI_AUDIT_LOG          - Enable audit logging (default: false)
-#   LOKI_MAX_PARALLEL_AGENTS - Limit concurrent agent spawning (default: 10)
-#   LOKI_SANDBOX_MODE       - Run in sandboxed container (default: false, requires Docker)
-#   LOKI_ALLOWED_PATHS      - Comma-separated paths agents can modify (default: all)
-#   LOKI_BLOCKED_COMMANDS   - Comma-separated blocked shell commands (default: rm -rf /)
-#
-# SDLC Phase Controls (all enabled by default, set to 'false' to skip):
-#   LOKI_PHASE_UNIT_TESTS      - Run unit tests (default: true)
-#   LOKI_PHASE_API_TESTS       - Functional API testing (default: true)
-#   LOKI_PHASE_E2E_TESTS       - E2E/UI testing with Playwright (default: true)
-#   LOKI_PHASE_SECURITY        - Security scanning OWASP/auth (default: true)
-#   LOKI_PHASE_INTEGRATION     - Integration tests SAML/OIDC/SSO (default: true)
-#   LOKI_PHASE_CODE_REVIEW     - 3-reviewer parallel code review (default: true)
-#   LOKI_PHASE_WEB_RESEARCH    - Competitor/feature gap research (default: true)
-#   LOKI_PHASE_PERFORMANCE     - Load/performance testing (default: true)
-#   LOKI_PHASE_ACCESSIBILITY   - WCAG compliance testing (default: true)
-#   LOKI_PHASE_REGRESSION      - Regression testing (default: true)
-#   LOKI_PHASE_UAT             - UAT simulation (default: true)
-#
-# Autonomous Loop Controls (Ralph Wiggum Mode):
-#   LOKI_COMPLETION_PROMISE    - EXPLICIT stop condition text (default: none - runs forever)
-#                                Example: "ALL TESTS PASSING 100%"
-#                                Only stops when Claude outputs this EXACT text
-#   LOKI_MAX_ITERATIONS        - Max loop iterations before exit (default: 1000)
-#   LOKI_PERPETUAL_MODE        - Ignore ALL completion signals (default: false)
-#                                Set to 'true' for truly infinite operation
+# # Usage:
+# ./autonomy/run.sh [PRD_PATH]
+# ./autonomy/run.sh ./docs/requirements.md
+# ./autonomy/run.sh                          # Interactive mode
+# # Environment Variables:
+# LOKI_MAX_RETRIES    - Max retry attempts (default: 50)
+# LOKI_BASE_WAIT      - Base wait time in seconds (default: 60)
+# LOKI_MAX_WAIT       - Max wait time in seconds (default: 3600)
+# LOKI_SKIP_PREREQS   - Skip prerequisite checks (default: false)
+# LOKI_DASHBOARD      - Enable web dashboard (default: true)
+# LOKI_DASHBOARD_PORT - Dashboard port (default: 57374)
+# # Resource Monitoring (prevents system overload):
+# LOKI_RESOURCE_CHECK_INTERVAL - Check resources every N seconds (default: 300 = 5min)
+# LOKI_RESOURCE_CPU_THRESHOLD  - CPU % threshold to warn (default: 80)
+# LOKI_RESOURCE_MEM_THRESHOLD  - Memory % threshold to warn (default: 80)
+# # Security & Autonomy Controls (Enterprise):
+# LOKI_STAGED_AUTONOMY    - Require approval before execution (default: false)
+# LOKI_AUDIT_LOG          - Enable audit logging (default: false)
+# LOKI_MAX_PARALLEL_AGENTS - Limit concurrent agent spawning (default: 10)
+# LOKI_SANDBOX_MODE       - Run in sandboxed container (default: false, requires Docker)
+# LOKI_ALLOWED_PATHS      - Comma-separated paths agents can modify (default: all)
+# LOKI_BLOCKED_COMMANDS   - Comma-separated blocked shell commands (default: rm -rf /)
+# # SDLC Phase Controls (all enabled by default, set to 'false' to skip):
+# LOKI_PHASE_UNIT_TESTS      - Run unit tests (default: true)
+# LOKI_PHASE_API_TESTS       - Functional API testing (default: true)
+# LOKI_PHASE_E2E_TESTS       - E2E/UI testing with Playwright (default: true)
+# LOKI_PHASE_SECURITY        - Security scanning OWASP/auth (default: true)
+# LOKI_PHASE_INTEGRATION     - Integration tests SAML/OIDC/SSO (default: true)
+# LOKI_PHASE_CODE_REVIEW     - 3-reviewer parallel code review (default: true)
+# LOKI_PHASE_WEB_RESEARCH    - Competitor/feature gap research (default: true)
+# LOKI_PHASE_PERFORMANCE     - Load/performance testing (default: true)
+# LOKI_PHASE_ACCESSIBILITY   - WCAG compliance testing (default: true)
+# LOKI_PHASE_REGRESSION      - Regression testing (default: true)
+# LOKI_PHASE_UAT             - UAT simulation (default: true)
+# # Autonomous Loop Controls (Ralph Wiggum Mode):
+# LOKI_COMPLETION_PROMISE    - EXPLICIT stop condition text (default: none - runs forever)
+# Example: "ALL TESTS PASSING 100%"
+# Only stops when Claude outputs this EXACT text
+# LOKI_MAX_ITERATIONS        - Max loop iterations before exit (default: 1000)
+# LOKI_PERPETUAL_MODE        - Ignore ALL completion signals (default: false)
+# Set to 'true' for truly infinite operation
 #===============================================================================
 
 set -uo pipefail
@@ -732,7 +726,7 @@ generate_dashboard() {
                     <div class="agent-status ${status}">${status}</div>
                     <div class="agent-work">${currentTask}</div>
                     <div class="agent-meta">
-                        <span>⏱ ${duration}</span>
+                        <span> ${duration}</span>
                         <span>✓ ${tasksCount} tasks</span>
                     </div>
                 </div>

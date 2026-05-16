@@ -52,7 +52,7 @@ if pytest tests/test_adaptor_benchmarks.py -v -m benchmark --tb=short -s; then
     echo "✓ Empty vs full skill performance compared"
     echo ""
 
-    echo -e "${YELLOW}📊 Key Insights:${NC}"
+    echo -e "${YELLOW} Key Insights:${NC}"
     echo "• All adaptors complete formatting in < 500ms"
     echo "• Package operations complete in < 1 second"
     echo "• Linear scaling confirmed (not exponential)"

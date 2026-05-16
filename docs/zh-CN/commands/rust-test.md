@@ -40,7 +40,7 @@ REPEAT  -> 下一个测试用例
 User: /rust-test I need a function to validate user registration
 
 Agent:
-# TDD Session: Registration Validator
+## TDD Session: Registration Validator
 
 ## Step 1: Define Interface
 
@@ -252,22 +252,22 @@ proptest! {
 ## 覆盖率命令
 
 ```bash
-# Summary report
+## Summary report
 cargo llvm-cov
 
-# HTML report
+## HTML report
 cargo llvm-cov --html
 
-# Fail if below threshold
+## Fail if below threshold
 cargo llvm-cov --fail-under-lines 80
 
-# Run specific test
+## Run specific test
 cargo test test_name
 
-# Run with output
+## Run with output
 cargo test -- --nocapture
 
-# Run without stopping on first failure
+## Run without stopping on first failure
 cargo test --no-fail-fast
 ```
 
@@ -286,8 +286,8 @@ cargo test --no-fail-fast
 
 * **首先**编写测试，在任何实现之前
 * 每次更改后运行测试
-* 使用 `assert_eq!` 而非 `assert!` 以获得更好的错误信息
-* 在返回 `Result` 的测试中使用 `?` 以获得更清晰的输出
+* 使用 `assert_eq!`而非`assert!` 以获得更好的错误信息
+* 在返回 `Result`的测试中使用`?` 以获得更清晰的输出
 * 测试行为，而非实现
 * 包含边界情况（空值、边界值、错误路径）
 
@@ -295,8 +295,8 @@ cargo test --no-fail-fast
 
 * 在测试之前编写实现
 * 跳过 RED 阶段
-* 在 `Result::is_err()` 可用时使用 `#[should_panic]`
-* 在测试中使用 `sleep()` — 应使用通道或 `tokio::time::pause()`
+* 在 `Result::is_err()`可用时使用`#[should_panic]`
+* 在测试中使用 `sleep()`— 应使用通道或`tokio::time::pause()`
 * 模拟一切 — 在可行时优先使用集成测试
 
 ## 相关命令

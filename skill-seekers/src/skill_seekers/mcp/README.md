@@ -299,19 +299,19 @@ Fast parallel processing: --pdf docs/large.pdf --parallel --workers 8
 ```
 User: Generate config for Svelte at https://svelte.dev/docs
 
-Agent: ✅ Config created: configs/svelte.json
+Agent: PASS: Config created: configs/svelte.json
 
 User: Estimate pages for configs/svelte.json
 
-Agent: 📊 Estimated pages: 150
+Agent:  Estimated pages: 150
 
 User: Scrape docs using configs/svelte.json
 
-Agent: ✅ Skill created at output/svelte/
+Agent: PASS: Skill created at output/svelte/
 
 User: Package skill at output/svelte/
 
-Agent: ✅ Created: output/svelte.zip
+Agent: PASS: Created: output/svelte.zip
        Ready to upload!
 ```
 
@@ -324,11 +324,11 @@ Agent: [Shows all configs: godot, react, vue, django, fastapi, etc.]
 
 User: Scrape docs using configs/react.json
 
-Agent: ✅ Skill created at output/react/
+Agent: PASS: Skill created at output/react/
 
 User: Package skill at output/react/
 
-Agent: ✅ Created: output/react.zip
+Agent: PASS: Created: output/react.zip
 ```
 
 ### Validate Before Scraping
@@ -336,7 +336,7 @@ Agent: ✅ Created: output/react.zip
 ```
 User: Validate configs/godot.json
 
-Agent: ✅ Config is valid!
+Agent: PASS: Config is valid!
         Name: godot
         Base URL: https://docs.godotengine.org/en/stable/
         Max pages: 500
@@ -352,16 +352,16 @@ Agent: [Starts scraping...]
 ```
 User: Scrape PDF at docs/api-manual.pdf and create skill named api-docs
 
-Agent: 📄 Scraping PDF documentation...
-       ✅ Extracted 120 pages
-       ✅ Found 45 code blocks (Python, JavaScript, C++)
-       ✅ Extracted 12 images
-       ✅ Created skill at output/api-docs/
-       📦 Package with: python3 cli/package_skill.py output/api-docs/
+Agent:  Scraping PDF documentation...
+       PASS: Extracted 120 pages
+       PASS: Found 45 code blocks (Python, JavaScript, C++)
+       PASS: Extracted 12 images
+       PASS: Created skill at output/api-docs/
+        Package with: python3 cli/package_skill.py output/api-docs/
 
 User: Package skill at output/api-docs/
 
-Agent: ✅ Created: output/api-docs.zip
+Agent: PASS: Created: output/api-docs.zip
        Ready to upload!
 ```
 
@@ -370,13 +370,13 @@ Agent: ✅ Created: output/api-docs.zip
 ```
 User: Estimate pages for configs/godot.json
 
-Agent: 📊 Estimated pages: 40,000
-       ⚠️  Large documentation detected!
-       💡 Recommend splitting into multiple skills
+Agent:  Estimated pages: 40,000
+       WARNING:  Large documentation detected!
+        Recommend splitting into multiple skills
 
 User: Split configs/godot.json using router strategy
 
-Agent: ✅ Split complete!
+Agent: PASS: Split complete!
         Created 5 sub-skills:
         - godot-scripting.json (5,000 pages)
         - godot-2d.json (8,000 pages)
@@ -387,11 +387,11 @@ Agent: ✅ Split complete!
 User: Scrape all godot sub-skills in parallel
 
 Agent: [Starts scraping all 5 configs in parallel...]
-       ✅ All skills created in 4-8 hours instead of 20-40!
+       PASS: All skills created in 4-8 hours instead of 20-40!
 
 User: Generate router for configs/godot-*.json
 
-Agent: ✅ Router skill created at output/godot/
+Agent: PASS: Router skill created at output/godot/
         Routing logic:
         - "scripting", "gdscript" → godot-scripting
         - "2d", "sprites", "tilemap" → godot-2d
@@ -401,7 +401,7 @@ Agent: ✅ Router skill created at output/godot/
 
 User: Package all godot skills
 
-Agent: ✅ 6 skills packaged:
+Agent: PASS: 6 skills packaged:
        - godot.zip (router)
        - godot-scripting.zip
        - godot-2d.zip

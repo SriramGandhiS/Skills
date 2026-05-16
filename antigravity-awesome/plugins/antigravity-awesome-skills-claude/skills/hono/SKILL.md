@@ -309,14 +309,14 @@ app.get('/stream', c =>
 
 ## Best Practices
 
-- ✅ Use route groups (sub-apps) to keep handlers in separate files — `app.route('/users', usersRouter)`
-- ✅ Use `zValidator` for all request body, query, and param validation
-- ✅ Type Cloudflare Workers bindings with the `Bindings` generic: `new Hono<{ Bindings: Env }>()`
-- ✅ Use the RPC client (`hc`) when your frontend and backend share the same repo
-- ✅ Prefer returning `c.json()`/`c.text()` over `new Response()` for cleaner code
-- ❌ Don't use Node.js-specific APIs (`fs`, `path`, `process`) if you want edge portability
-- ❌ Don't add heavy dependencies — Hono's value is its tiny footprint on edge runtimes
-- ❌ Don't skip middleware typing — use generics (`Variables`, `Bindings`) to keep `c.get()` type-safe
+- PASS: Use route groups (sub-apps) to keep handlers in separate files — `app.route('/users', usersRouter)`
+- PASS: Use `zValidator` for all request body, query, and param validation
+- PASS: Type Cloudflare Workers bindings with the `Bindings` generic: `new Hono<{ Bindings: Env }>()`
+- PASS: Use the RPC client (`hc`) when your frontend and backend share the same repo
+- PASS: Prefer returning `c.json()`/`c.text()` over `new Response()` for cleaner code
+- FAIL: Don't use Node.js-specific APIs (`fs`, `path`, `process`) if you want edge portability
+- FAIL: Don't add heavy dependencies — Hono's value is its tiny footprint on edge runtimes
+- FAIL: Don't skip middleware typing — use generics (`Variables`, `Bindings`) to keep `c.get()` type-safe
 
 ## Security & Safety Notes
 
@@ -329,16 +329,16 @@ app.get('/stream', c =>
 ## Common Pitfalls
 
 - **Problem:** Handler returns `undefined` — response is empty
-  **Solution:** Always `return` a response from handlers: `return c.json(...)` not just `c.json(...)`.
+**Solution:** Always `return` a response from handlers: `return c.json(...)` not just `c.json(...)`.
 
 - **Problem:** Middleware runs after the response is sent
-  **Solution:** Call `await next()` before post-response logic; Hono runs code after `next()` as the response travels back up the chain.
+**Solution:** Call `await next()` before post-response logic; Hono runs code after `next()` as the response travels back up the chain.
 
 - **Problem:** `c.env` is undefined on Node.js
-  **Solution:** Cloudflare `env` bindings only exist in Workers. Use `process.env` on Node.js.
+**Solution:** Cloudflare `env` bindings only exist in Workers. Use `process.env` on Node.js.
 
 - **Problem:** Route not matching — gets a 404
-  **Solution:** Check that `app.route('/prefix', subRouter)` uses the same prefix your client calls. Sub-routers should **not** repeat the prefix in their own routes.
+**Solution:** Check that `app.route('/prefix', subRouter)` uses the same prefix your client calls. Sub-routers should **not** repeat the prefix in their own routes.
 
 ## Related Skills
 

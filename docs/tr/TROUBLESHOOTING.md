@@ -27,18 +27,18 @@ Everything Claude Code (ECC) eklentisi için yaygın sorunlar ve çözümler.
 
 **Çözümler:**
 ```bash
-# 1. Konuşma geçmişini temizle ve yeni başla
-# Claude Code kullan: "New Chat" veya Cmd/Ctrl+Shift+N
+## 1. Konuşma geçmişini temizle ve yeni başla
+## Claude Code kullan: "New Chat" veya Cmd/Ctrl+Shift+N
 
-# 2. Analiz öncesi dosya boyutunu küçült
+## 2. Analiz öncesi dosya boyutunu küçült
 head -n 100 large-file.log > sample.log
 
-# 3. Büyük çıktılar için streaming kullan
+## 3. Büyük çıktılar için streaming kullan
 head -n 50 large-file.txt
 
-# 4. Görevleri daha küçük parçalara böl
-# Bunun yerine: "50 dosyanın hepsini analiz et"
-# Kullan: "src/components/ dizinindeki dosyaları analiz et"
+## 4. Görevleri daha küçük parçalara böl
+## Bunun yerine: "50 dosyanın hepsini analiz et"
+## Kullan: "src/components/ dizinindeki dosyaları analiz et"
 ```
 
 ### Bellek Kalıcılığı Hataları
@@ -52,10 +52,10 @@ head -n 50 large-file.txt
 
 **Çözümler:**
 ```bash
-# Gözlemlerin kaydedilip kaydedilmediğini kontrol et
+## Gözlemlerin kaydedilip kaydedilmediğini kontrol et
 ls ~/.claude/homunculus/projects/*/observations.jsonl
 
-# Mevcut projenin hash id'sini bul
+## Mevcut projenin hash id'sini bul
 python3 - <<'PY'
 import json, os
 registry_path = os.path.expanduser("~/.claude/homunculus/projects.json")
@@ -69,14 +69,14 @@ else:
     raise SystemExit("Project hash not found in ~/.claude/homunculus/projects.json")
 PY
 
-# O proje için son gözlemleri görüntüle
+## O proje için son gözlemleri görüntüle
 tail -20 ~/.claude/homunculus/projects/<project-hash>/observations.jsonl
 
-# Bozuk bir observations dosyasını yeniden oluşturmadan önce yedekle
+## Bozuk bir observations dosyasını yeniden oluşturmadan önce yedekle
 mv ~/.claude/homunculus/projects/<project-hash>/observations.jsonl \
   ~/.claude/homunculus/projects/<project-hash>/observations.jsonl.bak.$(date +%Y%m%d-%H%M%S)
 
-# Hook'ların etkin olduğunu doğrula
+## Hook'ların etkin olduğunu doğrula
 grep -r "observe" ~/.claude/settings.json
 ```
 
@@ -95,17 +95,17 @@ grep -r "observe" ~/.claude/settings.json
 
 **Çözümler:**
 ```bash
-# Eklenti kurulumunu kontrol et
+## Eklenti kurulumunu kontrol et
 ls ~/.claude/plugins/cache/
 
-# Ajanın var olduğunu doğrula (marketplace kurulumu)
+## Ajanın var olduğunu doğrula (marketplace kurulumu)
 ls ~/.claude/plugins/cache/*/agents/
 
-# Manuel kurulum için ajanlar şurada olmalı:
+## Manuel kurulum için ajanlar şurada olmalı:
 ls ~/.claude/agents/  # Sadece özel ajanlar
 
-# Eklentiyi yeniden yükle
-# Claude Code → Settings → Extensions → Reload
+## Eklentiyi yeniden yükle
+## Claude Code → Settings → Extensions → Reload
 ```
 
 ### İş Akışı Yürütmesi Takılıyor
@@ -119,17 +119,17 @@ ls ~/.claude/agents/  # Sadece özel ajanlar
 
 **Çözümler:**
 ```bash
-# 1. Takılı işlemleri kontrol et
+## 1. Takılı işlemleri kontrol et
 ps aux | grep claude
 
-# 2. Debug modunu etkinleştir
+## 2. Debug modunu etkinleştir
 export CLAUDE_DEBUG=1
 
-# 3. Daha kısa zaman aşımları ayarla
+## 3. Daha kısa zaman aşımları ayarla
 export CLAUDE_TIMEOUT=30
 
-# 4. Ağ bağlantısını kontrol et
-curl -I https://api.anthropic.com
+## 4. Ağ bağlantısını kontrol et
+curl -I <https://api.anthropic.com>
 ```
 
 ### Araç Kullanım Hataları
@@ -143,14 +143,14 @@ curl -I https://api.anthropic.com
 
 **Çözümler:**
 ```bash
-# Gerekli araçların kurulu olduğunu doğrula
+## Gerekli araçların kurulu olduğunu doğrula
 which node python3 npm git
 
-# Hook scriptlerinin izinlerini düzelt
+## Hook scriptlerinin izinlerini düzelt
 chmod +x ~/.claude/plugins/cache/*/hooks/*.sh
 chmod +x ~/.claude/plugins/cache/*/skills/*/hooks/*.sh
 
-# PATH'in gerekli binary'leri içerdiğini kontrol et
+## PATH'in gerekli binary'leri içerdiğini kontrol et
 echo $PATH
 ```
 
@@ -169,17 +169,17 @@ echo $PATH
 
 **Çözümler:**
 ```bash
-# Hook'ların kayıtlı olduğunu kontrol et
+## Hook'ların kayıtlı olduğunu kontrol et
 grep -A 10 '"hooks"' ~/.claude/settings.json
 
-# Hook dosyalarının var olduğunu ve çalıştırılabilir olduğunu doğrula
+## Hook dosyalarının var olduğunu ve çalıştırılabilir olduğunu doğrula
 ls -la ~/.claude/plugins/cache/*/hooks/
 
-# Hook'u manuel olarak test et
+## Hook'u manuel olarak test et
 bash ~/.claude/plugins/cache/*/hooks/pre-bash.sh <<< '{"command":"echo test"}'
 
-# Hook'ları yeniden kaydet (eklenti kullanıyorsa)
-# Claude Code ayarlarında eklentiyi devre dışı bırak ve yeniden etkinleştir
+## Hook'ları yeniden kaydet (eklenti kullanıyorsa)
+## Claude Code ayarlarında eklentiyi devre dışı bırak ve yeniden etkinleştir
 ```
 
 ### Python/Node Sürüm Uyumsuzlukları
@@ -193,22 +193,22 @@ bash ~/.claude/plugins/cache/*/hooks/pre-bash.sh <<< '{"command":"echo test"}'
 
 **Çözümler:**
 ```bash
-# Python 3'ü kur (eksikse)
-# macOS: brew install python3
-# Ubuntu: sudo apt install python3
-# Windows: python.org'dan indir
+## Python 3'ü kur (eksikse)
+## macOS: brew install python3
+## Ubuntu: sudo apt install python3
+## Windows: python.org'dan indir
 
-# Node.js'i kur (eksikse)
-# macOS: brew install node
-# Ubuntu: sudo apt install nodejs npm
-# Windows: nodejs.org'dan indir
+## Node.js'i kur (eksikse)
+## macOS: brew install node
+## Ubuntu: sudo apt install nodejs npm
+## Windows: nodejs.org'dan indir
 
-# Kurulumları doğrula
+## Kurulumları doğrula
 python3 --version
 node --version
 npm --version
 
-# Windows: python'un (python3 değil) çalıştığından emin ol
+## Windows: python'un (python3 değil) çalıştığından emin ol
 python --version
 ```
 
@@ -222,15 +222,15 @@ python --version
 
 **Çözümler:**
 ```bash
-# Bu v1.8.0+'da düzeltildi (PR #371)
-# Eklentiyi en son sürüme yükselt
+## Bu v1.8.0+'da düzeltildi (PR #371)
+## Eklentiyi en son sürüme yükselt
 
-# Geçici çözüm: Dev sunucularını tmux'ta sarmalayın
+## Geçici çözüm: Dev sunucularını tmux'ta sarmalayın
 tmux new-session -d -s dev "npm run dev"
 tmux attach -t dev
 
-# Gerekirse hook'u geçici olarak devre dışı bırak
-# ~/.claude/settings.json'u düzenle ve pre-bash hook'unu kaldır
+## Gerekirse hook'u geçici olarak devre dışı bırak
+## ~/.claude/settings.json'u düzenle ve pre-bash hook'unu kaldır
 ```
 
 ---
@@ -248,23 +248,23 @@ tmux attach -t dev
 
 **Çözümler:**
 ```bash
-# Değiştirmeden önce eklenti önbelleğini incele
+## Değiştirmeden önce eklenti önbelleğini incele
 ls -la ~/.claude/plugins/cache/
 
-# Silmek yerine eklenti önbelleğini yedekle
+## Silmek yerine eklenti önbelleğini yedekle
 mv ~/.claude/plugins/cache ~/.claude/plugins/cache.backup.$(date +%Y%m%d-%H%M%S)
 mkdir -p ~/.claude/plugins/cache
 
-# Marketplace'ten yeniden kur
-# Claude Code → Extensions → Everything Claude Code → Uninstall
-# Ardından marketplace'ten yeniden kur
+## Marketplace'ten yeniden kur
+## Claude Code → Extensions → Everything Claude Code → Uninstall
+## Ardından marketplace'ten yeniden kur
 
-# Claude Code sürümünü kontrol et
+## Claude Code sürümünü kontrol et
 claude --version
-# Claude Code 2.0+ gerektirir
+## Claude Code 2.0+ gerektirir
 
-# Manuel kurulum (marketplace başarısız olursa)
-git clone https://github.com/affaan-m/everything-claude-code.git
+## Manuel kurulum (marketplace başarısız olursa)
+git clone <https://github.com/affaan-m/everything-claude-code.git>
 cp -r everything-claude-code ~/.claude/plugins/ecc
 ```
 
@@ -279,19 +279,19 @@ cp -r everything-claude-code ~/.claude/plugins/ecc
 
 **Çözümler:**
 ```bash
-# Tercih edilen paket yöneticisini global olarak ayarla
+## Tercih edilen paket yöneticisini global olarak ayarla
 export CLAUDE_PACKAGE_MANAGER=pnpm
-# ~/.bashrc veya ~/.zshrc'ye ekle
+## ~/.bashrc veya ~/.zshrc'ye ekle
 
-# Veya proje bazında ayarla
+## Veya proje bazında ayarla
 echo '{"packageManager": "pnpm"}' > .claude/package-manager.json
 
-# Veya package.json alanını kullan
+## Veya package.json alanını kullan
 npm pkg set packageManager="pnpm@8.15.0"
 
-# Uyarı: lock dosyalarını kaldırmak kurulu bağımlılık sürümlerini değiştirebilir.
-# Önce lock dosyasını commit et veya yedekle, ardından yeni bir kurulum yap ve CI'ı yeniden çalıştır.
-# Bunu sadece kasıtlı olarak paket yöneticilerini değiştirirken yap.
+## Uyarı: lock dosyalarını kaldırmak kurulu bağımlılık sürümlerini değiştirebilir.
+## Önce lock dosyasını commit et veya yedekle, ardından yeni bir kurulum yap ve CI'ı yeniden çalıştır.
+## Bunu sadece kasıtlı olarak paket yöneticilerini değiştirirken yap.
 rm package-lock.json  # pnpm/yarn/bun kullanıyorsan
 ```
 
@@ -310,7 +310,7 @@ rm package-lock.json  # pnpm/yarn/bun kullanıyorsan
 
 **Çözümler:**
 ```bash
-# Büyük gözlemleri silmek yerine arşivle
+## Büyük gözlemleri silmek yerine arşivle
 archive_dir="$HOME/.claude/homunculus/archive/$(date +%Y%m%d)"
 mkdir -p "$archive_dir"
 find ~/.claude/homunculus/projects -name "observations.jsonl" -size +10M -exec sh -c '
@@ -321,11 +321,11 @@ find ~/.claude/homunculus/projects -name "observations.jsonl" -size +10M -exec s
   done
 ' sh {} +
 
-# Kullanılmayan hook'ları geçici olarak devre dışı bırak
-# ~/.claude/settings.json'u düzenle
+## Kullanılmayan hook'ları geçici olarak devre dışı bırak
+## ~/.claude/settings.json'u düzenle
 
-# Aktif gözlem dosyalarını küçük tut
-# Büyük arşivler ~/.claude/homunculus/archive/ altında olmalı
+## Aktif gözlem dosyalarını küçük tut
+## Büyük arşivler ~/.claude/homunculus/archive/ altında olmalı
 ```
 
 ### Yüksek CPU Kullanımı
@@ -339,16 +339,16 @@ find ~/.claude/homunculus/projects -name "observations.jsonl" -size +10M -exec s
 
 **Çözümler:**
 ```bash
-# Kontrolden çıkmış işlemleri kontrol et
+## Kontrolden çıkmış işlemleri kontrol et
 top -o cpu | grep claude
 
-# Sürekli öğrenmeyi geçici olarak devre dışı bırak
+## Sürekli öğrenmeyi geçici olarak devre dışı bırak
 touch ~/.claude/homunculus/disabled
 
-# Claude Code'u yeniden başlat
-# Cmd/Ctrl+Q ardından yeniden aç
+## Claude Code'u yeniden başlat
+## Cmd/Ctrl+Q ardından yeniden aç
 
-# Gözlem dosyası boyutunu kontrol et
+## Gözlem dosyası boyutunu kontrol et
 du -sh ~/.claude/homunculus/*/
 ```
 
@@ -359,21 +359,21 @@ du -sh ~/.claude/homunculus/*/
 ### "EACCES: permission denied"
 
 ```bash
-# Hook izinlerini düzelt
+## Hook izinlerini düzelt
 find ~/.claude/plugins -name "*.sh" -exec chmod +x {} \;
 
-# Gözlem dizini izinlerini düzelt
+## Gözlem dizini izinlerini düzelt
 chmod -R u+rwX,go+rX ~/.claude/homunculus
 ```
 
 ### "MODULE_NOT_FOUND"
 
 ```bash
-# Eklenti bağımlılıklarını kur
+## Eklenti bağımlılıklarını kur
 cd ~/.claude/plugins/cache/ecc
 npm install
 
-# Veya manuel kurulum için
+## Veya manuel kurulum için
 cd ~/.claude/plugins/ecc
 npm install
 ```
@@ -381,13 +381,13 @@ npm install
 ### "spawn UNKNOWN"
 
 ```bash
-# Windows'a özgü: Scriptlerin doğru satır sonlarını kullandığından emin ol
-# CRLF'yi LF'ye dönüştür
+## Windows'a özgü: Scriptlerin doğru satır sonlarını kullandığından emin ol
+## CRLF'yi LF'ye dönüştür
 find ~/.claude/plugins -name "*.sh" -exec dos2unix {} \;
 
-# Veya dos2unix'i kur
-# macOS: brew install dos2unix
-# Ubuntu: sudo apt install dos2unix
+## Veya dos2unix'i kur
+## macOS: brew install dos2unix
+## Ubuntu: sudo apt install dos2unix
 ```
 
 ---

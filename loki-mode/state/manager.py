@@ -1870,7 +1870,7 @@ _default_manager_lock = threading.Lock()
 
 def get_state_manager(
     loki_dir: Optional[Union[str, Path]] = None,
-    **kwargs
+**kwargs
 ) -> StateManager:
     """Get the default state manager instance.
 

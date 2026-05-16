@@ -1,4 +1,4 @@
-﻿---
+---
 name: dmux-workflows
 description: Multi-agent orchestration using dmux (tmux pane manager for AI agents). Patterns for parallel agent workflows across Claude Code, Codex, OpenCode, and other harnesses. Use when running multiple agent sessions in parallel or coordinating multi-agent development workflows.
 origin: ECC
@@ -27,16 +27,16 @@ dmux is a tmux-based orchestration tool that manages AI agent panes:
 ## Quick Start
 
 ```bash
-# Start dmux session
+## Start dmux session
 dmux
 
-# Create agent panes (press 'n' in dmux, then type prompt)
-# Pane 1: "Implement the auth middleware in src/auth/"
-# Pane 2: "Write tests for the user service"
-# Pane 3: "Update API documentation"
+## Create agent panes (press 'n' in dmux, then type prompt)
+## Pane 1: "Implement the auth middleware in src/auth/"
+## Pane 2: "Write tests for the user service"
+## Pane 3: "Update API documentation"
 
-# Each pane runs its own agent session
-# Press 'm' to merge results back
+## Each pane runs its own agent session
+## Press 'm' to merge results back
 ```
 
 ## Workflow Patterns
@@ -53,7 +53,7 @@ Pane 1 (Research): "Research best practices for rate limiting in Node.js.
 Pane 2 (Implement): "Implement rate limiting middleware for our Express API.
   Start with a basic token bucket, we'll refine after research completes."
 
-# After Pane 1 completes, merge findings into Pane 2's context
+## After Pane 1 completes, merge findings into Pane 2's context
 ```
 
 ### Pattern 2: Multi-File Feature
@@ -65,7 +65,7 @@ Pane 1: "Create the database schema and migrations for the billing feature"
 Pane 2: "Build the billing API endpoints in src/api/billing/"
 Pane 3: "Create the billing dashboard UI components"
 
-# Merge all, then do integration in main pane
+## Merge all, then do integration in main pane
 ```
 
 ### Pattern 3: Test + Fix Loop
@@ -98,7 +98,7 @@ Pane 1: "Review src/api/ for security vulnerabilities"
 Pane 2: "Review src/api/ for performance issues"
 Pane 3: "Review src/api/ for test coverage gaps"
 
-# Merge all reviews into a single report
+## Merge all reviews into a single report
 ```
 
 ## Best Practices
@@ -114,15 +114,15 @@ Pane 3: "Review src/api/ for test coverage gaps"
 For tasks that touch overlapping files:
 
 ```bash
-# Create worktrees for isolation
+## Create worktrees for isolation
 git worktree add -b feat/auth ../feature-auth HEAD
 git worktree add -b feat/billing ../feature-billing HEAD
 
-# Run agents in separate worktrees
-# Pane 1: cd ../feature-auth && claude
-# Pane 2: cd ../feature-billing && claude
+## Run agents in separate worktrees
+## Pane 1: cd ../feature-auth && claude
+## Pane 2: cd ../feature-billing && claude
 
-# Merge branches when done
+## Merge branches when done
 git merge feat/auth
 git merge feat/billing
 ```
@@ -161,12 +161,12 @@ Example `plan.json`:
 The helper:
 - Creates one branch-backed git worktree per worker
 - Optionally overlays selected `seedPaths` from the main checkout into each worker worktree
-- Writes per-worker `task.md`, `handoff.md`, and `status.md` files under `.orchestration/<session>/`
+- Writes per-worker `task.md`,`handoff.md`, and`status.md`files under`.orchestration/<session>/`
 - Starts a tmux session with one pane per worker
 - Launches each worker command in its own pane
 - Leaves the main pane free for the orchestrator
 
-Use `seedPaths` when workers need access to dirty or untracked local files that are not yet part of `HEAD`, such as local orchestration scripts, draft plans, or docs:
+Use `seedPaths`when workers need access to dirty or untracked local files that are not yet part of`HEAD`, such as local orchestration scripts, draft plans, or docs:
 
 ```json
 {
@@ -188,4 +188,4 @@ Use `seedPaths` when workers need access to dirty or untracked local files that 
 - **Pane not responding:** Switch to the pane directly or inspect it with `tmux capture-pane -pt <session>:0.<pane-index>`.
 - **Merge conflicts:** Use git worktrees to isolate file changes per pane.
 - **High token usage:** Reduce number of parallel panes. Each pane is a full agent session.
-- **tmux not found:** Install with `brew install tmux` (macOS) or `apt install tmux` (Linux).
+- **tmux not found:** Install with `brew install tmux`(macOS) or`apt install tmux` (Linux).

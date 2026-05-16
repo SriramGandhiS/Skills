@@ -1,4 +1,4 @@
-﻿---
+---
 name: plankton-code-quality
 description: "Write-time code quality enforcement using Plankton â€” auto-formatting, linting, and Claude-powered fixes on every file edit via hooks."
 origin: community
@@ -55,18 +55,18 @@ The main agent only sees issues the subprocess couldn't fix. Most quality proble
 
 ### Config Protection (Defense Against Rule-Gaming)
 
-LLMs will modify `.ruff.toml` or `biome.json` to disable rules rather than fix code. Plankton blocks this with three layers:
+LLMs will modify `.ruff.toml`or`biome.json` to disable rules rather than fix code. Plankton blocks this with three layers:
 
 1. **PreToolUse hook** â€” `protect_linter_configs.sh` blocks edits to all linter configs before they happen
-2. **Stop hook** â€” `stop_config_guardian.sh` detects config changes via `git diff` at session end
-3. **Protected files list** â€” `.ruff.toml`, `biome.json`, `.shellcheckrc`, `.yamllint`, `.hadolint.yaml`, and more
+2. **Stop hook** â€” `stop_config_guardian.sh`detects config changes via`git diff` at session end
+3. **Protected files list** â€” `.ruff.toml`,`biome.json`,`.shellcheckrc`,`.yamllint`,`.hadolint.yaml`, and more
 
 ### Package Manager Enforcement
 
 A PreToolUse hook on Bash blocks legacy package managers:
-- `pip`, `pip3`, `poetry`, `pipenv` â†’ Blocked (use `uv`)
-- `npm`, `yarn`, `pnpm` â†’ Blocked (use `bun`)
-- Allowed exceptions: `npm audit`, `npm view`, `npm publish`
+- `pip`,`pip3`,`poetry`,`pipenv`â†’ Blocked (use`uv`)
+- `npm`,`yarn`,`pnpm`â†’ Blocked (use`bun`)
+- Allowed exceptions: `npm audit`,`npm view`,`npm publish`
 
 ## Setup
 
@@ -75,13 +75,13 @@ A PreToolUse hook on Bash blocks legacy package managers:
 > **Note:** Plankton requires manual installation from its repository. Review the code before installing.
 
 ```bash
-# Install core dependencies
+## Install core dependencies
 brew install jaq ruff uv
 
-# Install Python linters
+## Install Python linters
 uv sync --all-extras
 
-# Start Claude Code â€” hooks activate automatically
+## Start Claude Code â€” hooks activate automatically
 claude
 ```
 
@@ -93,16 +93,16 @@ To use Plankton hooks in your own project:
 
 1. Copy `.claude/hooks/` directory to your project
 2. Copy `.claude/settings.json` hook configuration
-3. Copy linter config files (`.ruff.toml`, `biome.json`, etc.)
+3. Copy linter config files (`.ruff.toml`,`biome.json`, etc.)
 4. Install the linters for your languages
 
 ### Language-Specific Dependencies
 
 | Language | Required | Optional |
 |----------|----------|----------|
-| Python | `ruff`, `uv` | `ty` (types), `vulture` (dead code), `bandit` (security) |
-| TypeScript/JS | `biome` | `oxlint`, `semgrep`, `knip` (dead exports) |
-| Shell | `shellcheck`, `shfmt` | â€” |
+| Python | `ruff`,`uv`|`ty`(types),`vulture`(dead code),`bandit` (security) |
+| TypeScript/JS | `biome`|`oxlint`,`semgrep`,`knip` (dead exports) |
+| Shell | `shellcheck`,`shfmt` | â€” |
 | YAML | `yamllint` | â€” |
 | Markdown | `markdownlint-cli2` | â€” |
 | Dockerfile | `hadolint` (>= 2.12.0) | â€” |
@@ -214,7 +214,7 @@ export ECC_QUALITY_GATE_STRICT=true
 
 During quality enforcement, flag changes to config files in same iteration:
 
-- `biome.json`, `.eslintrc*`, `prettier.config*`, `tsconfig.json`, `pyproject.toml`
+- `biome.json`,`.eslintrc*`,`prettier.config*`,`tsconfig.json`,`pyproject.toml`
 
 If config is changed to suppress violations, require explicit review before merge.
 

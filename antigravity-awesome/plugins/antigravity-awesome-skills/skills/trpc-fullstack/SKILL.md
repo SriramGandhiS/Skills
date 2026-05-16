@@ -402,16 +402,16 @@ trpc.notification.onNew.useSubscription(undefined, {
 
 ## Best Practices
 
-- ✅ **Export only `AppRouter` type** from server code — never import `appRouter` on the client
-- ✅ **Use separate context factories** — `createTRPCContext` for the HTTP handler, `createServerContext` for Server Components and callers
-- ✅ **Validate all inputs with Zod** — never trust raw `input` without a schema
-- ✅ **Split routers by domain** (posts, users, billing) and merge in `root.ts`
-- ✅ **Extend context in middleware** rather than querying the DB multiple times per request
-- ✅ **Use `utils.invalidate()`** after mutations to keep the cache fresh
-- ❌ **Don't cast context with `as any`** to silence type errors — the mismatch will surface as a runtime failure when auth or session lookups return undefined
-- ❌ **Don't use `createContext({} as any)`** in Server Components — use `createServerContext()` which calls `auth()` directly
-- ❌ **Don't put business logic in the route handler** — keep it in the procedure or a service layer
-- ❌ **Don't share the tRPC client instance globally** — create it per-provider to avoid stale closures
+- PASS: **Export only `AppRouter` type** from server code — never import `appRouter` on the client
+- PASS: **Use separate context factories** — `createTRPCContext` for the HTTP handler, `createServerContext` for Server Components and callers
+- PASS: **Validate all inputs with Zod** — never trust raw `input` without a schema
+- PASS: **Split routers by domain** (posts, users, billing) and merge in `root.ts`
+- PASS: **Extend context in middleware** rather than querying the DB multiple times per request
+- PASS: **Use `utils.invalidate()`** after mutations to keep the cache fresh
+- FAIL: **Don't cast context with `as any`** to silence type errors — the mismatch will surface as a runtime failure when auth or session lookups return undefined
+- FAIL: **Don't use `createContext({} as any)`** in Server Components — use `createServerContext()` which calls `auth()` directly
+- FAIL: **Don't put business logic in the route handler** — keep it in the procedure or a service layer
+- FAIL: **Don't share the tRPC client instance globally** — create it per-provider to avoid stale closures
 
 ---
 
@@ -427,22 +427,22 @@ trpc.notification.onNew.useSubscription(undefined, {
 ## Common Pitfalls
 
 - **Problem:** Auth session is `null` in protected procedures even when the user is logged in
-  **Solution:** Ensure `createTRPCContext` uses the correct server-side auth call (e.g. `auth()` from Next-Auth v5) and is not receiving a Pages Router `req/res` cast via `as any` in an App Router handler
+**Solution:** Ensure `createTRPCContext` uses the correct server-side auth call (e.g. `auth()` from Next-Auth v5) and is not receiving a Pages Router `req/res` cast via `as any` in an App Router handler
 
 - **Problem:** Server Component caller fails for auth-dependent queries
-  **Solution:** Use `createServerContext()` (the dedicated server-side factory) instead of passing an empty or synthetic object to `createContext`
+**Solution:** Use `createServerContext()` (the dedicated server-side factory) instead of passing an empty or synthetic object to `createContext`
 
 - **Problem:** "Type error: AppRouter is not assignable to AnyRouter"
-  **Solution:** Import `AppRouter` as a `type` import (`import type { AppRouter }`) on the client, not the full module
+**Solution:** Import `AppRouter` as a `type` import (`import type { AppRouter }`) on the client, not the full module
 
 - **Problem:** Mutations not reflecting in the UI after success
-  **Solution:** Call `utils.<router>.<procedure>.invalidate()` in `onSuccess` to trigger a refetch via React Query
+**Solution:** Call `utils.<router>.<procedure>.invalidate()` in `onSuccess` to trigger a refetch via React Query
 
 - **Problem:** "Cannot find module '@trpc/server/adapters/next'" with App Router
-  **Solution:** Use `@trpc/server/adapters/fetch` and `fetchRequestHandler` for the App Router; the `nextjs` adapter is for Pages Router only
+**Solution:** Use `@trpc/server/adapters/fetch` and `fetchRequestHandler` for the App Router; the `nextjs` adapter is for Pages Router only
 
 - **Problem:** Subscriptions not connecting
-  **Solution:** Subscriptions require `splitLink` — route subscriptions to `wsLink` and queries/mutations to `httpBatchLink`
+**Solution:** Subscriptions require `splitLink` — route subscriptions to `wsLink` and queries/mutations to `httpBatchLink`
 
 ---
 

@@ -72,12 +72,12 @@ Load project context for conflict detection:
 
 1. Read `.planning/ROADMAP.md` — extract phase structure, phase numbers, dependencies
 2. Read `.planning/PROJECT.md` — extract project constraints, tech stack, scope boundaries.
-   **If PROJECT.md does not exist:** skip constraint checks that rely on it and display:
+**If PROJECT.md does not exist:** skip constraint checks that rely on it and display:
    ```
    GSD > Note: No PROJECT.md found. Conflict checks against project constraints will be skipped.
    ```
 3. Read `.planning/REQUIREMENTS.md` — extract existing requirements for overlap and contradiction checks.
-   **If REQUIREMENTS.md does not exist:** skip requirement conflict checks and continue.
+**If REQUIREMENTS.md does not exist:** skip requirement conflict checks and continue.
 4. Glob for all CONTEXT.md files across phase directories:
    ```bash
    find .planning/phases/ -name "*-CONTEXT.md" -o -name "CONTEXT.md" 2>/dev/null

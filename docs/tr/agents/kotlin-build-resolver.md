@@ -45,9 +45,9 @@ Bunları sırayla çalıştırın:
 | `Unresolved reference: X` | Eksik import, yazım hatası, eksik dependency | Import veya dependency ekle |
 | `Type mismatch: Required X, Found Y` | Yanlış tip, eksik dönüşüm | Dönüşüm ekle veya tipi düzelt |
 | `None of the following candidates is applicable` | Yanlış overload, yanlış argüman tipleri | Argüman tiplerini düzelt veya açık cast ekle |
-| `Smart cast impossible` | Mutable property veya eşzamanlı erişim | Yerel `val` kopyası kullanın veya `let` kullanın |
-| `'when' expression must be exhaustive` | Sealed class `when`'de eksik branch | Eksik branch'leri veya `else` ekle |
-| `Suspend function can only be called from coroutine` | Eksik `suspend` veya coroutine scope | `suspend` modifier ekle veya coroutine başlat |
+| `Smart cast impossible`| Mutable property veya eşzamanlı erişim | Yerel`val`kopyası kullanın veya`let` kullanın |
+| `'when' expression must be exhaustive`| Sealed class`when`'de eksik branch | Eksik branch'leri veya`else` ekle |
+| `Suspend function can only be called from coroutine`| Eksik`suspend`veya coroutine scope |`suspend` modifier ekle veya coroutine başlat |
 | `Cannot access 'X': it is internal in 'Y'` | Görünürlük sorunu | Görünürlüğü değiştir veya public API kullan |
 | `Conflicting declarations` | Yinelenen tanımlar | Yinelemeyi kaldır veya yeniden adlandır |
 | `Could not resolve: group:artifact:version` | Eksik repository veya yanlış versiyon | Repository ekle veya versiyonu düzelt |
@@ -56,22 +56,22 @@ Bunları sırayla çalıştırın:
 ## Gradle Sorun Giderme
 
 ```bash
-# Çakışmalar için dependency tree'sini kontrol et
+## Çakışmalar için dependency tree'sini kontrol et
 ./gradlew dependencies --configuration runtimeClasspath
 
-# Dependency'leri zorla yenile
+## Dependency'leri zorla yenile
 ./gradlew build --refresh-dependencies
 
-# Projeye özel Gradle build cache'ini temizle
+## Projeye özel Gradle build cache'ini temizle
 ./gradlew clean && rm -rf .gradle/build-cache/
 
-# Gradle versiyon uyumluluğunu kontrol et
+## Gradle versiyon uyumluluğunu kontrol et
 ./gradlew --version
 
-# Debug çıktısı ile çalıştır
+## Debug çıktısı ile çalıştır
 ./gradlew build --debug 2>&1 | tail -50
 
-# Dependency çakışmalarını kontrol et
+## Dependency çakışmalarını kontrol et
 ./gradlew dependencyInsight --dependency <name> --configuration runtimeClasspath
 ```
 

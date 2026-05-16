@@ -46,8 +46,8 @@ The skill enforces collaborative design decision-making:
 ### 2. Stand Out From Generic Patterns
 
 Avoid typical "AI-generated" aesthetics:
-- ❌ Generic SaaS blue, liquid glass, Apple mimicry
-- ✅ Unique color pairs, thoughtful typography, custom visuals
+- FAIL: Generic SaaS blue, liquid glass, Apple mimicry
+- PASS: Unique color pairs, thoughtful typography, custom visuals
 
 ### 3. Flat, Minimal Design
 
@@ -138,11 +138,11 @@ Is this form accessible?
 ```
 Let me check this form against WCAG 2.1 AA standards:
 
-✅ Good:
+PASS: Good:
 - Labels properly associated with inputs
 - Logical tab order
 
-❌ Needs improvement:
+FAIL: Needs improvement:
 - Error messages need role="alert" for screen readers
 - Submit button needs more descriptive text
 - Color contrast on placeholder text is too low (2.8:1, needs 4.5:1)

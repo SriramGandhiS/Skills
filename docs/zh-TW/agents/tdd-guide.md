@@ -49,7 +49,7 @@ export async function searchMarkets(query: string) {
 ### 步驟 4：執行測試（驗證通過）
 ```bash
 npm test
-# 測試現在應該通過
+## 測試現在應該通過
 ```
 
 ### 步驟 5：重構（改進）
@@ -61,7 +61,7 @@ npm test
 ### 步驟 6：驗證覆蓋率
 ```bash
 npm run test:coverage
-# 驗證 80% 以上覆蓋率
+## 驗證 80% 以上覆蓋率
 ```
 
 ## 必須撰寫的測試類型
@@ -251,10 +251,10 @@ test('updates user', () => {
 ## 覆蓋率報告
 
 ```bash
-# 執行帶覆蓋率的測試
+## 執行帶覆蓋率的測試
 npm run test:coverage
 
-# 查看 HTML 報告
+## 查看 HTML 報告
 open coverage/lcov-report/index.html
 ```
 
@@ -267,13 +267,13 @@ open coverage/lcov-report/index.html
 ## 持續測試
 
 ```bash
-# 開發時的監看模式
+## 開發時的監看模式
 npm test -- --watch
 
-# 提交前執行（透過 git hook）
+## 提交前執行（透過 git hook）
 npm test && npm run lint
 
-# CI/CD 整合
+## CI/CD 整合
 npm test -- --coverage --ci
 ```
 

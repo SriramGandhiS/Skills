@@ -1,4 +1,4 @@
-﻿---
+---
 name: security-scan
 description: Scan your Claude Code configuration (.claude/ directory) for security vulnerabilities, misconfigurations, and injection risks using AgentShield. Checks CLAUDE.md, settings.json, MCP servers, hooks, and agent definitions.
 origin: ECC
@@ -11,7 +11,7 @@ Audit your Claude Code configuration for security issues using [AgentShield](htt
 ## When to Activate
 
 - Setting up a new Claude Code project
-- After modifying `.claude/settings.json`, `CLAUDE.md`, or MCP configs
+- After modifying `.claude/settings.json`,`CLAUDE.md`, or MCP configs
 - Before committing configuration changes
 - When onboarding to a new repository with existing Claude Code configs
 - Periodic security hygiene checks
@@ -31,13 +31,13 @@ Audit your Claude Code configuration for security issues using [AgentShield](htt
 AgentShield must be installed. Check and install if needed:
 
 ```bash
-# Check if installed
+## Check if installed
 npx ecc-agentshield --version
 
-# Install globally (recommended)
+## Install globally (recommended)
 npm install -g ecc-agentshield
 
-# Or run directly via npx (no install needed)
+## Or run directly via npx (no install needed)
 npx ecc-agentshield scan .
 ```
 
@@ -48,29 +48,29 @@ npx ecc-agentshield scan .
 Run against the current project's `.claude/` directory:
 
 ```bash
-# Scan current project
+## Scan current project
 npx ecc-agentshield scan
 
-# Scan a specific path
+## Scan a specific path
 npx ecc-agentshield scan --path /path/to/.claude
 
-# Scan with minimum severity filter
+## Scan with minimum severity filter
 npx ecc-agentshield scan --min-severity medium
 ```
 
 ### Output Formats
 
 ```bash
-# Terminal output (default) â€” colored report with grade
+## Terminal output (default) â€” colored report with grade
 npx ecc-agentshield scan
 
-# JSON â€” for CI/CD integration
+## JSON â€” for CI/CD integration
 npx ecc-agentshield scan --format json
 
-# Markdown â€” for documentation
+## Markdown â€” for documentation
 npx ecc-agentshield scan --format markdown
 
-# HTML â€” self-contained dark-theme report
+## HTML â€” self-contained dark-theme report
 npx ecc-agentshield scan --format html > security-report.html
 ```
 
@@ -92,7 +92,7 @@ This will:
 Run the adversarial three-agent pipeline for deeper analysis:
 
 ```bash
-# Requires ANTHROPIC_API_KEY
+## Requires ANTHROPIC_API_KEY
 export ANTHROPIC_API_KEY=your-key
 npx ecc-agentshield scan --opus --stream
 ```
@@ -151,7 +151,7 @@ Add to your CI pipeline:
 - Agents with unnecessary Bash access
 
 ### Medium Findings (recommended)
-- Silent error suppression in hooks (`2>/dev/null`, `|| true`)
+- Silent error suppression in hooks (`2>/dev/null`,`|| true`)
 - Missing PreToolUse security hooks
 - `npx -y` auto-install in MCP server configs
 

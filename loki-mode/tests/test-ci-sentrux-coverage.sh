@@ -1,18 +1,15 @@
 #!/usr/bin/env bash
 #===============================================================================
 # tests/test-ci-sentrux-coverage.sh (v7.5.15)
-#
-# Verifies that the sentrux gate test wiring is intact across CI surfaces:
-#
-#   1. tests/test-sentrux-gate.sh (unit, fake binary) IS referenced from at
-#      least one .github/workflows/*.yml file -- either directly or via a
-#      runner that picks it up (e.g. tests/run-all-tests.sh).
-#   2. tests/integration/test_sentrux_real.sh is NOT in the default CI path
-#      (would be a false-positive risk on Linux without the real binary).
-#   3. tests/test-sentrux-gate.sh IS referenced from scripts/local-ci.sh so
-#      the pre-push gate covers it (per CLAUDE.md mandate).
-#
-# This test is platform-independent and has no external deps.
+# # Verifies that the sentrux gate test wiring is intact across CI surfaces:
+# # 1. tests/test-sentrux-gate.sh (unit, fake binary) IS referenced from at
+# least one .github/workflows/*.yml file -- either directly or via a
+# runner that picks it up (e.g. tests/run-all-tests.sh).
+# 2. tests/integration/test_sentrux_real.sh is NOT in the default CI path
+# (would be a false-positive risk on Linux without the real binary).
+# 3. tests/test-sentrux-gate.sh IS referenced from scripts/local-ci.sh so
+# the pre-push gate covers it (per CLAUDE.md mandate).
+# # This test is platform-independent and has no external deps.
 #===============================================================================
 
 set -u

@@ -8,7 +8,7 @@ This command invokes the **go-build-resolver** agent to incrementally fix Go bui
 
 ## What This Command Does
 
-1. **Run Diagnostics**: Execute `go build`, `go vet`, `staticcheck`
+1. **Run Diagnostics**: Execute `go build`,`go vet`,`staticcheck`
 2. **Parse Errors**: Group by file and sort by severity
 3. **Fix Incrementally**: One error at a time
 4. **Verify Each Fix**: Re-run build after each change
@@ -26,17 +26,17 @@ Use `/go-build` when:
 ## Diagnostic Commands Run
 
 ```bash
-# Primary build check
+## Primary build check
 go build ./...
 
-# Static analysis
+## Static analysis
 go vet ./...
 
-# Extended linting (if available)
+## Extended linting (if available)
 staticcheck ./...
 golangci-lint run
 
-# Module issues
+## Module issues
 go mod verify
 go mod tidy -v
 ```
@@ -47,7 +47,7 @@ go mod tidy -v
 User: /go-build
 
 Agent:
-# Go Build Resolution
+## Go Build Resolution
 
 ## Initial Diagnostics
 
@@ -78,7 +78,7 @@ var repo repository.UserRepository
 
 ```bash
 $ go build ./...
-# 2 errors remaining
+## 2 errors remaining
 ```
 
 ## Fix 2: Type Mismatch
@@ -96,7 +96,7 @@ count, _ := strconv.Atoi(countStr)
 
 ```bash
 $ go build ./...
-# 1 error remaining
+## 1 error remaining
 ```
 
 ## Fix 3: Missing Return
@@ -117,14 +117,14 @@ func GetUser(id string) (*User, error) {
 
 ```bash
 $ go build ./...
-# Build successful!
+## Build successful!
 ```
 
 ## Final Verification
 
 ```bash
 $ go vet ./...
-# No issues
+## No issues
 
 $ go test ./...
 ok      project/internal/service   0.015s
@@ -153,7 +153,7 @@ Build Status: PASS: SUCCESS
 | `X does not implement Y` | Add missing method |
 | `import cycle` | Restructure packages |
 | `declared but not used` | Remove or use variable |
-| `cannot find package` | `go get` or `go mod tidy` |
+| `cannot find package`|`go get`or`go mod tidy` |
 
 ## Fix Strategy
 

@@ -86,7 +86,7 @@ Use the clarvia aeo_score tool and tell me if it's agent-ready.
 ### Example 2: Find best tool in category
 
 ```
-I need an MCP server for web scraping. Use Clarvia to find the 
+I need an MCP server for web scraping. Use Clarvia to find the
 top-rated options and compare the top 3.
 ```
 
@@ -113,19 +113,19 @@ Add to your CI pipeline using the GitHub Action:
 
 ## Best Practices
 
-- ✅ Score tools before adding them to long-running agent workflows
-- ✅ Use Clarvia's leaderboard to discover alternatives you haven't considered
-- ✅ Re-check scores periodically — tools improve over time
-- ❌ Don't skip scoring for "well-known" tools — even popular tools can score poorly
-- ❌ Don't use tools scoring below 50 in production agent pipelines without understanding the limitations
+- PASS: Score tools before adding them to long-running agent workflows
+- PASS: Use Clarvia's leaderboard to discover alternatives you haven't considered
+- PASS: Re-check scores periodically — tools improve over time
+- FAIL: Don't skip scoring for "well-known" tools — even popular tools can score poorly
+- FAIL: Don't use tools scoring below 50 in production agent pipelines without understanding the limitations
 
 ## Common Pitfalls
 
 - **Problem:** Clarvia returns "not found" for a tool
-  **Solution:** Try scanning by URL directly with `aeo_score` — Clarvia will score it on-demand
+**Solution:** Try scanning by URL directly with `aeo_score` — Clarvia will score it on-demand
 
 - **Problem:** Score seems low for a tool I trust
-  **Solution:** Use `get_score_breakdown` to see which dimensions are weak and decide if they matter for your use case
+**Solution:** Use `get_score_breakdown` to see which dimensions are weak and decide if they matter for your use case
 
 ## Related Skills
 

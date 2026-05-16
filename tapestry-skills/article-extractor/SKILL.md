@@ -349,12 +349,12 @@ fi
 
 ## Best Practices
 
-- ✅ Always show preview after extraction (first 10 lines)
-- ✅ Verify extraction succeeded before saving
-- ✅ Clean filename for filesystem compatibility
-- ✅ Try fallback method if primary fails
-- ✅ Inform user which tool was used
-- ✅ Keep filename length reasonable (< 100 chars)
+- PASS: Always show preview after extraction (first 10 lines)
+- PASS: Verify extraction succeeded before saving
+- PASS: Clean filename for filesystem compatibility
+- PASS: Try fallback method if primary fails
+- PASS: Inform user which tool was used
+- PASS: Keep filename length reasonable (< 100 chars)
 
 ## After Extraction
 

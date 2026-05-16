@@ -2,7 +2,7 @@
 
 **Date:** 2025-10-24
 **Type:** Architecture Design
-**Status:** Phase 1 Implemented ✅
+**Status:** Phase 1 Implemented PASS:
 **Author:** Edgar + Claude (Brainstorming Session)
 
 ---
@@ -88,9 +88,9 @@ Result: 40x less context, no truncation, full access to docs
 **Change:** Download ALL 3 variants, not just one.
 
 **File naming (FIXED):**
-- `https://hono.dev/llms-full.txt` → `llms-full.md` ✅
-- `https://hono.dev/llms.txt` → `llms.md` ✅
-- `https://hono.dev/llms-small.txt` → `llms-small.md` ✅
+- `https://hono.dev/llms-full.txt` → `llms-full.md` PASS:
+- `https://hono.dev/llms.txt` → `llms.md` PASS:
+- `https://hono.dev/llms-small.txt` → `llms-small.md` PASS:
 
 **Sizes (Hono example):**
 - `llms-full.md` - 319k (complete documentation)
@@ -124,7 +124,7 @@ def _try_llms_txt(self) -> bool:
         content = downloader.download()
 
         if content:
-            # ✨ FIX: Rename .txt → .md immediately
+            #  FIX: Rename .txt → .md immediately
             clean_name = f"llms-{variant}.md"
             downloaded[variant] = {
                 'content': content,
@@ -289,7 +289,7 @@ def search(query, detail="auto"):
     matches = [s for s in catalog["sections"] if s["id"] in matching_section_ids]
 
     if not matches:
-        return f"❌ No sections found for '{query}'. Try: python scripts/list_topics.py"
+        return f"FAIL: No sections found for '{query}'. Try: python scripts/list_topics.py"
 
     # 2. Determine detail level
     if detail == "auto":
@@ -443,7 +443,7 @@ def get_section(title, variant="complete"):
             break
 
     if not section:
-        return f"❌ Section '{title}' not found. Try: python scripts/list_topics.py"
+        return f"FAIL: Section '{title}' not found. Try: python scripts/list_topics.py"
 
     # Load doc
     variant_file = catalog["metadata"]["variants"].get(variant, "complete")
@@ -455,7 +455,7 @@ def get_section(title, variant="complete"):
     start = doc_content.find(h1_marker)
 
     if start == -1:
-        return f"❌ Section '{title}' not found in {variant_file}"
+        return f"FAIL: Section '{title}' not found in {variant_file}"
 
     next_h1 = doc_content.find("\n# ", start + len(h1_marker))
     if next_h1 == -1:
@@ -493,9 +493,9 @@ type: active
 
 # {Name} Skill
 
-**⚡ This is an ACTIVE skill** - Uses scripts to load documentation on-demand instead of dumping everything into context.
+**This is an ACTIVE skill** - Uses scripts to load documentation on-demand instead of dumping everything into context.
 
-## 🎯 Strategy: Demand-Driven Documentation
+## Strategy: Demand-Driven Documentation
 
 **Traditional approach:**
 - Load 300k+ documentation into context
@@ -507,7 +507,7 @@ type: active
 - Agent calls scripts to fetch what's needed
 - Clean context, faster performance
 
-## 📚 Available Documentation
+## Available Documentation
 
 This skill provides access to {num_sections} documentation sections across 3 detail levels:
 
@@ -515,7 +515,7 @@ This skill provides access to {num_sections} documentation sections across 3 det
 - **Standard** (`llms.md`): {standard_size}k - Core concepts
 - **Complete** (`llms-full.md`): {full_size}k - Everything
 
-## 🔧 Tools Available
+## Tools Available
 
 ### 1. Search Documentation
 Find and load only relevant sections:
@@ -546,25 +546,25 @@ python scripts/get_section.py "Routing" quick
 
 **Returns:** Complete section from chosen variant
 
-## 💡 Recommended Workflow
+## Recommended Workflow
 
 1. **Discover:** `python scripts/list_topics.py` to see what's available
 2. **Search:** `python scripts/search.py "your topic"` to find relevant sections
 3. **Deep Dive:** Use returned content to answer questions in detail
 4. **Iterate:** Search more specific topics as needed
 
-## ⚠️ Important
+## WARNING: Important
 
 **DON'T:** Read `references/*.md` files directly into context
 **DO:** Use scripts to fetch only what you need
 
 This keeps your context clean and focused!
 
-## 📊 Index
+## Index
 
 Complete section catalog available in `assets/catalog.json` with search mappings and size information.
 
-## 🔄 Updating
+## Updating
 
 To refresh with latest documentation:
 ```bash
@@ -689,16 +689,16 @@ else:
 ### Agent Capabilities
 
 **Passive Skills:**
-- ❌ Cannot choose detail level
-- ❌ Cannot search efficiently
-- ❌ Must read entire context
-- ❌ Limited by context window
+- FAIL: Cannot choose detail level
+- FAIL: Cannot search efficiently
+- FAIL: Must read entire context
+- FAIL: Limited by context window
 
 **Active Skills:**
-- ✅ Chooses appropriate detail level
-- ✅ Searches catalog efficiently
-- ✅ Loads only what's needed
-- ✅ Unlimited documentation access
+- PASS: Chooses appropriate detail level
+- PASS: Searches catalog efficiently
+- PASS: Loads only what's needed
+- PASS: Unlimited documentation access
 
 ---
 
@@ -736,18 +736,18 @@ else:
 
 ### Technical Metrics
 
-- ✅ Context per query < 20k (down from 203k)
-- ✅ All 3 variants downloaded and named correctly
-- ✅ 0% content truncation
-- ✅ Catalog generation < 5 seconds
-- ✅ Search script < 1 second response time
+- PASS: Context per query < 20k (down from 203k)
+- PASS: All 3 variants downloaded and named correctly
+- PASS: 0% content truncation
+- PASS: Catalog generation < 5 seconds
+- PASS: Search script < 1 second response time
 
 ### User Experience Metrics
 
-- ✅ Agent successfully uses scripts without prompting
-- ✅ Answers are equally or more accurate than passive mode
-- ✅ Agent can handle queries about all documentation sections
-- ✅ No "context limit exceeded" errors
+- PASS: Agent successfully uses scripts without prompting
+- PASS: Answers are equally or more accurate than passive mode
+- PASS: Agent can handle queries about all documentation sections
+- PASS: No "context limit exceeded" errors
 
 ---
 

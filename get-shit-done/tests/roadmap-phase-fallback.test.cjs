@@ -217,7 +217,7 @@ describe('roadmap get-phase fallback to full ROADMAP.md (#1634)', () => {
 
 ## Phases
 
-### 🚧 v1.1 Launch-Ready (In Progress)
+### v1.1 Launch-Ready (In Progress)
 
 ### Phase 11: Structured Logging
 **Goal:** Add structured logging
@@ -248,7 +248,7 @@ describe('roadmap get-phase fallback to full ROADMAP.md (#1634)', () => {
 
 ## Phases
 
-### 🚧 v1.1 Launch-Ready (In Progress)
+### v1.1 Launch-Ready (In Progress)
 
 ### PHASE 11: Structured Logging
 **Goal:** Add structured logging

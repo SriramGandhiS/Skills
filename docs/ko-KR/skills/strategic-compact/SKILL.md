@@ -96,7 +96,7 @@ origin: ECC
 3. **구현 중간에는 컴팩션하지 않기** -- 관련 변경 사항의 컨텍스트 보존
 4. **제안을 읽기** -- Hook이 *언제*를 알려주고, *할지* 여부는 당신이 결정
 5. **컴팩션 전에 기록** -- 컴팩션 전에 중요한 컨텍스트를 파일이나 메모리에 저장
-6. **요약과 함께 `/compact` 사용** -- 커스텀 메시지 추가: `/compact Focus on implementing auth middleware next`
+6. **요약과 함께 `/compact`사용** -- 커스텀 메시지 추가:`/compact Focus on implementing auth middleware next`
 
 ## 관련 항목
 

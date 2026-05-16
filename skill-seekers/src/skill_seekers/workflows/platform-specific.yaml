@@ -13,14 +13,14 @@ stages:
     enabled: true
     prompt: >
       Document platform abstraction patterns.
-      
+
       Identify:
       1. Abstraction layer architecture
       2. Platform-specific implementations
       3. Shared business logic
       4. Code sharing strategy
       5. Platform detection
-      
+
       Output JSON with:
       - "architecture": abstraction approach
       - "implementations": platform-specific code
@@ -34,14 +34,14 @@ stages:
     enabled: true
     prompt: >
       Document native module integration.
-      
+
       Cover:
       1. Native module structure (iOS/Android)
       2. Bridging patterns
       3. FFI/Native calls
       4. Native UI components
       5. Third-party native SDKs
-      
+
       Output JSON with:
       - "module_structure": native module org
       - "bridging": bridge implementation
@@ -55,14 +55,14 @@ stages:
     enabled: true
     prompt: >
       Document platform-specific guidelines.
-      
+
       Include:
       1. iOS Human Interface Guidelines compliance
       2. Android Material Design compliance
       3. Platform navigation patterns
       4. Platform permissions
       5. Store submission requirements
-      
+
       Output JSON with:
       - "ios_guidelines": iOS-specific
       - "android_guidelines": Android-specific

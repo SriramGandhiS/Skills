@@ -262,8 +262,7 @@ const isMobile = /iPhone|iPad|Android/i.test(navigator.userAgent);
 <Canvas
   dpr={isMobile ? 1 : 2} // Lower resolution on mobile
   performance={{ min: 0.5 }} // Allow frame drops
->
-```
+> ```
 
 ### Fallback Strategy
 ```jsx

@@ -2,11 +2,11 @@
 
 **Last Updated:** February 5, 2026
 **Status:** Production Ready
-**Difficulty:** Easy ⭐
+**Difficulty:** Easy
 
 ---
 
-## 🎯 The Problem
+## The Problem
 
 Building knowledge bases and query engines with LlamaIndex requires well-structured documentation. Manually preparing documents is:
 
@@ -19,7 +19,7 @@ Building knowledge bases and query engines with LlamaIndex requires well-structu
 
 ---
 
-## ✨ The Solution
+## The Solution
 
 Use Skill Seekers as **essential preprocessing** before LlamaIndex:
 
@@ -33,7 +33,7 @@ Skill Seekers outputs JSON files with LlamaIndex Node format, ready to build ind
 
 ---
 
-## 🚀 Quick Start (5 Minutes)
+## Quick Start (5 Minutes)
 
 ### Prerequisites
 - Python 3.10+
@@ -98,7 +98,7 @@ print(response)
 
 ---
 
-## 📖 Detailed Setup Guide
+## Detailed Setup Guide
 
 ### Step 1: Choose Your Documentation Source
 
@@ -129,24 +129,24 @@ skill-seekers package output/django --target llama-index
 # Output structure:
 # output/django-llama-index.json
 # [
-#   {
-#     "text": "...",
-#     "metadata": {
-#       "source": "django",
-#       "category": "models",
-#       "file": "models.md"
-#     },
-#     "id_": "unique-hash-id",
-#     "embedding": null
-#   }
+# {
+# "text": "...",
+# "metadata": {
+# "source": "django",
+# "category": "models",
+# "file": "models.md"
+# },
+# "id_": "unique-hash-id",
+# "embedding": null
+# }
 # ]
 ```
 
 **What You Get:**
-- ✅ Pre-structured nodes with unique IDs
-- ✅ Rich metadata (source, category, file, type)
-- ✅ Clean text (code blocks preserved)
-- ✅ Ready for indexing
+- PASS: Pre-structured nodes with unique IDs
+- PASS: Rich metadata (source, category, file, type)
+- PASS: Clean text (code blocks preserved)
+- PASS: Ready for indexing
 
 ### Step 3: Create Vector Store Index
 
@@ -177,7 +177,7 @@ index = VectorStoreIndex(nodes)
 # Persist for later use
 index.storage_context.persist(persist_dir="./storage")
 
-print(f"✅ Index created with {len(nodes)} nodes")
+print(f"PASS: Index created with {len(nodes)} nodes")
 ```
 
 **Load Persisted Index:**
@@ -188,7 +188,7 @@ from llama_index.core import load_index_from_storage, StorageContext
 storage_context = StorageContext.from_defaults(persist_dir="./storage")
 index = load_index_from_storage(storage_context)
 
-print("✅ Index loaded from storage")
+print("PASS: Index loaded from storage")
 ```
 
 ### Step 4: Create Query Engine
@@ -227,7 +227,7 @@ print(response)
 
 ---
 
-## 🎨 Advanced Usage
+## Advanced Usage
 
 ### Custom Index Types
 
@@ -317,12 +317,12 @@ for source in sources:
 
 # Create unified index
 index = VectorStoreIndex(all_nodes)
-print(f"✅ Created index with {len(all_nodes)} nodes from {len(sources)} sources")
+print(f"PASS: Created index with {len(all_nodes)} nodes from {len(sources)} sources")
 ```
 
 ---
 
-## 💡 Best Practices
+## Best Practices
 
 ### 1. Persist Your Indexes
 ```python
@@ -369,7 +369,7 @@ print(f"Used {len(response.source_nodes)} source nodes")
 
 ---
 
-## 🔥 Real-World Example
+## Real-World Example
 
 ### Building a FastAPI Documentation Assistant
 
@@ -406,7 +406,7 @@ nodes = [
 index = VectorStoreIndex(nodes)
 index.storage_context.persist(persist_dir="./fastapi_index")
 
-print(f"✅ FastAPI index created with {len(nodes)} nodes")
+print(f"PASS: FastAPI index created with {len(nodes)} nodes")
 
 # Create chat engine
 chat_engine = index.as_chat_engine(
@@ -415,14 +415,14 @@ chat_engine = index.as_chat_engine(
 )
 
 # Interactive loop
-print("\n🤖 FastAPI Documentation Assistant")
+print("\n FastAPI Documentation Assistant")
 print("Ask me anything about FastAPI (type 'quit' to exit)\n")
 
 while True:
     user_input = input("You: ").strip()
 
     if user_input.lower() in ['quit', 'exit', 'q']:
-        print("👋 Goodbye!")
+        print(" Goodbye!")
         break
 
     if not user_input:
@@ -448,7 +448,7 @@ while True:
 
 ---
 
-## 🐛 Troubleshooting
+## Troubleshooting
 
 ### Issue: Index Too Large
 **Solution:** Use hybrid indexing or split by category
@@ -484,7 +484,7 @@ pip install llama-index-embeddings-openai  # For OpenAI embeddings
 
 ---
 
-## 📊 Before vs After Comparison
+## Before vs After Comparison
 
 | Aspect | Manual Process | With Skill Seekers |
 |--------|---------------|-------------------|
@@ -497,7 +497,7 @@ pip install llama-index-embeddings-openai  # For OpenAI embeddings
 
 ---
 
-## 🤝 Community & Support
+## Community & Support
 
 - **Questions:** [GitHub Discussions](https://github.com/yusufkaraaslan/Skill_Seekers/discussions)
 - **Issues:** [GitHub Issues](https://github.com/yusufkaraaslan/Skill_Seekers/issues)
@@ -506,7 +506,7 @@ pip install llama-index-embeddings-openai  # For OpenAI embeddings
 
 ---
 
-## 📚 Related Guides
+## Related Guides
 
 - [LangChain Integration](./LANGCHAIN.md)
 - [Pinecone Integration](./PINECONE.md)
@@ -514,7 +514,7 @@ pip install llama-index-embeddings-openai  # For OpenAI embeddings
 
 ---
 
-## 📖 Next Steps
+## Next Steps
 
 1. **Try the Quick Start** above
 2. **Explore different index types** (Tree, Keyword, List)

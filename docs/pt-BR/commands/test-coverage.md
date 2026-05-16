@@ -6,12 +6,12 @@ Analise cobertura de testes, identifique lacunas e gere testes faltantes para al
 
 | Indicator | Coverage Command |
 |-----------|-----------------|
-| `jest.config.*` or `package.json` jest | `npx jest --coverage --coverageReporters=json-summary` |
-| `vitest.config.*` | `npx vitest run --coverage` |
-| `pytest.ini` / `pyproject.toml` pytest | `pytest --cov=src --cov-report=json` |
-| `Cargo.toml` | `cargo llvm-cov --json` |
-| `pom.xml` with JaCoCo | `mvn test jacoco:report` |
-| `go.mod` | `go test -coverprofile=coverage.out ./...` |
+| `jest.config.*`or`package.json`jest |`npx jest --coverage --coverageReporters=json-summary` |
+| `vitest.config.*`|`npx vitest run --coverage` |
+| `pytest.ini`/`pyproject.toml`pytest |`pytest --cov=src --cov-report=json` |
+| `Cargo.toml`|`cargo llvm-cov --json` |
+| `pom.xml`with JaCoCo |`mvn test jacoco:report` |
+| `go.mod`|`go test -coverprofile=coverage.out ./...` |
 
 ## Passo 2: Analisar Relatório de Cobertura
 
@@ -34,7 +34,7 @@ Para cada arquivo abaixo da meta, gere testes seguindo esta prioridade:
 
 ### Regras para Geração de Testes
 
-- Coloque testes adjacentes ao código-fonte: `foo.ts` → `foo.test.ts` (ou convenção do projeto)
+- Coloque testes adjacentes ao código-fonte: `foo.ts`→`foo.test.ts` (ou convenção do projeto)
 - Use padrões de teste existentes do projeto (estilo de import, biblioteca de asserção, abordagem de mocking)
 - Faça mock de dependências externas (banco, APIs, sistema de arquivos)
 - Cada teste deve ser independente — sem estado mutável compartilhado entre testes

@@ -1,6 +1,6 @@
 # Legacy Documentation Archive
 
-> **Status:** Archived  
+> **Status:** Archived
 > **Reason:** Outdated patterns, phantom commands, or superseded by new docs
 
 ---

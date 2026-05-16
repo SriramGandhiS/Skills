@@ -1,4 +1,4 @@
-﻿# HTML Presentation Template
+# HTML Presentation Template
 
 Reference architecture for generating slide presentations. Every presentation follows this structure.
 
@@ -192,7 +192,7 @@ Every presentation must include:
 
 **If the user chose "No" for inline editing in Phase 1, do NOT generate any edit-related HTML, CSS, or JS.**
 
-**Do NOT use CSS `~` sibling selector for hover-based show/hide.** The CSS-only approach (`edit-hotzone:hover ~ .edit-toggle`) fails because `pointer-events: none` on the toggle button breaks the hover chain: user hovers hotzone -> button becomes visible -> mouse moves toward button -> leaves hotzone -> button disappears before click.
+**Do NOT use CSS `~`sibling selector for hover-based show/hide.** The CSS-only approach (`edit-hotzone:hover ~ .edit-toggle`) fails because`pointer-events: none` on the toggle button breaks the hover chain: user hovers hotzone -> button becomes visible -> mouse moves toward button -> leaves hotzone -> button disappears before click.
 
 **Required approach: JS-based hover with 400ms delay timeout.**
 
@@ -281,7 +281,7 @@ document.addEventListener("keydown", (e) => {
 **CRITICAL: `exportFile()` must strip edit state before capturing outerHTML.**
 
 When the user presses Ctrl+S in edit mode, `document.documentElement.outerHTML` captures the live DOM â€”
-including `body.edit-active`, `contenteditable="true"` on every text element, and `.active`/`.show` classes on
+including `body.edit-active`,`contenteditable="true"`on every text element, and`.active`/`.show` classes on
 the toggle button and banner. Anyone opening the saved file sees dashed outlines, a checkmark button, and an
 edit banner, as if permanently stuck in edit mode.
 
@@ -328,7 +328,7 @@ If user chose "No images" in Phase 1, skip this entirely. If images were provide
 ```python
 from PIL import Image, ImageDraw
 
-# Circular crop (for logos on modern/clean styles)
+## Circular crop (for logos on modern/clean styles)
 def crop_circle(input_path, output_path):
     img = Image.open(input_path).convert('RGBA')
     w, h = img.size
@@ -340,7 +340,7 @@ def crop_circle(input_path, output_path):
     img.putalpha(mask)
     img.save(output_path, 'PNG')
 
-# Resize (for oversized images that inflate HTML)
+## Resize (for oversized images that inflate HTML)
 def resize_max(input_path, output_path, max_dim=1200):
     img = Image.open(input_path)
     img.thumbnail((max_dim, max_dim), Image.LANCZOS)
@@ -397,7 +397,7 @@ Save processed images with `_processed` suffix. Never overwrite originals.
 
 **Accessibility:**
 
-- Semantic HTML (`<section>`, `<nav>`, `<main>`)
+- Semantic HTML (`<section>`,`<nav>`,`<main>`)
 - Keyboard navigation works fully
 - ARIA labels where needed
 - `prefers-reduced-motion` support (included in viewport-base.css)

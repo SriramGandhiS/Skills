@@ -50,12 +50,12 @@ def fetch_config_from_api(
         with httpx.Client(timeout=timeout) as client:
             # Get config details first
             detail_url = f"{API_BASE_URL}/api/configs/{config_name}"
-            logger.info(f"🔍 Checking API for config: {config_name}")
+            logger.info(f" Checking API for config: {config_name}")
 
             detail_response = client.get(detail_url)
 
             if detail_response.status_code == 404:
-                logger.warning(f"⚠️  Config '{config_name}' not found on API")
+                logger.warning(f"WARNING:  Config '{config_name}' not found on API")
                 return None
 
             detail_response.raise_for_status()
@@ -64,10 +64,10 @@ def fetch_config_from_api(
             # Download the actual config file using download_url from API response
             download_url = config_info.get("download_url")
             if not download_url:
-                logger.error(f"❌ Config '{config_name}' has no download_url. Contact support.")
+                logger.error(f"FAIL: Config '{config_name}' has no download_url. Contact support.")
                 return None
 
-            logger.info("📥 Downloading config from API...")
+            logger.info(" Downloading config from API...")
             download_response = client.get(download_url)
             download_response.raise_for_status()
             config_data = download_response.json()
@@ -80,20 +80,20 @@ def fetch_config_from_api(
             with open(config_file, "w", encoding="utf-8") as f:
                 json.dump(config_data, f, indent=2)
 
-            logger.info(f"✅ Config downloaded successfully: {config_file}")
+            logger.info(f"PASS: Config downloaded successfully: {config_file}")
             logger.info(f"   Category: {config_info.get('category', 'uncategorized')}")
             logger.info(f"   Type: {config_info.get('type', 'unknown')}")
 
             return config_file
 
     except httpx.HTTPError as e:
-        logger.warning(f"⚠️  HTTP Error fetching config: {e}")
+        logger.warning(f"WARNING:  HTTP Error fetching config: {e}")
         return None
     except json.JSONDecodeError as e:
-        logger.warning(f"⚠️  Invalid JSON response from API: {e}")
+        logger.warning(f"WARNING:  Invalid JSON response from API: {e}")
         return None
     except Exception as e:
-        logger.warning(f"⚠️  Error fetching config: {e}")
+        logger.warning(f"WARNING:  Error fetching config: {e}")
         return None
 
 
@@ -191,7 +191,7 @@ def resolve_config_path(config_path: str, auto_fetch: bool = True) -> Path | Non
             config_name = config_name[8:]
 
         logger.info(
-            "\n💡 Config not found locally, attempting to fetch from SkillSeekersWeb.com API..."
+            "\n Config not found locally, attempting to fetch from SkillSeekersWeb.com API..."
         )
         fetched_path = fetch_config_from_api(config_name, destination="configs")
         if fetched_path and fetched_path.exists():

@@ -1,4 +1,4 @@
-﻿---
+---
 name: fastapi-patterns
 description: FastAPI patterns for async APIs, dependency injection, Pydantic request and response models, OpenAPI docs, tests, security, and production readiness.
 origin: community
@@ -23,7 +23,7 @@ Treat the FastAPI app as a thin HTTP layer over explicit dependencies and servic
 - `main.py` owns app construction, middleware, exception handlers, and router registration.
 - `schemas/` owns Pydantic request and response models.
 - `dependencies.py` owns database, auth, pagination, and request-scoped dependencies.
-- `services/` or `crud/` owns business and persistence operations.
+- `services/`or`crud/` owns business and persistence operations.
 - `tests/` overrides dependencies instead of opening production resources.
 
 Prefer small routers and explicit `response_model` declarations. Keep raw ORM objects, secrets, and framework globals out of response schemas.
@@ -95,7 +95,7 @@ def create_app() -> FastAPI:
 app = create_app()
 ```
 
-Do not use `allow_origins=["*"]` with `allow_credentials=True`; browsers reject that combination and Starlette disallows it for credentialed requests.
+Do not use `allow_origins=["*"]`with`allow_credentials=True`; browsers reject that combination and Starlette disallows it for credentialed requests.
 
 ## Pydantic Schemas
 
@@ -198,7 +198,7 @@ async def list_users(
     return result.scalars().all()
 ```
 
-Use `httpx.AsyncClient` for external HTTP calls from async handlers. Do not call `requests` in an async route.
+Use `httpx.AsyncClient`for external HTTP calls from async handlers. Do not call`requests` in an async route.
 
 ## Error Handling
 
@@ -275,7 +275,7 @@ async def client(test_session: AsyncSession):
 
 ## Security Checklist
 
-- Hash passwords with `argon2-cffi`, `bcrypt`, or a current passlib-compatible hasher.
+- Hash passwords with `argon2-cffi`,`bcrypt`, or a current passlib-compatible hasher.
 - Validate JWT issuer, audience, expiry, and signing algorithm.
 - Keep CORS origins environment-specific.
 - Put rate limits on auth and write-heavy endpoints.
@@ -298,7 +298,7 @@ async def client(test_session: AsyncSession):
 Use these examples as patterns, not as project-wide templates:
 
 - Application factory: configure middleware and routers once in `create_app`.
-- Schema split: `UserCreate`, `UserUpdate`, and `UserResponse` have different responsibilities.
+- Schema split: `UserCreate`,`UserUpdate`, and`UserResponse` have different responsibilities.
 - Dependency override: tests override `get_db` directly.
 - OpenAPI customization: assign `app.openapi = custom_openapi`.
 

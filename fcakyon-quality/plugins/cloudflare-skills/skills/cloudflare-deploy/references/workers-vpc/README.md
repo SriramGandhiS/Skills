@@ -29,15 +29,15 @@ Need private network connectivity from Workers?
 ## When to Use TCP Sockets
 
 **Use TCP Sockets when you need:**
-- ✅ Direct control over wire protocols (e.g., Postgres wire protocol, SSH, Redis RESP)
-- ✅ Non-HTTP protocols (MQTT, SMTP, custom binary protocols)
-- ✅ StartTLS or custom TLS negotiation
-- ✅ Streaming binary data over TCP
+- PASS: Direct control over wire protocols (e.g., Postgres wire protocol, SSH, Redis RESP)
+- PASS: Non-HTTP protocols (MQTT, SMTP, custom binary protocols)
+- PASS: StartTLS or custom TLS negotiation
+- PASS: Streaming binary data over TCP
 
 **Don't use TCP Sockets when:**
-- ❌ You just need HTTP/HTTPS (use `fetch()` or VPC Services)
-- ❌ You need PostgreSQL/MySQL (use Hyperdrive for pooling)
-- ❌ You need WebSocket (use native Workers WebSocket)
+- FAIL: You just need HTTP/HTTPS (use `fetch()` or VPC Services)
+- FAIL: You need PostgreSQL/MySQL (use Hyperdrive for pooling)
+- FAIL: You need WebSocket (use native Workers WebSocket)
 
 ## Quick Start
 
@@ -54,14 +54,14 @@ export default {
 
     try {
       await socket.opened; // Wait for connection
-      
+
       const writer = socket.writable.getWriter();
       await writer.write(new TextEncoder().encode("QUERY\r\n"));
       await writer.close();
 
       const reader = socket.readable.getReader();
       const { value } = await reader.read();
-      
+
       return new Response(value);
     } finally {
       await socket.close();
@@ -76,7 +76,7 @@ Most private network connectivity combines TCP Sockets with Cloudflare Tunnel:
 
 ```
 ┌─────────┐     ┌─────────────┐     ┌──────────────┐     ┌─────────────┐
-│ Worker  │────▶│ TCP Socket  │────▶│   Tunnel     │────▶│   Private   │
+│ Worker  │────│ TCP Socket  │────│   Tunnel     │────│   Private   │
 │         │     │ (this API)  │     │ (cloudflared)│     │   Network   │
 └─────────┘     └─────────────┘     └──────────────┘     └─────────────┘
 ```

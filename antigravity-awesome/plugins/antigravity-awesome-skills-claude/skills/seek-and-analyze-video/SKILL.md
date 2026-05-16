@@ -80,10 +80,10 @@ Agent: uploads recording -> waits -> gets transcript -> uses chat_video for stru
 ## Common Pitfalls
 
 - **Problem:** Querying a video before processing completes
-  **Solution:** Always use the `wait` command after upload before any analysis
+**Solution:** Always use the `wait` command after upload before any analysis
 
 - **Problem:** Uploading a video when only a quick caption is needed
-  **Solution:** Use `caption_video` for one-off analysis; only upload for repeated queries
+**Solution:** Use `caption_video` for one-off analysis; only upload for repeated queries
 
 ## Limitations
 

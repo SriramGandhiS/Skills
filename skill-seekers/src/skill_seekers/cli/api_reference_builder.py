@@ -359,8 +359,8 @@ def main():
     generated_files = builder.build_reference(Path(args.output_dir))
 
     # Report results
-    print(f"✅ Generated {len(generated_files)} API reference files")
-    print(f"📁 Output directory: {args.output_dir}")
+    print(f"PASS: Generated {len(generated_files)} API reference files")
+    print(f" Output directory: {args.output_dir}")
     for source, output in generated_files.items():
         print(f"  • {output.name} (from {Path(source).name})")
 

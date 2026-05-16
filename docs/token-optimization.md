@@ -2,7 +2,7 @@
 
 Practical settings and habits to reduce token consumption, extend session quality, and get more work done within daily limits.
 
-> See also: `rules/common/performance.md` for model selection strategy, `skills/strategic-compact/` for automated compaction suggestions.
+> See also: `rules/common/performance.md`for model selection strategy,`skills/strategic-compact/` for automated compaction suggestions.
 
 ---
 
@@ -26,13 +26,13 @@ Add to your `~/.claude/settings.json`:
 
 | Setting | Default | Recommended | Effect |
 |---------|---------|-------------|--------|
-| `model` | opus | **sonnet** | Sonnet handles ~80% of coding tasks well. Switch to Opus with `/model opus` for complex reasoning. ~60% cost reduction. |
-| `MAX_THINKING_TOKENS` | 31,999 | **10,000** | Extended thinking reserves up to 31,999 output tokens per request for internal reasoning. Reducing this cuts hidden cost by ~70%. Set to `0` to disable for trivial tasks. |
+| `model`| opus | **sonnet** | Sonnet handles ~80% of coding tasks well. Switch to Opus with`/model opus` for complex reasoning. ~60% cost reduction. |
+| `MAX_THINKING_TOKENS`| 31,999 | **10,000** | Extended thinking reserves up to 31,999 output tokens per request for internal reasoning. Reducing this cuts hidden cost by ~70%. Set to`0` to disable for trivial tasks. |
 | `CLAUDE_CODE_SUBAGENT_MODEL` | _(inherits main)_ | **haiku** | Subagents (Task tool) run on this model. Haiku is ~80% cheaper and sufficient for exploration, file reading, and test running. |
 
 ### Community note on auto-compaction overrides
 
-Some recent Claude Code builds have community reports that `CLAUDE_AUTOCOMPACT_PCT_OVERRIDE` can only lower the compaction threshold, which means values below the default may compact earlier instead of later. If that happens in your setup, remove the override and rely on manual `/compact` plus ECC's `strategic-compact` guidance. See [Troubleshooting](./TROUBLESHOOTING.md).
+Some recent Claude Code builds have community reports that `CLAUDE_AUTOCOMPACT_PCT_OVERRIDE`can only lower the compaction threshold, which means values below the default may compact earlier instead of later. If that happens in your setup, remove the override and rely on manual`/compact`plus ECC's`strategic-compact` guidance. See [Troubleshooting](./TROUBLESHOOTING.md).
 
 ### Toggling extended thinking
 
@@ -73,7 +73,7 @@ Switch models mid-session:
 
 ### Strategic compaction
 
-The `strategic-compact` skill (in `skills/strategic-compact/`) suggests `/compact` at logical intervals rather than relying on auto-compaction, which can trigger mid-task. See the skill's README for hook setup instructions.
+The `strategic-compact`skill (in`skills/strategic-compact/`) suggests`/compact` at logical intervals rather than relying on auto-compaction, which can trigger mid-task. See the skill's README for hook setup instructions.
 
 **When to compact:**
 - After exploration, before implementation
@@ -98,10 +98,10 @@ Each enabled MCP server adds tool definitions to your context window. The README
 
 Tips:
 - Run `/mcp` to see active servers and their context cost
-- Use `/mcp` to disable Claude Code MCP servers when you want a live runtime change. Claude Code persists those runtime disables in `~/.claude.json`.
-- Prefer CLI tools when available (`gh` instead of GitHub MCP, `aws` instead of AWS MCP)
-- Do not rely on `.claude/settings.json` or `.claude/settings.local.json` to disable already-loaded Claude Code MCP servers; use `/mcp` for that.
-- `ECC_DISABLED_MCPS` only affects ECC-generated MCP config output during install/sync flows, such as `install.sh`, `npx ecc-install`, and Codex MCP merging. It is not a live Claude Code toggle.
+- Use `/mcp`to disable Claude Code MCP servers when you want a live runtime change. Claude Code persists those runtime disables in`~/.claude.json`.
+- Prefer CLI tools when available (`gh`instead of GitHub MCP,`aws` instead of AWS MCP)
+- Do not rely on `.claude/settings.json`or`.claude/settings.local.json`to disable already-loaded Claude Code MCP servers; use`/mcp` for that.
+- `ECC_DISABLED_MCPS`only affects ECC-generated MCP config output during install/sync flows, such as`install.sh`,`npx ecc-install`, and Codex MCP merging. It is not a live Claude Code toggle.
 - The `memory` MCP server is configured by default but not used by any skill, agent, or hook — consider disabling it
 
 ---
@@ -125,14 +125,14 @@ The `configure-ecc` install wizard could offer to set these environment variable
 ## Quick Reference
 
 ```bash
-# Daily workflow
+## Daily workflow
 /model sonnet              # Start here
 /model opus                # Only for complex reasoning
 /clear                     # Between unrelated tasks
 /compact                   # At logical breakpoints
 /cost                      # Check spending
 
-# Environment variables (add to ~/.claude/settings.json "env" block)
+## Environment variables (add to ~/.claude/settings.json "env" block)
 MAX_THINKING_TOKENS=10000
 CLAUDE_CODE_SUBAGENT_MODEL=haiku
 CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1

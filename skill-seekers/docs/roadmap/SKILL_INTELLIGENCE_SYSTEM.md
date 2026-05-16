@@ -1,6 +1,6 @@
 # Skill Seekers Intelligence System - Roadmap
 
-**Status:** 🔬 Research & Design Phase
+**Status:**  Research & Design Phase
 **Target:** Open Source, Individual Developers
 **Timeline:** 6-12 months (iterative releases)
 **Version:** 1.0 (Initial Design)
@@ -8,7 +8,7 @@
 
 ---
 
-## 🎯 Vision
+## Vision
 
 Build an **auto-updating, context-aware, multi-skill codebase intelligence system** that:
 
@@ -22,7 +22,7 @@ Build an **auto-updating, context-aware, multi-skill codebase intelligence syste
 
 ---
 
-## 🏗️ System Architecture Overview
+## System Architecture Overview
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
@@ -65,18 +65,18 @@ Build an **auto-updating, context-aware, multi-skill codebase intelligence syste
 
 ---
 
-## 📋 Development Phases
+## Development Phases
 
 ### Phase 0: Research & Validation (2-3 weeks)
-**Status:** 🔬 Current Phase
+**Status:**  Current Phase
 **Goal:** Validate core assumptions, design architecture
 
 **Deliverables:**
-- ✅ Technical architecture document
-- ✅ Roadmap document (this file)
-- ✅ POC design for Phase 1
-- ✅ Research clustering algorithms
-- ✅ Design config schema
+- PASS: Technical architecture document
+- PASS: Roadmap document (this file)
+- PASS: POC design for Phase 1
+- PASS: Research clustering algorithms
+- PASS: Design config schema
 
 **Success Criteria:**
 - Clear technical direction
@@ -86,7 +86,7 @@ Build an **auto-updating, context-aware, multi-skill codebase intelligence syste
 ---
 
 ### Phase 1: Git-Based Auto-Generation (3-4 weeks)
-**Status:** 📅 Planned
+**Status:**  Planned
 **Goal:** Auto-generate skills on branch merges
 
 #### Milestones
@@ -153,12 +153,12 @@ CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
 WATCH_BRANCHES=$(yq '.watch_branches[]' .skill-seekers/config.yml)
 
 if echo "$WATCH_BRANCHES" | grep -q "$CURRENT_BRANCH"; then
-  echo "🔄 Branch merge detected on $CURRENT_BRANCH"
-  echo "🚀 Regenerating skills..."
+  echo " Branch merge detected on $CURRENT_BRANCH"
+  echo " Regenerating skills..."
 
   skill-seekers regenerate-skills --branch "$CURRENT_BRANCH"
 
-  echo "✅ Skills updated"
+  echo "PASS: Skills updated"
 fi
 ```
 
@@ -243,7 +243,7 @@ cat .skill-seekers/skills/codebase/codebase.skill
 ---
 
 ### Phase 2: Tech Stack Detection & Library Skills (2-3 weeks)
-**Status:** 📅 Planned (After Phase 1)
+**Status:**  Planned (After Phase 1)
 **Goal:** Auto-detect tech stack and download library skills
 
 #### Milestones
@@ -444,7 +444,7 @@ git_hooks:
 ---
 
 ### Phase 3: Modular Skill Splitting (3-4 weeks)
-**Status:** 📅 Planned (After Phase 2)
+**Status:**  Planned (After Phase 2)
 **Goal:** Split codebase into modular skills based on config
 
 #### Milestones
@@ -591,7 +591,7 @@ class ModuleSplitter:
 ---
 
 ### Phase 4: Import-Based Clustering (2-3 weeks)
-**Status:** 📅 Planned (After Phase 3)
+**Status:**  Planned (After Phase 3)
 **Goal:** Load only relevant skills based on current file
 
 #### Milestones
@@ -701,7 +701,7 @@ class SkillSeekersIntelligenceAgent:
         self.load_skills(relevant)
 
         # Notify user
-        print(f"📚 Loaded {len(relevant)} relevant skills:")
+        print(f" Loaded {len(relevant)} relevant skills:")
         for skill in relevant:
             print(f"  - {skill.name}")
 
@@ -711,9 +711,9 @@ class SkillSeekersIntelligenceAgent:
         Action: Regenerate skills if needed
         """
         if branch in self.config.watch_branches:
-            print(f"🔄 Regenerating skills for {branch}...")
+            print(f" Regenerating skills for {branch}...")
             await self.regenerate_skills(branch)
-            print("✅ Skills updated")
+            print("PASS: Skills updated")
 
     def load_skills(self, skills: list[Path]):
         """Load skills into Claude context"""
@@ -759,7 +759,7 @@ class SkillSeekersIntelligenceAgent:
 ---
 
 ### Phase 5: Embedding-Based Clustering (3-4 weeks)
-**Status:** 🔬 Experimental (After Phase 4)
+**Status:**  Experimental (After Phase 4)
 **Goal:** Smarter clustering using semantic similarity
 
 #### Milestones
@@ -896,36 +896,36 @@ class HybridClusteringEngine:
 
 ---
 
-## 📊 Success Metrics
+## Success Metrics
 
 ### Phase 1 Metrics
-- ✅ Auto-regeneration works on branch merge
-- ✅ <5 minutes to regenerate skills
-- ✅ Git hooks work reliably
+- PASS: Auto-regeneration works on branch merge
+- PASS: <5 minutes to regenerate skills
+- PASS: Git hooks work reliably
 
 ### Phase 2 Metrics
-- ✅ 90%+ accuracy on tech stack detection
-- ✅ Library skills downloaded successfully
-- ✅ <2 seconds to download cached skill
+- PASS: 90%+ accuracy on tech stack detection
+- PASS: Library skills downloaded successfully
+- PASS: <2 seconds to download cached skill
 
 ### Phase 3 Metrics
-- ✅ Modular skills are 50-200 lines each
-- ✅ User can configure module boundaries
-- ✅ Cross-references work
+- PASS: Modular skills are 50-200 lines each
+- PASS: User can configure module boundaries
+- PASS: Cross-references work
 
 ### Phase 4 Metrics
-- ✅ Correct skills load 85%+ of the time
-- ✅ <100ms to find relevant skills
-- ✅ Plugin works smoothly in Claude Code
+- PASS: Correct skills load 85%+ of the time
+- PASS: <100ms to find relevant skills
+- PASS: Plugin works smoothly in Claude Code
 
 ### Phase 5 Metrics
-- ✅ Hybrid clustering beats import-only
-- ✅ <200ms to cluster with embeddings
-- ✅ Embedding cache < 100MB
+- PASS: Hybrid clustering beats import-only
+- PASS: <200ms to cluster with embeddings
+- PASS: Embedding cache < 100MB
 
 ---
 
-## 🎯 Target Users
+## Target Users
 
 ### Primary: Individual Open Source Developers
 - Working on their own projects
@@ -945,7 +945,7 @@ class HybridClusteringEngine:
 
 ---
 
-## 📦 Deliverables
+## Deliverables
 
 ### User-Facing
 - [ ] CLI commands (init, regenerate, detect, download)
@@ -967,7 +967,7 @@ class HybridClusteringEngine:
 
 ---
 
-## 🚧 Known Challenges
+## Known Challenges
 
 ### Technical
 1. **Context Window Limits:** Even with clustering, large projects may exceed limits
@@ -987,7 +987,7 @@ class HybridClusteringEngine:
 
 ---
 
-## 🔮 Future Ideas (Post v1.0)
+## Future Ideas (Post v1.0)
 
 ### Advanced Clustering
 - [ ] Multi-file context (editing 3 files → load related skills)
@@ -1011,7 +1011,7 @@ class HybridClusteringEngine:
 
 ---
 
-## 📚 References
+## References
 
 - **Existing Features:** C3.x Codebase Analysis (patterns, examples, architecture)
 - **Platform:** Claude Code plugin system

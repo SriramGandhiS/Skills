@@ -36,7 +36,7 @@ We encourage you to log in to your Hugging Face account to upload and share your
 
 ## Load Food-101 dataset
 
-Start by loading a smaller subset of the Food-101 dataset from the 🤗 Datasets library. This will give you a chance to
+Start by loading a smaller subset of the Food-101 dataset from the  Datasets library. This will give you a chance to
 experiment and make sure everything works before spending more time training on the full dataset.
 
 ```py
@@ -118,13 +118,13 @@ Then create a preprocessing function to apply the transforms and return the `pix
 ...     return examples
 ```
 
-To apply the preprocessing function over the entire dataset, use 🤗 Datasets [with_transform](https://huggingface.co/docs/datasets/v4.5.0/en/package_reference/main_classes#datasets.Dataset.with_transform) method. The transforms are applied on the fly when you load an element of the dataset:
+To apply the preprocessing function over the entire dataset, use  Datasets [with_transform](https://huggingface.co/docs/datasets/v4.5.0/en/package_reference/main_classes#datasets.Dataset.with_transform) method. The transforms are applied on the fly when you load an element of the dataset:
 
 ```py
 >>> food = food.with_transform(transforms)
 ```
 
-Now create a batch of examples using [DefaultDataCollator](/docs/transformers/v5.2.0/en/main_classes/data_collator#transformers.DefaultDataCollator). Unlike other data collators in 🤗 Transformers, the `DefaultDataCollator` does not apply additional preprocessing such as padding.
+Now create a batch of examples using [DefaultDataCollator](/docs/transformers/v5.2.0/en/main_classes/data_collator#transformers.DefaultDataCollator). Unlike other data collators in  Transformers, the `DefaultDataCollator` does not apply additional preprocessing such as padding.
 
 ```py
 >>> from transformers import DefaultDataCollator
@@ -135,8 +135,8 @@ Now create a batch of examples using [DefaultDataCollator](/docs/transformers/v5
 ## Evaluate
 
 Including a metric during training is often helpful for evaluating your model's performance. You can quickly load an
-evaluation method with the 🤗 [Evaluate](https://huggingface.co/docs/evaluate/index) library. For this task, load
-the [accuracy](https://huggingface.co/spaces/evaluate-metric/accuracy) metric (see the 🤗 Evaluate [quick tour](https://huggingface.co/docs/evaluate/a_quick_tour) to learn more about how to load and compute a metric):
+evaluation method with the  [Evaluate](https://huggingface.co/docs/evaluate/index) library. For this task, load
+the [accuracy](https://huggingface.co/spaces/evaluate-metric/accuracy) metric (see the  Evaluate [quick tour](https://huggingface.co/docs/evaluate/a_quick_tour) to learn more about how to load and compute a metric):
 
 ```py
 >>> import evaluate
@@ -232,7 +232,7 @@ Load an image you'd like to run inference on:
 >>> image = ds["image"][0]
 ```
 
-    
+
 
 The simplest way to try out your finetuned model for inference is to use it in a [pipeline()](/docs/transformers/v5.2.0/en/main_classes/pipelines#transformers.pipeline). Instantiate a `pipeline` for image classification with your model, and pass your image to it:
 

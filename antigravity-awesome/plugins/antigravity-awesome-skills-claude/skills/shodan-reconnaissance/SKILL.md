@@ -54,7 +54,7 @@ shodan init YOUR_API_KEY
 # Verify setup
 shodan info
 # Output: Query credits available: 100
-#         Scan credits available: 100
+# Scan credits available: 100
 ```
 
 #### Check Account Status
@@ -83,9 +83,9 @@ shodan host 1.1.1.1
 # Organization: Mountain View Communications
 # Number of open ports: 3
 # Ports:
-#   53/udp
-#   80/tcp
-#   443/tcp
+# 53/udp
+# 80/tcp
+# 443/tcp
 ```
 
 #### Check if Host is Honeypot
@@ -94,7 +94,7 @@ shodan host 1.1.1.1
 shodan honeyscore 192.168.1.100
 
 # Output: Not a honeypot
-#         Score: 0.3
+# Score: 0.3
 ```
 
 ### 3. Search Queries
@@ -447,28 +447,28 @@ def recon_organization(org_name):
         # Search for organization
         query = f'org:"{org_name}"'
         results = api.search(query)
-        
+
         print(f"[*] Found {results['total']} hosts for {org_name}")
-        
+
         # Collect unique IPs and ports
         hosts = {}
         for result in results['matches']:
             ip = result['ip_str']
             port = result['port']
             product = result.get('product', 'unknown')
-            
+
             if ip not in hosts:
                 hosts[ip] = []
             hosts[ip].append({'port': port, 'product': product})
-        
+
         # Output findings
         for ip, services in hosts.items():
             print(f"\n[+] {ip}")
             for svc in services:
                 print(f"    - {svc['port']}/tcp ({svc['product']})")
-        
+
         return hosts
-        
+
     except shodan.APIError as e:
         print(f"Error: {e}")
         return None

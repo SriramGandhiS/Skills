@@ -25,7 +25,7 @@
 * **命令**: `~/.claude/commands/` - 快速可执行的提示词
 
 ```bash
-# Example skill structure
+## Example skill structure
 ~/.claude/skills/
   pmx-guidelines.md      # Project-specific patterns
   coding-standards.md    # Language best practices
@@ -69,7 +69,7 @@
 ![PostToolUse 钩子反馈](../../assets/images/shortform/03-posttooluse-hook.png)
 *在 Claude Code 中运行 PostToolUse 钩子时获得的反馈示例*
 
-**专业提示：** 使用 `hookify` 插件以对话方式创建钩子，而不是手动编写 JSON。运行 `/hookify` 并描述你想要什么。
+**专业提示：** 使用 `hookify`插件以对话方式创建钩子，而不是手动编写 JSON。运行`/hookify` 并描述你想要什么。
 
 ***
 
@@ -80,7 +80,7 @@
 子代理与技能配合得很好——一个能够执行你技能子集的子代理可以被委托任务并自主使用这些技能。它们也可以用特定的工具权限进行沙盒化。
 
 ```bash
-# Example subagent structure
+## Example subagent structure
 ~/.claude/agents/
   planner.md           # Feature implementation planning
   architect.md         # System design decisions
@@ -98,7 +98,7 @@
 
 ## 规则和记忆
 
-你的 `.rules` 文件夹包含 `.md` 文件，其中是 Claude 应始终遵循的最佳实践。有两种方法：
+你的 `.rules`文件夹包含`.md` 文件，其中是 Claude 应始终遵循的最佳实践。有两种方法：
 
 1. **单一 CLAUDE.md** - 所有内容在一个文件中（用户或项目级别）
 2. **规则文件夹** - 按关注点分组的模块化 `.md` 文件
@@ -136,7 +136,7 @@ MCP 将 Claude 直接连接到外部服务。它不是 API 的替代品——而
 
 **关键：上下文窗口管理**
 
-对 MCP 要挑剔。我将所有 MCP 保存在用户配置中，但**禁用所有未使用的**。导航到 `/plugins` 并向下滚动，或运行 `/mcp`。
+对 MCP 要挑剔。我将所有 MCP 保存在用户配置中，但**禁用所有未使用的**。导航到 `/plugins`并向下滚动，或运行`/mcp`。
 
 ![/plugins 界面](../../assets/images/shortform/05-plugins-interface.jpeg)
 *使用 /plugins 导航到 MCP 以查看当前安装了哪些插件及其状态*
@@ -146,10 +146,10 @@ MCP 将 Claude 直接连接到外部服务。它不是 API 的替代品——而
 **经验法则：** 在配置中保留 20-30 个 MCP，但保持启用状态少于 10 个 / 活动工具少于 80 个。
 
 ```bash
-# Check enabled MCPs
+## Check enabled MCPs
 /mcp
 
-# Disable unused ones in ~/.claude.json under projects.disabledMcpServers
+## Disable unused ones in ~/.claude.json under projects.disabledMcpServers
 ```
 
 ***
@@ -161,11 +161,11 @@ MCP 将 Claude 直接连接到外部服务。它不是 API 的替代品——而
 **安装插件：**
 
 ```bash
-# Add a marketplace
-# mgrep plugin by @mixedbread-ai
-claude plugin marketplace add https://github.com/mixedbread-ai/mgrep
+## Add a marketplace
+## mgrep plugin by @mixedbread-ai
+claude plugin marketplace add <https://github.com/mixedbread-ai/mgrep>
 
-# Open Claude, run /plugins, find new marketplace, install from there
+## Open Claude, run /plugins, find new marketplace, install from there
 ```
 
 ![显示 mgrep 的市场选项卡](../../assets/images/shortform/06-marketplaces-mgrep.jpeg)
@@ -174,7 +174,7 @@ claude plugin marketplace add https://github.com/mixedbread-ai/mgrep
 **LSP 插件** 如果你经常在编辑器之外运行 Claude Code，则特别有用。语言服务器协议为 Claude 提供实时类型检查、跳转到定义和智能补全，而无需打开 IDE。
 
 ```bash
-# Enabled plugins example
+## Enabled plugins example
 typescript-lsp@claude-plugins-official  # TypeScript intelligence
 pyright-lsp@claude-plugins-official     # Python type checking
 hookify@claude-plugins-official         # Create hooks conversationally
@@ -204,7 +204,7 @@ mgrep@Mixedbread-Grep                   # Better search than ripgrep
 
 ```bash
 git worktree add ../feature-branch feature-branch
-# Now run separate Claude instances in each worktree
+## Now run separate Claude instances in each worktree
 ```
 
 ### 用于长时间运行命令的 tmux
@@ -215,13 +215,13 @@ git worktree add ../feature-branch feature-branch
 
 ```bash
 tmux new -s dev
-# Claude runs commands here, you can detach and reattach
+## Claude runs commands here, you can detach and reattach
 tmux attach -t dev
 ```
 
 ### mgrep > grep
 
-`mgrep` 是对 ripgrep/grep 的显著改进。通过插件市场安装，然后使用 `/mgrep` 技能。适用于本地搜索和网络搜索。
+`mgrep`是对 ripgrep/grep 的显著改进。通过插件市场安装，然后使用`/mgrep` 技能。适用于本地搜索和网络搜索。
 
 ```bash
 mgrep "function handleSubmit"  # Local search

@@ -1,4 +1,4 @@
-﻿# Template-Driven Forms
+# Template-Driven Forms
 
 Template-driven forms use two-way data binding (`[(ngModel)]`) to update the data model in the component as changes are made in the template and vice versa. They are ideal for simple forms and use directives in the HTML template to manage form state and validation.
 
@@ -7,8 +7,8 @@ Template-driven forms use two-way data binding (`[(ngModel)]`) to update the dat
 Template-driven forms rely on the `FormsModule` which provides these key directives:
 
 - `NgModel`: Reconciles value changes in the form element with the data model (`[(ngModel)]`).
-- `NgForm`: Automatically creates a top-level `FormGroup` bound to the `<form>` tag.
-- `NgModelGroup`: Creates a nested `FormGroup` bound to a DOM element.
+- `NgForm`: Automatically creates a top-level`FormGroup`bound to the`<form>` tag.
+- `NgModelGroup`: Creates a nested`FormGroup` bound to a DOM element.
 
 ## Setup
 
@@ -36,7 +36,7 @@ export class UserForm {
 
 ### Two-Way Binding with `[(ngModel)]`
 
-Use `[(ngModel)]` on input elements. **Every element using `[(ngModel)]` MUST have a `name` attribute.** Angular uses the `name` attribute to register the control with the parent `NgForm`.
+Use `[(ngModel)]`on input elements. **Every element using`[(ngModel)]`MUST have a`name`attribute.** Angular uses the`name`attribute to register the control with the parent`NgForm`.
 
 ```html
 <form #userForm="ngForm" (ngSubmit)="onSubmit()">
@@ -66,10 +66,10 @@ Angular automatically applies CSS classes to controls and forms based on their s
 
 | State          | Class if True                     | Class if False |
 | :------------- | :-------------------------------- | :------------- |
-| Visited        | `ng-touched`                      | `ng-untouched` |
-| Value Changed  | `ng-dirty`                        | `ng-pristine`  |
-| Value is Valid | `ng-valid`                        | `ng-invalid`   |
-| Form Submitted | `ng-submitted` (on `<form>` only) | -              |
+| Visited        | `ng-touched`|`ng-untouched` |
+| Value Changed  | `ng-dirty`|`ng-pristine`  |
+| Value is Valid | `ng-valid`|`ng-invalid`   |
+| Form Submitted | `ng-submitted`(on`<form>` only) | -              |
 
 You can use these classes to provide visual feedback in your CSS:
 
@@ -85,7 +85,7 @@ You can use these classes to provide visual feedback in your CSS:
 
 ## Validation and Error Messages
 
-To display error messages conditionally, export the `ngModel` directive to a template reference variable (e.g., `#nameCtrl="ngModel"`).
+To display error messages conditionally, export the `ngModel`directive to a template reference variable (e.g.,`#nameCtrl="ngModel"`).
 
 ```html
 <input type="text" id="name" required [(ngModel)]="user.name" name="name" #nameCtrl="ngModel" />
@@ -102,12 +102,12 @@ To display error messages conditionally, export the `ngModel` directive to a tem
 
 ## Submitting the Form
 
-1. Use the `(ngSubmit)` event on the `<form>` element.
-2. Bind the submit button's disabled state to the overall form validity using the `NgForm` template reference variable (e.g., `[disabled]="!userForm.form.valid"`).
+1. Use the `(ngSubmit)`event on the`<form>` element.
+2. Bind the submit button's disabled state to the overall form validity using the `NgForm`template reference variable (e.g.,`[disabled]="!userForm.form.valid"`).
 
 ## Resetting the Form
 
-To programmatically reset the form to its pristine state (clearing values and validation flags), use the `reset()` method on the `NgForm` instance.
+To programmatically reset the form to its pristine state (clearing values and validation flags), use the `reset()`method on the`NgForm` instance.
 
 ```html
 <button type="button" (click)="userForm.reset()">Reset</button>

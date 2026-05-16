@@ -1,4 +1,4 @@
-﻿---
+---
 name: search-first
 description: Research-before-coding workflow. Search for existing tools, libraries, and patterns before writing custom code. Invokes the researcher agent.
 origin: ECC
@@ -68,8 +68,8 @@ that are relevant to the task and project in front of you.
 
 | Channel | Check | If missing |
 |---------|-------|------------|
-| Repository search | `rg --files` and targeted `rg` queries | State that only visible files were inspected |
-| Package registry | `npm --version`, `python -m pip --version`, or project package manager | Use web/docs search and avoid claiming registry coverage |
+| Repository search | `rg --files`and targeted`rg` queries | State that only visible files were inspected |
+| Package registry | `npm --version`,`python -m pip --version`, or project package manager | Use web/docs search and avoid claiming registry coverage |
 | GitHub CLI | `gh auth status` | Use public web or local git history only |
 | MCP/docs tools | Available tool list or local MCP config | Fall back to official docs/web search |
 | Skills directory | `ls ~/.claude/skills ~/.codex/skills` where applicable | Say no local skill catalog was available |
@@ -105,24 +105,24 @@ tool name exposed by the active harness.
 ## Search Shortcuts by Category
 
 ### Development Tooling
-- Linting â†’ `eslint`, `ruff`, `textlint`, `markdownlint`
-- Formatting â†’ `prettier`, `black`, `gofmt`
-- Testing â†’ `jest`, `pytest`, `go test`
-- Pre-commit â†’ `husky`, `lint-staged`, `pre-commit`
+- Linting â†’ `eslint`,`ruff`,`textlint`,`markdownlint`
+- Formatting â†’ `prettier`,`black`,`gofmt`
+- Testing â†’ `jest`,`pytest`,`go test`
+- Pre-commit â†’ `husky`,`lint-staged`,`pre-commit`
 
 ### AI/LLM Integration
 - Claude SDK â†’ Context7 for latest docs
 - Prompt management â†’ Check MCP servers
-- Document processing â†’ `unstructured`, `pdfplumber`, `mammoth`
+- Document processing â†’ `unstructured`,`pdfplumber`,`mammoth`
 
 ### Data & APIs
-- HTTP clients â†’ `httpx` (Python), `ky`/`undici` (Node)
-- Validation â†’ `zod` (TS), `pydantic` (Python)
+- HTTP clients â†’ `httpx`(Python),`ky`/`undici` (Node)
+- Validation â†’ `zod`(TS),`pydantic` (Python)
 - Database â†’ Check for MCP servers first
 
 ### Content & Publishing
-- Markdown processing â†’ `remark`, `unified`, `markdown-it`
-- Image optimization â†’ `sharp`, `imagemin`
+- Markdown processing â†’ `remark`,`unified`,`markdown-it`
+- Image optimization â†’ `sharp`,`imagemin`
 
 ## Integration Points
 

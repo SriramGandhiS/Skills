@@ -87,27 +87,27 @@ origin: ECC
 
 ### 开发工具
 
-* Linting → `eslint`, `ruff`, `textlint`, `markdownlint`
-* Formatting → `prettier`, `black`, `gofmt`
-* Testing → `jest`, `pytest`, `go test`
-* Pre-commit → `husky`, `lint-staged`, `pre-commit`
+* Linting → `eslint`,`ruff`,`textlint`,`markdownlint`
+* Formatting → `prettier`,`black`,`gofmt`
+* Testing → `jest`,`pytest`,`go test`
+* Pre-commit → `husky`,`lint-staged`,`pre-commit`
 
 ### AI/LLM 集成
 
 * Claude SDK → 使用 Context7 获取最新文档
 * 提示词管理 → 检查 MCP 服务器
-* 文档处理 → `unstructured`, `pdfplumber`, `mammoth`
+* 文档处理 → `unstructured`,`pdfplumber`,`mammoth`
 
 ### 数据与 API
 
-* HTTP 客户端 → `httpx` (Python), `ky`/`got` (Node)
-* 验证 → `zod` (TS), `pydantic` (Python)
+* HTTP 客户端 → `httpx`(Python),`ky`/`got` (Node)
+* 验证 → `zod`(TS),`pydantic` (Python)
 * 数据库 → 首先检查是否有 MCP 服务器
 
 ### 内容与发布
 
-* Markdown 处理 → `remark`, `unified`, `markdown-it`
-* 图片优化 → `sharp`, `imagemin`
+* Markdown 处理 → `remark`,`unified`,`markdown-it`
+* 图片优化 → `sharp`,`imagemin`
 
 ## 集成点
 

@@ -1,12 +1,9 @@
 #!/usr/bin/env bash
-#
-# Test: Loki Compound CLI Commands
+# # Test: Loki Compound CLI Commands
 # Tests all subcommands of 'loki compound': help, list, show, search, stats
 # Uses a temporary HOME directory to isolate from real user data.
-#
-# Run: ./tests/test-compound-cli.sh
-#
-# Note: Not using -e to allow collecting all test results
+# # Run: ./tests/test-compound-cli.sh
+# # Note: Not using -e to allow collecting all test results
 
 set -uo pipefail
 

@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
 # Test: loki plan command
 # Tests the dry-run PRD analysis and cost estimation feature.
-#
-# Note: Not using -e to allow collecting all test results
+# # Note: Not using -e to allow collecting all test results
 
 set -uo pipefail
 

@@ -170,9 +170,9 @@ Snapshots automatically detect and inline iframe content. When the main-frame sn
 agent-browser snapshot -i
 # @e1 [heading] "Checkout"
 # @e2 [Iframe] "payment-frame"
-#   @e3 [input] "Card number"
-#   @e4 [input] "Expiry"
-#   @e5 [button] "Pay"
+# @e3 [input] "Card number"
+# @e4 [input] "Expiry"
+# @e5 [button] "Pay"
 # @e6 [button] "Cancel"
 
 # Interact with iframe elements directly using their refs

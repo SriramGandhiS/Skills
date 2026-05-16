@@ -146,7 +146,7 @@ t = i / (num_frames - 1)
 y = interpolate(start=0, end=400, t=t, easing='ease_out')
 
 # Available: linear, ease_in, ease_out, ease_in_out,
-#           bounce_out, elastic_out, back_out
+# bounce_out, elastic_out, back_out
 ```
 
 ### Frame Helpers (`core.frame_composer`)

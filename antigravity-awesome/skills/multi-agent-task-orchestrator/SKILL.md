@@ -139,16 +139,16 @@ Action: Notify user of existing task, wait for completion
 ## Common Pitfalls
 
 - **Problem:** Orchestrator starts doing work instead of delegating
-  **Solution:** Add explicit NOT-blocks and role boundaries
+**Solution:** Add explicit NOT-blocks and role boundaries
 
 - **Problem:** Two agents modify the same file simultaneously
-  **Solution:** Task registry with file-level locking and queue system
+**Solution:** Task registry with file-level locking and queue system
 
 - **Problem:** Agent claims "done" without actual changes
-  **Solution:** Quality gate checks git diff before accepting completion
+**Solution:** Quality gate checks git diff before accepting completion
 
 - **Problem:** Tasks pile up without progress
-  **Solution:** 30-minute heartbeat catches stale assignments and reassigns
+**Solution:** 30-minute heartbeat catches stale assignments and reassigns
 
 ## Related Skills
 

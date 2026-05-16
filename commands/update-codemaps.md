@@ -14,7 +14,7 @@ Analyze the codebase structure and generate token-lean architecture documentatio
 
 ## Step 2: Generate Codemaps
 
-Create or update codemaps in `docs/CODEMAPS/` (or `.reports/codemaps/`):
+Create or update codemaps in `docs/CODEMAPS/`(or`.reports/codemaps/`):
 
 | File | Contents |
 |------|----------|
@@ -29,7 +29,7 @@ Create or update codemaps in `docs/CODEMAPS/` (or `.reports/codemaps/`):
 Each codemap should be token-lean — optimized for AI context consumption:
 
 ```markdown
-# Backend Architecture
+## Backend Architecture
 
 ## Routes
 POST /api/users → UserController.create → UserService.create → UserRepo.insert

@@ -41,7 +41,7 @@ origin: ECC
 * 当模式已迁移且仅需要每次测试回滚时使用 `DatabaseTransactions`
 * 当每次测试都需要完整迁移/刷新且可以承担其开销时使用 `DatabaseMigrations`
 
-将 `RefreshDatabase` 作为触及数据库的测试的默认选择：对于支持事务的数据库，它每次测试运行运行一次迁移（通过静态标志）并将每个测试包装在事务中；对于 `:memory:` SQLite 或不支持事务的连接，它在每次测试前进行迁移。当模式已迁移且仅需要每次测试回滚时使用 `DatabaseTransactions`。
+将 `RefreshDatabase`作为触及数据库的测试的默认选择：对于支持事务的数据库，它每次测试运行运行一次迁移（通过静态标志）并将每个测试包装在事务中；对于`:memory:`SQLite 或不支持事务的连接，它在每次测试前进行迁移。当模式已迁移且仅需要每次测试回滚时使用`DatabaseTransactions`。
 
 ### 测试框架选择
 
@@ -186,7 +186,7 @@ final class ProjectRepositoryTest extends TestCase
 
 * 作业使用 `Bus::fake()`
 * 队列工作使用 `Queue::fake()`
-* 通知使用 `Mail::fake()` 和 `Notification::fake()`
+* 通知使用 `Mail::fake()`和`Notification::fake()`
 * 领域事件使用 `Event::fake()`
 
 ```php
@@ -228,7 +228,7 @@ $response->assertOk();
 ### 覆盖率目标
 
 * 对单元 + 功能测试强制执行 80% 以上的覆盖率
-* 在 CI 中使用 `pcov` 或 `XDEBUG_MODE=coverage`
+* 在 CI 中使用 `pcov`或`XDEBUG_MODE=coverage`
 
 ### 测试命令
 
@@ -238,7 +238,7 @@ $response->assertOk();
 
 ### 测试配置
 
-* 使用 `phpunit.xml` 设置 `DB_CONNECTION=sqlite` 和 `DB_DATABASE=:memory:` 以进行快速测试
+* 使用 `phpunit.xml`设置`DB_CONNECTION=sqlite`和`DB_DATABASE=:memory:` 以进行快速测试
 * 为测试保持独立的环境，以避免触及开发/生产数据
 
 ### 授权测试

@@ -9,7 +9,7 @@ Insert/upsert/delete return immediately but vectors aren't queryable for 5-10 se
 **Workers API: 1,000 vectors max per call (HTTP API: 5,000).** Silently truncates if exceeded.
 
 ```typescript
-// ✅ Chunk into 1000 (Workers API limit; HTTP API allows 5000)
+// PASS: Chunk into 1000 (Workers API limit; HTTP API allows 5000)
 for (let i = 0; i < vectors.length; i += 1000) {
   await env.VECTORIZE.upsert(vectors.slice(i, i + 1000));
 }
@@ -30,7 +30,7 @@ for (let i = 0; i < vectors.length; i += 1000) {
 Create BEFORE inserting - existing vectors not retroactively indexed.
 
 ```bash
-# ✅ Create index FIRST
+# PASS: Create index FIRST
 wrangler vectorize create-metadata-index my-index --property-name=category --type=string
 wrangler vectorize insert my-index --file=data.ndjson
 ```

@@ -251,7 +251,7 @@ def generate_token(
 
     # Return with raw token (only shown once)
     return {
-        **token_entry,
+**token_entry,
         "token": raw_token,  # Only returned on creation
     }
 

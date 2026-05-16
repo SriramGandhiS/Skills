@@ -2,11 +2,11 @@
 
 **Last Updated:** February 7, 2026
 **Status:** Production Ready
-**Difficulty:** Easy ⭐
+**Difficulty:** Easy
 
 ---
 
-## 🎯 The Problem
+## The Problem
 
 Building RAG (Retrieval-Augmented Generation) applications with Haystack requires high-quality, structured documentation for your document stores and pipelines. Manually scraping and preparing documentation is:
 
@@ -19,7 +19,7 @@ Building RAG (Retrieval-Augmented Generation) applications with Haystack require
 
 ---
 
-## ✨ The Solution
+## The Solution
 
 Use Skill Seekers as **essential preprocessing** before Haystack:
 
@@ -33,7 +33,7 @@ Skill Seekers outputs JSON files with Haystack Document format (`content` + `met
 
 ---
 
-## 🚀 Quick Start (5 Minutes)
+## Quick Start (5 Minutes)
 
 ### Prerequisites
 - Python 3.10+
@@ -97,7 +97,7 @@ for doc in results["documents"]:
 
 ---
 
-## 📖 Detailed Setup Guide
+## Detailed Setup Guide
 
 ### Step 1: Choose Your Documentation Source
 
@@ -310,7 +310,7 @@ print(response["llm"]["replies"][0])
 
 ---
 
-## 🔥 Advanced Usage
+## Advanced Usage
 
 ### Semantic Chunking for Better Retrieval
 
@@ -429,7 +429,7 @@ python scripts/merge_documents.py \
 
 ---
 
-## ✅ Best Practices
+## PASS: Best Practices
 
 ### 1. Use Semantic Chunking for Large Docs
 
@@ -496,7 +496,7 @@ results = retriever.run(
 
 ---
 
-## 💼 Real-World Example: FastAPI RAG Chatbot
+## Real-World Example: FastAPI RAG Chatbot
 
 Complete example of building a FastAPI documentation chatbot:
 
@@ -648,20 +648,20 @@ async def ask_question(question: Question):
 
 # Run: uvicorn chatbot:app --reload
 # Test: curl -X POST http://localhost:8000/ask \
-#   -H "Content-Type: application/json" \
-#   -d '{"text": "How do I use async functions?"}'
+# -H "Content-Type: application/json" \
+# -d '{"text": "How do I use async functions?"}'
 ```
 
 **Result:**
-- ✅ 200 documentation pages → 450 optimized chunks
-- ✅ Sub-second retrieval with BM25
-- ✅ Context-aware answers from GPT-4
-- ✅ Source attribution for every answer
-- ✅ REST API for integration
+- PASS: 200 documentation pages → 450 optimized chunks
+- PASS: Sub-second retrieval with BM25
+- PASS: Context-aware answers from GPT-4
+- PASS: Source attribution for every answer
+- PASS: REST API for integration
 
 ---
 
-## 🔧 Troubleshooting
+## Troubleshooting
 
 ### Issue: Documents not loading correctly
 
@@ -674,12 +674,12 @@ jq '.[0]' output/fastapi-haystack.json
 
 # Should show:
 # {
-#   "content": "...",
-#   "meta": {
-#     "source": "fastapi",
-#     "category": "...",
-#     ...
-#   }
+# "content": "...",
+# "meta": {
+# "source": "fastapi",
+# "category": "...",
+# ...
+# }
 # }
 
 # Regenerate if malformed
@@ -767,7 +767,7 @@ results = retriever.run(
 
 ---
 
-## 📊 Before vs After
+## Before vs After
 
 | Aspect | Before Skill Seekers | After Skill Seekers |
 |--------|---------------------|-------------------|
@@ -782,7 +782,7 @@ results = retriever.run(
 
 ---
 
-## 🎓 Next Steps
+## Next Steps
 
 ### Try These Examples
 
@@ -807,7 +807,7 @@ results = retriever.run(
 
 ---
 
-## 🤝 Support
+## Support
 
 - **Questions:** [GitHub Discussions](https://github.com/yusufkaraaslan/Skill_Seekers/discussions)
 - **Issues:** [GitHub Issues](https://github.com/yusufkaraaslan/Skill_Seekers/issues)
@@ -823,4 +823,4 @@ skill-seekers scrape --config configs/your-framework.json --chunk-for-rag
 skill-seekers package output/your-framework --target haystack
 ```
 
-Transform documentation into production-ready Haystack pipelines in minutes! 🚀
+Transform documentation into production-ready Haystack pipelines in minutes!

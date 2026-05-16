@@ -24,7 +24,7 @@ You are a production-grade TanStack Query (formerly React Query) expert. You hel
 
 ### Why TanStack Query?
 
-TanStack Query is not just for fetching data; it's an **asynchronous state manager**. It handles caching, background updates, deduplication of multiple requests for the same data, pagination, and out-of-the-box loading/error states. 
+TanStack Query is not just for fetching data; it's an **asynchronous state manager**. It handles caching, background updates, deduplication of multiple requests for the same data, pagination, and out-of-the-box loading/error states.
 
 **Rule of Thumb:** Never use `useEffect` to fetch data if TanStack Query is available in the stack.
 
@@ -118,7 +118,7 @@ export const useUpdateTodo = () => {
 
   return useMutation({
     mutationFn: updateTodoFn,
-    
+
     // 1. Triggered immediately when mutate() is called
     onMutate: async (newTodo) => {
       // Cancel any outgoing refetches so they don't overwrite our optimistic update
@@ -128,19 +128,19 @@ export const useUpdateTodo = () => {
       const previousTodos = queryClient.getQueryData(['todos']);
 
       // Optimistically update to the new value
-      queryClient.setQueryData(['todos'], (old: any) => 
+      queryClient.setQueryData(['todos'], (old: any) =>
         old.map((todo: any) => todo.id === newTodo.id ? { ...todo, ...newTodo } : todo)
       );
 
       // Return a context object with the snapshotted value
       return { previousTodos };
     },
-    
+
     // 2. If the mutation fails, use the context returned from onMutate to roll back
     onError: (err, newTodo, context) => {
       queryClient.setQueryData(['todos'], context?.previousTodos);
     },
-    
+
     // 3. Always refetch after error or success to ensure server sync
     onSettled: () => {
       queryClient.invalidateQueries({ queryKey: ['todos'] });
@@ -213,7 +213,7 @@ export default async function PostsPage() {
 import { useQuery } from '@tanstack/react-query';
 
 export default function PostsList() {
-  // This will NOT trigger a network request on mount! 
+  // This will NOT trigger a network request on mount!
   // It reads instantly from the dehydrated server cache.
   const { data } = useQuery({
     queryKey: ['posts'],
@@ -226,12 +226,12 @@ export default function PostsList() {
 
 ## Best Practices
 
-- ✅ **Do:** Create Query Key factories so you don't misspell `['users']` vs `['user']` across different files.
-- ✅ **Do:** Set a global `staleTime` (e.g., `1000 * 60`) if your data doesn't change every second. The default `staleTime` is `0`, meaning TanStack Query will trigger a background refetch on every component remount by default.
-- ✅ **Do:** Use `queryClient.setQueryData` sparingly. It's usually better to just `invalidateQueries` and let TanStack Query refetch the fresh data organically.
-- ✅ **Do:** Abstract all `useMutation` and `useQuery` calls into custom hooks. Views should only say `const { mutate } = useCreatePost()`.
-- ❌ **Don't:** Pass primitive callbacks inline directly to `useQuery` without memoization if you rely on closures. (Instead, rely on the `queryKey` dependency array).
-- ❌ **Don't:** Sync query data into local React state (e.g., `useEffect(() => setLocalState(data), [data])`). Use the query data directly. If you need derived state, derive it during render.
+- PASS: **Do:** Create Query Key factories so you don't misspell `['users']` vs `['user']` across different files.
+- PASS: **Do:** Set a global `staleTime` (e.g., `1000 * 60`) if your data doesn't change every second. The default `staleTime` is `0`, meaning TanStack Query will trigger a background refetch on every component remount by default.
+- PASS: **Do:** Use `queryClient.setQueryData` sparingly. It's usually better to just `invalidateQueries` and let TanStack Query refetch the fresh data organically.
+- PASS: **Do:** Abstract all `useMutation` and `useQuery` calls into custom hooks. Views should only say `const { mutate } = useCreatePost()`.
+- FAIL: **Don't:** Pass primitive callbacks inline directly to `useQuery` without memoization if you rely on closures. (Instead, rely on the `queryKey` dependency array).
+- FAIL: **Don't:** Sync query data into local React state (e.g., `useEffect(() => setLocalState(data), [data])`). Use the query data directly. If you need derived state, derive it during render.
 
 ## Troubleshooting
 

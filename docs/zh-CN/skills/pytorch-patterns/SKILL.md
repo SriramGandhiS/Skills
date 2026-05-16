@@ -23,12 +23,12 @@ origin: ECC
 始终编写能在 CPU 和 GPU 上运行且不硬编码设备的代码。
 
 ```python
-# Good: Device-agnostic
+## Good: Device-agnostic
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 model = MyModel().to(device)
 data = data.to(device)
 
-# Bad: Hardcoded device
+## Bad: Hardcoded device
 model = MyModel().cuda()  # Crashes if no GPU
 data = data.cuda()
 ```
@@ -38,7 +38,7 @@ data = data.cuda()
 设置所有随机种子以获得可复现的结果。
 
 ```python
-# Good: Full reproducibility setup
+## Good: Full reproducibility setup
 def set_seed(seed: int = 42) -> None:
     torch.manual_seed(seed)
     torch.cuda.manual_seed_all(seed)
@@ -47,7 +47,7 @@ def set_seed(seed: int = 42) -> None:
     torch.backends.cudnn.deterministic = True
     torch.backends.cudnn.benchmark = False
 
-# Bad: No seed control
+## Bad: No seed control
 model = MyModel()  # Different weights every run
 ```
 
@@ -56,7 +56,7 @@ model = MyModel()  # Different weights every run
 始终记录并验证张量形状。
 
 ```python
-# Good: Shape-annotated forward pass
+## Good: Shape-annotated forward pass
 def forward(self, x: torch.Tensor) -> torch.Tensor:
     # x: (batch_size, channels, height, width)
     x = self.conv1(x)    # -> (batch_size, 32, H, W)
@@ -64,7 +64,7 @@ def forward(self, x: torch.Tensor) -> torch.Tensor:
     x = x.view(x.size(0), -1)  # -> (batch_size, 32*H//2*W//2)
     return self.fc(x)    # -> (batch_size, num_classes)
 
-# Bad: No shape tracking
+## Bad: No shape tracking
 def forward(self, x):
     x = self.conv1(x)
     x = self.pool(x)
@@ -77,7 +77,7 @@ def forward(self, x):
 ### 清晰的 nn.Module 结构
 
 ```python
-# Good: Well-organized module
+## Good: Well-organized module
 class ImageClassifier(nn.Module):
     def __init__(self, num_classes: int, dropout: float = 0.5) -> None:
         super().__init__()
@@ -97,7 +97,7 @@ class ImageClassifier(nn.Module):
         x = x.view(x.size(0), -1)
         return self.classifier(x)
 
-# Bad: Everything in forward
+## Bad: Everything in forward
 class ImageClassifier(nn.Module):
     def __init__(self):
         super().__init__()
@@ -110,7 +110,7 @@ class ImageClassifier(nn.Module):
 ### 正确的权重初始化
 
 ```python
-# Good: Explicit initialization
+## Good: Explicit initialization
 def _init_weights(self, module: nn.Module) -> None:
     if isinstance(module, nn.Linear):
         nn.init.kaiming_normal_(module.weight, mode="fan_out", nonlinearity="relu")
@@ -131,7 +131,7 @@ model.apply(model._init_weights)
 ### 标准训练循环
 
 ```python
-# Good: Complete training loop with best practices
+## Good: Complete training loop with best practices
 def train_one_epoch(
     model: nn.Module,
     dataloader: DataLoader,
@@ -172,7 +172,7 @@ def train_one_epoch(
 ### 验证循环
 
 ```python
-# Good: Proper evaluation
+## Good: Proper evaluation
 @torch.no_grad()  # More efficient than wrapping in torch.no_grad() block
 def evaluate(
     model: nn.Module,
@@ -200,7 +200,7 @@ def evaluate(
 ### 自定义数据集
 
 ```python
-# Good: Clean Dataset with type hints
+## Good: Clean Dataset with type hints
 class ImageDataset(Dataset):
     def __init__(
         self,
@@ -228,7 +228,7 @@ class ImageDataset(Dataset):
 ### 高效的数据加载器配置
 
 ```python
-# Good: Optimized DataLoader
+## Good: Optimized DataLoader
 dataloader = DataLoader(
     dataset,
     batch_size=32,
@@ -239,14 +239,14 @@ dataloader = DataLoader(
     drop_last=True,          # Consistent batch sizes for BatchNorm
 )
 
-# Bad: Slow defaults
+## Bad: Slow defaults
 dataloader = DataLoader(dataset, batch_size=32)  # num_workers=0, no pin_memory
 ```
 
 ### 针对变长数据的自定义整理函数
 
 ```python
-# Good: Pad sequences in collate_fn
+## Good: Pad sequences in collate_fn
 def collate_fn(batch: list[tuple[torch.Tensor, int]]) -> tuple[torch.Tensor, torch.Tensor]:
     sequences, labels = zip(*batch)
     # Pad to max length in batch
@@ -261,7 +261,7 @@ dataloader = DataLoader(dataset, batch_size=32, collate_fn=collate_fn)
 ### 保存和加载检查点
 
 ```python
-# Good: Complete checkpoint with all training state
+## Good: Complete checkpoint with all training state
 def save_checkpoint(
     model: nn.Module,
     optimizer: torch.optim.Optimizer,
@@ -287,7 +287,7 @@ def load_checkpoint(
         optimizer.load_state_dict(checkpoint["optimizer_state_dict"])
     return checkpoint
 
-# Bad: Only saving model weights (can't resume training)
+## Bad: Only saving model weights (can't resume training)
 torch.save(model.state_dict(), "model.pt")
 ```
 
@@ -296,7 +296,7 @@ torch.save(model.state_dict(), "model.pt")
 ### 混合精度训练
 
 ```python
-# Good: AMP with GradScaler
+## Good: AMP with GradScaler
 scaler = torch.amp.GradScaler("cuda")
 for data, target in dataloader:
     with torch.amp.autocast("cuda"):
@@ -311,7 +311,7 @@ for data, target in dataloader:
 ### 大模型的梯度检查点
 
 ```python
-# Good: Trade compute for memory
+## Good: Trade compute for memory
 from torch.utils.checkpoint import checkpoint
 
 class LargeModel(nn.Module):
@@ -325,18 +325,18 @@ class LargeModel(nn.Module):
 ### 使用 torch.compile 加速
 
 ```python
-# Good: Compile the model for faster execution (PyTorch 2.0+)
+## Good: Compile the model for faster execution (PyTorch 2.0+)
 model = MyModel().to(device)
 model = torch.compile(model, mode="reduce-overhead")
 
-# Modes: "default" (safe), "reduce-overhead" (faster), "max-autotune" (fastest)
+## Modes: "default" (safe), "reduce-overhead" (faster), "max-autotune" (fastest)
 ```
 
 ## 快速参考：PyTorch 惯用法
 
 | 惯用法 | 描述 |
 |-------|-------------|
-| `model.train()` / `model.eval()` | 训练/评估前始终设置模式 |
+| `model.train()`/`model.eval()` | 训练/评估前始终设置模式 |
 | `torch.no_grad()` | 推理时禁用梯度 |
 | `optimizer.zero_grad(set_to_none=True)` | 更高效的梯度清零 |
 | `.to(device)` | 设备无关的张量/模型放置 |
@@ -350,47 +350,47 @@ model = torch.compile(model, mode="reduce-overhead")
 ## 应避免的反模式
 
 ```python
-# Bad: Forgetting model.eval() during validation
+## Bad: Forgetting model.eval() during validation
 model.train()
 with torch.no_grad():
     output = model(val_data)  # Dropout still active! BatchNorm uses batch stats!
 
-# Good: Always set eval mode
+## Good: Always set eval mode
 model.eval()
 with torch.no_grad():
     output = model(val_data)
 
-# Bad: In-place operations breaking autograd
+## Bad: In-place operations breaking autograd
 x = F.relu(x, inplace=True)  # Can break gradient computation
 x += residual                  # In-place add breaks autograd graph
 
-# Good: Out-of-place operations
+## Good: Out-of-place operations
 x = F.relu(x)
 x = x + residual
 
-# Bad: Moving data to GPU inside the training loop repeatedly
+## Bad: Moving data to GPU inside the training loop repeatedly
 for data, target in dataloader:
     model = model.cuda()  # Moves model EVERY iteration!
 
-# Good: Move model once before the loop
+## Good: Move model once before the loop
 model = model.to(device)
 for data, target in dataloader:
     data, target = data.to(device), target.to(device)
 
-# Bad: Using .item() before backward
+## Bad: Using .item() before backward
 loss = criterion(output, target).item()  # Detaches from graph!
 loss.backward()  # Error: can't backprop through .item()
 
-# Good: Call .item() only for logging
+## Good: Call .item() only for logging
 loss = criterion(output, target)
 loss.backward()
 print(f"Loss: {loss.item():.4f}")  # .item() after backward is fine
 
-# Bad: Not using torch.save properly
+## Bad: Not using torch.save properly
 torch.save(model, "model.pt")  # Saves entire model (fragile, not portable)
 
-# Good: Save state_dict
+## Good: Save state_dict
 torch.save(model.state_dict(), "model.pt")
 ```
 
-**请记住**：PyTorch 代码应做到设备无关、可复现且内存意识强。如有疑问，请使用 `torch.profiler` 进行分析，并使用 `torch.cuda.memory_summary()` 检查 GPU 内存。
+**请记住**：PyTorch 代码应做到设备无关、可复现且内存意识强。如有疑问，请使用 `torch.profiler`进行分析，并使用`torch.cuda.memory_summary()` 检查 GPU 内存。

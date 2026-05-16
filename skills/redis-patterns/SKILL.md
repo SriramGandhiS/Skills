@@ -1,4 +1,4 @@
-﻿---
+---
 name: redis-patterns
 description: Redis data structure patterns, caching strategies, distributed locks, rate limiting, pub/sub, and connection management for production applications.
 origin: ECC
@@ -71,7 +71,7 @@ def update_product(product_id: int, data: dict):
 ### Cache Invalidation
 
 ```python
-# Tag-based invalidation â€” group related keys under a set
+## Tag-based invalidation â€” group related keys under a set
 def cache_product(product_id: int, category_id: int, data: dict):
     key = f"product:{product_id}"
     tag = f"tag:category:{category_id}"
@@ -186,7 +186,7 @@ def release_lock(resource: str, token: str) -> bool:
     result = r.eval(release_script, 1, f"lock:{resource}", token)
     return bool(result)
 
-# Usage
+## Usage
 token = acquire_lock("order:payment:123")
 if token:
     try:
@@ -202,11 +202,11 @@ if token:
 ### Pub/Sub (Fire-and-Forget)
 
 ```python
-# Publisher
+## Publisher
 def publish_event(channel: str, payload: dict):
     r.publish(channel, json.dumps(payload))
 
-# Subscriber (blocking â€” run in separate thread/process)
+## Subscriber (blocking â€” run in separate thread/process)
 def subscribe_events(channel: str):
     pubsub = r.pubsub()
     pubsub.subscribe(channel)
@@ -218,11 +218,11 @@ def subscribe_events(channel: str):
 ### Redis Streams (Durable Queue)
 
 ```python
-# Producer
+## Producer
 def emit(stream: str, event: dict):
     r.xadd(stream, event, maxlen=10000)  # Cap stream length
 
-# Consumer group â€” guarantees at-least-once delivery
+## Consumer group â€” guarantees at-least-once delivery
 try:
     r.xgroup_create('events:orders', 'processor', id='0', mkstream=True)
 except Exception:
@@ -244,16 +244,16 @@ def consume(stream: str, group: str, consumer: str):
 ### Naming Conventions
 
 ```
-# Pattern: resource:id:field
+## Pattern: resource:id:field
 user:123:profile
 order:456:status
 cache:product:789
 
-# Pattern: namespace:resource:id
+## Pattern: namespace:resource:id
 myapp:session:abc123
 myapp:ratelimit:user:123
 
-# Pattern: resource:date (time-bound keys)
+## Pattern: resource:date (time-bound keys)
 stats:pageviews:2024-01-01
 ```
 
@@ -325,14 +325,14 @@ replica = sentinel.slave_for('mymaster', decode_responses=True)
 | `allkeys-lfu` | Evict least frequently used | Skewed access patterns |
 | `volatile-ttl` | Evict soonest-to-expire | Prioritize long-lived data |
 
-Set via `redis.conf`: `maxmemory-policy allkeys-lru`
+Set via `redis.conf`:`maxmemory-policy allkeys-lru`
 
 ## Anti-Patterns
 
 | Anti-Pattern | Problem | Fix |
 |---|---|---|
 | Keys with no TTL | Memory grows unbounded | Always set TTL |
-| `KEYS *` in production | Blocks the server (O(N)) | Use `SCAN` cursor |
+| `KEYS *`in production | Blocks the server (O(N)) | Use`SCAN` cursor |
 | Storing large blobs (>100KB) | Slow serialization, memory pressure | Store reference + fetch from object store |
 | Single Redis for everything | No isolation between cache & queue | Use separate DBs or instances |
 | Ignoring connection pool limits | Connection exhaustion under load | Size pool to workload |
@@ -376,7 +376,7 @@ Use cache-aside with `setex` and a 5-minute TTL on the response. Key on the requ
 Use fixed-window with `pipeline(transaction=True)` for low-traffic endpoints; use sliding-window Lua for accurate per-user throttling.
 
 **Coordinate a background job across workers:**
-Use `acquire_lock` with a TTL that exceeds the expected job duration. Always release in a `finally` block.
+Use `acquire_lock`with a TTL that exceeds the expected job duration. Always release in a`finally` block.
 
 **Fan-out notifications to multiple subscribers:**
 Use Pub/Sub for fire-and-forget. Switch to Streams if you need guaranteed delivery or replay for late consumers.

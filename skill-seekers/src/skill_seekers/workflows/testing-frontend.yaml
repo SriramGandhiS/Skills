@@ -20,7 +20,7 @@ stages:
     enabled: true
     prompt: >
       Analyze the frontend testing strategy.
-      
+
       Identify:
       1. Testing pyramid implementation
       2. Unit testing framework (Jest, Vitest)
@@ -28,7 +28,7 @@ stages:
       4. E2E testing framework (Cypress, Playwright)
       5. Visual regression testing (Chromatic, Percy)
       6. Test coverage targets
-      
+
       Output JSON with:
       - "pyramid": test distribution
       - "unit_framework": unit testing tool
@@ -44,7 +44,7 @@ stages:
     enabled: true
     prompt: >
       Document component testing patterns.
-      
+
       Cover:
       1. Component render and query patterns
       2. User event simulation
@@ -52,7 +52,7 @@ stages:
       4. Testing async operations
       5. Accessibility testing (jest-axe)
       6. Snapshot testing guidelines
-      
+
       Output JSON with:
       - "rendering": render patterns
       - "user_events": interaction testing
@@ -68,7 +68,7 @@ stages:
     enabled: true
     prompt: >
       Document end-to-end testing implementation.
-      
+
       Include:
       1. Test organization (page object model, etc.)
       2. Authentication in E2E tests
@@ -76,7 +76,7 @@ stages:
       4. Environment configuration
       5. Parallel execution setup
       6. CI/CD integration
-      
+
       Output JSON with:
       - "organization": test structure
       - "auth": login handling
@@ -92,7 +92,7 @@ stages:
     enabled: true
     prompt: >
       Document visual regression testing.
-      
+
       Cover:
       1. Visual testing tool setup
       2. Baseline management
@@ -100,7 +100,7 @@ stages:
       4. Page-level visual tests
       5. Responsive visual testing
       6. Flaky test handling
-      
+
       Output JSON with:
       - "tool_setup": visual testing config
       - "baselines": baseline management
@@ -116,7 +116,7 @@ stages:
     enabled: true
     prompt: >
       Document frontend testing best practices.
-      
+
       Include:
       1. Test naming conventions
       2. Arrange-Act-Assert pattern
@@ -124,7 +124,7 @@ stages:
       4. Test independence and isolation
       5. Debugging failing tests
       6. Test maintenance strategies
-      
+
       Output JSON with:
       - "naming": naming conventions
       - "aaa_pattern": AAA structure

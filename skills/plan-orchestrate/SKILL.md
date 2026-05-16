@@ -1,4 +1,4 @@
-﻿---
+---
 name: plan-orchestrate
 description: Read a plan document, decompose it into steps, design a per-step agent chain from the ECC catalogue, and emit ready-to-paste /orchestrate custom prompts. Generative only â€” never invokes /orchestrate itself. Use when the user has a multi-step plan and wants to drive it through orchestrate without composing chains by hand.
 origin: ECC
@@ -6,7 +6,7 @@ origin: ECC
 
 # Plan Orchestrate
 
-Bridge a plan document to `/orchestrate custom` by emitting one ready-to-paste invocation per step. The skill is generative only â€” it never executes `/orchestrate`. The user pastes each line when ready.
+Bridge a plan document to `/orchestrate custom`by emitting one ready-to-paste invocation per step. The skill is generative only â€” it never executes`/orchestrate`. The user pastes each line when ready.
 
 ## When to Activate
 
@@ -24,9 +24,9 @@ Skip when:
 <plan-doc-path> [--lang=python|typescript|go|rust|cpp|java|kotlin|flutter|auto] [--scope=all|step:<n>|range:<a>-<b>] [--dry-run]
 ```
 
-- `<plan-doc-path>` â€” required; relative or absolute path (`@docs/...` accepted).
-- `--lang` â€” reviewer language variant; defaults to `auto` (detected from project).
-- `--scope` â€” limits emitted steps; defaults to `all`.
+- `<plan-doc-path>`â€” required; relative or absolute path (`@docs/...` accepted).
+- `--lang`â€” reviewer language variant; defaults to`auto` (detected from project).
+- `--scope`â€” limits emitted steps; defaults to`all`.
 - `--dry-run` â€” print decomposition + chain rationale only; do not emit final prompts.
 
 ## Authoritative `/orchestrate` shape (do not deviate)
@@ -39,19 +39,19 @@ Where `{ORCH_CMD}` is determined in Phase 0 (see below). The command string in t
 
 - `custom` is a sequential chain; each agent's HANDOFF feeds the next.
 - Comma-separated agent list. No spaces preferred; one space tolerated.
-- No `--mode` / `--gate` / `--agents=...` flags exist â€” never invent them.
+- No `--mode`/`--gate`/`--agents=...` flags exist â€” never invent them.
 - Agent names come from the catalogue in this skill. Embedded double quotes in the task description are escaped as `\"`.
 
 ## ECC install form and namespacing
 
 Two install forms determine the prefix on **both** the slash command and every agent name. The two MUST stay in sync â€” one form per output, never mixed:
 
-Let `<claude-home>` denote the Claude Code home directory: `~/.claude` on macOS/Linux, `%USERPROFILE%\.claude` on Windows. Resolve it the way the host platform resolves the user home directory (do not hardcode `~`).
+Let `<claude-home>`denote the Claude Code home directory:`~/.claude`on macOS/Linux,`%USERPROFILE%\.claude`on Windows. Resolve it the way the host platform resolves the user home directory (do not hardcode`~`).
 
 | Form | Detection | `{ORCH_CMD}` | Agent name format |
 |---|---|---|---|
-| Plugin install (1.9.0+) | `<claude-home>/plugins/marketplaces/everything-claude-code/` exists | `/everything-claude-code:orchestrate` | `everything-claude-code:<name>` |
-| Legacy bare install | Above absent; agent files under `<claude-home>/agents/` | `/orchestrate` | `<name>` |
+| Plugin install (1.9.0+) | `<claude-home>/plugins/marketplaces/everything-claude-code/`exists |`/everything-claude-code:orchestrate`|`everything-claude-code:<name>` |
+| Legacy bare install | Above absent; agent files under `<claude-home>/agents/`|`/orchestrate`|`<name>` |
 
 Why this matters: under the plugin install, agents register as `everything-claude-code:tdd-guide`. Bare names force fuzzy matching, which fails intermittently under parallel calls. Under legacy, the prefixed forms are not registered and fail outright.
 
@@ -73,10 +73,10 @@ General:
 - `chief-of-staff` â€” multi-channel triage (rarely a fit for plan steps)
 
 Build error resolvers:
-- `build-error-resolver` (generic) / `cpp-build-resolver` / `go-build-resolver` / `java-build-resolver` / `kotlin-build-resolver` / `rust-build-resolver` / `pytorch-build-resolver`
+- `build-error-resolver`(generic) /`cpp-build-resolver`/`go-build-resolver`/`java-build-resolver`/`kotlin-build-resolver`/`rust-build-resolver`/`pytorch-build-resolver`
 
 Code reviewers:
-- `python-reviewer` / `typescript-reviewer` / `go-reviewer` / `rust-reviewer` / `cpp-reviewer` / `java-reviewer` / `kotlin-reviewer` / `flutter-reviewer`
+- `python-reviewer`/`typescript-reviewer`/`go-reviewer`/`rust-reviewer`/`cpp-reviewer`/`java-reviewer`/`kotlin-reviewer`/`flutter-reviewer`
 
 A misspelled agent name fails `/orchestrate`. Cross-check against this list before emitting.
 
@@ -86,30 +86,30 @@ A misspelled agent name fails `/orchestrate`. Cross-check against this list befo
 
 1. Read `<plan-doc-path>`. If missing or empty, report and stop.
 2. Detect ECC install form once and freeze it into `ECC_MODE`. Algorithm (run in order, stop at the first match):
-   1. If `<claude-home>/plugins/marketplaces/everything-claude-code/` exists â†’ `ECC_MODE=plugin`.
-   2. Else if `<claude-home>/agents/` exists and contains at least one ECC agent file (e.g. `tdd-guide.md`, `code-reviewer.md`) â†’ `ECC_MODE=legacy`.
-   3. Else â†’ default to `ECC_MODE=legacy` and emit a one-line warning at the top of the output: `> Warning: could not detect ECC install; defaulting to legacy form. If you use the plugin install, edit the prefixes manually.`
+   1. If `<claude-home>/plugins/marketplaces/everything-claude-code/`exists â†’`ECC_MODE=plugin`.
+   2. Else if `<claude-home>/agents/`exists and contains at least one ECC agent file (e.g.`tdd-guide.md`,`code-reviewer.md`) â†’`ECC_MODE=legacy`.
+   3. Else â†’ default to `ECC_MODE=legacy`and emit a one-line warning at the top of the output:`> Warning: could not detect ECC install; defaulting to legacy form. If you use the plugin install, edit the prefixes manually.`
    4. If both markers exist (mixed install), `plugin` wins â€” the plugin namespace is the only one that resolves agent names without fuzzy matching.
 
    From this point on, every emitted line uses the matching prefix on **both** the slash command and every agent name. **Never emit both forms in the same output.**
-3. Resolve `--lang`. When `auto`, run a polyglot-aware detection:
-   - Probe markers: `pyproject.toml` / `uv.lock` / `requirements.txt` â†’ python; `package.json` â†’ typescript; `go.mod` â†’ go; `Cargo.toml` â†’ rust; `CMakeLists.txt` or top-level `*.cpp` â†’ cpp; `pom.xml` / `build.gradle` (Java) â†’ java; `build.gradle.kts` or top-level Kotlin â†’ kotlin; `pubspec.yaml` â†’ flutter.
-   - **Polyglot tie-break**: if more than one marker matches, pick the language whose source files outnumber the others (count via `git ls-files`, excluding `vendor/`, `node_modules/`, `dist/`, `build/`, `.venv/`, generated files, and obvious test fixtures). On a tie or when no language exceeds 60% of source files, set `lang=unknown`.
+3. Resolve `--lang`. When`auto`, run a polyglot-aware detection:
+   - Probe markers: `pyproject.toml`/`uv.lock`/`requirements.txt`â†’ python;`package.json`â†’ typescript;`go.mod`â†’ go;`Cargo.toml`â†’ rust;`CMakeLists.txt`or top-level`*.cpp`â†’ cpp;`pom.xml`/`build.gradle`(Java) â†’ java;`build.gradle.kts`or top-level Kotlin â†’ kotlin;`pubspec.yaml` â†’ flutter.
+   - **Polyglot tie-break**: if more than one marker matches, pick the language whose source files outnumber the others (count via `git ls-files`, excluding`vendor/`,`node_modules/`,`dist/`,`build/`,`.venv/`, generated files, and obvious test fixtures). On a tie or when no language exceeds 60% of source files, set`lang=unknown`.
    - No marker matched â†’ set `lang=unknown`.
-   - `lang=unknown` is a sentinel â€” it is **not** an agent name. Phase 2 rules 4 and 5 turn it into `code-reviewer` / `build-error-resolver` at chain composition time.
-4. Detect a **PyTorch sub-profile**: when `lang=python` and any of `pyproject.toml` / `requirements.txt` / `uv.lock` declares a dependency on `torch`, set `pytorch=true`. This only affects `build` chain selection (Phase 2 rule below); the reviewer remains `python-reviewer`.
-5. **Normalize any agent names declared in the plan**: if the plan text references agents by their plugin-prefixed form (e.g. `everything-claude-code:tdd-guide`), strip the prefix to get the bare catalogue name before validating or composing chains. Re-prefixing happens only at output time per `ECC_MODE` (Phase 4). Never let a pre-prefixed name flow into chain composition â€” it would double-prefix in plugin mode.
+   - `lang=unknown`is a sentinel â€” it is **not** an agent name. Phase 2 rules 4 and 5 turn it into`code-reviewer`/`build-error-resolver` at chain composition time.
+4. Detect a **PyTorch sub-profile**: when `lang=python`and any of`pyproject.toml`/`requirements.txt`/`uv.lock`declares a dependency on`torch`, set`pytorch=true`. This only affects`build`chain selection (Phase 2 rule below); the reviewer remains`python-reviewer`.
+5. **Normalize any agent names declared in the plan**: if the plan text references agents by their plugin-prefixed form (e.g. `everything-claude-code:tdd-guide`), strip the prefix to get the bare catalogue name before validating or composing chains. Re-prefixing happens only at output time per`ECC_MODE` (Phase 4). Never let a pre-prefixed name flow into chain composition â€” it would double-prefix in plugin mode.
 
 ### Phase 1 â€” Decompose steps
 
 Identify "step units" in priority order:
 
-1. Explicit numbering: `## Step N` / `### Phase N` / `## N. ...` / top-level ordered list.
+1. Explicit numbering: `## Step N`/`### Phase N`/`## N. ...` / top-level ordered list.
 2. A "Step" column in a table.
 3. `---`-separated blocks with verb-led headings.
 4. Otherwise treat each H2 as one step.
 
-Per step extract `id` (1-based), `title` (â‰¤ 80 chars), `intent` (1â€“3 sentences), `tags`.
+Per step extract `id`(1-based),`title`(â‰¤ 80 chars),`intent`(1â€“3 sentences),`tags`.
 
 ### Phase 2 â€” Tag and pick chain
 
@@ -119,31 +119,31 @@ Trigger words below are matched case-insensitively. Multilingual plans are suppo
 
 | Tag | Trigger words | Default chain |
 |---|---|---|
-| `design` | architecture, design, choose, evaluate, RFC | `planner,architect` |
-| `plan` | plan, breakdown, milestone | `planner` |
-| `impl` | implement, build, add, create, port | `tdd-guide,<lang>-reviewer` |
-| `test` | test, coverage, e2e, integration | `tdd-guide,e2e-runner` |
-| `refactor` | refactor, cleanup, dedupe, split | `architect,refactor-cleaner,<lang>-reviewer` |
-| `migration` | migrate, upgrade, rewrite, port | `architect,tdd-guide,<lang>-reviewer` |
-| `db` | schema, migration, index, SQL, Postgres, alembic, sqlmodel | `database-reviewer,<lang>-reviewer` |
-| `security` | encrypt, auth, secret, OWASP, PII | `security-reviewer,<lang>-reviewer` |
-| `build` | build, compile, lint failure, CI | `<lang>-build-resolver` (falls back to `build-error-resolver`) |
-| `docs` | docs, readme, codemap, changelog | `doc-updater` |
-| `lookup` | lookup, reference, API usage | `docs-lookup` |
-| `review` | review, audit, verify | `<lang>-reviewer,code-reviewer` |
-| `loop` | loop, autonomous, watchdog | `loop-operator` |
+| `design`| architecture, design, choose, evaluate, RFC |`planner,architect` |
+| `plan`| plan, breakdown, milestone |`planner` |
+| `impl`| implement, build, add, create, port |`tdd-guide,<lang>-reviewer` |
+| `test`| test, coverage, e2e, integration |`tdd-guide,e2e-runner` |
+| `refactor`| refactor, cleanup, dedupe, split |`architect,refactor-cleaner,<lang>-reviewer` |
+| `migration`| migrate, upgrade, rewrite, port |`architect,tdd-guide,<lang>-reviewer` |
+| `db`| schema, migration, index, SQL, Postgres, alembic, sqlmodel |`database-reviewer,<lang>-reviewer` |
+| `security`| encrypt, auth, secret, OWASP, PII |`security-reviewer,<lang>-reviewer` |
+| `build`| build, compile, lint failure, CI |`<lang>-build-resolver`(falls back to`build-error-resolver`) |
+| `docs`| docs, readme, codemap, changelog |`doc-updater` |
+| `lookup`| lookup, reference, API usage |`docs-lookup` |
+| `review`| review, audit, verify |`<lang>-reviewer,code-reviewer` |
+| `loop`| loop, autonomous, watchdog |`loop-operator` |
 
 Chain composition rules:
 1. **Primary tag selection**: when a step matches multiple tags, the **first one in table order** (top of the table = highest priority) is the primary; the rest are secondaries. Composition rules 2 and 3 below handle specific multi-tag combinations explicitly; otherwise, append secondary chains in tag table order.
-2. `impl` + `security` â†’ `tdd-guide,<lang>-reviewer,security-reviewer`.
-3. `impl` + `db` â†’ `tdd-guide,database-reviewer,<lang>-reviewer`.
-4. **Deduplicate** the resulting chain (preserve first occurrence). E.g. `review` + `lang=unknown` would yield `code-reviewer,code-reviewer` after rule 5; deduplication collapses it to `code-reviewer`.
-5. `<lang>-reviewer` resolves to `code-reviewer` when `lang=unknown`.
-6. `<lang>-build-resolver` resolves to `build-error-resolver` when `lang=unknown`. **Special case**: if Phase 0 set `pytorch=true`, use `pytorch-build-resolver` for `build` chains regardless of `<lang>`. There is no `python-build-resolver`; `--lang=python` without `pytorch=true` resolves to `build-error-resolver`.
-7. **Zero-tag steps**: if no trigger word matches, set chain to `code-reviewer` and write `no tag matched; default review-only chain` under "Chain rationale".
-8. Chain length â‰¤ 4 after deduplication. If exceeded, drop weakest tag (`lookup` and `docs` first).
-9. Do not pair `planner` and `architect` in an `impl` chain (token waste). Pair them only on `design` steps.
-10. Steps tagged `impl`, `refactor`, or `migration` end with a **reviewer-class** agent â€” any of `<lang>-reviewer`, `code-reviewer`, `security-reviewer`, or `database-reviewer`. The most domain-specific reviewer wins the tail position (e.g. rule 2's `impl+security` ends with `security-reviewer`; rule 3's `impl+db` ends with `<lang>-reviewer` because `database-reviewer` already gates the migration earlier in the chain). `test` and `build` steps are gated by their own validators (`e2e-runner` and the build resolver respectively) and do not require an additional reviewer.
+2. `impl`+`security`â†’`tdd-guide,<lang>-reviewer,security-reviewer`.
+3. `impl`+`db`â†’`tdd-guide,database-reviewer,<lang>-reviewer`.
+4. **Deduplicate** the resulting chain (preserve first occurrence). E.g. `review`+`lang=unknown`would yield`code-reviewer,code-reviewer`after rule 5; deduplication collapses it to`code-reviewer`.
+5. `<lang>-reviewer`resolves to`code-reviewer`when`lang=unknown`.
+6. `<lang>-build-resolver`resolves to`build-error-resolver`when`lang=unknown`. **Special case**: if Phase 0 set`pytorch=true`, use`pytorch-build-resolver`for`build`chains regardless of`<lang>`. There is no`python-build-resolver`;`--lang=python`without`pytorch=true`resolves to`build-error-resolver`.
+7. **Zero-tag steps**: if no trigger word matches, set chain to `code-reviewer`and write`no tag matched; default review-only chain` under "Chain rationale".
+8. Chain length â‰¤ 4 after deduplication. If exceeded, drop weakest tag (`lookup`and`docs` first).
+9. Do not pair `planner`and`architect`in an`impl`chain (token waste). Pair them only on`design` steps.
+10. Steps tagged `impl`,`refactor`, or`migration`end with a **reviewer-class** agent â€” any of`<lang>-reviewer`,`code-reviewer`,`security-reviewer`, or`database-reviewer`. The most domain-specific reviewer wins the tail position (e.g. rule 2's`impl+security`ends with`security-reviewer`; rule 3's`impl+db`ends with`<lang>-reviewer`because`database-reviewer`already gates the migration earlier in the chain).`test`and`build`steps are gated by their own validators (`e2e-runner` and the build resolver respectively) and do not require an additional reviewer.
 
 ### Phase 3 â€” Compress task description
 
@@ -152,23 +152,23 @@ Each emitted `<task description>` must:
 - Start with `[Plan: <path>#step-<id>]`.
 - Include 1â€“3 verifiable Acceptance criteria.
 - Include a Scope guard (`Out of scope: ...`) **only if the plan declares one for this step**. Inherit verbatim. If the plan has no out-of-scope statement, omit the clause entirely â€” do not invent one.
-- Be 200â€“600 characters; one line; embedded `"` escaped as `\"`; no literal newlines.
+- Be 200â€“600 characters; one line; embedded `"`escaped as`\"`; no literal newlines.
 
 ### Phase 4 â€” Output
 
-Emit Markdown using **the form determined by `ECC_MODE`**. The output uses one form throughout â€” every `{ORCH_CMD}` and every agent name is rendered with the matching prefix from Phase 0. **Do not emit both forms; do not include "this is plugin form" / "strip the prefix" instructions in the rendered output.**
+Emit Markdown using **the form determined by `ECC_MODE`**. The output uses one form throughout â€” every`{ORCH_CMD}` and every agent name is rendered with the matching prefix from Phase 0. **Do not emit both forms; do not include "this is plugin form" / "strip the prefix" instructions in the rendered output.**
 
 Concrete rendering rules:
 
-- `{ORCH_CMD}` = `/everything-claude-code:orchestrate` under `plugin`, `/orchestrate` under `legacy`.
-- `{AGENT(name)}` = `everything-claude-code:<name>` under `plugin`, `<name>` under `legacy`.
+- `{ORCH_CMD}`=`/everything-claude-code:orchestrate`under`plugin`,`/orchestrate`under`legacy`.
+- `{AGENT(name)}`=`everything-claude-code:<name>`under`plugin`,`<name>`under`legacy`.
 - The overview-table "Chain" column uses the same `{AGENT(name)}` rendering.
-- Per-step bash blocks contain only the runnable command. **No `# plugin form` or `# legacy form` comments** â€” the form is implicit and uniform across the whole output.
+- Per-step bash blocks contain only the runnable command. **No `# plugin form`or`# legacy form` comments** â€” the form is implicit and uniform across the whole output.
 
 Output structure:
 
 ````markdown
-# Plan-Orchestrate Result
+## Plan-Orchestrate Result
 
 **Plan**: `<path>`
 **Lang**: `<detected-or-given>`
@@ -196,32 +196,32 @@ Output structure:
 ```
 ````
 
-> The `{ORCH_CMD}` and `{AGENT(...)}` notation above describes the substitution this skill performs at runtime. The actual emitted Markdown contains the resolved strings, never the placeholders.
+> The `{ORCH_CMD}`and`{AGENT(...)}` notation above describes the substitution this skill performs at runtime. The actual emitted Markdown contains the resolved strings, never the placeholders.
 
 Append a final "Batch execution" block aggregating every step's command in order so the user can paste them all at once. **Skip the Batch block in overview-only mode** (see "Large plan" edge case): when only the overview table is being emitted, there are no per-step commands to aggregate.
 
 ### Phase 5 â€” Self-check (run before emitting)
 
 - [ ] Every agent in every chain comes from the catalogue (after stripping any `everything-claude-code:` prefix that appeared in the plan; see Phase 0 step 5).
-- [ ] Resolved `{ORCH_CMD}` and every resolved `{AGENT(...)}` use the **same** form (`plugin` or `legacy`) â€” never mixed in one output.
-- [ ] No `# plugin form` / `# legacy form` annotations and no "strip the prefix" instructions remain in the rendered output.
-- [ ] No invented `--mode` / `--gate` / `--agents=...` fields.
+- [ ] Resolved `{ORCH_CMD}`and every resolved`{AGENT(...)}`use the **same** form (`plugin`or`legacy`) â€” never mixed in one output.
+- [ ] No `# plugin form`/`# legacy form` annotations and no "strip the prefix" instructions remain in the rendered output.
+- [ ] No invented `--mode`/`--gate`/`--agents=...` fields.
 - [ ] Each task description is single-line, double-quoted, with embedded `"` escaped.
-- [ ] Each task description begins with `[Plan: <path>#step-<id>]` and includes Acceptance (1â€“3 items). The `Out of scope:` clause is present only when inherited from the plan.
+- [ ] Each task description begins with `[Plan: <path>#step-<id>]`and includes Acceptance (1â€“3 items). The`Out of scope:` clause is present only when inherited from the plan.
 - [ ] No duplicate agent in any chain after Phase 2 dedup.
 - [ ] Chain length â‰¤ 4.
-- [ ] Steps tagged `impl`/`refactor`/`migration` end with a reviewer-class agent (`<lang>-reviewer`, `code-reviewer`, `security-reviewer`, or `database-reviewer`). `test` and `build` are exempt â€” see Phase 2 rule 10.
-- [ ] Zero-tag steps emit `code-reviewer` with the rationale `no tag matched; default review-only chain`.
+- [ ] Steps tagged `impl`/`refactor`/`migration`end with a reviewer-class agent (`<lang>-reviewer`,`code-reviewer`,`security-reviewer`, or`database-reviewer`).`test`and`build` are exempt â€” see Phase 2 rule 10.
+- [ ] Zero-tag steps emit `code-reviewer`with the rationale`no tag matched; default review-only chain`.
 - [ ] Overview table lists every step in the plan, regardless of `--scope`.
-- [ ] Per-step detail block count matches the resolved `--scope` (full plan when `--scope=all`; one block for `step:n`; range size for `range:a-b`). In overview-only mode, no per-step blocks and no Batch block are emitted.
+- [ ] Per-step detail block count matches the resolved `--scope`(full plan when`--scope=all`; one block for`step:n`; range size for`range:a-b`). In overview-only mode, no per-step blocks and no Batch block are emitted.
 
 ## Edge cases
 
 - **No clear steps**: prefer H2/H3 splitting; if still ambiguous, report "no structured steps detected" with the document outline and ask the user to confirm running by outline.
 - **Large plan (>1500 lines)**: enter **overview-only mode** â€” emit only the overview table and ask the user to narrow with `--scope` before re-running for details. In this mode, skip per-step detail blocks and skip the Batch execution block.
 - **Step too broad** (e.g. "complete all backend work"): do not force a single chain. Suggest splitting into N.a and N.b and propose a split.
-- **Plan declares agents** (rare): first **strip any `everything-claude-code:` prefix** to get the bare catalogue name (Phase 0 step 5), then validate against the catalogue. Replace invalid agents and explain under "Chain rationale". The bare name is re-prefixed at output time per `ECC_MODE`.
-- **Polyglot project where `--lang=auto` cannot pick a winner**: set `lang=unknown`; reviewer resolves to `code-reviewer` and build resolver to `build-error-resolver`. Mention the fallback under "Chain rationale".
+- **Plan declares agents** (rare): first **strip any `everything-claude-code:`prefix** to get the bare catalogue name (Phase 0 step 5), then validate against the catalogue. Replace invalid agents and explain under "Chain rationale". The bare name is re-prefixed at output time per`ECC_MODE`.
+- **Polyglot project where `--lang=auto`cannot pick a winner**: set`lang=unknown`; reviewer resolves to`code-reviewer`and build resolver to`build-error-resolver`. Mention the fallback under "Chain rationale".
 
 ## Examples
 
@@ -236,9 +236,9 @@ Excerpt of expected output:
 ````markdown
 ## Step 2 â€” Encrypt sensitive UserProfile fields
 
-**Intent**: Introduce an `EncryptedString` SQLAlchemy type and AES-GCM encrypt `birth_datetime` / `location` before persistence; load the key from an environment variable.
+**Intent**: Introduce an `EncryptedString`SQLAlchemy type and AES-GCM encrypt`birth_datetime`/`location` before persistence; load the key from an environment variable.
 **Tags**: impl, security, db
-**Chain rationale**: Security-sensitive write path, so `security-reviewer` closes the chain; `database-reviewer` validates the alembic migration; `python-reviewer` covers typing and PEP 8.
+**Chain rationale**: Security-sensitive write path, so `security-reviewer`closes the chain;`database-reviewer`validates the alembic migration;`python-reviewer` covers typing and PEP 8.
 
 ```bash
 /everything-claude-code:orchestrate custom "everything-claude-code:tdd-guide,everything-claude-code:database-reviewer,everything-claude-code:python-reviewer,everything-claude-code:security-reviewer" "[Plan: docs/plan/example-feature.md#step-2] Implement EncryptedString SQLAlchemy type and migrate UserProfile.birth_datetime/location columns; key from ENV APP_DB_KEY; Acceptance: encrypt/decrypt roundtrip tests pass; alembic upgrade/downgrade clean on empty DB; no plaintext in DB after migrate; Out of scope: cross-tenant profile sharing logic"

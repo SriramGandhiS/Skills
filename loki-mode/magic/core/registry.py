@@ -308,7 +308,7 @@ def register_component(
     description: str = "",
     tags=None,
     placement=None,
-    **extra,
+**extra,
 ) -> dict:
     """Register or update a component entry. Returns the stored entry as dict."""
     tags = list(tags) if tags else []

@@ -252,19 +252,19 @@ jq -n 'env.API_KEY'
 ## Common Pitfalls
 
 - **Problem:** `jq` outputs `null` instead of the expected value
-  **Solution:** Check for typos in key names; use `keys` to inspect actual field names. Remember JSON is case-sensitive.
+**Solution:** Check for typos in key names; use `keys` to inspect actual field names. Remember JSON is case-sensitive.
 
 - **Problem:** Numbers are quoted as strings in the output
-  **Solution:** Use `--argjson` instead of `--arg` when injecting numeric values.
+**Solution:** Use `--argjson` instead of `--arg` when injecting numeric values.
 
 - **Problem:** Filter works in the terminal but fails in a script
-  **Solution:** Ensure the filter string uses single quotes in the shell to prevent variable expansion. Example: `jq '.field'` not `jq ".field"`.
+**Solution:** Ensure the filter string uses single quotes in the shell to prevent variable expansion. Example: `jq '.field'` not `jq ".field"`.
 
 - **Problem:** `add` returns `null` on an empty array
-  **Solution:** Use `add // 0` or `add // ""` to provide a fallback default.
+**Solution:** Use `add // 0` or `add // ""` to provide a fallback default.
 
 - **Problem:** Streaming large files is slow
-  **Solution:** Use `jq --stream` or switch to `jstream`/`gron` for very large files.
+**Solution:** Use `jq --stream` or switch to `jstream`/`gron` for very large files.
 
 ## Related Skills
 

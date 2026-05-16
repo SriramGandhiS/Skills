@@ -13,14 +13,14 @@ stages:
     enabled: true
     prompt: >
       Document personal data inventory.
-      
+
       Identify:
       1. What personal data is collected
       2. Where personal data is stored
       3. Data retention periods
       4. Legal basis for processing
       5. Third-party data sharing
-      
+
       Output JSON with:
       - "data_types": personal data categories
       - "storage_locations": where data lives
@@ -34,14 +34,14 @@ stages:
     enabled: true
     prompt: >
       Document GDPR user rights implementation.
-      
+
       Cover:
       1. Right to access (data export)
       2. Right to rectification (data correction)
       3. Right to erasure (right to be forgotten)
       4. Right to data portability
       5. Right to object/restrict processing
-      
+
       Output JSON with:
       - "access_implementation": data export
       - "rectification": correction process
@@ -55,14 +55,14 @@ stages:
     enabled: true
     prompt: >
       Document privacy by design patterns.
-      
+
       Include:
       1. Data minimization
       2. Purpose limitation
       3. Storage limitation
       4. Pseudonymization/anonymization
       5. Privacy defaults
-      
+
       Output JSON with:
       - "minimization": collecting only necessary data
       - "pseudonymization": data masking techniques
@@ -76,14 +76,14 @@ stages:
     enabled: true
     prompt: >
       Document data breach response plan.
-      
+
       Cover:
       1. Breach detection mechanisms
       2. Incident response procedures
       3. Notification timelines (72 hours to DPA)
       4. User notification requirements
       5. Documentation and audit trail
-      
+
       Output JSON with:
       - "detection": breach detection
       - "response_plan": incident response

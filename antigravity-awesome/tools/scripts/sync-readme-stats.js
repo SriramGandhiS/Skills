@@ -37,7 +37,7 @@ function replaceOrWarn(content, regex, replacement, label) {
   const hasMatch = safeRegex.test(content);
 
   if (!hasMatch) {
-    console.warn(`⚠️ Pattern not found: ${label}`);
+    console.warn(`WARNING: Pattern not found: ${label}`);
     return content;
   }
 
@@ -67,7 +67,7 @@ readme = replaceOrWarn(
 
 readme = replaceOrWarn(
   readme,
-  /(# 🌌 Antigravity Awesome Skills:\s*)[\d,]+\+/,
+  /(#  Antigravity Awesome Skills:\s*)[\d,]+\+/,
   `$1${formatted}+`,
   "main title"
 );
@@ -103,6 +103,6 @@ readme = readme.replace(
 
 fs.writeFileSync(README_PATH, readme);
 
-console.log(`✅ README synced successfully`);
-console.log(`📦 Skills detected: ${count}`);
-console.log(`📝 README updated: README.md`);
+console.log(`PASS: README synced successfully`);
+console.log(` Skills detected: ${count}`);
+console.log(` README updated: README.md`);

@@ -83,7 +83,7 @@ new Response("Hello", { status: 200 })
 Response.json({ key: "value" }, { status: 200 })
 
 // HTML
-new Response("<h1>Hi</h1>", { 
+new Response("<h1>Hi</h1>", {
   status: 200,
   headers: { "Content-Type": "text/html" }
 })
@@ -168,7 +168,7 @@ Content-Type: application/json
 
 ## Available APIs in Snippets
 
-### ✅ Supported
+### PASS: Supported
 - `fetch()` - HTTP requests (2-5 subrequests per plan)
 - `Request` / `Response` - Standard Web APIs
 - `URL` / `URLSearchParams` - URL manipulation
@@ -177,7 +177,7 @@ Content-Type: application/json
 - `crypto.subtle` - Web Crypto API (hashing, signing)
 - `crypto.randomUUID()` - UUID generation
 
-### ❌ Not Supported in Snippets
+### FAIL: Not Supported in Snippets
 - `caches` API - Not available (use Workers)
 - `KV`, `D1`, `R2` - Storage APIs (use Workers)
 - `Durable Objects` - Stateful objects (use Workers)

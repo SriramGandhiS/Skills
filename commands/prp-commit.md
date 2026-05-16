@@ -31,13 +31,13 @@ Interpret `$ARGUMENTS` to determine what to stage:
 |---|---|---|
 | *(blank / empty)* | Stage everything | `git add -A` |
 | `staged` | Use whatever is already staged | *(no git add)* |
-| `*.ts` or `*.py` etc. | Stage matching glob | `git add '*.ts'` |
-| `except tests` | Stage all, then unstage tests | `git add -A && git reset -- '**/*.test.*' '**/*.spec.*' '**/test_*' 2>/dev/null \|\| true` |
-| `only new files` | Stage untracked files only | `git ls-files --others --exclude-standard \| grep . && git ls-files --others --exclude-standard \| xargs git add` |
-| `the auth changes` | Interpret from status/diff — find auth-related files | `git add <matched files>` |
+| `*.ts`or`*.py`etc. | Stage matching glob |`git add '*.ts'` |
+| `except tests`| Stage all, then unstage tests |`git add -A && git reset -- '**/*.test.*' '**/*.spec.*' '**/test_*' 2>/dev/null \|\| true` |
+| `only new files`| Stage untracked files only |`git ls-files --others --exclude-standard \| grep . && git ls-files --others --exclude-standard \| xargs git add` |
+| `the auth changes`| Interpret from status/diff — find auth-related files |`git add <matched files>` |
 | Specific filenames | Stage those files | `git add <files>` |
 
-For natural language inputs (like "the auth changes"), cross-reference the `git status` output and `git diff` to identify relevant files. Show the user which files you're staging and why.
+For natural language inputs (like "the auth changes"), cross-reference the `git status`output and`git diff` to identify relevant files. Show the user which files you're staging and why.
 
 ```bash
 git add <determined files>

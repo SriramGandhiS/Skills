@@ -91,11 +91,11 @@ Get a user by ID.
 ```typescript
 /**
  * Brief description of what the function does.
- * 
+ *
  * @param paramName - Description of parameter
  * @returns Description of return value
  * @throws ErrorType - When this error occurs
- * 
+ *
  * @example
  * const result = functionName(input);
  */
@@ -103,7 +103,7 @@ Get a user by ID.
 
 ### When to Comment
 
-| ✅ Comment | ❌ Don't Comment |
+| PASS: Comment | FAIL: Don't Comment |
 |-----------|-----------------|
 | Why (business logic) | What (obvious) |
 | Complex algorithms | Every line |

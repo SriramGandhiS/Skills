@@ -4,7 +4,7 @@ description: Claude Code session geçmişini, aliasları ve session metadata'sı
 
 # Sessions Komutu
 
-Claude Code session geçmişini yönet - `~/.claude/session-data/` dizininde saklanan session'ları listele, yükle, alias ata ve düzenle; eski `~/.claude/sessions/` dosyalarını da geriye dönük uyumluluk için okuyun.
+Claude Code session geçmişini yönet - `~/.claude/session-data/`dizininde saklanan session'ları listele, yükle, alias ata ve düzenle; eski`~/.claude/sessions/` dosyalarını da geriye dönük uyumluluk için okuyun.
 
 ## Kullanım
 
@@ -245,8 +245,8 @@ if (aliases.length === 0) {
 
 ## Operatör Notları
 
-- Session dosyaları header'da `Project`, `Branch` ve `Worktree`'yi sürdürür, böylece `/sessions info` parallel tmux/worktree çalıştırmalarını ayırt edebilir.
-- Command-center tarzı izleme için, `/sessions info`, `git diff --stat` ve `scripts/hooks/cost-tracker.js` tarafından yayılan cost metriklerini birleştirin.
+- Session dosyaları header'da `Project`,`Branch`ve`Worktree`'yi sürdürür, böylece`/sessions info` parallel tmux/worktree çalıştırmalarını ayırt edebilir.
+- Command-center tarzı izleme için, `/sessions info`,`git diff --stat`ve`scripts/hooks/cost-tracker.js` tarafından yayılan cost metriklerini birleştirin.
 
 ## Argümanlar
 
@@ -258,7 +258,7 @@ $ARGUMENTS:
 - `load <id|alias>` - Session içeriğini yükle
 - `alias <id> <name>` - Session için alias oluştur
 - `alias --remove <name>` - Alias'ı kaldır
-- `unalias <name>` - `--remove` ile aynı
+- `unalias <name>`-`--remove` ile aynı
 - `info <id|alias>` - Session istatistiklerini göster
 - `aliases` - Tüm aliasları listele
 - `help` - Bu yardımı göster
@@ -266,28 +266,28 @@ $ARGUMENTS:
 ## Örnekler
 
 ```bash
-# Tüm session'ları listele
+## Tüm session'ları listele
 /sessions list
 
-# Bugünkü session için alias oluştur
+## Bugünkü session için alias oluştur
 /sessions alias 2026-02-01 today
 
-# Session'ı alias ile yükle
+## Session'ı alias ile yükle
 /sessions load today
 
-# Session bilgisini göster
+## Session bilgisini göster
 /sessions info today
 
-# Alias'ı kaldır
+## Alias'ı kaldır
 /sessions alias --remove today
 
-# Tüm aliasları listele
+## Tüm aliasları listele
 /sessions aliases
 ```
 
 ## Notlar
 
-- Session'lar `~/.claude/session-data/` dizininde markdown dosyaları olarak saklanır; eski `~/.claude/sessions/` dosyaları da okunmaya devam eder
+- Session'lar `~/.claude/session-data/`dizininde markdown dosyaları olarak saklanır; eski`~/.claude/sessions/` dosyaları da okunmaya devam eder
 - Aliaslar `~/.claude/session-aliases.json` dosyasında saklanır
 - Session ID'leri kısaltılabilir (ilk 4-8 karakter genellikle yeterince benzersizdir)
 - Sık referans verilen session'lar için aliasları kullanın

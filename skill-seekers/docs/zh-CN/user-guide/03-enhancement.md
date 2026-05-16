@@ -1,6 +1,6 @@
 # Enhancement Guide
 
-> **Skill Seekers v3.1.0**  
+> **Skill Seekers v3.1.0**
 > **AI-powered quality improvement for skills**
 
 ---
@@ -10,7 +10,7 @@
 Enhancement uses AI to improve the quality of generated SKILL.md files:
 
 ```
-Basic SKILL.md ──▶ AI Enhancer ──▶ Enhanced SKILL.md
+Basic SKILL.md ── AI Enhancer ── Enhanced SKILL.md
 (100 lines)         (60 sec)        (400+ lines)
      ↓                                  ↓
   Sparse                          Comprehensive

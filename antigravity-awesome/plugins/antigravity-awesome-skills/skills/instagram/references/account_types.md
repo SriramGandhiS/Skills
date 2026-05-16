@@ -68,7 +68,7 @@ Recomendado para:
 - Perde histórico de insights
 - Posts e followers permanecem
 
-## Migração: Business ↔ Creator
+## Migração: Business  Creator
 
 Também é possível alternar entre Business e Creator:
 1. Configurações → Conta → Mudar tipo de conta

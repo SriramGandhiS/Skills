@@ -1,4 +1,4 @@
-﻿---
+---
 name: laravel-security
 description: Laravel security best practices for authn/authz, validation, CSRF, mass assignment, file uploads, secrets, rate limiting, and secure deployment.
 origin: ECC
@@ -18,17 +18,17 @@ Comprehensive security guidance for Laravel applications to protect against comm
 
 ## How It Works
 
-- Middleware provides baseline protections (CSRF via `VerifyCsrfToken`, security headers via `SecurityHeaders`).
-- Guards and policies enforce access control (`auth:sanctum`, `$this->authorize`, policy middleware).
+- Middleware provides baseline protections (CSRF via `VerifyCsrfToken`, security headers via`SecurityHeaders`).
+- Guards and policies enforce access control (`auth:sanctum`,`$this->authorize`, policy middleware).
 - Form Requests validate and shape input (`UploadInvoiceRequest`) before it reaches services.
 - Rate limiting adds abuse protection (`RateLimiter::for('login')`) alongside auth controls.
-- Data safety comes from encrypted casts, mass-assignment guards, and signed routes (`URL::temporarySignedRoute` + `signed` middleware).
+- Data safety comes from encrypted casts, mass-assignment guards, and signed routes (`URL::temporarySignedRoute`+`signed` middleware).
 
 ## Core Security Settings
 
 - `APP_DEBUG=false` in production
 - `APP_KEY` must be set and rotated on compromise
-- Set `SESSION_SECURE_COOKIE=true` and `SESSION_SAME_SITE=lax` (or `strict` for sensitive apps)
+- Set `SESSION_SECURE_COOKIE=true`and`SESSION_SAME_SITE=lax`(or`strict` for sensitive apps)
 - Configure trusted proxies for correct HTTPS detection
 
 ## Session and Cookie Hardening
@@ -96,7 +96,7 @@ Route::put('/projects/{project}', [ProjectController::class, 'update'])
 
 ## Mass Assignment Protection
 
-- Use `$fillable` or `$guarded` and avoid `Model::unguard()`
+- Use `$fillable`or`$guarded`and avoid`Model::unguard()`
 - Prefer DTOs or explicit attribute mapping
 
 ## SQL Injection Prevention

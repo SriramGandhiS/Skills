@@ -246,16 +246,16 @@ public class RateLimitFilter extends OncePerRequestFilter {
    * 設定する必要があります:
    *
    * 1. application.properties/yamlで server.forward-headers-strategy=NATIVE
-   *    （クラウドプラットフォーム用）またはFRAMEWORKを設定
+   * （クラウドプラットフォーム用）またはFRAMEWORKを設定
    * 2. FRAMEWORK戦略を使用する場合、ForwardedHeaderFilterを登録:
    *
-   *    @Bean
-   *    ForwardedHeaderFilter forwardedHeaderFilter() {
-   *        return new ForwardedHeaderFilter();
-   *    }
+   * @Bean
+   * ForwardedHeaderFilter forwardedHeaderFilter() {
+   * return new ForwardedHeaderFilter();
+   * }
    *
    * 3. プロキシが偽装を防ぐためにX-Forwarded-Forヘッダーを上書き（追加ではなく）
-   *    することを確認
+   * することを確認
    * 4. コンテナに応じてserver.tomcat.remoteip.trusted-proxiesまたは同等を設定
    *
    * この構成なしでは、request.getRemoteAddr()はクライアントIPではなくプロキシIPを返します。

@@ -243,7 +243,7 @@ class As2ProcessingServiceTest {
 1. **@Nested Sınıflar**: Testleri test edilen metoda göre gruplandırın
 2. **@DisplayName**: Test raporlarında okunabilir açıklamalar sağlayın
 3. **İsimlendirme Kuralı**: Netlik için `givenX_whenY_thenZ`
-4. **AAA Deseni**: Açık `// ARRANGE`, `// ACT`, `// ASSERT` yorumları
+4. **AAA Deseni**: Açık `// ARRANGE`,`// ACT`,`// ASSERT` yorumları
 5. **@BeforeEach**: Tekrarı azaltmak için ortak test verisi kurulumu
 6. **assertDoesNotThrow**: Exception yakalamadan başarı senaryolarını test edin
 7. **assertThrows**: AssertJ kullanarak mesaj doğrulamalı exception senaryolarını test edin
@@ -792,7 +792,7 @@ mvn clean test
 mvn jacoco:report
 mvn jacoco:check
 
-# Rapor: target/site/jacoco/index.html
+## Rapor: target/site/jacoco/index.html
 ```
 
 ## Test Bağımlılıkları
@@ -851,10 +851,10 @@ mvn jacoco:check
 - Tekrarı azaltmak için ortak test verisi kurulumunda `@BeforeEach` kullanın
 
 ### Test Yapısı
-- Açık yorumlarla AAA desenini izleyin (`// ARRANGE`, `// ACT`, `// ASSERT`)
+- Açık yorumlarla AAA desenini izleyin (`// ARRANGE`,`// ACT`,`// ASSERT`)
 - Başarı senaryoları için `assertDoesNotThrow` kullanın
 - Mesaj doğrulamalı exception senaryoları için `assertThrows` kullanın
-- AssertJ `contains()` veya `isEqualTo()` kullanarak exception mesajlarının beklenen değerlerle eşleştiğini doğrulayın
+- AssertJ `contains()`veya`isEqualTo()` kullanarak exception mesajlarının beklenen değerlerle eşleştiğini doğrulayın
 
 ### Test Kapsamı
 - Tüm public metodlar için mutlu yolları test edin
@@ -869,7 +869,7 @@ mvn jacoco:check
 - Okunabilirlik için akıcı AssertJ API'si kullanın: `assertThat(list).hasSize(3).contains(item)`
 - Exception'lar için: JUnit `assertThrows` ile yakalayın, ardından AssertJ ile mesajı doğrulayın
 - Fırlatılmayan başarı yolları için: JUnit `assertDoesNotThrow` kullanın
-- Koleksiyonlar için: `extracting()`, `filteredOn()`, `containsExactly()`
+- Koleksiyonlar için: `extracting()`,`filteredOn()`,`containsExactly()`
 
 ### Entegrasyon Testi
 - Entegrasyon testleri için `@QuarkusTest` kullanın
@@ -878,7 +878,7 @@ mvn jacoco:check
 - Test'e özel yapılandırma için `@TestProfile` kullanın
 
 ### Event-Driven Test
-- `AdviceWith` ve `MockEndpoint` ile Camel route'larını test edin
+- `AdviceWith`ve`MockEndpoint` ile Camel route'larını test edin
 - `@CamelQuarkusTest` annotasyonu kullanın (bağımsız Camel testleri kullanıyorsanız)
 - Mesaj içeriğini, başlıklarını ve yönlendirme mantığını doğrulayın
 - Hata işleme route'larını ayrı ayrı test edin
@@ -907,7 +907,7 @@ mvn jacoco:check
 - Native derleme uyumluluğunu periyodik olarak test edin
 - Farklı senaryolar için Quarkus test profillerini kullanın
 - Yerel test için Quarkus dev servislerinden yararlanın
-- `@MockBean` yerine `@InjectMock` kullanın (Quarkus'a özgü)
+- `@MockBean`yerine`@InjectMock` kullanın (Quarkus'a özgü)
 
 ### Doğrulama En İyi Uygulamaları
 - Mock'lanmış bağımlılıklardaki etkileşimleri her zaman doğrulayın

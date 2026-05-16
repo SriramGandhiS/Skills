@@ -241,7 +241,7 @@ PUT    /api/markets/:id          # マーケットを更新（全体）
 PATCH  /api/markets/:id          # マーケットを更新（部分）
 DELETE /api/markets/:id          # マーケットを削除
 
-# フィルタリング用クエリパラメータ
+## フィルタリング用クエリパラメータ
 GET /api/markets?status=active&limit=10&offset=0
 ```
 

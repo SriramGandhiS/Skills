@@ -81,7 +81,7 @@ class GuideEnhancer:
         if self._agent.is_available():
             self._agent.log_mode()
         else:
-            logger.warning("⚠️  No AI enhancement available")
+            logger.warning("WARNING:  No AI enhancement available")
             self.mode = "none"
 
     def enhance_guide(self, guide_data: dict) -> dict:
@@ -95,7 +95,7 @@ class GuideEnhancer:
             Enhanced guide data with all 5 enhancements
         """
         if self.mode == "none":
-            logger.warning("⚠️  AI enhancement unavailable - returning original guide")
+            logger.warning("WARNING:  AI enhancement unavailable - returning original guide")
             return guide_data
 
         try:
@@ -104,8 +104,8 @@ class GuideEnhancer:
             else:
                 return self._enhance_via_local(guide_data)
         except Exception as e:
-            logger.error(f"❌ AI enhancement failed: {e}")
-            logger.info("📝 Returning original guide without enhancement")
+            logger.error(f"FAIL: AI enhancement failed: {e}")
+            logger.info(" Returning original guide without enhancement")
             return guide_data
 
     def enhance_step_descriptions(self, steps: list[dict]) -> list[StepEnhancement]:
@@ -138,7 +138,7 @@ class GuideEnhancer:
                 for i, item in enumerate(data.get("step_descriptions", []))
             ]
         except (json.JSONDecodeError, KeyError) as e:
-            logger.warning(f"⚠️  Failed to parse step descriptions: {e}")
+            logger.warning(f"WARNING:  Failed to parse step descriptions: {e}")
             return []
 
     def enhance_troubleshooting(self, guide_data: dict) -> list[TroubleshootingItem]:
@@ -172,7 +172,7 @@ class GuideEnhancer:
                 for item in data.get("troubleshooting", [])
             ]
         except (json.JSONDecodeError, KeyError) as e:
-            logger.warning(f"⚠️  Failed to parse troubleshooting items: {e}")
+            logger.warning(f"WARNING:  Failed to parse troubleshooting items: {e}")
             return []
 
     def enhance_prerequisites(self, prereqs: list[str]) -> list[PrerequisiteItem]:
@@ -203,7 +203,7 @@ class GuideEnhancer:
                 for item in data.get("prerequisites_detailed", [])
             ]
         except (json.JSONDecodeError, KeyError) as e:
-            logger.warning(f"⚠️  Failed to parse prerequisites: {e}")
+            logger.warning(f"WARNING:  Failed to parse prerequisites: {e}")
             return []
 
     def enhance_next_steps(self, guide_data: dict) -> list[str]:
@@ -229,7 +229,7 @@ class GuideEnhancer:
             data = json.loads(response)
             return data.get("next_steps", [])
         except (json.JSONDecodeError, KeyError) as e:
-            logger.warning(f"⚠️  Failed to parse next steps: {e}")
+            logger.warning(f"WARNING:  Failed to parse next steps: {e}")
             return []
 
     def enhance_use_cases(self, guide_data: dict) -> list[str]:
@@ -255,7 +255,7 @@ class GuideEnhancer:
             data = json.loads(response)
             return data.get("use_cases", [])
         except (json.JSONDecodeError, KeyError) as e:
-            logger.warning(f"⚠️  Failed to parse use cases: {e}")
+            logger.warning(f"WARNING:  Failed to parse use cases: {e}")
             return []
 
     # === AI Call Methods ===
@@ -590,10 +590,10 @@ IMPORTANT: Return ONLY valid JSON.
             if "use_cases" in data:
                 enhanced["use_cases"] = data["use_cases"]
 
-            logger.info("✅ Successfully enhanced guide with all 5 improvements")
+            logger.info("PASS: Successfully enhanced guide with all 5 improvements")
             return enhanced
 
         except (json.JSONDecodeError, KeyError) as e:
-            logger.warning(f"⚠️  Failed to parse AI response: {e}")
+            logger.warning(f"WARNING:  Failed to parse AI response: {e}")
             logger.debug(f"Response was: {response[:500]}...")
             return guide_data

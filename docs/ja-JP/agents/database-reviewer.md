@@ -22,22 +22,22 @@ model: opus
 
 ### データベース分析コマンド
 ```bash
-# データベースに接続
+## データベースに接続
 psql $DATABASE_URL
 
-# 遅いクエリをチェック（pg_stat_statementsが必要）
+## 遅いクエリをチェック（pg_stat_statementsが必要）
 psql -c "SELECT query, mean_exec_time, calls FROM pg_stat_statements ORDER BY mean_exec_time DESC LIMIT 10;"
 
-# テーブルサイズをチェック
+## テーブルサイズをチェック
 psql -c "SELECT relname, pg_size_pretty(pg_total_relation_size(relid)) FROM pg_stat_user_tables ORDER BY pg_total_relation_size(relid) DESC;"
 
-# インデックス使用状況をチェック
+## インデックス使用状況をチェック
 psql -c "SELECT indexrelname, idx_scan, idx_tup_read FROM pg_stat_user_indexes ORDER BY idx_scan DESC;"
 
-# 外部キーの欠落しているインデックスを見つける
+## 外部キーの欠落しているインデックスを見つける
 psql -c "SELECT conrelid::regclass, a.attname FROM pg_constraint c JOIN pg_attribute a ON a.attrelid = c.conrelid AND a.attnum = ANY(c.conkey) WHERE c.contype = 'f' AND NOT EXISTS (SELECT 1 FROM pg_index i WHERE i.indrelid = c.conrelid AND a.attnum = ANY(i.indkey));"
 
-# テーブルの肥大化をチェック
+## テーブルの肥大化をチェック
 psql -c "SELECT relname, n_dead_tup, last_vacuum, last_autovacuum FROM pg_stat_user_tables WHERE n_dead_tup > 1000 ORDER BY n_dead_tup DESC;"
 ```
 
@@ -131,8 +131,8 @@ CREATE INDEX orders_customer_id_idx ON orders (customer_id);
 
 | インデックスタイプ | ユースケース | 演算子 |
 |------------|----------|-----------|
-| **B-tree**（デフォルト） | 等価、範囲 | `=`, `<`, `>`, `BETWEEN`, `IN` |
-| **GIN** | 配列、JSONB、全文検索 | `@>`, `?`, `?&`, `?\|`, `@@` |
+| **B-tree**（デフォルト） | 等価、範囲 | `=`,`<`,`>`,`BETWEEN`,`IN` |
+| **GIN** | 配列、JSONB、全文検索 | `@>`,`?`,`?&`,`?\|`,`@@` |
 | **BRIN** | 大きな時系列テーブル | ソート済みデータの範囲クエリ |
 | **Hash** | 等価のみ | `=`（B-treeより若干高速） |
 
@@ -539,8 +539,8 @@ SELECT * FROM orders WHERE customer_id = 123;
 |-----------|---------|----------|
 | 大きなテーブルでの`Seq Scan` | インデックスの欠落 | フィルタ列にインデックスを追加 |
 | `Rows Removed by Filter`が高い | 選択性が低い | WHERE句をチェック |
-| `Buffers: read >> hit` | データがキャッシュされていない | `shared_buffers`を増やす |
-| `Sort Method: external merge` | `work_mem`が低すぎる | `work_mem`を増やす |
+| `Buffers: read >> hit`| データがキャッシュされていない |`shared_buffers`を増やす |
+| `Sort Method: external merge`|`work_mem`が低すぎる |`work_mem`を増やす |
 
 ### 3. 統計の維持
 

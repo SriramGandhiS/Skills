@@ -120,11 +120,9 @@ We only support Node.js versions that are in **Active LTS** or **Maintenance** s
 
 When a Node.js version reaches end-of-life and is no longer in Active LTS or Maintenance status, Supabase will drop it in a **minor release**, and **this won't be considered a breaking change**.
 
-> ⚠️ **Node.js 18 Deprecation Notice**
->
-> Node.js 18 reached end-of-life on April 30, 2025. As announced in [our deprecation notice](https://github.com/orgs/supabase/discussions/37217), support for Node.js 18 was dropped in version `2.79.0`.
->
-> If you must use Node.js 18, please use version `2.78.0`, which is the last version that supported Node.js 18.
+> WARNING: **Node.js 18 Deprecation Notice**
+> > Node.js 18 reached end-of-life on April 30, 2025. As announced in [our deprecation notice](https://github.com/orgs/supabase/discussions/37217), support for Node.js 18 was dropped in version `2.79.0`.
+> > If you must use Node.js 18, please use version `2.78.0`, which is the last version that supported Node.js 18.
 
 ### Deno
 

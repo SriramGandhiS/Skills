@@ -33,12 +33,12 @@ These principles are derived from LLM citation behavior analysis and should info
 ### Traditional SEO Tactics Harm GEO Performance
 - **Finding:** Keyword stuffing, over-optimization actively hurt GEO performance
 - **Implication:** Write for AI extraction, not keyword density
-- **Anti-patterns:** ❌ Keyword stuffing, ❌ Generic listicles, ❌ Vague hedged language
+- **Anti-patterns:** FAIL: Keyword stuffing, FAIL: Generic listicles, FAIL: Vague hedged language
 
 ### Optimization Aggressiveness by Authority Level
 - **Finding:** Princeton study shows rank-5 sites gained 115% visibility with aggressive optimization, while rank-1 sites lost 30% with over-optimization
-- **Challenger sites (low authority):** ✅ Aggressive optimization with multiple extraction points, citations, stats
-- **Established sites (high authority):** ⚠️ Light touch optimization; trust existing credibility
+- **Challenger sites (low authority):** PASS: Aggressive optimization with multiple extraction points, citations, stats
+- **Established sites (high authority):** WARNING: Light touch optimization; trust existing credibility
 
 ---
 
@@ -111,10 +111,10 @@ When relevant, add step-by-step guides with:
 - **FAQ answers:** 30-50 words total, front-loaded with direct answer
 
 **Extraction-Ready Sentence Examples:**
-- ✅ "Eight-API synthesis reduces property analysis errors by 67%." (9 tokens, self-contained)
-- ✅ "RAG-based systems maintain brand voice 3x better than rule-based approaches." (11 tokens)
-- ❌ "Our system is incredibly fast and delivers amazing results." (vague, no specifics)
-- ❌ "It significantly improves performance when compared to alternatives." (pronoun ambiguity)
+- PASS: "Eight-API synthesis reduces property analysis errors by 67%." (9 tokens, self-contained)
+- PASS: "RAG-based systems maintain brand voice 3x better than rule-based approaches." (11 tokens)
+- FAIL: "Our system is incredibly fast and delivers amazing results." (vague, no specifics)
+- FAIL: "It significantly improves performance when compared to alternatives." (pronoun ambiguity)
 
 ### Content Freshness Signals
 
@@ -130,9 +130,9 @@ When relevant, add step-by-step guides with:
 
 **AI engines reward specificity over marketing claims:**
 
-✅ **Good:** "In a benchmark of 1,000 queries (July 2025), our system achieved 127ms median latency using the GPT-4 API."
+PASS: **Good:** "In a benchmark of 1,000 queries (July 2025), our system achieved 127ms median latency using the GPT-4 API."
 
-❌ **Bad:** "Our system is incredibly fast and delivers amazing results."
+FAIL: **Bad:** "Our system is incredibly fast and delivers amazing results."
 
 **Include:**
 - Original research and first-hand data
@@ -486,11 +486,11 @@ Run these prompts against ChatGPT, Claude, and Gemini:
 5. **Alternatives:** "What are alternatives to [Your Product]?"
 
 ### Check for:
-- ✅ Brand mentioned by name
-- ✅ Link to your website included
-- ✅ Accurate information cited
-- ✅ Evidence/data quoted
-- ❌ Hallucinations or incorrect claims
+- PASS: Brand mentioned by name
+- PASS: Link to your website included
+- PASS: Accurate information cited
+- PASS: Evidence/data quoted
+- FAIL: Hallucinations or incorrect claims
 
 ### Track Results:
 Create a simple scorecard (CSV or spreadsheet):
@@ -526,7 +526,7 @@ Create a simple scorecard (CSV or spreadsheet):
 
 #### For Challenger Sites (Aggressive Optimization)
 
-**✅ DO: Go aggressive with GEO tactics**
+**PASS: DO: Go aggressive with GEO tactics**
 - **Multiple extraction points:** 5-7 citation-ready sentences per page
 - **Heavy citation layer:** Reference studies, papers, original research
 - **Stat callouts everywhere:** Every claim backed by specific numbers
@@ -553,7 +553,7 @@ Last updated: 2025-10-31
 
 #### For Established Sites (Light Touch Optimization)
 
-**⚠️ CAUTION: Over-optimization hurts established sites**
+**WARNING: CAUTION: Over-optimization hurts established sites**
 - **1-2 strategic extraction points:** Don't stuff every paragraph
 - **Trust existing credibility:** Your brand already has authority
 - **Natural language:** Avoid keyword-stuffed optimization patterns
@@ -584,15 +584,15 @@ Independent validation: 94% accuracy rate (National Real Estate Technology Counc
 - Established brands often underestimate GEO, leaving opportunity
 
 **Strategic opportunities:**
-- ✅ Claim narrow domains with authoritative depth
-- ✅ Publish original research and data
-- ✅ Weekly micro-updates show active expertise
-- ✅ Focus on extractable, quotable claims
-- ✅ Build citation-worthy evidence panels
+- PASS: Claim narrow domains with authoritative depth
+- PASS: Publish original research and data
+- PASS: Weekly micro-updates show active expertise
+- PASS: Focus on extractable, quotable claims
+- PASS: Build citation-worthy evidence panels
 
 **Avoid competing head-on:**
-- ❌ Don't try to rank for "real estate" (too broad, dominated)
-- ✅ DO claim "eight-API property valuation methodology" (specific, ownable)
+- FAIL: Don't try to rank for "real estate" (too broad, dominated)
+- PASS: DO claim "eight-API property valuation methodology" (specific, ownable)
 
 ### Self-Assessment Checklist
 
@@ -650,51 +650,51 @@ Better to have 50 words AI can quote exactly than 500 words it has to summarize.
 ## Common Mistakes to Avoid
 
 ### Content Structure Errors
-❌ **FAQ answers too long** → Keep to 30-50 words, front-load direct answer
-❌ **Buried answers** → Put the conclusion first, details second
-❌ **Pronoun ambiguity** → Say "the product" not "it" (breaks extraction)
-❌ **Long sentences** → Violates 18-token rule; aim for 15-20 words for key claims
-❌ **Multi-topic pages** → Split into focused single-concept pages (domain.com/specific-topic)
+FAIL: **FAQ answers too long** → Keep to 30-50 words, front-load direct answer
+FAIL: **Buried answers** → Put the conclusion first, details second
+FAIL: **Pronoun ambiguity** → Say "the product" not "it" (breaks extraction)
+FAIL: **Long sentences** → Violates 18-token rule; aim for 15-20 words for key claims
+FAIL: **Multi-topic pages** → Split into focused single-concept pages (domain.com/specific-topic)
 
 ### Evidence & Authority Errors
-❌ **Vague claims** → Include specific data, methods, dates ("reduces by 67%" not "improves significantly")
-❌ **Missing evidence** → Add methodology, dataset, limitations for all claims
-❌ **No individual attribution** → Use "Name, Title at Company" format, not company name alone
-❌ **Missing citations** → Reference studies, papers, original research with dates
-❌ **Unsupported statistics** → Every number needs source + "as of [date]"
+FAIL: **Vague claims** → Include specific data, methods, dates ("reduces by 67%" not "improves significantly")
+FAIL: **Missing evidence** → Add methodology, dataset, limitations for all claims
+FAIL: **No individual attribution** → Use "Name, Title at Company" format, not company name alone
+FAIL: **Missing citations** → Reference studies, papers, original research with dates
+FAIL: **Unsupported statistics** → Every number needs source + "as of [date]"
 
 ### Technical Implementation Errors
-❌ **Missing dates** → Add "Last updated: YYYY-MM-DD" on every page
-❌ **No schema markup** → FAQPage schema is essential; validate with Google Rich Results Test
-❌ **Stale content** → Update within 10 months or lose 95% of citation opportunity
-❌ **Generic metadata** → Specific, extractable meta descriptions
+FAIL: **Missing dates** → Add "Last updated: YYYY-MM-DD" on every page
+FAIL: **No schema markup** → FAQPage schema is essential; validate with Google Rich Results Test
+FAIL: **Stale content** → Update within 10 months or lose 95% of citation opportunity
+FAIL: **Generic metadata** → Specific, extractable meta descriptions
 
 ### Optimization Strategy Errors
 
 #### Traditional SEO Tactics (Actively Harmful for GEO)
-❌ **Keyword stuffing** → AI engines penalize unnatural keyword density
-❌ **Generic listicles** → "Top 10 X" without original insight or data
-❌ **Vague hedging** → "May help improve" instead of specific claims with data
-❌ **Aggregated content** → Synthesizing others' work without unique angle
-❌ **Over-optimization patterns** → Especially harmful for established/high-authority sites
+FAIL: **Keyword stuffing** → AI engines penalize unnatural keyword density
+FAIL: **Generic listicles** → "Top 10 X" without original insight or data
+FAIL: **Vague hedging** → "May help improve" instead of specific claims with data
+FAIL: **Aggregated content** → Synthesizing others' work without unique angle
+FAIL: **Over-optimization patterns** → Especially harmful for established/high-authority sites
 
 #### Authority-Level Mismatches
-❌ **Established sites going aggressive** → Rank-1 sites lost 30% with over-optimization
-❌ **Challengers being too conservative** → New sites need 5-7 extraction points per page, not 1-2
-❌ **Broad topic claiming** → Better to own "eight-API property valuation" than "real estate"
-❌ **Ignoring competitive position** → Assess authority level before choosing optimization approach
+FAIL: **Established sites going aggressive** → Rank-1 sites lost 30% with over-optimization
+FAIL: **Challengers being too conservative** → New sites need 5-7 extraction points per page, not 1-2
+FAIL: **Broad topic claiming** → Better to own "eight-API property valuation" than "real estate"
+FAIL: **Ignoring competitive position** → Assess authority level before choosing optimization approach
 
 ### Content Quality Errors
-❌ **Marketing speak** → Use factual, specific language with verifiable claims
-❌ **AI-generated without verification** → Obvious patterns trigger quality filters
-❌ **No first-hand expertise** → Original research and data beats synthesis
-❌ **Anonymous content** → Attribution matters for authority signals
+FAIL: **Marketing speak** → Use factual, specific language with verifiable claims
+FAIL: **AI-generated without verification** → Obvious patterns trigger quality filters
+FAIL: **No first-hand expertise** → Original research and data beats synthesis
+FAIL: **Anonymous content** → Attribution matters for authority signals
 
 ### Update & Maintenance Errors
-❌ **One-and-done publishing** → Static content dies; need weekly micro-updates
-❌ **No freshness signals** → Dates, version numbers, "last reviewed" timestamps required
-❌ **Outdated examples** → References to old data without update notes
-❌ **Ignoring feedback loops** → Not testing with actual AI engines (ChatGPT, Claude, Gemini)
+FAIL: **One-and-done publishing** → Static content dies; need weekly micro-updates
+FAIL: **No freshness signals** → Dates, version numbers, "last reviewed" timestamps required
+FAIL: **Outdated examples** → References to old data without update notes
+FAIL: **Ignoring feedback loops** → Not testing with actual AI engines (ChatGPT, Claude, Gemini)
 
 ---
 

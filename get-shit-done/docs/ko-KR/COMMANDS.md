@@ -412,7 +412,6 @@
 /gsd-discuss-phase --assumptions 2       # 페이즈 2 가정 사항 확인
 ```
 
-
 ### `/gsd-plan-phase --research-phase`
 
 심층 에코시스템 조사만 수행합니다 (독립 실행 — 일반적으로 `/gsd-plan-phase`를 사용하세요).

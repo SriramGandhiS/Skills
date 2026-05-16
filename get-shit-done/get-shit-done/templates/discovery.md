@@ -69,7 +69,6 @@ Before completing discovery, verify:
 
 </discovery_protocol>
 
-
 <output_structure>
 Create `.planning/phases/XX-name/DISCOVERY.md`:
 

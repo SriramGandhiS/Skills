@@ -163,7 +163,7 @@ def _only_hardcoded_string(line: str) -> bool:
 # INJECTION PATTERN DEFINITIONS
 # =========================================================================
 # Each entry: (pattern_name, compiled_regex, base_severity, injection_type,
-#              description)
+# description)
 # The scanner applies context analysis on top of base_severity.
 
 _INJECTION_DEFS: list[tuple[str, str, str, str, str]] = [

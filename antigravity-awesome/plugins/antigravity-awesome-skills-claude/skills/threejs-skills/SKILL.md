@@ -374,12 +374,12 @@ const material = new THREE.MeshStandardMaterial({
 
 ### Common Pitfalls to Avoid
 
-- ❌ Using `outputEncoding` instead of `outputColorSpace` (renamed in r152)
-- ❌ Forgetting to add objects to scene with `scene.add()`
-- ❌ Using lit materials without adding lights
-- ❌ Not handling window resize
-- ❌ Forgetting to call `renderer.render()` in animation loop
-- ❌ Using `THREE.Clock` without considering `THREE.Timer` (recommended in r183)
+- FAIL: Using `outputEncoding` instead of `outputColorSpace` (renamed in r152)
+- FAIL: Forgetting to add objects to scene with `scene.add()`
+- FAIL: Using lit materials without adding lights
+- FAIL: Not handling window resize
+- FAIL: Forgetting to call `renderer.render()` in animation loop
+- FAIL: Using `THREE.Clock` without considering `THREE.Timer` (recommended in r183)
 
 ## Example Workflow
 

@@ -10,16 +10,16 @@ disable-model-invocation: true
 ## 使用方式
 
 ```bash
-# Detect current package manager
+## Detect current package manager
 node scripts/setup-package-manager.js --detect
 
-# Set global preference
+## Set global preference
 node scripts/setup-package-manager.js --global pnpm
 
-# Set project preference
+## Set project preference
 node scripts/setup-package-manager.js --project bun
 
-# List available package managers
+## List available package managers
 node scripts/setup-package-manager.js --list
 ```
 
@@ -67,10 +67,10 @@ node scripts/setup-package-manager.js --list
 设置 `CLAUDE_PACKAGE_MANAGER` 以覆盖所有其他检测方法：
 
 ```bash
-# Windows (PowerShell)
+## Windows (PowerShell)
 $env:CLAUDE_PACKAGE_MANAGER = "pnpm"
 
-# macOS/Linux
+## macOS/Linux
 export CLAUDE_PACKAGE_MANAGER=pnpm
 ```
 

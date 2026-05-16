@@ -20,7 +20,7 @@
 ## Location Page Thresholds
 
 ### Warning Level (30+ pages)
-- ⚠️ **WARNING** at 30+ location pages
+- WARNING: **WARNING** at 30+ location pages
 - Enforce 60%+ unique content per page
 - Content must include:
   - Unique local information (landmarks, neighborhoods)
@@ -29,7 +29,7 @@
   - Genuine customer testimonials from that area
 
 ### Hard Stop (50+ pages)
-- 🛑 **HARD STOP** at 50+ location pages
+- **HARD STOP** at 50+ location pages
 - Require explicit user justification
 - Must demonstrate:
   - Legitimate business presence in each location
@@ -47,7 +47,7 @@ Google's doorway page algorithm penalizes programmatic location pages with thin/
 
 ## Safe vs. Risky Programmatic Pages
 
-### Safe at Scale ✅
+### Safe at Scale PASS:
 | Page Type | Why It's Safe |
 |-----------|---------------|
 | Integration pages | Real setup documentation, unique technical content |
@@ -56,7 +56,7 @@ Google's doorway page algorithm penalizes programmatic location pages with thin/
 | Product pages | Unique specs, images, reviews |
 | User profile pages | User-generated unique content |
 
-### Penalty Risk ❌
+### Penalty Risk FAIL:
 | Page Type | Why It's Risky |
 |-----------|----------------|
 | Location pages with only city swapped | Duplicate content, doorway pages |

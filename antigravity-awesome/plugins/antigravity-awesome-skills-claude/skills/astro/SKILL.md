@@ -321,14 +321,14 @@ import SearchBox from '../components/SearchBox.tsx';
 
 ## Best Practices
 
-- ✅ Keep most components as static `.astro` files — only hydrate what must be interactive
-- ✅ Use content collections for all Markdown/MDX content — you get type safety and auto-validation
-- ✅ Prefer `client:visible` over `client:load` for below-the-fold components to reduce initial JS
-- ✅ Use `import.meta.env` for environment variables — prefix public vars with `PUBLIC_`
-- ✅ Add `<ViewTransitions />` from `astro:transitions` for smooth page navigation without a full SPA
-- ❌ Don't use `client:load` on every component — this defeats Astro's performance advantage
-- ❌ Don't put secrets in `.astro` frontmatter that gets used in client-facing templates
-- ❌ Don't skip `getStaticPaths` for dynamic routes in static mode — builds will fail
+- PASS: Keep most components as static `.astro` files — only hydrate what must be interactive
+- PASS: Use content collections for all Markdown/MDX content — you get type safety and auto-validation
+- PASS: Prefer `client:visible` over `client:load` for below-the-fold components to reduce initial JS
+- PASS: Use `import.meta.env` for environment variables — prefix public vars with `PUBLIC_`
+- PASS: Add `<ViewTransitions />` from `astro:transitions` for smooth page navigation without a full SPA
+- FAIL: Don't use `client:load` on every component — this defeats Astro's performance advantage
+- FAIL: Don't put secrets in `.astro` frontmatter that gets used in client-facing templates
+- FAIL: Don't skip `getStaticPaths` for dynamic routes in static mode — builds will fail
 
 ## Security & Safety Notes
 
@@ -340,16 +340,16 @@ import SearchBox from '../components/SearchBox.tsx';
 ## Common Pitfalls
 
 - **Problem:** JavaScript from a React/Vue component doesn't run in the browser
-  **Solution:** Add a `client:` directive (`client:load`, `client:visible`, etc.) — without it, components render as static HTML only.
+**Solution:** Add a `client:` directive (`client:load`, `client:visible`, etc.) — without it, components render as static HTML only.
 
 - **Problem:** `getStaticPaths` data is stale after content updates during dev
-  **Solution:** Astro's dev server watches content files — restart if changes to `content/config.ts` are not reflected.
+**Solution:** Astro's dev server watches content files — restart if changes to `content/config.ts` are not reflected.
 
 - **Problem:** `Astro.props` type is `any` — no autocomplete
-  **Solution:** Define a `Props` interface or type in the frontmatter and Astro will infer it automatically.
+**Solution:** Define a `Props` interface or type in the frontmatter and Astro will infer it automatically.
 
 - **Problem:** CSS from a `.astro` component bleeds into other components
-  **Solution:** Styles in `.astro` `<style>` tags are automatically scoped. Use `:global()` only when intentionally targeting children.
+**Solution:** Styles in `.astro` `<style>` tags are automatically scoped. Use `:global()` only when intentionally targeting children.
 
 ## Related Skills
 

@@ -115,7 +115,7 @@ gateguard init
 
 * 让门控自然触发。不要试图预先回答门控问题——调查本身才是提高质量的关键。
 * 为你的领域自定义门控消息。如果你的项目有特定约定，请将其添加到门控提示中。
-* 使用 `.gateguard.yml` 忽略 `.venv/`、`node_modules/`、`.git/` 等路径。
+* 使用 `.gateguard.yml`忽略`.venv/`、`node_modules/`、`.git/` 等路径。
 
 ## 相关技能
 

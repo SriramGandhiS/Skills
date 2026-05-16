@@ -1,36 +1,31 @@
 #!/usr/bin/env bash
 #===============================================================================
 # App Runner Module (v5.45.0)
-#
-# Detects, starts, restarts, and monitors user applications during autonomous
+# # Detects, starts, restarts, and monitors user applications during autonomous
 # Loki Mode sessions. Auto-restarts on code changes, provides health checks,
 # and integrates with the dashboard and completion council.
-#
-# Functions:
-#   app_runner_init()            - Detect app type and prerequisites
-#   app_runner_start()           - Start the detected application
-#   app_runner_stop()            - Stop the running application
-#   app_runner_restart()         - Restart (stop + start)
-#   app_runner_health_check()    - Check if app is healthy (HTTP or PID)
-#   app_runner_should_restart()  - Check if code changes warrant restart
-#   app_runner_cleanup()         - Full cleanup on session exit
-#   app_runner_status()          - One-line status for prompt injection
-#   app_runner_watchdog()        - Auto-restart on crash (with circuit breaker)
-#
-# Environment Variables:
-#   LOKI_APP_RUNNER              - Enable/disable (default: true)
-#   LOKI_APP_RUNNER_ENABLED      - Alias for LOKI_APP_RUNNER
-#   LOKI_APP_PORT                - Override detected port
-#   LOKI_APP_COMMAND             - Override app start command
-#
-# Data:
-#   .loki/app-runner/state.json       - App state
-#   .loki/app-runner/app.pid          - Process ID
-#   .loki/app-runner/app.log          - Application stdout/stderr
-#   .loki/app-runner/health.json      - Last health check
-#   .loki/app-runner/detection.json   - Detection results
-#
-#===============================================================================
+# # Functions:
+# app_runner_init()            - Detect app type and prerequisites
+# app_runner_start()           - Start the detected application
+# app_runner_stop()            - Stop the running application
+# app_runner_restart()         - Restart (stop + start)
+# app_runner_health_check()    - Check if app is healthy (HTTP or PID)
+# app_runner_should_restart()  - Check if code changes warrant restart
+# app_runner_cleanup()         - Full cleanup on session exit
+# app_runner_status()          - One-line status for prompt injection
+# app_runner_watchdog()        - Auto-restart on crash (with circuit breaker)
+# # Environment Variables:
+# LOKI_APP_RUNNER              - Enable/disable (default: true)
+# LOKI_APP_RUNNER_ENABLED      - Alias for LOKI_APP_RUNNER
+# LOKI_APP_PORT                - Override detected port
+# LOKI_APP_COMMAND             - Override app start command
+# # Data:
+# .loki/app-runner/state.json       - App state
+# .loki/app-runner/app.pid          - Process ID
+# .loki/app-runner/app.log          - Application stdout/stderr
+# .loki/app-runner/health.json      - Last health check
+# .loki/app-runner/detection.json   - Detection results
+# #===============================================================================
 
 # Configuration
 APP_RUNNER_ENABLED="${LOKI_APP_RUNNER:-${LOKI_APP_RUNNER_ENABLED:-true}}"
@@ -65,20 +60,19 @@ _json_escape() {
 }
 
 # Validate a command string: reject shell metacharacters that enable injection.
-#
-# Trust contract:
-#   - $_APP_RUNNER_METHOD is either (a) auto-detected by app_runner_init from a
-#     fixed set of internal templates (npm run dev, docker compose up -d, etc.)
-#     or (b) supplied verbatim by the operator via the LOKI_APP_COMMAND env
-#     variable. Auto-detected strings are trusted; LOKI_APP_COMMAND is an
-#     external operator-controlled input that may be set in CI, .envrc, or by
-#     a hostile parent process.
-#   - This validator is the only line of defense for the LOKI_APP_COMMAND path.
-#     It runs BEFORE the value is assigned to _APP_RUNNER_METHOD and BEFORE
-#     it is interpolated into `bash -lc -- "$_APP_RUNNER_METHOD"` at startup.
-#   - Allow only a strict whitelist: A-Z a-z 0-9 _ . / - = and a single ASCII
-#     space (0x20). Tabs, newlines, glob, redirects, command separators, and
-#     command substitution are all rejected.
+# # Trust contract:
+# - $_APP_RUNNER_METHOD is either (a) auto-detected by app_runner_init from a
+# fixed set of internal templates (npm run dev, docker compose up -d, etc.)
+# or (b) supplied verbatim by the operator via the LOKI_APP_COMMAND env
+# variable. Auto-detected strings are trusted; LOKI_APP_COMMAND is an
+# external operator-controlled input that may be set in CI, .envrc, or by
+# a hostile parent process.
+# - This validator is the only line of defense for the LOKI_APP_COMMAND path.
+# It runs BEFORE the value is assigned to _APP_RUNNER_METHOD and BEFORE
+# it is interpolated into `bash -lc -- "$_APP_RUNNER_METHOD"` at startup.
+# - Allow only a strict whitelist: A-Z a-z 0-9 _ . / - = and a single ASCII
+# space (0x20). Tabs, newlines, glob, redirects, command separators, and
+# command substitution are all rejected.
 _validate_app_command() {
     local cmd="$1"
     # Strict whitelist: alphanumerics, underscore, dot, slash, hyphen, equals,

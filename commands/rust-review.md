@@ -8,8 +8,8 @@ This command invokes the **rust-reviewer** agent for comprehensive Rust-specific
 
 ## What This Command Does
 
-1. **Verify Automated Checks**: Run `cargo check`, `cargo clippy -- -D warnings`, `cargo fmt --check`, and `cargo test` — stop if any fail
-2. **Identify Rust Changes**: Find modified `.rs` files via `git diff HEAD~1` (or `git diff main...HEAD` for PRs)
+1. **Verify Automated Checks**: Run `cargo check`,`cargo clippy -- -D warnings`,`cargo fmt --check`, and`cargo test` — stop if any fail
+2. **Identify Rust Changes**: Find modified `.rs`files via`git diff HEAD~1`(or`git diff main...HEAD` for PRs)
 3. **Run Security Audit**: Execute `cargo audit` if available
 4. **Security Scan**: Check for unsafe usage, command injection, hardcoded secrets
 5. **Ownership Review**: Analyze unnecessary clones, lifetime issues, borrowing patterns
@@ -28,7 +28,7 @@ Use `/rust-review` when:
 
 ### CRITICAL (Must Fix)
 - Unchecked `unwrap()`/`expect()` in production code paths
-- `unsafe` without `// SAFETY:` comment documenting invariants
+- `unsafe`without`// SAFETY:` comment documenting invariants
 - SQL injection via string interpolation in queries
 - Command injection via unvalidated input in `std::process::Command`
 - Hardcoded credentials
@@ -36,8 +36,8 @@ Use `/rust-review` when:
 
 ### HIGH (Should Fix)
 - Unnecessary `.clone()` to satisfy borrow checker
-- `String` parameter where `&str` or `impl AsRef<str>` suffices
-- Blocking in async context (`std::thread::sleep`, `std::fs`)
+- `String`parameter where`&str`or`impl AsRef<str>` suffices
+- Blocking in async context (`std::thread::sleep`,`std::fs`)
 - Missing `Send`/`Sync` bounds on shared types
 - Wildcard `_ =>` match on business-critical enums
 - Large functions (>50 lines)
@@ -47,24 +47,24 @@ Use `/rust-review` when:
 - Missing `with_capacity` when size is known
 - Suppressed clippy warnings without justification
 - Public API without `///` documentation
-- Consider `#[must_use]` on non-`must_use` return types where ignoring values is likely a bug
+- Consider `#[must_use]`on non-`must_use` return types where ignoring values is likely a bug
 
 ## Automated Checks Run
 
 ```bash
-# Build gate (must pass before review)
+## Build gate (must pass before review)
 cargo check
 
-# Lints and suggestions
+## Lints and suggestions
 cargo clippy -- -D warnings
 
-# Formatting
+## Formatting
 cargo fmt --check
 
-# Tests
+## Tests
 cargo test
 
-# Security audit (if available)
+## Security audit (if available)
 if command -v cargo-audit >/dev/null; then cargo audit; else echo "cargo-audit not installed"; fi
 ```
 
@@ -74,7 +74,7 @@ if command -v cargo-audit >/dev/null; then cargo audit; else echo "cargo-audit n
 User: /rust-review
 
 Agent:
-# Rust Code Review Report
+## Rust Code Review Report
 
 ## Files Reviewed
 - src/service/user.rs (modified)
@@ -139,4 +139,4 @@ Recommendation: Block merge until CRITICAL issue is fixed
 ## Related
 
 - Agent: `agents/rust-reviewer.md`
-- Skills: `skills/rust-patterns/`, `skills/rust-testing/`
+- Skills: `skills/rust-patterns/`,`skills/rust-testing/`

@@ -25,10 +25,10 @@ const response = await env.AUTH_SERVICE.fetch(
 
 **HTTP vs Service:**
 ```typescript
-// ❌ HTTP (slow, paid, cross-region latency)
+// FAIL: HTTP (slow, paid, cross-region latency)
 await fetch('https://auth-worker.example.com/validate');
 
-// ✅ Service binding (fast, free, same isolate)
+// PASS: Service binding (fast, free, same isolate)
 await env.AUTH_SERVICE.fetch(new Request('https://fake-host/validate'));
 ```
 
@@ -78,7 +78,7 @@ const response = await fetch('https://api.example.com', {
 
 **Never commit secrets:**
 ```jsonc
-// ❌ NEVER
+// FAIL: NEVER
 { "vars": { "API_KEY": "sk_live_abc123" } }
 ```
 
@@ -115,7 +115,7 @@ const response = await worker.fetch(
 ### Lazy Access
 
 ```typescript
-// ✅ Access only when needed
+// PASS: Access only when needed
 if (url.pathname === '/cached') {
   const cached = await env.MY_KV.get('data');
   if (cached) return new Response(cached);
@@ -125,7 +125,7 @@ if (url.pathname === '/cached') {
 ### Parallel Access
 
 ```typescript
-// ✅ Parallelize independent calls
+// PASS: Parallelize independent calls
 const [user, config, cache] = await Promise.all([
   env.DB.prepare('SELECT * FROM users WHERE id = ?').bind(userId).first(),
   env.MY_KV.get('config'),
@@ -141,7 +141,7 @@ const [user, config, cache] = await Promise.all([
 const config = await env.MY_KV.get('app-config', { type: 'json' });
 ```
 
-**Use when:** Read-heavy, <25MB, global distribution, eventual consistency OK  
+**Use when:** Read-heavy, <25MB, global distribution, eventual consistency OK
 **Latency:** <10ms reads (cached), writes eventually consistent (60s)
 
 ### D1: Relational Queries
@@ -153,7 +153,7 @@ const results = await env.DB.prepare(`
 `).all();
 ```
 
-**Use when:** Relational data, JOINs, ACID transactions  
+**Use when:** Relational data, JOINs, ACID transactions
 **Limits:** 10GB database size, 100k rows per query
 
 ### R2: Large Objects
@@ -163,7 +163,7 @@ const object = await env.MY_BUCKET.get('large-file.zip');
 return new Response(object.body);
 ```
 
-**Use when:** Files >25MB, S3-compatible API needed  
+**Use when:** Files >25MB, S3-compatible API needed
 **Limits:** 5TB per object, unlimited storage
 
 ### Durable Objects: Coordination
@@ -174,25 +174,25 @@ const stub = env.COUNTER.get(id);
 await stub.fetch(new Request('https://fake/increment'));
 ```
 
-**Use when:** Strong consistency, real-time coordination, WebSocket state  
+**Use when:** Strong consistency, real-time coordination, WebSocket state
 **Guarantees:** Single-threaded execution, transactional storage
 
 ## Anti-Patterns
 
-**❌ Hardcoding credentials:** `const apiKey = 'sk_live_abc123'`  
-**✅** `npx wrangler secret put API_KEY`
+**FAIL: Hardcoding credentials:** `const apiKey = 'sk_live_abc123'`
+**PASS:** `npx wrangler secret put API_KEY`
 
-**❌ Using REST API:** `fetch('https://api.cloudflare.com/.../kv/...')`  
-**✅** `env.MY_KV.get('key')`
+**FAIL: Using REST API:** `fetch('https://api.cloudflare.com/.../kv/...')`
+**PASS:** `env.MY_KV.get('key')`
 
-**❌ Polling storage:** `setInterval(() => env.KV.get('config'), 1000)`  
-**✅** Use Durable Objects for real-time state
+**FAIL: Polling storage:** `setInterval(() => env.KV.get('config'), 1000)`
+**PASS:** Use Durable Objects for real-time state
 
-**❌ Large data in vars:** `{ "vars": { "HUGE_CONFIG": "..." } }` (5KB max)  
-**✅** `env.MY_KV.put('config', data)`
+**FAIL: Large data in vars:** `{ "vars": { "HUGE_CONFIG": "..." } }` (5KB max)
+**PASS:** `env.MY_KV.put('config', data)`
 
-**❌ Caching env globally:** `const apiKey = env.API_KEY` outside fetch()  
-**✅** Access `env.API_KEY` per-request inside fetch()
+**FAIL: Caching env globally:** `const apiKey = env.API_KEY` outside fetch()
+**PASS:** Access `env.API_KEY` per-request inside fetch()
 
 ## See Also
 

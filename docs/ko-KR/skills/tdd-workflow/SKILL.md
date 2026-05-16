@@ -84,7 +84,7 @@ describe('Semantic Search', () => {
 ### 단계 3: 테스트 실행 (실패해야 함)
 ```bash
 npm test
-# Tests should fail - we haven't implemented yet
+## Tests should fail - we haven't implemented yet
 ```
 
 ### 단계 4: 코드 구현
@@ -100,7 +100,7 @@ export async function searchMarkets(query: string) {
 ### 단계 5: 테스트 재실행
 ```bash
 npm test
-# Tests should now pass
+## Tests should now pass
 ```
 
 ### 단계 6: 리팩터링
@@ -113,7 +113,7 @@ npm test
 ### 단계 7: 커버리지 확인
 ```bash
 npm run test:coverage
-# Verify 80%+ coverage achieved
+## Verify 80%+ coverage achieved
 ```
 
 ## 테스트 패턴
@@ -363,18 +363,18 @@ test('updates user', () => {
 ### 개발 중 Watch 모드
 ```bash
 npm test -- --watch
-# Tests run automatically on file changes
+## Tests run automatically on file changes
 ```
 
 ### Pre-Commit Hook
 ```bash
-# Runs before every commit
+## Runs before every commit
 npm test && npm run lint
 ```
 
 ### CI/CD 통합
 ```yaml
-# GitHub Actions
+## GitHub Actions
 - name: Run Tests
   run: npm test -- --coverage
 - name: Upload Coverage

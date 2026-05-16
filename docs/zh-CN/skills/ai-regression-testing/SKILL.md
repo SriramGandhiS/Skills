@@ -198,7 +198,7 @@ describe("GET /api/user/messages (conversation list)", () => {
 
 ```markdown
 <!-- .claude/commands/bug-check.md -->
-# Bug 检查
+## Bug 检查
 
 ## 步骤 1：自动化测试（强制，不可跳过）
 

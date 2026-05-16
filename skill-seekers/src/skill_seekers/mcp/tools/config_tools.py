@@ -93,7 +93,7 @@ async def generate_config(args: dict) -> list[TextContent]:
     with open(config_path, "w") as f:
         json.dump(config, f, indent=2)
 
-    result = f"""✅ Config created: {config_path}
+    result = f"""PASS: Config created: {config_path}
 
 Configuration:
   Name: {name}
@@ -135,7 +135,7 @@ async def list_configs(_args: dict) -> list[TextContent]:
     if not configs:
         return [TextContent(type="text", text="No config files found")]
 
-    result = "📋 Available Configs:\n\n"
+    result = " Available Configs:\n\n"
 
     for config_file in sorted(configs):
         try:
@@ -179,7 +179,7 @@ async def validate_config(args: dict) -> list[TextContent]:
         # Check if file exists
         if not Path(config_path).exists():
             return [
-                TextContent(type="text", text=f"❌ Error: Config file not found: {config_path}")
+                TextContent(type="text", text=f"FAIL: Error: Config file not found: {config_path}")
             ]
 
         # Try unified config validator first
@@ -188,11 +188,11 @@ async def validate_config(args: dict) -> list[TextContent]:
 
             validator = validate_config(config_path)
 
-            result = "✅ Config is valid!\n\n"
+            result = "PASS: Config is valid!\n\n"
 
             # Show format
             if validator.is_unified:
-                result += "📦 Format: Unified (multi-source)\n"
+                result += " Format: Unified (multi-source)\n"
                 result += f"  Name: {validator.config['name']}\n"
                 result += f"  Sources: {len(validator.config.get('sources', []))}\n"
 
@@ -229,7 +229,7 @@ async def validate_config(args: dict) -> list[TextContent]:
                     result += "  API merging: Required (docs + code sources)\n"
 
             else:
-                result += "📦 Format: Legacy (single source)\n"
+                result += " Format: Legacy (single source)\n"
                 result += f"  Name: {validator.config['name']}\n"
                 result += f"  Base URL: {validator.config.get('base_url', 'N/A')}\n"
                 result += f"  Max pages: {validator.config.get('max_pages', 'Not set')}\n"
@@ -250,23 +250,23 @@ async def validate_config(args: dict) -> list[TextContent]:
             errors, warnings = validate_config(config)
 
             if errors:
-                result = "❌ Config validation failed:\n\n"
+                result = "FAIL: Config validation failed:\n\n"
                 for error in errors:
                     result += f"  • {error}\n"
             else:
-                result = "✅ Config is valid!\n\n"
-                result += "📦 Format: Legacy (single source)\n"
+                result = "PASS: Config is valid!\n\n"
+                result += " Format: Legacy (single source)\n"
                 result += f"  Name: {config['name']}\n"
                 result += f"  Base URL: {config['base_url']}\n"
                 result += f"  Max pages: {config.get('max_pages', 'Not set')}\n"
                 result += f"  Rate limit: {config.get('rate_limit', 'Not set')}s\n"
 
                 if warnings:
-                    result += "\n⚠️  Warnings:\n"
+                    result += "\nWARNING:  Warnings:\n"
                     for warning in warnings:
                         result += f"  • {warning}\n"
 
             return [TextContent(type="text", text=result)]
 
     except Exception as e:
-        return [TextContent(type="text", text=f"❌ Error: {str(e)}")]
+        return [TextContent(type="text", text=f"FAIL: Error: {str(e)}")]

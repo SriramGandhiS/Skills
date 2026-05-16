@@ -379,7 +379,7 @@ timeout 30 bash -c 'until curl -s localhost:3000 > /dev/null 2>&1; do sleep 1; d
 
 ## 反模式
 
-### ❌ 错误：让用户启动开发服务器
+### FAIL: 错误：让用户启动开发服务器
 ```xml
 <task type="checkpoint:human-verify" gate="blocking">
   <what-built>仪表板组件</what-built>
@@ -392,7 +392,7 @@ timeout 30 bash -c 'until curl -s localhost:3000 > /dev/null 2>&1; do sleep 1; d
 ```
 **为什么错误：** Claude 可以运行 `npm run dev`。用户应该只访问 URL，不执行命令。
 
-### ✅ 正确：Claude 启动服务器，用户访问
+### PASS: 正确：Claude 启动服务器，用户访问
 ```xml
 <task type="auto">
   <name>启动开发服务器</name>
@@ -410,7 +410,7 @@ timeout 30 bash -c 'until curl -s localhost:3000 > /dev/null 2>&1; do sleep 1; d
 </task>
 ```
 
-### ❌ 错误：让用户部署 / ✅ 正确：Claude 自动化
+### FAIL: 错误：让用户部署 / PASS: 正确：Claude 自动化
 ```xml
 <!-- 错误：让用户通过仪表板部署 -->
 <task type="checkpoint:human-action" gate="blocking">

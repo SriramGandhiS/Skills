@@ -57,7 +57,7 @@ my-electron-app/
 │   │   ├── tray.ts             # System tray
 │   │   └── updater.ts          # Auto-update logic
 │   ├── preload/
-│   │   └── preload.ts          # Bridge between main ↔ renderer
+│   │   └── preload.ts          # Bridge between main  renderer
 │   ├── renderer/
 │   │   ├── index.html          # Entry HTML
 │   │   ├── App.tsx             # UI root (React/Vue/Svelte/vanilla)
@@ -88,10 +88,10 @@ Electron runs **multiple processes** that are isolated by design:
 
 | Process | Role | Node.js Access | DOM Access |
 |---------|------|----------------|------------|
-| **Main** | App lifecycle, windows, native APIs, IPC hub | ✅ Full | ❌ None |
-| **Renderer** | UI rendering, user interaction | ❌ None (by default) | ✅ Full |
-| **Preload** | Secure bridge between main and renderer | ✅ Limited (via contextBridge) | ✅ Before page loads |
-| **Utility** | CPU-intensive tasks, background work | ✅ Full | ❌ None |
+| **Main** | App lifecycle, windows, native APIs, IPC hub | PASS: Full | FAIL: None |
+| **Renderer** | UI rendering, user interaction | FAIL: None (by default) | PASS: Full |
+| **Preload** | Secure bridge between main and renderer | PASS: Limited (via contextBridge) | PASS: Before page loads |
+| **Utility** | CPU-intensive tasks, background work | PASS: Full | FAIL: None |
 
 **BrowserWindow with security defaults (MANDATORY):**
 ```typescript
@@ -107,10 +107,10 @@ function createMainWindow(): BrowserWindow {
       contextIsolation: true,     // Isolates preload from renderer context
       nodeIntegration: false,     // Prevents require() in renderer
       sandbox: true,              // OS-level process sandboxing
-      
+
       // ── PRELOAD SCRIPT ──
       preload: path.join(__dirname, '../preload/preload.js'),
-      
+
       // ── ADDITIONAL HARDENING ──
       webSecurity: true,          // Enforce same-origin policy
       allowRunningInsecureContent: false,
@@ -134,7 +134,7 @@ function createMainWindow(): BrowserWindow {
 }
 ```
 
-> ⚠️ **CRITICAL**: Never set `nodeIntegration: true` or `contextIsolation: false` in production. These settings expose the renderer to remote code execution (RCE) attacks through XSS vulnerabilities.
+> WARNING: **CRITICAL**: Never set `nodeIntegration: true` or `contextIsolation: false` in production. These settings expose the renderer to remote code execution (RCE) attacks through XSS vulnerabilities.
 
 ---
 
@@ -209,9 +209,9 @@ export function registerIpcHandlers(): void {
       properties: ['openFile'],
       filters: [{ name: 'Text Files', extensions: ['txt', 'md'] }],
     });
-    
+
     if (canceled || filePaths.length === 0) return null;
-    
+
     const content = await readFile(filePaths[0], 'utf-8');
     return { path: filePaths[0], content };
   });
@@ -271,7 +271,7 @@ const unsubscribe = window.electronAPI.on('update:available', (version) => {
 | **Request/Response** | `ipcRenderer.invoke()` → `ipcMain.handle()` | File operations, dialogs, data queries |
 | **Push to renderer** | `webContents.send()` → `ipcRenderer.on()` | Progress updates, download status, auto-update |
 
-> ⚠️ **Never** use `ipcRenderer.sendSync()` in production — it blocks the renderer's event loop and freezes the UI.
+> WARNING: **Never** use `ipcRenderer.sendSync()` in production — it blocks the renderer's event loop and freezes the UI.
 
 ---
 
@@ -597,13 +597,13 @@ ipcMain.handle('update:install', () => autoUpdater.quitAndInstall());
 
 #### Bundle Size Optimization
 
-- ✅ Use `asar: true` to package sources into a single archive
-- ✅ Set `compression: maximum` in electron-builder config
-- ✅ Exclude dev dependencies: `"files"` pattern should only include compiled output
-- ✅ Use a bundler (Vite, webpack, esbuild) to tree-shake the renderer
-- ✅ Audit `node_modules` shipped with the app — use `electron-builder`'s `files` exclude patterns
-- ✅ Consider `@electron/rebuild` for native modules instead of shipping prebuilt for all platforms
-- ❌ Do NOT bundle the entire `node_modules` — only production dependencies
+- PASS: Use `asar: true` to package sources into a single archive
+- PASS: Set `compression: maximum` in electron-builder config
+- PASS: Exclude dev dependencies: `"files"` pattern should only include compiled output
+- PASS: Use a bundler (Vite, webpack, esbuild) to tree-shake the renderer
+- PASS: Audit `node_modules` shipped with the app — use `electron-builder`'s `files` exclude patterns
+- PASS: Consider `@electron/rebuild` for native modules instead of shipping prebuilt for all platforms
+- FAIL: Do NOT bundle the entire `node_modules` — only production dependencies
 
 ---
 
@@ -821,21 +821,21 @@ app.on('web-contents-created', (_event, contents) => {
 
 ## Best Practices
 
-- ✅ **Always** set `contextIsolation: true` and `nodeIntegration: false`
-- ✅ **Always** use `contextBridge` in preload with an explicit channel whitelist
-- ✅ **Always** validate IPC inputs in the main process — treat renderer as untrusted
-- ✅ **Always** use `ipcMain.handle()` / `ipcRenderer.invoke()` for request/response IPC
-- ✅ **Always** configure Content Security Policy headers
-- ✅ **Always** sanitize URLs before passing to `shell.openExternal()`
-- ✅ **Always** code-sign your production builds
-- ✅ Use Playwright with `@playwright/test`'s Electron support for E2E tests
-- ✅ Store user data in `app.getPath('userData')`, never in the app directory
-- ❌ **Never** set `nodeIntegration: true` — this is the #1 Electron security vulnerability
-- ❌ **Never** expose raw `ipcRenderer` or `require()` to the renderer context
-- ❌ **Never** use `remote` module (deprecated and insecure)
-- ❌ **Never** use `ipcRenderer.sendSync()` — it blocks the renderer event loop
-- ❌ **Never** disable `webSecurity` in production
-- ❌ **Never** load remote/untrusted content without a strict CSP and sandboxing
+- PASS: **Always** set `contextIsolation: true` and `nodeIntegration: false`
+- PASS: **Always** use `contextBridge` in preload with an explicit channel whitelist
+- PASS: **Always** validate IPC inputs in the main process — treat renderer as untrusted
+- PASS: **Always** use `ipcMain.handle()` / `ipcRenderer.invoke()` for request/response IPC
+- PASS: **Always** configure Content Security Policy headers
+- PASS: **Always** sanitize URLs before passing to `shell.openExternal()`
+- PASS: **Always** code-sign your production builds
+- PASS: Use Playwright with `@playwright/test`'s Electron support for E2E tests
+- PASS: Store user data in `app.getPath('userData')`, never in the app directory
+- FAIL: **Never** set `nodeIntegration: true` — this is the #1 Electron security vulnerability
+- FAIL: **Never** expose raw `ipcRenderer` or `require()` to the renderer context
+- FAIL: **Never** use `remote` module (deprecated and insecure)
+- FAIL: **Never** use `ipcRenderer.sendSync()` — it blocks the renderer event loop
+- FAIL: **Never** disable `webSecurity` in production
+- FAIL: **Never** load remote/untrusted content without a strict CSP and sandboxing
 
 ## Limitations
 

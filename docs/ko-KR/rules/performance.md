@@ -36,7 +36,7 @@
 
 확장 사고 제어 방법:
 - **전환**: Option+T (macOS) / Alt+T (Windows/Linux)
-- **설정**: `~/.claude/settings.json`에서 `alwaysThinkingEnabled` 설정
+- **설정**: `~/.claude/settings.json`에서`alwaysThinkingEnabled` 설정
 - **예산 제한**: `export MAX_THINKING_TOKENS=10000`
 - **상세 모드**: Ctrl+O로 사고 출력 확인
 

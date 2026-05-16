@@ -84,7 +84,7 @@ These stay local and should be configured per operator:
 
 0. Run `ecc migrate audit --source ~/.hermes` first to inventory the legacy workspace and see which parts already map onto ECC2.
 0.5. Plan and scaffold migration artifacts before importing anything:
-   - generate reviewable plans with `ecc migrate plan` and `ecc migrate scaffold`
+   - generate reviewable plans with `ecc migrate plan`and`ecc migrate scaffold`
    - scaffold reusable legacy skills with `ecc migrate import-skills --output-dir migration-artifacts/skills`
    - scaffold tool translation templates with `ecc migrate import-tools --output-dir migration-artifacts/tools`
    - scaffold bridge plugin templates with `ecc migrate import-plugins --output-dir migration-artifacts/plugins`

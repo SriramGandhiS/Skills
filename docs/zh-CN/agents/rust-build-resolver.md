@@ -11,7 +11,7 @@ model: sonnet
 
 ## 核心职责
 
-1. 诊断 `cargo build` / `cargo check` 错误
+1. 诊断 `cargo build`/`cargo check` 错误
 2. 修复借用检查器和生命周期错误
 3. 解决 trait 实现不匹配问题
 4. 处理 Cargo 依赖和特性问题
@@ -44,20 +44,20 @@ if command -v cargo-audit >/dev/null; then cargo audit; else echo "cargo-audit n
 
 | 错误 | 原因 | 修复方法 |
 |-------|-------|-----|
-| `cannot borrow as mutable` | 不可变借用仍有效 | 重构以先结束不可变借用，或使用 `Cell`/`RefCell` |
+| `cannot borrow as mutable`| 不可变借用仍有效 | 重构以先结束不可变借用，或使用`Cell`/`RefCell` |
 | `does not live long enough` | 值在被借用时被丢弃 | 延长生命周期作用域，使用拥有所有权的类型，或添加生命周期注解 |
-| `cannot move out of` | 从引用后面移动值 | 使用 `.clone()`、`.to_owned()`，或重构以获取所有权 |
-| `mismatched types` | 类型错误或缺少转换 | 添加 `.into()`、`as` 或显式类型转换 |
-| `trait X is not implemented for Y` | 缺少 impl 或 derive | 添加 `#[derive(Trait)]` 或手动实现 trait |
-| `unresolved import` | 缺少依赖或路径错误 | 添加到 Cargo.toml 或修复 `use` 路径 |
-| `unused variable` / `unused import` | 死代码 | 移除或添加 `_` 前缀 |
+| `cannot move out of`| 从引用后面移动值 | 使用`.clone()`、`.to_owned()`，或重构以获取所有权 |
+| `mismatched types`| 类型错误或缺少转换 | 添加`.into()`、`as` 或显式类型转换 |
+| `trait X is not implemented for Y`| 缺少 impl 或 derive | 添加`#[derive(Trait)]` 或手动实现 trait |
+| `unresolved import`| 缺少依赖或路径错误 | 添加到 Cargo.toml 或修复`use` 路径 |
+| `unused variable`/`unused import`| 死代码 | 移除或添加`_` 前缀 |
 | `expected X, found Y` | 返回/参数类型不匹配 | 修复返回类型或添加转换 |
-| `cannot find macro` | 缺少 `#[macro_use]` 或特性 | 添加依赖特性或导入宏 |
-| `multiple applicable items` | 歧义的 trait 方法 | 使用完全限定语法：`<Type as Trait>::method()` |
-| `lifetime may not live long enough` | 生命周期约束过短 | 添加生命周期约束或在适当时使用 `'static` |
-| `async fn is not Send` | 跨 `.await` 持有非 Send 类型 | 重构以在 `.await` 之前丢弃非 Send 值 |
+| `cannot find macro`| 缺少`#[macro_use]` 或特性 | 添加依赖特性或导入宏 |
+| `multiple applicable items`| 歧义的 trait 方法 | 使用完全限定语法：`<Type as Trait>::method()` |
+| `lifetime may not live long enough`| 生命周期约束过短 | 添加生命周期约束或在适当时使用`'static` |
+| `async fn is not Send`| 跨`.await`持有非 Send 类型 | 重构以在`.await` 之前丢弃非 Send 值 |
 | `the trait bound is not satisfied` | 缺少泛型约束 | 为泛型参数添加 trait 约束 |
-| `no method named X` | 缺少 trait 导入 | 添加 `use Trait;` 导入 |
+| `no method named X`| 缺少 trait 导入 | 添加`use Trait;` 导入 |
 
 ## 借用检查器故障排除
 
@@ -85,19 +85,19 @@ let item = vec.swap_remove(index); // Takes ownership
 ## Cargo.toml 故障排除
 
 ```bash
-# Check dependency tree for conflicts
+## Check dependency tree for conflicts
 cargo tree -d                          # Show duplicate dependencies
 cargo tree -i some_crate               # Invert — who depends on this?
 
-# Feature resolution
+## Feature resolution
 cargo tree -f "{p} {f}"               # Show features enabled per crate
 cargo check --features "feat1,feat2"  # Test specific feature combination
 
-# Workspace issues
+## Workspace issues
 cargo check --workspace               # Check all workspace members
 cargo check -p specific_crate         # Check single crate in workspace
 
-# Lock file issues
+## Lock file issues
 cargo update -p specific_crate        # Update one dependency (preferred)
 cargo update                          # Full refresh (last resort — broad changes)
 ```
@@ -105,15 +105,15 @@ cargo update                          # Full refresh (last resort — broad chan
 ## 版本和 MSRV 问题
 
 ```bash
-# Check edition in Cargo.toml (2024 is the current default for new projects)
+## Check edition in Cargo.toml (2024 is the current default for new projects)
 grep "edition" Cargo.toml
 
-# Check minimum supported Rust version
+## Check minimum supported Rust version
 rustc --version
 grep "rust-version" Cargo.toml
 
-# Common fix: update edition for new syntax (check rust-version first!)
-# In Cargo.toml: edition = "2024"  # Requires rustc 1.85+
+## Common fix: update edition for new syntax (check rust-version first!)
+## In Cargo.toml: edition = "2024"  # Requires rustc 1.85+
 ```
 
 ## 关键原则
@@ -121,7 +121,7 @@ grep "rust-version" Cargo.toml
 * **仅进行精准修复** — 不要重构，只修复错误
 * **绝不**在未经明确批准的情况下添加 `#[allow(unused)]`
 * **绝不**使用 `unsafe` 来规避借用检查器错误
-* **绝不**添加 `.unwrap()` 来静默类型错误 — 使用 `?` 传播
+* **绝不**添加 `.unwrap()`来静默类型错误 — 使用`?` 传播
 * **始终**在每次修复尝试后运行 `cargo check`
 * 修复根本原因而非压制症状
 * 优先选择能保留原始意图的最简单修复方案

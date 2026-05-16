@@ -1,4 +1,4 @@
-﻿---
+---
 name: windows-desktop-e2e
 description: E2E testing for Windows native desktop apps (WPF, WinForms, Win32/MFC, Qt) using pywinauto and Windows UI Automation.
 origin: ECC
@@ -50,10 +50,10 @@ Your test (Python)
 ## Setup & Prerequisites
 
 ```bash
-# Python 3.8+, Windows only
+## Python 3.8+, Windows only
 pip install pywinauto pytest pytest-html Pillow pytest-timeout
-# Optional: screen recording
-# Install ffmpeg and add to PATH: https://ffmpeg.org/download.html
+## Optional: screen recording
+## Install ffmpeg and add to PATH: <https://ffmpeg.org/download.html>
 ```
 
 Verify UIA is reachable:
@@ -319,41 +319,41 @@ AutomationId  >  Name (text)  >  ClassName + index  >  XPath
 Inspect with Accessibility Insights â†’ **Properties** pane â†’ look for `AutomationId` first.
 
 ```python
-# Inspect at runtime â€” paste into a REPL to explore the tree
+## Inspect at runtime â€” paste into a REPL to explore the tree
 win.print_control_identifiers()
-# or narrow scope:
+## or narrow scope:
 win.child_window(auto_id="groupBox1").print_control_identifiers()
 ```
 
 ## Wait Patterns
 
 ```python
-# Wait for control to appear
+## Wait for control to appear
 page.wait_visible(page.by_id("statusLabel"))
 
-# Wait for control to disappear (e.g. loading spinner)
+## Wait for control to disappear (e.g. loading spinner)
 page.wait_gone(page.by_id("spinnerOverlay"))
 
-# Wait for a dialog to pop up
+## Wait for a dialog to pop up
 dlg = page.wait_window("Confirm Delete")
 
-# Custom condition (e.g. text changes)
+## Custom condition (e.g. text changes)
 page.wait_until(lambda: page.get_text(page.by_id("lblStatus")) == "Ready")
 ```
 
-**Never use `time.sleep()` as primary synchronization** â€” use `wait()` or `wait_until()`.
+**Never use `time.sleep()`as primary synchronization** â€” use`wait()`or`wait_until()`.
 
 ## Artifact Management
 
 ```python
-# Screenshot on demand
+## Screenshot on demand
 page.screenshot("after_login")
 
-# Full-screen capture (when window is off-screen or minimised)
+## Full-screen capture (when window is off-screen or minimised)
 import pyautogui
 pyautogui.screenshot("artifacts/fullscreen.png")
 
-# Screen recording with ffmpeg (start before test, stop after)
+## Screen recording with ffmpeg (start before test, stop after)
 import subprocess
 
 def start_recording(name):
@@ -374,7 +374,7 @@ The default failure screenshot is often too thin for diagnosing flaky tests. The
 
 ```bash
 E2E_TRACE=1 pytest tests/test_login.py -v
-# Include typed text in the JSONL log (DO NOT use on tests that type credentials/PII):
+## Include typed text in the JSONL log (DO NOT use on tests that type credentials/PII):
 E2E_TRACE=1 E2E_TRACE_INCLUDE_TEXT=1 pytest ...
 ```
 
@@ -419,20 +419,20 @@ class BasePage:
 
 ### Caveats
 
-- **PII / credentials**: `type_text` content is `<redacted>` by default. Never set `E2E_TRACE_INCLUDE_TEXT=1` on login or payment flows.
+- **PII / credentials**: `type_text`content is`<redacted>`by default. Never set`E2E_TRACE_INCLUDE_TEXT=1` on login or payment flows.
 - **Overhead**: ~50â€“200ms per action + one PNG per step on disk. Don't enable on the default CI matrix â€” only on a dedicated flake-repro job.
 - **Artifact bloat**: a long flow produces tens of MB; tune `retention-days` accordingly.
 - **Parallel/rerun hygiene**: this simple example appends to `trace.jsonl` and uses a class-level counter. Clear the artifact directory before reruns, and use per-worker artifact dirs for parallel tests.
-- **Coverage gap**: actions performed outside `BasePage` (raw `pywinauto` calls in test code) are not traced.
+- **Coverage gap**: actions performed outside `BasePage`(raw`pywinauto` calls in test code) are not traced.
 
 ## Flaky Test Handling
 
 ```python
-# Quarantine â€” equivalent to Playwright's test.fixme()
+## Quarantine â€” equivalent to Playwright's test.fixme()
 @pytest.mark.skip(reason="Flaky: animation race on slow CI. Issue #42")
 def test_animated_transition(self, app): ...
 
-# Skip in CI only
+## Skip in CI only
 @pytest.mark.skipif(os.environ.get("CI") == "true", reason="Flaky in CI #43")
 def test_heavy_load(self, app): ...
 ```
@@ -441,13 +441,13 @@ Common causes and fixes:
 
 | Cause | Fix |
 |-------|-----|
-| Control not ready | Replace `time.sleep` with `wait_visible` |
+| Control not ready | Replace `time.sleep`with`wait_visible` |
 | Window not focused | Add `win.set_focus()` before interactions |
 | Animation in progress | `wait_until(lambda: not loading_indicator.exists())` |
 | Dialog timing | `wait_window(title, timeout=15)` |
 | CI display not ready | Set `DISPLAY` or use virtual desktop in CI |
-| `set_edit_text` raises NotImplementedError | UIA ValuePattern missing (common on Qt 5.x) â€” `BasePage.type_text` already falls back to `keyboard.send_keys` |
-| Control exists but `wait_visible` times out | Window minimised or off-screen â€” call `win.restore()` + `win.set_focus()` before waiting |
+| `set_edit_text`raises NotImplementedError | UIA ValuePattern missing (common on Qt 5.x) â€”`BasePage.type_text`already falls back to`keyboard.send_keys` |
+| Control exists but `wait_visible`times out | Window minimised or off-screen â€” call`win.restore()`+`win.set_focus()` before waiting |
 
 ## Test Isolation & Sandbox
 
@@ -455,10 +455,10 @@ Three tiers of isolation â€” use the lightest tier that satisfies your need
 
 ### Tier 1 â€” Filesystem Isolation (default, always use)
 
-Each test gets its own `APPDATA` / `LOCALAPPDATA` / `TEMP` via `subprocess.Popen` and `Application.connect()`. pytest's `tmp_path` fixture handles cleanup automatically.
+Each test gets its own `APPDATA`/`LOCALAPPDATA`/`TEMP`via`subprocess.Popen`and`Application.connect()`. pytest's`tmp_path` fixture handles cleanup automatically.
 
 ```python
-# conftest.py â€” replace the basic `app` fixture with this
+## conftest.py â€” replace the basic `app` fixture with this
 import os, subprocess, pytest
 from pywinauto import Application
 from config import APP_PATH, APP_ARGS, APP_TITLE, LAUNCH_TIMEOUT, ACTION_TIMEOUT, ARTIFACT_DIR
@@ -567,7 +567,7 @@ def restrict_process(pid: int):
     kernel32.CloseHandle(hproc)
     return job  # keep alive â€” job closes (kills proc) when GC'd
 
-# After proc = subprocess.Popen(...):  job = restrict_process(proc.pid)
+## After proc = subprocess.Popen(...):  job = restrict_process(proc.pid)
 ```
 
 ### Tier 3 â€” Windows Sandbox (CI full-OS isolation)
@@ -628,12 +628,12 @@ Launch: `WindowsSandbox.exe e2e-sandbox.wsb`
 
 ### Prevent hanging tests
 
-Add `pytest-timeout` to cap any single test. In `pytest.ini` set `timeout = 60` and `timeout_method = thread`. Note: `thread` method cannot kill Qt app subprocesses on Windows â€” add `atexit.register(lambda: [p.kill() for p in psutil.Process().children(recursive=True)])` in `conftest.py` to reap orphans.
+Add `pytest-timeout`to cap any single test. In`pytest.ini`set`timeout = 60`and`timeout_method = thread`. Note:`thread`method cannot kill Qt app subprocesses on Windows â€” add`atexit.register(lambda: [p.kill() for p in psutil.Process().children(recursive=True)])`in`conftest.py` to reap orphans.
 
 ## CI/CD Integration
 
 ```yaml
-# .github/workflows/e2e-desktop.yml
+## .github/workflows/e2e-desktop.yml
 name: Desktop E2E
 on: [push, pull_request]
 
@@ -674,7 +674,7 @@ jobs:
 Qt 5.x accessibility is disabled by default in some builds (especially 5.7â€“5.14). Set the environment variable **before** launching. Qt 6.x enables accessibility by default â€” skip this step for Qt 6.
 
 ```python
-# conftest.py â€” add at module top
+## conftest.py â€” add at module top
 import os
 os.environ["QT_ACCESSIBILITY"] = "1"
 ```
@@ -744,7 +744,7 @@ cell  = table.cell(row=0, column=1)
 print(cell.window_text())
 ```
 
-**Self-drawn controls** (`paintEvent`-only, `QGraphicsView`, `QOpenGLWidget`) â€” UIA cannot see their internals. Use the Fallback section below.
+**Self-drawn controls** (`paintEvent`-only,`QGraphicsView`,`QOpenGLWidget`) â€” UIA cannot see their internals. Use the Fallback section below.
 
 ## Fallback: Screenshot Mode
 
@@ -784,9 +784,9 @@ def click_image(template_path, confidence=0.85):
 
 Screenshot matching is brutally sensitive to Windows display scaling (100% / 125% / 150%). Three hard rules:
 
-1. **Capture templates at the same scale as the target machine.** Don't try to rescue a mismatch with `PIL.Image.resize` â€” `cv2.matchTemplate` is very fragile against resampling artefacts.
-2. **Pin the CI display scaling.** On `windows-latest` add a step like `Set-DisplayResolution 1920 1080 -Force` and disable per-monitor DPI scaling, so screenshot dimensions are reproducible.
-3. **Record the scale alongside each artefact.** On capture, write `GetDpiForWindow(hwnd) / 96` to `artifacts/<test>/metadata.json` â€” postmortems become obvious instead of guess-work.
+1. **Capture templates at the same scale as the target machine.** Don't try to rescue a mismatch with `PIL.Image.resize`â€”`cv2.matchTemplate` is very fragile against resampling artefacts.
+2. **Pin the CI display scaling.** On `windows-latest`add a step like`Set-DisplayResolution 1920 1080 -Force` and disable per-monitor DPI scaling, so screenshot dimensions are reproducible.
+3. **Record the scale alongside each artefact.** On capture, write `GetDpiForWindow(hwnd) / 96`to`artifacts/<test>/metadata.json` â€” postmortems become obvious instead of guess-work.
 
 > Process-level DPI awareness (`SetProcessDpiAwarenessContext`) **can conflict with Qt's own DPI handling** when the app under test is Qt-based. Prefer "same-scale templates + CI pin" over flipping process-wide DPI mode in fixtures.
 
@@ -824,38 +824,38 @@ Always try UIA first; fall back to screenshots only for genuinely unreachable co
 ## Anti-Patterns
 
 ```python
-# BAD: fixed sleep
+## BAD: fixed sleep
 time.sleep(3)
 page.click(page.by_id("btnSubmit"))
 
-# GOOD: condition wait
+## GOOD: condition wait
 page.wait_visible(page.by_id("btnSubmit"))
 page.click(page.by_id("btnSubmit"))
 ```
 
 ```python
-# BAD: brittle class+index locator as primary strategy
+## BAD: brittle class+index locator as primary strategy
 page.by_class("Edit", index=2).type_keys("hello")
 
-# GOOD: AutomationId
+## GOOD: AutomationId
 page.by_id("usernameInput").set_edit_text("hello")
 ```
 
 ```python
-# BAD: assert on pixel coordinates
+## BAD: assert on pixel coordinates
 assert btn.rectangle().left == 120
 
-# GOOD: assert on content / state
+## GOOD: assert on content / state
 assert page.get_text(page.by_id("lblStatus")) == "Logged in"
 assert page.by_id("btnLogout").is_enabled()
 ```
 
 ```python
-# BAD: share app instance across all tests (state leaks)
+## BAD: share app instance across all tests (state leaks)
 @pytest.fixture(scope="session")
 def app(): ...
 
-# GOOD: fresh process per test (or per class at most)
+## GOOD: fresh process per test (or per class at most)
 @pytest.fixture(scope="function")
 def app(): ...
 ```
@@ -863,19 +863,19 @@ def app(): ...
 ## Running Tests
 
 ```bash
-# All tests
+## All tests
 pytest tests/ -v
 
-# Smoke only
+## Smoke only
 pytest tests/ -m smoke -v
 
-# Specific file
+## Specific file
 pytest tests/test_login.py -v
 
-# With custom app path
+## With custom app path
 APP_PATH="C:\build\Release\MyApp.exe" APP_TITLE="MyApp" pytest tests/ -v
 
-# Detect flaky tests (repeat each 5 times)
+## Detect flaky tests (repeat each 5 times)
 pip install pytest-repeat
 pytest tests/test_login.py --count=5 -v
 ```

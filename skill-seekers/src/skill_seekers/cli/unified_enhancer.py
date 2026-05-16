@@ -100,7 +100,7 @@ class UnifiedEnhancer:
             if self._agent.is_available():
                 self._agent.log_mode()
             else:
-                logger.warning("⚠️  AI agent not available. AI enhancement disabled.")
+                logger.warning("WARNING:  AI agent not available. AI enhancement disabled.")
                 self.config.enabled = False
 
     def enhance(
@@ -133,7 +133,7 @@ class UnifiedEnhancer:
         parallel_workers = self.config.parallel_workers if self.config.mode == "local" else 1
 
         logger.info(
-            f"🤖 Enhancing {len(items)} {enhancement_type}s with AI "
+            f" Enhancing {len(items)} {enhancement_type}s with AI "
             f"({self.config.mode.upper()} mode: {batch_size} per batch, {parallel_workers} workers)..."
         )
 
@@ -151,7 +151,7 @@ class UnifiedEnhancer:
                 batch_results = self._enhance_batch(batch, prompt_template)
                 enhanced.extend(batch_results)
 
-        logger.info(f"✅ Enhanced {len(enhanced)} {enhancement_type}s")
+        logger.info(f"PASS: Enhanced {len(enhanced)} {enhancement_type}s")
         return enhanced
 
     def _enhance_parallel(self, batches: list[list[dict]], prompt_template: str) -> list[dict]:
@@ -176,7 +176,7 @@ class UnifiedEnhancer:
                     if total < 10 or completed % 5 == 0 or completed == total:
                         logger.info(f"   Progress: {completed}/{total} batches completed")
                 except Exception as e:
-                    logger.warning(f"⚠️  Batch {idx} failed: {e}")
+                    logger.warning(f"WARNING:  Batch {idx} failed: {e}")
                     results[idx] = batches[idx]  # Return unenhanced on failure
 
         # Flatten results
@@ -220,10 +220,10 @@ class UnifiedEnhancer:
             return items
 
         except json.JSONDecodeError:
-            logger.warning("⚠️  Failed to parse AI response, returning items unchanged")
+            logger.warning("WARNING:  Failed to parse AI response, returning items unchanged")
             return items
         except Exception as e:
-            logger.warning(f"⚠️  Error processing AI analysis: {e}")
+            logger.warning(f"WARNING:  Error processing AI analysis: {e}")
             return items
 
     def _call_claude(self, prompt: str, max_tokens: int = 1000) -> str | None:
@@ -337,6 +337,6 @@ AIEnhancer = UnifiedEnhancer
 if __name__ == "__main__":
     # Quick test
     enhancer = UnifiedEnhancer(mode="local", enabled=False)
-    print(f"✅ Mode: {enhancer.config.mode}")
-    print(f"✅ Batch size: {enhancer.config.batch_size}")
-    print(f"✅ Workers: {enhancer.config.parallel_workers}")
+    print(f"PASS: Mode: {enhancer.config.mode}")
+    print(f"PASS: Batch size: {enhancer.config.batch_size}")
+    print(f"PASS: Workers: {enhancer.config.parallel_workers}")

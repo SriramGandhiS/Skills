@@ -414,23 +414,23 @@ class QualityAnalyzer:
 
         # Priority recommendations
         if score.completeness < 70:
-            recommendations.append("🔴 PRIORITY: Improve documentation completeness")
+            recommendations.append(" PRIORITY: Improve documentation completeness")
 
         if score.accuracy < 80:
-            recommendations.append("🟡 Address accuracy issues (TODOs, placeholders)")
+            recommendations.append(" Address accuracy issues (TODOs, placeholders)")
 
         if score.coverage < 60:
-            recommendations.append("🟡 Expand documentation coverage (API, examples)")
+            recommendations.append(" Expand documentation coverage (API, examples)")
 
         if score.health < 80:
-            recommendations.append("🟡 Fix health issues (empty files, structure)")
+            recommendations.append(" Fix health issues (empty files, structure)")
 
         # General recommendations
         if score.total_score < 80:
-            recommendations.append("📝 Review and enhance overall documentation quality")
+            recommendations.append(" Review and enhance overall documentation quality")
 
         if score.total_score >= 90:
-            recommendations.append("✅ Excellent quality! Consider adding advanced topics")
+            recommendations.append("PASS: Excellent quality! Consider adding advanced topics")
 
         return recommendations
 
@@ -473,19 +473,19 @@ class QualityAnalyzer:
         lines.append("")
 
         # Header
-        lines.append(f"📊 Skill: {report.skill_name}")
-        lines.append(f"🕐 Time: {report.timestamp}")
+        lines.append(f" Skill: {report.skill_name}")
+        lines.append(f" Time: {report.timestamp}")
         lines.append("")
 
         # Overall Score
         score = report.overall_score
-        lines.append("🎯 OVERALL SCORE")
+        lines.append(" OVERALL SCORE")
         lines.append(f"   Grade: {score.grade}")
         lines.append(f"   Score: {score.total_score:.1f}/100")
         lines.append("")
 
         # Component Scores
-        lines.append("📈 COMPONENT SCORES")
+        lines.append(" COMPONENT SCORES")
         lines.append(f"   Completeness: {score.completeness:.1f}% (30% weight)")
         lines.append(f"   Accuracy:     {score.accuracy:.1f}% (25% weight)")
         lines.append(f"   Coverage:     {score.coverage:.1f}% (25% weight)")
@@ -493,14 +493,14 @@ class QualityAnalyzer:
         lines.append("")
 
         # Metrics
-        lines.append("📋 DETAILED METRICS")
+        lines.append(" DETAILED METRICS")
         for metric in report.metrics:
             icon = {
-                MetricLevel.INFO: "✅",
-                MetricLevel.WARNING: "⚠️",
-                MetricLevel.ERROR: "❌",
-                MetricLevel.CRITICAL: "🔴",
-            }.get(metric.level, "ℹ️")
+                MetricLevel.INFO: "PASS:",
+                MetricLevel.WARNING: "WARNING:",
+                MetricLevel.ERROR: "FAIL:",
+                MetricLevel.CRITICAL: "",
+            }.get(metric.level, "")
 
             lines.append(f"   {icon} {metric.name}: {metric.value:.1f}%")
             if metric.suggestions:
@@ -509,7 +509,7 @@ class QualityAnalyzer:
         lines.append("")
 
         # Statistics
-        lines.append("📊 STATISTICS")
+        lines.append(" STATISTICS")
         stats = report.statistics
         lines.append(f"   Total files: {stats.get('total_files', 0)}")
         lines.append(f"   Markdown files: {stats.get('markdown_files', 0)}")
@@ -520,7 +520,7 @@ class QualityAnalyzer:
 
         # Recommendations
         if report.recommendations:
-            lines.append("💡 RECOMMENDATIONS")
+            lines.append(" RECOMMENDATIONS")
             for rec in report.recommendations:
                 lines.append(f"   {rec}")
             lines.append("")
@@ -545,7 +545,7 @@ def main():
     # Analyze skill
     skill_dir = Path(args.skill_dir)
     if not skill_dir.exists():
-        print(f"❌ Error: Directory not found: {skill_dir}")
+        print(f"FAIL: Error: Directory not found: {skill_dir}")
         return 1
 
     analyzer = QualityAnalyzer(skill_dir)
@@ -562,7 +562,7 @@ def main():
     report_path = Path(args.output) if args.output else skill_dir / "quality_report.json"
 
     report_path.write_text(json.dumps(asdict(report), indent=2, default=str))
-    print(f"\n✅ Report saved: {report_path}")
+    print(f"\nPASS: Report saved: {report_path}")
     return 0
 
 

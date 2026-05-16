@@ -13,7 +13,7 @@ metadata:
 
 Lightweight Google Calendar integration with standalone OAuth authentication. No MCP server required.
 
-> **⚠️ Requires Google Workspace account.** Personal Gmail accounts are not supported.
+> **WARNING: Requires Google Workspace account.** Personal Gmail accounts are not supported.
 
 ## When to Use
 - You need to list, create, inspect, or update Google Calendar events from local scripts.

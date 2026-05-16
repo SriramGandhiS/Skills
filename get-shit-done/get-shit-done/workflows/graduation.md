@@ -95,7 +95,7 @@ For each qualifying cluster, determine the suggested target file:
 Print the graduation report:
 
 ```text
-📚 Graduation scan across phases {M}–{N}:
+ Graduation scan across phases {M}–{N}:
 
   HIGH RECURRENCE ({K}/{WINDOW} phases)
   ├─ Cluster: "{representative title}"
@@ -130,8 +130,8 @@ Use `AskUserQuestion` (or equivalent HITL primitive for the current runtime). If
    ### {Cluster representative title}
    {Merged body — combine unique sentences across cluster items}
 
-   **Sources:** Phase {A}, Phase {B}, Phase {C}
-   **Promoted:** {ISO_DATE}
+**Sources:** Phase {A}, Phase {B}, Phase {C}
+**Promoted:** {ISO_DATE}
    ```
 3. For each source LEARNINGS.md item in the cluster, append `**Graduated:** {target-file}:{ISO_DATE}` after its last existing field
 4. Commit both the target file and all annotated LEARNINGS.md files in a single atomic commit:

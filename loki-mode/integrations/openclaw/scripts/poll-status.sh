@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
 # Poll loki status and output structured progress for OpenClaw channel routing
 # Usage: poll-status.sh [workdir]
-#
-# Reads loki status --json output and enriches it with budget data
+# # Reads loki status --json output and enriches it with budget data
 # from .loki/metrics/budget.json and council verdict from .loki/council/state.json.
 # Outputs a single JSON object suitable for channel message formatting.
 

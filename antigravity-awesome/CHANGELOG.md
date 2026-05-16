@@ -1426,18 +1426,18 @@ Upgrade now: `git pull origin main` to fetch the latest skills.
 
 This release closes the post-`v8.2.0` maintainer batch and includes the merged `landing-page-generator` skill (#341), activation/security hardening, and metadata updates from late-cycle contributions.
 
-## 🚀 New Skills
+## New Skills
 
 - **landing-page-generator** — high-converting landing-page and campaign copy templates for product launches and marketing work (PR #341)
 - **maxia-ai-to-ai** — MAXIA AI-to-AI marketplace interaction guidance and onboarding patterns (PR #359)
 
-## 📦 Improvements
+## Improvements
 
 - **Activation reliability**: Improved activation metadata loading paths and bundle startup behavior to reduce overflow/truncation behavior in local and plugin contexts (PR #358, #359).
 - **Metadata repair batch**: Fixed metadata consistency in `agentic-auditor` and `advanced-evaluation` to align risk/quality labels and schema validation (PR #353, #352).
 - **Bundle and security maintenance**: Refined full-bundle resolution and included follow-up CI/security cleanup to stabilize post-merge behavior.
 
-## 👥 Credits
+## Credits
 
 - **[@halith-smh](https://github.com/halith-smh)** for `landing-page-generator` in PR #341
 - **[@Champbreed](https://github.com/Champbreed)** for metadata fixes in PR #352 and PR #353 (`advanced-evaluation`, `agentic-auditor`)
@@ -1712,37 +1712,37 @@ This release finishes a focused maintenance sweep across open pull requests and 
 
 This release brings major architectural skills for local inferences, cross-jurisdictional legal logic, and advanced document structuring to help your AI agents operate securely and systematically.
 
-## 🚀 New Skills
+## New Skills
 
-### ⚖️ [lex](skills/lex/)
+### [lex](skills/lex/)
 **Cross-Jurisdictional Legal Logic Engine**
 A truth engine for navigating complex legal contexts across different jurisdictions without hallucinations.
 
-### 🛡️ [skill-check](skills/skill-check/)
+### [skill-check](skills/skill-check/)
 **Validation for agentskills.io Specification**
 A read-only skill that validates SKILL.md files against the agentskills specification and Anthropic best practices.
 
-### 🔑 [keyword-extractor](skills/keyword-extractor/)
+### [keyword-extractor](skills/keyword-extractor/)
 **Extract High-Quality SEO Keywords**
 Provides agents with the ability to extract up to 50 high-quality, ranked keywords from any text payload.
 
-### 🧠 [local-llm-expert](skills/local-llm-expert/)
+### [local-llm-expert](skills/local-llm-expert/)
 **Mastery over Local Inference & VRAM Optimization**
 Authoritative guidance on running, configuring, and optimizing large language models locally on consumer and enterprise hardware.
 
-### ✅ [yes-md](skills/yes-md/)
+### PASS: [yes-md](skills/yes-md/)
 **AI Governance at the Formatting Layer**
 Instructs generative agents on how to navigate complex formatting rules with a focus on governance and output fidelity.
 
-### 📝 [ai-md](skills/ai-md/)
+### [ai-md](skills/ai-md/)
 **Convert CLAUDE.md to AI-Native Format**
 A sophisticated transformation skill for AI documentation, battle-tested across 4 frontier models.
 
-### 🤔 [explain-like-socrates](skills/explain-like-socrates/)
+### [explain-like-socrates](skills/explain-like-socrates/)
 **Socratic-Style Concept Explanations**
 Transforms the agent into a Socratic tutor, engaging users in dialogue to teach complex concepts through questioning.
 
-## 👥 Credits
+## Credits
 
 A huge shoutout to our community contributors for making this release possible:
 - **@sx4im** for `local-llm-expert`
@@ -1762,24 +1762,24 @@ A huge shoutout to our community contributors for making this release possible:
 
 This patch release focuses on bringing the entire repository's documentation into strict compliance with the newly established maintenance protocols. It resolves conflicting skill counts, aligns the documentation "trinity", fixes workflow routing paths, and standardizes formats to prevent anchor breakage. It also includes new community skills like the `pipecat-friday-agent` and workflow enhancements.
 
-## 🚀 New Skills
+## New Skills
 
-### 🤖 [pipecat-friday-agent](skills/pipecat-friday-agent/)
+### [pipecat-friday-agent](skills/pipecat-friday-agent/)
 
 **Iron Man-inspired tactical voice assistant (F.R.I.D.A.Y.).**
 Built with Pipecat, Google Gemini, and OpenAI, providing a blueprint for creating interactive voice-driven agents.
 
-### ⏱️ [progressive-estimation](skills/progressive-estimation/)
+### [progressive-estimation](skills/progressive-estimation/)
 
 **Agentic workflow for progressive task estimation.**
 Breaks down complex tasks to improve estimation accuracy and project planning.
 
-### 🎥 [seek-and-analyze-video](skills/seek-and-analyze-video/)
+### [seek-and-analyze-video](skills/seek-and-analyze-video/)
 
 **AI-powered video analysis toolkit.**
 Automates seeking and analyzing of video content, extracting key insights and moments.
 
-## 📦 Improvements
+## Improvements
 
 - **Documentation Consistency**: Full audit and remediation of `.github/MAINTENANCE.md` rules.
 - **TOC Formatting**: Removed emojis from H2 headers in `README.md` to fix broken markdown anchors.
@@ -1787,7 +1787,7 @@ Automates seeking and analyzing of video content, extracting key insights and mo
 - **Workflow Routing**: Added the `design-ddd-core-domain` workflow to required path definitions and copy-paste examples in `skills/antigravity-workflows/SKILL.md`.
 - **Validation**: Passed all sync chains including `npm run validate:references`.
 
-## 👥 Credits
+## Credits
 
 A huge shoutout to our community contributors:
 
@@ -1802,25 +1802,25 @@ A huge shoutout to our community contributors:
 
 This release focuses on better multi-session planning and domain dashboards. It adds a Blueprint skill for cold-start construction plans that any coding agent can execute, plus a Sankhya dashboard best-practices skill with SQL/JSP and UI guidance. The registry, catalog, and README counts are synced to 1,236+ skills, and the web app build is verified clean for this version.
 
-## 🚀 New Skills
+## New Skills
 
-### 🧱 [blueprint](skills/blueprint/)
+### [blueprint](skills/blueprint/)
 
 **Cold-start construction planning for multi-step projects.**
 Generates dependency-aware plans where every step has its own context brief, tasks, rollback, verification, and exit criteria so fresh agents can execute steps independently.
 
-### 📊 [sankhya-dashboard-html-jsp-custom-best-pratices](skills/sankhya-dashboard-html-jsp-custom-best-pratices/)
+### [sankhya-dashboard-html-jsp-custom-best-pratices](skills/sankhya-dashboard-html-jsp-custom-best-pratices/)
 
 **Sankhya dashboard structure, SQL/JSP patterns, and UI best practices.**
 Documents resilient dashboard patterns, recommended SQL/JSP layout, and UX guidelines for production Sankhya deployments.
 
-## 📦 Improvements
+## Improvements
 
 - **Registry Update**: Now tracking **1,236+** skills across the catalog.
 - **Docs & Catalog**: `README.md`, `skills_index.json`, `data/catalog.json`, and `CATALOG.md` regenerated and validated for 7.4.0.
 - **Web App**: `npm run app:build` run successfully to ensure the skills browser is up to date.
 
-## 👥 Credits
+## Credits
 
 - **@antbotlab** for `blueprint` (PR #259).
 - **@Guilherme-ruy** for the Sankhya dashboard skill (PR #258).
@@ -1868,56 +1868,56 @@ _Upgrade now: `git pull origin main` to fetch the latest skills._
 
 This release integrates a fresh batch of community pull requests: a Figma-to-React converter, Stripe payment expert, TanStack Query expert, Vercel AI SDK expert, Uncle Bob Clean Architecture guide, Antigravity premium design skills, and an AI agent toolkit. It also restores the structural integrity of README.md, which had picked up nested conflict markers from the batch-merge process.
 
-## 🚀 New Skills
+## New Skills
 
-### 🎨 [figma-to-react](skills/figma-to-react/)
+### [figma-to-react](skills/figma-to-react/)
 
 **Convert Figma designs to production-ready React components.**
 Automatic conversion with pixel-perfect fidelity, responsive layouts, and Tailwind/CSS Modules support.
 
 > **Try it:** `Use @figma-to-react to turn this Figma component into a React component.`
 
-### 💳 [stripe-expert](skills/stripe-expert/)
+### [stripe-expert](skills/stripe-expert/)
 
 **Production-grade Stripe integration guidance.**
 Covers one-time payments, subscriptions, webhooks, and tax/compliance patterns.
 
 > **Try it:** `Use @stripe-expert to implement a SaaS subscription with annual billing.`
 
-### ⚡ [tanstack-query-expert](skills/tanstack-query-expert/)
+### [tanstack-query-expert](skills/tanstack-query-expert/)
 
 **Advanced data fetching and server state with TanStack Query v5.**
 Optimistic updates, infinite queries, and SSR/Next.js integration.
 
 > **Try it:** `Use @tanstack-query-expert to refactor this fetch call with caching and optimistic updates.`
 
-### 🤖 [vercel-ai-sdk-expert](skills/vercel-ai-sdk-expert/)
+### [vercel-ai-sdk-expert](skills/vercel-ai-sdk-expert/)
 
 **Generative UI and tool calling with the Vercel AI SDK.**
 Streaming, multi-step tools, and edge deployment patterns.
 
 > **Try it:** `Use @vercel-ai-sdk-expert to add streaming chat with tool calls.`
 
-### 📐 [uncle-bob-craft](skills/uncle-bob-craft/)
+### [uncle-bob-craft](skills/uncle-bob-craft/)
 
 **Clean Code, Clean Architecture, and TDD guidance from Uncle Bob's books.**
 Code reviews, refactoring, SOLID principles, and design pattern references.
 
 > **Try it:** `Use @uncle-bob-craft to review this class for SRP violations.`
 
-### ✨ [antigravity-premium-design](skills/antigravity-premium-design/)
+### [antigravity-premium-design](skills/antigravity-premium-design/)
 
 **Premium UI/UX patterns and motion design for Antigravity IDE.**
 
 > **Try it:** `Use @antigravity-premium-design to redesign this component.`
 
-## 📦 Improvements
+## Improvements
 
 - **Registry Update**: Now tracking **1,272** skills.
 - **README Integrity**: Removed all nested merge conflict markers introduced during the batch-merge phase; restored original section layout.
 - **Stats Sync**: `package.json` description updated to `1,272+`.
 
-## 👥 Credits
+## Credits
 
 A huge shoutout to our community contributors:
 
@@ -1942,29 +1942,29 @@ _Upgrade now: `git pull origin main` to fetch the latest skills._
 
 This patch release adds new skills for AI-writing cleanup and multi-chain crypto wallets, while improving how markdown is rendered in the web app. It also syncs the generated catalog and metadata for a clean 7.0.1 state.
 
-## 🚀 New Skills
+## New Skills
 
-### ✍️ avoid-ai-writing (skills/avoid-ai-writing/)
+### avoid-ai-writing (skills/avoid-ai-writing/)
 
 **Remove AI-isms from generated prose**
 Audits and rewrites content to remove 21 categories of AI writing patterns, using a 43-entry replacement table and a structured four-step audit workflow.
 
 > **Try it:** `Use @avoid-ai-writing to clean up this AI-generated blog post before publishing.`
 
-### 🪙 emblemai-crypto-wallet (skills/emblemai-crypto-wallet/)
+### emblemai-crypto-wallet (skills/emblemai-crypto-wallet/)
 
 **Multi-chain crypto wallet management via EmblemAI**
 Manages crypto wallets across 7 blockchains (Solana, Ethereum, Base, BSC, Polygon, Hedera, Bitcoin) for balance checks, swaps, transfers, and portfolio analysis via the EmblemAI Agent Hustle API.
 
 > **Try it:** `Use @emblemai-crypto-wallet to summarize my portfolio and estimate gas costs for a swap.`
 
-## 📦 Improvements
+## Improvements
 
 - **Registry Update**: Catalog and bundles regenerated after adding the new skills.
 - **Risk Metadata**: `emblemai-crypto-wallet` now uses a `critical` risk level to reflect real-value asset operations.
 - **Validation**: Full validation chain and catalog build run successfully for 7.0.1.
 
-## 👥 Credits
+## Credits
 
 - **@conorbronsdon** for `avoid-ai-writing`.
 - **@decentraliser** for `emblemai-crypto-wallet`.
@@ -1975,11 +1975,11 @@ Manages crypto wallets across 7 blockchains (Solana, Ethereum, Base, BSC, Polygo
 
 This major release expands our collection to **1,200+ skills** from 35+ community repositories, covering UI/UX, Security, Data Science, Health, Quantum Computing, and more. This is our biggest community-driven update ever!
 
-### 🎉 20k Stars Milestone
+### 20k Stars Milestone
 
 Thank you to our incredible community! From 0 to 20,000 stars, this journey has been powered by developers, security researchers, data scientists, and AI enthusiasts worldwide.
 
-## 🚀 New Skill Categories (300+ Skills)
+## New Skill Categories (300+ Skills)
 
 ### UI/UX & Frontend (35+ skills)
 
@@ -2068,7 +2068,7 @@ AWS expertise from zxkane:
 - **[enhance-prompt](skills/enhance-prompt/)**, **[remotion](skills/remotion/)**, **[stitch-loop](skills/stitch-loop/)** - Google Labs tools
 - **[claimable-postgres](skills/claimable-postgres/)** - Neon Postgres
 
-## 📦 Improvements
+## Improvements
 
 - **Registry Update**: Now tracking 1,200+ skills (from 900+)
 - **New Categories**: Bioinformatics, Quantum Computing, Makepad Framework, Health & Wellness
@@ -2076,7 +2076,7 @@ AWS expertise from zxkane:
 - **Validation**: Full validation chain run on all new skills
 - **Catalog**: Updated interactive web catalog with all new skills
 
-## 👥 Credits
+## Credits
 
 ### Official Team Contributions
 
@@ -2132,30 +2132,30 @@ AWS expertise from zxkane:
 
 This release introduces payment capabilities for agents via Agent Cards, production-grade Zod validation, comprehensive Product Management frameworks, and a suite of essential developer tools (API builder, bug hunter, performance optimizer). It also includes fixes for unwanted scrollbars in the interactive web app.
 
-## 🚀 New Skills
+## New Skills
 
-### 💳 [agent-cards/skill](https://github.com/agent-cards/skill)
+### [agent-cards/skill](https://github.com/agent-cards/skill)
 
 **Manage prepaid virtual Visa cards for AI agents.**
 Allows AI agents to create cards, complete Stripe checkout, check balances, view credentials, and close cards via MCP.
 
 > **Try it:** `Use agent-cards to create a virtual Visa card with a $50 budget.`
 
-### 🛡️ [zod-validation-expert](skills/zod-validation-expert/)
+### [zod-validation-expert](skills/zod-validation-expert/)
 
 **Type-safe schema definitions and parsing logic with Zod.**
 Production-grade guide covering schema definition, type inference, safe parsing, transformations, and React/Next.js integration.
 
 > **Try it:** `Use zod-validation-expert to create a user registration schema with custom error messages.`
 
-### 📊 [product-manager](skills/product-manager/)
+### [product-manager](skills/product-manager/)
 
 **Senior PM agent with 6 knowledge domains and 30+ frameworks.**
 Provides product management expertise including RICE scoring, PRD templates, and 32 SaaS metrics with exact formulas.
 
 > **Try it:** `Draft a PRD for our new authentication feature using the product-manager templates.`
 
-### 🛠️ Developer Essentials (3 skills)
+### Developer Essentials (3 skills)
 
 **Essential skills for building, debugging, and optimizing applications.**
 
@@ -2167,12 +2167,12 @@ Provides product management expertise including RICE scoring, PRD templates, and
 
 ---
 
-## 📦 Improvements
+## Improvements
 
 - **Web App Scroll Fixes**: Corrected horizontal and vertical scrollbar overflow issues in the web app UI grid and virtualized lists (PR #208).
 - **Registry Update**: Now tracking 1011 skills.
 
-## 👥 Credits
+## Credits
 
 A huge shoutout to our community contributors:
 
@@ -2194,9 +2194,9 @@ _Upgrade now: `git pull origin main` to fetch the latest skills._
 
 This release adds 28 new skills across database tooling, FDA compliance, Odoo ERP, agent orchestration, and production architecture. It also ships incremental web-app performance improvements and a full documentation emoji-cleanup pass in line with Maintenance V5 rules. Registry count synced to 1006+ across all docs.
 
-## 🚀 New Skills
+## New Skills
 
-### 🗄️ [drizzle-orm-expert](skills/drizzle-orm-expert/)
+### [drizzle-orm-expert](skills/drizzle-orm-expert/)
 
 **Type-safe database development with Drizzle ORM.**
 Covers queries, migrations, relations, and adapters for PostgreSQL, MySQL, and SQLite.
@@ -2205,7 +2205,7 @@ Covers queries, migrations, relations, and adapters for PostgreSQL, MySQL, and S
 
 ---
 
-### 🏭 FDA Compliance Suite (2 skills)
+### FDA Compliance Suite (2 skills)
 
 **FDA audit and compliance guidance for food and medtech.**
 
@@ -2216,7 +2216,7 @@ Covers queries, migrations, relations, and adapters for PostgreSQL, MySQL, and S
 
 ---
 
-### 🏢 Odoo ERP Suite (24 skills)
+### Odoo ERP Suite (24 skills)
 
 **Complete Odoo 17 coverage for development, functional, DevOps, compliance, and integrations.**
 
@@ -2226,7 +2226,7 @@ Skills include: `odoo-development`, `odoo-functional`, `odoo-devops`, `odoo-l10n
 
 ---
 
-### 🤖 Production & Audit Skills (2 skills)
+### Production & Audit Skills (2 skills)
 
 - **[codebase-audit-pre-push](skills/codebase-audit-pre-push/)**: Automated quality gate that runs before every push.
 - **[production-grade](skills/production-grade/)**: 14-agent orchestrator pipeline for end-to-end production-readiness checks.
@@ -2235,7 +2235,7 @@ Skills include: `odoo-development`, `odoo-functional`, `odoo-devops`, `odoo-l10n
 
 ---
 
-## 📦 Improvements
+## Improvements
 
 - **Registry Update**: Now tracking 1006 skills (+28 since v6.10.0).
 - **Statistics Sync**: All docs (README, GETTING_STARTED, FAQ, package.json) updated to reflect 1006 skills — eliminating 978/954/950/900 drift.
@@ -2244,7 +2244,7 @@ Skills include: `odoo-development`, `odoo-functional`, `odoo-devops`, `odoo-l10n
 - **Docs Polish**: Removed emojis from H2 headers in `GETTING_STARTED`, `SKILL_ANATOMY`, `CONTRIBUTING`, `FAQ` following Maintenance V5 anchor rules.
 - **Star History**: Updated star history chart in README.
 
-## 👥 Credits
+## Credits
 
 A huge shoutout to our community contributors:
 
@@ -2266,9 +2266,9 @@ _Upgrade now: `git pull origin main` to fetch the latest skills._
 
 This release brings a meta-skill for discovering the right skill, proofreading capabilities, Google Gemini integration, prompt optimization, SaaS MVP guidance, and Bitcoin Lightning Network skills. Plus documentation improvements for durable execution patterns.
 
-### 🚀 New Skills
+### New Skills
 
-### 🧭 Skill Router
+### Skill Router
 
 **Intelligent entry point to the skill library.**
 
@@ -2280,7 +2280,7 @@ Interviews users with a 4-question funnel when they're unsure what to do, then r
 
 > **Try it:** "@skill-router I want to build something but I'm not sure where to start"
 
-### ✍️ Professional Proofreader
+### Professional Proofreader
 
 **Structured proofreading and grammar correction.**
 
@@ -2292,7 +2292,7 @@ Proofreads and corrects grammar, spelling, punctuation, and clarity issues while
 
 > **Try it:** "Proofread this blog post and show me what changed"
 
-### 🤖 Gemini API Integration
+### Gemini API Integration
 
 **Integrate Google Gemini API into projects.**
 
@@ -2304,7 +2304,7 @@ Comprehensive guide for Google Gemini API covering model selection, multimodal i
 
 > **Try it:** "Set up Gemini API with streaming and function calling"
 
-### 🎯 LLM Prompt Optimizer
+### LLM Prompt Optimizer
 
 **Systematic prompt engineering framework.**
 
@@ -2316,7 +2316,7 @@ Transforms weak prompts into precision-engineered instructions using RSCIT frame
 
 > **Try it:** "Optimize this prompt to get better JSON outputs"
 
-### 🚀 SaaS MVP Launcher
+### SaaS MVP Launcher
 
 **End-to-end roadmap for building SaaS MVPs.**
 
@@ -2328,7 +2328,7 @@ Complete guide for building and launching a SaaS MVP: idea validation, tech stac
 
 > **Try it:** "I have an idea for a SaaS, help me build an MVP"
 
-### ⚡ Lightning Network Skills (3 skills)
+### Lightning Network Skills (3 skills)
 
 **Bitcoin Lightning Network development and architecture.**
 
@@ -2342,14 +2342,14 @@ Three skills from the SuperScalar project covering channel factories, LSP archit
 
 ---
 
-### 📦 Improvements
+### Improvements
 
 - **Registry Update**: Now tracking 978 skills.
 - **Documentation**: Added durable execution highlights to architectural skills (ai-agents-architect, architecture-patterns, event-sourcing-architect, saga-orchestration, workflow-automation).
 - **Community**: Added devmarketing-skills to Community Contributors section.
 - **Validation**: Fixed risk level in 3 skills (saas-mvp-launcher, llm-prompt-optimizer, gemini-api-integration).
 
-### 👥 Credits
+### Credits
 
 A huge shoutout to our community contributors:
 
@@ -2369,9 +2369,9 @@ A huge shoutout to our community contributors:
 
 This release delivers major infrastructure improvements: one-command install for multiple AI tools, email capabilities for agents via AgentMail, and video/audio processing with VideoDB. Plus significant web-app performance optimizations.
 
-### 🚀 New Skills
+### New Skills
 
-### 📧 AgentMail
+### AgentMail
 
 **Email infrastructure for AI agents.**
 
@@ -2384,7 +2384,7 @@ Gives agents real email addresses (`@theagentmail.net`) via REST API. Create acc
 
 > **Try it:** "Create an email account for my agent and send a verification email"
 
-### 📹 VideoDB
+### VideoDB
 
 **Video and audio perception, indexing, and editing.**
 
@@ -2399,13 +2399,13 @@ Ingest files/URLs/live streams, build visual/spoken indexes, search with timesta
 
 ---
 
-### 📦 Improvements
+### Improvements
 
 - **Multi-Tool Install Support**: The installer now supports installing skills for multiple tools simultaneously (e.g., `npx antigravity-awesome-skills --claude --codex`). Fixes #182.
 - **Web-App Sync Optimization**: Hybrid sync strategy using git fetch for faster updates (5+ min → < 2 sec when no changes). Includes sort by "Most Stars" feature.
 - **Registry Update**: Now tracking 970 skills (+2 new).
 
-### 👥 Credits
+### Credits
 
 - **@zinzied** for web-app sync optimization (PR #180)
 - **@0xrohitgarg** for VideoDB skill contribution (PR #181)
@@ -2419,9 +2419,9 @@ Ingest files/URLs/live streams, build visual/spoken indexes, search with timesta
 
 This release delivers version 2.0.0 upgrades to two critical skills: `vibe-code-auditor` and `tutorial-engineer`, packed with pattern recognition shortcuts, deterministic scoring, and copy-paste templates. Plus, a new "Sync Skills" button in the Web App enables live skill updates from GitHub without leaving the browser.
 
-## 🚀 New Features
+## New Features
 
-### 🔄 In-App Sync Skills Button
+### In-App Sync Skills Button
 
 **One-click skill synchronization from the Web App UI.**
 Replaces the unreliable START_APP.bat auto-updater. Users can now click "Sync Skills" in the web app to download the latest skills from GitHub instantly.
@@ -2430,9 +2430,9 @@ Replaces the unreliable START_APP.bat auto-updater. Users can now click "Sync Sk
 - Downloads and extracts only the `/skills/` folder and `skills_index.json`
 - Live UI updates without page refresh
 
-## 📦 Improvements
+## Improvements
 
-### ✨ vibe-code-auditor v2.0.0
+### vibe-code-auditor v2.0.0
 
 **Productivity-focused overhaul with 10x faster audits.**
 
@@ -2445,7 +2445,7 @@ Replaces the unreliable START_APP.bat auto-updater. Users can now click "Sync Sk
 - **Calibration Rules**: Scoring adjusted by code size (snippet vs multi-file)
 - **Expanded Security**: SQL injection, path traversal, insecure deserialization detection
 
-### 📚 tutorial-engineer v2.0.0
+### tutorial-engineer v2.0.0
 
 **Evidence-based learning with 75% better retention.**
 
@@ -2459,7 +2459,7 @@ Replaces the unreliable START_APP.bat auto-updater. Users can now click "Sync Sk
 - **Copy-Paste Template**: Ready-to-use Markdown structure
 - **Accessibility Checklist**: WCAG compliance for tutorials
 
-## 👥 Credits
+## Credits
 
 A huge shoutout to our community contributors:
 
@@ -2474,26 +2474,26 @@ A huge shoutout to our community contributors:
 
 This release integrates 14 new specialized agent-skills. Highlights include the official Apify collection for web scraping and data extraction, a high-performance X/Twitter scraper, and a comprehensive genomic analysis toolkit. The registry infrastructure has been hardened with hermetic testing and secure YAML parsing.
 
-## 🚀 New Skills
+## New Skills
 
-### 🕷️ [apify-agent-skills](skills/apify-actorization/)
+### [apify-agent-skills](skills/apify-actorization/)
 
 **12 Official Apify skills for web scraping and automation.**
 Scale data extraction using Apify Actors. Includes specialized skills for e-commerce, lead generation, social media analysis, and market research.
 
-### 🐦 [x-twitter-scraper](skills/x-twitter-scraper/)
+### [x-twitter-scraper](skills/x-twitter-scraper/)
 
 **High-performance X (Twitter) data extraction.**
 Search tweets, fetch profiles, and extract media/engagement metrics without complex API setups.
 
-### 🧬 [dna-claude-analysis](skills/dna-claude-analysis/)
+### [dna-claude-analysis](skills/dna-claude-analysis/)
 
 **Personal genome analysis toolkit.**
 Analyze raw DNA data across 17 categories (health, ancestry, pharmacogenomics) with interactive HTML visualization.
 
 ---
 
-## 📦 Improvements
+## Improvements
 
 - **Registry Hardening**: Migrated all registry maintenance scripts to `PyYAML` for safe, lossless metadata handling. (PR #168)
 - **Hermetic Testing**: Implemented environment-agnostic registry tests to prevent CI drift.
@@ -2501,7 +2501,7 @@ Analyze raw DNA data across 17 categories (health, ancestry, pharmacogenomics) w
 - **Documentation**: Standardized H2 headers in README.md (no emojis) for clean Table of Contents anchors, following Maintenance V5 rules.
 - **Skill Metadata**: Enhanced description validation and category consistency across 968 skills.
 
-## 👥 Credits
+## Credits
 
 A huge shoutout to our community contributors:
 
@@ -2517,31 +2517,31 @@ A huge shoutout to our community contributors:
 
 This release integrates major community contributions, adding skills for Android testing, scoped agent memory, vibe-code quality auditing, and the VideoDB SDK. It also addresses issues with skill metadata validation and enhances documentation consistency.
 
-## 🚀 New Skills
+## New Skills
 
-### 📱 [android_ui_verification](skills/android_ui_verification/)
+### [android_ui_verification](skills/android_ui_verification/)
 
 **Automated end-to-end UI testing on Android Emulators.**
 Test layout issues, check state verification, and capture screenshots right from ADB.
 
-### 🧠 [hierarchical-agent-memory](skills/hierarchical-agent-memory/)
+### [hierarchical-agent-memory](skills/hierarchical-agent-memory/)
 
 **Scoped CLAUDE.md memory system.**
 Directory-level context files with a dashboard, significantly reducing token spend on repetitive queries.
 
-### 🎥 [videodb-skills](skills/videodb-skills/)
+### [videodb-skills](skills/videodb-skills/)
 
 **The ultimate Video processing toolkit.**
 Upload, stream, search, edit, transcribe, and generate AI video/audio using the VideoDB SDK.
 
-### 🕵️ [vibe-code-auditor](skills/vibe-code-auditor/)
+### [vibe-code-auditor](skills/vibe-code-auditor/)
 
 **AI-code specific quality assessments.**
 Check prototypes and generated code for structural flaws, hidden technical debt, and production risks.
 
 ---
 
-## 📦 Improvements
+## Improvements
 
 - **Skill Description Restoration**: Recovered 223+ truncated descriptions from git history that were corrupted in release 6.5.0.
 - **Robust YAML Tooling**: Replaced fragile regex parsing with `PyYAML` across all maintenance scripts (`manage_skill_dates.py`, `validate_skills.py`, etc.) to prevent future data loss.
@@ -2551,7 +2551,7 @@ Check prototypes and generated code for structural flaws, hidden technical debt,
 - **Documentation**: New dedicated `docs/SEC_SKILLS.md` indexing all 128 security skills.
 - **README Quality**: Cleaned up inconsistencies, deduplicated lists, updated stats (954+ total skills).
 
-## 👥 Credits
+## Credits
 
 A huge shoutout to our community contributors:
 
@@ -2571,9 +2571,9 @@ A huge shoutout to our community contributors:
 
 This release introduces significant community-driven enhancements to the web application alongside comprehensive metadata improvements. Users can now upvote skills, build contextual prompts interactively, and benefit from automatic skill updates. All skills now include date tracking for better discoverability.
 
-## 🚀 New Features
+## New Features
 
-### ⭐ Stars & Community Upvotes
+### Stars & Community Upvotes
 
 **Community-driven skill discovery with star/upvote system.**
 
@@ -2582,9 +2582,9 @@ This release introduces significant community-driven enhancements to the web app
 - One upvote per browser (localStorage deduplication)
 - Discover popular skills through community ratings
 
-> **Try it:** Browse to any skill and click the ⭐ button to upvote!
+> **Try it:** Browse to any skill and click the  button to upvote!
 
-### 🔄 Auto-Update Mechanism
+### Auto-Update Mechanism
 
 **Seamless skill updates via START_APP.bat.**
 
@@ -2595,7 +2595,7 @@ This release introduces significant community-driven enhancements to the web app
 
 > **Try it:** Run `START_APP.bat` to automatically fetch the latest 950+ skills!
 
-### 🛠️ Interactive Prompt Builder
+### Interactive Prompt Builder
 
 **Build contextual prompts directly in skill detail pages.**
 
@@ -2606,7 +2606,7 @@ This release introduces significant community-driven enhancements to the web app
 
 > **Try it:** Visit any skill, add context in the text box, click "Copy @Skill"!
 
-### 📅 Date Tracking for All Skills
+### Date Tracking for All Skills
 
 **Complete `date_added` metadata across the entire registry.**
 
@@ -2615,7 +2615,7 @@ This release introduces significant community-driven enhancements to the web app
 - Filter and sort by recency
 - Better discoverability of new capabilities
 
-## 📦 Improvements
+## Improvements
 
 - **Smart Auto-Categorization**: Categories sorted by skill count with "uncategorized" at the end
 - **Category Stats**: Dropdown shows skill count per category
@@ -2623,7 +2623,7 @@ This release introduces significant community-driven enhancements to the web app
 - **Complete Date Coverage**: All skills updated with `date_added` metadata
 - **Web App Dependencies**: Automatic `@supabase/supabase-js` installation
 
-## 👥 Credits
+## Credits
 
 A huge shoutout to our community contributors:
 
@@ -2637,9 +2637,9 @@ A huge shoutout to our community contributors:
 
 This release builds on 6.4.0 by adding a Temporal Go SDK pro skill, a comprehensive Convex reactive backend skill, and aligning the new SEO incident/local audit skills with the strict validation rules so they ship cleanly via npm.
 
-## 🚀 New Skills
+## New Skills
 
-### ⏱️ [temporal-golang-pro](skills/temporal-golang-pro/)
+### [temporal-golang-pro](skills/temporal-golang-pro/)
 
 **Temporal Go SDK expert for durable distributed systems.**
 Guides production-grade Temporal Go usage with deterministic workflow rules, mTLS worker configuration, interceptors, testing strategies, and advanced patterns.
@@ -2649,7 +2649,7 @@ Guides production-grade Temporal Go usage with deterministic workflow rules, mTL
 
 > **Try it:** `Use temporal-golang-pro to design a durable subscription billing workflow with safe versioning and mTLS workers.`
 
-### 🔄 [convex](skills/convex/)
+### [convex](skills/convex/)
 
 **Convex reactive backend for schema, functions, and real-time apps.**
 Full-stack backend skill covering Convex schema design, TypeScript query/mutation/action functions, real-time subscriptions, auth, file storage, scheduling, and deployment flows.
@@ -2659,14 +2659,14 @@ Full-stack backend skill covering Convex schema design, TypeScript query/mutatio
 
 > **Try it:** `Use convex to design a schema and function set for a real-time dashboard with authenticated users and file uploads.`
 
-## 📦 Improvements
+## Improvements
 
 - **Strict SEO Skills Compliance**:
   - `seo-forensic-incident-response` and `local-legal-seo-audit` now include `## When to Use` sections and concise descriptions, and use `risk: safe`, fully passing `validate_skills.py --strict`.
 - **Catalog & Index Sync**:
   - Updated `CATALOG.md`, `data/catalog.json`, `skills_index.json`, `data/bundles.json`, `data/aliases.json`, and `README.md` to track **950+ skills**, including `temporal-golang-pro`, `convex`, and the new SEO skills.
 
-## 👥 Credits
+## Credits
 
 - **@HuynhNhatKhanh** for the Temporal Go SDK expert skill (`temporal-golang-pro`, PR #148).
 - **@chauey** for the Convex reactive backend skill (`convex`, PR #152).
@@ -2680,9 +2680,9 @@ Full-stack backend skill covering Convex schema design, TypeScript query/mutatio
 
 This release adds two advanced SEO skills for handling organic traffic incidents and auditing legal/professional services sites, and updates the public catalog to keep discovery aligned with the registry.
 
-## 🚀 New Skills
+## New Skills
 
-### 🧪 [seo-forensic-incident-response](skills/seo-forensic-incident-response/)
+### [seo-forensic-incident-response](skills/seo-forensic-incident-response/)
 
 **Forensic SEO incident response for sudden organic traffic or rankings drops.**
 Guides structured triage, hypothesis-driven investigation, evidence collection and phased recovery plans using GSC, analytics, logs and deployment history.
@@ -2692,7 +2692,7 @@ Guides structured triage, hypothesis-driven investigation, evidence collection a
 
 > **Try it:** `We lost 40% of organic traffic last week. Use seo-forensic-incident-response to investigate and propose a recovery plan.`
 
-### ⚖️ [local-legal-seo-audit](skills/local-legal-seo-audit/)
+### [local-legal-seo-audit](skills/local-legal-seo-audit/)
 
 **Local SEO auditing for law firms and legal/professional services.**
 Specialized audit framework for YMYL legal sites covering GBP, E‑E‑A‑T, practice area pages, NAP consistency, legal directories and reputation.
@@ -2702,12 +2702,12 @@ Specialized audit framework for YMYL legal sites covering GBP, E‑E‑A‑T, pr
 
 > **Try it:** `Audit the local SEO of this law firm website using local-legal-seo-audit and propose the top 10 fixes.`
 
-## 📦 Improvements
+## Improvements
 
 - **Catalog Sync**: Updated `CATALOG.md` and `data/catalog.json` to track 947 skills and include `10-andruia-skill-smith` in the general category listing.
 - **Documentation**: README now references the MojoAuth implementation skill in the integrations list.
 
-## 👥 Credits
+## Credits
 
 A huge shoutout to our community contributors:
 
@@ -2722,9 +2722,9 @@ A huge shoutout to our community contributors:
 
 This release fixes critical validation errors introduced in previous PRs, ensures full compliance with the strict CI registry checks, and restores two high-demand developer skills.
 
-## 🚀 New Skills
+## New Skills
 
-### 🧩 [chrome-extension-developer](skills/chrome-extension-developer/)
+### [chrome-extension-developer](skills/chrome-extension-developer/)
 
 **Expert in building Chrome Extensions using Manifest V3.**
 Senior expertise in modern extension architecture, focusing on Manifest V3, service workers, and production-ready security practices.
@@ -2734,7 +2734,7 @@ Senior expertise in modern extension architecture, focusing on Manifest V3, serv
 
 > **Try it:** `Help me design a Manifest V3 extension that monitors network requests using declarativeNetRequest.`
 
-### ☁️ [cloudflare-workers-expert](skills/cloudflare-workers-expert/)
+### [cloudflare-workers-expert](skills/cloudflare-workers-expert/)
 
 **Senior expertise for serverless edge computing on Cloudflare.**
 Specialized in edge architectures, performance optimization, and the full Cloudflare developer ecosystem (Wrangler, KV, D1, R2).
@@ -2746,13 +2746,13 @@ Specialized in edge architectures, performance optimization, and the full Cloudf
 
 ---
 
-## 📦 Improvements
+## Improvements
 
 - **Registry Update**: Now tracking 946+ high-performance skills.
 - **Validation Hardening**: Resolved missing "When to Use" sections for 11 critical skills (Andru.ia, Logistics, Energy).
 - **Risk Label Corrections**: Corrected risk levels to `safe` for `linkedin-cli`, `00-andruia-consultant`, and `20-andruia-niche-intelligence`.
 
-## 👥 Credits
+## Credits
 
 A huge shoutout to our community contributors:
 
@@ -2766,9 +2766,9 @@ _Upgrade now: `git pull origin main` to fetch the latest skills._
 
 > **Feature release: AgentFolio discovery skill, LinkedIn CLI automation, Evos operational skills, Andru.ia consulting roles, and hardened validation for new contributors.**
 
-## 🚀 New Skills
+## New Skills
 
-### 🔍 [agentfolio](skills/agentfolio/)
+### [agentfolio](skills/agentfolio/)
 
 **Discover and research autonomous AI agents.**
 Skill for discovering and researching autonomous AI agents, tools, and ecosystems using the AgentFolio directory.
@@ -2778,7 +2778,7 @@ Skill for discovering and researching autonomous AI agents, tools, and ecosystem
 
 > **Try it:** `Use AgentFolio to find 3 autonomous AI agents focused on code review.`
 
-### 💼 [linkedin-cli](skills/linkedin-cli/)
+### [linkedin-cli](skills/linkedin-cli/)
 
 **Automate LinkedIn operations via CLI.**
 CLI-based LinkedIn automation skill using `@linkedapi/linkedin-cli` for profile enrichment, outreach, Sales Navigator, and workflow execution.
@@ -2788,7 +2788,7 @@ CLI-based LinkedIn automation skill using `@linkedapi/linkedin-cli` for profile 
 
 > **Try it:** `Use linkedin-cli to search for PMs in San Francisco.`
 
-### 🚀 [appdeploy](skills/appdeploy/)
+### [appdeploy](skills/appdeploy/)
 
 **Deploy full-stack web apps.**
 Deploy web apps with backend APIs, database, and file storage via an HTTP API to get an instant public URL.
@@ -2798,7 +2798,7 @@ Deploy web apps with backend APIs, database, and file storage via an HTTP API to
 
 > **Try it:** `Deploy this React-Vite dashboard using appdeploy.`
 
-### 🐹 [grpc-golang](skills/grpc-golang/)
+### [grpc-golang](skills/grpc-golang/)
 
 **Production-grade gRPC patterns in Go.**
 Build robust microservices communication using Protobuf with mTLS, streaming, and observability configurations.
@@ -2808,7 +2808,7 @@ Build robust microservices communication using Protobuf with mTLS, streaming, an
 
 > **Try it:** `Use grpc-golang to define a user service streaming endpoint with mTLS.`
 
-### 📦 [logistics-exception-management](skills/logistics-exception-management/)
+### [logistics-exception-management](skills/logistics-exception-management/)
 
 **Expertise for handling freight and carrier disputes.**
 Deeply codified operational playbook for handling shipping exceptions, delays, damages, and claims. Part of the Evos operational domain expertise suite. Additional skills: `carrier-relationship-management`, `customs-trade-compliance`, `inventory-demand-planning`, `production-scheduling`, `returns-reverse-logistics`, `energy-procurement`, `quality-nonconformance`.
@@ -2818,7 +2818,7 @@ Deeply codified operational playbook for handling shipping exceptions, delays, d
 
 > **Try it:** `We have a delayed LTL shipment for a key customer, how should we handle it per logistics-exception-management?`
 
-### 🏗️ [00-andruia-consultant](skills/00-andruia-consultant/)
+### [00-andruia-consultant](skills/00-andruia-consultant/)
 
 **Spanish-language solutions architect.**
 Diagnóstica y traza la hoja de ruta óptima para proyectos de IA en español. Additional skills: `20-andruia-niche-intelligence`.
@@ -2828,7 +2828,7 @@ Diagnóstica y traza la hoja de ruta óptima para proyectos de IA en español. A
 
 > **Try it:** `Actúa como 00-andruia-consultant y diagnostica este nuevo workspace.`
 
-## 📦 Improvements
+## Improvements
 
 - **Validation & Quality Bar**:
   - Normalised `risk:` labels for new skills to conform to the allowed set (`none`, `safe`, `critical`, `offensive`, `unknown`).
@@ -2838,7 +2838,7 @@ Diagnóstica y traza la hoja de ruta óptima para proyectos de IA en español. A
 - **Registry**:
   - Validation Chain (`npm run chain` + `npm run validate:strict`) runs clean at 6.3.0 with all new skills indexed in `skills_index.json`, `data/catalog.json`, and `CATALOG.md`.
 
-## 👥 Credits
+## Credits
 
 - **@bobrenze-bot** for proposing the AgentFolio integration (Issue #136).
 - **@vprudnikoff** for the `linkedin-cli` skill (PR #131).
@@ -2855,19 +2855,19 @@ Diagnóstica y traza la hoja de ruta óptima para proyectos de IA en español. A
 
 > **Feature release: Interactive Skills Web App, AWS Infrastructure as Code skills, and Chrome Extension / Cloudflare Workers developer skills.**
 
-## 🚀 New Skills
+## New Skills
 
 - **AWS Infrastructure as Code** (PR #124): `cdk-patterns`, `cloudformation-best-practices`, `terraform-aws-modules`.
 - **Browser & Edge** (PR #128): `chrome-extension-developer`, `cloudflare-workers-expert`.
 
-## 📦 Improvements
+## Improvements
 
 - **Interactive Skills Web App** (PR #126): Added a local web UI for browsing skills, including `START_APP.bat`, setup script, and `web-app/` project with catalog export.
 - **Shopify Development Skill** (PR #125): Fixed markdown syntax issues in `skills/shopify-development/SKILL.md` to keep the registry strictly valid.
 - **Community Sources** (PR #127): Added SSOJet skills and integration guides to Credits & Sources.
 - **Registry**: Now tracking 930 skills.
 
-## 👥 Credits
+## Credits
 
 - **@ssumanbiswas** for AWS Infrastructure as Code skills (PR #124).
 - **@thuanlm** for the Shopify development skill fix (PR #125).
@@ -2955,17 +2955,17 @@ _Upgrade now: `git pull origin main` to fetch the latest skills._
 
 This release adds comprehensive support for Kiro CLI, AWS's recently launched agentic IDE, enabling 883+ skills to enhance Kiro's autonomous operations across serverless, IaC, and AWS architectures. It also includes an important bugfix for the npm installer CLI.
 
-## 🚀 Improvements
+## Improvements
 
 - **Integration Guide**: Added `docs/KIRO_INTEGRATION.md` detailing Kiro capabilities, installation instructions, AWS-recommended skills, and MCP usage.
 - **Documentation**: Updated `README.md`, `docs/GETTING_STARTED.md`, and `docs/FAQ.md` to formally support Kiro CLI and add invocation examples.
 - **Installer**: Added the `--kiro` flag to the CLI installer (`bin/install.js`) which correctly targets `~/.kiro/skills`.
 
-## 🐛 Bug Fixes
+## Bug Fixes
 
 - **Installer Path Consistency**: Fixed Issue #105 where the published `v5.9.0` npm install script contained an older version of `bin/install.js`, causing `--antigravity` installs to mistakenly target `.agent/skills` instead of the global `~/.gemini/antigravity/skills`. This release (`5.10.0`) properly bundles the corrected npm install script.
 
-## 👥 Credits
+## Credits
 
 A huge shoutout to our community contributors:
 
@@ -2979,9 +2979,9 @@ A huge shoutout to our community contributors:
 
 This release adds the official Apple Human Interface Guidelines skills suite, enforces strict agentskills-ref metadata validation across all skills, and addresses critical path resolution bugs in the CLI installer along with dangling link validation to prevent agent token waste.
 
-## 🚀 New Skills
+## New Skills
 
-### 🍎 [apple-hig-skills](skills/hig-platforms/)
+### [apple-hig-skills](skills/hig-platforms/)
 
 **Comprehensive platform and UX guidelines for Apple ecosystems.**
 Official guidelines covering iOS, macOS, visionOS, watchOS, and tvOS natively formatted for AI consumption.
@@ -2991,7 +2991,7 @@ Official guidelines covering iOS, macOS, visionOS, watchOS, and tvOS natively fo
 
 > **Try it:** `Use @hig-platforms to review if our iPad app navigation follows standard iOS paradigms.`
 
-### 👁️ [manifest](skills/manifest/)
+### [manifest](skills/manifest/)
 
 **Observability plugin setup guide for AI agents.**
 Walks through a 6-step setup for the Manifest observability platform, including troubleshooting for common errors.
@@ -3002,14 +3002,14 @@ Walks through a 6-step setup for the Manifest observability platform, including 
 
 ---
 
-## 📦 Improvements
+## Improvements
 
 - **Registry Update**: Now tracking 883 skills.
 - **CLI Installer**: Fixed the default `.agent/skills` path to properly default to `~/.gemini/antigravity/skills` and added an explicit `--antigravity` flag (fixes #101).
 - **Validation**: Enforced strict folder-to-name matching and concise (<200 char) descriptions based on `agentskills-ref` (fixes #97).
 - **Validation**: Added build-time Markdown dangling link validation to `validate_skills.py` to prevent agents from hallucinating relative paths (fixes #102).
 
-## 👥 Credits
+## Credits
 
 A huge shoutout to our community contributors:
 
@@ -3028,9 +3028,9 @@ _Upgrade now: `git pull origin main` to fetch the latest skills._
 
 This release introduces a comprehensive Domain-Driven Design skill suite (4 new skills) contributed by the community, plus playbook fixes for saga-orchestration and event-store-design, and new DDD-themed bundle and workflow entries.
 
-## 🚀 New Skills
+## New Skills
 
-### 🏗️ [domain-driven-design](skills/domain-driven-design/)
+### [domain-driven-design](skills/domain-driven-design/)
 
 **Entry point and router for all DDD adoption decisions.**
 Covers viability checks, routing to strategic/tactical/evented sub-skills, and output requirements.
@@ -3040,31 +3040,31 @@ Covers viability checks, routing to strategic/tactical/evented sub-skills, and o
 
 > **Try it:** `Use @domain-driven-design to assess if this billing platform should adopt full DDD.`
 
-### 🗺️ [ddd-strategic-design](skills/ddd-strategic-design/)
+### [ddd-strategic-design](skills/ddd-strategic-design/)
 
 **Subdomains, bounded contexts, and ubiquitous language.**
 Produces subdomain classification tables, bounded context catalogs, and glossaries.
 
-### 🔗 [ddd-context-mapping](skills/ddd-context-mapping/)
+### [ddd-context-mapping](skills/ddd-context-mapping/)
 
 **Cross-context integration contracts and anti-corruption layers.**
 Defines upstream/downstream ownership, translation rules, and versioning policies.
 
-### 🧩 [ddd-tactical-patterns](skills/ddd-tactical-patterns/)
+### [ddd-tactical-patterns](skills/ddd-tactical-patterns/)
 
 **Aggregates, value objects, repositories, and domain events in code.**
 Includes a TypeScript aggregate example with invariant enforcement.
 
 ---
 
-## 📦 Improvements
+## Improvements
 
 - **Registry Update**: Now tracking 868 skills.
 - **saga-orchestration** and **event-store-design**: Added missing `resources/implementation-playbook.md`.
 - **docs/BUNDLES.md**: Added DDD & Evented Architecture bundle section.
 - **docs/WORKFLOWS.md** + **data/workflows.json**: New "Design a DDD Core Domain" workflow entry.
 
-## 👥 Credits
+## Credits
 
 A huge shoutout to our community contributors:
 
@@ -3589,7 +3589,7 @@ The following skills are now correctly indexed and visible in the registry:
   - `scripts/generate_index.py`: Registry generation with Risk & Source columns.
 - **Experience**:
   - `docs/BUNDLES.md`: 9 Starter Packs (Essentials, Security, Web, Agent, Game Dev, DevOps, Data, Testing, Creative).
-  - **Interactive Registry**: README now features Risk Levels (🔴/🟢/🟣) and Collections.
+  - **Interactive Registry**: README now features Risk Levels (//) and Collections.
 - **Documentation**:
   - `docs/EXAMPLES.md`: Cookbook with 3 real-world scenarios.
   - `docs/SOURCES.md`: Legal ledger for attributions and licenses.

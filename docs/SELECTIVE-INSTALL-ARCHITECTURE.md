@@ -52,13 +52,13 @@ Current capabilities:
 - legacy and manifest installs both write durable install-state
 - read-only inspection of install plans before any mutation
 - unified `ecc` CLI routing install, planning, and lifecycle commands
-- lifecycle inspection and mutation via `list-installed`, `doctor`, `repair`,
+- lifecycle inspection and mutation via `list-installed`,`doctor`,`repair`,
   and `uninstall`
 
 Current limitation:
 
 - target-specific merge/remove semantics are still scaffold-level for some modules
-- legacy `ecc-install` compatibility still points at `install.sh`
+- legacy `ecc-install`compatibility still points at`install.sh`
 - publish surface is still broad in `package.json`
 
 ## Current Code Review
@@ -96,7 +96,7 @@ the installer architecture feel settled.
 
 ### Current Strengths
 
-- install intent is now explicit through `--profile` and `--modules`
+- install intent is now explicit through `--profile`and`--modules`
 - request parsing and request normalization are now split from the CLI shell
 - target root resolution is already adapterized
 - lifecycle commands now use durable install-state instead of guessing
@@ -431,7 +431,7 @@ steps should be:
 1. split `install-executor.js` into request normalization, operation planning,
    and execution modules
 2. move target-specific strategy decisions into adapter-owned planning methods
-3. make `repair` and `uninstall` operate on typed operation handlers rather than
+3. make `repair`and`uninstall` operate on typed operation handlers rather than
    only plain `copy-file` records
 4. teach manifests about install strategy and ownership so the planner no
    longer depends on path heuristics
@@ -506,11 +506,11 @@ Current fields already implemented:
 Fields still needed for ECC 2.0:
 
 - `installStrategy`
-  for example `copy`, `flatten-rules`, `generate`, `merge-config`
+  for example `copy`,`flatten-rules`,`generate`,`merge-config`
 - `ownership`
   whether ECC fully owns the target path or only generated files under it
 - `pathMode`
-  for example `preserve`, `flatten`, `target-template`
+  for example `preserve`,`flatten`,`target-template`
 - `conflicts`
   modules or path families that cannot coexist on one target
 - `publish`
@@ -735,10 +735,10 @@ The following commands are the lifecycle surface for install-state:
 
 Current implementation status:
 
-- `ecc list-installed` routes to `node scripts/list-installed.js`
-- `ecc uninstall` routes to `node scripts/uninstall.js`
-- `ecc doctor` routes to `node scripts/doctor.js`
-- `ecc repair` routes to `node scripts/repair.js`
+- `ecc list-installed`routes to`node scripts/list-installed.js`
+- `ecc uninstall`routes to`node scripts/uninstall.js`
+- `ecc doctor`routes to`node scripts/doctor.js`
+- `ecc repair`routes to`node scripts/repair.js`
 - legacy script entrypoints remain available during migration
 
 ### `list-installed`
@@ -884,7 +884,7 @@ keep growing per-target shell branches.
 1. add stronger target-specific merge/remove semantics
 2. extend repair/uninstall coverage for non-copy operations
 3. reduce package shipping surface to the module graph instead of broad folders
-4. decide when `ecc-install` should become a thin alias for `ecc install`
+4. decide when `ecc-install`should become a thin alias for`ecc install`
 
 ### Phase 4: Publish And Future Targets
 
@@ -900,7 +900,7 @@ The highest-signal next implementation moves in this repo are:
 1. add target-specific merge/remove semantics for config-like modules
 2. extend repair and uninstall beyond simple copy-file operations
 3. reduce package shipping surface to the module graph instead of broad folders
-4. decide whether `ecc-install` remains separate or becomes `ecc install`
+4. decide whether `ecc-install`remains separate or becomes`ecc install`
 5. add tests that lock down:
    - target-specific merge/remove behavior
    - repair and uninstall safety for non-copy operations
@@ -910,7 +910,7 @@ The highest-signal next implementation moves in this repo are:
 
 1. Should rules stay language-addressable in legacy mode forever, or only during
    the migration window?
-2. Should `platform-configs` always install with `core`, or be split into
+2. Should `platform-configs`always install with`core`, or be split into
    smaller target-specific modules?
 3. Do we want config merge semantics recorded at the operation level or only in
    adapter logic?

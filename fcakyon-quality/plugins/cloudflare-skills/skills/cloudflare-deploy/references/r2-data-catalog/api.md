@@ -163,7 +163,7 @@ three_days_ms = int((datetime.now() - timedelta(days=3)).timestamp() * 1000)
 table.delete_orphan_files(older_than=three_days_ms)
 ```
 
-⚠️ Always expire snapshots first, use 3+ day threshold, run during low traffic.
+WARNING: Always expire snapshots first, use 3+ day threshold, run during low traffic.
 
 ### Full Maintenance
 

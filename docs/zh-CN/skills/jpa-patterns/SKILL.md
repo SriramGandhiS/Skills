@@ -118,7 +118,7 @@ Page<MarketEntity> markets = repo.findByStatus(MarketStatus.ACTIVE, page);
 * 为常用过滤器添加索引（`status`、`slug`、外键）
 * 使用与查询模式匹配的复合索引（`status, created_at`）
 * 避免 `select *`；仅投影需要的列
-* 使用 `saveAll` 和 `hibernate.jdbc.batch_size` 进行批量写入
+* 使用 `saveAll`和`hibernate.jdbc.batch_size` 进行批量写入
 
 ## 连接池 (HikariCP)
 
@@ -150,6 +150,6 @@ spring.jpa.properties.hibernate.jdbc.lob.non_contextual_creation=true
 ## 测试数据访问
 
 * 首选使用 Testcontainers 的 `@DataJpaTest` 来镜像生产环境
-* 使用日志断言 SQL 效率：设置 `logging.level.org.hibernate.SQL=DEBUG` 和 `logging.level.org.hibernate.orm.jdbc.bind=TRACE` 以查看参数值
+* 使用日志断言 SQL 效率：设置 `logging.level.org.hibernate.SQL=DEBUG`和`logging.level.org.hibernate.orm.jdbc.bind=TRACE` 以查看参数值
 
 **请记住**：保持实体精简，查询有针对性，事务简短。通过获取策略和投影来预防 N+1 问题，并根据读写路径建立索引。

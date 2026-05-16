@@ -1,4 +1,4 @@
-﻿---
+---
 name: golang-patterns
 description: Idiomatic Go patterns, best practices, and conventions for building robust, efficient, and maintainable Go applications.
 origin: ECC
@@ -572,25 +572,25 @@ func join(parts []string) string {
 ### Essential Commands
 
 ```bash
-# Build and run
+## Build and run
 go build ./...
 go run ./cmd/myapp
 
-# Testing
+## Testing
 go test ./...
 go test -race ./...
 go test -cover ./...
 
-# Static analysis
+## Static analysis
 go vet ./...
 staticcheck ./...
 golangci-lint run
 
-# Module management
+## Module management
 go mod tidy
 go mod verify
 
-# Formatting
+## Formatting
 gofmt -w .
 goimports -w .
 ```

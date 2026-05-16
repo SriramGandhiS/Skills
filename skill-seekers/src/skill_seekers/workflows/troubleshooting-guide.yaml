@@ -20,19 +20,19 @@ stages:
     enabled: true
     prompt: >
       Catalog all common errors users might encounter.
-      
+
       For each error:
       1. Error message or code
       2. Root cause explanation
       3. Immediate fix
       4. Prevention strategies
-      
+
       Categorize by:
       - Setup/installation errors
       - Configuration errors
       - Runtime errors
       - Integration errors
-      
+
       Output JSON with "errors" array of:
       {category, error_message, cause, fix, prevention}
 
@@ -43,14 +43,14 @@ stages:
     enabled: true
     prompt: >
       Document systematic debugging approaches.
-      
+
       Include:
       1. Debugging configuration (flags, env vars)
       2. Log interpretation guide
       3. Common debugging tools/workflows
       4. How to enable verbose output
       5. Diagnostic command reference
-      
+
       Output JSON with:
       - "debug_modes": how to enable debugging
       - "log_guide": interpreting log output
@@ -64,13 +64,13 @@ stages:
     enabled: true
     prompt: >
       Generate frequently asked questions based on common issues.
-      
+
       For each FAQ:
       - Clear question
       - Concise answer
       - Related documentation links
       - Example if helpful
-      
+
       Output JSON with "faq" array of {question, answer, related_links}
 
   - name: support_resources
@@ -80,14 +80,14 @@ stages:
     enabled: true
     prompt: >
       Document where to get additional help.
-      
+
       Include:
       1. Official documentation links
       2. Community forums/Discord/Slack
       3. Issue tracker guidelines (how to report bugs)
       4. Stack Overflow tags
       5. Professional support options
-      
+
       Output JSON with:
       - "documentation": key doc links
       - "community": community resources

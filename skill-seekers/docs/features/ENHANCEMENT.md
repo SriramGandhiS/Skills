@@ -15,11 +15,11 @@ Both analyze reference documentation and extract the best examples and guidance.
 - Doesn't highlight key features
 
 **Solution:** Let Claude read your reference docs and create a much better SKILL.md with:
-- ✅ Best code examples extracted from documentation
-- ✅ Practical quick reference with real patterns
-- ✅ Domain-specific guidance
-- ✅ Clear navigation tips
-- ✅ Key concepts explained
+- PASS: Best code examples extracted from documentation
+- PASS: Practical quick reference with real patterns
+- PASS: Domain-specific guidance
+- PASS: Clear navigation tips
+- PASS: Key concepts explained
 
 ## Quick Start (LOCAL - No API Key)
 
@@ -212,7 +212,7 @@ The LOCAL enhancement successfully:
 | Cost | Free (your time) | Free (Max plan) | ~$0.20 per skill |
 | Setup | None | None | API key needed |
 | Quality | High (if expert) | 9/10 | 9/10 |
-| **Recommended?** | For experts only | ✅ **Yes** | If no Max plan |
+| **Recommended?** | For experts only | PASS: **Yes** | If no Max plan |
 
 ## When to Use
 
@@ -309,8 +309,8 @@ skill-seekers enhance output/react/ --target openai --mode api
 
 | Feature | Claude | Gemini | OpenAI |
 |---------|--------|--------|--------|
-| **Local Mode** | ✅ Yes (Claude Code Max) | ❌ No | ❌ No |
-| **API Mode** | ✅ Yes | ✅ Yes | ✅ Yes |
+| **Local Mode** | PASS: Yes (Claude Code Max) | FAIL: No | FAIL: No |
+| **API Mode** | PASS: Yes | PASS: Yes | PASS: Yes |
 | **Model** | Sonnet 4 | Gemini 2.0 Flash | GPT-4o |
 | **Format** | YAML + MD | Plain MD | Plain Text |
 | **Cost (API)** | ~$0.15-0.30 | ~$0.10-0.25 | ~$0.20-0.35 |

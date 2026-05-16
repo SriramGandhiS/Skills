@@ -163,8 +163,7 @@ Map types to CSS classes. Works on `enter`, `exit`, **and** `share`:
   exit={{ 'nav-forward': 'slide-to-left', 'nav-back': 'slide-to-right', default: 'none' }}
   share={{ 'nav-forward': 'morph-forward', 'nav-back': 'morph-back', default: 'morph' }}
   default="none"
->
-  <Page />
+> <Page />
 </ViewTransition>
 ```
 
@@ -175,8 +174,7 @@ Map types to CSS classes. Works on `enter`, `exit`, **and** `share`:
   enter={{ 'nav-forward': 'fade-in', 'nav-back': 'fade-in', default: 'none' }}
   exit={{ 'nav-forward': 'nav-forward', 'nav-back': 'nav-back', default: 'none' }}
   default="none"
->
-```
+> ```
 
 **TypeScript:** `ViewTransitionClassPerType` requires a `default` key.
 
@@ -386,8 +384,7 @@ Wrap each **page component** (not layout) in a type-keyed VT:
   enter={{ "nav-forward": "nav-forward", "nav-back": "nav-back", default: "none" }}
   exit={{ "nav-forward": "nav-forward", "nav-back": "nav-back", default: "none" }}
   default="none"
->
-  <div>...page content...</div>
+> <div>...page content...</div>
 </ViewTransition>
 ```
 
@@ -611,8 +608,7 @@ Imperative control via `onEnter`, `onExit`, `onUpdate`, `onShare`. Always return
     );
     return () => anim.cancel();
   }}
->
-  <Component />
+> <Component />
 </ViewTransition>
 ```
 
@@ -911,8 +907,7 @@ Directional slides + Suspense reveals coexist because they fire at different mom
   enter={{ "nav-forward": "slide-from-right", default: "none" }}
   exit={{ "nav-forward": "slide-to-left", default: "none" }}
   default="none"
->
-  <div>
+> <div>
     <Suspense fallback={<ViewTransition exit="slide-down"><Skeleton /></ViewTransition>}>
       <ViewTransition enter="slide-up" default="none"><Content /></ViewTransition>
     </Suspense>

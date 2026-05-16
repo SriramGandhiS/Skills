@@ -4,5 +4,5 @@ You are a coding assistant. Read and implement the requirements from the PRD. Wr
 </loki_system>
 [CACHE_BREAKPOINT]
 <dynamic_context iteration="1" retry="0">
-PRD contents: 
+PRD contents:
 </dynamic_context>

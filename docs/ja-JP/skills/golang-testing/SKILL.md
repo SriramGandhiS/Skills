@@ -612,14 +612,14 @@ func FuzzJSONParsing(f *testing.F) {
 ### カバレッジの実行と表示
 
 ```bash
-# カバレッジを実行してHTMLレポートを生成
+## カバレッジを実行してHTMLレポートを生成
 go test -coverprofile=coverage.out ./...
 go tool cover -html=coverage.out -o coverage.html
 
-# パッケージごとのカバレッジを表示
+## パッケージごとのカバレッジを表示
 go test -cover ./...
 
-# 詳細なカバレッジ
+## 詳細なカバレッジ
 go test -coverprofile=coverage.out -covermode=atomic ./...
 ```
 
@@ -672,10 +672,10 @@ func TestDatabaseIntegration(t *testing.T) {
 ```
 
 ```bash
-# 統合テストを実行
+## 統合テストを実行
 go test -tags=integration ./...
 
-# 統合テストを除外
+## 統合テストを除外
 go test ./...
 ```
 
@@ -767,43 +767,43 @@ func TestWithResourceLimit(t *testing.T) {
 ### テストコマンド
 
 ```bash
-# 基本テスト
+## 基本テスト
 go test ./...
 go test -v ./...                    # 詳細出力
 go test -run TestSpecific ./...     # 特定のテストを実行
 
-# カバレッジ
+## カバレッジ
 go test -cover ./...
 go test -coverprofile=coverage.out ./...
 
-# レースコンディション
+## レースコンディション
 go test -race ./...
 
-# ベンチマーク
+## ベンチマーク
 go test -bench=. ./...
 go test -bench=. -benchmem ./...
 go test -bench=. -cpuprofile=cpu.prof ./...
 
-# ファジング
+## ファジング
 go test -fuzz=FuzzTest
 
-# 統合テスト
+## 統合テスト
 go test -tags=integration ./...
 
-# JSONフォーマット（CI統合用）
+## JSONフォーマット（CI統合用）
 go test -json ./...
 ```
 
 ### テスト設定
 
 ```bash
-# テストタイムアウト
+## テストタイムアウト
 go test -timeout 30s ./...
 
-# 短時間テスト（長時間テストをスキップ）
+## 短時間テスト（長時間テストをスキップ）
 go test -short ./...
 
-# ビルドキャッシュのクリア
+## ビルドキャッシュのクリア
 go clean -testcache
 go test ./...
 ```

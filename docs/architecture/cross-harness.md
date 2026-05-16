@@ -20,10 +20,10 @@ For the operator-facing support matrix and scorecard workflow, see
 
 | Surface | Shared Source | Harness Adapter | Current Status |
 |---------|---------------|-----------------|----------------|
-| Skills | `skills/*/SKILL.md` | Claude plugin, Codex plugin, `.agents/skills`, Cursor skill copies, OpenCode plugin/config | Supported with harness-specific packaging |
-| Rules and instructions | `rules/`, `AGENTS.md`, translated docs | Claude rules install, Codex `AGENTS.md`, Cursor rules, OpenCode instructions | Supported, but not identical across harnesses |
-| Hooks | `hooks/hooks.json`, `scripts/hooks/` | Claude native hooks, OpenCode plugin events, Cursor hook adapter | Hook-backed in Claude/OpenCode/Cursor; instruction-backed in Codex |
-| MCPs | `.mcp.json`, `mcp-configs/` | Native MCP config import per harness | Supported where the harness exposes MCP |
+| Skills | `skills/*/SKILL.md`| Claude plugin, Codex plugin,`.agents/skills`, Cursor skill copies, OpenCode plugin/config | Supported with harness-specific packaging |
+| Rules and instructions | `rules/`,`AGENTS.md`, translated docs | Claude rules install, Codex`AGENTS.md`, Cursor rules, OpenCode instructions | Supported, but not identical across harnesses |
+| Hooks | `hooks/hooks.json`,`scripts/hooks/` | Claude native hooks, OpenCode plugin events, Cursor hook adapter | Hook-backed in Claude/OpenCode/Cursor; instruction-backed in Codex |
+| MCPs | `.mcp.json`,`mcp-configs/` | Native MCP config import per harness | Supported where the harness exposes MCP |
 | Commands | `commands/`, CLI scripts | Claude slash commands, compatibility shims, CLI entrypoints | Supported, but command semantics vary |
 | Sessions | `ecc2/`, session adapters, orchestration scripts | TUI/daemon, tmux/worktree orchestration, harness-specific runners | Alpha |
 
@@ -33,7 +33,7 @@ For the operator-facing support matrix and scorecard workflow, see
 
 A good ECC skill should:
 
-- use YAML frontmatter with `name`, `description`, and `origin`
+- use YAML frontmatter with `name`,`description`, and`origin`
 - describe when to use the skill
 - state required tools or connectors without embedding secrets
 - keep examples repo-relative or generic
@@ -51,7 +51,7 @@ Each harness has different loading and enforcement behavior:
 - Cursor uses its own rule and hook layout, so ECC maintains translated surfaces under `.cursor/`.
 - Gemini support is install/instruction oriented and should be treated as a compatibility surface, not as full hook parity.
 
-Adapters should stay thin. The shared behavior belongs in `skills/`, `rules/`, `hooks/`, `scripts/`, and `mcp-configs/`.
+Adapters should stay thin. The shared behavior belongs in `skills/`,`rules/`,`hooks/`,`scripts/`, and`mcp-configs/`.
 
 ## Hermes Boundary
 

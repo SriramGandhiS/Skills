@@ -61,7 +61,7 @@ docs/CODEMAPS/
 ### 4. Codemap Format
 
 ```markdown
-# [Area] Codemap
+## [Area] Codemap
 
 **Last Updated:** YYYY-MM-DD
 **Entry Points:** list of main files

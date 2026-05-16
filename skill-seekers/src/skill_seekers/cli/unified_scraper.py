@@ -157,8 +157,8 @@ class UnifiedScraper(SkillConverter):
         # Add to root logger
         logging.getLogger().addHandler(file_handler)
 
-        logger.info(f"📝 Logging to: {log_file}")
-        logger.info(f"🗂️  Cache directory: {self.cache_dir}")
+        logger.info(f" Logging to: {log_file}")
+        logger.info(f"  Cache directory: {self.cache_dir}")
 
     @staticmethod
     def _enrich_docs_json(docs_json: dict, data_file_path: str) -> dict:
@@ -253,7 +253,7 @@ class UnifiedScraper(SkillConverter):
                 logger.error(f"Error scraping {source_type}: {e}")
                 logger.info("Continuing with other sources...")
 
-        logger.info(f"\n✅ Scraped {len(self.scraped_data)} sources successfully")
+        logger.info(f"\nPASS: Scraped {len(self.scraped_data)} sources successfully")
 
     def _scrape_documentation(self, source: dict[str, Any]):
         """Scrape documentation website."""
@@ -331,7 +331,7 @@ class UnifiedScraper(SkillConverter):
         # Support "browser": true in source config for JavaScript SPA sites
         if source.get("browser", False):
             doc_config["browser"] = True
-            logger.info("  🌐 Browser mode enabled (JavaScript rendering via Playwright)")
+            logger.info("   Browser mode enabled (JavaScript rendering via Playwright)")
 
         # Import and call directly
         try:
@@ -380,7 +380,7 @@ class UnifiedScraper(SkillConverter):
                 }
             )
 
-            logger.info(f"✅ Documentation: {summary.get('total_pages', 0)} pages scraped")
+            logger.info(f"PASS: Documentation: {summary.get('total_pages', 0)} pages scraped")
         else:
             logger.warning("Documentation data file not found")
 
@@ -393,7 +393,7 @@ class UnifiedScraper(SkillConverter):
             if os.path.exists(cache_docs_dir):
                 shutil.rmtree(cache_docs_dir)
             shutil.move(docs_output_dir, cache_docs_dir)
-            logger.info(f"📦 Moved docs output to cache: {cache_docs_dir}")
+            logger.info(f" Moved docs output to cache: {cache_docs_dir}")
 
             # Update refs_dir in scraped_data with cache location
             refs_dir_path = os.path.join(cache_docs_dir, "references")
@@ -405,7 +405,7 @@ class UnifiedScraper(SkillConverter):
             if os.path.exists(cache_data_dir):
                 shutil.rmtree(cache_data_dir)
             shutil.move(docs_data_dir, cache_data_dir)
-            logger.info(f"📦 Moved docs data to cache: {cache_data_dir}")
+            logger.info(f" Moved docs data to cache: {cache_data_dir}")
 
             # Update data_file path to point to cache location
             if self.scraped_data["documentation"]:
@@ -430,7 +430,7 @@ class UnifiedScraper(SkillConverter):
 
         # Check if already cloned
         if os.path.exists(clone_path) and os.path.isdir(os.path.join(clone_path, ".git")):
-            logger.info(f"♻️  Found existing repository clone: {clone_path}")
+            logger.info(f"  Found existing repository clone: {clone_path}")
             logger.info("   Reusing for C3.x analysis (skip re-cloning)")
             return clone_path
 
@@ -438,9 +438,9 @@ class UnifiedScraper(SkillConverter):
 
         # Clone repo (full clone, not shallow - for complete analysis)
         repo_url = f"https://github.com/{repo_name}.git"
-        logger.info(f"🔄 Cloning repository for C3.x analysis: {repo_url}")
+        logger.info(f" Cloning repository for C3.x analysis: {repo_url}")
         logger.info(f"   → {clone_path}")
-        logger.info("   💾 Clone will be saved for future reuse")
+        logger.info("    Clone will be saved for future reuse")
 
         try:
             result = subprocess.run(
@@ -451,23 +451,23 @@ class UnifiedScraper(SkillConverter):
             )
 
             if result.returncode == 0:
-                logger.info("✅ Repository cloned successfully")
-                logger.info(f"   📁 Saved to: {clone_path}")
+                logger.info("PASS: Repository cloned successfully")
+                logger.info(f"    Saved to: {clone_path}")
                 return clone_path
             else:
-                logger.error(f"❌ Git clone failed: {result.stderr}")
+                logger.error(f"FAIL: Git clone failed: {result.stderr}")
                 # Clean up failed clone
                 if os.path.exists(clone_path):
                     shutil.rmtree(clone_path)
                 return None
 
         except subprocess.TimeoutExpired:
-            logger.error("❌ Git clone timed out after 10 minutes")
+            logger.error("FAIL: Git clone timed out after 10 minutes")
             if os.path.exists(clone_path):
                 shutil.rmtree(clone_path)
             return None
         except Exception as e:
-            logger.error(f"❌ Git clone failed: {e}")
+            logger.error(f"FAIL: Git clone failed: {e}")
             if os.path.exists(clone_path):
                 shutil.rmtree(clone_path)
             return None
@@ -495,13 +495,13 @@ class UnifiedScraper(SkillConverter):
 
         # Auto-clone if C3.x analysis is enabled but no local path provided
         if enable_codebase_analysis and not local_repo_path:
-            logger.info("🔬 C3.x codebase analysis enabled - cloning repository...")
+            logger.info(" C3.x codebase analysis enabled - cloning repository...")
             cloned_repo_path = self._clone_github_repo(repo, idx=idx)
             if cloned_repo_path:
                 local_repo_path = cloned_repo_path
-                logger.info(f"✅ Using cloned repo for C3.x analysis: {local_repo_path}")
+                logger.info(f"PASS: Using cloned repo for C3.x analysis: {local_repo_path}")
             else:
-                logger.warning("⚠️  Failed to clone repo - C3.x analysis will be skipped")
+                logger.warning("WARNING:  Failed to clone repo - C3.x analysis will be skipped")
                 enable_codebase_analysis = False
 
         # Create config for GitHub scraper
@@ -533,16 +533,16 @@ class UnifiedScraper(SkillConverter):
 
         # Run C3.x codebase analysis if enabled and local_repo_path available
         if enable_codebase_analysis and local_repo_path:
-            logger.info("🔬 Running C3.x codebase analysis...")
+            logger.info(" Running C3.x codebase analysis...")
             try:
                 c3_data = self._run_c3_analysis(local_repo_path, source)
                 if c3_data:
                     github_data["c3_analysis"] = c3_data
-                    logger.info("✅ C3.x analysis complete")
+                    logger.info("PASS: C3.x analysis complete")
                 else:
-                    logger.warning("⚠️  C3.x analysis returned no data")
+                    logger.warning("WARNING:  C3.x analysis returned no data")
             except Exception as e:
-                logger.warning(f"⚠️  C3.x analysis failed: {e}")
+                logger.warning(f"WARNING:  C3.x analysis failed: {e}")
                 import traceback
 
                 logger.debug(f"Traceback: {traceback.format_exc()}")
@@ -550,7 +550,7 @@ class UnifiedScraper(SkillConverter):
 
         # Note: We keep the cloned repo in output/ for future reuse
         if cloned_repo_path:
-            logger.info(f"📁 Repository clone saved for future use: {cloned_repo_path}")
+            logger.info(f" Repository clone saved for future use: {cloned_repo_path}")
 
         # Save data to unified location with unique filename
         github_data_file = os.path.join(self.data_dir, f"github_data_{idx}_{repo_id}.json")
@@ -581,9 +581,9 @@ class UnifiedScraper(SkillConverter):
             # Converter will load from output/{name}_github_data.json which now has C3.x data
             converter = GitHubToSkillConverter(config=github_config)
             converter.build_skill()
-            logger.info("✅ GitHub: Standalone SKILL.md created")
+            logger.info("PASS: GitHub: Standalone SKILL.md created")
         except Exception as e:
-            logger.warning(f"⚠️  Failed to build standalone GitHub SKILL.md: {e}")
+            logger.warning(f"WARNING:  Failed to build standalone GitHub SKILL.md: {e}")
 
         # Move intermediate files to cache to keep output/ clean
         github_output_dir = f"output/{github_config['name']}"
@@ -594,7 +594,7 @@ class UnifiedScraper(SkillConverter):
             if os.path.exists(cache_github_dir):
                 shutil.rmtree(cache_github_dir)
             shutil.move(github_output_dir, cache_github_dir)
-            logger.info(f"📦 Moved GitHub output to cache: {cache_github_dir}")
+            logger.info(f" Moved GitHub output to cache: {cache_github_dir}")
 
         if os.path.exists(github_data_file_path):
             cache_github_data = os.path.join(
@@ -603,9 +603,9 @@ class UnifiedScraper(SkillConverter):
             if os.path.exists(cache_github_data):
                 os.remove(cache_github_data)
             shutil.move(github_data_file_path, cache_github_data)
-            logger.info(f"📦 Moved GitHub data to cache: {cache_github_data}")
+            logger.info(f" Moved GitHub data to cache: {cache_github_data}")
 
-        logger.info("✅ GitHub: Repository scraped successfully")
+        logger.info("PASS: GitHub: Repository scraped successfully")
 
     def _scrape_pdf(self, source: dict[str, Any]):
         """Scrape PDF document."""
@@ -663,11 +663,11 @@ class UnifiedScraper(SkillConverter):
         # Build standalone SKILL.md for synthesis
         try:
             converter.build_skill()
-            logger.info("✅ PDF: Standalone SKILL.md created")
+            logger.info("PASS: PDF: Standalone SKILL.md created")
         except Exception as e:
-            logger.warning(f"⚠️  Failed to build standalone PDF SKILL.md: {e}")
+            logger.warning(f"WARNING:  Failed to build standalone PDF SKILL.md: {e}")
 
-        logger.info(f"✅ PDF: {len(pdf_data.get('pages', []))} pages extracted")
+        logger.info(f"PASS: PDF: {len(pdf_data.get('pages', []))} pages extracted")
 
     def _scrape_word(self, source: dict[str, Any]):
         """Scrape Word document (.docx)."""
@@ -723,11 +723,11 @@ class UnifiedScraper(SkillConverter):
         # Build standalone SKILL.md for synthesis
         try:
             converter.build_skill()
-            logger.info("✅ Word: Standalone SKILL.md created")
+            logger.info("PASS: Word: Standalone SKILL.md created")
         except Exception as e:
-            logger.warning(f"⚠️  Failed to build standalone Word SKILL.md: {e}")
+            logger.warning(f"WARNING:  Failed to build standalone Word SKILL.md: {e}")
 
-        logger.info(f"✅ Word: {len(word_data.get('pages', []))} sections extracted")
+        logger.info(f"PASS: Word: {len(word_data.get('pages', []))} sections extracted")
 
     def _scrape_video(self, source: dict[str, Any]):
         """Scrape video source (YouTube, local file, etc.)."""
@@ -781,10 +781,10 @@ class UnifiedScraper(SkillConverter):
 
             # Build standalone SKILL.md for synthesis
             converter.build_skill()
-            logger.info("✅ Video: Standalone SKILL.md created")
+            logger.info("PASS: Video: Standalone SKILL.md created")
 
             logger.info(
-                f"✅ Video: {len(result.videos)} videos, {result.total_segments} segments extracted"
+                f"PASS: Video: {len(result.videos)} videos, {result.total_segments} segments extracted"
             )
         except Exception as e:
             logger.error(f"Failed to process video source: {e}")
@@ -911,13 +911,13 @@ class UnifiedScraper(SkillConverter):
             signal_flow_file = temp_output / "signals" / "signal_flow.json"
             if signal_flow_file.exists():
                 local_data["signal_flow"] = self._load_json(signal_flow_file)
-                logger.info("✅ Signal flow analysis included (Godot)")
+                logger.info("PASS: Signal flow analysis included (Godot)")
 
             # Load SKILL.md if it exists
             skill_md_path = temp_output / "SKILL.md"
             if skill_md_path.exists():
                 local_data["skill_md"] = skill_md_path.read_text(encoding="utf-8")
-                logger.info(f"✅ Local: SKILL.md loaded ({len(local_data['skill_md'])} chars)")
+                logger.info(f"PASS: Local: SKILL.md loaded ({len(local_data['skill_md'])} chars)")
 
             # Save local data to cache
             local_data_file = os.path.join(self.data_dir, f"local_data_{idx}_{path_id}.json")
@@ -935,10 +935,10 @@ class UnifiedScraper(SkillConverter):
             # Append to local sources list
             self.scraped_data["local"].append(local_data)
 
-            logger.info(f"✅ Local: Analysis complete for {path_id}")
+            logger.info(f"PASS: Local: Analysis complete for {path_id}")
 
         except Exception as e:
-            logger.error(f"❌ Local analysis failed: {e}")
+            logger.error(f"FAIL: Local analysis failed: {e}")
             import traceback
 
             logger.debug(f"Traceback: {traceback.format_exc()}")
@@ -994,11 +994,11 @@ class UnifiedScraper(SkillConverter):
 
         try:
             converter.build_skill()
-            logger.info("✅ EPUB: Standalone SKILL.md created")
+            logger.info("PASS: EPUB: Standalone SKILL.md created")
         except Exception as e:
-            logger.warning(f"⚠️  Failed to build standalone EPUB SKILL.md: {e}")
+            logger.warning(f"WARNING:  Failed to build standalone EPUB SKILL.md: {e}")
 
-        logger.info(f"✅ EPUB: {len(epub_data.get('chapters', []))} chapters extracted")
+        logger.info(f"PASS: EPUB: {len(epub_data.get('chapters', []))} chapters extracted")
 
     def _scrape_jupyter(self, source: dict[str, Any]):
         """Scrape Jupyter Notebook (.ipynb)."""
@@ -1046,11 +1046,11 @@ class UnifiedScraper(SkillConverter):
 
         try:
             converter.build_skill()
-            logger.info("✅ Jupyter: Standalone SKILL.md created")
+            logger.info("PASS: Jupyter: Standalone SKILL.md created")
         except Exception as e:
-            logger.warning(f"⚠️  Failed to build standalone Jupyter SKILL.md: {e}")
+            logger.warning(f"WARNING:  Failed to build standalone Jupyter SKILL.md: {e}")
 
-        logger.info(f"✅ Jupyter: {len(nb_data.get('cells', []))} cells extracted")
+        logger.info(f"PASS: Jupyter: {len(nb_data.get('cells', []))} cells extracted")
 
     def _scrape_html(self, source: dict[str, Any]):
         """Scrape local HTML file(s)."""
@@ -1095,11 +1095,11 @@ class UnifiedScraper(SkillConverter):
 
         try:
             converter.build_skill()
-            logger.info("✅ HTML: Standalone SKILL.md created")
+            logger.info("PASS: HTML: Standalone SKILL.md created")
         except Exception as e:
-            logger.warning(f"⚠️  Failed to build standalone HTML SKILL.md: {e}")
+            logger.warning(f"WARNING:  Failed to build standalone HTML SKILL.md: {e}")
 
-        logger.info(f"✅ HTML: {len(html_data.get('pages', []))} pages extracted")
+        logger.info(f"PASS: HTML: {len(html_data.get('pages', []))} pages extracted")
 
     def _scrape_openapi(self, source: dict[str, Any]):
         """Scrape OpenAPI/Swagger specification."""
@@ -1145,11 +1145,11 @@ class UnifiedScraper(SkillConverter):
 
         try:
             converter.build_skill()
-            logger.info("✅ OpenAPI: Standalone SKILL.md created")
+            logger.info("PASS: OpenAPI: Standalone SKILL.md created")
         except Exception as e:
-            logger.warning(f"⚠️  Failed to build standalone OpenAPI SKILL.md: {e}")
+            logger.warning(f"WARNING:  Failed to build standalone OpenAPI SKILL.md: {e}")
 
-        logger.info(f"✅ OpenAPI: {len(api_data.get('endpoints', []))} endpoints extracted")
+        logger.info(f"PASS: OpenAPI: {len(api_data.get('endpoints', []))} endpoints extracted")
 
     def _scrape_asciidoc(self, source: dict[str, Any]):
         """Scrape AsciiDoc document(s)."""
@@ -1197,11 +1197,11 @@ class UnifiedScraper(SkillConverter):
 
         try:
             converter.build_skill()
-            logger.info("✅ AsciiDoc: Standalone SKILL.md created")
+            logger.info("PASS: AsciiDoc: Standalone SKILL.md created")
         except Exception as e:
-            logger.warning(f"⚠️  Failed to build standalone AsciiDoc SKILL.md: {e}")
+            logger.warning(f"WARNING:  Failed to build standalone AsciiDoc SKILL.md: {e}")
 
-        logger.info(f"✅ AsciiDoc: {len(adoc_data.get('sections', []))} sections extracted")
+        logger.info(f"PASS: AsciiDoc: {len(adoc_data.get('sections', []))} sections extracted")
 
     def _scrape_pptx(self, source: dict[str, Any]):
         """Scrape PowerPoint presentation (.pptx)."""
@@ -1249,11 +1249,11 @@ class UnifiedScraper(SkillConverter):
 
         try:
             converter.build_skill()
-            logger.info("✅ PowerPoint: Standalone SKILL.md created")
+            logger.info("PASS: PowerPoint: Standalone SKILL.md created")
         except Exception as e:
-            logger.warning(f"⚠️  Failed to build standalone PowerPoint SKILL.md: {e}")
+            logger.warning(f"WARNING:  Failed to build standalone PowerPoint SKILL.md: {e}")
 
-        logger.info(f"✅ PowerPoint: {len(pptx_data.get('slides', []))} slides extracted")
+        logger.info(f"PASS: PowerPoint: {len(pptx_data.get('slides', []))} slides extracted")
 
     def _scrape_confluence(self, source: dict[str, Any]):
         """Scrape Confluence wiki (API or exported HTML/XML)."""
@@ -1306,11 +1306,11 @@ class UnifiedScraper(SkillConverter):
 
         try:
             converter.build_skill()
-            logger.info("✅ Confluence: Standalone SKILL.md created")
+            logger.info("PASS: Confluence: Standalone SKILL.md created")
         except Exception as e:
-            logger.warning(f"⚠️  Failed to build standalone Confluence SKILL.md: {e}")
+            logger.warning(f"WARNING:  Failed to build standalone Confluence SKILL.md: {e}")
 
-        logger.info(f"✅ Confluence: {len(conf_data.get('pages', []))} pages extracted")
+        logger.info(f"PASS: Confluence: {len(conf_data.get('pages', []))} pages extracted")
 
     def _scrape_notion(self, source: dict[str, Any]):
         """Scrape Notion pages (API or exported Markdown)."""
@@ -1364,11 +1364,11 @@ class UnifiedScraper(SkillConverter):
 
         try:
             converter.build_skill()
-            logger.info("✅ Notion: Standalone SKILL.md created")
+            logger.info("PASS: Notion: Standalone SKILL.md created")
         except Exception as e:
-            logger.warning(f"⚠️  Failed to build standalone Notion SKILL.md: {e}")
+            logger.warning(f"WARNING:  Failed to build standalone Notion SKILL.md: {e}")
 
-        logger.info(f"✅ Notion: {len(notion_data.get('pages', []))} pages extracted")
+        logger.info(f"PASS: Notion: {len(notion_data.get('pages', []))} pages extracted")
 
     def _scrape_rss(self, source: dict[str, Any]):
         """Scrape RSS/Atom feed (with optional full article scraping)."""
@@ -1419,11 +1419,11 @@ class UnifiedScraper(SkillConverter):
 
         try:
             converter.build_skill()
-            logger.info("✅ RSS: Standalone SKILL.md created")
+            logger.info("PASS: RSS: Standalone SKILL.md created")
         except Exception as e:
-            logger.warning(f"⚠️  Failed to build standalone RSS SKILL.md: {e}")
+            logger.warning(f"WARNING:  Failed to build standalone RSS SKILL.md: {e}")
 
-        logger.info(f"✅ RSS: {len(rss_data.get('articles', []))} articles extracted")
+        logger.info(f"PASS: RSS: {len(rss_data.get('articles', []))} articles extracted")
 
     def _scrape_manpage(self, source: dict[str, Any]):
         """Scrape man page(s)."""
@@ -1470,11 +1470,11 @@ class UnifiedScraper(SkillConverter):
 
         try:
             converter.build_skill()
-            logger.info("✅ Man pages: Standalone SKILL.md created")
+            logger.info("PASS: Man pages: Standalone SKILL.md created")
         except Exception as e:
-            logger.warning(f"⚠️  Failed to build standalone man page SKILL.md: {e}")
+            logger.warning(f"WARNING:  Failed to build standalone man page SKILL.md: {e}")
 
-        logger.info(f"✅ Man pages: {len(man_data.get('pages', []))} man pages extracted")
+        logger.info(f"PASS: Man pages: {len(man_data.get('pages', []))} man pages extracted")
 
     def _scrape_chat(self, source: dict[str, Any]):
         """Scrape Slack/Discord chat export or API."""
@@ -1527,11 +1527,11 @@ class UnifiedScraper(SkillConverter):
 
         try:
             converter.build_skill()
-            logger.info("✅ Chat: Standalone SKILL.md created")
+            logger.info("PASS: Chat: Standalone SKILL.md created")
         except Exception as e:
-            logger.warning(f"⚠️  Failed to build standalone chat SKILL.md: {e}")
+            logger.warning(f"WARNING:  Failed to build standalone chat SKILL.md: {e}")
 
-        logger.info(f"✅ Chat: {len(chat_data.get('messages', []))} messages extracted")
+        logger.info(f"PASS: Chat: {len(chat_data.get('messages', []))} messages extracted")
 
     def _load_json_fallback(self, primary: Path, fallback: Path) -> dict:
         """Load JSON from primary path, falling back to secondary if not found."""
@@ -1786,7 +1786,7 @@ class UnifiedScraper(SkillConverter):
 
         # Print summary
         summary = detector.generate_summary(conflicts)
-        logger.info("\n📊 Conflict Summary:")
+        logger.info("\n Conflict Summary:")
         logger.info(f"   Total: {summary['total']}")
         logger.info("   By Type:")
         for ctype, count in summary["by_type"].items():
@@ -1795,7 +1795,7 @@ class UnifiedScraper(SkillConverter):
         logger.info("   By Severity:")
         for severity, count in summary["by_severity"].items():
             if count > 0:
-                emoji = "🔴" if severity == "high" else "🟡" if severity == "medium" else "🟢"
+                emoji = "" if severity == "high" else "" if severity == "medium" else ""
                 logger.info(f"     {emoji} {severity}: {count}")
 
         return conflicts
@@ -1850,7 +1850,7 @@ class UnifiedScraper(SkillConverter):
         with open(merged_file, "w", encoding="utf-8") as f:
             json.dump(merged_data, f, indent=2, ensure_ascii=False)
 
-        logger.info(f"✅ Merged data saved: {merged_file}")
+        logger.info(f"PASS: Merged data saved: {merged_file}")
 
         return merged_data
 
@@ -1884,7 +1884,7 @@ class UnifiedScraper(SkillConverter):
 
         builder.build()
 
-        logger.info(f"✅ Unified skill built: {self.output_dir}/")
+        logger.info(f"PASS: Unified skill built: {self.output_dir}/")
 
     def run(self, args=None):
         """
@@ -1898,9 +1898,9 @@ class UnifiedScraper(SkillConverter):
         # Store CLI args so _scrape_local() can access --enhance-level override
         self._cli_args = args
 
-        logger.info("\n" + "🚀 " * 20)
+        logger.info("\n" + " " * 20)
         logger.info(f"Unified Scraper: {self.config['name']}")
-        logger.info("🚀 " * 20 + "\n")
+        logger.info(" " * 20 + "\n")
 
         try:
             # Phase 1: Scrape all sources
@@ -1996,7 +1996,7 @@ class UnifiedScraper(SkillConverter):
 
                 skill_md_path = os.path.join(self.output_dir, "SKILL.md")
                 if not os.path.exists(skill_md_path):
-                    logger.warning("⚠️  SKILL.md not found, skipping enhancement")
+                    logger.warning("WARNING:  SKILL.md not found, skipping enhancement")
                 elif enhancement_mode == "LOCAL":
                     try:
                         from skill_seekers.cli.enhance_skill_local import LocalSkillEnhancer
@@ -2039,14 +2039,14 @@ class UnifiedScraper(SkillConverter):
                         success = enhancer.run(headless=True, timeout=timeout_val)
                         agent_name = agent or "claude"
                         if success:
-                            logger.info(f"✅ SKILL.md enhanced (LOCAL mode via {agent_name})")
+                            logger.info(f"PASS: SKILL.md enhanced (LOCAL mode via {agent_name})")
                         else:
                             logger.warning(
-                                f"⚠️  SKILL.md enhancement returned false (LOCAL mode via {agent_name}). "
+                                f"WARNING:  SKILL.md enhancement returned false (LOCAL mode via {agent_name}). "
                                 "Check logs above for the exact error."
                             )
                     except Exception as e:
-                        logger.warning(f"⚠️  LOCAL enhancement failed: {e}")
+                        logger.warning(f"WARNING:  LOCAL enhancement failed: {e}")
                         logger.info(
                             "   Try manually: skill-seekers enhance "
                             + self.output_dir
@@ -2081,34 +2081,34 @@ class UnifiedScraper(SkillConverter):
                                 shutil.copy2(skill_md_path, skill_md_path + ".backup")
                                 Path(skill_md_path).write_text(enhanced, encoding="utf-8")
                                 logger.info(
-                                    f"✅ SKILL.md enhanced (API mode via {client.provider})"
+                                    f"PASS: SKILL.md enhanced (API mode via {client.provider})"
                                 )
                             else:
-                                logger.warning("⚠️  API enhancement returned empty result")
+                                logger.warning("WARNING:  API enhancement returned empty result")
                         else:
-                            logger.warning("⚠️  No API key found, skipping API enhancement")
+                            logger.warning("WARNING:  No API key found, skipping API enhancement")
                             logger.info('   Set an API key or use "mode": "LOCAL" in config')
                     except Exception as e:
-                        logger.warning(f"⚠️  API enhancement failed: {e}")
+                        logger.warning(f"WARNING:  API enhancement failed: {e}")
             else:
                 logger.info("\n" + "=" * 60)
                 logger.info("PHASE 6: Enhancement (skipped - not enabled in config)")
                 logger.info("=" * 60)
 
-            logger.info("\n" + "✅ " * 20)
+            logger.info("\n" + "PASS: " * 20)
             logger.info("Unified scraping complete!")
-            logger.info("✅ " * 20 + "\n")
+            logger.info("PASS: " * 20 + "\n")
 
-            logger.info(f"📁 Output: {self.output_dir}/")
-            logger.info(f"📁 Data: {self.data_dir}/")
+            logger.info(f" Output: {self.output_dir}/")
+            logger.info(f" Data: {self.data_dir}/")
 
             return 0
 
         except KeyboardInterrupt:
-            logger.info("\n\n⚠️  Scraping interrupted by user")
+            logger.info("\n\nWARNING:  Scraping interrupted by user")
             return 130
         except Exception as e:
-            logger.error(f"\n\n❌ Error during scraping: {e}")
+            logger.error(f"\n\nFAIL: Error during scraping: {e}")
             import traceback
 
             traceback.print_exc()

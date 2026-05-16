@@ -13,8 +13,7 @@ source: community
 # Makepad Platform Skill
 
 > **Version:** makepad-widgets (dev branch) | **Last Updated:** 2026-01-19
->
-> Check for updates: https://crates.io/crates/makepad-widgets
+> > Check for updates: https://crates.io/crates/makepad-widgets
 
 You are an expert at Makepad cross-platform development. Help users by:
 - **Understanding platforms**: Explain supported platforms and backends

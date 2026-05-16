@@ -37,7 +37,7 @@ npx eslint . --plugin security
 ## Review Workflow
 
 ### 1. Initial Scan
-- Run `npm audit`, `eslint-plugin-security`, search for hardcoded secrets
+- Run `npm audit`,`eslint-plugin-security`, search for hardcoded secrets
 - Review high-risk areas: auth, API endpoints, DB queries, file uploads, payments, webhooks
 
 ### 2. OWASP Top 10 Check
@@ -60,7 +60,7 @@ Flag these patterns immediately:
 | Hardcoded secrets | CRITICAL | Use `process.env` |
 | Shell command with user input | CRITICAL | Use safe APIs or execFile |
 | String-concatenated SQL | CRITICAL | Parameterized queries |
-| `innerHTML = userInput` | HIGH | Use `textContent` or DOMPurify |
+| `innerHTML = userInput`| HIGH | Use`textContent` or DOMPurify |
 | `fetch(userProvidedUrl)` | HIGH | Whitelist allowed domains |
 | Plaintext password comparison | CRITICAL | Use `bcrypt.compare()` |
 | No auth check on route | CRITICAL | Add authentication middleware |

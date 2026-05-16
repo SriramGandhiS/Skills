@@ -247,7 +247,7 @@ VStack { /* content */ }
 |----------|-----------|
 | 使用 GlassEffectContainer 包装 | 性能优化，实现玻璃元素之间的变形 |
 | `spacing` 参数 | 控制合并距离——微调元素需要多近才能融合 |
-| `@Namespace` + `glassEffectID` | 在视图层次结构变化时实现平滑的变形过渡 |
+| `@Namespace`+`glassEffectID` | 在视图层次结构变化时实现平滑的变形过渡 |
 | `interactive()` 修饰符 | 明确选择加入触摸/指针反应——并非所有玻璃都应响应 |
 | UIKit 中的 UIGlassContainerEffect | 与 SwiftUI 保持一致的容器模式 |
 | 小组件中的强调色渲染模式 | 当用户选择带色调的主屏幕时，系统会应用带色调的玻璃效果 |

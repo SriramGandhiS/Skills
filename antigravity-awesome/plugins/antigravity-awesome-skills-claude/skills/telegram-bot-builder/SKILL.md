@@ -150,8 +150,8 @@ function getPaginatedKeyboard(items, page, perPage = 5) {
   );
 
   const nav = [];
-  if (page > 0) nav.push(Markup.button.callback('◀️', `page_${page-1}`));
-  if (start + perPage < items.length) nav.push(Markup.button.callback('▶️', `page_${page+1}`));
+  if (page > 0) nav.push(Markup.button.callback('', `page_${page-1}`));
+  if (start + perPage < items.length) nav.push(Markup.button.callback('', `page_${page+1}`));
 
   return Markup.inlineKeyboard([...buttons, nav]);
 }
@@ -193,7 +193,7 @@ bot.on('successful_payment', (ctx) => {
   const payment = ctx.message.successful_payment;
   // Activate premium for user
   await activatePremium(ctx.from.id);
-  ctx.reply('🎉 Premium activated!');
+  ctx.reply(' Premium activated!');
 });
 ```
 

@@ -57,11 +57,11 @@ competitive intent keywords with accurate, structured content.
 ```
 | Feature          | Your Product | Competitor A | Competitor B |
 |------------------|:------------:|:------------:|:------------:|
-| Feature 1        | ✅           | ✅           | ❌           |
-| Feature 2        | ✅           | ⚠️ Partial   | ✅           |
-| Feature 3        | ✅           | ❌           | ❌           |
+| Feature 1        | PASS:           | PASS:           | FAIL:           |
+| Feature 2        | PASS:           | WARNING: Partial   | PASS:           |
+| Feature 3        | PASS:           | FAIL:           | FAIL:           |
 | Pricing (from)   | $X/mo        | $Y/mo        | $Z/mo        |
-| Free Tier        | ✅           | ❌           | ✅           |
+| Free Tier        | PASS:           | FAIL:           | PASS:           |
 ```
 
 ### Data Accuracy Requirements

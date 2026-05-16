@@ -38,7 +38,7 @@ def upload_skill_api(package_path, target="claude", api_key=None, **kwargs):
         package_path: Path to skill package file
         target: Target platform ('claude', 'gemini', 'openai', 'chroma', 'weaviate')
         api_key: Optional API key (otherwise read from environment)
-        **kwargs: Platform-specific upload options
+**kwargs: Platform-specific upload options
 
     Returns:
         tuple: (success, message)
@@ -75,21 +75,21 @@ def upload_skill_api(package_path, target="claude", api_key=None, **kwargs):
 
     skill_name = package_path.stem
 
-    print(f"📤 Uploading skill: {skill_name}")
+    print(f" Uploading skill: {skill_name}")
     print(f"   Target: {adaptor.PLATFORM_NAME}")
     print(f"   Source: {package_path}")
     print(f"   Size: {package_path.stat().st_size:,} bytes")
     print()
 
     # Upload using adaptor
-    print(f"⏳ Uploading to {adaptor.PLATFORM_NAME}...")
+    print(f" Uploading to {adaptor.PLATFORM_NAME}...")
 
     try:
         result = adaptor.upload(package_path, api_key, **kwargs)
 
         if result["success"]:
             print()
-            print(f"✅ {result['message']}")
+            print(f"PASS: {result['message']}")
             print()
             if result.get("url"):
                 print("Your skill is now available at:")
@@ -246,9 +246,9 @@ Examples:
     if success:
         sys.exit(0)
     else:
-        print(f"\n❌ Upload failed: {message}")
+        print(f"\nFAIL: Upload failed: {message}")
         print()
-        print("📝 Manual upload instructions:")
+        print(" Manual upload instructions:")
         print_upload_instructions(args.package_file)
         sys.exit(1)
 

@@ -76,7 +76,7 @@ npx wrangler pipelines create my-pipeline \
   --sql "INSERT INTO my_sink SELECT * FROM my_stream WHERE event_type = 'purchase'"
 ```
 
-**⚠️ Pipelines are immutable** - cannot modify SQL. Must delete/recreate.
+**WARNING: Pipelines are immutable** - cannot modify SQL. Must delete/recreate.
 
 ## Credentials
 

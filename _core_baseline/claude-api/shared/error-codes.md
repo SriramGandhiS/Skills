@@ -190,7 +190,7 @@ thinking: budget_tokens=10000, max_tokens=16000
 | Any       | `Anthropic.APIError`              | `anthropic.APIError`              |
 
 ```typescript
-// ✅ Correct: use typed exceptions
+// PASS: Correct: use typed exceptions
 try {
   const response = await client.messages.create({...});
 } catch (error) {
@@ -201,7 +201,7 @@ try {
   }
 }
 
-// ❌ Wrong: don't check error messages with string matching
+// FAIL: Wrong: don't check error messages with string matching
 try {
   const response = await client.messages.create({...});
 } catch (error) {

@@ -447,7 +447,6 @@ def route_source(source_info: SourceInfo, args: argparse.Namespace):
     elif source_info.type == 'config':
         return _route_config(source_info, args)
 
-
 def _route_video(source_info: SourceInfo, args: argparse.Namespace):
     """Route video source to video scraper."""
     from skill_seekers.cli.video_scraper import VideoScraper
@@ -500,7 +499,6 @@ def _route_video(source_info: SourceInfo, args: argparse.Namespace):
 # src/skill_seekers/cli/parsers/video_parser.py
 
 from skill_seekers.cli.parsers.base import SubcommandParser
-
 
 class VideoParser(SubcommandParser):
     """Parser for the video scraping command."""
@@ -655,7 +653,6 @@ VIDEO_ARGUMENTS = {
         },
     },
 }
-
 
 def add_video_arguments(parser):
     """Add all video-specific arguments to a parser."""

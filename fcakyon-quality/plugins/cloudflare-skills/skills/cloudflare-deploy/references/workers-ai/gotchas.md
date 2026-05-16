@@ -3,10 +3,10 @@
 ## Critical: @cloudflare/ai is DEPRECATED
 
 ```typescript
-// ❌ WRONG - Don't install @cloudflare/ai
+// FAIL: WRONG - Don't install @cloudflare/ai
 import Ai from '@cloudflare/ai';
 
-// ✅ CORRECT - Use native binding
+// PASS: CORRECT - Use native binding
 export default {
   async fetch(request: Request, env: Env) {
     await env.AI.run('@cf/meta/llama-3.1-8b-instruct', { messages: [...] });
@@ -18,9 +18,9 @@ export default {
 
 ### "AI inference doesn't work locally"
 ```bash
-# ❌ Local AI doesn't work
+# FAIL: Local AI doesn't work
 wrangler dev
-# ✅ Use remote
+# PASS: Use remote
 wrangler dev --remote
 ```
 
@@ -56,9 +56,9 @@ for await (const chunk of stream) { console.log(chunk.response); }
 **Free tier**: 10,000 neurons/day
 
 ```typescript
-// ❌ EXPENSIVE - 70B model
+// FAIL: EXPENSIVE - 70B model
 await env.AI.run('@cf/meta/llama-3.1-70b-instruct', ...);
-// ✅ CHEAPER - Use smallest that works
+// PASS: CHEAPER - Use smallest that works
 await env.AI.run('@cf/meta/llama-3.1-8b-instruct', ...);
 ```
 
@@ -96,11 +96,11 @@ Check exact model name at developers.cloudflare.com/workers-ai/models/
 ```typescript
 // Text gen requires messages array
 await env.AI.run('@cf/meta/llama-3.1-8b-instruct', {
-  messages: [{ role: 'user', content: 'Hello' }]  // ✅
+  messages: [{ role: 'user', content: 'Hello' }]  // PASS:
 });
 
 // Embeddings require text
-await env.AI.run('@cf/baai/bge-base-en-v1.5', { text: 'Hello' });  // ✅
+await env.AI.run('@cf/baai/bge-base-en-v1.5', { text: 'Hello' });  // PASS:
 ```
 
 ## Vercel AI SDK Integration

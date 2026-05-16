@@ -1,15 +1,13 @@
 #!/usr/bin/env bash
 # Test the OpenSpec sentinel scoping + queue purge logic.
-#
-# Covers the six core scenarios:
-#   1. Fresh run with no sentinel -> populate
-#   2. Crash-restart same change+content -> skip (progress preserved)
-#   3. Switch to different change -> purge openspec tasks, repopulate
-#   4. Edit tasks.md (hash changes) -> purge and repopulate
-#   5. Non-openspec tasks survive purge
-#   6. Legacy single-line sentinel is safely upgraded
-#
-# These are unit tests against helper logic that mirrors run.sh. They do
+# # Covers the six core scenarios:
+# 1. Fresh run with no sentinel -> populate
+# 2. Crash-restart same change+content -> skip (progress preserved)
+# 3. Switch to different change -> purge openspec tasks, repopulate
+# 4. Edit tasks.md (hash changes) -> purge and repopulate
+# 5. Non-openspec tasks survive purge
+# 6. Legacy single-line sentinel is safely upgraded
+# # These are unit tests against helper logic that mirrors run.sh. They do
 # not invoke `loki start`; that path is covered indirectly by e2e tests.
 
 set -uo pipefail

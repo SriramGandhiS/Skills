@@ -32,8 +32,7 @@ Accessibility enables creativity - it's a foundation, not a limitation. WCAG 2.1
   role="button"
   tabIndex={0}
   onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && handleClick()}
->
-  Custom Button
+> Custom Button
 </div>
 ```
 

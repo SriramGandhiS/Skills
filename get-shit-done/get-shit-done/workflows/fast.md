@@ -70,7 +70,7 @@ If the table doesn't exist, skip this step silently.
 # Check if STATE.md has quick tasks table
 if grep -q "Quick Tasks Completed" .planning/STATE.md 2>/dev/null; then
   # Append entry — workflow handles the format
-  echo "| $(date +%Y-%m-%d) | fast | $TASK | ✅ |" >> .planning/STATE.md
+  echo "| $(date +%Y-%m-%d) | fast | $TASK | PASS: |" >> .planning/STATE.md
 fi
 ```
 </step>
@@ -79,7 +79,7 @@ fi
 Report completion:
 
 ```
-✅ Done: {what was changed}
+PASS: Done: {what was changed}
    Commit: {short hash}
    Files: {list of changed files}
 ```

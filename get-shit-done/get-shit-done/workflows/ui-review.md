@@ -44,7 +44,6 @@ UI_REVIEW_FILE=$(ls "${PHASE_DIR}"/*-UI-REVIEW.md 2>/dev/null | head -1)
 
 **If `SUMMARY_FILES` empty:** Exit — "Phase {N} not executed. Run /gsd-execute-phase {N} first."
 
-
 **Text mode (`workflow.text_mode: true` in config or `--text` flag):** Set `TEXT_MODE=true` if `--text` is present in `$ARGUMENTS` OR `text_mode` from init JSON is `true`. When TEXT_MODE is active, replace every `AskUserQuestion` call with a plain-text numbered list and ask the user to type their choice number. This is required for non-Claude runtimes (OpenAI Codex, Gemini CLI, etc.) where `AskUserQuestion` is not available.
 **If `UI_REVIEW_FILE` non-empty:** Use AskUserQuestion:
 - header: "Existing UI Review"
@@ -140,7 +139,7 @@ Full review: {path to UI-REVIEW.md}
 
 ───────────────────────────────────────────────────────────────
 
-## ▶ Next
+## Next
 
 `/clear` then one of:
 

@@ -2,8 +2,7 @@
 # Tests for council_write_transcript threshold arg (BUG-005)
 # Verifies that the 'threshold' field in the written JSON matches the 5th argument,
 # not the former hardcoded value of 2.
-#
-# Strategy: extract council_write_transcript from completion-council.sh via awk
+# # Strategy: extract council_write_transcript from completion-council.sh via awk
 # (depth-counting to handle nested { } in python3 heredocs), write to a temp
 # helper file, then source it in isolated sub-shells.
 
@@ -51,7 +50,7 @@ trap cleanup_all EXIT
 
 # ---------------------------------------------------------------------------
 # run_transcript <threshold_arg> <tmpdir>
-#   Invokes council_write_transcript in a sub-shell with the given threshold.
+# Invokes council_write_transcript in a sub-shell with the given threshold.
 # ---------------------------------------------------------------------------
 run_transcript() {
     local threshold_arg="$1"

@@ -1,11 +1,9 @@
-> ⚠️ **DEPRECATED**: This document contains phantom commands and outdated patterns.
-> 
-> For up-to-date documentation, please see:
+> WARNING: **DEPRECATED**: This document contains phantom commands and outdated patterns.
+> > For up-to-date documentation, please see:
 > - [Quick Start Guide](getting-started/02-quick-start.md) - 3 commands to first skill
 > - [CLI Reference](reference/CLI_REFERENCE.md) - Complete command reference
 > - [Documentation Hub](README.md) - All documentation
->
-> *This file is kept for historical reference only.*
+> > *This file is kept for historical reference only.*
 
 ---
 

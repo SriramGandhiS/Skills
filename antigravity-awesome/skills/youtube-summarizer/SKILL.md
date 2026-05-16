@@ -35,13 +35,13 @@ Before processing videos, validate the environment and dependencies:
 # Check if youtube-transcript-api is installed
 python3 -c "import youtube_transcript_api" 2>/dev/null
 if [ $? -ne 0 ]; then
-    echo "⚠️  youtube-transcript-api not found"
+    echo "WARNING:  youtube-transcript-api not found"
     # Offer to install
 fi
 
 # Check Python availability
 if ! command -v python3 &>/dev/null; then
-    echo "❌ Python 3 is required but not installed"
+    echo "FAIL: Python 3 is required but not installed"
     exit 1
 fi
 ```
@@ -65,7 +65,7 @@ pip install youtube-transcript-api
 **Verify installation:**
 
 ```bash
-python3 -c "import youtube_transcript_api; print('✅ youtube-transcript-api installed successfully')"
+python3 -c "import youtube_transcript_api; print('PASS: youtube-transcript-api installed successfully')"
 ```
 
 ## Main Workflow
@@ -88,7 +88,7 @@ echo "[████░░░░░░░░░░░░░░░░] 20% - Step 
 
 ```
 ╔══════════════════════════════════════════════════════════════╗
-║     📹  YOUTUBE SUMMARIZER - Processing Video                ║
+║       YOUTUBE SUMMARIZER - Processing Video                ║
 ╠══════════════════════════════════════════════════════════════╣
 ║ → Step 1: Validating URL                 [IN PROGRESS]       ║
 ║ ○ Step 2: Checking Availability                              ║
@@ -119,21 +119,21 @@ URL="$USER_PROVIDED_URL"
 # Pattern 1: youtube.com/watch?v=VIDEO_ID
 if echo "$URL" | grep -qE 'youtube\.com/watch\?v='; then
     VIDEO_ID=$(echo "$URL" | sed -E 's/.*[?&]v=([^&]+).*/\1/')
-# Pattern 2: youtu.be/VIDEO_ID  
+# Pattern 2: youtu.be/VIDEO_ID
 elif echo "$URL" | grep -qE 'youtu\.be/'; then
     VIDEO_ID=$(echo "$URL" | sed -E 's/.*youtu\.be\/([^?]+).*/\1/')
 else
-    echo "❌ Invalid YouTube URL format"
+    echo "FAIL: Invalid YouTube URL format"
     exit 1
 fi
 
-echo "📹 Video ID extracted: $VIDEO_ID"
+echo " Video ID extracted: $VIDEO_ID"
 ```
 
 **If URL is invalid:**
 
 ```
-❌ Invalid YouTube URL
+FAIL: Invalid YouTube URL
 
 Please provide a valid YouTube URL in one of these formats:
 - https://www.youtube.com/watch?v=VIDEO_ID
@@ -162,25 +162,25 @@ video_id = sys.argv[1]
 try:
     # Get list of available transcripts
     transcript_list = YouTubeTranscriptApi.list_transcripts(video_id)
-    
-    print(f"✅ Video accessible: {video_id}")
-    print("📝 Available transcripts:")
-    
+
+    print(f"PASS: Video accessible: {video_id}")
+    print(" Available transcripts:")
+
     for transcript in transcript_list:
         print(f"  - {transcript.language} ({transcript.language_code})")
         if transcript.is_generated:
             print("    [Auto-generated]")
-    
+
 except TranscriptsDisabled:
-    print(f"❌ Transcripts are disabled for video {video_id}")
+    print(f"FAIL: Transcripts are disabled for video {video_id}")
     sys.exit(1)
-    
+
 except NoTranscriptFound:
-    print(f"❌ No transcript found for video {video_id}")
+    print(f"FAIL: No transcript found for video {video_id}")
     sys.exit(1)
-    
+
 except Exception as e:
-    print(f"❌ Error accessing video: {e}")
+    print(f"FAIL: Error accessing video: {e}")
     sys.exit(1)
 ```
 
@@ -188,10 +188,10 @@ except Exception as e:
 
 | Error | Message | Action |
 |-------|---------|--------|
-| Video not found | "❌ Video does not exist or is private" | Ask user to verify URL |
-| Transcripts disabled | "❌ Transcripts are disabled for this video" | Cannot proceed |
-| No transcript available | "❌ No transcript found (not auto-generated or manually added)" | Cannot proceed |
-| Private/restricted video | "❌ Video is private or restricted" | Ask for public video |
+| Video not found | "FAIL: Video does not exist or is private" | Ask user to verify URL |
+| Transcripts disabled | "FAIL: Transcripts are disabled for this video" | Cannot proceed |
+| No transcript available | "FAIL: No transcript found (not auto-generated or manually added)" | Cannot proceed |
+| Private/restricted video | "FAIL: Video is private or restricted" | Ask for public video |
 
 ### Step 3: Extract Transcript
 
@@ -213,26 +213,26 @@ try:
     # Try to get transcript in user's preferred language first
     # Fall back to English if not available
     transcript = YouTubeTranscriptApi.get_transcript(
-        video_id, 
+        video_id,
         languages=['pt', 'en']  # Prefer Portuguese, fallback to English
     )
-    
+
     # Combine transcript segments into full text
     full_text = " ".join([entry['text'] for entry in transcript])
-    
+
     # Get video metadata
     from youtube_transcript_api import YouTubeTranscriptApi
     transcript_list = YouTubeTranscriptApi.list_transcripts(video_id)
-    
-    print("✅ Transcript extracted successfully")
-    print(f"📊 Transcript length: {len(full_text)} characters")
-    
+
+    print("PASS: Transcript extracted successfully")
+    print(f" Transcript length: {len(full_text)} characters")
+
     # Save to temporary file for processing
     with open(f"/tmp/transcript_{video_id}.txt", "w") as f:
         f.write(full_text)
-    
+
 except Exception as e:
-    print(f"❌ Error extracting transcript: {e}")
+    print(f"FAIL: Error extracting transcript: {e}")
     exit(1)
 ```
 
@@ -300,13 +300,12 @@ echo "[████████████████████] 100% - Step
 ```markdown
 # [Video Title]
 
-**Canal:** [Channel Name]  
-**Duração:** [Duration]  
-**URL:** [https://youtube.com/watch?v=VIDEO_ID]  
+**Canal:** [Channel Name]
+**Duração:** [Duration]
+**URL:** [https://youtube.com/watch?v=VIDEO_ID]
 **Data de Publicação:** [Date if available]
 
-
-## 📝 Detailed Summary
+## Detailed Summary
 
 ### [Topic 1]
 
@@ -320,18 +319,15 @@ echo "[████████████████████] 100% - Step
 
 [Continued detailed analysis...]
 
-
-## 📚 Concepts and Terminology
+## Concepts and Terminology
 
 - **[Term 1]:** [Definition and context]
 - **[Term 2]:** [Definition and context]
 
-
-## 📌 Conclusion
+## Conclusion
 
 [Final synthesis and takeaways]
 ```
-
 
 ### **Example 2: Missing Dependency**
 
@@ -343,7 +339,7 @@ claude> summarize this youtube video https://youtu.be/abc123
 **Skill Response:**
 
 ```
-⚠️  youtube-transcript-api not installed
+WARNING:  youtube-transcript-api not installed
 
 This skill requires the Python library 'youtube-transcript-api'.
 
@@ -358,9 +354,8 @@ Would you like me to install it now?
 $ pip install youtube-transcript-api
 Successfully installed youtube-transcript-api-0.6.1
 
-✅ Installation complete! Proceeding with video summary...
+PASS: Installation complete! Proceeding with video summary...
 ```
-
 
 ### **Example 4: Invalid URL**
 
@@ -372,7 +367,7 @@ claude> summarize youtube video www.youtube.com/some-video
 **Skill Response:**
 
 ```
-❌ Invalid YouTube URL format
+FAIL: Invalid YouTube URL format
 
 Expected format examples:
 - https://www.youtube.com/watch?v=VIDEO_ID
@@ -381,8 +376,7 @@ Expected format examples:
 Please provide a valid YouTube video URL.
 ```
 
-
-## 📊 Executive Summary
+## Executive Summary
 
 This video provides a comprehensive introduction to the fundamental concepts of Artificial Intelligence (AI), designed for beginners and professionals who want to understand the technical foundations and practical applications of modern AI. The instructor covers everything from basic definitions to machine learning algorithms, using practical examples and visualizations to facilitate understanding.
 
@@ -395,14 +389,12 @@ This video provides a comprehensive introduction to the fundamental concepts of 
 What would you like to save?
 → Summary + raw transcript
 
-✅ File saved: resumo-exemplo123-2026-02-01.md (includes raw transcript)
+PASS: File saved: resumo-exemplo123-2026-02-01.md (includes raw transcript)
 [████████████████████] 100% - ✓ Processing complete!
 ```
 
-
 Welcome to this comprehensive tutorial on machine learning fundamentals. In today's video, we'll explore the core concepts that power modern AI systems...
 ```
-
 
 **Version:** 1.2.0
 **Last Updated:** 2026-02-02

@@ -1,24 +1,21 @@
 #!/usr/bin/env bash
 #===============================================================================
 # Regression tests for autonomy/run.sh v7.5.12 static-analysis fixes:
-#
-#   A) Triage #2: when tsconfig.json exists, the TS gate must invoke
-#      `tsc --noEmit -p .` ONCE so paths/baseUrl resolve. Path-aliased
-#      imports like `@/x` must not false-block iterations.
-#
-#   B) Triage #3: shellcheck gate must use `-S error` so style/info/warning
-#      findings on WIP shell scripts do not block iteration.
-#
-# Strategy:
-#   - Build a tmpdir fixture that mirrors a Next.js-style project (tsconfig
-#     with paths, src/main.ts that imports `@/x`).
-#   - Source enforce_static_analysis() in a controlled manner is hard
-#     (run.sh has heavy top-level setup), so we instead exercise the same
-#     CLI surface the gate uses: `tsc --noEmit -p .` should succeed where
-#     `tsc --noEmit "$f"` fails. That proves the fix's contract.
-#   - For Triage #3 we grep autonomy/run.sh for the `-S error` flag on the
-#     ShellCheck invocation in enforce_static_analysis() and confirm the
-#     blocking call no longer fires on style/info severity.
+# # A) Triage #2: when tsconfig.json exists, the TS gate must invoke
+# `tsc --noEmit -p .` ONCE so paths/baseUrl resolve. Path-aliased
+# imports like `@/x` must not false-block iterations.
+# # B) Triage #3: shellcheck gate must use `-S error` so style/info/warning
+# findings on WIP shell scripts do not block iteration.
+# # Strategy:
+# - Build a tmpdir fixture that mirrors a Next.js-style project (tsconfig
+# with paths, src/main.ts that imports `@/x`).
+# - Source enforce_static_analysis() in a controlled manner is hard
+# (run.sh has heavy top-level setup), so we instead exercise the same
+# CLI surface the gate uses: `tsc --noEmit -p .` should succeed where
+# `tsc --noEmit "$f"` fails. That proves the fix's contract.
+# - For Triage #3 we grep autonomy/run.sh for the `-S error` flag on the
+# ShellCheck invocation in enforce_static_analysis() and confirm the
+# blocking call no longer fires on style/info severity.
 #===============================================================================
 
 set -u
@@ -85,8 +82,8 @@ TS
 
 #-------------------------------------------------------------------------------
 # Test A1: per-file `tsc --noEmit "$f"` (the OLD pre-7.5.12 gate behavior)
-#          must FAIL on path-aliased imports -- this proves the bug exists
-#          and our fix is meaningful. Skip if tsc not available.
+# must FAIL on path-aliased imports -- this proves the bug exists
+# and our fix is meaningful. Skip if tsc not available.
 #-------------------------------------------------------------------------------
 if command -v tsc >/dev/null 2>&1; then
     if (cd "$PROJECT" && tsc --noEmit --jsx preserve --target esnext src/main.ts) >/dev/null 2>&1; then

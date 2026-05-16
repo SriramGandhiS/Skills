@@ -174,10 +174,10 @@ function scanFile(filePath) {
  */
 function formatReport(violations) {
   if (violations.length === 0) {
-    return '✅ No token violations found';
+    return 'PASS: No token violations found';
   }
 
-  let report = `⚠️  Found ${violations.length} potential token violations:\n\n`;
+  let report = `WARNING:  Found ${violations.length} potential token violations:\n\n`;
 
   // Group by file
   const byFile = {};
@@ -187,7 +187,7 @@ function formatReport(violations) {
   });
 
   for (const [file, fileViolations] of Object.entries(byFile)) {
-    report += `📁 ${file}\n`;
+    report += ` ${file}\n`;
     fileViolations.forEach(v => {
       report += `   Line ${v.line}: ${v.message}\n`;
       report += `   Found: ${v.value}\n`;
@@ -202,7 +202,7 @@ function formatReport(violations) {
     byType[v.type] = (byType[v.type] || 0) + 1;
   });
 
-  report += `\n📊 Summary:\n`;
+  report += `\n Summary:\n`;
   for (const [type, count] of Object.entries(byType)) {
     report += `   ${patterns[type].message}: ${count}\n`;
   }

@@ -30,8 +30,8 @@ tags: schema, embedding, referencing, relationships, fundamentals, one-to-one, o
 | Order → Line Items | 1:few (1-50) | Always together | Yes | **Embed array** |
 | Publisher → Books | 1:many (1000+) | Often separate | No | **Reference** |
 | Post → Comments | 1:many (unbounded) | Separate adds | No | **Reference** |
-| Students ↔ Classes | Many-to-many | Both directions | Moderate | **Reference both ways** |
-| Product ↔ Category | Many-to-many | Either way | Moderate | **Embed refs in primary direction** |
+| Students  Classes | Many-to-many | Both directions | Moderate | **Reference both ways** |
+| Product  Category | Many-to-many | Either way | Moderate | **Embed refs in primary direction** |
 
 ---
 

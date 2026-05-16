@@ -455,19 +455,16 @@ Duplicate hook file detected: ./hooks/hooks.json is already resolved to a loaded
 これで、すべてのコマンド、エージェント、スキル、フックにすぐにアクセスできます。
 
 > **注:** Claude Codeプラグインシステムは`rules`をプラグイン経由で配布できません（[アップストリーム制限](https://code.claude.com/docs/en/plugins-reference)）。ルールは手動でインストールする必要があります：
->
-> ```bash
+> > ```bash
 > # まずリポジトリをクローン
 > git clone https://github.com/affaan-m/everything-claude-code.git
->
-> # オプション A：ユーザーレベルルール（すべてのプロジェクトに適用）
+> > # オプション A：ユーザーレベルルール（すべてのプロジェクトに適用）
 > mkdir -p ~/.claude/rules
 > cp -r everything-claude-code/rules/common ~/.claude/rules/common
 > cp -r everything-claude-code/rules/typescript ~/.claude/rules/typescript   # スタックを選択
 > cp -r everything-claude-code/rules/python ~/.claude/rules/python
 > cp -r everything-claude-code/rules/golang ~/.claude/rules/golang
->
-> # オプション B：プロジェクトレベルルール（現在のプロジェクトのみ）
+> > # オプション B：プロジェクトレベルルール（現在のプロジェクトのみ）
 > mkdir -p .claude/rules
 > cp -r everything-claude-code/rules/common .claude/rules/common
 > cp -r everything-claude-code/rules/typescript .claude/rules/typescript     # スタックを選択

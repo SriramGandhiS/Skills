@@ -83,7 +83,7 @@ describe('Semantic Search', () => {
 ### 步驟 3：執行測試（應該失敗）
 ```bash
 npm test
-# 測試應該失敗 - 我們還沒實作
+## 測試應該失敗 - 我們還沒實作
 ```
 
 ### 步驟 4：實作程式碼
@@ -99,7 +99,7 @@ export async function searchMarkets(query: string) {
 ### 步驟 5：再次執行測試
 ```bash
 npm test
-# 測試現在應該通過
+## 測試現在應該通過
 ```
 
 ### 步驟 6：重構
@@ -112,7 +112,7 @@ npm test
 ### 步驟 7：驗證覆蓋率
 ```bash
 npm run test:coverage
-# 驗證達到 80%+ 覆蓋率
+## 驗證達到 80%+ 覆蓋率
 ```
 
 ## 測試模式
@@ -364,18 +364,18 @@ test('updates user', () => {
 ### 開發期間的 Watch 模式
 ```bash
 npm test -- --watch
-# 檔案變更時自動執行測試
+## 檔案變更時自動執行測試
 ```
 
 ### Pre-Commit Hook
 ```bash
-# 每次 commit 前執行
+## 每次 commit 前執行
 npm test && npm run lint
 ```
 
 ### CI/CD 整合
 ```yaml
-# GitHub Actions
+## GitHub Actions
 - name: Run Tests
   run: npm test -- --coverage
 - name: Upload Coverage

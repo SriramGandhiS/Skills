@@ -23,10 +23,10 @@ if (Date.now() % 1000 === 0) {
 ### writeDataPoint Returns void
 
 ```typescript
-// ❌ Pointless await
+// FAIL: Pointless await
 await env.ANALYTICS.writeDataPoint({...});
 
-// ✅ Fire-and-forget
+// PASS: Fire-and-forget
 env.ANALYTICS.writeDataPoint({...});
 ```
 
@@ -40,7 +40,7 @@ Writes can fail silently. Check tail logs.
 | Hundreds | **Blob** | endpoint, status_code, country |
 
 ```typescript
-// ✅ Correct
+// PASS: Correct
 { blobs: [method, path, status], indexes: [userId] }
 ```
 
@@ -74,12 +74,12 @@ Auto-generated at write time. Store original in blob if needed.
 
 ## Best Practices
 
-✅ Pre-aggregate at high volumes  
-✅ Use index for high-cardinality (millions)  
-✅ Always include time filter in queries  
-✅ Design schema before coding  
+PASS: Pre-aggregate at high volumes
+PASS: Use index for high-cardinality (millions)
+PASS: Always include time filter in queries
+PASS: Design schema before coding
 
-❌ Don't await writeDataPoint  
-❌ Don't use index for low-cardinality  
-❌ Don't query without time range  
-❌ Don't assume all writes succeed
+FAIL: Don't await writeDataPoint
+FAIL: Don't use index for low-cardinality
+FAIL: Don't query without time range
+FAIL: Don't assume all writes succeed

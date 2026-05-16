@@ -20,7 +20,7 @@ success() {
 }
 
 warning() {
-    echo -e "${YELLOW}⚠${NC} $1"
+    echo -e "${YELLOW}WARNING:${NC} $1"
 }
 
 error() {
@@ -33,11 +33,11 @@ if ! command -v helm &> /dev/null; then
     exit 1
 fi
 
-echo "📦 Chart directory: $CHART_DIR"
+echo " Chart directory: $CHART_DIR"
 echo ""
 
 # 1. Check chart structure
-echo "1️⃣  Checking chart structure..."
+echo "1⃣  Checking chart structure..."
 if [ ! -f "$CHART_DIR/Chart.yaml" ]; then
     error "Chart.yaml not found"
     exit 1
@@ -58,7 +58,7 @@ success "templates/ directory exists"
 echo ""
 
 # 2. Lint the chart
-echo "2️⃣  Linting chart..."
+echo "2⃣  Linting chart..."
 if helm lint "$CHART_DIR"; then
     success "Chart passed lint"
 else
@@ -68,7 +68,7 @@ fi
 echo ""
 
 # 3. Check Chart.yaml
-echo "3️⃣  Validating Chart.yaml..."
+echo "3⃣  Validating Chart.yaml..."
 CHART_NAME=$(grep "^name:" "$CHART_DIR/Chart.yaml" | awk '{print $2}')
 CHART_VERSION=$(grep "^version:" "$CHART_DIR/Chart.yaml" | awk '{print $2}')
 APP_VERSION=$(grep "^appVersion:" "$CHART_DIR/Chart.yaml" | awk '{print $2}' | tr -d '"')
@@ -93,7 +93,7 @@ fi
 echo ""
 
 # 4. Test template rendering
-echo "4️⃣  Testing template rendering..."
+echo "4⃣  Testing template rendering..."
 if helm template "$RELEASE_NAME" "$CHART_DIR" > /dev/null 2>&1; then
     success "Templates rendered successfully"
 else
@@ -104,7 +104,7 @@ fi
 echo ""
 
 # 5. Dry-run installation
-echo "5️⃣  Testing dry-run installation..."
+echo "5⃣  Testing dry-run installation..."
 if helm install "$RELEASE_NAME" "$CHART_DIR" --dry-run --debug > /dev/null 2>&1; then
     success "Dry-run installation successful"
 else
@@ -114,7 +114,7 @@ fi
 echo ""
 
 # 6. Check for required Kubernetes resources
-echo "6️⃣  Checking generated resources..."
+echo "6⃣  Checking generated resources..."
 MANIFESTS=$(helm template "$RELEASE_NAME" "$CHART_DIR")
 
 if echo "$MANIFESTS" | grep -q "kind: Deployment"; then
@@ -137,7 +137,7 @@ fi
 echo ""
 
 # 7. Check for security best practices
-echo "7️⃣  Checking security best practices..."
+echo "7⃣  Checking security best practices..."
 if echo "$MANIFESTS" | grep -q "runAsNonRoot: true"; then
     success "Running as non-root user"
 else
@@ -158,7 +158,7 @@ fi
 echo ""
 
 # 8. Check for resource limits
-echo "8️⃣  Checking resource configuration..."
+echo "8⃣  Checking resource configuration..."
 if echo "$MANIFESTS" | grep -q "resources:"; then
     if echo "$MANIFESTS" | grep -q "limits:"; then
         success "Resource limits defined"
@@ -176,7 +176,7 @@ fi
 echo ""
 
 # 9. Check for health probes
-echo "9️⃣  Checking health probes..."
+echo "9⃣  Checking health probes..."
 if echo "$MANIFESTS" | grep -q "livenessProbe:"; then
     success "Liveness probe configured"
 else
@@ -192,7 +192,7 @@ echo ""
 
 # 10. Check dependencies
 if [ -f "$CHART_DIR/Chart.yaml" ] && grep -q "^dependencies:" "$CHART_DIR/Chart.yaml"; then
-    echo "🔟 Checking dependencies..."
+    echo " Checking dependencies..."
     if helm dependency list "$CHART_DIR" > /dev/null 2>&1; then
         success "Dependencies valid"
 
@@ -209,7 +209,7 @@ fi
 
 # 11. Check for values schema
 if [ -f "$CHART_DIR/values.schema.json" ]; then
-    echo "1️⃣1️⃣ Validating values schema..."
+    echo "1⃣1⃣ Validating values schema..."
     success "values.schema.json present"
 
     # Validate schema if jq is available

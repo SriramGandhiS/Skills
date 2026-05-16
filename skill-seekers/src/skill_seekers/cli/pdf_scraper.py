@@ -94,7 +94,7 @@ class PDFToSkillConverter(SkillConverter):
 
     def extract_pdf(self):
         """Extract content from PDF using pdf_extractor_poc.py"""
-        print(f"\n🔍 Extracting from PDF: {self.pdf_path}")
+        print(f"\n Extracting from PDF: {self.pdf_path}")
 
         # Create extractor with options
         extractor = PDFExtractor(
@@ -111,30 +111,30 @@ class PDFToSkillConverter(SkillConverter):
         result = extractor.extract_all()
 
         if not result:
-            print("❌ Extraction failed")
+            print("FAIL: Extraction failed")
             raise RuntimeError(f"Failed to extract PDF: {self.pdf_path}")
 
         # Save extracted data
         with open(self.data_file, "w", encoding="utf-8") as f:
             json.dump(result, f, indent=2, ensure_ascii=False)
 
-        print(f"\n💾 Saved extracted data to: {self.data_file}")
+        print(f"\n Saved extracted data to: {self.data_file}")
         self.extracted_data = result
         return True
 
     def load_extracted_data(self, json_path):
         """Load previously extracted data from JSON"""
-        print(f"\n📂 Loading extracted data from: {json_path}")
+        print(f"\n Loading extracted data from: {json_path}")
 
         with open(json_path, encoding="utf-8") as f:
             self.extracted_data = json.load(f)
 
-        print(f"✅ Loaded {self.extracted_data['total_pages']} pages")
+        print(f"PASS: Loaded {self.extracted_data['total_pages']} pages")
         return True
 
     def categorize_content(self):
         """Categorize pages based on chapters or keywords"""
-        print("\n📋 Categorizing content...")
+        print("\n Categorizing content...")
 
         categorized = {}
 
@@ -150,7 +150,7 @@ class PDFToSkillConverter(SkillConverter):
                 "pages": self.extracted_data.get("pages", []),
             }
 
-            print("✅ Created 1 category (single PDF source)")
+            print("PASS: Created 1 category (single PDF source)")
             print(f"   - {pdf_basename}: {len(categorized[category_key]['pages'])} pages")
             return categorized
 
@@ -238,7 +238,7 @@ class PDFToSkillConverter(SkillConverter):
             # No categorization - use single category
             categorized["content"] = {"title": "Content", "pages": self.extracted_data["pages"]}
 
-        print(f"✅ Created {len(categorized)} categories")
+        print(f"PASS: Created {len(categorized)} categories")
         for _cat_key, cat_data in categorized.items():
             print(f"   - {cat_data['title']}: {len(cat_data['pages'])} pages")
 
@@ -246,7 +246,7 @@ class PDFToSkillConverter(SkillConverter):
 
     def build_skill(self):
         """Build complete skill structure"""
-        print(f"\n🏗️  Building skill: {self.name}")
+        print(f"\n  Building skill: {self.name}")
 
         # Create directories
         os.makedirs(f"{self.skill_dir}/references", exist_ok=True)
@@ -257,7 +257,7 @@ class PDFToSkillConverter(SkillConverter):
         categorized = self.categorize_content()
 
         # Generate reference files
-        print("\n📝 Generating reference files...")
+        print("\n Generating reference files...")
         total_sections = len(categorized)
         section_num = 1
         for cat_key, cat_data in categorized.items():
@@ -270,8 +270,8 @@ class PDFToSkillConverter(SkillConverter):
         # Generate SKILL.md
         self._generate_skill_md(categorized)
 
-        print(f"\n✅ Skill built successfully: {self.skill_dir}/")
-        print(f"\n📦 Next step: Package with: skill-seekers package {self.skill_dir}/")
+        print(f"\nPASS: Skill built successfully: {self.skill_dir}/")
+        print(f"\n Next step: Package with: skill-seekers package {self.skill_dir}/")
 
     def _generate_reference_file(self, _cat_key, cat_data, section_num, total_sections):
         """Generate a reference markdown file for a category"""
@@ -308,7 +308,7 @@ class PDFToSkillConverter(SkillConverter):
 
             for page in cat_data["pages"]:
                 # Add page source marker for traceability
-                f.write(f"---\n\n**📄 Source: PDF Page {page['page_number']}**\n\n")
+                f.write(f"---\n\n** Source: PDF Page {page['page_number']}**\n\n")
 
                 # Add headings as section markers
                 if page.get("headings"):
@@ -432,7 +432,7 @@ class PDFToSkillConverter(SkillConverter):
             f.write(f"{self.description}\n\n")
 
             # Enhanced "When to Use" section
-            f.write("## 💡 When to Use This Skill\n\n")
+            f.write("##  When to Use This Skill\n\n")
             f.write("Use this skill when you need to:\n")
             f.write(f"- Understand {self.name} concepts and fundamentals\n")
             f.write("- Look up API references and technical specifications\n")
@@ -441,7 +441,7 @@ class PDFToSkillConverter(SkillConverter):
             f.write("- Explore the complete documentation structure\n\n")
 
             # Chapter Overview (PDF structure)
-            f.write("## 📖 Chapter Overview\n\n")
+            f.write("##  Chapter Overview\n\n")
             total_pages = self.extracted_data.get("total_pages", 0)
             f.write(f"**Total Pages:** {total_pages}\n\n")
             f.write("**Content Breakdown:**\n\n")
@@ -454,7 +454,7 @@ class PDFToSkillConverter(SkillConverter):
             f.write(self._format_key_concepts())
 
             # Quick Reference with patterns
-            f.write("## ⚡ Quick Reference\n\n")
+            f.write("##  Quick Reference\n\n")
             f.write(self._format_patterns_from_content())
 
             # Enhanced code examples section (top 15, grouped by language)
@@ -467,7 +467,7 @@ class PDFToSkillConverter(SkillConverter):
             top_code = all_code[:15]
 
             if top_code:
-                f.write("## 📝 Code Examples\n\n")
+                f.write("##  Code Examples\n\n")
                 f.write("*High-quality examples extracted from documentation*\n\n")
 
                 # Group by language
@@ -499,7 +499,7 @@ class PDFToSkillConverter(SkillConverter):
                         f.write("\n```\n\n")
 
             # Statistics
-            f.write("## 📊 Documentation Statistics\n\n")
+            f.write("##  Documentation Statistics\n\n")
             f.write(f"- **Total Pages**: {total_pages}\n")
             total_code_blocks = self.extracted_data.get("total_code_blocks", 0)
             f.write(f"- **Code Blocks**: {total_code_blocks}\n")
@@ -525,7 +525,7 @@ class PDFToSkillConverter(SkillConverter):
                 f.write(f"- Valid Code Blocks: {valid_blocks}\n\n")
 
             # Navigation
-            f.write("## 🗺️ Navigation\n\n")
+            f.write("##  Navigation\n\n")
             f.write("**Reference Files:**\n\n")
             for _cat_key, cat_data in categorized.items():
                 cat_file = self._sanitize_filename(cat_data["title"])
@@ -556,7 +556,7 @@ class PDFToSkillConverter(SkillConverter):
         if not all_headings:
             return ""
 
-        content = "## 🔑 Key Concepts\n\n"
+        content = "##  Key Concepts\n\n"
         content += "*Main topics covered in this documentation*\n\n"
 
         # Group by level and show top concepts

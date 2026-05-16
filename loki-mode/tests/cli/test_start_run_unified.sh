@@ -1,14 +1,12 @@
 #!/usr/bin/env bash
 # Test: Unified `loki start` entrypoint (v6.84.0)
-#
-# Verifies the unification of `loki start` and `loki run`:
-#  - `loki start path/to/prd.md` is PRD mode
-#  - `loki start https://github.com/x/y/issues/1` is ISSUE mode
-#  - `loki run 123` still works and prints deprecation notice
-#  - `loki start --help` mentions both modes
-#  - detect_arg_type() classifies inputs correctly (unit tests)
-#
-# Network-dependent behaviors (actual issue fetching) are only exercised far
+# # Verifies the unification of `loki start` and `loki run`:
+# - `loki start path/to/prd.md` is PRD mode
+# - `loki start https://github.com/x/y/issues/1` is ISSUE mode
+# - `loki run 123` still works and prints deprecation notice
+# - `loki start --help` mentions both modes
+# - detect_arg_type() classifies inputs correctly (unit tests)
+# # Network-dependent behaviors (actual issue fetching) are only exercised far
 # enough to confirm dispatch; we do not require external connectivity for
 # PASS/FAIL verdicts.
 
@@ -217,8 +215,7 @@ PRD
 # --budget=0.00 to short-circuit via an auto-pause path? No. Simplest: call
 # with a non-existent provider flag to fail before run.sh boots, but still
 # capture whether it entered PRD mode.
-#
-# Actually easiest: check that "Issue provider:" text does NOT appear. If it
+# # Actually easiest: check that "Issue provider:" text does NOT appear. If it
 # enters PRD mode, the output contains "Starting Loki Mode..." or requires a
 # provider check. If it entered issue mode, it would say "Issue provider:".
 prd_out=$(timeout 5 "$LOKI" start "$TEST_PRD" --provider nonexistent-provider 2>&1 || true)

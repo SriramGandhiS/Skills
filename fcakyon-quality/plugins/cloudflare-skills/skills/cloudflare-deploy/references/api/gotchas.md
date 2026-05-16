@@ -30,12 +30,12 @@ const limit = pLimit(10); // Max 10 concurrent requests
 **Problem:** Go SDK requires `cloudflare.F()` wrapper for optional fields.
 
 ```go
-// ❌ WRONG - Won't compile or send field
+// FAIL: WRONG - Won't compile or send field
 client.Zones.New(ctx, cloudflare.ZoneNewParams{
     Name: "example.com",
 })
 
-// ✅ CORRECT
+// PASS: CORRECT
 client.Zones.New(ctx, cloudflare.ZoneNewParams{
     Name: cloudflare.F("example.com"),
     Account: cloudflare.F(cloudflare.ZoneNewParamsAccount{
@@ -51,12 +51,12 @@ client.Zones.New(ctx, cloudflare.ZoneNewParams{
 **Problem:** Using sync client in async context or vice versa.
 
 ```python
-# ❌ WRONG - Can't await sync client
+# FAIL: WRONG - Can't await sync client
 from cloudflare import Cloudflare
 client = Cloudflare()
 await client.zones.list()  # TypeError
 
-# ✅ CORRECT - Use AsyncCloudflare
+# PASS: CORRECT - Use AsyncCloudflare
 from cloudflare import AsyncCloudflare
 client = AsyncCloudflare()
 await client.zones.list()
@@ -88,10 +88,10 @@ await client.zones.list()
 **Solution:** Use auto-pagination iterators.
 
 ```typescript
-// ❌ WRONG - Only first page (20 items)
+// FAIL: WRONG - Only first page (20 items)
 const page = await client.zones.list();
 
-// ✅ CORRECT - All results
+// PASS: CORRECT - All results
 const zones = [];
 for await (const zone of client.zones.list()) {
   zones.push(zone);
@@ -107,11 +107,11 @@ for await (const zone of client.zones.list()) {
 **Solution:** Use bindings instead of REST API in Workers (see ../bindings/).
 
 ```typescript
-// ❌ WRONG - REST API in Workers (counts against rate limit)
+// FAIL: WRONG - REST API in Workers (counts against rate limit)
 const client = new Cloudflare({ apiToken: env.CLOUDFLARE_API_TOKEN });
 const zones = await client.zones.list();
 
-// ✅ CORRECT - Use bindings (no rate limit)
+// PASS: CORRECT - Use bindings (no rate limit)
 // Access via env.MY_BINDING
 ```
 

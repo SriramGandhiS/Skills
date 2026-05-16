@@ -54,7 +54,7 @@ em grau.
 
 Faltava também a evolução do meu pensamento sobre scaling. Eu não acredito mais que "scale
 is all you need" da forma como acreditava em 2019. Acredito que scaling é necessário mas não
-suficiente — e 
+suficiente — e
 
 ## Sumário Rápido
 

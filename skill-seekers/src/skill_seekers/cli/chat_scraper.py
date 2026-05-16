@@ -326,13 +326,13 @@ class ChatToSkillConverter(SkillConverter):
 
         # Determine mode
         if self.export_path:
-            print(f"\n🔍 Extracting {self.platform} chat from export: {self.export_path}")
+            print(f"\n Extracting {self.platform} chat from export: {self.export_path}")
             if self.platform == "slack":
                 messages = self._extract_slack_export()
             else:
                 messages = self._extract_discord_export()
         elif self.token:
-            print(f"\n🔍 Fetching {self.platform} chat via API...")
+            print(f"\n Fetching {self.platform} chat via API...")
             if self.platform == "slack":
                 _check_slack_deps()
                 messages = self._extract_slack_api()
@@ -347,7 +347,7 @@ class ChatToSkillConverter(SkillConverter):
 
         if not messages:
             logger.warning("No messages extracted from %s source", self.platform)
-            print("   ⚠️  No messages were extracted.")
+            print("   WARNING:  No messages were extracted.")
 
         # Identify threads and extract enrichment
         threads = self._identify_threads(messages)
@@ -390,10 +390,10 @@ class ChatToSkillConverter(SkillConverter):
         with open(self.data_file, "w", encoding="utf-8") as f:
             json.dump(result_data, f, indent=2, ensure_ascii=False, default=str)
 
-        print(f"\n💾 Saved extracted data to: {self.data_file}")
+        print(f"\n Saved extracted data to: {self.data_file}")
         self.extracted_data = result_data
         print(
-            f"✅ Extracted {total_messages} messages across "
+            f"PASS: Extracted {total_messages} messages across "
             f"{len(channels_found)} channel(s), "
             f"{total_threads} threads, "
             f"{total_code_snippets} code snippets"
@@ -413,11 +413,11 @@ class ChatToSkillConverter(SkillConverter):
         Returns:
             True on success.
         """
-        print(f"\n📂 Loading extracted data from: {json_path}")
+        print(f"\n Loading extracted data from: {json_path}")
         with open(json_path, encoding="utf-8") as f:
             self.extracted_data = json.load(f)
         total = self.extracted_data.get("total_sections", len(self.extracted_data.get("pages", [])))
-        print(f"✅ Loaded {total} sections")
+        print(f"PASS: Loaded {total} sections")
         return True
 
     # ------------------------------------------------------------------
@@ -434,14 +434,14 @@ class ChatToSkillConverter(SkillConverter):
         Returns:
             Dict mapping category keys to dicts with 'title' and 'pages'.
         """
-        print("\n📋 Categorizing content...")
+        print("\n Categorizing content...")
 
         categorized: dict[str, dict] = {}
         sections = self.extracted_data.get("pages", [])
 
         if not sections:
             categorized["content"] = {"title": "Chat Content", "pages": []}
-            print("✅ Created 0 categories (no content)")
+            print("PASS: Created 0 categories (no content)")
             return categorized
 
         # Group sections by channel name
@@ -492,7 +492,7 @@ class ChatToSkillConverter(SkillConverter):
         if not categorized:
             categorized["content"] = {"title": "Chat Content", "pages": sections}
 
-        print(f"✅ Created {len(categorized)} categories")
+        print(f"PASS: Created {len(categorized)} categories")
         for cat_data in categorized.values():
             print(f"   - {cat_data['title']}: {len(cat_data['pages'])} sections")
 
@@ -512,7 +512,7 @@ class ChatToSkillConverter(SkillConverter):
         - scripts/ — reserved for future use
         - assets/ — reserved for future use
         """
-        print(f"\n🏗️  Building skill: {self.name}")
+        print(f"\n  Building skill: {self.name}")
 
         os.makedirs(f"{self.skill_dir}/references", exist_ok=True)
         os.makedirs(f"{self.skill_dir}/scripts", exist_ok=True)
@@ -520,7 +520,7 @@ class ChatToSkillConverter(SkillConverter):
 
         categorized = self.categorize_content()
 
-        print("\n📝 Generating reference files...")
+        print("\n Generating reference files...")
         total_categories = len(categorized)
         for section_num, (cat_key, cat_data) in enumerate(categorized.items(), 1):
             self._generate_reference_file(cat_key, cat_data, section_num, total_categories)
@@ -528,8 +528,8 @@ class ChatToSkillConverter(SkillConverter):
         self._generate_index(categorized)
         self._generate_skill_md(categorized)
 
-        print(f"\n✅ Skill built successfully: {self.skill_dir}/")
-        print(f"\n📦 Next step: Package with: skill-seekers package {self.skill_dir}/")
+        print(f"\nPASS: Skill built successfully: {self.skill_dir}/")
+        print(f"\n Next step: Package with: skill-seekers package {self.skill_dir}/")
 
     # ------------------------------------------------------------------
     # Slack export extraction
@@ -598,7 +598,7 @@ class ChatToSkillConverter(SkillConverter):
                     if parsed:
                         messages.append(parsed)
 
-            print(f"   📁 #{channel_name}: {len(json_files)} day file(s)")
+            print(f"    #{channel_name}: {len(json_files)} day file(s)")
 
         print(f"   Total messages parsed: {len(messages)}")
         return messages
@@ -699,7 +699,7 @@ class ChatToSkillConverter(SkillConverter):
                 ch_name = channel_names.get(ch_id, ch_id)
                 ch_messages = self._fetch_slack_channel_messages(client, ch_id, ch_name)
                 messages.extend(ch_messages)
-                print(f"   📡 #{ch_name}: {len(ch_messages)} messages")
+                print(f"    #{ch_name}: {len(ch_messages)} messages")
 
         except SlackApiError as e:
             raise RuntimeError(
@@ -821,7 +821,7 @@ class ChatToSkillConverter(SkillConverter):
                 if parsed:
                     messages.append(parsed)
 
-            print(f"   📁 #{channel_name}: {len(raw_messages)} messages")
+            print(f"    #{channel_name}: {len(raw_messages)} messages")
 
         print(f"   Total messages parsed: {len(messages)}")
         return messages
@@ -908,7 +908,7 @@ class ChatToSkillConverter(SkillConverter):
                     fetched += len(batch)
                     before = batch[-1]["id"]
 
-            print(f"   📡 #{channel_name}: {len(messages)} messages")
+            print(f"    #{channel_name}: {len(messages)} messages")
             return messages
 
         loop = asyncio.new_event_loop()
@@ -1448,7 +1448,7 @@ class ChatToSkillConverter(SkillConverter):
                 heading = section.get("heading", "")
                 msg_count = section.get("message_count", 0)
 
-                f.write(f"---\n\n**📄 Section {sec_num}**")
+                f.write(f"---\n\n** Section {sec_num}**")
                 f.write(f" ({msg_count} messages)\n\n")
 
                 if heading:
@@ -1556,7 +1556,7 @@ class ChatToSkillConverter(SkillConverter):
             f.write(f"{self.description}\n\n")
 
             # Chat metadata
-            f.write(f"## 📋 {platform_label} Chat Information\n\n")
+            f.write(f"##  {platform_label} Chat Information\n\n")
             f.write(f"**Platform:** {platform_label}\n\n")
             f.write(f"**Source:** {self.extracted_data.get('source', 'N/A')}\n\n")
             f.write(f"**Total Messages:** {meta.get('total_messages', 0)}\n\n")
@@ -1566,7 +1566,7 @@ class ChatToSkillConverter(SkillConverter):
                 f.write(f"**Channels:** {', '.join(f'#{c}' for c in channels)}\n\n")
 
             # When to Use
-            f.write("## 💡 When to Use This Skill\n\n")
+            f.write("##  When to Use This Skill\n\n")
             f.write("Use this skill when you need to:\n")
             f.write(f"- Find solutions discussed in {self.name} chat history\n")
             f.write("- Reference code snippets shared by team members\n")
@@ -1576,7 +1576,7 @@ class ChatToSkillConverter(SkillConverter):
 
             # Section overview
             total_sections = self.extracted_data.get("total_sections", 0)
-            f.write(f"## 📖 Content Overview\n\n")
+            f.write(f"##  Content Overview\n\n")
             f.write(f"**Total Sections:** {total_sections}\n\n")
             f.write("**Content Breakdown:**\n\n")
             for cd in categorized.values():
@@ -1589,7 +1589,7 @@ class ChatToSkillConverter(SkillConverter):
             # Top code examples
             code_snippets = self.extracted_data.get("code_snippets", [])
             if code_snippets:
-                f.write("## 📝 Top Code Snippets\n\n")
+                f.write("##  Top Code Snippets\n\n")
                 f.write("*High-quality code shared in chat*\n\n")
 
                 by_lang: dict[str, list] = {}
@@ -1618,7 +1618,7 @@ class ChatToSkillConverter(SkillConverter):
             # Shared links
             links = self.extracted_data.get("links", [])
             if links:
-                f.write(f"## 🔗 Shared Links ({len(links)})\n\n")
+                f.write(f"##  Shared Links ({len(links)})\n\n")
                 f.write("*Key resources shared in chat*\n\n")
                 for link in links[:20]:
                     url = link.get("url", "")
@@ -1638,7 +1638,7 @@ class ChatToSkillConverter(SkillConverter):
                 f.write("\n")
 
             # Statistics
-            f.write(f"## 📊 Chat Statistics\n\n")
+            f.write(f"##  Chat Statistics\n\n")
             f.write(f"- **Total Messages**: {meta.get('total_messages', 0)}\n")
             f.write(f"- **Total Threads**: {meta.get('total_threads', 0)}\n")
             f.write(f"- **Code Snippets**: {meta.get('total_code_snippets', 0)}\n")
@@ -1661,7 +1661,7 @@ class ChatToSkillConverter(SkillConverter):
                 f.write("\n")
 
             # Navigation
-            f.write("## 🗺️ Navigation\n\n")
+            f.write("##  Navigation\n\n")
             f.write("**Reference Files:**\n\n")
             for cd in categorized.values():
                 cat_file = self._sanitize_filename(cd["title"])
@@ -1702,7 +1702,7 @@ class ChatToSkillConverter(SkillConverter):
         if not topic_counts:
             return ""
 
-        content = "## 🔑 Key Discussion Topics\n\n"
+        content = "##  Key Discussion Topics\n\n"
         content += "*Topics frequently discussed in chat*\n\n"
 
         for topic, count in sorted(topic_counts.items(), key=lambda x: x[1], reverse=True):

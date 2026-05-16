@@ -29,7 +29,6 @@ claudio install [flags]
 : Show what would be done without making changes (simulation mode)
 : Useful for testing installation before committing changes
 
-
 **--quiet, -q** `boolean` (default: false)
 : Suppress output (no progress messages)
 : Shows only essential information and errors
@@ -192,7 +191,6 @@ claudio uninstall [flags]
 : Show what would be removed without making changes (simulation mode)
 : Lists hooks that would be removed
 
-
 **--quiet, -q** `boolean` (default: false)
 : Suppress output (no progress messages)
 : Shows only essential information and errors
@@ -307,7 +305,7 @@ Claudio automatically discovers Claude Code settings:
 
 **User Scope:**
 - macOS: `~/Library/Application Support/claude-code/settings.json`
-- Linux: `~/.config/claude-code/settings.json`  
+- Linux: `~/.config/claude-code/settings.json`
 - Windows: `%APPDATA%\claude-code\settings.json`
 
 **Project Scope:**

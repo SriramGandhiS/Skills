@@ -577,7 +577,7 @@ For each conflict, reconcile the differences intelligently:
 
 3. **Add implementation notes for discrepancies**
    - If docs differ from code, explain the difference
-   - Example: "⚠️ The `snap` parameter exists in code but is not documented"
+   - Example: "WARNING: The `snap` parameter exists in code but is not documented"
 
 4. **Flag missing APIs clearly**
    - Missing in docs → Add [UNDOCUMENTED] tag
@@ -686,15 +686,15 @@ Return ONLY the JSON, no explanation."""
                     merged = json.loads(json_match.group())
                     with open(merged_file, "w") as f:
                         json.dump(merged, f, indent=2)
-                    logger.info("✅ AI merge complete — merged_apis.json written")
+                    logger.info("PASS: AI merge complete — merged_apis.json written")
                     return
                 except json.JSONDecodeError:
-                    logger.warning("⚠️  Could not parse JSON from AI response")
+                    logger.warning("WARNING:  Could not parse JSON from AI response")
 
             # Fallback: write raw response
             with open(merged_file, "w") as f:
                 f.write(response)
-            logger.info("✅ AI merge complete (raw response saved)")
+            logger.info("PASS: AI merge complete (raw response saved)")
         else:
             raise RuntimeError("AI agent returned no response for merge")
 
@@ -800,13 +800,13 @@ if __name__ == "__main__":
 
     # Print summary
     summary = merged.get("summary", {})
-    print(f"\n✅ Merge complete ({merged.get('merge_mode')})")
+    print(f"\nPASS: Merge complete ({merged.get('merge_mode')})")
     print(f"   Total APIs: {summary.get('total_apis', 0)}")
     print(f"   Matched: {summary.get('matched', 0)}")
     print(f"   Docs only: {summary.get('docs_only', 0)}")
     print(f"   Code only: {summary.get('code_only', 0)}")
     print(f"   Conflicts: {summary.get('conflict', 0)}")
-    print(f"\n📄 Saved to: {args.output}")
+    print(f"\n Saved to: {args.output}")
 
 
 # Backward compatibility alias

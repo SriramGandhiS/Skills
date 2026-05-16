@@ -138,11 +138,11 @@ Memory (GB) ≈ (Model params in billions) × 4
 ```
 
 **Examples:**
-- Qwen2.5-0.5B full: ~10GB ✅ fits t4-small
-- Qwen2.5-1.5B full: ~30GB ❌ exceeds most GPUs
-- Qwen2.5-1.5B LoRA: ~6GB ✅ fits t4-small
-- Qwen2.5-7B full: ~140GB ❌ not feasible
-- Qwen2.5-7B LoRA: ~28GB ✅ fits a10g-large
+- Qwen2.5-0.5B full: ~10GB PASS: fits t4-small
+- Qwen2.5-1.5B full: ~30GB FAIL: exceeds most GPUs
+- Qwen2.5-1.5B LoRA: ~6GB PASS: fits t4-small
+- Qwen2.5-7B full: ~140GB FAIL: not feasible
+- Qwen2.5-7B LoRA: ~28GB PASS: fits a10g-large
 
 ### Memory Optimization
 

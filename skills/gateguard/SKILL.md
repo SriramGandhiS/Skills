@@ -1,4 +1,4 @@
-﻿---
+---
 name: gateguard
 description: Fact-forcing gate that blocks Edit/Write/Bash (including MultiEdit) and demands concrete investigation (importers, data schemas, user instruction) before allowing the action. Measurably improves output quality by +2.25 points vs ungated agents.
 origin: community
@@ -73,7 +73,7 @@ Before creating {file_path}, present these facts:
 
 ### Destructive Bash Gate (every destructive command)
 
-Triggers on: `rm -rf`, `git reset --hard`, `git push --force`, `drop table`, etc.
+Triggers on: `rm -rf`,`git reset --hard`,`git push --force`,`drop table`, etc.
 
 ```
 1. List all files/data this command will modify or delete
@@ -117,7 +117,7 @@ This adds `.gateguard.yml` for per-project configuration (custom messages, ignor
 
 - Let the gate fire naturally. Don't try to pre-answer the gate questions â€” the investigation itself is what improves quality.
 - Customize gate messages for your domain. If your project has specific conventions, add them to the gate prompts.
-- Use `.gateguard.yml` to ignore paths like `.venv/`, `node_modules/`, `.git/`.
+- Use `.gateguard.yml`to ignore paths like`.venv/`,`node_modules/`,`.git/`.
 
 ## Related Skills
 

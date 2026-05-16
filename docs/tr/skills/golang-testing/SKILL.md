@@ -524,19 +524,19 @@ func FuzzCompare(f *testing.F) {
 ### Coverage Çalıştırma
 
 ```bash
-# Temel coverage
+## Temel coverage
 go test -cover ./...
 
-# Coverage profili oluştur
+## Coverage profili oluştur
 go test -coverprofile=coverage.out ./...
 
-# Coverage'ı tarayıcıda görüntüle
+## Coverage'ı tarayıcıda görüntüle
 go tool cover -html=coverage.out
 
-# Fonksiyona göre coverage görüntüle
+## Fonksiyona göre coverage görüntüle
 go tool cover -func=coverage.out
 
-# Race detection ile coverage
+## Race detection ile coverage
 go test -race -coverprofile=coverage.out ./...
 ```
 
@@ -644,37 +644,37 @@ func TestAPIHandler(t *testing.T) {
 ## Test Komutları
 
 ```bash
-# Tüm testleri çalıştır
+## Tüm testleri çalıştır
 go test ./...
 
-# Verbose çıktı ile testleri çalıştır
+## Verbose çıktı ile testleri çalıştır
 go test -v ./...
 
-# Belirli bir testi çalıştır
+## Belirli bir testi çalıştır
 go test -run TestAdd ./...
 
-# Pattern ile eşleşen testleri çalıştır
+## Pattern ile eşleşen testleri çalıştır
 go test -run "TestUser/Create" ./...
 
-# Race detector ile testleri çalıştır
+## Race detector ile testleri çalıştır
 go test -race ./...
 
-# Coverage ile testleri çalıştır
+## Coverage ile testleri çalıştır
 go test -cover -coverprofile=coverage.out ./...
 
-# Sadece kısa testleri çalıştır
+## Sadece kısa testleri çalıştır
 go test -short ./...
 
-# Timeout ile testleri çalıştır
+## Timeout ile testleri çalıştır
 go test -timeout 30s ./...
 
-# Benchmark'ları çalıştır
+## Benchmark'ları çalıştır
 go test -bench=. -benchmem ./...
 
-# Fuzzing çalıştır
+## Fuzzing çalıştır
 go test -fuzz=FuzzParse -fuzztime=30s ./...
 
-# Test çalışma sayısı (flaky test tespiti için)
+## Test çalışma sayısı (flaky test tespiti için)
 go test -count=10 ./...
 ```
 
@@ -699,7 +699,7 @@ go test -count=10 ./...
 ## CI/CD ile Entegrasyon
 
 ```yaml
-# GitHub Actions örneği
+## GitHub Actions örneği
 test:
   runs-on: ubuntu-latest
   steps:

@@ -1,4 +1,4 @@
-﻿---
+---
 name: mutual-mapper
 description: Maps the user's social graph (X following, LinkedIn connections) against scored prospects to find mutual connections and rank them by introduction potential.
 tools:

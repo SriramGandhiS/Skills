@@ -219,7 +219,7 @@ const securityHeaders = [
       style-src 'self' 'unsafe-inline';
       img-src 'self' data: https:;
       font-src 'self';
-      connect-src 'self' https://api.example.com;
+      connect-src 'self' <https://api.example.com;>
     `.replace(/\s{2,}/g, ' ').trim()
   }
 ]
@@ -392,25 +392,25 @@ async function verifyTransaction(transaction: Transaction) {
 
 #### Düzenli Güncellemeler
 ```bash
-# Güvenlik açıklarını kontrol et
+## Güvenlik açıklarını kontrol et
 npm audit
 
-# Otomatik düzeltilebilir sorunları düzelt
+## Otomatik düzeltilebilir sorunları düzelt
 npm audit fix
 
-# Bağımlılıkları güncelle
+## Bağımlılıkları güncelle
 npm update
 
-# Eski paketleri kontrol et
+## Eski paketleri kontrol et
 npm outdated
 ```
 
 #### Lock Dosyaları
 ```bash
-# HER ZAMAN lock dosyalarını commit et
+## HER ZAMAN lock dosyalarını commit et
 git add package-lock.json
 
-# CI/CD'de tekrarlanabilir build'ler için kullan
+## CI/CD'de tekrarlanabilir build'ler için kullan
 npm ci  # npm install yerine
 ```
 

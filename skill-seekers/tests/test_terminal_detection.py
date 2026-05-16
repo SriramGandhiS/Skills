@@ -286,7 +286,7 @@ class TestDetectTerminalApp(unittest.TestCase):
             output = captured_output.getvalue()
 
             # Should contain warning about unknown terminal
-            self.assertIn("⚠️", output)
+            self.assertIn("WARNING:", output)
             self.assertIn("unknown TERM_PROGRAM", output)
             self.assertIn("vscode", output)
             self.assertIn("Using Terminal.app as fallback", output)

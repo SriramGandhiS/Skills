@@ -126,7 +126,7 @@ def load_metadata(
         current_readme = file.read()
 
     existing_sync_metadata = parse_existing_sync_metadata(current_readme)
-    current_star_match = re.search(r"⭐%20([\d%2C\+]+)%20Stars", current_readme)
+    current_star_match = re.search(r"%20([\d%2C\+]+)%20Stars", current_readme)
     current_stars = None
     if current_star_match:
         compact = current_star_match.group(1).replace("%2C", "").replace("%2B", "")
@@ -186,9 +186,9 @@ def apply_metadata(content: str, metadata: dict) -> str:
     )
 
     content = re.sub(
-        r"^# 🌌 Antigravity Awesome Skills: .*?$",
+        r"^#  Antigravity Awesome Skills: .*?$",
         (
-            f"# 🌌 Antigravity Awesome Skills: {total_skills_label} "
+            f"#  Antigravity Awesome Skills: {total_skills_label} "
             "Agentic Skills for Claude Code, Gemini CLI, Cursor, Copilot & More"
         ),
         content,
@@ -207,8 +207,8 @@ def apply_metadata(content: str, metadata: dict) -> str:
         flags=re.MULTILINE,
     )
     content = re.sub(
-        r"https://img\.shields\.io/badge/⭐%20[\dA-Fa-f%,\+]+%20Stars-gold\?style=for-the-badge",
-        f"https://img.shields.io/badge/⭐%20{star_badge_count}%20Stars-gold?style=for-the-badge",
+        r"https://img\.shields\.io/badge/%20[\dA-Fa-f%,\+]+%20Stars-gold\?style=for-the-badge",
+        f"https://img.shields.io/badge/%20{star_badge_count}%20Stars-gold?style=for-the-badge",
         content,
         count=1,
     )
@@ -233,8 +233,8 @@ def apply_metadata(content: str, metadata: dict) -> str:
         flags=re.MULTILINE,
     )
     content = re.sub(
-        r"\[📚 Browse \d[\d,]*\+ Skills\]\(#browse-[^)]+\)",
-        f"[📚 Browse {total_skills_label} Skills](#browse-{total_skills}-skills)",
+        r"\[ Browse \d[\d,]*\+ Skills\]\(#browse-[^)]+\)",
+        f"[ Browse {total_skills_label} Skills](#browse-{total_skills}-skills)",
         content,
         count=1,
     )
@@ -245,8 +245,8 @@ def apply_metadata(content: str, metadata: dict) -> str:
         count=1,
     )
     content = re.sub(
-        r"> \*\*🌟 .*? GitHub Stars Milestone!\*\*",
-        f"> **🌟 {star_milestone} GitHub Stars Milestone!**",
+        r"> \*\* .*? GitHub Stars Milestone!\*\*",
+        f"> ** {star_milestone} GitHub Stars Milestone!**",
         content,
         count=1,
     )
@@ -279,26 +279,26 @@ def update_readme(dry_run: bool = False, refresh_volatile: bool = False) -> dict
     readme_path = os.path.join(base_dir, "README.md")
     metadata = load_metadata(base_dir, refresh_volatile=refresh_volatile)
 
-    print(f"📖 Reading README from: {readme_path}")
-    print(f"🔢 Total skills found: {metadata['total_skills']}")
-    print(f"🏷️ Version found: {metadata['version']}")
+    print(f" Reading README from: {readme_path}")
+    print(f" Total skills found: {metadata['total_skills']}")
+    print(f" Version found: {metadata['version']}")
     if metadata["used_live_star_count"]:
-        print(f"⭐ Live GitHub stars found: {metadata['stars']}")
+        print(f" Live GitHub stars found: {metadata['stars']}")
     else:
-        print(f"⭐ Using existing README star count: {metadata['stars']}")
+        print(f" Using existing README star count: {metadata['stars']}")
 
     with open(readme_path, "r", encoding="utf-8") as file:
         content = file.read()
 
     updated_content = apply_metadata(content, metadata)
     if dry_run:
-        print("🧪 Dry run enabled; README.md not written.")
+        print(" Dry run enabled; README.md not written.")
         return metadata
 
     with open(readme_path, "w", encoding="utf-8", newline="\n") as file:
         file.write(updated_content)
 
-    print("✅ README.md updated successfully.")
+    print("PASS: README.md updated successfully.")
     return metadata
 
 

@@ -25,7 +25,7 @@ After training models with TRL on Hugging Face Jobs, convert them to **GGUF form
 
 Based on production testing, these are **essential** for reliable conversion:
 
-### 1. ✅ Install Build Tools FIRST
+### 1. PASS: Install Build Tools FIRST
 **Before cloning llama.cpp**, install build dependencies:
 ```python
 subprocess.run(["apt-get", "update", "-qq"], check=True, capture_output=True)
@@ -34,7 +34,7 @@ subprocess.run(["apt-get", "install", "-y", "-qq", "build-essential", "cmake"], 
 
 **Why:** The quantization tool requires gcc and cmake. Installing after cloning doesn't help.
 
-### 2. ✅ Use CMake (Not Make)
+### 2. PASS: Use CMake (Not Make)
 **Build the quantize tool with CMake:**
 ```python
 # Create build directory
@@ -58,27 +58,27 @@ quantize_bin = "/tmp/llama.cpp/build/bin/llama-quantize"
 
 **Why:** CMake is more reliable than `make` and produces consistent binary paths.
 
-### 3. ✅ Include All Dependencies
+### 3. PASS: Include All Dependencies
 **PEP 723 header must include:**
 ```python
 # /// script
 # dependencies = [
-#     "transformers>=4.36.0",
-#     "peft>=0.7.0",
-#     "torch>=2.0.0",
-#     "accelerate>=0.24.0",
-#     "huggingface_hub>=0.20.0",
-#     "sentencepiece>=0.1.99",  # Required for tokenizer
-#     "protobuf>=3.20.0",        # Required for tokenizer
-#     "numpy",
-#     "gguf",
+# "transformers>=4.36.0",
+# "peft>=0.7.0",
+# "torch>=2.0.0",
+# "accelerate>=0.24.0",
+# "huggingface_hub>=0.20.0",
+# "sentencepiece>=0.1.99",  # Required for tokenizer
+# "protobuf>=3.20.0",        # Required for tokenizer
+# "numpy",
+# "gguf",
 # ]
 # ///
 ```
 
 **Why:** `sentencepiece` and `protobuf` are critical for tokenizer conversion. Missing them causes silent failures.
 
-### 4. ✅ Verify Names Before Use
+### 4. PASS: Verify Names Before Use
 **Always verify repos exist:**
 ```python
 # Before submitting job, verify:
@@ -93,12 +93,12 @@ hub_repo_details([BASE_MODEL], repo_type="model")
 See `scripts/convert_to_gguf.py` for the complete, production-ready script.
 
 **Key features:**
-- ✅ All dependencies in PEP 723 header
-- ✅ Build tools installed automatically
-- ✅ CMake build process (reliable)
-- ✅ Comprehensive error handling
-- ✅ Environment variable configuration
-- ✅ Automatic README generation
+- PASS: All dependencies in PEP 723 header
+- PASS: Build tools installed automatically
+- PASS: CMake build process (reliable)
+- PASS: Comprehensive error handling
+- PASS: Environment variable configuration
+- PASS: Automatic README generation
 
 ## Quick Conversion Job
 
@@ -192,7 +192,7 @@ ollama run my-model
 
 ## Best Practices
 
-### ✅ DO:
+### PASS: DO:
 1. **Verify repos exist** before submitting jobs (use `hub_repo_details`)
 2. **Install build tools FIRST** before cloning llama.cpp
 3. **Use CMake** for building quantize tool (not make)
@@ -201,7 +201,7 @@ ollama run my-model
 6. **Test on known models** before production use
 7. **Use A10G GPU** for faster conversion
 
-### ❌ DON'T:
+### FAIL: DON'T:
 1. **Assume repos exist** - Always verify with hub tools
 2. **Use make** instead of CMake - Less reliable
 3. **Remove dependencies** to "simplify" - They're all needed

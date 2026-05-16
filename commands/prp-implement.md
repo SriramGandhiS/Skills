@@ -21,20 +21,20 @@ Execute a plan file step-by-step with continuous validation. Every change is ver
 
 | File Exists | Package Manager | Runner |
 |---|---|---|
-| `bun.lockb` | bun | `bun run` |
-| `pnpm-lock.yaml` | pnpm | `pnpm run` |
-| `yarn.lock` | yarn | `yarn` |
-| `package-lock.json` | npm | `npm run` |
-| `pyproject.toml` or `requirements.txt` | uv / pip | `uv run` or `python -m` |
-| `Cargo.toml` | cargo | `cargo` |
-| `go.mod` | go | `go` |
+| `bun.lockb`| bun |`bun run` |
+| `pnpm-lock.yaml`| pnpm |`pnpm run` |
+| `yarn.lock`| yarn |`yarn` |
+| `package-lock.json`| npm |`npm run` |
+| `pyproject.toml`or`requirements.txt`| uv / pip |`uv run`or`python -m` |
+| `Cargo.toml`| cargo |`cargo` |
+| `go.mod`| go |`go` |
 
 ### Validation Scripts
 
 Check `package.json` (or equivalent) for available scripts:
 
 ```bash
-# For Node.js projects
+## For Node.js projects
 cat package.json | grep -A 20 '"scripts"'
 ```
 
@@ -136,10 +136,10 @@ Run all validation levels from the plan. Fix issues at each level before proceed
 ### Level 1: Static Analysis
 
 ```bash
-# Type checking — zero errors required
+## Type checking — zero errors required
 [project type-check command]
 
-# Linting — fix automatically where possible
+## Linting — fix automatically where possible
 [project lint command]
 [project lint-fix command]
 ```
@@ -169,14 +169,14 @@ Build must succeed with zero errors.
 ### Level 4: Integration Testing (if applicable)
 
 ```bash
-# Start server, run tests, stop server
+## Start server, run tests, stop server
 [project dev server command] &
 SERVER_PID=$!
 
-# Wait for server to be ready (adjust port as needed)
+## Wait for server to be ready (adjust port as needed)
 SERVER_READY=0
 for i in $(seq 1 30); do
-  if curl -sf http://localhost:PORT/health >/dev/null 2>&1; then
+  if curl -sf <http://localhost:PORT/health> >/dev/null 2>&1; then
     SERVER_READY=1
     break
   fi
@@ -217,7 +217,7 @@ mkdir -p .claude/PRPs/reports
 Write report to `.claude/PRPs/reports/{plan-name}-report.md`:
 
 ```markdown
-# Implementation Report: [Feature Name]
+## Implementation Report: [Feature Name]
 
 ## Summary
 [What was implemented]
@@ -274,7 +274,7 @@ Write report to `.claude/PRPs/reports/{plan-name}-report.md`:
 ### Update PRD (if applicable)
 
 If this implementation was for a PRD phase:
-1. Update the phase status from `in-progress` to `complete`
+1. Update the phase status from `in-progress`to`complete`
 2. Add report path as reference
 
 ### Archive Plan
@@ -326,7 +326,7 @@ Report to user:
 | Phase 2 | [next] |
 | ... | ... |
 
-> Next step: Run `/prp-pr` to create a pull request, or `/code-review` to review changes first.
+> Next step: Run `/prp-pr`to create a pull request, or`/code-review` to review changes first.
 ```
 
 ---

@@ -83,11 +83,11 @@ Use BuyWhere Product Catalog to set up BuyWhere MCP for my shopping agent and ke
 
 ## Best Practices
 
-- ✅ Start from the live developer portal or API key flow before giving configuration details.
-- ✅ Keep the first proof of integration to one successful query.
-- ✅ Ask which MCP host or API runtime the user is using.
-- ❌ Do not claim a specific product-count or retailer-count unless you have current runtime evidence.
-- ❌ Do not send users to deprecated or broken documentation surfaces when a working public page exists.
+- PASS: Start from the live developer portal or API key flow before giving configuration details.
+- PASS: Keep the first proof of integration to one successful query.
+- PASS: Ask which MCP host or API runtime the user is using.
+- FAIL: Do not claim a specific product-count or retailer-count unless you have current runtime evidence.
+- FAIL: Do not send users to deprecated or broken documentation surfaces when a working public page exists.
 
 ## Limitations
 
@@ -102,10 +102,10 @@ Use BuyWhere Product Catalog to set up BuyWhere MCP for my shopping agent and ke
 ## Common Pitfalls
 
 - **Problem:** The user wants BuyWhere setup help but has not created an API key yet.
-  **Solution:** Start at `https://buywhere.ai/api-keys/` and only move to config after that step is complete.
+**Solution:** Start at `https://buywhere.ai/api-keys/` and only move to config after that step is complete.
 
 - **Problem:** A documentation hostname is unavailable.
-  **Solution:** Prefer the live developer portal, API key flow, MCP guide on `api.buywhere.ai`, and the official GitHub plugin repo.
+**Solution:** Prefer the live developer portal, API key flow, MCP guide on `api.buywhere.ai`, and the official GitHub plugin repo.
 
 ## Related Skills
 

@@ -1,15 +1,15 @@
 <!-- ANTIGRAVITY ENGINE ACTIVE -->
-# 🛡️ THE INDELIBLE MASTER PROTOCOL
+# THE INDELIBLE MASTER PROTOCOL
 This project is rooted in the Global Antigravity Registry at d:\eeeee\skills-repo.
 
-### 🌌 ELITE TASK HANDSHAKE
+### ELITE TASK HANDSHAKE
 Before starting ANY task, the AI must explicitly state:
-"🌌 Antigravity Engine Active. Engaging [Skill Names] (e.g. Taste, UI-UX Pro Max) for this task."
+" Antigravity Engine Active. Engaging [Skill Names] (e.g. Taste, UI-UX Pro Max) for this task."
 
-### 🛠️ MANDATORY SKILLS
+### MANDATORY SKILLS
 Mandatory Skills: ui-ux-pro-max, taste-skill, everything-claude-code.
 
-# CLAUDE.md
+## CLAUDE.md
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
@@ -36,7 +36,7 @@ python3 src/ui-ux-pro-max/scripts/search.py "<query>" --domain <domain> [-n <max
 ```bash
 python3 src/ui-ux-pro-max/scripts/search.py "<query>" --stack <stack>
 ```
-Available stacks: `html-tailwind` (default), `react`, `nextjs`, `astro`, `vue`, `nuxtjs`, `nuxt-ui`, `svelte`, `swiftui`, `react-native`, `flutter`, `shadcn`, `jetpack-compose`
+Available stacks: `html-tailwind`(default),`react`,`nextjs`,`astro`,`vue`,`nuxtjs`,`nuxt-ui`,`svelte`,`swiftui`,`react-native`,`flutter`,`shadcn`,`jetpack-compose`
 
 ## Architecture
 
@@ -77,9 +77,9 @@ The search engine uses BM25 ranking combined with regex matching. Domain auto-de
 When modifying files:
 
 1. **Data & Scripts** - Edit in `src/ui-ux-pro-max/`:
-   - `data/*.csv` and `data/stacks/*.csv`
+   - `data/*.csv`and`data/stacks/*.csv`
    - `scripts/*.py`
-   - Changes automatically available via symlinks in `.claude/`, `.factory/`, `.shared/`
+   - Changes automatically available via symlinks in `.claude/`,`.factory/`,`.shared/`
 
 2. **Templates** - Edit in `src/ui-ux-pro-max/templates/`:
    - `base/skill-content.md` - Common SKILL.md content
@@ -103,7 +103,7 @@ Python 3.x (no external dependencies required)
 
 Never push directly to `main`. Always:
 
-1. Create a new branch: `git checkout -b feat/...` or `fix/...`
+1. Create a new branch: `git checkout -b feat/...`or`fix/...`
 2. Commit changes
 3. Push branch: `git push -u origin <branch>`
 4. Create PR: `gh pr create`

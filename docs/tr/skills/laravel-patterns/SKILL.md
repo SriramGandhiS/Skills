@@ -120,8 +120,8 @@ Route::scopeBindings()->group(function () {
 
 ### İç İçe Route'lar ve Binding İsimleri
 
-- Çift iç içe geçmeyi önlemek için prefix'leri ve path'leri tutarlı tutun (örn. `conversation` vs `conversations`).
-- Bound model'e uyan tek bir parametre ismi kullanın (örn. `Conversation` için `{conversation}`).
+- Çift iç içe geçmeyi önlemek için prefix'leri ve path'leri tutarlı tutun (örn. `conversation`vs`conversations`).
+- Bound model'e uyan tek bir parametre ismi kullanın (örn. `Conversation`için`{conversation}`).
 - İç içe geçirirken üst-alt ilişkilerini zorlamak için scoped binding'leri tercih edin.
 
 ```php
@@ -145,7 +145,7 @@ Route::middleware('auth:sanctum')->prefix('conversations')->group(function () {
 });
 ```
 
-Bir parametrenin farklı bir model sınıfına çözümlenmesini istiyorsanız, açık binding tanımlayın. Özel binding mantığı için `Route::bind()` kullanın veya model'de `resolveRouteBinding()` uygulayın.
+Bir parametrenin farklı bir model sınıfına çözümlenmesini istiyorsanız, açık binding tanımlayın. Özel binding mantığı için `Route::bind()`kullanın veya model'de`resolveRouteBinding()` uygulayın.
 
 ```php
 use App\Models\AiConversation;
@@ -411,5 +411,5 @@ return response()->json([
 
 ### Yapılandırma ve Ortamlar
 
-- Gizli bilgileri `.env`'de ve yapılandırmayı `config/*.php`'de tutun
+- Gizli bilgileri `.env`'de ve yapılandırmayı`config/*.php`'de tutun
 - Ortama özel yapılandırma geçersiz kılmaları kullanın ve production'da `config:cache` kullanın

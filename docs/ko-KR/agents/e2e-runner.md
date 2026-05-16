@@ -23,11 +23,11 @@ E2E 테스트 전문 에이전트입니다. 포괄적인 E2E 테스트를 생성
 **Playwright보다 Agent Browser 선호** — 시맨틱 셀렉터, AI 최적화, 자동 대기, Playwright 기반.
 
 ```bash
-# 설정
+## 설정
 npm install -g agent-browser && agent-browser install
 
-# 핵심 워크플로우
-agent-browser open https://example.com
+## 핵심 워크플로우
+agent-browser open <https://example.com>
 agent-browser snapshot -i          # ref로 요소 가져오기 [ref=e1]
 agent-browser click @e1            # ref로 클릭
 agent-browser fill @e2 "text"      # ref로 입력 채우기
@@ -64,14 +64,14 @@ npx playwright show-report                 # HTML 보고서 보기
 
 ### 3. 실행
 - 로컬에서 3-5회 실행하여 불안정성 확인
-- 불안정한 테스트는 `test.fixme()` 또는 `test.skip()`으로 격리
+- 불안정한 테스트는 `test.fixme()`또는`test.skip()`으로 격리
 - CI에 아티팩트 업로드
 
 ## 핵심 원칙
 
 - **시맨틱 로케이터 사용**: `[data-testid="..."]` > CSS 셀렉터 > XPath
-- **시간이 아닌 조건 대기**: `waitForResponse()` > `waitForTimeout()`
-- **자동 대기 내장**: `locator.click()`과 `page.click()` 모두 자동 대기를 제공하지만, 더 안정적인 `locator` 기반 API를 선호
+- **시간이 아닌 조건 대기**: `waitForResponse()`>`waitForTimeout()`
+- **자동 대기 내장**: `locator.click()`과`page.click()`모두 자동 대기를 제공하지만, 더 안정적인`locator` 기반 API를 선호
 - **테스트 격리**: 각 테스트는 독립적; 공유 상태 없음
 - **빠른 실패**: 모든 핵심 단계에서 `expect()` 어설션 사용
 - **재시도 시 트레이스**: 실패 디버깅을 위해 `trace: 'on-first-retry'` 설정

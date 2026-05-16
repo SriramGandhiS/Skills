@@ -87,10 +87,10 @@ module.exports = {
 
 | 框架 | script | args |
 |-----------|--------|------|
-| Vite | `node_modules/vite/bin/vite.js` | `--port {port}` |
-| Next.js | `node_modules/next/dist/bin/next` | `dev -p {port}` |
-| Nuxt | `node_modules/nuxt/bin/nuxt.mjs` | `dev --port {port}` |
-| Express | `src/index.js` 或 `server.js` | - |
+| Vite | `node_modules/vite/bin/vite.js`|`--port {port}` |
+| Next.js | `node_modules/next/dist/bin/next`|`dev -p {port}` |
+| Nuxt | `node_modules/nuxt/bin/nuxt.mjs`|`dev --port {port}` |
+| Express | `src/index.js`或`server.js` | - |
 
 ### Python 包装脚本 (start.cjs)
 

@@ -1,4 +1,4 @@
-﻿---
+---
 name: architecture-decision-records
 description: Capture architectural decisions made during Claude Code sessions as structured ADRs. Auto-detects decision moments, records context, alternatives considered, and rationale. Maintains an ADR log so future developers understand why the codebase is shaped the way it is.
 origin: ECC
@@ -21,7 +21,7 @@ Capture architectural decisions as they happen during coding sessions. Instead o
 Use the lightweight ADR format proposed by Michael Nygard, adapted for AI-assisted development:
 
 ```markdown
-# ADR-NNNN: [Decision Title]
+## ADR-NNNN: [Decision Title]
 
 **Date**: YYYY-MM-DD
 **Status**: proposed | accepted | deprecated | superseded by ADR-NNNN
@@ -73,7 +73,7 @@ What becomes easier or more difficult to do because of this change?
 
 When a decision moment is detected:
 
-1. **Initialize (first time only)** â€” if `docs/adr/` does not exist, ask the user for confirmation before creating the directory, a `README.md` seeded with the index table header (see ADR Index Format below), and a blank `template.md` for manual use. Do not create files without explicit consent.
+1. **Initialize (first time only)** â€” if `docs/adr/`does not exist, ask the user for confirmation before creating the directory, a`README.md`seeded with the index table header (see ADR Index Format below), and a blank`template.md` for manual use. Do not create files without explicit consent.
 2. **Identify the decision** â€” extract the core architectural choice being made
 3. **Gather context** â€” what problem prompted this? What constraints exist?
 4. **Document alternatives** â€” what other options were considered? Why were they rejected?
@@ -106,7 +106,7 @@ docs/
 ### ADR Index Format
 
 ```markdown
-# Architecture Decision Records
+## Architecture Decision Records
 
 | ADR | Title | Status | Date |
 |-----|-------|--------|------|

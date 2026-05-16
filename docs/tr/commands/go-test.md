@@ -39,7 +39,7 @@ TEKRARLA → Sonraki test senaryosu
 Kullanıcı: /go-test E-posta adreslerini doğrulamak için bir fonksiyona ihtiyacım var
 
 Agent:
-# TDD Oturumu: E-posta Doğrulayıcı
+## TDD Oturumu: E-posta Doğrulayıcı
 
 ## Adım 1: Interface Tanımla
 
@@ -215,19 +215,19 @@ func setupTestDB(t *testing.T) *sql.DB {
 ## Kapsama Komutları
 
 ```bash
-# Basit kapsama
+## Basit kapsama
 go test -cover ./...
 
-# Kapsama profili
+## Kapsama profili
 go test -coverprofile=coverage.out ./...
 
-# Tarayıcıda görüntüle
+## Tarayıcıda görüntüle
 go tool cover -html=coverage.out
 
-# Fonksiyona göre kapsama
+## Fonksiyona göre kapsama
 go tool cover -func=coverage.out
 
-# Race tespiti ile
+## Race tespiti ile
 go test -race -cover ./...
 ```
 

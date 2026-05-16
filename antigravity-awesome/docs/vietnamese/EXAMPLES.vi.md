@@ -1,9 +1,9 @@
-# 🧪 Ví dụ Thực tế ("Sổ tay Nấu ăn Antigravity")
+# Ví dụ Thực tế ("Sổ tay Nấu ăn Antigravity")
 
-Các kỹ năng (skills) vốn dĩ đã mạnh mẽ khi đứng riêng lẻ, nhưng chúng sẽ trở nên không thể ngăn cản khi được kết hợp lại với nhau.  
+Các kỹ năng (skills) vốn dĩ đã mạnh mẽ khi đứng riêng lẻ, nhưng chúng sẽ trở nên không thể ngăn cản khi được kết hợp lại với nhau.
 Dưới đây là ba tình huống phổ biến và cách giải quyết chúng bằng cách sử dụng repository này.
 
-## 🥘 Công thức 1: "Kiểm tra Code cũ (Legacy Code Audit)"
+## Công thức 1: "Kiểm tra Code cũ (Legacy Code Audit)"
 
 _Tình huống: Bạn vừa tiếp nhận một repository Node.js 5 năm tuổi đang rất hỗn loạn. Bạn cần sửa nó một cách an toàn._
 
@@ -21,7 +21,7 @@ _Tình huống: Bạn vừa tiếp nhận một repository Node.js 5 năm tuổi
 
 ---
 
-## 🥘 Công thức 2: "Ứng dụng Web hiện đại"
+## Công thức 2: "Ứng dụng Web hiện đại"
 
 _Tình huống: Bạn cần xây dựng một trang Landing Page hiệu suất cao trong vòng 2 giờ._
 
@@ -39,7 +39,7 @@ _Tình huống: Bạn cần xây dựng một trang Landing Page hiệu suất c
 
 ---
 
-## 🥘 Công thức 3: "Kiến trúc sư Agent"
+## Công thức 3: "Kiến trúc sư Agent"
 
 _Tình huống: Bạn muốn xây dựng một trợ lý AI (agent) tùy chỉnh có khả năng tự xác minh mã code của chính nó._
 

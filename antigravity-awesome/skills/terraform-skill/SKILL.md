@@ -84,13 +84,13 @@ resource "aws_s3_bucket" "bucket" { }
 
 Use `"this"` when your module creates only one resource of that type:
 
-✅ DO:
+PASS: DO:
 ```hcl
 resource "aws_vpc" "this" {}           # Module creates one VPC
 resource "aws_security_group" "this" {}  # Module creates one SG
 ```
 
-❌ DON'T use "this" for multiple resources:
+FAIL: DON'T use "this" for multiple resources:
 ```hcl
 resource "aws_subnet" "this" {}  # If creating multiple subnets
 ```
@@ -180,7 +180,7 @@ var.database_instance_class # Not just "instance_class"
 5. `lifecycle` at the very end (if needed)
 
 ```hcl
-# ✅ GOOD - Correct ordering
+# PASS: GOOD - Correct ordering
 resource "aws_nat_gateway" "this" {
   count = var.create_nat_gateway ? 1 : 0
 
@@ -240,7 +240,7 @@ variable "environment" {
 
 **Boolean conditions:**
 ```hcl
-# ✅ GOOD - Boolean condition
+# PASS: GOOD - Boolean condition
 resource "aws_nat_gateway" "this" {
   count = var.create_nat_gateway ? 1 : 0
   # ...
@@ -249,7 +249,7 @@ resource "aws_nat_gateway" "this" {
 
 **Stable addressing with for_each:**
 ```hcl
-# ✅ GOOD - Removing "us-east-1b" only affects that subnet
+# PASS: GOOD - Removing "us-east-1b" only affects that subnet
 resource "aws_subnet" "private" {
   for_each = toset(var.availability_zones)
 
@@ -257,7 +257,7 @@ resource "aws_subnet" "private" {
   # ...
 }
 
-# ❌ BAD - Removing middle AZ recreates all subsequent subnets
+# FAIL: BAD - Removing middle AZ recreates all subsequent subnets
 resource "aws_subnet" "private" {
   count = length(var.availability_zones)
 
@@ -331,20 +331,20 @@ my-module/
 ### Best Practices Summary
 
 **Variables:**
-- ✅ Always include `description`
-- ✅ Use explicit `type` constraints
-- ✅ Provide sensible `default` values where appropriate
-- ✅ Add `validation` blocks for complex constraints
-- ✅ Use `sensitive = true` for secrets
+- PASS: Always include `description`
+- PASS: Use explicit `type` constraints
+- PASS: Provide sensible `default` values where appropriate
+- PASS: Add `validation` blocks for complex constraints
+- PASS: Use `sensitive = true` for secrets
 
 **Outputs:**
-- ✅ Always include `description`
-- ✅ Mark sensitive outputs with `sensitive = true`
-- ✅ Consider returning objects for related values
-- ✅ Document what consumers should do with each output
+- PASS: Always include `description`
+- PASS: Mark sensitive outputs with `sensitive = true`
+- PASS: Consider returning objects for related values
+- PASS: Document what consumers should do with each output
 
 **For detailed module patterns, see:**
-- **Module Patterns Guide** - Variable best practices, output design, ✅ DO vs ❌ DON'T patterns
+- **Module Patterns Guide** - Variable best practices, output design, PASS: DO vs FAIL: DON'T patterns
 - **Quick Reference** - Resource naming, variable naming, file organization
 
 ## CI/CD Integration
@@ -379,13 +379,13 @@ checkov -d .
 
 ### Common Issues to Avoid
 
-❌ **Don't:**
+FAIL: **Don't:**
 - Store secrets in variables
 - Use default VPC
 - Skip encryption
 - Open security groups to 0.0.0.0/0
 
-✅ **Do:**
+PASS: **Do:**
 - Use AWS Secrets Manager / Parameter Store
 - Create dedicated VPCs
 - Enable encryption at rest
@@ -498,9 +498,9 @@ Both are fully supported by this skill. For licensing, governance, and feature c
 
 This skill uses **progressive disclosure** - essential information is in this main file, detailed guides are available when needed:
 
-📚 **Reference Files:**
+**Reference Files:**
 - **Testing Frameworks** - In-depth guide to static analysis, native tests, and Terratest
-- **Module Patterns** - Module structure, variable/output best practices, ✅ DO vs ❌ DON'T patterns
+- **Module Patterns** - Module structure, variable/output best practices, PASS: DO vs FAIL: DON'T patterns
 - **CI/CD Workflows** - GitHub Actions, GitLab CI templates, cost optimization, automated cleanup
 - **Security & Compliance** - Trivy/Checkov integration, secrets management, compliance testing
 - **Quick Reference** - Command cheat sheets, decision flowcharts, troubleshooting guide

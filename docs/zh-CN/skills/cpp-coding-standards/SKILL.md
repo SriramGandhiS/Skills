@@ -14,7 +14,7 @@ origin: ECC
 * 审查或重构现有的 C++ 代码
 * 在 C++ 项目中做出架构决策
 * 在 C++ 代码库中强制执行一致的风格
-* 在语言特性之间做出选择（例如，`enum` 对比 `enum class`，原始指针对比智能指针）
+* 在语言特性之间做出选择（例如，`enum`对比`enum class`，原始指针对比智能指针）
 
 ### 何时不应使用
 
@@ -134,7 +134,7 @@ static_assert(factorial(5) == 120);
 
 | 规则 | 摘要 |
 |------|---------|
-| **C.2** | 如果存在不变式，使用 `class`；如果数据成员独立变化，使用 `struct` |
+| **C.2** | 如果存在不变式，使用 `class`；如果数据成员独立变化，使用`struct` |
 | **C.9** | 最小化成员的暴露 |
 | **C.20** | 如果你能避免定义默认操作，就这么做（零规则） |
 | **C.21** | 如果你定义或 `=delete` 任何拷贝/移动/析构函数，则处理所有（五规则） |
@@ -142,7 +142,7 @@ static_assert(factorial(5) == 120);
 | **C.41** | 构造函数应创建完全初始化的对象 |
 | **C.46** | 将单参数构造函数声明为 `explicit` |
 | **C.67** | 多态类应禁止公开拷贝/移动 |
-| **C.128** | 虚函数：精确指定 `virtual`、`override` 或 `final` 中的一个 |
+| **C.128** | 虚函数：精确指定 `virtual`、`override`或`final` 中的一个 |
 
 ### 零规则
 
@@ -228,10 +228,10 @@ private:
 | **R.3** | 原始指针 (`T*`) 是非拥有的 |
 | **R.5** | 优先作用域对象；不要不必要地在堆上分配 |
 | **R.10** | 避免 `malloc()`/`free()` |
-| **R.11** | 避免显式调用 `new` 和 `delete` |
-| **R.20** | 使用 `unique_ptr` 或 `shared_ptr` 表示所有权 |
-| **R.21** | 除非共享所有权，否则优先 `unique_ptr` 而非 `shared_ptr` |
-| **R.22** | 使用 `make_shared()` 来创建 `shared_ptr` |
+| **R.11** | 避免显式调用 `new`和`delete` |
+| **R.20** | 使用 `unique_ptr`或`shared_ptr` 表示所有权 |
+| **R.21** | 除非共享所有权，否则优先 `unique_ptr`而非`shared_ptr` |
+| **R.22** | 使用 `make_shared()`来创建`shared_ptr` |
 
 ### 智能指针使用
 
@@ -285,7 +285,7 @@ private:
 * 裸 `new`/`delete` (R.11)
 * C++ 代码中的 `malloc()`/`free()` (R.10)
 * 在单个表达式中进行多次资源分配 (R.13 -- 异常安全风险)
-* 在 `unique_ptr` 足够时使用 `shared_ptr` (R.21)
+* 在 `unique_ptr`足够时使用`shared_ptr` (R.21)
 
 ## 表达式与语句 (ES.\*)
 
@@ -296,11 +296,11 @@ private:
 | **ES.5** | 保持作用域小 |
 | **ES.20** | 始终初始化对象 |
 | **ES.23** | 优先 `{}` 初始化语法 |
-| **ES.25** | 除非打算修改，否则将对象声明为 `const` 或 `constexpr` |
+| **ES.25** | 除非打算修改，否则将对象声明为 `const`或`constexpr` |
 | **ES.28** | 使用 lambda 进行 `const` 变量的复杂初始化 |
 | **ES.45** | 避免魔法常量；使用符号常量 |
 | **ES.46** | 避免有损的算术转换 |
-| **ES.47** | 使用 `nullptr` 而非 `0` 或 `NULL` |
+| **ES.47** | 使用 `nullptr`而非`0`或`NULL` |
 | **ES.48** | 避免强制类型转换 |
 | **ES.50** | 不要丢弃 `const` |
 
@@ -325,7 +325,7 @@ const auto config = [&] {
 ### 反模式
 
 * 未初始化的变量 (ES.20)
-* 使用 `0` 或 `NULL` 作为指针 (ES.47 -- 使用 `nullptr`)
+* 使用 `0`或`NULL`作为指针 (ES.47 -- 使用`nullptr`)
 * C 风格强制类型转换 (ES.48 -- 使用 `static_cast`、`const_cast` 等)
 * 丢弃 `const` (ES.50)
 * 没有命名常量的魔法数字 (ES.45)
@@ -442,7 +442,7 @@ constexpr int MAX_SENSORS = 256;
 | **CP.21** | 使用 `std::scoped_lock` 来获取多个互斥量 |
 | **CP.22** | 持有锁时切勿调用未知代码 |
 | **CP.42** | 不要在没有条件的情况下等待 |
-| **CP.44** | 记得为你的 `lock_guard` 和 `unique_lock` 命名 |
+| **CP.44** | 记得为你的 `lock_guard`和`unique_lock` 命名 |
 | **CP.100** | 除非绝对必要，否则不要使用无锁编程 |
 
 ### 安全加锁
@@ -503,7 +503,7 @@ void transfer(Account& from, Account& to, double amount) {
 | **T.10** | 为所有模板参数指定概念 |
 | **T.11** | 尽可能使用标准概念 |
 | **T.13** | 对于简单概念，优先使用简写符号 |
-| **T.43** | 优先 `using` 而非 `typedef` |
+| **T.43** | 优先 `using`而非`typedef` |
 | **T.120** | 仅在确实需要时使用模板元编程 |
 | **T.144** | 不要特化函数模板（改用重载） |
 
@@ -541,7 +541,7 @@ void save(const T& obj, const std::string& path);
 * 在可见命名空间中使用无约束模板 (T.47)
 * 特化函数模板而非重载 (T.144)
 * 在 `constexpr` 足够时使用模板元编程 (T.120)
-* 使用 `typedef` 而非 `using` (T.43)
+* 使用 `typedef`而非`using` (T.43)
 
 ## 标准库 (SL.\*)
 
@@ -551,11 +551,11 @@ void save(const T& obj, const std::string& path);
 |------|---------|
 | **SL.1** | 尽可能使用库 |
 | **SL.2** | 优先标准库而非其他库 |
-| **SL.con.1** | 优先 `std::array` 或 `std::vector` 而非 C 数组 |
+| **SL.con.1** | 优先 `std::array`或`std::vector` 而非 C 数组 |
 | **SL.con.2** | 默认情况下优先 `std::vector` |
 | **SL.str.1** | 使用 `std::string` 来拥有字符序列 |
 | **SL.str.2** | 使用 `std::string_view` 来引用字符序列 |
-| **SL.io.50** | 避免 `endl`（使用 `'\n'` -- `endl` 会强制刷新） |
+| **SL.io.50** | 避免 `endl`（使用`'\n'`--`endl` 会强制刷新） |
 
 ```cpp
 // SL.con.1 + SL.con.2: Prefer vector/array over C arrays
@@ -578,7 +578,7 @@ std::cout << "result: " << value << '\n';
 | 规则 | 摘要 |
 |------|---------|
 | **Enum.1** | 优先枚举而非宏 |
-| **Enum.3** | 优先 `enum class` 而非普通 `enum` |
+| **Enum.3** | 优先 `enum class`而非普通`enum` |
 | **Enum.5** | 不要对枚举项使用全大写 |
 | **Enum.6** | 避免未命名的枚举 |
 
@@ -598,9 +598,9 @@ enum { RED, GREEN, BLUE };           // Enum.3 + Enum.5 + Enum.6 violation
 
 | 规则 | 摘要 |
 |------|---------|
-| **SF.1** | 代码文件使用 `.cpp`，接口文件使用 `.h` |
+| **SF.1** | 代码文件使用 `.cpp`，接口文件使用`.h` |
 | **SF.7** | 不要在头文件的全局作用域内写 `using namespace` |
-| **SF.8** | 所有 `.h` 文件都应使用 `#include` 防护 |
+| **SF.8** | 所有 `.h`文件都应使用`#include` 防护 |
 | **SF.11** | 头文件应是自包含的 |
 | **NL.5** | 避免在名称中编码类型信息（不要使用匈牙利命名法） |
 | **NL.8** | 使用一致的命名风格 |
@@ -707,8 +707,8 @@ std::vector<std::unique_ptr<Point>> indirect_points; // BAD: pointer chasing
 * \[ ] 对象在声明时初始化 (ES.20)
 * \[ ] 变量默认是 `const`/`constexpr` (Con.1, ES.25)
 * \[ ] 成员函数尽可能设为 `const` (Con.2)
-* \[ ] 使用 `enum class` 而非普通 `enum` (Enum.3)
-* \[ ] 使用 `nullptr` 而非 `0`/`NULL` (ES.47)
+* \[ ] 使用 `enum class`而非普通`enum` (Enum.3)
+* \[ ] 使用 `nullptr`而非`0`/`NULL` (ES.47)
 * \[ ] 没有窄化转换 (ES.46)
 * \[ ] 没有 C 风格转换 (ES.48)
 * \[ ] 单参数构造函数是 `explicit` (C.46)
@@ -719,5 +719,5 @@ std::vector<std::unique_ptr<Point>> indirect_points; // BAD: pointer chasing
 * \[ ] 头文件有包含防护且是自包含的 (SF.8, SF.11)
 * \[ ] 锁使用 RAII (`scoped_lock`/`lock_guard`) (CP.20)
 * \[ ] 异常是自定义类型，按值抛出，按引用捕获 (E.14, E.15)
-* \[ ] 使用 `'\n'` 而非 `std::endl` (SL.io.50)
+* \[ ] 使用 `'\n'`而非`std::endl` (SL.io.50)
 * \[ ] 没有魔数 (ES.45)

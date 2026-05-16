@@ -23,7 +23,7 @@ Sending text to the synthesizer in small chunks (sentence-by-sentence or word-by
 ### Solution
 Buffer the entire LLM response before sending it to the synthesizer:
 
-**❌ Bad: Yields sentence-by-sentence**
+**FAIL: Bad: Yields sentence-by-sentence**
 ```python
 async def generate_response(self, prompt):
     async for sentence in llm_stream:
@@ -31,14 +31,14 @@ async def generate_response(self, prompt):
         yield GeneratedResponse(message=BaseMessage(text=sentence))
 ```
 
-**✅ Good: Buffer entire response**
+**PASS: Good: Buffer entire response**
 ```python
 async def generate_response(self, prompt):
     # Buffer the entire response
     full_response = ""
     async for chunk in llm_stream:
         full_response += chunk
-    
+
     # Yield once with complete response
     yield GeneratedResponse(message=BaseMessage(text=full_response))
 ```
@@ -84,7 +84,7 @@ self.transcriber.unmute()
 class BaseTranscriber:
     def __init__(self):
         self.is_muted = False
-    
+
     def send_audio(self, chunk: bytes):
         """Client calls this to send audio"""
         if not self.is_muted:
@@ -92,15 +92,15 @@ class BaseTranscriber:
         else:
             # Send silence instead (prevents echo)
             self.input_queue.put_nowait(self.create_silent_chunk(len(chunk)))
-    
+
     def mute(self):
         """Called when bot starts speaking"""
         self.is_muted = True
-    
+
     def unmute(self):
         """Called when bot stops speaking"""
         self.is_muted = False
-    
+
     def create_silent_chunk(self, size: int) -> bytes:
         """Create a silent audio chunk"""
         return b'\x00' * size
@@ -131,14 +131,14 @@ All audio chunks are sent to the client immediately, buffering the entire messag
 ### Solution
 Rate-limit audio chunks to match real-time playback:
 
-**❌ Bad: Send all chunks immediately**
+**FAIL: Bad: Send all chunks immediately**
 ```python
 async for chunk in synthesis_result.chunk_generator:
     # Sends all chunks as fast as possible
     output_device.consume_nonblocking(chunk)
 ```
 
-**✅ Good: Rate-limit chunks**
+**PASS: Good: Rate-limit chunks**
 ```python
 async for chunk in synthesis_result.chunk_generator:
     # Check for interrupt
@@ -148,16 +148,16 @@ async for chunk in synthesis_result.chunk_generator:
             chunk_idx * seconds_per_chunk
         )
         return partial_message, True  # cut_off = True
-    
+
     start_time = time.time()
-    
+
     # Send chunk
     output_device.consume_nonblocking(chunk)
-    
+
     # CRITICAL: Wait for chunk duration before sending next
     processing_time = time.time() - start_time
     await asyncio.sleep(max(seconds_per_chunk - processing_time, 0))
-    
+
     chunk_idx += 1
 ```
 
@@ -198,28 +198,28 @@ WebSocket connections, API streams, or async tasks are not properly closed when 
 ### Solution
 Always use context managers and cleanup:
 
-**❌ Bad: No cleanup**
+**FAIL: Bad: No cleanup**
 ```python
 async def handle_conversation(websocket):
     conversation = create_conversation()
     await conversation.start()
-    
+
     async for message in websocket.iter_bytes():
         conversation.receive_audio(message)
     # No cleanup! Resources leak
 ```
 
-**✅ Good: Proper cleanup**
+**PASS: Good: Proper cleanup**
 ```python
 async def handle_conversation(websocket):
     conversation = None
     try:
         conversation = create_conversation()
         await conversation.start()
-        
+
         async for message in websocket.iter_bytes():
             conversation.receive_audio(message)
-            
+
     except WebSocketDisconnect:
         logger.info("Client disconnected")
     except Exception as e:
@@ -235,19 +235,19 @@ async def handle_conversation(websocket):
 async def terminate(self):
     """Gracefully shut down all workers"""
     self.active = False
-    
+
     # Stop all workers
     self.transcriber.terminate()
     self.agent.terminate()
     self.synthesizer.terminate()
-    
+
     # Wait for queues to drain
     await asyncio.sleep(0.5)
-    
+
     # Close connections
     if self.websocket:
         await self.websocket.close()
-    
+
     # Cancel tasks
     for task in self.tasks:
         if not task.done():
@@ -277,23 +277,23 @@ Maintain conversation history in the agent:
 class Agent:
     def __init__(self):
         self.conversation_history = []
-    
+
     async def generate_response(self, user_input):
         # Add user message to history
         self.conversation_history.append({
             "role": "user",
             "content": user_input
         })
-        
+
         # Generate response with full history
         response = await self.llm.generate(self.conversation_history)
-        
+
         # Add bot response to history
         self.conversation_history.append({
             "role": "assistant",
             "content": response
         })
-        
+
         return response
 ```
 
@@ -335,7 +335,7 @@ Implement heartbeat and reconnection:
 @app.websocket("/conversation")
 async def conversation_endpoint(websocket: WebSocket):
     await websocket.accept()
-    
+
     # Start heartbeat
     async def heartbeat():
         while True:
@@ -344,9 +344,9 @@ async def conversation_endpoint(websocket: WebSocket):
                 await asyncio.sleep(30)  # Ping every 30 seconds
             except:
                 break
-    
+
     heartbeat_task = asyncio.create_task(heartbeat())
-    
+
     try:
         async for message in websocket.iter_bytes():
             # Process message
@@ -372,31 +372,31 @@ Long delays between user speech and bot response.
 
 **1. Not using streaming**
 ```python
-# ❌ Bad: Wait for entire response
+# FAIL: Bad: Wait for entire response
 response = await llm.complete(prompt)
 
-# ✅ Good: Stream response
+# PASS: Good: Stream response
 async for chunk in llm.complete(prompt, stream=True):
     yield chunk
 ```
 
 **2. Sequential processing**
 ```python
-# ❌ Bad: Sequential
+# FAIL: Bad: Sequential
 transcription = await transcriber.transcribe(audio)
 response = await agent.generate(transcription)
 audio = await synthesizer.synthesize(response)
 
-# ✅ Good: Concurrent with queues
+# PASS: Good: Concurrent with queues
 # All workers run simultaneously
 ```
 
 **3. Large chunk sizes**
 ```python
-# ❌ Bad: Large chunks (high latency)
+# FAIL: Bad: Large chunks (high latency)
 chunk_size = 8192  # 0.25 seconds
 
-# ✅ Good: Small chunks (low latency)
+# PASS: Good: Small chunks (low latency)
 chunk_size = 1024  # 0.032 seconds
 ```
 
@@ -417,14 +417,14 @@ Poor audio quality, distortion, or artifacts.
 
 **1. Wrong audio format**
 ```python
-# ✅ Use LINEAR16 PCM at 16kHz
+# PASS: Use LINEAR16 PCM at 16kHz
 audio_encoding = AudioEncoding.LINEAR16
 sample_rate = 16000
 ```
 
 **2. Incorrect format conversion**
 ```python
-# ✅ Proper MP3 to PCM conversion
+# PASS: Proper MP3 to PCM conversion
 from pydub import AudioSegment
 import io
 
@@ -438,7 +438,7 @@ def mp3_to_pcm(mp3_bytes):
 
 **3. Buffer underruns**
 ```python
-# ✅ Ensure consistent chunk timing
+# PASS: Ensure consistent chunk timing
 await asyncio.sleep(max(seconds_per_chunk - processing_time, 0))
 ```
 

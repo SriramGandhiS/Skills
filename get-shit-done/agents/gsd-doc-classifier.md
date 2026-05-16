@@ -4,11 +4,11 @@ description: Classifies a single planning document as ADR, PRD, SPEC, DOC, or UN
 tools: Read, Write, Grep, Glob
 color: yellow
 # hooks:
-#   PostToolUse:
-#     - matcher: "Write|Edit"
-#       hooks:
-#         - type: command
-#           command: "true"
+# PostToolUse:
+# - matcher: "Write|Edit"
+# hooks:
+# - type: command
+# command: "true"
 ---
 
 <role>

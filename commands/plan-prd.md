@@ -16,7 +16,7 @@ Produces a **Product Requirements Document** — the requirements-phase artifact
 | Frame the problem and users | Design the architecture |
 | Capture success criteria and scope | Pick files or write patterns |
 | List open questions and risks | Enumerate implementation tasks |
-| Write `.claude/prds/{name}.prd.md` | Produce an implementation plan — that's `/plan` |
+| Write `.claude/prds/{name}.prd.md`| Produce an implementation plan — that's`/plan` |
 
 If you find yourself writing implementation detail, stop and cut it. It belongs in `/plan`.
 
@@ -77,7 +77,7 @@ mkdir -p .claude/prds
 #### PRD Template
 
 ```markdown
-# {Product / Feature Name}
+## {Product / Feature Name}
 
 ## Problem
 {2–3 sentences: who has what problem, and what's the cost of leaving it unsolved?}

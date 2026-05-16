@@ -8,8 +8,8 @@ description: Comprehensive Go code review for idiomatic patterns, concurrency sa
 
 ## 此指令的功能
 
-1. **識別 Go 變更**：透過 `git diff` 找出修改的 `.go` 檔案
-2. **執行靜態分析**：執行 `go vet`、`staticcheck` 和 `golangci-lint`
+1. **識別 Go 變更**：透過 `git diff`找出修改的`.go` 檔案
+2. **執行靜態分析**：執行 `go vet`、`staticcheck`和`golangci-lint`
 3. **安全性掃描**：檢查 SQL 注入、命令注入、競態條件
 4. **並行審查**：分析 goroutine 安全性、channel 使用、mutex 模式
 5. **慣用 Go 檢查**：驗證程式碼遵循 Go 慣例和最佳實務
@@ -52,17 +52,17 @@ description: Comprehensive Go code review for idiomatic patterns, concurrency sa
 ## 執行的自動化檢查
 
 ```bash
-# 靜態分析
+## 靜態分析
 go vet ./...
 
-# 進階檢查（如果已安裝）
+## 進階檢查（如果已安裝）
 staticcheck ./...
 golangci-lint run
 
-# 競態偵測
+## 競態偵測
 go build -race ./...
 
-# 安全性弱點
+## 安全性弱點
 govulncheck ./...
 ```
 

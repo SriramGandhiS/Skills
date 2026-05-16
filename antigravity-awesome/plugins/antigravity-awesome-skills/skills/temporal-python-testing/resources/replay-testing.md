@@ -82,14 +82,14 @@ async def test_replay_multiple_workflows():
 **Problem: Random Number Generation**
 
 ```python
-# ❌ Non-deterministic (breaks replay)
+# FAIL: Non-deterministic (breaks replay)
 @workflow.defn
 class BadWorkflow:
     @workflow.run
     async def run(self) -> int:
         return random.randint(1, 100)  # Different on replay!
 
-# ✅ Deterministic (safe for replay)
+# PASS: Deterministic (safe for replay)
 @workflow.defn
 class GoodWorkflow:
     @workflow.run
@@ -100,7 +100,7 @@ class GoodWorkflow:
 **Problem: Current Time**
 
 ```python
-# ❌ Non-deterministic
+# FAIL: Non-deterministic
 @workflow.defn
 class BadWorkflow:
     @workflow.run
@@ -108,7 +108,7 @@ class BadWorkflow:
         now = datetime.now()  # Different on replay!
         return now.isoformat()
 
-# ✅ Deterministic
+# PASS: Deterministic
 @workflow.defn
 class GoodWorkflow:
     @workflow.run
@@ -120,7 +120,7 @@ class GoodWorkflow:
 **Problem: Direct External Calls**
 
 ```python
-# ❌ Non-deterministic
+# FAIL: Non-deterministic
 @workflow.defn
 class BadWorkflow:
     @workflow.run
@@ -128,7 +128,7 @@ class BadWorkflow:
         response = requests.get("https://api.example.com/data")  # External call!
         return response.json()
 
-# ✅ Deterministic
+# PASS: Deterministic
 @workflow.defn
 class GoodWorkflow:
     @workflow.run

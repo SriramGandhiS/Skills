@@ -247,14 +247,14 @@ export const handle: Handle = async ({ event, resolve }) => {
 
 ## Best Practices
 
-- ✅ Use `+page.server.ts` for database/auth logic — it never ships to the client
-- ✅ Use `$lib/server/` for shared server-only modules (DB client, auth helpers)
-- ✅ Use form actions for mutations instead of client-side `fetch` — works without JS
-- ✅ Type all `load` return values with generated `$types` (`PageData`, `LayoutData`)
-- ✅ Use `event.locals` in hooks to pass server-side context to load functions
-- ❌ Don't import server-only code in `+page.svelte` or `+layout.svelte` directly
-- ❌ Don't store sensitive state in stores — use `locals` on the server
-- ❌ Don't skip `use:enhance` on forms — without it, forms lose progressive enhancement
+- PASS: Use `+page.server.ts` for database/auth logic — it never ships to the client
+- PASS: Use `$lib/server/` for shared server-only modules (DB client, auth helpers)
+- PASS: Use form actions for mutations instead of client-side `fetch` — works without JS
+- PASS: Type all `load` return values with generated `$types` (`PageData`, `LayoutData`)
+- PASS: Use `event.locals` in hooks to pass server-side context to load functions
+- FAIL: Don't import server-only code in `+page.svelte` or `+layout.svelte` directly
+- FAIL: Don't store sensitive state in stores — use `locals` on the server
+- FAIL: Don't skip `use:enhance` on forms — without it, forms lose progressive enhancement
 
 ## Security & Safety Notes
 
@@ -267,16 +267,16 @@ export const handle: Handle = async ({ event, resolve }) => {
 ## Common Pitfalls
 
 - **Problem:** `Cannot use import statement in a module` in `+page.server.ts`
-  **Solution:** The file must be `.ts` or `.js`, not `.svelte`. Server files and Svelte components are separate.
+**Solution:** The file must be `.ts` or `.js`, not `.svelte`. Server files and Svelte components are separate.
 
 - **Problem:** Store value is `undefined` on first SSR render
-  **Solution:** Populate the store from the `load` function return value (`data` prop), not from client-side `onMount`.
+**Solution:** Populate the store from the `load` function return value (`data` prop), not from client-side `onMount`.
 
 - **Problem:** Form action does not redirect after submit
-  **Solution:** Use `redirect(303, '/path')` from `@sveltejs/kit`, not a plain `return`. 303 is required for POST redirects.
+**Solution:** Use `redirect(303, '/path')` from `@sveltejs/kit`, not a plain `return`. 303 is required for POST redirects.
 
 - **Problem:** `locals.user` is undefined inside a `+page.server.ts` load function
-  **Solution:** Set `event.locals.user` in `src/hooks.server.ts` before the `resolve()` call.
+**Solution:** Set `event.locals.user` in `src/hooks.server.ts` before the `resolve()` call.
 
 ## Related Skills
 

@@ -38,7 +38,7 @@ You analyze conversation history to identify problematic Claude Code behaviors t
 - Patterns of behavior the user keeps correcting
 
 ### Reverted Changes
-- `git checkout -- file` or `git restore file` after Claude's edit
+- `git checkout -- file`or`git restore file` after Claude's edit
 - User undoing or reverting Claude's work
 - Re-editing files Claude just edited
 

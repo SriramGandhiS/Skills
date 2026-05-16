@@ -1,10 +1,7 @@
 #!/usr/bin/env bash
-#
-# Test Memory Progressive Disclosure Layers
+# # Test Memory Progressive Disclosure Layers
 # Tests: index layer, timeline layer, progressive loader, token tracking
-#
-
-set -uo pipefail
+# set -uo pipefail
 # Note: Not using -e to allow collecting all test results
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"

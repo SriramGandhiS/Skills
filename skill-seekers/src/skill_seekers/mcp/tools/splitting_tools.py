@@ -57,7 +57,7 @@ def run_subprocess_with_streaming(cmd, timeout=None):
             # Check timeout
             if timeout and (time.time() - start_time) > timeout:
                 process.kill()
-                stderr_lines.append(f"\n⚠️ Process killed after {timeout}s timeout")
+                stderr_lines.append(f"\nWARNING: Process killed after {timeout}s timeout")
                 break
 
             # Check if process finished
@@ -148,8 +148,8 @@ async def split_config(args: dict) -> list[TextContent]:
     # Timeout: 5 minutes for config splitting
     timeout = 300
 
-    progress_msg = "✂️ Splitting configuration...\n"
-    progress_msg += f"⏱️ Maximum time: {timeout // 60} minutes\n\n"
+    progress_msg = " Splitting configuration...\n"
+    progress_msg += f" Maximum time: {timeout // 60} minutes\n\n"
 
     stdout, stderr, returncode = run_subprocess_with_streaming(cmd, timeout=timeout)
 
@@ -158,7 +158,7 @@ async def split_config(args: dict) -> list[TextContent]:
     if returncode == 0:
         return [TextContent(type="text", text=output)]
     else:
-        return [TextContent(type="text", text=f"{output}\n\n❌ Error:\n{stderr}")]
+        return [TextContent(type="text", text=f"{output}\n\nFAIL: Error:\n{stderr}")]
 
 
 async def generate_router(args: dict) -> list[TextContent]:
@@ -186,7 +186,7 @@ async def generate_router(args: dict) -> list[TextContent]:
 
     if not config_files:
         return [
-            TextContent(type="text", text=f"❌ No config files match pattern: {config_pattern}")
+            TextContent(type="text", text=f"FAIL: No config files match pattern: {config_pattern}")
         ]
 
     # Run generate_router.py
@@ -201,8 +201,8 @@ async def generate_router(args: dict) -> list[TextContent]:
     # Timeout: 5 minutes for router generation
     timeout = 300
 
-    progress_msg = "🧭 Generating router skill...\n"
-    progress_msg += f"⏱️ Maximum time: {timeout // 60} minutes\n\n"
+    progress_msg = " Generating router skill...\n"
+    progress_msg += f" Maximum time: {timeout // 60} minutes\n\n"
 
     stdout, stderr, returncode = run_subprocess_with_streaming(cmd, timeout=timeout)
 
@@ -211,4 +211,4 @@ async def generate_router(args: dict) -> list[TextContent]:
     if returncode == 0:
         return [TextContent(type="text", text=output)]
     else:
-        return [TextContent(type="text", text=f"{output}\n\n❌ Error:\n{stderr}")]
+        return [TextContent(type="text", text=f"{output}\n\nFAIL: Error:\n{stderr}")]

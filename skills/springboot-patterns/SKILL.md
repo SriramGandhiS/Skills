@@ -1,4 +1,4 @@
-﻿---
+---
 name: springboot-patterns
 description: Spring Boot architecture patterns, REST API design, layered services, data access, caching, async processing, and logging. Use for Java Spring Boot backend work.
 origin: ECC
@@ -237,10 +237,10 @@ public <T> T withRetry(Supplier<T> supplier, int maxRetries) {
 Only use forwarded headers when:
 1. Your app is behind a trusted reverse proxy (nginx, AWS ALB, etc.)
 2. You have registered `ForwardedHeaderFilter` as a bean
-3. You have configured `server.forward-headers-strategy=NATIVE` or `FRAMEWORK` in application properties
+3. You have configured `server.forward-headers-strategy=NATIVE`or`FRAMEWORK` in application properties
 4. Your proxy is configured to overwrite (not append to) the `X-Forwarded-For` header
 
-When `ForwardedHeaderFilter` is properly configured, `request.getRemoteAddr()` will automatically
+When `ForwardedHeaderFilter`is properly configured,`request.getRemoteAddr()` will automatically
 return the correct client IP from the forwarded headers. Without this configuration, use
 `request.getRemoteAddr()` directlyâ€”it returns the immediate connection IP, which is the only
 trustworthy value.
@@ -257,13 +257,13 @@ public class RateLimitFilter extends OncePerRequestFilter {
 - Spring to handle forwarded headers properly for accurate client IP detection:
    *
 - 1. Set server.forward-headers-strategy=NATIVE (for cloud platforms) or FRAMEWORK in
--    application.properties/yaml
+- application.properties/yaml
 - 2. If using FRAMEWORK strategy, register ForwardedHeaderFilter:
    *
--    @Bean
--    ForwardedHeaderFilter forwardedHeaderFilter() {
--        return new ForwardedHeaderFilter();
--    }
+- @Bean
+- ForwardedHeaderFilter forwardedHeaderFilter() {
+- return new ForwardedHeaderFilter();
+- }
    *
 - 3. Ensure your proxy overwrites (not appends) the X-Forwarded-For header to prevent spoofing
 - 4. Configure server.tomcat.remoteip.trusted-proxies or equivalent for your container
@@ -309,6 +309,6 @@ Use Springâ€™s `@Scheduled` or integrate with queues (e.g., Kafka, SQS, Rab
 - Enable `spring.mvc.problemdetails.enabled=true` for RFC 7807 errors (Spring Boot 3+)
 - Configure HikariCP pool sizes for workload, set timeouts
 - Use `@Transactional(readOnly = true)` for queries
-- Enforce null-safety via `@NonNull` and `Optional` where appropriate
+- Enforce null-safety via `@NonNull`and`Optional` where appropriate
 
 **Remember**: Keep controllers thin, services focused, repositories simple, and errors handled centrally. Optimize for maintainability and testability.

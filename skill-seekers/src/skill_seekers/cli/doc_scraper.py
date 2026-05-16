@@ -333,14 +333,14 @@ class DocToSkillConverter(SkillConverter):
         try:
             with open(self.checkpoint_file, "w", encoding="utf-8") as f:
                 json.dump(checkpoint_data, f, indent=2)
-            logger.info("  💾 Checkpoint saved (%d pages)", self.pages_scraped)
+            logger.info("   Checkpoint saved (%d pages)", self.pages_scraped)
         except Exception as e:
-            logger.warning("  ⚠️  Failed to save checkpoint: %s", e)
+            logger.warning("  WARNING:  Failed to save checkpoint: %s", e)
 
     def load_checkpoint(self) -> None:
         """Load progress from checkpoint"""
         if not os.path.exists(self.checkpoint_file):
-            logger.info("ℹ️  No checkpoint found, starting fresh")
+            logger.info("  No checkpoint found, starting fresh")
             return
 
         try:
@@ -353,7 +353,7 @@ class DocToSkillConverter(SkillConverter):
             self._enqueued_urls = set(pending)
             self.pages_scraped = checkpoint_data["pages_scraped"]
 
-            logger.info("✅ Resumed from checkpoint")
+            logger.info("PASS: Resumed from checkpoint")
             logger.info("   Pages already scraped: %d", self.pages_scraped)
             logger.info("   URLs visited: %d", len(self.visited_urls))
             logger.info("   URLs pending: %d", len(self.pending_urls))
@@ -361,7 +361,7 @@ class DocToSkillConverter(SkillConverter):
             logger.info("")
 
         except Exception as e:
-            logger.warning("⚠️  Failed to load checkpoint: %s", e)
+            logger.warning("WARNING:  Failed to load checkpoint: %s", e)
             logger.info("   Starting fresh")
 
     def clear_checkpoint(self) -> None:
@@ -369,9 +369,9 @@ class DocToSkillConverter(SkillConverter):
         if os.path.exists(self.checkpoint_file):
             try:
                 os.remove(self.checkpoint_file)
-                logger.info("✅ Checkpoint cleared")
+                logger.info("PASS: Checkpoint cleared")
             except Exception as e:
-                logger.warning("⚠️  Failed to clear checkpoint: %s", e)
+                logger.warning("WARNING:  Failed to clear checkpoint: %s", e)
 
     def checkpoint_exists(self) -> bool:
         """Return True when a saved checkpoint file is available."""
@@ -440,7 +440,7 @@ class DocToSkillConverter(SkillConverter):
         main, _selector_used = self._find_main_content(soup)
 
         if not main:
-            logger.warning("⚠ No content: %s", url)
+            logger.warning("WARNING: No content: %s", url)
             return page
 
         # Extract headings with better structure
@@ -1071,12 +1071,12 @@ class DocToSkillConverter(SkillConverter):
         Returns:
             True if llms.txt was found and processed successfully
         """
-        logger.info("\n🔍 Checking for llms.txt at %s...", self.base_url)
+        logger.info("\n Checking for llms.txt at %s...", self.base_url)
 
         # Check for explicit config URL first
         explicit_url = self.config.get("llms_txt_url")
         if explicit_url:
-            logger.info("\n📌 Using explicit llms_txt_url from config: %s", explicit_url)
+            logger.info("\n Using explicit llms_txt_url from config: %s", explicit_url)
 
             # Download explicit file first
             downloader = LlmsTxtDownloader(explicit_url)
@@ -1090,7 +1090,7 @@ class DocToSkillConverter(SkillConverter):
 
                 with open(filepath, "w", encoding="utf-8") as f:
                     f.write(content)
-                logger.info("  💾 Saved %s (%d chars)", filename, len(content))
+                logger.info("   Saved %s (%d chars)", filename, len(content))
 
                 # Also try to detect and download ALL other variants
                 detector = LlmsTxtDetector(self.base_url)
@@ -1098,7 +1098,7 @@ class DocToSkillConverter(SkillConverter):
 
                 if variants:
                     logger.info(
-                        "\n🔍 Found %d total variant(s), downloading remaining...",
+                        "\n Found %d total variant(s), downloading remaining...",
                         len(variants),
                     )
                     for variant_info in variants:
@@ -1109,7 +1109,7 @@ class DocToSkillConverter(SkillConverter):
                         if url == explicit_url:
                             continue
 
-                        logger.info("  📥 Downloading %s...", variant)
+                        logger.info("   Downloading %s...", variant)
                         extra_downloader = LlmsTxtDownloader(url)
                         extra_content = extra_downloader.download()
 
@@ -1135,7 +1135,7 @@ class DocToSkillConverter(SkillConverter):
                     # Clean URLs: strip anchors, deduplicate
                     cleaned_urls = self._convert_to_md_urls(extracted_urls)
                     logger.info(
-                        "\n🔗 Found %d URLs in llms.txt (%d unique), starting BFS crawl...",
+                        "\n Found %d URLs in llms.txt (%d unique), starting BFS crawl...",
                         len(extracted_urls),
                         len(cleaned_urls),
                     )
@@ -1146,7 +1146,7 @@ class DocToSkillConverter(SkillConverter):
                             self._enqueue_url(url)
 
                     logger.info(
-                        "  📋 %d URLs added to crawl queue after filtering",
+                        "   %d URLs added to crawl queue after filtering",
                         len(self.pending_urls),
                     )
 
@@ -1172,10 +1172,10 @@ class DocToSkillConverter(SkillConverter):
         variants = detector.detect_all()
 
         if not variants:
-            logger.info("ℹ️  No llms.txt found, using HTML scraping")
+            logger.info("  No llms.txt found, using HTML scraping")
             return False
 
-        logger.info("✅ Found %d llms.txt variant(s)", len(variants))
+        logger.info("PASS: Found %d llms.txt variant(s)", len(variants))
 
         # Download ALL variants
         downloaded = {}
@@ -1183,7 +1183,7 @@ class DocToSkillConverter(SkillConverter):
             url = variant_info["url"]
             variant = variant_info["variant"]
 
-            logger.info("  📥 Downloading %s...", variant)
+            logger.info("   Downloading %s...", variant)
             downloader = LlmsTxtDownloader(url)
             content = downloader.download()
 
@@ -1197,7 +1197,7 @@ class DocToSkillConverter(SkillConverter):
                 logger.info("     ✓ %s (%d chars)", filename, len(content))
 
         if not downloaded:
-            logger.warning("⚠️  Failed to download any variants, falling back to HTML scraping")
+            logger.warning("WARNING:  Failed to download any variants, falling back to HTML scraping")
             return False
 
         # Save ALL variants to references/
@@ -1207,11 +1207,11 @@ class DocToSkillConverter(SkillConverter):
             filepath = os.path.join(self.skill_dir, "references", data["filename"])
             with open(filepath, "w", encoding="utf-8") as f:
                 f.write(data["content"])
-            logger.info("  💾 Saved %s", data["filename"])
+            logger.info("   Saved %s", data["filename"])
 
         # Parse LARGEST variant for skill building
         largest = max(downloaded.items(), key=lambda x: x[1]["size"])
-        logger.info("\n📄 Parsing %s for skill building...", largest[1]["filename"])
+        logger.info("\n Parsing %s for skill building...", largest[1]["filename"])
 
         parser = LlmsTxtParser(largest[1]["content"], self.base_url)
 
@@ -1221,7 +1221,7 @@ class DocToSkillConverter(SkillConverter):
             # Clean URLs: strip anchors, deduplicate
             cleaned_urls = self._convert_to_md_urls(extracted_urls)
             logger.info(
-                "\n🔗 Found %d URLs in llms.txt (%d unique), starting BFS crawl...",
+                "\n Found %d URLs in llms.txt (%d unique), starting BFS crawl...",
                 len(extracted_urls),
                 len(cleaned_urls),
             )
@@ -1232,7 +1232,7 @@ class DocToSkillConverter(SkillConverter):
                     self._enqueue_url(url)
 
             logger.info(
-                "  📋 %d URLs added to crawl queue after filtering",
+                "   %d URLs added to crawl queue after filtering",
                 len(self.pending_urls),
             )
 
@@ -1245,7 +1245,7 @@ class DocToSkillConverter(SkillConverter):
         pages = parser.parse()
 
         if not pages:
-            logger.warning("⚠️  Failed to parse llms.txt, falling back to HTML scraping")
+            logger.warning("WARNING:  Failed to parse llms.txt, falling back to HTML scraping")
             return False
 
         logger.info("  ✓ Parsed %d sections", len(pages))
@@ -1327,7 +1327,7 @@ class DocToSkillConverter(SkillConverter):
                         discovered.append(url)
 
                 if discovered:
-                    logger.info(f"📋 Found sitemap at {sitemap_url} ({len(discovered)} valid URLs)")
+                    logger.info(f" Found sitemap at {sitemap_url} ({len(discovered)} valid URLs)")
                     return list(set(discovered))
 
             except Exception as e:
@@ -1349,7 +1349,7 @@ class DocToSkillConverter(SkillConverter):
         if not self.browser_mode:
             return []
 
-        logger.info("🌐 Rendering index page with networkidle to discover SPA navigation...")
+        logger.info(" Rendering index page with networkidle to discover SPA navigation...")
 
         try:
             from skill_seekers.cli.browser_renderer import BrowserRenderer
@@ -1375,12 +1375,12 @@ class DocToSkillConverter(SkillConverter):
                     discovered.append(href)
 
             if discovered:
-                logger.info(f"🌐 Discovered {len(discovered)} pages from rendered SPA navigation")
+                logger.info(f" Discovered {len(discovered)} pages from rendered SPA navigation")
 
             return discovered
 
         except Exception as e:
-            logger.warning(f"⚠️  SPA navigation discovery failed: {e}")
+            logger.warning(f"WARNING:  SPA navigation discovery failed: {e}")
             return []
 
     def scrape_all(self) -> None:
@@ -1411,7 +1411,7 @@ class DocToSkillConverter(SkillConverter):
                 llms_result = self._try_llms_txt()
                 if llms_result:
                     logger.info(
-                        "\n✅ Used llms.txt (%s) - skipping HTML scraping",
+                        "\nPASS: Used llms.txt (%s) - skipping HTML scraping",
                         self.llms_txt_variant,
                     )
                     self.save_summary()
@@ -1444,7 +1444,7 @@ class DocToSkillConverter(SkillConverter):
 
         # Handle unlimited mode
         if max_pages is None or max_pages == -1:
-            logger.warning("⚠️  UNLIMITED MODE: No page limit (will scrape all pages)\n")
+            logger.warning("WARNING:  UNLIMITED MODE: No page limit (will scrape all pages)\n")
             unlimited = True
         else:
             unlimited = False
@@ -1480,7 +1480,7 @@ class DocToSkillConverter(SkillConverter):
                                 self._enqueue_url(href)
                     except Exception as e:
                         # Failed to extract links in fast mode, continue anyway
-                        logger.warning("⚠️  Warning: Could not extract links from %s: %s", url, e)
+                        logger.warning("WARNING:  Warning: Could not extract links from %s: %s", url, e)
                 else:
                     self.scrape_page(url)
                     self.pages_scraped += 1
@@ -1498,7 +1498,7 @@ class DocToSkillConverter(SkillConverter):
         else:
             from concurrent.futures import ThreadPoolExecutor, as_completed
 
-            logger.info("🚀 Starting parallel scraping with %d workers\n", self.workers)
+            logger.info(" Starting parallel scraping with %d workers\n", self.workers)
 
             with ThreadPoolExecutor(max_workers=self.workers) as executor:
                 futures = []
@@ -1531,7 +1531,7 @@ class DocToSkillConverter(SkillConverter):
                             future.result()  # Raises exception if scrape_page failed
                         except Exception as e:
                             with self.lock:
-                                logger.warning("  ⚠️  Worker exception: %s", e)
+                                logger.warning("  WARNING:  Worker exception: %s", e)
 
                         with self.lock:
                             self.pages_scraped += 1
@@ -1555,19 +1555,19 @@ class DocToSkillConverter(SkillConverter):
                         future.result()
                     except Exception as e:
                         with self.lock:
-                            logger.warning("  ⚠️  Worker exception: %s", e)
+                            logger.warning("  WARNING:  Worker exception: %s", e)
 
                     with self.lock:
                         self.pages_scraped += 1
 
         if self.dry_run:
-            logger.info("\n✅ Dry run complete: would scrape ~%d pages", len(self.visited_urls))
+            logger.info("\nPASS: Dry run complete: would scrape ~%d pages", len(self.visited_urls))
             if len(self.visited_urls) >= preview_limit:
                 logger.info(
                     "   (showing first %d, actual scraping may find more)",
                     preview_limit,
                 )
-            logger.info("\n💡 To actually scrape, run without --dry-run")
+            logger.info("\n To actually scrape, run without --dry-run")
         else:
             self._log_scrape_completion()
             self.save_summary()
@@ -1586,7 +1586,7 @@ class DocToSkillConverter(SkillConverter):
             llms_result = self._try_llms_txt()
             if llms_result:
                 logger.info(
-                    "\n✅ Used llms.txt (%s) - skipping HTML scraping",
+                    "\nPASS: Used llms.txt (%s) - skipping HTML scraping",
                     self.llms_txt_variant,
                 )
                 self.save_summary()
@@ -1612,7 +1612,7 @@ class DocToSkillConverter(SkillConverter):
 
         # Handle unlimited mode
         if max_pages is None or max_pages == -1:
-            logger.warning("⚠️  UNLIMITED MODE: No page limit (will scrape all pages)\n")
+            logger.warning("WARNING:  UNLIMITED MODE: No page limit (will scrape all pages)\n")
             unlimited = True
             preview_limit = float("inf")
         else:
@@ -1665,7 +1665,7 @@ class DocToSkillConverter(SkillConverter):
                                         self._enqueue_url(href)
                             except Exception as e:
                                 logger.warning(
-                                    "⚠️  Warning: Could not extract links from %s: %s", url, e
+                                    "WARNING:  Warning: Could not extract links from %s: %s", url, e
                                 )
                         else:
                             task = asyncio.create_task(
@@ -1704,13 +1704,13 @@ class DocToSkillConverter(SkillConverter):
                         logger.error("  ✗ Async task failed: %s: %s", type(result).__name__, result)
 
         if self.dry_run:
-            logger.info("\n✅ Dry run complete: would scrape ~%d pages", len(self.visited_urls))
+            logger.info("\nPASS: Dry run complete: would scrape ~%d pages", len(self.visited_urls))
             if len(self.visited_urls) >= preview_limit:
                 logger.info(
                     "   (showing first %d, actual scraping may find more)",
                     int(preview_limit),
                 )
-            logger.info("\n💡 To actually scrape, run without --dry-run")
+            logger.info("\n To actually scrape, run without --dry-run")
         else:
             self._log_scrape_completion()
             self.save_summary()
@@ -1725,14 +1725,14 @@ class DocToSkillConverter(SkillConverter):
         visited = len(self.visited_urls)
         if self.pages_skipped > 0:
             logger.info(
-                "\n✅ Scraped %d pages (%d saved, %d skipped - empty content)",
+                "\nPASS: Scraped %d pages (%d saved, %d skipped - empty content)",
                 visited,
                 self.pages_saved,
                 self.pages_skipped,
             )
         else:
             logger.info(
-                "\n✅ Scraped %d pages (%d saved)",
+                "\nPASS: Scraped %d pages (%d saved)",
                 visited,
                 self.pages_saved,
             )
@@ -1740,7 +1740,7 @@ class DocToSkillConverter(SkillConverter):
         # SPA detection: warn when most pages had empty content
         if visited >= 5 and self.pages_saved == 0:
             logger.warning(
-                "⚠️  All %d pages had empty content. This site likely requires "
+                "WARNING:  All %d pages had empty content. This site likely requires "
                 "JavaScript rendering (SPA/React/Vue).\n"
                 "   Try: skill-seekers create <url> --browser\n"
                 "   Install: pip install 'skill-seekers[browser]'",
@@ -1750,7 +1750,7 @@ class DocToSkillConverter(SkillConverter):
             skip_ratio = self.pages_skipped / visited
             if skip_ratio > 0.8:
                 logger.warning(
-                    "⚠️  %d%% of pages had empty content. This site may use "
+                    "WARNING:  %d%% of pages had empty content. This site may use "
                     "JavaScript rendering for some pages.\n"
                     "   Try: skill-seekers create <url> --browser",
                     int(skip_ratio * 100),
@@ -1787,7 +1787,7 @@ class DocToSkillConverter(SkillConverter):
                     pages.append(json.load(f))
             except Exception as e:
                 logger.error(
-                    "⚠️  Error loading scraped data file %s: %s: %s",
+                    "WARNING:  Error loading scraped data file %s: %s: %s",
                     json_file,
                     type(e).__name__,
                     e,
@@ -2186,7 +2186,7 @@ To refresh this skill with updated documentation:
         logger.info("Creating SKILL.md...")
         self.create_enhanced_skill_md(categories, quick_ref)
 
-        logger.info("\n✅ Skill built: %s/", self.skill_dir)
+        logger.info("\nPASS: Skill built: %s/", self.skill_dir)
         return True
 
 
@@ -2341,7 +2341,7 @@ def load_config(config_path: str) -> dict[str, Any]:
         available = list_available_configs()
         searched_paths = get_last_searched_paths()
 
-        logger.error("❌ Error: Config file not found: %s", config_path)
+        logger.error("FAIL: Error: Config file not found: %s", config_path)
         logger.error("")
         logger.error("   Searched in these locations:")
         for i, path in enumerate(searched_paths, 1):
@@ -2351,24 +2351,24 @@ def load_config(config_path: str) -> dict[str, Any]:
 
         # Show where user should place custom configs
         user_config_dir = Path.home() / ".config" / "skill-seekers" / "configs"
-        logger.error("   💡 To use a custom config, place it in one of these locations:")
+        logger.error("    To use a custom config, place it in one of these locations:")
         logger.error("      • Current directory: ./configs/%s", Path(config_path).name)
         logger.error("      • User config directory: %s", user_config_dir / Path(config_path).name)
         logger.error("      • Absolute path: /full/path/to/%s", Path(config_path).name)
         logger.error("")
 
         if available:
-            logger.error("   📋 Or use a preset config from API (%d total):", len(available))
+            logger.error("    Or use a preset config from API (%d total):", len(available))
             for cfg in available[:10]:  # Show first 10
                 logger.error("      • %s", cfg)
             if len(available) > 10:
                 logger.error("      ... and %d more", len(available) - 10)
             logger.error("")
-            logger.error("   💡 Use any preset: skill-seekers scrape --config <name>.json")
-            logger.error("   🌐 Browse all: https://skillseekersweb.com/")
+            logger.error("    Use any preset: skill-seekers scrape --config <name>.json")
+            logger.error("    Browse all: https://skillseekersweb.com/")
         else:
-            logger.error("   ⚠️  Could not connect to API to list available configs")
-            logger.error("   🌐 Visit: https://skillseekersweb.com/ for available configs")
+            logger.error("   WARNING:  Could not connect to API to list available configs")
+            logger.error("    Visit: https://skillseekersweb.com/ for available configs")
         sys.exit(1)
 
     # Load the resolved config file
@@ -2376,7 +2376,7 @@ def load_config(config_path: str) -> dict[str, Any]:
         with open(resolved_path, encoding="utf-8") as f:
             config = json.load(f)
     except json.JSONDecodeError as e:
-        logger.error("❌ Error: Invalid JSON in config file: %s", resolved_path)
+        logger.error("FAIL: Error: Invalid JSON in config file: %s", resolved_path)
         logger.error("   Details: %s", e)
         logger.error("   Suggestion: Check syntax at line %d, column %d", e.lineno, e.colno)
         sys.exit(1)
@@ -2390,7 +2390,7 @@ def load_config(config_path: str) -> dict[str, Any]:
         if validator.is_unified:
             logger.debug("✓ Unified config format detected")
     except ValueError as e:
-        logger.error("❌ Configuration validation errors in %s:", config_path)
+        logger.error("FAIL: Configuration validation errors in %s:", config_path)
         logger.error("   %s", str(e))
         logger.error(
             "\n   Suggestion: Fix the above errors or check https://skillseekersweb.com/ for examples"
@@ -2455,7 +2455,7 @@ def _run_scraping(config: dict[str, Any]) -> Optional["DocToSkillConverter"]:
 
     # Check for resume
     if config.get("resume") and converter.checkpoint_exists():
-        logger.info("📂 Resuming from checkpoint...")
+        logger.info(" Resuming from checkpoint...")
         converter.load_checkpoint()
     else:
         # Clear checkpoint if fresh start
@@ -2464,17 +2464,17 @@ def _run_scraping(config: dict[str, Any]) -> Optional["DocToSkillConverter"]:
 
     # Scrape
     if not config.get("skip_scrape"):
-        logger.info("\n🔍 Starting scrape...")
+        logger.info("\n Starting scrape...")
         try:
             converter.scrape_all()
         except KeyboardInterrupt:
-            logger.info("\n\n⚠️  Interrupted by user")
+            logger.info("\n\nWARNING:  Interrupted by user")
             converter.save_checkpoint()
-            logger.info("💾 Checkpoint saved. Resume with --resume")
+            logger.info(" Checkpoint saved. Resume with --resume")
             return None
 
     # Build skill
-    logger.info("\n📦 Building skill...")
+    logger.info("\n Building skill...")
     converter.build_skill()
 
     return converter
@@ -2491,7 +2491,7 @@ def _run_enhancement(
     skill_dir = f"output/{config['name']}"
 
     logger.info("\n" + "=" * 60)
-    logger.info(f"🤖 Enhancing SKILL.md (level {ctx.enhancement.level})")
+    logger.info(f" Enhancing SKILL.md (level {ctx.enhancement.level})")
     logger.info("=" * 60)
 
     # Use AgentClient from context
@@ -2511,13 +2511,13 @@ def _run_enhancement(
                 if adaptor.supports_enhancement():
                     success = adaptor.enhance(Path(skill_dir), api_key)
                     if success:
-                        logger.info("✅ API enhancement complete! (%s)", adaptor.PLATFORM_NAME)
+                        logger.info("PASS: API enhancement complete! (%s)", adaptor.PLATFORM_NAME)
                     else:
-                        logger.warning("⚠️  API enhancement did not complete")
+                        logger.warning("WARNING:  API enhancement did not complete")
                 else:
-                    logger.warning("⚠️  %s does not support AI enhancement", adaptor.PLATFORM_NAME)
+                    logger.warning("WARNING:  %s does not support AI enhancement", adaptor.PLATFORM_NAME)
             else:
-                logger.warning("⚠️  No API key available for enhancement")
+                logger.warning("WARNING:  No API key available for enhancement")
         else:
             # Local mode enhancement
             from skill_seekers.cli.enhance_skill_local import LocalSkillEnhancer
@@ -2530,8 +2530,8 @@ def _run_enhancement(
             success = enhancer.run(headless=True, timeout=ctx.enhancement.timeout)
             if success:
                 agent_name = ctx.enhancement.agent or "claude"
-                logger.info(f"✅ Local enhancement complete! (via {agent_name})")
+                logger.info(f"PASS: Local enhancement complete! (via {agent_name})")
             else:
-                logger.warning("⚠️  Local enhancement did not complete")
+                logger.warning("WARNING:  Local enhancement did not complete")
     except Exception as e:
-        logger.warning(f"⚠️  Enhancement failed: {e}")
+        logger.warning(f"WARNING:  Enhancement failed: {e}")

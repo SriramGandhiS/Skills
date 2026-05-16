@@ -443,7 +443,7 @@ def {func.__name__}({", ".join(params)}){return_type}:
 
 #### Deleting ${FEATURE}
 
-> ⚠️ **Warning**: Deletion is permanent and cannot be undone.
+> WARNING: **Warning**: Deletion is permanent and cannot be undone.
 
 1. Find your ${FEATURE} in the list
 2. Click the "Delete" button

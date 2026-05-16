@@ -8,7 +8,7 @@ Bu komut, minimal değişikliklerle Go build hatalarını aşamalı olarak düze
 
 ## Bu Komut Ne Yapar
 
-1. **Diagnostics Çalıştır**: `go build`, `go vet`, `staticcheck` yürüt
+1. **Diagnostics Çalıştır**: `go build`,`go vet`,`staticcheck` yürüt
 2. **Hataları Parse Et**: Dosyaya göre grupla ve önem derecesine göre sırala
 3. **Aşamalı Düzelt**: Bir seferde bir hata
 4. **Her Düzeltmeyi Doğrula**: Her değişiklikten sonra build'i yeniden çalıştır
@@ -26,17 +26,17 @@ Bu komut, minimal değişikliklerle Go build hatalarını aşamalı olarak düze
 ## Çalıştırılan Diagnostic Komutları
 
 ```bash
-# Birincil build kontrolü
+## Birincil build kontrolü
 go build ./...
 
-# Static analiz
+## Static analiz
 go vet ./...
 
-# Genişletilmiş linting (mevcutsa)
+## Genişletilmiş linting (mevcutsa)
 staticcheck ./...
 golangci-lint run
 
-# Modül sorunları
+## Modül sorunları
 go mod verify
 go mod tidy -v
 ```
@@ -47,7 +47,7 @@ go mod tidy -v
 Kullanıcı: /go-build
 
 Agent:
-# Go Build Çözümü
+## Go Build Çözümü
 
 ## İlk Diagnostics
 
@@ -78,7 +78,7 @@ var repo repository.UserRepository
 
 ```bash
 $ go build ./...
-# 2 hata kaldı
+## 2 hata kaldı
 ```
 
 ## Düzeltme 2: Tip Uyuşmazlığı
@@ -96,7 +96,7 @@ count, _ := strconv.Atoi(countStr)
 
 ```bash
 $ go build ./...
-# 1 hata kaldı
+## 1 hata kaldı
 ```
 
 ## Düzeltme 3: Eksik Return
@@ -117,14 +117,14 @@ func GetUser(id string) (*User, error) {
 
 ```bash
 $ go build ./...
-# Build başarılı!
+## Build başarılı!
 ```
 
 ## Son Doğrulama
 
 ```bash
 $ go vet ./...
-# Sorun yok
+## Sorun yok
 
 $ go test ./...
 ok      project/internal/service   0.015s
@@ -153,7 +153,7 @@ Build Durumu: PASS: BAŞARILI
 | `X does not implement Y` | Eksik metod ekle |
 | `import cycle` | Paketleri yeniden yapılandır |
 | `declared but not used` | Değişkeni kaldır veya kullan |
-| `cannot find package` | `go get` veya `go mod tidy` |
+| `cannot find package`|`go get`veya`go mod tidy` |
 
 ## Düzeltme Stratejisi
 

@@ -25,7 +25,7 @@ try:
     from rich.table import Table
     from rich.panel import Panel
 except ImportError:
-    print("❌ Missing dependencies!")
+    print("FAIL: Missing dependencies!")
     print("Install with: pip install chromadb rich")
     sys.exit(1)
 
@@ -39,7 +39,7 @@ def create_client(persist_directory: str = None):
         else:
             return chromadb.Client()
     except Exception as e:
-        console.print(f"[red]❌ Client creation failed: {e}[/red]")
+        console.print(f"[red]FAIL: Client creation failed: {e}[/red]")
         sys.exit(1)
 
 def get_collection(client, collection_name: str = "vue"):
@@ -47,7 +47,7 @@ def get_collection(client, collection_name: str = "vue"):
     try:
         return client.get_collection(collection_name)
     except Exception as e:
-        console.print(f"[red]❌ Collection not found: {e}[/red]")
+        console.print(f"[red]FAIL: Collection not found: {e}[/red]")
         console.print("\n[yellow]Did you run 2_upload_to_chroma.py first?[/yellow]")
         sys.exit(1)
 
@@ -96,7 +96,7 @@ def semantic_search_example(collection):
         console.print(table)
 
         # Explain distance scores
-        console.print("\n[dim]💡 Distance: Lower = more similar (< 0.5 = very relevant)[/dim]")
+        console.print("\n[dim] Distance: Lower = more similar (< 0.5 = very relevant)[/dim]")
 
     except Exception as e:
         console.print(f"[red]Query failed: {e}[/red]")
@@ -278,8 +278,8 @@ def main():
     top_k_results_example(collection)
     complex_filter_example(collection)
 
-    console.print("\n[bold green]✅ All examples completed![/bold green]")
-    console.print("\n[cyan]💡 Tips:[/cyan]")
+    console.print("\n[bold green]PASS: All examples completed![/bold green]")
+    console.print("\n[cyan] Tips:[/cyan]")
     console.print("  • Lower distance = more similar (< 0.5 is very relevant)")
     console.print("  • Use 'where' filters to narrow results before search")
     console.print("  • Combine filters with $and, $or, $not operators")

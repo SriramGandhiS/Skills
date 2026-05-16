@@ -50,12 +50,12 @@ jobs:
 
     - name: Run adaptor tests
       run: |
-        echo "🧪 Testing $ADAPTOR_NAME adaptor..."
+        echo " Testing $ADAPTOR_NAME adaptor..."
         python -m pytest "tests/test_adaptors/test_${ADAPTOR_NAME}_adaptor.py" -v --tb=short
 
     - name: Test adaptor integration
       run: |
-        echo "🔗 Testing $ADAPTOR_NAME integration..."
+        echo " Testing $ADAPTOR_NAME integration..."
 
         # Create test skill
         mkdir -p test_skill/references
@@ -103,6 +103,6 @@ jobs:
 
     - name: Run MCP vector DB tests
       run: |
-        echo "🧪 Testing MCP vector database tools..."
+        echo " Testing MCP vector database tools..."
         python -m pytest tests/test_mcp_vector_dbs.py -v --tb=short
 

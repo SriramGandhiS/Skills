@@ -2,10 +2,10 @@ name: Post-Release Soak Monitor
 
 # v7.4.10: Repurposed from PR #158 watcher (PR is now closed).
 # Daily snapshot of post-release health for the latest published version:
-#   1. Open GitHub issues tagged `bun-route` or matching the latest version
-#   2. Most recent npm download count for `loki-mode`
-#   3. Docker Hub pulls in the last 24h
-#   4. Latest GitHub release reactions
+# 1. Open GitHub issues tagged `bun-route` or matching the latest version
+# 2. Most recent npm download count for `loki-mode`
+# 3. Docker Hub pulls in the last 24h
+# 4. Latest GitHub release reactions
 # Writes a job summary to the workflow run; uploads JSON artifact for trend
 # analysis. Does NOT post to any PR (PR #158 was a one-shot soak target).
 

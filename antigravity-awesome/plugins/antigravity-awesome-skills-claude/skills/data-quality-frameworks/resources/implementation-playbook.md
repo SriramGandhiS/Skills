@@ -516,7 +516,7 @@ class DataQualityPipeline:
         report.append("")
 
         for table, result in results.items():
-            status = "✅" if result.passed else "❌"
+            status = "PASS:" if result.passed else "FAIL:"
             report.append(f"### {status} {table}")
             report.append(f"- Expectations: {result.total_expectations}")
             report.append(f"- Failed: {result.failed_expectations}")

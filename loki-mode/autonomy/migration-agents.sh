@@ -3,28 +3,23 @@
 # shellcheck disable=SC2155  # Declare and assign separately (acceptable in this codebase)
 #===============================================================================
 # Migration Agents - Shell-sourceable agent definitions for codebase migration
-#
-# Defines 5 specialized agents for safe, structured codebase migration:
-#   1. Codebase Archaeologist  - Read-only legacy code exploration
-#   2. Characterization Tester - Behavioral test generation
-#   3. Seam Detector           - Architecture seam identification
-#   4. Migration Planner       - Ordered migration plan generation
-#   5. Migration Reviewer      - Specialized migration review council member
-#
-# Usage:
-#   source autonomy/migration-agents.sh
-#   agent_codebase_archaeologist "/path/to/code" "/path/to/migration"
-#   agent_characterization_tester "/path/to/code" "/path/to/migration"
-#   migration_agent_dispatch "archaeologist" "/path/to/code" "/path/to/migration"
-#
-# Each function echoes a structured prompt suitable for claude/codex/gemini.
+# # Defines 5 specialized agents for safe, structured codebase migration:
+# 1. Codebase Archaeologist  - Read-only legacy code exploration
+# 2. Characterization Tester - Behavioral test generation
+# 3. Seam Detector           - Architecture seam identification
+# 4. Migration Planner       - Ordered migration plan generation
+# 5. Migration Reviewer      - Specialized migration review council member
+# # Usage:
+# source autonomy/migration-agents.sh
+# agent_codebase_archaeologist "/path/to/code" "/path/to/migration"
+# agent_characterization_tester "/path/to/code" "/path/to/migration"
+# migration_agent_dispatch "archaeologist" "/path/to/code" "/path/to/migration"
+# # Each function echoes a structured prompt suitable for claude/codex/gemini.
 # The migration directory stores all artifacts (docs/, tests/, seams.json, etc).
-#
-# Environment Variables:
-#   MIGRATION_STRATEGY   - "big-bang" (default) or "strangler-fig"
-#   MIGRATION_CONFIDENCE - Minimum confidence for auto-proceed (default: 0.8)
-#
-#===============================================================================
+# # Environment Variables:
+# MIGRATION_STRATEGY   - "big-bang" (default) or "strangler-fig"
+# MIGRATION_CONFIDENCE - Minimum confidence for auto-proceed (default: 0.8)
+# #===============================================================================
 
 MIGRATION_AGENTS_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
@@ -34,8 +29,7 @@ MIGRATION_CONFIDENCE="${MIGRATION_CONFIDENCE:-0.8}"
 
 #===============================================================================
 # Base Prompts
-#
-# Each agent has a MIGRATION_AGENT_<NAME>_PROMPT variable containing its
+# # Each agent has a MIGRATION_AGENT_<NAME>_PROMPT variable containing its
 # core instructions. The agent functions compose these with runtime paths.
 #===============================================================================
 
@@ -325,16 +319,14 @@ PROMPT_EOF
 
 #===============================================================================
 # Agent Functions
-#
-# Each function composes the base prompt with runtime context (paths,
+# # Each function composes the base prompt with runtime context (paths,
 # strategy, configuration) and echoes the final prompt string.
 #===============================================================================
 
 # agent_codebase_archaeologist -- Read-only legacy code exploration
-#
-# Args:
-#   $1 - codebase_path: Path to the codebase to explore
-#   $2 - migration_dir: Path to the migration working directory
+# # Args:
+# $1 - codebase_path: Path to the codebase to explore
+# $2 - migration_dir: Path to the migration working directory
 agent_codebase_archaeologist() {
     local codebase_path="${1:?Usage: agent_codebase_archaeologist <codebase_path> <migration_dir>}"
     local migration_dir="${2:?Usage: agent_codebase_archaeologist <codebase_path> <migration_dir>}"
@@ -353,10 +345,9 @@ EOF
 }
 
 # agent_characterization_tester -- Behavioral test generation
-#
-# Args:
-#   $1 - codebase_path: Path to the codebase to test
-#   $2 - migration_dir: Path to the migration working directory
+# # Args:
+# $1 - codebase_path: Path to the codebase to test
+# $2 - migration_dir: Path to the migration working directory
 agent_characterization_tester() {
     local codebase_path="${1:?Usage: agent_characterization_tester <codebase_path> <migration_dir>}"
     local migration_dir="${2:?Usage: agent_characterization_tester <codebase_path> <migration_dir>}"
@@ -377,10 +368,9 @@ EOF
 }
 
 # agent_seam_detector -- Architecture seam identification
-#
-# Args:
-#   $1 - codebase_path: Path to the codebase to analyze
-#   $2 - migration_dir: Path to the migration working directory
+# # Args:
+# $1 - codebase_path: Path to the codebase to analyze
+# $2 - migration_dir: Path to the migration working directory
 agent_seam_detector() {
     local codebase_path="${1:?Usage: agent_seam_detector <codebase_path> <migration_dir>}"
     local migration_dir="${2:?Usage: agent_seam_detector <codebase_path> <migration_dir>}"
@@ -402,10 +392,9 @@ EOF
 }
 
 # agent_migration_planner -- Ordered migration plan generation
-#
-# Args:
-#   $1 - codebase_path: Path to the codebase to plan migration for
-#   $2 - migration_dir: Path to the migration working directory
+# # Args:
+# $1 - codebase_path: Path to the codebase to plan migration for
+# $2 - migration_dir: Path to the migration working directory
 agent_migration_planner() {
     local codebase_path="${1:?Usage: agent_migration_planner <codebase_path> <migration_dir>}"
     local migration_dir="${2:?Usage: agent_migration_planner <codebase_path> <migration_dir>}"
@@ -429,10 +418,9 @@ EOF
 }
 
 # agent_migration_reviewer -- Specialized migration review council member
-#
-# Args:
-#   $1 - codebase_path: Path to the codebase under migration
-#   $2 - migration_dir: Path to the migration working directory
+# # Args:
+# $1 - codebase_path: Path to the codebase under migration
+# $2 - migration_dir: Path to the migration working directory
 agent_migration_reviewer() {
     local codebase_path="${1:?Usage: agent_migration_reviewer <codebase_path> <migration_dir>}"
     local migration_dir="${2:?Usage: agent_migration_reviewer <codebase_path> <migration_dir>}"
@@ -456,18 +444,15 @@ EOF
 
 #===============================================================================
 # Dispatcher
-#
-# migration_agent_dispatch(agent_type, codebase_path, migration_dir)
-#
-# Routes to the correct agent function by type name. Supports both
+# # migration_agent_dispatch(agent_type, codebase_path, migration_dir)
+# # Routes to the correct agent function by type name. Supports both
 # short names and full function names.
-#
-# Agent types:
-#   archaeologist | codebase-archaeologist
-#   tester        | characterization-tester
-#   seam          | seam-detector
-#   planner       | migration-planner
-#   reviewer      | migration-reviewer
+# # Agent types:
+# archaeologist | codebase-archaeologist
+# tester        | characterization-tester
+# seam          | seam-detector
+# planner       | migration-planner
+# reviewer      | migration-reviewer
 #===============================================================================
 
 migration_agent_dispatch() {

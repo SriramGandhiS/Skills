@@ -381,8 +381,8 @@ After plan approval:
    ```markdown
    # Track: {Track Title}
 
-   **ID:** {trackId}
-   **Status:** Pending
+**ID:** {trackId}
+**Status:** Pending
 
    ## Documents
 

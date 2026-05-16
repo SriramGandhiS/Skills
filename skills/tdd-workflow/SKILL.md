@@ -1,4 +1,4 @@
-﻿---
+---
 name: tdd-workflow
 description: Use this skill when writing new features, fixing bugs, or refactoring code. Enforces test-driven development with 80%+ coverage including unit, integration, and E2E tests.
 origin: ECC
@@ -97,7 +97,7 @@ describe('Semantic Search', () => {
 ### Step 3: Run Tests (They Should Fail)
 ```bash
 npm test
-# Tests should fail - we haven't implemented yet
+## Tests should fail - we haven't implemented yet
 ```
 
 This step is mandatory and is the RED gate for all production changes.
@@ -138,7 +138,7 @@ If the repository is under Git, stage the minimal fix now but defer the checkpoi
 ### Step 5: Run Tests Again
 ```bash
 npm test
-# Tests should now pass
+## Tests should now pass
 ```
 
 Rerun the same relevant test target after the fix and confirm the previously failing test is now GREEN.
@@ -166,7 +166,7 @@ Recommended commit message format:
 ### Step 7: Verify Coverage
 ```bash
 npm run test:coverage
-# Verify 80%+ coverage achieved
+## Verify 80%+ coverage achieved
 ```
 
 ## Testing Patterns
@@ -418,18 +418,18 @@ test('updates user', () => {
 ### Watch Mode During Development
 ```bash
 npm test -- --watch
-# Tests run automatically on file changes
+## Tests run automatically on file changes
 ```
 
 ### Pre-Commit Hook
 ```bash
-# Runs before every commit
+## Runs before every commit
 npm test && npm run lint
 ```
 
 ### CI/CD Integration
 ```yaml
-# GitHub Actions
+## GitHub Actions
 - name: Run Tests
   run: npm test -- --coverage
 - name: Upload Coverage

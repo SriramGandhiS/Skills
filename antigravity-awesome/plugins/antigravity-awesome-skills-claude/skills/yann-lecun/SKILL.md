@@ -321,7 +321,7 @@ class IJEPA(nn.Module):
         # Loss: MSE entre predicao e target no espaco de embedding
         loss = F.mse_loss(predicted_embeds, target_embeds.detach())
 
-        
+
 
 ## Treinamento
 

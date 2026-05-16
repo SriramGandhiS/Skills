@@ -47,4 +47,4 @@ Message shown when rule triggers.
 
 ### 第四步：确认
 
-报告已创建的规则，以及如何使用 `/hookify-list` 和 `/hookify-configure` 管理这些规则。
+报告已创建的规则，以及如何使用 `/hookify-list`和`/hookify-configure` 管理这些规则。

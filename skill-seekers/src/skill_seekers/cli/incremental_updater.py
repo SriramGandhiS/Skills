@@ -94,7 +94,7 @@ class IncrementalUpdater:
                     sha256.update(chunk)
             return sha256.hexdigest()
         except Exception as e:
-            print(f"⚠️  Warning: Failed to hash {file_path}: {e}")
+            print(f"WARNING:  Warning: Failed to hash {file_path}: {e}")
             return ""
 
     def _scan_documents(self) -> dict[str, DocumentVersion]:
@@ -151,7 +151,7 @@ class IncrementalUpdater:
 
             return True
         except Exception as e:
-            print(f"⚠️  Warning: Failed to load versions: {e}")
+            print(f"WARNING:  Warning: Failed to load versions: {e}")
             return False
 
     def save_current_versions(self) -> None:
@@ -298,7 +298,7 @@ class IncrementalUpdater:
         lines.append("")
 
         # Summary
-        lines.append("📊 Summary:")
+        lines.append(" Summary:")
         lines.append(f"   Added: {len(change_set.added)} files")
         lines.append(f"   Modified: {len(change_set.modified)} files")
         lines.append(f"   Deleted: {len(change_set.deleted)} files")
@@ -308,14 +308,14 @@ class IncrementalUpdater:
 
         # Added files
         if change_set.added:
-            lines.append("➕ Added Files:")
+            lines.append(" Added Files:")
             for doc in change_set.added:
                 lines.append(f"   + {doc.file_path} ({doc.size_bytes:,} bytes)")
             lines.append("")
 
         # Modified files
         if change_set.modified:
-            lines.append("📝 Modified Files:")
+            lines.append(" Modified Files:")
             for doc in change_set.modified:
                 prev = self.previous_versions.get(doc.file_path)
                 if prev:
@@ -330,14 +330,14 @@ class IncrementalUpdater:
 
         # Deleted files
         if change_set.deleted:
-            lines.append("🗑️  Deleted Files:")
+            lines.append("  Deleted Files:")
             for file_path in change_set.deleted:
                 lines.append(f"   - {file_path}")
             lines.append("")
 
         # Content diffs for modified files
         if change_set.modified:
-            lines.append("📄 Content Changes:")
+            lines.append(" Content Changes:")
             for doc in change_set.modified:
                 prev = self.previous_versions.get(doc.file_path)
                 if prev:
@@ -369,7 +369,7 @@ class IncrementalUpdater:
         try:
             update_data = json.loads(Path(package_path).read_text())
 
-            print("📦 Applying incremental update...")
+            print(" Applying incremental update...")
             print(f"   Timestamp: {update_data['metadata']['timestamp']}")
             print(f"   Changes: {update_data['metadata']['total_changes']}")
 
@@ -379,24 +379,24 @@ class IncrementalUpdater:
                 full_path = self.skill_dir / file_path
 
                 if action == "add":
-                    print(f"   ➕ Adding: {file_path}")
+                    print(f"    Adding: {file_path}")
                     full_path.parent.mkdir(parents=True, exist_ok=True)
                     full_path.write_text(change["content"], encoding="utf-8")
 
                 elif action == "modify":
-                    print(f"   📝 Modifying: {file_path}")
+                    print(f"    Modifying: {file_path}")
                     full_path.write_text(change["content"], encoding="utf-8")
 
                 elif action == "delete":
-                    print(f"   🗑️  Deleting: {file_path}")
+                    print(f"     Deleting: {file_path}")
                     if full_path.exists():
                         full_path.unlink()
 
-            print("✅ Update applied successfully!")
+            print("PASS: Update applied successfully!")
             return True
 
         except Exception as e:
-            print(f"❌ Failed to apply update: {e}")
+            print(f"FAIL: Failed to apply update: {e}")
             return False
 
 
@@ -414,7 +414,7 @@ def main():
 
     skill_dir = Path(args.skill_dir)
     if not skill_dir.exists():
-        print(f"❌ Error: Directory not found: {skill_dir}")
+        print(f"FAIL: Error: Directory not found: {skill_dir}")
         return 1
 
     # Initialize updater
@@ -424,15 +424,15 @@ def main():
     if args.apply_update:
         update_path = Path(args.apply_update)
         if not update_path.exists():
-            print(f"❌ Error: Update package not found: {update_path}")
+            print(f"FAIL: Error: Update package not found: {update_path}")
             return 1
 
-        print(f"📥 Applying update from: {update_path}")
+        print(f" Applying update from: {update_path}")
         success = updater.apply_update_package(update_path)
         return 0 if success else 1
 
     # Detect changes
-    print("🔍 Detecting changes...")
+    print(" Detecting changes...")
     change_set = updater.detect_changes()
 
     # Generate report
@@ -449,15 +449,15 @@ def main():
         else:
             package_path = skill_dir.parent / f"{skill_dir.name}-update.json"
 
-        print("\n📦 Generating update package...")
+        print("\n Generating update package...")
         package_path = updater.generate_update_package(change_set, package_path)
-        print(f"✅ Package created: {package_path}")
+        print(f"PASS: Package created: {package_path}")
 
         # Save versions
         updater.save_current_versions()
-        print(f"💾 Versions saved to: {updater.version_file}")
+        print(f" Versions saved to: {updater.version_file}")
     else:
-        print("\n✅ No changes detected - skill is up to date!")
+        print("\nPASS: No changes detected - skill is up to date!")
 
     return 0
 

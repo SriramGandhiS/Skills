@@ -211,8 +211,7 @@ Imperative control via `onEnter`, `onExit`, `onUpdate`, `onShare`. Always return
     );
     return () => anim.cancel();
   }}
->
-  <Component />
+> <Component />
 </ViewTransition>
 ```
 

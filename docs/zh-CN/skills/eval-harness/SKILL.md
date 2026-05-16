@@ -65,13 +65,13 @@ tools: Read, Write, Edit, Bash, Grep, Glob
 使用代码进行确定性检查：
 
 ```bash
-# Check if file contains expected pattern
+## Check if file contains expected pattern
 grep -q "export function handleAuth" src/auth.ts && echo "PASS" || echo "FAIL"
 
-# Check if tests pass
+## Check if tests pass
 npm test -- --testPathPattern="auth" && echo "PASS" || echo "FAIL"
 
-# Check if build succeeds
+## Check if build succeeds
 npm run build && echo "PASS" || echo "FAIL"
 ```
 
@@ -152,13 +152,13 @@ npm run build && echo "PASS" || echo "FAIL"
 ### 3. 评估
 
 ```bash
-# Run capability evals
+## Run capability evals
 [Run each capability eval, record PASS/FAIL]
 
-# Run regression evals
+## Run regression evals
 npm test -- --testPathPattern="existing"
 
-# Generate report
+## Generate report
 ```
 
 ### 4. 报告

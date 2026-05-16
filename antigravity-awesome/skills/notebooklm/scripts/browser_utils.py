@@ -50,9 +50,9 @@ class BrowserFactory:
                     state = json.load(f)
                     if 'cookies' in state and len(state['cookies']) > 0:
                         context.add_cookies(state['cookies'])
-                        # print(f"  🔧 Injected {len(state['cookies'])} cookies from state.json")
+                        # print(f"   Injected {len(state['cookies'])} cookies from state.json")
             except Exception as e:
-                print(f"  ⚠️  Could not load state.json: {e}")
+                print(f"  WARNING:  Could not load state.json: {e}")
 
 
 class StealthUtils:
@@ -73,14 +73,14 @@ class StealthUtils:
                 element = page.wait_for_selector(selector, timeout=2000)
             except:
                 pass
-        
+
         if not element:
-            print(f"⚠️ Element not found for typing: {selector}")
+            print(f"WARNING: Element not found for typing: {selector}")
             return
 
         # Click to focus
         element.click()
-        
+
         # Type
         for char in text:
             element.type(char, delay=random.uniform(25, 75))

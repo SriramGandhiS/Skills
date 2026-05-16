@@ -110,7 +110,7 @@ bot.command('app', (ctx) => {
   ctx.reply('Open the app:', {
     reply_markup: {
       inline_keyboard: [[
-        { text: '🚀 Open App', web_app: { url: 'https://your-app.com' } }
+        { text: ' Open App', web_app: { url: 'https://your-app.com' } }
       ]]
     }
   });

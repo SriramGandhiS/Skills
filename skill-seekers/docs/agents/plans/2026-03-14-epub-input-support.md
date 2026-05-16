@@ -47,40 +47,40 @@ output/book/
 ```
 $ skill-seekers create programming-rust.epub
 
-ℹ️  Detected source type: epub
-ℹ️  Routing to epub scraper...
+  Detected source type: epub
+  Routing to epub scraper...
 
-🔍 Extracting from EPUB: programming-rust.epub
+ Extracting from EPUB: programming-rust.epub
    Title: Programming Rust, 2nd Edition
    Author: Jim Blandy, Jason Orendorff
    Language: en
    Chapters: 23 (spine items)
 
-📄 Processing chapters...
+ Processing chapters...
    Chapter 1/23: Why Rust? (2 sections, 1 code block)
    Chapter 2/23: A Tour of Rust (5 sections, 12 code blocks)
    ...
    Chapter 23/23: Macros (4 sections, 8 code blocks)
 
-📊 Extraction complete:
+ Extraction complete:
    Sections: 142
    Code blocks: 287 (Rust: 245, Shell: 28, TOML: 14)
    Images: 34
    Tables: 12
 
-💾 Saved extracted data to: output/programming-rust_extracted.json
+ Saved extracted data to: output/programming-rust_extracted.json
 
-📋 Categorizing content...
-✅ Created 1 category (single EPUB source)
+ Categorizing content...
+PASS: Created 1 category (single EPUB source)
    - programming-rust: 142 sections
 
-📝 Generating reference files...
+ Generating reference files...
    Generated: output/programming-rust/references/programming-rust.md
    Generated: output/programming-rust/references/index.md
 
-✅ Skill built successfully: output/programming-rust/
+PASS: Skill built successfully: output/programming-rust/
 
-📦 Next step: Package with: skill-seekers package output/programming-rust/
+ Next step: Package with: skill-seekers package output/programming-rust/
 ```
 
 ### Verification:
@@ -171,7 +171,6 @@ from bs4 import BeautifulSoup, Comment
 
 logger = logging.getLogger(__name__)
 
-
 def _check_epub_deps():
     """Raise RuntimeError if ebooklib is not installed."""
     if not EPUB_AVAILABLE:
@@ -180,7 +179,6 @@ def _check_epub_deps():
             'Install with: pip install "skill-seekers[epub]"\n'
             "Or: pip install ebooklib"
         )
-
 
 def infer_description_from_epub(metadata: dict | None = None, name: str = "") -> str:
     """Infer skill description from EPUB metadata."""
@@ -372,7 +370,7 @@ def main():
         print(f"Source:         {source}")
         print(f"Name:           {getattr(args, 'name', None) or '(auto-detect)'}")
         print(f"Enhance level:  {getattr(args, 'enhance_level', 0)}")
-        print(f"\n✅ Dry run complete")
+        print(f"\nPASS: Dry run complete")
         return
 
     # Validate inputs
@@ -402,7 +400,7 @@ def main():
     try:
         converter = EpubToSkillConverter(config)
         if not converter.extract_epub():
-            print("\n❌ EPUB extraction failed", file=sys.stderr)
+            print("\nFAIL: EPUB extraction failed", file=sys.stderr)
             sys.exit(1)
         converter.build_skill()
 
@@ -416,7 +414,7 @@ def main():
             ...
 
     except RuntimeError as e:
-        print(f"\n❌ Error: {e}", file=sys.stderr)
+        print(f"\nFAIL: Error: {e}", file=sys.stderr)
         sys.exit(1)
 ```
 
@@ -510,7 +508,6 @@ EPUB_ARGUMENTS: dict[str, dict[str, Any]] = {
     },
 }
 
-
 def add_epub_arguments(parser: argparse.ArgumentParser) -> None:
     """Add EPUB-specific arguments to parser."""
     add_all_standard_arguments(parser)
@@ -572,7 +569,6 @@ if mode in ["epub", "all"]:
 from .base import SubcommandParser
 from skill_seekers.cli.arguments.epub import add_epub_arguments
 
-
 class EpubParser(SubcommandParser):
     """Parser for EPUB extraction command."""
 
@@ -617,7 +613,7 @@ Add to COMMAND_MODULES (after "word" entry, line 52):
 
 Add to module docstring (after "word" line, line 15):
 ```python
-#    epub                 Extract from EPUB e-book (.epub)
+# epub                 Extract from EPUB e-book (.epub)
 ```
 
 #### [x] 7. Create command routing
@@ -741,7 +737,6 @@ import tempfile
 import unittest
 from pathlib import Path
 from unittest.mock import MagicMock, patch, PropertyMock
-
 
 # Conditional import (same pattern as test_word_scraper.py)
 try:

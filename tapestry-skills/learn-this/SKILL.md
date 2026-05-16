@@ -97,7 +97,7 @@ else
     CONTENT_TYPE="article"
 fi
 
-echo "📍 Detected: $CONTENT_TYPE"
+echo " Detected: $CONTENT_TYPE"
 ```
 
 ### Step 2: Extract Content (by Type)
@@ -106,7 +106,7 @@ echo "📍 Detected: $CONTENT_TYPE"
 
 ```bash
 # Use youtube-transcript skill workflow
-echo "📺 Extracting YouTube transcript..."
+echo " Extracting YouTube transcript..."
 
 # 1. Check for yt-dlp
 if ! command -v yt-dlp &> /dev/null; then
@@ -151,7 +151,7 @@ echo "✓ Saved transcript: $CONTENT_FILE"
 
 ```bash
 # Use article-extractor skill workflow
-echo "📄 Extracting article content..."
+echo " Extracting article content..."
 
 # 1. Check for extraction tools
 if command -v reader &> /dev/null; then
@@ -221,7 +221,7 @@ echo "✓ Saved article: $CONTENT_FILE"
 
 ```bash
 # Download and extract PDF
-echo "📑 Downloading PDF..."
+echo " Downloading PDF..."
 
 # 1. Download PDF
 PDF_FILENAME=$(basename "$URL")
@@ -242,7 +242,7 @@ if command -v pdftotext &> /dev/null; then
     fi
 else
     # No pdftotext available
-    echo "⚠️  pdftotext not found. PDF downloaded but not extracted."
+    echo "WARNING:  pdftotext not found. PDF downloaded but not extracted."
     echo "   Install with: brew install poppler"
     CONTENT_FILE="$PDF_FILENAME"
 fi
@@ -277,20 +277,20 @@ CONTENT_FILE="[from previous step]"
 
 Show user:
 ```
-✅ Tapestry Workflow Complete!
+PASS: Tapestry Workflow Complete!
 
-📥 Content Extracted:
+ Content Extracted:
    ✓ [Content type]: [Title]
    ✓ Saved to: [filename.txt]
    ✓ [X] words extracted
 
-📋 Action Plan Created:
+ Action Plan Created:
    ✓ Quest: [Quest title]
    ✓ Saved to: Ship-Learn-Next Plan - [Title].md
 
-🎯 Your Quest: [One-line summary]
+ Your Quest: [One-line summary]
 
-📍 Rep 1 (This Week): [Rep 1 goal]
+ Rep 1 (This Week): [Rep 1 goal]
 
 When will you ship Rep 1?
 ```
@@ -310,7 +310,7 @@ if [ -z "$URL" ]; then
     exit 1
 fi
 
-echo "🧵 Tapestry Workflow Starting..."
+echo " Tapestry Workflow Starting..."
 echo "URL: $URL"
 echo ""
 
@@ -323,23 +323,23 @@ else
     CONTENT_TYPE="article"
 fi
 
-echo "📍 Detected: $CONTENT_TYPE"
+echo " Detected: $CONTENT_TYPE"
 echo ""
 
 # Step 2: Extract content
 case $CONTENT_TYPE in
     youtube)
-        echo "📺 Extracting YouTube transcript..."
+        echo " Extracting YouTube transcript..."
         # [YouTube extraction code from above]
         ;;
 
     article)
-        echo "📄 Extracting article..."
+        echo " Extracting article..."
         # [Article extraction code from above]
         ;;
 
     pdf)
-        echo "📑 Downloading PDF..."
+        echo " Downloading PDF..."
         # [PDF extraction code from above]
         ;;
 esac
@@ -347,16 +347,16 @@ esac
 echo ""
 
 # Step 3: Create action plan
-echo "🚀 Creating Ship-Learn-Next action plan..."
+echo " Creating Ship-Learn-Next action plan..."
 # [Plan creation using ship-learn-next skill]
 
 echo ""
-echo "✅ Tapestry Workflow Complete!"
+echo "PASS: Tapestry Workflow Complete!"
 echo ""
-echo "📥 Content: $CONTENT_FILE"
-echo "📋 Plan: Ship-Learn-Next Plan - [title].md"
+echo " Content: $CONTENT_FILE"
+echo " Plan: Ship-Learn-Next Plan - [title].md"
 echo ""
-echo "🎯 Next: Review your action plan and ship Rep 1!"
+echo " Next: Review your action plan and ship Rep 1!"
 ```
 
 ## Error Handling
@@ -384,13 +384,13 @@ echo "🎯 Next: Review your action plan and ship Rep 1!"
 
 ## Best Practices
 
-- ✅ Always show what was detected ("📍 Detected: youtube")
-- ✅ Display progress for each step
-- ✅ Save both content file AND plan file
-- ✅ Show preview of extracted content (first 10 lines)
-- ✅ Create plan automatically (don't ask)
-- ✅ Present clear summary at end
-- ✅ Ask commitment question: "When will you ship Rep 1?"
+- PASS: Always show what was detected (" Detected: youtube")
+- PASS: Display progress for each step
+- PASS: Save both content file AND plan file
+- PASS: Show preview of extracted content (first 10 lines)
+- PASS: Create plan automatically (don't ask)
+- PASS: Present clear summary at end
+- PASS: Ask commitment question: "When will you ship Rep 1?"
 
 ## Usage Examples
 
@@ -400,16 +400,16 @@ echo "🎯 Next: Review your action plan and ship Rep 1!"
 User: learn-this https://www.youtube.com/watch?v=dQw4w9WgXcQ
 
 Claude:
-🧵 Tapestry Workflow Starting...
-📍 Detected: youtube
-📺 Extracting YouTube transcript...
+ Tapestry Workflow Starting...
+ Detected: youtube
+ Extracting YouTube transcript...
 ✓ Saved transcript: Never Gonna Give You Up.txt
 
-🚀 Creating action plan...
+ Creating action plan...
 ✓ Quest: Master Video Production
 ✓ Saved plan: Ship-Learn-Next Plan - Master Video Production.md
 
-✅ Complete! When will you ship Rep 1?
+PASS: Complete! When will you ship Rep 1?
 ```
 
 ### Example 2: Article (using "weave")
@@ -418,17 +418,17 @@ Claude:
 User: weave https://example.com/how-to-build-saas
 
 Claude:
-🧵 Tapestry Workflow Starting...
-📍 Detected: article
-📄 Extracting article...
+ Tapestry Workflow Starting...
+ Detected: article
+ Extracting article...
 ✓ Using reader (Mozilla Readability)
 ✓ Saved article: How to Build a SaaS.txt
 
-🚀 Creating action plan...
+ Creating action plan...
 ✓ Quest: Build a SaaS MVP
 ✓ Saved plan: Ship-Learn-Next Plan - Build a SaaS MVP.md
 
-✅ Complete! When will you ship Rep 1?
+PASS: Complete! When will you ship Rep 1?
 ```
 
 ### Example 3: PDF (using "help me plan")
@@ -437,17 +437,17 @@ Claude:
 User: help me plan https://example.com/research-paper.pdf
 
 Claude:
-🧵 Tapestry Workflow Starting...
-📍 Detected: pdf
-📑 Downloading PDF...
+ Tapestry Workflow Starting...
+ Detected: pdf
+ Downloading PDF...
 ✓ Downloaded: research-paper.pdf
 ✓ Extracted text: research-paper.txt
 
-🚀 Creating action plan...
+ Creating action plan...
 ✓ Quest: Apply Research Findings
 ✓ Saved plan: Ship-Learn-Next Plan - Apply Research Findings.md
 
-✅ Complete! When will you ship Rep 1?
+PASS: Complete! When will you ship Rep 1?
 ```
 
 ## Dependencies

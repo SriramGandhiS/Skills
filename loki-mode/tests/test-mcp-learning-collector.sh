@@ -1,10 +1,8 @@
 #!/usr/bin/env bash
 # Test MCP learning collector signal emission
-#
-# This test verifies that the MCP learning collector correctly
+# # This test verifies that the MCP learning collector correctly
 # emits learning signals for tool calls.
-#
-# Run: ./tests/test-mcp-learning-collector.sh
+# # Run: ./tests/test-mcp-learning-collector.sh
 
 set -euo pipefail
 

@@ -48,7 +48,7 @@ export default {
       before: `
         <div class="motion-demo motion-transition-demo">
           <div class="motion-card motion-card-before">
-            <div class="motion-card-icon">📦</div>
+            <div class="motion-card-icon"></div>
             <div class="motion-card-text">Order Placed</div>
           </div>
         </div>

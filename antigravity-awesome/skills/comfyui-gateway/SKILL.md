@@ -49,14 +49,14 @@ with priorities, webhook callbacks, result caching, and multiple storage backend
 
 ```
 ┌─────────────┐     ┌──────────────────────────────────┐     ┌──────────┐
-│   Clients    │────▶│        ComfyUI Gateway           │────▶│ ComfyUI  │
+│   Clients    │────│        ComfyUI Gateway           │────│ ComfyUI  │
 │ (curl, n8n,  │     │                                  │     │ Server   │
 │  Claude,     │     │  ┌─────────┐  ┌──────────────┐  │     │ (local/  │
 │  Lovable,    │     │  │ Fastify │  │ BullMQ Queue │  │     │  remote) │
 │  Supabase)   │     │  │ API     │──│ (or in-mem)  │  │     └──────────┘
-│              │◀────│  └─────────┘  └──────────────┘  │
+│              │────│  └─────────┘  └──────────────┘  │
 │              │     │  ┌─────────┐  ┌──────────────┐  │     ┌──────────┐
-│              │     │  │ Auth +  │  │ Storage      │  │────▶│ S3/MinIO │
+│              │     │  │ Auth +  │  │ Storage      │  │────│ S3/MinIO │
 │              │     │  │ RateL.  │  │ (local/S3)   │  │     │(optional)│
 │              │     │  └─────────┘  └──────────────┘  │     └──────────┘
 └─────────────┘     └──────────────────────────────────┘

@@ -18,7 +18,7 @@ def show_installation_guide():
 
 Choose your installation profile:
 
-1️⃣  CLI Only (Skill Generation)
+1⃣  CLI Only (Skill Generation)
    pip install skill-seekers
 
    Features:
@@ -27,7 +27,7 @@ Choose your installation profile:
    • Extract from PDFs
    • Package skills for all platforms
 
-2️⃣  MCP Integration (Claude Code, Cursor, Windsurf)
+2⃣  MCP Integration (Claude Code, Cursor, Windsurf)
    pip install skill-seekers[mcp]
 
    Features:
@@ -36,7 +36,7 @@ Choose your installation profile:
    • One-command skill installation
    • HTTP/stdio transport modes
 
-3️⃣  Multi-LLM Support (Gemini, OpenAI)
+3⃣  Multi-LLM Support (Gemini, OpenAI)
    pip install skill-seekers[all-llms]
 
    Features:
@@ -45,7 +45,7 @@ Choose your installation profile:
    • OpenAI ChatGPT support
    • Enhanced AI features
 
-4️⃣  Everything
+4⃣  Everything
    pip install skill-seekers[all]
 
    Features:

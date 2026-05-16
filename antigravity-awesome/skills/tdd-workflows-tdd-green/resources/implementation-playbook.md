@@ -478,7 +478,7 @@ function calculateShipping(weight: number, distance: number, express: boolean): 
 
 **Green Phase: Focus on Correctness**
 ```
-❌ Avoid:
+FAIL: Avoid:
 - Caching strategies
 - Database query optimization
 - Algorithmic complexity improvements

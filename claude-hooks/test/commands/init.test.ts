@@ -131,10 +131,10 @@ describe('init', () => {
       expect(indexContent).to.contain('const preCompact: PreCompactHandler')
 
       // Check example functionality
-      expect(indexContent).to.contain('📝 Claude is editing:')
-      expect(indexContent).to.contain('🚀 Running command:')
-      expect(indexContent).to.contain('💬 User prompt:')
-      expect(indexContent).to.contain('🗜️  Compact triggered:')
+      expect(indexContent).to.contain(' Claude is editing:')
+      expect(indexContent).to.contain(' Running command:')
+      expect(indexContent).to.contain(' User prompt:')
+      expect(indexContent).to.contain('  Compact triggered:')
 
       // Check runHook call
       expect(indexContent).to.contain('runHook({')

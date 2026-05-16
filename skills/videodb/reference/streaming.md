@@ -1,4 +1,4 @@
-﻿# Streaming & Playback
+# Streaming & Playback
 
 VideoDB generates streams on-demand, returning HLS-compatible URLs that play instantly in any standard video player. No render times or export waits - edits, searches, and compositions stream immediately.
 
@@ -13,13 +13,13 @@ Videos **must be uploaded** to a collection before streams can be generated. For
 Every video, search result, and timeline in VideoDB can produce a **stream URL**. This URL points to an HLS (HTTP Live Streaming) manifest that is compiled on demand.
 
 ```python
-# From a video
+## From a video
 stream_url = video.generate_stream()
 
-# From a timeline
+## From a timeline
 stream_url = timeline.generate_stream()
 
-# From search results
+## From search results
 stream_url = results.compile()
 ```
 
@@ -34,22 +34,22 @@ conn = videodb.connect()
 coll = conn.get_collection()
 video = coll.get_video("your-video-id")
 
-# Generate stream URL
+## Generate stream URL
 stream_url = video.generate_stream()
 print(f"Stream: {stream_url}")
 
-# Open in default browser
+## Open in default browser
 video.play()
 ```
 
 ### With Subtitles
 
 ```python
-# Index and add subtitles first
+## Index and add subtitles first
 video.index_spoken_words(force=True)
 stream_url = video.add_subtitle()
 
-# Returned URL already includes subtitles
+## Returned URL already includes subtitles
 print(f"Subtitled stream: {stream_url}")
 ```
 
@@ -58,7 +58,7 @@ print(f"Subtitled stream: {stream_url}")
 Stream only a portion of a video by passing a timeline of timestamp ranges:
 
 ```python
-# Stream seconds 10-30 and 60-90
+## Stream seconds 10-30 and 60-90
 stream_url = video.generate_stream(timeline=[(10, 30), (60, 90)])
 print(f"Segment stream: {stream_url}")
 ```
@@ -80,25 +80,25 @@ music = coll.get_audio(music_id)
 
 timeline = Timeline(conn)
 
-# Main video content
+## Main video content
 timeline.add_inline(VideoAsset(asset_id=video.id))
 
-# Background music overlay (starts at second 0)
+## Background music overlay (starts at second 0)
 timeline.add_overlay(0, AudioAsset(asset_id=music.id))
 
-# Text overlay at the beginning
+## Text overlay at the beginning
 timeline.add_overlay(0, TextAsset(
     text="Live Demo",
     duration=3,
     style=TextStyle(fontsize=48, fontcolor="white", boxcolor="#000000"),
 ))
 
-# Generate the composed stream
+## Generate the composed stream
 stream_url = timeline.generate_stream()
 print(f"Composed stream: {stream_url}")
 ```
 
-**Important:** `add_inline()` only accepts `VideoAsset`. Use `add_overlay()` for `AudioAsset`, `ImageAsset`, and `TextAsset`.
+**Important:** `add_inline()`only accepts`VideoAsset`. Use`add_overlay()`for`AudioAsset`,`ImageAsset`, and`TextAsset`.
 
 For detailed timeline editing, see [editor.md](editor.md).
 
@@ -173,7 +173,7 @@ video = coll.get_video("your-video-id")
 
 video.index_spoken_words(force=True)
 
-# Search for key moments
+## Search for key moments
 queries = ["introduction", "main demo", "Q&A"]
 timeline = Timeline(conn)
 timeline_offset = 0.0
@@ -255,7 +255,7 @@ video.index_spoken_words(force=True)
 
 timeline = Timeline(conn)
 
-# Try to find specific content; fall back to full video
+## Try to find specific content; fall back to full video
 topics = ["opening remarks", "technical deep dive", "closing"]
 
 found_any = False
@@ -306,27 +306,27 @@ from videodb.asset import VideoAsset, AudioAsset, ImageAsset, TextAsset, TextSty
 conn = videodb.connect()
 coll = conn.get_collection()
 
-# Upload event recording
+## Upload event recording
 event = coll.upload(url="https://example.com/event-recording.mp4")
 event.index_spoken_words(force=True)
 
-# Generate background music
+## Generate background music
 music = coll.generate_music(
     prompt="upbeat corporate background music",
     duration=120,
 )
 
-# Generate title image
+## Generate title image
 title_img = coll.generate_image(
     prompt="modern event recap title card, dark background, professional",
     aspect_ratio="16:9",
 )
 
-# Build the recap timeline
+## Build the recap timeline
 timeline = Timeline(conn)
 timeline_offset = 0.0
 
-# Main video segments from search
+## Main video segments from search
 try:
     keynote = event.search("keynote announcement", search_type=SearchType.semantic)
     keynote_shots = keynote.get_shots()[:5]
@@ -363,12 +363,12 @@ if demo_shots:
 else:
     demo_start = None
 
-# Overlay title card image
+## Overlay title card image
 timeline.add_overlay(0, ImageAsset(
     asset_id=title_img.id, width=100, height=100, x=80, y=20, duration=5
 ))
 
-# Overlay section labels at the correct timeline offsets
+## Overlay section labels at the correct timeline offsets
 if keynote_start is not None:
     timeline.add_overlay(max(5, keynote_start), TextAsset(
         text="Keynote Highlights",
@@ -382,12 +382,12 @@ if demo_start is not None:
         style=TextStyle(fontsize=36, fontcolor="white", boxcolor="#0d1117"),
     ))
 
-# Overlay background music
+## Overlay background music
 timeline.add_overlay(0, AudioAsset(
     asset_id=music.id, fade_in_duration=3
 ))
 
-# Stream the final recap
+## Stream the final recap
 stream_url = timeline.generate_stream()
 print(f"Event recap: {stream_url}")
 ```
@@ -399,8 +399,8 @@ print(f"Event recap: {stream_url}")
 - **HLS compatibility**: Stream URLs return HLS manifests (`.m3u8`). They work in Safari natively, and in other browsers via hls.js or similar libraries.
 - **On-demand compilation**: Streams are compiled server-side when requested. The first play may have a brief compilation delay; subsequent plays of the same composition are cached.
 - **Caching**: Calling `video.generate_stream()` a second time without arguments returns the cached stream URL rather than recompiling.
-- **Segment streams**: `video.generate_stream(timeline=[(start, end)])` is the fastest way to stream a specific clip without building a full `Timeline` object.
-- **Inline vs overlay**: `add_inline()` only accepts `VideoAsset` and places assets sequentially on the main track. `add_overlay()` accepts `AudioAsset`, `ImageAsset`, and `TextAsset` and layers them on top at a given start time.
-- **TextStyle defaults**: `TextStyle` defaults to `font='Sans'`, `fontcolor='black'`. Use `boxcolor` (not `bgcolor`) for background color on text.
-- **Combine with generation**: Use `coll.generate_music(prompt, duration)` and `coll.generate_image(prompt, aspect_ratio)` to create assets for timeline compositions.
+- **Segment streams**: `video.generate_stream(timeline=[(start, end)])`is the fastest way to stream a specific clip without building a full`Timeline` object.
+- **Inline vs overlay**: `add_inline()`only accepts`VideoAsset`and places assets sequentially on the main track.`add_overlay()`accepts`AudioAsset`,`ImageAsset`, and`TextAsset` and layers them on top at a given start time.
+- **TextStyle defaults**: `TextStyle`defaults to`font='Sans'`,`fontcolor='black'`. Use`boxcolor`(not`bgcolor`) for background color on text.
+- **Combine with generation**: Use `coll.generate_music(prompt, duration)`and`coll.generate_image(prompt, aspect_ratio)` to create assets for timeline compositions.
 - **Playback**: `.play()` opens the stream URL in the default system browser. For programmatic use, work with the URL string directly.

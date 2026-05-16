@@ -100,11 +100,11 @@ trainer = SFTTrainer(
 
 **Solution:**
 ```python
-# ✅ CORRECT - TRL uses max_length
+# PASS: CORRECT - TRL uses max_length
 SFTConfig(max_length=512)
 DPOConfig(max_length=512)
 
-# ❌ WRONG - This will fail
+# FAIL: WRONG - This will fail
 SFTConfig(max_seq_length=512)
 ```
 

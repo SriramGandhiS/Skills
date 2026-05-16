@@ -237,10 +237,10 @@ public <T> T withRetry(Supplier<T> supplier, int maxRetries) {
 Forwarded başlıkları sadece şu durumlarda kullanın:
 1. Uygulamanız güvenilir bir reverse proxy'nin arkasında (nginx, AWS ALB, vb.)
 2. `ForwardedHeaderFilter`'ı bean olarak kaydetmişsiniz
-3. application properties'de `server.forward-headers-strategy=NATIVE` veya `FRAMEWORK` yapılandırmışsınız
+3. application properties'de `server.forward-headers-strategy=NATIVE`veya`FRAMEWORK` yapılandırmışsınız
 4. Proxy'niz `X-Forwarded-For` başlığını üzerine yazmak için yapılandırılmış (eklememek için değil)
 
-`ForwardedHeaderFilter` düzgün yapılandırıldığında, `request.getRemoteAddr()` otomatik olarak
+`ForwardedHeaderFilter`düzgün yapılandırıldığında,`request.getRemoteAddr()` otomatik olarak
 forwarded başlıklardan doğru istemci IP'sini döndürür. Bu yapılandırma olmadan, `request.getRemoteAddr()` doğrudan kullanın—anlık bağlantı IP'sini döndürür, bu güvenilir tek değerdir.
 
 ```java
@@ -255,13 +255,13 @@ public class RateLimitFilter extends OncePerRequestFilter {
    * Spring'i forwarded başlıkları düzgün işleyecek şekilde yapılandırmalısınız:
    *
    * 1. application.properties/yaml'da server.forward-headers-strategy=NATIVE (cloud platformlar için)
-   *    veya FRAMEWORK ayarlayın
+   * veya FRAMEWORK ayarlayın
    * 2. FRAMEWORK stratejisi kullanıyorsanız, ForwardedHeaderFilter'ı kaydedin:
    *
-   *    @Bean
-   *    ForwardedHeaderFilter forwardedHeaderFilter() {
-   *        return new ForwardedHeaderFilter();
-   *    }
+   * @Bean
+   * ForwardedHeaderFilter forwardedHeaderFilter() {
+   * return new ForwardedHeaderFilter();
+   * }
    *
    * 3. Proxy'nizin sahteciliği önlemek için X-Forwarded-For başlığını üzerine yazdığından emin olun (eklemediğinden)
    * 4. Container'ınız için server.tomcat.remoteip.trusted-proxies veya eşdeğerini yapılandırın
@@ -307,6 +307,6 @@ Spring'in `@Scheduled`'ını kullanın veya kuyruklar ile entegre olun (örn. Ka
 - RFC 7807 hataları için `spring.mvc.problemdetails.enabled=true` etkinleştirin (Spring Boot 3+)
 - İş yükü için HikariCP pool boyutlarını yapılandırın, timeout'ları ayarlayın
 - Sorgular için `@Transactional(readOnly = true)` kullanın
-- `@NonNull` ve uygun yerlerde `Optional` ile null-safety zorlayın
+- `@NonNull`ve uygun yerlerde`Optional` ile null-safety zorlayın
 
 **Unutmayın**: Controller'ları ince, servisleri odaklı, repository'leri basit ve hataları merkezi olarak işlenmiş tutun. Bakım yapılabilirlik ve test edilebilirlik için optimize edin.

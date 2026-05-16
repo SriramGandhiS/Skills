@@ -1,4 +1,4 @@
-﻿---
+---
 name: skill-comply
 description: Visualize whether skills, rules, and agent definitions are actually followed â€” auto-generates scenarios at 3 prompt strictness levels, runs agents, classifies behavioral sequences, and reports compliance rates with full tool call timelines
 origin: ECC
@@ -31,13 +31,13 @@ Measures whether coding agents actually follow skills, rules, or agent definitio
 ## Usage
 
 ```bash
-# Full run
+## Full run
 uv run python -m scripts.run ~/.claude/rules/common/testing.md
 
-# Dry run (no cost, spec + scenarios only)
+## Dry run (no cost, spec + scenarios only)
 uv run python -m scripts.run --dry-run ~/.claude/skills/search-first/SKILL.md
 
-# Custom models
+## Custom models
 uv run python -m scripts.run --gen-model haiku --model sonnet <path>
 ```
 

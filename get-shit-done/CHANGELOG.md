@@ -330,7 +330,6 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   excluded from the public allowlist after #2530. A new `RUNTIME_STATE_KEYS` set lets
   `isValidConfigKey()` accept it without exposing it as a user-settable option. (#3162)
 
-
 ## [1.39.1] - 2026-05-01
 
 Hotfix release. Cherry-picks user-facing fixes from `main` onto the v1.39.0 stable
@@ -1776,7 +1775,7 @@ Technical implementation details for Phase 2 appear in the **Changed** section b
 
 ### Added
 
-- Statusline update indicator — shows `⬆ /gsd:update` when a new version is available
+- Statusline update indicator — shows ` /gsd:update` when a new version is available
 
 ### Fixed
 

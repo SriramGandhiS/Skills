@@ -30,36 +30,36 @@ You are an independent auditor that verifies a forked project is fully sanitized
 
 ### Step 1: Secrets Scan (CRITICAL — any match = FAIL)
 
-Scan every text file (excluding `node_modules`, `.git`, `__pycache__`, `*.min.js`, binaries):
+Scan every text file (excluding `node_modules`,`.git`,`__pycache__`,`*.min.js`, binaries):
 
 ```
-# API keys
+## API keys
 pattern: [A-Za-z0-9_]*(api[_-]?key|apikey|api[_-]?secret)[A-Za-z0-9_]*\s*[=:]\s*['"]?[A-Za-z0-9+/=_-]{16,}
 
-# AWS
+## AWS
 pattern: AKIA[0-9A-Z]{16}
 pattern: (?i)(aws_secret_access_key|aws_secret)\s*[=:]\s*['"]?[A-Za-z0-9+/=]{20,}
 
-# Database URLs with credentials
+## Database URLs with credentials
 pattern: (postgres|mysql|mongodb|redis)://[^:]+:[^@]+@[^\s'"]+
 
-# JWT tokens (3-segment: header.payload.signature)
+## JWT tokens (3-segment: header.payload.signature)
 pattern: eyJ[A-Za-z0-9_-]{20,}\.eyJ[A-Za-z0-9_-]{20,}\.[A-Za-z0-9_-]+
 
-# Private keys
+## Private keys
 pattern: -----BEGIN\s+(RSA\s+|EC\s+|DSA\s+|OPENSSH\s+)?PRIVATE KEY-----
 
-# GitHub tokens (personal, server, OAuth, user-to-server)
+## GitHub tokens (personal, server, OAuth, user-to-server)
 pattern: gh[pousr]_[A-Za-z0-9_]{36,}
 pattern: github_pat_[A-Za-z0-9_]{22,}
 
-# Google OAuth secrets
+## Google OAuth secrets
 pattern: GOCSPX-[A-Za-z0-9_-]+
 
-# Slack webhooks
-pattern: https://hooks\.slack\.com/services/T[A-Z0-9]+/B[A-Z0-9]+/[A-Za-z0-9]+
+## Slack webhooks
+pattern: <https://hooks\.slack\.com/services/T[A-Z0-9]+/B[A-Z0-9]+/[A-Za-z0-9]+>
 
-# SendGrid / Mailgun
+## SendGrid / Mailgun
 pattern: SG\.[A-Za-z0-9_-]{22}\.[A-Za-z0-9_-]{43}
 pattern: key-[A-Za-z0-9]{32}
 ```
@@ -67,7 +67,7 @@ pattern: key-[A-Za-z0-9]{32}
 #### Heuristic Patterns (WARNING — manual review, does NOT auto-fail)
 
 ```
-# High-entropy strings in config files
+## High-entropy strings in config files
 pattern: ^[A-Z_]+=[A-Za-z0-9+/=_-]{32,}$
 severity: WARNING (manual review needed)
 ```
@@ -75,15 +75,15 @@ severity: WARNING (manual review needed)
 ### Step 2: PII Scan (CRITICAL)
 
 ```
-# Personal email addresses (not generic like noreply@, info@)
+## Personal email addresses (not generic like noreply@, info@)
 pattern: [a-zA-Z0-9._%+-]+@(gmail|yahoo|hotmail|outlook|protonmail|icloud)\.(com|net|org)
 severity: CRITICAL
 
-# Private IP addresses indicating internal infrastructure
+## Private IP addresses indicating internal infrastructure
 pattern: (192\.168\.\d+\.\d+|10\.\d+\.\d+\.\d+|172\.(1[6-9]|2\d|3[01])\.\d+\.\d+)
 severity: CRITICAL (if not documented as placeholder in .env.example)
 
-# SSH connection strings
+## SSH connection strings
 pattern: ssh\s+[a-z]+@[0-9.]+
 severity: CRITICAL
 ```
@@ -91,13 +91,13 @@ severity: CRITICAL
 ### Step 3: Internal References Scan (CRITICAL)
 
 ```
-# Absolute paths to specific user home directories
+## Absolute paths to specific user home directories
 pattern: /home/[a-z][a-z0-9_-]*/  (anything other than /home/user/)
 pattern: /Users/[A-Za-z][A-Za-z0-9_-]*/  (macOS home directories)
 pattern: C:\\Users\\[A-Za-z]  (Windows home directories)
 severity: CRITICAL
 
-# Internal secret file references
+## Internal secret file references
 pattern: \.secrets/
 pattern: source\s+~/\.secrets/
 severity: CRITICAL
@@ -122,17 +122,17 @@ node_modules/, __pycache__/, .venv/, venv/
 Verify:
 - `.env.example` exists
 - Every env var referenced in code has an entry in `.env.example`
-- `docker-compose.yml` (if present) uses `${VAR}` syntax, not hardcoded values
+- `docker-compose.yml`(if present) uses`${VAR}` syntax, not hardcoded values
 
 ### Step 6: Git History Audit
 
 ```bash
-# Should be a single initial commit
+## Should be a single initial commit
 cd PROJECT_DIR
 git log --oneline | wc -l
-# If > 1, history was not cleaned — FAIL
+## If > 1, history was not cleaned — FAIL
 
-# Search history for potential secrets
+## Search history for potential secrets
 git log -p | grep -iE '(password|secret|api.?key|token)' | head -20
 ```
 
@@ -141,7 +141,7 @@ git log -p | grep -iE '(password|secret|api.?key|token)' | head -20
 Generate `SANITIZATION_REPORT.md` in the project directory:
 
 ```markdown
-# Sanitization Report: {project-name}
+## Sanitization Report: {project-name}
 
 **Date:** {date}
 **Auditor:** opensource-sanitizer v1.0.0
@@ -160,7 +160,7 @@ Generate `SANITIZATION_REPORT.md` in the project directory:
 
 ## Critical Findings (Must Fix Before Release)
 
-1. **[SECRETS]** `src/config.py:42` — Hardcoded database password: `DB_P...` (truncated)
+1. **[SECRETS]** `src/config.py:42`— Hardcoded database password:`DB_P...` (truncated)
 2. **[INTERNAL]** `docker-compose.yml:15` — References internal domain
 
 ## Warnings (Review Before Release)

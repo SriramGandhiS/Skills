@@ -12,10 +12,10 @@ Cloudflare Spectrum provides security and acceleration for ANY TCP or UDP-based 
 |------------|--------------|------------|
 | TCP protocols | Selected ports only | All ports (1-65535) |
 | UDP protocols | Selected ports only | All ports (1-65535) |
-| Port ranges | ❌ | ✅ |
-| Argo Smart Routing | ✅ | ✅ |
-| IP Firewall | ✅ | ✅ |
-| Load balancer origins | ✅ | ✅ |
+| Port ranges | FAIL: | PASS: |
+| Argo Smart Routing | PASS: | PASS: |
+| IP Firewall | PASS: | PASS: |
+| Load balancer origins | PASS: | PASS: |
 
 ## Decision Tree
 

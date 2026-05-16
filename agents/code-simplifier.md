@@ -31,7 +31,7 @@ You simplify code while preserving functionality.
 
 - extract deeply nested logic into named functions
 - replace complex conditionals with early returns where clearer
-- simplify callback chains with `async` / `await`
+- simplify callback chains with `async`/`await`
 - remove dead code and unused imports
 
 ### Readability

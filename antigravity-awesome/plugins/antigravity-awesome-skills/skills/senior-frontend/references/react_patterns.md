@@ -618,8 +618,7 @@ class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundarySta
 <ErrorBoundary
   fallback={<ErrorFallback />}
   onError={(error) => trackError(error)}
->
-  <MyComponent />
+> <MyComponent />
 </ErrorBoundary>
 ```
 

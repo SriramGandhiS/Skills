@@ -88,8 +88,7 @@ Use for: Mechanical interactions, precise movements
 <motion.button
   whileHover={{ scale: 1.02 }}
   transition={{ duration: 0.15, ease: "easeOut" }}
->
-  Hover Me
+> Hover Me
 </motion.button>
 ```
 
@@ -146,8 +145,7 @@ Use for: Mechanical interactions, precise movements
 <motion.button
   whileTap={{ scale: 0.98 }}
   transition={{ duration: 0.1, ease: "easeIn" }}
->
-  Press Me
+> Press Me
 </motion.button>
 
 // CSS alternative
@@ -170,8 +168,7 @@ Use for: Mechanical interactions, precise movements
     opacity-50 cursor-not-allowed
     pointer-events-none
   "
->
-  Disabled
+> Disabled
 </button>
 ```
 
@@ -223,8 +220,7 @@ Use for: Mechanical interactions, precise movements
   initial={{ opacity: 0, scale: 0.5 }}
   animate={{ opacity: 1, scale: 1 }}
   transition={{ duration: 0.3, ease: "easeOut" }}
->
-  <CheckCircle className="text-green-600" size={48} />
+> <CheckCircle className="text-green-600" size={48} />
 </motion.div>
 ```
 
@@ -236,8 +232,7 @@ Use for: Mechanical interactions, precise movements
   exit={{ y: -100, opacity: 0 }}
   transition={{ duration: 0.3, ease: "easeOut" }}
   className="bg-green-600 text-white p-4 rounded-lg"
->
-  Success! Changes saved.
+> Success! Changes saved.
 </motion.div>
 ```
 
@@ -249,8 +244,7 @@ Use for: Mechanical interactions, precise movements
   animate={{ x: [0, -4, 4, -4, 4, 0] }}
   transition={{ duration: 0.3, ease: "easeInOut" }}
   className="border-2 border-red-500"
->
-  <input type="text" />
+> <input type="text" />
 </motion.div>
 
 // CSS alternative
@@ -273,8 +267,7 @@ Use for: Mechanical interactions, precise movements
   exit={{ height: 0, opacity: 0 }}
   transition={{ duration: 0.2, ease: "easeOut" }}
   className="text-red-600 text-sm"
->
-  Please enter a valid email address
+> Please enter a valid email address
 </motion.div>
 ```
 
@@ -290,8 +283,7 @@ Use for: Mechanical interactions, precise movements
     repeat: Infinity
   }}
   className="border-2 border-amber-500"
->
-  Warning Content
+> Warning Content
 </motion.div>
 ```
 
@@ -334,8 +326,7 @@ Use for: Mechanical interactions, precise movements
   initial={{ opacity: 0 }}
   animate={{ opacity: 1 }}
   transition={{ duration: 0.3, ease: "easeOut" }}
->
-  Content
+> Content
 </motion.div>
 
 // CSS
@@ -356,8 +347,7 @@ Use for: Mechanical interactions, precise movements
   initial={{ opacity: 0, y: 20 }}
   animate={{ opacity: 1, y: 0 }}
   transition={{ duration: 0.3, ease: "easeOut" }}
->
-  Content
+> Content
 </motion.div>
 
 // CSS
@@ -385,8 +375,7 @@ Use for: Mechanical interactions, precise movements
   animate={{ opacity: 1, scale: 1 }}
   exit={{ opacity: 0, scale: 0.95 }}
   transition={{ duration: 0.3, ease: "easeOut" }}
->
-  Modal content
+> Modal content
 </motion.div>
 ```
 
@@ -403,8 +392,7 @@ Use for: Mechanical interactions, precise movements
       }
     }
   }}
->
-  {items.map(item => (
+> {items.map(item => (
     <motion.li
       key={item.id}
       variants={{
@@ -486,8 +474,7 @@ Animated elements that are near each other should move together to reinforce gro
 <motion.div
   initial={{ opacity: 0, y: 20 }}
   animate={{ opacity: 1, y: 0 }}
->
-  <h3>Title</h3>
+> <h3>Title</h3>
   <p>Content</p>
   <button>Action</button>
 </motion.div>

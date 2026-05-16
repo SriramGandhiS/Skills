@@ -1,4 +1,4 @@
-﻿---
+---
 name: kotlin-testing
 description: Kotlin testing patterns with Kotest, MockK, coroutine testing, property-based testing, and Kover coverage. Follows TDD methodology with idiomatic Kotlin practices.
 origin: ECC
@@ -687,19 +687,19 @@ kover {
 #### Coverage Commands
 
 ```bash
-# Run tests with coverage
+## Run tests with coverage
 ./gradlew koverHtmlReport
 
-# Verify coverage thresholds
+## Verify coverage thresholds
 ./gradlew koverVerify
 
-# XML report for CI
+## XML report for CI
 ./gradlew koverXmlReport
 
-# View HTML report (use the command for your OS)
-# macOS:   open build/reports/kover/html/index.html
-# Linux:   xdg-open build/reports/kover/html/index.html
-# Windows: start build/reports/kover/html/index.html
+## View HTML report (use the command for your OS)
+## macOS:   open build/reports/kover/html/index.html
+## Linux:   xdg-open build/reports/kover/html/index.html
+## Windows: start build/reports/kover/html/index.html
 ```
 
 #### Coverage Targets
@@ -751,28 +751,28 @@ class ApiRoutesTest : FunSpec({
 ### Testing Commands
 
 ```bash
-# Run all tests
+## Run all tests
 ./gradlew test
 
-# Run specific test class
+## Run specific test class
 ./gradlew test --tests "com.example.UserServiceTest"
 
-# Run specific test
+## Run specific test
 ./gradlew test --tests "com.example.UserServiceTest.getUser returns user when found"
 
-# Run with verbose output
+## Run with verbose output
 ./gradlew test --info
 
-# Run with coverage
+## Run with coverage
 ./gradlew koverHtmlReport
 
-# Run detekt (static analysis)
+## Run detekt (static analysis)
 ./gradlew detekt
 
-# Run ktlint (formatting check)
+## Run ktlint (formatting check)
 ./gradlew ktlintCheck
 
-# Continuous testing
+## Continuous testing
 ./gradlew test --continuous
 ```
 
@@ -790,7 +790,7 @@ class ApiRoutesTest : FunSpec({
 **DON'T:**
 - Mix testing frameworks (pick Kotest and stick with it)
 - Mock data classes (use real instances)
-- Use `Thread.sleep()` in coroutine tests (use `advanceTimeBy`)
+- Use `Thread.sleep()`in coroutine tests (use`advanceTimeBy`)
 - Skip the RED phase in TDD
 - Test private functions directly
 - Ignore flaky tests
@@ -798,7 +798,7 @@ class ApiRoutesTest : FunSpec({
 ### Integration with CI/CD
 
 ```yaml
-# GitHub Actions example
+## GitHub Actions example
 test:
   runs-on: ubuntu-latest
   steps:

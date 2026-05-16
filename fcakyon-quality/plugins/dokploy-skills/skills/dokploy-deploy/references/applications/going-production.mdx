@@ -71,8 +71,8 @@ jobs:
           push: true
           # Make sure to replace with your own namespace and repository
           tags: |
-            namespace/example:latest 
-          platforms: linux/amd64     
+            namespace/example:latest
+          platforms: linux/amd64
 ```
 7. Create your own Dockerfile, in this case we will use the `Dockerfile` from the repository.
 
@@ -148,7 +148,7 @@ jobs:
 
     steps:
        ...Same as step 7 from the previous example
-          
+
       - name: Trigger Dokploy Deployment
         uses: dokploy/dokploy-action@v1
         run: |
@@ -167,7 +167,7 @@ You can also use this Github Action [Action](https://github.com/marketplace/acti
 ## Healthcheck & Rollbacks
 
 When using Dokploy you can also configure healthchecks and rollbacks, this will allow you to configure your application to be able to recover from failures.
- 
+
 In the repo we are using from the `Step 1.` we have a healthcheck endpoint `/health` that returns a 200 status code and running in the port 3000.
 
 Go to `Advanced` Tab and go to Cluster Settings and enter to `Swarm Settings`

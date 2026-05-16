@@ -5,7 +5,7 @@ risk: unknown
 source: community
 ---
 
-# Odoo ↔ Shopify Integration
+# Odoo  Shopify Integration
 
 ## Overview
 
@@ -94,11 +94,11 @@ def shopify_order_webhook():
 
 ## Best Practices
 
-- ✅ **Do:** Use Shopify's **webhook system** for real-time order sync instead of polling.
-- ✅ **Do:** Match products using **SKU / Internal Reference** as the unique key between both systems.
-- ✅ **Do:** Validate Shopify webhook HMAC signatures before processing any payload.
-- ❌ **Don't:** Sync inventory from both systems simultaneously without a "master system" — pick one as the source of truth.
-- ❌ **Don't:** Use Shopify product IDs as the key — use SKUs which are stable across platforms.
+- PASS: **Do:** Use Shopify's **webhook system** for real-time order sync instead of polling.
+- PASS: **Do:** Match products using **SKU / Internal Reference** as the unique key between both systems.
+- PASS: **Do:** Validate Shopify webhook HMAC signatures before processing any payload.
+- FAIL: **Don't:** Sync inventory from both systems simultaneously without a "master system" — pick one as the source of truth.
+- FAIL: **Don't:** Use Shopify product IDs as the key — use SKUs which are stable across platforms.
 
 ## Limitations
 - Use this skill only when the task clearly matches the scope described above.

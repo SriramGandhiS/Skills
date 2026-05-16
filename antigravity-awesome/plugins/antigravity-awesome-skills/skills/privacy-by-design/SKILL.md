@@ -193,14 +193,14 @@ When building a feature that touches user data:
 
 ## Best Practices
 
-- ✅ Ask "do we need this?" for every new data field
-- ✅ Design deletion and export flows from day one
-- ✅ Use hashing or tokenization for sensitive identifiers when possible
-- ✅ Document purpose and retention in schema or metadata
-- ❌ Don't log passwords, tokens, or PII in plain text
-- ❌ Don't share data with third parties without explicit consent
-- ❌ Don't assume "we'll add privacy later"—it rarely happens
-- ❌ Don't expose stack traces or internal errors to clients
+- PASS: Ask "do we need this?" for every new data field
+- PASS: Design deletion and export flows from day one
+- PASS: Use hashing or tokenization for sensitive identifiers when possible
+- PASS: Document purpose and retention in schema or metadata
+- FAIL: Don't log passwords, tokens, or PII in plain text
+- FAIL: Don't share data with third parties without explicit consent
+- FAIL: Don't assume "we'll add privacy later"—it rarely happens
+- FAIL: Don't expose stack traces or internal errors to clients
 
 ---
 

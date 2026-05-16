@@ -1,13 +1,13 @@
 # Skill Seekers Intelligence System - Technical Architecture
 
 **Version:** 1.0 (Draft)
-**Status:** 🔬 Research & Design
+**Status:**  Research & Design
 **Last Updated:** 2026-01-20
 **For:** Study and iteration before implementation
 
 ---
 
-## 🎯 System Overview
+## System Overview
 
 The **Skill Seekers Intelligence System** is a multi-layered architecture that automatically generates, updates, and intelligently loads codebase knowledge into Claude Code's context.
 
@@ -19,7 +19,7 @@ The **Skill Seekers Intelligence System** is a multi-layered architecture that a
 
 ---
 
-## 🏗️ Architecture Layers
+## Architecture Layers
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
@@ -28,7 +28,7 @@ The **Skill Seekers Intelligence System** is a multi-layered architecture that a
 │  │ CLI Commands     Claude Code Plugin    Config Files  │   │
 │  └──────────────────────────────────────────────────────┘   │
 └─────────────────────────────────────────────────────────────┘
-                            ↕
+
 ┌─────────────────────────────────────────────────────────────┐
 │                   ORCHESTRATION LAYER                       │
 │  ┌──────────────────────────────────────────────────────┐   │
@@ -37,7 +37,7 @@ The **Skill Seekers Intelligence System** is a multi-layered architecture that a
 │  │ • Update Scheduler                                   │   │
 │  └──────────────────────────────────────────────────────┘   │
 └─────────────────────────────────────────────────────────────┘
-                            ↕
+
 ┌─────────────────────────────────────────────────────────────┐
 │                  SKILL GENERATION LAYER                     │
 │  ┌────────────────────┐  ┌────────────────────┐            │
@@ -49,7 +49,7 @@ The **Skill Seekers Intelligence System** is a multi-layered architecture that a
 │  │ Downloader         │  │ Detector           │            │
 │  └────────────────────┘  └────────────────────┘            │
 └─────────────────────────────────────────────────────────────┘
-                            ↕
+
 ┌─────────────────────────────────────────────────────────────┐
 │                  CLUSTERING LAYER                           │
 │  ┌────────────────────┐  ┌────────────────────┐            │
@@ -62,7 +62,7 @@ The **Skill Seekers Intelligence System** is a multi-layered architecture that a
 │  │ (Combines both)    │                                     │
 │  └────────────────────┘                                     │
 └─────────────────────────────────────────────────────────────┘
-                            ↕
+
 ┌─────────────────────────────────────────────────────────────┐
 │                     STORAGE LAYER                           │
 │  ┌──────────────────────────────────────────────────────┐   │
@@ -76,7 +76,7 @@ The **Skill Seekers Intelligence System** is a multi-layered architecture that a
 
 ---
 
-## 📂 File System Structure
+## File System Structure
 
 ```
 project-root/
@@ -125,7 +125,7 @@ project-root/
 
 ---
 
-## ⚙️ Component Details
+## Component Details
 
 ### 1. Project Manager
 
@@ -221,9 +221,9 @@ fi
 WATCH_BRANCHES=$(yq '.watch_branches[]' "$CONFIG_FILE" 2>/dev/null || echo "")
 
 if echo "$WATCH_BRANCHES" | grep -q "^$CURRENT_BRANCH$"; then
-    echo "🔄 Skill regeneration triggered on branch: $CURRENT_BRANCH"
+    echo " Skill regeneration triggered on branch: $CURRENT_BRANCH"
     skill-seekers regenerate-skills --branch "$CURRENT_BRANCH" --silent
-    echo "✅ Skills updated"
+    echo "PASS: Skills updated"
 fi
 """
 
@@ -997,7 +997,7 @@ class HybridClusteringEngine:
 
 ---
 
-## 🔌 Claude Code Plugin Integration
+## Claude Code Plugin Integration
 
 ```python
 # claude_plugins/skill-seekers-intelligence/agent.py
@@ -1043,7 +1043,7 @@ class SkillSeekersIntelligenceAgent:
         await self.load_skills(relevant_skills)
 
         # Notify user
-        self.notify_user(f"📚 Loaded {len(relevant_skills)} skills", relevant_skills)
+        self.notify_user(f" Loaded {len(relevant_skills)} skills", relevant_skills)
 
     async def on_branch_merge(self, branch: str):
         """Hook: Branch merged"""
@@ -1079,14 +1079,14 @@ class SkillSeekersIntelligenceAgent:
         )
 
         if result.returncode == 0:
-            self.notify_user(f"✅ Skills updated for branch: {branch}")
+            self.notify_user(f"PASS: Skills updated for branch: {branch}")
         else:
-            self.notify_user(f"❌ Skill regeneration failed: {result.stderr}")
+            self.notify_user(f"FAIL: Skill regeneration failed: {result.stderr}")
 ```
 
 ---
 
-## 📊 Performance Considerations
+## Performance Considerations
 
 ### Import Analysis
 - **Speed:** <100ms per file (AST parsing is fast)
@@ -1111,7 +1111,7 @@ class SkillSeekersIntelligenceAgent:
 
 ---
 
-## 🔒 Security Considerations
+## Security Considerations
 
 1. **Git Hooks:** Installed with user permission, can be disabled
 2. **File System:** Limited to project directory
@@ -1121,7 +1121,7 @@ class SkillSeekersIntelligenceAgent:
 
 ---
 
-## 🎯 Design Trade-offs
+## Design Trade-offs
 
 ### 1. Git-Based vs Watch Mode
 - **Chosen:** Git-based (update on merge)
@@ -1145,7 +1145,7 @@ class SkillSeekersIntelligenceAgent:
 
 ---
 
-## 🚧 Open Questions
+## Open Questions
 
 1. **Claude Code Plugin API:** How exactly do we load skills into context?
 2. **Context Management:** How to handle context overflow with large skills?
@@ -1155,7 +1155,7 @@ class SkillSeekersIntelligenceAgent:
 
 ---
 
-## 📚 References
+## References
 
 - **Existing Code:** `src/skill_seekers/cli/codebase_scraper.py` (C3.x features)
 - **Similar Tools:** GitHub Copilot, Cursor, Tabnine

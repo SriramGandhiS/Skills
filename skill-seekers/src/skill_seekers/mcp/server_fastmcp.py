@@ -64,7 +64,7 @@ try:
 except ImportError as e:
     # Only exit if running as main module, not when importing for tests
     if __name__ == "__main__":
-        print("❌ Error: mcp package not installed")
+        print("FAIL: Error: mcp package not installed")
         print("Install with: pip install mcp")
         print(f"Import error: {e}")
         sys.exit(1)
@@ -780,7 +780,7 @@ async def extract_config_patterns(
     Analyzes configuration files in the codebase to extract settings,
     detect common patterns, and generate comprehensive documentation.
 
-    **AI Enhancement (NEW)**: Optional AI-powered insights including:
+**AI Enhancement (NEW)**: Optional AI-powered insights including:
     - Explanations of what each config does
     - Best practice suggestions
     - Security analysis (hardcoded secrets, exposed credentials)
@@ -1714,7 +1714,7 @@ async def run_http_server(host: str, port: int):
     try:
         import uvicorn
     except ImportError:
-        logging.error("❌ Error: uvicorn package not installed")
+        logging.error("FAIL: Error: uvicorn package not installed")
         logging.error("Install with: pip install uvicorn")
         sys.exit(1)
 
@@ -1735,7 +1735,7 @@ async def run_http_server(host: str, port: int):
             )
             logging.info("✓ CORS middleware enabled")
         except ImportError:
-            logging.warning("⚠ CORS middleware not available (starlette not installed)")
+            logging.warning("WARNING: CORS middleware not available (starlette not installed)")
 
         # Add health check endpoint
         from starlette.responses import JSONResponse
@@ -1760,11 +1760,11 @@ async def run_http_server(host: str, port: int):
         # Add route before the catch-all SSE route
         app.routes.insert(0, Route("/health", health_check, methods=["GET"]))
 
-        logging.info("🚀 Starting Skill Seeker MCP Server (HTTP mode)")
-        logging.info(f"📡 Server URL: http://{host}:{port}")
-        logging.info(f"🔗 SSE Endpoint: http://{host}:{port}/sse")
-        logging.info(f"💚 Health Check: http://{host}:{port}/health")
-        logging.info(f"📝 Messages: http://{host}:{port}/messages/")
+        logging.info(" Starting Skill Seeker MCP Server (HTTP mode)")
+        logging.info(f" Server URL: http://{host}:{port}")
+        logging.info(f" SSE Endpoint: http://{host}:{port}/sse")
+        logging.info(f" Health Check: http://{host}:{port}/health")
+        logging.info(f" Messages: http://{host}:{port}/messages/")
         logging.info("")
         logging.info("Claude Desktop Configuration (HTTP):")
         logging.info("{")
@@ -1789,7 +1789,7 @@ async def run_http_server(host: str, port: int):
         await server.serve()
 
     except Exception as e:
-        logging.error(f"❌ Failed to start HTTP server: {e}")
+        logging.error(f"FAIL: Failed to start HTTP server: {e}")
         import traceback
 
         traceback.print_exc()
@@ -1802,7 +1802,7 @@ def main():
 
     # Check if MCP is available
     if not MCP_AVAILABLE or mcp is None:
-        print("❌ Error: mcp package not installed or FastMCP not available")
+        print("FAIL: Error: mcp package not installed or FastMCP not available")
         print("Install with: pip install mcp>=1.25")
         sys.exit(1)
 
@@ -1814,19 +1814,19 @@ def main():
 
     if args.http:
         # HTTP transport mode
-        logging.info(f"🌐 Using HTTP transport on {args.host}:{args.port}")
+        logging.info(f" Using HTTP transport on {args.host}:{args.port}")
         try:
             asyncio.run(run_http_server(args.host, args.port))
         except KeyboardInterrupt:
-            logging.info("\n👋 Server stopped by user")
+            logging.info("\n Server stopped by user")
             sys.exit(0)
     else:
         # Stdio transport mode (default, backward compatible)
-        logging.info("📺 Using stdio transport (default)")
+        logging.info(" Using stdio transport (default)")
         try:
             asyncio.run(mcp.run_stdio_async())
         except KeyboardInterrupt:
-            logging.info("\n👋 Server stopped by user")
+            logging.info("\n Server stopped by user")
             sys.exit(0)
 
 

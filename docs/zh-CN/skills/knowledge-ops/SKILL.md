@@ -139,17 +139,17 @@ origin: ECC
 ## 记忆模式
 
 ```
-# 短期：当前会话上下文
+## 短期：当前会话上下文
 使用 TodoWrite 进行会话内任务追踪
 
-# 中期：项目记忆文件
+## 中期：项目记忆文件
 写入 ~/.claude/projects/*/memory/ 以实现跨会话回溯
 
-# 长期：GitHub / Linear / 知识库
+## 长期：GitHub / Linear / 知识库
 将活跃执行事实置于 GitHub + Linear
 将持久化综合上下文置于知识库仓库
 
-# 语义层：MCP 知识图谱
+## 语义层：MCP 知识图谱
 使用 mcp__memory__create_entities 创建永久结构化数据
 使用 mcp__memory__create_relations 进行关系映射
 使用 mcp__memory__add_observations 添加关于已知实体的新事实

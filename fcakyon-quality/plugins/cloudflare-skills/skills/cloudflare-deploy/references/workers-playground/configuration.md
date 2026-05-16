@@ -11,7 +11,7 @@ Navigate to [workers.cloudflare.com/playground](https://workers.cloudflare.com/p
 
 ## Playground Constraints
 
-⚠️ **Important Limitations**
+WARNING: **Important Limitations**
 
 | Constraint | Playground | Production Workers |
 |------------|------------|-------------------|
@@ -130,9 +130,9 @@ Click **Deploy** button to move code to production:
 
 | Browser | Status | Notes |
 |---------|--------|-------|
-| Chrome/Edge | ✅ Full support | Recommended |
-| Firefox | ✅ Full support | Works well |
-| Safari | ⚠️ Broken | Preview fails with "PreviewRequestFailed" |
+| Chrome/Edge | PASS: Full support | Recommended |
+| Firefox | PASS: Full support | Works well |
+| Safari | WARNING: Broken | Preview fails with "PreviewRequestFailed" |
 
 **Safari users:** Use Chrome, Firefox, or Edge for Workers Playground.
 

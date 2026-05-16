@@ -18,8 +18,8 @@ from .common import add_all_standard_arguments
 
 # Analyze-specific argument definitions as data structure
 # NOTE: Shared args (name, description, output, enhance_level, api_key, dry_run,
-#       verbose, quiet, workflow args) are registered by add_all_standard_arguments().
-#       The default enhance_level for analyze is 0 (overridden after registration).
+# verbose, quiet, workflow args) are registered by add_all_standard_arguments().
+# The default enhance_level for analyze is 0 (overridden after registration).
 ANALYZE_ARGUMENTS: dict[str, dict[str, Any]] = {
     # Core options
     "directory": {

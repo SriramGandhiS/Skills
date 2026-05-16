@@ -59,6 +59,6 @@ Se divergirem (edição manual, corrupção), `maintain` corrige automaticamente
 maintain
   ├── Verificar sessões antigas → arquivar
   ├── Consolidar arquivo se necessário
-  ├── Verificar drift ACTIVE_CONTEXT ↔ MEMORY.md → sincronizar
+  ├── Verificar drift ACTIVE_CONTEXT  MEMORY.md → sincronizar
   └── Reindexar busca FTS5
 ```

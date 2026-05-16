@@ -303,7 +303,6 @@ Manual SHA256 hashing provides <5ms cache lookups compared to 100-500ms for `tsc
 rm .claude/hooks/react-app/tsconfig-cache.json
 ```
 
-
 **Hook not running?**
 
 ```bash

@@ -3,7 +3,7 @@
 ## Snapshot
 
 This document records a live GitHub triage snapshot for the
-`everything-claude-code` pull-request queue as of `2026-03-13T08:33:31Z`.
+`everything-claude-code`pull-request queue as of`2026-03-13T08:33:31Z`.
 
 Sources used:
 
@@ -14,13 +14,13 @@ Sources used:
 
 Stale threshold used for this pass:
 
-- `last updated before 2026-02-11` (`>30` days before March 13, 2026)
+- `last updated before 2026-02-11`(`>30` days before March 13, 2026)
 
 ## PR `#399` Retrospective Review
 
 PR:
 
-- `#399` — `fix(observe): 5-layer automated session guard to prevent self-loop observations`
+- `#399`—`fix(observe): 5-layer automated session guard to prevent self-loop observations`
 - state: `MERGED`
 - merged at: `2026-03-13T06:40:03Z`
 - merge commit: `c52a28ace9e7e84c00309fc7b629955dfc46ecf9`
@@ -33,7 +33,7 @@ Files changed:
 Validation performed against merged head `546628182200c16cc222b97673ddd79e942eacce`:
 
 - `bash -n` on both changed shell scripts
-- `node tests/hooks/hooks.test.js` (`204` passed, `0` failed)
+- `node tests/hooks/hooks.test.js`(`204`passed,`0` failed)
 - targeted hook invocations for:
   - interactive CLI session
   - `CLAUDE_CODE_ENTRYPOINT=mcp`
@@ -52,14 +52,14 @@ Remaining findings:
 
 1. Medium: skipped automated sessions still create homunculus project state
    before the new guards exit.
-   `observe.sh` resolves `cwd` and sources project detection before reaching the
+   `observe.sh`resolves`cwd` and sources project detection before reaching the
    automated-session guard block, so `detect-project.sh` still creates
-   `projects/<id>/...` directories and updates `projects.json` for sessions that
+   `projects/<id>/...`directories and updates`projects.json` for sessions that
    later exit early.
 2. Low: the new guard matrix shipped without direct regression coverage.
    The hook test suite still validates adjacent behavior, but it does not
-   directly assert the new `CLAUDE_CODE_ENTRYPOINT`, `ECC_HOOK_PROFILE`,
-   `ECC_SKIP_OBSERVE`, `agent_id`, or trimmed skip-path branches.
+   directly assert the new `CLAUDE_CODE_ENTRYPOINT`,`ECC_HOOK_PROFILE`,
+   `ECC_SKIP_OBSERVE`,`agent_id`, or trimmed skip-path branches.
 
 Verdict:
 
@@ -77,10 +77,10 @@ There are currently `4` open PRs.
 
 | PR | Title | Draft | Mergeable | Merge State | Updated | Stale | Current Verdict |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| `#292` | `chore(config): governance and config foundation (PR #272 split 1/6)` | `false` | `MERGEABLE` | `UNSTABLE` | `2026-03-13T07:26:55Z` | `No` | `Best current merge candidate` |
-| `#298` | `feat(agents,skills,rules): add Rust, Java, mobile, DevOps, and performance content` | `false` | `CONFLICTING` | `DIRTY` | `2026-03-11T04:29:07Z` | `No` | `Needs changes before review can finish` |
-| `#336` | `Customisation for Codex CLI - Features from Claude Code and OpenCode` | `true` | `MERGEABLE` | `UNSTABLE` | `2026-03-13T07:26:12Z` | `No` | `Needs manual review and draft exit` |
-| `#420` | `feat: add laravel skills` | `true` | `MERGEABLE` | `UNSTABLE` | `2026-03-12T22:57:36Z` | `No` | `Low-risk draft, review after draft exit` |
+| `#292`|`chore(config): governance and config foundation (PR #272 split 1/6)`|`false`|`MERGEABLE`|`UNSTABLE`|`2026-03-13T07:26:55Z`|`No`|`Best current merge candidate` |
+| `#298`|`feat(agents,skills,rules): add Rust, Java, mobile, DevOps, and performance content`|`false`|`CONFLICTING`|`DIRTY`|`2026-03-11T04:29:07Z`|`No`|`Needs changes before review can finish` |
+| `#336`|`Customisation for Codex CLI - Features from Claude Code and OpenCode`|`true`|`MERGEABLE`|`UNSTABLE`|`2026-03-13T07:26:12Z`|`No`|`Needs manual review and draft exit` |
+| `#420`|`feat: add laravel skills`|`true`|`MERGEABLE`|`UNSTABLE`|`2026-03-12T22:57:36Z`|`No`|`Low-risk draft, review after draft exit` |
 
 No currently open PR is stale by the `>30 days since last update` rule.
 
@@ -121,7 +121,7 @@ Current recommendation:
 
 - `Mergeable after one final owner pass.`
 - If you want a conservative path, do one quick human review of the remaining
-  `.env.example`, PR-template, and `.tool-versions` nitpicks before merge.
+  `.env.example`, PR-template, and`.tool-versions` nitpicks before merge.
 
 ### `#298` — Large Multi-Domain Content Expansion
 
@@ -147,7 +147,7 @@ Assessment:
 - This PR is not ready for merge.
 - It conflicts with current `main`, so it is not even mergeable at the branch
   level yet.
-- cubic identified `34` issues across `35` files in the current review.
+- cubic identified `34`issues across`35` files in the current review.
   Those findings are substantive and technical, not just style cleanup, and
   they cover broken or misleading examples across several new skills.
 - Even without the conflict, the scope is large enough that it needs a deliberate

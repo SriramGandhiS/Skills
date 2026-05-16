@@ -54,7 +54,7 @@ Expert UI/UX design skill that helps create unique, accessible, and thoughtfully
    - Cards use borders and background differentiation (not depth effects)
    - Animations follow real-world physics principles adapted to digital responsiveness
 
-   **Examples:**
+**Examples:**
    - Clickable: Use distinct colors, hover state changes, cursor feedback
    - Containers: Use subtle borders (1px), background color shifts, or generous padding
    - Hierarchy: Use scale, weight, and spacing rather than elevation
@@ -387,8 +387,7 @@ Define consistent durations for element types:
   animate={{ opacity: 1, y: 0 }}
   exit={{ opacity: 0, y: -20 }}
   transition={{ duration: 0.3, ease: "easeOut" }}
->
-  Content
+> Content
 </motion.div>
 ```
 
@@ -456,19 +455,19 @@ For detailed motion specs, see MOTION-SPEC.md (easing curves, duration tables, s
 
    Prioritize natural language interaction where appropriate:
 
-   **Four types:**
+**Four types:**
    - **Pure chat**: Full conversation (AI assistants, support bots)
    - **Command palette**: Text-based shortcuts (Cmd+K, search everywhere)
    - **Smart search**: Natural language queries (search "meetings next week" vs filtering)
    - **Form alternatives**: Conversational data collection ("What's your name?" vs form fields)
 
-   **When to use:**
+**When to use:**
    - Complex searches with multiple variables
    - Task guidance (wizards, onboarding)
    - Contextual help
    - Quick actions (command palette)
 
-   **When NOT to use:**
+**When NOT to use:**
    - Simple forms (just use inputs)
    - Precise control interfaces (design tools, dashboards)
    - High-frequency repetitive tasks
@@ -646,8 +645,7 @@ import { ArrowRight } from "@phosphor-icons/react";
 
 <Button
   className="bg-slate-800 hover:bg-slate-700 text-white px-6 py-3 rounded-lg transition-colors duration-200"
->
-  Get Started
+> Get Started
   <ArrowRight className="ml-2" />
 </Button>
 ```
@@ -705,7 +703,7 @@ Which direction feels right for your brand?
 
 ## Common Patterns to Avoid
 
-❌ **Don't:**
+FAIL: **Don't:**
 - Use generic SaaS blue (#3B82F6) without considering alternatives
 - Default to shadows and gradients for depth
 - Copy Apple's design language
@@ -715,7 +713,7 @@ Which direction feels right for your brand?
 - Use animations that delay user actions
 - Create cluttered interfaces with competing elements
 
-✅ **Do:**
+PASS: **Do:**
 - Ask before making design decisions
 - Suggest unique, contextually appropriate color pairs
 - Use flat, minimal design

@@ -62,7 +62,7 @@ def run_subprocess_with_streaming(cmd: list[str], timeout: int = None) -> tuple[
             # Check timeout
             if timeout and (time.time() - start_time) > timeout:
                 process.kill()
-                stderr_lines.append(f"\n⚠️ Process killed after {timeout}s timeout")
+                stderr_lines.append(f"\nWARNING: Process killed after {timeout}s timeout")
                 break
 
             # Check if process finished
@@ -136,7 +136,7 @@ async def package_skill_tool(args: dict) -> list[TextContent]:
         return [
             TextContent(
                 type="text",
-                text=f"❌ Invalid platform: {str(e)}\n\nSupported platforms: claude, gemini, openai, markdown",
+                text=f"FAIL: Invalid platform: {str(e)}\n\nSupported platforms: claude, gemini, openai, markdown",
             )
         ]
 
@@ -163,10 +163,10 @@ async def package_skill_tool(args: dict) -> list[TextContent]:
     # Timeout: 5 minutes for packaging + upload
     timeout = 300
 
-    progress_msg = f"📦 Packaging skill for {adaptor.PLATFORM_NAME}...\n"
+    progress_msg = f" Packaging skill for {adaptor.PLATFORM_NAME}...\n"
     if should_upload:
-        progress_msg += f"📤 Will auto-upload to {adaptor.PLATFORM_NAME} if successful\n"
-    progress_msg += f"⏱️ Maximum time: {timeout // 60} minutes\n\n"
+        progress_msg += f" Will auto-upload to {adaptor.PLATFORM_NAME} if successful\n"
+    progress_msg += f" Maximum time: {timeout // 60} minutes\n\n"
 
     stdout, stderr, returncode = run_subprocess_with_streaming(cmd, timeout=timeout)
 
@@ -175,7 +175,7 @@ async def package_skill_tool(args: dict) -> list[TextContent]:
     if returncode == 0:
         if should_upload:
             # Upload succeeded
-            output += f"\n\n✅ Skill packaged and uploaded to {adaptor.PLATFORM_NAME}!"
+            output += f"\n\nPASS: Skill packaged and uploaded to {adaptor.PLATFORM_NAME}!"
             if target == "claude":
                 output += "\n   Your skill is now available in Claude!"
                 output += "\n   Go to https://claude.ai/skills to use it"
@@ -187,26 +187,26 @@ async def package_skill_tool(args: dict) -> list[TextContent]:
                 output += "\n   Go to https://platform.openai.com/assistants/ to use it"
         elif auto_upload and not has_api_key:
             # User wanted upload but no API key
-            output += f"\n\n📝 Skill packaged successfully for {adaptor.PLATFORM_NAME}!"
+            output += f"\n\n Skill packaged successfully for {adaptor.PLATFORM_NAME}!"
             output += "\n"
-            output += "\n💡 To enable automatic upload:"
+            output += "\n To enable automatic upload:"
             if target == "claude":
                 output += "\n   1. Get API key from https://console.anthropic.com/"
                 output += "\n   2. Set: export ANTHROPIC_API_KEY=sk-ant-..."
-                output += "\n\n📤 Manual upload:"
+                output += "\n\n Manual upload:"
                 output += "\n   1. Find the .zip file in your output/ folder"
                 output += "\n   2. Go to https://claude.ai/skills"
                 output += "\n   3. Click 'Upload Skill' and select the .zip file"
             elif target == "gemini":
                 output += "\n   1. Get API key from https://aistudio.google.com/"
                 output += "\n   2. Set: export GOOGLE_API_KEY=AIza..."
-                output += "\n\n📤 Manual upload:"
+                output += "\n\n Manual upload:"
                 output += "\n   1. Go to https://aistudio.google.com/"
                 output += "\n   2. Upload the .tar.gz file from your output/ folder"
             elif target == "openai":
                 output += "\n   1. Get API key from https://platform.openai.com/"
                 output += "\n   2. Set: export OPENAI_API_KEY=sk-proj-..."
-                output += "\n\n📤 Manual upload:"
+                output += "\n\n Manual upload:"
                 output += "\n   1. Use OpenAI Assistants API"
                 output += "\n   2. Upload the .zip file from your output/ folder"
             elif target == "markdown":
@@ -214,7 +214,7 @@ async def package_skill_tool(args: dict) -> list[TextContent]:
                 output += "\n   Package created for manual distribution"
         else:
             # auto_upload=False, just packaged
-            output += f"\n\n✅ Skill packaged successfully for {adaptor.PLATFORM_NAME}!"
+            output += f"\n\nPASS: Skill packaged successfully for {adaptor.PLATFORM_NAME}!"
             if target == "claude":
                 output += "\n   Upload manually to https://claude.ai/skills"
             elif target == "gemini":
@@ -226,7 +226,7 @@ async def package_skill_tool(args: dict) -> list[TextContent]:
 
         return [TextContent(type="text", text=output)]
     else:
-        return [TextContent(type="text", text=f"{output}\n\n❌ Error:\n{stderr}")]
+        return [TextContent(type="text", text=f"{output}\n\nFAIL: Error:\n{stderr}")]
 
 
 async def upload_skill_tool(args: dict) -> list[TextContent]:
@@ -261,7 +261,7 @@ async def upload_skill_tool(args: dict) -> list[TextContent]:
         return [
             TextContent(
                 type="text",
-                text=f"❌ Invalid platform: {str(e)}\n\nSupported platforms: claude, gemini, openai",
+                text=f"FAIL: Invalid platform: {str(e)}\n\nSupported platforms: claude, gemini, openai",
             )
         ]
 
@@ -270,7 +270,7 @@ async def upload_skill_tool(args: dict) -> list[TextContent]:
         return [
             TextContent(
                 type="text",
-                text="❌ Markdown export does not support upload. Use the packaged file manually.",
+                text="FAIL: Markdown export does not support upload. Use the packaged file manually.",
             )
         ]
 
@@ -284,8 +284,8 @@ async def upload_skill_tool(args: dict) -> list[TextContent]:
     # Timeout: 5 minutes for upload
     timeout = 300
 
-    progress_msg = f"📤 Uploading skill to {adaptor.PLATFORM_NAME}...\n"
-    progress_msg += f"⏱️ Maximum time: {timeout // 60} minutes\n\n"
+    progress_msg = f" Uploading skill to {adaptor.PLATFORM_NAME}...\n"
+    progress_msg += f" Maximum time: {timeout // 60} minutes\n\n"
 
     stdout, stderr, returncode = run_subprocess_with_streaming(cmd, timeout=timeout)
 
@@ -294,7 +294,7 @@ async def upload_skill_tool(args: dict) -> list[TextContent]:
     if returncode == 0:
         return [TextContent(type="text", text=output)]
     else:
-        return [TextContent(type="text", text=f"{output}\n\n❌ Error:\n{stderr}")]
+        return [TextContent(type="text", text=f"{output}\n\nFAIL: Error:\n{stderr}")]
 
 
 async def enhance_skill_tool(args: dict) -> list[TextContent]:
@@ -328,10 +328,10 @@ async def enhance_skill_tool(args: dict) -> list[TextContent]:
 
     # Validate skill directory
     if not skill_dir.exists():
-        return [TextContent(type="text", text=f"❌ Skill directory not found: {skill_dir}")]
+        return [TextContent(type="text", text=f"FAIL: Skill directory not found: {skill_dir}")]
 
     if not (skill_dir / "SKILL.md").exists():
-        return [TextContent(type="text", text=f"❌ SKILL.md not found in {skill_dir}")]
+        return [TextContent(type="text", text=f"FAIL: SKILL.md not found in {skill_dir}")]
 
     # Get platform adaptor
     try:
@@ -340,7 +340,7 @@ async def enhance_skill_tool(args: dict) -> list[TextContent]:
         return [
             TextContent(
                 type="text",
-                text=f"❌ Invalid platform: {str(e)}\n\nSupported platforms: claude, gemini, openai",
+                text=f"FAIL: Invalid platform: {str(e)}\n\nSupported platforms: claude, gemini, openai",
             )
         ]
 
@@ -348,12 +348,12 @@ async def enhance_skill_tool(args: dict) -> list[TextContent]:
     if not adaptor.supports_enhancement():
         return [
             TextContent(
-                type="text", text=f"❌ {adaptor.PLATFORM_NAME} does not support AI enhancement"
+                type="text", text=f"FAIL: {adaptor.PLATFORM_NAME} does not support AI enhancement"
             )
         ]
 
     output_lines = []
-    output_lines.append(f"🚀 Enhancing skill with {adaptor.PLATFORM_NAME}")
+    output_lines.append(f" Enhancing skill with {adaptor.PLATFORM_NAME}")
     output_lines.append("-" * 70)
     output_lines.append(f"Skill directory: {skill_dir}")
     output_lines.append(f"Mode: {mode}")
@@ -373,15 +373,15 @@ async def enhance_skill_tool(args: dict) -> list[TextContent]:
             if returncode == 0:
                 output_lines.append(stdout)
                 output_lines.append("")
-                output_lines.append("✅ Enhancement complete!")
+                output_lines.append("PASS: Enhancement complete!")
                 output_lines.append(f"Enhanced SKILL.md: {skill_dir / 'SKILL.md'}")
                 output_lines.append(f"Backup: {skill_dir / 'SKILL.md.backup'}")
             else:
-                output_lines.append(f"❌ Enhancement failed (exit code {returncode})")
+                output_lines.append(f"FAIL: Enhancement failed (exit code {returncode})")
                 output_lines.append(stderr if stderr else stdout)
 
         except Exception as e:
-            output_lines.append(f"❌ Error: {str(e)}")
+            output_lines.append(f"FAIL: Error: {str(e)}")
 
     elif mode == "api":
         # Use API enhancement
@@ -396,7 +396,7 @@ async def enhance_skill_tool(args: dict) -> list[TextContent]:
                 return [
                     TextContent(
                         type="text",
-                        text=f"❌ {env_var} not set. Set API key or pass via api_key parameter.",
+                        text=f"FAIL: {env_var} not set. Set API key or pass via api_key parameter.",
                     )
                 ]
 
@@ -404,7 +404,7 @@ async def enhance_skill_tool(args: dict) -> list[TextContent]:
         if not adaptor.validate_api_key(api_key):
             return [
                 TextContent(
-                    type="text", text=f"❌ Invalid API key format for {adaptor.PLATFORM_NAME}"
+                    type="text", text=f"FAIL: Invalid API key format for {adaptor.PLATFORM_NAME}"
                 )
             ]
 
@@ -415,17 +415,17 @@ async def enhance_skill_tool(args: dict) -> list[TextContent]:
             success = adaptor.enhance(skill_dir, api_key)
 
             if success:
-                output_lines.append("✅ Enhancement complete!")
+                output_lines.append("PASS: Enhancement complete!")
                 output_lines.append(f"Enhanced SKILL.md: {skill_dir / 'SKILL.md'}")
                 output_lines.append(f"Backup: {skill_dir / 'SKILL.md.backup'}")
             else:
-                output_lines.append("❌ Enhancement failed")
+                output_lines.append("FAIL: Enhancement failed")
 
         except Exception as e:
-            output_lines.append(f"❌ Error: {str(e)}")
+            output_lines.append(f"FAIL: Error: {str(e)}")
 
     else:
-        return [TextContent(type="text", text=f"❌ Invalid mode: {mode}. Use 'local' or 'api'")]
+        return [TextContent(type="text", text=f"FAIL: Invalid mode: {mode}. Use 'local' or 'api'")]
 
     return [TextContent(type="text", text="\n".join(output_lines))]
 
@@ -483,7 +483,7 @@ async def install_skill_tool(args: dict) -> list[TextContent]:
         return [
             TextContent(
                 type="text",
-                text=f"❌ Error: {str(e)}\n\nSupported platforms: claude, gemini, openai, markdown",
+                text=f"FAIL: Error: {str(e)}\n\nSupported platforms: claude, gemini, openai, markdown",
             )
         ]
 
@@ -492,7 +492,7 @@ async def install_skill_tool(args: dict) -> list[TextContent]:
         return [
             TextContent(
                 type="text",
-                text="❌ Error: Must provide either config_name or config_path\n\nExamples:\n  install_skill(config_name='react')\n  install_skill(config_path='configs/custom.json')",
+                text="FAIL: Error: Must provide either config_name or config_path\n\nExamples:\n  install_skill(config_name='react')\n  install_skill(config_path='configs/custom.json')",
             )
         ]
 
@@ -500,18 +500,18 @@ async def install_skill_tool(args: dict) -> list[TextContent]:
         return [
             TextContent(
                 type="text",
-                text="❌ Error: Cannot provide both config_name and config_path\n\nChoose one:\n  - config_name: Fetch from API (e.g., 'react')\n  - config_path: Use existing file (e.g., 'configs/custom.json')",
+                text="FAIL: Error: Cannot provide both config_name and config_path\n\nChoose one:\n  - config_name: Fetch from API (e.g., 'react')\n  - config_path: Use existing file (e.g., 'configs/custom.json')",
             )
         ]
 
     # Initialize output
     output_lines = []
-    output_lines.append("🚀 SKILL INSTALLATION WORKFLOW")
+    output_lines.append(" SKILL INSTALLATION WORKFLOW")
     output_lines.append("=" * 70)
     output_lines.append("")
 
     if dry_run:
-        output_lines.append("🔍 DRY RUN MODE - Preview only, no actions taken")
+        output_lines.append(" DRY RUN MODE - Preview only, no actions taken")
         output_lines.append("")
 
     # Track workflow state
@@ -526,7 +526,7 @@ async def install_skill_tool(args: dict) -> list[TextContent]:
     try:
         # ===== PHASE 1: Fetch Config (if needed) =====
         if config_name:
-            output_lines.append("📥 PHASE 1/5: Fetch Config")
+            output_lines.append(" PHASE 1/5: Fetch Config")
             output_lines.append("-" * 70)
             output_lines.append(f"Config: {config_name}")
             output_lines.append(f"Destination: {destination}/")
@@ -544,16 +544,16 @@ async def install_skill_tool(args: dict) -> list[TextContent]:
                 output_lines.append("")
 
                 # Extract config path from output
-                # Expected format: "📂 Saved to: configs/react.json"
+                # Expected format: " Saved to: configs/react.json"
                 match = re.search(r"(?i)saved to:\s*(.+\.json)", fetch_output)
                 if match:
                     workflow_state["config_path"] = match.group(1).strip()
-                    output_lines.append(f"✅ Config fetched: {workflow_state['config_path']}")
+                    output_lines.append(f"PASS: Config fetched: {workflow_state['config_path']}")
                 else:
                     return [
                         TextContent(
                             type="text",
-                            text="\n".join(output_lines) + "\n\n❌ Failed to fetch config",
+                            text="\n".join(output_lines) + "\n\nFAIL: Failed to fetch config",
                         )
                     ]
 
@@ -566,7 +566,7 @@ async def install_skill_tool(args: dict) -> list[TextContent]:
 
         # ===== PHASE 2: Scrape Documentation =====
         phase_num = "2/5" if config_name else "1/4"
-        output_lines.append(f"📄 PHASE {phase_num}: Scrape Documentation")
+        output_lines.append(f" PHASE {phase_num}: Scrape Documentation")
         output_lines.append("-" * 70)
         output_lines.append(f"Config: {workflow_state['config_path']}")
         output_lines.append(f"Unlimited mode: {unlimited}")
@@ -583,7 +583,7 @@ async def install_skill_tool(args: dict) -> list[TextContent]:
                 return [
                     TextContent(
                         type="text",
-                        text="\n".join(output_lines) + f"\n\n❌ Failed to read config: {str(e)}",
+                        text="\n".join(output_lines) + f"\n\nFAIL: Failed to read config: {str(e)}",
                     )
                 ]
 
@@ -606,11 +606,11 @@ async def install_skill_tool(args: dict) -> list[TextContent]:
             output_lines.append("")
 
             # Check for success
-            if "❌" in scrape_output:
+            if "FAIL:" in scrape_output:
                 return [
                     TextContent(
                         type="text",
-                        text="\n".join(output_lines) + "\n\n❌ Scraping failed - see error above",
+                        text="\n".join(output_lines) + "\n\nFAIL: Scraping failed - see error above",
                     )
                 ]
 
@@ -625,9 +625,9 @@ async def install_skill_tool(args: dict) -> list[TextContent]:
 
         # ===== PHASE 3: AI Enhancement (MANDATORY) =====
         phase_num = "3/5" if config_name else "2/4"
-        output_lines.append(f"✨ PHASE {phase_num}: AI Enhancement (MANDATORY)")
+        output_lines.append(f" PHASE {phase_num}: AI Enhancement (MANDATORY)")
         output_lines.append("-" * 70)
-        output_lines.append("⚠️  Enhancement is REQUIRED for quality (3/10→9/10 boost)")
+        output_lines.append("WARNING:  Enhancement is REQUIRED for quality (3/10→9/10 boost)")
         output_lines.append(f"Skill directory: {workflow_state['skill_dir']}")
         output_lines.append("Mode: Headless (runs in background)")
         output_lines.append("Estimated time: 30-60 seconds")
@@ -650,7 +650,7 @@ async def install_skill_tool(args: dict) -> list[TextContent]:
             stdout, stderr, returncode = run_subprocess_with_streaming(cmd, timeout=timeout)
 
             if returncode != 0:
-                output_lines.append(f"\n❌ Enhancement failed (exit code {returncode}):")
+                output_lines.append(f"\nFAIL: Enhancement failed (exit code {returncode}):")
                 output_lines.append(stderr if stderr else stdout)
                 return [TextContent(type="text", text="\n".join(output_lines))]
 
@@ -663,7 +663,7 @@ async def install_skill_tool(args: dict) -> list[TextContent]:
 
         # ===== PHASE 4: Package Skill =====
         phase_num = "4/5" if config_name else "3/4"
-        output_lines.append(f"📦 PHASE {phase_num}: Package Skill for {adaptor.PLATFORM_NAME}")
+        output_lines.append(f" PHASE {phase_num}: Package Skill for {adaptor.PLATFORM_NAME}")
         output_lines.append("-" * 70)
         output_lines.append(f"Skill directory: {workflow_state['skill_dir']}")
         output_lines.append(f"Target platform: {adaptor.PLATFORM_NAME}")
@@ -725,7 +725,7 @@ async def install_skill_tool(args: dict) -> list[TextContent]:
         has_api_key = False  # Initialize before conditional block
         if auto_upload:
             phase_num = "5/5" if config_name else "4/4"
-            output_lines.append(f"📤 PHASE {phase_num}: Upload to {adaptor.PLATFORM_NAME}")
+            output_lines.append(f" PHASE {phase_num}: Upload to {adaptor.PLATFORM_NAME}")
             output_lines.append("-" * 70)
             output_lines.append(f"Package file: {workflow_state['zip_path']}")
             output_lines.append("")
@@ -738,7 +738,7 @@ async def install_skill_tool(args: dict) -> list[TextContent]:
                 if has_api_key:
                     # Upload not supported for markdown platform
                     if target == "markdown":
-                        output_lines.append("⚠️  Markdown export does not support upload")
+                        output_lines.append("WARNING:  Markdown export does not support upload")
                         output_lines.append("    Package has been created - use manually")
                     else:
                         # Call upload_skill_tool with target
@@ -752,7 +752,7 @@ async def install_skill_tool(args: dict) -> list[TextContent]:
                         workflow_state["phases_completed"].append("upload_skill")
                 else:
                     # Platform-specific instructions for missing API key
-                    output_lines.append(f"⚠️  {env_var_name} not set - skipping upload")
+                    output_lines.append(f"WARNING:  {env_var_name} not set - skipping upload")
                     output_lines.append("")
                     output_lines.append("To enable automatic upload:")
 
@@ -760,7 +760,7 @@ async def install_skill_tool(args: dict) -> list[TextContent]:
                         output_lines.append("  1. Get API key from https://console.anthropic.com/")
                         output_lines.append("  2. Set: export ANTHROPIC_API_KEY=sk-ant-...")
                         output_lines.append("")
-                        output_lines.append("📤 Manual upload:")
+                        output_lines.append(" Manual upload:")
                         output_lines.append("  1. Go to https://claude.ai/skills")
                         output_lines.append("  2. Click 'Upload Skill'")
                         output_lines.append(f"  3. Select: {workflow_state['zip_path']}")
@@ -768,14 +768,14 @@ async def install_skill_tool(args: dict) -> list[TextContent]:
                         output_lines.append("  1. Get API key from https://aistudio.google.com/")
                         output_lines.append("  2. Set: export GOOGLE_API_KEY=AIza...")
                         output_lines.append("")
-                        output_lines.append("📤 Manual upload:")
+                        output_lines.append(" Manual upload:")
                         output_lines.append("  1. Go to https://aistudio.google.com/")
                         output_lines.append(f"  2. Upload package: {workflow_state['zip_path']}")
                     elif target == "openai":
                         output_lines.append("  1. Get API key from https://platform.openai.com/")
                         output_lines.append("  2. Set: export OPENAI_API_KEY=sk-proj-...")
                         output_lines.append("")
-                        output_lines.append("📤 Manual upload:")
+                        output_lines.append(" Manual upload:")
                         output_lines.append("  1. Use OpenAI Assistants API")
                         output_lines.append(f"  2. Upload package: {workflow_state['zip_path']}")
                     elif target == "markdown":
@@ -846,7 +846,7 @@ async def install_skill_tool(args: dict) -> list[TextContent]:
 
         # ===== WORKFLOW SUMMARY =====
         output_lines.append("=" * 70)
-        output_lines.append("✅ WORKFLOW COMPLETE")
+        output_lines.append("PASS: WORKFLOW COMPLETE")
         output_lines.append("=" * 70)
         output_lines.append("")
 
@@ -856,7 +856,7 @@ async def install_skill_tool(args: dict) -> list[TextContent]:
                 output_lines.append(f"  ✓ {phase}")
             output_lines.append("")
 
-            output_lines.append("📁 Output:")
+            output_lines.append(" Output:")
             output_lines.append(f"  Skill directory: {workflow_state['skill_dir']}")
             if workflow_state["zip_path"]:
                 output_lines.append(f"  Skill package: {workflow_state['zip_path']}")
@@ -865,20 +865,20 @@ async def install_skill_tool(args: dict) -> list[TextContent]:
             if auto_upload and has_api_key and target != "markdown":
                 # Platform-specific success message
                 if target == "claude":
-                    output_lines.append("🎉 Your skill is now available in Claude!")
+                    output_lines.append(" Your skill is now available in Claude!")
                     output_lines.append("   Go to https://claude.ai/skills to use it")
                 elif target == "gemini":
-                    output_lines.append("🎉 Your skill is now available in Gemini!")
+                    output_lines.append(" Your skill is now available in Gemini!")
                     output_lines.append("   Go to https://aistudio.google.com/ to use it")
                 elif target == "openai":
-                    output_lines.append("🎉 Your assistant is now available in OpenAI!")
+                    output_lines.append(" Your assistant is now available in OpenAI!")
                     output_lines.append(
                         "   Go to https://platform.openai.com/assistants/ to use it"
                     )
             elif auto_upload:
-                output_lines.append("📝 Manual upload required (see instructions above)")
+                output_lines.append(" Manual upload required (see instructions above)")
             else:
-                output_lines.append("📤 To upload:")
+                output_lines.append(" To upload:")
                 output_lines.append(
                     f"   skill-seekers upload {workflow_state['zip_path']} --target {target}"
                 )
@@ -895,7 +895,7 @@ async def install_skill_tool(args: dict) -> list[TextContent]:
 
     except Exception as e:
         output_lines.append("")
-        output_lines.append(f"❌ Workflow failed: {str(e)}")
+        output_lines.append(f"FAIL: Workflow failed: {str(e)}")
         output_lines.append("")
         output_lines.append("Phases completed before failure:")
         for phase in workflow_state["phases_completed"]:

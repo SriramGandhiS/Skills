@@ -195,7 +195,7 @@ After filtering to `.sql` files under `models/` or `snapshots/`:
 
 2. **Model cap:** If more than 10 models remain after filtering, select the first 10 (by file path order) and warn the user:
    ```
-   ⚠️ <total_count> models changed — generating validation queries for the first 10 only.
+   WARNING: <total_count> models changed — generating validation queries for the first 10 only.
    To generate for specific models, re-run with: --models <model1,model2,...>
    Skipped models: <list of skipped model filenames>
    ```
@@ -641,7 +641,7 @@ Present:
 - **Changed Models:** <count> models (of <total_count> changed)
 - **Generated Queries:** <count> queries
 
-> ⚠️ If models were capped: "Only the first 10 of <total_count> changed models were included. Re-run with `--models` to select specific models."
+> WARNING: If models were capped: "Only the first 10 of <total_count> changed models were included. Re-run with `--models` to select specific models."
 
 ## Notebook Opened
 The notebook has been opened directly in your browser.

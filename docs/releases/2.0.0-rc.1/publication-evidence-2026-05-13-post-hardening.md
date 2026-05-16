@@ -20,7 +20,7 @@ commit with a clean checkout before publishing.
 
 | Surface | Command | Result |
 | --- | --- | --- |
-| GitHub PRs and issues | `gh pr list` / `gh issue list` across trunk, AgentShield, and JARVIS | 0 open PRs and 0 open issues on accessible `affaan-m` repos |
+| GitHub PRs and issues | `gh pr list`/`gh issue list`across trunk, AgentShield, and JARVIS | 0 open PRs and 0 open issues on accessible`affaan-m` repos |
 | Trunk discussions | GraphQL discussion count for `affaan-m/everything-claude-code` | 0 open discussions |
 | Dependabot alerts | Dependabot alert API for trunk, AgentShield, and JARVIS | 0 open alerts |
 | Release state | `gh release view v2.0.0-rc.1` | Still not created; release remains approval-gated |
@@ -34,16 +34,16 @@ The prior post-#42 local checkout handoff recorded both ECC-Tools repos at
 
 | PR | Merge commit | Evidence |
 | --- | --- | --- |
-| #1850 | `248673271455e9dc85b8add2a6ab76107b718639` | Removed `Bash` tool access from read-only analyzer agents and zh-CN copies; AgentShield high findings on that surface dropped 21 -> 18 with no new high findings |
-| #1851 | `209abd403b7eaa968c6d4fa67be82e04b55706d6` | Disabled `actions/checkout` credential persistence in write-permission workflows and added a workflow-security validator rule to keep that guard in place |
+| #1850 | `248673271455e9dc85b8add2a6ab76107b718639`| Removed`Bash` tool access from read-only analyzer agents and zh-CN copies; AgentShield high findings on that surface dropped 21 -> 18 with no new high findings |
+| #1851 | `209abd403b7eaa968c6d4fa67be82e04b55706d6`| Disabled`actions/checkout` credential persistence in write-permission workflows and added a workflow-security validator rule to keep that guard in place |
 
 ## Required Command Evidence
 
 | Evidence | Command | Result |
 | --- | --- | --- |
-| Harness audit | `npm run harness:audit -- --format json` | `overall_score: 70`, `max_score: 70`, no top actions |
-| Adapter scorecard | `npm run harness:adapters -- --check` | `Harness Adapter Compliance: PASS`; 11 adapters |
-| Observability readiness | `npm run observability:ready -- --format json` | `overall_score: 21`, `max_score: 21`, `ready: true`, no top actions; includes Release Safety 3/3 |
+| Harness audit | `npm run harness:audit -- --format json`|`overall_score: 70`,`max_score: 70`, no top actions |
+| Adapter scorecard | `npm run harness:adapters -- --check`|`Harness Adapter Compliance: PASS`; 11 adapters |
+| Observability readiness | `npm run observability:ready -- --format json`|`overall_score: 21`,`max_score: 21`,`ready: true`, no top actions; includes Release Safety 3/3 |
 | Workflow security validator | `node scripts/ci/validate-workflow-security.js` | Validated 7 workflow files |
 | Workflow validator tests | `node tests/ci/validate-workflow-security.test.js` | Passed 14/14 |
 | Release surface | `node tests/docs/ecc2-release-surface.test.js` | Passed 18/18 |
@@ -78,17 +78,17 @@ ECC's current guardrails cover those classes through:
 
 - rejection of untrusted checkout refs in `workflow_run` and
   `pull_request_target` workflows;
-- rejection of shared caches in `pull_request_target` and `id-token: write`
+- rejection of shared caches in `pull_request_target`and`id-token: write`
   workflows;
-- mandatory `npm audit signatures` when workflows run `npm audit`;
+- mandatory `npm audit signatures`when workflows run`npm audit`;
 - mandatory `npm ci --ignore-scripts` in workflows with write permissions;
-- mandatory `persist-credentials: false` on `actions/checkout` in workflows
+- mandatory `persist-credentials: false`on`actions/checkout` in workflows
   with write permissions.
 
 ## Blockers Still Requiring Approval Or External Action
 
 - Create or verify GitHub prerelease `v2.0.0-rc.1`.
-- Publish `ecc-universal@2.0.0-rc.1` with npm dist-tag `next`.
+- Publish `ecc-universal@2.0.0-rc.1`with npm dist-tag`next`.
 - Create and push the Claude plugin tag only after explicit approval.
 - Confirm the live Claude/Codex/OpenCode marketplace submission path or record
   the manual submission owner and status.

@@ -7,11 +7,9 @@ description: >-
 
 Endpoint: `POST /api/{organization}/{stream}/_json`
 
-
-
 This will upload multiple records in batch with standard json format.
 
-## Request 
+## Request
 
 e.g. `POST /api/myorg/stream1/_json`
 
@@ -118,7 +116,7 @@ OpenObserve flattens deep JSON logs. Below is an example log before and after be
 		"error_occured": false,
 		"status_code": 200
 	}
-	
+
 }
 ```
 
@@ -137,12 +135,12 @@ OpenObserve flattens deep JSON logs. Below is an example log before and after be
 
 ### Restriction on flattening depth
 
-⚠️ For performance reasons, OpenObserve limits the depth at which the JSON structure gets flattened. Past that limit, the generated field will contain unparsed JSON as a string.
+WARNING: For performance reasons, OpenObserve limits the depth at which the JSON structure gets flattened. Past that limit, the generated field will contain unparsed JSON as a string.
 The default depth is `3`, but this limit can be configured via the `ZO_INGEST_FLATTEN_LEVEL` environment variable. `ZO_INGEST_FLATTEN_LEVEL` can either be `0`, which disables the flattening limit, or any positive number, to change the depth at which the flattening stops.
 
 ## Timestamp
 
-By default we add a field `_timestamp` for each record with the value of `NOW` in microseconds (unix epoch value). 
+By default we add a field `_timestamp` for each record with the value of `NOW` in microseconds (unix epoch value).
 
 we support use of two fields to override the default value.
 
@@ -164,7 +162,7 @@ use microseconds
 ```json
 [{
 	"kubernetes.container_image": "quay.io/prometheus/prometheus:v2.39.1",
-	"kubernetes.container_name": "prometheus", 
+	"kubernetes.container_name": "prometheus",
 	"_timestamp": "1674789786006000"
 }]
 ```
@@ -174,7 +172,7 @@ use string datetime
 ```json
 [{
 	"kubernetes.container_image": "quay.io/prometheus/prometheus:v2.39.1",
-	"kubernetes.container_name": "prometheus", 
+	"kubernetes.container_name": "prometheus",
 	"_timestamp": "2023-01-02T10:01:01Z"
 }]
 ```

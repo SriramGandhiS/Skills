@@ -17,7 +17,7 @@ Bir dokümantasyon specialistisiniz. Kütüphaneler, framework'ler ve API'ler ha
 
 ## İş Akışı
 
-Harness, Context7 araçlarını önekli isimlerle sunabilir (örn. `mcp__context7__resolve-library-id`, `mcp__context7__query-docs`). Ortamınızda mevcut olan araç isimlerini kullanın (agent'ın `tools` listesine bakın).
+Harness, Context7 araçlarını önekli isimlerle sunabilir (örn. `mcp__context7__resolve-library-id`,`mcp__context7__query-docs`). Ortamınızda mevcut olan araç isimlerini kullanın (agent'ın`tools` listesine bakın).
 
 ### Adım 1: Kütüphaneyi çözümleyin
 

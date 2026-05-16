@@ -11,12 +11,12 @@ description: 테스트 커버리지를 분석하고, 80% 이상을 목표로 누
 
 | 지표 | 커버리지 커맨드 |
 |------|----------------|
-| `jest.config.*` 또는 `package.json` jest | `npx jest --coverage --coverageReporters=json-summary` |
-| `vitest.config.*` | `npx vitest run --coverage` |
-| `pytest.ini` / `pyproject.toml` pytest | `pytest --cov=src --cov-report=json` |
-| `Cargo.toml` | `cargo llvm-cov --json` |
-| `pom.xml` with JaCoCo | `mvn test jacoco:report` |
-| `go.mod` | `go test -coverprofile=coverage.out ./...` |
+| `jest.config.*`또는`package.json`jest |`npx jest --coverage --coverageReporters=json-summary` |
+| `vitest.config.*`|`npx vitest run --coverage` |
+| `pytest.ini`/`pyproject.toml`pytest |`pytest --cov=src --cov-report=json` |
+| `Cargo.toml`|`cargo llvm-cov --json` |
+| `pom.xml`with JaCoCo |`mvn test jacoco:report` |
+| `go.mod`|`go test -coverprofile=coverage.out ./...` |
 
 ## 2단계: 커버리지 보고서 분석
 
@@ -39,7 +39,7 @@ description: 테스트 커버리지를 분석하고, 80% 이상을 목표로 누
 
 ### 테스트 생성 규칙
 
-- 소스 파일 옆에 테스트 배치: `foo.ts` → `foo.test.ts` (또는 프로젝트 컨벤션에 따름)
+- 소스 파일 옆에 테스트 배치: `foo.ts`→`foo.test.ts` (또는 프로젝트 컨벤션에 따름)
 - 프로젝트의 기존 테스트 패턴 사용 (import 스타일, assertion 라이브러리, mocking 방식)
 - 외부 의존성 mock 처리 (데이터베이스, API, 파일 시스템)
 - 각 테스트는 독립적이어야 함 — 테스트 간 공유 가변 상태 없음

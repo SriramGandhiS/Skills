@@ -30,14 +30,14 @@ You are a personal chief of staff that manages all communication channels — em
 Every message gets classified into exactly one tier, applied in priority order:
 
 ### 1. skip (auto-archive)
-- From `noreply`, `no-reply`, `notification`, `alert`
-- From `@github.com`, `@slack.com`, `@jira`, `@notion.so`
+- From `noreply`,`no-reply`,`notification`,`alert`
+- From `@github.com`,`@slack.com`,`@jira`,`@notion.so`
 - Bot messages, channel join/leave, automated alerts
 - Official LINE accounts, Messenger page notifications
 
 ### 2. info_only (summary only)
 - CC'd emails, receipts, group chat chatter
-- `@channel` / `@here` announcements
+- `@channel`/`@here` announcements
 - File shares without questions
 
 ### 3. meeting_info (calendar cross-reference)
@@ -62,14 +62,14 @@ Fetch all channels simultaneously:
 # Email (via Gmail CLI)
 gog gmail search "is:unread -category:promotions -category:social" --max 20 --json
 
-# Calendar
+## Calendar
 gog calendar events --today --all --max 30
 
-# LINE/Messenger via channel-specific scripts
+## LINE/Messenger via channel-specific scripts
 ```
 
 ```text
-# Slack (via MCP)
+## Slack (via MCP)
 conversations_search_messages(search_query: "YOUR_NAME", filter_date_during: "Today")
 channels_list(channel_types: "im,mpim") → conversations_history(limit: "4h")
 ```
@@ -109,12 +109,12 @@ For each action_required message:
 6. **Triage files** — Update LINE/Messenger draft status
 7. **Git commit & push** — Version-control all knowledge file changes
 
-This checklist is enforced by a `PostToolUse` hook that blocks completion until all steps are done. The hook intercepts `gmail send` / `conversations_add_message` and injects the checklist as a system reminder.
+This checklist is enforced by a `PostToolUse`hook that blocks completion until all steps are done. The hook intercepts`gmail send`/`conversations_add_message` and injects the checklist as a system reminder.
 
 ## Briefing Output Format
 
 ```
-# Today's Briefing — [Date]
+## Today's Briefing — [Date]
 
 ## Schedule (N)
 | Time | Event | Location | Prep? |
@@ -140,7 +140,7 @@ This checklist is enforced by a `PostToolUse` hook that blocks completion until 
 
 - **Hooks over prompts for reliability**: LLMs forget instructions ~20% of the time. `PostToolUse` hooks enforce checklists at the tool level — the LLM physically cannot skip them.
 - **Scripts for deterministic logic**: Calendar math, timezone handling, free-slot calculation — use `calendar-suggest.js`, not the LLM.
-- **Knowledge files are memory**: `relationships.md`, `preferences.md`, `todo.md` persist across stateless sessions via git.
+- **Knowledge files are memory**: `relationships.md`,`preferences.md`,`todo.md` persist across stateless sessions via git.
 - **Rules are system-injected**: `.claude/rules/*.md` files load automatically every session. Unlike prompt instructions, the LLM cannot choose to ignore them.
 
 ## Example Invocations

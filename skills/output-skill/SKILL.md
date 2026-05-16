@@ -1,4 +1,4 @@
-﻿---
+---
 name: full-output-enforcement
 description: Overrides default LLM truncation behavior. Enforces complete code generation, bans placeholder patterns, and handles token-limit splits cleanly. Apply to any task requiring exhaustive, unabridged output.
 ---
@@ -13,7 +13,7 @@ Treat every task as production-critical. A partial output is a broken output. Do
 
 The following patterns are hard failures. Never produce them:
 
-**In code blocks:** `// ...`, `// rest of code`, `// implement here`, `// TODO`, `/* ... */`, `// similar to above`, `// continue pattern`, `// add more as needed`, bare `...` standing in for omitted code
+**In code blocks:** `// ...`,`// rest of code`,`// implement here`,`// TODO`,`/* ... */`,`// similar to above`,`// continue pattern`,`// add more as needed`, bare`...` standing in for omitted code
 
 **In prose:** "Let me know if you want me to continue", "I can provide more details if needed", "for brevity", "the rest follows the same pattern", "similarly for the remaining", "and so on" (when replacing actual content), "I'll leave that as an exercise"
 

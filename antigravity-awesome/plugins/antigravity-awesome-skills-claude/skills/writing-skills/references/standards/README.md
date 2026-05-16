@@ -71,10 +71,10 @@ What to avoid and why.
 The `description` field is critical for skill discovery:
 
 ```yaml
-# ❌ BAD: Workflow summary (agent skips reading full skill)
+# FAIL: BAD: Workflow summary (agent skips reading full skill)
 description: Analyzes code, finds bugs, suggests fixes
 
-# ✅ GOOD: Trigger conditions only
+# PASS: GOOD: Trigger conditions only
 description: Use when debugging errors or reviewing code quality.
 metadata:
   triggers: bug, error, code review

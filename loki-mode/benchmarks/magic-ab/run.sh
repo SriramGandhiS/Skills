@@ -1,12 +1,10 @@
 #!/usr/bin/env bash
 # Magic Modules A/B benchmark runner.
-#
-# Runs `loki start` twice on the same PRD: once with the magic debate gate
+# # Runs `loki start` twice on the same PRD: once with the magic debate gate
 # enabled (arm A, the default) and once with it disabled (arm B). Captures
 # metrics into benchmarks/magic-ab/results/{A,B}-<ts>.json so compare.py can
 # diff them.
-#
-# This script REQUIRES a real provider (claude CLI logged in by default).
+# # This script REQUIRES a real provider (claude CLI logged in by default).
 # Each arm consumes real tokens. Do not run in CI.
 
 set -uo pipefail

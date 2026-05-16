@@ -46,15 +46,15 @@ def format_status(status):
         str: Formatted status string
     """
     if not status:
-        return "❌ No enhancement in progress (no status file found)"
+        return "FAIL: No enhancement in progress (no status file found)"
 
     if "error" in status:
-        return f"❌ {status['error']}"
+        return f"FAIL: {status['error']}"
 
     # Status emoji mapping
-    status_emojis = {"pending": "⏳", "running": "🔄", "completed": "✅", "failed": "❌"}
+    status_emojis = {"pending": "", "running": "", "completed": "PASS:", "failed": "FAIL:"}
 
-    emoji = status_emojis.get(status.get("status", ""), "❓")
+    emoji = status_emojis.get(status.get("status", ""), "")
     status_text = status.get("status", "unknown").upper()
     message = status.get("message", "")
     progress = status.get("progress", 0.0)
@@ -84,7 +84,7 @@ def format_status(status):
     lines.append(f"   Timestamp: {timestamp}")
 
     if error:
-        lines.append(f"\n❌ Error: {error}")
+        lines.append(f"\nFAIL: Error: {error}")
 
     lines.append("")
 
@@ -98,7 +98,7 @@ def watch_status(skill_dir, interval=2):
         skill_dir: Path to skill directory
         interval: Update interval in seconds
     """
-    print(f"👀 Watching enhancement status for: {skill_dir}")
+    print(f" Watching enhancement status for: {skill_dir}")
     print(f"   Update interval: {interval} seconds")
     print("   Press Ctrl+C to stop\n")
 
@@ -123,7 +123,7 @@ def watch_status(skill_dir, interval=2):
             time.sleep(interval)
 
     except KeyboardInterrupt:
-        print("\n\n👋 Stopped watching")
+        print("\n\n Stopped watching")
         sys.exit(0)
 
 

@@ -4,7 +4,6 @@ description: "Use when the task involves reading, creating, or editing `.docx` d
 license: MIT
 ---
 
-
 # DOCX Skill
 
 ## When to use

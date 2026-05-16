@@ -87,12 +87,12 @@ Routes → Controllers → Services → Repositories → Database
 ### 2. Routes Only Route
 
 ```ts
-// ❌ NEVER
+// FAIL: NEVER
 router.post('/create', async (req, res) => {
   await prisma.user.create(...);
 });
 
-// ✅ ALWAYS
+// PASS: ALWAYS
 router.post('/create', (req, res) =>
   userController.create(req, res)
 );
@@ -148,19 +148,19 @@ catch (error) {
 }
 ```
 
-❌ `console.log`
-❌ silent failures
-❌ swallowed errors
+FAIL: `console.log`
+FAIL: silent failures
+FAIL: swallowed errors
 
 ---
 
 ### 6. unifiedConfig Is the Only Config Source
 
 ```ts
-// ❌ NEVER
+// FAIL: NEVER
 process.env.JWT_SECRET;
 
-// ✅ ALWAYS
+// PASS: ALWAYS
 import { config } from '@/config/unifiedConfig';
 config.auth.jwtSecret;
 ```
@@ -303,13 +303,13 @@ No tests → no merge.
 
 ## 10. Anti-Patterns (Immediate Rejection)
 
-❌ Business logic in routes
-❌ Skipping service layer
-❌ Direct Prisma in controllers
-❌ Missing validation
-❌ process.env usage
-❌ console.log instead of Sentry
-❌ Untested business logic
+FAIL: Business logic in routes
+FAIL: Skipping service layer
+FAIL: Direct Prisma in controllers
+FAIL: Missing validation
+FAIL: process.env usage
+FAIL: console.log instead of Sentry
+FAIL: Untested business logic
 
 ---
 

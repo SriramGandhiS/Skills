@@ -48,20 +48,20 @@
 ## 빠른 시작
 
 ```bash
-# 1. 포크 및 클론
+## 1. 포크 및 클론
 gh repo fork affaan-m/everything-claude-code --clone
 cd everything-claude-code
 
-# 2. 브랜치 생성
+## 2. 브랜치 생성
 git checkout -b feat/my-contribution
 
-# 3. 기여 항목 추가 (아래 섹션 참고)
+## 3. 기여 항목 추가 (아래 섹션 참고)
 
-# 4. 로컬 테스트
+## 4. 로컬 테스트
 cp -r skills/my-skill ~/.claude/skills/  # 스킬의 경우
-# 그런 다음 Claude Code로 테스트
+## 그런 다음 Claude Code로 테스트
 
-# 5. PR 제출
+## 5. PR 제출
 git add . && git commit -m "feat: add my-skill" && git push -u origin feat/my-contribution
 ```
 
@@ -88,7 +88,7 @@ description: 스킬 목록에 표시되는 간단한 설명
 origin: ECC
 ---
 
-# 스킬 제목
+## 스킬 제목
 
 이 스킬이 다루는 내용에 대한 간단한 개요.
 
@@ -190,10 +190,10 @@ model: sonnet
 
 | 필드 | 설명 | 옵션 |
 |------|------|------|
-| `name` | 소문자, 하이픈 연결 | `code-reviewer` |
+| `name`| 소문자, 하이픈 연결 |`code-reviewer` |
 | `description` | 호출 시점 결정에 사용 | 구체적으로 작성! |
-| `tools` | 필요한 것만 포함 | `Read, Write, Edit, Bash, Grep, Glob, WebFetch, Task` |
-| `model` | 복잡도 수준 | `haiku` (단순), `sonnet` (코딩), `opus` (복잡) |
+| `tools`| 필요한 것만 포함 |`Read, Write, Edit, Bash, Grep, Glob, WebFetch, Task` |
+| `model`| 복잡도 수준 |`haiku`(단순),`sonnet`(코딩),`opus` (복잡) |
 
 ### 예시 에이전트
 
@@ -291,7 +291,7 @@ tool == "Bash" && tool_input.command matches "git push"
 
 - [ ] Matcher가 구체적 (너무 광범위하지 않게)
 - [ ] 명확한 오류/정보 메시지 포함
-- [ ] 올바른 종료 코드 사용 (`exit 1`은 차단, `exit 0`은 허용)
+- [ ] 올바른 종료 코드 사용 (`exit 1`은 차단,`exit 0`은 허용)
 - [ ] 충분한 테스트 완료
 - [ ] 설명 포함
 
@@ -314,7 +314,7 @@ commands/your-command.md
 description: /help에 표시되는 간단한 설명
 ---
 
-# 커맨드 이름
+## 커맨드 이름
 
 ## 목적
 
@@ -354,20 +354,20 @@ description: /help에 표시되는 간단한 설명
 
 ECC는 다른 하네스를 위한 스킬 서브셋도 제공합니다:
 
-- **Codex:** `.agents/skills/` — `agents/openai.yaml`에 나열된 스킬이 Codex에서 로드됩니다.
+- **Codex:** `.agents/skills/`—`agents/openai.yaml`에 나열된 스킬이 Codex에서 로드됩니다.
 - **Cursor:** `.cursor/skills/` — Cursor용 스킬 서브셋이 별도로 포함됩니다.
 
 Codex 또는 Cursor에서도 제공해야 하는 **새 스킬**을 추가한다면:
 
 1. 먼저 `skills/your-skill-name/` 아래에 일반적인 ECC 스킬로 추가합니다.
-2. **Codex**에서도 제공해야 하면 `.agents/skills/`에 반영하고, 필요하면 `agents/openai.yaml`에도 참조를 추가합니다.
+2. **Codex**에서도 제공해야 하면 `.agents/skills/`에 반영하고, 필요하면`agents/openai.yaml`에도 참조를 추가합니다.
 3. **Cursor**에서도 제공해야 하면 Cursor 레이아웃에 맞게 `.cursor/skills/` 아래에 추가합니다.
 
 기존 디렉터리의 구조를 확인한 뒤 같은 패턴을 따르세요. 이 서브셋 동기화는 수동이므로 PR 설명에 반영 여부를 적어 두는 것이 좋습니다.
 
 ### 번역
 
-번역 문서는 `docs/` 아래에 있습니다. 예: `docs/zh-CN`, `docs/zh-TW`, `docs/ja-JP`.
+번역 문서는 `docs/`아래에 있습니다. 예:`docs/zh-CN`,`docs/zh-TW`,`docs/ja-JP`.
 
 번역된 에이전트, 커맨드, 스킬을 변경한다면:
 
@@ -438,7 +438,7 @@ docs: improve contributing guide
 ## 파일 이름 규칙
 
 - 소문자에 하이픈 사용: `python-reviewer.md`
-- 설명적으로 작성: `workflow.md`가 아닌 `tdd-workflow.md`
+- 설명적으로 작성: `workflow.md`가 아닌`tdd-workflow.md`
 - name과 파일명을 일치시키기
 
 ---

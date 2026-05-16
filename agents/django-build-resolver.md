@@ -26,7 +26,7 @@ You DO NOT refactor or rewrite code — you fix the error only.
 2. Fix Django migration conflicts and state inconsistencies
 3. Diagnose and repair Django configuration/settings errors
 4. Resolve Python import errors and module not found issues
-5. Fix `collectstatic`, `runserver`, and management command failures
+5. Fix `collectstatic`,`runserver`, and management command failures
 6. Repair database connection and `DATABASES` misconfiguration
 
 ## Diagnostic Commands
@@ -34,27 +34,27 @@ You DO NOT refactor or rewrite code — you fix the error only.
 Run these in order to locate the error:
 
 ```bash
-# Check Python and Django versions
+## Check Python and Django versions
 python --version
 python -m django --version
 
-# Verify virtual environment is active
+## Verify virtual environment is active
 which python
 pip list | grep -E "Django|djangorestframework|celery|psycopg"
 
-# Check for missing dependencies
+## Check for missing dependencies
 pip check
 
-# Validate Django configuration
+## Validate Django configuration
 python manage.py check --deploy 2>&1 || python manage.py check 2>&1
 
-# List pending migrations
+## List pending migrations
 python manage.py showmigrations 2>&1
 
-# Detect migration conflicts
+## Detect migration conflicts
 python manage.py migrate --check 2>&1
 
-# Static files
+## Static files
 python manage.py collectstatic --dry-run --noinput 2>&1
 ```
 
@@ -75,21 +75,21 @@ python manage.py collectstatic --dry-run --noinput 2>&1
 
 | Error | Cause | Fix |
 |-------|-------|-----|
-| `ModuleNotFoundError: No module named 'X'` | Missing package | `pip install X` or add to `requirements.txt` |
+| `ModuleNotFoundError: No module named 'X'`| Missing package |`pip install X`or add to`requirements.txt` |
 | `ImportError: cannot import name 'X' from 'Y'` | Version mismatch | Pin compatible version in requirements |
-| `ERROR: pip's dependency resolver...` | Conflicting deps | Upgrade pip: `pip install --upgrade pip`, then `pip install -r requirements.txt` |
-| `Poetry: No solution found` | Conflicting constraints | Relax version pin in `pyproject.toml` |
+| `ERROR: pip's dependency resolver...`| Conflicting deps | Upgrade pip:`pip install --upgrade pip`, then`pip install -r requirements.txt` |
+| `Poetry: No solution found`| Conflicting constraints | Relax version pin in`pyproject.toml` |
 | `pkg_resources.DistributionNotFound` | Installed outside venv | Reinstall inside venv |
 
 ```bash
-# Force reinstall all dependencies
+## Force reinstall all dependencies
 pip install --force-reinstall -r requirements.txt
 
-# Poetry: clear cache and resolve
+## Poetry: clear cache and resolve
 poetry cache clear --all pypi
 poetry install
 
-# Create fresh virtualenv if corrupt
+## Create fresh virtualenv if corrupt
 deactivate
 python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
@@ -99,26 +99,26 @@ pip install -r requirements.txt
 
 | Error | Cause | Fix |
 |-------|-------|-----|
-| `django.db.migrations.exceptions.MigrationSchemaMissing` | DB tables not created | `python manage.py migrate` |
+| `django.db.migrations.exceptions.MigrationSchemaMissing`| DB tables not created |`python manage.py migrate` |
 | `InconsistentMigrationHistory` | Applied out of order | Squash or fake migrations |
-| `Migration X dependencies reference nonexistent parent Y` | Missing migration file | Recreate with `makemigrations` |
-| `Table already exists` | Migration applied outside Django | `migrate --fake-initial` |
-| `Multiple leaf nodes in the migration graph` | Conflicting migration branches | Merge: `python manage.py makemigrations --merge` |
-| `django.db.utils.OperationalError: no such column` | Unapplied migration | `python manage.py migrate` |
+| `Migration X dependencies reference nonexistent parent Y`| Missing migration file | Recreate with`makemigrations` |
+| `Table already exists`| Migration applied outside Django |`migrate --fake-initial` |
+| `Multiple leaf nodes in the migration graph`| Conflicting migration branches | Merge:`python manage.py makemigrations --merge` |
+| `django.db.utils.OperationalError: no such column`| Unapplied migration |`python manage.py migrate` |
 
 ```bash
-# Fix conflicting migrations
+## Fix conflicting migrations
 python manage.py makemigrations --merge --no-input
 
-# Fake migrations already applied at DB level
+## Fake migrations already applied at DB level
 python manage.py migrate --fake <app> <migration_number>
 
-# Reset migrations for an app (dev only!)
+## Reset migrations for an app (dev only!)
 python manage.py migrate <app> zero
 python manage.py makemigrations <app>
 python manage.py migrate <app>
 
-# Show migration plan
+## Show migration plan
 python manage.py migrate --plan
 ```
 
@@ -126,49 +126,49 @@ python manage.py migrate --plan
 
 | Error | Cause | Fix |
 |-------|-------|-----|
-| `django.core.exceptions.ImproperlyConfigured` | Missing setting or wrong value | Check `settings.py` for the named setting |
-| `DJANGO_SETTINGS_MODULE not set` | Env var missing | `export DJANGO_SETTINGS_MODULE=config.settings.development` |
-| `SECRET_KEY must not be empty` | Missing env var | Set `DJANGO_SECRET_KEY` in `.env` |
-| `Invalid HTTP_HOST header` | `ALLOWED_HOSTS` misconfigured | Add hostname to `ALLOWED_HOSTS` |
-| `Apps aren't loaded yet` | Importing models before `django.setup()` | Call `django.setup()` or move imports inside functions |
-| `RuntimeError: Model class ... doesn't declare an explicit app_label` | App not in `INSTALLED_APPS` | Add the app to `INSTALLED_APPS` |
+| `django.core.exceptions.ImproperlyConfigured`| Missing setting or wrong value | Check`settings.py` for the named setting |
+| `DJANGO_SETTINGS_MODULE not set`| Env var missing |`export DJANGO_SETTINGS_MODULE=config.settings.development` |
+| `SECRET_KEY must not be empty`| Missing env var | Set`DJANGO_SECRET_KEY`in`.env` |
+| `Invalid HTTP_HOST header`|`ALLOWED_HOSTS`misconfigured | Add hostname to`ALLOWED_HOSTS` |
+| `Apps aren't loaded yet`| Importing models before`django.setup()`| Call`django.setup()` or move imports inside functions |
+| `RuntimeError: Model class ... doesn't declare an explicit app_label`| App not in`INSTALLED_APPS`| Add the app to`INSTALLED_APPS` |
 
 ```bash
-# Verify settings module resolves
+## Verify settings module resolves
 python -c "import django; django.setup(); print('OK')"
 
-# Check environment variable
+## Check environment variable
 echo $DJANGO_SETTINGS_MODULE
 
-# Find missing settings
+## Find missing settings
 python manage.py diffsettings 2>&1
 ```
 
 ### Import Errors
 
 ```bash
-# Diagnose circular imports
+## Diagnose circular imports
 python -c "import <module>" 2>&1
 
-# Find where an import is used
+## Find where an import is used
 grep -r "from <module> import" . --include="*.py"
 
-# Check installed app paths
+## Check installed app paths
 python -c "import <app>; print(<app>.__file__)"
 ```
 
 **Circular import fix:** Move imports inside functions or use `apps.get_model()`:
 
 ```python
-# Bad - top-level causes circular import
+## Bad - top-level causes circular import
 from apps.users.models import User
 
-# Good - import inside function
+## Good - import inside function
 def get_user(pk):
     from apps.users.models import User
     return User.objects.get(pk=pk)
 
-# Good - use apps registry
+## Good - use apps registry
 from django.apps import apps
 User = apps.get_model('users', 'User')
 ```
@@ -177,16 +177,16 @@ User = apps.get_model('users', 'User')
 
 | Error | Cause | Fix |
 |-------|-------|-----|
-| `django.db.utils.OperationalError: could not connect to server` | DB not running or wrong host | Start DB or fix `DATABASES['HOST']` |
-| `django.db.utils.OperationalError: FATAL: role X does not exist` | Wrong DB user | Fix `DATABASES['USER']` |
-| `django.db.utils.ProgrammingError: relation X does not exist` | Missing migration | `python manage.py migrate` |
-| `psycopg2 not installed` | Missing driver | `pip install psycopg2-binary` |
+| `django.db.utils.OperationalError: could not connect to server`| DB not running or wrong host | Start DB or fix`DATABASES['HOST']` |
+| `django.db.utils.OperationalError: FATAL: role X does not exist`| Wrong DB user | Fix`DATABASES['USER']` |
+| `django.db.utils.ProgrammingError: relation X does not exist`| Missing migration |`python manage.py migrate` |
+| `psycopg2 not installed`| Missing driver |`pip install psycopg2-binary` |
 
 ```bash
-# Test database connection
+## Test database connection
 python manage.py dbshell
 
-# Check DATABASES setting
+## Check DATABASES setting
 python -c "from django.conf import settings; print(settings.DATABASES)"
 ```
 
@@ -194,29 +194,29 @@ python -c "from django.conf import settings; print(settings.DATABASES)"
 
 | Error | Cause | Fix |
 |-------|-------|-----|
-| `staticfiles.E001: The STATICFILES_DIRS...` | Dir in both `STATICFILES_DIRS` and `STATIC_ROOT` | Remove from `STATICFILES_DIRS` |
+| `staticfiles.E001: The STATICFILES_DIRS...`| Dir in both`STATICFILES_DIRS`and`STATIC_ROOT`| Remove from`STATICFILES_DIRS` |
 | `FileNotFoundError` during collectstatic | Missing static file referenced in template | Remove or create the referenced file |
-| `AttributeError: 'str' object has no attribute 'path'` | `STORAGES` not configured for Django 4.2+ | Update `STORAGES` dict in settings |
+| `AttributeError: 'str' object has no attribute 'path'`|`STORAGES`not configured for Django 4.2+ | Update`STORAGES` dict in settings |
 
 ```bash
-# Dry run to find issues
+## Dry run to find issues
 python manage.py collectstatic --dry-run --noinput 2>&1
 
-# Clear and recollect
+## Clear and recollect
 python manage.py collectstatic --clear --noinput
 ```
 
 ### runserver Failures
 
 ```bash
-# Port already in use
+## Port already in use
 lsof -ti:8000 | xargs kill -9
 python manage.py runserver
 
-# Use alternate port
+## Use alternate port
 python manage.py runserver 8080
 
-# Verbose startup for hidden errors
+## Verbose startup for hidden errors
 python manage.py runserver --verbosity=2 2>&1
 ```
 
@@ -227,7 +227,7 @@ python manage.py runserver --verbosity=2 2>&1
 - **Always** run `python manage.py check` after fixing
 - Fix root cause over suppressing symptoms
 - Use `--fake` sparingly and only when DB state is known
-- Prefer `pip install --upgrade` over manual `requirements.txt` edits when resolving conflicts
+- Prefer `pip install --upgrade`over manual`requirements.txt` edits when resolving conflicts
 
 ## Stop Conditions
 

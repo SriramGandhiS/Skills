@@ -102,14 +102,14 @@ For automatic verification, connect the [MongoDB MCP Server](https://github.com/
 
 If the MCP server is running and connected, I can automatically run verification commands to check your actual schema, document sizes, array lengths, index usage, and more. This allows me to provide tailored recommendations based on your real data, not just code patterns.
 
-**⚠️ Security**: Use `--readOnly` for safety. Remove only if you need write operations.
+**WARNING: Security**: Use `--readOnly` for safety. Remove only if you need write operations.
 
 When connected, I can automatically:
 - Infer schema via `mcp__mongodb__collection-schema`
 - Measure document/array sizes via `mcp__mongodb__aggregate`
 - Check collection statistics via `mcp__mongodb__db-stats`
 
-### ⚠️ Action Policy
+### WARNING: Action Policy
 
 **I will NEVER execute write operations without your explicit approval.**
 
@@ -137,5 +137,4 @@ If you're not sure about a recommendation:
 3. I'll adjust my recommendation based on your actual data
 
 We're a team—let's get this right together.
-
 

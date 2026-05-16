@@ -120,8 +120,8 @@ Route::scopeBindings()->group(function () {
 
 ### 嵌套路由和绑定名称
 
-* 保持前缀和路径一致，避免双重嵌套（例如 `conversation` 与 `conversations`）。
-* 使用与绑定模型匹配的单一参数名（例如，`{conversation}` 对应 `Conversation`）。
+* 保持前缀和路径一致，避免双重嵌套（例如 `conversation`与`conversations`）。
+* 使用与绑定模型匹配的单一参数名（例如，`{conversation}`对应`Conversation`）。
 * 嵌套时优先使用作用域绑定以强制执行父子关系。
 
 ```php
@@ -145,7 +145,7 @@ Route::middleware('auth:sanctum')->prefix('conversations')->group(function () {
 });
 ```
 
-如果希望参数解析为不同的模型类，请定义显式绑定。对于自定义绑定逻辑，请使用 `Route::bind()` 或在模型上实现 `resolveRouteBinding()`。
+如果希望参数解析为不同的模型类，请定义显式绑定。对于自定义绑定逻辑，请使用 `Route::bind()`或在模型上实现`resolveRouteBinding()`。
 
 ```php
 use App\Models\AiConversation;
@@ -411,5 +411,5 @@ return response()->json([
 
 ### 配置与环境
 
-* 将机密信息保存在 `.env` 中，将配置保存在 `config/*.php` 中
+* 将机密信息保存在 `.env`中，将配置保存在`config/*.php` 中
 * 使用按环境配置覆盖，并在生产环境中使用 `config:cache`

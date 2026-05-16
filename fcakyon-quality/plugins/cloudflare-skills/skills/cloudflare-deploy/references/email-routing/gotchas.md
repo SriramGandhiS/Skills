@@ -10,11 +10,11 @@
 
 **Solution:**
 ```typescript
-// ❌ WRONG
+// FAIL: WRONG
 const email1 = await parser.parse(await message.raw.arrayBuffer());
 const email2 = await parser.parse(await message.raw.arrayBuffer()); // FAILS
 
-// ✅ CORRECT
+// PASS: CORRECT
 const raw = await message.raw.arrayBuffer();
 const email = await parser.parse(raw);
 ```
@@ -94,10 +94,10 @@ await message.forward("dest@example.com");
 
 **Solution:**
 ```typescript
-// ❌ WRONG
+// FAIL: WRONG
 const subj = message.headers.get("subject").toLowerCase();
 
-// ✅ CORRECT
+// PASS: CORRECT
 const subj = message.headers.get("subject")?.toLowerCase() || "";
 ```
 
@@ -173,10 +173,10 @@ if (!auth.includes("pass")) {
 
 **Solution:**
 ```dns
-; ✅ Good
+; PASS: Good
 example.com. IN TXT "v=spf1 include:_spf.google.com ~all"
 
-; ❌ Bad - too many
+; FAIL: Bad - too many
 example.com. IN TXT "v=spf1 include:a.com include:b.com ... ~all"
 ```
 

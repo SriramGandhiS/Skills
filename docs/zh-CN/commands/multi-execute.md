@@ -21,7 +21,7 @@ $ARGUMENTS
 **调用语法**（并行：使用 `run_in_background: true`）：
 
 ```
-# 恢复会话调用（推荐）- 实现原型
+## 恢复会话调用（推荐）- 实现原型
 Bash({
   command: "~/.claude/bin/codeagent-wrapper {{LITE_MODE_FLAG}}--backend <codex|gemini> {{GEMINI_MODEL_FLAG}}resume <SESSION_ID> - \"$PWD\" <<'EOF'
 ROLE_FILE: <role prompt path>
@@ -36,7 +36,7 @@ EOF",
   description: "简要描述"
 })
 
-# 新建会话调用 - 实现原型
+## 新建会话调用 - 实现原型
 Bash({
   command: "~/.claude/bin/codeagent-wrapper {{LITE_MODE_FLAG}}--backend <codex|gemini> {{GEMINI_MODEL_FLAG}}- \"$PWD\" <<'EOF'
 ROLE_FILE: <role prompt path>
@@ -79,16 +79,16 @@ EOF",
 
 **模型参数说明**：
 
-* `{{GEMINI_MODEL_FLAG}}`：当使用 `--backend gemini` 时，替换为 `--gemini-model gemini-3-pro-preview`（注意尾随空格）；对于 codex 使用空字符串
+* `{{GEMINI_MODEL_FLAG}}`：当使用`--backend gemini`时，替换为`--gemini-model gemini-3-pro-preview`（注意尾随空格）；对于 codex 使用空字符串
 
 **角色提示**：
 
 | 阶段 | Codex | Gemini |
 |-------|-------|--------|
-| 实施 | `~/.claude/.ccg/prompts/codex/architect.md` | `~/.claude/.ccg/prompts/gemini/frontend.md` |
-| 审查 | `~/.claude/.ccg/prompts/codex/reviewer.md` | `~/.claude/.ccg/prompts/gemini/reviewer.md` |
+| 实施 | `~/.claude/.ccg/prompts/codex/architect.md`|`~/.claude/.ccg/prompts/gemini/frontend.md` |
+| 审查 | `~/.claude/.ccg/prompts/codex/reviewer.md`|`~/.claude/.ccg/prompts/gemini/reviewer.md` |
 
-**会话重用**：如果 `/ccg:plan` 提供了 SESSION\_ID，使用 `resume <SESSION_ID>` 来重用上下文。
+**会话重用**：如果 `/ccg:plan`提供了 SESSION\_ID，使用`resume <SESSION_ID>` 来重用上下文。
 
 **等待后台任务**（最大超时 600000ms = 10 分钟）：
 
@@ -160,7 +160,7 @@ mcp__ace-tool__search_context({
 1. **Glob**：从计划的“关键文件”表中查找目标文件（例如，`Glob("src/components/**/*.tsx")`）
 2. **Grep**：在代码库中搜索关键符号、函数名、类型定义
 3. **Read**：读取发现的文件以收集完整的上下文
-4. **Task (探索代理)**：对于更广泛的探索，使用 `Task` 和 `subagent_type: "Explore"`
+4. **Task (探索代理)**：对于更广泛的探索，使用 `Task`和`subagent_type: "Explore"`
 
 **检索后**：
 
@@ -185,7 +185,7 @@ mcp__ace-tool__search_context({
 3. 输出：`Unified Diff Patch ONLY. Strictly prohibit any actual modifications.`
 4. **Gemini 是前端设计权威，其 CSS/React/Vue 原型是最终的视觉基线**
 5. **警告**：忽略 Gemini 的后端逻辑建议
-6. 如果计划包含 `GEMINI_SESSION`：优先使用 `resume <GEMINI_SESSION>`
+6. 如果计划包含 `GEMINI_SESSION`：优先使用`resume <GEMINI_SESSION>`
 
 #### 路由 B：后端/逻辑/算法 → Codex
 
@@ -193,7 +193,7 @@ mcp__ace-tool__search_context({
 2. 输入：计划内容 + 检索到的上下文 + 目标文件
 3. 输出：`Unified Diff Patch ONLY. Strictly prohibit any actual modifications.`
 4. **Codex 是后端逻辑权威，利用其逻辑推理和调试能力**
-5. 如果计划包含 `CODEX_SESSION`：优先使用 `resume <CODEX_SESSION>`
+5. 如果计划包含 `CODEX_SESSION`：优先使用`resume <CODEX_SESSION>`
 
 #### 路由 C：全栈 → 并行调用
 
@@ -201,9 +201,9 @@ mcp__ace-tool__search_context({
    * Gemini：处理前端部分
    * Codex：处理后端部分
 2. 使用 `TaskOutput` 等待两个模型的完整结果
-3. 每个模型使用计划中相应的 `SESSION_ID` 作为 `resume`（如果缺失则创建新会话）
+3. 每个模型使用计划中相应的 `SESSION_ID`作为`resume`（如果缺失则创建新会话）
 
-**遵循上面 `IMPORTANT` 中的 `Multi-Model Call Specification` 指令**
+**遵循上面 `IMPORTANT`中的`Multi-Model Call Specification` 指令**
 
 ***
 
@@ -259,7 +259,7 @@ mcp__ace-tool__search_context({
    * 输入：更改的差异 + 目标文件
    * 重点：可访问性、设计一致性、用户体验
 
-使用 `TaskOutput` 等待两个模型的完整审查结果。优先重用阶段 3 的会话（`resume <SESSION_ID>`）以确保上下文一致性。
+使用 `TaskOutput`等待两个模型的完整审查结果。优先重用阶段 3 的会话（`resume <SESSION_ID>`）以确保上下文一致性。
 
 #### 5.2 整合与修复
 
@@ -305,10 +305,10 @@ mcp__ace-tool__search_context({
 ## 使用方法
 
 ```bash
-# Execute plan file
+## Execute plan file
 /ccg:execute .claude/plan/feature-name.md
 
-# Execute task directly (for plans already discussed in context)
+## Execute task directly (for plans already discussed in context)
 /ccg:execute implement user authentication based on previous plan
 ```
 

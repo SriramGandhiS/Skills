@@ -1,8 +1,7 @@
 # Communication Templates — Inventory Demand Planning
 
 > **Reference Type:** Tier 3 — Load on demand when composing or reviewing demand planning communications.
->
-> **Usage:** Each template includes variable placeholders in `{{double_braces}}` for direct substitution. Templates are organized by audience and purpose. Select the template matching your scenario, substitute variables, review tone guidance, and send.
+> > **Usage:** Each template includes variable placeholders in `{{double_braces}}` for direct substitution. Templates are organized by audience and purpose. Select the template matching your scenario, substitute variables, review tone guidance, and send.
 
 ---
 
@@ -180,7 +179,7 @@ Urgent, concise, action-oriented. The audience is internal (planning manager, ca
 
 ### Template
 
-**Subject:** `🔴 STOCKOUT ALERT — {{sku_description}} — {{store_count}} locations at risk`
+**Subject:** ` STOCKOUT ALERT — {{sku_description}} — {{store_count}} locations at risk`
 
 ---
 

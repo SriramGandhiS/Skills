@@ -8,7 +8,7 @@
 
 ---
 
-## 📋 What You'll Need
+## What You'll Need
 
 Before starting, you need:
 - A computer (macOS, Linux, or Windows with WSL)
@@ -29,9 +29,9 @@ Open Terminal (macOS/Linux) or Command Prompt (Windows) and type:
 python3 --version
 ```
 
-**✅ If you see:** `Python 3.10.x` or `Python 3.11.x` or higher → **Skip to Step 2!**
+**PASS: If you see:** `Python 3.10.x` or `Python 3.11.x` or higher → **Skip to Step 2!**
 
-**❌ If you see:** `command not found` or version less than 3.10 → **Continue below**
+**FAIL: If you see:** `command not found` or version less than 3.10 → **Continue below**
 
 ### Install Python
 
@@ -71,7 +71,7 @@ pip3 --version
 python --version
 ```
 
-**✅ Success looks like:**
+**PASS: Success looks like:**
 ```
 Python 3.11.5
 ```
@@ -86,9 +86,9 @@ Python 3.11.5
 git --version
 ```
 
-**✅ If you see:** `git version 2.x.x` → **Skip to Step 3!**
+**PASS: If you see:** `git version 2.x.x` → **Skip to Step 3!**
 
-**❌ If not installed:**
+**FAIL: If not installed:**
 
 #### macOS:
 ```bash
@@ -134,7 +134,7 @@ git clone https://github.com/yusufkaraaslan/Skill_Seekers.git
 cd Skill_Seekers
 ```
 
-**✅ Success looks like:**
+**PASS: Success looks like:**
 ```
 Cloning into 'Skill_Seekers'...
 remote: Enumerating objects: 245, done.
@@ -145,15 +145,15 @@ remote: Counting objects: 100% (245/245), done.
 ```bash
 pwd
 # Should show something like:
-#   macOS: /Users/yourname/Projects/Skill_Seekers
-#   Linux: /home/yourname/Projects/Skill_Seekers
+# macOS: /Users/yourname/Projects/Skill_Seekers
+# Linux: /home/yourname/Projects/Skill_Seekers
 # (Replace 'yourname' with YOUR actual username)
 
 ls
 # Should show: README.md, cli/, mcp/, configs/, etc.
 ```
 
-**❌ If `git clone` fails:**
+**FAIL: If `git clone` fails:**
 ```bash
 # Check internet connection
 ping google.com
@@ -182,7 +182,7 @@ source venv/bin/activate  # macOS/Linux
 # Windows users: venv\Scripts\activate
 ```
 
-**✅ Success looks like:**
+**PASS: Success looks like:**
 ```
 (venv) username@computer Skill_Seekers %
 ```
@@ -193,7 +193,7 @@ Notice `(venv)` appears in your prompt - this means the virtual environment is a
 pip install -e .
 ```
 
-**✅ Success looks like:**
+**PASS: Success looks like:**
 ```
 Successfully installed skill-seekers-2.7.4 requests-2.32.5 beautifulsoup4-4.14.2 anthropic-0.76.0 ...
 Obtaining file:///path/to/Skill_Seekers
@@ -213,24 +213,24 @@ Successfully installed skill-seekers
 - You'll know it's active when you see `(venv)` in your terminal prompt
 - To deactivate later: just type `deactivate`
 
-**❌ If python3 not found:**
+**FAIL: If python3 not found:**
 ```bash
 # Try without the 3
 python -m venv venv
 ```
 
-**❌ If permission denied:**
+**FAIL: If permission denied:**
 ```bash
 # Virtual environment approach doesn't need sudo - you might have the wrong path
 # Make sure you're in the Skill_Seekers directory:
 pwd
 # Should show something like:
-#   macOS: /Users/yourname/Projects/Skill_Seekers
-#   Linux: /home/yourname/Projects/Skill_Seekers
+# macOS: /Users/yourname/Projects/Skill_Seekers
+# Linux: /home/yourname/Projects/Skill_Seekers
 # (Replace 'yourname' with YOUR actual username)
 ```
 
-**❌ If "pip: command not found":**
+**FAIL: If "pip: command not found":**
 ```bash
 # Try with python -m pip instead
 python3 -m pip install -e .
@@ -247,12 +247,12 @@ Let's make sure everything works:
 skill-seekers scrape --help
 ```
 
-**✅ Success looks like:**
+**PASS: Success looks like:**
 ```
 usage: doc_scraper.py [-h] [--config CONFIG] [--interactive] ...
 ```
 
-**❌ If you see "No such file or directory":**
+**FAIL: If you see "No such file or directory":**
 ```bash
 # Check you're in the right directory
 pwd
@@ -320,15 +320,15 @@ skill-seekers scrape --config configs/test.json
 2. Creates `output/test-skill/` directory
 3. Generates SKILL.md and reference files
 
-**⏱️ Time:** ~30 seconds
+**Time:** ~30 seconds
 
-**✅ Success looks like:**
+**PASS: Success looks like:**
 ```
 Scraping: https://tailwindcss.com/docs/installation
 Page 1/5: Installation
 Page 2/5: Editor Setup
 ...
-✅ Skill created at: output/test-skill/
+PASS: Skill created at: output/test-skill/
 ```
 
 ### Option B: Full Example (React Docs)
@@ -338,7 +338,7 @@ Page 2/5: Editor Setup
 skill-seekers scrape --config configs/react.json --max-pages 50
 ```
 
-**⏱️ Time:** ~5 minutes
+**Time:** ~5 minutes
 
 **What you get:**
 - `output/react/SKILL.md` - Main skill file
@@ -364,11 +364,11 @@ head output/test-skill/SKILL.md
 skill-seekers package output/test-skill/
 ```
 
-**✅ Success looks like:**
+**PASS: Success looks like:**
 ```
-✅ Skill packaged successfully!
-📦 Created: output/test-skill.zip
-📏 Size: 45.2 KB
+PASS: Skill packaged successfully!
+ Created: output/test-skill.zip
+ Size: 45.2 KB
 
 Ready to upload to Claude AI!
 ```
@@ -388,7 +388,7 @@ Ready to upload to Claude AI!
 
 ---
 
-## 🎉 Success! What's Next?
+## Success! What's Next?
 
 You now have a working Skill Seeker installation! Here's what you can do:
 
@@ -498,7 +498,7 @@ If you have Claude Code installed:
 
 ---
 
-## 🔧 Troubleshooting
+## Troubleshooting
 
 ### "Command not found" errors
 
@@ -581,7 +581,7 @@ curl -I https://docs.yoursite.com
 
 ---
 
-## 📚 Next Steps
+## Next Steps
 
 - **Read the full README:** [README.md](README.md)
 - **Learn about presets:** [configs/](configs/)
@@ -590,7 +590,7 @@ curl -I https://docs.yoursite.com
 
 ---
 
-## ✅ Quick Reference
+## PASS: Quick Reference
 
 ```bash
 # Your typical workflow:
@@ -603,7 +603,7 @@ skill-seekers package output/react/
 
 # 3. Upload output/react.zip to Claude
 
-# Done! 🎉
+# Done!
 ```
 
 **Common locations:**

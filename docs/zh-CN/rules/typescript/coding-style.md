@@ -41,7 +41,7 @@ export function formatUser(user: User): string {
 
 * 使用 `interface` 定义可能被扩展或实现的对象结构
 * 使用 `type` 定义联合类型、交叉类型、元组、映射类型和工具类型
-* 优先使用字符串字面量联合类型而非 `enum`，除非需要 `enum` 以实现互操作性
+* 优先使用字符串字面量联合类型而非 `enum`，除非需要`enum` 以实现互操作性
 
 ```typescript
 interface User {
@@ -79,7 +79,7 @@ function getErrorMessage(error: unknown): string {
 
 ### React 属性
 
-* 使用命名的 `interface` 或 `type` 定义组件属性
+* 使用命名的 `interface`或`type` 定义组件属性
 * 显式地定义回调属性类型
 * 除非有特定原因，否则不要使用 `React.FC`
 
@@ -101,7 +101,7 @@ function UserCard({ user, onSelect }: UserCardProps) {
 
 ### JavaScript 文件
 
-* 在 `.js` 和 `.jsx` 文件中，当类型能提高清晰度且迁移到 TypeScript 不可行时，使用 JSDoc
+* 在 `.js`和`.jsx` 文件中，当类型能提高清晰度且迁移到 TypeScript 不可行时，使用 JSDoc
 * 保持 JSDoc 与运行时行为一致
 
 ```javascript

@@ -121,10 +121,8 @@ Run the SPIDR rules from `@~/.claude/get-shit-done/references/spidr-splitting.md
 a) Restate the story to the user:
 
 > "Your story: «${USER_STORY}»
->
-> This story has [signal description, e.g., 'two compound capabilities joined by and']. Splitting it into multiple phases will produce a cleaner Walking Skeleton and reduce the risk of mid-phase scope creep.
->
-> Want to walk through SPIDR splitting?"
+> > This story has [signal description, e.g., 'two compound capabilities joined by and']. Splitting it into multiple phases will produce a cleaner Walking Skeleton and reduce the risk of mid-phase scope creep.
+> > Want to walk through SPIDR splitting?"
 
 Use `AskUserQuestion` with options [Yes, walk through SPIDR / No, proceed with the story as-is].
 
@@ -149,8 +147,7 @@ d) Produce a split proposal. Example:
 > "Proposed split (Paths axis):
 > - **Phase ${PHASE} (this one):** Happy path — ${HAPPY_STORY}
 > - **Phase ${PHASE+1} (new):** Edge case — ${EDGE_STORY}
->
-> Accept this split?"
+> > Accept this split?"
 
 Use `AskUserQuestion` [Accept / Modify / Reject].
 
@@ -204,14 +201,11 @@ The Walking Skeleton gate (also from Phase 1) will fire automatically if `${PHAS
 If SPIDR produced a split in step 4, append a final user-facing message:
 
 > "**SPIDR split deferred phases.**
->
-> Your original story was split. The first slice is now planned via plan-phase.
+> > Your original story was split. The first slice is now planned via plan-phase.
 > To create the remaining slice(s) as new phases, run:
->
-> - `/gsd add-phase` — for the next slice: «${SPLIT_2_STORY}»
+> > - `/gsd add-phase` — for the next slice: «${SPLIT_2_STORY}»
 > - `/gsd add-phase` — for the next slice: «${SPLIT_3_STORY}»
->
-> Each will be added to the end of the current milestone. You can then run
+> > Each will be added to the end of the current milestone. You can then run
 > `/gsd mvp-phase <new-phase-number>` on each to plan them as MVP slices."
 
 ## 9. Exit

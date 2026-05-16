@@ -1,4 +1,4 @@
-﻿# tinystruct Testing Patterns
+# tinystruct Testing Patterns
 
 ## When to Use
 
@@ -9,7 +9,7 @@ Use these patterns when writing unit tests for your applications with **JUnit 5*
 ### Unit Testing Applications
 ActionRegistry is a singleton. To test an application:
 1. Instantiate the application.
-2. Provide a `Settings` object (triggers `init()` and annotation processing).
+2. Provide a `Settings`object (triggers`init()` and annotation processing).
 3. Use `app.invoke(path, args)` to test logic directly.
 
 ### HTTP Integration Testing
@@ -17,7 +17,7 @@ For tests involving the built-in HTTP server:
 1. Start `HttpServer` in a background thread.
 2. Use `ApplicationManager.call("start", context, Action.Mode.CLI)` to boot.
 3. Wait for the port to be open using a `Socket`.
-4. Use `URLRequest` and `HTTPHandler` to perform actual requests.
+4. Use `URLRequest`and`HTTPHandler` to perform actual requests.
 
 ## Examples
 

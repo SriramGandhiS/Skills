@@ -84,7 +84,7 @@
 * `/docs` — 文档查找 (#530)
 * `/aside` — 侧边对话 (#407)
 * `/prompt-optimize` — 提示优化 (#418)
-* `/resume-session`, `/save-session` — 会话管理
+* `/resume-session`,`/save-session` — 会话管理
 * `learn-eval` 改进，支持基于清单的整体裁决
 
 ### 新规则
@@ -98,7 +98,7 @@
 
 ### 基础设施
 
-* 选择性安装架构，支持清单解析 (`install-plan.js`, `install-apply.js`) (#509, #512)
+* 选择性安装架构，支持清单解析 (`install-plan.js`,`install-apply.js`) (#509, #512)
 * SQLite 状态存储，提供查询 CLI 以跟踪已安装组件 (#510)
 * 会话适配器，用于结构化会话记录 (#511)
 * 技能演进基础，支持自我改进的技能 (#514)
@@ -153,7 +153,7 @@
 
 ### 核心
 
-* 新增命令：`/harness-audit`, `/loop-start`, `/loop-status`, `/quality-gate`, `/model-route`。
+* 新增命令：`/harness-audit`,`/loop-start`,`/loop-status`,`/quality-gate`,`/model-route`。
 * 新增技能：
   * `agent-harness-construction`
   * `agentic-engineering`
@@ -172,7 +172,7 @@
 * 将会话摘要持久化移至 `Stop`，此处可获得转录负载。
 * 增加了质量门和成本追踪钩子。
 * 用专门的脚本文件替换了脆弱的单行内联钩子。
-* 增加了 `ECC_HOOK_PROFILE` 和 `ECC_DISABLED_HOOKS` 控制。
+* 增加了 `ECC_HOOK_PROFILE`和`ECC_DISABLED_HOOKS` 控制。
 
 ### 跨平台
 
@@ -181,7 +181,7 @@
 
 ### 备注
 
-* `autonomous-loops` 作为一个兼容性别名保留一个版本；`continuous-agent-loop` 是规范名称。
+* `autonomous-loops`作为一个兼容性别名保留一个版本；`continuous-agent-loop` 是规范名称。
 
 ### 鸣谢
 

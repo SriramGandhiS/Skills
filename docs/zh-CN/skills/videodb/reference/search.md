@@ -15,7 +15,7 @@
 ```python
 video = coll.get_video(video_id)
 
-# force=True makes indexing idempotent — skips if already indexed
+## force=True makes indexing idempotent — skips if already indexed
 video.index_spoken_words(force=True)
 ```
 
@@ -25,10 +25,10 @@ video.index_spoken_words(force=True)
 
 | 参数 | 类型 | 默认值 | 描述 |
 |-----------|------|---------|-------------|
-| `language_code` | `str\|None` | `None` | 视频的语言代码 |
-| `segmentation_type` | `SegmentationType` | `SegmentationType.sentence` | 分割类型 (`sentence` 或 `llm`) |
-| `force` | `bool` | `False` | 设置为 `True` 以跳过已索引的情况（避免“已存在”错误） |
-| `callback_url` | `str\|None` | `None` | 用于异步通知的 Webhook URL |
+| `language_code`|`str\|None`|`None` | 视频的语言代码 |
+| `segmentation_type`|`SegmentationType`|`SegmentationType.sentence`| 分割类型 (`sentence`或`llm`) |
+| `force`|`bool`|`False`| 设置为`True` 以跳过已索引的情况（避免“已存在”错误） |
+| `callback_url`|`str\|None`|`None` | 用于异步通知的 Webhook URL |
 
 ### 场景索引
 
@@ -103,14 +103,14 @@ results = video.search(
 
 视觉内容查询与已索引的场景描述进行匹配。需要事先调用 `index_scenes()`。
 
-`index_scenes()` 返回一个 `scene_index_id`。将其传递给 `video.search()` 以定位特定的场景索引（当视频有多个场景索引时尤其重要）：
+`index_scenes()`返回一个`scene_index_id`。将其传递给`video.search()` 以定位特定的场景索引（当视频有多个场景索引时尤其重要）：
 
 ```python
 from videodb import SearchType, IndexType
 from videodb.exceptions import InvalidRequestError
 
-# Search using semantic search against the scene index.
-# Use score_threshold to filter low-relevance noise (recommended: 0.3+).
+## Search using semantic search against the scene index.
+## Use score_threshold to filter low-relevance noise (recommended: 0.3+).
 try:
     results = video.search(
         query="person writing on a whiteboard",
@@ -129,8 +129,8 @@ except InvalidRequestError as e:
 
 **重要说明：**
 
-* 将 `SearchType.semantic` 与 `index_type=IndexType.scene` 结合使用——这是最可靠的组合，适用于所有套餐。
-* `SearchType.scene` 存在，但可能并非在所有套餐中都可用（例如免费套餐）。建议优先使用 `SearchType.semantic` 与 `IndexType.scene`。
+* 将 `SearchType.semantic`与`index_type=IndexType.scene` 结合使用——这是最可靠的组合，适用于所有套餐。
+* `SearchType.scene`存在，但可能并非在所有套餐中都可用（例如免费套餐）。建议优先使用`SearchType.semantic`与`IndexType.scene`。
 * `scene_index_id` 参数是可选的。如果省略，搜索将针对视频上的所有场景索引运行。传递此参数以定位特定索引。
 * 您可以为每个视频创建多个场景索引（使用不同的提示或提取类型），并使用 `scene_index_id` 独立搜索它们。
 
@@ -196,7 +196,7 @@ for shot in results.get_shots():
 ```python
 coll = conn.get_collection()
 
-# Search across all videos in the collection
+## Search across all videos in the collection
 results = coll.search(
     query="product demo",
     search_type=SearchType.semantic,
@@ -206,7 +206,7 @@ for shot in results.get_shots():
     print(f"Video: {shot.video_id} [{shot.start:.1f}s - {shot.end:.1f}s]")
 ```
 
-> **注意：** 集合级搜索仅支持 `SearchType.semantic`。将 `SearchType.keyword` 或 `SearchType.scene` 与 `coll.search()` 结合使用将引发 `NotImplementedError`。要进行关键词或场景搜索，请改为对单个视频使用 `video.search()`。
+> **注意：** 集合级搜索仅支持 `SearchType.semantic`。将`SearchType.keyword`或`SearchType.scene`与`coll.search()`结合使用将引发`NotImplementedError`。要进行关键词或场景搜索，请改为对单个视频使用`video.search()`。
 
 ## 搜索 + 编译
 
@@ -225,6 +225,6 @@ print(stream_url)
 * **组合索引类型**：同时索引口语词和场景，以便在同一视频上启用所有搜索类型。
 * **优化查询**：语义搜索最适合描述性的自然语言短语，而不是单个关键词。
 * **使用关键词搜索提高精度**：当您需要精确的术语匹配时，关键词搜索可以避免语义漂移。
-* **处理“未找到结果”**：当没有结果匹配时，`video.search()` 会引发 `InvalidRequestError`。始终将搜索调用包装在 try/except 中，并将 `"No results found"` 视为空结果集。
+* **处理“未找到结果”**：当没有结果匹配时，`video.search()`会引发`InvalidRequestError`。始终将搜索调用包装在 try/except 中，并将`"No results found"` 视为空结果集。
 * **过滤场景搜索噪声**：对于模糊查询，语义场景搜索可能会返回低相关性的结果。使用 `score_threshold=0.3`（或更高值）来过滤噪声。
-* **幂等索引**：使用 `index_spoken_words(force=True)` 可以安全地重新索引。`index_scenes()` 没有 `force` 参数——将其包装在 try/except 中，并使用 `re.search(r"id\s+([a-f0-9]+)", str(e))` 从错误消息中提取现有的 `scene_index_id`。
+* **幂等索引**：使用 `index_spoken_words(force=True)`可以安全地重新索引。`index_scenes()`没有`force`参数——将其包装在 try/except 中，并使用`re.search(r"id\s+([a-f0-9]+)", str(e))`从错误消息中提取现有的`scene_index_id`。

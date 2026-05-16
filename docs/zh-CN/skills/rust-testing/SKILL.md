@@ -19,7 +19,7 @@ origin: ECC
 ## 工作原理
 
 1. **识别目标代码** — 找到要测试的函数、特征或模块
-2. **编写测试** — 在 `#[cfg(test)]` 模块中使用 `#[test]`，使用 rstest 进行参数化测试，或使用 proptest 进行基于属性的测试
+2. **编写测试** — 在 `#[cfg(test)]`模块中使用`#[test]`，使用 rstest 进行参数化测试，或使用 proptest 进行基于属性的测试
 3. **模拟依赖项** — 使用 mockall 来隔离被测单元
 4. **运行测试 (RED)** — 验证测试是否按预期失败
 5. **实现 (GREEN)** — 编写最少代码以通过测试
@@ -390,7 +390,7 @@ pub fn parse_config(input: &str) -> Result<Config, ParseError> {
 ## 使用 Criterion 进行基准测试
 
 ```toml
-# Cargo.toml
+## Cargo.toml
 [dev-dependencies]
 criterion = { version = "0.5", features = ["html_reports"] }
 
@@ -423,7 +423,7 @@ criterion_main!(benches);
 ### 运行覆盖率
 
 ```bash
-# Install: cargo install cargo-llvm-cov (or use taiki-e/install-action in CI)
+## Install: cargo install cargo-llvm-cov (or use taiki-e/install-action in CI)
 cargo llvm-cov                    # Summary
 cargo llvm-cov --html             # HTML report
 cargo llvm-cov --lcov > lcov.info # LCOV format for CI
@@ -460,22 +460,22 @@ cargo test -- --ignored           # Run ignored tests
 * 使用 `#[cfg(test)]` 模块进行单元测试
 * 测试行为，而非实现
 * 使用描述性测试名称来解释场景
-* 为了更好的错误信息，优先使用 `assert_eq!` 而非 `assert!`
-* 在返回 `Result` 的测试中使用 `?` 以获得更清晰的错误输出
+* 为了更好的错误信息，优先使用 `assert_eq!`而非`assert!`
+* 在返回 `Result`的测试中使用`?` 以获得更清晰的错误输出
 * 保持测试独立 — 没有共享的可变状态
 
 **不应该做：**
 
-* 在可以测试 `Result::is_err()` 时使用 `#[should_panic]`
+* 在可以测试 `Result::is_err()`时使用`#[should_panic]`
 * 模拟所有内容 — 在可行时优先考虑集成测试
 * 忽略不稳定的测试 — 修复或隔离它们
-* 在测试中使用 `sleep()` — 使用通道、屏障或 `tokio::time::pause()`
+* 在测试中使用 `sleep()`— 使用通道、屏障或`tokio::time::pause()`
 * 跳过错误路径测试
 
 ## CI 集成
 
 ```yaml
-# GitHub Actions
+## GitHub Actions
 test:
   runs-on: ubuntu-latest
   steps:

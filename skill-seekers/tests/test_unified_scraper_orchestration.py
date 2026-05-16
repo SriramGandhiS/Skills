@@ -28,7 +28,7 @@ def _make_scraper(extra_config=None, tmp_path=None):
         "name": "test_unified",
         "description": "Test unified config",
         "sources": [],
-        **(extra_config or {}),
+**(extra_config or {}),
     }
     scraper = UnifiedScraper.__new__(UnifiedScraper)
     scraper.config = config

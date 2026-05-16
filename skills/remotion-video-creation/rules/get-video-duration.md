@@ -1,4 +1,4 @@
-﻿---
+---
 name: get-video-duration
 description: Getting the duration of a video file in seconds with Mediabunny
 metadata:
@@ -36,7 +36,7 @@ console.log(duration); // e.g. 10.5 (seconds)
 
 ## Using with local files
 
-For local files, use `FileSource` instead of `UrlSource`:
+For local files, use `FileSource`instead of`UrlSource`:
 
 ```tsx
 import { Input, ALL_FORMATS, FileSource } from "mediabunny";

@@ -38,7 +38,6 @@ curl -X PUT \
 
 **When to use:** Internal platforms, A/B testing platforms, need geolocation data
 
-
 ### With Outbound Worker
 ```jsonc
 {
@@ -72,7 +71,7 @@ const userWorker = env.DISPATCHER.get(
   workerName,
   {},
   {
-    limits: { 
+    limits: {
       cpuMs: 10,        // Max CPU ms
       subRequests: 5    // Max fetch() calls
     }

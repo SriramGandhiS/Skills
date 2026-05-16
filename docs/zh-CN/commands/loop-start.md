@@ -6,7 +6,7 @@
 
 `/loop-start [pattern] [--mode safe|fast]`
 
-* `pattern`: `sequential`, `continuous-pr`, `rfc-dag`, `infinite`
+* `pattern`:`sequential`,`continuous-pr`,`rfc-dag`,`infinite`
 * `--mode`:
   * `safe` (默认): 严格的质量门禁和检查点
   * `fast`: 为速度而减少门禁
@@ -29,5 +29,5 @@
 
 $ARGUMENTS:
 
-* `<pattern>` 可选 (`sequential|continuous-pr|rfc-dag|infinite`)
+* `<pattern>`可选 (`sequential|continuous-pr|rfc-dag|infinite`)
 * `--mode safe|fast` 可选

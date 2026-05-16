@@ -1,13 +1,11 @@
 #!/usr/bin/env bash
 # Test learning-based suggestions
-#
-# This test verifies that the learning suggestions system correctly:
+# # This test verifies that the learning suggestions system correctly:
 # - Generates suggestions from aggregated learnings
 # - Filters by suggestion type
 # - Ranks suggestions by relevance and confidence
 # - Provides context-aware recommendations
-#
-# Run: ./tests/test-learning-suggestions.sh
+# # Run: ./tests/test-learning-suggestions.sh
 
 set -euo pipefail
 

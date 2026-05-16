@@ -13,7 +13,7 @@ A soundpack is a directory containing organized sound files. Here's the standard
 
 ```
 default/                    # Soundpack directory
-├── loading/               # PreToolUse event sounds  
+├── loading/               # PreToolUse event sounds
 │   ├── git-commit-start.wav     # Git commit operations starting
 │   ├── git-start.wav            # Git operations starting
 │   ├── npm-start.wav            # NPM operations starting
@@ -50,7 +50,7 @@ Instead of organizing actual sound files in directories, you create a JSON file 
   "version": "1.0.0",
   "mappings": {
     "success/bash-success.wav": "sounds/bash-success.wav",
-    "success/git-success.wav": "/usr/share/sounds/alsa/Front_Left.wav", 
+    "success/git-success.wav": "/usr/share/sounds/alsa/Front_Left.wav",
     "error/bash-error.wav": "/usr/share/sounds/alsa/Side_Right.wav",
     "error/error.wav": "/usr/share/sounds/alsa/Side_Left.wav",
     "loading/loading.wav": "/usr/share/sounds/alsa/Rear_Center.wav",
@@ -75,7 +75,7 @@ Save this as `/path/to/my-sounds.json` and reference it in your config:
 - `mappings` - Object mapping Claudio sound keys to absolute paths or paths relative to the JSON file
 
 **Optional fields:**
-- `description` - Human-readable description  
+- `description` - Human-readable description
 - `version` - Version string for tracking
 
 **Validation:**
@@ -87,7 +87,7 @@ Save this as `/path/to/my-sounds.json` and reference it in your config:
 **System Sound Integration:**
 ```json
 {
-  "name": "macos-system", 
+  "name": "macos-system",
   "mappings": {
     "success/success.wav": "/System/Library/Sounds/Glass.aiff",
     "error/error.wav": "/System/Library/Sounds/Sosumi.aiff",
@@ -104,7 +104,7 @@ Save this as `/path/to/my-sounds.json` and reference it in your config:
     "success/bash-success.wav": "/home/user/sounds/success.wav",
     "success/git-success.wav": "/home/user/sounds/success.wav",
     "success/success.wav": "/home/user/sounds/success.wav",
-    "error/bash-error.wav": "/home/user/sounds/error.wav", 
+    "error/bash-error.wav": "/home/user/sounds/error.wav",
     "error/git-error.wav": "/home/user/sounds/error.wav",
     "error/error.wav": "/home/user/sounds/error.wav"
   }
@@ -139,7 +139,7 @@ Save this as `/path/to/my-sounds.json` and reference it in your config:
      "description": "My custom sound mappings",
      "mappings": {
        "success/success.wav": "/path/to/my/success.wav",
-       "error/error.wav": "/path/to/my/error.wav", 
+       "error/error.wav": "/path/to/my/error.wav",
        "default.wav": "/path/to/my/default.wav"
      }
    }
@@ -310,7 +310,7 @@ Played when Claude Code is about to run a tool. These are "start" or "loading" s
 - `git-commit-start.wav` - Git commit operations starting
 - `git-start.wav` - Git operations starting
 - `npm-install-start.wav` - NPM install operations starting
-- `npm-start.wav` - NPM operations starting  
+- `npm-start.wav` - NPM operations starting
 - `docker-start.wav` - Docker operations starting
 - `bash-start.wav` - General bash commands starting
 - `tool-start.wav` - Generic tool starting

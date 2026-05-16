@@ -1,4 +1,4 @@
-﻿---
+---
 name: quarkus-tdd
 description: Test-driven development for Quarkus 3.x LTS using JUnit 5, Mockito, REST Assured, Camel testing, and JaCoCo. Use when adding features, fixing bugs, or refactoring event-driven services.
 origin: ECC
@@ -137,7 +137,7 @@ class OrderServiceTest {
 1. **@Nested Classes**: Group tests by method being tested
 2. **@DisplayName**: Provide readable test descriptions for test reports
 3. **Naming Convention**: `givenX_whenY_thenZ` for clarity
-4. **AAA Pattern**: Explicit `// ARRANGE`, `// ACT`, `// ASSERT` comments
+4. **AAA Pattern**: Explicit `// ARRANGE`,`// ACT`,`// ASSERT` comments
 5. **@BeforeEach**: Setup common test data to reduce duplication
 6. **assertDoesNotThrow**: Test success scenarios without catching exceptions
 7. **assertThrows**: Test exception scenarios with message validation using AssertJ
@@ -687,7 +687,7 @@ mvn clean test
 mvn jacoco:report
 mvn jacoco:check
 
-# Report at: target/site/jacoco/index.html
+## Report at: target/site/jacoco/index.html
 ```
 
 ## Test Dependencies
@@ -746,10 +746,10 @@ mvn jacoco:check
 - Use `@BeforeEach` for common test data setup to reduce duplication
 
 ### Test Structure
-- Follow AAA pattern with explicit comments (`// ARRANGE`, `// ACT`, `// ASSERT`)
+- Follow AAA pattern with explicit comments (`// ARRANGE`,`// ACT`,`// ASSERT`)
 - Use `assertDoesNotThrow` for success scenarios
 - Use `assertThrows` for exception scenarios with message validation
-- Verify exception messages match expected values using AssertJ `contains()` or `isEqualTo()`
+- Verify exception messages match expected values using AssertJ `contains()`or`isEqualTo()`
 
 ### Test Coverage
 - Test happy paths for all public methods
@@ -764,7 +764,7 @@ mvn jacoco:check
 - Use fluent AssertJ API for readability: `assertThat(list).hasSize(3).contains(item)`
 - For exceptions: use JUnit `assertThrows` to capture, then AssertJ to validate the message
 - For non-throwing success paths: use JUnit `assertDoesNotThrow`
-- For collections: `extracting()`, `filteredOn()`, `containsExactly()`
+- For collections: `extracting()`,`filteredOn()`,`containsExactly()`
 
 ### Testing Integration
 - Use `@QuarkusTest` for integration tests
@@ -773,7 +773,7 @@ mvn jacoco:check
 - Use `@TestProfile` for test-specific configuration
 
 ### Event-Driven Testing
-- Test Camel routes with `AdviceWith` and `MockEndpoint`
+- Test Camel routes with `AdviceWith`and`MockEndpoint`
 - Use `@CamelQuarkusTest` annotation (if using standalone Camel tests)
 - Verify message content, headers, and routing logic
 - Test error handling routes separately
@@ -802,7 +802,7 @@ mvn jacoco:check
 - Test native compilation compatibility periodically
 - Use Quarkus test profiles for different scenarios
 - Leverage Quarkus dev services for local testing
-- Use `@InjectMock` instead of `@MockBean` (Quarkus-specific)
+- Use `@InjectMock`instead of`@MockBean` (Quarkus-specific)
 
 ### Verification Best Practices
 - Always verify interactions on mocked dependencies

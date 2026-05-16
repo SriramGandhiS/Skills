@@ -7,7 +7,7 @@ Create a Hook-based plugin for Claude Code called Claudio which will allow playi
 
 ### Available Hook Events
 1. `PreToolUse` - Before any tool runs
-2. `PostToolUse` - After tool completes 
+2. `PostToolUse` - After tool completes
 3. `UserPromptSubmit` - When user sends message
 4. `Notification` - System notifications
 5. `Stop` - When main agent finishes responding
@@ -36,7 +36,7 @@ Create a Hook-based plugin for Claude Code called Claudio which will allow playi
 ### Configuration Files (Priority Order)
 1. Enterprise managed policy settings (highest)
 2. `~/.claude/settings.json` (user-level)
-3. `.claude/settings.json` (project-level) 
+3. `.claude/settings.json` (project-level)
 4. `.claude/settings.local.json` (local project, lowest)
 
 ### Discovery Process
@@ -47,7 +47,7 @@ Create a Hook-based plugin for Claude Code called Claudio which will allow playi
 
 ### Complete Hook Events Available
 1. **PreToolUse** - Before tool execution → loading/thinking sounds
-2. **PostToolUse** - After tool completion → success/error sounds  
+2. **PostToolUse** - After tool completion → success/error sounds
 3. **UserPromptSubmit** - When user sends message → message sent sounds
 4. **Notification** - Permission requests/idle timeout → alert sounds
 5. **Stop** - Main agent finishes → completion sounds
@@ -130,14 +130,14 @@ claudio --test error      # Play error sound from current soundpack
 
 ### Matching Priority (Most Specific First)
 1. **Exact Tool + Args Match**: `PostToolUse` + `tool_name: "Write"` + `file_path: "*.rs"` → rust-save.wav
-2. **Tool + Success/Failure**: `PostToolUse` + `tool_name: "Bash"` + success → terminal-success.wav  
+2. **Tool + Success/Failure**: `PostToolUse` + `tool_name: "Bash"` + success → terminal-success.wav
 3. **Tool Type Only**: `PostToolUse` + `tool_name: "Edit"` → edit.wav
 4. **Event Type**: `PostToolUse` → tool-complete.wav
 5. **Fallback**: Default success/error sounds
 
 ### Specific Examples
 - `Write` + `*.rs` + success → rust-save.wav
-- `Write` + `*.py` + success → python-save.wav  
+- `Write` + `*.py` + success → python-save.wav
 - `Write` + success → file-save.wav (fallback)
 - `Bash` + `git commit` → commit.wav
 - `Bash` + `npm test` + failure → test-fail.wav
@@ -170,7 +170,7 @@ package decoder
 
 type AudioData struct {
     Samples    []byte
-    Channels   uint32  
+    Channels   uint32
     SampleRate uint32
     Format     FormatType  // malgo.FormatS16, etc.
 }

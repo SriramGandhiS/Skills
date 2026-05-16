@@ -11,13 +11,13 @@ date_added: "2026-02-27"
 > API design principles and decision-making for 2025.
 > **Learn to THINK, not copy fixed patterns.**
 
-## 🎯 Selective Reading Rule
+## Selective Reading Rule
 
 **Read ONLY files relevant to the request!** Check the content map, find what you need.
 
 ---
 
-## 📑 Content Map
+## Content Map
 
 | File | Description | When to Read |
 |------|-------------|--------------|
@@ -34,7 +34,7 @@ date_added: "2026-02-27"
 
 ---
 
-## 🔗 Related Skills
+## Related Skills
 
 | Need | Skill |
 |------|-------|
@@ -44,7 +44,7 @@ date_added: "2026-02-27"
 
 ---
 
-## ✅ Decision Checklist
+## PASS: Decision Checklist
 
 Before designing an API:
 
@@ -58,7 +58,7 @@ Before designing an API:
 
 ---
 
-## ❌ Anti-Patterns
+## FAIL: Anti-Patterns
 
 **DON'T:**
 - Default to REST for everything

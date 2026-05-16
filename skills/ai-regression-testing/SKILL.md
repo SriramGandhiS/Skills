@@ -1,4 +1,4 @@
-﻿---
+---
 name: ai-regression-testing
 description: Regression testing strategies for AI-assisted development. Sandbox-mode API testing without database dependencies, automated bug-check workflows, and patterns to catch AI blind spots where the same model writes and reviews code.
 origin: ECC
@@ -198,7 +198,7 @@ describe("GET /api/user/messages (conversation list)", () => {
 
 ```markdown
 <!-- .claude/commands/bug-check.md -->
-# Bug Check
+## Bug Check
 
 ## Step 1: Automated Tests (mandatory, cannot skip)
 

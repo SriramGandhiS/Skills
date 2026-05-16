@@ -1,4 +1,4 @@
-﻿---
+---
 name: videodb
 description: See, Understand, Act on video and audio. See- ingest from local files, URLs, RTSP/live feeds, or live record desktop; return realtime context and playable stream links. Understand- extract frames, build visual/semantic/temporal indexes, and search moments with timestamps and auto-clips. Act- transcode and normalize (codec, fps, resolution, aspect ratio), perform timeline edits (subtitles, text/image overlays, branding, audio overlays, dubbing, translation), generate media assets (image, audio, video), and create real time alerts for events from live streams or desktop capture.
 origin: ECC
@@ -67,7 +67,7 @@ This reads `VIDEO_DB_API_KEY` from:
 1. Environment (if already exported)
 2. Project's `.env` file in current directory
 
-If the key is missing, `videodb.connect()` raises `AuthenticationError` automatically.
+If the key is missing, `videodb.connect()`raises`AuthenticationError` automatically.
 
 Do NOT write a script file when a short inline command works.
 
@@ -106,7 +106,7 @@ pip install videodb python-dotenv
 The user must set `VIDEO_DB_API_KEY` using **either** method:
 
 - **Export in terminal** (before starting Claude): `export VIDEO_DB_API_KEY=your-key`
-- **Project `.env` file**: Save `VIDEO_DB_API_KEY=your-key` in the project's `.env` file
+- **Project `.env`file**: Save`VIDEO_DB_API_KEY=your-key`in the project's`.env` file
 
 Get a free API key at [console.videodb.io](https://console.videodb.io) (50 free uploads, no credit card).
 
@@ -117,20 +117,20 @@ Get a free API key at [console.videodb.io](https://console.videodb.io) (50 free 
 ### Upload media
 
 ```python
-# URL
+## URL
 video = coll.upload(url="https://example.com/video.mp4")
 
-# YouTube
+## YouTube
 video = coll.upload(url="https://www.youtube.com/watch?v=VIDEO_ID")
 
-# Local file
+## Local file
 video = coll.upload(file_path="/path/to/video.mp4")
 ```
 
 ### Transcript + subtitle
 
 ```python
-# force=True skips the error if the video is already indexed
+## force=True skips the error if the video is already indexed
 video.index_spoken_words(force=True)
 text = video.get_transcript_text()
 stream_url = video.add_subtitle()
@@ -143,8 +143,8 @@ from videodb.exceptions import InvalidRequestError
 
 video.index_spoken_words(force=True)
 
-# search() raises InvalidRequestError when no results are found.
-# Always wrap in try/except and treat "No results found" as empty.
+## search() raises InvalidRequestError when no results are found.
+## Always wrap in try/except and treat "No results found" as empty.
 try:
     results = video.search("product demo")
     shots = results.get_shots()
@@ -163,8 +163,8 @@ import re
 from videodb import SearchType, IndexType, SceneExtractionType
 from videodb.exceptions import InvalidRequestError
 
-# index_scenes() has no force parameter â€” it raises an error if a scene
-# index already exists. Extract the existing index ID from the error.
+## index_scenes() has no force parameter â€” it raises an error if a scene
+## index already exists. Extract the existing index ID from the error.
 try:
     scene_index_id = video.index_scenes(
         extraction_type=SceneExtractionType.shot_based,
@@ -177,7 +177,7 @@ except Exception as e:
     else:
         raise
 
-# Use score_threshold to filter low-relevance noise (recommended: 0.3+)
+## Use score_threshold to filter low-relevance noise (recommended: 0.3+)
 try:
     results = video.search(
         query="person writing on a whiteboard",
@@ -199,8 +199,8 @@ except InvalidRequestError as e:
 
 **Important:** Always validate timestamps before building a timeline:
 - `start` must be >= 0 (negative values are silently accepted but produce broken output)
-- `start` must be < `end`
-- `end` must be <= `video.length`
+- `start`must be <`end`
+- `end`must be <=`video.length`
 
 ```python
 from videodb.timeline import Timeline
@@ -217,7 +217,7 @@ stream_url = timeline.generate_stream()
 ```python
 from videodb import TranscodeMode, VideoConfig, AudioConfig
 
-# Change resolution, quality, or aspect ratio server-side
+## Change resolution, quality, or aspect ratio server-side
 job_id = conn.transcode(
     source="https://example.com/video.mp4",
     callback_url="https://example.com/webhook",
@@ -238,16 +238,16 @@ several minutes and may time out. Best practices:
 ```python
 from videodb import ReframeMode
 
-# Always prefer reframing a short segment:
+## Always prefer reframing a short segment:
 reframed = video.reframe(start=0, end=60, target="vertical", mode=ReframeMode.smart)
 
-# Async reframe for full-length videos (returns None, result via webhook):
+## Async reframe for full-length videos (returns None, result via webhook):
 video.reframe(target="vertical", callback_url="https://example.com/webhook")
 
-# Presets: "vertical" (9:16), "square" (1:1), "landscape" (16:9)
+## Presets: "vertical" (9:16), "square" (1:1), "landscape" (16:9)
 reframed = video.reframe(start=0, end=60, target="square")
 
-# Custom dimensions
+## Custom dimensions
 reframed = video.reframe(start=0, end=60, target={"width": 1280, "height": 720})
 ```
 
@@ -280,12 +280,12 @@ except InvalidRequestError as e:
 
 | Scenario | Error message | Solution |
 |----------|--------------|----------|
-| Indexing an already-indexed video | `Spoken word index for video already exists` | Use `video.index_spoken_words(force=True)` to skip if already indexed |
-| Scene index already exists | `Scene index with id XXXX already exists` | Extract the existing `scene_index_id` from the error with `re.search(r"id\s+([a-f0-9]+)", str(e))` |
-| Search finds no matches | `InvalidRequestError: No results found` | Catch the exception and treat as empty results (`shots = []`) |
-| Reframe times out | Blocks indefinitely on long videos | Use `start`/`end` to limit segment, or pass `callback_url` for async |
-| Negative timestamps on Timeline | Silently produces broken stream | Always validate `start >= 0` before creating `VideoAsset` |
-| `generate_video()` / `create_collection()` fails | `Operation not allowed` or `maximum limit` | Plan-gated features â€” inform the user about plan limits |
+| Indexing an already-indexed video | `Spoken word index for video already exists`| Use`video.index_spoken_words(force=True)` to skip if already indexed |
+| Scene index already exists | `Scene index with id XXXX already exists`| Extract the existing`scene_index_id`from the error with`re.search(r"id\s+([a-f0-9]+)", str(e))` |
+| Search finds no matches | `InvalidRequestError: No results found`| Catch the exception and treat as empty results (`shots = []`) |
+| Reframe times out | Blocks indefinitely on long videos | Use `start`/`end`to limit segment, or pass`callback_url` for async |
+| Negative timestamps on Timeline | Silently produces broken stream | Always validate `start >= 0`before creating`VideoAsset` |
+| `generate_video()`/`create_collection()`fails |`Operation not allowed`or`maximum limit` | Plan-gated features â€” inform the user about plan limits |
 
 ## Examples
 
@@ -360,13 +360,13 @@ Reference documentation is in the `reference/` directory adjacent to this SKILL.
 
 | Problem | VideoDB solution |
 |---------|-----------------|
-| Platform rejects video aspect ratio or resolution | `video.reframe()` or `conn.transcode()` with `VideoConfig` |
-| Need to resize video for Twitter/Instagram/TikTok | `video.reframe(target="vertical")` or `target="square"` |
-| Need to change resolution (e.g. 1080p â†’ 720p) | `conn.transcode()` with `VideoConfig(resolution=720)` |
-| Need to overlay audio/music on video | `AudioAsset` on a `Timeline` |
-| Need to add subtitles | `video.add_subtitle()` or `CaptionAsset` |
-| Need to combine/trim clips | `VideoAsset` on a `Timeline` |
-| Need to generate voiceover, music, or SFX | `coll.generate_voice()`, `generate_music()`, `generate_sound_effect()` |
+| Platform rejects video aspect ratio or resolution | `video.reframe()`or`conn.transcode()`with`VideoConfig` |
+| Need to resize video for Twitter/Instagram/TikTok | `video.reframe(target="vertical")`or`target="square"` |
+| Need to change resolution (e.g. 1080p â†’ 720p) | `conn.transcode()`with`VideoConfig(resolution=720)` |
+| Need to overlay audio/music on video | `AudioAsset`on a`Timeline` |
+| Need to add subtitles | `video.add_subtitle()`or`CaptionAsset` |
+| Need to combine/trim clips | `VideoAsset`on a`Timeline` |
+| Need to generate voiceover, music, or SFX | `coll.generate_voice()`,`generate_music()`,`generate_sound_effect()` |
 
 ## Provenance
 

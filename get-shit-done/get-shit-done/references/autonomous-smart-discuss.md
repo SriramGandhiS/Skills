@@ -146,7 +146,7 @@ Display a table:
 ```
 ### Grey Area {M}/{N}: {Area Name}
 
-| # | Question | ✅ Recommended | Alternative(s) |
+| # | Question | PASS: Recommended | Alternative(s) |
 |---|----------|---------------|-----------------|
 | 1 | {question} | {answer} — {rationale} | {alt1}; {alt2} |
 | 2 | {question} | {answer} — {rationale} | {alt1} |

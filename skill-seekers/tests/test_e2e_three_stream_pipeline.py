@@ -359,7 +359,7 @@ testproject.run()
         skill_md = generator.generate_skill_md()
 
         # Validate repository metadata section
-        assert "⭐ 5,000" in skill_md
+        assert " 5,000" in skill_md
         assert "Python" in skill_md
         assert "Fast test framework" in skill_md
 
@@ -528,7 +528,7 @@ class TestE2EBackwardCompatibility:
         assert "How It Works" in skill_md
 
         # Should NOT have GitHub-specific sections
-        assert "⭐" not in skill_md
+        assert "" not in skill_md
         assert "Repository Info" not in skill_md
         assert "Quick Start (from README)" not in skill_md
         assert "Common Issues (from GitHub)" not in skill_md

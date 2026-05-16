@@ -16,7 +16,7 @@ Build enterprise agents for Microsoft 365, Teams, and Copilot Studio using the M
 
 ## Important Notice - Import Changes
 
-> **⚠️ Breaking Change**: Recent updates have changed the Python import structure from `microsoft.agents` to `microsoft_agents` (using underscores instead of dots).
+> **WARNING: Breaking Change**: Recent updates have changed the Python import structure from `microsoft.agents` to `microsoft_agents` (using underscores instead of dots).
 
 ## Installation
 
@@ -209,7 +209,7 @@ async def on_poem_message(context: TurnContext, _state: TurnState):
         ],
         stream=True,
     )
-    
+
     try:
         async for chunk in streamed_response:
             if chunk.choices and chunk.choices[0].delta.content:
@@ -267,10 +267,10 @@ def acquire_token(settings, app_client_id, tenant_id):
         client_id=app_client_id,
         authority=f"https://login.microsoftonline.com/{tenant_id}",
     )
-    
+
     token_request = {"scopes": ["https://api.powerplatform.com/.default"]}
     accounts = pca.get_accounts()
-    
+
     if accounts:
         response = pca.acquire_token_silent(token_request["scopes"], account=accounts[0])
         return response.get("access_token")
@@ -283,21 +283,21 @@ async def main():
         environment_id=environ.get("COPILOTSTUDIOAGENT__ENVIRONMENTID"),
         agent_identifier=environ.get("COPILOTSTUDIOAGENT__SCHEMANAME"),
     )
-    
+
     token = acquire_token(
         settings,
         app_client_id=environ.get("COPILOTSTUDIOAGENT__AGENTAPPID"),
         tenant_id=environ.get("COPILOTSTUDIOAGENT__TENANTID"),
     )
-    
+
     copilot_client = CopilotClient(settings, token)
-    
+
     # Start conversation
     act = copilot_client.start_conversation(True)
     async for action in act:
         if action.text:
             print(action.text)
-    
+
     # Ask question
     replies = copilot_client.ask_question("Hello!", action.conversation.id)
     async for reply in replies:

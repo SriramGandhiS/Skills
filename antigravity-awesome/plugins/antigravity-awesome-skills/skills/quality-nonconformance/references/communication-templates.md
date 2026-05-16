@@ -1,8 +1,7 @@
 # Communication Templates — Quality & Non-Conformance Management
 
 > **Reference Type:** Tier 3 — Load on demand when composing or reviewing quality communications.
->
-> **Usage:** Each template includes variable placeholders in `{{double_braces}}` for direct substitution. Templates are organized by audience and situation. Select the template matching your scenario, substitute variables, review tone guidance, and send.
+> > **Usage:** Each template includes variable placeholders in `{{double_braces}}` for direct substitution. Templates are organized by audience and situation. Select the template matching your scenario, substitute variables, review tone guidance, and send.
 
 ---
 
@@ -536,7 +535,7 @@ Urgent, clear, and actionable. This goes to the production floor — operators, 
 
 ### Template
 
-**⚠ QUALITY ALERT ⚠**
+**WARNING: QUALITY ALERT WARNING:**
 
 **Alert Number:** QA-{{alert_number}}
 **Date Issued:** {{date_issued}}

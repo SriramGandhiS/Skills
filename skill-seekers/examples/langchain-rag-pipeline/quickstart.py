@@ -45,7 +45,7 @@ def load_documents(json_path: str) -> list[Document]:
         for doc in docs_data
     ]
 
-    print(f"✅ Loaded {len(documents)} documents")
+    print(f"PASS: Loaded {len(documents)} documents")
     print(f"   Categories: {set(doc.metadata['category'] for doc in documents)}")
 
     return documents
@@ -70,7 +70,7 @@ def create_vector_store(documents: list[Document], persist_dir: str = "./chroma_
         persist_directory=persist_dir
     )
 
-    print(f"✅ Vector store created at: {persist_dir}")
+    print(f"PASS: Vector store created at: {persist_dir}")
     print(f"   Documents indexed: {len(documents)}")
 
     return vectorstore
@@ -100,7 +100,7 @@ def create_qa_chain(vectorstore: Chroma) -> RetrievalQA:
         return_source_documents=True
     )
 
-    print("✅ QA chain created")
+    print("PASS: QA chain created")
 
     return qa_chain
 
@@ -144,7 +144,7 @@ def main():
 
     # Check if documents exist
     if not Path(DOCS_PATH).exists():
-        print(f"❌ Documents not found at: {DOCS_PATH}")
+        print(f"FAIL: Documents not found at: {DOCS_PATH}")
         print("\nGenerate documents first:")
         print("  1. skill-seekers scrape --config configs/react.json")
         print("  2. skill-seekers package output/react --target langchain")
@@ -187,7 +187,7 @@ def main():
         user_query = input("You: ").strip()
 
         if user_query.lower() in ['quit', 'exit', 'q']:
-            print("\n👋 Goodbye!")
+            print("\n Goodbye!")
             break
 
         if not user_query:
@@ -200,9 +200,9 @@ if __name__ == "__main__":
     try:
         main()
     except KeyboardInterrupt:
-        print("\n\n👋 Interrupted. Goodbye!")
+        print("\n\n Interrupted. Goodbye!")
     except Exception as e:
-        print(f"\n❌ Error: {e}")
+        print(f"\nFAIL: Error: {e}")
         print("\nMake sure you have:")
         print("  1. Set OPENAI_API_KEY environment variable")
         print("  2. Installed required packages:")

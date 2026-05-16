@@ -78,7 +78,7 @@ process.stdin.on('end', () => {
     const output = {
       hookSpecificOutput: {
         hookEventName: "PreToolUse",
-        additionalContext: `⚠️ WORKFLOW ADVISORY: You're editing ${path.basename(filePath)} directly without a GSD command. ` +
+        additionalContext: `WARNING: WORKFLOW ADVISORY: You're editing ${path.basename(filePath)} directly without a GSD command. ` +
           'This edit will not be tracked in STATE.md or produce a SUMMARY.md. ' +
           'Consider using /gsd-fast for trivial fixes or /gsd-quick for larger changes ' +
           'to maintain project state tracking. ' +

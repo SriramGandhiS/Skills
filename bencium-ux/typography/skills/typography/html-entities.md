@@ -42,7 +42,7 @@ When generating HTML/JSX, substitute these characters automatically:
 ### Dashes
 
 ```
--              U+002D   hyphen (compound words, line breaks)
+- U+002D   hyphen (compound words, line breaks)
 &ndash;   –   U+2013   en dash (ranges: 1–10, connections: Sarbanes–Oxley)
 &mdash;   —   U+2014   em dash (sentence breaks—like this)
 &shy;          U+00AD   soft/optional hyphen (invisible break suggestion)

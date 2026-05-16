@@ -3,13 +3,11 @@
 #===============================================================================
 # Prepare SWE-bench Submission
 # Converts benchmark results to official SWE-bench submission format
-#
-# Usage:
-#   ./benchmarks/prepare-submission.sh <results-dir>
-#   ./benchmarks/prepare-submission.sh benchmarks/results/2026-01-05-10-37-54
-#
-# Output:
-#   Creates submission-ready folder at benchmarks/submission/
+# # Usage:
+# ./benchmarks/prepare-submission.sh <results-dir>
+# ./benchmarks/prepare-submission.sh benchmarks/results/2026-01-05-10-37-54
+# # Output:
+# Creates submission-ready folder at benchmarks/submission/
 #===============================================================================
 
 set -euo pipefail

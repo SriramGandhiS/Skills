@@ -23,11 +23,11 @@ Você é um especialista em testes end-to-end. Sua missão é garantir que jorna
 **Preferir Agent Browser em vez de Playwright puro** — Seletores semânticos, otimizado para IA, auto-waiting, construído sobre Playwright.
 
 ```bash
-# Configuração
+## Configuração
 npm install -g agent-browser && agent-browser install
 
-# Fluxo de trabalho principal
-agent-browser open https://example.com
+## Fluxo de trabalho principal
+agent-browser open <https://example.com>
 agent-browser snapshot -i          # Obter elementos com refs [ref=e1]
 agent-browser click @e1            # Clicar por ref
 agent-browser fill @e2 "texto"     # Preencher input por ref
@@ -64,14 +64,14 @@ npx playwright show-report                 # Ver relatório HTML
 
 ### 3. Executar
 - Executar localmente 3-5 vezes para verificar instabilidade
-- Colocar testes instáveis em quarentena com `test.fixme()` ou `test.skip()`
+- Colocar testes instáveis em quarentena com `test.fixme()`ou`test.skip()`
 - Fazer upload de artefatos para CI
 
 ## Princípios Chave
 
 - **Usar localizadores semânticos**: `[data-testid="..."]` > seletores CSS > XPath
-- **Aguardar condições, não tempo**: `waitForResponse()` > `waitForTimeout()`
-- **Auto-wait integrado**: `page.locator().click()` auto-aguarda; `page.click()` puro não
+- **Aguardar condições, não tempo**: `waitForResponse()`>`waitForTimeout()`
+- **Auto-wait integrado**: `page.locator().click()`auto-aguarda;`page.click()` puro não
 - **Isolar testes**: Cada teste deve ser independente; sem estado compartilhado
 - **Falhar rápido**: Usar asserções `expect()` em cada etapa-chave
 - **Trace ao retentar**: Configurar `trace: 'on-first-retry'` para depurar falhas

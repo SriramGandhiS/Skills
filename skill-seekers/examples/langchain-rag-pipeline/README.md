@@ -59,15 +59,15 @@ LANGCHAIN RAG PIPELINE QUICKSTART
 ============================================================
 
 Step 1: Loading documents...
-✅ Loaded 150 documents
+PASS: Loaded 150 documents
    Categories: {'overview', 'hooks', 'components', 'api'}
 
 Step 2: Creating vector store...
-✅ Vector store created at: ./chroma_db
+PASS: Vector store created at: ./chroma_db
    Documents indexed: 150
 
 Step 3: Creating QA chain...
-✅ QA chain created
+PASS: QA chain created
 
 Step 4: Running example queries...
 

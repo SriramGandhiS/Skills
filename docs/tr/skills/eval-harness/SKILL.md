@@ -56,13 +56,13 @@ Sonuç: X/Y geçti (önceden Y/Y)
 ### 1. Code-Based Grader
 Kod kullanarak deterministik kontroller:
 ```bash
-# Dosyanın beklenen pattern içerip içermediğini kontrol et
+## Dosyanın beklenen pattern içerip içermediğini kontrol et
 grep -q "export function handleAuth" src/auth.ts && echo "PASS" || echo "FAIL"
 
-# Testlerin geçip geçmediğini kontrol et
+## Testlerin geçip geçmediğini kontrol et
 npm test -- --testPathPattern="auth" && echo "PASS" || echo "FAIL"
 
-# Build'in başarılı olup olmadığını kontrol et
+## Build'in başarılı olup olmadığını kontrol et
 npm run build && echo "PASS" || echo "FAIL"
 ```
 
@@ -129,13 +129,13 @@ Tanımlanan eval'ları geçmek için kod yaz.
 
 ### 3. Değerlendir
 ```bash
-# Capability eval'ları çalıştır
+## Capability eval'ları çalıştır
 [Her capability eval'ı çalıştır, PASS/FAIL kaydet]
 
-# Regression eval'ları çalıştır
+## Regression eval'ları çalıştır
 npm test -- --testPathPattern="existing"
 
-# Rapor oluştur
+## Rapor oluştur
 ```
 
 ### 4. Rapor

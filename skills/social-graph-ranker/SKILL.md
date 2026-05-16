@@ -1,4 +1,4 @@
-﻿---
+---
 name: social-graph-ranker
 description: Weighted social-graph ranking for warm intro discovery, bridge scoring, and network gap analysis across X and LinkedIn. Use when the user wants the reusable graph-ranking engine itself, not the broader outreach or network-maintenance workflow layered on top of it.
 origin: ECC
@@ -14,7 +14,7 @@ Use this when the user needs to:
 - map warm paths to a target list
 - measure bridge value across first- and second-order connections
 - decide which targets deserve warm intros versus direct cold outreach
-- understand the graph math independently from `lead-intelligence` or `connections-optimizer`
+- understand the graph math independently from `lead-intelligence`or`connections-optimizer`
 
 ## When To Use This Standalone
 
@@ -45,7 +45,7 @@ Given:
 
 - `T` = weighted target set
 - `M` = your current mutuals / direct connections
-- `d(m, t)` = shortest hop distance from mutual `m` to target `t`
+- `d(m, t)`= shortest hop distance from mutual`m`to target`t`
 - `w(t)` = target weight from signal scoring
 
 Base bridge score:
@@ -56,7 +56,7 @@ B(m) = Î£_{t âˆˆ T} w(t) Â· Î»^(d(m,t) - 1)
 
 Where:
 
-- `Î»` is the decay factor, usually `0.5`
+- `Î»`is the decay factor, usually`0.5`
 - a direct path contributes full value
 - each extra hop halves the contribution
 
@@ -69,7 +69,7 @@ B_ext(m) = B(m) + Î± Â· Î£_{m' âˆˆ N(m) \\ M} Î£_{t âˆˆ T} w(t) Â
 Where:
 
 - `N(m) \\ M` is the set of people the mutual knows that you do not
-- `Î±` discounts second-order reach, usually `0.3`
+- `Î±`discounts second-order reach, usually`0.3`
 
 Response-adjusted final ranking:
 
@@ -80,7 +80,7 @@ R(m) = B_ext(m) Â· (1 + Î² Â· engagement(m))
 Where:
 
 - `engagement(m)` is normalized responsiveness or relationship strength
-- `Î²` is the engagement bonus, usually `0.2`
+- `Î²`is the engagement bonus, usually`0.2`
 
 Interpretation:
 

@@ -3,7 +3,7 @@ name: learning-journal
 description: Automatically documents student learning progress, code snippets, and architectural decisions into Obsidian-friendly markdown files.
 ---
 
-# 📝 Learning Journal Skill
+# Learning Journal Skill
 
 ## Overview
 This skill should be used to capture "What I Learned Today" (WILT) entries. It transforms technical sessions into professional documentation for a student's portfolio or study notes.
@@ -27,7 +27,7 @@ Entries MUST include:
 - `concepts`: List of key technical terms learned
 - `code_snippet`: The most important piece of code from the session
 
-## Use when: 
+## Use when:
 - Finishing a project milestone.
 - Solving a difficult CSS/JS bug.
 - Learning a new tool (like PRPM or Pilot Shell).

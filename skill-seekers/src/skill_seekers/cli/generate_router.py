@@ -81,7 +81,7 @@ class RouterGenerator:
             with open(path) as f:
                 return json.load(f)
         except Exception as e:
-            print(f"❌ Error loading {path}: {e}")
+            print(f"FAIL: Error loading {path}: {e}")
             sys.exit(1)
 
     def infer_router_name(self) -> str:
@@ -759,7 +759,7 @@ This is a router skill that directs your questions to specialized sub-skills for
             skill_md += f"""## Repository Info
 
 **Repository:** {repo_url}
-**Stars:** ⭐ {stars:,} | **Language:** {language}
+**Stars:**  {stars:,} | **Language:** {language}
 {f"**Description:** {description}" if description else ""}
 
 """
@@ -974,7 +974,7 @@ GitHub issues related to this topic:
                 labels = issue.get("labels", [])
 
                 # Format issue
-                state_icon = "🔴" if state == "open" else "✅"
+                state_icon = "" if state == "open" else "PASS:"
                 issues_md += f"**{state_icon} Issue #{number}: {title}**\n"
                 issues_md += f"- Status: {state.title()}\n"
                 issues_md += f"- {comments} comments\n"
@@ -1178,7 +1178,7 @@ Examples:
             config_files.append(path_str)
 
     if not config_files:
-        print("❌ Error: No valid config files provided")
+        print("FAIL: Error: No valid config files provided")
         sys.exit(1)
 
     print(f"\n{'=' * 60}")
@@ -1193,8 +1193,8 @@ Examples:
     generator = RouterGenerator(config_files, args.name)
     config_path, skill_path = generator.generate(args.output_dir)
 
-    print(f"✅ Router config created: {config_path}")
-    print(f"✅ Router SKILL.md created: {skill_path}")
+    print(f"PASS: Router config created: {config_path}")
+    print(f"PASS: Router SKILL.md created: {skill_path}")
     print("")
     print(f"{'=' * 60}")
     print("NEXT STEPS")

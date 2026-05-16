@@ -57,8 +57,8 @@ Where:
 │                                     │ ← Hit area: 48px (padding extends)
 └─────────────────────────────────────┘
 
-✅ CORRECT: Visual can be smaller if hit area is minimum 44-48px
-❌ WRONG: Making hit area same as small visual element
+PASS: CORRECT: Visual can be smaller if hit area is minimum 44-48px
+FAIL: WRONG: Making hit area same as small visual element
 ```
 
 ### Application Rules
@@ -237,10 +237,10 @@ Swipe actions need visual hints:
 │  └───┘                                  │
 └─────────────────────────────────────────┘
 
-✅ Good: Slight color peek at edge suggesting swipe
-✅ Good: Drag handle icon ( ≡ ) suggesting reorder
-✅ Good: Onboarding tooltip explaining gesture
-❌ Bad: Hidden gestures with no visual affordance
+PASS: Good: Slight color peek at edge suggesting swipe
+PASS: Good: Drag handle icon ( ≡ ) suggesting reorder
+PASS: Good: Onboarding tooltip explaining gesture
+FAIL: Bad: Hidden gestures with no visual affordance
 ```
 
 ### Platform Gesture Differences
@@ -299,7 +299,7 @@ Without haptics:
 ### Haptic Usage Guidelines
 
 ```
-✅ DO use haptics for:
+PASS: DO use haptics for:
 ├── Button taps
 ├── Toggle switches
 ├── Picker/slider values
@@ -309,7 +309,7 @@ Without haptics:
 ├── Swipe action thresholds
 └── Important state changes
 
-❌ DON'T use haptics for:
+FAIL: DON'T use haptics for:
 ├── Every scroll position
 ├── Every list item
 ├── Background events
@@ -346,19 +346,19 @@ Without haptics:
 ```
 1. ONE PRIMARY ACTION per screen
    └── Clear what to do next
-   
+
 2. PROGRESSIVE DISCLOSURE
    └── Show only what's needed now
-   
+
 3. SMART DEFAULTS
    └── Pre-fill what you can
-   
+
 4. CHUNKING
    └── Break long forms into steps
-   
+
 5. RECOGNITION over RECALL
    └── Show options, don't make user remember
-   
+
 6. CONTEXT PERSISTENCE
    └── Save state on interrupt/background
 ```

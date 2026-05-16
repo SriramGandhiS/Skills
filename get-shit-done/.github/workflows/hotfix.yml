@@ -1,26 +1,24 @@
 name: Hotfix Release
 
 # Hotfix flow for X.YY.Z patch releases (Z > 0).
-#
-# create:
-#   - Branches hotfix/X.YY.Z from the highest existing vX.YY.* tag (1.27.2 from
-#     v1.27.1, 1.27.1 from v1.27.0). The base IS the cumulative-fix anchor for
-#     the previous patch.
-#   - Auto-cherry-picks every fix:/chore: commit on origin/main that isn't
-#     already in the base, oldest-first. Patch-equivalents (already applied)
-#     are skipped via `git cherry`. feat:/refactor: are NEVER auto-included.
-#   - Conflicts fail the workflow with the offending SHA so the operator can
-#     resolve manually on the branch and re-run finalize with auto_cherry_pick=false.
-#   - Step summary lists every included SHA so the eventual vX.YY.Z tag
-#     self-documents what shipped.
-#
-# finalize:
-#   - install-smoke gate (cross-platform, parity with release.yml/release-sdk.yml)
-#   - Bundles SDK as both loose tree (sdk/dist/cli.js) and recoverable tarball
-#     (sdk-bundle/gsd-sdk.tgz) — parity with release-sdk.yml so a hotfix shipped
-#     during the @gsd-build-token outage carries the same payload shape.
-#   - Publishes to @latest, tags vX.YY.Z, re-points @next → vX.YY.Z, opens
-#     merge-back PR.
+# # create:
+# - Branches hotfix/X.YY.Z from the highest existing vX.YY.* tag (1.27.2 from
+# v1.27.1, 1.27.1 from v1.27.0). The base IS the cumulative-fix anchor for
+# the previous patch.
+# - Auto-cherry-picks every fix:/chore: commit on origin/main that isn't
+# already in the base, oldest-first. Patch-equivalents (already applied)
+# are skipped via `git cherry`. feat:/refactor: are NEVER auto-included.
+# - Conflicts fail the workflow with the offending SHA so the operator can
+# resolve manually on the branch and re-run finalize with auto_cherry_pick=false.
+# - Step summary lists every included SHA so the eventual vX.YY.Z tag
+# self-documents what shipped.
+# # finalize:
+# - install-smoke gate (cross-platform, parity with release.yml/release-sdk.yml)
+# - Bundles SDK as both loose tree (sdk/dist/cli.js) and recoverable tarball
+# (sdk-bundle/gsd-sdk.tgz) — parity with release-sdk.yml so a hotfix shipped
+# during the @gsd-build-token outage carries the same payload shape.
+# - Publishes to @latest, tags vX.YY.Z, re-points @next → vX.YY.Z, opens
+# merge-back PR.
 
 on:
   workflow_dispatch:
@@ -371,7 +369,7 @@ jobs:
             echo "::error::CC tarball is missing package/sdk-bundle/gsd-sdk.tgz"
             exit 1
           fi
-          echo "✅ CC tarball contains sdk-bundle/gsd-sdk.tgz"
+          echo "PASS: CC tarball contains sdk-bundle/gsd-sdk.tgz"
           rm -f "$TARBALL"
 
       - name: Dry-run publish validation
@@ -410,7 +408,7 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
           npm dist-tag add "get-shit-done-cc@${VERSION}" next
-          echo "✅ next dist-tag re-pointed to v${VERSION} (matches latest)"
+          echo "PASS: next dist-tag re-pointed to v${VERSION} (matches latest)"
 
       - name: Create GitHub Release (idempotent)
         if: ${{ !inputs.dry_run }}

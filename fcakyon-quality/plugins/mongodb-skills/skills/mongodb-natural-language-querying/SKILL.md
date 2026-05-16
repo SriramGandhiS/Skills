@@ -95,12 +95,12 @@ Always output queries in a JSON response structure with stringified MongoDB quer
 ```
 
 Note the stringified format:
-- ✅ `"{ age: { $gte: 25 } }"` (string)
-- ❌ `{ age: { $gte: 25 } }` (object)
+- PASS: `"{ age: { $gte: 25 } }"` (string)
+- FAIL: `{ age: { $gte: 25 } }` (object)
 
 For aggregation pipelines:
-- ✅ `"[{ $match: { status: 'active' } }]"` (string)
-- ❌ `[{ $match: { status: 'active' } }]` (array)
+- PASS: `"[{ $match: { status: 'active' } }]"` (string)
+- FAIL: `[{ $match: { status: 'active' } }]` (array)
 
 ## Best Practices
 

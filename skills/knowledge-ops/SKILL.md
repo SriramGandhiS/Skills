@@ -1,4 +1,4 @@
-﻿---
+---
 name: knowledge-ops
 description: Knowledge base management, ingestion, sync, and retrieval across multiple storage layers (local files, MCP memory, vector stores, Git repos). Use when the user wants to save, organize, sync, deduplicate, or search across their knowledge systems.
 origin: ECC
@@ -117,17 +117,17 @@ Pull knowledge from multiple sources into one place:
 ## Memory Patterns
 
 ```
-# Short-term: current session context
+## Short-term: current session context
 Use TodoWrite for in-session task tracking
 
-# Medium-term: project memory files
+## Medium-term: project memory files
 Write to ~/.claude/projects/*/memory/ for cross-session recall
 
-# Long-term: GitHub / Linear / KB
+## Long-term: GitHub / Linear / KB
 Put active execution truth in GitHub + Linear
 Put durable synthesized context in the knowledge base repo
 
-# Semantic layer: MCP knowledge graph
+## Semantic layer: MCP knowledge graph
 Use mcp__memory__create_entities for permanent structured data
 Use mcp__memory__create_relations for relationship mapping
 Use mcp__memory__add_observations for new facts about known entities

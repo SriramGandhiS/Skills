@@ -251,7 +251,7 @@ PUT    /api/markets/:id          # 更新市场（完整）
 PATCH  /api/markets/:id          # 更新市场（部分）
 DELETE /api/markets/:id          # 删除市场
 
-# 用于筛选的查询参数
+## 用于筛选的查询参数
 GET /api/markets?status=active&limit=10&offset=0
 ```
 

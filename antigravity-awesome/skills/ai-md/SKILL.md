@@ -95,7 +95,7 @@ MOAT:
 ```
 
 **Real proof:** This specific technique fixed a test case that failed 5 consecutive times
-across all models. The label `new-api:` raised Codex T5 from ❌→✅ on first try.
+across all models. The label `new-api:` raised Codex T5 from FAIL:→PASS: on first try.
 
 ---
 
@@ -273,7 +273,7 @@ The whole point of AI.MD is that it works ACROSS models.
 3. Include "negative" tests where a rule should NOT trigger
 4. DO NOT hint which rules are being tested (the AI shouldn't know)
 5. Run each model independently
-6. Score each answer: ✅ full compliance, ⚠️ partial, ❌ miss
+6. Score each answer: PASS: full compliance, WARNING: partial, FAIL: miss
 7. If ANY model's score drops after conversion → revert that specific change
 
 **The 8-question template we used:**

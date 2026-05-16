@@ -165,7 +165,7 @@ formulas:
   total: "price * quantity"
 
   # Conditional logic
-  status_icon: 'if(done, "✅", "⏳")'
+  status_icon: 'if(done, "PASS:", "")'
 
   # String formatting
   formatted_price: 'if(price, price.toFixed(2) + " dollars")'
@@ -216,7 +216,7 @@ When subtracting two dates, the result is a **Duration** type (not a number).
 
 ```yaml
 # Duration units: y/year/years, M/month/months, d/day/days,
-#                 w/week/weeks, h/hour/hours, m/minute/minutes, s/second/seconds
+# w/week/weeks, h/hour/hours, m/minute/minutes, s/second/seconds
 "now() + \"1 day\""       # Tomorrow
 "today() + \"7d\""        # A week from today
 "now() - file.ctime"      # Returns Duration
@@ -307,7 +307,7 @@ filters:
 formulas:
   days_until_due: 'if(due, (date(due) - today()).days, "")'
   is_overdue: 'if(due, date(due) < today() && status != "done", false)'
-  priority_label: 'if(priority == 1, "🔴 High", if(priority == 2, "🟡 Medium", "🟢 Low"))'
+  priority_label: 'if(priority == 1, " High", if(priority == 2, " Medium", " Low"))'
 
 properties:
   status:
@@ -355,7 +355,7 @@ filters:
 
 formulas:
   reading_time: 'if(pages, (pages * 2).toString() + " min", "")'
-  status_icon: 'if(status == "reading", "📖", if(status == "done", "✅", "📚"))'
+  status_icon: 'if(status == "reading", "", if(status == "done", "PASS:", ""))'
   year_read: 'if(finished_date, date(finished_date).year, "")'
 
 properties:

@@ -1,10 +1,9 @@
 # Loki CI - Quality Gate Example Workflow
 # Add this to your repository's .github/workflows/ directory
 # Runs Loki Mode quality gates on every pull request
-#
-# Prerequisites:
-#   - npm install -g loki-mode (or add to devDependencies)
-#   - GITHUB_TOKEN is available by default in GitHub Actions
+# # Prerequisites:
+# - npm install -g loki-mode (or add to devDependencies)
+# - GITHUB_TOKEN is available by default in GitHub Actions
 
 name: Loki CI Quality Gate
 

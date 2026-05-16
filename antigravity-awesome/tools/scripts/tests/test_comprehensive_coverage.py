@@ -96,14 +96,14 @@ def analyze_skill_locations():
     Comprehensive analysis of all skill locations in Microsoft repo.
     Verifies flat name uniqueness and coverage.
     """
-    print("🔬 Comprehensive Skill Coverage & Uniqueness Analysis")
+    print(" Comprehensive Skill Coverage & Uniqueness Analysis")
     print("=" * 60)
 
     repo_path: Path | None = None
     try:
         repo_path = create_clone_target(prefix="ms-skills-")
 
-        print("\n1️⃣ Cloning repository...")
+        print("\n1⃣ Cloning repository...")
         try:
             subprocess.run(
                 ["git", "clone", "--depth", "1", MS_REPO, str(repo_path)],
@@ -112,14 +112,14 @@ def analyze_skill_locations():
                 text=True,
             )
         except subprocess.CalledProcessError as exc:
-            print("\n❌ git clone failed.", file=sys.stderr)
+            print("\nFAIL: git clone failed.", file=sys.stderr)
             if exc.stderr:
                 print(exc.stderr.strip(), file=sys.stderr)
             raise
 
         # Find ALL SKILL.md files
         all_skill_files = list(repo_path.rglob("SKILL.md"))
-        print(f"\n2️⃣ Total SKILL.md files found: {len(all_skill_files)}")
+        print(f"\n2⃣ Total SKILL.md files found: {len(all_skill_files)}")
 
         # Categorize by location
         location_types = defaultdict(list)
@@ -134,12 +134,12 @@ def analyze_skill_locations():
             else:
                 location_types["other"].append(skill_file)
 
-        print("\n3️⃣ Skills by Location Type:")
+        print("\n3⃣ Skills by Location Type:")
         for loc_type, files in sorted(location_types.items()):
-            print(f"  📍 {loc_type}: {len(files)} skills")
+            print(f"   {loc_type}: {len(files)} skills")
 
         # Flat name uniqueness check
-        print("\n4️⃣ Flat Name Uniqueness Check:")
+        print("\n4⃣ Flat Name Uniqueness Check:")
         print("-" * 60)
 
         name_map: dict[str, list[str]] = {}
@@ -177,48 +177,48 @@ def analyze_skill_locations():
         unique_names = {n: paths for n,
                         paths in name_map.items() if len(paths) == 1}
 
-        print(f"\n  ✅ Unique names: {len(unique_names)}")
+        print(f"\n  PASS: Unique names: {len(unique_names)}")
 
         if missing_names:
             print(
-                f"\n  ⚠️  Skills missing frontmatter 'name' ({len(missing_names)}):")
+                f"\n  WARNING:  Skills missing frontmatter 'name' ({len(missing_names)}):")
             for path in missing_names[:5]:
                 print(f"     - {path}")
             if len(missing_names) > 5:
                 print(f"     ... and {len(missing_names) - 5} more")
 
         if collisions:
-            print(f"\n  ❌ Name collisions ({len(collisions)}):")
+            print(f"\n  FAIL: Name collisions ({len(collisions)}):")
             for name, paths in collisions.items():
                 print(f"     '{name}':")
                 for p in paths:
                     print(f"       - {p}")
         else:
-            print(f"\n  ✅ No collisions detected!")
+            print(f"\n  PASS: No collisions detected!")
 
         if ignored_collisions:
-            print(f"\n  ⚠️  Ignored known upstream collisions ({len(ignored_collisions)}):")
+            print(f"\n  WARNING:  Ignored known upstream collisions ({len(ignored_collisions)}):")
             for name, paths in ignored_collisions.items():
                 print(f"     '{name}':")
                 for p in paths:
                     print(f"       - {p}")
 
         # Validate all names are valid directory names
-        print("\n5️⃣ Directory Name Validation:")
+        print("\n5⃣ Directory Name Validation:")
         invalid_names = []
         for name in name_map:
             if not re.match(r"^[a-zA-Z0-9][a-zA-Z0-9._-]*$", name):
                 invalid_names.append(name)
 
         if invalid_names:
-            print(f"  ❌ Invalid directory names ({len(invalid_names)}):")
+            print(f"  FAIL: Invalid directory names ({len(invalid_names)}):")
             for name in invalid_names[:5]:
                 print(f"     - '{name}'")
         else:
-            print(f"  ✅ All {len(name_map)} names are valid directory names!")
+            print(f"  PASS: All {len(name_map)} names are valid directory names!")
 
         # Summary
-        print("\n6️⃣ Summary:")
+        print("\n6⃣ Summary:")
         print("-" * 60)
         total = len(all_skill_files)
         unique = len(unique_names) + len(collisions)
@@ -231,11 +231,11 @@ def analyze_skill_locations():
 
         is_pass = len(collisions) == 0 and len(invalid_names) == 0
         if is_pass:
-            print(f"\n  ✅ ALL CHECKS PASSED")
+            print(f"\n  PASS: ALL CHECKS PASSED")
         else:
-            print(f"\n  ⚠️  SOME CHECKS NEED ATTENTION")
+            print(f"\n  WARNING:  SOME CHECKS NEED ATTENTION")
 
-        print("\n✨ Analysis complete!")
+        print("\n Analysis complete!")
 
         return {
             "total": total,
@@ -261,11 +261,11 @@ if __name__ == "__main__":
         print("=" * 60)
 
         if results["passed"]:
-            print("\n✅ V4 FLAT STRUCTURE IS VALID")
+            print("\nPASS: V4 FLAT STRUCTURE IS VALID")
             print("   All names are unique and valid directory names!")
             sys.exit(0)
         else:
-            print("\n⚠️  V4 FLAT STRUCTURE NEEDS FIXES")
+            print("\nWARNING:  V4 FLAT STRUCTURE NEEDS FIXES")
             if results["collisions"] > 0:
                 print(f"   {results['collisions']} name collisions to resolve")
             if results["invalid_names"] > 0:
@@ -275,6 +275,6 @@ if __name__ == "__main__":
     except subprocess.CalledProcessError as exc:
         sys.exit(exc.returncode or 1)
     except Exception as e:
-        print(f"\n❌ Error: {e}", file=sys.stderr)
+        print(f"\nFAIL: Error: {e}", file=sys.stderr)
         traceback.print_exc(file=sys.stderr)
         sys.exit(1)

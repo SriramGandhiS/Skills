@@ -1,4 +1,4 @@
-﻿---
+---
 name: brandkit
 description: Premium brand-kit image generation skill for creating high-end brand-guidelines boards, logo systems, identity decks, and visual-world presentations. Trained for minimalist, cinematic, editorial, dark-tech, luxury, cultural, security, gaming, developer-tool, and consumer-app brand systems. Optimized for intentional logo concepting, refined composition, sparse typography, strong symbolic meaning, premium mockups, art-directed imagery, and flexible grid layouts.
 ---
@@ -27,7 +27,7 @@ Create a complete brand world in one image.
 
 ---
 
-# REFERENCE STYLE DNA
+## REFERENCE STYLE DNA
 
 The desired visual quality is inspired by premium brand-guidelines decks with:
 
@@ -54,7 +54,7 @@ They define the quality bar, restraint, and presentation logic.
 
 ---
 
-# CORE PRINCIPLE
+## CORE PRINCIPLE
 
 A premium brand kit is not decoration.
 
@@ -70,13 +70,13 @@ Every generated board must answer:
 
 ---
 
-# DEFAULT OUTPUT
+## DEFAULT OUTPUT
 
 Unless the user specifies otherwise:
 
 - Generate one brand-kit overview image
 - Default layout: `3 Ã— 3`
-- Default aspect ratio: `4:3` or `16:10`
+- Default aspect ratio: `4:3`or`16:10`
 - Use a clean presentation grid
 - Use consistent gutters
 - Use minimal text
@@ -94,7 +94,7 @@ If the user gives references, match their quality and rhythm, not their exact co
 
 ---
 
-# BRAND STRATEGY FIRST
+## BRAND STRATEGY FIRST
 
 Before generating, infer the brand strategy.
 
@@ -130,7 +130,7 @@ Do not pick symbols randomly.
 
 ---
 
-# LOGO GENERATION STANDARD
+## LOGO GENERATION STANDARD
 
 The logo must be professional.
 
@@ -158,7 +158,7 @@ The logo should feel like it came from research and reduction.
 
 ---
 
-# LOGO CONCEPT METHODS
+## LOGO CONCEPT METHODS
 
 Use one or combine two maximum.
 
@@ -245,7 +245,7 @@ One panel can show construction logic.
 
 ---
 
-# BOARD COMPOSITION DNA
+## BOARD COMPOSITION DNA
 
 A strong brand-kit board should feel like a curated sequence.
 
@@ -269,7 +269,7 @@ The board should have rhythm:
 
 ---
 
-# DEFAULT 3 Ã— 3 PANEL SYSTEM
+## DEFAULT 3 Ã— 3 PANEL SYSTEM
 
 Use this if no layout is specified:
 
@@ -307,7 +307,7 @@ UI chips, input bar, command line, icon row, badge system, component strip, patt
 
 ---
 
-# 2 Ã— 3 REFERENCE-STYLE LAYOUT
+## 2 Ã— 3 REFERENCE-STYLE LAYOUT
 
 For boards like the uploaded references, use:
 
@@ -336,7 +336,7 @@ This layout should feel like a premium mini-deck.
 
 ---
 
-# VISUAL MODES
+## VISUAL MODES
 
 Choose based on the brand.
 
@@ -529,7 +529,7 @@ memorable, creative, still controlled.
 
 ---
 
-# PREMIUM DETAIL LANGUAGE
+## PREMIUM DETAIL LANGUAGE
 
 Use details like:
 - small page numbers
@@ -554,7 +554,7 @@ Premium detail should reward looking closer.
 
 ---
 
-# TEXT RULES
+## TEXT RULES
 
 Use very little text.
 
@@ -578,7 +578,7 @@ Text should be large enough and sparse enough to render well.
 
 ---
 
-# TAGLINE STYLE
+## TAGLINE STYLE
 
 Taglines should be short and specific.
 
@@ -600,7 +600,7 @@ Avoid:
 
 ---
 
-# IMAGE DIRECTION
+## IMAGE DIRECTION
 
 Images should feel art-directed.
 
@@ -627,7 +627,7 @@ Images should match the palette and metaphor.
 
 ---
 
-# MOCKUP DIRECTION
+## MOCKUP DIRECTION
 
 Mockups should be minimal and believable.
 
@@ -658,7 +658,7 @@ Mockups are identity applications, not feature demos.
 
 ---
 
-# COLOR DISCIPLINE
+## COLOR DISCIPLINE
 
 Use one dominant palette.
 
@@ -686,7 +686,7 @@ Rules:
 
 ---
 
-# ANTI-GENERIC RULES
+## ANTI-GENERIC RULES
 
 Never make:
 - random floating icons
@@ -706,7 +706,7 @@ Make the design quieter, sharper, and more intentional.
 
 ---
 
-# REFERENCE USAGE
+## REFERENCE USAGE
 
 When the user provides references:
 
@@ -733,7 +733,7 @@ Use references as quality training, not as templates.
 
 ---
 
-# PROMPT TEMPLATE
+## PROMPT TEMPLATE
 
 Use this structure internally:
 
@@ -777,7 +777,7 @@ professional, symbolic, simple, ownable, based on the brand's purpose, repeated 
 
 ---
 
-# FINAL OUTPUT STANDARD
+## FINAL OUTPUT STANDARD
 
 The image must look like:
 - a premium identity deck

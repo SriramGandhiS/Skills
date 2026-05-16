@@ -39,7 +39,7 @@ REPEAT  → 次のテストケースへ
 User: /go-test メールアドレスを検証する関数が必要です
 
 Agent:
-# TDD セッション: メールバリデーター
+## TDD セッション: メールバリデーター
 
 ## ステップ 1: インターフェースの定義
 
@@ -215,19 +215,19 @@ func setupTestDB(t *testing.T) *sql.DB {
 ## カバレッジコマンド
 
 ```bash
-# 基本的なカバレッジ
+## 基本的なカバレッジ
 go test -cover ./...
 
-# カバレッジプロファイル
+## カバレッジプロファイル
 go test -coverprofile=coverage.out ./...
 
-# ブラウザで表示
+## ブラウザで表示
 go tool cover -html=coverage.out
 
-# 関数ごとのカバレッジ
+## 関数ごとのカバレッジ
 go tool cover -func=coverage.out
 
-# レース検出付き
+## レース検出付き
 go test -race -cover ./...
 ```
 

@@ -1087,8 +1087,8 @@ function extractCurrentMilestone(content, cwd) {
 
   // 2. Fallback: derive version from getMilestoneInfo pattern in ROADMAP.md itself
   if (!version) {
-    // Check for 🚧 in-progress marker
-    const inProgressMatch = content.match(/🚧\s*\*\*v(\d+\.\d+)\s/);
+    // Check for  in-progress marker
+    const inProgressMatch = content.match(/\s*\*\*v(\d+\.\d+)\s/);
     if (inProgressMatch) {
       version = 'v' + inProgressMatch[1];
     }
@@ -1110,7 +1110,7 @@ function extractCurrentMilestone(content, cwd) {
   const sectionStart = sectionMatch.index;
 
   // Find the end: next milestone heading at same or higher level, or EOF.
-  // Milestone headings look like: ## v2.0, ## Roadmap v2.0, ## ✅ v1.0, etc.
+  // Milestone headings look like: ## v2.0, ## Roadmap v2.0, ## PASS: v1.0, etc.
   // Scan line-by-line so that heading-like lines inside fenced code blocks
   // (``` or ~~~) are not mistaken for milestone boundaries. See #2787.
   const headingLevel = sectionMatch[1].match(/^(#{1,3})\s/)[1].length;
@@ -1119,7 +1119,7 @@ function extractCurrentMilestone(content, cwd) {
   // being treated as milestone boundaries just because they mention vX.Y in
   // the title. Phase headings always start with the literal `Phase `. See #2619.
   const nextMilestonePattern = new RegExp(
-    `^#{1,${headingLevel}}\\s+(?!Phase\\s+\\S)(?:.*v\\d+\\.\\d+|✅|📋|🚧)`,
+    `^#{1,${headingLevel}}\\s+(?!Phase\\s+\\S)(?:.*v\\d+\\.\\d+|PASS:||)`,
     'i'
   );
 
@@ -1697,7 +1697,7 @@ function getMilestoneInfo(cwd) {
 
     // 0. Prefer STATE.md milestone: frontmatter as the authoritative source.
     // This prevents falling through to a regex that may match an old heading
-    // when the active milestone's 🚧 marker is inside a <summary> tag without
+    // when the active milestone's  marker is inside a <summary> tag without
     // **bold** formatting (bug #2409).
     let stateVersion = null;
     if (cwd) {
@@ -1719,17 +1719,17 @@ function getMilestoneInfo(cwd) {
         new RegExp(`##[^\\n]*${escapedVer}[:\\s]+([^\\n(]+)`, 'i')
       );
       if (headingMatch) {
-        // If the heading line contains ✅ the milestone is already shipped.
+        // If the heading line contains PASS: the milestone is already shipped.
         // Fall through to normal detection so the NEW active milestone is returned
         // instead of the stale shipped one still recorded in STATE.md.
-        if (!headingMatch[0].includes('✅')) {
+        if (!headingMatch[0].includes('PASS:')) {
           return { version: stateVersion, name: headingMatch[1].trim() };
         }
         // Shipped milestone — do not early-return; fall through to normal detection below.
       } else {
-        // Match list-format: 🚧 **v2.9 Name** or 🚧 v2.9 Name
+        // Match list-format:  **v2.9 Name** or  v2.9 Name
         const listMatch = roadmap.match(
-          new RegExp(`🚧\\s*\\*?\\*?${escapedVer}\\s+([^*\\n]+)`, 'i')
+          new RegExp(`\\s*\\*?\\*?${escapedVer}\\s+([^*\\n]+)`, 'i')
         );
         if (listMatch) {
           return { version: stateVersion, name: listMatch[1].trim() };
@@ -1739,10 +1739,10 @@ function getMilestoneInfo(cwd) {
       }
     }
 
-    // First: check for list-format roadmaps using 🚧 (in-progress) marker
-    // e.g. "- 🚧 **v2.1 Belgium** — Phases 24-28 (in progress)"
-    // e.g. "- 🚧 **v1.2.1 Tech Debt** — Phases 1-8 (in progress)"
-    const inProgressMatch = roadmap.match(/🚧\s*\*\*v(\d+(?:\.\d+)+)\s+([^*]+)\*\*/);
+    // First: check for list-format roadmaps using  (in-progress) marker
+    // e.g. "-  **v2.1 Belgium** — Phases 24-28 (in progress)"
+    // e.g. "-  **v1.2.1 Tech Debt** — Phases 1-8 (in progress)"
+    const inProgressMatch = roadmap.match(/\s*\*\*v(\d+(?:\.\d+)+)\s+([^*]+)\*\*/);
     if (inProgressMatch) {
       return {
         version: 'v' + inProgressMatch[1],
@@ -1751,13 +1751,13 @@ function getMilestoneInfo(cwd) {
     }
 
     // Second: heading-format roadmaps — strip shipped milestones.
-    // <details> blocks are stripped by stripShippedMilestones; heading-format ✅ markers
+    // <details> blocks are stripped by stripShippedMilestones; heading-format PASS: markers
     // are excluded by the negative lookahead below so a stale STATE.md version (or any
-    // shipped ✅ heading) never wins over the first non-shipped milestone heading.
+    // shipped PASS: heading) never wins over the first non-shipped milestone heading.
     const cleaned = stripShippedMilestones(roadmap);
-    // Negative lookahead skips headings that contain ✅ (shipped milestone marker).
+    // Negative lookahead skips headings that contain PASS: (shipped milestone marker).
     // Supports 2+ segment versions: v1.2, v1.2.1, v2.0.1, etc.
-    const headingMatch = cleaned.match(/## (?!.*✅).*v(\d+(?:\.\d+)+)[:\s]+([^\n(]+)/);
+    const headingMatch = cleaned.match(/## (?!.*PASS:).*v(\d+(?:\.\d+)+)[:\s]+([^\n(]+)/);
     if (headingMatch) {
       return {
         version: 'v' + headingMatch[1],
@@ -1805,7 +1805,7 @@ function getMilestonePhaseFilter(cwd, versionOverride) {
         const sectionStart = sectionMatch.index;
         const headingLevel = sectionMatch[1].match(/^(#{1,3})\s/)[1].length;
         const restContent = roadmapContent.slice(sectionStart + sectionMatch[0].length);
-        const nextMilestonePattern = new RegExp(`^#{1,${headingLevel}}\\s+(?!Phase\\s+\\S)(?:.*v\\d+\\.\\d+|✅|📋|🚧)`, 'i');
+        const nextMilestonePattern = new RegExp(`^#{1,${headingLevel}}\\s+(?!Phase\\s+\\S)(?:.*v\\d+\\.\\d+|PASS:||)`, 'i');
 
         let sectionEnd = roadmapContent.length;
         let fenceChar = null;

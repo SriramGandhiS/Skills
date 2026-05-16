@@ -47,11 +47,11 @@ class AuditConsistencyTests(unittest.TestCase):
         (root / "skills_index.json").write_text(json.dumps([{}] * total_skills), encoding="utf-8")
         (root / "README.md").write_text(
             f"""<!-- registry-sync: version=8.4.0; skills={total_skills}; stars=26132; updated_at=2026-03-21T00:00:00+00:00 -->
-# 🌌 Antigravity Awesome Skills: {count_label} Agentic Skills for Claude Code, Gemini CLI, Cursor, Copilot & More
+# Antigravity Awesome Skills: {count_label} Agentic Skills for Claude Code, Gemini CLI, Cursor, Copilot & More
 
 > **Installable GitHub library of {count_label} agentic skills for Claude Code, Cursor, Codex CLI, Gemini CLI, Antigravity, and other AI coding assistants.**
 
-[![GitHub stars](https://img.shields.io/badge/⭐%2026%2C000%2B%20Stars-gold?style=for-the-badge)](https://github.com/sickn33/antigravity-awesome-skills/stargazers)
+[![GitHub stars](https://img.shields.io/badge/%2026%2C000%2B%20Stars-gold?style=for-the-badge)](https://github.com/sickn33/antigravity-awesome-skills/stargazers)
 
 **Current release: V8.4.0.** Trusted by 26k+ GitHub stargazers, this repository combines official and community skill collections with bundles, workflows, installation paths, and docs that help you go from first install to daily use quickly.
 
@@ -74,7 +74,7 @@ If you want a faster answer than "browse all {count_label} skills", start with a
             encoding="utf-8",
         )
         (root / "docs" / "users" / "usage.md").write_text(
-            f"✅ **Downloaded {count_label} skill files**\n- You installed a toolbox with {count_label} tools\nDon't try to use all {count_label} skills at once.\nNo. Even though you have {count_label} skills installed locally\n",
+            f"PASS: **Downloaded {count_label} skill files**\n- You installed a toolbox with {count_label} tools\nDon't try to use all {count_label} skills at once.\nNo. Even though you have {count_label} skills installed locally\n",
             encoding="utf-8",
         )
         (root / "docs" / "users" / "visual-guide.md").write_text(
@@ -82,7 +82,7 @@ If you want a faster answer than "browse all {count_label} skills", start with a
             encoding="utf-8",
         )
         (root / "docs" / "users" / "bundles.md").write_text(
-            f'### 🚀 The "Essentials" Pack\n_Last updated: March 2026 | Total Skills: {count_label} | Total Bundles: 1_\n',
+            f'###  The "Essentials" Pack\n_Last updated: March 2026 | Total Skills: {count_label} | Total Bundles: 1_\n',
             encoding="utf-8",
         )
         (root / "docs" / "users" / "kiro-integration.md").write_text(
@@ -120,7 +120,7 @@ If you want a faster answer than "browse all {count_label} skills", start with a
             root = Path(temp_dir)
             self.write_repo_state(root, count_label="1,304+")
             (root / "docs" / "users" / "usage.md").write_text(
-                "✅ **Downloaded 1,273+ skill files**\n",
+                "PASS: **Downloaded 1,273+ skill files**\n",
                 encoding="utf-8",
             )
 

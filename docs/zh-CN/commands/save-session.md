@@ -34,9 +34,9 @@ mkdir -p ~/.claude/session-data
 
 ### 步骤 3：写入会话文件
 
-创建 `~/.claude/session-data/YYYY-MM-DD-<short-id>-session.tmp`，使用今天的实际日期和一个满足 `session-manager.js` 中 `SESSION_FILENAME_REGEX` 强制规则的短 ID：
+创建 `~/.claude/session-data/YYYY-MM-DD-<short-id>-session.tmp`，使用今天的实际日期和一个满足`session-manager.js`中`SESSION_FILENAME_REGEX` 强制规则的短 ID：
 
-* 允许的字符：小写 `a-z`，数字 `0-9`，连字符 `-`
+* 允许的字符：小写 `a-z`，数字`0-9`，连字符`-`
 * 最小长度：8 个字符
 * 不允许大写字母、下划线、空格
 
@@ -68,7 +68,7 @@ mkdir -p ~/.claude/session-data
 ## 会话文件格式
 
 ```markdown
-# 会话：YYYY-MM-DD
+## 会话：YYYY-MM-DD
 
 **开始时间：** [若已知大致时间]
 **最后更新：** [当前时间]
@@ -171,7 +171,7 @@ mkdir -p ~/.claude/session-data
 ## 示例输出
 
 ```markdown
-# 会话：2024-01-15
+## 会话：2024-01-15
 
 **开始时间：** ~下午2点
 **最后更新：** 下午5:30
@@ -189,7 +189,7 @@ mkdir -p ~/.claude/session-data
 ## 哪些工作有效（附证据）
 
 - **`/api/auth/register` 端点** — 确认依据：Postman POST 请求返回 200 并包含用户对象，Supabase 仪表板中可见行记录，bcrypt 哈希正确存储
-- **在 `lib/auth.ts` 中生成 JWT** — 确认依据：单元测试通过 (`npm test -- auth.test.ts`)，在 jwt.io 解码的令牌显示正确的负载
+- **在 `lib/auth.ts`中生成 JWT** — 确认依据：单元测试通过 (`npm test -- auth.test.ts`)，在 jwt.io 解码的令牌显示正确的负载
 - **密码哈希** — 确认依据：`bcrypt.compare()` 在测试中返回 true
 
 ---
@@ -204,7 +204,7 @@ mkdir -p ~/.claude/session-data
 ## 尚未尝试的事项
 
 - 在登录路由响应中将 JWT 存储为 httpOnly cookie（最可能的解决方案）
-- 使用 `cookies()` 从 `next/headers` 中读取服务器组件中的令牌
+- 使用 `cookies()`从`next/headers` 中读取服务器组件中的令牌
 - 编写 middleware.ts 通过检查 cookie 是否存在来保护路由
 
 ---
@@ -236,7 +236,7 @@ mkdir -p ~/.claude/session-data
 
 ## 确切下一步
 
-在 `app/api/auth/login/route.ts` 中，生成 JWT 后，使用 `cookies().set('token', jwt, { httpOnly: true, secure: true, sameSite: 'strict' })` 将其设置为 httpOnly cookie。
+在 `app/api/auth/login/route.ts`中，生成 JWT 后，使用`cookies().set('token', jwt, { httpOnly: true, secure: true, sameSite: 'strict' })` 将其设置为 httpOnly cookie。
 然后用 Postman 测试 — 响应应包含一个 `Set-Cookie` 头。
 ```
 

@@ -21,7 +21,7 @@ origin: ECC
 ### 标准 Web 应用栈
 
 ```yaml
-# docker-compose.yml
+## docker-compose.yml
 services:
   app:
     build:
@@ -81,13 +81,13 @@ volumes:
 ### 开发与生产 Dockerfile
 
 ```dockerfile
-# Stage: dependencies
+## Stage: dependencies
 FROM node:22-alpine AS deps
 WORKDIR /app
 COPY package.json package-lock.json ./
 RUN npm ci
 
-# Stage: dev (hot reload, debug tools)
+## Stage: dev (hot reload, debug tools)
 FROM node:22-alpine AS dev
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
@@ -95,14 +95,14 @@ COPY . .
 EXPOSE 3000
 CMD ["npm", "run", "dev"]
 
-# Stage: build
+## Stage: build
 FROM node:22-alpine AS build
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 RUN npm run build && npm prune --production
 
-# Stage: production (minimal image)
+## Stage: production (minimal image)
 FROM node:22-alpine AS production
 WORKDIR /app
 RUN addgroup -g 1001 -S appgroup && adduser -S appuser -u 1001
@@ -112,14 +112,14 @@ COPY --from=build --chown=appuser:appgroup /app/node_modules ./node_modules
 COPY --from=build --chown=appuser:appgroup /app/package.json ./
 ENV NODE_ENV=production
 EXPOSE 3000
-HEALTHCHECK --interval=30s --timeout=3s CMD wget -qO- http://localhost:3000/health || exit 1
+HEALTHCHECK --interval=30s --timeout=3s CMD wget -qO- <http://localhost:3000/health> || exit 1
 CMD ["node", "dist/server.js"]
 ```
 
 ### 覆盖文件
 
 ```yaml
-# docker-compose.override.yml (auto-loaded, dev-only settings)
+## docker-compose.override.yml (auto-loaded, dev-only settings)
 services:
   app:
     environment:
@@ -128,7 +128,7 @@ services:
     ports:
       - "9229:9229"                   # Node.js debugger
 
-# docker-compose.prod.yml (explicit for production)
+## docker-compose.prod.yml (explicit for production)
 services:
   app:
     build:
@@ -142,10 +142,10 @@ services:
 ```
 
 ```bash
-# Development (auto-loads override)
+## Development (auto-loads override)
 docker compose up
 
-# Production
+## Production
 docker compose -f docker-compose.yml -f docker-compose.prod.yml up -d
 ```
 
@@ -156,7 +156,7 @@ docker compose -f docker-compose.yml -f docker-compose.prod.yml up -d
 同一 Compose 网络中的服务可通过服务名解析：
 
 ```
-# 从 "app" 容器：
+## 从 "app" 容器：
 postgres://postgres:postgres@db:5432/app_dev    # "db" 解析到 db 容器
 redis://redis:6379/0                             # "redis" 解析到 redis 容器
 ```
@@ -228,16 +228,16 @@ services:
 ### Dockerfile 加固
 
 ```dockerfile
-# 1. Use specific tags (never :latest)
+## 1. Use specific tags (never :latest)
 FROM node:22.12-alpine3.20
 
-# 2. Run as non-root
+## 2. Run as non-root
 RUN addgroup -g 1001 -S app && adduser -S app -u 1001
 USER app
 
-# 3. Drop capabilities (in compose)
-# 4. Read-only root filesystem where possible
-# 5. No secrets in image layers
+## 3. Drop capabilities (in compose)
+## 4. Read-only root filesystem where possible
+## 5. No secrets in image layers
 ```
 
 ### Compose 安全
@@ -260,7 +260,7 @@ services:
 ### 密钥管理
 
 ```yaml
-# GOOD: Use environment variables (injected at runtime)
+## GOOD: Use environment variables (injected at runtime)
 services:
   app:
     env_file:
@@ -268,7 +268,7 @@ services:
     environment:
       - API_KEY                  # Inherits from host environment
 
-# GOOD: Docker secrets (Swarm mode)
+## GOOD: Docker secrets (Swarm mode)
 secrets:
   db_password:
     file: ./secrets/db_password.txt
@@ -278,8 +278,8 @@ services:
     secrets:
       - db_password
 
-# BAD: Hardcoded in image
-# ENV API_KEY=sk-proj-xxxxx      # NEVER DO THIS
+## BAD: Hardcoded in image
+## ENV API_KEY=sk-proj-xxxxx      # NEVER DO THIS
 ```
 
 ## .dockerignore
@@ -305,24 +305,24 @@ tests/
 ### 常用命令
 
 ```bash
-# View logs
+## View logs
 docker compose logs -f app           # Follow app logs
 docker compose logs --tail=50 db     # Last 50 lines from db
 
-# Execute commands in running container
+## Execute commands in running container
 docker compose exec app sh           # Shell into app
 docker compose exec db psql -U postgres  # Connect to postgres
 
-# Inspect
+## Inspect
 docker compose ps                     # Running services
 docker compose top                    # Processes in each container
 docker stats                          # Resource usage
 
-# Rebuild
+## Rebuild
 docker compose up --build             # Rebuild images
 docker compose build --no-cache app   # Force full rebuild
 
-# Clean up
+## Clean up
 docker compose down                   # Stop and remove containers
 docker compose down -v                # Also remove volumes (DESTRUCTIVE)
 docker system prune                   # Remove unused images/containers
@@ -331,13 +331,13 @@ docker system prune                   # Remove unused images/containers
 ### 调试网络问题
 
 ```bash
-# Check DNS resolution inside container
+## Check DNS resolution inside container
 docker compose exec app nslookup db
 
-# Check connectivity
-docker compose exec app wget -qO- http://api:3000/health
+## Check connectivity
+docker compose exec app wget -qO- <http://api:3000/health>
 
-# Inspect network
+## Inspect network
 docker network ls
 docker network inspect <project>_default
 ```
@@ -345,21 +345,21 @@ docker network inspect <project>_default
 ## 反模式
 
 ```
-# 错误做法：在生产环境中使用 docker compose 而不进行编排
-# 生产环境多容器工作负载应使用 Kubernetes、ECS 或 Docker Swarm
+## 错误做法：在生产环境中使用 docker compose 而不进行编排
+## 生产环境多容器工作负载应使用 Kubernetes、ECS 或 Docker Swarm
 
-# 错误做法：在容器内存储数据而不使用卷
-# 容器是临时性的——不使用卷时，重启会导致所有数据丢失
+## 错误做法：在容器内存储数据而不使用卷
+## 容器是临时性的——不使用卷时，重启会导致所有数据丢失
 
-# 错误做法：以 root 用户身份运行
-# 始终创建并使用非 root 用户
+## 错误做法：以 root 用户身份运行
+## 始终创建并使用非 root 用户
 
-# 错误做法：使用 :latest 标签
-# 固定到特定版本以实现可复现的构建
+## 错误做法：使用 :latest 标签
+## 固定到特定版本以实现可复现的构建
 
-# 错误做法：将所有服务放入一个巨型容器
-# 关注点分离：每个容器运行一个进程
+## 错误做法：将所有服务放入一个巨型容器
+## 关注点分离：每个容器运行一个进程
 
-# 错误做法：将密钥放入 docker-compose.yml
-# 使用 .env 文件（在 git 中忽略）或 Docker secrets
+## 错误做法：将密钥放入 docker-compose.yml
+## 使用 .env 文件（在 git 中忽略）或 Docker secrets
 ```

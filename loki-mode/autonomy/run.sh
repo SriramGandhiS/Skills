@@ -6,146 +6,126 @@
 #===============================================================================
 # Loki Mode - Autonomous Runner
 # Single script that handles prerequisites, setup, and autonomous execution
-#
-# Usage:
-#   ./autonomy/run.sh [OPTIONS] [PRD_PATH]
-#   ./autonomy/run.sh ./docs/requirements.md
-#   ./autonomy/run.sh                          # Interactive mode
-#   ./autonomy/run.sh --parallel               # Parallel mode with git worktrees
-#   ./autonomy/run.sh --parallel ./prd.md      # Parallel mode with PRD
-#
-# Environment Variables:
-#   LOKI_PROVIDER       - AI provider: claude (default), codex, gemini
-#   LOKI_MAX_RETRIES    - Max retry attempts (default: 50)
-#   LOKI_BASE_WAIT      - Base wait time in seconds (default: 60)
-#   LOKI_MAX_WAIT       - Max wait time in seconds (default: 3600)
-#   LOKI_SKIP_PREREQS   - Skip prerequisite checks (default: false)
-#   LOKI_DASHBOARD      - Enable web dashboard (default: true)
-#   LOKI_DASHBOARD_PORT - Dashboard port (default: 57374)
-#   LOKI_TLS_CERT       - Path to PEM certificate (enables HTTPS for dashboard)
-#   LOKI_TLS_KEY        - Path to PEM private key (enables HTTPS for dashboard)
-#
-# Resource Monitoring (prevents system overload):
-#   LOKI_RESOURCE_CHECK_INTERVAL - Check resources every N seconds (default: 300 = 5min)
-#   LOKI_RESOURCE_CPU_THRESHOLD  - CPU % threshold to warn (default: 80)
-#   LOKI_RESOURCE_MEM_THRESHOLD  - Memory % threshold to warn (default: 80)
-#
-# Budget / Cost Limits (opt-in):
-#   LOKI_BUDGET_LIMIT            - Max USD spend before auto-pause (default: empty = unlimited)
-#                                  Example: "50.00" pauses session when estimated cost >= $50
-#
-# Security & Autonomy Controls (Enterprise):
-#   LOKI_STAGED_AUTONOMY    - Require approval before execution (default: false)
-#   LOKI_AUDIT_LOG          - Enable audit logging (default: true)
-#   LOKI_AUDIT_DISABLED     - Disable audit logging (default: false)
-#   LOKI_MAX_PARALLEL_AGENTS - Limit concurrent agent spawning (default: 10)
-#   LOKI_SANDBOX_MODE       - Run in sandboxed container (default: false, requires Docker)
-#   LOKI_ALLOWED_PATHS      - Comma-separated paths agents can modify (default: all)
-#   LOKI_BLOCKED_COMMANDS   - Comma-separated blocked shell commands (default: rm -rf /)
-#
-# OIDC / SSO Authentication (optional, works alongside token auth):
-#   LOKI_OIDC_ISSUER        - OIDC issuer URL (e.g., https://accounts.google.com)
-#   LOKI_OIDC_CLIENT_ID     - OIDC client/application ID
-#   LOKI_OIDC_AUDIENCE      - Expected JWT audience (default: same as client_id)
-#
-# SDLC Phase Controls (all enabled by default, set to 'false' to skip):
-#   LOKI_PHASE_UNIT_TESTS      - Run unit tests (default: true)
-#   LOKI_PHASE_API_TESTS       - Functional API testing (default: true)
-#   LOKI_PHASE_E2E_TESTS       - E2E/UI testing with Playwright (default: true)
-#   LOKI_PHASE_SECURITY        - Security scanning OWASP/auth (default: true)
-#   LOKI_PHASE_INTEGRATION     - Integration tests SAML/OIDC/SSO (default: true)
-#   LOKI_PHASE_CODE_REVIEW     - 3-reviewer parallel code review (default: true)
-#   LOKI_PHASE_WEB_RESEARCH    - Competitor/feature gap research (default: true)
-#   LOKI_PHASE_PERFORMANCE     - Load/performance testing (default: true)
-#   LOKI_PHASE_ACCESSIBILITY   - WCAG compliance testing (default: true)
-#   LOKI_PHASE_REGRESSION      - Regression testing (default: true)
-#   LOKI_PHASE_UAT             - UAT simulation (default: true)
-#
-# Autonomous Loop Controls (Ralph Wiggum Mode):
-#   LOKI_COMPLETION_PROMISE    - EXPLICIT stop condition text (default: none - runs forever)
-#                                Example: "ALL TESTS PASSING 100%"
-#                                Only stops when the AI provider outputs this EXACT text
-#   LOKI_MAX_ITERATIONS        - Max loop iterations before exit (default: 1000)
-#   LOKI_PERPETUAL_MODE        - Ignore ALL completion signals (default: false)
-#                                Set to 'true' for truly infinite operation
-#
-# Completion Council (v5.25.0) - Multi-agent completion verification:
-#   LOKI_COUNCIL_ENABLED          - Enable completion council (default: true)
-#   LOKI_COUNCIL_SIZE             - Number of council members (default: 3)
-#   LOKI_COUNCIL_THRESHOLD        - Votes needed for completion (default: 2)
-#   LOKI_COUNCIL_CHECK_INTERVAL   - Check every N iterations (default: 5)
-#   LOKI_COUNCIL_MIN_ITERATIONS   - Min iterations before council runs (default: 3)
-#   LOKI_COUNCIL_STAGNATION_LIMIT - Max iterations with no git changes (default: 5)
-#
-# Model Selection:
-#   LOKI_ALLOW_HAIKU           - Enable Haiku model for fast tier (default: false)
-#                                When false: Opus for dev/bugfix, Sonnet for tests/docs
-#                                When true:  Sonnet for dev, Haiku for tests/docs (original)
-#                                Use --allow-haiku flag or set to 'true'
-#
-# 2026 Research Enhancements:
-#   LOKI_PROMPT_REPETITION     - Enable prompt repetition for Haiku agents (default: true)
-#                                arXiv 2512.14982v1: Improves accuracy 4-5x on structured tasks
-#   LOKI_CONFIDENCE_ROUTING    - Enable confidence-based routing (default: true)
-#                                HN Production: 4-tier routing (auto-approve, direct, supervisor, escalate)
-#   LOKI_AUTONOMY_MODE         - Autonomy level (default: perpetual)
-#                                Options: perpetual, checkpoint, supervised
-#                                Tim Dettmers: "Shorter bursts of autonomy with feedback loops"
-#
-# Parallel Workflows (Git Worktrees):
-#   LOKI_PARALLEL_MODE         - Enable git worktree-based parallelism (default: false)
-#                                Use --parallel flag or set to 'true'
-#   LOKI_MAX_WORKTREES         - Maximum parallel worktrees (default: 5)
-#   LOKI_MAX_PARALLEL_SESSIONS - Maximum concurrent AI sessions (default: 3)
-#   LOKI_PARALLEL_TESTING      - Run testing stream in parallel (default: true)
-#   LOKI_PARALLEL_DOCS         - Run documentation stream in parallel (default: true)
-#   LOKI_PARALLEL_BLOG         - Run blog stream if site has blog (default: false)
-#   LOKI_AUTO_MERGE            - Auto-merge completed features (default: true)
-#
-# Complexity Tiers (Auto-Claude pattern):
-#   LOKI_COMPLEXITY            - Force complexity tier (default: auto)
-#                                Options: auto, simple, standard, complex
-#   Simple (3 phases):   1-2 files, single service, UI fixes, text changes
-#   Standard (6 phases): 3-10 files, 1-2 services, features, bug fixes
-#   Complex (8 phases):  10+ files, multiple services, external integrations
-#
-# GitHub Integration (v4.1.0):
-#   LOKI_GITHUB_IMPORT   - Import open issues as tasks (default: false)
-#   LOKI_GITHUB_PR       - Create PR when feature complete (default: false)
-#   LOKI_GITHUB_SYNC     - Sync status back to issues (default: false)
-#   LOKI_GITHUB_REPO     - Override repo detection (default: from git remote)
-#   LOKI_GITHUB_LABELS   - Filter by labels (comma-separated)
-#   LOKI_GITHUB_MILESTONE - Filter by milestone
-#   LOKI_GITHUB_ASSIGNEE - Filter by assignee
-#   LOKI_GITHUB_LIMIT    - Max issues to import (default: 100)
-#   LOKI_GITHUB_PR_LABEL - Label for PRs (default: none, avoids error if label missing)
-#
-# Desktop Notifications (v4.1.0):
-#   LOKI_NOTIFICATIONS   - Enable desktop notifications (default: true)
-#   LOKI_NOTIFICATION_SOUND - Play sound with notifications (default: true)
-#
-# Human Intervention (Auto-Claude pattern):
-#   PAUSE file:          touch .loki/PAUSE - pauses after current session
-#   HUMAN_INPUT.md:      echo "instructions" > .loki/HUMAN_INPUT.md
-#   STOP file:           touch .loki/STOP - stops immediately
-#   Ctrl+C (once):       Pauses execution, shows options
-#   Ctrl+C (twice):      Exits immediately
-#
-# Security (Enterprise):
-#   LOKI_PROMPT_INJECTION - Enable HUMAN_INPUT.md processing (default: false)
-#                           Set to "true" only in trusted environments
-#
-# Branch Protection (agent isolation):
-#   LOKI_BRANCH_PROTECTION     - Create feature branch for agent changes (default: false)
-#                                Agent works on loki/session-<timestamp>-<pid> branch
-#                                Creates PR on session end if gh CLI is available
-#
-# Process Supervision (opt-in):
-#   LOKI_WATCHDOG              - Enable process health monitoring (default: false)
-#   LOKI_WATCHDOG_INTERVAL     - Check interval in seconds (default: 30)
+# # Usage:
+# ./autonomy/run.sh [OPTIONS] [PRD_PATH]
+# ./autonomy/run.sh ./docs/requirements.md
+# ./autonomy/run.sh                          # Interactive mode
+# ./autonomy/run.sh --parallel               # Parallel mode with git worktrees
+# ./autonomy/run.sh --parallel ./prd.md      # Parallel mode with PRD
+# # Environment Variables:
+# LOKI_PROVIDER       - AI provider: claude (default), codex, gemini
+# LOKI_MAX_RETRIES    - Max retry attempts (default: 50)
+# LOKI_BASE_WAIT      - Base wait time in seconds (default: 60)
+# LOKI_MAX_WAIT       - Max wait time in seconds (default: 3600)
+# LOKI_SKIP_PREREQS   - Skip prerequisite checks (default: false)
+# LOKI_DASHBOARD      - Enable web dashboard (default: true)
+# LOKI_DASHBOARD_PORT - Dashboard port (default: 57374)
+# LOKI_TLS_CERT       - Path to PEM certificate (enables HTTPS for dashboard)
+# LOKI_TLS_KEY        - Path to PEM private key (enables HTTPS for dashboard)
+# # Resource Monitoring (prevents system overload):
+# LOKI_RESOURCE_CHECK_INTERVAL - Check resources every N seconds (default: 300 = 5min)
+# LOKI_RESOURCE_CPU_THRESHOLD  - CPU % threshold to warn (default: 80)
+# LOKI_RESOURCE_MEM_THRESHOLD  - Memory % threshold to warn (default: 80)
+# # Budget / Cost Limits (opt-in):
+# LOKI_BUDGET_LIMIT            - Max USD spend before auto-pause (default: empty = unlimited)
+# Example: "50.00" pauses session when estimated cost >= $50
+# # Security & Autonomy Controls (Enterprise):
+# LOKI_STAGED_AUTONOMY    - Require approval before execution (default: false)
+# LOKI_AUDIT_LOG          - Enable audit logging (default: true)
+# LOKI_AUDIT_DISABLED     - Disable audit logging (default: false)
+# LOKI_MAX_PARALLEL_AGENTS - Limit concurrent agent spawning (default: 10)
+# LOKI_SANDBOX_MODE       - Run in sandboxed container (default: false, requires Docker)
+# LOKI_ALLOWED_PATHS      - Comma-separated paths agents can modify (default: all)
+# LOKI_BLOCKED_COMMANDS   - Comma-separated blocked shell commands (default: rm -rf /)
+# # OIDC / SSO Authentication (optional, works alongside token auth):
+# LOKI_OIDC_ISSUER        - OIDC issuer URL (e.g., https://accounts.google.com)
+# LOKI_OIDC_CLIENT_ID     - OIDC client/application ID
+# LOKI_OIDC_AUDIENCE      - Expected JWT audience (default: same as client_id)
+# # SDLC Phase Controls (all enabled by default, set to 'false' to skip):
+# LOKI_PHASE_UNIT_TESTS      - Run unit tests (default: true)
+# LOKI_PHASE_API_TESTS       - Functional API testing (default: true)
+# LOKI_PHASE_E2E_TESTS       - E2E/UI testing with Playwright (default: true)
+# LOKI_PHASE_SECURITY        - Security scanning OWASP/auth (default: true)
+# LOKI_PHASE_INTEGRATION     - Integration tests SAML/OIDC/SSO (default: true)
+# LOKI_PHASE_CODE_REVIEW     - 3-reviewer parallel code review (default: true)
+# LOKI_PHASE_WEB_RESEARCH    - Competitor/feature gap research (default: true)
+# LOKI_PHASE_PERFORMANCE     - Load/performance testing (default: true)
+# LOKI_PHASE_ACCESSIBILITY   - WCAG compliance testing (default: true)
+# LOKI_PHASE_REGRESSION      - Regression testing (default: true)
+# LOKI_PHASE_UAT             - UAT simulation (default: true)
+# # Autonomous Loop Controls (Ralph Wiggum Mode):
+# LOKI_COMPLETION_PROMISE    - EXPLICIT stop condition text (default: none - runs forever)
+# Example: "ALL TESTS PASSING 100%"
+# Only stops when the AI provider outputs this EXACT text
+# LOKI_MAX_ITERATIONS        - Max loop iterations before exit (default: 1000)
+# LOKI_PERPETUAL_MODE        - Ignore ALL completion signals (default: false)
+# Set to 'true' for truly infinite operation
+# # Completion Council (v5.25.0) - Multi-agent completion verification:
+# LOKI_COUNCIL_ENABLED          - Enable completion council (default: true)
+# LOKI_COUNCIL_SIZE             - Number of council members (default: 3)
+# LOKI_COUNCIL_THRESHOLD        - Votes needed for completion (default: 2)
+# LOKI_COUNCIL_CHECK_INTERVAL   - Check every N iterations (default: 5)
+# LOKI_COUNCIL_MIN_ITERATIONS   - Min iterations before council runs (default: 3)
+# LOKI_COUNCIL_STAGNATION_LIMIT - Max iterations with no git changes (default: 5)
+# # Model Selection:
+# LOKI_ALLOW_HAIKU           - Enable Haiku model for fast tier (default: false)
+# When false: Opus for dev/bugfix, Sonnet for tests/docs
+# When true:  Sonnet for dev, Haiku for tests/docs (original)
+# Use --allow-haiku flag or set to 'true'
+# # 2026 Research Enhancements:
+# LOKI_PROMPT_REPETITION     - Enable prompt repetition for Haiku agents (default: true)
+# arXiv 2512.14982v1: Improves accuracy 4-5x on structured tasks
+# LOKI_CONFIDENCE_ROUTING    - Enable confidence-based routing (default: true)
+# HN Production: 4-tier routing (auto-approve, direct, supervisor, escalate)
+# LOKI_AUTONOMY_MODE         - Autonomy level (default: perpetual)
+# Options: perpetual, checkpoint, supervised
+# Tim Dettmers: "Shorter bursts of autonomy with feedback loops"
+# # Parallel Workflows (Git Worktrees):
+# LOKI_PARALLEL_MODE         - Enable git worktree-based parallelism (default: false)
+# Use --parallel flag or set to 'true'
+# LOKI_MAX_WORKTREES         - Maximum parallel worktrees (default: 5)
+# LOKI_MAX_PARALLEL_SESSIONS - Maximum concurrent AI sessions (default: 3)
+# LOKI_PARALLEL_TESTING      - Run testing stream in parallel (default: true)
+# LOKI_PARALLEL_DOCS         - Run documentation stream in parallel (default: true)
+# LOKI_PARALLEL_BLOG         - Run blog stream if site has blog (default: false)
+# LOKI_AUTO_MERGE            - Auto-merge completed features (default: true)
+# # Complexity Tiers (Auto-Claude pattern):
+# LOKI_COMPLEXITY            - Force complexity tier (default: auto)
+# Options: auto, simple, standard, complex
+# Simple (3 phases):   1-2 files, single service, UI fixes, text changes
+# Standard (6 phases): 3-10 files, 1-2 services, features, bug fixes
+# Complex (8 phases):  10+ files, multiple services, external integrations
+# # GitHub Integration (v4.1.0):
+# LOKI_GITHUB_IMPORT   - Import open issues as tasks (default: false)
+# LOKI_GITHUB_PR       - Create PR when feature complete (default: false)
+# LOKI_GITHUB_SYNC     - Sync status back to issues (default: false)
+# LOKI_GITHUB_REPO     - Override repo detection (default: from git remote)
+# LOKI_GITHUB_LABELS   - Filter by labels (comma-separated)
+# LOKI_GITHUB_MILESTONE - Filter by milestone
+# LOKI_GITHUB_ASSIGNEE - Filter by assignee
+# LOKI_GITHUB_LIMIT    - Max issues to import (default: 100)
+# LOKI_GITHUB_PR_LABEL - Label for PRs (default: none, avoids error if label missing)
+# # Desktop Notifications (v4.1.0):
+# LOKI_NOTIFICATIONS   - Enable desktop notifications (default: true)
+# LOKI_NOTIFICATION_SOUND - Play sound with notifications (default: true)
+# # Human Intervention (Auto-Claude pattern):
+# PAUSE file:          touch .loki/PAUSE - pauses after current session
+# HUMAN_INPUT.md:      echo "instructions" > .loki/HUMAN_INPUT.md
+# STOP file:           touch .loki/STOP - stops immediately
+# Ctrl+C (once):       Pauses execution, shows options
+# Ctrl+C (twice):      Exits immediately
+# # Security (Enterprise):
+# LOKI_PROMPT_INJECTION - Enable HUMAN_INPUT.md processing (default: false)
+# Set to "true" only in trusted environments
+# # Branch Protection (agent isolation):
+# LOKI_BRANCH_PROTECTION     - Create feature branch for agent changes (default: false)
+# Agent works on loki/session-<timestamp>-<pid> branch
+# Creates PR on session end if gh CLI is available
+# # Process Supervision (opt-in):
+# LOKI_WATCHDOG              - Enable process health monitoring (default: false)
+# LOKI_WATCHDOG_INTERVAL     - Check interval in seconds (default: 30)
 #===============================================================================
-#
-# Compatibility: bash 3.2+ (macOS default), bash 4+ (Linux), WSL
+# # Compatibility: bash 3.2+ (macOS default), bash 4+ (Linux), WSL
 # Parallel mode (--parallel) requires bash 4.0+ for associative arrays
 #===============================================================================
 
@@ -477,15 +457,14 @@ parse_yaml_with_yq() {
 load_config_file
 
 # Load JSON settings from loki config set (v6.0.0)
-#
-# SECURITY NOTE (v7.5.10, L12#2 audit): The eval below is intentional and safe.
+# # SECURITY NOTE (v7.5.10, L12#2 audit): The eval below is intentional and safe.
 # The Python script's output is constrained to a fixed template:
-#     [ -z "${VAR:-}" ] && export VAR=<value>
+# [ -z "${VAR:-}" ] && export VAR=<value>
 # where:
-#   - VAR is a hardcoded env var name from the `mapping` dict (NOT user-controlled).
-#   - <value> is produced by shlex.quote(), which emits POSIX-shell-safe single-
-#     quoted strings even for adversarial input (e.g. quotes, semicolons, $()).
-#   - Non-string values from settings.json are skipped (isinstance check).
+# - VAR is a hardcoded env var name from the `mapping` dict (NOT user-controlled).
+# - <value> is produced by shlex.quote(), which emits POSIX-shell-safe single-
+# quoted strings even for adversarial input (e.g. quotes, semicolons, $()).
+# - Non-string values from settings.json are skipped (isinstance check).
 # Therefore no user-controlled bytes can break out of the quoted value or alter
 # the surrounding shell syntax. Do NOT remove the shlex.quote() call or relax
 # the isinstance(val, str) guard without re-auditing this eval.
@@ -1490,10 +1469,10 @@ get_phase_names() {
 # Dynamic Tier Selection (RARV-aware model routing)
 #===============================================================================
 # Maps RARV cycle phases to optimal model tiers:
-#   - Reason phase  -> planning tier (opus/xhigh/high)
-#   - Act phase     -> development tier (sonnet/high/medium)
-#   - Reflect phase -> development tier (sonnet/high/medium)
-#   - Verify phase  -> fast tier (haiku/low/low)
+# - Reason phase  -> planning tier (opus/xhigh/high)
+# - Act phase     -> development tier (sonnet/high/medium)
+# - Reflect phase -> development tier (sonnet/high/medium)
+# - Verify phase  -> fast tier (haiku/low/low)
 
 # Global tier for current iteration (set by get_rarv_tier)
 CURRENT_TIER="development"
@@ -5921,8 +5900,7 @@ except (json.JSONDecodeError, FileNotFoundError, OSError):
 # indefinitely. Uses `timeout` on Linux, `gtimeout` (coreutils) on macOS,
 # and degrades gracefully if neither is available (logs a warning, runs
 # unbounded). Configurable via LOKI_PYTEST_TIMEOUT (default 300s).
-#
-# Usage: _loki_run_pytest_with_timeout <target_dir> [pytest_args...]
+# # Usage: _loki_run_pytest_with_timeout <target_dir> [pytest_args...]
 # Stdout: combined pytest output
 # Exit: 0 on pass, non-zero on fail. Exit 124 indicates the timeout fired.
 _loki_run_pytest_with_timeout() {
@@ -8345,15 +8323,13 @@ except Exception:
 # The tool writes a payload to .loki/signals/TASK_COMPLETION_CLAIMED with the
 # structured completion claim. When the signal exists, we read it, log the
 # structured event, and consume (remove) the file. Returns 0 on detection.
-#
-# v7.4.17: also accepts a file-based fallback at .loki/signals/
+# # v7.4.17: also accepts a file-based fallback at .loki/signals/
 # COMPLETION_REQUESTED -- the LLM can `touch` this file directly when the
 # MCP tool isn't surfaced in its environment (e.g., harness limitations,
 # Codex CLI, Gemini CLI). User reproduction: the LLM said "the
 # loki_complete_task MCP tool isn't loaded in this environment" and
 # tried to signal completion via state files; we now honor that.
-#
-# Output on stdout: the JSON payload (for callers that want to log it).
+# # Output on stdout: the JSON payload (for callers that want to log it).
 check_task_completion_signal() {
     local signal_file=".loki/signals/TASK_COMPLETION_CLAIMED"
     local fallback_file=".loki/signals/COMPLETION_REQUESTED"
@@ -8433,8 +8409,7 @@ except Exception:
 }
 
 # Check if completion promise is fulfilled in log output.
-#
-# As of v6.82.0, the default path is the MCP tool `loki_complete_task`
+# # As of v6.82.0, the default path is the MCP tool `loki_complete_task`
 # (detected via check_task_completion_signal above). The legacy grep-based
 # detection is retained behind LOKI_LEGACY_COMPLETION_MATCH=true for rollback.
 check_completion_promise() {
@@ -9967,7 +9942,7 @@ purge_openspec_from_queue() {
 
 # Populate the task queue from OpenSpec task artifacts.
 # The sentinel .loki/queue/.openspec-populated is scoped per change:
-#   line 1 = change path, line 2 = content hash of openspec-tasks.json.
+# line 1 = change path, line 2 = content hash of openspec-tasks.json.
 # Same path + same hash -> skip (crash-restart preserves progress).
 # Different path -> change switched, purge stale tasks and repopulate.
 # Same path + different hash -> tasks.md edited, purge and repopulate.
@@ -10522,8 +10497,7 @@ PRD_PARSE_EOF
 
 #-------------------------------------------------------------------------------
 # Sentrux architectural-drift gate hooks (v7.5.15).
-#
-# Opt-in via LOKI_SENTRUX_GATE=1. Default OFF -- zero behavior change for users
+# # Opt-in via LOKI_SENTRUX_GATE=1. Default OFF -- zero behavior change for users
 # who don't opt in. The helper at autonomy/lib/sentrux-gate.sh is sourced inside
 # run_autonomous() under the same guard. Both hook functions no-op silently if
 # the helper is not loaded or the sentrux binary is not on PATH.

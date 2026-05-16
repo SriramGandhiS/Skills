@@ -13,10 +13,10 @@ RTStream 操作的代码级详情。工作流程指南请参阅 [rtstream.md](rt
 
 | 方法 | 返回 | 描述 |
 |--------|---------|-------------|
-| `coll.connect_rtstream(url, name, ...)` | `RTStream` | 从 RTSP/RTMP URL 创建新的 RTStream |
-| `coll.get_rtstream(id)` | `RTStream` | 通过 ID 获取现有的 RTStream |
-| `coll.list_rtstreams(limit, offset, status, name, ordering)` | `List[RTStream]` | 列出集合中的所有 RTStream |
-| `coll.search(query, namespace="rtstream")` | `RTStreamSearchResult` | 在所有 RTStream 中搜索 |
+| `coll.connect_rtstream(url, name, ...)`|`RTStream` | 从 RTSP/RTMP URL 创建新的 RTStream |
+| `coll.get_rtstream(id)`|`RTStream` | 通过 ID 获取现有的 RTStream |
+| `coll.list_rtstreams(limit, offset, status, name, ordering)`|`List[RTStream]` | 列出集合中的所有 RTStream |
+| `coll.search(query, namespace="rtstream")`|`RTStreamSearchResult` | 在所有 RTStream 中搜索 |
 
 ### 连接 RTStream
 
@@ -70,7 +70,7 @@ displays = session.get_rtstream("screen")
 system_audios = session.get_rtstream("system_audio")
 ```
 
-或使用 `capture_session.active` WebSocket 事件中的 `rtstreams` 数据：
+或使用 `capture_session.active`WebSocket 事件中的`rtstreams` 数据：
 
 ```python
 for rts in rtstreams:
@@ -83,30 +83,30 @@ for rts in rtstreams:
 
 | 方法 | 返回 | 描述 |
 |--------|---------|-------------|
-| `rtstream.start()` | `None` | 开始摄取 |
-| `rtstream.stop()` | `None` | 停止摄取 |
-| `rtstream.generate_stream(start, end)` | `str` | 流式传输录制的片段（Unix 时间戳） |
-| `rtstream.export(name=None)` | `RTStreamExportResult` | 导出为永久视频 |
-| `rtstream.index_visuals(prompt, ...)` | `RTStreamSceneIndex` | 创建带 AI 分析的视觉索引 |
-| `rtstream.index_audio(prompt, ...)` | `RTStreamSceneIndex` | 创建带 LLM 摘要的音频索引 |
-| `rtstream.list_scene_indexes()` | `List[RTStreamSceneIndex]` | 列出流上的所有场景索引 |
-| `rtstream.get_scene_index(index_id)` | `RTStreamSceneIndex` | 获取特定场景索引 |
-| `rtstream.search(query, ...)` | `RTStreamSearchResult` | 搜索索引内容 |
-| `rtstream.start_transcript(ws_connection_id, engine)` | `dict` | 开始实时转录 |
-| `rtstream.get_transcript(page, page_size, start, end, since)` | `dict` | 获取转录页面 |
-| `rtstream.stop_transcript(engine)` | `dict` | 停止转录 |
+| `rtstream.start()`|`None` | 开始摄取 |
+| `rtstream.stop()`|`None` | 停止摄取 |
+| `rtstream.generate_stream(start, end)`|`str` | 流式传输录制的片段（Unix 时间戳） |
+| `rtstream.export(name=None)`|`RTStreamExportResult` | 导出为永久视频 |
+| `rtstream.index_visuals(prompt, ...)`|`RTStreamSceneIndex` | 创建带 AI 分析的视觉索引 |
+| `rtstream.index_audio(prompt, ...)`|`RTStreamSceneIndex` | 创建带 LLM 摘要的音频索引 |
+| `rtstream.list_scene_indexes()`|`List[RTStreamSceneIndex]` | 列出流上的所有场景索引 |
+| `rtstream.get_scene_index(index_id)`|`RTStreamSceneIndex` | 获取特定场景索引 |
+| `rtstream.search(query, ...)`|`RTStreamSearchResult` | 搜索索引内容 |
+| `rtstream.start_transcript(ws_connection_id, engine)`|`dict` | 开始实时转录 |
+| `rtstream.get_transcript(page, page_size, start, end, since)`|`dict` | 获取转录页面 |
+| `rtstream.stop_transcript(engine)`|`dict` | 停止转录 |
 
 ***
 
 ## 启动和停止
 
 ```python
-# Begin ingestion
+## Begin ingestion
 rtstream.start()
 
-# ... stream is being recorded ...
+## ... stream is being recorded ...
 
-# Stop ingestion
+## Stop ingestion
 rtstream.stop()
 ```
 
@@ -122,13 +122,13 @@ import time
 start_ts = time.time()
 rtstream.start()
 
-# Let it record for a while...
+## Let it record for a while...
 time.sleep(60)
 
 end_ts = time.time()
 rtstream.stop()
 
-# Generate a stream URL for the recorded segment
+## Generate a stream URL for the recorded segment
 stream_url = rtstream.generate_stream(start=start_ts, end=end_ts)
 print(f"Recorded stream: {stream_url}")
 ```
@@ -152,11 +152,11 @@ print(f"Duration: {export_result.duration}s")
 
 | 属性 | 类型 | 描述 |
 |----------|------|-------------|
-| `video_id` | `str` | 导出视频的 ID |
-| `stream_url` | `str` | HLS 流 URL |
-| `player_url` | `str` | Web 播放器 URL |
-| `name` | `str` | 视频名称 |
-| `duration` | `float` | 时长（秒） |
+| `video_id`|`str` | 导出视频的 ID |
+| `stream_url`|`str` | HLS 流 URL |
+| `player_url`|`str` | Web 播放器 URL |
+| `name`|`str` | 视频名称 |
+| `duration`|`float` | 时长（秒） |
 
 ***
 
@@ -168,8 +168,8 @@ AI 管道处理实时流并通过 WebSocket 发送结果。
 
 | 方法 | 返回 | 描述 |
 |--------|---------|-------------|
-| `rtstream.index_audio(prompt, batch_config, ...)` | `RTStreamSceneIndex` | 开始带 LLM 摘要的音频索引 |
-| `rtstream.index_visuals(prompt, batch_config, ...)` | `RTStreamSceneIndex` | 开始屏幕内容的视觉索引 |
+| `rtstream.index_audio(prompt, batch_config, ...)`|`RTStreamSceneIndex` | 开始带 LLM 摘要的音频索引 |
+| `rtstream.index_visuals(prompt, batch_config, ...)`|`RTStreamSceneIndex` | 开始屏幕内容的视觉索引 |
 
 ### 音频索引
 
@@ -221,19 +221,19 @@ scene_index = rtstream.index_visuals(
 
 | 参数 | 类型 | 描述 |
 |-----------|------|-------------|
-| `prompt` | `str` | AI 模型的指令（支持结构化 JSON 输出） |
-| `batch_config` | `dict` | 控制帧采样（见下文） |
-| `model_name` | `str` | 模型层级：`"mini"`、`"basic"`、`"pro"`、`"ultra"` |
-| `name` | `str` | 索引名称（可选） |
-| `ws_connection_id` | `str` | 用于接收结果的 WebSocket 连接 ID |
+| `prompt`|`str` | AI 模型的指令（支持结构化 JSON 输出） |
+| `batch_config`|`dict` | 控制帧采样（见下文） |
+| `model_name`|`str`| 模型层级：`"mini"`、`"basic"`、`"pro"`、`"ultra"` |
+| `name`|`str` | 索引名称（可选） |
+| `ws_connection_id`|`str` | 用于接收结果的 WebSocket 连接 ID |
 
 **视觉 batch\_config：**
 
 | 键 | 类型 | 描述 |
 |-----|------|-------------|
-| `type` | `str` | 仅 `"time"` 支持视觉索引 |
-| `value` | `int` | 窗口大小（秒） |
-| `frame_count` | `int` | 每个窗口提取的帧数 |
+| `type`|`str`| 仅`"time"` 支持视觉索引 |
+| `value`|`int` | 窗口大小（秒） |
+| `frame_count`|`int` | 每个窗口提取的帧数 |
 
 示例：`{"type": "time", "value": 2, "frame_count": 5}` 每 2 秒采样 5 帧并将其发送到模型。
 
@@ -264,21 +264,21 @@ Return only valid JSON.""",
 
 ## 批处理配置摘要
 
-| 索引类型 | `type` 选项 | `value` | 额外键 |
+| 索引类型 | `type`选项 |`value` | 额外键 |
 |---------------|----------------|---------|------------|
 | **音频** | `"word"`、`"sentence"`、`"time"` | words/sentences/seconds | - |
-| **视觉** | 仅 `"time"` | seconds | `frame_count` |
+| **视觉** | 仅 `"time"`| seconds |`frame_count` |
 
 示例：
 
 ```python
-# Audio: every 50 words
+## Audio: every 50 words
 {"type": "word", "value": 50}
 
-# Audio: every 30 seconds
+## Audio: every 30 seconds
 {"type": "time", "value": 30}
 
-# Visual: 5 frames every 2 seconds
+## Visual: 5 frames every 2 seconds
 {"type": "time", "value": 2, "frame_count": 5}
 ```
 
@@ -289,13 +289,13 @@ Return only valid JSON.""",
 通过 WebSocket 进行实时转录：
 
 ```python
-# Start live transcription
+## Start live transcription
 rtstream.start_transcript(
     ws_connection_id=ws_id,
     engine=None,  # optional, defaults to "assemblyai"
 )
 
-# Get transcript pages (with optional filters)
+## Get transcript pages (with optional filters)
 transcript = rtstream.get_transcript(
     page=1,
     page_size=100,
@@ -305,7 +305,7 @@ transcript = rtstream.get_transcript(
     engine=None,
 )
 
-# Stop transcription
+## Stop transcription
 rtstream.stop_transcript(engine=None)
 ```
 
@@ -315,16 +315,16 @@ rtstream.stop_transcript(engine=None)
 
 ## RTStreamSceneIndex
 
-当您调用 `index_audio()` 或 `index_visuals()` 时，该方法返回一个 `RTStreamSceneIndex` 对象。此对象表示正在运行的索引，并提供用于管理场景和警报的方法。
+当您调用 `index_audio()`或`index_visuals()`时，该方法返回一个`RTStreamSceneIndex` 对象。此对象表示正在运行的索引，并提供用于管理场景和警报的方法。
 
 ```python
-# index_visuals returns an RTStreamSceneIndex
+## index_visuals returns an RTStreamSceneIndex
 scene_index = rtstream.index_visuals(
     prompt="Describe what is on screen",
     ws_connection_id=ws_id,
 )
 
-# index_audio also returns an RTStreamSceneIndex
+## index_audio also returns an RTStreamSceneIndex
 audio_index = rtstream.index_audio(
     prompt="Summarize the discussion",
     ws_connection_id=ws_id,
@@ -335,25 +335,25 @@ audio_index = rtstream.index_audio(
 
 | 属性 | 类型 | 描述 |
 |----------|------|-------------|
-| `rtstream_index_id` | `str` | 索引的唯一 ID |
-| `rtstream_id` | `str` | 父 RTStream 的 ID |
-| `extraction_type` | `str` | 提取类型（`time` 或 `transcript`） |
-| `extraction_config` | `dict` | 提取配置 |
-| `prompt` | `str` | 用于分析的提示语 |
-| `name` | `str` | 索引名称 |
-| `status` | `str` | 状态（`connected`、`stopped`） |
+| `rtstream_index_id`|`str` | 索引的唯一 ID |
+| `rtstream_id`|`str` | 父 RTStream 的 ID |
+| `extraction_type`|`str`| 提取类型（`time`或`transcript`） |
+| `extraction_config`|`dict` | 提取配置 |
+| `prompt`|`str` | 用于分析的提示语 |
+| `name`|`str` | 索引名称 |
+| `status`|`str`| 状态（`connected`、`stopped`） |
 
 ### RTStreamSceneIndex 方法
 
 | 方法 | 返回 | 描述 |
 |--------|---------|-------------|
-| `index.get_scenes(start, end, page, page_size)` | `dict` | 获取已索引的场景 |
-| `index.start()` | `None` | 启动/恢复索引 |
-| `index.stop()` | `None` | 停止索引 |
-| `index.create_alert(event_id, callback_url, ws_connection_id)` | `str` | 创建事件检测警报 |
-| `index.list_alerts()` | `list` | 列出此索引上的所有警报 |
-| `index.enable_alert(alert_id)` | `None` | 启用警报 |
-| `index.disable_alert(alert_id)` | `None` | 禁用警报 |
+| `index.get_scenes(start, end, page, page_size)`|`dict` | 获取已索引的场景 |
+| `index.start()`|`None` | 启动/恢复索引 |
+| `index.stop()`|`None` | 停止索引 |
+| `index.create_alert(event_id, callback_url, ws_connection_id)`|`str` | 创建事件检测警报 |
+| `index.list_alerts()`|`list` | 列出此索引上的所有警报 |
+| `index.enable_alert(alert_id)`|`None` | 启用警报 |
+| `index.disable_alert(alert_id)`|`None` | 禁用警报 |
 
 ### 获取场景
 
@@ -378,16 +378,16 @@ if result["next_page"]:
 ### 管理场景索引
 
 ```python
-# List all indexes on the stream
+## List all indexes on the stream
 indexes = rtstream.list_scene_indexes()
 
-# Get a specific index by ID
+## Get a specific index by ID
 scene_index = rtstream.get_scene_index(index_id)
 
-# Stop an index
+## Stop an index
 scene_index.stop()
 
-# Restart an index
+## Restart an index
 scene_index.start()
 ```
 
@@ -401,8 +401,8 @@ scene_index.start()
 
 | 方法 | 返回 | 描述 |
 |--------|---------|-------------|
-| `conn.create_event(event_prompt, label)` | `str` (event\_id) | 创建检测事件 |
-| `conn.list_events()` | `list` | 列出所有事件 |
+| `conn.create_event(event_prompt, label)`|`str` (event\_id) | 创建检测事件 |
+| `conn.list_events()`|`list` | 列出所有事件 |
 
 ### 创建事件
 
@@ -430,13 +430,13 @@ for event in events:
 ### 创建警报
 
 ```python
-# Get the RTStreamSceneIndex from index_visuals
+## Get the RTStreamSceneIndex from index_visuals
 scene_index = rtstream.index_visuals(
     prompt="Describe what application is open on screen",
     ws_connection_id=ws_id,
 )
 
-# Create an alert on the index
+## Create an alert on the index
 alert_id = scene_index.create_alert(
     event_id=event_id,
     callback_url="https://your-backend.com/alerts",  # for webhook delivery
@@ -444,15 +444,15 @@ alert_id = scene_index.create_alert(
 )
 ```
 
-**注意：** `callback_url` 是必需的。如果仅使用 WebSocket 交付，请传递空字符串 `""`。
+**注意：** `callback_url`是必需的。如果仅使用 WebSocket 交付，请传递空字符串`""`。
 
 ### 管理警报
 
 ```python
-# List all alerts on an index
+## List all alerts on an index
 alerts = scene_index.list_alerts()
 
-# Enable/disable alerts
+## Enable/disable alerts
 scene_index.disable_alert(alert_id)
 scene_index.enable_alert(alert_id)
 ```
@@ -509,10 +509,10 @@ scene_index.enable_alert(alert_id)
 
 | 通道 | 来源 | 内容 |
 |---------|--------|---------|
-| `transcript` | `start_transcript()` | 实时语音转文本 |
-| `scene_index` | `index_visuals()` | 视觉分析结果 |
-| `audio_index` | `index_audio()` | 音频分析结果 |
-| `alert` | `create_alert()` | 警报通知 |
+| `transcript`|`start_transcript()` | 实时语音转文本 |
+| `scene_index`|`index_visuals()` | 视觉分析结果 |
+| `audio_index`|`index_audio()` | 音频分析结果 |
+| `alert`|`create_alert()` | 警报通知 |
 
 有关 WebSocket 事件结构和 ws\_listener 用法，请参阅 [capture-reference.md](capture-reference.md)。
 
@@ -528,7 +528,7 @@ from videodb.exceptions import InvalidRequestError
 conn = videodb.connect()
 coll = conn.get_collection()
 
-# 1. Connect and start recording
+## 1. Connect and start recording
 rtstream = coll.connect_rtstream(
     url="rtmp://your-stream-server/live/stream-key",
     name="Weekly Standup",
@@ -536,25 +536,25 @@ rtstream = coll.connect_rtstream(
 )
 rtstream.start()
 
-# 2. Record for the duration of the meeting
+## 2. Record for the duration of the meeting
 start_ts = time.time()
 time.sleep(1800)  # 30 minutes
 end_ts = time.time()
 rtstream.stop()
 
-# Generate an immediate playback URL for the captured window
+## Generate an immediate playback URL for the captured window
 stream_url = rtstream.generate_stream(start=start_ts, end=end_ts)
 print(f"Recorded stream: {stream_url}")
 
-# 3. Export to a permanent video
+## 3. Export to a permanent video
 export_result = rtstream.export(name="Weekly Standup Recording")
 print(f"Exported video: {export_result.video_id}")
 
-# 4. Index the exported video for search
+## 4. Index the exported video for search
 video = coll.get_video(export_result.video_id)
 video.index_spoken_words(force=True)
 
-# 5. Search for action items
+## 5. Search for action items
 try:
     results = video.search("action items and next steps")
     stream_url = results.compile()

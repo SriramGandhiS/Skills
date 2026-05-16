@@ -1,11 +1,11 @@
 # /// script
 # requires-python = ">=3.10"
 # dependencies = [
-#     "lighteval[accelerate,vllm]>=0.6.0",
-#     "torch>=2.0.0",
-#     "transformers>=4.40.0",
-#     "accelerate>=0.30.0",
-#     "vllm>=0.4.0",
+# "lighteval[accelerate,vllm]>=0.6.0",
+# "torch>=2.0.0",
+# "transformers>=4.40.0",
+# "accelerate>=0.30.0",
+# "vllm>=0.4.0",
 # ]
 # ///
 

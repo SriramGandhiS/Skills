@@ -68,7 +68,7 @@ export function stripShippedMilestones(content: string): string {
   // Pattern 2: inline milestone headings marked as shipped.
   // Keep aligned with heading levels accepted by extractCurrentMilestone() (## and ###).
   const sections = result.split(/(?=^#{2,3}\s)/m);
-  result = sections.filter(s => !/^#{2,3}\s[^\n]*✅\s*SHIPPED\b/im.test(s)).join('');
+  result = sections.filter(s => !/^#{2,3}\s[^\n]*PASS:\s*SHIPPED\b/im.test(s)).join('');
   return result;
 }
 
@@ -93,7 +93,7 @@ async function parseMilestoneFromState(projectDir: string, workstream?: string):
  * Get milestone version and name from ROADMAP.md (and optionally STATE.md).
  *
  * Port of getMilestoneInfo from core.cjs lines 1367-1402, extended for:
- * - 🟡 in-flight marker (same list shape as 🚧)
+ * -  in-flight marker (same list shape as )
  * - milestone bullets `**vX.Y Title**` before `## Phases` (last = current when listed in semver order)
  * - STATE.md frontmatter when ROADMAP has no parseable milestone
  * - **last** bare `vX.Y` fallback (first match was often v1.0 from the shipped list)
@@ -116,13 +116,13 @@ export async function getMilestoneInfo(projectDir: string, workstream?: string):
     const roadmap = await readFile(planningPaths(projectDir, workstream).roadmap, 'utf-8');
 
     // List-format: construction / blocked (legacy emoji)
-    const barricadeMatch = roadmap.match(/🚧\s*\*\*v(\d+(?:\.\d+)+)\s+([^*]+)\*\*/);
+    const barricadeMatch = roadmap.match(/\s*\*\*v(\d+(?:\.\d+)+)\s+([^*]+)\*\*/);
     if (barricadeMatch) {
       return { version: stateVersion ?? 'v' + barricadeMatch[1], name: barricadeMatch[2].trim() };
     }
 
-    // List-format: in flight / active (GSD ROADMAP template uses 🟡 for current milestone)
-    const inFlightMatch = roadmap.match(/🟡\s*\*\*v(\d+(?:\.\d+)+)\s+([^*]+)\*\*/);
+    // List-format: in flight / active (GSD ROADMAP template uses  for current milestone)
+    const inFlightMatch = roadmap.match(/\s*\*\*v(\d+(?:\.\d+)+)\s+([^*]+)\*\*/);
     if (inFlightMatch) {
       return { version: stateVersion ?? 'v' + inFlightMatch[1], name: inFlightMatch[2].trim() };
     }
@@ -198,7 +198,7 @@ export async function extractCurrentMilestone(content: string, projectDir: strin
 
   // Fallback: derive from ROADMAP in-progress marker
   if (!version) {
-    const inProgressMatch = content.match(/(?:🚧|🟡)\s*\*\*v(\d+(?:\.\d+)+)\s/);
+    const inProgressMatch = content.match(/(?:|)\s*\*\*v(\d+(?:\.\d+)+)\s/);
     if (inProgressMatch) {
       version = 'v' + inProgressMatch[1];
     }
@@ -297,7 +297,7 @@ export async function extractCurrentMilestone(content: string, projectDir: strin
   // being treated as milestone boundaries just because they mention vX.Y in
   // the title. Phase headings always start with the literal `Phase `. See #2619.
   const nextMilestoneRegex = new RegExp(
-    `^#{1,${headingLevel}}\\s+(?!Phase\\s+\\S)(?:.*v(\\d+(?:\\.\\d+)+)[^\\n]*|.*(?:✅|📋|🚧|🟡))`,
+    `^#{1,${headingLevel}}\\s+(?!Phase\\s+\\S)(?:.*v(\\d+(?:\\.\\d+)+)[^\\n]*|.*(?:PASS:|||))`,
     // `i` flag ensures the `(?!Phase\s+\S)` lookahead matches PHASE/phase too
     // (CodeRabbit follow-up on #2619).
     'gmi'
@@ -390,7 +390,7 @@ export async function extractNextMilestoneSection(
     currentVersion = /^v\d/i.test(raw) ? raw : `v${raw}`;
   }
   if (!currentVersion) {
-    const inProgressMatch = cleaned.match(/(?:🚧|🟡)\s*\*\*v(\d+(?:\.\d+)+)\s/);
+    const inProgressMatch = cleaned.match(/(?:|)\s*\*\*v(\d+(?:\.\d+)+)\s/);
     if (inProgressMatch) currentVersion = 'v' + inProgressMatch[1];
   }
   if (!currentVersion) return null;
@@ -407,7 +407,7 @@ export async function extractNextMilestoneSection(
   // Look for the next ## milestone heading after the current one.
   const tail = cleaned.slice(currentMatch.index + currentMatch[0].length);
   // Exclude phase headings — see #2619.
-  const nextMilestonePattern = /^##\s+(?!Phase\s+\S)([^\n]*(?:v(\d+(?:\.\d+)+)|✅|🚧|🟡|📋)[^\n]*)$/gim;
+  const nextMilestonePattern = /^##\s+(?!Phase\s+\S)([^\n]*(?:v(\d+(?:\.\d+)+)|PASS:|||)[^\n]*)$/gim;
   let nextMatch: RegExpExecArray | null;
   while ((nextMatch = nextMilestonePattern.exec(tail)) !== null) {
     const heading = nextMatch[1];

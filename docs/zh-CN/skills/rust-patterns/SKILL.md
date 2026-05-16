@@ -17,7 +17,7 @@ origin: ECC
 
 ## 工作原理
 
-此技能在六个关键领域强制执行惯用的 Rust 约定：所有权和借用，用于在编译时防止数据竞争；`Result`/`?` 错误传播，库使用 `thiserror` 而应用程序使用 `anyhow`；枚举和穷尽模式匹配，使非法状态无法表示；用于零成本抽象的 trait 和泛型；通过 `Arc<Mutex<T>>`、通道和 async/await 实现的安全并发；以及按领域组织的最小化 `pub` 接口。
+此技能在六个关键领域强制执行惯用的 Rust 约定：所有权和借用，用于在编译时防止数据竞争；`Result`/`?`错误传播，库使用`thiserror`而应用程序使用`anyhow`；枚举和穷尽模式匹配，使非法状态无法表示；用于零成本抽象的 trait 和泛型；通过`Arc<Mutex<T>>`、通道和 async/await 实现的安全并发；以及按领域组织的最小化`pub` 接口。
 
 ## 核心原则
 
@@ -59,7 +59,7 @@ fn normalize(input: &str) -> Cow<'_, str> {
 
 ## 错误处理
 
-### 使用 `Result` 和 `?` —— 切勿在生产环境中使用 `unwrap()`
+### 使用 `Result`和`?`—— 切勿在生产环境中使用`unwrap()`
 
 ```rust
 // Good: Propagate errors with context
@@ -80,7 +80,7 @@ fn load_config_bad(path: &str) -> Config {
 }
 ```
 
-### 库错误使用 `thiserror`，应用程序错误使用 `anyhow`
+### 库错误使用 `thiserror`，应用程序错误使用`anyhow`
 
 ```rust
 // Library code: structured, typed errors
@@ -368,7 +368,7 @@ async fn fetch_all(urls: Vec<String>) -> Vec<Result<String>> {
 ```rust
 // Acceptable: FFI boundary with documented invariants (Rust 2024+)
 /// # Safety
-/// `ptr` must be a valid, aligned pointer to an initialized `Widget`.
+/// `ptr`must be a valid, aligned pointer to an initialized`Widget`.
 unsafe fn widget_from_raw<'a>(ptr: *const Widget) -> &'a Widget {
     // SAFETY: caller guarantees ptr is valid and aligned
     unsafe { &*ptr }
@@ -434,24 +434,24 @@ pub fn internal_helper() {} // Should be pub(crate) or private
 ### 基本命令
 
 ```bash
-# Build and check
+## Build and check
 cargo build
 cargo check              # Fast type checking without codegen
 cargo clippy             # Lints and suggestions
 cargo fmt                # Format code
 
-# Testing
+## Testing
 cargo test
 cargo test -- --nocapture    # Show println output
 cargo test --lib             # Unit tests only
 cargo test --test integration # Integration tests only
 
-# Dependencies
+## Dependencies
 cargo audit              # Security audit
 cargo tree               # Dependency tree
 cargo update             # Update dependencies
 
-# Performance
+## Performance
 cargo bench              # Run benchmarks
 ```
 
@@ -461,14 +461,14 @@ cargo bench              # Run benchmarks
 |-------|-------------|
 | 借用，而非克隆 | 传递 `&T`，除非需要所有权，否则不要克隆 |
 | 使非法状态无法表示 | 使用枚举仅对有效状态进行建模 |
-| `?` 优于 `unwrap()` | 传播错误，切勿在库/生产代码中恐慌 |
+| `?`优于`unwrap()` | 传播错误，切勿在库/生产代码中恐慌 |
 | 解析，而非验证 | 在边界处将非结构化数据转换为类型化结构体 |
 | Newtype 用于类型安全 | 将基本类型包装在 newtype 中以防止参数错位 |
 | 优先使用迭代器而非循环 | 声明式链更清晰且通常更快 |
 | 对 Result 使用 `#[must_use]` | 确保调用者处理返回值 |
 | 使用 `Cow` 实现灵活的所有权 | 当借用足够时避免分配 |
 | 穷尽匹配 | 业务关键枚举不使用通配符 `_` |
-| 最小化 `pub` 接口 | 内部 API 使用 `pub(crate)` |
+| 最小化 `pub`接口 | 内部 API 使用`pub(crate)` |
 
 ## 应避免的反模式
 
@@ -496,4 +496,4 @@ async fn bad_async() {
 }
 ```
 
-**请记住**：如果它能编译，那它很可能是正确的 —— 但前提是你要避免 `unwrap()`，最小化 `unsafe`，并让类型系统为你工作。
+**请记住**：如果它能编译，那它很可能是正确的 —— 但前提是你要避免 `unwrap()`，最小化`unsafe`，并让类型系统为你工作。

@@ -26,7 +26,7 @@ python3 ~/.claude/skills/continuous-learning-v2/scripts/instinct-cli.py import <
 
 ```
 /instinct-import team-instincts.yaml
-/instinct-import https://github.com/org/repo/instincts.yaml
+/instinct-import <https://github.com/org/repo/instincts.yaml>
 /instinct-import team-instincts.yaml --dry-run
 /instinct-import team-instincts.yaml --scope global --force
 ```

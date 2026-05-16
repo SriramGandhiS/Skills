@@ -80,7 +80,7 @@ echo $CLAUDE_CODE_VERSION
 ```
 If unset/empty: print error and exit.
 ```text
-⚠ /gsd-ultraplan-phase requires Claude Code.
+WARNING: /gsd-ultraplan-phase requires Claude Code.
   /ultraplan is not available in this runtime.
   Use /gsd-plan-phase for local planning.
 ```
@@ -140,7 +140,7 @@ Ultraplan runs as a standard Claude Code on the web session. For Pro/Max subscri
 ## Beta Markers
 
 - `[BETA]` in command description
-- `⚠ BETA` in workflow banner
+- `WARNING: BETA` in workflow banner
 - Comment in workflow noting ultraplan is in research preview
 
 ---

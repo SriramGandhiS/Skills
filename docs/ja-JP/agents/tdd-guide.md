@@ -49,7 +49,7 @@ export async function searchMarkets(query: string) {
 ### ステップ4: テストを実行（合格することを確認）
 ```bash
 npm test
-# テストは合格するはず
+## テストは合格するはず
 ```
 
 ### ステップ5: リファクタリング（改善）
@@ -61,7 +61,7 @@ npm test
 ### ステップ6: カバレッジを確認
 ```bash
 npm run test:coverage
-# 80%以上のカバレッジを確認
+## 80%以上のカバレッジを確認
 ```
 
 ## 書くべきテストタイプ
@@ -251,10 +251,10 @@ test('updates user', () => {
 ## カバレッジレポート
 
 ```bash
-# カバレッジ付きでテストを実行
+## カバレッジ付きでテストを実行
 npm run test:coverage
 
-# HTMLレポートを表示
+## HTMLレポートを表示
 open coverage/lcov-report/index.html
 ```
 
@@ -267,13 +267,13 @@ open coverage/lcov-report/index.html
 ## 継続的テスト
 
 ```bash
-# 開発中のウォッチモード
+## 開発中のウォッチモード
 npm test -- --watch
 
-# コミット前に実行（gitフック経由）
+## コミット前に実行（gitフック経由）
 npm test && npm run lint
 
-# CI/CD統合
+## CI/CD統合
 npm test -- --coverage --ci
 ```
 

@@ -516,7 +516,7 @@ describe('Golden file tests', () => {
       const gsdOutput = await captureGsdToolsOutput('validate', ['consistency'], REPO_ROOT);
       const registry = createRegistry();
       const sdkResult = await registry.dispatch('validate.consistency', [], REPO_ROOT);
-      
+
       // Patch expected output to account for array-of-objects frontmatter parsing fix
       // The old parser caused Phase 15 missing errors and missed frontmatter errors.
       const patchedGsd = JSON.parse(JSON.stringify(gsdOutput));

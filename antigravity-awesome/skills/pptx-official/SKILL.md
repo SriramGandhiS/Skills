@@ -59,11 +59,11 @@ When creating a new PowerPoint presentation from scratch, use the **html2pptx** 
 4. **State your approach**: Explain your design choices before writing code
 
 **Requirements**:
-- ✅ State your content-informed design approach BEFORE writing code
-- ✅ Use web-safe fonts only: Arial, Helvetica, Times New Roman, Georgia, Courier New, Verdana, Tahoma, Trebuchet MS, Impact
-- ✅ Create clear visual hierarchy through size, weight, and color
-- ✅ Ensure readability: strong contrast, appropriately sized text, clean alignment
-- ✅ Be consistent: repeat patterns, spacing, and visual language across slides
+- PASS: State your content-informed design approach BEFORE writing code
+- PASS: Use web-safe fonts only: Arial, Helvetica, Times New Roman, Georgia, Courier New, Verdana, Tahoma, Trebuchet MS, Impact
+- PASS: Create clear visual hierarchy through size, weight, and color
+- PASS: Ensure readability: strong contrast, appropriately sized text, clean alignment
+- PASS: Be consistent: repeat patterns, spacing, and visual language across slides
 
 #### Color Palette Selection
 
@@ -197,8 +197,8 @@ When you need to create a presentation that follows an existing template's desig
    * Create and save a template inventory file at `template-inventory.md` containing:
      ```markdown
      # Template Inventory Analysis
-     **Total Slides: [count]**
-     **IMPORTANT: Slides are 0-indexed (first slide = 0, last slide = count-1)**
+**Total Slides: [count]**
+**IMPORTANT: Slides are 0-indexed (first slide = 0, last slide = count-1)**
 
      ## [Category Name]
      - Slide 0: [Layout code if available] - Description/purpose
@@ -362,7 +362,7 @@ When you need to create a presentation that follows an existing template's desig
    ]
    ```
 
-   **Shapes not listed in the replacement JSON are automatically cleared**:
+**Shapes not listed in the replacement JSON are automatically cleared**:
    ```json
    {
      "slide-0": {
@@ -374,7 +374,7 @@ When you need to create a presentation that follows an existing template's desig
    }
    ```
 
-   **Common formatting patterns for presentations**:
+**Common formatting patterns for presentations**:
    - Title slides: Bold text, sometimes centered
    - Section headers within slides: Bold text
    - Bullet lists: Each item needs `"bullet": true, "level": 0`

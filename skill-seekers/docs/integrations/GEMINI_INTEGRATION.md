@@ -106,7 +106,7 @@ skill-seekers upload react-gemini.tar.gz --target gemini --api-key AIzaSy...
 
 **Output:**
 ```
-✅ Upload successful!
+PASS: Upload successful!
 Skill ID: files/abc123xyz
 URL: https://aistudio.google.com/app/files/abc123xyz
 Files uploaded: 15 files
@@ -251,10 +251,10 @@ result = gemini.upload(
 )
 
 if result['success']:
-    print(f"✅ Uploaded to: {result['url']}")
+    print(f"PASS: Uploaded to: {result['url']}")
     print(f"Skill ID: {result['skill_id']}")
 else:
-    print(f"❌ Upload failed: {result['message']}")
+    print(f"FAIL: Upload failed: {result['message']}")
 ```
 
 ### Manual Package Extraction
@@ -416,12 +416,12 @@ skill-seekers upload react-gemini.tar.gz --target gemini
 
 ## Next Steps
 
-1. ✅ Install Gemini support: `pip install skill-seekers[gemini]`
-2. ✅ Get API key from Google AI Studio
-3. ✅ Scrape your documentation
-4. ✅ Enhance with Gemini
-5. ✅ Package for Gemini
-6. ✅ Upload and test
+1. PASS: Install Gemini support: `pip install skill-seekers[gemini]`
+2. PASS: Get API key from Google AI Studio
+3. PASS: Scrape your documentation
+4. PASS: Enhance with Gemini
+5. PASS: Package for Gemini
+6. PASS: Upload and test
 
 ## Resources
 

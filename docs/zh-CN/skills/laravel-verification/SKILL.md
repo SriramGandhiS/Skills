@@ -33,7 +33,7 @@ php artisan --version
 
 * 验证 `.env` 文件存在且包含必需的键
 * 确认生产环境已设置 `APP_DEBUG=false`
-* 确认 `APP_ENV` 与目标部署环境匹配（`production`、`staging`）
+* 确认 `APP_ENV`与目标部署环境匹配（`production`、`staging`）
 
 如果在本地使用 Laravel Sail：
 
@@ -96,7 +96,7 @@ php artisan migrate:status
 ```
 
 * 仔细审查破坏性迁移
-* 确保迁移文件名遵循 `Y_m_d_His_*` 格式（例如，`2025_03_14_154210_create_orders_table.php`）并清晰地描述变更
+* 确保迁移文件名遵循 `Y_m_d_His_*`格式（例如，`2025_03_14_154210_create_orders_table.php`）并清晰地描述变更
 * 确保可以执行回滚
 * 验证 `down()` 方法，避免在没有明确备份的情况下造成不可逆的数据丢失
 
@@ -111,7 +111,7 @@ php artisan view:cache
 
 * 确保在生产配置下缓存预热成功
 * 验证队列工作者和调度器已配置
-* 确认在目标环境中 `storage/` 和 `bootstrap/cache/` 目录可写
+* 确认在目标环境中 `storage/`和`bootstrap/cache/` 目录可写
 
 ## 第七阶段：队列和调度器检查
 

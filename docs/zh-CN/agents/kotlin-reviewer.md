@@ -19,13 +19,13 @@ model: sonnet
 
 ### 步骤 1：收集上下文
 
-运行 `git diff --staged` 和 `git diff` 以查看更改。如果没有差异，请检查 `git log --oneline -5`。识别已更改的 Kotlin/KTS 文件。
+运行 `git diff --staged`和`git diff`以查看更改。如果没有差异，请检查`git log --oneline -5`。识别已更改的 Kotlin/KTS 文件。
 
 ### 步骤 2：理解项目结构
 
 检查：
 
-* `build.gradle.kts` 或 `settings.gradle.kts` 以理解模块布局
+* `build.gradle.kts`或`settings.gradle.kts` 以理解模块布局
 * `CLAUDE.md` 了解项目特定的约定
 * 项目是仅限 Android、KMP 还是 Compose Multiplatform
 
@@ -61,10 +61,10 @@ model: sonnet
 
 * **GlobalScope 使用** — 必须使用结构化作用域（`viewModelScope`、`coroutineScope`）
 * **捕获 CancellationException** — 必须重新抛出或不捕获；吞没该异常会破坏取消机制
-* **IO 操作缺少 `withContext`** — 在 `Dispatchers.Main` 上进行数据库/网络调用
+* **IO 操作缺少 `withContext`** — 在`Dispatchers.Main` 上进行数据库/网络调用
 * **包含可变状态的 StateFlow** — 在 StateFlow 内部使用可变集合（必须复制）
-* **在 `init {}` 中收集 Flow** — 应使用 `stateIn()` 或在作用域内启动
-* **缺少 `WhileSubscribed`** — 当 `WhileSubscribed` 更合适时使用了 `stateIn(scope, SharingStarted.Eagerly)`
+* **在 `init {}`中收集 Flow** — 应使用`stateIn()` 或在作用域内启动
+* **缺少 `WhileSubscribed`** — 当`WhileSubscribed`更合适时使用了`stateIn(scope, SharingStarted.Eagerly)`
 
 ```kotlin
 // BAD — swallows cancellation
@@ -95,16 +95,16 @@ Button(onClick = onClick)
 
 ### Kotlin 惯用法（中）
 
-* **`!!` 使用** — 非空断言；更推荐 `?.`、`?:`、`requireNotNull` 或 `checkNotNull`
-* **可以使用 `val` 的地方使用了 `var`** — 更推荐不可变性
+* **`!!`使用** — 非空断言；更推荐`?.`、`?:`、`requireNotNull`或`checkNotNull`
+* **可以使用 `val`的地方使用了`var`** — 更推荐不可变性
 * **Java 风格模式** — 静态工具类（应使用顶层函数）、getter/setter（应使用属性）
-* **字符串拼接** — 使用字符串模板 `"Hello $name"` 而非 `"Hello " + name`
-* **`when` 缺少穷举分支** — 密封类/接口应使用穷举的 `when`
-* **暴露可变集合** — 公共 API 应返回 `List` 而非 `MutableList`
+* **字符串拼接** — 使用字符串模板 `"Hello $name"`而非`"Hello " + name`
+* **`when`缺少穷举分支** — 密封类/接口应使用穷举的`when`
+* **暴露可变集合** — 公共 API 应返回 `List`而非`MutableList`
 
 ### Android 特定（中）
 
-* **上下文泄漏** — 在单例/ViewModels 中存储 `Activity` 或 `Fragment` 引用
+* **上下文泄漏** — 在单例/ViewModels 中存储 `Activity`或`Fragment` 引用
 * **缺少 ProGuard 规则** — 序列化类缺少 `@Keep` 或 ProGuard 规则
 * **硬编码字符串** — 面向用户的字符串未放在 `strings.xml` 或 Compose 资源中
 * **缺少生命周期处理** — 在 Activity 中收集 Flow 时未使用 `repeatOnLifecycle`
@@ -122,7 +122,7 @@ Button(onClick = onClick)
 
 * **未使用版本目录** — 硬编码版本而非使用 `libs.versions.toml`
 * **不必要的依赖项** — 添加了但未使用的依赖项
-* **缺少 KMP 源集** — 声明了 `androidMain` 代码，而该代码本可以是 `commonMain`
+* **缺少 KMP 源集** — 声明了 `androidMain`代码，而该代码本可以是`commonMain`
 
 ## 输出格式
 

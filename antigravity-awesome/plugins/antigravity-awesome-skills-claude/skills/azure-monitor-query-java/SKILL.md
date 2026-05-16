@@ -11,8 +11,7 @@ date_added: '2026-02-27'
 > **DEPRECATION NOTICE**: This package is deprecated in favor of:
 > - `azure-monitor-query-logs` — For Log Analytics queries
 > - `azure-monitor-query-metrics` — For metrics queries
->
-> See migration guides: [Logs Migration](https://github.com/Azure/azure-sdk-for-java/blob/main/sdk/monitor/azure-monitor-query-logs/migration-guide.md) | [Metrics Migration](https://github.com/Azure/azure-sdk-for-java/blob/main/sdk/monitor/azure-monitor-query-metrics/migration-guide.md)
+> > See migration guides: [Logs Migration](https://github.com/Azure/azure-sdk-for-java/blob/main/sdk/monitor/azure-monitor-query-logs/migration-guide.md) | [Metrics Migration](https://github.com/Azure/azure-sdk-for-java/blob/main/sdk/monitor/azure-monitor-query-metrics/migration-guide.md)
 
 Client library for querying Azure Monitor Logs and Metrics.
 
@@ -175,7 +174,7 @@ for (LogsTableRow row : result.getTable().getRows()) {
 public class ActivityLog {
     private String resourceGroup;
     private String operationName;
-    
+
     public String getResourceGroup() { return resourceGroup; }
     public String getOperationName() { return operationName; }
 }
@@ -383,7 +382,7 @@ import com.azure.monitor.query.models.LogsQueryResultStatus;
 
 try {
     LogsQueryResult result = logsClient.queryWorkspace(workspaceId, query, timeInterval);
-    
+
     // Check partial failure
     if (result.getStatus() == LogsQueryResultStatus.PARTIAL_FAILURE) {
         System.err.println("Partial failure: " + result.getError().getMessage());

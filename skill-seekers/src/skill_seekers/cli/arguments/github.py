@@ -18,7 +18,7 @@ from .common import add_all_standard_arguments
 
 # GitHub-specific argument definitions as data structure
 # NOTE: Shared args (name, description, enhance_level, api_key, dry_run,
-#       verbose, quiet, workflow args) are registered by add_all_standard_arguments().
+# verbose, quiet, workflow args) are registered by add_all_standard_arguments().
 GITHUB_ARGUMENTS: dict[str, dict[str, Any]] = {
     # Core GitHub options
     "repo": {

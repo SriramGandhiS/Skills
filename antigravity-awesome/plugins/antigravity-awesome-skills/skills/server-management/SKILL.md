@@ -150,7 +150,7 @@ When something's wrong:
 
 ## 8. Anti-Patterns
 
-| ❌ Don't | ✅ Do |
+| FAIL: Don't | PASS: Do |
 |----------|-------|
 | Run as root | Use non-root user |
 | Ignore logs | Set up log rotation |

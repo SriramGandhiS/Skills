@@ -61,10 +61,10 @@ More instructions...
 
 ## Best Practices
 
-- ✅ Do this
-- ✅ Also do this
-- ❌ Don't do this
-- ❌ Avoid this
+- PASS: Do this
+- PASS: Also do this
+- FAIL: Don't do this
+- FAIL: Avoid this
 
 ## Limitations
 
@@ -85,7 +85,7 @@ More instructions...
 ## Common Pitfalls
 
 - **Problem:** Description
-  **Solution:** How to fix it
+**Solution:** How to fix it
 
 ## Related Skills
 

@@ -4,8 +4,7 @@ name: Mutation Testing (stryker)
 # modules (state.ts, build_prompt.ts, providers.ts, budget.ts,
 # checkpoint.ts, shell.ts). Stryker uses bun:test as the runner via the
 # `command` runner; ~10-25 minutes per run, so weekly + manual only.
-#
-# Threshold: 50% break / 60% low / 80% high (matches stryker.config.json).
+# # Threshold: 50% break / 60% low / 80% high (matches stryker.config.json).
 # A drop below 50% fails the workflow.
 
 on:

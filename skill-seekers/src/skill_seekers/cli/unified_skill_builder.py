@@ -5,7 +5,7 @@ Unified Skill Builder
 Generates final skill structure from merged multi-source data:
 - SKILL.md with merged APIs and conflict warnings
 - references/ with organized content by source
-- Inline conflict markers (⚠️)
+- Inline conflict markers (WARNING:)
 - Separate conflicts summary section
 
 Supports mixed sources (documentation, GitHub, PDF) and highlights
@@ -76,7 +76,7 @@ class UnifiedSkillBuilder:
         if self.conflicts:
             self._generate_conflicts_report()
 
-        logger.info(f"✅ Unified skill built: {self.skill_dir}/")
+        logger.info(f"PASS: Unified skill built: {self.skill_dir}/")
 
     def _load_source_skill_mds(self) -> dict[str, str]:
         """Load standalone SKILL.md files from each source.
@@ -206,21 +206,21 @@ class UnifiedSkillBuilder:
                 # Remove emoji and markdown formatting
                 current_section = current_section.split("](")[0]  # Remove links
                 for emoji in [
-                    "📚",
-                    "🏗️",
-                    "⚠️",
-                    "🔧",
-                    "📖",
-                    "💡",
-                    "🎯",
-                    "📊",
-                    "🔍",
-                    "⚙️",
-                    "🧪",
-                    "📝",
-                    "🗂️",
-                    "📐",
-                    "⚡",
+                    "",
+                    "",
+                    "WARNING:",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
                 ]:
                     current_section = current_section.replace(emoji, "").strip()
                 current_content = []
@@ -273,18 +273,18 @@ description: {desc}
 
 {self.description}
 
-## 📚 Sources
+## Sources
 
 This skill synthesizes knowledge from multiple sources:
 
-- ✅ **Official Documentation**: {self.config.get("sources", [{}])[0].get("base_url", "N/A")}
-- ✅ **GitHub Repository**: {[s for s in self.config.get("sources", []) if s.get("type") == "github"][0].get("repo", "N/A") if [s for s in self.config.get("sources", []) if s.get("type") == "github"] else "N/A"}
+- PASS: **Official Documentation**: {self.config.get("sources", [{}])[0].get("base_url", "N/A")}
+- PASS: **GitHub Repository**: {[s for s in self.config.get("sources", []) if s.get("type") == "github"][0].get("repo", "N/A") if [s for s in self.config.get("sources", []) if s.get("type") == "github"] else "N/A"}
 
 """
 
         # Add GitHub Description and Metadata if present
         if "Description" in github_sections:
-            content += "## 📦 About\n\n"
+            content += "##  About\n\n"
             content += github_sections["Description"] + "\n\n"
 
         # Add Repository Info from GitHub
@@ -297,7 +297,7 @@ This skill synthesizes knowledge from multiple sources:
             content += "### Languages\n\n"
             content += github_sections["Languages"] + "\n\n"
 
-        content += "## 💡 When to Use This Skill\n\n"
+        content += "##  When to Use This Skill\n\n"
 
         # Merge "When to Use" sections - Fix placeholder text
         when_to_use_added = False
@@ -316,7 +316,7 @@ This skill synthesizes knowledge from multiple sources:
             content += github_sections["When to Use This Skill"] + "\n\n"
 
         # Quick Reference: Merge from both sources
-        content += "## 🎯 Quick Reference\n\n"
+        content += "##  Quick Reference\n\n"
 
         if "Quick Reference" in docs_sections:
             content += "**From Documentation:**\n\n"
@@ -338,7 +338,7 @@ This skill synthesizes knowledge from multiple sources:
             content += github_sections["Design Patterns Detected"] + "\n\n"
 
         # Code Examples: Prefer GitHub (real usage)
-        content += "## 🧪 Code Examples\n\n"
+        content += "##  Code Examples\n\n"
 
         if "Code Examples" in github_sections:
             content += "**From Repository Tests:**\n\n"
@@ -354,7 +354,7 @@ This skill synthesizes knowledge from multiple sources:
 
         # API Reference: Include from both sources
         if "API Reference" in docs_sections or "API Reference" in github_sections:
-            content += "## 🔧 API Reference\n\n"
+            content += "##  API Reference\n\n"
 
             if "API Reference" in github_sections:
                 # Note: GitHub section already includes "*Extracted from codebase analysis (C2.5)*" label
@@ -366,7 +366,7 @@ This skill synthesizes knowledge from multiple sources:
 
         # Known Issues: GitHub only
         if "Known Issues" in github_sections:
-            content += "## ⚠️ Known Issues\n\n"
+            content += "## WARNING: Known Issues\n\n"
             content += "*Recent issues from GitHub*\n\n"
             content += github_sections["Known Issues"] + "\n\n"
 
@@ -380,7 +380,7 @@ This skill synthesizes knowledge from multiple sources:
             content += releases_content + "\n\n"
 
         # Reference documentation
-        content += "## 📖 Reference Documentation\n\n"
+        content += "##  Reference Documentation\n\n"
         content += "Organized by source:\n\n"
         content += "- [Documentation](references/documentation/)\n"
         content += "- [GitHub](references/github/)\n"
@@ -417,14 +417,14 @@ This skill synthesizes knowledge from multiple sources:
         insertion_index = -1
 
         for i, line in enumerate(lines):
-            if line.startswith("## 🧪 Code Examples") or line.startswith("## 🔧 API Reference"):
+            if line.startswith("##  Code Examples") or line.startswith("##  API Reference"):
                 insertion_index = i
                 break
 
         if insertion_index == -1:
             # Fallback: insert before Reference Documentation
             for i, line in enumerate(lines):
-                if line.startswith("## 📖 Reference Documentation"):
+                if line.startswith("##  Reference Documentation"):
                     insertion_index = i
                     break
 
@@ -433,14 +433,14 @@ This skill synthesizes knowledge from multiple sources:
 
         # Add Chapter Overview
         if "Chapter Overview" in pdf_sections:
-            pdf_content_lines.append("## 📚 PDF Documentation Structure\n")
+            pdf_content_lines.append("##  PDF Documentation Structure\n")
             pdf_content_lines.append("*From PDF analysis*\n")
             pdf_content_lines.append(pdf_sections["Chapter Overview"])
             pdf_content_lines.append("\n")
 
         # Add Key Concepts
         if "Key Concepts" in pdf_sections:
-            pdf_content_lines.append("## 🔍 Key Concepts\n")
+            pdf_content_lines.append("##  Key Concepts\n")
             pdf_content_lines.append("*Extracted from PDF headings*\n")
             pdf_content_lines.append(pdf_sections["Key Concepts"])
             pdf_content_lines.append("\n")
@@ -597,7 +597,7 @@ This skill synthesizes knowledge from multiple sources:
 
         # Find insertion point before Reference Documentation
         for i, line in enumerate(lines):
-            if line.startswith("## 📖 Reference") or line.startswith("## Reference"):
+            if line.startswith("##  Reference") or line.startswith("## Reference"):
                 insertion_index = i
                 break
 
@@ -605,13 +605,13 @@ This skill synthesizes knowledge from multiple sources:
         pdf_content_lines = []
 
         if "Chapter Overview" in pdf_sections:
-            pdf_content_lines.append("## 📚 PDF Documentation Structure\n")
+            pdf_content_lines.append("##  PDF Documentation Structure\n")
             pdf_content_lines.append("*From PDF analysis*\n")
             pdf_content_lines.append(pdf_sections["Chapter Overview"])
             pdf_content_lines.append("\n")
 
         if "Key Concepts" in pdf_sections:
-            pdf_content_lines.append("## 🔍 Key Concepts\n")
+            pdf_content_lines.append("##  Key Concepts\n")
             pdf_content_lines.append("*Extracted from PDF headings*\n")
             pdf_content_lines.append(pdf_sections["Key Concepts"])
             pdf_content_lines.append("\n")
@@ -643,7 +643,7 @@ This skill synthesizes knowledge from multiple sources:
 
         # Find insertion point before Reference Documentation
         for i, line in enumerate(lines):
-            if line.startswith("## 📖 Reference") or line.startswith("## Reference"):
+            if line.startswith("##  Reference") or line.startswith("## Reference"):
                 insertion_index = i
                 break
 
@@ -651,7 +651,7 @@ This skill synthesizes knowledge from multiple sources:
         pdf_content_lines = []
 
         if "Chapter Overview" in pdf_sections:
-            pdf_content_lines.append("## 📚 PDF Documentation Structure\n")
+            pdf_content_lines.append("##  PDF Documentation Structure\n")
             pdf_content_lines.append("*From PDF analysis*\n")
             pdf_content_lines.append(pdf_sections["Chapter Overview"])
             pdf_content_lines.append("\n")
@@ -838,7 +838,7 @@ description: {desc}
 
 {self.description}
 
-## 📚 Sources
+## Sources
 
 This skill combines knowledge from multiple sources:
 
@@ -877,7 +877,7 @@ This skill combines knowledge from multiple sources:
             primary_val = source.get(primary_key, "N/A")
             if isinstance(primary_val, list):
                 primary_val = ", ".join(str(v) for v in primary_val)
-            content += f"- ✅ **{label}**: {primary_val}\n"
+            content += f"- PASS: **{label}**: {primary_val}\n"
             for extra_label, extra_key, extra_default in extras:
                 content += f"  - {extra_label}: {source.get(extra_key, extra_default)}\n"
 
@@ -888,7 +888,7 @@ This skill combines knowledge from multiple sources:
 
         # Data quality section
         if self.conflicts:
-            content += "\n## ⚠️ Data Quality\n\n"
+            content += "\n## WARNING: Data Quality\n\n"
             content += f"**{len(self.conflicts)} conflicts detected** between sources.\n\n"
 
             # Count by type
@@ -910,7 +910,7 @@ This skill combines knowledge from multiple sources:
             content += self._format_merged_apis()
 
         # Quick reference from each source
-        content += "\n## 📖 Reference Documentation\n\n"
+        content += "\n##  Reference Documentation\n\n"
         content += "Organized by source:\n\n"
 
         for source in self.config.get("sources", []):
@@ -918,7 +918,7 @@ This skill combines knowledge from multiple sources:
             content += f"- [{source_type.title()}](references/{source_type}/)\n"
 
         # When to use this skill
-        content += "\n## 💡 When to Use This Skill\n\n"
+        content += "\n##  When to Use This Skill\n\n"
         content += "Use this skill when you need to:\n"
         content += f"- Understand how to use {self.name}\n"
         content += "- Look up API documentation\n"
@@ -938,7 +938,7 @@ This skill combines knowledge from multiple sources:
         if not self.merged_data:
             return ""
 
-        content = "\n## 🔧 API Reference\n\n"
+        content = "\n##  API Reference\n\n"
         content += "*Merged from documentation and code analysis*\n\n"
 
         apis = self.merged_data.get("apis", {})
@@ -954,28 +954,28 @@ This skill combines knowledge from multiple sources:
 
         # Show matched APIs first
         if matched:
-            content += "### ✅ Verified APIs\n\n"
+            content += "### PASS: Verified APIs\n\n"
             content += "*Documentation and code agree*\n\n"
             for _api_name, api_data in list(matched.items())[:10]:  # Limit to first 10
                 content += self._format_api_entry(api_data, inline_conflict=False)
 
         # Show conflicting APIs with warnings
         if conflicts:
-            content += "\n### ⚠️ APIs with Conflicts\n\n"
+            content += "\n### WARNING: APIs with Conflicts\n\n"
             content += "*Documentation and code differ*\n\n"
             for _api_name, api_data in list(conflicts.items())[:10]:
                 content += self._format_api_entry(api_data, inline_conflict=True)
 
         # Show undocumented APIs
         if code_only:
-            content += "\n### 💻 Undocumented APIs\n\n"
+            content += "\n###  Undocumented APIs\n\n"
             content += f"*Found in code but not in documentation ({len(code_only)} total)*\n\n"
             for _api_name, api_data in list(code_only.items())[:5]:
                 content += self._format_api_entry(api_data, inline_conflict=False)
 
         # Show removed/missing APIs
         if docs_only:
-            content += "\n### 📖 Documentation-Only APIs\n\n"
+            content += "\n###  Documentation-Only APIs\n\n"
             content += f"*Documented but not found in code ({len(docs_only)} total)*\n\n"
             for _api_name, api_data in list(docs_only.items())[:5]:
                 content += self._format_api_entry(api_data, inline_conflict=False)
@@ -998,7 +998,7 @@ This skill combines knowledge from multiple sources:
 
         # Add inline conflict warning
         if inline_conflict and warning:
-            entry += f"⚠️ **Conflict**: {warning}\n\n"
+            entry += f"WARNING: **Conflict**: {warning}\n\n"
 
             # Show both versions if available
             conflict = api_data.get("conflict", {})
@@ -1476,7 +1476,7 @@ This skill combines knowledge from multiple sources:
                         f.write(f"- [{label}]({source}/{sub_dir}/)\n")
                 f.write("\n")
 
-        logger.info(f"📚 Created codebase analysis index: {index_path}")
+        logger.info(f" Created codebase analysis index: {index_path}")
 
     def _write_codebase_analysis_references(
         self,
@@ -1500,7 +1500,7 @@ This skill combines knowledge from multiple sources:
         self._generate_config_references(c3_dir, c3_data.get("config_patterns"))
         self._copy_architecture_details(c3_dir, c3_data.get("architecture"))
 
-        logger.info("✅ Created codebase analysis references")
+        logger.info("PASS: Created codebase analysis references")
 
     def _generate_architecture_overview(self, c3_dir: str, c3_data: dict, github_data: dict):
         """Generate comprehensive ARCHITECTURE.md (C3.5 main deliverable)."""
@@ -1602,7 +1602,7 @@ This skill combines knowledge from multiple sources:
                     ):
                         f.write(f"- **{ptype}**: {count} instance(s)\n")
                     f.write(
-                        "\n📁 See `references/codebase_analysis/patterns/` for detailed analysis.\n\n"
+                        "\n See `references/codebase_analysis/patterns/` for detailed analysis.\n\n"
                     )
                 else:
                     f.write("*No design patterns detected.*\n\n")
@@ -1626,14 +1626,14 @@ This skill combines knowledge from multiple sources:
                         security_issues = insights.get("security_issues_found", 0)
                         if security_issues > 0:
                             f.write(
-                                f"\n🔐 **Security Alert**: {security_issues} potential security issue(s) found in configurations.\n"
+                                f"\n **Security Alert**: {security_issues} potential security issue(s) found in configurations.\n"
                             )
                             if insights.get("recommended_actions"):
                                 f.write("\n**Recommended Actions**:\n")
                                 for action in insights["recommended_actions"][:5]:
                                     f.write(f"- {action}\n")
                     f.write(
-                        "\n📁 See `references/codebase_analysis/configuration/` for details.\n\n"
+                        "\n See `references/codebase_analysis/configuration/` for details.\n\n"
                     )
                 else:
                     f.write("*No configuration files detected.*\n\n")
@@ -1648,7 +1648,7 @@ This skill combines knowledge from multiple sources:
                     for guide in guides[:10]:  # Top 10
                         f.write(f"- {guide.get('title', 'Untitled Guide')}\n")
                     f.write(
-                        "\n📁 See `references/codebase_analysis/guides/` for detailed tutorials.\n\n"
+                        "\n See `references/codebase_analysis/guides/` for detailed tutorials.\n\n"
                     )
                 else:
                     f.write("*No workflow guides extracted.*\n\n")
@@ -1675,7 +1675,7 @@ This skill combines knowledge from multiple sources:
                             f.write(f"- {cat}: {count}\n")
 
                     f.write(
-                        "\n📁 See `references/codebase_analysis/examples/` for code samples.\n\n"
+                        "\n See `references/codebase_analysis/examples/` for code samples.\n\n"
                     )
                 else:
                     f.write("*No test examples extracted.*\n\n")
@@ -1701,7 +1701,7 @@ This skill combines knowledge from multiple sources:
             )
             f.write("*Last updated: skill build time*\n")
 
-        logger.info("📐 Created ARCHITECTURE.md")
+        logger.info(" Created ARCHITECTURE.md")
 
     @staticmethod
     def _make_path_relative(file_path: str) -> str:
@@ -1905,7 +1905,7 @@ This skill combines knowledge from multiple sources:
                         f.write("## Overall Insights\n\n")
                         if insights.get("security_issues_found"):
                             f.write(
-                                f"🔐 **Security Issues**: {insights['security_issues_found']}\n\n"
+                                f" **Security Issues**: {insights['security_issues_found']}\n\n"
                             )
                         if insights.get("recommended_actions"):
                             f.write("**Recommended Actions**:\n")
@@ -2001,7 +2001,7 @@ This skill combines knowledge from multiple sources:
         if not payloads:
             return ""
 
-        content = "\n## 🏗️ Architecture & Code Analysis\n\n"
+        content = "\n##  Architecture & Code Analysis\n\n"
         content += "*This skill includes comprehensive codebase analysis*\n\n"
 
         # Primary architecture: take from the first payload that has one
@@ -2073,12 +2073,12 @@ This skill combines knowledge from multiple sources:
         if total_config_files > 0:
             content += f"**Configuration Files**: {total_config_files} analyzed\n"
             if total_security_issues > 0:
-                content += f"- 🔐 **Security Alert**: {total_security_issues} issue(s) detected\n"
+                content += f"-  **Security Alert**: {total_security_issues} issue(s) detected\n"
             content += "\n"
 
         # Add link to the codebase-analysis landing page (#362)
         content += (
-            "📖 **See** `references/codebase_analysis/index.md` for the per-source "
+            " **See** `references/codebase_analysis/index.md` for the per-source "
             "architecture overviews and detailed pattern, example, guide, and "
             "configuration references.\n\n"
         )
@@ -2112,13 +2112,13 @@ This skill combines knowledge from multiple sources:
             ]
 
             f.write("## Severity Breakdown\n\n")
-            f.write(f"- 🔴 **High**: {len(high)} (action required)\n")
-            f.write(f"- 🟡 **Medium**: {len(medium)} (review recommended)\n")
-            f.write(f"- 🟢 **Low**: {len(low)} (informational)\n\n")
+            f.write(f"-  **High**: {len(high)} (action required)\n")
+            f.write(f"-  **Medium**: {len(medium)} (review recommended)\n")
+            f.write(f"-  **Low**: {len(low)} (informational)\n\n")
 
             # List high severity conflicts
             if high:
-                f.write("## 🔴 High Severity\n\n")
+                f.write("##  High Severity\n\n")
                 f.write("*These conflicts require immediate attention*\n\n")
 
                 for conflict in high:
@@ -2138,7 +2138,7 @@ This skill combines knowledge from multiple sources:
 
             # List medium severity
             if medium:
-                f.write("## 🟡 Medium Severity\n\n")
+                f.write("##  Medium Severity\n\n")
 
                 for conflict in medium[:20]:  # Limit to 20
                     api_name = (
@@ -2179,4 +2179,4 @@ if __name__ == "__main__":
     builder = UnifiedSkillBuilder(config, scraped_data)
     builder.build()
 
-    print(f"\n✅ Test skill built in: output/{config['name']}/")
+    print(f"\nPASS: Test skill built in: output/{config['name']}/")

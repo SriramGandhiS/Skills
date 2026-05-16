@@ -74,15 +74,15 @@ const options: AzureMonitorOpenTelemetryOptions = {
     storageDirectory: "/path/to/offline/storage",
     disableOfflineStorage: false
   },
-  
+
   // Sampling
   samplingRatio: 1.0,  // 0-1, percentage of traces
-  
+
   // Features
   enableLiveMetrics: true,
   enableStandardMetrics: true,
   enablePerformanceCounters: true,
-  
+
   // Instrumentation libraries
   instrumentationOptions: {
     azureSdk: { enabled: true },
@@ -94,7 +94,7 @@ const options: AzureMonitorOpenTelemetryOptions = {
     bunyan: { enabled: false },
     winston: { enabled: false }
   },
-  
+
   // Custom resource
   resource: resourceFromAttributes({ "service.name": "my-service" })
 };
@@ -114,9 +114,9 @@ try {
   span.setAttribute("component", "worker");
   span.setAttribute("operation.id", "42");
   span.addEvent("processing started");
-  
+
   // Your work here
-  
+
 } catch (error) {
   span.recordException(error as Error);
   span.setStatus({ code: 2, message: (error as Error).message });
@@ -244,11 +244,11 @@ class FilteringSpanProcessor implements SpanProcessor {
   forceFlush(): Promise<void> { return Promise.resolve(); }
   shutdown(): Promise<void> { return Promise.resolve(); }
   onStart(span: Span, context: Context): void {}
-  
+
   onEnd(span: ReadableSpan): void {
     // Add custom attributes
     span.attributes["CustomDimension"] = "value";
-    
+
     // Filter out internal spans
     if (span.kind === SpanKind.INTERNAL) {
       span.spanContext().traceFlags = TraceFlags.NONE;

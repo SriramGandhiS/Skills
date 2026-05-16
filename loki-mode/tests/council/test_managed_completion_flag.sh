@@ -1,15 +1,13 @@
 #!/usr/bin/env bash
 # tests/council/test_managed_completion_flag.sh
 # v7.0.0 Phase 4: flag matrix for LOKI_EXPERIMENTAL_MANAGED_COUNCIL.
-#
-# Invariants:
-#   1. Default is OFF (false).
-#   2. council=true with umbrella=false -> warn and force council=false.
-#   3. council=true with parent=false  -> warn and force council=false.
-#   4. umbrella=true with parent=false -> warn (umbrella alone is meaningless).
-#   5. parent+umbrella+council all true -> no warnings, council stays true.
-#
-# The fail-fast logic lives in autonomy/run.sh. We exercise the exact block
+# # Invariants:
+# 1. Default is OFF (false).
+# 2. council=true with umbrella=false -> warn and force council=false.
+# 3. council=true with parent=false  -> warn and force council=false.
+# 4. umbrella=true with parent=false -> warn (umbrella alone is meaningless).
+# 5. parent+umbrella+council all true -> no warnings, council stays true.
+# # The fail-fast logic lives in autonomy/run.sh. We exercise the exact block
 # in a bash subshell so we don't have to source the entire runner.
 
 set -u

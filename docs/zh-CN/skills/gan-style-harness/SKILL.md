@@ -154,23 +154,23 @@ tools: Read, Write, Edit, Bash, Grep, Glob, Task
 ### 通过命令行
 
 ```bash
-# Full three-agent harness
+## Full three-agent harness
 /project:gan-build "Build a project management app with Kanban boards, team collaboration, and dark mode"
 
-# With custom config
+## With custom config
 /project:gan-build "Build a recipe sharing platform" --max-iterations 10 --pass-threshold 7.5
 
-# Frontend design mode (generator + evaluator only, no planner)
+## Frontend design mode (generator + evaluator only, no planner)
 /project:gan-design "Create a landing page for a crypto portfolio tracker"
 ```
 
 ### 通过 Shell 脚本
 
 ```bash
-# Basic usage
+## Basic usage
 ./scripts/gan-harness.sh "Build a music streaming dashboard"
 
-# With options
+## With options
 GAN_MAX_ITERATIONS=10 \
 GAN_PASS_THRESHOLD=7.5 \
 GAN_EVAL_CRITERIA="functionality,performance,security" \
@@ -180,19 +180,19 @@ GAN_EVAL_CRITERIA="functionality,performance,security" \
 ### 通过 Claude Code（手动）
 
 ```bash
-# Step 1: Plan
+## Step 1: Plan
 claude -p --model opus "You are a Product Planner. Read PLANNER_PROMPT.md. Expand this brief into a full product spec: 'Build a Kanban board app'. Write spec to spec.md"
 
-# Step 2: Generate (iteration 1)
+## Step 2: Generate (iteration 1)
 claude -p --model opus "You are a Generator. Read spec.md. Implement Sprint 1. Start the dev server on port 3000."
 
-# Step 3: Evaluate (iteration 1)
-claude -p --model opus --allowedTools "Read,Bash,mcp__playwright__*" "You are an Evaluator. Read EVALUATOR_PROMPT.md. Test the live app at http://localhost:3000. Score against the rubric. Write feedback to feedback-001.md"
+## Step 3: Evaluate (iteration 1)
+claude -p --model opus --allowedTools "Read,Bash,mcp__playwright__*" "You are an Evaluator. Read EVALUATOR_PROMPT.md. Test the live app at <http://localhost:3000.> Score against the rubric. Write feedback to feedback-001.md"
 
-# Step 4: Generate (iteration 2 — reads feedback)
+## Step 4: Generate (iteration 2 — reads feedback)
 claude -p --model opus "You are a Generator. Read spec.md and feedback-001.md. Address all issues. Improve the scores."
 
-# Repeat steps 3-4 until pass threshold met
+## Repeat steps 3-4 until pass threshold met
 ```
 
 ## 随模型能力的演进
@@ -228,17 +228,17 @@ claude -p --model opus "You are a Generator. Read spec.md and feedback-001.md. A
 
 | 变量 | 默认值 | 描述 |
 |----------|---------|-------------|
-| `GAN_MAX_ITERATIONS` | `15` | 最大生成器-评估器循环次数 |
-| `GAN_PASS_THRESHOLD` | `7.0` | 通过所需的加权分数（1-10） |
-| `GAN_PLANNER_MODEL` | `opus` | 规划智能体的模型 |
-| `GAN_GENERATOR_MODEL` | `opus` | 生成器智能体的模型 |
-| `GAN_EVALUATOR_MODEL` | `opus` | 评估器智能体的模型 |
-| `GAN_EVAL_CRITERIA` | `design,originality,craft,functionality` | 逗号分隔的标准 |
-| `GAN_DEV_SERVER_PORT` | `3000` | 实时应用的端口 |
-| `GAN_DEV_SERVER_CMD` | `npm run dev` | 启动开发服务器的命令 |
-| `GAN_PROJECT_DIR` | `.` | 项目工作目录 |
-| `GAN_SKIP_PLANNER` | `false` | 跳过规划器，直接使用规格 |
-| `GAN_EVAL_MODE` | `playwright` | `playwright`、`screenshot` 或 `code-only` |
+| `GAN_MAX_ITERATIONS`|`15` | 最大生成器-评估器循环次数 |
+| `GAN_PASS_THRESHOLD`|`7.0` | 通过所需的加权分数（1-10） |
+| `GAN_PLANNER_MODEL`|`opus` | 规划智能体的模型 |
+| `GAN_GENERATOR_MODEL`|`opus` | 生成器智能体的模型 |
+| `GAN_EVALUATOR_MODEL`|`opus` | 评估器智能体的模型 |
+| `GAN_EVAL_CRITERIA`|`design,originality,craft,functionality` | 逗号分隔的标准 |
+| `GAN_DEV_SERVER_PORT`|`3000` | 实时应用的端口 |
+| `GAN_DEV_SERVER_CMD`|`npm run dev` | 启动开发服务器的命令 |
+| `GAN_PROJECT_DIR`|`.` | 项目工作目录 |
+| `GAN_SKIP_PLANNER`|`false` | 跳过规划器，直接使用规格 |
+| `GAN_EVAL_MODE`|`playwright`|`playwright`、`screenshot`或`code-only` |
 
 ### 评估模式
 

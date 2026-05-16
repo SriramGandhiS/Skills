@@ -264,7 +264,7 @@ public class Product implements TableEntity {
     private String eTag;
     private String name;
     private double price;
-    
+
     // Getters and setters for all fields
     @Override
     public String getPartitionKey() { return partitionKey; }
@@ -275,7 +275,7 @@ public class Product implements TableEntity {
     @Override
     public void setRowKey(String rowKey) { this.rowKey = rowKey; }
     // ... other getters/setters
-    
+
     public String getName() { return name; }
     public void setName(String name) { this.name = name; }
     public double getPrice() { return price; }

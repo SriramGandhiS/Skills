@@ -47,8 +47,7 @@ If it fails, check that the CLI is installed and available in the PATH.
 Ask the user:
 
 > To connect your agent, you need a Manifest API key. Here's how to get one:
->
-> 1. Go to **https://app.manifest.build** and create an account (or sign in)
+> > 1. Go to **https://app.manifest.build** and create an account (or sign in)
 > 2. Once logged in, click **"Connect Agent"** to create a new agent
 > 3. Copy the API key that starts with `mnfst_`
 > 4. Paste it here

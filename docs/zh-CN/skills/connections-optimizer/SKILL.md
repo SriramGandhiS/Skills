@@ -32,7 +32,7 @@ origin: ECC
 * 目标角色、行业、地区或生态圈
 * 平台选择：X、LinkedIn 或两者
 * 不可触碰名单
-* 模式：`light-pass`、`default` 或 `aggressive`
+* 模式：`light-pass`、`default`或`aggressive`
 
 如果用户未指定模式，则使用 `default`。
 

@@ -1,4 +1,4 @@
-﻿---
+---
 name: autonomous-loops
 description: "Patterns and architectures for autonomous Claude Code loops â€” from simple sequential pipelines to RFC-driven multi-agent DAG systems."
 origin: ECC
@@ -49,20 +49,20 @@ The `claude -p` flag runs Claude Code non-interactively with a prompt, exits whe
 
 ```bash
 #!/bin/bash
-# daily-dev.sh â€” Sequential pipeline for a feature branch
+## daily-dev.sh â€” Sequential pipeline for a feature branch
 
 set -e
 
-# Step 1: Implement the feature
+## Step 1: Implement the feature
 claude -p "Read the spec in docs/auth-spec.md. Implement OAuth2 login in src/auth/. Write tests first (TDD). Do NOT create any new documentation files."
 
-# Step 2: De-sloppify (cleanup pass)
+## Step 2: De-sloppify (cleanup pass)
 claude -p "Review all files changed by the previous commit. Remove any unnecessary type tests, overly defensive checks, or testing of language features (e.g., testing that TypeScript generics work). Keep real business logic tests. Run the test suite after cleanup."
 
-# Step 3: Verify
+## Step 3: Verify
 claude -p "Run the full build, lint, type check, and test suite. Fix any failures. Do not add new features."
 
-# Step 4: Commit
+## Step 4: Commit
 claude -p "Create a conventional commit for all staged changes. Use 'feat: add OAuth2 login flow' as the message."
 ```
 
@@ -77,19 +77,19 @@ claude -p "Create a conventional commit for all staged changes. Use 'feat: add O
 
 **With model routing:**
 ```bash
-# Research with Opus (deep reasoning)
+## Research with Opus (deep reasoning)
 claude -p --model opus "Analyze the codebase architecture and write a plan for adding caching..."
 
-# Implement with Sonnet (fast, capable)
+## Implement with Sonnet (fast, capable)
 claude -p "Implement the caching layer according to the plan in docs/caching-plan.md..."
 
-# Review with Opus (thorough)
+## Review with Opus (thorough)
 claude -p --model opus "Review all changes for security issues, race conditions, and edge cases..."
 ```
 
 **With environment context:**
 ```bash
-# Pass context via files, not prompt length
+## Pass context via files, not prompt length
 echo "Focus areas: auth module, API rate limiting" > .claude-context.md
 claude -p "Read .claude-context.md for priorities. Work through them in order."
 rm .claude-context.md
@@ -97,10 +97,10 @@ rm .claude-context.md
 
 **With `--allowedTools` restrictions:**
 ```bash
-# Read-only analysis pass
+## Read-only analysis pass
 claude -p --allowedTools "Read,Grep,Glob" "Audit this codebase for security vulnerabilities..."
 
-# Write-only implementation pass
+## Write-only implementation pass
 claude -p --allowedTools "Read,Write,Edit,Bash" "Implement the fixes from security-audit.md..."
 ```
 
@@ -111,10 +111,10 @@ claude -p --allowedTools "Read,Write,Edit,Bash" "Implement the fixes from securi
 **ECC's built-in persistent loop.** A session-aware REPL that calls `claude -p` synchronously with full conversation history.
 
 ```bash
-# Start the default session
+## Start the default session
 node scripts/claw.js
 
-# Named session with skill context
+## Named session with skill context
 CLAW_SESSION=my-project CLAW_SKILLS=tdd-workflow,security-review node scripts/claw.js
 ```
 
@@ -240,22 +240,22 @@ Don't rely on agents to self-differentiate. The orchestrator **assigns** each ag
 ### Usage
 
 ```bash
-# Basic: 10 iterations
+## Basic: 10 iterations
 continuous-claude --prompt "Add unit tests for all untested functions" --max-runs 10
 
-# Cost-limited
+## Cost-limited
 continuous-claude --prompt "Fix all linter errors" --max-cost 5.00
 
-# Time-boxed
+## Time-boxed
 continuous-claude --prompt "Improve test coverage" --max-duration 8h
 
-# With code review pass
+## With code review pass
 continuous-claude \
   --prompt "Add authentication feature" \
   --max-runs 10 \
   --review-prompt "Run npm test && npm run lint, fix any failures"
 
-# Parallel via worktrees
+## Parallel via worktrees
 continuous-claude --prompt "Add tests" --max-runs 5 --worktree tests-worker &
 continuous-claude --prompt "Refactor code" --max-runs 5 --worktree refactor-worker &
 wait
@@ -338,10 +338,10 @@ Adding "don't test type systems" or "don't add unnecessary checks" to the Implem
 Instead of constraining the Implementer, let it be thorough. Then add a focused cleanup agent:
 
 ```bash
-# Step 1: Implement (let it be thorough)
+## Step 1: Implement (let it be thorough)
 claude -p "Implement the feature with full TDD. Be thorough with tests."
 
-# Step 2: De-sloppify (separate context, focused cleanup)
+## Step 2: De-sloppify (separate context, focused cleanup)
 claude -p "Review all changes in the working tree. Remove:
 - Tests that verify language/framework behavior rather than business logic
 - Redundant type checks that the type system already enforces
@@ -568,7 +568,7 @@ These patterns compose well:
 
 2. **Continuous Claude + De-Sloppify** â€” Add `--review-prompt` with a de-sloppify directive to each iteration.
 
-3. **Any loop + Verification** â€” Use ECC's `/verify` command or `verification-loop` skill as a gate before commits.
+3. **Any loop + Verification** â€” Use ECC's `/verify`command or`verification-loop` skill as a gate before commits.
 
 4. **Ralphinho's tiered approach in simpler loops** â€” Even in a sequential pipeline, you can route simple tasks to Haiku and complex tasks to Opus:
    ```bash
@@ -587,7 +587,7 @@ These patterns compose well:
 
 1. **Infinite loops without exit conditions** â€” Always have a max-runs, max-cost, max-duration, or completion signal.
 
-2. **No context bridge between iterations** â€” Each `claude -p` call starts fresh. Use `SHARED_TASK_NOTES.md` or filesystem state to bridge context.
+2. **No context bridge between iterations** â€” Each `claude -p`call starts fresh. Use`SHARED_TASK_NOTES.md` or filesystem state to bridge context.
 
 3. **Retrying the same failure** â€” If an iteration fails, don't just retry. Capture the error context and feed it to the next attempt.
 

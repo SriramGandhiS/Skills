@@ -17,7 +17,7 @@ First off, thank you for considering contributing to Skill Seeker! It's people l
 
 ## Branch Workflow
 
-**⚠️ IMPORTANT:** Skill Seekers uses a two-branch workflow.
+**WARNING: IMPORTANT:** Skill Seekers uses a two-branch workflow.
 
 ### Branch Structure
 
@@ -167,7 +167,7 @@ Adds configuration for Svelte documentation (https://svelte.dev/docs).
 
 We actively welcome your pull requests!
 
-**⚠️ IMPORTANT:** All PRs must target the `development` branch, not `main`.
+**WARNING: IMPORTANT:** All PRs must target the `development` branch, not `main`.
 
 1. Fork the repo and create your branch from `development`
 2. If you've added code, add tests
@@ -530,9 +530,9 @@ Releases are managed by maintainers:
 
 ## Questions?
 
-- 💬 [Open a discussion](https://github.com/yusufkaraaslan/Skill_Seekers/discussions)
-- 🐛 [Report a bug](https://github.com/yusufkaraaslan/Skill_Seekers/issues)
-- 📧 Contact: yusufkaraaslan.yk@pm.me
+- [Open a discussion](https://github.com/yusufkaraaslan/Skill_Seekers/discussions)
+- [Report a bug](https://github.com/yusufkaraaslan/Skill_Seekers/issues)
+- Contact: yusufkaraaslan.yk@pm.me
 
 ---
 
@@ -543,4 +543,4 @@ Contributors will be recognized in:
 - CHANGELOG.md for each release
 - GitHub contributors page
 
-Thank you for contributing to Skill Seeker! 🎉
+Thank you for contributing to Skill Seeker!

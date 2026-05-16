@@ -5,11 +5,11 @@
 ### ReadableStream Single-Use
 
 ```typescript
-// ❌ WRONG: Stream consumed twice
+// FAIL: WRONG: Stream consumed twice
 const email = await PostalMime.parse(await new Response(message.raw).arrayBuffer());
 const rawText = await new Response(message.raw).text(); // EMPTY!
 
-// ✅ CORRECT: Buffer first
+// PASS: CORRECT: Buffer first
 const buffer = await new Response(message.raw).arrayBuffer();
 const email = await PostalMime.parse(buffer);
 const rawText = new TextDecoder().decode(buffer);
@@ -18,10 +18,10 @@ const rawText = new TextDecoder().decode(buffer);
 ### ctx.waitUntil() Errors Silent
 
 ```typescript
-// ❌ Errors dropped silently
+// FAIL: Errors dropped silently
 ctx.waitUntil(fetch(webhookUrl, { method: 'POST', body: data }));
 
-// ✅ Catch and log
+// PASS: Catch and log
 ctx.waitUntil(
   fetch(webhookUrl, { method: 'POST', body: data })
     .catch(err => env.ERROR_LOG.put(`error:${Date.now()}`, err.message))
@@ -80,8 +80,8 @@ if (!env.KV) throw new Error('KV not configured');
 ### forward() Only X-* Headers
 
 ```typescript
-headers.set('X-Processed-By', 'worker');  // ✅ Works
-headers.set('Subject', 'Modified');        // ❌ Dropped
+headers.set('X-Processed-By', 'worker');  // PASS: Works
+headers.set('Subject', 'Modified');        // FAIL: Dropped
 ```
 
 ### Reply Requires Verified Domain

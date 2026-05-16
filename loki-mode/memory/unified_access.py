@@ -567,7 +567,7 @@ class UnifiedMemoryAccess:
         economics = self.token_economics.get_summary()
 
         return {
-            **stats,
+**stats,
             "token_economics": economics,
             "session_id": self._session_id,
         }

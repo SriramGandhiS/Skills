@@ -188,7 +188,7 @@ class TestConfigTools:
         result = await server_fastmcp.generate_config(**args)
 
         assert isinstance(result, str)
-        assert "✅" in result or "Generated" in result.lower()
+        assert "PASS:" in result or "Generated" in result.lower()
 
         # Verify config file was created
         config_path = temp_dirs["config"] / "my-framework.json"
@@ -237,7 +237,7 @@ class TestConfigTools:
         result = await server_fastmcp.validate_config(config_path=str(sample_config))
 
         assert isinstance(result, str)
-        assert "✅" in result or "valid" in result.lower()
+        assert "PASS:" in result or "valid" in result.lower()
 
     async def test_validate_config_unified(self, unified_config):
         """Test validating a unified config file."""
@@ -255,7 +255,7 @@ class TestConfigTools:
 
         assert isinstance(result, str)
         # Should indicate error
-        assert "error" in result.lower() or "❌" in result or "not found" in result.lower()
+        assert "error" in result.lower() or "FAIL:" in result or "not found" in result.lower()
 
 
 # ============================================================================
@@ -813,7 +813,7 @@ class TestErrorHandling:
             result = await server_fastmcp.scrape_docs(config_path="/nonexistent/config.json")
             assert isinstance(result, str)
             # Should contain error message
-            assert "error" in result.lower() or "not found" in result.lower() or "❌" in result
+            assert "error" in result.lower() or "not found" in result.lower() or "FAIL:" in result
         except FileNotFoundError:
             # If it raises, that's also acceptable error handling
             pass

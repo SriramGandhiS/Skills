@@ -386,7 +386,7 @@ When check_budget_limit() detects exceeded (autonomy/run.sh:7907-7926):
    mkdir -p ".loki/signals"
    echo "{\"type\":\"BUDGET_EXCEEDED\",...}" > ".loki/signals/BUDGET_EXCEEDED"
    ```
-   
+
    Signal format:
    ```json
    {

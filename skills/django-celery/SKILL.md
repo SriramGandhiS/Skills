@@ -1,4 +1,4 @@
-﻿---
+---
 name: django-celery
 description: Django + Celery async task patterns â€” configuration, task design, beat scheduling, retries, canvas workflows, monitoring, and testing. Use when adding background jobs, scheduled tasks, or async processing to a Django app.
 origin: ECC
@@ -28,7 +28,7 @@ pip install celery[redis] django-celery-results django-celery-beat
 ### `celery.py` â€” App Entrypoint
 
 ```python
-# config/celery.py
+## config/celery.py
 import os
 from celery import Celery
 
@@ -44,7 +44,7 @@ def debug_task(self):
 ```
 
 ```python
-# config/__init__.py
+## config/__init__.py
 from .celery import app as celery_app
 
 __all__ = ('celery_app',)
@@ -53,31 +53,31 @@ __all__ = ('celery_app',)
 ### Django Settings
 
 ```python
-# config/settings/base.py
+## config/settings/base.py
 
-# Broker (Redis recommended for production)
+## Broker (Redis recommended for production)
 CELERY_BROKER_URL = env('CELERY_BROKER_URL', default='redis://localhost:6379/0')
 CELERY_RESULT_BACKEND = env('CELERY_RESULT_BACKEND', default='django-db')
 
-# Serialization
+## Serialization
 CELERY_ACCEPT_CONTENT = ['json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
 
-# Task behavior
+## Task behavior
 CELERY_TASK_TRACK_STARTED = True
 CELERY_TASK_TIME_LIMIT = 30 * 60        # Hard limit: 30 min
 CELERY_TASK_SOFT_TIME_LIMIT = 25 * 60   # Soft limit: sends SoftTimeLimitExceeded
 CELERY_WORKER_PREFETCH_MULTIPLIER = 1   # Prevent worker hoarding long tasks
 CELERY_TASK_ACKS_LATE = True            # Re-queue on worker crash
 
-# Result persistence
+## Result persistence
 CELERY_RESULT_EXPIRES = 60 * 60 * 24   # Keep results 24 hours
 
-# Beat scheduler (for periodic tasks)
+## Beat scheduler (for periodic tasks)
 CELERY_BEAT_SCHEDULER = 'django_celery_beat.schedulers:DatabaseScheduler'
 
-# Installed apps
+## Installed apps
 INSTALLED_APPS += [
     'django_celery_results',
     'django_celery_beat',
@@ -87,16 +87,16 @@ INSTALLED_APPS += [
 ### Running Workers
 
 ```bash
-# Start worker (development)
+## Start worker (development)
 celery -A config worker --loglevel=info
 
-# Start beat scheduler (periodic tasks)
+## Start beat scheduler (periodic tasks)
 celery -A config beat --loglevel=info --scheduler django_celery_beat.schedulers:DatabaseScheduler
 
-# Combined worker + beat (dev only, never production)
+## Combined worker + beat (dev only, never production)
 celery -A config worker --beat --loglevel=info
 
-# Production: multiple workers with concurrency
+## Production: multiple workers with concurrency
 celery -A config worker --loglevel=warning --concurrency=4 -Q default,high_priority
 ```
 
@@ -105,7 +105,7 @@ celery -A config worker --loglevel=warning --concurrency=4 -Q default,high_prior
 ### Basic Task
 
 ```python
-# apps/notifications/tasks.py
+## apps/notifications/tasks.py
 from celery import shared_task
 import logging
 
@@ -204,17 +204,17 @@ def generate_pdf_report(self, report_id: int) -> str:
 from datetime import timedelta
 from django.utils import timezone
 
-# Fire and forget (async)
+## Fire and forget (async)
 send_welcome_email.delay(user.pk)
 
-# Schedule in the future
+## Schedule in the future
 send_reminder.apply_async(args=[user.pk], countdown=3600)  # 1 hour from now
 send_reminder.apply_async(args=[user.pk], eta=timezone.now() + timedelta(days=1))
 
-# Apply with queue routing
+## Apply with queue routing
 sync_contact_to_crm.apply_async(args=[contact.pk], queue='high_priority')
 
-# Run synchronously (tests / debugging only)
+## Run synchronously (tests / debugging only)
 result = generate_pdf_report.apply(args=[report.pk])
 ```
 
@@ -223,7 +223,7 @@ result = generate_pdf_report.apply(args=[report.pk])
 ### Code-Defined Schedule
 
 ```python
-# config/settings/base.py
+## config/settings/base.py
 from celery.schedules import crontab
 
 CELERY_BEAT_SCHEDULE = {
@@ -245,7 +245,7 @@ CELERY_BEAT_SCHEDULE = {
 ### Database-Defined Schedule (via django-celery-beat)
 
 ```python
-# Manage periodic tasks from Django admin or code
+## Manage periodic tasks from Django admin or code
 from django_celery_beat.models import PeriodicTask, CrontabSchedule
 import json
 
@@ -270,7 +270,7 @@ PeriodicTask.objects.update_or_create(
 ```python
 from celery import chain, group, chord
 
-# Chain: run tasks sequentially, passing results
+## Chain: run tasks sequentially, passing results
 pipeline = chain(
     fetch_data.s(source_id),
     transform_data.s(),          # receives fetch_data result as first arg
@@ -278,14 +278,14 @@ pipeline = chain(
 )
 pipeline.delay()
 
-# Group: run tasks in parallel
+## Group: run tasks in parallel
 parallel = group(
     send_welcome_email.s(user_id)
     for user_id in new_user_ids
 )
 parallel.delay()
 
-# Chord: parallel tasks + callback when all complete
+## Chord: parallel tasks + callback when all complete
 result = chord(
     group(process_chunk.s(chunk) for chunk in data_chunks),
     aggregate_results.s(),       # called with list of chunk results
@@ -296,7 +296,7 @@ result.delay()
 ## Error Handling and Dead Letter Queue
 
 ```python
-# apps/core/tasks.py
+## apps/core/tasks.py
 from celery.signals import task_failure
 
 @task_failure.connect
@@ -314,7 +314,7 @@ def on_task_failure(sender, task_id, exception, args, kwargs, traceback, einfo, 
 ```
 
 ```python
-# Route failed tasks to dead-letter queue after max retries
+## Route failed tasks to dead-letter queue after max retries
 @shared_task(
     bind=True,
     max_retries=3,
@@ -342,7 +342,7 @@ def charge_card(self, order_id: int) -> None:
 ### Unit Testing (No Broker)
 
 ```python
-# tests/test_tasks.py
+## tests/test_tasks.py
 import pytest
 from unittest.mock import patch, MagicMock
 from apps.notifications.tasks import send_welcome_email
@@ -364,11 +364,11 @@ class TestSendWelcomeEmail:
 ### Integration Testing with CELERY_TASK_ALWAYS_EAGER
 
 ```python
-# config/settings/test.py
+## config/settings/test.py
 CELERY_TASK_ALWAYS_EAGER = True      # Run tasks synchronously in tests
 CELERY_TASK_EAGER_PROPAGATES = True  # Re-raise exceptions from tasks
 
-# tests/test_integration.py
+## tests/test_integration.py
 @pytest.mark.django_db
 def test_registration_triggers_welcome_email(client):
     with patch('apps.notifications.services.EmailService') as mock_email:
@@ -398,15 +398,15 @@ def test_task_retries_on_connection_error():
 ## Monitoring
 
 ```bash
-# Inspect active workers and queues
+## Inspect active workers and queues
 celery -A config inspect active
 celery -A config inspect stats
 celery -A config inspect reserved
 
-# Check queue lengths (Redis)
+## Check queue lengths (Redis)
 redis-cli llen celery
 
-# Flower: web-based real-time monitor
+## Flower: web-based real-time monitor
 pip install flower
 celery -A config flower --port=5555
 ```
@@ -414,20 +414,20 @@ celery -A config flower --port=5555
 ## Anti-Patterns
 
 ```python
-# BAD: Passing model instances â€” they may be stale by execution time
+## BAD: Passing model instances â€” they may be stale by execution time
 send_welcome_email.delay(user)        # Never pass ORM objects
 send_welcome_email.delay(user.pk)     # Always pass PKs
 
-# BAD: Calling tasks synchronously in production views
+## BAD: Calling tasks synchronously in production views
 result = generate_report.apply()      # Blocks the request thread
 
-# BAD: Non-idempotent task without guards
+## BAD: Non-idempotent task without guards
 @shared_task
 def charge_and_fulfill(order_id):
     order.charge()     # May charge twice if task retries!
     order.fulfill()
 
-# GOOD: Idempotent with status guard
+## GOOD: Idempotent with status guard
 @shared_task
 def charge_and_fulfill(order_id):
     order = Order.objects.select_for_update().get(pk=order_id)
@@ -441,7 +441,7 @@ def charge_and_fulfill(order_id):
 
 | Check | Setting |
 |-------|---------|
-| Worker restarts on crash | `supervisord` or `systemd` unit |
+| Worker restarts on crash | `supervisord`or`systemd` unit |
 | `CELERY_TASK_ACKS_LATE = True` | Re-queue tasks on worker crash |
 | `CELERY_WORKER_PREFETCH_MULTIPLIER = 1` | Fair distribution of long tasks |
 | Separate queues per priority | `-Q default,high_priority,low_priority` |

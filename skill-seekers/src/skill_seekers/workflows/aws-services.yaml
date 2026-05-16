@@ -20,7 +20,7 @@ stages:
     enabled: true
     prompt: >
       Analyze AWS service usage in this codebase.
-      
+
       Identify:
       1. AWS SDK version and configuration
       2. AWS region configuration
@@ -28,7 +28,7 @@ stages:
       4. Services used (S3, DynamoDB, Lambda, etc.)
       5. Multi-region vs single-region setup
       6. AWS Organizations/Accounts structure
-      
+
       Output JSON with:
       - "sdk_version": AWS SDK details
       - "region_config": region setup
@@ -43,7 +43,7 @@ stages:
     enabled: true
     prompt: >
       Document AWS compute service integration.
-      
+
       Cover:
       1. EC2/ECS/EKS usage (if applicable)
       2. Lambda function configuration
@@ -51,7 +51,7 @@ stages:
       4. Load balancer setup (ALB, NLB)
       5. Container registry (ECR)
       6. Compute optimization
-      
+
       Output JSON with:
       - "ec2_ecs_eks": container/compute setup
       - "lambda": function configuration
@@ -67,7 +67,7 @@ stages:
     enabled: true
     prompt: >
       Document AWS storage service integration.
-      
+
       Include:
       1. S3 bucket configuration and policies
       2. S3 storage classes usage
@@ -75,7 +75,7 @@ stages:
       4. RDS/Aurora configuration
       5. ElastiCache (Redis/Memcached)
       6. EFS usage (if applicable)
-      
+
       Output JSON with:
       - "s3": S3 configuration
       - "s3_lifecycle": storage lifecycle
@@ -91,7 +91,7 @@ stages:
     enabled: true
     prompt: >
       Document AWS networking and security configuration.
-      
+
       Cover:
       1. VPC and subnet configuration
       2. Security groups and NACLs
@@ -100,7 +100,7 @@ stages:
       5. KMS encryption configuration
       6. CloudFront distribution
       7. WAF and Shield
-      
+
       Output JSON with:
       - "vpc": network setup
       - "security_groups": firewall rules
@@ -117,7 +117,7 @@ stages:
     enabled: true
     prompt: >
       Document AWS integration and messaging services.
-      
+
       Include:
       1. API Gateway configuration
       2. SQS queue setup
@@ -125,7 +125,7 @@ stages:
       4. EventBridge rules
       5. Step Functions workflows
       6. AppSync (if using GraphQL)
-      
+
       Output JSON with:
       - "api_gateway": API management
       - "sqs": message queuing
@@ -141,7 +141,7 @@ stages:
     enabled: true
     prompt: >
       Document AWS monitoring and observability.
-      
+
       Cover:
       1. CloudWatch metrics and logs
       2. CloudWatch alarms
@@ -149,7 +149,7 @@ stages:
       4. CloudTrail audit logging
       5. AWS Config rules
       6. Cost Explorer and budgets
-      
+
       Output JSON with:
       - "cloudwatch": metrics/logging
       - "alarms": alerting setup
@@ -165,7 +165,7 @@ stages:
     enabled: true
     prompt: >
       Document AWS Well-Architected best practices.
-      
+
       Include:
       1. Cost optimization strategies
       2. Performance efficiency
@@ -173,7 +173,7 @@ stages:
       4. Security best practices
       5. Sustainability considerations
       6. Disaster recovery planning
-      
+
       Output JSON with:
       - "cost_optimization": saving strategies
       - "performance": efficiency tips

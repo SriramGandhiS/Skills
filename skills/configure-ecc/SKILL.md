@@ -1,4 +1,4 @@
-﻿---
+---
 name: configure-ecc
 description: Interactive installer for Everything Claude Code â€” guides users through selecting and installing skills and rules to user-level or project-level directories, verifies paths, and optionally optimizes installed files.
 origin: ECC
@@ -29,7 +29,7 @@ Before any installation, clone the latest ECC source to `/tmp`:
 
 ```bash
 rm -rf /tmp/everything-claude-code
-git clone https://github.com/affaan-m/everything-claude-code.git /tmp/everything-claude-code
+git clone <https://github.com/affaan-m/everything-claude-code.git> /tmp/everything-claude-code
 ```
 
 Set `ECC_ROOT=/tmp/everything-claude-code` as the source for all subsequent copy operations.
@@ -53,7 +53,7 @@ Options:
 Store the choice as `INSTALL_LEVEL`. Set the target directory:
 - User-level: `TARGET=~/.claude`
 - Project-level: `TARGET=.claude` (relative to current project root)
-- Both: `TARGET_USER=~/.claude`, `TARGET_PROJECT=.claude`
+- Both: `TARGET_USER=~/.claude`,`TARGET_PROJECT=.claude`
 
 Create the target directories if they don't exist:
 ```bash
@@ -66,7 +66,7 @@ mkdir -p $TARGET/skills $TARGET/rules
 
 ### 2a: Choose Scope (Core vs Niche)
 
-Default to **Core (recommended for new users)** â€” copy `.agents/skills/*` plus `skills/search-first/` for research-first workflows. This bundle covers engineering, evals, verification, security, strategic compaction, frontend design, and Anthropic cross-functional skills (article-writing, content-engine, market-research, frontend-slides).
+Default to **Core (recommended for new users)** â€” copy `.agents/skills/*`plus`skills/search-first/` for research-first workflows. This bundle covers engineering, evals, verification, security, strategic compaction, frontend design, and Anthropic cross-functional skills (article-writing, content-engine, market-research, frontend-slides).
 
 Use `AskUserQuestion` (single select):
 ```
@@ -82,7 +82,7 @@ If the user chooses niche or core + niche, continue to category selection below 
 
 ### 2b: Choose Skill Categories
 
-There are 7 selectable category groups below. The detailed confirmation lists that follow cover 45 skills across 8 categories, plus 1 standalone template. Use `AskUserQuestion` with `multiSelect: true`:
+There are 7 selectable category groups below. The detailed confirmation lists that follow cover 45 skills across 8 categories, plus 1 standalone template. Use `AskUserQuestion`with`multiSelect: true`:
 
 ```
 Question: "Which skill categories do you want to install?"
@@ -143,7 +143,7 @@ For each selected category, print the full list of skills below and ask the user
 
 | Skill | Description |
 |-------|-------------|
-| `continuous-learning` | Legacy v1 Stop-hook session pattern extraction; prefer `continuous-learning-v2` for new installs |
+| `continuous-learning`| Legacy v1 Stop-hook session pattern extraction; prefer`continuous-learning-v2` for new installs |
 | `continuous-learning-v2` | Instinct-based learning with confidence scoring, evolves into skills, agents, and optional legacy command shims |
 | `eval-harness` | Formal evaluation framework for eval-driven development (EDD) |
 | `iterative-retrieval` | Progressive context refinement for subagent context problem |
@@ -169,7 +169,7 @@ For each selected category, print the full list of skills below and ask the user
 | `deep-research` | Multi-source deep research using firecrawl and exa MCPs with cited reports |
 | `exa-search` | Neural search via Exa MCP for web, code, company, and people research |
 
-`claude-api` is an Anthropic canonical skill. Install it from [`anthropics/skills`](https://github.com/anthropics/skills) when you want the official Claude API workflow instead of an ECC-bundled copy.
+`claude-api`is an Anthropic canonical skill. Install it from [`anthropics/skills`](https://github.com/anthropics/skills) when you want the official Claude API workflow instead of an ECC-bundled copy.
 
 **Category: Social & Content Distribution (2 skills)**
 
@@ -202,10 +202,10 @@ For each selected category, print the full list of skills below and ask the user
 For each selected skill, copy the entire skill directory from the correct source root:
 
 ```bash
-# Core skills live under .agents/skills/
+## Core skills live under .agents/skills/
 cp -R "$ECC_ROOT/.agents/skills/<skill-name>" "$TARGET/skills/"
 
-# Niche skills live under skills/
+## Niche skills live under skills/
 cp -R "$ECC_ROOT/skills/<skill-name>" "$TARGET/skills/"
 ```
 
@@ -215,13 +215,13 @@ When iterating over globbed source directories, never pass a trailing-slash sour
 cp -R "${src%/}" "$TARGET/skills/$(basename "${src%/}")"
 ```
 
-Note: `continuous-learning` and `continuous-learning-v2` have extra files (config.json, hooks, scripts) â€” ensure the entire directory is copied, not just SKILL.md.
+Note: `continuous-learning`and`continuous-learning-v2` have extra files (config.json, hooks, scripts) â€” ensure the entire directory is copied, not just SKILL.md.
 
 ---
 
 ## Step 3: Select & Install Rules
 
-Use `AskUserQuestion` with `multiSelect: true`:
+Use `AskUserQuestion`with`multiSelect: true`:
 
 ```
 Question: "Which rule sets do you want to install?"
@@ -234,10 +234,10 @@ Options:
 
 Execute installation:
 ```bash
-# Common rules
+## Common rules
 cp -r $ECC_ROOT/rules/common $TARGET/rules/common
 
-# Language-specific rules (preserve per-language directories)
+## Language-specific rules (preserve per-language directories)
 cp -r $ECC_ROOT/rules/typescript $TARGET/rules/typescript   # if selected
 cp -r $ECC_ROOT/rules/python $TARGET/rules/python            # if selected
 cp -r $ECC_ROOT/rules/golang $TARGET/rules/golang            # if selected
@@ -271,23 +271,23 @@ grep -rn "skills/" $TARGET/skills/
 
 **For project-level installs**, flag any references to `~/.claude/` paths:
 - If a skill references `~/.claude/settings.json` â€” this is usually fine (settings are always user-level)
-- If a skill references `~/.claude/skills/` or `~/.claude/rules/` â€” this may be broken if installed only at project level
+- If a skill references `~/.claude/skills/`or`~/.claude/rules/` â€” this may be broken if installed only at project level
 - If a skill references another skill by name â€” check that the referenced skill was also installed
 
 ### 4c: Check Cross-References Between Skills
 
 Some skills reference others. Verify these dependencies:
-- `django-tdd` may reference `django-patterns`
-- `laravel-tdd` may reference `laravel-patterns`
-- `quarkus-tdd` may reference `quarkus-patterns`
-- `springboot-tdd` may reference `springboot-patterns`
-- `continuous-learning-v2` references `~/.claude/homunculus/` directory
-- `python-testing` may reference `python-patterns`
-- `golang-testing` may reference `golang-patterns`
-- `crosspost` references `content-engine` and `x-api`
-- `deep-research` references `exa-search` (complementary MCP tools)
-- `fal-ai-media` references `videodb` (complementary media skill)
-- `x-api` references `content-engine` and `crosspost`
+- `django-tdd`may reference`django-patterns`
+- `laravel-tdd`may reference`laravel-patterns`
+- `quarkus-tdd`may reference`quarkus-patterns`
+- `springboot-tdd`may reference`springboot-patterns`
+- `continuous-learning-v2`references`~/.claude/homunculus/` directory
+- `python-testing`may reference`python-patterns`
+- `golang-testing`may reference`golang-patterns`
+- `crosspost`references`content-engine`and`x-api`
+- `deep-research`references`exa-search` (complementary MCP tools)
+- `fal-ai-media`references`videodb` (complementary media skill)
+- `x-api`references`content-engine`and`crosspost`
 - Language-specific rules reference `common/` counterparts
 
 ### 4d: Report Issues
@@ -376,9 +376,9 @@ Then print a summary report:
 - For project-level: check `.claude/skills/<skill-name>/SKILL.md` exists
 
 ### "Rules not working"
-- Rules are flat files, not in subdirectories: `$TARGET/rules/coding-style.md` (correct) vs `$TARGET/rules/common/coding-style.md` (incorrect for flat install)
+- Rules are flat files, not in subdirectories: `$TARGET/rules/coding-style.md`(correct) vs`$TARGET/rules/common/coding-style.md` (incorrect for flat install)
 - Restart Claude Code after installing rules
 
 ### "Path reference errors after project-level install"
 - Some skills assume `~/.claude/` paths. Run Step 4 verification to find and fix these.
-- For `continuous-learning-v2`, the `~/.claude/homunculus/` directory is always user-level â€” this is expected and not an error.
+- For `continuous-learning-v2`, the`~/.claude/homunculus/` directory is always user-level â€” this is expected and not an error.

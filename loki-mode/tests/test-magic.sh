@@ -1,12 +1,9 @@
 #!/usr/bin/env bash
-#
-# Integration tests for `loki magic` command.
-#
-# Run:
-#   bash tests/test-magic.sh
-#
-# Make executable (integration step):
-#   chmod +x tests/test-magic.sh
+# # Integration tests for `loki magic` command.
+# # Run:
+# bash tests/test-magic.sh
+# # Make executable (integration step):
+# chmod +x tests/test-magic.sh
 
 set -euo pipefail
 

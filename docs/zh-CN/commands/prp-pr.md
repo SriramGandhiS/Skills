@@ -7,7 +7,7 @@ argument-hint: "[base-branch] (default: main)"
 
 > 改编自 Wirasm 的 PRPs-agentic-eng。属于 PRP 工作流系列的一部分。
 
-**输入**：`$ARGUMENTS` — 可选，可包含基础分支名称和/或标志（例如 `--draft`）。
+**输入**：`$ARGUMENTS`— 可选，可包含基础分支名称和/或标志（例如`--draft`）。
 
 **解析 `$ARGUMENTS`**：
 
@@ -31,8 +31,8 @@ git log origin/<base>..HEAD --oneline
 |---|---|---|
 | 不在基础分支上 | 当前分支 ≠ 基础分支 | 停止："请先切换到功能分支。" |
 | 工作目录干净 | 无未提交的更改 | 警告："存在未提交的更改。请先提交或暂存。使用 `/prp-commit` 提交。" |
-| 存在领先提交 | `git log origin/<base>..HEAD` 不为空 | 停止："`<base>` 前无提交。无需创建 PR。" |
-| 无现有 PR | `gh pr list --head <branch> --json number` 为空 | 停止："PR 已存在：#<编号>。使用 `gh pr view <number> --web` 打开。" |
+| 存在领先提交 | `git log origin/<base>..HEAD`不为空 | 停止："`<base>` 前无提交。无需创建 PR。" |
+| 无现有 PR | `gh pr list --head <branch> --json number`为空 | 停止："PR 已存在：#<编号>。使用`gh pr view <number> --web` 打开。" |
 
 若所有检查通过，继续执行。
 
@@ -44,7 +44,7 @@ git log origin/<base>..HEAD --oneline
 
 按顺序搜索 PR 模板：
 
-1. `.github/PULL_REQUEST_TEMPLATE/` 目录 — 若存在，列出文件并让用户选择（或使用 `default.md`）
+1. `.github/PULL_REQUEST_TEMPLATE/`目录 — 若存在，列出文件并让用户选择（或使用`default.md`）
 2. `.github/PULL_REQUEST_TEMPLATE.md`
 3. `.github/pull_request_template.md`
 4. `docs/pull_request_template.md`
@@ -181,8 +181,8 @@ CI 检查: <状态摘要 或 "待处理" 或 "未配置">
 
 ## 边界情况
 
-* **无 `gh` CLI**：停止并提示："需要 GitHub CLI（`gh`）。安装地址：<https://cli.github.com/>"
+* **无 `gh`CLI**：停止并提示："需要 GitHub CLI（`gh`）。安装地址：<https://cli.github.com/>"
 * **未认证**：停止并提示："请先运行 `gh auth login`。"
-* **需要强制推送**：若远程已分歧且已完成变基，使用 `git push --force-with-lease`（切勿使用 `--force`）。
+* **需要强制推送**：若远程已分歧且已完成变基，使用 `git push --force-with-lease`（切勿使用`--force`）。
 * **多个 PR 模板**：若 `.github/PULL_REQUEST_TEMPLATE/` 包含多个文件，列出并让用户选择。
 * **大型 PR（超过 20 个文件）**：警告 PR 规模。若变更逻辑上可分离，建议拆分。

@@ -103,10 +103,10 @@ All 31 checks passed. No issues found.
 ## Common Pitfalls
 
 - **Problem:** Score seems low due to many suggestions
-  **Solution:** Suggestions cap at -15 points total. Focus on warnings and criticals first.
+**Solution:** Suggestions cap at -15 points total. Focus on warnings and criticals first.
 
 - **Problem:** False positive on ambiguous terms inside code blocks
-  **Solution:** SkillCheck skips code blocks and inline code. If you still see false positives, wrap the term in backticks.
+**Solution:** SkillCheck skips code blocks and inline code. If you still see false positives, wrap the term in backticks.
 
 - **Problem:** Wisdom/platitude check flags legitimate instructions
-  **Solution:** Rephrase generic advice ("Remember that testing is important") as concrete directives ("Run tests before committing").
+**Solution:** Rephrase generic advice ("Remember that testing is important") as concrete directives ("Run tests before committing").

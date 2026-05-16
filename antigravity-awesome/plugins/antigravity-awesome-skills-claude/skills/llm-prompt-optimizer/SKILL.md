@@ -95,7 +95,7 @@ Classify the sentiment of customer reviews as POSITIVE, NEGATIVE, or NEUTRAL.
 
 Examples:
 Review: "This product exceeded my expectations!" -> POSITIVE
-Review: "It arrived broken and support was useless." -> NEGATIVE  
+Review: "It arrived broken and support was useless." -> NEGATIVE
 Review: "Product works as described, nothing special." -> NEUTRAL
 
 Now classify:
@@ -138,7 +138,7 @@ Reduce token count without losing effectiveness:
 
 ```
 # Verbose (expensive)
-"Please carefully analyze the following code and provide a detailed explanation of 
+"Please carefully analyze the following code and provide a detailed explanation of
 what it does, how it works, and any potential issues you might find."
 
 # Compressed (efficient, same quality)
@@ -147,14 +147,14 @@ what it does, how it works, and any potential issues you might find."
 
 ## Best Practices
 
-- ✅ **Do:** Always specify the output format (JSON, markdown, plain text, bullet list)
-- ✅ **Do:** Use delimiters (```, ---) to separate instructions from content
-- ✅ **Do:** Test prompts with edge cases (empty input, unusual data)
-- ✅ **Do:** Version your system prompts in source control
-- ✅ **Do:** Add "think step by step" for math, logic, or multi-step tasks
-- ❌ **Don't:** Use negative-only instructions ("don't be verbose") — add positive alternatives
-- ❌ **Don't:** Assume the model knows your codebase context — always include it
-- ❌ **Don't:** Use the same prompt across different models without testing — they behave differently
+- PASS: **Do:** Always specify the output format (JSON, markdown, plain text, bullet list)
+- PASS: **Do:** Use delimiters (```, ---) to separate instructions from content
+- PASS: **Do:** Test prompts with edge cases (empty input, unusual data)
+- PASS: **Do:** Version your system prompts in source control
+- PASS: **Do:** Add "think step by step" for math, logic, or multi-step tasks
+- FAIL: **Don't:** Use negative-only instructions ("don't be verbose") — add positive alternatives
+- FAIL: **Don't:** Assume the model knows your codebase context — always include it
+- FAIL: **Don't:** Use the same prompt across different models without testing — they behave differently
 
 ## Prompt Audit Checklist
 

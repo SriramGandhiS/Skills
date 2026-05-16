@@ -145,9 +145,9 @@ trackio.init(project="hyperparam-sweep", run_name="lr-0.01", group="lr_0.01")
 
 ## Critical: Evaluation Dataset Requirements
 
-**⚠️ IMPORTANT**: If you set `eval_strategy="steps"` or `eval_strategy="epoch"`, you **MUST** provide an `eval_dataset` to the trainer, or the training will hang.
+**WARNING: IMPORTANT**: If you set `eval_strategy="steps"` or `eval_strategy="epoch"`, you **MUST** provide an `eval_dataset` to the trainer, or the training will hang.
 
-### ✅ CORRECT - With eval dataset:
+### PASS: CORRECT - With eval dataset:
 ```python
 dataset_split = dataset.train_test_split(test_size=0.1, seed=42)
 
@@ -159,7 +159,7 @@ trainer = SFTTrainer(
 )
 ```
 
-### ❌ WRONG - Will hang:
+### FAIL: WRONG - Will hang:
 ```python
 trainer = SFTTrainer(
     model="Qwen/Qwen2.5-0.5B",

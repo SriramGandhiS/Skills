@@ -149,7 +149,7 @@ TEST(ServiceTest, SendsNotifications) {
 ### CMake/CTest 快速入门
 
 ```cmake
-# CMakeLists.txt (excerpt)
+## CMakeLists.txt (excerpt)
 cmake_minimum_required(VERSION 3.20)
 project(example LANGUAGES CXX)
 
@@ -157,12 +157,12 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 include(FetchContent)
-# Prefer project-locked versions. If using a tag, use a pinned version per project policy.
+## Prefer project-locked versions. If using a tag, use a pinned version per project policy.
 set(GTEST_VERSION v1.17.0) # Adjust to project policy.
 FetchContent_Declare(
   googletest
   # Google Test framework (official repository)
-  URL https://github.com/google/googletest/archive/refs/tags/${GTEST_VERSION}.zip
+  URL <https://github.com/google/googletest/archive/refs/tags/${GTEST_VERSION}.zip>
 )
 FetchContent_MakeAvailable(googletest)
 
@@ -276,7 +276,7 @@ endif()
 
 * 保持测试的确定性和隔离性
 * 优先使用依赖注入而非全局变量
-* 对前置条件使用 `ASSERT_*`，对多个检查使用 `EXPECT_*`
+* 对前置条件使用 `ASSERT_*`，对多个检查使用`EXPECT_*`
 * 在 CTest 标签或目录中分离单元测试与集成测试
 * 在 CI 中运行消毒剂以进行内存和竞态检测
 

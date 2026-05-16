@@ -238,8 +238,8 @@ Iframes are detected automatically during snapshots. When the main-frame snapsho
 ```bash
 agent-browser snapshot -i
 # @e3 [Iframe] "payment-frame"
-#   @e4 [input] "Card number"
-#   @e5 [button] "Pay"
+# @e4 [input] "Card number"
+# @e5 [button] "Pay"
 
 # Interact directly — refs inside iframes already work
 agent-browser fill @e4 "4111111111111111"

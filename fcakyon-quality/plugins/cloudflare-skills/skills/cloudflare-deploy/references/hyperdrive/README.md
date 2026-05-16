@@ -49,10 +49,10 @@ export default {
 
 ## When to Use
 
-✅ Global access to single-region DBs, high read ratios, popular queries, connection-heavy loads
-❌ Write-heavy, real-time data (<1s), single-region apps close to DB
+PASS: Global access to single-region DBs, high read ratios, popular queries, connection-heavy loads
+FAIL: Write-heavy, real-time data (<1s), single-region apps close to DB
 
-**💡 Pair with Smart Placement** for Workers making multiple queries - executes near DB to minimize latency.
+**Pair with Smart Placement** for Workers making multiple queries - executes near DB to minimize latency.
 
 ## Driver Choice
 

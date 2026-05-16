@@ -130,8 +130,7 @@ function Modal({ isOpen, onClose, children }: ModalProps) {
 <button
   aria-pressed={isEnabled}
   onClick={() => setIsEnabled(!isEnabled)}
->
-  {isEnabled ? 'Enabled' : 'Disabled'}
+> {isEnabled ? 'Enabled' : 'Disabled'}
 </button>
 
 // Expandable sections
@@ -139,8 +138,7 @@ function Modal({ isOpen, onClose, children }: ModalProps) {
   aria-expanded={isOpen}
   aria-controls="content-panel"
   onClick={() => setIsOpen(!isOpen)}
->
-  Show details
+> Show details
 </button>
 <div id="content-panel" hidden={!isOpen}>
   Content here

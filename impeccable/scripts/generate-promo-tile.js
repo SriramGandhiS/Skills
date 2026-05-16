@@ -82,8 +82,8 @@ const svg = `
     </g>
 
     <!-- Sparkles inside the card (more AI slop vibes) -->
-    <text x="32" y="56" font-family="-apple-system, system-ui, sans-serif" font-size="20" fill="#fbbf24">✨</text>
-    <text x="268" y="56" font-family="-apple-system, system-ui, sans-serif" font-size="20" fill="#fbbf24">✨</text>
+    <text x="32" y="56" font-family="-apple-system, system-ui, sans-serif" font-size="20" fill="#fbbf24"></text>
+    <text x="268" y="56" font-family="-apple-system, system-ui, sans-serif" font-size="20" fill="#fbbf24"></text>
 
     <!-- Gradient text headline (the slop being detected) -->
     <text x="156" y="52" text-anchor="middle"

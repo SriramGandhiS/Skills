@@ -46,7 +46,7 @@ Returns when **process starts**, NOT when ports ready. Use for fire-and-forget.
 ```typescript
 await container.startAndWaitForPorts();  // Uses requiredPorts
 await container.startAndWaitForPorts({ ports: [8080, 9090] });
-await container.startAndWaitForPorts({ 
+await container.startAndWaitForPorts({
   ports: [8080],
   startOptions: { envVars: { KEY: "value" } }
 });
@@ -68,7 +68,7 @@ await container.waitForPort(8080, { timeout: 30000 });
 ### fetch() - HTTP with WebSocket support
 
 ```typescript
-// ✅ Supports WebSocket upgrades
+// PASS: Supports WebSocket upgrades
 const response = await container.fetch(request);
 const response = await container.fetch("http://container/api", {
   method: "POST",
@@ -81,11 +81,11 @@ const response = await container.fetch("http://container/api", {
 ### containerFetch() - HTTP only (no WebSocket)
 
 ```typescript
-// ❌ No WebSocket support
+// FAIL: No WebSocket support
 const response = await container.containerFetch(request);
 ```
 
-**⚠️ Critical:** Use `fetch()` for WebSocket, not `containerFetch()`.
+**WARNING: Critical:** Use `fetch()` for WebSocket, not `containerFetch()`.
 
 ### TCP Connections
 
@@ -163,7 +163,7 @@ export class ScheduledContainer extends Container {
 }
 ```
 
-**⚠️ Don't override `alarm()` directly when using `schedule()` helper.**
+**WARNING: Don't override `alarm()` directly when using `schedule()` helper.**
 
 ## State Inspection
 
@@ -184,4 +184,4 @@ export class MyContainer extends Container {
 }
 ```
 
-**⚠️ Use `getState()` for external checks, `ctx.container.running` for internal.**
+**WARNING: Use `getState()` for external checks, `ctx.container.running` for internal.**

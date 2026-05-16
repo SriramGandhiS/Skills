@@ -1,8 +1,7 @@
 # Communication Templates — Logistics Exception Management
 
 > **Reference Type:** Tier 3 — Load on demand when composing or reviewing exception communications.
->
-> **Usage:** Each template includes variable placeholders in `{{double_braces}}` for direct substitution. Templates are organized by audience and escalation stage. Select the template matching your scenario, substitute variables, review tone guidance, and send.
+> > **Usage:** Each template includes variable placeholders in `{{double_braces}}` for direct substitution. Templates are organized by audience and escalation stage. Select the template matching your scenario, substitute variables, review tone guidance, and send.
 
 ---
 

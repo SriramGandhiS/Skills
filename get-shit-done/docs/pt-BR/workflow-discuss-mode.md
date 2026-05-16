@@ -17,7 +17,7 @@ Use quando:
 - você quer explorar alternativas livremente
 - há decisões de produto/UX em aberto
 
-Vantagem: descoberta ampla.  
+Vantagem: descoberta ampla.
 Trade-off: pode consumir mais tempo de perguntas.
 
 ## Quando usar `assumptions`
@@ -28,7 +28,7 @@ Use quando:
 - você quer reduzir fricção no intake
 - o time prefere revisão de propostas em vez de entrevista aberta
 
-Vantagem: velocidade e consistência com o código existente.  
+Vantagem: velocidade e consistência com o código existente.
 Trade-off: depende da qualidade do mapeamento de contexto.
 
 ## Como habilitar

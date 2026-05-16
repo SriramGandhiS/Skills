@@ -1,4 +1,4 @@
-﻿---
+---
 name: nestjs-patterns
 description: NestJS architecture patterns for modules, controllers, providers, DTO validation, guards, interceptors, config, and production-grade TypeScript backends.
 origin: ECC
@@ -74,7 +74,7 @@ async function bootstrap() {
 bootstrap();
 ```
 
-- Always enable `whitelist` and `forbidNonWhitelisted` on public APIs.
+- Always enable `whitelist`and`forbidNonWhitelisted` on public APIs.
 - Prefer one global validation pipe instead of repeating validation config per route.
 
 ## Modules, Controllers, and Providers

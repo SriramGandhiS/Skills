@@ -32,13 +32,13 @@ hub_repo_details(["org/model-name"], repo_type="model")
 **Examples that would have caught errors:**
 
 ```python
-# ❌ WRONG: Assumed dataset exists
+# FAIL: WRONG: Assumed dataset exists
 hf_jobs("uv", {
     "script": """...""",
     "env": {"DATASET": "trl-lib/argilla-dpo-mix-7k"}  # Doesn't exist!
 })
 
-# ✅ CORRECT: Verify first
+# PASS: CORRECT: Verify first
 dataset_search({"query": "argilla dpo", "author": "trl-lib"})
 # Would show: "trl-lib/ultrafeedback_binarized" is the correct name
 
@@ -55,7 +55,7 @@ hub_repo_details(["trl-lib/ultrafeedback_binarized"], repo_type="dataset")
 - [ ] Validate file paths in repositories
 - [ ] Check for recent updates/renames of resources
 
-**Time cost:** 5-10 seconds  
+**Time cost:** 5-10 seconds
 **Time saved:** Hours of failed job time + debugging
 
 ---
@@ -76,7 +76,7 @@ hub_repo_details(["trl-lib/ultrafeedback_binarized"], repo_type="dataset")
 **Choose reliability:**
 
 ```python
-# ❌ RISKY: Aggressive optimization that may fail
+# FAIL: RISKY: Aggressive optimization that may fail
 SFTConfig(
     torch_compile=True,  # Can fail on T4, A10G GPUs
     optim="adamw_bnb_8bit",  # Requires specific setup
@@ -84,7 +84,7 @@ SFTConfig(
     ...
 )
 
-# ✅ SAFE: Proven defaults
+# PASS: SAFE: Proven defaults
 SFTConfig(
     # torch_compile=True,  # Commented with note: "Enable on H100 for 20% speedup"
     optim="adamw_torch",  # Standard, always works
@@ -96,10 +96,10 @@ SFTConfig(
 **For build processes:**
 
 ```python
-# ❌ UNRELIABLE: Uses make (platform-dependent)
+# FAIL: UNRELIABLE: Uses make (platform-dependent)
 subprocess.run(["make", "-C", "/tmp/llama.cpp", "llama-quantize"], check=True)
 
-# ✅ RELIABLE: Uses CMake (consistent, documented)
+# PASS: RELIABLE: Uses CMake (consistent, documented)
 subprocess.run([
     "cmake", "-B", "/tmp/llama.cpp/build", "-S", "/tmp/llama.cpp",
     "-DGGML_CUDA=OFF"  # Disable CUDA for faster, more reliable build
@@ -130,7 +130,7 @@ subprocess.run([
 - [ ] Document known incompatibilities
 - [ ] Provide "safe" and "fast" variants when needed
 
-**Performance loss:** 10-20% in best case  
+**Performance loss:** 10-20% in best case
 **Reliability gain:** 95%+ success rate vs 60-70%
 
 ---
@@ -151,27 +151,27 @@ subprocess.run([
 **Complete dependency specifications:**
 
 ```python
-# ❌ INCOMPLETE: "Simplified" by removing dependencies
+# FAIL: INCOMPLETE: "Simplified" by removing dependencies
 # /// script
 # dependencies = [
-#     "transformers",
-#     "peft",
-#     "torch",
+# "transformers",
+# "peft",
+# "torch",
 # ]
 # ///
 
-# ✅ COMPLETE: All dependencies explicit
+# PASS: COMPLETE: All dependencies explicit
 # /// script
 # dependencies = [
-#     "transformers>=4.36.0",
-#     "peft>=0.7.0",
-#     "torch>=2.0.0",
-#     "accelerate>=0.24.0",
-#     "huggingface_hub>=0.20.0",
-#     "sentencepiece>=0.1.99",  # Required for tokenizers
-#     "protobuf>=3.20.0",        # Required for tokenizers
-#     "numpy",
-#     "gguf",
+# "transformers>=4.36.0",
+# "peft>=0.7.0",
+# "torch>=2.0.0",
+# "accelerate>=0.24.0",
+# "huggingface_hub>=0.20.0",
+# "sentencepiece>=0.1.99",  # Required for tokenizers
+# "protobuf>=3.20.0",        # Required for tokenizers
+# "numpy",
+# "gguf",
 # ]
 # ///
 ```
@@ -179,11 +179,11 @@ subprocess.run([
 **Complete build processes:**
 
 ```python
-# ❌ INCOMPLETE: Assumes build tools exist
+# FAIL: INCOMPLETE: Assumes build tools exist
 subprocess.run(["git", "clone", "https://github.com/ggerganov/llama.cpp.git", "/tmp/llama.cpp"])
 subprocess.run(["make", "-C", "/tmp/llama.cpp", "llama-quantize"])  # FAILS: no gcc/make
 
-# ✅ COMPLETE: Installs all requirements
+# PASS: COMPLETE: Installs all requirements
 subprocess.run(["apt-get", "update", "-qq"], check=True)
 subprocess.run(["apt-get", "install", "-y", "-qq", "build-essential", "cmake"], check=True)
 subprocess.run(["git", "clone", "https://github.com/ggerganov/llama.cpp.git", "/tmp/llama.cpp"])
@@ -210,7 +210,7 @@ subprocess.run(["git", "clone", "https://github.com/ggerganov/llama.cpp.git", "/
 - [ ] Test scripts in clean environment
 - [ ] Document why each dependency is needed
 
-**Complexity:** Slightly longer scripts  
+**Complexity:** Slightly longer scripts
 **Reliability:** Scripts "just work" every time
 
 ---
@@ -224,10 +224,10 @@ subprocess.run(["git", "clone", "https://github.com/ggerganov/llama.cpp.git", "/
 **Wrap subprocess calls:**
 
 ```python
-# ❌ UNCLEAR: Silent failure
+# FAIL: UNCLEAR: Silent failure
 subprocess.run([...], check=True, capture_output=True)
 
-# ✅ CLEAR: Shows what failed
+# PASS: CLEAR: Shows what failed
 try:
     result = subprocess.run(
         [...],
@@ -239,7 +239,7 @@ try:
     if result.stderr:
         print("Warnings:", result.stderr)
 except subprocess.CalledProcessError as e:
-    print(f"❌ Command failed!")
+    print(f"FAIL: Command failed!")
     print("STDOUT:", e.stdout)
     print("STDERR:", e.stderr)
     raise
@@ -248,19 +248,19 @@ except subprocess.CalledProcessError as e:
 **Validate inputs:**
 
 ```python
-# ❌ UNCLEAR: Fails later with cryptic error
+# FAIL: UNCLEAR: Fails later with cryptic error
 model = load_model(MODEL_NAME)
 
-# ✅ CLEAR: Fails fast with clear message
+# PASS: CLEAR: Fails fast with clear message
 if not MODEL_NAME:
     raise ValueError("MODEL_NAME environment variable not set!")
 
 print(f"Loading model: {MODEL_NAME}")
 try:
     model = load_model(MODEL_NAME)
-    print(f"✅ Model loaded successfully")
+    print(f"PASS: Model loaded successfully")
 except Exception as e:
-    print(f"❌ Failed to load model: {MODEL_NAME}")
+    print(f"FAIL: Failed to load model: {MODEL_NAME}")
     print(f"Error: {e}")
     print("Hint: Check that model exists on Hub")
     raise
@@ -271,7 +271,7 @@ except Exception as e:
 - [ ] Wrap external calls with try/except
 - [ ] Print stdout/stderr on failure
 - [ ] Validate environment variables early
-- [ ] Add progress indicators (✅, ❌, 🔄)
+- [ ] Add progress indicators (PASS:, FAIL:, )
 - [ ] Include hints for common failures
 - [ ] Log configuration at start
 
@@ -310,7 +310,7 @@ TEST_BASE = "Qwen/Qwen2.5-0.5B"  # Compatible base
 - [ ] Keep test jobs cheap (small models, short timeouts)
 - [ ] Only move to production after test succeeds
 
-**Time cost:** 5-10 minutes for test run  
+**Time cost:** 5-10 minutes for test run
 **Debugging time saved:** Hours
 
 ---

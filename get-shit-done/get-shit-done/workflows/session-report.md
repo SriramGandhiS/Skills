@@ -120,18 +120,18 @@ Show the user:
 ```
 ## Session Report Generated
 
-📄 `.planning/reports/[filename].md`
+ `.planning/reports/[filename].md`
 
 ### Highlights
 - **Commits:** [N]
-- **Files changed:** [N]  
+- **Files changed:** [N]
 - **Phase progress:** [X]%
 - **Plans executed:** [N]
 ```
 
 If this is the first report, mention:
 ```
-💡 Run `/gsd-session-report` at the end of each session to build a history of project activity.
+ Run `/gsd-session-report` at the end of each session to build a history of project activity.
 ```
 </step>
 

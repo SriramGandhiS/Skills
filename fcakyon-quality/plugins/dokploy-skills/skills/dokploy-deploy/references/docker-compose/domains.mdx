@@ -12,7 +12,7 @@ When using Docker Compose, there are **two ways** to configure domains for your 
 The easiest way to configure domains is using Dokploy's native domain management feature. This method allows you to configure domains directly through the Dokploy UI without manually editing your Docker Compose file.
 
 <Callout type="info">
-  **Recommended**: Since v0.7.0, Dokploy supports domains natively. You can configure your domains directly in the Dokploy UI through the **Domains** tab of your Docker Compose application. This is the simplest and most user-friendly approach.
+**Recommended**: Since v0.7.0, Dokploy supports domains natively. You can configure your domains directly in the Dokploy UI through the **Domains** tab of your Docker Compose application. This is the simplest and most user-friendly approach.
 </Callout>
 
 To use this method:
@@ -156,7 +156,7 @@ volumes:
 First, we'll add the dokploy-network to our services:
 
 <Callout type="info">
-  **Tip**: If you prefer to isolate all services and avoid adding them to the `dokploy-network`, you can use the **Isolated Deployments** feature. This feature isolates all services and eliminates the need to manually add them to the dokploy-network. See the [Isolated Deployments guide](/docs/core/docker-compose/utilities#isolated-deployments) for more information.
+**Tip**: If you prefer to isolate all services and avoid adding them to the `dokploy-network`, you can use the **Isolated Deployments** feature. This feature isolates all services and eliminates the need to manually add them to the dokploy-network. See the [Isolated Deployments guide](/docs/core/docker-compose/utilities#isolated-deployments) for more information.
 </Callout>
 
 ```yaml
@@ -191,7 +191,7 @@ networks:
 Now, let's add Traefik labels to route domains to our services. We'll focus on the frontend and backend services:
 
 <Callout type="warn">
-  **Important for Docker Stack**: If you're using **Docker Stack** (Docker Swarm mode), the Traefik labels must be placed in the `deploy.labels` section instead of directly in the `labels` section. See the Docker Stack example below.
+**Important for Docker Stack**: If you're using **Docker Stack** (Docker Swarm mode), the Traefik labels must be placed in the `deploy.labels` section instead of directly in the `labels` section. See the Docker Stack example below.
 </Callout>
 
 ```yaml
@@ -261,7 +261,7 @@ networks:
 When using **Docker Stack** (Docker Swarm mode), labels must be placed under the `deploy.labels` section. Additionally, Docker Stack does not support the `build` directive, so you must use pre-built images from a registry:
 
 <Callout type="warn">
-  **Important**: Docker Stack does not support the `build` directive. You must build your images separately and push them to a Docker registry, then reference them using the `image:` directive.
+**Important**: Docker Stack does not support the `build` directive. You must build your images separately and push them to a Docker registry, then reference them using the `image:` directive.
 </Callout>
 
 ```yaml

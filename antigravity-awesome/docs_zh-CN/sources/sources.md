@@ -1,4 +1,4 @@
-# 📜 来源与归属
+# 来源与归属
 
 我们相信应该给予应得的荣誉。
 如果您在这里发现了您的作品但没有正确归属，请提交Issue。
@@ -230,8 +230,8 @@
 
 如果您对来源归属有疑问或建议，请联系：
 
-- 📧 sources@antigravity-skills.org
-- 🐛 [GitHub Issues](https://github.com/sickn33/antigravity-awesome-skills/issues)
-- 💬 [GitHub Discussions](https://github.com/sickn33/antigravity-awesome-skills/discussions)
+- sources@antigravity-skills.org
+- [GitHub Issues](https://github.com/sickn33/antigravity-awesome-skills/issues)
+- [GitHub Discussions](https://github.com/sickn33/antigravity-awesome-skills/discussions)
 
-我们致力于确保每个贡献都得到适当的认可和尊重。感谢您为AI开发社区做出的贡献！🙏
+我们致力于确保每个贡献都得到适当的认可和尊重。感谢您为AI开发社区做出的贡献！

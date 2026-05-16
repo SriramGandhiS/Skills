@@ -71,8 +71,7 @@ Then wrap each **page component** (not layout) in a type-keyed `<ViewTransition>
     default: "none",
   }}
   default="none"
->
-  <div>...page content...</div>
+> <div>...page content...</div>
 </ViewTransition>
 ```
 
@@ -113,8 +112,7 @@ For every `<Suspense>` boundary identified in Step 1, wrap the fallback and cont
       <Skeleton />
     </ViewTransition>
   }
->
-  <ViewTransition enter="slide-up" default="none">
+> <ViewTransition enter="slide-up" default="none">
     <AsyncContent />
   </ViewTransition>
 </Suspense>

@@ -40,17 +40,17 @@ Với Claude Code, phần lớn người dùng nên chọn đúng **một** tron
 
 - **Khuyến nghị:** cài plugin Claude Code, sau đó copy thủ công chỉ những thư mục `rules/` bạn thật sự cần.
 - **Dùng installer thủ công** nếu bạn muốn kiểm soát chi tiết hơn, muốn tránh plugin, hoặc bản Claude Code của bạn không resolve được marketplace tự host.
-- **Không chồng nhiều cách cài lên nhau.** Cấu hình dễ hỏng nhất là `/plugin install` trước, rồi chạy tiếp `install.sh --profile full` hoặc `npx ecc-install --profile full`.
+- **Không chồng nhiều cách cài lên nhau.** Cấu hình dễ hỏng nhất là `/plugin install`trước, rồi chạy tiếp`install.sh --profile full`hoặc`npx ecc-install --profile full`.
 
 Nếu bạn đã cài chồng nhiều lần và thấy skill/hook bị trùng, xem [Reset / Gỡ ECC](#reset--gỡ-ecc).
 
 ### Cài plugin Claude Code
 
 ```bash
-# Thêm marketplace
-/plugin marketplace add https://github.com/affaan-m/everything-claude-code
+## Thêm marketplace
+/plugin marketplace add <https://github.com/affaan-m/everything-claude-code>
 
-# Cài plugin
+## Cài plugin
 /plugin install ecc@ecc
 ```
 
@@ -60,14 +60,14 @@ ECC có ba định danh công khai khác nhau:
 - Plugin Claude marketplace: `ecc@ecc`
 - Gói npm: `ecc-universal`
 
-Các tên này cố ý khác nhau. Plugin Claude Code dùng `ecc@ecc`; npm vẫn dùng `ecc-universal`.
+Các tên này cố ý khác nhau. Plugin Claude Code dùng `ecc@ecc`; npm vẫn dùng`ecc-universal`.
 
 ### Copy rules nếu cần
 
 Plugin Claude Code không tự phân phối `rules/`. Nếu bạn đã cài bằng plugin, **đừng** chạy thêm full installer. Hãy copy riêng rule pack bạn muốn:
 
 ```bash
-git clone https://github.com/affaan-m/everything-claude-code.git
+git clone <https://github.com/affaan-m/everything-claude-code.git>
 cd everything-claude-code
 
 mkdir -p ~/.claude/rules/ecc
@@ -76,7 +76,7 @@ cp -R rules/typescript ~/.claude/rules/ecc/
 ```
 
 ```powershell
-git clone https://github.com/affaan-m/everything-claude-code.git
+git clone <https://github.com/affaan-m/everything-claude-code.git>
 cd everything-claude-code
 
 New-Item -ItemType Directory -Force -Path "$HOME/.claude/rules/ecc" | Out-Null
@@ -84,7 +84,7 @@ Copy-Item -Recurse rules/common "$HOME/.claude/rules/ecc/"
 Copy-Item -Recurse rules/typescript "$HOME/.claude/rules/ecc/"
 ```
 
-Copy cả thư mục ngôn ngữ, ví dụ `rules/common` hoặc `rules/golang`, thay vì copy từng file riêng lẻ.
+Copy cả thư mục ngôn ngữ, ví dụ `rules/common`hoặc`rules/golang`, thay vì copy từng file riêng lẻ.
 
 ### Cài thủ công nếu không dùng plugin
 
@@ -98,7 +98,7 @@ npm install
 ```powershell
 npm install
 .\install.ps1 --profile full
-# hoặc
+## hoặc
 npx ecc-install --profile full
 ```
 
@@ -114,7 +114,7 @@ Nếu bạn chỉ muốn rules, agents, commands và core workflow skills, dùng
 
 ```powershell
 .\install.ps1 --profile minimal --target claude
-# hoặc
+## hoặc
 npx ecc-install --profile minimal --target claude
 ```
 
@@ -166,13 +166,13 @@ ECC chỉ xoá file có trong install-state của nó. Nó không xoá file khô
 ## Dùng Thử
 
 ```bash
-# Plugin install dùng namespace đầy đủ
+## Plugin install dùng namespace đầy đủ
 /ecc:plan "Thêm xác thực người dùng"
 
-# Manual install giữ dạng slash ngắn
-# /plan "Thêm xác thực người dùng"
+## Manual install giữ dạng slash ngắn
+## /plan "Thêm xác thực người dùng"
 
-# Xem plugin đang cài
+## Xem plugin đang cài
 /plugin list ecc@ecc
 ```
 

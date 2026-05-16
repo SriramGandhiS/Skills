@@ -500,6 +500,6 @@ for example in report.examples:
 
 ---
 
-**Status**: ✅ Implemented in v2.6.0
+**Status**: PASS: Implemented in v2.6.0
 **Issue**: #TBD (C3.2)
 **Related Tasks**: C3.1 (Pattern Detection), C3.3-C3.5 (Future enhancements)

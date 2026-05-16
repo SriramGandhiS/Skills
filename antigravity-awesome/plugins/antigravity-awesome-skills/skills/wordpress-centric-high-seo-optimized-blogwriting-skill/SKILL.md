@@ -241,11 +241,11 @@ Use placeholder URLs if needed
 
 ## Best Practices
 
-- ✅ Use short, punchy sentences.
-- ✅ Ensure tables are clean and use `|` markdown syntax.
-- ✅ Maintain the Truth Box at the very beginning of the post for high engagement.
-- ❌ Avoid using numbered headings; stick to standard markdown `#`, `##`, `###`.
-- ❌ Do not use hyphen bullets in the contents section.
+- PASS: Use short, punchy sentences.
+- PASS: Ensure tables are clean and use `|` markdown syntax.
+- PASS: Maintain the Truth Box at the very beginning of the post for high engagement.
+- FAIL: Avoid using numbered headings; stick to standard markdown `#`, `##`, `###`.
+- FAIL: Do not use hyphen bullets in the contents section.
 
 ## Limitations
 
@@ -261,9 +261,9 @@ Use placeholder URLs if needed
 ## Common Pitfalls
 
 - **Problem:** Missing Primary Keyword in Alt Text.
-  **Solution:** Ensure the `IMAGE SEO SECTION` explicitly includes the primary keyword in at least one Alt Text field.
+**Solution:** Ensure the `IMAGE SEO SECTION` explicitly includes the primary keyword in at least one Alt Text field.
 - **Problem:** AI-sounding or repetitive tone.
-  **Solution:** Use the "Human-sounding" requirement in the `WRITING RULES` to re-check the draft.
+**Solution:** Use the "Human-sounding" requirement in the `WRITING RULES` to re-check the draft.
 
 ## Related Skills
 

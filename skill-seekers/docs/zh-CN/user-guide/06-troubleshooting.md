@@ -1,6 +1,6 @@
 # Troubleshooting Guide
 
-> **Skill Seekers v3.1.0**  
+> **Skill Seekers v3.1.0**
 > **Common issues and solutions**
 
 ---

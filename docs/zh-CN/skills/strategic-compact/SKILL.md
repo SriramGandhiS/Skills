@@ -124,7 +124,7 @@ origin: ECC
 
 常见的重复上下文来源：
 
-* 相同的规则同时出现在 `~/.claude/rules/` 和项目 `.claude/rules/` 中
+* 相同的规则同时出现在 `~/.claude/rules/`和项目`.claude/rules/` 中
 * 技能重复了 CLAUDE.md 的指令
 * 多个技能覆盖了重叠的领域
 

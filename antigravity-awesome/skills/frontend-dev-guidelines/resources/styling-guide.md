@@ -102,8 +102,7 @@ const formStyles: Record<string, SxProps<Theme>> = {
         color: (theme) => theme.palette.primary.contrastText,
         borderRadius: (theme) => theme.shape.borderRadius,
     }}
->
-    Themed Box
+> Themed Box
 </Box>
 ```
 
@@ -116,8 +115,7 @@ const formStyles: Record<string, SxProps<Theme>> = {
         width: { xs: '100%', md: '50%' },
         flexDirection: { xs: 'column', md: 'row' },
     }}
->
-    Responsive Layout
+> Responsive Layout
 </Box>
 ```
 
@@ -137,8 +135,7 @@ const formStyles: Record<string, SxProps<Theme>> = {
             color: 'primary.main',
         },
     }}
->
-    Interactive Box
+> Interactive Box
 </Box>
 ```
 
@@ -151,7 +148,7 @@ const formStyles: Record<string, SxProps<Theme>> = {
 ```typescript
 import { Grid } from '@mui/material';
 
-// ✅ CORRECT - v7 syntax with size prop
+// PASS: CORRECT - v7 syntax with size prop
 <Grid container spacing={2}>
     <Grid size={{ xs: 12, md: 6 }}>
         Left Column
@@ -161,7 +158,7 @@ import { Grid } from '@mui/material';
     </Grid>
 </Grid>
 
-// ❌ WRONG - Old v6 syntax
+// FAIL: WRONG - Old v6 syntax
 <Grid container spacing={2}>
     <Grid xs={12} md={6}>  {/* OLD - Don't use */}
         Content
@@ -248,10 +245,10 @@ const styles: Record<string, SxProps<Theme>> = {
 
 ## What NOT to Use
 
-### ❌ makeStyles (MUI v4 pattern)
+### FAIL: makeStyles (MUI v4 pattern)
 
 ```typescript
-// ❌ AVOID - Old Material-UI v4 pattern
+// FAIL: AVOID - Old Material-UI v4 pattern
 import { makeStyles } from '@mui/styles';
 
 const useStyles = makeStyles((theme) => ({
@@ -263,10 +260,10 @@ const useStyles = makeStyles((theme) => ({
 
 **Why avoid**: Deprecated, v7 doesn't support it well
 
-### ❌ styled() Components
+### FAIL: styled() Components
 
 ```typescript
-// ❌ AVOID - styled-components pattern
+// FAIL: AVOID - styled-components pattern
 import { styled } from '@mui/material/styles';
 
 const StyledBox = styled(Box)(({ theme }) => ({
@@ -276,17 +273,16 @@ const StyledBox = styled(Box)(({ theme }) => ({
 
 **Why avoid**: sx prop is more flexible and doesn't create new components
 
-### ✅ Use sx Prop Instead
+### PASS: Use sx Prop Instead
 
 ```typescript
-// ✅ PREFERRED
+// PASS: PREFERRED
 <Box
     sx={{
         p: 2,
         backgroundColor: 'primary.main',
     }}
->
-    Content
+> Content
 </Box>
 ```
 
@@ -313,11 +309,11 @@ const styles: Record<string, SxProps<Theme>> = {
 **Single quotes** for strings (project standard)
 
 ```typescript
-// ✅ CORRECT
+// PASS: CORRECT
 const color = 'primary.main';
 import { Box } from '@mui/material';
 
-// ❌ WRONG
+// FAIL: WRONG
 const color = "primary.main";
 import { Box } from "@mui/material";
 ```
@@ -327,7 +323,7 @@ import { Box } from "@mui/material";
 **Always use trailing commas** in objects and arrays
 
 ```typescript
-// ✅ CORRECT
+// PASS: CORRECT
 const styles = {
     container: { p: 2 },
     header: { mb: 1 },  // Trailing comma
@@ -338,7 +334,7 @@ const items = [
     'item2',  // Trailing comma
 ];
 
-// ❌ WRONG - No trailing comma
+// FAIL: WRONG - No trailing comma
 const styles = {
     container: { p: 2 },
     header: { mb: 1 }  // Missing comma
@@ -414,14 +410,14 @@ const styles = {
 ## Summary
 
 **Styling Checklist:**
-- ✅ Use `sx` prop for MUI styling
-- ✅ Type-safe with `SxProps<Theme>`
-- ✅ <100 lines: inline; >100 lines: separate file
-- ✅ MUI v7 Grid: `size={{ xs: 12 }}`
-- ✅ 4 space indentation
-- ✅ Single quotes
-- ✅ Trailing commas
-- ❌ No makeStyles or styled()
+- PASS: Use `sx` prop for MUI styling
+- PASS: Type-safe with `SxProps<Theme>`
+- PASS: <100 lines: inline; >100 lines: separate file
+- PASS: MUI v7 Grid: `size={{ xs: 12 }}`
+- PASS: 4 space indentation
+- PASS: Single quotes
+- PASS: Trailing commas
+- FAIL: No makeStyles or styled()
 
 **See Also:**
 - [component-patterns.md](component-patterns.md) - Component structure

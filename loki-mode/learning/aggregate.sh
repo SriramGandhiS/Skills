@@ -1,37 +1,29 @@
 #!/usr/bin/env bash
 # Loki Mode Learning Aggregator - Bash CLI helper
-#
-# Runs learning signal aggregation and displays results.
+# # Runs learning signal aggregation and displays results.
 # This provides a CLI interface for the Python learning aggregator.
-#
-# Usage:
-#   ./aggregate.sh [options]
-#
-# Options:
-#   --days <n>          Time window in days (default: 7)
-#   --min-freq <n>      Minimum frequency for patterns (default: 2)
-#   --min-conf <0-1>    Minimum confidence score (default: 0.5)
-#   --no-save           Don't save the aggregation result
-#   --json              Output as JSON instead of summary
-#   --list              List recent aggregations
-#   --latest            Show the latest aggregation
-#
-# Examples:
-#   # Run aggregation with defaults
-#   ./aggregate.sh
-#
-#   # Run with custom time window
-#   ./aggregate.sh --days 30
-#
-#   # Output as JSON
-#   ./aggregate.sh --json
-#
-#   # List recent aggregations
-#   ./aggregate.sh --list
-#
-# Environment:
-#   LOKI_DIR          - Path to .loki directory (default: .loki)
-#   LOKI_SKILL_DIR    - Path to skill installation (auto-detected)
+# # Usage:
+# ./aggregate.sh [options]
+# # Options:
+# --days <n>          Time window in days (default: 7)
+# --min-freq <n>      Minimum frequency for patterns (default: 2)
+# --min-conf <0-1>    Minimum confidence score (default: 0.5)
+# --no-save           Don't save the aggregation result
+# --json              Output as JSON instead of summary
+# --list              List recent aggregations
+# --latest            Show the latest aggregation
+# # Examples:
+# # Run aggregation with defaults
+# ./aggregate.sh
+# # # Run with custom time window
+# ./aggregate.sh --days 30
+# # # Output as JSON
+# ./aggregate.sh --json
+# # # List recent aggregations
+# ./aggregate.sh --list
+# # Environment:
+# LOKI_DIR          - Path to .loki directory (default: .loki)
+# LOKI_SKILL_DIR    - Path to skill installation (auto-detected)
 
 set -uo pipefail
 

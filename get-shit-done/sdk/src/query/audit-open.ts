@@ -596,7 +596,7 @@ export function formatAuditReport(auditResult: AuditOpenResult): string {
 
   if (has_scan_errors) {
     lines.push('');
-    lines.push('  ⚠ Some files or directories could not be scanned completely.');
+    lines.push('  WARNING: Some files or directories could not be scanned completely.');
     lines.push('  Treat this audit as incomplete until read errors are resolved.');
     lines.push('');
   }
@@ -619,7 +619,7 @@ export function formatAuditReport(auditResult: AuditOpenResult): string {
 
   if (counts.debug_sessions > 0) {
     lines.push('');
-    lines.push(`🔴 Debug Sessions (${counts.debug_sessions} open)`);
+    lines.push(` Debug Sessions (${counts.debug_sessions} open)`);
     for (const item of items.debug_sessions.filter(i => !i.scan_error)) {
       const hyp = item.hypothesis ? ` — ${item.hypothesis}` : '';
       lines.push(`   • ${item.slug} [${item.status}]${hyp}`);
@@ -628,7 +628,7 @@ export function formatAuditReport(auditResult: AuditOpenResult): string {
 
   if (counts.uat_gaps > 0) {
     lines.push('');
-    lines.push(`🔴 UAT Gaps (${counts.uat_gaps} phases with incomplete UAT)`);
+    lines.push(` UAT Gaps (${counts.uat_gaps} phases with incomplete UAT)`);
     for (const item of items.uat_gaps.filter(i => !i.scan_error)) {
       lines.push(`   • Phase ${item.phase}: ${item.file} [${item.status}] — ${item.open_scenario_count} pending scenarios`);
     }
@@ -636,7 +636,7 @@ export function formatAuditReport(auditResult: AuditOpenResult): string {
 
   if (counts.verification_gaps > 0) {
     lines.push('');
-    lines.push(`🔴 Verification Gaps (${counts.verification_gaps} unresolved)`);
+    lines.push(` Verification Gaps (${counts.verification_gaps} unresolved)`);
     for (const item of items.verification_gaps.filter(i => !i.scan_error)) {
       lines.push(`   • Phase ${item.phase}: ${item.file} [${item.status}]`);
     }
@@ -644,7 +644,7 @@ export function formatAuditReport(auditResult: AuditOpenResult): string {
 
   if (counts.quick_tasks > 0) {
     lines.push('');
-    lines.push(`🟡 Quick Tasks (${counts.quick_tasks} incomplete)`);
+    lines.push(` Quick Tasks (${counts.quick_tasks} incomplete)`);
     for (const item of items.quick_tasks.filter(i => !i.scan_error)) {
       const d = item.date ? ` (${item.date})` : '';
       lines.push(`   • ${item.slug}${d} [${item.status}]`);
@@ -655,7 +655,7 @@ export function formatAuditReport(auditResult: AuditOpenResult): string {
     const realTodos = items.todos.filter(i => !i.scan_error && !i._remainder_count);
     const remainder = items.todos.find(i => i._remainder_count);
     lines.push('');
-    lines.push(`🟡 Pending Todos (${counts.todos} pending)`);
+    lines.push(` Pending Todos (${counts.todos} pending)`);
     for (const item of realTodos) {
       const area = item.area ? ` [${item.area}]` : '';
       const pri = item.priority ? ` (${item.priority})` : '';
@@ -669,7 +669,7 @@ export function formatAuditReport(auditResult: AuditOpenResult): string {
 
   if (counts.threads > 0) {
     lines.push('');
-    lines.push(`🔵 Open Threads (${counts.threads} active)`);
+    lines.push(` Open Threads (${counts.threads} active)`);
     for (const item of items.threads.filter(i => !i.scan_error)) {
       const title = item.title ? ` — ${item.title}` : '';
       lines.push(`   • ${item.slug} [${item.status}]${title}`);
@@ -678,7 +678,7 @@ export function formatAuditReport(auditResult: AuditOpenResult): string {
 
   if (counts.seeds > 0) {
     lines.push('');
-    lines.push(`🔵 Unimplemented Seeds (${counts.seeds} pending)`);
+    lines.push(` Unimplemented Seeds (${counts.seeds} pending)`);
     for (const item of items.seeds.filter(i => !i.scan_error)) {
       const title = item.title ? ` — ${item.title}` : '';
       lines.push(`   • ${item.seed_id} [${item.status}]${title}`);
@@ -687,7 +687,7 @@ export function formatAuditReport(auditResult: AuditOpenResult): string {
 
   if (counts.context_questions > 0) {
     lines.push('');
-    lines.push(`🔵 CONTEXT Open Questions (${counts.context_questions} phases with open questions)`);
+    lines.push(` CONTEXT Open Questions (${counts.context_questions} phases with open questions)`);
     for (const item of items.context_questions.filter(i => !i.scan_error)) {
       lines.push(`   • Phase ${item.phase}: ${item.file} (${item.question_count} question${item.question_count !== 1 ? 's' : ''})`);
       for (const q of (item.questions as string[]) || []) {

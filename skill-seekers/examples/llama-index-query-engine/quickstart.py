@@ -44,7 +44,7 @@ def load_nodes(json_path: str) -> list[TextNode]:
         for node in nodes_data
     ]
 
-    print(f"✅ Loaded {len(nodes)} nodes")
+    print(f"PASS: Loaded {len(nodes)} nodes")
 
     # Show category breakdown
     categories = {}
@@ -74,7 +74,7 @@ def create_index(nodes: list[TextNode], persist_dir: str = "./storage") -> Vecto
     # Persist to disk
     index.storage_context.persist(persist_dir=persist_dir)
 
-    print(f"✅ Index created and persisted to: {persist_dir}")
+    print(f"PASS: Index created and persisted to: {persist_dir}")
     print(f"   Nodes indexed: {len(nodes)}")
 
     return index
@@ -141,7 +141,7 @@ def interactive_chat(index: VectorStoreIndex) -> None:
         user_input = input("You: ").strip()
 
         if user_input.lower() in ['quit', 'exit', 'q']:
-            print("\n👋 Goodbye!")
+            print("\n Goodbye!")
             break
 
         if not user_input:
@@ -161,7 +161,7 @@ def interactive_chat(index: VectorStoreIndex) -> None:
                 print()
 
         except Exception as e:
-            print(f"\n❌ Error: {e}\n")
+            print(f"\nFAIL: Error: {e}\n")
 
 
 def main():
@@ -179,7 +179,7 @@ def main():
 
     # Check if documents exist
     if not Path(DOCS_PATH).exists():
-        print(f"❌ Documents not found at: {DOCS_PATH}")
+        print(f"FAIL: Documents not found at: {DOCS_PATH}")
         print("\nGenerate documents first:")
         print("  1. skill-seekers scrape --config configs/django.json")
         print("  2. skill-seekers package output/django --target llama-index")
@@ -208,9 +208,9 @@ if __name__ == "__main__":
     try:
         main()
     except KeyboardInterrupt:
-        print("\n\n👋 Interrupted. Goodbye!")
+        print("\n\n Interrupted. Goodbye!")
     except Exception as e:
-        print(f"\n❌ Error: {e}")
+        print(f"\nFAIL: Error: {e}")
         import traceback
         traceback.print_exc()
         print("\nMake sure you have:")

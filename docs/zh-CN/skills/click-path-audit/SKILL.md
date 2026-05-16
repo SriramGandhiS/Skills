@@ -22,7 +22,7 @@ origin: community
 * **函数 B 是否静默撤销了函数 A 刚刚执行的操作？**
 * **共享状态（Zustand/Redux/context）是否存在抵消预期操作的副作用？**
 
-真实案例：一个"新邮件"按钮依次调用了 `setComposeMode(true)` 和 `selectThread(null)`。两者单独工作正常。但 `selectThread` 有一个副作用重置了 `composeMode: false`。按钮毫无反应。系统化调试发现了 54 个缺陷——这个被遗漏了。
+真实案例：一个"新邮件"按钮依次调用了 `setComposeMode(true)`和`selectThread(null)`。两者单独工作正常。但`selectThread`有一个副作用重置了`composeMode: false`。按钮毫无反应。系统化调试发现了 54 个缺陷——这个被遗漏了。
 
 ***
 
@@ -59,7 +59,7 @@ origin: community
     - 文档：actionName → {sets: [...], resets: [...]}
 ```
 
-这是关键参考。"新邮件"缺陷在不知道 `selectThread` 重置了 `composeMode` 的情况下是不可见的。
+这是关键参考。"新邮件"缺陷在不知道 `selectThread`重置了`composeMode` 的情况下是不可见的。
 
 **输出格式：**
 
@@ -252,6 +252,6 @@ selectThread: (thread) => set({
 
 **点击路径审计捕获了它**，因为：
 
-* 步骤 1 映射出 `selectThread` 重置了 `composeMode`
+* 步骤 1 映射出 `selectThread`重置了`composeMode`
 * 步骤 2 追踪处理程序：调用 1 设置为 true，调用 2 重置为 false
 * 判定：顺序撤销——最终状态与按钮意图矛盾

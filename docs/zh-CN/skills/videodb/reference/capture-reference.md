@@ -15,22 +15,22 @@ VideoDB 捕获会话的代码级详情。工作流程指南请参阅 [capture.md
 | 通道 | 来源 | 内容 |
 |---------|--------|---------|
 | `capture_session` | 会话生命周期 | 状态变更 |
-| `transcript` | `start_transcript()` | 语音转文字 |
-| `visual_index` / `scene_index` | `index_visuals()` | 视觉分析 |
-| `audio_index` | `index_audio()` | 音频分析 |
-| `alert` | `create_alert()` | 警报通知 |
+| `transcript`|`start_transcript()` | 语音转文字 |
+| `visual_index`/`scene_index`|`index_visuals()` | 视觉分析 |
+| `audio_index`|`index_audio()` | 音频分析 |
+| `alert`|`create_alert()` | 警报通知 |
 
 ### 会话生命周期事件
 
 | 事件 | 状态 | 关键数据 |
 |-------|--------|----------|
-| `capture_session.created` | `created` | — |
-| `capture_session.starting` | `starting` | — |
-| `capture_session.active` | `active` | `rtstreams[]` |
-| `capture_session.stopping` | `stopping` | — |
-| `capture_session.stopped` | `stopped` | — |
-| `capture_session.exported` | `exported` | `exported_video_id`, `stream_url`, `player_url` |
-| `capture_session.failed` | `failed` | `error` |
+| `capture_session.created`|`created` | — |
+| `capture_session.starting`|`starting` | — |
+| `capture_session.active`|`active`|`rtstreams[]` |
+| `capture_session.stopping`|`stopping` | — |
+| `capture_session.stopped`|`stopped` | — |
+| `capture_session.exported`|`exported`|`exported_video_id`,`stream_url`,`player_url` |
+| `capture_session.failed`|`failed`|`error` |
 
 ### 事件结构
 
@@ -123,10 +123,10 @@ VideoDB 捕获会话的代码级详情。工作流程指南请参阅 [capture.md
 ### 启动监听器并获取 WebSocket ID
 
 ```bash
-# Start with --clear to clear old events (recommended for new sessions)
+## Start with --clear to clear old events (recommended for new sessions)
 python scripts/ws_listener.py --clear &
 
-# Append to existing events (for reconnects)
+## Append to existing events (for reconnects)
 python scripts/ws_listener.py &
 ```
 
@@ -134,7 +134,7 @@ python scripts/ws_listener.py &
 
 ```bash
 python scripts/ws_listener.py --clear /path/to/output &
-# Or via environment variable:
+## Or via environment variable:
 VIDEODB_EVENTS_DIR=/path/to/output python scripts/ws_listener.py --clear &
 ```
 
@@ -222,8 +222,8 @@ ws_id = ws.connection_id
 
 | 属性 / 方法 | 类型 | 描述 |
 |-------------------|------|-------------|
-| `ws.connection_id` | `str` | 唯一连接 ID（传递给 AI 流水线方法） |
-| `ws.receive()` | `AsyncIterator[dict]` | 异步迭代器，产生实时消息 |
+| `ws.connection_id`|`str` | 唯一连接 ID（传递给 AI 流水线方法） |
+| `ws.receive()`|`AsyncIterator[dict]` | 异步迭代器，产生实时消息 |
 
 ***
 
@@ -233,9 +233,9 @@ ws_id = ws.connection_id
 
 | 方法 | 返回值 | 描述 |
 |--------|---------|-------------|
-| `conn.create_capture_session(end_user_id, collection_id, ws_connection_id, metadata)` | `CaptureSession` | 创建新的捕获会话 |
-| `conn.get_capture_session(capture_session_id)` | `CaptureSession` | 检索现有的捕获会话 |
-| `conn.generate_client_token()` | `str` | 生成客户端身份验证令牌 |
+| `conn.create_capture_session(end_user_id, collection_id, ws_connection_id, metadata)`|`CaptureSession` | 创建新的捕获会话 |
+| `conn.get_capture_session(capture_session_id)`|`CaptureSession` | 检索现有的捕获会话 |
+| `conn.generate_client_token()`|`str` | 生成客户端身份验证令牌 |
 
 ### 创建捕获会话
 
@@ -253,19 +253,19 @@ session = conn.create_capture_session(
 print(f"Session ID: {session.id}")
 ```
 
-> **注意：** `end_user_id` 是必需的，用于标识发起捕获的用户。用于测试或演示目的时，任何唯一的字符串标识符都有效（例如 `"demo-user"`、`"test-123"`）。
+> **注意：** `end_user_id`是必需的，用于标识发起捕获的用户。用于测试或演示目的时，任何唯一的字符串标识符都有效（例如`"demo-user"`、`"test-123"`）。
 
 ### CaptureSession 属性
 
 | 属性 | 类型 | 描述 |
 |----------|------|-------------|
-| `session.id` | `str` | 唯一的捕获会话 ID |
+| `session.id`|`str` | 唯一的捕获会话 ID |
 
 ### CaptureSession 方法
 
 | 方法 | 返回值 | 描述 |
 |--------|---------|-------------|
-| `session.get_rtstream(type)` | `list[RTStream]` | 按类型获取 RTStream：`"mic"`、`"screen"` 或 `"system_audio"` |
+| `session.get_rtstream(type)`|`list[RTStream]`| 按类型获取 RTStream：`"mic"`、`"screen"`或`"system_audio"` |
 
 ### 生成客户端令牌
 
@@ -289,11 +289,11 @@ client = CaptureClient(client_token=token)
 
 | 方法 | 返回值 | 描述 |
 |--------|---------|-------------|
-| `await client.request_permission(type)` | `None` | 请求设备权限（`"microphone"`、`"screen_capture"`） |
-| `await client.list_channels()` | `Channels` | 发现可用的音频/视频通道 |
-| `await client.start_capture_session(capture_session_id, channels, primary_video_channel_id)` | `None` | 开始流式传输选定的通道 |
-| `await client.stop_capture()` | `None` | 优雅地停止捕获会话 |
-| `await client.shutdown()` | `None` | 清理客户端资源 |
+| `await client.request_permission(type)`|`None`| 请求设备权限（`"microphone"`、`"screen_capture"`） |
+| `await client.list_channels()`|`Channels` | 发现可用的音频/视频通道 |
+| `await client.start_capture_session(capture_session_id, channels, primary_video_channel_id)`|`None` | 开始流式传输选定的通道 |
+| `await client.stop_capture()`|`None` | 优雅地停止捕获会话 |
+| `await client.shutdown()`|`None` | 清理客户端资源 |
 
 ### 请求权限
 
@@ -340,25 +340,25 @@ system_audio = channels.system_audio.default
 
 | 属性 | 类型 | 描述 |
 |----------|------|-------------|
-| `channels.mics` | `ChannelGroup` | 可用的麦克风 |
-| `channels.displays` | `ChannelGroup` | 可用的屏幕显示器 |
-| `channels.system_audio` | `ChannelGroup` | 可用的系统音频源 |
+| `channels.mics`|`ChannelGroup` | 可用的麦克风 |
+| `channels.displays`|`ChannelGroup` | 可用的屏幕显示器 |
+| `channels.system_audio`|`ChannelGroup` | 可用的系统音频源 |
 
 ### ChannelGroup 方法与属性
 
 | 成员 | 类型 | 描述 |
 |--------|------|-------------|
-| `group.default` | `Channel` | 组中的默认通道（或 `None`） |
-| `group.all()` | `list[Channel]` | 组中的所有通道 |
+| `group.default`|`Channel`| 组中的默认通道（或`None`） |
+| `group.all()`|`list[Channel]` | 组中的所有通道 |
 
 ### 通道属性
 
 | 属性 | 类型 | 描述 |
 |----------|------|-------------|
-| `ch.id` | `str` | 唯一的通道 ID |
-| `ch.type` | `str` | 通道类型（`"mic"`、`"display"`、`"system_audio"`） |
-| `ch.name` | `str` | 人类可读的通道名称 |
-| `ch.store` | `bool` | 是否持久化录制（设置为 `True` 以保存） |
+| `ch.id`|`str` | 唯一的通道 ID |
+| `ch.type`|`str`| 通道类型（`"mic"`、`"display"`、`"system_audio"`） |
+| `ch.name`|`str` | 人类可读的通道名称 |
+| `ch.store`|`bool`| 是否持久化录制（设置为`True` 以保存） |
 
 没有 `store = True`，流会实时处理但不保存。
 

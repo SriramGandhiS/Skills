@@ -44,23 +44,23 @@ Integrate multiple digital health data sources, connect to [WellAlly.tech](https
 Use this skill when users mention the following scenarios:
 
 **Data Import**:
-- ✅ "Import my health data from Apple Health"
-- ✅ "Connect my Fitbit device"
-- ✅ "Sync my Oura Ring data"
-- ✅ "Import CSV health data file"
-- ✅ "How to import fitness tracker/smartwatch data"
+- PASS: "Import my health data from Apple Health"
+- PASS: "Connect my Fitbit device"
+- PASS: "Sync my Oura Ring data"
+- PASS: "Import CSV health data file"
+- PASS: "How to import fitness tracker/smartwatch data"
 
 **Knowledge Base Query**:
-- ✅ "Articles about hypertension on WellAlly platform"
-- ✅ "Recommend some health management reading materials"
-- ✅ "Recommend articles based on my health data"
-- ✅ "WellAlly knowledge base articles about sleep"
-- ✅ "How to improve my blood pressure (check knowledge base)"
+- PASS: "Articles about hypertension on WellAlly platform"
+- PASS: "Recommend some health management reading materials"
+- PASS: "Recommend articles based on my health data"
+- PASS: "WellAlly knowledge base articles about sleep"
+- PASS: "How to improve my blood pressure (check knowledge base)"
 
 **Data Management**:
-- ✅ "What health data sources do I have"
-- ✅ "Integrate health data from different platforms"
-- ✅ "View imported external data"
+- PASS: "What health data sources do I have"
+- PASS: "Integrate health data from different platforms"
+- PASS: "View imported external data"
 
 ### Execution Steps
 
@@ -298,32 +298,32 @@ const recommendationReport = {
 ### Data Import Output
 
 ```
-✅ Data Import Successful
+PASS: Data Import Successful
 
 Data Source: Apple Health
 Import Time: 2025-01-22 14:30:00
 
 Import Records Statistics:
 ━━━━━━━━━━━━━━━━━━━━━━━━━━
-📊 Step Records: 1,234 records
-⚖️ Weight Records: 30 records
-❤️ Heart Rate Records: 1,200 records
-😴 Sleep Records: 90 records
+ Step Records: 1,234 records
+ Weight Records: 30 records
+ Heart Rate Records: 1,200 records
+ Sleep Records: 90 records
 
 Data Time Range: 2025-01-01 to 2025-01-22
 ━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-💾 Data Saved To:
+ Data Saved To:
 • data/fitness/activities.json (steps)
 • data/profile.json (weight history)
 • data/fitness/heart-rate.json (heart rate)
 • data/sleep/sleep-records.json (sleep)
 
-⚠️  Validation Warnings:
+WARNING:  Validation Warnings:
 • 3 step records missing timestamps, used default values
 • 1 weight record abnormal (<20kg), skipped
 
-💡 Next Steps:
+ Next Steps:
 • Use /health-trend to analyze imported data
 • Use /wellally-tech for personalized article recommendations
 ```
@@ -331,7 +331,7 @@ Data Time Range: 2025-01-01 to 2025-01-22
 ### Knowledge Base Query Output
 
 ```
-📚 WellAlly Knowledge Base Search Results
+ WellAlly Knowledge Base Search Results
 
 Search Topic: Hypertension Management
 Articles Found: 2
@@ -350,25 +350,25 @@ Articles Found: 2
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-🔗 Related Topics:
+ Related Topics:
 • Diabetes Management
 • Cardiovascular Health
 • Medication Adherence
 
-💡 Tips:
+ Tips:
 Click links to visit [WellAlly.tech](https://www.wellally.tech/) platform for full articles
 ```
 
 ### Intelligent Recommendation Output
 
 ```
-💡 Article Recommendations Based on Your Health Data
+ Article Recommendations Based on Your Health Data
 
 Generated Time: 2025-01-22 14:30:00
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-🔴 Attention Needed: Blood Pressure Management
+ Attention Needed: Blood Pressure Management
 ━━━━━━━━━━━━━━━━━━━━━━━━━━
 Current Status: Average blood pressure 142/92 mmHg (elevated)
 
@@ -384,7 +384,7 @@ Recommended Articles:
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-🟡 Attention Needed: Sleep Improvement
+ Attention Needed: Sleep Improvement
 ━━━━━━━━━━━━━━━━━━━━━━━━━━
 Current Status: Average sleep duration 5.8 hours (insufficient)
 
@@ -397,7 +397,7 @@ Recommended Articles:
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-🟢 Keep Up: Daily Activity
+ Keep Up: Daily Activity
 ━━━━━━━━━━━━━━━━━━━━━━━━━━
 Current Status: Daily average steps 9,234 (good)
 
@@ -561,19 +561,19 @@ python scripts/import_generic.py health_data.csv --mapping mapping_config.json
 
 ### Must Follow
 
-- ❌ Do not upload data to external servers (except API sync)
-- ❌ Do not hardcode API credentials in code
-- ❌ Do not share user access tokens
-- ✅ All imported data stored locally only
-- ✅ OAuth credentials encrypted storage
-- ✅ Import only after explicit user authorization
+- FAIL: Do not upload data to external servers (except API sync)
+- FAIL: Do not hardcode API credentials in code
+- FAIL: Do not share user access tokens
+- PASS: All imported data stored locally only
+- PASS: OAuth credentials encrypted storage
+- PASS: Import only after explicit user authorization
 
 ### Data Validation
 
-- ✅ Validate imported data types and ranges
-- ✅ Filter abnormal values (e.g., negative steps)
-- ✅ Preserve data source information
-- ✅ Handle timezone conversion
+- PASS: Validate imported data types and ranges
+- PASS: Filter abnormal values (e.g., negative steps)
+- PASS: Preserve data source information
+- PASS: Handle timezone conversion
 
 ### Error Handling
 

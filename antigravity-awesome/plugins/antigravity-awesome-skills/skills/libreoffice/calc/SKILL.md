@@ -130,13 +130,13 @@ def create_formula_spreadsheet():
     smgr = ctx.ServiceManager
     doc = smgr.createInstanceWithContext("com.sun.star.sheet.SpreadsheetDocument", ctx)
     sheet = doc.getSheets().getByIndex(0)
-    
+
     sheet.getCellByPosition(0, 0).setDoubleValue(100)
     sheet.getCellByPosition(0, 1).setDoubleValue(200)
-    
+
     cell = sheet.getCellByPosition(0, 2)
     cell.setFormula("SUM(A1:A2)")
-    
+
     doc.storeToURL("file:///path/to/formulas.ods", ())
     doc.close(True)
 ```

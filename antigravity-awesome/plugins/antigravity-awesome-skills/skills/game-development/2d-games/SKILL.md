@@ -109,7 +109,7 @@ date_added: "2026-02-27"
 
 ## 6. Anti-Patterns
 
-| ❌ Don't | ✅ Do |
+| FAIL: Don't | PASS: Do |
 |----------|-------|
 | Separate textures | Use atlases |
 | Complex collision shapes | Simplified collision |

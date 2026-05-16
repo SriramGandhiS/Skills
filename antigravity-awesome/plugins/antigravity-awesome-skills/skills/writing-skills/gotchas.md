@@ -13,14 +13,14 @@ Tribal knowledge to avoid common mistakes.
 ### Invalid Syntax
 
 ```yaml
-# ❌ BAD: Mixed list and map
+# FAIL: BAD: Mixed list and map
 metadata:
-  references: 
+  references:
   triggers: a, b, c
   - item1
   - item2
 
-# ✅ GOOD: Consistent structure
+# PASS: GOOD: Consistent structure
 metadata:
   triggers: a, b, c
   references:
@@ -31,11 +31,11 @@ metadata:
 ### Multiline Description
 
 ```yaml
-# ❌ BAD: Line breaks create parsing errors
+# FAIL: BAD: Line breaks create parsing errors
 description: Use when creating skills.
   Also for updating.
 
-# ✅ GOOD: Use YAML multiline syntax
+# PASS: GOOD: Use YAML multiline syntax
 description: >-
   Use when creating or updating skills.
   Triggers: new skill, update skill
@@ -46,11 +46,11 @@ description: >-
 ### Directory Must Match `name` Field
 
 ```
-# ❌ BAD
+# FAIL: BAD
 directory: my-skill/
 name: mySkill  # Mismatch!
 
-# ✅ GOOD
+# PASS: GOOD
 directory: my-skill/
 name: my-skill  # Exact match
 ```
@@ -58,11 +58,11 @@ name: my-skill  # Exact match
 ### SKILL.md Must Be ALL CAPS
 
 ```
-# ❌ BAD
+# FAIL: BAD
 skill.md
 Skill.md
 
-# ✅ GOOD
+# PASS: GOOD
 SKILL.md
 ```
 
@@ -71,20 +71,20 @@ SKILL.md
 ### Description = Triggers, NOT Workflow
 
 ```yaml
-# ❌ BAD: Agent reads this and skips the full skill
+# FAIL: BAD: Agent reads this and skips the full skill
 description: Analyzes code, finds bugs, suggests fixes
 
-# ✅ GOOD: Agent reads full skill to understand workflow
+# PASS: GOOD: Agent reads full skill to understand workflow
 description: Use when debugging errors or reviewing code quality
 ```
 
 ### Pre-Violation Triggers for Discipline Skills
 
 ```yaml
-# ❌ BAD: Triggers AFTER violation
+# FAIL: BAD: Triggers AFTER violation
 description: Use when you forgot to write tests
 
-# ✅ GOOD: Triggers BEFORE violation
+# PASS: GOOD: Triggers BEFORE violation
 description: Use when implementing any feature, before writing code
 ```
 
@@ -99,9 +99,9 @@ description: Use when implementing any feature, before writing code
 ### Don't Duplicate CLI Help
 
 ```markdown
-# ❌ BAD: 50 lines documenting all flags
+# FAIL: BAD: 50 lines documenting all flags
 
-# ✅ GOOD: One line
+# PASS: GOOD: One line
 Run `mytool --help` for all options.
 ```
 
@@ -110,10 +110,10 @@ Run `mytool --help` for all options.
 ### Agents Are Smart at Finding Loopholes
 
 ```markdown
-# ❌ BAD: Trust agents will "get the spirit"
+# FAIL: BAD: Trust agents will "get the spirit"
 Write test before code.
 
-# ✅ GOOD: Close every loophole explicitly
+# PASS: GOOD: Close every loophole explicitly
 Write test before code.
 
 **No exceptions:**
@@ -136,20 +136,20 @@ Every excuse from baseline testing goes in the table:
 ### Keep References One Level Deep
 
 ```markdown
-# ❌ BAD: Nested chain (A → B → C)
+# FAIL: BAD: Nested chain (A → B → C)
 See [patterns.md] → which links to [advanced.md] → which links to [deep.md]
 
-# ✅ GOOD: Flat (A → B, A → C)
+# PASS: GOOD: Flat (A → B, A → C)
 See [patterns.md] and [advanced.md]
 ```
 
 ### Never Force-Load with @
 
 ```markdown
-# ❌ BAD: Burns context immediately
+# FAIL: BAD: Burns context immediately
 @skills/my-skill/SKILL.md
 
-# ✅ GOOD: Agent loads when needed
+# PASS: GOOD: Agent loads when needed
 See [my-skill] for details.
 ```
 
@@ -158,20 +158,20 @@ See [my-skill] for details.
 ### Correct Skill Directory
 
 ```bash
-# ❌ BAD: Old singular path
+# FAIL: BAD: Old singular path
 ~/.config/opencode/skill/my-skill/
 
-# ✅ GOOD: Plural path
+# PASS: GOOD: Plural path
 ~/.config/opencode/skills/my-skill/
 ```
 
 ### Skill Cross-Reference Syntax
 
 ```markdown
-# ❌ BAD: File path (fragile)
+# FAIL: BAD: File path (fragile)
 See /home/user/.config/opencode/skills/my-skill/SKILL.md
 
-# ✅ GOOD: Skill protocol
+# PASS: GOOD: Skill protocol
 See my-skill
 ```
 
@@ -180,10 +180,10 @@ See my-skill
 ### Don't Overthink Tier Choice
 
 ```markdown
-# ❌ BAD: Starting with Tier 3 "just in case"
+# FAIL: BAD: Starting with Tier 3 "just in case"
 # Result: Wasted effort, empty reference files
 
-# ✅ GOOD: Start with Tier 1, upgrade when needed
+# PASS: GOOD: Start with Tier 1, upgrade when needed
 # Can always add references/ later
 ```
 

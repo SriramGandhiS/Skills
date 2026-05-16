@@ -1,29 +1,23 @@
 #!/bin/bash
-#
-# run-bash.sh -- Phase 4 prompt-parity bash harness.
-#
-# Invokes the bash build_prompt() function (autonomy/run.sh:8912) inside a
+# # run-bash.sh -- Phase 4 prompt-parity bash harness.
+# # Invokes the bash build_prompt() function (autonomy/run.sh:8912) inside a
 # fixture's working directory, captures stdout to expected.txt, and computes
 # expected.sha256.
-#
-# Usage:
-#   run-bash.sh <fixture-dir>
-#
-# A fixture-dir contains:
-#   env.sh           - exported env vars (RETRY, PRD, ITERATION, PHASE_*, ...)
-#   .loki/           - state directory used by the function
-#   <prd file>       - optional PRD anchor target
-#
-# After invocation, the directory will additionally contain:
-#   expected.txt      - byte-exact bash output (gold standard)
-#   expected.sha256   - sha256(expected.txt)
-#   env.txt           - rendered env (resolved values, for the index)
-#
-# The script is deliberately deterministic:
-#   * Defaults all phase flags to false and clears optional sentinels so a
-#     fixture only sees the env vars it explicitly sets in env.sh.
-#   * cd's into the fixture dir so relative .loki/ paths resolve correctly.
-#   * Sources autonomy/run.sh in a subshell -- the parent shell is untouched.
+# # Usage:
+# run-bash.sh <fixture-dir>
+# # A fixture-dir contains:
+# env.sh           - exported env vars (RETRY, PRD, ITERATION, PHASE_*, ...)
+# .loki/           - state directory used by the function
+# <prd file>       - optional PRD anchor target
+# # After invocation, the directory will additionally contain:
+# expected.txt      - byte-exact bash output (gold standard)
+# expected.sha256   - sha256(expected.txt)
+# env.txt           - rendered env (resolved values, for the index)
+# # The script is deliberately deterministic:
+# * Defaults all phase flags to false and clears optional sentinels so a
+# fixture only sees the env vars it explicitly sets in env.sh.
+# * cd's into the fixture dir so relative .loki/ paths resolve correctly.
+# * Sources autonomy/run.sh in a subshell -- the parent shell is untouched.
 
 set -euo pipefail
 

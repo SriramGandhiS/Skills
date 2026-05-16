@@ -187,7 +187,7 @@ async def update_tenant(
     ctx = _audit_context(request, token_info)
     audit.log_event(
         action="update", resource_type="tenant", resource_id=str(tenant_id),
-        **ctx,
+**ctx,
     )
     return resp
 
@@ -207,7 +207,7 @@ async def delete_tenant(
     ctx = _audit_context(request, token_info)
     audit.log_event(
         action="delete", resource_type="tenant", resource_id=str(tenant_id),
-        **ctx,
+**ctx,
     )
     return None
 

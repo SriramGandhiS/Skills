@@ -20,9 +20,9 @@ Claude Code 세션을 위한 포괄적인 검증 시스템.
 
 ### 단계 1: 빌드 검증
 ```bash
-# Check if project builds
+## Check if project builds
 npm run build 2>&1 | tail -20
-# OR
+## OR
 pnpm build 2>&1 | tail -20
 ```
 
@@ -30,10 +30,10 @@ pnpm build 2>&1 | tail -20
 
 ### 단계 2: 타입 검사
 ```bash
-# TypeScript projects
+## TypeScript projects
 npx tsc --noEmit 2>&1 | head -30
 
-# Python projects
+## Python projects
 pyright . 2>&1 | head -30
 ```
 
@@ -41,20 +41,20 @@ pyright . 2>&1 | head -30
 
 ### 단계 3: 린트 검사
 ```bash
-# JavaScript/TypeScript
+## JavaScript/TypeScript
 npm run lint 2>&1 | head -30
 
-# Python
+## Python
 ruff check . 2>&1 | head -30
 ```
 
 ### 단계 4: 테스트 스위트
 ```bash
-# Run tests with coverage
+## Run tests with coverage
 npm run test -- --coverage 2>&1 | tail -50
 
-# Check coverage threshold
-# Target: 80% minimum
+## Check coverage threshold
+## Target: 80% minimum
 ```
 
 보고 항목:
@@ -65,17 +65,17 @@ npm run test -- --coverage 2>&1 | tail -50
 
 ### 단계 5: 보안 스캔
 ```bash
-# Check for secrets
+## Check for secrets
 grep -rn "sk-" --include="*.ts" --include="*.js" . 2>/dev/null | head -10
 grep -rn "api_key" --include="*.ts" --include="*.js" . 2>/dev/null | head -10
 
-# Check for console.log
+## Check for console.log
 grep -rn "console.log" --include="*.ts" --include="*.tsx" src/ 2>/dev/null | head -10
 ```
 
 ### 단계 6: Diff 리뷰
 ```bash
-# Show what changed
+## Show what changed
 git diff --stat
 git diff --name-only
 git diff --cached --name-only

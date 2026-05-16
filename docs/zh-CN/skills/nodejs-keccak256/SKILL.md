@@ -99,4 +99,4 @@ grep -rn "keccak256" --include="*.ts" --include="*.js" . | grep -v node_modules
 
 ## 规则
 
-在以太坊上下文中，切勿使用 `crypto.createHash('sha3-256')`。应使用来自 `ethers`、`viem`、`web3` 或其他明确 Keccak 实现的 Keccak 感知辅助函数。
+在以太坊上下文中，切勿使用 `crypto.createHash('sha3-256')`。应使用来自`ethers`、`viem`、`web3` 或其他明确 Keccak 实现的 Keccak 感知辅助函数。

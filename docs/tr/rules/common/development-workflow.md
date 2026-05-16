@@ -7,7 +7,7 @@ Feature Implementation Workflow geliştirme pipeline'ını tanımlar: araştırm
 ## Feature Uygulama İş Akışı
 
 0. **Araştırma & Yeniden Kullanım** _(her yeni implementasyondan önce zorunlu)_
-   - **Önce GitHub kod araması:** Yeni bir şey yazmadan önce mevcut implementasyonları, şablonları ve pattern'leri bulmak için `gh search repos` ve `gh search code` çalıştır.
+   - **Önce GitHub kod araması:** Yeni bir şey yazmadan önce mevcut implementasyonları, şablonları ve pattern'leri bulmak için `gh search repos`ve`gh search code` çalıştır.
    - **İkinci olarak kütüphane dokümanları:** Uygulamadan önce API davranışını, paket kullanımını ve versiyona özgü detayları doğrulamak için Context7 veya birincil vendor dokümanlarını kullan.
    - **İlk ikisi yetersiz olduğunda Exa:** GitHub araması ve birincil dokümanlardan sonra daha geniş web araştırması veya keşif için Exa kullan.
    - **Paket kayıtlarını kontrol et:** Utility kodu yazmadan önce npm, PyPI, crates.io ve diğer kayıtları ara. Kendi çözümlerinden ziyade test edilmiş kütüphaneleri tercih et.

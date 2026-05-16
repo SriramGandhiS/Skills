@@ -53,7 +53,7 @@ REPEAT:   开始下一个功能/场景
 User: /tdd I need a function to calculate market liquidity score
 
 Agent (tdd-guide):
-# TDD Session: Market Liquidity Score Calculator
+## TDD Session: Market Liquidity Score Calculator
 
 ## Step 1: Define Interface (SCAFFOLD)
 

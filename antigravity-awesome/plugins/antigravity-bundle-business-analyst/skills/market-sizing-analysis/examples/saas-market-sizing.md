@@ -174,7 +174,7 @@ Total:                          $8.5M ARR (888 customers)
 | **TAM** | $539M | $488M | +10% |
 | **SAM** | $169M | $171M | -1% |
 
-**Validation Result:** ✅ Excellent alignment (< 2% variance on SAM)
+**Validation Result:** PASS: Excellent alignment (< 2% variance on SAM)
 
 **Why alignment matters:**
 - Bottom-up and top-down within 10% gives high confidence
@@ -200,19 +200,19 @@ Total:                          $8.5M ARR (888 customers)
 ### Sanity Checks
 
 **Customer Count Check:**
-✅ 888 customers at Year 5 (5% market share) = reasonable
-✅ Implies ~14,000 total addressable customers
-✅ Aligns with estimated 105,000 e-commerce cos $1M+ in NA
+PASS: 888 customers at Year 5 (5% market share) = reasonable
+PASS: Implies ~14,000 total addressable customers
+PASS: Aligns with estimated 105,000 e-commerce cos $1M+ in NA
 
 **Average Revenue Check:**
-✅ $8.5M ARR / 888 customers = $9,571 ACV
-✅ Within expected range of $3.6K-$24K by segment
-✅ Weighted average makes sense given segment mix
+PASS: $8.5M ARR / 888 customers = $9,571 ACV
+PASS: Within expected range of $3.6K-$24K by segment
+PASS: Weighted average makes sense given segment mix
 
 **Market Share Check:**
-✅ 5% market share in Year 5 is achievable for well-funded startup
-✅ Lower than Klaviyo (46%), appropriate for new entrant
-✅ Room for growth beyond Year 5
+PASS: 5% market share in Year 5 is achievable for well-funded startup
+PASS: Lower than Klaviyo (46%), appropriate for new entrant
+PASS: Room for growth beyond Year 5
 
 ## Growth Projections
 
@@ -264,19 +264,19 @@ Total:                          $8.5M ARR (888 customers)
 
 ## Investment Thesis Validation
 
-### Market Opportunity Score: ✅ Strong
+### Market Opportunity Score: PASS: Strong
 
 **Positives:**
-✅ Large market: $1.5B+ global TAM
-✅ Growing market: 12% CAGR, 25% for AI subset
-✅ Addressable: $169M SAM with clear path to customers
-✅ Achievable: $8.5M Year 5 ARR reasonable
-✅ Validation: Public companies prove market exists
+PASS: Large market: $1.5B+ global TAM
+PASS: Growing market: 12% CAGR, 25% for AI subset
+PASS: Addressable: $169M SAM with clear path to customers
+PASS: Achievable: $8.5M Year 5 ARR reasonable
+PASS: Validation: Public companies prove market exists
 
 **Risks:**
-⚠️ Competition: Klaviyo and Mailchimp are strong
-⚠️ Switching costs: Customers invested in current tools
-⚠️ Market share: 5% requires excellent execution
+WARNING: Competition: Klaviyo and Mailchimp are strong
+WARNING: Switching costs: Customers invested in current tools
+WARNING: Market share: 5% requires excellent execution
 
 **Verdict:** Market opportunity supports venture-scale outcome ($100M+ exit possible)
 

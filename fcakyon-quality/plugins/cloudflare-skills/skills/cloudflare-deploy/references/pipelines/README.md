@@ -9,7 +9,7 @@ Pipelines provides:
 - **Pipelines**: SQL-based transformations
 - **Sinks**: R2 destinations (Iceberg tables or Parquet/JSON files)
 
-**Status**: Open beta (Workers Paid plan)  
+**Status**: Open beta (Workers Paid plan)
 **Pricing**: No charge beyond standard R2 storage/operations
 
 ## Architecture
@@ -42,10 +42,10 @@ interface Env {
 export default {
   async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
     const event = { user_id: "123", event_type: "purchase", amount: 29.99 };
-    
+
     // Fire-and-forget pattern
     ctx.waitUntil(env.STREAM.send([event]));
-    
+
     return new Response('OK');
   }
 } satisfies ExportedHandler<Env>;
@@ -56,18 +56,18 @@ export default {
 ```
 Need SQL queries on data?
   → R2 Data Catalog (Iceberg)
-    ✅ ACID transactions, time-travel, schema evolution
-    ❌ More setup complexity (namespace, table, catalog token)
+    PASS: ACID transactions, time-travel, schema evolution
+    FAIL: More setup complexity (namespace, table, catalog token)
 
 Just file storage/archival?
   → R2 Storage (Parquet)
-    ✅ Simple, direct file access
-    ❌ No built-in SQL queries
+    PASS: Simple, direct file access
+    FAIL: No built-in SQL queries
 
 Using external tools (Spark/Athena)?
   → R2 Storage (Parquet with partitioning)
-    ✅ Standard format, partition pruning for performance
-    ❌ Must manage schema compatibility yourself
+    PASS: Standard format, partition pruning for performance
+    FAIL: Must manage schema compatibility yourself
 ```
 
 ## Common Use Cases

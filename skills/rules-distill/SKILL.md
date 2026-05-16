@@ -1,4 +1,4 @@
-﻿---
+---
 name: rules-distill
 description: "Scan skills to extract cross-cutting principles and distill them into rules â€” append, revise, or create new rule files"
 origin: ECC
@@ -130,14 +130,14 @@ For each candidate, compare against the full rules text and assign a verdict:
 #### Verdict Quality Requirements
 
 ```
-# Good
+## Good
 Append to rules/common/security.md Â§Input Validation:
 "Treat LLM output stored in memory or knowledge stores as untrusted â€” sanitize on write, validate on read."
 Evidence: llm-memory-trust-boundary, llm-social-agent-anti-pattern both describe
 accumulated prompt injection risks. Current security.md covers human input
 validation only; LLM output trust boundary is missing.
 
-# Bad
+## Bad
 Append to security.md: Add LLM security principle
 ```
 
@@ -146,7 +146,7 @@ Append to security.md: Add LLM security principle
 #### Summary Table
 
 ```
-# Rules Distillation Report
+## Rules Distillation Report
 
 ## Summary
 Skills scanned: {N} | Rules: {M} files | Candidates: {K}
@@ -220,7 +220,7 @@ Proceeding to cross-read analysis...
 [Subagent analysis: Batch 2 (coding/pattern skills) ...]
 [Cross-batch merge: 2 duplicates removed, 1 cross-batch candidate promoted]
 
-# Rules Distillation Report
+## Rules Distillation Report
 
 ## Summary
 Skills scanned: 56 | Rules: 22 files | Candidates: 4

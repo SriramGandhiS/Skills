@@ -41,7 +41,7 @@ Kapsama göre katmanları seçin:
 - Şema zaten migrate edilmişse ve sadece test başına rollback'e ihtiyacınız varsa `DatabaseTransactions`
 - Her test için tam bir migrate/fresh'e ihtiyacınız varsa ve maliyetini karşılayabiliyorsanız `DatabaseMigrations`
 
-Veritabanına dokunan testler için varsayılan olarak `RefreshDatabase` kullanın: transaction desteği olan veritabanları için, test run'ı başına bir kez (static bir bayrak aracılığıyla) migration'ları çalıştırır ve her testi bir transaction'a sarar; `:memory:` SQLite veya transaction'sız bağlantılar için her testten önce migrate eder. Şema zaten migrate edilmişse ve sadece test başına rollback'lere ihtiyacınız varsa `DatabaseTransactions` kullanın.
+Veritabanına dokunan testler için varsayılan olarak `RefreshDatabase`kullanın: transaction desteği olan veritabanları için, test run'ı başına bir kez (static bir bayrak aracılığıyla) migration'ları çalıştırır ve her testi bir transaction'a sarar;`:memory:`SQLite veya transaction'sız bağlantılar için her testten önce migrate eder. Şema zaten migrate edilmişse ve sadece test başına rollback'lere ihtiyacınız varsa`DatabaseTransactions` kullanın.
 
 ### Test Framework Seçimi
 
@@ -186,7 +186,7 @@ final class ProjectRepositoryTest extends TestCase
 
 - Job'lar için `Bus::fake()`
 - Kuyruğa alınmış işler için `Queue::fake()`
-- Bildirimler için `Mail::fake()` ve `Notification::fake()`
+- Bildirimler için `Mail::fake()`ve`Notification::fake()`
 - Domain event'leri için `Event::fake()`
 
 ```php
@@ -228,7 +228,7 @@ $response->assertOk();
 ### Kapsam Hedefleri
 
 - Unit + feature testleri için 80%+ kapsam zorlayın
-- CI'da `pcov` veya `XDEBUG_MODE=coverage` kullanın
+- CI'da `pcov`veya`XDEBUG_MODE=coverage` kullanın
 
 ### Test Komutları
 
@@ -238,7 +238,7 @@ $response->assertOk();
 
 ### Test Yapılandırması
 
-- Hızlı testler için `phpunit.xml`'de `DB_CONNECTION=sqlite` ve `DB_DATABASE=:memory:` ayarlayın
+- Hızlı testler için `phpunit.xml`'de`DB_CONNECTION=sqlite`ve`DB_DATABASE=:memory:` ayarlayın
 - Dev/prod verilerine dokunmaktan kaçınmak için testler için ayrı env tutun
 
 ### Yetkilendirme Testleri

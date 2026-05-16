@@ -39,7 +39,7 @@ REPEAT  -> Next test case
 User: /kotlin-test I need a function to validate user registration requests
 
 Agent:
-# TDD Session: Registration Validator
+## TDD Session: Registration Validator
 
 ## Step 1: Define Interface
 
@@ -255,22 +255,22 @@ class AsyncServiceTest : FunSpec({
 ## Coverage Commands
 
 ```bash
-# Run tests with coverage
+## Run tests with coverage
 ./gradlew koverHtmlReport
 
-# Verify coverage thresholds
+## Verify coverage thresholds
 ./gradlew koverVerify
 
-# XML report for CI
+## XML report for CI
 ./gradlew koverXmlReport
 
-# Open HTML report
+## Open HTML report
 open build/reports/kover/html/index.html
 
-# Run specific test class
+## Run specific test class
 ./gradlew test --tests "com.example.UserServiceTest"
 
-# Run with verbose output
+## Run with verbose output
 ./gradlew test --info
 ```
 

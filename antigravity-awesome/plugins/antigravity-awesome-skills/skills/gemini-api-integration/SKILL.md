@@ -145,14 +145,14 @@ console.log(response.response.text());
 
 ## Best Practices
 
-- ✅ **Do:** Use `gemini-1.5-flash` for most tasks — it's fast and cost-effective
-- ✅ **Do:** Always stream responses for user-facing chat UIs to reduce perceived latency
-- ✅ **Do:** Store API keys in environment variables, never hard-code them
-- ✅ **Do:** Implement exponential backoff for rate limit (429) errors
-- ✅ **Do:** Use `systemInstruction` to set persistent model behavior
-- ❌ **Don't:** Use `gemini-pro` for simple tasks — Flash is cheaper and faster
-- ❌ **Don't:** Send large base64 images inline for files > 20MB — use File API instead
-- ❌ **Don't:** Ignore safety ratings in responses for production apps
+- PASS: **Do:** Use `gemini-1.5-flash` for most tasks — it's fast and cost-effective
+- PASS: **Do:** Always stream responses for user-facing chat UIs to reduce perceived latency
+- PASS: **Do:** Store API keys in environment variables, never hard-code them
+- PASS: **Do:** Implement exponential backoff for rate limit (429) errors
+- PASS: **Do:** Use `systemInstruction` to set persistent model behavior
+- FAIL: **Don't:** Use `gemini-pro` for simple tasks — Flash is cheaper and faster
+- FAIL: **Don't:** Send large base64 images inline for files > 20MB — use File API instead
+- FAIL: **Don't:** Ignore safety ratings in responses for production apps
 
 ## Error Handling
 

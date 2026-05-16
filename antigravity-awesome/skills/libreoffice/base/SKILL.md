@@ -94,13 +94,13 @@ def connect_to_mysql(host, port, database, user, password):
         "uno:socket,host=localhost,port=8100;urp;StarOffice.ComponentContext"
     )
     smgr = ctx.ServiceManager
-    
+
     doc = smgr.createInstanceWithContext("com.sun.star.sdb.DatabaseDocument", ctx)
     datasource = doc.getDataSource()
     datasource.URL = f"sdbc:mysql:jdbc:mysql://{host}:{port}/{database}"
     datasource.Properties["UserName"] = user
     datasource.Properties["Password"] = password
-    
+
     doc.storeToURL("file:///path/to/connected.odb", ())
     return doc
 ```

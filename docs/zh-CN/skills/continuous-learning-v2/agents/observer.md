@@ -93,7 +93,7 @@ project_id: "a1b2c3d4e5f6"
 project_name: "my-react-app"
 ---
 
-# Use React Hooks Pattern
+## Use React Hooks Pattern
 
 ## Action
 Always use functional components with hooks instead of class components.
@@ -116,7 +116,7 @@ source: "session-observation"
 scope: global
 ---
 
-# Always Validate User Input
+## Always Validate User Input
 
 ## Action
 Validate and sanitize all user input before processing.
@@ -167,7 +167,7 @@ Validate and sanitize all user input before processing.
 2. 每个实例的置信度 **>= 0.8**
 3. 其领域属于全局友好列表（安全、通用最佳实践、工作流）
 
-提升操作由 `instinct-cli.py promote` 命令或 `/evolve` 分析处理。
+提升操作由 `instinct-cli.py promote`命令或`/evolve` 分析处理。
 
 ## 重要准则
 
@@ -177,7 +177,7 @@ Validate and sanitize all user input before processing.
 4. **尊重隐私**：切勿包含实际的代码片段，只包含模式
 5. **合并相似项**：如果新本能与现有本能相似，则更新而非重复创建
 6. **默认项目作用域**：除非模式明显是通用的，否则设为项目作用域
-7. **包含项目上下文**：对于项目作用域的本能，始终设置 `project_id` 和 `project_name`
+7. **包含项目上下文**：对于项目作用域的本能，始终设置 `project_id`和`project_name`
 
 ## 示例分析会话
 

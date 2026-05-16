@@ -38,7 +38,7 @@ Task tool (general-purpose):
   prompt: |
     You are a spec document reviewer. Verify this spec is complete and ready for planning.
 
-    **Spec to review:** [SPEC_FILE_PATH]
+**Spec to review:** [SPEC_FILE_PATH]
 
     ## What to Check
 
@@ -61,12 +61,12 @@ Task tool (general-purpose):
 
     ## Spec Review
 
-    **Status:** ✅ Approved | ❌ Issues Found
+**Status:** PASS: Approved | FAIL: Issues Found
 
-    **Issues (if any):**
+**Issues (if any):**
     - [Section X]: [specific issue] - [why it matters]
 
-    **Recommendations (advisory):**
+**Recommendations (advisory):**
     - [suggestions that don't block approval]
 ```
 
@@ -104,11 +104,11 @@ Find the "After the Design" section and add a new "Spec Review Loop" section aft
 **Spec Review Loop:**
 After writing the spec document:
 1. Dispatch spec-document-reviewer subagent (see spec-document-reviewer-prompt.md)
-2. If ❌ Issues Found:
+2. If FAIL: Issues Found:
    - Fix the issues in the spec document
    - Re-dispatch reviewer
-   - Repeat until ✅ Approved
-3. If ✅ Approved: proceed to implementation setup
+   - Repeat until PASS: Approved
+3. If PASS: Approved: proceed to implementation setup
 
 **Review loop guidance:**
 - Same agent that wrote the spec fixes it (preserves context)
@@ -156,8 +156,8 @@ Task tool (general-purpose):
   prompt: |
     You are a plan document reviewer. Verify this plan chunk is complete and ready for implementation.
 
-    **Plan chunk to review:** [PLAN_FILE_PATH] - Chunk N only
-    **Spec for reference:** [SPEC_FILE_PATH]
+**Plan chunk to review:** [PLAN_FILE_PATH] - Chunk N only
+**Spec for reference:** [SPEC_FILE_PATH]
 
     ## What to Check
 
@@ -181,12 +181,12 @@ Task tool (general-purpose):
 
     ## Plan Review - Chunk N
 
-    **Status:** ✅ Approved | ❌ Issues Found
+**Status:** PASS: Approved | FAIL: Issues Found
 
-    **Issues (if any):**
+**Issues (if any):**
     - [Task X, Step Y]: [specific issue] - [why it matters]
 
-    **Recommendations (advisory):**
+**Recommendations (advisory):**
     - [suggestions that don't block approval]
 ```
 
@@ -227,11 +227,11 @@ After completing each chunk of the plan:
 
 1. Dispatch plan-document-reviewer subagent for the current chunk
    - Provide: chunk content, path to spec document
-2. If ❌ Issues Found:
+2. If FAIL: Issues Found:
    - Fix the issues in the chunk
    - Re-dispatch reviewer for that chunk
-   - Repeat until ✅ Approved
-3. If ✅ Approved: proceed to next chunk (or execution handoff if last chunk)
+   - Repeat until PASS: Approved
+3. If PASS: Approved: proceed to next chunk (or execution handoff if last chunk)
 
 **Chunk boundaries:** Use `## Chunk N: <name>` headings to delimit chunks. Each chunk should be ≤1000 lines and logically self-contained.
 ```

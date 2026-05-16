@@ -110,7 +110,7 @@ class SkillAdaptor(ABC):
         Args:
             package_path: Path to packaged skill file
             api_key: Platform API key
-            **kwargs: Additional platform-specific arguments
+**kwargs: Additional platform-specific arguments
 
         Returns:
             Dictionary with keys:
@@ -294,7 +294,7 @@ class SkillAdaptor(ABC):
                     content = ref_file.read_text(encoding="utf-8")
                     yield ref_file, content
                 except Exception as e:
-                    print(f"⚠️  Warning: Could not read {ref_file.name}: {e}")
+                    print(f"WARNING:  Warning: Could not read {ref_file.name}: {e}")
                     continue
 
     def _build_metadata_dict(self, metadata: SkillMetadata, **extra: Any) -> dict[str, Any]:
@@ -303,7 +303,7 @@ class SkillAdaptor(ABC):
 
         Args:
             metadata: SkillMetadata object
-            **extra: Additional platform-specific fields
+**extra: Additional platform-specific fields
 
         Returns:
             Metadata dictionary
@@ -364,7 +364,7 @@ class SkillAdaptor(ABC):
             from skill_seekers.cli.rag_chunker import RAGChunker
         except ImportError:
             # RAGChunker not available - fall back to no chunking
-            print("⚠️  Warning: RAGChunker not available, chunking disabled")
+            print("WARNING:  Warning: RAGChunker not available, chunking disabled")
             return [(content, metadata)]
 
         # RAGChunker uses TOKENS (it converts to chars internally)
@@ -397,8 +397,8 @@ class SkillAdaptor(ABC):
         for chunk_dict in chunks:
             chunk_text = chunk_dict["page_content"]
             chunk_meta = {
-                **metadata,  # Base metadata
-                **chunk_dict["metadata"],  # RAGChunker metadata (chunk_index, etc.)
+**metadata,  # Base metadata
+**chunk_dict["metadata"],  # RAGChunker metadata (chunk_index, etc.)
                 "is_chunked": True,
                 "chunk_id": chunk_dict["chunk_id"],
             }

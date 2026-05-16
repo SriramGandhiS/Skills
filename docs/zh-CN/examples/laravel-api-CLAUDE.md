@@ -16,7 +16,7 @@
 * 所有 PHP 文件中使用 `declare(strict_types=1)`
 * 处处使用类型属性和返回类型
 * 服务和操作优先使用 `final` 类
-* 提交的代码中不允许出现 `dd()` 或 `dump()`
+* 提交的代码中不允许出现 `dd()`或`dump()`
 * 通过 Laravel Pint 进行格式化 (PSR-12)
 
 ### API 响应封装
@@ -36,7 +36,7 @@
 
 * 迁移文件提交到 git
 * 使用 Eloquent 或查询构造器（除非参数化，否则不使用原始 SQL）
-* 为 `where` 或 `orderBy` 中使用的任何列建立索引
+* 为 `where`或`orderBy` 中使用的任何列建立索引
 * 避免在服务中修改模型实例；优先通过存储库或查询构造器进行创建/更新
 
 ### 认证
@@ -54,7 +54,7 @@
 ### 错误处理
 
 * 在服务中抛出领域异常
-* 在 `bootstrap/app.php` 中通过 `withExceptions` 将异常映射到 HTTP 响应
+* 在 `bootstrap/app.php`中通过`withExceptions` 将异常映射到 HTTP 响应
 * 绝不向客户端暴露内部错误
 
 ### 代码风格

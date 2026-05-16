@@ -129,7 +129,7 @@ final class QuestionListViewModel {
 
 ## 应避免的反模式
 
-* 在 Swift 并发新代码中使用 `DispatchQueue` 或 `NSLock` 而非 actor
+* 在 Swift 并发新代码中使用 `DispatchQueue`或`NSLock` 而非 actor
 * 将内部缓存字典暴露给外部调用者
 * 在不进行验证的情况下使文件 URL 可配置
 * 忘记所有 actor 方法调用都是 `await` —— 调用者必须处理异步上下文

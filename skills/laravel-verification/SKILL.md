@@ -1,4 +1,4 @@
-﻿---
+---
 name: laravel-verification
 description: "Verification loop for Laravel projects: env checks, linting, static analysis, tests with coverage, security scans, and deployment readiness."
 origin: ECC
@@ -33,7 +33,7 @@ php artisan --version
 
 - Verify `.env` is present and required keys exist
 - Confirm `APP_DEBUG=false` for production environments
-- Confirm `APP_ENV` matches the target deployment (`production`, `staging`)
+- Confirm `APP_ENV`matches the target deployment (`production`,`staging`)
 
 If using Laravel Sail locally:
 
@@ -96,7 +96,7 @@ php artisan migrate:status
 ```
 
 - Review destructive migrations carefully
-- Ensure migration filenames follow `Y_m_d_His_*` (e.g., `2025_03_14_154210_create_orders_table.php`) and describe the change clearly
+- Ensure migration filenames follow `Y_m_d_His_*`(e.g.,`2025_03_14_154210_create_orders_table.php`) and describe the change clearly
 - Ensure rollbacks are possible
 - Verify `down()` methods and avoid irreversible data loss without explicit backups
 
@@ -111,7 +111,7 @@ php artisan view:cache
 
 - Ensure cache warmups succeed in production configuration
 - Verify queue workers and scheduler are configured
-- Confirm `storage/` and `bootstrap/cache/` are writable in the target environment
+- Confirm `storage/`and`bootstrap/cache/` are writable in the target environment
 
 ## Phase 7: Queue and Scheduler Checks
 

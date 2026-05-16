@@ -197,7 +197,7 @@ class SyncMonitor:
 
     def _trigger_update(self, report: ChangeReport):
         """Trigger skill rebuild."""
-        print(f"🔄 Auto-updating {self.skill_name} due to {report.change_count} changes...")
+        print(f" Auto-updating {self.skill_name} due to {report.change_count} changes...")
         # TODO: Integrate with doc_scraper to rebuild skill
         # For now, just log
         print(f"  Added: {len(report.added)}")
@@ -223,7 +223,7 @@ class SyncMonitor:
         self._thread = threading.Thread(target=run_schedule, daemon=True)
         self._thread.start()
 
-        print(f"✅ Started monitoring {self.skill_name} (every {self.check_interval}s)")
+        print(f"PASS: Started monitoring {self.skill_name} (every {self.check_interval}s)")
 
         # Run first check immediately
         self.check_now()
@@ -238,7 +238,7 @@ class SyncMonitor:
         if self._thread:
             self._thread.join(timeout=5)
 
-        print(f"🛑 Stopped monitoring {self.skill_name}")
+        print(f" Stopped monitoring {self.skill_name}")
 
     def stats(self) -> dict:
         """Get monitoring statistics."""

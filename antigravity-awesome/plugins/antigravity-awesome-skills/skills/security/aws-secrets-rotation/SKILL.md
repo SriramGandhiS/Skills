@@ -116,20 +116,20 @@ rds_client = boto3.client('rds')
 
 def lambda_handler(event, context):
     """Rotate RDS MySQL password"""
-    
+
     secret_arn = event['SecretId']
     token = event['ClientRequestToken']
     step = event['Step']
-    
+
     # Get current secret
     current = secrets_client.get_secret_value(SecretId=secret_arn)
     secret = json.loads(current['SecretString'])
-    
+
     if step == "createSecret":
         # Generate new password
         new_password = generate_password()
         secret['password'] = new_password
-        
+
         # Store as pending
         secrets_client.put_secret_value(
             SecretId=secret_arn,
@@ -137,7 +137,7 @@ def lambda_handler(event, context):
             SecretString=json.dumps(secret),
             VersionStages=['AWSPENDING']
         )
-    
+
     elif step == "setSecret":
         # Update RDS password
         rds_client.modify_db_instance(
@@ -145,7 +145,7 @@ def lambda_handler(event, context):
             MasterUserPassword=secret['password'],
             ApplyImmediately=True
         )
-    
+
     elif step == "testSecret":
         # Test new credentials
         import pymysql
@@ -156,7 +156,7 @@ def lambda_handler(event, context):
             database=secret['dbname']
         )
         conn.close()
-    
+
     elif step == "finishSecret":
         # Mark as current
         secrets_client.update_secret_version_stage(
@@ -165,7 +165,7 @@ def lambda_handler(event, context):
             MoveToVersionId=token,
             RemoveFromVersionId=current['VersionId']
         )
-    
+
     return {'statusCode': 200}
 
 def generate_password(length=32):
@@ -187,10 +187,10 @@ secrets_client = boto3.client('secretsmanager')
 
 def rotate_stripe_key(secret_arn, token, step):
     """Rotate Stripe API key"""
-    
+
     current = secrets_client.get_secret_value(SecretId=secret_arn)
     secret = json.loads(current['SecretString'])
-    
+
     if step == "createSecret":
         # Create new Stripe key via API
         response = requests.post(
@@ -199,7 +199,7 @@ def rotate_stripe_key(secret_arn, token, step):
             data={'name': f'rotated-{token[:8]}'}
         )
         new_key = response.json()['secret']
-        
+
         secret['api_key'] = new_key
         secrets_client.put_secret_value(
             SecretId=secret_arn,
@@ -207,7 +207,7 @@ def rotate_stripe_key(secret_arn, token, step):
             SecretString=json.dumps(secret),
             VersionStages=['AWSPENDING']
         )
-    
+
     elif step == "testSecret":
         # Test new key
         response = requests.get(
@@ -216,7 +216,7 @@ def rotate_stripe_key(secret_arn, token, step):
         )
         if response.status_code != 200:
             raise Exception("New key failed validation")
-    
+
     elif step == "finishSecret":
         # Revoke old key
         old_key = json.loads(current['SecretString'])['api_key']
@@ -224,7 +224,7 @@ def rotate_stripe_key(secret_arn, token, step):
             f'https://api.stripe.com/v1/api_keys/{old_key}',
             auth=(secret['api_key'], '')
         )
-        
+
         # Promote to current
         secrets_client.update_secret_version_stage(
             SecretId=secret_arn,
@@ -268,20 +268,20 @@ while read name enabled last_rotated; do
   echo "Secret: $name"
   echo "  Rotation Enabled: $enabled"
   echo "  Last Rotated: $last_rotated"
-  
+
   if [ "$enabled" = "True" ]; then
     # Check rotation schedule
     rules=$(aws secretsmanager describe-secret --secret-id "$name" \
       --query 'RotationRules.AutomaticallyAfterDays' --output text)
     echo "  Rotation Schedule: Every $rules days"
-    
+
     # Calculate days since last rotation
     if [ "$last_rotated" != "None" ]; then
       days_ago=$(( ($(date +%s) - $(date -d "$last_rotated" +%s)) / 86400 ))
       echo "  Days Since Rotation: $days_ago"
-      
+
       if [ $days_ago -gt $rules ]; then
-        echo "  ⚠️  OVERDUE for rotation!"
+        echo "  WARNING:  OVERDUE for rotation!"
       fi
     fi
   fi
@@ -299,7 +299,7 @@ import json
 def get_secret(secret_name):
     """Retrieve secret from Secrets Manager"""
     client = boto3.client('secretsmanager')
-    
+
     try:
         response = client.get_secret_value(SecretId=secret_name)
         return json.loads(response['SecretString'])
@@ -328,7 +328,7 @@ async function getSecret(secretName) {
     const data = await secretsManager.getSecretValue({
       SecretId: secretName
     }).promise();
-    
+
     return JSON.parse(data.SecretString);
   } catch (err) {
     console.error('Error retrieving secret:', err);
@@ -402,22 +402,22 @@ client = boto3.client('secretsmanager')
 
 def generate_compliance_report():
     secrets = client.list_secrets()['SecretList']
-    
+
     compliant = []
     non_compliant = []
-    
+
     for secret in secrets:
         name = secret['Name']
         rotation_enabled = secret.get('RotationEnabled', False)
         last_rotated = secret.get('LastRotatedDate')
-        
+
         if not rotation_enabled:
             non_compliant.append({
                 'name': name,
                 'issue': 'Rotation not enabled'
             })
             continue
-        
+
         if last_rotated:
             days_ago = (datetime.now(last_rotated.tzinfo) - last_rotated).days
             if days_ago > 90:
@@ -432,7 +432,7 @@ def generate_compliance_report():
                 'name': name,
                 'issue': 'Never rotated'
             })
-    
+
     print(f"Compliant Secrets: {len(compliant)}")
     print(f"Non-Compliant Secrets: {len(non_compliant)}")
     print("\nNon-Compliant Details:")

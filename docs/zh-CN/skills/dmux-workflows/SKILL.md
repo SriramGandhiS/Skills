@@ -28,16 +28,16 @@ dmux 是一个基于 tmux 的编排工具，用于管理 AI 代理窗格：
 ## 快速开始
 
 ```bash
-# Start dmux session
+## Start dmux session
 dmux
 
-# Create agent panes (press 'n' in dmux, then type prompt)
-# Pane 1: "Implement the auth middleware in src/auth/"
-# Pane 2: "Write tests for the user service"
-# Pane 3: "Update API documentation"
+## Create agent panes (press 'n' in dmux, then type prompt)
+## Pane 1: "Implement the auth middleware in src/auth/"
+## Pane 2: "Write tests for the user service"
+## Pane 3: "Update API documentation"
 
-# Each pane runs its own agent session
-# Press 'm' to merge results back
+## Each pane runs its own agent session
+## Press 'm' to merge results back
 ```
 
 ## 工作流模式
@@ -54,7 +54,7 @@ Pane 1 (Research): "研究 Node.js 中速率限制的最佳实践。
 Pane 2 (Implement): "为我们的 Express API 实现速率限制中间件。
   先从基本的令牌桶算法开始，研究完成后我们将进一步优化。"
 
-# Pane 1 完成后，将研究结果合并到 Pane 2 的上下文中
+## Pane 1 完成后，将研究结果合并到 Pane 2 的上下文中
 ```
 
 ### 模式 2：多文件功能
@@ -66,7 +66,7 @@ Pane 1: "创建计费功能的数据库模式和迁移"
 Pane 2: "在 src/api/billing/ 中构建计费 API 端点"
 Pane 3: "创建计费仪表板 UI 组件"
 
-# 合并所有内容，然后在主面板中进行集成
+## 合并所有内容，然后在主面板中进行集成
 ```
 
 ### 模式 3：测试 + 修复循环
@@ -99,7 +99,7 @@ Pane 1: "审查 src/api/ 中的安全漏洞"
 Pane 2: "审查 src/api/ 中的性能问题"
 Pane 3: "审查 src/api/ 中的测试覆盖缺口"
 
-# 将所有审查合并为一份报告
+## 将所有审查合并为一份报告
 ```
 
 ## 最佳实践
@@ -115,15 +115,15 @@ Pane 3: "审查 src/api/ 中的测试覆盖缺口"
 对于涉及重叠文件的任务：
 
 ```bash
-# Create worktrees for isolation
+## Create worktrees for isolation
 git worktree add -b feat/auth ../feature-auth HEAD
 git worktree add -b feat/billing ../feature-billing HEAD
 
-# Run agents in separate worktrees
-# Pane 1: cd ../feature-auth && claude
-# Pane 2: cd ../feature-billing && claude
+## Run agents in separate worktrees
+## Pane 1: cd ../feature-auth && claude
+## Pane 2: cd ../feature-billing && claude
 
-# Merge branches when done
+## Merge branches when done
 git merge feat/auth
 git merge feat/billing
 ```
@@ -163,12 +163,12 @@ node scripts/orchestrate-worktrees.js plan.json --execute
 
 * 为每个工作器创建一个基于分支的 git worktree
 * 可选择将主检出中的选定 `seedPaths` 覆盖到每个工作器的工作树中
-* 在 `.orchestration/<session>/` 下写入每个工作器的 `task.md`、`handoff.md` 和 `status.md` 文件
+* 在 `.orchestration/<session>/`下写入每个工作器的`task.md`、`handoff.md`和`status.md` 文件
 * 启动一个 tmux 会话，每个工作器一个窗格
 * 在每个窗格中启动相应的工作器命令
 * 为主协调器保留主窗格空闲
 
-当工作器需要访问尚未纳入 `HEAD` 的脏文件或未跟踪的本地文件（例如本地编排脚本、草案计划或文档）时，使用 `seedPaths`：
+当工作器需要访问尚未纳入 `HEAD`的脏文件或未跟踪的本地文件（例如本地编排脚本、草案计划或文档）时，使用`seedPaths`：
 
 ```json
 {
@@ -190,4 +190,4 @@ node scripts/orchestrate-worktrees.js plan.json --execute
 * **窗格无响应：** 直接切换到该窗格或使用 `tmux capture-pane -pt <session>:0.<pane-index>` 检查它。
 * **合并冲突：** 使用 git worktree 隔离每个窗格的文件更改。
 * **令牌使用量高：** 减少并行窗格数量。每个窗格都是一个完整的代理会话。
-* **未找到 tmux：** 使用 `brew install tmux` (macOS) 或 `apt install tmux` (Linux) 安装。
+* **未找到 tmux：** 使用 `brew install tmux`(macOS) 或`apt install tmux` (Linux) 安装。

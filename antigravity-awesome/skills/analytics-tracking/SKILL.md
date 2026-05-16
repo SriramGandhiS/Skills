@@ -36,7 +36,7 @@ It prevents:
 
 ---
 
-## 🔢 Measurement Readiness & Signal Quality Index
+## Measurement Readiness & Signal Quality Index
 
 ### Total Score: **0–100**
 

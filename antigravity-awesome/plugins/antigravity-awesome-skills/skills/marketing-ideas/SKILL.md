@@ -46,8 +46,8 @@ When a user asks for marketing ideas:
    * Define success metrics
    * Call out execution risk
 
-> ❌ Do not dump long lists
-> ✅ Act as a decision filter
+> FAIL: Do not dump long lists
+> PASS: Act as a decision filter
 
 ---
 
@@ -117,7 +117,7 @@ Marketing Feasibility Score (MFS)
 MFS = (5 + 4 + 2) − (4 + 3) = 4
 ```
 
-➡️ *Viable, but not a short-term win*
+ *Viable, but not a short-term win*
 
 ---
 
@@ -200,17 +200,17 @@ Use these biases when scoring:
 
 ## 7. Guardrails
 
-* ❌ No idea dumping
+* FAIL: No idea dumping
 
-* ❌ No unscored recommendations
+* FAIL: No unscored recommendations
 
-* ❌ No novelty for novelty’s sake
+* FAIL: No novelty for novelty’s sake
 
-* ✅ Bias toward learning velocity
+* PASS: Bias toward learning velocity
 
-* ✅ Prefer compounding channels
+* PASS: Prefer compounding channels
 
-* ✅ Optimize for *decision clarity*, not creativity
+* PASS: Optimize for *decision clarity*, not creativity
 
 ---
 

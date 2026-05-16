@@ -196,7 +196,7 @@ processedPhotos[item.id] = await processor.extractSticker(data: data, with: item
 * **为主要是单线程的应用目标启用 MainActor 推断模式**
 * **在卸载前进行性能分析** — 使用 Instruments 查找实际的瓶颈
 * **使用 MainActor 保护全局变量** — 全局/静态可变状态需要 actor 隔离
-* **使用隔离的一致性**，而不是 `nonisolated` 变通方法或 `@Sendable` 包装器
+* **使用隔离的一致性**，而不是 `nonisolated`变通方法或`@Sendable` 包装器
 * **增量迁移** — 在构建设置中一次启用一个功能
 
 ## 应避免的反模式

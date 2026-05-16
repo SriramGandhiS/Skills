@@ -1,4 +1,4 @@
-﻿---
+---
 name: lead-intelligence
 description: AI-native lead intelligence and outreach pipeline. Replaces Apollo, Clay, and ZoomInfo with agent-powered signal scoring, mutual ranking, warm path discovery, source-derived voice modeling, and channel-specific outreach across email, LinkedIn, and X. Use when the user wants to find, qualify, and reach high-value contacts.
 origin: ECC
@@ -21,7 +21,7 @@ Agent-powered lead intelligence pipeline that finds, scores, and reaches high-va
 
 ### Required
 - **Exa MCP** â€” Deep web search for people, companies, and signals (`web_search_exa`)
-- **X API** â€” Follower/following graph, mutual analysis, recent activity (`X_BEARER_TOKEN`, plus write-context credentials such as `X_CONSUMER_KEY`, `X_CONSUMER_SECRET`, `X_ACCESS_TOKEN`, `X_ACCESS_TOKEN_SECRET`)
+- **X API** â€” Follower/following graph, mutual analysis, recent activity (`X_BEARER_TOKEN`, plus write-context credentials such as`X_CONSUMER_KEY`,`X_CONSUMER_SECRET`,`X_ACCESS_TOKEN`,`X_ACCESS_TOKEN_SECRET`)
 
 ### Optional (enhance results)
 - **LinkedIn** â€” Direct API if available, otherwise browser control for search, profile inspection, and drafting
@@ -43,7 +43,7 @@ Agent-powered lead intelligence pipeline that finds, scores, and reaches high-va
 
 Do not draft outbound from generic sales copy.
 
-Run `brand-voice` first whenever the user's voice matters. Reuse its `VOICE PROFILE` instead of re-deriving style ad hoc inside this skill.
+Run `brand-voice`first whenever the user's voice matters. Reuse its`VOICE PROFILE` instead of re-deriving style ad hoc inside this skill.
 
 If live X access is available, pull recent original posts before drafting. If not, use supplied examples or the best repo/site material available.
 
@@ -63,12 +63,12 @@ Search for high-signal people in target verticals. Assign a weight to each based
 ### Signal Search Approach
 
 ```python
-# Step 1: Define target parameters
+## Step 1: Define target parameters
 target_verticals = ["prediction markets", "AI tooling", "developer tools"]
 target_roles = ["founder", "CEO", "CTO", "VP Engineering", "investor", "partner"]
 target_locations = ["San Francisco", "New York", "London", "remote"]
 
-# Step 2: Exa deep search for people
+## Step 2: Exa deep search for people
 for vertical in target_verticals:
     results = web_search_exa(
         query=f"{vertical} {role} founder CEO",
@@ -77,12 +77,12 @@ for vertical in target_verticals:
     )
     # Score each result
 
-# Step 3: X API search for active voices
+## Step 3: X API search for active voices
 x_search = search_recent_tweets(
     query="prediction markets OR AI tooling OR developer tools",
     max_results=100
 )
-# Extract and score unique authors
+## Extract and score unique authors
 ```
 
 ## Stage 2: Mutual Ranking
@@ -279,7 +279,7 @@ Do not send messages automatically without explicit user approval.
 Users should set these environment variables:
 
 ```bash
-# Required
+## Required
 export X_BEARER_TOKEN="..."
 export X_ACCESS_TOKEN="..."
 export X_ACCESS_TOKEN_SECRET="..."
@@ -287,7 +287,7 @@ export X_CONSUMER_KEY="..."
 export X_CONSUMER_SECRET="..."
 export EXA_API_KEY="..."
 
-# Optional
+## Optional
 export LINKEDIN_COOKIE="..." # For browser-use LinkedIn access
 export APOLLO_API_KEY="..."  # For Apollo enrichment
 ```

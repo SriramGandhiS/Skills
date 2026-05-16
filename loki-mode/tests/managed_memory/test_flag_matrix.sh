@@ -1,12 +1,10 @@
 #!/usr/bin/env bash
 # tests/managed_memory/test_flag_matrix.sh
 # v6.83.0 Phase 1: flag matrix for LOKI_MANAGED_AGENTS x LOKI_MANAGED_MEMORY.
-#
-# Invariant: the only misconfiguration that FAILS fast is
-#     child=true AND parent=false  -> exit 2 with a clear error on stderr.
+# # Invariant: the only misconfiguration that FAILS fast is
+# child=true AND parent=false  -> exit 2 with a clear error on stderr.
 # Every other combination must be allowed (run.sh continues past the check).
-#
-# Strategy: source run.sh in a subshell with `exit 0` injected just after the
+# # Strategy: source run.sh in a subshell with `exit 0` injected just after the
 # fail-fast check by intercepting via LOKI_AUTONOMY_EARLY_EXIT. But run.sh
 # doesn't have such a hook. Instead we extract the flag block + fail-fast
 # into a tiny harness using `bash -c` with the exact lines.

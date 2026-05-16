@@ -499,7 +499,7 @@ function renderMobileLayout(container, commands) {
         // because the invocation is /impeccable <name>, not /<name>.
         if (relationship) {
             if (relationship.pairs) {
-                relationshipHTML = `<div class="mobile-cmd-rel">↔ pairs with <code>${relationship.pairs}</code></div>`;
+                relationshipHTML = `<div class="mobile-cmd-rel"> pairs with <code>${relationship.pairs}</code></div>`;
             } else if (relationship.leadsTo && relationship.leadsTo.length > 0) {
                 relationshipHTML = `<div class="mobile-cmd-rel">→ leads to ${relationship.leadsTo.map(c => `<code>${c}</code>`).join(', ')}</div>`;
             }

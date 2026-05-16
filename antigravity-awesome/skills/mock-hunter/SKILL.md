@@ -119,13 +119,13 @@ Skill: ...
 
 ## Best Practices
 
-- ✅ Provide DB access when available — lifts UNKNOWN verdicts to REAL or MOCK
-- ✅ Use a dedicated test account for form-login auth
-- ✅ Run cold-start tests (zero data) — many vibe-coded apps fail there
-- ✅ Tell the skill if specific sections are intentionally AI-generated, so it doesn't false-flag them
-- ❌ Don't run on apps you don't own without permission — it clicks every button
-- ❌ Don't skip the destructive-button exclusion list — apps can mutate state
-- ❌ Don't trust the audit if the page failed to load — check console first
+- PASS: Provide DB access when available — lifts UNKNOWN verdicts to REAL or MOCK
+- PASS: Use a dedicated test account for form-login auth
+- PASS: Run cold-start tests (zero data) — many vibe-coded apps fail there
+- PASS: Tell the skill if specific sections are intentionally AI-generated, so it doesn't false-flag them
+- FAIL: Don't run on apps you don't own without permission — it clicks every button
+- FAIL: Don't skip the destructive-button exclusion list — apps can mutate state
+- FAIL: Don't trust the audit if the page failed to load — check console first
 
 ## Limitations
 

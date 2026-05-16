@@ -30,7 +30,7 @@ def check_prettier_version() -> bool:
         if result.returncode == 0:
             version = result.stdout.strip()
             if "3.6.2" not in version:
-                print(f"⚠️  Prettier version mismatch: expected 3.6.2, found {version}")
+                print(f"WARNING:  Prettier version mismatch: expected 3.6.2, found {version}")
             return True
     except Exception:
         pass
@@ -89,9 +89,9 @@ def format_code_with_ruff(temp_dir: Path) -> None:
     """
     try:
         subprocess.run(["ruff", "format", "--line-length=120", str(temp_dir)], check=True)
-        print("Completed ruff format ✅")
+        print("Completed ruff format PASS:")
     except Exception as exc:
-        print(f"ERROR running ruff format ❌ {exc}")
+        print(f"ERROR running ruff format FAIL: {exc}")
 
     try:
         subprocess.run(
@@ -106,9 +106,9 @@ def format_code_with_ruff(temp_dir: Path) -> None:
             ],
             check=True,
         )
-        print("Completed ruff check ✅")
+        print("Completed ruff check PASS:")
     except Exception as exc:
-        print(f"ERROR running ruff check ❌ {exc}")
+        print(f"ERROR running ruff check FAIL: {exc}")
 
     # Format docstrings in extracted Python blocks (matches actions pipeline)
     try:
@@ -119,9 +119,9 @@ def format_code_with_ruff(temp_dir: Path) -> None:
             formatted = format_python_file(content)
             if formatted != content:
                 py_file.write_text(formatted)
-        print("Completed docstring formatting ✅")
+        print("Completed docstring formatting PASS:")
     except Exception as exc:
-        print(f"ERROR running docstring formatter ❌ {exc}")
+        print(f"ERROR running docstring formatter FAIL: {exc}")
 
 
 def format_bash_with_prettier(temp_dir: Path) -> None:
@@ -139,11 +139,11 @@ def format_bash_with_prettier(temp_dir: Path) -> None:
             cwd=temp_dir,
         )
         if result.returncode != 0:
-            print(f"ERROR running prettier-plugin-sh ❌ {result.stderr}")
+            print(f"ERROR running prettier-plugin-sh FAIL: {result.stderr}")
         else:
-            print("Completed bash formatting ✅")
+            print("Completed bash formatting PASS:")
     except Exception as exc:
-        print(f"ERROR running prettier-plugin-sh ❌ {exc}")
+        print(f"ERROR running prettier-plugin-sh FAIL: {exc}")
 
 
 def generate_temp_filename(file_path: Path, index: int, code_type: str) -> str:

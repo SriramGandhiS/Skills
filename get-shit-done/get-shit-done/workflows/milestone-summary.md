@@ -140,9 +140,9 @@ Present as a bulleted list of decisions with brief rationale:
 ## 4. Requirements Coverage
 
 {From REQUIREMENTS.md: list each requirement with status}
-- ✅ {Requirement met}
-- ⚠️ {Requirement partially met — note gap}
-- ❌ {Requirement not met — note reason}
+- PASS: {Requirement met}
+- WARNING: {Requirement partially met — note gap}
+- FAIL: {Requirement not met — note reason}
 
 {If MILESTONE-AUDIT.md exists: include audit verdict}
 
@@ -202,8 +202,7 @@ Display the full summary document inline.
 After presenting the summary:
 
 > "Summary written to `.planning/reports/MILESTONE_SUMMARY-v{VERSION}.md`.
->
-> I have full context from the build artifacts. Want to ask anything about the project?
+> > I have full context from the build artifacts. Want to ask anything about the project?
 > Architecture decisions, specific phases, requirements, tech debt — ask away."
 
 If the user asks questions:

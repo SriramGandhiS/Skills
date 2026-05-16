@@ -1,17 +1,15 @@
-> ⚠️ **DEPRECATED**: This document is outdated and uses old CLI patterns.
-> 
-> For up-to-date documentation, please see:
+> WARNING: **DEPRECATED**: This document is outdated and uses old CLI patterns.
+> > For up-to-date documentation, please see:
 > - [Quick Start Guide](docs/getting-started/02-quick-start.md) - 3 commands to first skill
 > - [Installation Guide](docs/getting-started/01-installation.md) - Complete installation
 > - [Documentation Hub](docs/README.md) - All documentation
->
-> *This file is kept for historical reference only.*
+> > *This file is kept for historical reference only.*
 
 ---
 
 # Quick Start Guide
 
-## 🚀 3 Steps to Create a Skill
+## 3 Steps to Create a Skill
 
 ### Step 1: Install Dependencies
 
@@ -64,7 +62,7 @@ skill-seekers package output/godot/
 
 ---
 
-## 📋 Available Presets
+## Available Presets
 
 ```bash
 # Godot Engine
@@ -91,7 +89,7 @@ skill-seekers unified --config configs/godot_unified.json
 
 ---
 
-## ⚡ Using Existing Data (Fast!)
+## Using Existing Data (Fast!)
 
 If you already scraped once:
 
@@ -112,7 +110,7 @@ skill-seekers scrape --config configs/godot.json --skip-scrape
 
 ---
 
-## 🎯 Complete Example (Recommended Workflow)
+## Complete Example (Recommended Workflow)
 
 ```bash
 # 1. Install (once)
@@ -142,7 +140,7 @@ skill-seekers package output/react/
 
 ---
 
-## 💡 Pro Tips
+## Pro Tips
 
 ### Test with Small Pages First
 Edit config file:
@@ -172,7 +170,7 @@ skill-seekers scrape --config configs/myframework.json
 
 ---
 
-## 📁 What You Get
+## What You Get
 
 ```
 output/
@@ -184,7 +182,7 @@ output/
 
 ---
 
-## ❓ Need Help?
+## Need Help?
 
 See **README.md** for:
 - Complete documentation
@@ -194,7 +192,7 @@ See **README.md** for:
 
 ---
 
-## 🎮 Let's Go!
+## Let's Go!
 
 ```bash
 # Godot
@@ -204,4 +202,4 @@ skill-seekers scrape --config configs/godot.json
 skill-seekers scrape --interactive
 ```
 
-That's it! 🚀
+That's it!

@@ -19,17 +19,17 @@ pytest、factory_boy、Django REST Frameworkを使用したDjangoアプリケー
 ### Red-Green-Refactorサイクル
 
 ```python
-# ステップ1: RED - 失敗するテストを書く
+## ステップ1: RED - 失敗するテストを書く
 def test_user_creation():
     user = User.objects.create_user(email='test@example.com', password='testpass123')
     assert user.email == 'test@example.com'
     assert user.check_password('testpass123')
     assert not user.is_staff
 
-# ステップ2: GREEN - テストを通す
-# Userモデルまたはファクトリーを作成
+## ステップ2: GREEN - テストを通す
+## Userモデルまたはファクトリーを作成
 
-# ステップ3: REFACTOR - テストをグリーンに保ちながら改善
+## ステップ3: REFACTOR - テストをグリーンに保ちながら改善
 ```
 
 ## セットアップ
@@ -37,7 +37,7 @@ def test_user_creation():
 ### pytest設定
 
 ```ini
-# pytest.ini
+## pytest.ini
 [pytest]
 DJANGO_SETTINGS_MODULE = config.settings.test
 testpaths = tests
@@ -59,7 +59,7 @@ markers =
 ### テスト設定
 
 ```python
-# config/settings/test.py
+## config/settings/test.py
 from .base import *
 
 DEBUG = True
@@ -70,7 +70,7 @@ DATABASES = {
     }
 }
 
-# マイグレーションを無効化して高速化
+## マイグレーションを無効化して高速化
 class DisableMigrations:
     def __contains__(self, item):
         return True
@@ -80,15 +80,15 @@ class DisableMigrations:
 
 MIGRATION_MODULES = DisableMigrations()
 
-# より高速なパスワードハッシング
+## より高速なパスワードハッシング
 PASSWORD_HASHERS = [
     'django.contrib.auth.hashers.MD5PasswordHasher',
 ]
 
-# メールバックエンド
+## メールバックエンド
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
-# Celeryは常にeager
+## Celeryは常にeager
 CELERY_TASK_ALWAYS_EAGER = True
 CELERY_TASK_EAGER_PROPAGATES = True
 ```
@@ -96,7 +96,7 @@ CELERY_TASK_EAGER_PROPAGATES = True
 ### conftest.py
 
 ```python
-# tests/conftest.py
+## tests/conftest.py
 import pytest
 from django.utils import timezone
 from django.contrib.auth import get_user_model
@@ -150,7 +150,7 @@ def authenticated_api_client(api_client, user):
 ### ファクトリーセットアップ
 
 ```python
-# tests/factories.py
+## tests/factories.py
 import factory
 from factory import fuzzy
 from datetime import datetime, timedelta
@@ -210,7 +210,7 @@ class ProductFactory(factory.django.DjangoModelFactory):
 ### ファクトリーの使用
 
 ```python
-# tests/test_models.py
+## tests/test_models.py
 import pytest
 from tests.factories import ProductFactory, UserFactory
 
@@ -238,7 +238,7 @@ def test_multiple_products():
 ### モデルテスト
 
 ```python
-# tests/test_models.py
+## tests/test_models.py
 import pytest
 from django.core.exceptions import ValidationError
 from tests.factories import UserFactory, ProductFactory
@@ -314,7 +314,7 @@ class TestProductModel:
 ### Djangoビューテスト
 
 ```python
-# tests/test_views.py
+## tests/test_views.py
 import pytest
 from django.urls import reverse
 from tests.factories import ProductFactory, UserFactory
@@ -374,7 +374,7 @@ class TestProductViews:
 ### シリアライザーテスト
 
 ```python
-# tests/test_serializers.py
+## tests/test_serializers.py
 import pytest
 from rest_framework.exceptions import ValidationError
 from apps.products.serializers import ProductSerializer
@@ -442,7 +442,7 @@ class TestProductSerializer:
 ### API ViewSetテスト
 
 ```python
-# tests/test_api.py
+## tests/test_api.py
 import pytest
 from rest_framework.test import APIClient
 from rest_framework import status
@@ -550,7 +550,7 @@ class TestProductAPI:
 ### 外部サービスのモック
 
 ```python
-# tests/test_views.py
+## tests/test_views.py
 from unittest.mock import patch, Mock
 import pytest
 
@@ -594,7 +594,7 @@ class TestPaymentView:
 ### メール送信のモック
 
 ```python
-# tests/test_email.py
+## tests/test_email.py
 from django.core import mail
 from django.test import override_settings
 
@@ -613,7 +613,7 @@ def test_order_confirmation_email(db, order):
 ### 完全フローテスト
 
 ```python
-# tests/test_integration.py
+## tests/test_integration.py
 import pytest
 from django.urls import reverse
 from tests.factories import UserFactory, ProductFactory
@@ -692,10 +692,10 @@ class TestCheckoutFlow:
 ### カバレッジ設定
 
 ```bash
-# カバレッジでテストを実行
+## カバレッジでテストを実行
 pytest --cov=apps --cov-report=html --cov-report=term-missing
 
-# HTMLレポートを生成
+## HTMLレポートを生成
 open htmlcov/index.html
 ```
 

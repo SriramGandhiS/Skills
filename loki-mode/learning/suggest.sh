@@ -1,38 +1,30 @@
 #!/usr/bin/env bash
 # Loki Mode Learning Suggestions - Bash CLI helper
-#
-# Shows context-aware suggestions based on aggregated learnings.
+# # Shows context-aware suggestions based on aggregated learnings.
 # This provides a CLI interface for the Python learning suggestions module.
-#
-# Usage:
-#   ./suggest.sh [options]
-#
-# Options:
-#   --type <type>       Filter by type (command, error, practice, tool)
-#   --limit <n>         Maximum suggestions to show (default: 10)
-#   --min-conf <0-1>    Minimum confidence score (default: 0.3)
-#   --context <text>    Current task context
-#   --task-type <type>  Task type (debugging, implementation, testing, etc.)
-#   --json              Output as JSON
-#   --verbose           Show detailed information
-#   --startup           Show startup tips only
-#
-# Examples:
-#   # Show all suggestions
-#   ./suggest.sh
-#
-#   # Show only error prevention suggestions
-#   ./suggest.sh --type error
-#
-#   # Show suggestions with context
-#   ./suggest.sh --context "implementing user authentication"
-#
-#   # Get startup tips
-#   ./suggest.sh --startup
-#
-# Environment:
-#   LOKI_DIR          - Path to .loki directory (default: .loki)
-#   LOKI_SKILL_DIR    - Path to skill installation (auto-detected)
+# # Usage:
+# ./suggest.sh [options]
+# # Options:
+# --type <type>       Filter by type (command, error, practice, tool)
+# --limit <n>         Maximum suggestions to show (default: 10)
+# --min-conf <0-1>    Minimum confidence score (default: 0.3)
+# --context <text>    Current task context
+# --task-type <type>  Task type (debugging, implementation, testing, etc.)
+# --json              Output as JSON
+# --verbose           Show detailed information
+# --startup           Show startup tips only
+# # Examples:
+# # Show all suggestions
+# ./suggest.sh
+# # # Show only error prevention suggestions
+# ./suggest.sh --type error
+# # # Show suggestions with context
+# ./suggest.sh --context "implementing user authentication"
+# # # Get startup tips
+# ./suggest.sh --startup
+# # Environment:
+# LOKI_DIR          - Path to .loki directory (default: .loki)
+# LOKI_SKILL_DIR    - Path to skill installation (auto-detected)
 
 set -uo pipefail
 

@@ -159,12 +159,12 @@ For each rep, reference the source material:
 
 ## What NOT to Do
 
-- ❌ Don't create a study plan (create a SHIP plan)
-- ❌ Don't list all resources to read/watch (pick minimal resources for current rep)
-- ❌ Don't make perfect the enemy of shipped
-- ❌ Don't let them plan forever without starting
-- ❌ Don't accept vague goals ("learn X" → "ship Y by Z date")
-- ❌ Don't overwhelm with the full journey (focus on rep 1)
+- FAIL: Don't create a study plan (create a SHIP plan)
+- FAIL: Don't list all resources to read/watch (pick minimal resources for current rep)
+- FAIL: Don't make perfect the enemy of shipped
+- FAIL: Don't let them plan forever without starting
+- FAIL: Don't accept vague goals ("learn X" → "ship Y by Z date")
+- FAIL: Don't overwhelm with the full journey (focus on rep 1)
 
 ## Key Phrases to Use
 
@@ -270,14 +270,14 @@ Answer these questions:
 ## Success Metrics
 
 A good Ship-Learn-Next plan has:
-- ✅ Specific, shippable rep 1 (completable in 1-7 days)
-- ✅ Clear success criteria (user knows when they're done)
-- ✅ Concrete artifacts (something real to show)
-- ✅ Direct connection to source content
-- ✅ Progression path for reps 2-5
-- ✅ Emphasis on action over consumption
-- ✅ Honest reflection built in
-- ✅ Small enough to start today, big enough to learn
+- PASS: Specific, shippable rep 1 (completable in 1-7 days)
+- PASS: Clear success criteria (user knows when they're done)
+- PASS: Concrete artifacts (something real to show)
+- PASS: Direct connection to source content
+- PASS: Progression path for reps 2-5
+- PASS: Emphasis on action over consumption
+- PASS: Honest reflection built in
+- PASS: Small enough to start today, big enough to learn
 
 ## Saving the Plan
 

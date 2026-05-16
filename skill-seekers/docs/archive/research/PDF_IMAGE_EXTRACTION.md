@@ -1,6 +1,6 @@
 # PDF Image Extraction (Task B1.5)
 
-**Status:** ✅ Completed
+**Status:** PASS: Completed
 **Date:** October 21, 2025
 **Task:** B1.5 - Add PDF image extraction (diagrams, screenshots)
 
@@ -12,7 +12,7 @@ Task B1.5 adds the ability to extract images (diagrams, screenshots, charts) fro
 
 ## New Features
 
-### ✅ 1. Image Extraction to Files
+### PASS: 1. Image Extraction to Files
 
 Extract embedded images from PDFs and save them to disk:
 
@@ -27,7 +27,7 @@ python3 cli/pdf_extractor_poc.py manual.pdf --extract-images --image-dir assets/
 python3 cli/pdf_extractor_poc.py manual.pdf --extract-images --min-image-size 200
 ```
 
-### ✅ 2. Size-Based Filtering
+### PASS: 2. Size-Based Filtering
 
 Automatically filter out small images (icons, bullets, decorations):
 
@@ -35,7 +35,7 @@ Automatically filter out small images (icons, bullets, decorations):
 - **Configurable:** `--min-image-size`
 - **Purpose:** Focus on meaningful diagrams and screenshots
 
-### ✅ 3. Image Metadata
+### PASS: 3. Image Metadata
 
 Each extracted image includes comprehensive metadata:
 
@@ -52,7 +52,7 @@ Each extracted image includes comprehensive metadata:
 }
 ```
 
-### ✅ 4. Automatic Directory Creation
+### PASS: 4. Automatic Directory Creation
 
 Images are automatically organized:
 
@@ -73,7 +73,7 @@ python3 cli/pdf_extractor_poc.py tutorial.pdf --extract-images -v
 
 **Output:**
 ```
-📄 Extracting from: tutorial.pdf
+ Extracting from: tutorial.pdf
    Pages: 50
    Metadata: {...}
    Image directory: output/tutorial_images
@@ -84,7 +84,7 @@ python3 cli/pdf_extractor_poc.py tutorial.pdf --extract-images -v
     Extracted image: tutorial_page2_img2.jpeg (1024x768)
   ...
 
-✅ Extraction complete:
+PASS: Extraction complete:
    Images found: 45
    Images extracted: 32
    Image directory: output/tutorial_images
@@ -263,11 +263,11 @@ def extract_images_from_page(self, page, page_num):
 
 PyMuPDF automatically handles format detection and extraction:
 
-- ✅ PNG (lossless, best for diagrams)
-- ✅ JPEG (lossy, best for photos)
-- ✅ GIF (animated, rare in PDFs)
-- ✅ BMP (uncompressed)
-- ✅ TIFF (high quality)
+- PASS: PNG (lossless, best for diagrams)
+- PASS: JPEG (lossy, best for photos)
+- PASS: GIF (animated, rare in PDFs)
+- PASS: BMP (uncompressed)
+- PASS: TIFF (high quality)
 
 Images are extracted in their original format.
 
@@ -489,12 +489,12 @@ python3 cli/pdf_extractor_poc.py manual.pdf \
 
 | Feature | Before (B1.4) | After (B1.5) |
 |---------|---------------|--------------|
-| Image detection | ✅ Count only | ✅ Count + Extract |
-| Image files | ❌ Not saved | ✅ Saved to disk |
-| Image metadata | ❌ None | ✅ Full metadata |
-| Size filtering | ❌ None | ✅ Configurable |
-| Directory organization | ❌ N/A | ✅ Automatic |
-| Format support | ❌ N/A | ✅ All formats |
+| Image detection | PASS: Count only | PASS: Count + Extract |
+| Image files | FAIL: Not saved | PASS: Saved to disk |
+| Image metadata | FAIL: None | PASS: Full metadata |
+| Size filtering | FAIL: None | PASS: Configurable |
+| Directory organization | FAIL: N/A | PASS: Automatic |
+| Format support | FAIL: N/A | PASS: All formats |
 
 ---
 
@@ -530,11 +530,11 @@ result = mcp.scrape_pdf(
 ## Conclusion
 
 Task B1.5 successfully implements:
-- ✅ Image extraction from PDF pages
-- ✅ Automatic file saving with metadata
-- ✅ Size-based filtering (configurable)
-- ✅ Organized directory structure
-- ✅ Multiple format support
+- PASS: Image extraction from PDF pages
+- PASS: Automatic file saving with metadata
+- PASS: Size-based filtering (configurable)
+- PASS: Organized directory structure
+- PASS: Multiple format support
 
 **Impact:**
 - Preserves visual documentation

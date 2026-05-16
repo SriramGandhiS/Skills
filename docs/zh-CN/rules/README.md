@@ -30,14 +30,14 @@ rules/
 ### 选项 1：安装脚本（推荐）
 
 ```bash
-# Install common + one or more language-specific rule sets
+## Install common + one or more language-specific rule sets
 ./install.sh typescript
 ./install.sh python
 ./install.sh golang
 ./install.sh swift
 ./install.sh php
 
-# Install multiple languages at once
+## Install multiple languages at once
 ./install.sh typescript python
 ```
 
@@ -48,23 +48,23 @@ rules/
 > 将它们扁平化到一个目录会导致语言特定的文件覆盖通用规则，并破坏语言特定文件使用的相对 `../common/` 引用。
 
 ```bash
-# Install common rules (required for all projects)
+## Install common rules (required for all projects)
 cp -r rules/common ~/.claude/rules/common
 
-# Install language-specific rules based on your project's tech stack
+## Install language-specific rules based on your project's tech stack
 cp -r rules/typescript ~/.claude/rules/typescript
 cp -r rules/python ~/.claude/rules/python
 cp -r rules/golang ~/.claude/rules/golang
 cp -r rules/swift ~/.claude/rules/swift
 cp -r rules/php ~/.claude/rules/php
 
-# Attention ! ! ! Configure according to your actual project requirements; the configuration here is for reference only.
+## Attention ! ! ! Configure according to your actual project requirements; the configuration here is for reference only.
 ```
 
 ## 规则与技能
 
 * **规则** 定义广泛适用的标准、约定和检查清单（例如，“80% 的测试覆盖率”、“没有硬编码的密钥”）。
-* **技能**（`skills/` 目录）为特定任务提供深入、可操作的参考材料（例如，`python-patterns`，`golang-testing`）。
+* **技能**（`skills/`目录）为特定任务提供深入、可操作的参考材料（例如，`python-patterns`，`golang-testing`）。
 
 语言特定的规则文件会在适当的地方引用相关的技能。规则告诉你*要做什么*；技能告诉你*如何去做*。
 
@@ -94,7 +94,7 @@ cp -r rules/php ~/.claude/rules/php
 
 ### 示例
 
-`common/coding-style.md` 建议将不可变性作为默认原则。语言特定的 `golang/coding-style.md` 可以覆盖这一点：
+`common/coding-style.md`建议将不可变性作为默认原则。语言特定的`golang/coding-style.md` 可以覆盖这一点：
 
 > 符合 Go 语言习惯的做法是使用指针接收器进行结构体修改——关于通用原则请参阅 [common/coding-style.md](../../../common/coding-style.md)，但此处更推荐符合 Go 语言习惯的修改方式。
 

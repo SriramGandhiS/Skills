@@ -1,4 +1,4 @@
-﻿---
+---
 name: gan-style-harness
 description: "GAN-inspired Generator-Evaluator agent harness for building high-quality applications autonomously. Based on Anthropic's March 2026 harness design paper."
 origin: ECC-community
@@ -151,23 +151,23 @@ The default four criteria, each scored 1-10:
 ### Via Command
 
 ```bash
-# Full three-agent harness
+## Full three-agent harness
 /project:gan-build "Build a project management app with Kanban boards, team collaboration, and dark mode"
 
-# With custom config
+## With custom config
 /project:gan-build "Build a recipe sharing platform" --max-iterations 10 --pass-threshold 7.5
 
-# Frontend design mode (generator + evaluator only, no planner)
+## Frontend design mode (generator + evaluator only, no planner)
 /project:gan-design "Create a landing page for a crypto portfolio tracker"
 ```
 
 ### Via Shell Script
 
 ```bash
-# Basic usage
+## Basic usage
 ./scripts/gan-harness.sh "Build a music streaming dashboard"
 
-# With options
+## With options
 GAN_MAX_ITERATIONS=10 \
 GAN_PASS_THRESHOLD=7.5 \
 GAN_EVAL_CRITERIA="functionality,performance,security" \
@@ -177,19 +177,19 @@ GAN_EVAL_CRITERIA="functionality,performance,security" \
 ### Via Claude Code (Manual)
 
 ```bash
-# Step 1: Plan
+## Step 1: Plan
 claude -p --model opus "You are a Product Planner. Read PLANNER_PROMPT.md. Expand this brief into a full product spec: 'Build a Kanban board app'. Write spec to spec.md"
 
-# Step 2: Generate (iteration 1)
+## Step 2: Generate (iteration 1)
 claude -p --model opus "You are a Generator. Read spec.md. Implement Sprint 1. Start the dev server on port 3000."
 
-# Step 3: Evaluate (iteration 1)
-claude -p --model opus --allowedTools "Read,Bash,mcp__playwright__*" "You are an Evaluator. Read EVALUATOR_PROMPT.md. Test the live app at http://localhost:3000. Score against the rubric. Write feedback to feedback-001.md"
+## Step 3: Evaluate (iteration 1)
+claude -p --model opus --allowedTools "Read,Bash,mcp__playwright__*" "You are an Evaluator. Read EVALUATOR_PROMPT.md. Test the live app at <http://localhost:3000.> Score against the rubric. Write feedback to feedback-001.md"
 
-# Step 4: Generate (iteration 2 â€” reads feedback)
+## Step 4: Generate (iteration 2 â€” reads feedback)
 claude -p --model opus "You are a Generator. Read spec.md and feedback-001.md. Address all issues. Improve the scores."
 
-# Repeat steps 3-4 until pass threshold met
+## Repeat steps 3-4 until pass threshold met
 ```
 
 ## Evolution Across Model Capabilities
@@ -222,17 +222,17 @@ The harness should simplify as models improve. Following Anthropic's evolution:
 
 | Variable | Default | Description |
 |----------|---------|-------------|
-| `GAN_MAX_ITERATIONS` | `15` | Maximum generator-evaluator cycles |
-| `GAN_PASS_THRESHOLD` | `7.0` | Weighted score to pass (1-10) |
-| `GAN_PLANNER_MODEL` | `opus` | Model for planning agent |
-| `GAN_GENERATOR_MODEL` | `opus` | Model for generator agent |
-| `GAN_EVALUATOR_MODEL` | `opus` | Model for evaluator agent |
-| `GAN_EVAL_CRITERIA` | `design,originality,craft,functionality` | Comma-separated criteria |
-| `GAN_DEV_SERVER_PORT` | `3000` | Port for the live app |
-| `GAN_DEV_SERVER_CMD` | `npm run dev` | Command to start dev server |
-| `GAN_PROJECT_DIR` | `.` | Project working directory |
-| `GAN_SKIP_PLANNER` | `false` | Skip planner, use spec directly |
-| `GAN_EVAL_MODE` | `playwright` | `playwright`, `screenshot`, or `code-only` |
+| `GAN_MAX_ITERATIONS`|`15` | Maximum generator-evaluator cycles |
+| `GAN_PASS_THRESHOLD`|`7.0` | Weighted score to pass (1-10) |
+| `GAN_PLANNER_MODEL`|`opus` | Model for planning agent |
+| `GAN_GENERATOR_MODEL`|`opus` | Model for generator agent |
+| `GAN_EVALUATOR_MODEL`|`opus` | Model for evaluator agent |
+| `GAN_EVAL_CRITERIA`|`design,originality,craft,functionality` | Comma-separated criteria |
+| `GAN_DEV_SERVER_PORT`|`3000` | Port for the live app |
+| `GAN_DEV_SERVER_CMD`|`npm run dev` | Command to start dev server |
+| `GAN_PROJECT_DIR`|`.` | Project working directory |
+| `GAN_SKIP_PLANNER`|`false` | Skip planner, use spec directly |
+| `GAN_EVAL_MODE`|`playwright`|`playwright`,`screenshot`, or`code-only` |
 
 ### Evaluation Modes
 

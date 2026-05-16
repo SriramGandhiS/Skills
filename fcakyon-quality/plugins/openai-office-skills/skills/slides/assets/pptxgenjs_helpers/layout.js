@@ -188,7 +188,7 @@ function warnIfSlideHasOverlaps(slide, pptx, options = {}) {
             }
 
             console.error(
-              `❌ ${slideLabel}: Severe text overlap detected between ${formatElement(
+              `FAIL: ${slideLabel}: Severe text overlap detected between ${formatElement(
                 a
               )} and ${formatElement(
                 b
@@ -200,7 +200,7 @@ function warnIfSlideHasOverlaps(slide, pptx, options = {}) {
             );
           } else {
             console.warn(
-              `⚠️ ${slideLabel}: Overlap detected between ${formatElement(
+              `WARNING: ${slideLabel}: Overlap detected between ${formatElement(
                 a
               )} and ${formatElement(b)}.`
             );
@@ -212,7 +212,7 @@ function warnIfSlideHasOverlaps(slide, pptx, options = {}) {
           const container = elements[comparison.containerIndex];
           const contained = elements[comparison.containedIndex];
           console.warn(
-            `⚠️ ${slideLabel}: ${formatElement(
+            `WARNING: ${slideLabel}: ${formatElement(
               contained
             )} is fully contained within ${formatElement(container)}`
           );
@@ -227,7 +227,7 @@ function warnIfSlideHasOverlaps(slide, pptx, options = {}) {
     if (overlapCount > 0) issues.push(`${overlapCount} overlapping pair(s)`);
     if (!opts.muteContainment && containmentCount > 0)
       issues.push(`${containmentCount} containment case(s)`);
-    console.log(`⚠️ ${slideLabel}: Found ${issues.join(" and ")}.`);
+    console.log(`WARNING: ${slideLabel}: Found ${issues.join(" and ")}.`);
   }
 }
 
@@ -590,7 +590,7 @@ function warnIfSlideElementsOutOfBounds(slide, pptx) {
     slideIndex >= 0 ? `Slide ${slideIndex + 1}` : "(Unknown slide index)";
   if (source === "default") {
     console.warn(
-      `⚠️ ${slideLabel}: Unable to determine slide dimensions from pptxgenjs internals; assuming width=${slideWidth}, height=${slideHeight}.`
+      `WARNING: ${slideLabel}: Unable to determine slide dimensions from pptxgenjs internals; assuming width=${slideWidth}, height=${slideHeight}.`
     );
   }
   const EPS = 1e-4;
@@ -617,7 +617,7 @@ function warnIfSlideElementsOutOfBounds(slide, pptx) {
     if (violations.length > 0) {
       outOfBoundsCount++;
       console.warn(
-        `⚠️ ${slideLabel}: ${formatElement(
+        `WARNING: ${slideLabel}: ${formatElement(
           index,
           type,
           bounds
@@ -627,7 +627,7 @@ function warnIfSlideElementsOutOfBounds(slide, pptx) {
   });
   if (outOfBoundsCount > 0) {
     console.log(
-      `⚠️ ${slideLabel}: Found ${outOfBoundsCount} element(s) extending beyond the slide bounds.`
+      `WARNING: ${slideLabel}: Found ${outOfBoundsCount} element(s) extending beyond the slide bounds.`
     );
   }
 }

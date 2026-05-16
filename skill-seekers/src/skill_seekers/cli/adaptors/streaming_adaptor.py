@@ -64,7 +64,7 @@ class StreamingAdaptorMixin:
             chunk_size=chunk_size, chunk_overlap=chunk_overlap, batch_size=batch_size
         )
 
-        print(f"\n📊 Streaming ingestion starting...")
+        print(f"\n Streaming ingestion starting...")
         print(f"   Chunk size: {chunk_size} chars")
         print(f"   Overlap: {chunk_overlap} chars")
         print(f"   Batch size: {batch_size} chunks")
@@ -90,14 +90,14 @@ class StreamingAdaptorMixin:
         chunks = ingester.stream_skill_directory(skill_dir, callback=on_progress)
         all_chunks = list(chunks)
 
-        print(f"\n✅ Streaming ingestion complete!")
+        print(f"\nPASS: Streaming ingestion complete!")
         print(f"   Total chunks: {len(all_chunks)}")
         print(f"   Total bytes: {ingester.progress.bytes_processed:,}")
         print(f"   Time: {ingester.progress.elapsed_time:.1f}s")
         print(f"   Rate: {ingester.progress.chunks_per_second:.1f} chunks/sec")
 
         # Convert chunks to platform format
-        print(f"\n📦 Converting to {self.PLATFORM_NAME} format...")
+        print(f"\n Converting to {self.PLATFORM_NAME} format...")
         package_data = self._convert_chunks_to_platform_format(all_chunks, skill_dir.name)
 
         # Determine output filename
@@ -115,7 +115,7 @@ class StreamingAdaptorMixin:
             json.dumps(package_data, indent=2, ensure_ascii=False), encoding="utf-8"
         )
 
-        print(f"✅ Package created: {output_path}")
+        print(f"PASS: Package created: {output_path}")
         print(f"   Size: {output_path.stat().st_size:,} bytes")
 
         return output_path
@@ -337,7 +337,7 @@ def demo_streaming():
         skill_dir, Path("output"), chunk_size=2000, chunk_overlap=100, batch_size=50
     )
 
-    print(f"\n✅ Complete! Output: {output}")
+    print(f"\nPASS: Complete! Output: {output}")
 
 
 if __name__ == "__main__":

@@ -22,7 +22,7 @@ origin: ECC
 ### URL 结构
 
 ```
-# 资源使用名词、复数、小写、短横线连接
+## 资源使用名词、复数、小写、短横线连接
 GET    /api/v1/users
 GET    /api/v1/users/:id
 POST   /api/v1/users
@@ -30,11 +30,11 @@ PUT    /api/v1/users/:id
 PATCH  /api/v1/users/:id
 DELETE /api/v1/users/:id
 
-# 用于关系的子资源
+## 用于关系的子资源
 GET    /api/v1/users/:id/orders
 POST   /api/v1/users/:id/orders
 
-# 非 CRUD 映射的操作（谨慎使用动词）
+## 非 CRUD 映射的操作（谨慎使用动词）
 POST   /api/v1/orders/:id/cancel
 POST   /api/v1/auth/login
 POST   /api/v1/auth/refresh
@@ -43,12 +43,12 @@ POST   /api/v1/auth/refresh
 ### 命名规则
 
 ```
-# 良好
+## 良好
 /api/v1/team-members          # 多单词资源使用 kebab-case
 /api/v1/orders?status=active  # 查询参数用于过滤
 /api/v1/users/123/orders      # 嵌套资源表示所有权关系
 
-# 不良
+## 不良
 /api/v1/getUsers              # URL 中包含动词
 /api/v1/user                  # 使用单数形式（应使用复数）
 /api/v1/team_members          # URL 中使用 snake_case
@@ -72,12 +72,12 @@ POST   /api/v1/auth/refresh
 ### 状态码参考
 
 ```
-# 成功
+## 成功
 200 OK                    — GET、PUT、PATCH（包含响应体）
 201 Created               — POST（包含 Location 头部）
 204 No Content            — DELETE、PUT（无响应体）
 
-# 客户端错误
+## 客户端错误
 400 Bad Request           — 验证失败、JSON 格式错误
 401 Unauthorized          — 缺少或无效的身份验证
 403 Forbidden             — 已认证但未授权
@@ -86,7 +86,7 @@ POST   /api/v1/auth/refresh
 422 Unprocessable Entity  — 语义无效（JSON 格式正确但数据错误）
 429 Too Many Requests     — 超出速率限制
 
-# 服务器错误
+## 服务器错误
 500 Internal Server Error — 意外故障（切勿暴露细节）
 502 Bad Gateway           — 上游服务失败
 503 Service Unavailable   — 临时过载，需包含 Retry-After 头部
@@ -95,18 +95,18 @@ POST   /api/v1/auth/refresh
 ### 常见错误
 
 ```
-# 错误：对所有请求都返回 200
+## 错误：对所有请求都返回 200
 { "status": 200, "success": false, "error": "Not found" }
 
-# 正确：按语义使用 HTTP 状态码
+## 正确：按语义使用 HTTP 状态码
 HTTP/1.1 404 Not Found
 { "error": { "code": "not_found", "message": "User not found" } }
 
-# 错误：验证错误返回 500
-# 正确：返回 400 或 422 并包含字段级详情
+## 错误：验证错误返回 500
+## 正确：返回 400 或 422 并包含字段级详情
 
-# 错误：创建资源返回 200
-# 正确：返回 201 并包含 Location 标头
+## 错误：创建资源返回 200
+## 正确：返回 201 并包含 Location 标头
 HTTP/1.1 201 Created
 Location: /api/v1/users/abc-123
 ```
@@ -202,7 +202,7 @@ interface ApiError {
 ```
 GET /api/v1/users?page=2&per_page=20
 
-# 实现
+## 实现
 SELECT * FROM users
 ORDER BY created_at DESC
 LIMIT 20 OFFSET 20;
@@ -216,7 +216,7 @@ LIMIT 20 OFFSET 20;
 ```
 GET /api/v1/users?cursor=eyJpZCI6MTIzfQ&limit=20
 
-# 实现
+## 实现
 SELECT * FROM users
 WHERE id > :cursor_id
 ORDER BY id ASC
@@ -250,44 +250,44 @@ LIMIT 21;  -- 多取一条以判断是否有下一页
 ### 过滤
 
 ```
-# 简单相等
+## 简单相等
 GET /api/v1/orders?status=active&customer_id=abc-123
 
-# 比较运算符（使用括号表示法）
+## 比较运算符（使用括号表示法）
 GET /api/v1/products?price[gte]=10&price[lte]=100
 GET /api/v1/orders?created_at[after]=2025-01-01
 
-# 多个值（逗号分隔）
+## 多个值（逗号分隔）
 GET /api/v1/products?category=electronics,clothing
 
-# 嵌套字段（点表示法）
+## 嵌套字段（点表示法）
 GET /api/v1/orders?customer.country=US
 ```
 
 ### 排序
 
 ```
-# 单字段排序（前缀 - 表示降序）
+## 单字段排序（前缀 - 表示降序）
 GET /api/v1/products?sort=-created_at
 
-# 多字段排序（逗号分隔）
+## 多字段排序（逗号分隔）
 GET /api/v1/products?sort=-featured,price,-created_at
 ```
 
 ### 全文搜索
 
 ```
-# 搜索查询参数
+## 搜索查询参数
 GET /api/v1/products?q=wireless+headphones
 
-# 字段特定搜索
+## 字段特定搜索
 GET /api/v1/users?email=alice
 ```
 
 ### 稀疏字段集
 
 ```
-# 仅返回指定字段（减少负载）
+## 仅返回指定字段（减少负载）
 GET /api/v1/users?fields=id,name,email
 GET /api/v1/orders?fields=id,total,status&include=customer.name
 ```
@@ -297,11 +297,11 @@ GET /api/v1/orders?fields=id,total,status&include=customer.name
 ### 基于令牌的认证
 
 ```
-# Bearer token in Authorization header
+## Bearer token in Authorization header
 GET /api/v1/users
 Authorization: Bearer eyJhbGciOiJIUzI1NiIs...
 
-# API key (for server-to-server)
+## API key (for server-to-server)
 GET /api/v1/data
 X-API-Key: sk_live_abc123
 ```
@@ -334,7 +334,7 @@ X-RateLimit-Limit: 100
 X-RateLimit-Remaining: 95
 X-RateLimit-Reset: 1640000000
 
-# 超出限制时
+## 超出限制时
 HTTP/1.1 429 Too Many Requests
 Retry-After: 60
 {

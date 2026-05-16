@@ -20,17 +20,17 @@ origin: ECC
 ### 红-绿-重构循环
 
 ```python
-# Step 1: RED - Write failing test
+## Step 1: RED - Write failing test
 def test_user_creation():
     user = User.objects.create_user(email='test@example.com', password='testpass123')
     assert user.email == 'test@example.com'
     assert user.check_password('testpass123')
     assert not user.is_staff
 
-# Step 2: GREEN - Make test pass
-# Create User model or factory
+## Step 2: GREEN - Make test pass
+## Create User model or factory
 
-# Step 3: REFACTOR - Improve while keeping tests green
+## Step 3: REFACTOR - Improve while keeping tests green
 ```
 
 ## 设置
@@ -38,7 +38,7 @@ def test_user_creation():
 ### pytest 配置
 
 ```ini
-# pytest.ini
+## pytest.ini
 [pytest]
 DJANGO_SETTINGS_MODULE = config.settings.test
 testpaths = tests
@@ -60,7 +60,7 @@ markers =
 ### 测试设置
 
 ```python
-# config/settings/test.py
+## config/settings/test.py
 from .base import *
 
 DEBUG = True
@@ -71,7 +71,7 @@ DATABASES = {
     }
 }
 
-# Disable migrations for speed
+## Disable migrations for speed
 class DisableMigrations:
     def __contains__(self, item):
         return True
@@ -81,15 +81,15 @@ class DisableMigrations:
 
 MIGRATION_MODULES = DisableMigrations()
 
-# Faster password hashing
+## Faster password hashing
 PASSWORD_HASHERS = [
     'django.contrib.auth.hashers.MD5PasswordHasher',
 ]
 
-# Email backend
+## Email backend
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
-# Celery always eager
+## Celery always eager
 CELERY_TASK_ALWAYS_EAGER = True
 CELERY_TASK_EAGER_PROPAGATES = True
 ```
@@ -97,7 +97,7 @@ CELERY_TASK_EAGER_PROPAGATES = True
 ### conftest.py
 
 ```python
-# tests/conftest.py
+## tests/conftest.py
 import pytest
 from django.utils import timezone
 from django.contrib.auth import get_user_model
@@ -151,7 +151,7 @@ def authenticated_api_client(api_client, user):
 ### 工厂设置
 
 ```python
-# tests/factories.py
+## tests/factories.py
 import factory
 from factory import fuzzy
 from datetime import datetime, timedelta
@@ -211,7 +211,7 @@ class ProductFactory(factory.django.DjangoModelFactory):
 ### 使用工厂
 
 ```python
-# tests/test_models.py
+## tests/test_models.py
 import pytest
 from tests.factories import ProductFactory, UserFactory
 
@@ -239,7 +239,7 @@ def test_multiple_products():
 ### 模型测试
 
 ```python
-# tests/test_models.py
+## tests/test_models.py
 import pytest
 from django.core.exceptions import ValidationError
 from tests.factories import UserFactory, ProductFactory
@@ -315,7 +315,7 @@ class TestProductModel:
 ### Django 视图测试
 
 ```python
-# tests/test_views.py
+## tests/test_views.py
 import pytest
 from django.urls import reverse
 from tests.factories import ProductFactory, UserFactory
@@ -375,7 +375,7 @@ class TestProductViews:
 ### 序列化器测试
 
 ```python
-# tests/test_serializers.py
+## tests/test_serializers.py
 import pytest
 from rest_framework.exceptions import ValidationError
 from apps.products.serializers import ProductSerializer
@@ -443,7 +443,7 @@ class TestProductSerializer:
 ### API ViewSet 测试
 
 ```python
-# tests/test_api.py
+## tests/test_api.py
 import pytest
 from rest_framework.test import APIClient
 from rest_framework import status
@@ -551,7 +551,7 @@ class TestProductAPI:
 ### 模拟外部服务
 
 ```python
-# tests/test_views.py
+## tests/test_views.py
 from unittest.mock import patch, Mock
 import pytest
 
@@ -595,7 +595,7 @@ class TestPaymentView:
 ### 模拟邮件发送
 
 ```python
-# tests/test_email.py
+## tests/test_email.py
 from django.core import mail
 from django.test import override_settings
 
@@ -614,7 +614,7 @@ def test_order_confirmation_email(db, order):
 ### 完整流程测试
 
 ```python
-# tests/test_integration.py
+## tests/test_integration.py
 import pytest
 from django.urls import reverse
 from tests.factories import UserFactory, ProductFactory
@@ -676,7 +676,7 @@ class TestCheckoutFlow:
 * **模拟外部服务**：不要依赖外部 API
 * **使用夹具**：消除重复
 * **测试权限**：确保授权有效
-* **保持测试快速**：使用 `--reuse-db` 和 `--nomigrations`
+* **保持测试快速**：使用 `--reuse-db`和`--nomigrations`
 
 ### 不应该做
 
@@ -693,10 +693,10 @@ class TestCheckoutFlow:
 ### 覆盖率配置
 
 ```bash
-# Run tests with coverage
+## Run tests with coverage
 pytest --cov=apps --cov-report=html --cov-report=term-missing
 
-# Generate HTML report
+## Generate HTML report
 open htmlcov/index.html
 ```
 

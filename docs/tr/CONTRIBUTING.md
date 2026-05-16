@@ -50,20 +50,20 @@ Faydalı workflow'ları çağıran slash command'lar:
 ## Hızlı Başlangıç
 
 ```bash
-# 1. Fork ve clone
+## 1. Fork ve clone
 gh repo fork affaan-m/everything-claude-code --clone
 cd everything-claude-code
 
-# 2. Branch oluştur
+## 2. Branch oluştur
 git checkout -b feat/my-contribution
 
-# 3. Katkınızı ekleyin (aşağıdaki bölümlere bakın)
+## 3. Katkınızı ekleyin (aşağıdaki bölümlere bakın)
 
-# 4. Yerel olarak test edin
+## 4. Yerel olarak test edin
 cp -r skills/my-skill ~/.claude/skills/  # skill'ler için
-# Ardından Claude Code ile test edin
+## Ardından Claude Code ile test edin
 
-# 5. PR gönderin
+## 5. PR gönderin
 git add . && git commit -m "feat: add my-skill" && git push -u origin feat/my-contribution
 ```
 
@@ -90,7 +90,7 @@ description: Skill listesinde gösterilen kısa açıklama
 origin: ECC
 ---
 
-# Skill Başlığınız
+## Skill Başlığınız
 
 Bu skill'in neyi kapsadığına dair kısa genel bakış.
 
@@ -192,10 +192,10 @@ Eylem: [yaptığınız]
 
 | Alan | Açıklama | Seçenekler |
 |-------|-------------|---------|
-| `name` | Küçük harf, tire ile ayrılmış | `code-reviewer` |
+| `name`| Küçük harf, tire ile ayrılmış |`code-reviewer` |
 | `description` | Ne zaman çağrılacağına karar vermek için kullanılır | Spesifik olun! |
-| `tools` | Sadece gerekli olanlar | `Read, Write, Edit, Bash, Grep, Glob, WebFetch, Task`, veya agent MCP kullanıyorsa MCP tool isimleri (örn. `mcp__context7__resolve-library-id`, `mcp__context7__query-docs`) |
-| `model` | Karmaşıklık seviyesi | `haiku` (basit), `sonnet` (kodlama), `opus` (karmaşık) |
+| `tools`| Sadece gerekli olanlar |`Read, Write, Edit, Bash, Grep, Glob, WebFetch, Task`, veya agent MCP kullanıyorsa MCP tool isimleri (örn.`mcp__context7__resolve-library-id`,`mcp__context7__query-docs`) |
+| `model`| Karmaşıklık seviyesi |`haiku`(basit),`sonnet`(kodlama),`opus` (karmaşık) |
 
 ### Örnek Agent'lar
 
@@ -293,7 +293,7 @@ tool == "Bash" && tool_input.command matches "git push"
 
 - [ ] Matcher spesifik (aşırı geniş değil)
 - [ ] Net hata/bilgi mesajları içeriyor
-- [ ] Doğru çıkış kodlarını kullanıyor (`exit 1` engeller, `exit 0` izin verir)
+- [ ] Doğru çıkış kodlarını kullanıyor (`exit 1`engeller,`exit 0` izin verir)
 - [ ] Kapsamlı test edilmiş
 - [ ] Açıklama içeriyor
 
@@ -316,7 +316,7 @@ commands/your-command.md
 description: /help'te gösterilen kısa açıklama
 ---
 
-# Command Adı
+## Command Adı
 
 ## Amaç
 
@@ -354,10 +354,10 @@ Kullanıcının aldığı.
 
 Skill'ler ve agent'lar, sadece eğitim verilerine güvenmek yerine güncel verileri çekmek için **MCP (Model Context Protocol)** tool'larını kullanabilir. Bu özellikle dokümantasyon için faydalıdır.
 
-- **Context7**, `resolve-library-id` ve `query-docs`'u açığa çıkaran bir MCP server'ıdır. Kullanıcı kütüphaneler, framework'ler veya API'ler hakkında sorduğunda, cevapların güncel dokümantasyonu ve kod örneklerini yansıtması için kullanın.
+- **Context7**, `resolve-library-id`ve`query-docs`'u açığa çıkaran bir MCP server'ıdır. Kullanıcı kütüphaneler, framework'ler veya API'ler hakkında sorduğunda, cevapların güncel dokümantasyonu ve kod örneklerini yansıtması için kullanın.
 - Canlı dokümantasyona bağlı **skill'lere** katkıda bulunurken (örn. kurulum, API kullanımı), ilgili MCP tool'larının nasıl kullanılacağını açıklayın (örn. kütüphane ID'sini çözümle, ardından dokümantasyonu sorgula) ve pattern olarak `documentation-lookup` skill'ine veya Context7'ye işaret edin.
-- Dokümantasyon/API sorularını yanıtlayan **agent'lara** katkıda bulunurken, agent'ın tool'larına Context7 MCP tool isimlerini ekleyin (örn. `mcp__context7__resolve-library-id`, `mcp__context7__query-docs`) ve çözümle → sorgula workflow'unu belgeleyin.
-- **mcp-configs/mcp-servers.json** bir Context7 girişi içerir; kullanıcılar `documentation-lookup` skill'ini (`skills/documentation-lookup/` içinde) ve `/docs` command'ını kullanmak için bunu harness'lerinde (örn. Claude Code, Cursor) etkinleştirir.
+- Dokümantasyon/API sorularını yanıtlayan **agent'lara** katkıda bulunurken, agent'ın tool'larına Context7 MCP tool isimlerini ekleyin (örn. `mcp__context7__resolve-library-id`,`mcp__context7__query-docs`) ve çözümle → sorgula workflow'unu belgeleyin.
+- **mcp-configs/mcp-servers.json** bir Context7 girişi içerir; kullanıcılar `documentation-lookup`skill'ini (`skills/documentation-lookup/`içinde) ve`/docs` command'ını kullanmak için bunu harness'lerinde (örn. Claude Code, Cursor) etkinleştirir.
 
 ---
 
@@ -367,20 +367,20 @@ Skill'ler ve agent'lar, sadece eğitim verilerine güvenmek yerine güncel veril
 
 ECC, diğer harness'ler için skill alt kümeleri içerir:
 
-- **Codex:** `.agents/skills/` — `agents/openai.yaml` içinde listelenen skill'ler Codex tarafından yüklenir.
+- **Codex:** `.agents/skills/`—`agents/openai.yaml` içinde listelenen skill'ler Codex tarafından yüklenir.
 - **Cursor:** `.cursor/skills/` — Cursor için bir skill alt kümesi paketlenmiştir.
 
 Codex veya Cursor'da kullanılabilir olması gereken **yeni bir skill eklediğinizde**:
 
 1. Skill'i her zamanki gibi `skills/your-skill-name/` altına ekleyin.
-2. **Codex**'te kullanılabilir olması gerekiyorsa, `.agents/skills/` altına ekleyin (skill dizinini kopyalayın veya referans ekleyin) ve gerekirse `agents/openai.yaml` içinde referans verildiğinden emin olun.
+2. **Codex**'te kullanılabilir olması gerekiyorsa, `.agents/skills/`altına ekleyin (skill dizinini kopyalayın veya referans ekleyin) ve gerekirse`agents/openai.yaml` içinde referans verildiğinden emin olun.
 3. **Cursor**'da kullanılabilir olması gerekiyorsa, Cursor'un düzenine göre `.cursor/skills/` altına ekleyin.
 
 Beklenen yapı için bu dizinlerdeki mevcut skill'leri kontrol edin. Bu alt kümeleri senkronize tutmak manuel bir işlemdir; bunları güncellediyseniz PR'ınızda belirtin.
 
 ### Çeviriler
 
-Çeviriler `docs/` altında bulunur (örn. `docs/zh-CN`, `docs/zh-TW`, `docs/ja-JP`). Çevrilmiş agent'ları, command'ları veya skill'leri değiştirirseniz, ilgili çeviri dosyalarını güncellemeyi veya bakımcıların ya da çevirmenlerin bunları güncelleyebilmesi için bir issue açmayı düşünün.
+Çeviriler `docs/`altında bulunur (örn.`docs/zh-CN`,`docs/zh-TW`,`docs/ja-JP`). Çevrilmiş agent'ları, command'ları veya skill'leri değiştirirseniz, ilgili çeviri dosyalarını güncellemeyi veya bakımcıların ya da çevirmenlerin bunları güncelleyebilmesi için bir issue açmayı düşünün.
 
 ---
 
@@ -446,7 +446,7 @@ Bunu nasıl test ettiniz.
 ## Dosya Adlandırma
 
 - Tire ile küçük harf kullanın: `python-reviewer.md`
-- Açıklayıcı olun: `tdd-workflow.md` değil `workflow.md`
+- Açıklayıcı olun: `tdd-workflow.md`değil`workflow.md`
 - İsim, dosya adıyla eşleşsin
 
 ---

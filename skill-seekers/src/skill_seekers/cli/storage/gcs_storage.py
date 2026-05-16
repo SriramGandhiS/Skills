@@ -54,7 +54,7 @@ class GCSStorageAdaptor(BaseStorageAdaptor):
 
         Args:
             bucket: GCS bucket name (required)
-            **kwargs: Additional GCS configuration
+**kwargs: Additional GCS configuration
         """
         super().__init__(**kwargs)
 

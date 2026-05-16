@@ -13,7 +13,7 @@ origin: ECC
 ## 何时启用
 
 * 创建演讲文稿、推介文稿、研讨会文稿或内部演示文稿时
-* 将 `.ppt` 或 `.pptx` 幻灯片转换为 HTML 演示文稿时
+* 将 `.ppt`或`.pptx` 幻灯片转换为 HTML 演示文稿时
 * 改进现有 HTML 演示文稿的布局、动效或排版时
 * 与尚不清楚其设计偏好的用户一起探索演示文稿风格时
 
@@ -34,7 +34,7 @@ origin: ECC
 选择一条路径：
 
 * **新演示文稿**：用户有主题、笔记或完整草稿
-* **PPT 转换**：用户有 `.ppt` 或 `.pptx`
+* **PPT 转换**：用户有 `.ppt`或`.pptx`
 * **增强**：用户已有 HTML 幻灯片并希望改进
 
 ### 2. 发现内容
@@ -86,7 +86,7 @@ origin: ECC
 
 规则：
 
-* 每个 `.slide` 必须使用 `height: 100vh; height: 100dvh; overflow: hidden;`
+* 每个 `.slide`必须使用`height: 100vh; height: 100dvh; overflow: hidden;`
 * 所有字体和间距必须随 `clamp()` 缩放
 * 当内容无法适配时，将其拆分为多张幻灯片
 * 切勿通过将文本缩小到可读尺寸以下来解决溢出问题
@@ -124,7 +124,7 @@ origin: ECC
 
 对于 PowerPoint 转换：
 
-1. 优先使用 `python3` 和 `python-pptx` 来提取文本、图像和备注。
+1. 优先使用 `python3`和`python-pptx` 来提取文本、图像和备注。
 2. 如果 `python-pptx` 不可用，询问是安装它还是回退到基于手动/导出的工作流程。
 3. 保留幻灯片顺序、演讲者备注和提取的资源。
 4. 提取后，运行与新演示文稿相同的风格选择工作流程。
@@ -152,7 +152,7 @@ origin: ECC
 
 ### 可访问性
 
-* 使用语义化结构 (`main`, `section`, `nav`)
+* 使用语义化结构 (`main`,`section`,`nav`)
 * 保持对比度可读
 * 支持仅键盘导航
 * 尊重 `prefers-reduced-motion`

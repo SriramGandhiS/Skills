@@ -206,7 +206,7 @@ See IR_EXAMPLES.md for detailed examples.
 
 ---
 
-# PHASE 4 — Alignment IR (Spec ↔ Code Comparison)
+# PHASE 4 — Alignment IR (Spec  Code Comparison)
 
 For **each item in Spec-IR**:
 Locate related behaviors in Code-IR and generate an Alignment Record containing:

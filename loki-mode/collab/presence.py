@@ -677,7 +677,7 @@ _default_manager: Optional[PresenceManager] = None
 
 def get_presence_manager(
     loki_dir: Optional[Path] = None,
-    **kwargs
+**kwargs
 ) -> PresenceManager:
     """Get the default presence manager instance."""
     global _default_manager

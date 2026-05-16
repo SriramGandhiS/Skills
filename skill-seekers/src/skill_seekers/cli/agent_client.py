@@ -366,7 +366,7 @@ class AgentClient:
         if self.agent == "custom":
             custom_cmd = os.environ.get("SKILL_SEEKER_AGENT_CMD", "").strip()
             if not custom_cmd:
-                logger.warning("⚠️  Custom agent selected but SKILL_SEEKER_AGENT_CMD not set")
+                logger.warning("WARNING:  Custom agent selected but SKILL_SEEKER_AGENT_CMD not set")
                 return None
             preset = {
                 "display_name": "Custom Agent",
@@ -376,7 +376,7 @@ class AgentClient:
         else:
             preset = AGENT_PRESETS.get(self.agent)
             if not preset:
-                logger.warning(f"⚠️  Unknown agent: {self.agent}")
+                logger.warning(f"WARNING:  Unknown agent: {self.agent}")
                 return None
 
         try:
@@ -434,15 +434,15 @@ class AgentClient:
                         stdout = self._parse_kimi_output(stdout)
                     return stdout
 
-                logger.warning(f"⚠️  No output from {self.agent_display}")
+                logger.warning(f"WARNING:  No output from {self.agent_display}")
                 return None
 
         except subprocess.TimeoutExpired:
-            logger.warning(f"⚠️  {self.agent_display} timeout ({timeout}s)")
+            logger.warning(f"WARNING:  {self.agent_display} timeout ({timeout}s)")
             return None
         except FileNotFoundError:
             logger.warning(
-                f"⚠️  {self.agent_display} CLI not found. "
+                f"WARNING:  {self.agent_display} CLI not found. "
                 f"Install it or set SKILL_SEEKER_AGENT to a different agent."
             )
             return None
@@ -553,8 +553,8 @@ class AgentClient:
     def log_mode(self) -> None:
         """Log the current mode and agent for UX."""
         if self.mode == "api":
-            logger.info(f"✅ AI enhancement enabled (using {self.provider} API)")
+            logger.info(f"PASS: AI enhancement enabled (using {self.provider} API)")
         elif self.mode == "local":
-            logger.info(f"✅ AI enhancement enabled (using LOCAL mode - {self.agent_display})")
+            logger.info(f"PASS: AI enhancement enabled (using LOCAL mode - {self.agent_display})")
         else:
-            logger.info("ℹ️  AI enhancement disabled")
+            logger.info("  AI enhancement disabled")

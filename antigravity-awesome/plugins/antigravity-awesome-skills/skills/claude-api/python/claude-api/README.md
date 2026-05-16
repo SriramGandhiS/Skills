@@ -231,7 +231,7 @@ class ConversationManager:
             max_tokens=kwargs.get("max_tokens", 1024),
             system=self.system,
             messages=self.messages,
-            **kwargs
+**kwargs
         )
 
         assistant_message = response.content[0].text
@@ -380,7 +380,7 @@ def call_with_retry(
     max_retries: int = 5,
     base_delay: float = 1.0,
     max_delay: float = 60.0,
-    **kwargs
+**kwargs
 ):
     """Call the API with exponential backoff retry."""
     last_exception = None

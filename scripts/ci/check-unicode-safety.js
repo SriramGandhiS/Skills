@@ -41,11 +41,7 @@ const textExtensions = new Set([
   '.rs',
 ]);
 
-const writableExtensions = new Set([
-  '.md',
-  '.mdx',
-  '.txt',
-]);
+const writableExtensions = new Set(textExtensions);
 
 const writeModeSkip = new Set([
   path.normalize('scripts/ci/check-unicode-safety.js'),

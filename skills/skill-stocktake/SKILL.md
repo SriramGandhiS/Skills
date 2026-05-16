@@ -1,4 +1,4 @@
-﻿---
+---
 name: skill-stocktake
 description: "Use when auditing Claude skills and commands for quality. Supports Quick Scan (changed skills only) and Full Stocktake modes with sequential subagent batch evaluation."
 origin: ECC
@@ -35,7 +35,7 @@ If the project has no `.claude/skills/` directory, only global skills and comman
 | Mode | Trigger | Duration |
 |------|---------|---------|
 | Quick Scan | `results.json` exists (default) | 5â€“10 min |
-| Full Stocktake | `results.json` absent, or `/skill-stocktake full` | 20â€“30 min |
+| Full Stocktake | `results.json`absent, or`/skill-stocktake full` | 20â€“30 min |
 
 **Results cache:** `~/.claude/skills/skill-stocktake/results.json`
 
@@ -97,7 +97,7 @@ The subagent reads each skill, applies the checklist, and returns per-skill JSON
 
 `{ "verdict": "Keep"|"Improve"|"Update"|"Retire"|"Merge into [X]", "reason": "..." }`
 
-**Chunk guidance:** Process ~20 skills per subagent invocation to keep context manageable. Save intermediate results to `results.json` (`status: "in_progress"`) after each chunk.
+**Chunk guidance:** Process ~20 skills per subagent invocation to keep context manageable. Save intermediate results to `results.json`(`status: "in_progress"`) after each chunk.
 
 After all skills are evaluated: set `status: "completed"`, proceed to Phase 3.
 
@@ -165,7 +165,7 @@ Evaluation is **holistic AI judgment** â€” not a numeric rubric. Guiding di
 `~/.claude/skills/skill-stocktake/results.json`:
 
 **`evaluated_at`**: Must be set to the actual UTC time of evaluation completion.
-Obtain via Bash: `date -u +%Y-%m-%dT%H:%M:%SZ`. Never use a date-only approximation like `T00:00:00Z`.
+Obtain via Bash: `date -u +%Y-%m-%dT%H:%M:%SZ`. Never use a date-only approximation like`T00:00:00Z`.
 
 ```json
 {

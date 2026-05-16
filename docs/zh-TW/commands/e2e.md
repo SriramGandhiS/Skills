@@ -52,13 +52,13 @@ e2e-runner Agent 會：
 ## 檢視產出物
 
 ```bash
-# 在瀏覽器檢視 HTML 報告
+## 在瀏覽器檢視 HTML 報告
 npx playwright show-report
 
-# 檢視特定追蹤檔案
+## 檢視特定追蹤檔案
 npx playwright show-trace artifacts/trace-abc123.zip
 
-# 截圖儲存在 artifacts/ 目錄
+## 截圖儲存在 artifacts/ 目錄
 open artifacts/search-results.png
 ```
 
@@ -83,22 +83,22 @@ open artifacts/search-results.png
 ## 快速指令
 
 ```bash
-# 執行所有 E2E 測試
+## 執行所有 E2E 測試
 npx playwright test
 
-# 執行特定測試檔案
+## 執行特定測試檔案
 npx playwright test tests/e2e/markets/search.spec.ts
 
-# 以可視模式執行（看到瀏覽器）
+## 以可視模式執行（看到瀏覽器）
 npx playwright test --headed
 
-# 除錯測試
+## 除錯測試
 npx playwright test --debug
 
-# 產生測試程式碼
-npx playwright codegen http://localhost:3000
+## 產生測試程式碼
+npx playwright codegen <http://localhost:3000>
 
-# 檢視報告
+## 檢視報告
 npx playwright show-report
 ```
 

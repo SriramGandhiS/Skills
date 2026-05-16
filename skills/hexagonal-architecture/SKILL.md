@@ -1,4 +1,4 @@
-﻿---
+---
 name: hexagonal-architecture
 description: Design, implement, and refactor Ports & Adapters systems with clear domain boundaries, dependency inversion, and testable use-case orchestration across TypeScript, Java, Kotlin, and Go services.
 origin: ECC
@@ -39,7 +39,7 @@ Dependency direction is always inward:
 
 ### Step 1: Model a use case boundary
 
-Define a single use case with a clear input and output DTO. Keep transport details (Express `req`, GraphQL `context`, job payload wrappers) outside this boundary.
+Define a single use case with a clear input and output DTO. Keep transport details (Express `req`, GraphQL`context`, job payload wrappers) outside this boundary.
 
 ### Step 2: Define outbound ports first
 
@@ -47,7 +47,7 @@ Identify every side effect as a port:
 
 - persistence (`UserRepositoryPort`)
 - external calls (`BillingGatewayPort`)
-- cross-cutting (`LoggerPort`, `ClockPort`)
+- cross-cutting (`LoggerPort`,`ClockPort`)
 
 Ports should model capabilities, not technologies.
 
@@ -208,20 +208,20 @@ Use the same boundary rules across ecosystems; only syntax and wiring style chan
 - **TypeScript/JavaScript**
   - Ports: `application/ports/*` as interfaces/types.
   - Use cases: classes/functions with constructor/argument injection.
-  - Adapters: `adapters/inbound/*`, `adapters/outbound/*`.
+  - Adapters: `adapters/inbound/*`,`adapters/outbound/*`.
   - Composition: explicit factory/container module (no hidden globals).
 - **Java**
-  - Packages: `domain`, `application.port.in`, `application.port.out`, `application.usecase`, `adapter.in`, `adapter.out`.
+  - Packages: `domain`,`application.port.in`,`application.port.out`,`application.usecase`,`adapter.in`,`adapter.out`.
   - Ports: interfaces in `application.port.*`.
   - Use cases: plain classes (Spring `@Service` is optional, not required).
   - Composition: Spring config or manual wiring class; keep wiring out of domain/use-case classes.
 - **Kotlin**
-  - Modules/packages mirror the Java split (`domain`, `application.port`, `application.usecase`, `adapter`).
+  - Modules/packages mirror the Java split (`domain`,`application.port`,`application.usecase`,`adapter`).
   - Ports: Kotlin interfaces.
   - Use cases: classes with constructor injection (Koin/Dagger/Spring/manual).
   - Composition: module definitions or dedicated composition functions; avoid service locator patterns.
 - **Go**
-  - Packages: `internal/<feature>/domain`, `application`, `ports`, `adapters/inbound`, `adapters/outbound`.
+  - Packages: `internal/<feature>/domain`,`application`,`ports`,`adapters/inbound`,`adapters/outbound`.
   - Ports: small interfaces owned by the consuming application package.
   - Use cases: structs with interface fields plus explicit `New...` constructors.
   - Composition: wire in `cmd/<app>/main.go` (or dedicated wiring package), keep constructors explicit.
@@ -229,7 +229,7 @@ Use the same boundary rules across ecosystems; only syntax and wiring style chan
 ## Anti-Patterns to Avoid
 
 - Domain entities importing ORM models, web framework types, or SDK clients.
-- Use cases reading directly from `req`, `res`, or queue metadata.
+- Use cases reading directly from `req`,`res`, or queue metadata.
 - Returning database rows directly from use cases without domain/application mapping.
 - Letting adapters call each other directly instead of flowing through use-case ports.
 - Spreading dependency wiring across many files with hidden global singletons.

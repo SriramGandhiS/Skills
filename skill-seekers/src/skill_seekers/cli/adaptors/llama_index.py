@@ -60,7 +60,7 @@ class LlamaIndexAdaptor(SkillAdaptor):
             skill_dir: Path to skill directory
             metadata: Skill metadata
             enable_chunking: Enable intelligent chunking for large documents
-            **kwargs: Additional chunking parameters (chunk_max_tokens, preserve_code_blocks)
+**kwargs: Additional chunking parameters (chunk_max_tokens, preserve_code_blocks)
 
         Returns:
             JSON string containing array of LlamaIndex Nodes
@@ -192,12 +192,12 @@ class LlamaIndexAdaptor(SkillAdaptor):
         # Write to file
         output_path.write_text(nodes_json, encoding="utf-8")
 
-        print(f"\n✅ LlamaIndex nodes packaged successfully!")
-        print(f"📦 Output: {output_path}")
+        print(f"\nPASS: LlamaIndex nodes packaged successfully!")
+        print(f" Output: {output_path}")
 
         # Parse and show stats
         nodes = json.loads(nodes_json)
-        print(f"📊 Total nodes: {len(nodes)}")
+        print(f" Total nodes: {len(nodes)}")
 
         # Show category breakdown
         categories = {}
@@ -205,7 +205,7 @@ class LlamaIndexAdaptor(SkillAdaptor):
             cat = node["metadata"].get("category", "unknown")
             categories[cat] = categories.get(cat, 0) + 1
 
-        print("📁 Categories:")
+        print(" Categories:")
         for cat, count in sorted(categories.items()):
             print(f"   - {cat}: {count}")
 
@@ -248,7 +248,7 @@ class LlamaIndexAdaptor(SkillAdaptor):
         Args:
             package_path: Path to JSON file
             api_key: Not used
-            **kwargs: Not used
+**kwargs: Not used
 
         Returns:
             Result indicating no upload capability
@@ -340,7 +340,7 @@ print(response)
         Returns:
             False
         """
-        print("❌ LlamaIndex format does not support enhancement")
+        print("FAIL: LlamaIndex format does not support enhancement")
         print("   Enhance before packaging:")
         print("   skill-seekers enhance output/skill/ --mode LOCAL")
         print("   skill-seekers package output/skill/ --target llama-index")

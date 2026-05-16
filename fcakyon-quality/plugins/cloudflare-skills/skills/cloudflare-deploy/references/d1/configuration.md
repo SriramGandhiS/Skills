@@ -174,8 +174,8 @@ wrangler d1 execute <db-name> --remote --file=./backup.sql
 | Database size | 500 MB | 10 GB |
 | Batch size | 1,000 statements | 10,000 statements |
 | Time Travel | 7 days | 30 days |
-| Read replicas | ❌ | ✅ |
-| Sessions API | ❌ | ✅ (up to 15 min) |
+| Read replicas | FAIL: | PASS: |
+| Sessions API | FAIL: | PASS: (up to 15 min) |
 | Pricing | Free | $5/mo + usage |
 
 **Usage pricing** (paid plans, beyond included allowances): $0.001 per million rows read + $1.00 per million rows written + $0.75/GB-mo storage

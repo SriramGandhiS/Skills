@@ -15,12 +15,12 @@ These are upstream Claude Code behaviors, not ECC bugs. The entries below summar
 - Consume stdin at the start of the hook (`input=$(cat)` in shell hooks) so the parent process does not see an unconsumed pipe.
 - For simple allow/block hooks, send human-readable diagnostics to stderr and keep stdout quiet unless your hook implementation explicitly requires structured stdout.
 - Redirect noisy child-process stderr when it is not actionable.
-- Use the correct exit codes: `0` allows, `2` blocks, other non-zero exits are treated as errors.
+- Use the correct exit codes: `0`allows,`2` blocks, other non-zero exits are treated as errors.
 
 **Example:**
 
 ```bash
-# Good: block with stderr message and exit 2
+## Good: block with stderr message and exit 2
 input=$(cat)
 echo "[BLOCKED] Reason here" >&2
 exit 2
@@ -33,7 +33,7 @@ exit 2
 **What helps:**
 
 - On some current Claude Code builds, lower values may reduce the compaction threshold instead of extending it.
-- If you want more working room, remove `CLAUDE_AUTOCOMPACT_PCT_OVERRIDE` and prefer manual `/compact` at logical task boundaries.
+- If you want more working room, remove `CLAUDE_AUTOCOMPACT_PCT_OVERRIDE`and prefer manual`/compact` at logical task boundaries.
 - Use ECC's `strategic-compact` guidance instead of forcing a lower auto-compact threshold.
 
 ### MCP connectors look connected but fail after compaction
@@ -53,7 +53,7 @@ exit 2
 **What helps:**
 
 - Restart the Claude Code session after changing hooks.
-- Advanced users sometimes script a local `/reload` command around `kill -HUP $PPID`, but ECC does not ship that because it is shell-dependent and not universally reliable.
+- Advanced users sometimes script a local `/reload`command around`kill -HUP $PPID`, but ECC does not ship that because it is shell-dependent and not universally reliable.
 
 ### Repeated `529 Overloaded` responses
 

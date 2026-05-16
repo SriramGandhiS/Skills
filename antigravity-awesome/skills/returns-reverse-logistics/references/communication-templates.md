@@ -1,8 +1,7 @@
 # Communication Templates — Returns & Reverse Logistics
 
 > **Reference Type:** Tier 3 — Load on demand when composing or reviewing returns-related communications.
->
-> **Usage:** Each template includes variable placeholders in `{{double_braces}}` for direct substitution. Templates are organized by audience and stage. Select the template matching your scenario, substitute variables, review tone guidance, and send.
+> > **Usage:** Each template includes variable placeholders in `{{double_braces}}` for direct substitution. Templates are organized by audience and stage. Select the template matching your scenario, substitute variables, review tone guidance, and send.
 
 ---
 

@@ -69,7 +69,7 @@ origin: ECC
 
 ```
 /benchmark baseline    # 保存当前指标
-# ... 进行更改 ...
+## ... 进行更改 ...
 /benchmark compare     # 与基线进行比较
 ```
 

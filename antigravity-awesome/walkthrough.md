@@ -22,7 +22,7 @@
 - Merged community PR batch `#487`, `#488`, `#489`, and `#490` on GitHub with squash, following the maintainer GitHub-only merge contract instead of local integration.
 - Used the repository batch shortcut for the initial pass, then switched to the manual maintainer playbook when fork metadata drift produced stale `pr-policy` failures on reopened PRs.
 - Repaired PR `#488` on the contributor branch by adding the missing `fruitwyatt/puzzle-activity-planner` source credit to `README.md`, then pushed the maintainer fix back to the fork and re-ran the fork workflows.
-- Normalized PR `#490` by patching the body to include the required `## Quality Bar Checklist ✅` section, then closed and reopened it to force fresh `pull_request` checks against the updated metadata.
+- Normalized PR `#490` by patching the body to include the required `## Quality Bar Checklist PASS:` section, then closed and reopened it to force fresh `pull_request` checks against the updated metadata.
 - Approved the pending fork workflow runs for PRs `#487` through `#490` after each reopen/push cycle so `Skills Registry CI`, `Skill Review & Optimize`, `Dependency Review`, and `CodeQL` could execute on the contributor heads.
 - Ran the mandatory post-merge `npm run sync:contributors` follow-up after each successful merge and pushed the resulting README contributor-sync commits directly to `main` when the sync changed tracked files.
 - Prepared the `v9.12.0` release notes in `CHANGELOG.md` to cover the Rayden UI additions, puzzle activity planning, skill diagnostics, and the `sales-automator` YAML repair before starting the release workflow.

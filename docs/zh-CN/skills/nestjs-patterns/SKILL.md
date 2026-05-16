@@ -74,7 +74,7 @@ async function bootstrap() {
 bootstrap();
 ```
 
-* 始终在公共 API 上启用 `whitelist` 和 `forbidNonWhitelisted`。
+* 始终在公共 API 上启用 `whitelist`和`forbidNonWhitelisted`。
 * 优先使用一个全局验证管道，而不是为每个路由重复验证配置。
 
 ## 模块、控制器和提供者

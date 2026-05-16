@@ -45,9 +45,9 @@ model: sonnet
 | `Unresolved reference: X` | 缺少导入、拼写错误、缺少依赖 | 添加导入或依赖 |
 | `Type mismatch: Required X, Found Y` | 类型错误、缺少转换 | 添加转换或修正类型 |
 | `None of the following candidates is applicable` | 重载错误、参数类型错误 | 修正参数类型或添加显式转换 |
-| `Smart cast impossible` | 可变属性或并发访问 | 使用局部 `val` 副本或 `let` |
-| `'when' expression must be exhaustive` | 密封类 `when` 中缺少分支 | 添加缺失分支或 `else` |
-| `Suspend function can only be called from coroutine` | 缺少 `suspend` 或协程作用域 | 添加 `suspend` 修饰符或启动协程 |
+| `Smart cast impossible`| 可变属性或并发访问 | 使用局部`val`副本或`let` |
+| `'when' expression must be exhaustive`| 密封类`when`中缺少分支 | 添加缺失分支或`else` |
+| `Suspend function can only be called from coroutine`| 缺少`suspend`或协程作用域 | 添加`suspend` 修饰符或启动协程 |
 | `Cannot access 'X': it is internal in 'Y'` | 可见性问题 | 更改可见性或使用公共 API |
 | `Conflicting declarations` | 重复定义 | 移除重复项或重命名 |
 | `Could not resolve: group:artifact:version` | 缺少仓库或版本错误 | 添加仓库或修正版本 |
@@ -56,22 +56,22 @@ model: sonnet
 ## Gradle 故障排除
 
 ```bash
-# Check dependency tree for conflicts
+## Check dependency tree for conflicts
 ./gradlew dependencies --configuration runtimeClasspath
 
-# Force refresh dependencies
+## Force refresh dependencies
 ./gradlew build --refresh-dependencies
 
-# Clear project-local Gradle build cache
+## Clear project-local Gradle build cache
 ./gradlew clean && rm -rf .gradle/build-cache/
 
-# Check Gradle version compatibility
+## Check Gradle version compatibility
 ./gradlew --version
 
-# Run with debug output
+## Run with debug output
 ./gradlew build --debug 2>&1 | tail -50
 
-# Check for dependency conflicts
+## Check for dependency conflicts
 ./gradlew dependencyInsight --dependency <name> --configuration runtimeClasspath
 ```
 

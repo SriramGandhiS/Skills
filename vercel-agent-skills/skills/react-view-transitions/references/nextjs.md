@@ -104,8 +104,7 @@ Directional slides + Suspense reveals coexist because they fire at different mom
   enter={{ "nav-forward": "slide-from-right", default: "none" }}
   exit={{ "nav-forward": "slide-to-left", default: "none" }}
   default="none"
->
-  <div>
+> <div>
     <Suspense fallback={<ViewTransition exit="slide-down"><Skeleton /></ViewTransition>}>
       <ViewTransition enter="slide-up" default="none"><Content /></ViewTransition>
     </Suspense>

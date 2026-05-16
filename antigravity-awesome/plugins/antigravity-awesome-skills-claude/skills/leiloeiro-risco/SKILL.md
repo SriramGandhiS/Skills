@@ -54,13 +54,13 @@ a decisão de investimento.
 
 | Risco | Probabilidade | Impacto | Score |
 |-------|--------------|---------|-------|
-| Falta de intimação do cônjuge | Médio | Muito Alto | 🔴 |
-| Edital publicado incorretamente | Baixo | Alto | 🟡 |
-| Avaliação desatualizada (>12 meses) | Médio | Médio | 🟡 |
-| Bem impenhorável não arguido | Baixo | Muito Alto | 🔴 |
-| Embargos com efeito suspensivo | Baixo | Muito Alto | 🔴 |
-| Processo com recursos pendentes | Médio | Alto | 🟡 |
-| Cônjuge sem meação respeitada | Baixo | Alto | 🟡 |
+| Falta de intimação do cônjuge | Médio | Muito Alto |  |
+| Edital publicado incorretamente | Baixo | Alto |  |
+| Avaliação desatualizada (>12 meses) | Médio | Médio |  |
+| Bem impenhorável não arguido | Baixo | Muito Alto |  |
+| Embargos com efeito suspensivo | Baixo | Muito Alto |  |
+| Processo com recursos pendentes | Médio | Alto |  |
+| Cônjuge sem meação respeitada | Baixo | Alto |  |
 
 **Como mitigar:**
 - Solicitar certidão dos autos (ou pesquisa no e-SAJ/PJE)
@@ -176,12 +176,12 @@ Exemplo: R$ 300.000 × 10,5% × 12 meses / 12 = R$ 31.500/ano (custo de oportuni
 #### 3.2 Risco de Fraude ou Manipulação
 
 **Sinais de alerta em leilões:**
-- ⚠️ Leiloeiro não cadastrado na Junta Comercial
-- ⚠️ Plataforma online desconhecida sem CNPJ verificável
-- ⚠️ Valor de avaliação muito incompatível com mercado (extremos)
-- ⚠️ Edital publicado em prazo inferior ao legal
-- ⚠️ Lote com descrição vaga e sem matrícula informada
-- ⚠️ Exigência de depósito antes de visualizar documentos
+- WARNING: Leiloeiro não cadastrado na Junta Comercial
+- WARNING: Plataforma online desconhecida sem CNPJ verificável
+- WARNING: Valor de avaliação muito incompatível com mercado (extremos)
+- WARNING: Edital publicado em prazo inferior ao legal
+- WARNING: Lote com descrição vaga e sem matrícula informada
+- WARNING: Exigência de depósito antes de visualizar documentos
 
 **Como proteger:**
 - Verificar leiloeiro no site da Junta Comercial do estado
@@ -248,10 +248,10 @@ RISCOS DE MERCADO:
 SCORE TOTAL: ___ / 36
 
 CLASSIFICAÇÃO:
-0-5:   BAIXO RISCO ✅ — Proceder com segurança
-6-10:  MÉDIO RISCO ⚠️ — Mitigar os pontos identificados
-11-18: ALTO RISCO 🔴 — Só com expertise e desconto maior
-19+:   MUITO ALTO RISCO ❌ — Evitar, salvo especialista experiente
+0-5:   BAIXO RISCO PASS: — Proceder com segurança
+6-10:  MÉDIO RISCO WARNING: — Mitigar os pontos identificados
+11-18: ALTO RISCO  — Só com expertise e desconto maior
+19+:   MUITO ALTO RISCO FAIL: — Evitar, salvo especialista experiente
 ```
 
 ---

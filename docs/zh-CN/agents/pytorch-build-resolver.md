@@ -45,26 +45,26 @@ python -c "import torch; x = torch.randn(2,3).cuda(); print('CUDA tensor test: O
 
 | 错误 | 原因 | 修复方法 |
 |-------|-------|-----|
-| `RuntimeError: mat1 and mat2 shapes cannot be multiplied` | 线性层输入尺寸不匹配 | 修正 `in_features` 以匹配前一层输出 |
-| `RuntimeError: Expected all tensors to be on the same device` | CPU/GPU 张量混合 | 为所有张量和模型添加 `.to(device)` |
-| `CUDA out of memory` | 批次过大或内存泄漏 | 减小批次大小，添加 `torch.cuda.empty_cache()`，使用梯度检查点 |
-| `RuntimeError: element 0 of tensors does not require grad` | 损失计算中使用分离的张量 | 在反向传播前移除 `.detach()` 或 `.item()` |
+| `RuntimeError: mat1 and mat2 shapes cannot be multiplied`| 线性层输入尺寸不匹配 | 修正`in_features` 以匹配前一层输出 |
+| `RuntimeError: Expected all tensors to be on the same device`| CPU/GPU 张量混合 | 为所有张量和模型添加`.to(device)` |
+| `CUDA out of memory`| 批次过大或内存泄漏 | 减小批次大小，添加`torch.cuda.empty_cache()`，使用梯度检查点 |
+| `RuntimeError: element 0 of tensors does not require grad`| 损失计算中使用分离的张量 | 在反向传播前移除`.detach()`或`.item()` |
 | `ValueError: Expected input batch_size X to match target batch_size Y` | 批次维度不匹配 | 修复 DataLoader 整理或模型输出重塑 |
-| `RuntimeError: one of the variables needed for gradient computation has been modified by an inplace operation` | 原地操作破坏自动求导 | 将 `x += 1` 替换为 `x = x + 1`，避免原地 relu |
-| `RuntimeError: stack expects each tensor to be equal size` | DataLoader 中张量大小不一致 | 在 Dataset `__getitem__` 或自定义 `collate_fn` 中添加填充/截断 |
-| `RuntimeError: cuDNN error: CUDNN_STATUS_INTERNAL_ERROR` | cuDNN 不兼容或状态损坏 | 设置 `torch.backends.cudnn.enabled = False` 进行测试，更新驱动程序 |
+| `RuntimeError: one of the variables needed for gradient computation has been modified by an inplace operation`| 原地操作破坏自动求导 | 将`x += 1`替换为`x = x + 1`，避免原地 relu |
+| `RuntimeError: stack expects each tensor to be equal size`| DataLoader 中张量大小不一致 | 在 Dataset`__getitem__`或自定义`collate_fn` 中添加填充/截断 |
+| `RuntimeError: cuDNN error: CUDNN_STATUS_INTERNAL_ERROR`| cuDNN 不兼容或状态损坏 | 设置`torch.backends.cudnn.enabled = False` 进行测试，更新驱动程序 |
 | `IndexError: index out of range in self` | 嵌入索引 >= num\_embeddings | 修正词汇表大小或钳制索引 |
-| `RuntimeError: Trying to backward through the graph a second time` | 重复使用计算图 | 添加 `retain_graph=True` 或重构前向传播 |
+| `RuntimeError: Trying to backward through the graph a second time`| 重复使用计算图 | 添加`retain_graph=True` 或重构前向传播 |
 
 ## 形状调试
 
 当形状不清晰时，注入诊断打印：
 
 ```python
-# Add before the failing line:
+## Add before the failing line:
 print(f"tensor.shape = {tensor.shape}, dtype = {tensor.dtype}, device = {tensor.device}")
 
-# For full model shape tracing:
+## For full model shape tracing:
 from torchsummary import summary
 summary(model, input_size=(C, H, W))
 ```
@@ -72,7 +72,7 @@ summary(model, input_size=(C, H, W))
 ## 内存调试
 
 ```bash
-# Check GPU memory usage
+## Check GPU memory usage
 python -c "
 import torch
 print(f'Allocated: {torch.cuda.memory_allocated()/1e9:.2f} GB')

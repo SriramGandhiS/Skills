@@ -10,7 +10,7 @@
 Packaging converts your skill directory into a platform-specific format:
 
 ```
-output/my-skill/ ──▶ Packager ──▶ output/my-skill-{platform}.{format}
+output/my-skill/ ── Packager ── output/my-skill-{platform}.{format}
     ↓                                ↓
 (SKILL.md +        Platform-specific  (ZIP, tar.gz,
  references)        formatting        directories,
@@ -113,17 +113,17 @@ SKILL_DIR="output/my-skill"
 PLATFORMS="claude gemini openai langchain llama-index chroma"
 
 for platform in $PLATFORMS; do
-  echo "▶️ Packaging for $platform..."
+  echo " Packaging for $platform..."
   skill-seekers package "$SKILL_DIR" --target "$platform"
-  
+
   if [ $? -eq 0 ]; then
-    echo "✅ $platform done"
+    echo "PASS: $platform done"
   else
-    echo "❌ $platform failed"
+    echo "FAIL: $platform failed"
  fi
 done
 
-echo "🎉 All platforms packaged!"
+echo " All platforms packaged!"
 ```
 
 ---

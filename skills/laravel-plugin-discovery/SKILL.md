@@ -1,4 +1,4 @@
-﻿---
+---
 name: laravel-plugin-discovery
 description: Discover and evaluate Laravel packages via LaraPlugins.io MCP. Use when the user wants to find plugins, check package health, or assess Laravel/PHP compatibility.
 origin: ECC
@@ -39,9 +39,9 @@ Search packages by keyword, health score, vendor, and version compatibility.
 
 **Parameters:**
 - `text_search` (string, optional): Keyword to search (e.g. "permission", "admin", "api")
-- `health_score` (string, optional): Filter by health band â€” `Healthy`, `Medium`, `Unhealthy`, or `Unrated`
-- `laravel_compatibility` (string, optional): Filter by Laravel version â€” `"5"`, `"6"`, `"7"`, `"8"`, `"9"`, `"10"`, `"11"`, `"12"`, `"13"`
-- `php_compatibility` (string, optional): Filter by PHP version â€” `"7.4"`, `"8.0"`, `"8.1"`, `"8.2"`, `"8.3"`, `"8.4"`, `"8.5"`
+- `health_score`(string, optional): Filter by health band â€”`Healthy`,`Medium`,`Unhealthy`, or`Unrated`
+- `laravel_compatibility`(string, optional): Filter by Laravel version â€”`"5"`,`"6"`,`"7"`,`"8"`,`"9"`,`"10"`,`"11"`,`"12"`,`"13"`
+- `php_compatibility`(string, optional): Filter by PHP version â€”`"7.4"`,`"8.0"`,`"8.1"`,`"8.2"`,`"8.3"`,`"8.4"`,`"8.5"`
 - `vendor_filter` (string, optional): Filter by vendor name (e.g. "spatie", "laravel")
 - `page` (number, optional): Page number for pagination
 

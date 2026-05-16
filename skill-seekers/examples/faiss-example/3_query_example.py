@@ -9,19 +9,19 @@ try:
     from rich.console import Console
     from rich.table import Table
 except ImportError:
-    print("❌ Run: pip install -r requirements.txt")
+    print("FAIL: Run: pip install -r requirements.txt")
     sys.exit(1)
 
 console = Console()
 
 # Load index and metadata
-console.print("📥 Loading FAISS index...")
+console.print(" Loading FAISS index...")
 index = faiss.read_index("flask.index")
 
 with open("flask_metadata.json") as f:
     data = json.load(f)
 
-console.print(f"✅ Loaded {index.ntotal} vectors")
+console.print(f"PASS: Loaded {index.ntotal} vectors")
 
 # Initialize OpenAI
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
@@ -60,7 +60,7 @@ def search(query_text: str, k: int = 5):
         )
 
     console.print(table)
-    console.print("[dim]💡 Distance: Lower = more similar[/dim]")
+    console.print("[dim] Distance: Lower = more similar[/dim]")
 
 # Example queries
 console.print("[bold green]FAISS Query Examples[/bold green]\n")
@@ -69,4 +69,4 @@ search("How do I create a Flask route?", k=3)
 search("database models and ORM", k=3)
 search("authentication and security", k=3)
 
-console.print("\n✅ All examples completed!")
+console.print("\nPASS: All examples completed!")

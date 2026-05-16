@@ -56,22 +56,22 @@ const [user, settings] = await Promise.all([
 
 ### Conditional Steps
 ```typescript
-const config = await step.do('fetch config', async () => 
+const config = await step.do('fetch config', async () =>
   this.env.KV.get('flags', { type: 'json' })
 );
 
-// ✅ Deterministic (based on step output)
+// PASS: Deterministic (based on step output)
 if (config.enableEmail) {
   await step.do('send email', async () => sendEmail());
 }
 
-// ❌ Non-deterministic (Date.now outside step)
+// FAIL: Non-deterministic (Date.now outside step)
 if (Date.now() > deadline) { /* BAD */ }
 ```
 
 ### Dynamic Steps (Loops)
 ```typescript
-const files = await step.do('list files', async () => 
+const files = await step.do('list files', async () =>
   this.env.BUCKET.list()
 );
 

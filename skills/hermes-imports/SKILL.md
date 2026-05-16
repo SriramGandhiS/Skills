@@ -1,4 +1,4 @@
-﻿---
+---
 name: hermes-imports
 description: Convert local Hermes operator workflows into sanitized ECC skills and release-pack artifacts. Use when preparing a Hermes workflow for public ECC reuse without leaking private workspace state, credentials, or local-only paths.
 origin: ECC
@@ -20,7 +20,7 @@ Hermes is the operator shell. ECC is the reusable workflow layer. Imports should
 ## Import Rules
 
 - Convert local paths to repo-relative paths or placeholders.
-- Replace live account names with role labels such as `operator`, `default profile`, or `workspace owner`.
+- Replace live account names with role labels such as `operator`,`default profile`, or`workspace owner`.
 - Describe credential requirements by provider name only.
 - Keep examples narrow and operational.
 - Do not ship raw workspace exports, tokens, OAuth files, health data, CRM data, or finance data.

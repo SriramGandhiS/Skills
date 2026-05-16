@@ -40,7 +40,7 @@ class BaseStorageAdaptor(ABC):
         Initialize storage adaptor.
 
         Args:
-            **kwargs: Provider-specific configuration
+**kwargs: Provider-specific configuration
         """
         self.config = kwargs
 

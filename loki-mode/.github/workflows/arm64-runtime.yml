@@ -4,8 +4,7 @@ name: ARM64 Runtime Smoke Test (qemu)
 # qemu emulation. Closes the W2-R6/C3 gap where buildx shipped the image
 # but no test ever ran the binary on ARM64. Slow (~3-8 min) because qemu
 # emulates the full instruction set, but free + reproducible.
-#
-# Triggers on every release publish. Manual dispatch lets us re-test any
+# # Triggers on every release publish. Manual dispatch lets us re-test any
 # previously published image.
 
 on:

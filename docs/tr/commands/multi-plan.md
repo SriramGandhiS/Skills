@@ -37,16 +37,16 @@ EOF",
 ```
 
 **Model Parametre Notları**:
-- `{{GEMINI_MODEL_FLAG}}`: `--backend gemini` kullanırken, `--gemini-model gemini-3-pro-preview` ile değiştir (trailing space not edin); codex için boş string kullan
+- `{{GEMINI_MODEL_FLAG}}`:`--backend gemini`kullanırken,`--gemini-model gemini-3-pro-preview` ile değiştir (trailing space not edin); codex için boş string kullan
 
 **Role Prompts**:
 
 | Phase | Codex | Gemini |
 |-------|-------|--------|
-| Analysis | `~/.claude/.ccg/prompts/codex/analyzer.md` | `~/.claude/.ccg/prompts/gemini/analyzer.md` |
-| Planning | `~/.claude/.ccg/prompts/codex/architect.md` | `~/.claude/.ccg/prompts/gemini/architect.md` |
+| Analysis | `~/.claude/.ccg/prompts/codex/analyzer.md`|`~/.claude/.ccg/prompts/gemini/analyzer.md` |
+| Planning | `~/.claude/.ccg/prompts/codex/architect.md`|`~/.claude/.ccg/prompts/gemini/architect.md` |
 
-**Session Reuse**: Her çağrı `SESSION_ID: xxx` döndürür (genellikle wrapper tarafından çıktılanır), sonraki `/ccg:execute` kullanımı için **MUTLAKA kaydet**.
+**Session Reuse**: Her çağrı `SESSION_ID: xxx`döndürür (genellikle wrapper tarafından çıktılanır), sonraki`/ccg:execute` kullanımı için **MUTLAKA kaydet**.
 
 **Background Task'leri Bekle** (max timeout 600000ms = 10 dakika):
 
@@ -100,10 +100,10 @@ mcp__ace-tool__search_context({
 - **ASLA varsayımlara dayalı cevap verme**
 
 **ace-tool MCP mevcut DEĞİLSE**, fallback olarak Claude Code built-in tool'ları kullan:
-1. **Glob**: Pattern'e göre ilgili dosyaları bul (örn., `Glob("**/*.ts")`, `Glob("src/**/*.py")`)
+1. **Glob**: Pattern'e göre ilgili dosyaları bul (örn., `Glob("**/*.ts")`,`Glob("src/**/*.py")`)
 2. **Grep**: Anahtar semboller, fonksiyon adları, sınıf tanımlarını ara (örn., `Grep("className|functionName")`)
 3. **Read**: Tam context toplamak için keşfedilen dosyaları oku
-4. **Task (Explore agent)**: Daha derin keşif için, codebase genelinde aramak üzere `Task`'ı `subagent_type: "Explore"` ile kullan
+4. **Task (Explore agent)**: Daha derin keşif için, codebase genelinde aramak üzere `Task`'ı`subagent_type: "Explore"` ile kullan
 
 #### 1.3 Tamamlılık Kontrolü
 
@@ -136,7 +136,7 @@ mcp__ace-tool__search_context({
    - Odak: UI/UX etkisi, kullanıcı deneyimi, görsel tasarım
    - OUTPUT: Çok perspektifli çözümler + artı/eksi analizi
 
-`TaskOutput` ile her iki modelin tam sonuçlarını bekle. **SESSION_ID'yi kaydet** (`CODEX_SESSION` ve `GEMINI_SESSION`).
+`TaskOutput`ile her iki modelin tam sonuçlarını bekle. **SESSION_ID'yi kaydet** (`CODEX_SESSION`ve`GEMINI_SESSION`).
 
 #### 2.2 Cross-Validation
 
@@ -200,7 +200,7 @@ Her iki analizi sentezle, **Adım Adım Implementation Planı** oluştur:
 **`/ccg:plan` sorumlulukları burada biter, MUTLAKA şu aksiyonları çalıştır**:
 
 1. Tam implementation planını kullanıcıya sun (pseudo-code dahil)
-2. Planı `.claude/plan/<feature-name>.md`'ye kaydet (requirement'tan feature adını çıkar, örn., `user-auth`, `payment-module`)
+2. Planı `.claude/plan/<feature-name>.md`'ye kaydet (requirement'tan feature adını çıkar, örn.,`user-auth`,`payment-module`)
 3. **Kalın metinle** prompt çıktıla (MUTLAKA gerçek kaydedilen dosya yolunu kullan):
 
    ---
@@ -232,7 +232,7 @@ Her iki analizi sentezle, **Adım Adım Implementation Planı** oluştur:
 Planlama tamamlandıktan sonra, planı şuraya kaydet:
 
 - **İlk planlama**: `.claude/plan/<feature-name>.md`
-- **İterasyon versiyonları**: `.claude/plan/<feature-name>-v2.md`, `.claude/plan/<feature-name>-v3.md`...
+- **İterasyon versiyonları**: `.claude/plan/<feature-name>-v2.md`,`.claude/plan/<feature-name>-v3.md`...
 
 Plan dosyası yazma, planı kullanıcıya sunmadan önce tamamlanmalı.
 
@@ -265,4 +265,4 @@ Kullanıcı onayladıktan sonra, **manuel** olarak çalıştır:
 2. **Y/N prompt'ları yok** – Sadece planı sun, kullanıcının sonraki adımlara karar vermesine izin ver
 3. **Güven Kuralları** – Backend Codex'i takip eder, Frontend Gemini'yi takip eder
 4. Harici modellerin **sıfır dosya sistemi yazma erişimi**
-5. **SESSION_ID Devri** – Plan sonunda `CODEX_SESSION` / `GEMINI_SESSION` içermeli (`/ccg:execute resume <SESSION_ID>` kullanımı için)
+5. **SESSION_ID Devri** – Plan sonunda `CODEX_SESSION`/`GEMINI_SESSION`içermeli (`/ccg:execute resume <SESSION_ID>` kullanımı için)

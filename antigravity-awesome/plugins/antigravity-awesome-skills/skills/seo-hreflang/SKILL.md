@@ -185,9 +185,9 @@ Key rules:
 #### Validation Results
 | Language | URL | Self-Ref | Return Tags | x-default | Status |
 |----------|-----|----------|-------------|-----------|--------|
-| en-US | https://... | ✅ | ✅ | ✅ | ✅ |
-| fr | https://... | ❌ | ⚠️ | ✅ | ❌ |
-| de | https://... | ✅ | ❌ | ✅ | ❌ |
+| en-US | https://... | PASS: | PASS: | PASS: | PASS: |
+| fr | https://... | FAIL: | WARNING: | PASS: | FAIL: |
+| de | https://... | PASS: | FAIL: | PASS: | FAIL: |
 
 ### Generated Hreflang Tags
 - HTML `<link>` tags (if HTML method chosen)

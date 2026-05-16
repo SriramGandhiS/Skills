@@ -62,7 +62,7 @@ class FAISSHelpers(SkillAdaptor):
             skill_dir: Path to skill directory
             metadata: Skill metadata
             enable_chunking: Enable intelligent chunking for large documents
-            **kwargs: Additional chunking parameters
+**kwargs: Additional chunking parameters
 
         Returns:
             JSON string containing FAISS-compatible data
@@ -202,15 +202,15 @@ class FAISSHelpers(SkillAdaptor):
         # Write to file
         output_path.write_text(faiss_json, encoding="utf-8")
 
-        print(f"\n✅ FAISS data packaged successfully!")
-        print(f"📦 Output: {output_path}")
+        print(f"\nPASS: FAISS data packaged successfully!")
+        print(f" Output: {output_path}")
 
         # Parse and show stats
         data = json.loads(faiss_json)
 
-        print(f"📊 Total documents: {len(data['documents'])}")
-        print(f"📐 Recommended index: {data['config']['index_type']}")
-        print(f"📏 Embedding dimension: {data['config']['dimension']}")
+        print(f" Total documents: {len(data['documents'])}")
+        print(f" Recommended index: {data['config']['index_type']}")
+        print(f" Embedding dimension: {data['config']['dimension']}")
 
         # Show category breakdown
         categories = {}
@@ -218,7 +218,7 @@ class FAISSHelpers(SkillAdaptor):
             cat = meta.get("category", "unknown")
             categories[cat] = categories.get(cat, 0) + 1
 
-        print("📁 Categories:")
+        print(" Categories:")
         for cat, count in sorted(categories.items()):
             print(f"   - {cat}: {count}")
 
@@ -234,7 +234,7 @@ class FAISSHelpers(SkillAdaptor):
         Args:
             package_path: Path to JSON file
             api_key: Not used
-            **kwargs: Not used
+**kwargs: Not used
 
         Returns:
             Result with usage instructions
@@ -284,7 +284,7 @@ index = faiss.IndexFlatL2(dimension)
 # Add vectors to index
 vectors = np.array(embeddings).astype('float32')
 index.add(vectors)
-print(f"✅ Added {{index.ntotal}} vectors to index")
+print(f"PASS: Added {{index.ntotal}} vectors to index")
 
 # Save index and metadata (using JSON - safe!)
 output_dir = Path("faiss_db")
@@ -300,7 +300,7 @@ with open(output_dir / "metadata.json", "w") as f:
         "ids": data["ids"]
     }}, f, indent=2)
 
-print(f"✅ Saved index to: {{output_dir}}/")
+print(f"PASS: Saved index to: {{output_dir}}/")
 
 # Search with metadata
 def search(query_text: str, k: int = 5):
@@ -383,7 +383,7 @@ def add_documents(new_docs: list, new_metadatas: list):
 
     # Save updated index
     faiss.write_index(index, str(output_dir / "docs.index"))
-    print(f"✅ Added {{len(new_docs)}} documents")
+    print(f"PASS: Added {{len(new_docs)}} documents")
 
 # Index statistics
 print(f"\\nIndex stats:")
@@ -417,7 +417,7 @@ print(f"  Type: {{type(index).__name__}}")
 
     def enhance(self, _skill_dir: Path, _api_key: str) -> bool:
         """FAISS format doesn't support enhancement."""
-        print("❌ FAISS format does not support enhancement")
+        print("FAIL: FAISS format does not support enhancement")
         print("   Enhance before packaging:")
         print("   skill-seekers enhance output/skill/ --mode LOCAL")
         print("   skill-seekers package output/skill/ --target faiss")

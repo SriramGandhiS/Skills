@@ -72,27 +72,27 @@ uv run scripts/dataset_inspector.py --help
 
 Before starting any training job, verify:
 
-### ✅ **Account & Authentication**
+### PASS: **Account & Authentication**
 - Hugging Face Account with [Pro](https://hf.co/pro), [Team](https://hf.co/enterprise), or [Enterprise](https://hf.co/enterprise) plan (Jobs require paid plan)
 - Authenticated login: Check with `hf_whoami()`
-- **HF_TOKEN for Hub Push** ⚠️ CRITICAL - Training environment is ephemeral, must push to Hub or ALL training results are lost
-- Token must have write permissions  
+- **HF_TOKEN for Hub Push** WARNING: CRITICAL - Training environment is ephemeral, must push to Hub or ALL training results are lost
+- Token must have write permissions
 - **MUST pass `secrets={"HF_TOKEN": "$HF_TOKEN"}` in job config** to make token available (the `$HF_TOKEN` syntax
   references your actual token value)
 
-### ✅ **Dataset Requirements**
+### PASS: **Dataset Requirements**
 - Dataset must exist on Hub or be loadable via `datasets.load_dataset()`
 - Format must match training method (SFT: "messages"/text/prompt-completion; DPO: chosen/rejected; GRPO: prompt-only)
 - **ALWAYS validate unknown datasets** before GPU training to prevent format failures (see Dataset Validation section below)
 - Size appropriate for hardware (Demo: 50-100 examples on t4-small; Production: 1K-10K+ on a10g-large/a100-large)
 
-### ⚠️ **Critical Settings**
+### WARNING: **Critical Settings**
 - **Timeout must exceed expected training time** - Default 30min is TOO SHORT for most training. Minimum recommended: 1-2 hours. Job fails and loses all progress if timeout is exceeded.
 - **Hub push must be enabled** - Config: `push_to_hub=True`, `hub_model_id="username/model-name"`; Job: `secrets={"HF_TOKEN": "$HF_TOKEN"}`
 
 ## Asynchronous Job Guidelines
 
-**⚠️ IMPORTANT: Training jobs run asynchronously and can take hours**
+**WARNING: IMPORTANT: Training jobs run asynchronously and can take hours**
 
 ### Action Required
 
@@ -111,14 +111,14 @@ Before starting any training job, verify:
 ### After Submission
 
 **Provide to user:**
-- ✅ Job ID and monitoring URL
-- ✅ Expected completion time
-- ✅ Trackio dashboard URL
-- ✅ Note that user can request status checks later
+- PASS: Job ID and monitoring URL
+- PASS: Expected completion time
+- PASS: Trackio dashboard URL
+- PASS: Note that user can request status checks later
 
 **Example Response:**
 ```
-✅ Job submitted successfully!
+PASS: Job submitted successfully!
 
 Job ID: abc123xyz
 Monitor: https://huggingface.co/jobs/username/abc123xyz
@@ -131,18 +131,18 @@ The job is running in the background. Ask me to check status/logs when ready!
 
 ## Quick Start: Three Approaches
 
-**💡 Tip for Demos:** For quick demos on smaller GPUs (t4-small), omit `eval_dataset` and `eval_strategy` to save ~40% memory. You'll still see training loss and learning progress.
+**Tip for Demos:** For quick demos on smaller GPUs (t4-small), omit `eval_dataset` and `eval_strategy` to save ~40% memory. You'll still see training loss and learning progress.
 
 ### Sequence Length Configuration
 
 **TRL config classes use `max_length` (not `max_seq_length`)** to control tokenized sequence length:
 
 ```python
-# ✅ CORRECT - If you need to set sequence length
+# PASS: CORRECT - If you need to set sequence length
 SFTConfig(max_length=512)   # Truncate sequences to 512 tokens
 DPOConfig(max_length=2048)  # Longer context (2048 tokens)
 
-# ❌ WRONG - This parameter doesn't exist
+# FAIL: WRONG - This parameter doesn't exist
 SFTConfig(max_seq_length=512)  # TypeError!
 ```
 
@@ -208,7 +208,7 @@ trainer.push_to_hub()
 
 #### Working with Scripts
 
-⚠️ **Important:** The `script` parameter accepts either inline code (as shown above) OR a URL. **Local file paths do NOT work.**
+WARNING: **Important:** The `script` parameter accepts either inline code (as shown above) OR a URL. **Local file paths do NOT work.**
 
 **Why local paths don't work:**
 Jobs run in isolated Docker containers without access to your local filesystem. Scripts must be:
@@ -218,7 +218,7 @@ Jobs run in isolated Docker containers without access to your local filesystem. 
 
 **Common mistakes:**
 ```python
-# ❌ These will all fail
+# FAIL: These will all fail
 hf_jobs("uv", {"script": "train.py"})
 hf_jobs("uv", {"script": "./scripts/train.py"})
 hf_jobs("uv", {"script": "/path/to/train.py"})
@@ -226,16 +226,16 @@ hf_jobs("uv", {"script": "/path/to/train.py"})
 
 **Correct approaches:**
 ```python
-# ✅ Inline code (recommended)
+# PASS: Inline code (recommended)
 hf_jobs("uv", {"script": "# /// script\n# dependencies = [...]\n# ///\n\n<your code>"})
 
-# ✅ From Hugging Face Hub
+# PASS: From Hugging Face Hub
 hf_jobs("uv", {"script": "https://huggingface.co/user/repo/resolve/main/train.py"})
 
-# ✅ From GitHub
+# PASS: From GitHub
 hf_jobs("uv", {"script": "https://raw.githubusercontent.com/user/repo/main/train.py"})
 
-# ✅ From Gist
+# PASS: From Gist
 hf_jobs("uv", {"script": "https://gist.githubusercontent.com/user/id/raw/train.py"})
 ```
 
@@ -288,19 +288,19 @@ hub_repo_details(["uv-scripts/classification"], repo_type="dataset", include_rea
 
 When the `hf_jobs()` MCP tool is unavailable, use the `hf jobs` CLI directly.
 
-**⚠️ CRITICAL: CLI Syntax Rules**
+**WARNING: CRITICAL: CLI Syntax Rules**
 
 ```bash
-# ✅ CORRECT syntax - flags BEFORE script URL
+# PASS: CORRECT syntax - flags BEFORE script URL
 hf jobs uv run --flavor a10g-large --timeout 2h --secrets HF_TOKEN "https://example.com/train.py"
 
-# ❌ WRONG - "run uv" instead of "uv run"
+# FAIL: WRONG - "run uv" instead of "uv run"
 hf jobs run uv "https://example.com/train.py" --flavor a10g-large
 
-# ❌ WRONG - flags AFTER script URL (will be ignored!)
+# FAIL: WRONG - flags AFTER script URL (will be ignored!)
 hf jobs uv run "https://example.com/train.py" --flavor a10g-large
 
-# ❌ WRONG - "--secret" instead of "--secrets" (plural)
+# FAIL: WRONG - "--secret" instead of "--secrets" (plural)
 hf jobs uv run --secret HF_TOKEN "https://example.com/train.py"
 ```
 
@@ -342,7 +342,7 @@ uvx trl-jobs sft \
 **When to use:** User working in terminal directly (not Claude Code context), quick local experimentation
 **Repository:** https://github.com/huggingface/trl-jobs
 
-⚠️ **In Claude Code context, prefer using `hf_jobs()` MCP tool (Approach 1) when available.**
+WARNING: **In Claude Code context, prefer using `hf_jobs()` MCP tool (Approach 1) when available.**
 
 ## Hardware Selection
 
@@ -365,7 +365,7 @@ uvx trl-jobs sft \
 
 ## Critical: Saving Results to Hub
 
-**⚠️ EPHEMERAL ENVIRONMENT—MUST PUSH TO HUB**
+**WARNING: EPHEMERAL ENVIRONMENT—MUST PUSH TO HUB**
 
 The Jobs environment is temporary. All files are deleted when the job ends. If the model isn't pushed to Hub, **ALL TRAINING IS LOST**.
 
@@ -399,7 +399,7 @@ Before submitting:
 
 ## Timeout Management
 
-**⚠️ DEFAULT: 30 MINUTES—TOO SHORT FOR TRAINING**
+**WARNING: DEFAULT: 30 MINUTES—TOO SHORT FOR TRAINING**
 
 ### Setting Timeouts
 
@@ -467,7 +467,7 @@ These scripts demonstrate proper Hub saving, Trackio integration, checkpoint man
 - **Space ID**: `{username}/trackio` (use "trackio" as default space name)
 - **Run naming**: Unless otherwise specified, name the run in a way the user will recognize (e.g., descriptive of the task, model, or purpose)
 - **Config**: Keep minimal - only include hyperparameters and model/dataset info
-- **Project Name**: Use a Project Name to associate runs with a particular Project 
+- **Project Name**: Use a Project Name to associate runs with a particular Project
 
 **User overrides:** If user requests specific trackio configuration (custom space, run naming, grouping, or additional config), apply their preferences instead of defaults.
 
@@ -542,9 +542,9 @@ hf_jobs("uv", {
 })
 
 # 2. Check output markers:
-#    ✓ READY → proceed with training
-#    ✗ NEEDS MAPPING → apply mapping code below
-#    ✗ INCOMPATIBLE → choose different method/dataset
+# ✓ READY → proceed with training
+# ✗ NEEDS MAPPING → apply mapping code below
+# ✗ INCOMPATIBLE → choose different method/dataset
 
 # 3. If mapping needed, apply before training:
 def format_for_dpo(example):
@@ -616,9 +616,9 @@ See `references/training_patterns.md` for detailed examples including:
 ### Out of Memory (OOM)
 
 **Fix (try in order):**
-1. Reduce batch size: `per_device_train_batch_size=1`, increase `gradient_accumulation_steps=8`. Effective batch size is `per_device_train_batch_size` x `gradient_accumulation_steps`. For best performance keep effective batch size close to 128. 
+1. Reduce batch size: `per_device_train_batch_size=1`, increase `gradient_accumulation_steps=8`. Effective batch size is `per_device_train_batch_size` x `gradient_accumulation_steps`. For best performance keep effective batch size close to 128.
 2. Enable: `gradient_checkpointing=True`
-3. Upgrade hardware: t4-small → l4x1, a10g-small → a10g-large etc. 
+3. Upgrade hardware: t4-small → l4x1, a10g-small → a10g-large etc.
 
 ### Dataset Misformatted
 

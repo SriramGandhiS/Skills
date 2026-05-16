@@ -170,7 +170,7 @@ Browse the reference files for detailed information on each topic. All files are
         Args:
             package_path: Path to package file
             api_key: Not used
-            **kwargs: Not used
+**kwargs: Not used
 
         Returns:
             Result indicating no upload capability
@@ -226,7 +226,7 @@ Browse the reference files for detailed information on each topic. All files are
         Returns:
             False
         """
-        print("❌ Generic markdown export does not support AI enhancement")
+        print("FAIL: Generic markdown export does not support AI enhancement")
         print("   Use --target claude, --target gemini, or --target openai for enhancement")
         return False
 

@@ -80,7 +80,7 @@ Recommended Next Steps:
 此命令需要 Jira 凭据。请选择以下方式之一：
 
 **选项 A — MCP 服务器（推荐）：**
-将 `jira` 添加到您的 `mcpServers` 配置中（请参阅 `mcp-configs/mcp-servers.json` 获取模板）。
+将 `jira`添加到您的`mcpServers`配置中（请参阅`mcp-configs/mcp-servers.json` 获取模板）。
 
 **选项 B — 环境变量：**
 
@@ -105,4 +105,4 @@ export JIRA_API_TOKEN="your-api-token"
 ## 相关
 
 * **技能：** `skills/jira-integration/`
-* **MCP 配置：** `mcp-configs/mcp-servers.json` → `jira`
+* **MCP 配置：** `mcp-configs/mcp-servers.json`→`jira`

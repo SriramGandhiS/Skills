@@ -3,13 +3,13 @@
 Step-by-step guide to set up the Skill Seeker MCP server with 5 supported AI coding agents.
 
 **Version 3.1.0-dev Highlights:**
-- ✅ **MCP SDK v1.25.0** - Latest protocol support (upgraded from v1.18.0)
-- ✅ **FastMCP Framework** - Modern, decorator-based server implementation
-- ✅ **Dual Transport** - HTTP + stdio support (choose based on agent)
-- ✅ **26 MCP Tools** - Core (9), Extended (10), Vector DB (4), Cloud (3)
-- ✅ **Multi-Agent Support** - Claude Code, Cursor, Windsurf, VS Code + Cline, IntelliJ IDEA
-- ✅ **Auto-Configuration** - One-line setup with `./setup_mcp.sh`
-- ✅ **Production Ready** - 1,880+ comprehensive tests, 100% pass rate
+- PASS: **MCP SDK v1.25.0** - Latest protocol support (upgraded from v1.18.0)
+- PASS: **FastMCP Framework** - Modern, decorator-based server implementation
+- PASS: **Dual Transport** - HTTP + stdio support (choose based on agent)
+- PASS: **26 MCP Tools** - Core (9), Extended (10), Vector DB (4), Cloud (3)
+- PASS: **Multi-Agent Support** - Claude Code, Cursor, Windsurf, VS Code + Cline, IntelliJ IDEA
+- PASS: **Auto-Configuration** - One-line setup with `./setup_mcp.sh`
+- PASS: **Production Ready** - 1,880+ comprehensive tests, 100% pass rate
 
 ---
 
@@ -154,8 +154,7 @@ New config (v2.4.0+):
 # For HTTP transport (Cursor, Windsurf, IntelliJ):
 # Run server separately:
 # python3 -m skill_seekers.mcp.server_fastmcp --transport http --port 3000
-#
-# Then configure agent with URL:
+# # Then configure agent with URL:
 {
   "url": "http://localhost:3000/sse"
 }
@@ -662,7 +661,7 @@ Generate a config for Tailwind CSS at https://tailwindcss.com/docs
 
 **Expected response:**
 ```
-✅ Config created: configs/tailwind.json
+PASS: Config created: configs/tailwind.json
 ```
 
 ### Step 4: Test HTTP Server (if using)
@@ -689,20 +688,20 @@ curl -N http://localhost:8000/sse
 ```
 User: Generate config for Svelte docs at https://svelte.dev/docs
 
-Agent: ✅ Config created: configs/svelte.json
+Agent: PASS: Config created: configs/svelte.json
 
 User: Estimate pages for configs/svelte.json
 
-Agent: 📊 Estimated pages: 150
+Agent:  Estimated pages: 150
        Recommended max_pages: 180
 
 User: Scrape docs using configs/svelte.json
 
-Agent: ✅ Skill created at output/svelte/
+Agent: PASS: Skill created at output/svelte/
 
 User: Package skill at output/svelte/
 
-Agent: ✅ Created: output/svelte.zip
+Agent: PASS: Created: output/svelte.zip
        Ready to upload to Claude!
 ```
 
@@ -711,7 +710,7 @@ Agent: ✅ Created: output/svelte.zip
 ```
 User: Add config source named "team" with git URL https://github.com/myorg/skill-configs.git
 
-Agent: ✅ Source registered: team
+Agent: PASS: Source registered: team
        Type: github
        Priority: 100
 
@@ -723,7 +722,7 @@ Agent: Registered sources:
 
 User: Fetch config "nextjs" from source "team"
 
-Agent: ✅ Config downloaded: configs/nextjs.json
+Agent: PASS: Config downloaded: configs/nextjs.json
        Source: team (https://github.com/myorg/skill-configs.git)
 
 User: Scrape docs using configs/nextjs.json
@@ -740,17 +739,17 @@ Agent: No sources registered. Use add_config_source to add sources.
 
 User: Add config source "company-internal" with git URL git@gitlab.company.com:configs/ai-skills.git
 
-Agent: ✅ Source registered: company-internal
+Agent: PASS: Source registered: company-internal
        Type: gitlab
        Token: GITLAB_TOKEN (environment variable)
 
 User: Fetch config "internal-api" from "company-internal"
 
-Agent: ✅ Config downloaded: configs/internal-api.json
+Agent: PASS: Config downloaded: configs/internal-api.json
 
 User: Validate configs/internal-api.json
 
-Agent: ✅ Config is valid
+Agent: PASS: Config is valid
        - Base URL: https://docs.company.com/api/
        - Max pages: 1000
        - Categories: 5
@@ -767,29 +766,29 @@ Skill Seekers supports packaging and uploading to 12 LLM platforms: Claude AI, G
 ```
 User: Scrape docs using configs/react.json
 
-Agent: ✅ Skill created at output/react/
+Agent: PASS: Skill created at output/react/
 
 User: Package skill at output/react/ with target gemini
 
-Agent: ✅ Packaged for Google Gemini
+Agent: PASS: Packaged for Google Gemini
        Saved to: output/react-gemini.tar.gz
        Format: tar.gz (Gemini-specific format)
 
 User: Package skill at output/react/ with target openai
 
-Agent: ✅ Packaged for OpenAI ChatGPT
+Agent: PASS: Packaged for OpenAI ChatGPT
        Saved to: output/react-openai.zip
        Format: ZIP with vector store
 
 User: Enhance skill at output/react/ with target gemini and mode api
 
-Agent: ✅ Enhanced with Gemini 2.0 Flash
+Agent: PASS: Enhanced with Gemini 2.0 Flash
        Backup: output/react/SKILL.md.backup
        Enhanced: output/react/SKILL.md
 
 User: Upload output/react-gemini.tar.gz with target gemini
 
-Agent: ✅ Uploaded to Google Gemini
+Agent: PASS: Uploaded to Google Gemini
        Skill ID: gemini_12345
        Access at: https://aistudio.google.com/
 ```
@@ -829,13 +828,13 @@ Agent: ✅ Uploaded to Google Gemini
 
 3. **Test server manually:**
 
-   **For stdio:**
+**For stdio:**
    ```bash
    timeout 3 python3 -m skill_seekers.mcp.server_fastmcp
    # Should exit cleanly or timeout (both OK)
    ```
 
-   **For HTTP:**
+**For HTTP:**
    ```bash
    python3 -m skill_seekers.mcp.server_fastmcp --http --port 8000
    # Should show: Uvicorn running on http://127.0.0.1:8000
@@ -843,11 +842,11 @@ Agent: ✅ Uploaded to Google Gemini
 
 4. **Check agent logs:**
 
-   **Claude Code:**
+**Claude Code:**
    - macOS: `~/Library/Logs/Claude/`
    - Linux: `~/.config/claude-code/logs/`
 
-   **Cursor:**
+**Cursor:**
    - macOS: `~/Library/Logs/Cursor/`
    - Linux: `~/.cursor/logs/`
 
@@ -1509,4 +1508,4 @@ TROUBLESHOOTING:
 
 ---
 
-Happy skill creating! 🚀
+Happy skill creating!

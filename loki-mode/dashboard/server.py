@@ -4752,7 +4752,7 @@ async def get_process_health(token: Optional[dict] = Depends(auth.get_current_to
                     "id": agent.get("id", ""),
                     "name": agent.get("name", ""),
                     "pid": pid,
-                    **state_info,
+**state_info,
                 })
         except Exception:
             pass
@@ -4788,7 +4788,7 @@ async def get_process_health(token: Optional[dict] = Depends(auth.get_current_to
                     "pid": pid,
                     "label": entry.get("label", "unknown"),
                     "ppid": entry.get("ppid"),
-                    **state_info,
+**state_info,
                 })
             except (ValueError, json.JSONDecodeError, OSError):
                 continue
@@ -5775,8 +5775,7 @@ def start_migration_phase(migration_id: str, request_body: dict):
 
 # ---------------------------------------------------------------------------
 # Managed Agents Memory bridge (Phase 5, read-only)
-#
-# These endpoints expose the contents of .loki/managed/events.ndjson plus a
+# # These endpoints expose the contents of .loki/managed/events.ndjson plus a
 # thin proxy to beta.memory_stores.memory_versions.list(). All endpoints are
 # safe to call when the managed-agents flags are off: they return empty
 # lists / {enabled: false} rather than 500s. No endpoint writes to the

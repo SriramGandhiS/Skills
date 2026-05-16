@@ -21,9 +21,9 @@ origin: ECC
 
 此技能提供按关注点组织的、可直接复制粘贴的 Dart/Flutter 代码模式：
 
-1. **空安全** — 避免 `!`，优先使用 `?.`/`??`/模式匹配
+1. **空安全** — 避免 `!`，优先使用`?.`/`??`/模式匹配
 2. **不可变状态** — 密封类、`freezed`、`copyWith`
-3. **异步组合** — 并发 `Future.wait`、`BuildContext` 后安全使用 `await`
+3. **异步组合** — 并发 `Future.wait`、`BuildContext`后安全使用`await`
 4. **组件架构** — 提取为类（而非方法）、`const` 传播、作用域重建
 5. **状态管理** — BLoC/Cubit 事件、Riverpod 通知器和派生提供者
 6. **导航** — 通过 `refreshListenable` 实现带响应式认证守卫的 GoRouter

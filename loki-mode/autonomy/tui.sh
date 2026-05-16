@@ -3,16 +3,14 @@
 #===============================================================================
 # Loki Mode TUI Library
 # Rich terminal output: spinners, progress bars, tables, boxes, diffs
-#
-# Inspired by Kiro CLI's TUI (kiro.dev/changelog/cli/1-24)
+# # Inspired by Kiro CLI's TUI (kiro.dev/changelog/cli/1-24)
 # Source: arXiv:2602.22518 (RepoMod-Bench) for progress visualization patterns
-#
-# Usage:
-#   source "$(dirname "${BASH_SOURCE[0]}")/tui.sh"
-#   spinner_start "Analyzing codebase..."
-#   spinner_stop
-#   progress_bar 75 100 "Files processed"
-#   draw_box "Title" "Content here"
+# # Usage:
+# source "$(dirname "${BASH_SOURCE[0]}")/tui.sh"
+# spinner_start "Analyzing codebase..."
+# spinner_stop
+# progress_bar 75 100 "Files processed"
+# draw_box "Title" "Content here"
 #===============================================================================
 
 # Guard against double-sourcing

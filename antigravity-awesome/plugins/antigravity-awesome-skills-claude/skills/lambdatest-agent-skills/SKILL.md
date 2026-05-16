@@ -58,7 +58,7 @@ When requested, generate a GitHub Actions (or Jenkins / GitLab CI) workflow that
 
 ## Skill Registry
 
-### 🌐 E2E / Browser Testing (15 skills)
+### E2E / Browser Testing (15 skills)
 
 | Skill | Languages | Description |
 |---|---|---|
@@ -78,7 +78,7 @@ When requested, generate a GitHub Actions (or Jenkins / GitLab CI) workflow that
 | `laravel-dusk-skill` | PHP | Laravel Dusk browser testing |
 | `robot-framework-skill` | Python, Robot | Robot Framework keyword-driven testing |
 
-### 🧪 Unit Testing (15 skills)
+### Unit Testing (15 skills)
 
 | Skill | Languages | Description |
 |---|---|---|
@@ -98,7 +98,7 @@ When requested, generate a GitHub Actions (or Jenkins / GitLab CI) workflow that
 | `testunit-skill` | Ruby | Test::Unit Ruby testing |
 | `unittest-skill` | Python | Python unittest with mocking |
 
-### 📱 Mobile Testing (5 skills)
+### Mobile Testing (5 skills)
 
 | Skill | Languages | Description |
 |---|---|---|
@@ -108,7 +108,7 @@ When requested, generate a GitHub Actions (or Jenkins / GitLab CI) workflow that
 | `flutter-testing-skill` | Dart | Flutter widget and integration tests |
 | `detox-skill` | JS, TS | Detox React Native E2E testing |
 
-### 📋 BDD Testing (7 skills)
+### BDD Testing (7 skills)
 
 | Skill | Languages | Description |
 |---|---|---|
@@ -120,25 +120,25 @@ When requested, generate a GitHub Actions (or Jenkins / GitLab CI) workflow that
 | `gauge-skill` | Java, Python, JS, Ruby, C# | Gauge specification-based testing |
 | `lettuce-skill` | Python | Lettuce Python BDD testing |
 
-### 👁️ Visual Testing (1 skill)
+### Visual Testing (1 skill)
 
 | Skill | Languages | Description |
 |---|---|---|
 | `smartui-skill` | JS, TS, Java | SmartUI visual regression testing |
 
-### ☁️ Cloud Testing (1 skill)
+### Cloud Testing (1 skill)
 
 | Skill | Languages | Description |
 |---|---|---|
 | `hyperexecute-skill` | YAML | HyperExecute cloud test orchestration |
 
-### 🔄 Migration (1 skill)
+### Migration (1 skill)
 
 | Skill | Languages | Description |
 |---|---|---|
 | `test-framework-migration-skill` | JS, TS, Java, Python, C# | Convert tests between Selenium, Playwright, Puppeteer, Cypress |
 
-### 🔄 DevOps / CI/CD (1 skill)
+### DevOps / CI/CD (1 skill)
 
 | Skill | Languages | Description |
 |---|---|---|
@@ -180,16 +180,16 @@ The skill generates a `conftest.py` with shared fixtures, parametrized test case
 
 ## Best Practices
 
-- ✅ Always use environment variables for cloud credentials (`LT_USERNAME`, `LT_ACCESS_KEY`) — never hardcode them
-- ✅ Use Page Object Model (POM) to keep test logic separate from UI selectors
-- ✅ Prefer explicit waits over fixed `sleep()` calls in all frameworks
-- ✅ Run tests in parallel where the framework supports it to reduce execution time
-- ✅ Always capture screenshots and logs on test failure for easier debugging
-- ✅ Match dependency versions to what each framework officially recommends — avoid mixing major versions
-- ❌ Don't write tests that depend on test execution order
-- ❌ Don't hardcode URLs, credentials, or environment-specific values inside test files
-- ❌ Don't skip writing assertions — a test without assertions is not a test
-- ❌ Don't ignore flaky tests — investigate and fix root cause rather than adding retries as a permanent fix
+- PASS: Always use environment variables for cloud credentials (`LT_USERNAME`, `LT_ACCESS_KEY`) — never hardcode them
+- PASS: Use Page Object Model (POM) to keep test logic separate from UI selectors
+- PASS: Prefer explicit waits over fixed `sleep()` calls in all frameworks
+- PASS: Run tests in parallel where the framework supports it to reduce execution time
+- PASS: Always capture screenshots and logs on test failure for easier debugging
+- PASS: Match dependency versions to what each framework officially recommends — avoid mixing major versions
+- FAIL: Don't write tests that depend on test execution order
+- FAIL: Don't hardcode URLs, credentials, or environment-specific values inside test files
+- FAIL: Don't skip writing assertions — a test without assertions is not a test
+- FAIL: Don't ignore flaky tests — investigate and fix root cause rather than adding retries as a permanent fix
 
 ## Limitations
 
@@ -207,19 +207,19 @@ The skill generates a `conftest.py` with shared fixtures, parametrized test case
 ## Common Pitfalls
 
 - **Problem:** Tests pass locally but fail on CI
-  **Solution:** Ensure headless mode is enabled in CI, and that browser versions match between local and CI environments. Use the framework's built-in CI detection where available.
+**Solution:** Ensure headless mode is enabled in CI, and that browser versions match between local and CI environments. Use the framework's built-in CI detection where available.
 
 - **Problem:** Flaky tests due to timing issues
-  **Solution:** Replace `sleep()` with explicit waits — `waitForSelector` in Playwright, `WebDriverWait` in Selenium, `cy.get().should()` in Cypress.
+**Solution:** Replace `sleep()` with explicit waits — `waitForSelector` in Playwright, `WebDriverWait` in Selenium, `cy.get().should()` in Cypress.
 
 - **Problem:** Cloud tests fail with authentication errors
-  **Solution:** Verify `LT_USERNAME` and `LT_ACCESS_KEY` are correctly set as environment variables and match the credentials on the LambdaTest dashboard.
+**Solution:** Verify `LT_USERNAME` and `LT_ACCESS_KEY` are correctly set as environment variables and match the credentials on the LambdaTest dashboard.
 
 - **Problem:** Wrong browser capabilities for cloud execution
-  **Solution:** Use the LambdaTest Capabilities Generator at https://www.lambdatest.com/capabilities-generator/ to get the correct capability object for your target browser and OS.
+**Solution:** Use the LambdaTest Capabilities Generator at https://www.lambdatest.com/capabilities-generator/ to get the correct capability object for your target browser and OS.
 
 - **Problem:** Mobile tests fail with "device not found"
-  **Solution:** For local runs, verify the emulator/simulator is running and `adb devices` (Android) or Simulator is active (iOS). For cloud runs, check the device name matches exactly what LambdaTest supports.
+**Solution:** For local runs, verify the emulator/simulator is running and `adb devices` (Android) or Simulator is active (iOS). For cloud runs, check the device name matches exactly what LambdaTest supports.
 
 ## Related Skills
 

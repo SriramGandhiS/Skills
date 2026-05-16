@@ -219,13 +219,13 @@ const securityHeaders = [
       style-src 'self' 'nonce-{nonce}';
       img-src 'self' data: https:;
       font-src 'self';
-      connect-src 'self' https://api.example.com;
+      connect-src 'self' <https://api.example.com;>
     `.replace(/\s{2,}/g, ' ').trim()
   }
 ]
 ```
 
-`{nonce}`는 요청마다 새로 생성하고, 헤더와 인라인 `<script>`/`<style>` 태그에 동일하게 주입해야 합니다.
+`{nonce}`는 요청마다 새로 생성하고, 헤더와 인라인`<script>`/`<style>` 태그에 동일하게 주입해야 합니다.
 
 #### 확인 단계
 - [ ] 사용자 제공 HTML이 새니타이징됨
@@ -401,25 +401,25 @@ async function verifyTransaction(transaction: Transaction) {
 
 #### 정기 업데이트
 ```bash
-# Check for vulnerabilities
+## Check for vulnerabilities
 npm audit
 
-# Fix automatically fixable issues
+## Fix automatically fixable issues
 npm audit fix
 
-# Update dependencies
+## Update dependencies
 npm update
 
-# Check for outdated packages
+## Check for outdated packages
 npm outdated
 ```
 
 #### 잠금 파일
 ```bash
-# ALWAYS commit lock files
+## ALWAYS commit lock files
 git add package-lock.json
 
-# Use in CI/CD for reproducible builds
+## Use in CI/CD for reproducible builds
 npm ci  # Instead of npm install
 ```
 

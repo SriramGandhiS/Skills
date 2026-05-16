@@ -13,7 +13,7 @@ origin: ECC
 * 用户说"开源此项目"或"使其公开"
 * 用户希望将私有仓库准备为公开发布
 * 用户需要在推送到 GitHub 前剥离密钥
-* 用户调用 `/opensource fork`、`/opensource verify` 或 `/opensource package`
+* 用户调用 `/opensource fork`、`/opensource verify`或`/opensource package`
 
 ## 命令
 
@@ -184,7 +184,7 @@ gh repo create "{github_org}/{github_repo}" --public --source=. --push --descrip
 
 ### /opensource verify PROJECT
 
-独立运行净化器。解析路径：如果 PROJECT 包含 `/`，则视为路径。否则检查 `$HOME/opensource-staging/PROJECT`，然后 `$HOME/PROJECT`，最后当前目录。
+独立运行净化器。解析路径：如果 PROJECT 包含 `/`，则视为路径。否则检查`$HOME/opensource-staging/PROJECT`，然后`$HOME/PROJECT`，最后当前目录。
 
 ```
 Agent(
@@ -244,7 +244,7 @@ $HOME/opensource-staging/
 * **绝不**在未经用户批准的情况下推送到 GitHub
 * **绝不**跳过净化器——它是安全门
 * **绝不**在净化器失败且未修复所有关键发现后继续
-* **绝不**在暂存目录中保留 `.env`、`*.pem` 或 `credentials.json`
+* **绝不**在暂存目录中保留 `.env`、`*.pem`或`credentials.json`
 
 ## 最佳实践
 

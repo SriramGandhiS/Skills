@@ -56,8 +56,8 @@ origin: ECC
 #### 结构化数据
 
 * 首页：适当时使用组织或企业架构
-* 编辑页面：`Article` / `BlogPosting`
-* 产品页面：`Product` 和 `Offer`
+* 编辑页面：`Article`/`BlogPosting`
+* 产品页面：`Product`和`Offer`
 * 内部页面：`BreadcrumbList`
 * 问答部分：仅当内容完全匹配时使用 `FAQPage`
 
@@ -78,7 +78,7 @@ origin: ECC
 #### 标题结构
 
 * 一个清晰的 `H1`
-* `H2` 和 `H3` 应反映实际内容层级
+* `H2`和`H3` 应反映实际内容层级
 * 不要仅为视觉样式跳过结构层级
 
 ### 关键词映射

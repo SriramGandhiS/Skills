@@ -157,7 +157,7 @@ describe('replaceInCurrentMilestone', () => {
       '# Roadmap',
       '',
       '<details>',
-      '<summary>✅ v1.18 (shipped)</summary>',
+      '<summary>PASS: v1.18 (shipped)</summary>',
       '',
       '### Phase 1: Old Phase',
       '',
@@ -166,7 +166,7 @@ describe('replaceInCurrentMilestone', () => {
       '</details>',
       '',
       '<details>',
-      '<summary>✅ v1.19 (shipped)</summary>',
+      '<summary>PASS: v1.19 (shipped)</summary>',
       '',
       '### Phase 2: Another Old Phase',
       '',
@@ -188,8 +188,8 @@ describe('replaceInCurrentMilestone', () => {
     // Should update Phase 3's Plans line (current milestone)
     expect(result).toContain('**Plans:** 2/2 plans complete');
     // Should NOT touch v1.18 or v1.19 sections
-    expect(result).toContain('✅ v1.18');
-    expect(result).toContain('✅ v1.19');
+    expect(result).toContain('PASS: v1.18');
+    expect(result).toContain('PASS: v1.19');
   });
 
   it('replaces inside active milestone when it is wrapped in a <details> block', async () => {
@@ -199,7 +199,7 @@ describe('replaceInCurrentMilestone', () => {
       '# Roadmap',
       '',
       '<details>',
-      '<summary>✅ v1.18 (shipped)</summary>',
+      '<summary>PASS: v1.18 (shipped)</summary>',
       '',
       '### Phase 1: Old Phase',
       '',
@@ -208,7 +208,7 @@ describe('replaceInCurrentMilestone', () => {
       '</details>',
       '',
       '<details>',
-      '<summary>🚧 v1.19 in-progress</summary>',
+      '<summary> v1.19 in-progress</summary>',
       '',
       '### Phase 2: Current Work',
       '',

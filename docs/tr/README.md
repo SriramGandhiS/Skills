@@ -82,17 +82,17 @@ Bu repository yalnızca ham kodu içerir. Rehberler her şeyi açıklıyor.
 ### v2.0.0-rc.1 — Surface Sync, Operatör İş Akışları ve ECC 2.0 Alpha (Nis 2026)
 
 - **Public surface canlı repo ile senkronlandı** — metadata, katalog sayıları, plugin manifest'leri ve kurulum odaklı dokümanlar artık gerçek OSS yüzeyiyle eşleşiyor.
-- **Operatör ve dışa dönük iş akışları büyüdü** — `brand-voice`, `social-graph-ranker`, `customer-billing-ops`, `google-workspace-ops` ve ilgili operatör skill'leri aynı sistem içinde tamamlandı.
-- **Medya ve lansman araçları** — `manim-video`, `remotion-video-creation` ve sosyal yayın yüzeyleri teknik anlatım ve duyuru akışlarını aynı repo içine taşıdı.
+- **Operatör ve dışa dönük iş akışları büyüdü** — `brand-voice`,`social-graph-ranker`,`customer-billing-ops`,`google-workspace-ops` ve ilgili operatör skill'leri aynı sistem içinde tamamlandı.
+- **Medya ve lansman araçları** — `manim-video`,`remotion-video-creation` ve sosyal yayın yüzeyleri teknik anlatım ve duyuru akışlarını aynı repo içine taşıdı.
 - **Framework ve ürün yüzeyi genişledi** — `nestjs-patterns`, daha zengin Codex/OpenCode kurulum yüzeyleri ve çapraz harness paketleme iyileştirmeleri repo'yu Claude Code dışına da taşıdı.
-- **ECC 2.0 alpha repoda** — `ecc2/` altındaki Rust kontrol katmanı artık yerelde derleniyor ve `dashboard`, `start`, `sessions`, `status`, `stop`, `resume` ve `daemon` komutlarını sunuyor.
+- **ECC 2.0 alpha repoda** — `ecc2/`altındaki Rust kontrol katmanı artık yerelde derleniyor ve`dashboard`,`start`,`sessions`,`status`,`stop`,`resume`ve`daemon` komutlarını sunuyor.
 - **Ekosistem sağlamlaştırma** — AgentShield, ECC Tools maliyet kontrolleri, billing portal işleri ve web yüzeyi çekirdek plugin etrafında birlikte gelişmeye devam ediyor.
 
 ### v1.9.0 — Seçici Kurulum & Dil Genişlemesi (Mar 2026)
 
-- **Seçici kurulum mimarisi** — `install-plan.js` ve `install-apply.js` ile manifest-tabanlı kurulum pipeline'ı, hedefli component kurulumu için. State store neyin kurulu olduğunu takip eder ve artımlı güncellemelere olanak sağlar.
-- **6 yeni agent** — `typescript-reviewer`, `pytorch-build-resolver`, `java-build-resolver`, `java-reviewer`, `kotlin-reviewer`, `kotlin-build-resolver` dil desteğini 10 dile çıkarıyor.
-- **Yeni skill'ler** — Deep learning iş akışları için `pytorch-patterns`, API referans araştırması için `documentation-lookup`, modern JS toolchain'leri için `bun-runtime` ve `nextjs-turbopack`, artı 8 operasyonel domain skill ve `mcp-server-patterns`.
+- **Seçici kurulum mimarisi** — `install-plan.js`ve`install-apply.js` ile manifest-tabanlı kurulum pipeline'ı, hedefli component kurulumu için. State store neyin kurulu olduğunu takip eder ve artımlı güncellemelere olanak sağlar.
+- **6 yeni agent** — `typescript-reviewer`,`pytorch-build-resolver`,`java-build-resolver`,`java-reviewer`,`kotlin-reviewer`,`kotlin-build-resolver` dil desteğini 10 dile çıkarıyor.
+- **Yeni skill'ler** — Deep learning iş akışları için `pytorch-patterns`, API referans araştırması için`documentation-lookup`, modern JS toolchain'leri için`bun-runtime`ve`nextjs-turbopack`, artı 8 operasyonel domain skill ve`mcp-server-patterns`.
 - **Session & state altyapısı** — Query CLI ile SQLite state store, yapılandırılmış kayıt için session adapter'ları, kendini geliştiren skill'ler için skill evolution foundation.
 - **Orkestrasyon iyileştirmesi** — Harness audit skorlaması deterministik hale getirildi, orkestrasyon durumu ve launcher uyumluluğu sağlamlaştırıldı, 5 katmanlı koruma ile observer loop önleme.
 - **Observer güvenilirliği** — Throttling ve tail sampling ile memory patlaması düzeltmesi, sandbox erişim düzeltmesi, lazy-start mantığı ve re-entrancy koruması.
@@ -104,8 +104,8 @@ Bu repository yalnızca ham kodu içerir. Rehberler her şeyi açıklıyor.
 
 - **Harness-first release** — ECC artık açıkça bir agent harness performans sistemi olarak çerçevelendi, sadece bir config paketi değil.
 - **Hook güvenilirlik iyileştirmesi** — SessionStart root fallback, Stop-phase session özetleri ve kırılgan inline one-liner'lar yerine script-tabanlı hook'lar.
-- **Hook runtime kontrolleri** — `ECC_HOOK_PROFILE=minimal|standard|strict` ve `ECC_DISABLED_HOOKS=...` hook dosyalarını düzenlemeden runtime gating için.
-- **Yeni harness command'ları** — `/harness-audit`, `/loop-start`, `/loop-status`, `/quality-gate`, `/model-route`.
+- **Hook runtime kontrolleri** — `ECC_HOOK_PROFILE=minimal|standard|strict`ve`ECC_DISABLED_HOOKS=...` hook dosyalarını düzenlemeden runtime gating için.
+- **Yeni harness command'ları** — `/harness-audit`,`/loop-start`,`/loop-status`,`/quality-gate`,`/model-route`.
 - **NanoClaw v2** — Model routing, skill hot-load, session branch/search/export/compact/metrics.
 - **Çapraz harness paritesi** — Claude Code, Cursor, OpenCode ve Codex app/CLI arasında davranış sıkılaştırıldı.
 - **997 internal test geçiyor** — Hook/runtime refactor ve uyumluluk güncellemelerinden sonra tam suite yeşil.
@@ -121,10 +121,10 @@ Bu repository yalnızca ham kodu içerir. Rehberler her şeyi açıklıyor.
 ### Adım 1: Plugin'i Kurun
 
 ```bash
-# Marketplace ekle
-/plugin marketplace add https://github.com/affaan-m/everything-claude-code
+## Marketplace ekle
+/plugin marketplace add <https://github.com/affaan-m/everything-claude-code>
 
-# Plugin'i kur
+## Plugin'i kur
 /plugin install ecc@ecc
 ```
 
@@ -133,28 +133,28 @@ Bu repository yalnızca ham kodu içerir. Rehberler her şeyi açıklıyor.
 > WARNING: **Önemli:** Claude Code plugin'leri `rule`'ları otomatik olarak dağıtamaz. Manuel olarak kurmalısınız:
 
 ```bash
-# Önce repo'yu klonlayın
-git clone https://github.com/affaan-m/everything-claude-code.git
+## Önce repo'yu klonlayın
+git clone <https://github.com/affaan-m/everything-claude-code.git>
 cd everything-claude-code
 
-# Bağımlılıkları kurun (paket yöneticinizi seçin)
+## Bağımlılıkları kurun (paket yöneticinizi seçin)
 npm install        # veya: pnpm install | yarn install | bun install
 
-# macOS/Linux
+## macOS/Linux
 ./install.sh typescript    # veya python veya golang veya swift veya php
-# ./install.sh typescript python golang swift php
-# ./install.sh --target cursor typescript
-# ./install.sh --target antigravity typescript
+## ./install.sh typescript python golang swift php
+## ./install.sh --target cursor typescript
+## ./install.sh --target antigravity typescript
 ```
 
 ```powershell
-# Windows PowerShell
+## Windows PowerShell
 .\install.ps1 typescript   # veya python veya golang veya swift veya php
-# .\install.ps1 typescript python golang swift php
-# .\install.ps1 --target cursor typescript
-# .\install.ps1 --target antigravity typescript
+## .\install.ps1 typescript python golang swift php
+## .\install.ps1 --target cursor typescript
+## .\install.ps1 --target antigravity typescript
 
-# npm-installed uyumluluk entry point'i de çapraz platform çalışır
+## npm-installed uyumluluk entry point'i de çapraz platform çalışır
 npx ecc-install typescript
 ```
 
@@ -163,13 +163,13 @@ Manuel kurulum talimatları için `rules/` klasöründeki README'ye bakın.
 ### Adım 3: Kullanmaya Başlayın
 
 ```bash
-# Bir command deneyin (plugin kurulumu namespace'li form kullanır)
+## Bir command deneyin (plugin kurulumu namespace'li form kullanır)
 /ecc:plan "Kullanıcı kimlik doğrulaması ekle"
 
-# Manuel kurulum (Seçenek 2) daha kısa formu kullanır:
-# /plan "Kullanıcı kimlik doğrulaması ekle"
+## Manuel kurulum (Seçenek 2) daha kısa formu kullanır:
+## /plan "Kullanıcı kimlik doğrulaması ekle"
 
-# Mevcut command'ları kontrol edin
+## Mevcut command'ları kontrol edin
 /plugin list ecc@ecc
 ```
 
@@ -195,16 +195,16 @@ Plugin, tercih ettiğiniz paket yöneticisini (npm, pnpm, yarn veya bun) otomati
 Tercih ettiğiniz paket yöneticisini ayarlamak için:
 
 ```bash
-# Ortam değişkeni ile
+## Ortam değişkeni ile
 export CLAUDE_PACKAGE_MANAGER=pnpm
 
-# Global config ile
+## Global config ile
 node scripts/setup-package-manager.js --global pnpm
 
-# Proje config ile
+## Proje config ile
 node scripts/setup-package-manager.js --project bun
 
-# Mevcut ayarı algıla
+## Mevcut ayarı algıla
 node scripts/setup-package-manager.js --detect
 ```
 
@@ -215,10 +215,10 @@ Veya Claude Code'da `/setup-pm` command'ını kullanın.
 Sıkılığı ayarlamak veya belirli hook'ları geçici olarak devre dışı bırakmak için runtime flag'lerini kullanın:
 
 ```bash
-# Hook sıkılık profili (varsayılan: standard)
+## Hook sıkılık profili (varsayılan: standard)
 export ECC_HOOK_PROFILE=standard
 
-# Devre dışı bırakılacak hook ID'leri (virgülle ayrılmış)
+## Devre dışı bırakılacak hook ID'leri (virgülle ayrılmış)
 export ECC_DISABLED_HOOKS="pre:bash:tmux-reminder,post:edit:typecheck"
 ```
 
@@ -361,7 +361,7 @@ Bu, plugin'den mevcut tüm agent'ları, command'ları ve skill'leri gösterir.
 <details>
 <summary><b>Hook'larım çalışmıyor / "Duplicate hooks file" hatası alıyorum</b></summary>
 
-Bu en yaygın sorundur. `.claude-plugin/plugin.json`'a bir `"hooks"` alanı **EKLEMEYİN**. Claude Code v2.1+ kurulu plugin'lerden `hooks/hooks.json`'ı otomatik olarak yükler. Açıkça belirtmek duplicate algılama hatalarına neden olur. Bkz. [#29](https://github.com/affaan-m/everything-claude-code/issues/29), [#52](https://github.com/affaan-m/everything-claude-code/issues/52), [#103](https://github.com/affaan-m/everything-claude-code/issues/103).
+Bu en yaygın sorundur. `.claude-plugin/plugin.json`'a bir`"hooks"`alanı **EKLEMEYİN**. Claude Code v2.1+ kurulu plugin'lerden`hooks/hooks.json`'ı otomatik olarak yükler. Açıkça belirtmek duplicate algılama hatalarına neden olur. Bkz. [#29](https://github.com/affaan-m/everything-claude-code/issues/29), [#52](https://github.com/affaan-m/everything-claude-code/issues/52), [#103](https://github.com/affaan-m/everything-claude-code/issues/103).
 </details>
 
 <details>
@@ -386,10 +386,10 @@ Bu en yaygın sorundur. `.claude-plugin/plugin.json`'a bir `"hooks"` alanı **EK
 Evet. Seçenek 2'yi (manuel kurulum) kullanın ve yalnızca ihtiyacınız olanı kopyalayın:
 
 ```bash
-# Sadece agent'lar
+## Sadece agent'lar
 cp everything-claude-code/agents/*.md ~/.claude/agents/
 
-# Sadece rule'lar
+## Sadece rule'lar
 cp -r everything-claude-code/rules/common ~/.claude/rules/common
 ```
 
@@ -424,10 +424,10 @@ Evet. ECC çapraz platformdur:
 Plugin kapsamlı bir test suite içerir:
 
 ```bash
-# Tüm testleri çalıştır
+## Tüm testleri çalıştır
 node tests/run-all.js
 
-# Bireysel test dosyalarını çalıştır
+## Bireysel test dosyalarını çalıştır
 node tests/lib/utils.test.js
 node tests/lib/package-manager.test.js
 node tests/hooks/hooks.test.js

@@ -1,4 +1,4 @@
-﻿---
+---
 name: evm-token-decimals
 description: Prevent silent decimal mismatch bugs across EVM chains. Covers runtime decimal lookup, chain-aware caching, bridged-token precision drift, and safe normalization for bots, dashboards, and DeFi tools.
 origin: ECC direct-port adaptation
@@ -19,7 +19,7 @@ Silent decimal mismatches are one of the easiest ways to ship balances or USD va
 
 ## How It Works
 
-Never assume stablecoins use the same decimals everywhere. Query `decimals()` at runtime, cache by `(chain_id, token_address)`, and use decimal-safe math for value calculations.
+Never assume stablecoins use the same decimals everywhere. Query `decimals()`at runtime, cache by`(chain_id, token_address)`, and use decimal-safe math for value calculations.
 
 ## Examples
 
@@ -125,6 +125,6 @@ cast call <token_address> "decimals()(uint8)" --rpc-url <rpc>
 
 - Always query `decimals()` at runtime
 - Cache by chain plus token address, not symbol
-- Use `Decimal`, `BigInt`, or equivalent exact math, not float
+- Use `Decimal`,`BigInt`, or equivalent exact math, not float
 - Re-query decimals after bridging or wrapper changes
 - Normalize internal accounting consistently before comparison or pricing

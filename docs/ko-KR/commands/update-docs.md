@@ -15,11 +15,11 @@ description: 코드베이스를 기준으로 문서를 동기화하고 생성된
 | `.env.example` | 환경 변수 문서 |
 | `openapi.yaml` / 라우트 파일 | API 엔드포인트 참조 |
 | 소스 코드 exports | 공개 API 문서 |
-| `Dockerfile` / `docker-compose.yml` | 인프라 설정 문서 |
+| `Dockerfile`/`docker-compose.yml` | 인프라 설정 문서 |
 
 ## 2단계: 스크립트 참조 생성
 
-1. `package.json` (또는 `Makefile`, `Cargo.toml`, `pyproject.toml`) 읽기
+1. `package.json`(또는`Makefile`,`Cargo.toml`,`pyproject.toml`) 읽기
 2. 모든 스크립트/커맨드와 설명 추출
 3. 참조 테이블 생성:
 
@@ -33,7 +33,7 @@ description: 코드베이스를 기준으로 문서를 동기화하고 생성된
 
 ## 3단계: 환경 변수 문서 생성
 
-1. `.env.example` (또는 `.env.template`, `.env.sample`) 읽기
+1. `.env.example`(또는`.env.template`,`.env.sample`) 읽기
 2. 모든 변수와 용도 추출
 3. 필수 vs 선택으로 분류
 4. 예상 형식과 유효 값 문서화
@@ -41,8 +41,8 @@ description: 코드베이스를 기준으로 문서를 동기화하고 생성된
 ```markdown
 | 변수 | 필수 | 설명 | 예시 |
 |------|------|------|------|
-| `DATABASE_URL` | 예 | PostgreSQL 연결 문자열 | `postgres://user:pass@host:5432/db` |
-| `LOG_LEVEL` | 아니오 | 로깅 상세도 (기본값: info) | `debug`, `info`, `warn`, `error` |
+| `DATABASE_URL`| 예 | PostgreSQL 연결 문자열 |`postgres://user:pass@host:5432/db` |
+| `LOG_LEVEL`| 아니오 | 로깅 상세도 (기본값: info) |`debug`,`info`,`warn`,`error` |
 ```
 
 ## 4단계: 기여 가이드 업데이트

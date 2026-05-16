@@ -25,12 +25,12 @@ export default {
   async queue(batch: MessageBatch, env: Env, ctx: ExecutionContext): Promise<void> {
     for (const msg of batch.messages) {
       await processMessage(msg.body);
-      
+
       // Fire-and-forget analytics (doesn't block ack)
       ctx.waitUntil(
         env.ANALYTICS_QUEUE.send({ messageId: msg.id, processedAt: Date.now() })
       );
-      
+
       msg.ack();
     }
   }
@@ -69,7 +69,7 @@ export default {
 2. **Throwing uncaught errors retries the ENTIRE batch**, not just the failed message. Always wrap individual message processing in try/catch and call `msg.retry()` explicitly per message.
 
 ```typescript
-// ❌ BAD: Uncaught error retries entire batch
+// FAIL: BAD: Uncaught error retries entire batch
 async queue(batch: MessageBatch): Promise<void> {
   for (const msg of batch.messages) {
     await riskyOperation(msg.body); // If this throws, entire batch retries
@@ -77,7 +77,7 @@ async queue(batch: MessageBatch): Promise<void> {
   }
 }
 
-// ✅ GOOD: Catch per message, handle individually
+// PASS: GOOD: Catch per message, handle individually
 async queue(batch: MessageBatch): Promise<void> {
   for (const msg of batch.messages) {
     try {
@@ -102,7 +102,7 @@ async queue(batch: MessageBatch): Promise<void> {
     msg.ack();        // Message marked for ack
     msg.retry();      // Overrides ack - message will retry
   }
-  
+
   batch.ackAll();     // Only affects messages not explicitly handled above
 }
 ```

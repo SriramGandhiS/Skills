@@ -13,10 +13,10 @@ def main() -> int:
     issues = find_local_consistency_issues(root)
     if issues:
         for issue in issues:
-            print(f"❌ {issue}")
+            print(f"FAIL: {issue}")
         return 1
 
-    print("✅ No stale claims detected in active docs.")
+    print("PASS: No stale claims detected in active docs.")
     return 0
 
 

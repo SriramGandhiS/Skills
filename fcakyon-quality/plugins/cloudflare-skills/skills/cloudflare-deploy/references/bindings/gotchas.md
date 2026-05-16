@@ -2,10 +2,10 @@
 
 ## Critical: Global Scope Mutation
 
-### ❌ THE #1 GOTCHA: Caching env in Global Scope
+### FAIL: THE #1 GOTCHA: Caching env in Global Scope
 
 ```typescript
-// ❌ DANGEROUS - env cached at deploy time
+// FAIL: DANGEROUS - env cached at deploy time
 const apiKey = env.API_KEY;  // ERROR: env not available in global scope
 
 export default {
@@ -20,7 +20,7 @@ export default {
 - If using workarounds, secrets may not update without redeployment
 - Leads to "Cannot read property 'X' of undefined" errors
 
-**✅ Always access env per-request:**
+**PASS: Always access env per-request:**
 ```typescript
 export default {
   async fetch(request: Request, env: Env) {
@@ -33,27 +33,27 @@ export default {
 
 ### "env.MY_KV is undefined"
 
-**Cause:** Name mismatch or not configured  
+**Cause:** Name mismatch or not configured
 **Solution:** Check wrangler.jsonc (case-sensitive), run `npx wrangler types`, verify `npx wrangler kv namespace list`
 
 ### "Property 'MY_KV' does not exist on type 'Env'"
 
-**Cause:** Types not generated  
+**Cause:** Types not generated
 **Solution:** `npx wrangler types`
 
 ### "preview_id is required for --remote"
 
-**Cause:** Missing preview binding  
+**Cause:** Missing preview binding
 **Solution:** Add `"preview_id": "dev-id"` or use `npx wrangler dev` (local mode)
 
 ### "Secret updated but Worker still uses old value"
 
-**Cause:** Cached in global scope or not redeployed  
+**Cause:** Cached in global scope or not redeployed
 **Solution:** Avoid global caching, redeploy after secret change
 
 ### "KV get() returns null for existing key"
 
-**Cause:** Eventual consistency (60s), wrong namespace, wrong environment  
+**Cause:** Eventual consistency (60s), wrong namespace, wrong environment
 **Solution:**
 ```bash
 # Check key exists
@@ -72,7 +72,7 @@ npx wrangler deployments list
 
 ### "Service binding returns 'No such service'"
 
-**Cause:** Target Worker not deployed, name mismatch, environment mismatch  
+**Cause:** Target Worker not deployed, name mismatch, environment mismatch
 **Solution:**
 ```bash
 # List deployed Workers
@@ -87,23 +87,23 @@ cd ../target-worker && npx wrangler deploy
 
 ### "Rate limit exceeded" on KV writes
 
-**Cause:** >1 write/second per key  
+**Cause:** >1 write/second per key
 **Solution:** Use different keys, Durable Objects, or Queues
 
 ## Type Safety Gotchas
 
 ### Missing @cloudflare/workers-types
 
-**Error:** `Cannot find name 'Request'`  
+**Error:** `Cannot find name 'Request'`
 **Solution:** `npm install -D @cloudflare/workers-types`, add to tsconfig.json `"types"`
 
 ### Binding Type Mismatches
 
 ```typescript
-// ❌ Wrong - KV returns string | null
+// FAIL: Wrong - KV returns string | null
 const value: string = await env.MY_KV.get('key');
 
-// ✅ Handle null
+// PASS: Handle null
 const value = await env.MY_KV.get('key');
 if (!value) return new Response('Not found', { status: 404 });
 ```
@@ -124,7 +124,7 @@ if (!value) return new Response('Not found', { status: 404 });
 - dev: Uses `preview_id` or local bindings, secrets not available
 - deploy: Uses production `id`, secrets available
 
-**Access secrets in dev:** `npx wrangler dev --remote`  
+**Access secrets in dev:** `npx wrangler dev --remote`
 **Persist local data:** `npx wrangler dev --persist`
 
 ## Performance Gotchas
@@ -132,11 +132,11 @@ if (!value) return new Response('Not found', { status: 404 });
 ### Sequential Binding Calls
 
 ```typescript
-// ❌ Slow
+// FAIL: Slow
 const user = await env.DB.prepare('...').first();
 const config = await env.MY_KV.get('config');
 
-// ✅ Parallel
+// PASS: Parallel
 const [user, config] = await Promise.all([
   env.DB.prepare('...').first(),
   env.MY_KV.get('config')
@@ -145,11 +145,11 @@ const [user, config] = await Promise.all([
 
 ## Security Gotchas
 
-**❌ Secrets in logs:** `console.log('Key:', env.API_KEY)` - visible in dashboard  
-**✅** `console.log('Key:', env.API_KEY ? '***' : 'missing')`
+**FAIL: Secrets in logs:** `console.log('Key:', env.API_KEY)` - visible in dashboard
+**PASS:** `console.log('Key:', env.API_KEY ? '***' : 'missing')`
 
-**❌ Exposing env:** `return Response.json(env)` - exposes all bindings  
-**✅** Never return env object in responses
+**FAIL: Exposing env:** `return Response.json(env)` - exposes all bindings
+**PASS:** Never return env object in responses
 
 ## Limits Reference
 

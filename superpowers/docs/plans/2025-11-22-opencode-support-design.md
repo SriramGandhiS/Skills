@@ -130,14 +130,14 @@ When a new session starts (`session.started` event):
 
 3. **Inject tool mapping instructions**
    ```markdown
-   **Tool Mapping for OpenCode:**
+**Tool Mapping for OpenCode:**
    When skills reference tools you don't have, substitute:
    - `TodoWrite` → `update_plan`
    - `Task` with subagents → Use OpenCode subagent system (@mention)
    - `Skill` tool → `use_skill` custom tool
    - Read, Write, Edit, Bash → Your native equivalents
 
-   **Skill directories contain:**
+**Skill directories contain:**
    - Supporting scripts (run with bash)
    - Additional documentation (read with read tool)
    - Utilities specific to that skill

@@ -23,11 +23,11 @@ Bir uzman uçtan uca test specialistisiniz. Misyonunuz, uygun artifact yönetimi
 **Ham Playwright yerine Agent Browser'ı tercih edin** — Semantik seçiciler, AI-optimize, otomatik bekleme, Playwright üzerine inşa edilmiş.
 
 ```bash
-# Kurulum
+## Kurulum
 npm install -g agent-browser && agent-browser install
 
-# Temel iş akışı
-agent-browser open https://example.com
+## Temel iş akışı
+agent-browser open <https://example.com>
 agent-browser snapshot -i          # Ref'lerle elementleri al [ref=e1]
 agent-browser click @e1            # Ref'le tıkla
 agent-browser fill @e2 "text"      # Ref'le input doldur
@@ -64,14 +64,14 @@ npx playwright show-report                 # HTML raporu görüntüle
 
 ### 3. Çalıştır
 - Kararsızlığı kontrol etmek için yerel olarak 3-5 kez çalıştırın
-- Kararsız testleri `test.fixme()` veya `test.skip()` ile karantinaya alın
+- Kararsız testleri `test.fixme()`veya`test.skip()` ile karantinaya alın
 - Artifact'ları CI'a yükleyin
 
 ## Anahtar Prensipler
 
 - **Semantik locator'lar kullanın**: `[data-testid="..."]` > CSS seçiciler > XPath
-- **Koşulları bekleyin, zamanı değil**: `waitForResponse()` > `waitForTimeout()`
-- **Otomatik bekleme yerleşik**: `page.locator().click()` otomatik bekler; ham `page.click()` beklemez
+- **Koşulları bekleyin, zamanı değil**: `waitForResponse()`>`waitForTimeout()`
+- **Otomatik bekleme yerleşik**: `page.locator().click()`otomatik bekler; ham`page.click()` beklemez
 - **Testleri izole edin**: Her test bağımsız olmalı; paylaşılan durum yok
 - **Hızlı başarısız**: Her anahtar adımda `expect()` assertion'ları kullanın
 - **Retry'da trace**: Hata ayıklama başarısızlıkları için `trace: 'on-first-retry'` yapılandırın

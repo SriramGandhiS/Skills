@@ -2,7 +2,7 @@
 
 V8-based JS/Wasm runtime powering Cloudflare Workers. Use as app server, dev tool, or HTTP proxy.
 
-## ⚠️ IMPORTANT SECURITY NOTICE
+## WARNING: IMPORTANT SECURITY NOTICE
 **workerd is NOT a hardened sandbox.** Do not run untrusted code. It's designed for deploying YOUR code locally/self-hosted, not multi-tenant SaaS. Cloudflare production adds security layers not present in open-source workerd.
 
 ## Decision Tree: When to Use What

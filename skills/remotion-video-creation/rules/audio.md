@@ -1,4 +1,4 @@
-﻿---
+---
 name: audio
 description: Using audio and sound in Remotion - importing, trimming, volume, speed, pitch
 metadata:
@@ -21,7 +21,7 @@ pnpm exec remotion add @remotion/media # If project uses pnpm
 
 ## Importing Audio
 
-Use `<Audio>` from `@remotion/media` to add audio to your composition.
+Use `<Audio>`from`@remotion/media` to add audio to your composition.
 
 ```tsx
 import { Audio } from "@remotion/media";
@@ -43,7 +43,7 @@ Multiple audio tracks can be layered by adding multiple `<Audio>` components.
 
 ## Trimming
 
-Use `trimBefore` and `trimAfter` to remove portions of the audio. Values are in frames.
+Use `trimBefore`and`trimAfter` to remove portions of the audio. Values are in frames.
 
 ```tsx
 const { fps } = useVideoConfig();

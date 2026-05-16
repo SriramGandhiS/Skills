@@ -1,6 +1,6 @@
 # Referência de Agentes do GSD
 
-Este documento descreve os papéis dos agentes especializados no ecossistema GSD.  
+Este documento descreve os papéis dos agentes especializados no ecossistema GSD.
 Para a listagem completa com regras detalhadas, consulte [AGENTS.md em inglês](../AGENTS.md).
 
 ---

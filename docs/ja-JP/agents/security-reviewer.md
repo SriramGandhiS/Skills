@@ -29,22 +29,22 @@ model: opus
 
 ### 分析コマンド
 ```bash
-# 脆弱な依存関係をチェック
+## 脆弱な依存関係をチェック
 npm audit
 
-# 高重大度のみ
+## 高重大度のみ
 npm audit --audit-level=high
 
-# ファイル内のシークレットをチェック
+## ファイル内のシークレットをチェック
 grep -r "api[_-]?key\|password\|secret\|token" --include="*.js" --include="*.ts" --include="*.json" .
 
-# 一般的なセキュリティ問題をチェック
+## 一般的なセキュリティ問題をチェック
 npx eslint . --plugin security
 
-# ハードコードされたシークレットをスキャン
+## ハードコードされたシークレットをスキャン
 npx trufflehog filesystem . --json
 
-# gitヒストリー内のシークレットをチェック
+## gitヒストリー内のシークレットをチェック
 git log -p | grep -i "password\|api_key\|secret"
 ```
 
@@ -346,7 +346,7 @@ console.log('User login:', {
 ## セキュリティレビューレポート形式
 
 ```markdown
-# セキュリティレビューレポート
+## セキュリティレビューレポート
 
 **ファイル/コンポーネント:** [path/to/file.ts]
 **レビュー日:** YYYY-MM-DD
@@ -479,13 +479,13 @@ PRをレビューする際、インラインコメントを投稿:
 ## セキュリティツールのインストール
 
 ```bash
-# セキュリティリンティングをインストール
+## セキュリティリンティングをインストール
 npm install --save-dev eslint-plugin-security
 
-# 依存関係監査をインストール
+## 依存関係監査をインストール
 npm install --save-dev audit-ci
 
-# package.jsonスクリプトに追加
+## package.jsonスクリプトに追加
 {
   "scripts": {
     "security:audit": "npm audit",

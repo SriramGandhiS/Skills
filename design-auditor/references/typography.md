@@ -213,12 +213,12 @@ Step 3: Assign roles by relative position and frequency:
     → caption / helper
 
 Step 4: Flag these automatically:
-  - Any body candidate < 14px → 🔴 Critical
-  - Any caption/helper < 11px → 🔴 Critical
-  - Two adjacent role sizes within 2px of each other → 🟡 (indistinct)
-  - Scale ratio between body and h2 < 1.25 → 🟡 (too flat — no clear hierarchy)
-  - More than 6 distinct font sizes in one frame/component → 🟡 (scale too complex)
-  - Same font size used for two different visual roles → 🟡 (relies on weight alone — fragile)
+  - Any body candidate < 14px →  Critical
+  - Any caption/helper < 11px →  Critical
+  - Two adjacent role sizes within 2px of each other →  (indistinct)
+  - Scale ratio between body and h2 < 1.25 →  (too flat — no clear hierarchy)
+  - More than 6 distinct font sizes in one frame/component →  (scale too complex)
+  - Same font size used for two different visual roles →  (relies on weight alone — fragile)
 
 Step 5: Pass extracted sizes + roles as data to the Type Scale Stack widget.
   If no font size data found: skip widget silently — do not render with placeholder data.

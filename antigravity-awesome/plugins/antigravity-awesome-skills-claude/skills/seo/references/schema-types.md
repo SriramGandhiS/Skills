@@ -50,8 +50,7 @@ Google's documentation explicitly recommends JSON-LD over Microdata and RDFa.
 | FAQPage | Government and healthcare authority sites ONLY | August 2023 |
 
 > Google severely limited FAQ rich results in August 2023. Only authoritative sources (government, health organizations) receive FAQ rich results.
->
-> **GEO nuance**: FAQPage schema still benefits AI/LLM citation visibility (ChatGPT, Perplexity, Google AI Overviews), even without Google rich results.
+> > **GEO nuance**: FAQPage schema still benefits AI/LLM citation visibility (ChatGPT, Perplexity, Google AI Overviews), even without Google rich results.
 > - **Existing FAQPage on commercial site**: Flag at Info priority, not Critical. Removal removes GEO citation upside.
 > - **Adding new FAQPage**: Not recommended for Google benefit; acceptable if AI search visibility is a priority.
 
@@ -103,14 +102,14 @@ Google's documentation explicitly recommends JSON-LD over Microdata and RDFa.
 
 For any schema block, verify:
 
-1. ✅ `@context` is `"https://schema.org"` (not http)
-2. ✅ `@type` is a valid, non-deprecated type
-3. ✅ All required properties are present
-4. ✅ Property values match expected data types
-5. ✅ No placeholder text (e.g., "[Business Name]")
-6. ✅ URLs are absolute, not relative
-7. ✅ Dates are in ISO 8601 format
-8. ✅ Images have valid URLs
+1. PASS: `@context` is `"https://schema.org"` (not http)
+2. PASS: `@type` is a valid, non-deprecated type
+3. PASS: All required properties are present
+4. PASS: Property values match expected data types
+5. PASS: No placeholder text (e.g., "[Business Name]")
+6. PASS: URLs are absolute, not relative
+7. PASS: Dates are in ISO 8601 format
+8. PASS: Images have valid URLs
 
 ## Testing Tools
 

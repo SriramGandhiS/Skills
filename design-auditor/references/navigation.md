@@ -76,12 +76,12 @@ Active nav item must have at least **3:1 contrast** against inactive items — n
 
 Tabs switch between **parallel views of the same content or context**. They are NOT for top-level navigation between different sections.
 
-### ✅ Correct Tab Usage
+### PASS: Correct Tab Usage
 - Profile page: Overview | Activity | Settings
 - Message thread: Messages | Files | Members
 - Dashboard: Daily | Weekly | Monthly
 
-### ❌ Incorrect Tab Usage
+### FAIL: Incorrect Tab Usage
 - Home | Projects | Settings | Help (these are different sections — use nav)
 - Step 1 | Step 2 | Step 3 (these are sequential — use a stepper)
 
@@ -210,33 +210,33 @@ When auditing HTML/React/Vue navigation code, check these directly.
 ### Semantic structure
 ```
 <nav> element:
-  → Primary nav wrapped in <nav> → ✅
-  → Nav built with <div> and no role="navigation" → 🟡
-  → Multiple <nav> elements without distinguishing aria-label → 🟡
+  → Primary nav wrapped in <nav> → PASS:
+  → Nav built with <div> and no role="navigation" →
+  → Multiple <nav> elements without distinguishing aria-label →
     Fix: <nav aria-label="Primary navigation"> / <nav aria-label="Footer navigation">
 
 Nav item elements:
-  → Nav links are <a href="..."> → ✅
-  → Nav links are <button> (for SPA router pushes) → ✅ if keyboard accessible
-  → Nav links are <div onClick> with no role or tabindex → 🔴 Critical
+  → Nav links are <a href="..."> → PASS:
+  → Nav links are <button> (for SPA router pushes) → PASS: if keyboard accessible
+  → Nav links are <div onClick> with no role or tabindex →  Critical
 ```
 
 ### Active state
 ```
 aria-current="page":
-  → Present on the active nav item → ✅
-  → Missing — active state is CSS-only (.active class) → 🟡
+  → Present on the active nav item → PASS:
+  → Missing — active state is CSS-only (.active class) →
     (screen readers can't detect CSS classes as the current page)
 
 Active visual signal:
-  → Only color change between active and inactive → 🟡
+  → Only color change between active and inactive →
     (fails colorblind users — need weight, background, or indicator bar too)
-  → Color + font-weight or border-bottom indicator → ✅
+  → Color + font-weight or border-bottom indicator → PASS:
 
 Active state contrast:
   → Extract active and inactive text/icon colors
   → Run contrast check: active vs inactive must be ≥ 3:1
-  → Less than 3:1 → 🟡 Warning
+  → Less than 3:1 →  Warning
 ```
 
 ### Skip navigation link
@@ -255,39 +255,39 @@ Pattern to detect:
   }
 
 Check:
-  → Skip link present as first focusable element → ✅
-  → Skip link missing → 🟡 Warning
-  → Skip link present but target ID doesn't exist in DOM → 🔴 Critical
-  → Skip link visible at all times (not just on focus) → 🟢 Tip (valid but not required)
+  → Skip link present as first focusable element → PASS:
+  → Skip link missing →  Warning
+  → Skip link present but target ID doesn't exist in DOM →  Critical
+  → Skip link visible at all times (not just on focus) →  Tip (valid but not required)
 ```
 
 ### Tab vs nav misuse
 ```
 Tabs (same-page view switching):
   Correct HTML: role="tablist" > role="tab" (aria-selected) > role="tabpanel"
-  → <nav> used for view switching instead of tablist → 🟡
-  → Tabs without aria-selected on active tab → 🟡
-  → Tab panels without role="tabpanel" → 🟡
+  → <nav> used for view switching instead of tablist →
+  → Tabs without aria-selected on active tab →
+  → Tab panels without role="tabpanel" →
 
 Navigation (cross-page section switching):
   Correct HTML: <nav> > <ul> > <li> > <a href="...">
-  → role="tablist" used for routing between pages → 🟡
-  → Nav uses <a> links (not buttons) → ✅ for page nav
+  → role="tablist" used for routing between pages →
+  → Nav uses <a> links (not buttons) → PASS: for page nav
 ```
 
 ### Keyboard and dropdown handling
 ```
 Dropdown menus:
-  → Escape key closes the dropdown → ✅ (check for keydown handler)
-  → Arrow keys navigate within dropdown items → ✅ (ideal)
-  → Dropdown has no keyboard handler at all → 🟡
-  → Dropdown trigger has aria-expanded="true/false" → ✅
-  → aria-expanded missing on dropdown trigger → 🟡
+  → Escape key closes the dropdown → PASS: (check for keydown handler)
+  → Arrow keys navigate within dropdown items → PASS: (ideal)
+  → Dropdown has no keyboard handler at all →
+  → Dropdown trigger has aria-expanded="true/false" → PASS:
+  → aria-expanded missing on dropdown trigger →
 
 Focus trapping in mobile drawers/hamburger menus:
-  → Focus trapped inside open drawer → ✅
-  → Focus leaves drawer when open → 🟡
-  → Escape closes drawer → ✅
+  → Focus trapped inside open drawer → PASS:
+  → Focus leaves drawer when open →
+  → Escape closes drawer → PASS:
 ```
 
 ### Breadcrumbs
@@ -302,10 +302,10 @@ Correct structure:
   </nav>
 
 Checks:
-  → <nav aria-label="Breadcrumb"> wrapping → ✅
-  → <ol> used (not <ul>) → ✅ (order matters)
-  → Last item has aria-current="page" → ✅
-  → Intermediate items are links → ✅
-  → Intermediate items are plain text, not links → 🟡
-  → No breadcrumb on route with 3+ path segments → 🟡
+  → <nav aria-label="Breadcrumb"> wrapping → PASS:
+  → <ol> used (not <ul>) → PASS: (order matters)
+  → Last item has aria-current="page" → PASS:
+  → Intermediate items are links → PASS:
+  → Intermediate items are plain text, not links →
+  → No breadcrumb on route with 3+ path segments →
 ```

@@ -20,7 +20,7 @@ stages:
     enabled: true
     prompt: >
       Analyze identity provider integration.
-      
+
       Identify:
       1. Identity providers (IdP) used (Auth0, Okta, Cognito, etc.)
       2. SSO/SAML configuration
@@ -28,7 +28,7 @@ stages:
       4. Enterprise identity (Active Directory, LDAP)
       5. Multi-factor authentication setup
       6. Passwordless authentication
-      
+
       Output JSON with:
       - "idp": primary identity provider
       - "sso": SSO configuration
@@ -44,7 +44,7 @@ stages:
     enabled: true
     prompt: >
       Document authorization models in detail.
-      
+
       Cover:
       1. Role-Based Access Control (RBAC) hierarchy
       2. Attribute-Based Access Control (ABAC)
@@ -52,7 +52,7 @@ stages:
       4. Permission inheritance
       5. Dynamic authorization (policy engine)
       6. Cross-organization access
-      
+
       Output JSON with:
       - "rbac": role definitions
       - "abac": attribute rules
@@ -68,7 +68,7 @@ stages:
     enabled: true
     prompt: >
       Document identity lifecycle management.
-      
+
       Include:
       1. User provisioning and deprovisioning
       2. Just-in-time (JIT) provisioning
@@ -76,7 +76,7 @@ stages:
       4. Profile management
       5. Account recovery
       6. Offboarding workflows
-      
+
       Output JSON with:
       - "provisioning": user creation
       - "jit": JIT provisioning
@@ -92,7 +92,7 @@ stages:
     enabled: true
     prompt: >
       Document access review and audit processes.
-      
+
       Cover:
       1. Periodic access reviews
       2. Automated access certification
@@ -100,7 +100,7 @@ stages:
       4. Access request workflows
       5. Audit logging and reporting
       6. Compliance attestation
-      
+
       Output JSON with:
       - "access_reviews": review process
       - "certification": automated reviews
@@ -116,7 +116,7 @@ stages:
     enabled: true
     prompt: >
       Document identity security best practices.
-      
+
       Include:
       1. Session management and timeouts
       2. Concurrent session control
@@ -124,7 +124,7 @@ stages:
       4. Step-up authentication
       5. Risk-based authentication
       6. Identity threat detection
-      
+
       Output JSON with:
       - "session_mgmt": session handling
       - "concurrent_sessions": session limits

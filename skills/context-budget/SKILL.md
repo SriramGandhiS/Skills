@@ -1,4 +1,4 @@
-﻿---
+---
 name: context-budget
 description: Audits Claude Code context window consumption across agents, skills, MCP servers, and rules. Identifies bloat, redundant components, and produces prioritized token-savings recommendations.
 origin: ECC
@@ -40,7 +40,7 @@ Scan all component directories and estimate token consumption:
 **MCP Servers** (`.mcp.json` or active MCP config)
 - Count configured servers and total tool count
 - Estimate schema overhead at ~500 tokens per tool
-- Flag: servers with >20 tools, servers that wrap simple CLI commands (`gh`, `git`, `npm`, `supabase`, `vercel`)
+- Flag: servers with >20 tools, servers that wrap simple CLI commands (`gh`,`git`,`npm`,`supabase`,`vercel`)
 
 **CLAUDE.md** (project + user-level)
 - Count tokens per file in the CLAUDE.md chain
@@ -128,7 +128,7 @@ Skill: Current overhead 33% â†’ adding 5 servers (~50 tools) would add ~25,
 
 ## Best Practices
 
-- **Token estimation**: use `words Ã— 1.3` for prose, `chars / 4` for code-heavy files
+- **Token estimation**: use `words Ã— 1.3`for prose,`chars / 4` for code-heavy files
 - **MCP is the biggest lever**: each tool schema costs ~500 tokens; a 30-tool server costs more than all your skills combined
 - **Agent descriptions are loaded always**: even if the agent is never invoked, its description field is present in every Task tool context
 - **Verbose mode for debugging**: use when you need to pinpoint the exact files driving overhead, not for regular audits

@@ -1,4 +1,4 @@
-﻿# Dependency Injection (DI) Fundamentals
+# Dependency Injection (DI) Fundamentals
 
 Dependency Injection (DI) is a design pattern used to organize and share code across an application by allowing you to "inject" features into different parts. This improves code maintainability, scalability, and testability.
 
@@ -17,7 +17,7 @@ A **service** is the most common way to share data and functionality across an a
 
 ### Creating a Service
 
-Use the `providedIn: 'root'` option in the `@Injectable` decorator to make the service a singleton available throughout the entire application. This is the recommended approach for most services.
+Use the `providedIn: 'root'`option in the`@Injectable` decorator to make the service a singleton available throughout the entire application. This is the recommended approach for most services.
 
 ```ts
 import {Injectable} from '@angular/core';

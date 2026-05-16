@@ -1,4 +1,4 @@
-﻿---
+---
 name: continuous-agent-loop
 description: Patterns for continuous autonomous agent loops with quality gates, evals, and recovery controls.
 origin: ECC
@@ -26,7 +26,7 @@ Start
 
 Recommended production stack:
 1. RFC decomposition (`ralphinho-rfc-pipeline`)
-2. quality gates (`plankton-code-quality` + `/quality-gate`)
+2. quality gates (`plankton-code-quality`+`/quality-gate`)
 3. eval loop (`eval-harness`)
 4. session persistence (`nanoclaw-repl`)
 

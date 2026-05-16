@@ -29,7 +29,7 @@ It prevents:
 
 ---
 
-## 🔢 Page Conversion Readiness & Impact Index
+## Page Conversion Readiness & Impact Index
 
 ### Total Score: **0–100**
 

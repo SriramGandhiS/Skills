@@ -30,7 +30,7 @@ origin: ECC
 ```
 
 在 [exa.ai](https://exa.ai) 获取 API 密钥。
-此仓库当前的 Exa 设置记录了此处公开的工具接口：`web_search_exa` 和 `get_code_context_exa`。
+此仓库当前的 Exa 设置记录了此处公开的工具接口：`web_search_exa`和`get_code_context_exa`。
 如果你的 Exa 服务器公开了其他工具，请在文档或提示中依赖它们之前，先核实其确切名称。
 
 ## 核心工具
@@ -49,9 +49,9 @@ web_search_exa(query: "2026年最新人工智能发展", numResults: 5)
 |-------|------|---------|-------|
 | `query` | 字符串 | 必填 | 搜索查询 |
 | `numResults` | 数字 | 8 | 结果数量 |
-| `type` | 字符串 | `auto` | 搜索模式 |
-| `livecrawl` | 字符串 | `fallback` | 需要时优先使用实时爬取 |
-| `category` | 字符串 | 无 | 可选焦点，例如 `company` 或 `research paper` |
+| `type`| 字符串 |`auto` | 搜索模式 |
+| `livecrawl`| 字符串 |`fallback` | 需要时优先使用实时爬取 |
+| `category`| 字符串 | 无 | 可选焦点，例如`company`或`research paper` |
 
 ### get\_code\_context\_exa
 
@@ -99,7 +99,7 @@ get_code_context_exa(query: "WebAssembly 组件模型示例", tokensNum: 4000)
 ## 提示
 
 * 使用 `web_search_exa` 获取最新信息、公司查询和广泛发现
-* 使用 `site:`、引号内的短语和 `intitle:` 等搜索运算符来缩小结果范围
+* 使用 `site:`、引号内的短语和`intitle:` 等搜索运算符来缩小结果范围
 * 对于聚焦的代码片段，使用较低的 `tokensNum` (1000-2000)；对于全面的上下文，使用较高的值 (5000+)
 * 当你需要 API 用法或代码示例而非通用网页时，使用 `get_code_context_exa`
 

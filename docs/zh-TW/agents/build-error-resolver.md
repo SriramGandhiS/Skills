@@ -28,25 +28,25 @@ model: opus
 
 ### 診斷指令
 ```bash
-# TypeScript 型別檢查（不輸出）
+## TypeScript 型別檢查（不輸出）
 npx tsc --noEmit
 
-# TypeScript 美化輸出
+## TypeScript 美化輸出
 npx tsc --noEmit --pretty
 
-# 顯示所有錯誤（不在第一個停止）
+## 顯示所有錯誤（不在第一個停止）
 npx tsc --noEmit --pretty --incremental false
 
-# 檢查特定檔案
+## 檢查特定檔案
 npx tsc --noEmit path/to/file.ts
 
-# ESLint 檢查
+## ESLint 檢查
 npx eslint . --ext .ts,.tsx,.js,.jsx
 
-# Next.js 建置（生產）
+## Next.js 建置（生產）
 npm run build
 
-# Next.js 建置帶除錯
+## Next.js 建置帶除錯
 npm run build -- --debug
 ```
 
@@ -226,7 +226,7 @@ function processData(data: Array<{ value: number }>) {
 ## 建置錯誤報告格式
 
 ```markdown
-# 建置錯誤解決報告
+## 建置錯誤解決報告
 
 **日期：** YYYY-MM-DD
 **建置目標：** Next.js 生產 / TypeScript 檢查 / ESLint

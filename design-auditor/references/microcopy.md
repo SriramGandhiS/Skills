@@ -9,7 +9,7 @@ Microcopy is the small functional text throughout a UI — button labels, error 
 ### The Verb Rule
 Buttons should always be a **verb** (or verb phrase) that describes the action:
 
-| ❌ Vague | ✅ Specific |
+| FAIL: Vague | PASS: Specific |
 |---|---|
 | OK | Got it / Save / Confirm |
 | Submit | Send Message / Create Account / Place Order |
@@ -51,7 +51,7 @@ A good error message answers three questions:
 2. **Why did it go wrong?** (if not obvious)
 3. **How do I fix it?**
 
-| ❌ Bad | ✅ Good |
+| FAIL: Bad | PASS: Good |
 |---|---|
 | Invalid input | Please enter a valid email address |
 | Error | We couldn't save your changes — check your connection and try again |
@@ -93,7 +93,7 @@ Placeholders appear inside empty inputs and disappear when the user starts typin
 ### Rules
 - **Always have a visible label** in addition to placeholder text.
 - **Keep placeholders short** — one phrase, max.
-- **Prefix style** — When showing an example value, write it as `e.g. Project Alpha` (with a space after the period). Avoid `eg:`, `eg.`, or `E.g:` — these are informal and inconsistent. Flag as 🟡 Warning.
+- **Prefix style** — When showing an example value, write it as `e.g. Project Alpha` (with a space after the period). Avoid `eg:`, `eg.`, or `E.g:` — these are informal and inconsistent. Flag as  Warning.
 - **Don't duplicate the label** — A placeholder that says exactly the same thing as its label adds no value. Use the placeholder for format hints or examples only.
 - **Placeholder contrast** should be noticeably lighter than real input text — but still meet 3:1 contrast for readability.
 
@@ -103,7 +103,7 @@ When flagging a placeholder issue, always cite:
 - The node ID if available from `get_design_context`
 - The specific rule it violates
 
-Example: 🟡 Placeholder `"eg: 5"` (node 68:27994) — uses informal `eg:` prefix. Use `e.g. 5` or just the unit hint.
+Example:  Placeholder `"eg: 5"` (node 68:27994) — uses informal `eg:` prefix. Use `e.g. 5` or just the unit hint.
 
 ---
 
@@ -138,7 +138,7 @@ Position: directly below the input, above where the error message will appear.
 | **Friendly & casual** | Consumer apps, social, creative tools | "Looks great! Your changes are saved ✓" |
 | **Warm & professional** | SaaS, productivity, HR tools | "Your changes have been saved." |
 | **Neutral & clinical** | Finance, legal, healthcare, enterprise | "Transaction completed successfully." |
-| **Playful** | Games, kids apps, lifestyle | "Woohoo! You crushed it 🎉" |
+| **Playful** | Games, kids apps, lifestyle | "Woohoo! You crushed it " |
 
 ### Consistency Rules
 - If you use contractions ("you're", "we'll") in one place, use them everywhere.
@@ -180,7 +180,7 @@ Create a short glossary and stick to it. Every button, label, confirmation, and 
 
 ## Confirmation & Success Messages
 
-| Action | ✅ Good Confirmation |
+| Action | PASS: Good Confirmation |
 |---|---|
 | Saved | "Changes saved" or "Project saved" |
 | Sent | "Message sent to Jamie" |
@@ -192,7 +192,7 @@ Create a short glossary and stick to it. Every button, label, confirmation, and 
 ### Rules
 - **Be specific** — name the thing that was acted on when possible.
 - **Offer undo** for destructive or hard-to-reverse actions.
-- **Don't celebrate too hard** — "🎉 Amazing! You saved a file!" is patronizing. Save enthusiasm for genuinely exciting moments (first project created, subscription upgraded).
+- **Don't celebrate too hard** — " Amazing! You saved a file!" is patronizing. Save enthusiasm for genuinely exciting moments (first project created, subscription upgraded).
 
 ---
 
@@ -200,12 +200,12 @@ Create a short glossary and stick to it. Every button, label, confirmation, and 
 
 If asterisks (*) are used to mark required fields, a visible legend must appear in the form — typically at the top or bottom:
 
-| ✅ Good | ❌ Bad |
+| PASS: Good | FAIL: Bad |
 |---|---|
 | "* Required fields" near the form title | Asterisks with no explanation |
 | "Fields marked * are required" | Assuming all users know the convention |
 
-**Rule:** The `*` convention is widely understood but not universal. A legend is always required for accessibility. Absence of a legend is a 🟢 Tip — not critical, but worth flagging at handoff.
+**Rule:** The `*` convention is widely understood but not universal. A legend is always required for accessibility. Absence of a legend is a  Tip — not critical, but worth flagging at handoff.
 
 ---
 
@@ -224,4 +224,4 @@ When auditing text content in a Figma frame or codebase, classify each text node
 | **Confirmation/toast** | Success/feedback text after an action | Names the thing acted on. Offers undo if destructive |
 
 **Audit citation format:** Always quote the exact text and include the node ID when available.
-`🟡 Button label "Submit" (node 68:27811) — vague verb. Use "Save Changes" or "Send Report" instead.`
+` Button label "Submit" (node 68:27811) — vague verb. Use "Save Changes" or "Send Report" instead.`

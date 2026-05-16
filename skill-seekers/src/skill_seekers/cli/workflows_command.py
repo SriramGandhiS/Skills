@@ -238,7 +238,7 @@ def cmd_validate(name_or_path: str) -> int:
     try:
         engine = WorkflowEngine(name_or_path)
         wf = engine.workflow
-        print(f"✅ Workflow '{wf.name}' is valid.")
+        print(f"PASS: Workflow '{wf.name}' is valid.")
         print(f"   Description : {wf.description}")
         print(f"   Version     : {wf.version}")
         print(f"   Stages      : {len(wf.stages)}")

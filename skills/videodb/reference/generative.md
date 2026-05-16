@@ -1,4 +1,4 @@
-﻿# Generative Media Guide
+# Generative Media Guide
 
 VideoDB provides AI-powered generation of images, videos, music, sound effects, voice, and text content. All generation methods are on the **Collection** object.
 
@@ -23,7 +23,7 @@ image = coll.generate_image(
     aspect_ratio="16:9",
 )
 
-# Access the generated image
+## Access the generated image
 print(image.id)
 print(image.generate_url())  # returns a signed download URL
 ```
@@ -32,13 +32,13 @@ print(image.generate_url())  # returns a signed download URL
 
 | Parameter | Type | Default | Description |
 |-----------|------|---------|-------------|
-| `prompt` | `str` | required | Text description of the image to generate |
-| `aspect_ratio` | `str` | `"1:1"` | Aspect ratio: `"1:1"`, `"9:16"`, `"16:9"`, `"4:3"`, or `"3:4"` |
-| `callback_url` | `str\|None` | `None` | URL to receive async callback |
+| `prompt`|`str` | required | Text description of the image to generate |
+| `aspect_ratio`|`str`|`"1:1"`| Aspect ratio:`"1:1"`,`"9:16"`,`"16:9"`,`"4:3"`, or`"3:4"` |
+| `callback_url`|`str\|None`|`None` | URL to receive async callback |
 
-Returns an `Image` object with `.id`, `.name`, and `.collection_id`. The `.url` property may be `None` for generated images â€” always use `image.generate_url()` to get a reliable signed download URL.
+Returns an `Image`object with`.id`,`.name`, and`.collection_id`. The`.url`property may be`None`for generated images â€” always use`image.generate_url()` to get a reliable signed download URL.
 
-> **Note:** Unlike `Video` objects (which use `.generate_stream()`), `Image` objects use `.generate_url()` to retrieve the image URL. The `.url` property is only populated for some image types (e.g. thumbnails).
+> **Note:** Unlike `Video`objects (which use`.generate_stream()`),`Image`objects use`.generate_url()`to retrieve the image URL. The`.url` property is only populated for some image types (e.g. thumbnails).
 
 ## Video Generation
 
@@ -58,9 +58,9 @@ video.play()
 
 | Parameter | Type | Default | Description |
 |-----------|------|---------|-------------|
-| `prompt` | `str` | required | Text description of the video to generate |
-| `duration` | `int` | `5` | Duration in seconds (must be integer value, 5-8) |
-| `callback_url` | `str\|None` | `None` | URL to receive async callback |
+| `prompt`|`str` | required | Text description of the video to generate |
+| `duration`|`int`|`5` | Duration in seconds (must be integer value, 5-8) |
+| `callback_url`|`str\|None`|`None` | URL to receive async callback |
 
 Returns a `Video` object. Generated videos are automatically added to the collection and can be used in timelines, searches, and compilations like any uploaded video.
 
@@ -83,9 +83,9 @@ print(music.id)
 
 | Parameter | Type | Default | Description |
 |-----------|------|---------|-------------|
-| `prompt` | `str` | required | Text description of the music |
-| `duration` | `int` | `5` | Duration in seconds |
-| `callback_url` | `str\|None` | `None` | URL to receive async callback |
+| `prompt`|`str` | required | Text description of the music |
+| `duration`|`int`|`5` | Duration in seconds |
+| `callback_url`|`str\|None`|`None` | URL to receive async callback |
 
 ### Sound Effects
 
@@ -100,10 +100,10 @@ sfx = coll.generate_sound_effect(
 
 | Parameter | Type | Default | Description |
 |-----------|------|---------|-------------|
-| `prompt` | `str` | required | Text description of the sound effect |
-| `duration` | `int` | `2` | Duration in seconds |
-| `config` | `dict` | `{}` | Additional configuration |
-| `callback_url` | `str\|None` | `None` | URL to receive async callback |
+| `prompt`|`str` | required | Text description of the sound effect |
+| `duration`|`int`|`2` | Duration in seconds |
+| `config`|`dict`|`{}` | Additional configuration |
+| `callback_url`|`str\|None`|`None` | URL to receive async callback |
 
 ### Voice (Text-to-Speech)
 
@@ -118,22 +118,22 @@ voice = coll.generate_voice(
 
 | Parameter | Type | Default | Description |
 |-----------|------|---------|-------------|
-| `text` | `str` | required | Text to convert to speech |
-| `voice_name` | `str` | `"Default"` | Voice to use |
-| `config` | `dict` | `{}` | Additional configuration |
-| `callback_url` | `str\|None` | `None` | URL to receive async callback |
+| `text`|`str` | required | Text to convert to speech |
+| `voice_name`|`str`|`"Default"` | Voice to use |
+| `config`|`dict`|`{}` | Additional configuration |
+| `callback_url`|`str\|None`|`None` | URL to receive async callback |
 
-All three audio methods return an `Audio` object with `.id`, `.name`, `.length`, and `.collection_id`.
+All three audio methods return an `Audio`object with`.id`,`.name`,`.length`, and`.collection_id`.
 
 ## Text Generation (LLM Integration)
 
 Use `coll.generate_text()` to run LLM analysis. This is a **Collection-level** method -- pass any context (transcripts, descriptions) directly in the prompt string.
 
 ```python
-# Get transcript from a video first
+## Get transcript from a video first
 transcript_text = video.get_transcript_text()
 
-# Generate analysis using collection LLM
+## Generate analysis using collection LLM
 result = coll.generate_text(
     prompt=f"Summarize the key points discussed in this video:\n{transcript_text}",
     model_name="pro",
@@ -146,11 +146,11 @@ print(result["output"])
 
 | Parameter | Type | Default | Description |
 |-----------|------|---------|-------------|
-| `prompt` | `str` | required | Prompt with context for the LLM |
-| `model_name` | `str` | `"basic"` | Model tier: `"basic"`, `"pro"`, or `"ultra"` |
-| `response_type` | `str` | `"text"` | Response format: `"text"` or `"json"` |
+| `prompt`|`str` | required | Prompt with context for the LLM |
+| `model_name`|`str`|`"basic"`| Model tier:`"basic"`,`"pro"`, or`"ultra"` |
+| `response_type`|`str`|`"text"`| Response format:`"text"`or`"json"` |
 
-Returns a `dict` with an `output` key. When `response_type="text"`, `output` is a `str`. When `response_type="json"`, `output` is a `dict`.
+Returns a `dict`with an`output`key. When`response_type="text"`,`output`is a`str`. When`response_type="json"`,`output`is a`dict`.
 
 ```python
 result = coll.generate_text(prompt="Summarize this", model_name="pro")
@@ -164,14 +164,14 @@ Combine scene extraction with text generation:
 ```python
 from videodb import SceneExtractionType
 
-# First index scenes
+## First index scenes
 scenes = video.index_scenes(
     extraction_type=SceneExtractionType.time_based,
     extraction_config={"time": 10},
     prompt="Describe the visual content in this scene.",
 )
 
-# Get transcript for spoken context
+## Get transcript for spoken context
 transcript_text = video.get_transcript_text()
 scene_descriptions = []
 for scene in scenes:
@@ -183,7 +183,7 @@ for scene in scenes:
 
 scenes_text = "\n".join(scene_descriptions)
 
-# Analyze with collection LLM
+## Analyze with collection LLM
 result = coll.generate_text(
     prompt=(
         f"Given this video transcript:\n{transcript_text}\n\n"
@@ -214,9 +214,9 @@ dubbed_video.play()
 
 | Parameter | Type | Default | Description |
 |-----------|------|---------|-------------|
-| `video_id` | `str` | required | ID of the video to dub |
-| `language_code` | `str` | required | Target language code (e.g., `"es"`, `"fr"`, `"de"`) |
-| `callback_url` | `str\|None` | `None` | URL to receive async callback |
+| `video_id`|`str` | required | ID of the video to dub |
+| `language_code`|`str`| required | Target language code (e.g.,`"es"`,`"fr"`,`"de"`) |
+| `callback_url`|`str\|None`|`None` | URL to receive async callback |
 
 Returns a `Video` object with the dubbed content.
 
@@ -234,7 +234,7 @@ for entry in translated:
     print(entry)
 ```
 
-**Supported languages** include: `en`, `es`, `fr`, `de`, `it`, `pt`, `ja`, `ko`, `zh`, `hi`, `ar`, and more.
+**Supported languages** include: `en`,`es`,`fr`,`de`,`it`,`pt`,`ja`,`ko`,`zh`,`hi`,`ar`, and more.
 
 ## Complete Workflow Examples
 
@@ -247,10 +247,10 @@ conn = videodb.connect()
 coll = conn.get_collection()
 video = coll.get_video("your-video-id")
 
-# Get transcript
+## Get transcript
 transcript_text = video.get_transcript_text()
 
-# Generate narration script using collection LLM
+## Generate narration script using collection LLM
 result = coll.generate_text(
     prompt=(
         f"Write a professional narration script for this video content:\n"
@@ -260,7 +260,7 @@ result = coll.generate_text(
 )
 script = result["output"]
 
-# Convert script to speech
+## Convert script to speech
 narration = coll.generate_voice(text=script)
 print(f"Narration audio: {narration.id}")
 ```
@@ -286,13 +286,13 @@ conn = videodb.connect()
 coll = conn.get_collection()
 video = coll.get_video("your-video-id")
 
-# Generate background music
+## Generate background music
 music = coll.generate_music(
     prompt="calm ambient background music for a tutorial video",
     duration=60,
 )
 
-# Build timeline with video + music overlay
+## Build timeline with video + music overlay
 timeline = Timeline(conn)
 timeline.add_inline(VideoAsset(asset_id=video.id))
 timeline.add_overlay(0, AudioAsset(asset_id=music.id, disable_other_tracks=False))
@@ -315,7 +315,7 @@ result = coll.generate_text(
     response_type="json",
 )
 
-# result["output"] is a dict when response_type="json"
+## result["output"] is a dict when response_type="json"
 print(result["output"]["summary"])
 print(result["output"]["topics"])
 ```
@@ -323,9 +323,9 @@ print(result["output"]["topics"])
 ## Tips
 
 - **Generated media is persistent**: All generated content is stored in your collection and can be reused.
-- **Three audio methods**: Use `generate_music()` for background music, `generate_sound_effect()` for SFX, and `generate_voice()` for text-to-speech. There is no unified `generate_audio()` method.
-- **Text generation is collection-level**: `coll.generate_text()` does not have access to video content automatically. Fetch the transcript with `video.get_transcript_text()` and pass it in the prompt.
-- **Model tiers**: `"basic"` is fastest, `"pro"` is balanced, `"ultra"` is highest quality. Use `"pro"` for most analysis tasks.
+- **Three audio methods**: Use `generate_music()`for background music,`generate_sound_effect()`for SFX, and`generate_voice()`for text-to-speech. There is no unified`generate_audio()` method.
+- **Text generation is collection-level**: `coll.generate_text()`does not have access to video content automatically. Fetch the transcript with`video.get_transcript_text()` and pass it in the prompt.
+- **Model tiers**: `"basic"`is fastest,`"pro"`is balanced,`"ultra"`is highest quality. Use`"pro"` for most analysis tasks.
 - **Combine generation types**: Generate images for overlays, music for backgrounds, and voice for narration, then compose using timelines (see [editor.md](editor.md)).
 - **Prompt quality matters**: Descriptive, specific prompts produce better results across all generation types.
-- **Aspect ratios for images**: Choose from `"1:1"`, `"9:16"`, `"16:9"`, `"4:3"`, or `"3:4"`.
+- **Aspect ratios for images**: Choose from `"1:1"`,`"9:16"`,`"16:9"`,`"4:3"`, or`"3:4"`.

@@ -1,4 +1,4 @@
-﻿---
+---
 name: article-writing
 description: Write articles, guides, blog posts, tutorials, newsletter issues, and other long-form content in a distinctive voice derived from supplied examples or brand guidance. Use when the user wants polished written content longer than a paragraph, especially when voice consistency, structure, and credibility matter.
 origin: ECC
@@ -25,7 +25,7 @@ Write long-form content that sounds like an actual person with a point of view, 
 
 ## Voice Handling
 
-If the user wants a specific voice, run `brand-voice` first and reuse its `VOICE PROFILE`.
+If the user wants a specific voice, run `brand-voice`first and reuse its`VOICE PROFILE`.
 Do not duplicate a second style-analysis pass here unless the user explicitly asks for one.
 
 If no voice references are given, default to a sharp operator voice: concrete, unsentimental, useful.

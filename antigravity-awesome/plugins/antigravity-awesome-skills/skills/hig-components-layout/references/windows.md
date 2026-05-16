@@ -42,8 +42,8 @@ Windows present in one of two ways depending on a person’s choice in Multitask
 
   * **Windowed.** People can freely resize app windows. Multiple windows can be onscreen at once, and people can reposition them and bring them to the front. The system remembers window size and placement even when an app is closed.
 
-  * Full screen 
-  * Windowed 
+  * Full screen
+  * Windowed
 
 ![A screenshot of the Notes app in full screen on iPad, with an open document titled Nature Walks. The app interface fills the entire screen, with no visible border to the window.](https://docs-assets.developer.apple.com/published/5daa697ab73d7e08de1e4fa78a56bfcb/windows-ipad-notes-fullscreen%402x.png)
 
@@ -169,9 +169,9 @@ You can use a volume to display 2D or 3D content that people can view from any a
 
 ## [Change log](https://developer.apple.com/design/human-interface-guidelines/windows#Change-log)
 
-Date| Changes  
----|---  
-June 9, 2025| Added best practices, and updated with guidance for resizable windows in iPadOS.  
-June 10, 2024| Updated to include guidance for using volumes in visionOS 2 and added game-specific examples.  
-June 21, 2023| Updated to include guidance for visionOS.  
-  
+Date| Changes
+---|---
+June 9, 2025| Added best practices, and updated with guidance for resizable windows in iPadOS.
+June 10, 2024| Updated to include guidance for using volumes in visionOS 2 and added game-specific examples.
+June 21, 2023| Updated to include guidance for visionOS.
+

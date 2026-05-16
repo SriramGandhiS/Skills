@@ -185,7 +185,7 @@ class ManPageToSkillConverter(SkillConverter):
             FileNotFoundError: If ``man_path`` does not exist.
             RuntimeError: If no man pages could be extracted.
         """
-        print(f"\n🔍 Extracting man pages for skill: {self.name}")
+        print(f"\n Extracting man pages for skill: {self.name}")
 
         pages: list[dict] = []
 
@@ -235,10 +235,10 @@ class ManPageToSkillConverter(SkillConverter):
         with open(self.data_file, "w", encoding="utf-8") as f:
             json.dump(result_data, f, indent=2, ensure_ascii=False)
 
-        print(f"\n💾 Saved extracted data to: {self.data_file}")
+        print(f"\n Saved extracted data to: {self.data_file}")
         self.extracted_data = result_data
         print(
-            f"✅ Extracted {len(pages)} man page(s), "
+            f"PASS: Extracted {len(pages)} man page(s), "
             f"{total_options} options, "
             f"{total_examples} examples"
         )
@@ -825,11 +825,11 @@ class ManPageToSkillConverter(SkillConverter):
         Returns:
             ``True`` on success.
         """
-        print(f"\n📂 Loading extracted data from: {json_path}")
+        print(f"\n Loading extracted data from: {json_path}")
         with open(json_path, encoding="utf-8") as f:
             self.extracted_data = json.load(f)
         total = self.extracted_data.get("total_pages", len(self.extracted_data.get("pages", [])))
-        print(f"✅ Loaded {total} man page(s)")
+        print(f"PASS: Loaded {total} man page(s)")
         return True
 
     # ------------------------------------------------------------------
@@ -848,7 +848,7 @@ class ManPageToSkillConverter(SkillConverter):
             Dict mapping category keys to ``{"title": ..., "pages": [...]}``
             dicts.
         """
-        print("\n📋 Categorizing content...")
+        print("\n Categorizing content...")
 
         categorized: dict[str, dict] = {}
         pages = self.extracted_data.get("pages", [])
@@ -892,7 +892,7 @@ class ManPageToSkillConverter(SkillConverter):
                             categorized["other"] = {"title": "Other", "pages": []}
                         categorized["other"]["pages"].append(page)
 
-            print(f"✅ Created {len(categorized)} categories")
+            print(f"PASS: Created {len(categorized)} categories")
             for _cat_key, cat_data in categorized.items():
                 print(f"   - {cat_data['title']}: {len(cat_data['pages'])} pages")
             return categorized
@@ -926,7 +926,7 @@ class ManPageToSkillConverter(SkillConverter):
                 "pages": pages,
             }
 
-        print(f"✅ Created {len(categorized)} categories")
+        print(f"PASS: Created {len(categorized)} categories")
         for _cat_key, cat_data in categorized.items():
             print(f"   - {cat_data['title']}: {len(cat_data['pages'])} pages")
         return categorized
@@ -941,7 +941,7 @@ class ManPageToSkillConverter(SkillConverter):
         Creates the output directory, generates reference files, an index,
         and the main SKILL.md.
         """
-        print(f"\n🏗️  Building skill: {self.name}")
+        print(f"\n  Building skill: {self.name}")
 
         # Create directories
         os.makedirs(f"{self.skill_dir}/references", exist_ok=True)
@@ -952,7 +952,7 @@ class ManPageToSkillConverter(SkillConverter):
         categorized = self.categorize_content()
 
         # Generate reference files
-        print("\n📝 Generating reference files...")
+        print("\n Generating reference files...")
         total_cats = len(categorized)
         cat_num = 1
         for cat_key, cat_data in categorized.items():
@@ -965,8 +965,8 @@ class ManPageToSkillConverter(SkillConverter):
         # Generate SKILL.md
         self._generate_skill_md(categorized)
 
-        print(f"\n✅ Skill built successfully: {self.skill_dir}/")
-        print(f"\n📦 Next step: Package with: skill-seekers package {self.skill_dir}/")
+        print(f"\nPASS: Skill built successfully: {self.skill_dir}/")
+        print(f"\n Next step: Package with: skill-seekers package {self.skill_dir}/")
 
     # ------------------------------------------------------------------
     # Generation (private)
@@ -1186,7 +1186,7 @@ class ManPageToSkillConverter(SkillConverter):
                     all_options.append(
                         {
                             "command": page.get("name", ""),
-                            **opt,
+**opt,
                         }
                     )
 
@@ -1219,7 +1219,7 @@ class ManPageToSkillConverter(SkillConverter):
                     all_examples.append(
                         {
                             "command_name": page.get("name", ""),
-                            **ex,
+**ex,
                         }
                     )
 

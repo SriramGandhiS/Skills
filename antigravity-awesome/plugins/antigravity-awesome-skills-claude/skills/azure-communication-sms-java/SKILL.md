@@ -141,7 +141,7 @@ System.out.println("Headers: " + response.getHeaders());
 for (SmsSendResult result : response.getValue()) {
     System.out.println("Message ID: " + result.getMessageId());
     System.out.println("Successful: " + result.isSuccessful());
-    
+
     if (!result.isSuccessful()) {
         System.out.println("HTTP Status: " + result.getHttpStatusCode());
         System.out.println("Error: " + result.getErrorMessage());
@@ -192,12 +192,12 @@ try {
         "+14255551234",
         "Test message"
     );
-    
+
     // Individual message errors don't throw exceptions
     if (!result.isSuccessful()) {
         handleMessageError(result);
     }
-    
+
 } catch (HttpResponseException e) {
     // Request-level failures (auth, network, etc.)
     System.out.println("Request failed: " + e.getMessage());
@@ -209,7 +209,7 @@ try {
 private void handleMessageError(SmsSendResult result) {
     int status = result.getHttpStatusCode();
     String error = result.getErrorMessage();
-    
+
     if (status == 400) {
         System.out.println("Invalid phone number: " + result.getTo());
     } else if (status == 429) {
@@ -229,7 +229,7 @@ Delivery reports are sent via Azure Event Grid. Configure an Event Grid subscrip
 public void handleDeliveryReport(String eventJson) {
     // Parse Event Grid event
     // Event type: Microsoft.Communication.SMSDeliveryReportReceived
-    
+
     // Event data contains:
     // - messageId: correlates to SmsSendResult.getMessageId()
     // - from: sender number

@@ -1,32 +1,26 @@
 #!/usr/bin/env bash
 #===============================================================================
 # Council v2 - True blind review with sycophancy detection
-#
-# Upgraded council review system that provides:
-#   1. True blind review (isolated evidence packages, no cross-contamination)
-#   2. Sycophancy detection via statistical analysis
-#   3. Reviewer calibration tracking over time
-#   4. Anti-sycophancy devil's advocate on high sycophancy scores
-#
-# Activated via: LOKI_COUNCIL_VERSION=2
-#
-# Environment Variables:
-#   LOKI_COUNCIL_SYCOPHANCY_THRESHOLD - Score above which to trigger devil's advocate (default: 0.6)
-#   LOKI_COUNCIL_VERSION              - Set to "2" to activate this module
-#
-# Dependencies:
-#   - completion-council.sh (sourced by caller for shared functions)
-#   - swarm/sycophancy.py (sycophancy detection)
-#   - swarm/calibration.py (reviewer calibration)
-#
-#===============================================================================
+# # Upgraded council review system that provides:
+# 1. True blind review (isolated evidence packages, no cross-contamination)
+# 2. Sycophancy detection via statistical analysis
+# 3. Reviewer calibration tracking over time
+# 4. Anti-sycophancy devil's advocate on high sycophancy scores
+# # Activated via: LOKI_COUNCIL_VERSION=2
+# # Environment Variables:
+# LOKI_COUNCIL_SYCOPHANCY_THRESHOLD - Score above which to trigger devil's advocate (default: 0.6)
+# LOKI_COUNCIL_VERSION              - Set to "2" to activate this module
+# # Dependencies:
+# - completion-council.sh (sourced by caller for shared functions)
+# - swarm/sycophancy.py (sycophancy detection)
+# - swarm/calibration.py (reviewer calibration)
+# #===============================================================================
 
 COUNCIL_V2_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 #===============================================================================
 # council_v2_vote() -- Main entry point for v2 voting
-#
-# 1. Create isolated evidence packages (no cross-contamination)
+# # 1. Create isolated evidence packages (no cross-contamination)
 # 2. Launch parallel reviewers with isolated evidence
 # 3. Collect votes independently
 # 4. Run sycophancy detection via Python
@@ -213,8 +207,7 @@ SUMMARY_EOF
 
 #===============================================================================
 # council_v2_run_reviewer() -- Run a single isolated reviewer
-#
-# Each reviewer receives only their evidence package and produces a JSON vote.
+# # Each reviewer receives only their evidence package and produces a JSON vote.
 # No reviewer can see another reviewer's output (true blind review).
 #===============================================================================
 

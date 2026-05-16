@@ -85,19 +85,19 @@ AEO Keywords:
 
 ## Best Practices
 
-- ✅ **Do:** Target Tier 1 keywords first — build authority before going after competitive terms
-- ✅ **Do:** Use AEO keywords in FAQ sections and definition blocks for AI engine citation
-- ✅ **Do:** Validate estimated volume and difficulty with a live tool (Ahrefs, SEMrush) before committing
-- ❌ **Don't:** Target two keywords on the same page if cannibalization is flagged
-- ❌ **Don't:** Use volume as the only prioritisation signal — difficulty and intent matter more
+- PASS: **Do:** Target Tier 1 keywords first — build authority before going after competitive terms
+- PASS: **Do:** Use AEO keywords in FAQ sections and definition blocks for AI engine citation
+- PASS: **Do:** Validate estimated volume and difficulty with a live tool (Ahrefs, SEMrush) before committing
+- FAIL: **Don't:** Target two keywords on the same page if cannibalization is flagged
+- FAIL: **Don't:** Use volume as the only prioritisation signal — difficulty and intent matter more
 
 ## Common Pitfalls
 
 - **Problem:** High-volume keyword chosen but impossible to rank for early on
-  **Solution:** Always cross-check volume with difficulty. Tier 1 should have difficulty under 45.
+**Solution:** Always cross-check volume with difficulty. Tier 1 should have difficulty under 45.
 
 - **Problem:** AEO keywords ignored in favour of traditional search terms
-  **Solution:** AEO keywords drive AI engine citation — include at least 5 in every research run.
+**Solution:** AEO keywords drive AI engine citation — include at least 5 in every research run.
 
 ## Related Skills
 

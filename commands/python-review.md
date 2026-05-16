@@ -8,8 +8,8 @@ This command invokes the **python-reviewer** agent for comprehensive Python-spec
 
 ## What This Command Does
 
-1. **Identify Python Changes**: Find modified `.py` files via `git diff`
-2. **Run Static Analysis**: Execute `ruff`, `mypy`, `pylint`, `black --check`
+1. **Identify Python Changes**: Find modified `.py`files via`git diff`
+2. **Run Static Analysis**: Execute `ruff`,`mypy`,`pylint`,`black --check`
 3. **Security Scan**: Check for SQL injection, command injection, unsafe deserialization
 4. **Type Safety Review**: Analyze type hints and mypy errors
 5. **Pythonic Code Check**: Verify code follows PEP 8 and Python best practices
@@ -55,22 +55,22 @@ Use `/python-review` when:
 ## Automated Checks Run
 
 ```bash
-# Type checking
+## Type checking
 mypy .
 
-# Linting and formatting
+## Linting and formatting
 ruff check .
 black --check .
 isort --check-only .
 
-# Security scanning
+## Security scanning
 bandit -r .
 
-# Dependency audit
+## Dependency audit
 pip-audit
 safety check
 
-# Testing
+## Testing
 pytest --cov=app --cov-report=term-missing
 ```
 
@@ -80,7 +80,7 @@ pytest --cov=app --cov-report=term-missing
 User: /python-review
 
 Agent:
-# Python Code Review Report
+## Python Code Review Report
 
 ## Files Reviewed
 - app/routes/user.py (modified)
@@ -180,7 +180,7 @@ Run: `black app/routes/user.py app/services/auth.py`
 
 ### Django Projects
 The reviewer checks for:
-- N+1 query issues (use `select_related` and `prefetch_related`)
+- N+1 query issues (use `select_related`and`prefetch_related`)
 - Missing migrations for model changes
 - Raw SQL usage when ORM could work
 - Missing `transaction.atomic()` for multi-step operations
@@ -203,17 +203,17 @@ The reviewer checks for:
 ## Related
 
 - Agent: `agents/python-reviewer.md`
-- Skills: `skills/python-patterns/`, `skills/python-testing/`
+- Skills: `skills/python-patterns/`,`skills/python-testing/`
 
 ## Common Fixes
 
 ### Add Type Hints
 ```python
-# Before
+## Before
 def calculate(x, y):
     return x + y
 
-# After
+## After
 from typing import Union
 
 def calculate(x: Union[int, float], y: Union[int, float]) -> Union[int, float]:
@@ -222,36 +222,36 @@ def calculate(x: Union[int, float], y: Union[int, float]) -> Union[int, float]:
 
 ### Use Context Managers
 ```python
-# Before
+## Before
 f = open("file.txt")
 data = f.read()
 f.close()
 
-# After
+## After
 with open("file.txt") as f:
     data = f.read()
 ```
 
 ### Use List Comprehensions
 ```python
-# Before
+## Before
 result = []
 for item in items:
     if item.active:
         result.append(item.name)
 
-# After
+## After
 result = [item.name for item in items if item.active]
 ```
 
 ### Fix Mutable Defaults
 ```python
-# Before
+## Before
 def append(value, items=[]):
     items.append(value)
     return items
 
-# After
+## After
 def append(value, items=None):
     if items is None:
         items = []
@@ -261,23 +261,23 @@ def append(value, items=None):
 
 ### Use f-strings (Python 3.6+)
 ```python
-# Before
+## Before
 name = "Alice"
 greeting = "Hello, " + name + "!"
 greeting2 = "Hello, {}".format(name)
 
-# After
+## After
 greeting = f"Hello, {name}!"
 ```
 
 ### Fix String Concatenation in Loops
 ```python
-# Before
+## Before
 result = ""
 for item in items:
     result += str(item)
 
-# After
+## After
 result = "".join(str(item) for item in items)
 ```
 
@@ -294,4 +294,4 @@ The reviewer notes when code uses features from newer Python versions:
 | Match statements | 3.10+ |
 | Type unions (&#96;x &#124; None&#96;) | 3.10+ |
 
-Ensure your project's `pyproject.toml` or `setup.py` specifies the correct minimum Python version.
+Ensure your project's `pyproject.toml`or`setup.py` specifies the correct minimum Python version.

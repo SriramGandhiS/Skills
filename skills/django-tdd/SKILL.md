@@ -1,4 +1,4 @@
-﻿---
+---
 name: django-tdd
 description: Django testing strategies with pytest-django, TDD methodology, factory_boy, mocking, coverage, and testing Django REST Framework APIs.
 origin: ECC
@@ -20,17 +20,17 @@ Test-driven development for Django applications using pytest, factory_boy, and D
 ### Red-Green-Refactor Cycle
 
 ```python
-# Step 1: RED - Write failing test
+## Step 1: RED - Write failing test
 def test_user_creation():
     user = User.objects.create_user(email='test@example.com', password='testpass123')
     assert user.email == 'test@example.com'
     assert user.check_password('testpass123')
     assert not user.is_staff
 
-# Step 2: GREEN - Make test pass
-# Create User model or factory
+## Step 2: GREEN - Make test pass
+## Create User model or factory
 
-# Step 3: REFACTOR - Improve while keeping tests green
+## Step 3: REFACTOR - Improve while keeping tests green
 ```
 
 ## Setup
@@ -38,7 +38,7 @@ def test_user_creation():
 ### pytest Configuration
 
 ```ini
-# pytest.ini
+## pytest.ini
 [pytest]
 DJANGO_SETTINGS_MODULE = config.settings.test
 testpaths = tests
@@ -60,7 +60,7 @@ markers =
 ### Test Settings
 
 ```python
-# config/settings/test.py
+## config/settings/test.py
 from .base import *
 
 DEBUG = True
@@ -71,7 +71,7 @@ DATABASES = {
     }
 }
 
-# Disable migrations for speed
+## Disable migrations for speed
 class DisableMigrations:
     def __contains__(self, item):
         return True
@@ -81,15 +81,15 @@ class DisableMigrations:
 
 MIGRATION_MODULES = DisableMigrations()
 
-# Faster password hashing
+## Faster password hashing
 PASSWORD_HASHERS = [
     'django.contrib.auth.hashers.MD5PasswordHasher',
 ]
 
-# Email backend
+## Email backend
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
-# Celery always eager
+## Celery always eager
 CELERY_TASK_ALWAYS_EAGER = True
 CELERY_TASK_EAGER_PROPAGATES = True
 ```
@@ -97,7 +97,7 @@ CELERY_TASK_EAGER_PROPAGATES = True
 ### conftest.py
 
 ```python
-# tests/conftest.py
+## tests/conftest.py
 import pytest
 from django.utils import timezone
 from django.contrib.auth import get_user_model
@@ -151,7 +151,7 @@ def authenticated_api_client(api_client, user):
 ### Factory Setup
 
 ```python
-# tests/factories.py
+## tests/factories.py
 import factory
 from factory import fuzzy
 from datetime import datetime, timedelta
@@ -211,7 +211,7 @@ class ProductFactory(factory.django.DjangoModelFactory):
 ### Using Factories
 
 ```python
-# tests/test_models.py
+## tests/test_models.py
 import pytest
 from tests.factories import ProductFactory, UserFactory
 
@@ -239,7 +239,7 @@ def test_multiple_products():
 ### Model Tests
 
 ```python
-# tests/test_models.py
+## tests/test_models.py
 import pytest
 from django.core.exceptions import ValidationError
 from tests.factories import UserFactory, ProductFactory
@@ -315,7 +315,7 @@ class TestProductModel:
 ### Django View Testing
 
 ```python
-# tests/test_views.py
+## tests/test_views.py
 import pytest
 from django.urls import reverse
 from tests.factories import ProductFactory, UserFactory
@@ -375,7 +375,7 @@ class TestProductViews:
 ### Serializer Testing
 
 ```python
-# tests/test_serializers.py
+## tests/test_serializers.py
 import pytest
 from rest_framework.exceptions import ValidationError
 from apps.products.serializers import ProductSerializer
@@ -443,7 +443,7 @@ class TestProductSerializer:
 ### API ViewSet Testing
 
 ```python
-# tests/test_api.py
+## tests/test_api.py
 import pytest
 from rest_framework.test import APIClient
 from rest_framework import status
@@ -551,7 +551,7 @@ class TestProductAPI:
 ### Mocking External Services
 
 ```python
-# tests/test_views.py
+## tests/test_views.py
 from unittest.mock import patch, Mock
 import pytest
 
@@ -595,7 +595,7 @@ class TestPaymentView:
 ### Mocking Email Sending
 
 ```python
-# tests/test_email.py
+## tests/test_email.py
 from django.core import mail
 from django.test import override_settings
 
@@ -614,7 +614,7 @@ def test_order_confirmation_email(db, order):
 ### Full Flow Testing
 
 ```python
-# tests/test_integration.py
+## tests/test_integration.py
 import pytest
 from django.urls import reverse
 from tests.factories import UserFactory, ProductFactory
@@ -676,7 +676,7 @@ class TestCheckoutFlow:
 - **Mock external services**: Don't depend on external APIs
 - **Use fixtures**: Eliminate duplication
 - **Test permissions**: Ensure authorization works
-- **Keep tests fast**: Use `--reuse-db` and `--nomigrations`
+- **Keep tests fast**: Use `--reuse-db`and`--nomigrations`
 
 ### DON'T
 
@@ -693,10 +693,10 @@ class TestCheckoutFlow:
 ### Coverage Configuration
 
 ```bash
-# Run tests with coverage
+## Run tests with coverage
 pytest --cov=apps --cov-report=html --cov-report=term-missing
 
-# Generate HTML report
+## Generate HTML report
 open htmlcov/index.html
 ```
 

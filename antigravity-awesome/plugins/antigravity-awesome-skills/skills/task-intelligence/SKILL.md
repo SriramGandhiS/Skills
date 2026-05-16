@@ -164,14 +164,14 @@ Estratégia: backup preventivo, confirmação explícita, rollback plan.
 MAPA DE PROBLEMAS — [Nome da Tarefa]
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 PROVÁVEIS (resolver antes de começar):
-  ⚠ [problema] → [solução preventiva aplicada agora]
-  ⚠ [problema] → [solução preventiva aplicada agora]
+  WARNING: [problema] → [solução preventiva aplicada agora]
+  WARNING: [problema] → [solução preventiva aplicada agora]
 
 POSSÍVEIS (monitorar durante execução):
   ~ [problema] → [sinal de alerta] → [ação se ocorrer]
 
 CRÍTICOS (baixa prob, alto impacto):
-  🔴 [risco] → [backup/rollback plan]
+   [risco] → [backup/rollback plan]
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```
 
@@ -197,8 +197,8 @@ PLANO DE EXECUÇÃO:
 TEMPO TOTAL: ~Xmin | CONFIANÇA: Alta/Média/Baixa
 
 PROBLEMAS PRÉ-RESOLVIDOS:
-  ✅ [problema] → [solução aplicada]
-  ✅ [problema] → [solução aplicada]
+  PASS: [problema] → [solução aplicada]
+  PASS: [problema] → [solução aplicada]
 
 PONTOS DE VERIFICAÇÃO:
   [ ] Após etapa 1: verificar [critério de sucesso]
@@ -271,9 +271,9 @@ TEMPO TOTAL: ~28min | CONFIANÇA: Alta
 (estrutura clara, dependências conhecidas, sem APIs externas incertas)
 
 PROBLEMAS PRÉ-RESOLVIDOS:
-  ✅ API key exposta → .env obrigatório, .gitignore configurado
-  ✅ YAML inválido → validar antes de instalar
-  ✅ Webhook sem autenticação → HMAC-SHA256 incluído no plano
+  PASS: API key exposta → .env obrigatório, .gitignore configurado
+  PASS: YAML inválido → validar antes de instalar
+  PASS: Webhook sem autenticação → HMAC-SHA256 incluído no plano
 
 PONTOS DE VERIFICAÇÃO:
   [ ] Após SKILL.md: yaml.safe_load não levanta exceção

@@ -2,8 +2,7 @@
 # tests/integration/test_sdk_isolation.sh
 # v7.0.0 invariant: `import anthropic` / `from anthropic` is ONLY permitted
 # in memory/managed_memory/ and providers/managed.py.
-#
-# This is a stricter superset of tests/managed_memory/test_sdk_isolation.sh.
+# # This is a stricter superset of tests/managed_memory/test_sdk_isolation.sh.
 # The integration test codifies the v7 policy: as Phase 2/3/4/5 land, if any
 # new file in autonomy/, dashboard/, mcp/, providers/, memory/ (outside the
 # allowlist) imports the SDK, the blast-radius invariant is broken.

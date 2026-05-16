@@ -85,7 +85,7 @@ generate(
 | 参数 | 类型 | 选项 | 说明 |
 |-------|------|---------|-------|
 | `prompt` | 字符串 | 必需 | 描述您想要的内容 |
-| `image_size` | 字符串 | `square`、`portrait_4_3`、`landscape_16_9`、`portrait_16_9`、`landscape_4_3` | 宽高比 |
+| `image_size`| 字符串 |`square`、`portrait_4_3`、`landscape_16_9`、`portrait_16_9`、`landscape_4_3` | 宽高比 |
 | `num_images` | 数字 | 1-4 | 生成数量 |
 | `seed` | 数字 | 任意整数 | 可重现性 |
 | `guidance_scale` | 数字 | 1-20 | 遵循提示的紧密程度（值越高越贴近字面） |
@@ -95,10 +95,10 @@ generate(
 使用 Nano Banana 2 并输入图像进行修复、扩展或风格迁移：
 
 ```
-# 首先上传源图像
+## 首先上传源图像
 upload(file_path: "/path/to/image.png")
 
-# 然后使用图像输入进行生成
+## 然后使用图像输入进行生成
 generate(
   app_id: "fal-ai/nano-banana-2",
   input_data: {
@@ -178,8 +178,8 @@ generate(
 | 参数 | 类型 | 选项 | 说明 |
 |-------|------|---------|-------|
 | `prompt` | 字符串 | 必需 | 描述视频内容 |
-| `duration` | 字符串 | `"5s"`、`"10s"` | 视频长度 |
-| `aspect_ratio` | 字符串 | `"16:9"`、`"9:16"`、`"1:1"` | 帧比例 |
+| `duration`| 字符串 |`"5s"`、`"10s"` | 视频长度 |
+| `aspect_ratio`| 字符串 |`"16:9"`、`"9:16"`、`"1:1"` | 帧比例 |
 | `seed` | 数字 | 任意整数 | 可重现性 |
 | `image_url` | 字符串 | URL | 用于图生视频的源图像 |
 
@@ -244,13 +244,13 @@ with open("output.mp3", "wb") as f:
 如果配置了 VideoDB，使用其生成式音频：
 
 ```python
-# Voice generation
+## Voice generation
 audio = coll.generate_voice(text="Your narration here", voice="alloy")
 
-# Music generation
+## Music generation
 music = coll.generate_music(prompt="upbeat electronic background music", duration=30)
 
-# Sound effects
+## Sound effects
 sfx = coll.generate_sound_effect(prompt="thunder crack followed by rain")
 ```
 

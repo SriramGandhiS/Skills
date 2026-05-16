@@ -50,7 +50,7 @@ During an autonomous run the optimizer **must stream stage transitions** as they
 Short bullet-block, never a wall of text:
 
 - Current stage letter + name
-- Per-output status: ⏳ pending, ✓ done, ✗ failed
+- Per-output status:  pending, ✓ done, ✗ failed
 - Metric state: aggregate total, weakest criterion, delta vs champion
 - Running cost + session budget remaining
 
@@ -60,7 +60,7 @@ Example (iter 1 Stage D in progress):
 [D] Iter 1 generation — 2 of 3 done
     outputs/01.md  ✓ (6:00, 66k tokens)
     outputs/02.md  ✓ (5:18, 63k tokens, partial c6 leak detected)
-    outputs/03.md  ⏳ still running
+    outputs/03.md   still running
     session cost so far: ~$0.17 of $2.50 cap
 ```
 

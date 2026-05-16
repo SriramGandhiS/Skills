@@ -4,26 +4,26 @@
 
 ### 1. Not Using `ctx.waitUntil()`
 
-**Problem:** Async work doesn't complete or tail Worker times out  
-**Cause:** Handlers exit immediately; awaiting blocks processing  
+**Problem:** Async work doesn't complete or tail Worker times out
+**Cause:** Handlers exit immediately; awaiting blocks processing
 **Solution:**
 
 ```typescript
-// ❌ WRONG - fire and forget
+// FAIL: WRONG - fire and forget
 export default {
   async tail(events) {
     fetch(endpoint, { body: JSON.stringify(events) });
   }
 };
 
-// ❌ WRONG - blocking await
+// FAIL: WRONG - blocking await
 export default {
   async tail(events, env, ctx) {
     await fetch(endpoint, { body: JSON.stringify(events) });
   }
 };
 
-// ✅ CORRECT
+// PASS: CORRECT
 export default {
   async tail(events, env, ctx) {
     ctx.waitUntil(
@@ -38,37 +38,37 @@ export default {
 
 ### 2. Missing `tail()` Handler
 
-**Problem:** Producer deployment fails  
-**Cause:** Worker in `tail_consumers` doesn't export `tail()` handler  
+**Problem:** Producer deployment fails
+**Cause:** Worker in `tail_consumers` doesn't export `tail()` handler
 **Solution:** Ensure `export default { async tail(events, env, ctx) { ... } }`
 
 ### 3. Outcome vs HTTP Status
 
-**Problem:** Filtering by wrong status  
+**Problem:** Filtering by wrong status
 **Cause:** `outcome` is script execution status, not HTTP status
 
 ```typescript
-// ❌ WRONG
+// FAIL: WRONG
 if (event.outcome === 500) { /* never matches */ }
 
-// ✅ CORRECT
+// PASS: CORRECT
 if (event.outcome === 'exception') { /* script threw */ }
 if (event.event?.response?.status === 500) { /* HTTP 500 */ }
 ```
 
 ### 4. Timestamp Units
 
-**Problem:** Dates off by 1000x  
+**Problem:** Dates off by 1000x
 **Cause:** Timestamps are epoch milliseconds, not seconds
 
 ```typescript
-// ❌ WRONG: const date = new Date(event.eventTimestamp * 1000);
-// ✅ CORRECT: const date = new Date(event.eventTimestamp);
+// FAIL: WRONG: const date = new Date(event.eventTimestamp * 1000);
+// PASS: CORRECT: const date = new Date(event.eventTimestamp);
 ```
 
 ### 5. Type Name Mismatch
 
-**Problem:** Using `TailItem` type  
+**Problem:** Using `TailItem` type
 **Cause:** Old docs used `TailItem`, SDK uses `TraceItem`
 
 ```typescript
@@ -80,8 +80,8 @@ export default {
 
 ### 6. Excessive Logging Volume
 
-**Problem:** Unexpected high costs  
-**Cause:** Invoked on EVERY producer request  
+**Problem:** Unexpected high costs
+**Cause:** Invoked on EVERY producer request
 **Solution:** Sample events
 
 ```typescript
@@ -95,8 +95,8 @@ export default {
 
 ### 7. Serialization Issues
 
-**Problem:** `JSON.stringify()` fails  
-**Cause:** `log.message` is `unknown[]` with non-serializable values  
+**Problem:** `JSON.stringify()` fails
+**Cause:** `log.message` is `unknown[]` with non-serializable values
 **Solution:**
 
 ```typescript
@@ -114,8 +114,8 @@ const safePayload = events.map(e => ({
 
 ### 8. Missing Error Handling
 
-**Problem:** Tail Worker silently fails  
-**Cause:** No try/catch  
+**Problem:** Tail Worker silently fails
+**Cause:** No try/catch
 **Solution:**
 
 ```typescript
@@ -131,8 +131,8 @@ ctx.waitUntil((async () => {
 
 ### 9. Deployment Order
 
-**Problem:** Producer deployment fails  
-**Cause:** Tail consumer not deployed yet  
+**Problem:** Producer deployment fails
+**Cause:** Tail consumer not deployed yet
 **Solution:** Deploy tail consumer FIRST
 
 ```bash
@@ -142,8 +142,8 @@ cd ../producer && wrangler deploy
 
 ### 10. No Event Retry
 
-**Problem:** Events lost when handler fails  
-**Cause:** Failed invocations NOT retried  
+**Problem:** Events lost when handler fails
+**Cause:** Failed invocations NOT retried
 **Solution:** Implement fallback storage (see #8)
 
 ## Debugging

@@ -524,19 +524,19 @@ func FuzzCompare(f *testing.F) {
 ### 커버리지 실행
 
 ```bash
-# Basic coverage
+## Basic coverage
 go test -cover ./...
 
-# Generate coverage profile
+## Generate coverage profile
 go test -coverprofile=coverage.out ./...
 
-# View coverage in browser
+## View coverage in browser
 go tool cover -html=coverage.out
 
-# View coverage by function
+## View coverage by function
 go tool cover -func=coverage.out
 
-# Coverage with race detection
+## Coverage with race detection
 go test -race -coverprofile=coverage.out ./...
 ```
 
@@ -644,37 +644,37 @@ func TestAPIHandler(t *testing.T) {
 ## 테스팅 명령어
 
 ```bash
-# Run all tests
+## Run all tests
 go test ./...
 
-# Run tests with verbose output
+## Run tests with verbose output
 go test -v ./...
 
-# Run specific test
+## Run specific test
 go test -run TestAdd ./...
 
-# Run tests matching pattern
+## Run tests matching pattern
 go test -run "TestUser/Create" ./...
 
-# Run tests with race detector
+## Run tests with race detector
 go test -race ./...
 
-# Run tests with coverage
+## Run tests with coverage
 go test -cover -coverprofile=coverage.out ./...
 
-# Run short tests only
+## Run short tests only
 go test -short ./...
 
-# Run tests with timeout
+## Run tests with timeout
 go test -timeout 30s ./...
 
-# Run benchmarks
+## Run benchmarks
 go test -bench=. -benchmem ./...
 
-# Run fuzzing
+## Run fuzzing
 go test -fuzz=FuzzParse -fuzztime=30s ./...
 
-# Count test runs (for flaky test detection)
+## Count test runs (for flaky test detection)
 go test -count=10 ./...
 ```
 
@@ -699,7 +699,7 @@ go test -count=10 ./...
 ## CI/CD 통합
 
 ```yaml
-# GitHub Actions example
+## GitHub Actions example
 test:
   runs-on: ubuntu-latest
   steps:

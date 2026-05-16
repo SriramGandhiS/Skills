@@ -66,11 +66,11 @@ terraform {
 
 ## Best Practices
 
-- ✅ **Do:** Pin provider versions in `versions.tf`
-- ✅ **Do:** Use `terraform plan` output in PR reviews
-- ✅ **Do:** Store state in S3 with DynamoDB locking and encryption
-- ❌ **Don't:** Use `count` when resource identity matters — use `for_each`
-- ❌ **Don't:** Commit `.tfstate` files to version control
+- PASS: **Do:** Pin provider versions in `versions.tf`
+- PASS: **Do:** Use `terraform plan` output in PR reviews
+- PASS: **Do:** Store state in S3 with DynamoDB locking and encryption
+- FAIL: **Don't:** Use `count` when resource identity matters — use `for_each`
+- FAIL: **Don't:** Commit `.tfstate` files to version control
 
 ## Troubleshooting
 

@@ -29,13 +29,13 @@ Repository'nizin git geçmişini analiz ederek kodlama desenlerini çıkarın ve
 ### Adım 1: Git Verilerini Topla
 
 ```bash
-# Dosya değişiklikleriyle son commit'leri al
+## Dosya değişiklikleriyle son commit'leri al
 git log --oneline -n ${COMMITS:-200} --name-only --pretty=format:"%H|%s|%ad" --date=short
 
-# Dosyaya göre commit sıklığını al
+## Dosyaya göre commit sıklığını al
 git log --oneline -n 200 --name-only | grep -v "^$" | grep -v "^[a-f0-9]" | sort | uniq -c | sort -rn | head -20
 
-# Commit mesaj desenlerini al
+## Commit mesaj desenlerini al
 git log --oneline -n 200 | cut -d' ' -f2- | head -50
 ```
 
@@ -64,7 +64,7 @@ source: local-git-analysis
 analyzed_commits: {count}
 ---
 
-# {Repo Name} Desenleri
+## {Repo Name} Desenleri
 
 ## Commit Kuralları
 {tespit edilen commit mesaj desenleri}
@@ -92,7 +92,7 @@ domain: git
 source: local-repo-analysis
 ---
 
-# Conventional Commits Kullan
+## Conventional Commits Kullan
 
 ## Aksiyon
 Commit'leri şu öneklerle başlat: feat:, fix:, chore:, docs:, test:, refactor:
@@ -115,7 +115,7 @@ source: local-git-analysis
 analyzed_commits: 150
 ---
 
-# My App Desenleri
+## My App Desenleri
 
 ## Commit Kuralları
 
@@ -150,7 +150,7 @@ src/
 
 ## Test Desenleri
 
-- Test dosyaları: `__tests__/` dizinleri veya `.test.ts` eki
+- Test dosyaları: `__tests__/`dizinleri veya`.test.ts` eki
 - Kapsama hedefi: 80%+
 - Framework: Vitest
 ```

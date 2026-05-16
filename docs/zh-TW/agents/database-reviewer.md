@@ -22,19 +22,19 @@ model: opus
 
 ### 資料庫分析指令
 ```bash
-# 連接到資料庫
+## 連接到資料庫
 psql $DATABASE_URL
 
-# 檢查慢查詢（需要 pg_stat_statements）
+## 檢查慢查詢（需要 pg_stat_statements）
 psql -c "SELECT query, mean_exec_time, calls FROM pg_stat_statements ORDER BY mean_exec_time DESC LIMIT 10;"
 
-# 檢查表格大小
+## 檢查表格大小
 psql -c "SELECT relname, pg_size_pretty(pg_total_relation_size(relid)) FROM pg_stat_user_tables ORDER BY pg_total_relation_size(relid) DESC;"
 
-# 檢查索引使用
+## 檢查索引使用
 psql -c "SELECT indexrelname, idx_scan, idx_tup_read FROM pg_stat_user_indexes ORDER BY idx_scan DESC;"
 
-# 找出外鍵上缺少的索引
+## 找出外鍵上缺少的索引
 psql -c "SELECT conrelid::regclass, a.attname FROM pg_constraint c JOIN pg_attribute a ON a.attrelid = c.conrelid AND a.attnum = ANY(c.conkey) WHERE c.contype = 'f' AND NOT EXISTS (SELECT 1 FROM pg_index i WHERE i.indrelid = c.conrelid AND a.attnum = ANY(i.indkey));"
 ```
 
@@ -337,9 +337,9 @@ RETURNING *;
 - 非參數化查詢（SQL 注入風險）
 
 ### FAIL: 結構描述反模式
-- IDs 用 `int`（應用 `bigint`）
-- 無理由用 `varchar(255)`（應用 `text`）
-- `timestamp` 沒有時區（應用 `timestamptz`）
+- IDs 用 `int`（應用`bigint`）
+- 無理由用 `varchar(255)`（應用`text`）
+- `timestamp`沒有時區（應用`timestamptz`）
 - 隨機 UUIDs 作為主鍵（應用 UUIDv7 或 IDENTITY）
 - 需要引號的混合大小寫識別符
 

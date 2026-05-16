@@ -10,7 +10,7 @@ date_added: '2026-02-27'
 
 Management plane SDK for provisioning and managing Azure API Management resources via Azure Resource Manager.
 
-> **⚠️ Management vs Data Plane**
+> **WARNING: Management vs Data Plane**
 > - **This SDK (Azure.ResourceManager.ApiManagement)**: Create services, APIs, products, subscriptions, policies, users, groups
 > - **Data Plane**: Direct API calls to your APIM gateway endpoints
 
@@ -94,7 +94,7 @@ var resourceGroup = await subscription
 var serviceData = new ApiManagementServiceData(
     location: AzureLocation.EastUS,
     sku: new ApiManagementServiceSkuProperties(
-        ApiManagementServiceSkuType.Developer, 
+        ApiManagementServiceSkuType.Developer,
         capacity: 1),
     publisherEmail: "admin@contoso.com",
     publisherName: "Contoso");

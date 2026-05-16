@@ -34,7 +34,7 @@ This skill should be used when:
 
 ## Visual Enhancement with Scientific Schematics
 
-**⚠️ MANDATORY: Every scientific paper MUST include a graphical abstract plus 1-2 additional AI-generated figures using the scientific-schematics skill.**
+**WARNING: MANDATORY: Every scientific paper MUST include a graphical abstract plus 1-2 additional AI-generated figures using the scientific-schematics skill.**
 
 This is not optional. Scientific papers without visual elements are incomplete. Before finalizing any document:
 1. **ALWAYS generate a graphical abstract** as the first visual element
@@ -63,7 +63,7 @@ python scripts/generate_schematic.py "Graphical abstract for [paper title]: [bri
 
 ### Additional Figures (GENERATE EXTENSIVELY)
 
-**⚠️ CRITICAL: Use BOTH scientific-schematics AND generate-image EXTENSIVELY throughout all documents.**
+**WARNING: CRITICAL: Use BOTH scientific-schematics AND generate-image EXTENSIVELY throughout all documents.**
 
 Every document should be richly illustrated. Generate figures liberally - when in doubt, add a visual.
 
@@ -307,21 +307,21 @@ Once the outline is complete, expand each bullet point into proper prose:
 **Example conversion to prose:**
 
 ```
-Artificial intelligence approaches have gained significant traction in drug discovery 
-pipelines over the past decade (Smith, 2023; Jones, 2024). While these computational 
-methods show promise for accelerating the identification of therapeutic candidates, 
-traditional experimental approaches remain slow and resource-intensive, often requiring 
-years of laboratory work and substantial financial investment. However, the application 
-of AI to rare diseases has been limited, with only two prior studies demonstrating 
-proof-of-concept results (Lee, 2022; Chen, 2023). The primary obstacle has been the 
-scarcity of training data for conditions affecting small patient populations. 
+Artificial intelligence approaches have gained significant traction in drug discovery
+pipelines over the past decade (Smith, 2023; Jones, 2024). While these computational
+methods show promise for accelerating the identification of therapeutic candidates,
+traditional experimental approaches remain slow and resource-intensive, often requiring
+years of laboratory work and substantial financial investment. However, the application
+of AI to rare diseases has been limited, with only two prior studies demonstrating
+proof-of-concept results (Lee, 2022; Chen, 2023). The primary obstacle has been the
+scarcity of training data for conditions affecting small patient populations.
 
-To address this challenge, we developed a transfer learning approach that leverages 
-knowledge from well-characterized common diseases to predict therapeutic targets for 
-rare conditions. Our novel neural architecture combines convolutional layers for 
-molecular feature extraction with attention mechanisms for protein-ligand interaction 
-modeling. The objective of this study was to validate our approach across three 
-independent rare disease datasets, assessing both predictive accuracy and biological 
+To address this challenge, we developed a transfer learning approach that leverages
+knowledge from well-characterized common diseases to predict therapeutic targets for
+rare conditions. Our novel neural architecture combines convolutional layers for
+molecular feature extraction with attention mechanisms for protein-ligand interaction
+modeling. The objective of this study was to validate our approach across three
+independent rare disease datasets, assessing both predictive accuracy and biological
 interpretability of the results.
 ```
 
@@ -337,13 +337,13 @@ interpretability of the results.
 
 **Common Mistakes to Avoid:**
 
-- ❌ **Never** leave bullet points in the final manuscript
-- ❌ **Never** submit lists where paragraphs should be
-- ❌ **Don't** use numbered or bulleted lists in Results or Discussion sections (except for specific cases like study hypotheses or inclusion criteria)
-- ❌ **Don't** write sentence fragments or incomplete thoughts
-- ✅ **Do** use occasional lists only in Methods (e.g., inclusion/exclusion criteria, materials lists)
-- ✅ **Do** ensure every section flows as connected prose
-- ✅ **Do** read paragraphs aloud to check for natural flow
+- FAIL: **Never** leave bullet points in the final manuscript
+- FAIL: **Never** submit lists where paragraphs should be
+- FAIL: **Don't** use numbered or bulleted lists in Results or Discussion sections (except for specific cases like study hypotheses or inclusion criteria)
+- FAIL: **Don't** write sentence fragments or incomplete thoughts
+- PASS: **Do** use occasional lists only in Methods (e.g., inclusion/exclusion criteria, materials lists)
+- PASS: **Do** ensure every section flows as connected prose
+- PASS: **Do** read paragraphs aloud to check for natural flow
 
 **When Lists ARE Acceptable (Limited Cases):**
 
@@ -353,8 +353,8 @@ Lists may appear in scientific papers only in specific contexts:
 - **Never in**: Abstract, Introduction, Results, Discussion, Conclusions
 
 **Abstract Format Rule:**
-- ❌ **NEVER** use labeled sections (Background:, Methods:, Results:, Conclusions:)
-- ✅ **ALWAYS** write as flowing paragraph(s) with natural transitions
+- FAIL: **NEVER** use labeled sections (Background:, Methods:, Results:, Conclusions:)
+- PASS: **ALWAYS** write as flowing paragraph(s) with natural transitions
 - Exception: Only use structured format if journal explicitly requires it in author guidelines
 
 **Integration with Research Lookup:**

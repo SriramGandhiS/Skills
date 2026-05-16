@@ -1,4 +1,4 @@
-﻿---
+---
 name: extract-frames
 description: Extract frames from videos at specific timestamps using Mediabunny
 metadata:

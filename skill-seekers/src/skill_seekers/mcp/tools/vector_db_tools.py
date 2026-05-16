@@ -68,7 +68,7 @@ async def export_to_weaviate_impl(args: dict) -> list[TextContent]:
         return [
             TextContent(
                 type="text",
-                text="❌ Error: Could not import adaptors module. Please ensure skill-seekers is properly installed.",
+                text="FAIL: Error: Could not import adaptors module. Please ensure skill-seekers is properly installed.",
             )
         ]
 
@@ -79,7 +79,7 @@ async def export_to_weaviate_impl(args: dict) -> list[TextContent]:
         return [
             TextContent(
                 type="text",
-                text=f"❌ Error: Skill directory not found: {skill_dir}\n\nPlease scrape documentation first using scrape_docs.",
+                text=f"FAIL: Error: Skill directory not found: {skill_dir}\n\nPlease scrape documentation first using scrape_docs.",
             )
         ]
 
@@ -91,13 +91,13 @@ async def export_to_weaviate_impl(args: dict) -> list[TextContent]:
         package_path = adaptor.package(skill_dir, output_dir)
 
         # Success message
-        result_text = f"""✅ Weaviate Export Complete!
+        result_text = f"""PASS: Weaviate Export Complete!
 
-📦 Package: {package_path.name}
-📁 Location: {package_path.parent}
-📊 Size: {package_path.stat().st_size:,} bytes
+ Package: {package_path.name}
+ Location: {package_path.parent}
+ Size: {package_path.stat().st_size:,} bytes
 
-🔧 Next Steps:
+ Next Steps:
 1. Upload to Weaviate:
    ```python
    import weaviate
@@ -123,7 +123,7 @@ async def export_to_weaviate_impl(args: dict) -> list[TextContent]:
        .do()
    ```
 
-📚 Resources:
+ Resources:
 - Weaviate Docs: https://weaviate.io/developers/weaviate
 - Hybrid Search: https://weaviate.io/developers/weaviate/search/hybrid
 """
@@ -134,7 +134,7 @@ async def export_to_weaviate_impl(args: dict) -> list[TextContent]:
         return [
             TextContent(
                 type="text",
-                text=f"❌ Error exporting to Weaviate: {str(e)}\n\nPlease check that the skill directory contains valid documentation.",
+                text=f"FAIL: Error exporting to Weaviate: {str(e)}\n\nPlease check that the skill directory contains valid documentation.",
             )
         ]
 
@@ -171,7 +171,7 @@ async def export_to_chroma_impl(args: dict) -> list[TextContent]:
         return [
             TextContent(
                 type="text",
-                text="❌ Error: Could not import adaptors module.",
+                text="FAIL: Error: Could not import adaptors module.",
             )
         ]
 
@@ -182,7 +182,7 @@ async def export_to_chroma_impl(args: dict) -> list[TextContent]:
         return [
             TextContent(
                 type="text",
-                text=f"❌ Error: Skill directory not found: {skill_dir}",
+                text=f"FAIL: Error: Skill directory not found: {skill_dir}",
             )
         ]
 
@@ -190,13 +190,13 @@ async def export_to_chroma_impl(args: dict) -> list[TextContent]:
         adaptor = get_adaptor("chroma")
         package_path = adaptor.package(skill_dir, output_dir)
 
-        result_text = f"""✅ Chroma Export Complete!
+        result_text = f"""PASS: Chroma Export Complete!
 
-📦 Package: {package_path.name}
-📁 Location: {package_path.parent}
-📊 Size: {package_path.stat().st_size:,} bytes
+ Package: {package_path.name}
+ Location: {package_path.parent}
+ Size: {package_path.stat().st_size:,} bytes
 
-🔧 Next Steps:
+ Next Steps:
 1. Load into Chroma:
    ```python
    import chromadb
@@ -227,7 +227,7 @@ async def export_to_chroma_impl(args: dict) -> list[TextContent]:
    )
    ```
 
-📚 Resources:
+ Resources:
 - Chroma Docs: https://docs.trychroma.com/
 - Getting Started: https://docs.trychroma.com/getting-started
 """
@@ -238,7 +238,7 @@ async def export_to_chroma_impl(args: dict) -> list[TextContent]:
         return [
             TextContent(
                 type="text",
-                text=f"❌ Error exporting to Chroma: {str(e)}",
+                text=f"FAIL: Error exporting to Chroma: {str(e)}",
             )
         ]
 
@@ -277,7 +277,7 @@ async def export_to_faiss_impl(args: dict) -> list[TextContent]:
         return [
             TextContent(
                 type="text",
-                text="❌ Error: Could not import adaptors module.",
+                text="FAIL: Error: Could not import adaptors module.",
             )
         ]
 
@@ -288,7 +288,7 @@ async def export_to_faiss_impl(args: dict) -> list[TextContent]:
         return [
             TextContent(
                 type="text",
-                text=f"❌ Error: Skill directory not found: {skill_dir}",
+                text=f"FAIL: Error: Skill directory not found: {skill_dir}",
             )
         ]
 
@@ -296,13 +296,13 @@ async def export_to_faiss_impl(args: dict) -> list[TextContent]:
         adaptor = get_adaptor("faiss")
         package_path = adaptor.package(skill_dir, output_dir)
 
-        result_text = f"""✅ FAISS Export Complete!
+        result_text = f"""PASS: FAISS Export Complete!
 
-📦 Package: {package_path.name}
-📁 Location: {package_path.parent}
-📊 Size: {package_path.stat().st_size:,} bytes
+ Package: {package_path.name}
+ Location: {package_path.parent}
+ Size: {package_path.stat().st_size:,} bytes
 
-🔧 Next Steps:
+ Next Steps:
 1. Build FAISS index:
    ```python
    import faiss
@@ -346,7 +346,7 @@ async def export_to_faiss_impl(args: dict) -> list[TextContent]:
    faiss.write_index(index, "react_docs.index")
    ```
 
-📚 Resources:
+ Resources:
 - FAISS Wiki: https://github.com/facebookresearch/faiss/wiki
 - GPU Support: https://github.com/facebookresearch/faiss/wiki/Faiss-on-the-GPU
 """
@@ -357,7 +357,7 @@ async def export_to_faiss_impl(args: dict) -> list[TextContent]:
         return [
             TextContent(
                 type="text",
-                text=f"❌ Error exporting to FAISS: {str(e)}",
+                text=f"FAIL: Error exporting to FAISS: {str(e)}",
             )
         ]
 
@@ -393,7 +393,7 @@ async def export_to_qdrant_impl(args: dict) -> list[TextContent]:
         return [
             TextContent(
                 type="text",
-                text="❌ Error: Could not import adaptors module.",
+                text="FAIL: Error: Could not import adaptors module.",
             )
         ]
 
@@ -404,7 +404,7 @@ async def export_to_qdrant_impl(args: dict) -> list[TextContent]:
         return [
             TextContent(
                 type="text",
-                text=f"❌ Error: Skill directory not found: {skill_dir}",
+                text=f"FAIL: Error: Skill directory not found: {skill_dir}",
             )
         ]
 
@@ -412,13 +412,13 @@ async def export_to_qdrant_impl(args: dict) -> list[TextContent]:
         adaptor = get_adaptor("qdrant")
         package_path = adaptor.package(skill_dir, output_dir)
 
-        result_text = f"""✅ Qdrant Export Complete!
+        result_text = f"""PASS: Qdrant Export Complete!
 
-📦 Package: {package_path.name}
-📁 Location: {package_path.parent}
-📊 Size: {package_path.stat().st_size:,} bytes
+ Package: {package_path.name}
+ Location: {package_path.parent}
+ Size: {package_path.stat().st_size:,} bytes
 
-🔧 Next Steps:
+ Next Steps:
 1. Upload to Qdrant:
    ```python
    from qdrant_client import QdrantClient
@@ -463,7 +463,7 @@ async def export_to_qdrant_impl(args: dict) -> list[TextContent]:
    )
    ```
 
-📚 Resources:
+ Resources:
 - Qdrant Docs: https://qdrant.tech/documentation/
 - Filtering: https://qdrant.tech/documentation/concepts/filtering/
 """
@@ -474,7 +474,7 @@ async def export_to_qdrant_impl(args: dict) -> list[TextContent]:
         return [
             TextContent(
                 type="text",
-                text=f"❌ Error exporting to Qdrant: {str(e)}",
+                text=f"FAIL: Error exporting to Qdrant: {str(e)}",
             )
         ]
 

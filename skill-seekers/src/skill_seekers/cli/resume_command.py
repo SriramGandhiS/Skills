@@ -16,14 +16,14 @@ def list_resumable_jobs():
     jobs = config.list_resumable_jobs()
 
     if not jobs:
-        print("\n📦 No resumable jobs found.\n")
+        print("\n No resumable jobs found.\n")
         print("Jobs are automatically saved when:")
         print("  • You interrupt a scraping operation (Ctrl+C)")
         print("  • A rate limit is reached")
         print("  • An error occurs during scraping\n")
         return
 
-    print(f"\n📦 Resumable Jobs ({len(jobs)} available):\n")
+    print(f"\n Resumable Jobs ({len(jobs)} available):\n")
 
     for idx, job in enumerate(jobs, 1):
         job_id = job["job_id"]
@@ -57,18 +57,18 @@ def resume_job(job_id: str):
     """Resume a specific job."""
     config = get_config_manager()
 
-    print(f"\n🔄 Resuming job: {job_id}\n")
+    print(f"\n Resuming job: {job_id}\n")
 
     # Load progress
     progress = config.load_progress(job_id)
 
     if not progress:
-        print(f"❌ Job '{job_id}' not found or cannot be resumed.\n")
+        print(f"FAIL: Job '{job_id}' not found or cannot be resumed.\n")
         print("Use 'skill-seekers resume --list' to see available jobs.\n")
         return 1
 
     if not progress.get("can_resume", False):
-        print(f"❌ Job '{job_id}' is not marked as resumable.\n")
+        print(f"FAIL: Job '{job_id}' is not marked as resumable.\n")
         return 1
 
     # Extract job details
@@ -82,28 +82,28 @@ def resume_job(job_id: str):
 
     # Reconstruct command
     if "github" in command:
-        print("📌 Resuming GitHub scraping...")
-        print("⚠️  Note: GitHub resume feature not yet implemented")
+        print(" Resuming GitHub scraping...")
+        print("WARNING:  Note: GitHub resume feature not yet implemented")
         print("   You can re-run the original command - it will use cached data where available.\n")
         print(f"   Command: {command}\n")
         return 1
 
     elif "scrape" in command:
-        print("📌 Resuming documentation scraping...")
-        print("⚠️  Note: Documentation scraping resume feature not yet implemented")
+        print(" Resuming documentation scraping...")
+        print("WARNING:  Note: Documentation scraping resume feature not yet implemented")
         print("   You can re-run the original command - it will use cached data where available.\n")
         print(f"   Command: {command}\n")
         return 1
 
     elif "unified" in command:
-        print("📌 Resuming unified scraping...")
-        print("⚠️  Note: Unified scraping resume feature not yet implemented")
+        print(" Resuming unified scraping...")
+        print("WARNING:  Note: Unified scraping resume feature not yet implemented")
         print("   You can re-run the original command - it will use cached data where available.\n")
         print(f"   Command: {command}\n")
         return 1
 
     else:
-        print("❌ Unknown job type. Cannot resume.\n")
+        print("FAIL: Unknown job type. Cannot resume.\n")
         return 1
 
 
@@ -111,7 +111,7 @@ def clean_old_jobs():
     """Clean up old progress files."""
     config = get_config_manager()
 
-    print("\n🧹 Cleaning up old progress files...\n")
+    print("\n Cleaning up old progress files...\n")
 
     jobs_before = len(config.list_resumable_jobs())
     config.cleanup_old_progress()
@@ -120,12 +120,12 @@ def clean_old_jobs():
     deleted = jobs_before - jobs_after
 
     if deleted > 0:
-        print(f"✅ Deleted {deleted} old job(s)")
+        print(f"PASS: Deleted {deleted} old job(s)")
     else:
-        print("✅ No old jobs to clean up")
+        print("PASS: No old jobs to clean up")
 
     if jobs_after > 0:
-        print(f"📦 {jobs_after} job(s) remaining\n")
+        print(f" {jobs_after} job(s) remaining\n")
     else:
         print()
 
@@ -149,7 +149,7 @@ def main():
         return 0
 
     if not args.job_id:
-        print("\n❌ Error: Job ID required or use --list to see available jobs\n")
+        print("\nFAIL: Error: Job ID required or use --list to see available jobs\n")
         parser.print_help()
         return 1
 

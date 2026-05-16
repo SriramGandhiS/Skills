@@ -69,38 +69,38 @@ def format_context(context):
     output.append(f"Position: Slide {context.get('slide_position')} of {context.get('total_slides')}")
 
     if context.get('recommended_layout'):
-        output.append(f"\n📐 Layout: {context['recommended_layout']}")
+        output.append(f"\n Layout: {context['recommended_layout']}")
         output.append(f"   Direction: {context.get('layout_direction', 'N/A')}")
         output.append(f"   Visual Weight: {context.get('visual_weight', 'N/A')}")
 
     if context.get('typography'):
         typo = context['typography']
-        output.append(f"\n📝 Typography:")
+        output.append(f"\n Typography:")
         output.append(f"   Primary: {typo.get('primary_size', 'N/A')}")
         output.append(f"   Secondary: {typo.get('secondary_size', 'N/A')}")
         output.append(f"   Contrast: {typo.get('weight_contrast', 'N/A')}")
 
     if context.get('color_treatment'):
         color = context['color_treatment']
-        output.append(f"\n🎨 Color Treatment:")
+        output.append(f"\n Color Treatment:")
         output.append(f"   Background: {color.get('background', 'N/A')}")
         output.append(f"   Text: {color.get('text_color', 'N/A')}")
         output.append(f"   Accent: {color.get('accent_usage', 'N/A')}")
 
     if context.get('should_break_pattern'):
-        output.append(f"\n⚡ Pattern Break: YES (use contrasting layout)")
+        output.append(f"\n Pattern Break: YES (use contrasting layout)")
 
     if context.get('should_use_full_bleed'):
-        output.append(f"\n🖼️ Full Bleed: Recommended for emotional impact")
+        output.append(f"\n Full Bleed: Recommended for emotional impact")
 
     if context.get('use_background_image') and context.get('background'):
         bg = context['background']
-        output.append(f"\n📸 Background Image:")
+        output.append(f"\n Background Image:")
         output.append(f"   Category: {bg.get('image_category', 'N/A')}")
         output.append(f"   Overlay: {bg.get('overlay_style', 'N/A')}")
         output.append(f"   Keywords: {bg.get('search_keywords', 'N/A')}")
 
-    output.append(f"\n✨ Animation: {context.get('animation_class', 'animate-fade-up')}")
+    output.append(f"\n Animation: {context.get('animation_class', 'animate-fade-up')}")
 
     return "\n".join(output)
 

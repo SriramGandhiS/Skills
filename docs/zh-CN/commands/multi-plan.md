@@ -38,16 +38,16 @@ EOF",
 
 **模型参数说明**：
 
-* `{{GEMINI_MODEL_FLAG}}`: 当使用 `--backend gemini` 时，替换为 `--gemini-model gemini-3-pro-preview`（注意尾随空格）；对于 codex 使用空字符串
+* `{{GEMINI_MODEL_FLAG}}`: 当使用`--backend gemini`时，替换为`--gemini-model gemini-3-pro-preview`（注意尾随空格）；对于 codex 使用空字符串
 
 **角色提示**：
 
 | 阶段 | Codex | Gemini |
 |-------|-------|--------|
-| 分析 | `~/.claude/.ccg/prompts/codex/analyzer.md` | `~/.claude/.ccg/prompts/gemini/analyzer.md` |
-| 规划 | `~/.claude/.ccg/prompts/codex/architect.md` | `~/.claude/.ccg/prompts/gemini/architect.md` |
+| 分析 | `~/.claude/.ccg/prompts/codex/analyzer.md`|`~/.claude/.ccg/prompts/gemini/analyzer.md` |
+| 规划 | `~/.claude/.ccg/prompts/codex/architect.md`|`~/.claude/.ccg/prompts/gemini/architect.md` |
 
-**会话复用**：每次调用返回 `SESSION_ID: xxx`（通常由包装器输出），**必须保存** 供后续 `/ccg:execute` 使用。
+**会话复用**：每次调用返回 `SESSION_ID: xxx`（通常由包装器输出），**必须保存** 供后续`/ccg:execute` 使用。
 
 **等待后台任务**（最大超时 600000ms = 10 分钟）：
 
@@ -106,7 +106,7 @@ mcp__ace-tool__search_context({
 1. **Glob**：通过模式查找相关文件（例如，`Glob("**/*.ts")`、`Glob("src/**/*.py")`）
 2. **Grep**：搜索关键符号、函数名、类定义（例如，`Grep("className|functionName")`）
 3. **Read**：读取发现的文件以收集完整的上下文
-4. **Task (Explore agent)**：要进行更深入的探索，使用 `Task` 并配合 `subagent_type: "Explore"` 来搜索整个代码库
+4. **Task (Explore agent)**：要进行更深入的探索，使用 `Task`并配合`subagent_type: "Explore"` 来搜索整个代码库
 
 #### 1.3 完整性检查
 
@@ -139,7 +139,7 @@ mcp__ace-tool__search_context({
    * 重点：UI/UX 影响、用户体验、视觉设计
    * 输出：多视角解决方案 + 优缺点分析
 
-使用 `TaskOutput` 等待两个模型的完整结果。**保存 SESSION\_ID**（`CODEX_SESSION` 和 `GEMINI_SESSION`）。
+使用 `TaskOutput`等待两个模型的完整结果。**保存 SESSION\_ID**（`CODEX_SESSION`和`GEMINI_SESSION`）。
 
 #### 2.2 交叉验证
 
@@ -205,7 +205,7 @@ mcp__ace-tool__search_context({
 
 1. 向用户呈现完整的实施计划（包括伪代码）
 
-2. 将计划保存到 `.claude/plan/<feature-name>.md`（从需求中提取功能名称，例如 `user-auth`，`payment-module`）
+2. 将计划保存到 `.claude/plan/<feature-name>.md`（从需求中提取功能名称，例如`user-auth`，`payment-module`）
 
 3. 以 **粗体文本** 输出提示（必须使用实际保存的文件路径）：
 
@@ -275,4 +275,4 @@ mcp__ace-tool__search_context({
 2. **无是/否提示** – 仅呈现计划，让用户决定后续步骤
 3. **信任规则** – 后端遵循 Codex，前端遵循 Gemini
 4. 外部模型 **零文件系统写入权限**
-5. **SESSION\_ID 交接** – 计划末尾必须包含 `CODEX_SESSION` / `GEMINI_SESSION`（供 `/ccg:execute resume <SESSION_ID>` 使用）
+5. **SESSION\_ID 交接** – 计划末尾必须包含 `CODEX_SESSION`/`GEMINI_SESSION`（供`/ccg:execute resume <SESSION_ID>` 使用）

@@ -2,17 +2,15 @@
 #===============================================================================
 # Loki Mode - Issue Provider Abstraction (v6.0.0)
 # Multi-provider issue fetching: GitHub, GitLab, Jira, Azure DevOps
-#
-# Usage:
-#   source autonomy/issue-providers.sh
-#   detect_issue_provider "https://github.com/org/repo/issues/123"
-#   fetch_issue "https://github.com/org/repo/issues/123"
-#   fetch_issue "https://gitlab.com/org/repo/-/issues/42"
-#   fetch_issue "https://org.atlassian.net/browse/PROJ-123"
-#   fetch_issue "https://dev.azure.com/org/project/_workitems/edit/456"
-#
-# Output:
-#   JSON with normalized fields: provider, number, title, body, labels, author, url, created_at
+# # Usage:
+# source autonomy/issue-providers.sh
+# detect_issue_provider "https://github.com/org/repo/issues/123"
+# fetch_issue "https://github.com/org/repo/issues/123"
+# fetch_issue "https://gitlab.com/org/repo/-/issues/42"
+# fetch_issue "https://org.atlassian.net/browse/PROJ-123"
+# fetch_issue "https://dev.azure.com/org/project/_workitems/edit/456"
+# # Output:
+# JSON with normalized fields: provider, number, title, body, labels, author, url, created_at
 #===============================================================================
 
 # Colors (safe to re-source; used by scripts that source this file)

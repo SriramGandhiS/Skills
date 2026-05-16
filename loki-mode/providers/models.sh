@@ -1,17 +1,14 @@
 #!/usr/bin/env bash
 # Dynamic model-catalog loader for Loki Mode providers.
-#
-# Instead of hardcoding dated model IDs (e.g. claude-sonnet-4-5-20250929)
+# # Instead of hardcoding dated model IDs (e.g. claude-sonnet-4-5-20250929)
 # throughout the codebase, every provider and caller reads from the single
 # source of truth at providers/model_catalog.json. When a new model ships,
 # update that one JSON file and every provider picks it up.
-#
-# Usage:
-#   source providers/models.sh
-#   model=$(loki_latest_model claude planning)   # -> claude-opus-4-7
-#   model=$(loki_latest_model gemini fast)       # -> gemini-3-flash-preview
-#
-# Env override order: LOKI_<PROVIDER>_MODEL_<TIER> > LOKI_<PROVIDER>_MODEL > catalog latest.
+# # Usage:
+# source providers/models.sh
+# model=$(loki_latest_model claude planning)   # -> claude-opus-4-7
+# model=$(loki_latest_model gemini fast)       # -> gemini-3-flash-preview
+# # Env override order: LOKI_<PROVIDER>_MODEL_<TIER> > LOKI_<PROVIDER>_MODEL > catalog latest.
 
 # Resolve catalog path relative to this script, regardless of CWD.
 _LOKI_MODELS_SH_DIR="$(cd "$(dirname "${BASH_SOURCE[0]:-$0}")" && pwd)"
@@ -19,7 +16,7 @@ LOKI_MODEL_CATALOG="${LOKI_MODEL_CATALOG:-$_LOKI_MODELS_SH_DIR/model_catalog.jso
 
 # Return the "latest_<tier>" id for a provider from the catalog.
 # Args: $1 provider (claude|codex|gemini|cline|aider)
-#       $2 tier     (planning|development|fast)
+# $2 tier     (planning|development|fast)
 loki_latest_model() {
     local provider="${1:-claude}"
     local tier="${2:-planning}"

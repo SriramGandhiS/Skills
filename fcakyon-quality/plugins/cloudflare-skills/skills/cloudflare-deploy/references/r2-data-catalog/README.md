@@ -124,7 +124,7 @@ Start → Need analytics on object storage data?
                                     │
                                     ├─ No → D1 or external DB may be simpler
                                     │
-                                    └─ Yes → ✅ Use R2 Data Catalog
+                                    └─ Yes → PASS: Use R2 Data Catalog
 ```
 
 **Quick check:** If you answer "yes" to all:

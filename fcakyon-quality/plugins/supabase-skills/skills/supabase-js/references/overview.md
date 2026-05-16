@@ -27,17 +27,14 @@
 </div>
 
 > **For contributors: Repository Structure Changed**
->
-> This repository has been restructured as a monorepo. All libraries, including `supabase-js` itself, have moved to `packages/core/`:
->
-> | What You're Looking For | Where It Is Now              |
+> > This repository has been restructured as a monorepo. All libraries, including `supabase-js` itself, have moved to `packages/core/`:
+> > | What You're Looking For | Where It Is Now              |
 > | ----------------------- | ---------------------------- |
 > | Main supabase-js code   | `packages/core/supabase-js/` |
 > | Other libraries         | `packages/core/*/`           |
->
-> Read the **[Migration Guide](./docs/MIGRATION.md)** to learn more.
+> > Read the **[Migration Guide](./docs/MIGRATION.md)** to learn more.
 
-## 📦 Libraries
+## Libraries
 
 This monorepo contains the complete suite of Supabase JavaScript SDK:
 
@@ -60,11 +57,9 @@ We only support Node.js versions that are in **Active LTS** or **Maintenance** s
 
 When a Node.js version reaches end-of-life and is no longer in Active LTS or Maintenance status, Supabase will drop it in a **minor release**, and **this won't be considered a breaking change**.
 
-> ⚠️ **Node.js 18 Deprecation Notice**
->
-> Node.js 18 reached end-of-life on April 30, 2025. As announced in [our deprecation notice](https://github.com/orgs/supabase/discussions/37217), support for Node.js 18 was dropped in version `2.79.0`.
->
-> If you must use Node.js 18, please use version `2.78.0`, which is the last version that supported Node.js 18.
+> WARNING: **Node.js 18 Deprecation Notice**
+> > Node.js 18 reached end-of-life on April 30, 2025. As announced in [our deprecation notice](https://github.com/orgs/supabase/discussions/37217), support for Node.js 18 was dropped in version `2.79.0`.
+> > If you must use Node.js 18, please use version `2.78.0`, which is the last version that supported Node.js 18.
 
 ### Deno
 
@@ -93,7 +88,7 @@ We support Cloudflare Workers runtime environments. Cloudflare Workers provides 
 - **Experimental features**: Features marked as experimental may be removed or changed without notice
 - **Build warnings**: If you see `UNUSED_EXTERNAL_IMPORT` warnings from Vite/Nuxt, see the [supabase-js README](./packages/core/supabase-js/README.md#known-build-warnings) — these are false positives
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Installation
 
@@ -103,7 +98,7 @@ npm install @supabase/supabase-js
 
 Read more in each package's README file.
 
-## 🤝 Contributing
+## Contributing
 
 We welcome contributions! Please see our [Contributing Guide](./CONTRIBUTING.md) for details.
 
@@ -125,11 +120,11 @@ We welcome contributions! Please see our [Contributing Guide](./CONTRIBUTING.md)
 - Run `npx nx format` before committing
 - Ensure all tests pass with `npx nx affected --target=test`
 
-## 🧪 Testing
+## Testing
 
 Testing varies per package. See the top-level [TESTING.md](docs/TESTING.md) for an overview and links to package-specific guides.
 
-## 📚 Documentation
+## Documentation
 
 ### API Documentation
 
@@ -147,7 +142,7 @@ Testing varies per package. See the top-level [TESTING.md](docs/TESTING.md) for 
 - **[Migration Guide](./docs/MIGRATION.md)** - Migrating to the monorepo structure
 - **[Security Policy](./docs/SECURITY.md)** - Security guidelines and reporting
 
-## 🔐 Verifying provenance attestations
+## Verifying provenance attestations
 
 You can verify registry signatures and provenance attestations for installed packages using the npm CLI:
 
@@ -172,11 +167,11 @@ audited 1 package in 0s
 
 Because provenance attestations are a new capability, security features may evolve over time. Ensure you are using the latest npm CLI to verify attestation signatures reliably. This may require updating npm beyond the version bundled with Node.js.
 
-## 📄 License
+## License
 
 This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details.
 
-## 🆘 Support
+## Support
 
 - **Documentation**: [supabase.com/docs](https://supabase.com/docs)
 - **Community**: [GitHub Discussions](https://github.com/supabase/supabase/discussions)

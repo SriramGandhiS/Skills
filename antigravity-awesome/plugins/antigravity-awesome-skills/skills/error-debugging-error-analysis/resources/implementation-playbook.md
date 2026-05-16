@@ -284,7 +284,7 @@ def log_structured(level, message, **context):
         'correlation_id': g.correlation_id,
         'service': 'payment-service',
         'message': message,
-        **context
+**context
     }
     logger.log(getattr(logging, level), json.dumps(log_entry))
 ```
@@ -1081,7 +1081,7 @@ GET /logs-*/_search
 
 **Initial Incident Notification:**
 ```
-🚨 INCIDENT: Payment Processing Errors
+ INCIDENT: Payment Processing Errors
 
 Severity: High
 Status: Investigating
@@ -1104,7 +1104,7 @@ Status Page: https://status.company.com/incident/abc123
 
 **Mitigation Notification:**
 ```
-✅ INCIDENT UPDATE: Mitigation Applied
+PASS: INCIDENT UPDATE: Mitigation Applied
 
 Severity: High → Medium
 Status: Mitigated

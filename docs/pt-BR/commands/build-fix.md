@@ -8,13 +8,13 @@ Identifique a ferramenta de build do projeto e execute o build:
 
 | Indicator | Build Command |
 |-----------|---------------|
-| `package.json` with `build` script | `npm run build` or `pnpm build` |
-| `tsconfig.json` (TypeScript only) | `npx tsc --noEmit` |
-| `Cargo.toml` | `cargo build 2>&1` |
-| `pom.xml` | `mvn compile` |
-| `build.gradle` | `./gradlew compileJava` |
-| `go.mod` | `go build ./...` |
-| `pyproject.toml` | `python -m py_compile` or `mypy .` |
+| `package.json`with`build`script |`npm run build`or`pnpm build` |
+| `tsconfig.json`(TypeScript only) |`npx tsc --noEmit` |
+| `Cargo.toml`|`cargo build 2>&1` |
+| `pom.xml`|`mvn compile` |
+| `build.gradle`|`./gradlew compileJava` |
+| `go.mod`|`go build ./...` |
+| `pyproject.toml`|`python -m py_compile`or`mypy .` |
 
 ## Passo 2: Parsear e Agrupar Erros
 
@@ -39,7 +39,7 @@ Pare e pergunte ao usuário se:
 - Uma correção introduz **mais erros do que resolve**
 - O **mesmo erro persiste após 3 tentativas** (provavelmente há um problema mais profundo)
 - A correção exige **mudanças arquiteturais** (não apenas correção de build)
-- Os erros de build vêm de **dependências ausentes** (precisa de `npm install`, `cargo add`, etc.)
+- Os erros de build vêm de **dependências ausentes** (precisa de `npm install`,`cargo add`, etc.)
 
 ## Passo 5: Resumo
 
@@ -56,7 +56,7 @@ Mostre resultados:
 | Missing module/import | Check if package is installed; suggest install command |
 | Type mismatch | Read both type definitions; fix the narrower type |
 | Circular dependency | Identify cycle with import graph; suggest extraction |
-| Version conflict | Check `package.json` / `Cargo.toml` for version constraints |
+| Version conflict | Check `package.json`/`Cargo.toml` for version constraints |
 | Build tool misconfiguration | Read config file; compare with working defaults |
 
 Corrija um erro por vez por segurança. Prefira diffs mínimos em vez de refatoração.

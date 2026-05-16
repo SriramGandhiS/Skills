@@ -90,7 +90,7 @@ class JucerjaScraper(AbstractJuntaScraper):
         seen_names: set = set()
 
         headers = {
-            **self.HEADERS,
+**self.HEADERS,
             "X-Requested-With": "XMLHttpRequest",
             "Referer": self.url,
         }

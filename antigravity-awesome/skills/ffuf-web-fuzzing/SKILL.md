@@ -284,7 +284,7 @@ ffuf -w cmdi_payloads.txt -u https://target.com/execute?cmd=FUZZ -fr "error"
 cat targets.txt | xargs -I@ sh -c 'ffuf -w wordlist.txt -u @/FUZZ -ac'
 
 # Loop through multiple targets with results
-for url in $(cat targets.txt); do 
+for url in $(cat targets.txt); do
     ffuf -w wordlist.txt -u $url/FUZZ -ac -o "results_$(echo $url | md5sum | cut -d' ' -f1).json"
 done
 ```

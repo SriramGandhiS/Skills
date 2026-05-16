@@ -27,17 +27,17 @@ description: 逐步修复Go构建错误、go vet警告和linter问题。调用go
 ## 运行的诊断命令
 
 ```bash
-# Primary build check
+## Primary build check
 go build ./...
 
-# Static analysis
+## Static analysis
 go vet ./...
 
-# Extended linting (if available)
+## Extended linting (if available)
 staticcheck ./...
 golangci-lint run
 
-# Module issues
+## Module issues
 go mod verify
 go mod tidy -v
 ```
@@ -45,7 +45,7 @@ go mod tidy -v
 ## 示例会话
 
 ````text
-# Go Build 解析
+## Go Build 解析
 
 ## 初始诊断
 
@@ -77,7 +77,7 @@ var repo repository.UserRepository
 
 ```bash
 $ go build ./...
-# 2 errors remaining
+## 2 errors remaining
 ```
 
 ## 修复 2：类型不匹配
@@ -95,7 +95,7 @@ count, _ := strconv.Atoi(countStr)
 
 ```bash
 $ go build ./...
-# 1 error remaining
+## 1 error remaining
 ```
 
 ## 修复 3：缺少返回
@@ -116,14 +116,14 @@ func GetUser(id string) (*User, error) {
 
 ```bash
 $ go build ./...
-# Build successful!
+## Build successful!
 ```
 
 ## 最终验证
 
 ```bash
 $ go vet ./...
-# No issues
+## No issues
 
 $ go test ./...
 ok      project/internal/service   0.015s
@@ -152,7 +152,7 @@ ok      project/internal/handler   0.023s
 | `X does not implement Y` | 添加缺失的方法 |
 | `import cycle` | 重构包结构 |
 | `declared but not used` | 移除或使用变量 |
-| `cannot find package` | `go get` 或 `go mod tidy` |
+| `cannot find package`|`go get`或`go mod tidy` |
 
 ## 修复策略
 

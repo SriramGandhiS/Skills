@@ -70,7 +70,7 @@
 - 通常200-400行、ファイルごとに最大800行
 
 ### Git
-- Conventional Commits: `feat:`, `fix:`, `refactor:`, `docs:`, `test:`
+- Conventional Commits: `feat:`,`fix:`,`refactor:`,`docs:`,`test:`
 - コミット前に常にローカルでテスト
 - 小さく焦点を絞ったコミット
 

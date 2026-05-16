@@ -4,7 +4,7 @@
 # shellcheck disable=SC2329  # Unreachable code in test functions
 # Test suite for rate limiting functions in autonomy/run.sh
 # Tests: is_rate_limited, parse_claude_reset_time, parse_retry_after,
-#        calculate_rate_limit_backoff, detect_rate_limit, format_duration
+# calculate_rate_limit_backoff, detect_rate_limit, format_duration
 
 set -euo pipefail
 

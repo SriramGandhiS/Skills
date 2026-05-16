@@ -63,7 +63,6 @@ Recent GSD commits:
   3. ghi9012 fix(02-03): correct validation logic
 ```
 
-
 **Text mode (`workflow.text_mode: true` in config or `--text` flag):** Set `TEXT_MODE=true` if `--text` is present in `$ARGUMENTS` OR `text_mode` from init JSON is `true`. When TEXT_MODE is active, replace every `AskUserQuestion` call with a plain-text numbered list and ask the user to type their choice number. This is required for non-Claude runtimes (OpenAI Codex, Gemini CLI, etc.) where `AskUserQuestion` is not available.
 Use AskUserQuestion to ask:
 - question: "Which commits to revert? Enter numbers (e.g., 1,3) or 'all'"
@@ -132,7 +131,7 @@ For each dependent phase N found:
 
 If any downstream phase has started work, collect warnings:
 ```
-⚠  Downstream dependency detected:
+WARNING:  Downstream dependency detected:
    Phase ${N} depends on Phase ${TARGET_PHASE} and has started work.
 ```
 
@@ -148,7 +147,7 @@ Look for later plans in the same phase directory (`.planning/phases/${NN}-*/`). 
 
 If any later plan references the target plan's outputs, collect warnings:
 ```
-⚠  Intra-phase dependency detected:
+WARNING:  Intra-phase dependency detected:
    Plan ${LATER_PLAN} in phase ${NN} references outputs from plan ${TARGET_PLAN}.
 ```
 
@@ -237,7 +236,7 @@ If any revert fails (merge conflict or error):
    Revert failed on commit ${HASH}.
    Likely cause: merge conflict with subsequent changes.
 
-   **To fix:** Resolve the conflict manually or revert commits individually.
+**To fix:** Resolve the conflict manually or revert commits individually.
    All pending reverts have been aborted — working tree is clean.
    ```
 4. Exit with error.
@@ -279,7 +278,7 @@ Show next steps:
 ```
 ───────────────────────────────────────────────────────────────
 
-## ▶ Next Up — [${PROJECT_CODE}] ${PROJECT_TITLE}
+## Next Up — [${PROJECT_CODE}] ${PROJECT_TITLE}
 
 **Review state** — verify project is in expected state after revert
 

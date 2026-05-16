@@ -1,13 +1,13 @@
 # /// script
 # requires-python = ">=3.10"
 # dependencies = [
-#     "unsloth",
-#     "datasets",
-#     "trl==0.22.2",
-#     "huggingface_hub[hf_transfer]",
-#     "trackio",
-#     "tensorboard",
-#     "transformers==4.57.3",
+# "unsloth",
+# "datasets",
+# "trl==0.22.2",
+# "huggingface_hub[hf_transfer]",
+# "trackio",
+# "tensorboard",
+# "transformers==4.57.3",
 # ]
 # ///
 """

@@ -17,11 +17,11 @@
 
 An AI skill that provides design intelligence for building professional UI/UX across multiple platforms and frameworks.
 
-### 📊 Quick Start Catalog
+### Quick Start Catalog
 You now have access to 60 agents, 242 skills, and 75 legacy command shims.
 
 > [!TIP]
-> **GitHub Copilot Users**: Enable `.vscode/settings.json` with `"chat.promptFiles": true` to use our custom agents in `.github/prompts/`. Try slash commands like `/plan`, `/tdd`, or `/code-review`.
+> **GitHub Copilot Users**: Enable `.vscode/settings.json`with`"chat.promptFiles": true`to use our custom agents in`.github/prompts/`. Try slash commands like`/plan`,`/tdd`, or`/code-review`.
 > **Elite Performance**: For low-latency local execution, see the [Hermes Setup Guide](docs/HERMES-SETUP.md).
 > **Release Candidate**: Review the [v2.0.0-rc.1 Release Notes](docs/releases/2.0.0-rc.1/release-notes.md) for the latest surface updates.
 
@@ -98,7 +98,7 @@ The flagship feature of v2.0 is the **Design System Generator** - an AI-powered 
 |  TYPOGRAPHY: Cormorant Garamond / Montserrat                                           |
 |     Mood: Elegant, calming, sophisticated                                              |
 |     Best For: Luxury brands, wellness, beauty, editorial                               |
-|     Google Fonts: https://fonts.google.com/share?selection.family=...                  |
+|     Google Fonts: <https://fonts.google.com/share?selection.family=...>                  |
 |                                                                                        |
 |  KEY EFFECTS:                                                                          |
 |     Soft shadows + Smooth transitions (200-300ms) + Gentle hover states                |
@@ -293,13 +293,13 @@ Install directly in Claude Code with two commands:
 ### Using CLI (Recommended)
 
 ```bash
-# Install CLI globally
+## Install CLI globally
 npm install -g uipro-cli
 
-# Go to your project
+## Go to your project
 cd /path/to/your/project
 
-# Install for your AI assistant
+## Install for your AI assistant
 uipro init --ai claude      # Claude Code
 uipro init --ai cursor      # Cursor
 uipro init --ai windsurf    # Windsurf
@@ -344,16 +344,16 @@ uipro uninstall --global    # Remove from global install
 Python 3.x is required for the search script.
 
 ```bash
-# Check if Python is installed
+## Check if Python is installed
 python3 --version
 
-# macOS
+## macOS
 brew install python3
 
-# Ubuntu/Debian
+## Ubuntu/Debian
 sudo apt update && sudo apt install python3
 
-# Windows
+## Windows
 winget install Python.Python.3.12
 ```
 
@@ -425,21 +425,21 @@ Just mention your preferred stack in the prompt, or let it default to HTML + Tai
 
 For direct access to the design system generator:
 
-> Note: If you installed via Continue, replace `.claude/skills/` with `.continue/skills/` in the commands below. For Droid (Factory), use `.factory/skills/`.
+> Note: If you installed via Continue, replace `.claude/skills/`with`.continue/skills/`in the commands below. For Droid (Factory), use`.factory/skills/`.
 
 ```bash
-# Generate design system with ASCII output
+## Generate design system with ASCII output
 python3 .claude/skills/ui-ux-pro-max/scripts/search.py "beauty spa wellness" --design-system -p "Serenity Spa"
 
-# Generate with Markdown output
+## Generate with Markdown output
 python3 .claude/skills/ui-ux-pro-max/scripts/search.py "fintech banking" --design-system -f markdown
 
-# Domain-specific search
+## Domain-specific search
 python3 .claude/skills/ui-ux-pro-max/scripts/search.py "glassmorphism" --domain style
 python3 .claude/skills/ui-ux-pro-max/scripts/search.py "elegant serif" --domain typography
 python3 .claude/skills/ui-ux-pro-max/scripts/search.py "dashboard" --domain chart
 
-# Stack-specific guidelines
+## Stack-specific guidelines
 python3 .claude/skills/ui-ux-pro-max/scripts/search.py "form validation" --stack react
 python3 .claude/skills/ui-ux-pro-max/scripts/search.py "responsive layout" --stack html-tailwind
 ```
@@ -449,10 +449,10 @@ python3 .claude/skills/ui-ux-pro-max/scripts/search.py "responsive layout" --sta
 Save your design system to files for **hierarchical retrieval across sessions**:
 
 ```bash
-# Generate and persist to design-system/MASTER.md
+## Generate and persist to design-system/MASTER.md
 python3 .claude/skills/ui-ux-pro-max/scripts/search.py "SaaS dashboard" --design-system --persist -p "MyApp"
 
-# Also create a page-specific override file
+## Also create a page-specific override file
 python3 .claude/skills/ui-ux-pro-max/scripts/search.py "SaaS dashboard" --design-system --persist -p "MyApp" --page "dashboard"
 ```
 
@@ -483,7 +483,7 @@ Now, generate the code...
 
 ### For Users
 
-The codebase has been restructured to use a **template-based generation system**. All platform-specific files (`.cursor/`, `.windsurf/`, `.kiro/`, `.factory/`, etc.) are now generated dynamically by the CLI.
+The codebase has been restructured to use a **template-based generation system**. All platform-specific files (`.cursor/`,`.windsurf/`,`.kiro/`,`.factory/`, etc.) are now generated dynamically by the CLI.
 
 **Always use the CLI to install:**
 
@@ -499,31 +499,31 @@ This ensures you get the latest templates and correct file structure for your AI
 If you want to contribute to this project:
 
 ```bash
-# 1. Clone the repository
-git clone https://github.com/nextlevelbuilder/ui-ux-pro-max-skill.git
+## 1. Clone the repository
+git clone <https://github.com/nextlevelbuilder/ui-ux-pro-max-skill.git>
 cd ui-ux-pro-max-skill
 
-# 2. Understand the structure
+## 2. Understand the structure
 src/ui-ux-pro-max/           # Source of truth (data, scripts, templates)
 cli/                         # CLI installer (generates files from templates)
 .claude/                     # Local dev/test for Claude Code skill
 .factory/                    # Local dev/test for Droid (Factory) skill
 
-# 3. Make changes in src/ui-ux-pro-max/
-# - data/*.csv              → Database files
-# - scripts/*.py            → Search engine & design system
-# - templates/              → Platform-specific templates
+## 3. Make changes in src/ui-ux-pro-max/
+## - data/*.csv              → Database files
+## - scripts/*.py            → Search engine & design system
+## - templates/              → Platform-specific templates
 
-# 4. Sync to CLI and test locally
+## 4. Sync to CLI and test locally
 cp -r src/ui-ux-pro-max/data/* cli/assets/data/
 cp -r src/ui-ux-pro-max/scripts/* cli/assets/scripts/
 cp -r src/ui-ux-pro-max/templates/* cli/assets/templates/
 
-# 5. Build and test CLI
+## 5. Build and test CLI
 cd cli && bun run build
 node dist/index.js init --ai claude --offline  # Test in a temp folder
 
-# 6. Create PR (never push directly to main)
+## 6. Create PR (never push directly to main)
 git checkout -b feat/your-feature
 git commit -m "feat: description"
 git push -u origin feat/your-feature

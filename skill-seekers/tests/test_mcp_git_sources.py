@@ -121,7 +121,7 @@ class TestFetchConfigModes:
             result = await fetch_config_tool(args)
 
             assert len(result) == 1
-            assert "✅" in result[0].text
+            assert "PASS:" in result[0].text
             assert "react" in result[0].text
 
             # Verify file was created
@@ -154,7 +154,7 @@ class TestFetchConfigModes:
         result = await fetch_config_tool(args)
 
         assert len(result) == 1
-        assert "✅" in result[0].text
+        assert "PASS:" in result[0].text
         assert "git URL" in result[0].text
         assert "react" in result[0].text
 
@@ -199,7 +199,7 @@ class TestFetchConfigModes:
         result = await fetch_config_tool(args)
 
         assert len(result) == 1
-        assert "✅" in result[0].text
+        assert "PASS:" in result[0].text
         assert "git source" in result[0].text
         assert "team" in result[0].text
 
@@ -223,7 +223,7 @@ class TestFetchConfigModes:
             result = await fetch_config_tool(args)
 
             assert len(result) == 1
-            assert "❌" in result[0].text
+            assert "FAIL:" in result[0].text
             assert "not found" in result[0].text
 
     @patch("skill_seekers.mcp.git_repo.GitConfigRepo")
@@ -246,7 +246,7 @@ class TestFetchConfigModes:
         result = await fetch_config_tool(args)
 
         assert len(result) == 1
-        assert "❌" in result[0].text
+        assert "FAIL:" in result[0].text
         assert "not found" in result[0].text
         assert "Available configs" in result[0].text
 
@@ -264,7 +264,7 @@ class TestFetchConfigModes:
         result = await fetch_config_tool(args)
 
         assert len(result) == 1
-        assert "❌" in result[0].text
+        assert "FAIL:" in result[0].text
         assert "Invalid git URL" in result[0].text
 
 
@@ -295,7 +295,7 @@ class TestSourceManagementTools:
             result = await add_config_source_tool(args)
 
             assert len(result) == 1
-            assert "✅" in result[0].text
+            assert "PASS:" in result[0].text
             assert "team" in result[0].text
             assert "registered" in result[0].text
 
@@ -310,7 +310,7 @@ class TestSourceManagementTools:
         result = await add_config_source_tool(args)
 
         assert len(result) == 1
-        assert "❌" in result[0].text
+        assert "FAIL:" in result[0].text
         assert "name" in result[0].text.lower()
         assert "required" in result[0].text.lower()
 
@@ -322,7 +322,7 @@ class TestSourceManagementTools:
         result = await add_config_source_tool(args)
 
         assert len(result) == 1
-        assert "❌" in result[0].text
+        assert "FAIL:" in result[0].text
         assert "git_url" in result[0].text.lower()
         assert "required" in result[0].text.lower()
 
@@ -341,7 +341,7 @@ class TestSourceManagementTools:
             result = await add_config_source_tool(args)
 
             assert len(result) == 1
-            assert "❌" in result[0].text
+            assert "FAIL:" in result[0].text
             assert "Validation Error" in result[0].text
 
     async def test_list_config_sources(self):
@@ -378,7 +378,7 @@ class TestSourceManagementTools:
             result = await list_config_sources_tool(args)
 
             assert len(result) == 1
-            assert "📋" in result[0].text
+            assert "" in result[0].text
             assert "team" in result[0].text
             assert "company" in result[0].text
             assert "2 total" in result[0].text
@@ -440,7 +440,7 @@ class TestSourceManagementTools:
             result = await remove_config_source_tool(args)
 
             assert len(result) == 1
-            assert "✅" in result[0].text
+            assert "PASS:" in result[0].text
             assert "removed" in result[0].text.lower()
             assert "team" in result[0].text
 
@@ -464,7 +464,7 @@ class TestSourceManagementTools:
             result = await remove_config_source_tool(args)
 
             assert len(result) == 1
-            assert "❌" in result[0].text
+            assert "FAIL:" in result[0].text
             assert "not found" in result[0].text
             assert "Available sources" in result[0].text
 
@@ -476,7 +476,7 @@ class TestSourceManagementTools:
         result = await remove_config_source_tool(args)
 
         assert len(result) == 1
-        assert "❌" in result[0].text
+        assert "FAIL:" in result[0].text
         assert "name" in result[0].text.lower()
         assert "required" in result[0].text.lower()
 
@@ -514,7 +514,7 @@ class TestCompleteWorkflow:
         add_result = await add_config_source_tool(
             {"name": "team", "git_url": "https://github.com/myorg/configs.git"}
         )
-        assert "✅" in add_result[0].text
+        assert "PASS:" in add_result[0].text
 
         # Step 2: Fetch config from source
         mock_sm.get_source.return_value = {
@@ -538,7 +538,7 @@ class TestCompleteWorkflow:
         fetch_result = await fetch_config_tool(
             {"config_name": "react", "source": "team", "destination": str(temp_dirs["dest"])}
         )
-        assert "✅" in fetch_result[0].text
+        assert "PASS:" in fetch_result[0].text
 
         # Verify config file created
         assert (temp_dirs["dest"] / "react.json").exists()
@@ -564,4 +564,4 @@ class TestCompleteWorkflow:
         mock_sm.remove_source.return_value = True
 
         remove_result = await remove_config_source_tool({"name": "team"})
-        assert "✅" in remove_result[0].text
+        assert "PASS:" in remove_result[0].text

@@ -49,16 +49,16 @@ def estimate_pages(config, max_discovery=DEFAULT_MAX_DISCOVERY, timeout=30):
     # Handle unlimited mode
     unlimited = max_discovery == -1 or max_discovery is None
 
-    print(f"🔍 Estimating pages for: {config['name']}")
-    print(f"📍 Base URL: {base_url}")
-    print(f"🎯 Start URLs: {len(start_urls)}")
-    print(f"⏱️  Rate limit: {rate_limit}s")
+    print(f" Estimating pages for: {config['name']}")
+    print(f" Base URL: {base_url}")
+    print(f" Start URLs: {len(start_urls)}")
+    print(f"  Rate limit: {rate_limit}s")
 
     if unlimited:
-        print("🔢 Max discovery: UNLIMITED (will discover all pages)")
-        print("⚠️  WARNING: This may take a long time!")
+        print(" Max discovery: UNLIMITED (will discover all pages)")
+        print("WARNING:  WARNING: This may take a long time!")
     else:
-        print(f"🔢 Max discovery: {max_discovery}")
+        print(f" Max discovery: {max_discovery}")
 
     print()
 
@@ -79,7 +79,7 @@ def estimate_pages(config, max_discovery=DEFAULT_MAX_DISCOVERY, timeout=30):
         if discovered % 10 == 0:
             elapsed = time.time() - start_time
             rate = discovered / elapsed if elapsed > 0 else 0
-            print(f"⏳ Discovered: {discovered} pages ({rate:.1f} pages/sec)", end="\r")
+            print(f" Discovered: {discovered} pages ({rate:.1f} pages/sec)", end="\r")
 
         try:
             # HEAD request first to check if page exists (faster)
@@ -163,31 +163,31 @@ def print_results(results, config):
     """Print estimation results"""
     print()
     print("=" * 70)
-    print("📊 ESTIMATION RESULTS")
+    print(" ESTIMATION RESULTS")
     print("=" * 70)
     print()
     print(f"Config: {config['name']}")
     print(f"Base URL: {config['base_url']}")
     print()
-    print(f"✅ Pages Discovered: {results['discovered']}")
-    print(f"⏳ Pages Pending: {results['pending']}")
-    print(f"📈 Estimated Total: {results['estimated_total']}")
+    print(f"PASS: Pages Discovered: {results['discovered']}")
+    print(f" Pages Pending: {results['pending']}")
+    print(f" Estimated Total: {results['estimated_total']}")
     print()
-    print(f"⏱️  Time Elapsed: {results['elapsed_seconds']}s")
-    print(f"⚡ Discovery Rate: {results['discovery_rate']} pages/sec")
+    print(f"  Time Elapsed: {results['elapsed_seconds']}s")
+    print(f" Discovery Rate: {results['discovery_rate']} pages/sec")
 
     if results.get("unlimited", False):
         print()
-        print("✅ UNLIMITED MODE - Discovered all reachable pages")
+        print("PASS: UNLIMITED MODE - Discovered all reachable pages")
         print(f"   Total pages: {results['estimated_total']}")
     elif results["hit_limit"]:
         print()
-        print("⚠️  Hit discovery limit - actual total may be higher")
+        print("WARNING:  Hit discovery limit - actual total may be higher")
         print("   Increase max_discovery parameter for more accurate estimate")
 
     print()
     print("=" * 70)
-    print("💡 RECOMMENDATIONS")
+    print(" RECOMMENDATIONS")
     print("=" * 70)
     print()
 
@@ -195,11 +195,11 @@ def print_results(results, config):
     current_max = config.get("max_pages", 100)
 
     if estimated <= current_max:
-        print(f"✅ Current max_pages ({current_max}) is sufficient")
+        print(f"PASS: Current max_pages ({current_max}) is sufficient")
     else:
         recommended = min(estimated + 50, DISCOVERY_THRESHOLD)  # Add 50 buffer, cap at threshold
-        print(f"⚠️  Current max_pages ({current_max}) may be too low")
-        print(f"📝 Recommended max_pages: {recommended}")
+        print(f"WARNING:  Current max_pages ({current_max}) may be too low")
+        print(f" Recommended max_pages: {recommended}")
         print(f"   (Estimated {estimated} + 50 buffer)")
 
     # Estimate time for full scrape
@@ -209,7 +209,7 @@ def print_results(results, config):
     estimated_time = (estimated * rate_limit) / 60  # in minutes
 
     print()
-    print(f"⏱️  Estimated full scrape time: {estimated_time:.1f} minutes")
+    print(f"  Estimated full scrape time: {estimated_time:.1f} minutes")
     print(f"   (Based on rate_limit: {rate_limit}s)")
 
     print()
@@ -222,10 +222,10 @@ def load_config(config_path):
             config = json.load(f)
         return config
     except FileNotFoundError:
-        print(f"❌ Error: Config file not found: {config_path}")
+        print(f"FAIL: Error: Config file not found: {config_path}")
         sys.exit(1)
     except json.JSONDecodeError as e:
-        print(f"❌ Error: Invalid JSON in config file: {e}")
+        print(f"FAIL: Error: Invalid JSON in config file: {e}")
         sys.exit(1)
 
 
@@ -260,23 +260,23 @@ def list_all_configs():
     config_dir = find_configs_directory()
 
     if not config_dir:
-        print("❌ Error: No config directory found")
+        print("FAIL: Error: No config directory found")
         print("   Tried: api/configs_repo/official/ and configs/")
         return 1
 
     print()
     print("=" * 70)
-    print("📋 AVAILABLE CONFIGS")
+    print(" AVAILABLE CONFIGS")
     print("=" * 70)
     print()
-    print(f"📁 Config directory: {config_dir}")
+    print(f" Config directory: {config_dir}")
     print()
 
     # Find all JSON files recursively
     config_files = sorted(config_dir.rglob("*.json"))
 
     if not config_files:
-        print("⚠️  No config files found")
+        print("WARNING:  No config files found")
         return 1
 
     # Group by category (subdirectory)
@@ -318,7 +318,7 @@ def list_all_configs():
                     "file": config_file.name,
                     "path": str(rel_path),
                     "name": config_file.stem,
-                    "description": f"⚠️  Error loading config: {e}",
+                    "description": f"WARNING:  Error loading config: {e}",
                 }
             )
 
@@ -328,7 +328,7 @@ def list_all_configs():
         configs = by_category[category]
         total += len(configs)
 
-        print(f"📦 {category.upper()}")
+        print(f" {category.upper()}")
         print("-" * 70)
 
         for config in configs:
@@ -338,7 +338,7 @@ def list_all_configs():
             print()
 
     print("=" * 70)
-    print(f"📊 Total: {total} configs found")
+    print(f" Total: {total} configs found")
     print("=" * 70)
     print()
 
@@ -422,10 +422,10 @@ Examples:
         return 0  # Success
 
     except KeyboardInterrupt:
-        print("\n\n⚠️  Estimation interrupted by user")
+        print("\n\nWARNING:  Estimation interrupted by user")
         return 1
     except Exception as e:
-        print(f"\n\n❌ Error during estimation: {e}")
+        print(f"\n\nFAIL: Error during estimation: {e}")
         return 1
 
 

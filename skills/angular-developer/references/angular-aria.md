@@ -1,4 +1,4 @@
-﻿# Angular Aria
+# Angular Aria
 
 Angular Aria (`@angular/aria`) is a collection of headless, accessible directives that implement common WAI-ARIA patterns. These directives handle keyboard interactions, ARIA attributes, focus management, and screen reader support.
 
@@ -10,7 +10,7 @@ Because Angular Aria components are headless, they do not come with default styl
 
 Common ARIA attributes to target in CSS:
 
-- `[aria-expanded="true"]` / `[aria-expanded="false"]`
+- `[aria-expanded="true"]`/`[aria-expanded="false"]`
 - `[aria-selected="true"]`
 - `[aria-disabled="true"]`
 - `[aria-current="page"]` (for navigation)
@@ -27,7 +27,7 @@ Organizes related content into expandable/collapsible sections.
 
 **Imports:** `import { AccordionContent, AccordionGroup, AccordionPanel, AccordionTrigger } from '@angular/aria/accordion';`
 
-**Directives:** `ngAccordionGroup`, `ngAccordionTrigger`, `ngAccordionPanel`, `ngAccordionContent` (for lazy loading).
+**Directives:** `ngAccordionGroup`,`ngAccordionTrigger`,`ngAccordionPanel`,`ngAccordionContent` (for lazy loading).
 
 ```ts
 @Component({
@@ -82,7 +82,7 @@ A foundational directive for displaying a list of options. Used for visible sele
 
 **Imports:** `import {Listbox, Option} from '@angular/aria/listbox';`
 
-**Directives:** `ngListbox`, `ngOption`.
+**Directives:** `ngListbox`,`ngOption`.
 
 ```ts
 @Component({
@@ -105,7 +105,7 @@ export class App {
 ```
 
 **Styling Strategy:**
-Target `[aria-selected="true"]` for selected state and `:focus-visible` or `[data-active]` for the focused item (Angular Aria uses roving tabindex or activedescendant).
+Target `[aria-selected="true"]`for selected state and`:focus-visible`or`[data-active]` for the focused item (Angular Aria uses roving tabindex or activedescendant).
 
 ```css
 .option {
@@ -126,7 +126,7 @@ Target `[aria-selected="true"]` for selected state and `:focus-visible` or `[dat
 
 ## 3. Combobox, Select, and Multiselect
 
-These patterns combine `ngCombobox` with a popup containing an `ngListbox`.
+These patterns combine `ngCombobox`with a popup containing an`ngListbox`.
 
 - **Combobox**: Text input + popup (used for Autocomplete).
 - **Select**: Readonly Combobox + single-select Listbox.
@@ -141,7 +141,7 @@ These patterns combine `ngCombobox` with a popup containing an `ngListbox`.
   import {Listbox, Option} from '@angular/aria/listbox';
 ```
 
-**Directives:** `ngCombobox`, `ngComboboxInput`, `ngComboboxPopupContainer`, `ngListbox`, `ngOption`.
+**Directives:** `ngCombobox`,`ngComboboxInput`,`ngComboboxPopupContainer`,`ngListbox`,`ngOption`.
 
 ```html
 <!-- Example: Standard Select -->
@@ -188,7 +188,7 @@ For actions, commands, and context menus (not for form selection).
 
 **Imports:** `import {MenuBar, Menu, MenuContent, MenuItem} from '@angular/aria/menu';`
 
-**Directives:** `ngMenuBar`, `ngMenu`, `ngMenuItem`, `ngMenuTrigger`.
+**Directives:** `ngMenuBar`,`ngMenu`,`ngMenuItem`,`ngMenuTrigger`.
 
 ```html
 <!-- Menubar Example -->
@@ -235,7 +235,7 @@ Layered content sections where only one panel is visible.
 
 **Imports:** `import {Tab, Tabs, TabList, TabPanel, TabContent} from '@angular/aria/tabs';`
 
-**Directives:** `ngTabs`, `ngTabList`, `ngTab`, `ngTabPanel`, `ngTabContent`.
+**Directives:** `ngTabs`,`ngTabList`,`ngTab`,`ngTabPanel`,`ngTabContent`.
 
 ```html
 <div ngTabs>
@@ -287,7 +287,7 @@ Groups related controls (like text formatting).
 
 **Imports:** `import {Toolbar, ToolbarWidget, ToolbarWidgetGroup} from '@angular/aria/toolbar';`
 
-**Directives:** `ngToolbar`, `ngToolbarWidget`, `ngToolbarWidgetGroup`.
+**Directives:** `ngToolbar`,`ngToolbarWidget`,`ngToolbarWidgetGroup`.
 
 ```html
 <div ngToolbar class="toolbar">
@@ -299,7 +299,7 @@ Groups related controls (like text formatting).
 ```
 
 **Styling Strategy:**
-Target `[aria-pressed="true"]` (for toggle buttons) or `[aria-checked="true"]` (for radio groups) within the toolbar.
+Target `[aria-pressed="true"]`(for toggle buttons) or`[aria-checked="true"]` (for radio groups) within the toolbar.
 
 ```css
 .toolbar {
@@ -328,7 +328,7 @@ Displays hierarchical data (file systems, nested nav).
 
 **Imports:** `import {Tree, TreeItem, TreeItemGroup} from '@angular/aria/tree';`
 
-**Directives:** `ngTree`, `ngTreeItem`, `ngTreeGroup`.
+**Directives:** `ngTree`,`ngTreeItem`,`ngTreeGroup`.
 
 ```html
 <ul ngTree class="tree">
@@ -342,7 +342,7 @@ Displays hierarchical data (file systems, nested nav).
 ```
 
 **Styling Strategy:**
-Target `[aria-expanded]` to show/hide children or rotate chevron icons. Use `padding-left` on nested groups to show hierarchy.
+Target `[aria-expanded]`to show/hide children or rotate chevron icons. Use`padding-left` on nested groups to show hierarchy.
 
 ```css
 .tree,
@@ -365,7 +365,7 @@ li[aria-expanded='true'] > .tree-label::before {
 A two-dimensional interactive collection of cells enabling navigation via arrow keys.
 
 **Usage:** Data tables, calendars, spreadsheets, and layout patterns for interactive elements.
-**Directives:** `ngGrid`, `ngGridRow`, `ngGridCell`, `ngGridCellWidget`.
+**Directives:** `ngGrid`,`ngGridRow`,`ngGridCell`,`ngGridCellWidget`.
 
 ```html
 <table ngGrid [multi]="true" [enableSelection]="true" class="grid-table">
@@ -383,7 +383,7 @@ A two-dimensional interactive collection of cells enabling navigation via arrow 
 ```
 
 **Styling Strategy:**
-Target `[aria-selected="true"]` for selected cells and `:focus-visible` for the active cell (roving tabindex) or `[aria-activedescendant]` on the container.
+Target `[aria-selected="true"]`for selected cells and`:focus-visible`for the active cell (roving tabindex) or`[aria-activedescendant]` on the container.
 
 ```css
 .grid-table {
@@ -405,6 +405,6 @@ Target `[aria-selected="true"]` for selected cells and `:focus-visible` for the 
 
 ## General Rules for Agents
 
-1. **Never use native HTML elements like `<select>`** when asked to implement these specific Aria patterns. Use the `ng*` directives.
-2. **Handle CSS manually**: Remember that `Angular Aria` does NOT provide styles. You must write the CSS, targeting the native ARIA attributes (`aria-expanded`, `aria-selected`, etc.) that the directives automatically toggle.
-3. **Lazy Loading**: Always use the provided structural directives (`ngAccordionContent`, `ngTabContent`) inside `ng-template` for heavy content panels to ensure they are lazily rendered.
+1. **Never use native HTML elements like `<select>`** when asked to implement these specific Aria patterns. Use the`ng*` directives.
+2. **Handle CSS manually**: Remember that `Angular Aria`does NOT provide styles. You must write the CSS, targeting the native ARIA attributes (`aria-expanded`,`aria-selected`, etc.) that the directives automatically toggle.
+3. **Lazy Loading**: Always use the provided structural directives (`ngAccordionContent`,`ngTabContent`) inside`ng-template` for heavy content panels to ensure they are lazily rendered.

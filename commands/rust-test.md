@@ -39,7 +39,7 @@ REPEAT  -> Next test case
 User: /rust-test I need a function to validate user registration
 
 Agent:
-# TDD Session: Registration Validator
+## TDD Session: Registration Validator
 
 ## Step 1: Define Interface
 
@@ -251,22 +251,22 @@ proptest! {
 ## Coverage Commands
 
 ```bash
-# Summary report
+## Summary report
 cargo llvm-cov
 
-# HTML report
+## HTML report
 cargo llvm-cov --html
 
-# Fail if below threshold
+## Fail if below threshold
 cargo llvm-cov --fail-under-lines 80
 
-# Run specific test
+## Run specific test
 cargo test test_name
 
-# Run with output
+## Run with output
 cargo test -- --nocapture
 
-# Run without stopping on first failure
+## Run without stopping on first failure
 cargo test --no-fail-fast
 ```
 
@@ -284,16 +284,16 @@ cargo test --no-fail-fast
 **DO:**
 - Write test FIRST, before any implementation
 - Run tests after each change
-- Use `assert_eq!` over `assert!` for better error messages
-- Use `?` in tests that return `Result` for cleaner output
+- Use `assert_eq!`over`assert!` for better error messages
+- Use `?`in tests that return`Result` for cleaner output
 - Test behavior, not implementation
 - Include edge cases (empty, boundary, error paths)
 
 **DON'T:**
 - Write implementation before tests
 - Skip the RED phase
-- Use `#[should_panic]` when `Result::is_err()` works
-- Use `sleep()` in tests — use channels or `tokio::time::pause()`
+- Use `#[should_panic]`when`Result::is_err()` works
+- Use `sleep()`in tests — use channels or`tokio::time::pause()`
 - Mock everything — prefer integration tests when feasible
 
 ## Related Commands

@@ -2,7 +2,7 @@
 export default {
   id: 'normalize',
   caption: 'Inconsistent styles → Systematic design tokens',
-  
+
   before: `
     <div style="display: flex; flex-direction: column; gap: 8px; width: 100%; max-width: 260px;">
       <div style="padding: 12px 16px; background: #f0f0f0; border-radius: 6px;">
@@ -19,7 +19,7 @@ export default {
       </div>
     </div>
   `,
-  
+
   after: `
     <div style="display: flex; flex-direction: column; gap: var(--spacing-sm); width: 100%; max-width: 260px;">
       <div style="padding: var(--spacing-md); background: var(--color-paper); border: 1px solid var(--color-mist); border-radius: 6px;">

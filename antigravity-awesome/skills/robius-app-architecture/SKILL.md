@@ -40,14 +40,14 @@ For production-ready async patterns, see the `_base/` directory:
 ┌─────────────────────────────────────────────────────────────┐
 │                     UI Thread (Makepad)                     │
 │  ┌─────────┐     ┌──────────┐     ┌──────────────────────┐ │
-│  │   App   │────▶│ WidgetRef │────▶│ Widget Tree (View)  │ │
+│  │   App   │────│ WidgetRef │────│ Widget Tree (View)  │ │
 │  │ State   │     │    ui     │     │ Scope::with_data()  │ │
 │  └────┬────┘     └──────────┘     └──────────────────────┘ │
 │       │                                                     │
 │       │ submit_async_request()                              │
 │       ▼                                                     │
 │  ┌─────────────────┐          ┌─────────────────────────┐  │
-│  │ REQUEST_SENDER  │─────────▶│  Crossbeam SegQueue     │  │
+│  │ REQUEST_SENDER  │─────────│  Crossbeam SegQueue     │  │
 │  │ (MPSC Channel)  │          │  (Lock-free Updates)    │  │
 │  └─────────────────┘          └─────────────────────────┘  │
 └───────────────────────────────────┬─────────────────────────┘

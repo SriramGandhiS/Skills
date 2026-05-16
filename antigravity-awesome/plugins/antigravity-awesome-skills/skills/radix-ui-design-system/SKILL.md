@@ -57,10 +57,10 @@ Every Radix primitive is built with accessibility as the foundation:
 Radix provides **behavior**, you provide **appearance**:
 
 ```tsx
-// ❌ Don't fight pre-styled components
+// FAIL: Don't fight pre-styled components
 <Button className="override-everything" />
 
-// ✅ Radix gives you behavior, you add styling
+// PASS: Radix gives you behavior, you add styling
 <Dialog.Root>
   <Dialog.Trigger className="your-button-styles" />
   <Dialog.Content className="your-modal-styles" />
@@ -119,14 +119,14 @@ export function MyDialog() {
       <Dialog.Portal>
         {/* Overlay (backdrop) */}
         <Dialog.Overlay className="overlay-styles" />
-        
+
         {/* Content (modal) */}
         <Dialog.Content className="content-styles">
           <Dialog.Title>Title</Dialog.Title>
           <Dialog.Description>Description</Dialog.Description>
-          
+
           {/* Your content here */}
-          
+
           <Dialog.Close asChild>
             <button>Close</button>
           </Dialog.Close>
@@ -162,7 +162,7 @@ export function MyDialog() {
 
 ```tsx
 // Component.tsx
-<Dialog.Content 
+<Dialog.Content
   className="
     bg-[hsl(var(--color-surface))]
     rounded-[var(--radius-base)]
@@ -230,7 +230,7 @@ const StyledContent = styled(Dialog.Content, {
   backgroundColor: '$surface',
   borderRadius: '$md',
   padding: '$6',
-  
+
   variants: {
     size: {
       small: { width: '300px' },
@@ -238,7 +238,7 @@ const StyledContent = styled(Dialog.Content, {
       large: { width: '700px' },
     },
   },
-  
+
   defaultVariants: {
     size: 'medium',
   },
@@ -272,8 +272,8 @@ export function CustomSelect({ items, placeholder, onValueChange }) {
         <Select.Content className="select-content">
           <Select.Viewport>
             {items.map((item) => (
-              <Select.Item 
-                key={item.value} 
+              <Select.Item
+                key={item.value}
                 value={item.value}
                 className="select-item"
               >
@@ -296,12 +296,12 @@ export function CustomSelect({ items, placeholder, onValueChange }) {
 **Use case**: Render as different elements without losing behavior
 
 ```tsx
-// ✅ Render as Next.js Link but keep Radix behavior
+// PASS: Render as Next.js Link but keep Radix behavior
 <Dialog.Trigger asChild>
   <Link href="/settings">Open Settings</Link>
 </Dialog.Trigger>
 
-// ✅ Render as custom component
+// PASS: Render as custom component
 <DropdownMenu.Item asChild>
   <YourCustomButton icon={<Icon />}>Action</YourCustomButton>
 </DropdownMenu.Item>
@@ -348,7 +348,7 @@ export function AnimatedDialog({ open, onOpenChange }) {
                   className="dialog-overlay"
                 />
               </Dialog.Overlay>
-              
+
               <Dialog.Content asChild>
                 <motion.div
                   initial={{ opacity: 0, scale: 0.95 }}
@@ -484,7 +484,7 @@ export function AnimatedDialog({ open, onOpenChange }) {
 
 ## Best Practices
 
-### ✅ Do This
+### PASS: Do This
 
 1. **Always use `asChild` to avoid wrapper divs**
    ```tsx
@@ -523,11 +523,11 @@ export function AnimatedDialog({ open, onOpenChange }) {
    }
    ```
 
-### ❌ Don't Do This
+### FAIL: Don't Do This
 
 1. **Don't skip accessibility parts**
    ```tsx
-   // ❌ Missing Title and Description
+   // FAIL: Missing Title and Description
    <Dialog.Content>
      <div>Content</div>
    </Dialog.Content>
@@ -535,19 +535,19 @@ export function AnimatedDialog({ open, onOpenChange }) {
 
 2. **Don't fight the primitives**
    ```tsx
-   // ❌ Overriding internal behavior
+   // FAIL: Overriding internal behavior
    <Dialog.Content onClick={(e) => e.stopPropagation()}>
    ```
 
 3. **Don't mix controlled and uncontrolled**
    ```tsx
-   // ❌ Inconsistent state management
+   // FAIL: Inconsistent state management
    <Tabs.Root defaultValue="tab1" value={activeTab}>
    ```
 
 4. **Don't ignore keyboard navigation**
    ```tsx
-   // ❌ Disabling keyboard behavior
+   // FAIL: Disabling keyboard behavior
    <DropdownMenu.Item onKeyDown={(e) => e.preventDefault()}>
    ```
 
@@ -655,7 +655,7 @@ export function CountryForm() {
               <Select.Value placeholder="Select a country" />
               <Select.Icon />
             </Select.Trigger>
-            
+
             <Select.Portal>
               <Select.Content className="select-content">
                 <Select.Viewport>

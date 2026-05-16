@@ -195,7 +195,7 @@ Making calculator tools that get shared
 ```
 BAD:  "Result: $45,230"
 GOOD: "You could save $45,230 by age 40"
-BEST: "You're leaving $45,230 on the table 💸"
+BEST: "You're leaving $45,230 on the table "
 ```
 
 ### Comparison Features

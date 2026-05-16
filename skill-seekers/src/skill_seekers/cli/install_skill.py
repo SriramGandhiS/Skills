@@ -44,7 +44,7 @@ def main():
     """Main entry point for CLI"""
     # Check MCP availability first
     if not MCP_AVAILABLE:
-        print("\n❌ Error: MCP package not installed")
+        print("\nFAIL: Error: MCP package not installed")
         print("\nThe 'install' command requires MCP support.")
         print("Install with:")
         print("  pip install skill-seekers[mcp]")
@@ -166,15 +166,15 @@ Phases:
 
         # Return success/failure based on output
         output_text = result[0].text
-        if "❌" in output_text and "WORKFLOW COMPLETE" not in output_text:
+        if "FAIL:" in output_text and "WORKFLOW COMPLETE" not in output_text:
             return 1
         return 0
 
     except KeyboardInterrupt:
-        print("\n\n⚠️  Workflow interrupted by user")
+        print("\n\nWARNING:  Workflow interrupted by user")
         return 130  # Standard exit code for SIGINT
     except Exception as e:
-        print(f"\n\n❌ Unexpected error: {str(e)}")
+        print(f"\n\nFAIL: Unexpected error: {str(e)}")
         return 1
 
 

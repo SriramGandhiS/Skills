@@ -214,7 +214,7 @@ If critical context is missing, **state assumptions explicitly** before proceedi
 * Secure site
 
 ---
-## 🔢 SEO Health Index & Scoring Layer (Additive)
+## SEO Health Index & Scoring Layer (Additive)
 
 ### Purpose
 
@@ -402,7 +402,7 @@ These fields are **mandatory** and directly inform the SEO Health Index.
 
 * **Recommendation**
   What should be done to resolve the issue.
-  **Do not include implementation steps unless explicitly requested.**
+**Do not include implementation steps unless explicitly requested.**
 
 ---
 

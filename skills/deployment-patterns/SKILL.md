@@ -1,4 +1,4 @@
-﻿---
+---
 name: deployment-patterns
 description: Deployment workflows, CI/CD pipeline patterns, Docker containerization, health checks, rollback strategies, and production readiness checklists for web applications.
 origin: ECC
@@ -49,7 +49,7 @@ Run two identical environments. Switch traffic atomically.
 Blue  (v1) â† traffic
 Green (v2)   idle, running new version
 
-# After verification:
+## After verification:
 Blue  (v1)   idle (becomes standby)
 Green (v2) â† traffic
 ```
@@ -66,11 +66,11 @@ Route a small percentage of traffic to the new version first.
 v1: 95% of traffic
 v2:  5% of traffic  (canary)
 
-# If metrics look good:
+## If metrics look good:
 v1: 50% of traffic
 v2: 50% of traffic
 
-# Final:
+## Final:
 v2: 100% of traffic
 ```
 
@@ -83,13 +83,13 @@ v2: 100% of traffic
 ### Multi-Stage Dockerfile (Node.js)
 
 ```dockerfile
-# Stage 1: Install dependencies
+## Stage 1: Install dependencies
 FROM node:22-alpine AS deps
 WORKDIR /app
 COPY package.json package-lock.json ./
 RUN npm ci --production=false
 
-# Stage 2: Build
+## Stage 2: Build
 FROM node:22-alpine AS builder
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
@@ -97,7 +97,7 @@ COPY . .
 RUN npm run build
 RUN npm prune --production
 
-# Stage 3: Production image
+## Stage 3: Production image
 FROM node:22-alpine AS runner
 WORKDIR /app
 
@@ -112,7 +112,7 @@ ENV NODE_ENV=production
 EXPOSE 3000
 
 HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
-  CMD wget --no-verbose --tries=1 --spider http://localhost:3000/health || exit 1
+  CMD wget --no-verbose --tries=1 --spider <http://localhost:3000/health> || exit 1
 
 CMD ["node", "dist/server.js"]
 ```
@@ -135,7 +135,7 @@ USER appuser
 COPY --from=builder /server /server
 
 EXPOSE 8080
-HEALTHCHECK --interval=30s --timeout=3s CMD wget -qO- http://localhost:8080/health || exit 1
+HEALTHCHECK --interval=30s --timeout=3s CMD wget -qO- <http://localhost:8080/health> || exit 1
 CMD ["/server"]
 ```
 
@@ -168,7 +168,7 @@ CMD ["gunicorn", "config.wsgi:application", "--bind", "0.0.0.0:8000", "--workers
 ### Docker Best Practices
 
 ```
-# GOOD practices
+## GOOD practices
 - Use specific version tags (node:22-alpine, not node:latest)
 - Multi-stage builds to minimize image size
 - Run as non-root user
@@ -177,7 +177,7 @@ CMD ["gunicorn", "config.wsgi:application", "--bind", "0.0.0.0:8000", "--workers
 - Add HEALTHCHECK instruction
 - Set resource limits in docker-compose or k8s
 
-# BAD practices
+## BAD practices
 - Running as root
 - Using :latest tags
 - Copying entire repo in one COPY layer
@@ -333,14 +333,14 @@ startupProbe:
 ### Twelve-Factor App Pattern
 
 ```bash
-# All config via environment variables â€” never in code
+## All config via environment variables â€” never in code
 DATABASE_URL=postgres://user:pass@host:5432/db
 REDIS_URL=redis://host:6379/0
 API_KEY=${API_KEY}           # injected by secrets manager
 LOG_LEVEL=info
 PORT=3000
 
-# Environment-specific behavior
+## Environment-specific behavior
 NODE_ENV=production          # or staging, development
 APP_ENV=production           # explicit app environment
 ```
@@ -368,16 +368,16 @@ export const env = envSchema.parse(process.env);
 ### Instant Rollback
 
 ```bash
-# Docker/Kubernetes: point to previous image
+## Docker/Kubernetes: point to previous image
 kubectl rollout undo deployment/app
 
-# Vercel: promote previous deployment
+## Vercel: promote previous deployment
 vercel rollback
 
-# Railway: redeploy previous commit
+## Railway: redeploy previous commit
 railway up --commit <previous-sha>
 
-# Database: rollback migration (if reversible)
+## Database: rollback migration (if reversible)
 npx prisma migrate resolve --rolled-back <migration-name>
 ```
 

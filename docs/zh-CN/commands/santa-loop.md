@@ -64,7 +64,7 @@ git diff --name-only HEAD
 
 #### 评审者 A：Claude Agent（始终运行）
 
-启动一个 Agent（subagent\_type: `code-reviewer`，model: `opus`），包含完整的评分标准 + 所有被审查的文件。提示必须包括：
+启动一个 Agent（subagent\_type: `code-reviewer`，model:`opus`），包含完整的评分标准 + 所有被审查的文件。提示必须包括：
 
 * 完整的评分标准
 * 所有被审查的文件内容
@@ -105,8 +105,8 @@ gemini -p "$(cat "$PROMPT_FILE")" -m gemini-2.5-pro
 rm -f "$PROMPT_FILE"
 ```
 
-**Claude Agent 回退**（仅当 `codex` 和 `gemini` 均未安装时）
-启动第二个 Claude Agent（subagent\_type: `code-reviewer`，model: `opus`）。记录一条警告，说明两个评审者共享相同的模型家族——未实现真正的模型多样性，但上下文隔离仍然得到强制执行。
+**Claude Agent 回退**（仅当 `codex`和`gemini` 均未安装时）
+启动第二个 Claude Agent（subagent\_type: `code-reviewer`，model:`opus`）。记录一条警告，说明两个评审者共享相同的模型家族——未实现真正的模型多样性，但上下文隔离仍然得到强制执行。
 
 在所有情况下，评审者必须返回与评审者 A 相同的结构化 JSON 裁决。
 

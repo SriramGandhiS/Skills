@@ -1,4 +1,4 @@
-﻿---
+---
 name: docker-patterns
 description: Docker and Docker Compose patterns for local development, container security, networking, volume strategies, and multi-service orchestration.
 origin: ECC
@@ -21,7 +21,7 @@ Docker and Docker Compose best practices for containerized development.
 ### Standard Web App Stack
 
 ```yaml
-# docker-compose.yml
+## docker-compose.yml
 services:
   app:
     build:
@@ -81,13 +81,13 @@ volumes:
 ### Development vs Production Dockerfile
 
 ```dockerfile
-# Stage: dependencies
+## Stage: dependencies
 FROM node:22-alpine AS deps
 WORKDIR /app
 COPY package.json package-lock.json ./
 RUN npm ci
 
-# Stage: dev (hot reload, debug tools)
+## Stage: dev (hot reload, debug tools)
 FROM node:22-alpine AS dev
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
@@ -95,14 +95,14 @@ COPY . .
 EXPOSE 3000
 CMD ["npm", "run", "dev"]
 
-# Stage: build
+## Stage: build
 FROM node:22-alpine AS build
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 RUN npm run build && npm prune --production
 
-# Stage: production (minimal image)
+## Stage: production (minimal image)
 FROM node:22-alpine AS production
 WORKDIR /app
 RUN addgroup -g 1001 -S appgroup && adduser -S appuser -u 1001
@@ -112,14 +112,14 @@ COPY --from=build --chown=appuser:appgroup /app/node_modules ./node_modules
 COPY --from=build --chown=appuser:appgroup /app/package.json ./
 ENV NODE_ENV=production
 EXPOSE 3000
-HEALTHCHECK --interval=30s --timeout=3s CMD wget -qO- http://localhost:3000/health || exit 1
+HEALTHCHECK --interval=30s --timeout=3s CMD wget -qO- <http://localhost:3000/health> || exit 1
 CMD ["node", "dist/server.js"]
 ```
 
 ### Override Files
 
 ```yaml
-# docker-compose.override.yml (auto-loaded, dev-only settings)
+## docker-compose.override.yml (auto-loaded, dev-only settings)
 services:
   app:
     environment:
@@ -128,7 +128,7 @@ services:
     ports:
       - "9229:9229"                   # Node.js debugger
 
-# docker-compose.prod.yml (explicit for production)
+## docker-compose.prod.yml (explicit for production)
 services:
   app:
     build:
@@ -142,10 +142,10 @@ services:
 ```
 
 ```bash
-# Development (auto-loads override)
+## Development (auto-loads override)
 docker compose up
 
-# Production
+## Production
 docker compose -f docker-compose.yml -f docker-compose.prod.yml up -d
 ```
 
@@ -155,7 +155,7 @@ docker compose -f docker-compose.yml -f docker-compose.prod.yml up -d
 
 Services in the same Compose network resolve by service name:
 ```
-# From "app" container:
+## From "app" container:
 postgres://postgres:postgres@db:5432/app_dev    # "db" resolves to the db container
 redis://redis:6379/0                             # "redis" resolves to the redis container
 ```
@@ -227,16 +227,16 @@ services:
 ### Dockerfile Hardening
 
 ```dockerfile
-# 1. Use specific tags (never :latest)
+## 1. Use specific tags (never :latest)
 FROM node:22.12-alpine3.20
 
-# 2. Run as non-root
+## 2. Run as non-root
 RUN addgroup -g 1001 -S app && adduser -S app -u 1001
 USER app
 
-# 3. Drop capabilities (in compose)
-# 4. Read-only root filesystem where possible
-# 5. No secrets in image layers
+## 3. Drop capabilities (in compose)
+## 4. Read-only root filesystem where possible
+## 5. No secrets in image layers
 ```
 
 ### Compose Security
@@ -259,7 +259,7 @@ services:
 ### Secret Management
 
 ```yaml
-# GOOD: Use environment variables (injected at runtime)
+## GOOD: Use environment variables (injected at runtime)
 services:
   app:
     env_file:
@@ -267,7 +267,7 @@ services:
     environment:
       - API_KEY                  # Inherits from host environment
 
-# GOOD: Docker secrets (Swarm mode)
+## GOOD: Docker secrets (Swarm mode)
 secrets:
   db_password:
     file: ./secrets/db_password.txt
@@ -277,8 +277,8 @@ services:
     secrets:
       - db_password
 
-# BAD: Hardcoded in image
-# ENV API_KEY=sk-proj-xxxxx      # NEVER DO THIS
+## BAD: Hardcoded in image
+## ENV API_KEY=sk-proj-xxxxx      # NEVER DO THIS
 ```
 
 ## .dockerignore
@@ -304,24 +304,24 @@ tests/
 ### Common Commands
 
 ```bash
-# View logs
+## View logs
 docker compose logs -f app           # Follow app logs
 docker compose logs --tail=50 db     # Last 50 lines from db
 
-# Execute commands in running container
+## Execute commands in running container
 docker compose exec app sh           # Shell into app
 docker compose exec db psql -U postgres  # Connect to postgres
 
-# Inspect
+## Inspect
 docker compose ps                     # Running services
 docker compose top                    # Processes in each container
 docker stats                          # Resource usage
 
-# Rebuild
+## Rebuild
 docker compose up --build             # Rebuild images
 docker compose build --no-cache app   # Force full rebuild
 
-# Clean up
+## Clean up
 docker compose down                   # Stop and remove containers
 docker compose down -v                # Also remove volumes (DESTRUCTIVE)
 docker system prune                   # Remove unused images/containers
@@ -330,13 +330,13 @@ docker system prune                   # Remove unused images/containers
 ### Debugging Network Issues
 
 ```bash
-# Check DNS resolution inside container
+## Check DNS resolution inside container
 docker compose exec app nslookup db
 
-# Check connectivity
-docker compose exec app wget -qO- http://api:3000/health
+## Check connectivity
+docker compose exec app wget -qO- <http://api:3000/health>
 
-# Inspect network
+## Inspect network
 docker network ls
 docker network inspect <project>_default
 ```
@@ -344,21 +344,21 @@ docker network inspect <project>_default
 ## Anti-Patterns
 
 ```
-# BAD: Using docker compose in production without orchestration
-# Use Kubernetes, ECS, or Docker Swarm for production multi-container workloads
+## BAD: Using docker compose in production without orchestration
+## Use Kubernetes, ECS, or Docker Swarm for production multi-container workloads
 
-# BAD: Storing data in containers without volumes
-# Containers are ephemeral -- all data lost on restart without volumes
+## BAD: Storing data in containers without volumes
+## Containers are ephemeral -- all data lost on restart without volumes
 
-# BAD: Running as root
-# Always create and use a non-root user
+## BAD: Running as root
+## Always create and use a non-root user
 
-# BAD: Using :latest tag
-# Pin to specific versions for reproducible builds
+## BAD: Using :latest tag
+## Pin to specific versions for reproducible builds
 
-# BAD: One giant container with all services
-# Separate concerns: one process per container
+## BAD: One giant container with all services
+## Separate concerns: one process per container
 
-# BAD: Putting secrets in docker-compose.yml
-# Use .env files (gitignored) or Docker secrets
+## BAD: Putting secrets in docker-compose.yml
+## Use .env files (gitignored) or Docker secrets
 ```

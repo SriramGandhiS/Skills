@@ -54,11 +54,11 @@ class TestScenario1GitHubThreeStream:
     }
 
     Expected Result:
-    - ✅ Code analyzed with C3.x
-    - ✅ README/docs extracted
-    - ✅ 100 issues analyzed
-    - ✅ Router + 4 sub-skills generated
-    - ✅ All skills include GitHub insights
+    - PASS: Code analyzed with C3.x
+    - PASS: README/docs extracted
+    - PASS: 100 issues analyzed
+    - PASS: Router + 4 sub-skills generated
+    - PASS: All skills include GitHub insights
     """
 
     @pytest.fixture
@@ -403,7 +403,7 @@ How to use async tools.
 
         # Verify GitHub metadata present
         assert "Repository Info" in skill_md or "Repository:" in skill_md
-        assert "1234" in skill_md or "⭐" in skill_md  # Stars
+        assert "1234" in skill_md or "" in skill_md  # Stars
         assert "Python" in skill_md
 
         # Verify README quick start
@@ -435,7 +435,7 @@ description: FastMCP framework overview
 # FastMCP - Overview
 
 **Repository:** https://github.com/jlowin/fastmcp
-**Stars:** ⭐ 1,234 | **Language:** Python
+**Stars:**  1,234 | **Language:** Python
 
 ## Quick Start (from README)
 
@@ -468,7 +468,7 @@ pip install fastmcp
         github_lines = 0
         if "Repository:" in router_md:
             github_lines += 1
-        if "Stars:" in router_md or "⭐" in router_md:
+        if "Stars:" in router_md or "" in router_md:
             github_lines += 1
         if "Common Issues" in router_md:
             github_lines += router_md.count("Issue #")
@@ -478,7 +478,7 @@ pip install fastmcp
 
         # Check content quality (Architecture Section 8.2)
         assert "Issue #42" in router_md, "Missing issue references"
-        assert "⭐" in router_md or "Stars:" in router_md, "Missing GitHub metadata"
+        assert "" in router_md or "Stars:" in router_md, "Missing GitHub metadata"
         assert "Quick Start" in router_md or "README" in router_md, "Missing README content"
 
 
@@ -508,12 +508,12 @@ class TestScenario2MultiSource:
     }
 
     Expected Result:
-    - ✅ HTML docs scraped (200 pages)
-    - ✅ Code analyzed with C3.x
-    - ✅ GitHub insights added
-    - ✅ Conflicts detected (docs vs code)
-    - ✅ Hybrid content generated
-    - ✅ Router + sub-skills with all sources
+    - PASS: HTML docs scraped (200 pages)
+    - PASS: Code analyzed with C3.x
+    - PASS: GitHub insights added
+    - PASS: Conflicts detected (docs vs code)
+    - PASS: Hybrid content generated
+    - PASS: Router + sub-skills with all sources
     """
 
     def test_scenario_2_issue_categorization(self):
@@ -662,10 +662,10 @@ class TestScenario3LocalCodebase:
     }
 
     Expected Result:
-    - ✅ Code analyzed with C3.x
-    - ❌ No GitHub insights (not applicable)
-    - ✅ Router + sub-skills generated
-    - ✅ Works without GitHub data
+    - PASS: Code analyzed with C3.x
+    - FAIL: No GitHub insights (not applicable)
+    - PASS: Router + sub-skills generated
+    - PASS: Works without GitHub data
     """
 
     @pytest.fixture
@@ -815,7 +815,7 @@ def test_connection():
         # Verify NO GitHub metadata present
         assert "Repository:" not in skill_md
         assert "Stars:" not in skill_md
-        assert "⭐" not in skill_md
+        assert "" not in skill_md
 
         # Verify NO GitHub issues
         assert "Common Issues" not in skill_md
@@ -843,7 +843,7 @@ description: FastMCP framework overview
 
 ## Repository Info
 **Repository:** https://github.com/jlowin/fastmcp
-**Stars:** ⭐ 1,234 | **Language:** Python | **Open Issues:** 12
+**Stars:**  1,234 | **Language:** Python | **Open Issues:** 12
 
 FastMCP is a Python framework for building MCP servers with OAuth support.
 
@@ -911,7 +911,7 @@ Based on analysis of GitHub issues:
                 if (
                     line.startswith("**")
                     or "github.com" in line
-                    or "⭐" in line
+                    or "" in line
                     or "FastMCP is" in line
                 ):
                     github_overhead += 1
@@ -983,12 +983,12 @@ provider = GitHubProvider(client_id="...", client_secret="...")
 **Issue #42: OAuth setup fails**
 - Status: Open
 - Comments: 15
-- ⚠️ Open issue - community discussion ongoing
+- WARNING: Open issue - community discussion ongoing
 
 **Issue #35: Fixed OAuth redirect**
 - Status: Closed
 - Comments: 5
-- ✅ Solution found (see issue for details)
+- PASS: Solution found (see issue for details)
 """
 
         # Check minimum 3 code examples
@@ -1010,7 +1010,7 @@ provider = GitHubProvider(client_id="...", client_secret="...")
 
         # Check solution indicators for closed issues
         if "closed" in sub_skill_md.lower():
-            assert "✅" in sub_skill_md or "Solution" in sub_skill_md, (
+            assert "PASS:" in sub_skill_md or "Solution" in sub_skill_md, (
                 "Closed issues should indicate solution found"
             )
 

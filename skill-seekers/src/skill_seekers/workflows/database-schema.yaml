@@ -13,20 +13,20 @@ stages:
     enabled: true
     prompt: >
       Identify all data models/entities in this codebase.
-      
+
       Look for:
       1. ORM model classes
       2. Database table definitions
       3. Schema definitions
       4. DTO/Entity classes
       5. Type definitions for data structures
-      
+
       For each entity:
       - Name and purpose
       - Key attributes/fields
       - Data types
       - Constraints (nullable, unique, etc.)
-      
+
       Output JSON with "entities" array of:
       {name, description, fields[], primary_key, indexes}
 
@@ -37,16 +37,16 @@ stages:
     enabled: true
     prompt: >
       Document relationships between entities.
-      
+
       Identify:
       1. One-to-One relationships
       2. One-to-Many relationships
       3. Many-to-Many relationships (with join tables)
       4. Foreign key mappings
       5. Cascade behaviors (delete, update)
-      
+
       Visualize the entity relationship diagram conceptually.
-      
+
       Output JSON with:
       - "relationships": array of {from, to, type, cascade}
       - "erd_description": textual ERD representation
@@ -58,14 +58,14 @@ stages:
     enabled: true
     prompt: >
       Document database migration strategies.
-      
+
       Include:
       1. Migration framework used
       2. Creating new migrations
       3. Running migrations (up/down)
       4. Migration best practices
       5. Handling migration conflicts
-      
+
       Output JSON with:
       - "migration_commands": key commands
       - "best_practices": do's and don'ts
@@ -78,14 +78,14 @@ stages:
     enabled: true
     prompt: >
       Document efficient query patterns.
-      
+
       Cover:
       1. N+1 query problem and solutions
       2. Eager loading strategies
       3. Index usage and optimization
       4. Query caching opportunities
       5. Complex query patterns (aggregation, subqueries)
-      
+
       Output JSON with:
       - "common_patterns": query examples
       - "optimization_tips": performance advice

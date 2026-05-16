@@ -41,7 +41,7 @@ e2e-runner エージェントは：
 User: /e2e マーケット検索と表示フローをテスト
 
 Agent (e2e-runner):
-# E2Eテスト生成: マーケット検索と表示フロー
+## E2Eテスト生成: マーケット検索と表示フロー
 
 ## 特定されたテストシナリオ
 
@@ -160,7 +160,7 @@ test.describe('Market Search and View Flow', () => {
 ## テスト実行
 
 ```bash
-# 生成されたテストを実行
+## 生成されたテストを実行
 npx playwright test tests/e2e/markets/search-and-view.spec.ts
 
 Running 3 tests using 3 workers
@@ -222,13 +222,13 @@ PASS: E2E テストスイートは CI/CD 統合の準備ができました！
 ## アーティファクトの確認
 
 ```bash
-# ブラウザでHTMLレポートを表示
+## ブラウザでHTMLレポートを表示
 npx playwright show-report
 
-# 特定のトレースファイルを表示
+## 特定のトレースファイルを表示
 npx playwright show-trace artifacts/trace-abc123.zip
 
-# スクリーンショットはartifacts/ディレクトリに保存
+## スクリーンショットはartifacts/ディレクトリに保存
 open artifacts/search-results.png
 ````
 
@@ -269,7 +269,7 @@ WARNING:  FLAKY TEST DETECTED: tests/e2e/markets/trade.spec.ts
 CI パイプラインに追加：
 
 ```yaml
-# .github/workflows/e2e.yml
+## .github/workflows/e2e.yml
 - name: Install Playwright
   run: npx playwright install --with-deps
 
@@ -345,26 +345,26 @@ PMX の場合、以下の E2E テストを優先：
 
 ## 関連エージェント
 
-このコマンドは `~/.claude/agents/e2e-runner.md` の `e2e-runner` エージェントを呼び出します。
+このコマンドは `~/.claude/agents/e2e-runner.md`の`e2e-runner` エージェントを呼び出します。
 
 ## 快速命令
 
 ```bash
-# 全E2Eテストを実行
+## 全E2Eテストを実行
 npx playwright test
 
-# 特定のテストファイルを実行
+## 特定のテストファイルを実行
 npx playwright test tests/e2e/markets/search.spec.ts
 
-# ヘッドモードで実行 (ブラウザ表示)
+## ヘッドモードで実行 (ブラウザ表示)
 npx playwright test --headed
 
-# テストをデバッグ
+## テストをデバッグ
 npx playwright test --debug
 
-# テストコードを生成
-npx playwright codegen http://localhost:3000
+## テストコードを生成
+npx playwright codegen <http://localhost:3000>
 
-# レポートを表示
+## レポートを表示
 npx playwright show-report
 ```

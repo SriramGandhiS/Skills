@@ -381,16 +381,13 @@ Claude Code v2.1+는 설치된 플러그인의 `hooks/hooks.json`을 **자동으
 ```
 
 > **참고:** Claude Code 플러그인 시스템은 `rules`를 플러그인으로 배포하는 것을 지원하지 않습니다. 룰은 수동으로 설치해야 합니다:
->
-> ```bash
+> > ```bash
 > git clone https://github.com/affaan-m/everything-claude-code.git
->
-> # 옵션 A: 사용자 레벨 룰 (모든 프로젝트에 적용)
+> > # 옵션 A: 사용자 레벨 룰 (모든 프로젝트에 적용)
 > mkdir -p ~/.claude/rules
 > cp -r everything-claude-code/rules/common ~/.claude/rules/common
 > cp -r everything-claude-code/rules/typescript ~/.claude/rules/typescript   # 사용하는 스택 선택
->
-> # 옵션 B: 프로젝트 레벨 룰 (현재 프로젝트에만 적용)
+> > # 옵션 B: 프로젝트 레벨 룰 (현재 프로젝트에만 적용)
 > mkdir -p .claude/rules
 > cp -r everything-claude-code/rules/common .claude/rules/common
 > ```

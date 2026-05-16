@@ -184,13 +184,11 @@ if __name__ == "__main__":
 # For production, use HTTP mode with a web server
 # from flask import Flask, request
 # from slack_bolt.adapter.flask import SlackRequestHandler
-#
-# flask_app = Flask(__name__)
+# # flask_app = Flask(__name__)
 # handler = SlackRequestHandler(app)
-#
-# @flask_app.route("/slack/events", methods=["POST"])
+# # @flask_app.route("/slack/events", methods=["POST"])
 # def slack_events():
-#     return handler.handle(request)
+# return handler.handle(request)
 
 ### Anti_patterns
 

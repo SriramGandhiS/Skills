@@ -1,4 +1,4 @@
-﻿---
+---
 name: netmiko-ssh-automation
 description: Safe Python Netmiko patterns for read-only collection, bounded batch SSH, TextFSM parsing, guarded config changes, timeouts, and network automation error handling.
 origin: community
@@ -152,7 +152,7 @@ snippet and capture before/after evidence in the change record.
 
 - Does the script identify an explicit inventory source?
 - Are credentials absent from source, logs, and exception messages?
-- Are `conn_timeout`, `auth_timeout`, and command `read_timeout` set?
+- Are `conn_timeout`,`auth_timeout`, and command`read_timeout` set?
 - Are failures reported per device without stopping the whole batch?
 - Does the script avoid broad scans and unbounded concurrency?
 - Are config changes behind a dry-run or explicit operator flag?

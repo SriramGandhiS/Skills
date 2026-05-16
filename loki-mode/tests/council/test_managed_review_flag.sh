@@ -1,11 +1,10 @@
 #!/usr/bin/env bash
 # T5 Phase 3: LOKI_EXPERIMENTAL_MANAGED_REVIEW fail-fast flag test.
-#
-# Verifies the run.sh flag block rejects misconfigured flag combinations:
-#   - REVIEW=true without parent LOKI_MANAGED_AGENTS => exit 2
-#   - REVIEW=true with parent but without umbrella    => exit 2
-#   - REVIEW=true with both parent+umbrella           => proceeds (--help OK)
-#   - REVIEW=false (default)                          => proceeds (v6.83.1 behavior)
+# # Verifies the run.sh flag block rejects misconfigured flag combinations:
+# - REVIEW=true without parent LOKI_MANAGED_AGENTS => exit 2
+# - REVIEW=true with parent but without umbrella    => exit 2
+# - REVIEW=true with both parent+umbrella           => proceeds (--help OK)
+# - REVIEW=false (default)                          => proceeds (v6.83.1 behavior)
 set -u
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"

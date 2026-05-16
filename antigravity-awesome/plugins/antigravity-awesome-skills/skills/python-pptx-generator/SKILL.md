@@ -76,12 +76,12 @@ Output: A python-pptx script with executive-friendly slide titles, concise bulle
 
 ## Best Practices
 
-- ✅ Use standard `python-pptx` layouts unless the user asks for custom positioning
-- ✅ Write audience-appropriate bullet points instead of placeholders
-- ✅ Save the output file explicitly in the script, for example `output.pptx`
-- ✅ Keep slide titles short and the bullet hierarchy readable
-- ❌ Do not return partial snippets that require the user to assemble the rest
-- ❌ Do not invent unsupported styling APIs without checking `python-pptx` capabilities
+- PASS: Use standard `python-pptx` layouts unless the user asks for custom positioning
+- PASS: Write audience-appropriate bullet points instead of placeholders
+- PASS: Save the output file explicitly in the script, for example `output.pptx`
+- PASS: Keep slide titles short and the bullet hierarchy readable
+- FAIL: Do not return partial snippets that require the user to assemble the rest
+- FAIL: Do not invent unsupported styling APIs without checking `python-pptx` capabilities
 
 ## Security & Safety Notes
 
@@ -91,14 +91,14 @@ Output: A python-pptx script with executive-friendly slide titles, concise bulle
 
 ## Common Pitfalls
 
-- **Problem:** The generated script uses placeholder text instead of real content  
-  **Solution:** Draft the narrative first, then turn each slide into specific titles and bullets
+- **Problem:** The generated script uses placeholder text instead of real content
+**Solution:** Draft the narrative first, then turn each slide into specific titles and bullets
 
-- **Problem:** The deck uses too many slides for the requested audience  
-  **Solution:** Compress the outline to the most important 4 to 8 slides unless the user explicitly wants a longer deck
+- **Problem:** The deck uses too many slides for the requested audience
+**Solution:** Compress the outline to the most important 4 to 8 slides unless the user explicitly wants a longer deck
 
-- **Problem:** The script forgets to save or print a completion message  
-  **Solution:** Always end with `prs.save(...)` and a short success print
+- **Problem:** The script forgets to save or print a completion message
+**Solution:** Always end with `prs.save(...)` and a short success print
 
 ## Related Skills
 

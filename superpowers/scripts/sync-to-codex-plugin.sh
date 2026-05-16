@@ -13,12 +13,12 @@
 # identical diffs, so two back-to-back runs can verify the tool itself.
 #
 # Usage:
-#   ./scripts/sync-to-codex-plugin.sh                              # full run
-#   ./scripts/sync-to-codex-plugin.sh -n                           # dry run
-#   ./scripts/sync-to-codex-plugin.sh -y                           # skip confirm
-#   ./scripts/sync-to-codex-plugin.sh --local PATH                 # existing checkout
-#   ./scripts/sync-to-codex-plugin.sh --base BRANCH                # default: main
-#   ./scripts/sync-to-codex-plugin.sh --bootstrap                  # create plugin dir if missing
+# ./scripts/sync-to-codex-plugin.sh                              # full run
+# ./scripts/sync-to-codex-plugin.sh -n                           # dry run
+# ./scripts/sync-to-codex-plugin.sh -y                           # skip confirm
+# ./scripts/sync-to-codex-plugin.sh --local PATH                 # existing checkout
+# ./scripts/sync-to-codex-plugin.sh --base BRANCH                # default: main
+# ./scripts/sync-to-codex-plugin.sh --bootstrap                  # create plugin dir if missing
 #
 # Bootstrap mode: skips the "plugin must exist on base" requirement and creates
 # plugins/superpowers/ when absent, then copies the tracked plugin files from

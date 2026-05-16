@@ -373,7 +373,7 @@ Ignoring the legislative risk because "re-regulation never happens." It happened
    - Full re-regulation (Ohio energy cost increases $1.24M/year)
    - Partial re-regulation (competitive supply preserved for large C&I but with new surcharges — increase $400K-$600K/year)
    - Bill fails (no cost change, but future legislative risk remains)
-   
+
    Present scenarios to the CFO with probability weights. Budget to the expected value.
 
 **Key Indicators:**
@@ -588,7 +588,7 @@ Assuming "firm" gas service means guaranteed delivery under all conditions. Firm
    - Electric resistance heating: $180/MWh ÷ 3,412 BTU/kWh × 1,000,000 = $52.75/MMBtu equivalent (even more expensive than spot gas and subject to demand charge spikes)
    - Product loss: $4.2M ÷ 72 hours = $58,333/hour of delay. Even at $28/MMBtu, running the process heat costs far less than product loss.
 
-   **Decision: Purchase spot gas at $28/MMBtu for process heat. Use electric heating only for space heating (lower priority, can tolerate temperature setback).**
+**Decision: Purchase spot gas at $28/MMBtu for process heat. Use electric heating only for space heating (lower priority, can tolerate temperature setback).**
 
 2. **Spot gas procurement (Hour 0-4):** Contact your gas marketer or broker to secure spot supply at Transco Zone 6. Request a 15-day deal (covering the forecast cold snap duration). Negotiate for a fixed daily quantity with a price cap rather than floating daily pricing — during extreme events, daily spot prices can swing $10-$15/MMBtu between morning and afternoon.
 

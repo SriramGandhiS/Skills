@@ -77,20 +77,20 @@ Write one `<script type="application/ld+json">` block per schema type. Include i
 
 ## Best Practices
 
-- ✅ **Do:** Always include FAQPage schema on any page with a FAQ section — it is the strongest AEO signal
-- ✅ **Do:** Use one `<script>` block per schema type — never combine multiple types
-- ✅ **Do:** Test every output in Google's Rich Results Test before deploying
-- ❌ **Don't:** Use relative URLs anywhere in schema — all URLs must start with `https://`
-- ❌ **Don't:** Leave placeholder text in any field before deploying
-- ❌ **Don't:** Use HTML tags inside JSON-LD string values
+- PASS: **Do:** Always include FAQPage schema on any page with a FAQ section — it is the strongest AEO signal
+- PASS: **Do:** Use one `<script>` block per schema type — never combine multiple types
+- PASS: **Do:** Test every output in Google's Rich Results Test before deploying
+- FAIL: **Don't:** Use relative URLs anywhere in schema — all URLs must start with `https://`
+- FAIL: **Don't:** Leave placeholder text in any field before deploying
+- FAIL: **Don't:** Use HTML tags inside JSON-LD string values
 
 ## Common Pitfalls
 
 - **Problem:** Schema passes validation but rich result doesn't appear in search
-  **Solution:** Rich results can take weeks to appear after deployment. Request re-indexing in Google Search Console immediately after adding schema.
+**Solution:** Rich results can take weeks to appear after deployment. Request re-indexing in Google Search Console immediately after adding schema.
 
 - **Problem:** Product schema missing star rating display
-  **Solution:** Add AggregateRating object with ratingValue, reviewCount, bestRating, and worstRating — all four fields required.
+**Solution:** Add AggregateRating object with ratingValue, reviewCount, bestRating, and worstRating — all four fields required.
 
 ## Related Skills
 

@@ -20,7 +20,7 @@ stages:
     enabled: true
     prompt: >
       Analyze Protocol Buffers schema design.
-      
+
       Identify:
       1. Proto file organization
       2. Message structure and naming
@@ -29,7 +29,7 @@ stages:
       5. Oneof usage
       6. Import dependencies
       7. Package structure
-      
+
       Output JSON with:
       - "organization": proto file layout
       - "messages": message design
@@ -46,7 +46,7 @@ stages:
     enabled: true
     prompt: >
       Document gRPC service definitions.
-      
+
       Cover:
       1. Service and RPC naming
       2. Unary vs streaming RPCs
@@ -54,7 +54,7 @@ stages:
       4. Error handling with status codes
       5. Deadlines and timeouts
       6. Metadata and headers
-      
+
       Output JSON with:
       - "naming": service naming
       - "rpc_types": unary/streaming
@@ -70,7 +70,7 @@ stages:
     enabled: true
     prompt: >
       Document protobuf code generation.
-      
+
       Include:
       1. Protobuf compiler setup
       2. Language-specific plugins
@@ -78,7 +78,7 @@ stages:
       4. Version compatibility
       5. Build integration
       6. CI/CD for proto changes
-      
+
       Output JSON with:
       - "compiler": protoc setup
       - "plugins": language plugins
@@ -94,7 +94,7 @@ stages:
     enabled: true
     prompt: >
       Document gRPC server implementation.
-      
+
       Cover:
       1. Server setup and configuration
       2. Interceptor/middleware patterns
@@ -102,7 +102,7 @@ stages:
       4. TLS configuration
       5. Health checking
       6. Graceful shutdown
-      
+
       Output JSON with:
       - "setup": server configuration
       - "interceptors": middleware
@@ -118,7 +118,7 @@ stages:
     enabled: true
     prompt: >
       Document gRPC client patterns.
-      
+
       Include:
       1. Client connection management
       2. Load balancing
@@ -126,7 +126,7 @@ stages:
       4. Circuit breaker integration
       5. Client-side streaming
       6. Connection pooling
-      
+
       Output JSON with:
       - "connection_mgmt": connection handling
       - "load_balancing": LB strategies
@@ -142,14 +142,14 @@ stages:
     enabled: true
     prompt: >
       Document gRPC-Web and gateway patterns.
-      
+
       Cover:
       1. gRPC-Web proxy setup
       2. REST gateway (grpc-gateway)
       3. Transcoding configuration
       4. Browser client support
       5. Streaming limitations
-      
+
       Output JSON with:
       - "grpc_web": web proxy
       - "rest_gateway": HTTP gateway

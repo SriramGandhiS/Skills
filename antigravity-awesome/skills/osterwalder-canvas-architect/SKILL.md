@@ -38,9 +38,9 @@ Final validation to ensure every activity is accounted for in the Cost Structure
 "Analyze the consistency of a direct-to-consumer organic dairy brand. Ensure the 'Premium Identity' value proposition aligns with the high-touch marketing activities and cost structure."
 
 ## Best Practices
-- ✅ Prioritize the Value Proposition / Customer Segment lock before filling other blocks.
-- ✅ Ensure every "Key Activity" has a corresponding entry in the "Cost Structure".
-- ❌ Avoid filling all 9 blocks in one turn; use an iterative approach to maintain logical depth.
+- PASS: Prioritize the Value Proposition / Customer Segment lock before filling other blocks.
+- PASS: Ensure every "Key Activity" has a corresponding entry in the "Cost Structure".
+- FAIL: Avoid filling all 9 blocks in one turn; use an iterative approach to maintain logical depth.
 
 ## Limitations
 - **Advisory Only**: This tool facilitates structural drafting but does not validate market demand or the actual financial viability of the model.

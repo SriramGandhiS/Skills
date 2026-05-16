@@ -8,7 +8,7 @@ origin: ECC
 
 当用户要求研究当前信息、比较选项、丰富人员或公司信息，或将重复查询转化为可监控的工作流时，使用此功能。
 
-这是仓库研究栈的操作封装。它并非 `deep-research`、`exa-search` 或 `market-research` 的替代品；而是指示何时以及如何将它们结合使用。
+这是仓库研究栈的操作封装。它并非 `deep-research`、`exa-search`或`market-research` 的替代品；而是指示何时以及如何将它们结合使用。
 
 ## 技能栈
 

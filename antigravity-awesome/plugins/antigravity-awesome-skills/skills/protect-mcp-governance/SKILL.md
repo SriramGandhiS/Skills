@@ -241,22 +241,22 @@ npx @veritasacta/verify audit.json --bundle
 
 # Expected output:
 # ✓ Bundle: VALID
-#   Total:    47
-#   Passed:   47
-#   Failed:   0
+# Total:    47
+# Passed:   47
+# Failed:   0
 ```
 
 **Explanation:** After an incident, export the audit bundle and verify that no receipts have been tampered with. The bundle contains all receipts from the session plus the signing keys needed for verification.
 
 ## Best Practices
 
-- ✅ **Do:** Start in shadow mode and observe before enforcing
-- ✅ **Do:** Use `policy_digest` to track which policy version produced each decision
-- ✅ **Do:** Store receipts alongside your application logs for correlation
-- ✅ **Do:** Pin the verifier version when integrating into CI (`@veritasacta/verify@0.2.5`)
-- ❌ **Don't:** Skip shadow mode and go straight to enforce in production
-- ❌ **Don't:** Trust `claimed_issuer_tier` without independent verification
-- ❌ **Don't:** Treat a valid signature as proof the signer is trustworthy — it only proves the receipt has not been tampered with since signing
+- PASS: **Do:** Start in shadow mode and observe before enforcing
+- PASS: **Do:** Use `policy_digest` to track which policy version produced each decision
+- PASS: **Do:** Store receipts alongside your application logs for correlation
+- PASS: **Do:** Pin the verifier version when integrating into CI (`@veritasacta/verify@0.2.5`)
+- FAIL: **Don't:** Skip shadow mode and go straight to enforce in production
+- FAIL: **Don't:** Trust `claimed_issuer_tier` without independent verification
+- FAIL: **Don't:** Treat a valid signature as proof the signer is trustworthy — it only proves the receipt has not been tampered with since signing
 
 ## Troubleshooting
 

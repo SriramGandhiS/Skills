@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
 # Test: Bug fixes from CLI audit (35 bugs)
 # Validates that all fixes from the audit are correct and regressions are caught.
-#
-# Note: Not using -e to allow collecting all test results
+# # Note: Not using -e to allow collecting all test results
 
 set -uo pipefail
 

@@ -2,20 +2,18 @@
 #===============================================================================
 # Test that `loki doctor --json` exposes the sentrux architectural-drift gate
 # state in v7.5.15+.
-#
-# Schema (sibling of checks/disk/summary):
-#   "sentrux": {
-#     "found":    true|false,
-#     "version":  "X.Y.Z" | null,
-#     "status":   "pass" | "warn",
-#     "required": "optional"
-#   }
-#
-# Tested cases:
-#   1) sentrux NOT on PATH -> found=false, version=null, status="warn"
-#   2) fake sentrux on PATH -> found=true, version="0.5.7", status="pass"
-#   3) JSON parses cleanly via python3 in both cases
-#   4) Both bash route (LOKI_LEGACY_BASH=1) and Bun route surface the field
+# # Schema (sibling of checks/disk/summary):
+# "sentrux": {
+# "found":    true|false,
+# "version":  "X.Y.Z" | null,
+# "status":   "pass" | "warn",
+# "required": "optional"
+# }
+# # Tested cases:
+# 1) sentrux NOT on PATH -> found=false, version=null, status="warn"
+# 2) fake sentrux on PATH -> found=true, version="0.5.7", status="pass"
+# 3) JSON parses cleanly via python3 in both cases
+# 4) Both bash route (LOKI_LEGACY_BASH=1) and Bun route surface the field
 #===============================================================================
 
 set -u

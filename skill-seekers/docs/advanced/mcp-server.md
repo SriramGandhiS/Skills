@@ -1,6 +1,6 @@
 # MCP Server Setup Guide
 
-> **Skill Seekers v3.2.0**  
+> **Skill Seekers v3.2.0**
 > **Integrate with AI agents via Model Context Protocol**
 
 ---
@@ -11,8 +11,8 @@ MCP (Model Context Protocol) lets AI agents like Claude Code control Skill Seeke
 
 ```
 You: "Scrape the React documentation"
-Claude: ▶️ scrape_docs({"url": "https://react.dev/"})
-        ✅ Done! Created output/react/
+Claude:  scrape_docs({"url": "https://react.dev/"})
+        PASS: Done! Created output/react/
 ```
 
 ---
@@ -222,13 +222,13 @@ See [MCP Reference](../reference/MCP_REFERENCE.md) for full details.
 
 ```
 User: "Create a skill from React docs"
-Claude: ▶️ scrape_docs({"url": "https://react.dev/"})
-        ⏳ Scraping...
-        ✅ Created output/react/
-        
-        ▶️ package_skill({"skill_directory": "output/react/", "target": "claude"})
-        ✅ Created output/react-claude.zip
-        
+Claude:  scrape_docs({"url": "https://react.dev/"})
+         Scraping...
+        PASS: Created output/react/
+
+         package_skill({"skill_directory": "output/react/", "target": "claude"})
+        PASS: Created output/react-claude.zip
+
         Skill ready! Upload to Claude?
 ```
 
@@ -236,25 +236,25 @@ Claude: ▶️ scrape_docs({"url": "https://react.dev/"})
 
 ```
 User: "Analyze the facebook/react repo"
-Claude: ▶️ scrape_github({"repo": "facebook/react"})
-        ⏳ Analyzing...
-        ✅ Created output/react/
-        
-        ▶️ enhance_skill({"skill_directory": "output/react/", "workflow": "architecture-comprehensive"})
-        ✅ Enhanced with architecture analysis
+Claude:  scrape_github({"repo": "facebook/react"})
+         Analyzing...
+        PASS: Created output/react/
+
+         enhance_skill({"skill_directory": "output/react/", "workflow": "architecture-comprehensive"})
+        PASS: Enhanced with architecture analysis
 ```
 
 ### Workflow 3: Multi-Platform Export
 
 ```
 User: "Create Django skill for all platforms"
-Claude: ▶️ scrape_docs({"config": "django"})
-        ✅ Created output/django/
-        
-        ▶️ package_skill({"skill_directory": "output/django/", "target": "claude"})
-        ▶️ package_skill({"skill_directory": "output/django/", "target": "gemini"})
-        ▶️ package_skill({"skill_directory": "output/django/", "target": "openai"})
-        ✅ Created packages for all platforms
+Claude:  scrape_docs({"config": "django"})
+        PASS: Created output/django/
+
+         package_skill({"skill_directory": "output/django/", "target": "claude"})
+         package_skill({"skill_directory": "output/django/", "target": "gemini"})
+         package_skill({"skill_directory": "output/django/", "target": "openai"})
+        PASS: Created packages for all platforms
 ```
 
 ---

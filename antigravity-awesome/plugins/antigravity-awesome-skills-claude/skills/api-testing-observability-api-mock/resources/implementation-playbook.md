@@ -274,7 +274,7 @@ dynamic_stub.with_response_generator(lambda req, state: {
         'request_count': state.get('request_count', 0)
     }
 }).with_state_modifier(lambda state, req: {
-    **state,
+**state,
     'request_count': state.get('request_count', 0) + 1
 })
 '''
@@ -590,9 +590,9 @@ class SequenceExecutor:
                 'handlers': {
                     'add_to_cart': lambda state, request: {
                         'state': {
-                            **state,
+**state,
                             'cart': {
-                                **state['cart'],
+**state['cart'],
                                 request['body']['product_id']: request['body']['quantity']
                             },
                             'total': state['total'] + request['body']['price']
@@ -1289,14 +1289,14 @@ return doc
                 layout: "BaseLayout",
                 tryItOutEnabled: true,
                 requestInterceptor: (request) => {
-                    request.headers['X-Mock-Scenario'] = 
+                    request.headers['X-Mock-Scenario'] =
                         document.getElementById('scenario-select').value;
                     return request;
                 }
             });
         }
     </script>
-    
+
     <div class="scenario-selector">
         <label>Scenario:</label>
         <select id="scenario-select">

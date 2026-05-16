@@ -40,7 +40,7 @@ e2e-runner agent'ı şunları yapacaktır:
 Kullanıcı: /e2e Piyasa arama ve görüntüleme akışını test et
 
 Agent (e2e-runner):
-# E2E Test Oluşturma: Piyasa Arama ve Görüntüleme Akışı
+## E2E Test Oluşturma: Piyasa Arama ve Görüntüleme Akışı
 
 ## Tanımlanan Test Senaryosu
 
@@ -159,7 +159,7 @@ test.describe('Market Search and View Flow', () => {
 ## Testleri Çalıştırma
 
 ```bash
-# Oluşturulan testi çalıştır
+## Oluşturulan testi çalıştır
 npx playwright test tests/e2e/markets/search-and-view.spec.ts
 
 3 worker kullanarak 3 test çalıştırılıyor
@@ -220,13 +220,13 @@ Testler çalıştığında, şu artifact'lar yakalanır:
 ## Artifact'ları Görüntüleme
 
 ```bash
-# HTML raporunu tarayıcıda görüntüle
+## HTML raporunu tarayıcıda görüntüle
 npx playwright show-report
 
-# Belirli izleme dosyasını görüntüle
+## Belirli izleme dosyasını görüntüle
 npx playwright show-trace artifacts/trace-abc123.zip
 
-# Ekran görüntüleri artifacts/ dizinine kaydedilir
+## Ekran görüntüleri artifacts/ dizinine kaydedilir
 open artifacts/search-results.png
 ```
 
@@ -266,7 +266,7 @@ Tarayıcıları ayarlamak için `playwright.config.ts`'yi yapılandırın.
 CI pipeline'ınıza ekleyin:
 
 ```yaml
-# .github/workflows/e2e.yml
+## .github/workflows/e2e.yml
 - name: Install Playwright
   run: npx playwright install --with-deps
 
@@ -345,21 +345,21 @@ Manuel kurulumlar için, kaynak dosya şurada bulunur:
 ## Hızlı Komutlar
 
 ```bash
-# Tüm E2E testlerini çalıştır
+## Tüm E2E testlerini çalıştır
 npx playwright test
 
-# Belirli test dosyasını çalıştır
+## Belirli test dosyasını çalıştır
 npx playwright test tests/e2e/markets/search.spec.ts
 
-# Headed modda çalıştır (tarayıcıyı gör)
+## Headed modda çalıştır (tarayıcıyı gör)
 npx playwright test --headed
 
-# Testi debug et
+## Testi debug et
 npx playwright test --debug
 
-# Test kodu oluştur
-npx playwright codegen http://localhost:3000
+## Test kodu oluştur
+npx playwright codegen <http://localhost:3000>
 
-# Raporu görüntüle
+## Raporu görüntüle
 npx playwright show-report
 ```

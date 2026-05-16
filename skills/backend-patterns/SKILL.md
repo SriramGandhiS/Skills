@@ -1,4 +1,4 @@
-﻿---
+---
 name: backend-patterns
 description: Backend architecture patterns, API design, database optimization, and server-side best practices for Node.js, Express, and Next.js API routes.
 origin: ECC
@@ -436,7 +436,7 @@ production APIs: they reset on deploy, split across replicas, and fail open in
 serverless or multi-instance environments.
 
 Keep the backend layer responsible for choosing the integration point and error
-shape; use `api-design` for the HTTP contract and `security-review` for abuse
+shape; use `api-design`for the HTTP contract and`security-review` for abuse
 case review.
 
 ## Background Jobs & Queues

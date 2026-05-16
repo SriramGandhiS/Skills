@@ -1,18 +1,15 @@
 #!/usr/bin/env bash
 # base64-scan.sh — Detect base64-obfuscated prompt injection in source files
-#
-# Extracts base64 blobs >= 40 chars, decodes them, and checks decoded content
+# # Extracts base64 blobs >= 40 chars, decodes them, and checks decoded content
 # against the same injection patterns used by prompt-injection-scan.sh.
-#
-# Usage:
-#   scripts/base64-scan.sh --diff origin/main   # CI mode: scan changed files
-#   scripts/base64-scan.sh --file path/to/file   # Scan a single file
-#   scripts/base64-scan.sh --dir agents/          # Scan all files in a directory
-#
-# Exit codes:
-#   0 = clean
-#   1 = findings detected
-#   2 = usage error
+# # Usage:
+# scripts/base64-scan.sh --diff origin/main   # CI mode: scan changed files
+# scripts/base64-scan.sh --file path/to/file   # Scan a single file
+# scripts/base64-scan.sh --dir agents/          # Scan all files in a directory
+# # Exit codes:
+# 0 = clean
+# 1 = findings detected
+# 2 = usage error
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"

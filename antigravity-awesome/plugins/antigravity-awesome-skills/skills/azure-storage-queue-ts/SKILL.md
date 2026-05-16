@@ -16,7 +16,7 @@ SDK for Azure Queue Storage operations — send, receive, peek, and manage messa
 npm install @azure/storage-queue @azure/identity
 ```
 
-**Current Version**: 12.x  
+**Current Version**: 12.x
 **Node.js**: >= 18.0.0
 
 ## Environment Variables
@@ -175,9 +175,9 @@ for (const message of response.receivedMessageItems) {
   console.log("Content:", message.messageText);
   console.log("Dequeue Count:", message.dequeueCount);
   console.log("Pop Receipt:", message.popReceipt);
-  
+
   // Process the message...
-  
+
   // Delete after processing
   await queueClient.deleteMessage(message.messageId, message.popReceipt);
 }
@@ -216,7 +216,7 @@ if (message) {
     "Updated content",
     60 // New visibility timeout in seconds
   );
-  
+
   // Use new popReceipt for subsequent operations
   console.log("New pop receipt:", updateResponse.popReceipt);
 }
@@ -518,11 +518,11 @@ import {
 
 | Feature | Node.js | Browser |
 |---------|---------|---------|
-| `StorageSharedKeyCredential` | ✅ | ❌ |
-| SAS generation | ✅ | ❌ |
-| DefaultAzureCredential | ✅ | ❌ |
-| Anonymous/SAS access | ✅ | ✅ |
-| All message operations | ✅ | ✅ |
+| `StorageSharedKeyCredential` | PASS: | FAIL: |
+| SAS generation | PASS: | FAIL: |
+| DefaultAzureCredential | PASS: | FAIL: |
+| Anonymous/SAS access | PASS: | PASS: |
+| All message operations | PASS: | PASS: |
 
 ## When to Use
 This skill is applicable to execute the workflow or actions described in the overview.

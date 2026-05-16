@@ -403,7 +403,7 @@ This step prevents broken releases. Every single release MUST pass these checks 
 
 ```bash
 # 1. Verify npm tarball contains expected files
-#    If web-app/dist/ or dashboard/static/ are missing, the release is broken.
+# If web-app/dist/ or dashboard/static/ are missing, the release is broken.
 npm pack --dry-run 2>&1 | grep -E "web-app/dist|dashboard/static" || echo "FAIL: expected files missing from tarball"
 
 # 2. Verify built artifacts exist in git (not just locally)

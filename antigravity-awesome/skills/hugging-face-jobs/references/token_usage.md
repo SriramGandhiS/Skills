@@ -1,6 +1,6 @@
 # Token Usage Guide for Hugging Face Jobs
 
-**⚠️ CRITICAL:** Proper token usage is essential for any job that interacts with the Hugging Face Hub.
+**WARNING: CRITICAL:** Proper token usage is essential for any job that interacts with the Hugging Face Hub.
 
 ## Overview
 
@@ -22,7 +22,7 @@ Hugging Face tokens are authentication credentials that allow your jobs to inter
 - **Permissions:** Push models/datasets, create repos, modify content
 - **Use case:** Jobs that need to upload results (most common)
 - **Creation:** https://huggingface.co/settings/tokens
-- **⚠️ Required for:** Pushing models, datasets, or any uploads
+- **WARNING: Required for:** Pushing models, datasets, or any uploads
 
 ### Organization Token
 - **Permissions:** Act on behalf of an organization
@@ -31,12 +31,12 @@ Hugging Face tokens are authentication credentials that allow your jobs to inter
 
 ## Providing Tokens to Jobs
 
-### Method 1: `hf_jobs` MCP tool with `$HF_TOKEN` (Recommended) ⭐
+### Method 1: `hf_jobs` MCP tool with `$HF_TOKEN` (Recommended)
 
 ```python
 hf_jobs("uv", {
     "script": "your_script.py",
-    "secrets": {"HF_TOKEN": "$HF_TOKEN"}  # ✅ Automatic replacement
+    "secrets": {"HF_TOKEN": "$HF_TOKEN"}  # PASS: Automatic replacement
 })
 ```
 
@@ -47,17 +47,17 @@ hf_jobs("uv", {
 4. Most secure and convenient method
 
 **Benefits:**
-- ✅ No token exposure in code
-- ✅ Uses your current login session
-- ✅ Automatically updated if you re-login
-- ✅ Works seamlessly with MCP tools
-- ✅ Token encrypted server-side
+- PASS: No token exposure in code
+- PASS: Uses your current login session
+- PASS: Automatically updated if you re-login
+- PASS: Works seamlessly with MCP tools
+- PASS: Token encrypted server-side
 
 **Requirements:**
 - Must be logged in: `hf auth login` or `hf_whoami()` works
 - Token must have required permissions
 
-**⚠️ CRITICAL:** `$HF_TOKEN` auto-replacement is an `hf_jobs` MCP tool feature ONLY. It does NOT work with `HfApi().run_uv_job()` — see Method 1b below.
+**WARNING: CRITICAL:** `$HF_TOKEN` auto-replacement is an `hf_jobs` MCP tool feature ONLY. It does NOT work with `HfApi().run_uv_job()` — see Method 1b below.
 
 ### Method 1b: `HfApi().run_uv_job()` with `get_token()` (Required for Python API)
 
@@ -66,7 +66,7 @@ from huggingface_hub import HfApi, get_token
 api = HfApi()
 api.run_uv_job(
     script="your_script.py",
-    secrets={"HF_TOKEN": get_token()},  # ✅ Passes actual token value
+    secrets={"HF_TOKEN": get_token()},  # PASS: Passes actual token value
 )
 ```
 
@@ -86,7 +86,7 @@ api.run_uv_job(
 ```python
 hf_jobs("uv", {
     "script": "your_script.py",
-    "secrets": {"HF_TOKEN": "hf_abc123..."}  # ⚠️ Hardcoded token
+    "secrets": {"HF_TOKEN": "hf_abc123..."}  # WARNING: Hardcoded token
 })
 ```
 
@@ -96,17 +96,17 @@ hf_jobs("uv", {
 - Organization tokens (use with caution)
 
 **Security concerns:**
-- ❌ Token visible in code/logs
-- ❌ Must manually update if token rotates
-- ❌ Risk of token exposure
-- ❌ Not recommended for production
+- FAIL: Token visible in code/logs
+- FAIL: Must manually update if token rotates
+- FAIL: Risk of token exposure
+- FAIL: Not recommended for production
 
 ### Method 3: Environment Variable (Less Secure)
 
 ```python
 hf_jobs("uv", {
     "script": "your_script.py",
-    "env": {"HF_TOKEN": "hf_abc123..."}  # ⚠️ Less secure than secrets
+    "env": {"HF_TOKEN": "hf_abc123..."}  # WARNING: Less secure than secrets
 })
 ```
 
@@ -151,7 +151,7 @@ api.upload_file(...)
 from huggingface_hub import HfApi
 
 # Automatically uses HF_TOKEN env var
-api = HfApi()  # ✅ Simpler, uses token from environment
+api = HfApi()  # PASS: Simpler, uses token from environment
 api.upload_file(...)
 ```
 
@@ -193,7 +193,7 @@ dataset = Dataset.from_dict(data)
 # Push to Hub (token auto-detected)
 dataset.push_to_hub("username/my-dataset")
 
-print("✅ Dataset pushed successfully!")
+print("PASS: Dataset pushed successfully!")
 ```
 
 ## Token Verification
@@ -205,9 +205,9 @@ from huggingface_hub import whoami
 
 try:
     user_info = whoami()
-    print(f"✅ Logged in as: {user_info['name']}")
+    print(f"PASS: Logged in as: {user_info['name']}")
 except Exception as e:
-    print(f"❌ Not authenticated: {e}")
+    print(f"FAIL: Not authenticated: {e}")
 ```
 
 ### Verify Token in Job
@@ -229,7 +229,7 @@ if not token.startswith("hf_"):
 from huggingface_hub import whoami
 try:
     user_info = whoami(token=token)
-    print(f"✅ Token valid for user: {user_info['name']}")
+    print(f"PASS: Token valid for user: {user_info['name']}")
 except Exception as e:
     raise ValueError(f"Token validation failed: {e}")
 ```
@@ -308,19 +308,19 @@ ValueError: HF_TOKEN not found
 
 **Correct configuration:**
 ```python
-# ✅ Correct
+# PASS: Correct
 hf_jobs("uv", {
     "script": "...",
     "secrets": {"HF_TOKEN": "$HF_TOKEN"}
 })
 
-# ❌ Wrong - using env instead of secrets
+# FAIL: Wrong - using env instead of secrets
 hf_jobs("uv", {
     "script": "...",
     "env": {"HF_TOKEN": "$HF_TOKEN"}  # Less secure
 })
 
-# ❌ Wrong - wrong key name
+# FAIL: Wrong - wrong key name
 hf_jobs("uv", {
     "script": "...",
     "secrets": {"TOKEN": "$HF_TOKEN"}  # Wrong key
@@ -353,23 +353,23 @@ from huggingface_hub import HfApi
 api = HfApi()
 try:
     repo_info = api.repo_info("username/repo-name")
-    print(f"✅ Access granted: {repo_info.id}")
+    print(f"PASS: Access granted: {repo_info.id}")
 except Exception as e:
-    print(f"❌ Access denied: {e}")
+    print(f"FAIL: Access denied: {e}")
 ```
 
 ## Token Security Best Practices
 
 ### 1. Never Commit Tokens
 
-**❌ Bad:**
+**FAIL: Bad:**
 ```python
 # Never do this!
 token = "hf_abc123xyz..."
 api = HfApi(token=token)
 ```
 
-**✅ Good:**
+**PASS: Good:**
 ```python
 # Use environment variable
 token = os.environ.get("HF_TOKEN")
@@ -378,7 +378,7 @@ api = HfApi(token=token)
 
 ### 2. Use Secrets, Not Environment Variables
 
-**❌ Bad:**
+**FAIL: Bad:**
 ```python
 hf_jobs("uv", {
     "script": "...",
@@ -386,7 +386,7 @@ hf_jobs("uv", {
 })
 ```
 
-**✅ Good:**
+**PASS: Good:**
 ```python
 hf_jobs("uv", {
     "script": "...",
@@ -396,7 +396,7 @@ hf_jobs("uv", {
 
 ### 3. Use Automatic Token Replacement
 
-**❌ Bad:**
+**FAIL: Bad:**
 ```python
 hf_jobs("uv", {
     "script": "...",
@@ -404,7 +404,7 @@ hf_jobs("uv", {
 })
 ```
 
-**✅ Good:**
+**PASS: Good:**
 ```python
 hf_jobs("uv", {
     "script": "...",
@@ -460,11 +460,11 @@ model = AutoModel.from_pretrained("base-model")
 
 # Push to Hub (token auto-detected)
 model.push_to_hub("username/my-model")
-print("✅ Model pushed!")
+print("PASS: Model pushed!")
 """,
     "flavor": "a10g-large",
     "timeout": "2h",
-    "secrets": {"HF_TOKEN": "$HF_TOKEN"}  # ✅ Token provided
+    "secrets": {"HF_TOKEN": "$HF_TOKEN"}  # PASS: Token provided
 })
 ```
 
@@ -485,11 +485,11 @@ assert "HF_TOKEN" in os.environ, "HF_TOKEN required!"
 
 # Load private dataset (token auto-detected)
 dataset = load_dataset("private-org/private-dataset")
-print(f"✅ Loaded {len(dataset)} examples")
+print(f"PASS: Loaded {len(dataset)} examples")
 """,
     "flavor": "cpu-basic",
     "timeout": "30m",
-    "secrets": {"HF_TOKEN": "$HF_TOKEN"}  # ✅ Token provided
+    "secrets": {"HF_TOKEN": "$HF_TOKEN"}  # PASS: Token provided
 })
 ```
 
@@ -516,11 +516,11 @@ dataset = Dataset.from_dict(data)
 # Push to Hub
 api = HfApi()  # Auto-detects HF_TOKEN
 dataset.push_to_hub("username/my-dataset")
-print("✅ Dataset pushed!")
+print("PASS: Dataset pushed!")
 """,
     "flavor": "cpu-basic",
     "timeout": "30m",
-    "secrets": {"HF_TOKEN": "$HF_TOKEN"}  # ✅ Token provided
+    "secrets": {"HF_TOKEN": "$HF_TOKEN"}  # PASS: Token provided
 })
 ```
 

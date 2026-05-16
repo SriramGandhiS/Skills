@@ -1,4 +1,4 @@
-﻿---
+---
 name: benchmark
 description: Use this skill to measure performance baselines, detect regressions before/after PRs, and compare stack alternatives.
 origin: ECC
@@ -69,7 +69,7 @@ Run before and after a change to measure impact:
 
 ```
 /benchmark baseline    # saves current metrics
-# ... make changes ...
+## ... make changes ...
 /benchmark compare     # compares against baseline
 ```
 

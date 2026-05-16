@@ -53,7 +53,7 @@ loki-mode/
 ├── integrations/
 │   └── vibe-kanban.md          # Vibe Kanban integration guide
 ├── autonomy/
-│   ├── run.sh                  # ⭐ MAIN ENTRY POINT - handles everything
+│   ├── run.sh                  #  MAIN ENTRY POINT - handles everything
 │   └── README.md               # Autonomy documentation
 └── .github/workflows/
     └── release.yml             # GitHub Actions for releases

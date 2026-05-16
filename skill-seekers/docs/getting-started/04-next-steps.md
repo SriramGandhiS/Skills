@@ -1,11 +1,11 @@
 # Next Steps
 
-> **Skill Seekers v3.1.0**  
+> **Skill Seekers v3.1.0**
 > **Where to go after creating your first skill**
 
 ---
 
-## You've Created Your First Skill! 🎉
+## You've Created Your First Skill!
 
 Now what? Here's your roadmap to becoming a Skill Seekers power user.
 
@@ -63,10 +63,10 @@ skill-seekers create ./my-project \
 
 ### Beginner (You Are Here)
 
-✅ Created your first skill  
-⬜ Try different source types  
-⬜ Package for multiple platforms  
-⬜ Use preset configs
+PASS: Created your first skill
+ Try different source types
+ Package for multiple platforms
+ Use preset configs
 
 **Resources:**
 - [Core Concepts](../user-guide/01-core-concepts.md)
@@ -75,11 +75,11 @@ skill-seekers create ./my-project \
 
 ### Intermediate
 
-⬜ Custom configurations  
-⬜ Multi-source scraping  
-⬜ Enhancement workflows  
-⬜ Vector database export  
-⬜ MCP server setup
+ Custom configurations
+ Multi-source scraping
+ Enhancement workflows
+ Vector database export
+ MCP server setup
 
 **Resources:**
 - [Config Format](../reference/CONFIG_FORMAT.md)
@@ -89,10 +89,10 @@ skill-seekers create ./my-project \
 
 ### Advanced
 
-⬜ Custom workflow creation  
-⬜ Integration with CI/CD  
-⬜ API programmatic usage  
-⬜ Contributing to project
+ Custom workflow creation
+ Integration with CI/CD
+ API programmatic usage
+ Contributing to project
 
 **Resources:**
 - [Advanced: Custom Workflows](../advanced/custom-workflows.md)
@@ -312,7 +312,7 @@ skill-seekers-mcp                          # Start MCP server
 
 ## You're Ready!
 
-Go build something amazing. The documentation is your oyster. 🦪
+Go build something amazing. The documentation is your oyster.
 
 ```bash
 # Your next skill awaits

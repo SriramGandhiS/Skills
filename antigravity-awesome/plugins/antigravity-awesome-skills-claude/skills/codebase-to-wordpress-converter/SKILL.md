@@ -23,10 +23,10 @@ This skill is designed for the high-fidelity conversion of static or React-based
 
 ### Phased Conversion & Audit
 The skill follows a strict 4-phase forensic process:
-1.  **Phase 1: Forensic UI Comparison**: Side-by-side table audit of React components vs. WordPress templates to find discrepancies.
-2.  **Phase 2: Full Audit**: Deep dive into UI, SEO, CMS Editability, Navigation, Functionality, and Performance.
-3.  **Phase 3: Action Plan**: Tasks classified as **SAFE**, **RISKY**, or **BLOCKED** to prevent breaking the UI.
-4.  **Phase 4: Iterative Fixing**: Executing one safe task at a time with validation after each step.
+1. **Phase 1: Forensic UI Comparison**: Side-by-side table audit of React components vs. WordPress templates to find discrepancies.
+2. **Phase 2: Full Audit**: Deep dive into UI, SEO, CMS Editability, Navigation, Functionality, and Performance.
+3. **Phase 3: Action Plan**: Tasks classified as **SAFE**, **RISKY**, or **BLOCKED** to prevent breaking the UI.
+4. **Phase 4: Iterative Fixing**: Executing one safe task at a time with validation after each step.
 
 ### Absolute UI Lock
 Strict enforcement of non-negotiable rules:
@@ -53,9 +53,9 @@ Ensure every theme includes the foundational WordPress hooks correctly:
 
 ### 4. Validation & Live Tracker
 Maintain a live tracker of Total Issues, Fixed, and Remaining. Every fix must be followed by a confirmation:
-- ✅ No UI change
-- ✅ No DOM change
-- ✅ No class change
+- PASS: No UI change
+- PASS: No DOM change
+- PASS: No class change
 
 ## Examples
 
@@ -82,11 +82,11 @@ wp_nav_menu([
 
 ## Best Practices
 
-- ✅ **Do:** Use `get_page_by_path()` for robust internal linking.
-- ✅ **Do:** Implement ACF (Advanced Custom Fields) fallbacks in `functions.php`.
-- ✅ **Do:** Keep the Tailwind configuration in the `header.php` to ensure global styles are active.
-- ❌ **Don't:** Add "div" wrappers or rename classes to "clean up" the code.
-- ❌ **Don't:** Use standard WordPress default styles if they conflict with the original design.
+- PASS: **Do:** Use `get_page_by_path()` for robust internal linking.
+- PASS: **Do:** Implement ACF (Advanced Custom Fields) fallbacks in `functions.php`.
+- PASS: **Do:** Keep the Tailwind configuration in the `header.php` to ensure global styles are active.
+- FAIL: **Don't:** Add "div" wrappers or rename classes to "clean up" the code.
+- FAIL: **Don't:** Use standard WordPress default styles if they conflict with the original design.
 
 ## Additional Resources
 

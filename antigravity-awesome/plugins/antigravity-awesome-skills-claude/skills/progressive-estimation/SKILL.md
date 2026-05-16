@@ -63,13 +63,13 @@ Progressive Estimation adapts to your team's working mode — human-only, hybrid
 ## Common Pitfalls
 
 - **Problem:** Overconfident estimates
-  **Solution:** Use P75 or P90 for commitments, not P50
+**Solution:** Use P75 or P90 for commitments, not P50
 
 - **Problem:** Missing context
-  **Solution:** The skill asks clarifying questions — provide team size and agent usage
+**Solution:** The skill asks clarifying questions — provide team size and agent usage
 
 - **Problem:** Stale calibration
-  **Solution:** Re-calibrate when team composition or tooling changes significantly
+**Solution:** Re-calibrate when team composition or tooling changes significantly
 
 ## Related Skills
 

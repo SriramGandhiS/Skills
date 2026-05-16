@@ -8,13 +8,11 @@
 
 `gsd-tools.cjs` centralizes config parsing, model resolution, phase lookup, git commits, summary verification, state management, and template operations across GSD commands, workflows, and agents.
 
-
 |                    |                                                                                                                                                                                                        |
 | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | **Shipped path**   | `get-shit-done/bin/gsd-tools.cjs`                                                                                                                                                                      |
 | **Implementation** | 20 domain modules under `get-shit-done/bin/lib/` (the directory is authoritative)                                                                                                                        |
 | **Status**         | Maintained for parity tests and CJS-only entrypoints; `gsd-sdk query` / SDK registry are the supported path for new orchestration (see [QUERY-HANDLERS.md](../sdk/src/query/QUERY-HANDLERS.md)). |
-
 
 **Usage (CJS):**
 
@@ -24,13 +22,11 @@ node gsd-tools.cjs <command> [args] [--raw] [--cwd <path>]
 
 **Global flags (CJS):**
 
-
 | Flag           | Description                                                                  |
 | -------------- | ---------------------------------------------------------------------------- |
 | `--raw`        | Machine-readable output (JSON or plain text, no formatting)                  |
 | `--cwd <path>` | Override working directory (for sandboxed subagents)                         |
 | `--ws <name>`  | Workstream context (also honored when the SDK spawns this binary; see below) |
-
 
 ---
 
@@ -53,7 +49,6 @@ Use this when authoring workflows, not when you only need the command list below
 
 **CJS → SDK examples (same project directory):**
 
-
 | Legacy CJS                               | Preferred `gsd-sdk query` (examples) |
 | ---------------------------------------- | ------------------------------------ |
 | `node gsd-tools.cjs init phase-op 12`    | `gsd-sdk query init phase-op 12`     |
@@ -61,14 +56,13 @@ Use this when authoring workflows, not when you only need the command list below
 | `node gsd-tools.cjs state json`          | `gsd-sdk query state json`           |
 | `node gsd-tools.cjs roadmap analyze`     | `gsd-sdk query roadmap analyze`      |
 
-
 **SDK state reads:** `state.json` and `state.load` are both registered query handlers with parity coverage. You can invoke them through `gsd-sdk query …` and through the SDK Runtime Bridge (`GSDTools` → `sdk/src/query-runtime-bridge.ts`), honoring `allowFallbackToSubprocess` / `strictSdk` and emitting `onDispatchEvent` observability. For direct typed dispatch, use `createRegistry()` from `sdk/src/query/index.ts`. Full routing and golden rules: [QUERY-HANDLERS.md](../sdk/src/query/QUERY-HANDLERS.md).
 
 **CLI-only (not in registry):** e.g. **graphify**, **from-gsd2** / **gsd2-import** — call `gsd-tools.cjs` until registered.
 
 **Mutation events (SDK):** `QUERY_MUTATION_COMMANDS` in `sdk/src/query/index.ts` lists commands that may emit structured events after a successful dispatch. Exceptions called out in QUERY-HANDLERS: `state validate` (read-only), `skill-manifest` (writes only with `--write`), `intel update` (stub).
 
-**Golden parity:** Policy and CJS↔SDK test categories are documented under **Golden parity** in [QUERY-HANDLERS.md](../sdk/src/query/QUERY-HANDLERS.md).
+**Golden parity:** Policy and CJSSDK test categories are documented under **Golden parity** in [QUERY-HANDLERS.md](../sdk/src/query/QUERY-HANDLERS.md).
 
 ---
 

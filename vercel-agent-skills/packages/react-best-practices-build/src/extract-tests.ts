@@ -14,14 +14,14 @@ import { RULES_DIR, TEST_CASES_FILE } from './config.js'
  */
 function extractTestCases(rule: Rule): TestCase[] {
   const testCases: TestCase[] = []
-  
+
   rule.examples.forEach((example, index) => {
-    const isBad = example.label.toLowerCase().includes('incorrect') || 
+    const isBad = example.label.toLowerCase().includes('incorrect') ||
                   example.label.toLowerCase().includes('wrong') ||
                   example.label.toLowerCase().includes('bad')
     const isGood = example.label.toLowerCase().includes('correct') ||
                    example.label.toLowerCase().includes('good')
-    
+
     if (isBad || isGood) {
       testCases.push({
         ruleId: rule.id,
@@ -33,7 +33,7 @@ function extractTestCases(rule: Rule): TestCase[] {
       })
     }
   })
-  
+
   return testCases
 }
 
@@ -45,12 +45,12 @@ async function extractTests() {
     console.log('Extracting test cases from rules...')
     console.log(`Rules directory: ${RULES_DIR}`)
     console.log(`Output file: ${TEST_CASES_FILE}`)
-    
+
     const files = await readdir(RULES_DIR)
     const ruleFiles = files.filter(f => f.endsWith('.md') && !f.startsWith('_') && f !== 'README.md')
-    
+
     const allTestCases: TestCase[] = []
-    
+
     for (const file of ruleFiles) {
       const filePath = join(RULES_DIR, file)
       try {
@@ -61,10 +61,10 @@ async function extractTests() {
         console.error(`Error processing ${file}:`, error)
       }
     }
-    
+
     // Write test cases as JSON
     await writeFile(TEST_CASES_FILE, JSON.stringify(allTestCases, null, 2), 'utf-8')
-    
+
     console.log(`✓ Extracted ${allTestCases.length} test cases to ${TEST_CASES_FILE}`)
     console.log(`  - Bad examples: ${allTestCases.filter(tc => tc.type === 'bad').length}`)
     console.log(`  - Good examples: ${allTestCases.filter(tc => tc.type === 'good').length}`)

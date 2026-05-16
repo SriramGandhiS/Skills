@@ -193,15 +193,15 @@ export async function createCheckoutSession(userId: string, priceId: string) {
 
 ## Best Practices
 
-- ✅ **Do:** Ship a working MVP in 4-6 weeks maximum, then iterate based on feedback
-- ✅ **Do:** Charge from day 1 — free users don't validate product-market fit
-- ✅ **Do:** Build the "happy path" first, handle edge cases later
-- ✅ **Do:** Use feature flags for gradual rollouts (e.g., Vercel Edge Config)
-- ✅ **Do:** Monitor user behavior from launch day — not after problems arise
-- ❌ **Don't:** Build every feature before talking to customers
-- ❌ **Don't:** Optimize for scale before reaching $10k MRR
-- ❌ **Don't:** Build a custom auth system — use Clerk, Auth.js, or Supabase Auth
-- ❌ **Don't:** Skip the onboarding flow — it's where most SaaS lose users
+- PASS: **Do:** Ship a working MVP in 4-6 weeks maximum, then iterate based on feedback
+- PASS: **Do:** Charge from day 1 — free users don't validate product-market fit
+- PASS: **Do:** Build the "happy path" first, handle edge cases later
+- PASS: **Do:** Use feature flags for gradual rollouts (e.g., Vercel Edge Config)
+- PASS: **Do:** Monitor user behavior from launch day — not after problems arise
+- FAIL: **Don't:** Build every feature before talking to customers
+- FAIL: **Don't:** Optimize for scale before reaching $10k MRR
+- FAIL: **Don't:** Build a custom auth system — use Clerk, Auth.js, or Supabase Auth
+- FAIL: **Don't:** Skip the onboarding flow — it's where most SaaS lose users
 
 ## Troubleshooting
 

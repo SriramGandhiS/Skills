@@ -29,9 +29,9 @@ Para cada decisao tecnica tomada na sessao:
 ```markdown
 ### Decisoes
 - **O que**: [descricao da decisao]
-  **Por que**: [motivo tecnico]
-  **Alternativas descartadas**: [opcoes que nao foram escolhidas e por que]
-  **Impacto**: [o que muda por causa dessa decisao]
+**Por que**: [motivo tecnico]
+**Alternativas descartadas**: [opcoes que nao foram escolhidas e por que]
+**Impacto**: [o que muda por causa dessa decisao]
 ```
 
 Decisoes incluem: escolha de tecnologia, padrao de codigo, arquitetura,
@@ -44,10 +44,10 @@ Para cada bug encontrado e corrigido:
 ```markdown
 ### Correcoes
 - **Sintoma**: [como o bug se manifestou]
-  **Causa raiz**: [por que acontecia]
-  **Arquivo**: [caminho:linha]
-  **Correcao**: [o que foi feito, em 1-2 linhas de codigo se relevante]
-  **Verificacao**: [como confirmou que esta corrigido]
+**Causa raiz**: [por que acontecia]
+**Arquivo**: [caminho:linha]
+**Correcao**: [o que foi feito, em 1-2 linhas de codigo se relevante]
+**Verificacao**: [como confirmou que esta corrigido]
 ```
 
 ## Passo 4: Estado de Progresso

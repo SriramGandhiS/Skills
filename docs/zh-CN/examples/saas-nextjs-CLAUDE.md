@@ -15,14 +15,14 @@
 
 * 所有查询均使用启用 RLS 的 Supabase 客户端 — 绝不要绕过 RLS
 * 迁移在 `supabase/migrations/` 中 — 绝不要直接修改数据库
-* 使用带有明确列列表的 `select()`，而不是 `select('*')`
+* 使用带有明确列列表的 `select()`，而不是`select('*')`
 * 所有面向用户的查询必须包含 `.limit()` 以防止返回无限制的结果
 
 ### 身份验证
 
-* 在服务器组件中使用来自 `@supabase/ssr` 的 `createServerClient()`
-* 在客户端组件中使用来自 `@supabase/ssr` 的 `createBrowserClient()`
-* 受保护的路由检查 `getUser()` — 绝不要仅依赖 `getSession()` 进行身份验证
+* 在服务器组件中使用来自 `@supabase/ssr`的`createServerClient()`
+* 在客户端组件中使用来自 `@supabase/ssr`的`createBrowserClient()`
+* 受保护的路由检查 `getUser()`— 绝不要仅依赖`getSession()` 进行身份验证
 * `middleware.ts` 中的中间件会在每个请求上刷新身份验证令牌
 
 ### 计费
@@ -36,7 +36,7 @@
 
 * 代码或注释中不使用表情符号
 * 仅使用不可变模式 — 使用展开运算符，永不直接修改
-* 服务器组件：不使用 `'use client'` 指令，不使用 `useState`/`useEffect`
+* 服务器组件：不使用 `'use client'`指令，不使用`useState`/`useEffect`
 * 客户端组件：`'use client'` 放在顶部，保持最小化 — 将逻辑提取到钩子中
 * 所有输入验证（API 路由、表单、环境变量）优先使用 Zod 模式
 
@@ -111,17 +111,17 @@ export async function createProject(formData: FormData) {
 ## 环境变量
 
 ```bash
-# Supabase
+## Supabase
 NEXT_PUBLIC_SUPABASE_URL=
 NEXT_PUBLIC_SUPABASE_ANON_KEY=
 SUPABASE_SERVICE_ROLE_KEY=     # Server-only, never expose to client
 
-# Stripe
+## Stripe
 STRIPE_SECRET_KEY=
 STRIPE_WEBHOOK_SECRET=
 NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=
 
-# App
+## App
 NEXT_PUBLIC_APP_URL=http://localhost:3000
 ```
 
@@ -143,24 +143,24 @@ NEXT_PUBLIC_APP_URL=http://localhost:3000
 ## ECC 工作流
 
 ```bash
-# Planning a feature
+## Planning a feature
 /plan "Add team invitations with email notifications"
 
-# Developing with TDD
+## Developing with TDD
 /tdd
 
-# Before committing
+## Before committing
 /code-review
 /security-scan
 
-# Before release
+## Before release
 /e2e
 /test-coverage
 ```
 
 ## Git 工作流
 
-* `feat:` 新功能，`fix:` 错误修复，`refactor:` 代码变更
+* `feat:`新功能，`fix:`错误修复，`refactor:` 代码变更
 * 从 `main` 创建功能分支，需要 PR
 * CI 运行：代码检查、类型检查、单元测试、端到端测试
 * 部署：在 PR 上部署到 Vercel 预览环境，在合并到 `main` 时部署到生产环境

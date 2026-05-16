@@ -113,7 +113,7 @@ class WordToSkillConverter(SkillConverter):
         from bs4 import BeautifulSoup
         from skill_seekers.cli.language_detector import LanguageDetector
 
-        print(f"\n🔍 Extracting from Word document: {self.docx_path}")
+        print(f"\n Extracting from Word document: {self.docx_path}")
 
         if not os.path.exists(self.docx_path):
             raise FileNotFoundError(f"Word document not found: {self.docx_path}")
@@ -232,10 +232,10 @@ class WordToSkillConverter(SkillConverter):
         with open(self.data_file, "w", encoding="utf-8") as f:
             json.dump(result_data, f, indent=2, ensure_ascii=False, default=str)
 
-        print(f"\n💾 Saved extracted data to: {self.data_file}")
+        print(f"\n Saved extracted data to: {self.data_file}")
         self.extracted_data = result_data
         print(
-            f"✅ Extracted {len(sections)} sections, "
+            f"PASS: Extracted {len(sections)} sections, "
             f"{total_code_blocks} code blocks, "
             f"{result_data['total_images']} images"
         )
@@ -243,16 +243,16 @@ class WordToSkillConverter(SkillConverter):
 
     def load_extracted_data(self, json_path):
         """Load previously extracted data from JSON."""
-        print(f"\n📂 Loading extracted data from: {json_path}")
+        print(f"\n Loading extracted data from: {json_path}")
         with open(json_path, encoding="utf-8") as f:
             self.extracted_data = json.load(f)
         total = self.extracted_data.get("total_sections", len(self.extracted_data.get("pages", [])))
-        print(f"✅ Loaded {total} sections")
+        print(f"PASS: Loaded {total} sections")
         return True
 
     def categorize_content(self):
         """Categorize sections based on headings or keywords."""
-        print("\n📋 Categorizing content...")
+        print("\n Categorizing content...")
 
         categorized = {}
         sections = self.extracted_data.get("pages", [])
@@ -265,7 +265,7 @@ class WordToSkillConverter(SkillConverter):
                 "title": docx_basename,
                 "pages": sections,
             }
-            print("✅ Created 1 category (single Word source)")
+            print("PASS: Created 1 category (single Word source)")
             print(f"   - {docx_basename}: {len(sections)} sections")
             return categorized
 
@@ -316,7 +316,7 @@ class WordToSkillConverter(SkillConverter):
             # No categorization - single category
             categorized["content"] = {"title": "Content", "pages": sections}
 
-        print(f"✅ Created {len(categorized)} categories")
+        print(f"PASS: Created {len(categorized)} categories")
         for _cat_key, cat_data in categorized.items():
             print(f"   - {cat_data['title']}: {len(cat_data['pages'])} sections")
 
@@ -324,7 +324,7 @@ class WordToSkillConverter(SkillConverter):
 
     def build_skill(self):
         """Build complete skill structure."""
-        print(f"\n🏗️  Building skill: {self.name}")
+        print(f"\n  Building skill: {self.name}")
 
         # Create directories
         os.makedirs(f"{self.skill_dir}/references", exist_ok=True)
@@ -335,7 +335,7 @@ class WordToSkillConverter(SkillConverter):
         categorized = self.categorize_content()
 
         # Generate reference files
-        print("\n📝 Generating reference files...")
+        print("\n Generating reference files...")
         total_sections = len(categorized)
         section_num = 1
         for cat_key, cat_data in categorized.items():
@@ -348,8 +348,8 @@ class WordToSkillConverter(SkillConverter):
         # Generate SKILL.md
         self._generate_skill_md(categorized)
 
-        print(f"\n✅ Skill built successfully: {self.skill_dir}/")
-        print(f"\n📦 Next step: Package with: skill-seekers package {self.skill_dir}/")
+        print(f"\nPASS: Skill built successfully: {self.skill_dir}/")
+        print(f"\n Next step: Package with: skill-seekers package {self.skill_dir}/")
 
     def _generate_reference_file(self, _cat_key, cat_data, section_num, total_sections):
         """Generate a reference markdown file for a category."""
@@ -384,7 +384,7 @@ class WordToSkillConverter(SkillConverter):
                 heading = section.get("heading", "")
                 heading_level = section.get("heading_level", "h1")
 
-                f.write(f"---\n\n**📄 Source: Section {sec_num}**\n\n")
+                f.write(f"---\n\n** Source: Section {sec_num}**\n\n")
 
                 # Add heading
                 if heading:
@@ -520,7 +520,7 @@ class WordToSkillConverter(SkillConverter):
             # Document metadata
             metadata = self.extracted_data.get("metadata", {})
             if any(metadata.values()):
-                f.write("## 📋 Document Information\n\n")
+                f.write("##  Document Information\n\n")
                 if metadata.get("title"):
                     f.write(f"**Title:** {metadata['title']}\n\n")
                 if metadata.get("author"):
@@ -531,7 +531,7 @@ class WordToSkillConverter(SkillConverter):
                     f.write(f"**Modified:** {metadata['modified']}\n\n")
 
             # When to Use
-            f.write("## 💡 When to Use This Skill\n\n")
+            f.write("##  When to Use This Skill\n\n")
             f.write("Use this skill when you need to:\n")
             f.write(f"- Understand {self.name} concepts and fundamentals\n")
             f.write("- Look up API references and technical specifications\n")
@@ -541,7 +541,7 @@ class WordToSkillConverter(SkillConverter):
 
             # Section Overview
             total_sections = self.extracted_data.get("total_sections", 0)
-            f.write("## 📖 Section Overview\n\n")
+            f.write("##  Section Overview\n\n")
             f.write(f"**Total Sections:** {total_sections}\n\n")
             f.write("**Content Breakdown:**\n\n")
             for _cat_key, cat_data in categorized.items():
@@ -553,7 +553,7 @@ class WordToSkillConverter(SkillConverter):
             f.write(self._format_key_concepts())
 
             # Quick Reference patterns
-            f.write("## ⚡ Quick Reference\n\n")
+            f.write("##  Quick Reference\n\n")
             f.write(self._format_patterns_from_content())
 
             # Code examples (top 15, grouped by language)
@@ -565,7 +565,7 @@ class WordToSkillConverter(SkillConverter):
             top_code = all_code[:15]
 
             if top_code:
-                f.write("## 📝 Code Examples\n\n")
+                f.write("##  Code Examples\n\n")
                 f.write("*High-quality examples extracted from documentation*\n\n")
 
                 by_lang: dict[str, list] = {}
@@ -594,7 +594,7 @@ class WordToSkillConverter(SkillConverter):
                     all_tables.append((section.get("heading", ""), table))
 
             if all_tables:
-                f.write("## 📊 Table Summary\n\n")
+                f.write("##  Table Summary\n\n")
                 f.write(f"*{len(all_tables)} table(s) found in document*\n\n")
                 for section_heading, table in all_tables[:5]:
                     if section_heading:
@@ -609,7 +609,7 @@ class WordToSkillConverter(SkillConverter):
                         f.write("\n")
 
             # Statistics
-            f.write("## 📊 Documentation Statistics\n\n")
+            f.write("##  Documentation Statistics\n\n")
             f.write(f"- **Total Sections**: {total_sections}\n")
             f.write(f"- **Code Blocks**: {self.extracted_data.get('total_code_blocks', 0)}\n")
             f.write(f"- **Images/Diagrams**: {self.extracted_data.get('total_images', 0)}\n")
@@ -624,7 +624,7 @@ class WordToSkillConverter(SkillConverter):
                 f.write("\n")
 
             # Navigation
-            f.write("## 🗺️ Navigation\n\n")
+            f.write("##  Navigation\n\n")
             f.write("**Reference Files:**\n\n")
             for _cat_key, cat_data in categorized.items():
                 cat_file = self._sanitize_filename(cat_data["title"])
@@ -659,7 +659,7 @@ class WordToSkillConverter(SkillConverter):
         if not all_headings:
             return ""
 
-        content = "## 🔑 Key Concepts\n\n"
+        content = "##  Key Concepts\n\n"
         content += "*Main topics covered in this documentation*\n\n"
 
         h1_headings = [text for level, text in all_headings if level == "h1"]

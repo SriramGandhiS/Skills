@@ -831,27 +831,27 @@ For your specific project:
 
 ## Common Implementation Pitfalls
 
-### ❌ Pitfall 1: Remembering Too Much
+### FAIL: Pitfall 1: Remembering Too Much
 **Problem:** Storing every interaction without relevance filtering
 **Impact:** Slow system, privacy concerns, noise in pattern detection
 **Fix:** Implement relevance filtering and retention policies
 
-### ❌ Pitfall 2: Rigid Trust Stages
+### FAIL: Pitfall 2: Rigid Trust Stages
 **Problem:** Fixed timeline: "Week 1 = transparency, Week 4 = autonomous"
 **Impact:** Doesn't match individual user trust development
 **Fix:** Detect trust level from behavior, let users control progression
 
-### ❌ Pitfall 3: Optimizing for Short-Term Metrics
+### FAIL: Pitfall 3: Optimizing for Short-Term Metrics
 **Problem:** Still measuring session duration, immediate conversion
 **Impact:** Misses relationship quality deterioration
 **Fix:** Track longitudinal metrics, relationship health over time
 
-### ❌ Pitfall 4: No Trust Recovery Path
+### FAIL: Pitfall 4: No Trust Recovery Path
 **Problem:** When system makes mistake, no way to rebuild trust
 **Impact:** Users abandon system after first error
 **Fix:** Implement transparent recovery protocols
 
-### ❌ Pitfall 5: Ignoring Privacy
+### FAIL: Pitfall 5: Ignoring Privacy
 **Problem:** "More data = better personalization" without user control
 **Impact:** Privacy violations, user discomfort, regulatory issues
 **Fix:** Privacy-first design with user controls

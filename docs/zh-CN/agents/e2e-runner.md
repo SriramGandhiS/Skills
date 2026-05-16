@@ -23,11 +23,11 @@ model: sonnet
 **首选 Agent Browser 而非原始 Playwright** — 语义化选择器、AI 优化、自动等待，基于 Playwright 构建。
 
 ```bash
-# Setup
+## Setup
 npm install -g agent-browser && agent-browser install
 
-# Core workflow
-agent-browser open https://example.com
+## Core workflow
+agent-browser open <https://example.com>
 agent-browser snapshot -i          # Get elements with refs [ref=e1]
 agent-browser click @e1            # Click by ref
 agent-browser fill @e2 "text"      # Fill input by ref
@@ -67,14 +67,14 @@ npx playwright show-report                 # View HTML report
 ### 3. 执行
 
 * 本地运行 3-5 次以检查是否存在不稳定性
-* 使用 `test.fixme()` 或 `test.skip()` 隔离不稳定的测试
+* 使用 `test.fixme()`或`test.skip()` 隔离不稳定的测试
 * 将产物上传到 CI
 
 ## 关键原则
 
 * **使用语义化定位器**：`[data-testid="..."]` > CSS 选择器 > XPath
-* **等待条件，而非时间**：`waitForResponse()` > `waitForTimeout()`
-* **内置自动等待**：`page.locator().click()` 自动等待；原始的 `page.click()` 不会
+* **等待条件，而非时间**：`waitForResponse()`>`waitForTimeout()`
+* **内置自动等待**：`page.locator().click()`自动等待；原始的`page.click()` 不会
 * **隔离测试**：每个测试应独立；无共享状态
 * **快速失败**：在每个关键步骤使用 `expect()` 断言
 * **重试时追踪**：配置 `trace: 'on-first-retry'` 以调试失败

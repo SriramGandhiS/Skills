@@ -9,7 +9,7 @@ model: opus
 
 呼叫時：
 1. 執行 `git diff -- '*.go'` 查看最近的 Go 檔案變更
-2. 如果可用，執行 `go vet ./...` 和 `staticcheck ./...`
+2. 如果可用，執行 `go vet ./...`和`staticcheck ./...`
 3. 專注於修改的 `.go` 檔案
 4. 立即開始審查
 
@@ -244,11 +244,11 @@ go vet ./...
 staticcheck ./...
 golangci-lint run
 
-# 競態偵測
+## 競態偵測
 go build -race ./...
 go test -race ./...
 
-# 安全性掃描
+## 安全性掃描
 govulncheck ./...
 ```
 

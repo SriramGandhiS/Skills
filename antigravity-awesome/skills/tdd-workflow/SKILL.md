@@ -15,11 +15,11 @@ date_added: "2026-02-27"
 ## 1. The TDD Cycle
 
 ```
-🔴 RED → Write failing test
+ RED → Write failing test
     ↓
-🟢 GREEN → Write minimal code to pass
+ GREEN → Write minimal code to pass
     ↓
-🔵 REFACTOR → Improve code quality
+ REFACTOR → Improve code quality
     ↓
    Repeat...
 ```
@@ -126,7 +126,7 @@ Every test follows:
 
 ## 9. Anti-Patterns
 
-| ❌ Don't | ✅ Do |
+| FAIL: Don't | PASS: Do |
 |----------|-------|
 | Skip the RED phase | Watch test fail first |
 | Write tests after | Write tests before |

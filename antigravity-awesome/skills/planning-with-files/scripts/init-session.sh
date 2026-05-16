@@ -67,12 +67,8 @@ if [ ! -f "findings.md" ]; then
 # Findings & Decisions
 
 ## Requirements
--
-
-## Research Findings
--
-
-## Technical Decisions
+- ## Research Findings
+- ## Technical Decisions
 | Decision | Rationale |
 |----------|-----------|
 
@@ -81,8 +77,7 @@ if [ ! -f "findings.md" ]; then
 |-------|------------|
 
 ## Resources
--
-EOF
+- EOF
     echo "Created findings.md"
 else
     echo "findings.md already exists, skipping"
@@ -100,9 +95,7 @@ if [ ! -f "progress.md" ]; then
 - **Started:** $DATE
 
 ### Actions Taken
--
-
-### Test Results
+- ### Test Results
 | Test | Expected | Actual | Status |
 |------|----------|--------|--------|
 

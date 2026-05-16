@@ -10,12 +10,12 @@ Analyze test coverage, identify gaps, and generate missing tests to reach 80%+ c
 
 | Indicator | Coverage Command |
 |-----------|-----------------|
-| `jest.config.*` or `package.json` jest | `npx jest --coverage --coverageReporters=json-summary` |
-| `vitest.config.*` | `npx vitest run --coverage` |
-| `pytest.ini` / `pyproject.toml` pytest | `pytest --cov=src --cov-report=json` |
-| `Cargo.toml` | `cargo llvm-cov --json` |
-| `pom.xml` with JaCoCo | `mvn test jacoco:report` |
-| `go.mod` | `go test -coverprofile=coverage.out ./...` |
+| `jest.config.*`or`package.json`jest |`npx jest --coverage --coverageReporters=json-summary` |
+| `vitest.config.*`|`npx vitest run --coverage` |
+| `pytest.ini`/`pyproject.toml`pytest |`pytest --cov=src --cov-report=json` |
+| `Cargo.toml`|`cargo llvm-cov --json` |
+| `pom.xml`with JaCoCo |`mvn test jacoco:report` |
+| `go.mod`|`go test -coverprofile=coverage.out ./...` |
 
 ## Step 2: Analyze Coverage Report
 
@@ -38,7 +38,7 @@ For each under-covered file, generate tests following this priority:
 
 ### Test Generation Rules
 
-- Place tests adjacent to source: `foo.ts` → `foo.test.ts` (or project convention)
+- Place tests adjacent to source: `foo.ts`→`foo.test.ts` (or project convention)
 - Use existing test patterns from the project (import style, assertion library, mocking approach)
 - Mock external dependencies (database, APIs, file system)
 - Each test should be independent — no shared mutable state between tests

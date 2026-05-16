@@ -128,11 +128,11 @@ Present complete project status to user:
 ╚══════════════════════════════════════════════════════════════╝
 
 [If incomplete work found:]
-⚠️  Incomplete work detected:
+WARNING:  Incomplete work detected:
     - [.continue-here file or incomplete plan]
 
 [If interrupted agent found:]
-⚠️  Interrupted agent detected:
+WARNING:  Interrupted agent detected:
     Agent ID: [id]
     Task: [task description from agent-history.json]
     Interrupted: [timestamp]
@@ -140,15 +140,15 @@ Present complete project status to user:
     Resume with: Task tool (resume parameter with agent ID)
 
 [If pending todos exist:]
-📋 [N] pending todos — /gsd-capture --list to review
+ [N] pending todos — /gsd-capture --list to review
 
 [If blockers exist:]
-⚠️  Carried concerns:
+WARNING:  Carried concerns:
     - [blocker 1]
     - [blocker 2]
 
 [If alignment is not ✓:]
-⚠️  Brief alignment: [status] - [assessment]
+WARNING:  Brief alignment: [status] - [assessment]
 ```
 
 </step>
@@ -233,9 +233,9 @@ Resume-specific exception: do **not** emit `/clear then:` here. Resume is alread
   ```
   ---
 
-  ## ▶ Next Up — [${PROJECT_CODE}] ${PROJECT_TITLE}
+  ##  Next Up — [${PROJECT_CODE}] ${PROJECT_TITLE}
 
-  **{phase}-{plan}: [Plan Name]** — [objective from PLAN.md]
+**{phase}-{plan}: [Plan Name]** — [objective from PLAN.md]
 
   `/gsd-execute-phase {phase} ${GSD_WS}`
 
@@ -245,15 +245,15 @@ Resume-specific exception: do **not** emit `/clear then:` here. Resume is alread
   ```
   ---
 
-  ## ▶ Next Up — [${PROJECT_CODE}] ${PROJECT_TITLE}
+  ##  Next Up — [${PROJECT_CODE}] ${PROJECT_TITLE}
 
-  **Phase [N]: [Name]** — [Goal from ROADMAP.md]
+**Phase [N]: [Name]** — [Goal from ROADMAP.md]
 
   `/gsd-plan-phase [phase-number] ${GSD_WS}`
 
   ---
 
-  **Also available:**
+**Also available:**
   - `/gsd-discuss-phase [N] ${GSD_WS}` — gather context first
   - `/gsd-plan-phase --research-phase [N] ${GSD_WS}` — investigate unknowns
 

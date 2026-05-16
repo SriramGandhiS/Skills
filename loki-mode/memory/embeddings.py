@@ -1275,7 +1275,7 @@ class EmbeddingEngine:
     def get_metrics(self) -> Dict[str, Any]:
         """Get embedding metrics."""
         return {
-            **self._metrics,
+**self._metrics,
             "cache_size": len(self._cache),
             "current_provider": self._current_provider_name,
             "using_fallback": self._using_fallback,

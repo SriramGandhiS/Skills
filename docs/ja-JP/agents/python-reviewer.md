@@ -415,22 +415,22 @@ cursor.execute(query, (user_id,))
 # 型チェック
 mypy .
 
-# リンティング
+## リンティング
 ruff check .
 pylint app/
 
-# フォーマットチェック
+## フォーマットチェック
 black --check .
 isort --check-only .
 
-# セキュリティスキャン
+## セキュリティスキャン
 bandit -r .
 
-# 依存関係監査
+## 依存関係監査
 pip-audit
 safety check
 
-# テスト
+## テスト
 pytest --cov=app --cov-report=term-missing
 ```
 

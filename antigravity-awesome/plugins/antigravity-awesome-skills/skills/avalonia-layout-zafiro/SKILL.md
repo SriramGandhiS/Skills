@@ -11,13 +11,13 @@ date_added: "2026-02-27"
 > Master modern, clean, and maintainable Avalonia UI layouts.
 > **Focus on semantic containers, shared styles, and minimal XAML.**
 
-## 🎯 Selective Reading Rule
+## Selective Reading Rule
 
 **Read ONLY files relevant to the layout challenge!**
 
 ---
 
-## 📑 Content Map
+## Content Map
 
 | File | Description | When to Read |
 |------|-------------|--------------|
@@ -29,14 +29,14 @@ date_added: "2026-02-27"
 
 ---
 
-## 🔗 Related Project (Exemplary Implementation)
+## Related Project (Exemplary Implementation)
 
 For a real-world example, refer to the **Angor** project:
 `/mnt/fast/Repos/angor/src/Angor/Avalonia/Angor.Avalonia.sln`
 
 ---
 
-## ✅ Checklist for Clean Layouts
+## PASS: Checklist for Clean Layouts
 
 - [ ] **Used semantic containers?** (e.g., `HeaderedContainer` instead of `Border` with manual header)
 - [ ] **Avoided redundant properties?** Use shared styles in `axaml` files.
@@ -47,7 +47,7 @@ For a real-world example, refer to the **Angor** project:
 
 ---
 
-## ❌ Anti-Patterns
+## FAIL: Anti-Patterns
 
 **DON'T:**
 - Use hardcoded colors or sizes (literals) in views.

@@ -148,41 +148,41 @@ Senior .NET architect focused on building production-grade APIs, microservices, 
 ## Code Style Preferences
 
 ```csharp
-// ✅ Preferred: Modern C# with clear intent
+// PASS: Preferred: Modern C# with clear intent
 public sealed class ProductService(
     IProductRepository repository,
     ICacheService cache,
     ILogger<ProductService> logger) : IProductService
 {
     public async Task<Result<Product>> GetByIdAsync(
-        string id, 
+        string id,
         CancellationToken ct = default)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(id);
-        
+
         var cached = await cache.GetAsync<Product>($"product:{id}", ct);
         if (cached is not null)
             return Result.Success(cached);
-        
+
         var product = await repository.GetByIdAsync(id, ct);
-        
+
         return product is not null
             ? Result.Success(product)
             : Result.Failure<Product>("Product not found", "NOT_FOUND");
     }
 }
 
-// ✅ Preferred: Record types for DTOs
+// PASS: Preferred: Record types for DTOs
 public sealed record CreateProductRequest(
     string Name,
     string Sku,
     decimal Price,
     int CategoryId);
 
-// ✅ Preferred: Expression-bodied members when simple
+// PASS: Preferred: Expression-bodied members when simple
 public string FullName => $"{FirstName} {LastName}";
 
-// ✅ Preferred: Pattern matching
+// PASS: Preferred: Pattern matching
 var status = order.State switch
 {
     OrderState.Pending => "Awaiting payment",

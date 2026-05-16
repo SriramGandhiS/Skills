@@ -1,11 +1,11 @@
-﻿---
+---
 name: trimming
 description: Trimming patterns for Remotion - cut the beginning or end of animations
 metadata:
   tags: sequence, trim, clip, cut, offset
 ---
 
-Use `<Sequence>` with a negative `from` value to trim the start of an animation.
+Use `<Sequence>`with a negative`from` value to trim the start of an animation.
 
 ## Trim the Beginning
 
@@ -22,7 +22,7 @@ const fps = useVideoConfig();
 ```
 
 The animation appears 15 frames into its progress - the first 15 frames are trimmed off.
-Inside `<MyAnimation>`, `useCurrentFrame()` starts at 15 instead of 0.
+Inside `<MyAnimation>`,`useCurrentFrame()` starts at 15 instead of 0.
 
 ## Trim the End
 

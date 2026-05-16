@@ -19,7 +19,7 @@ model: sonnet
 
 ### 步骤 1：收集上下文
 
-运行 `git diff --staged` 和 `git diff` 以查看更改。如果没有差异，检查 `git log --oneline -5`。识别更改的 Dart 文件。
+运行 `git diff --staged`和`git diff`以查看更改。如果没有差异，检查`git log --oneline -5`。识别更改的 Dart 文件。
 
 ### 步骤 2：理解项目结构
 
@@ -68,7 +68,7 @@ model: sonnet
 * **跨层导入** —— 导入必须遵守项目的层边界；内层不得依赖于外层
 * **框架泄漏到纯 Dart 层** —— 如果项目有一个旨在与框架无关的领域/模型层，它不得导入 Flutter 或平台代码
 * **循环依赖** —— 包 A 依赖于 B，而 B 依赖于 A
-* **跨包的私有 `src/` 导入** —— 导入 `package:other/src/internal.dart` 破坏了 Dart 包的封装
+* **跨包的私有 `src/`导入** —— 导入`package:other/src/internal.dart` 破坏了 Dart 包的封装
 * **业务逻辑中的直接实例化** —— 状态管理器应通过注入接收依赖项，而不是在内部构造它们
 * **层边界处缺少抽象** —— 跨层导入具体类，而不是依赖于接口
 
@@ -80,7 +80,7 @@ model: sonnet
 * **非穷尽的状态处理** —— 必须穷尽处理所有状态变体；未处理的变体会无声地破坏功能
 * **违反单一职责** —— 避免"上帝"管理器处理无关的关注点
 * **从 widget 直接调用 API/数据库** —— 数据访问应通过服务/仓库层进行
-* **在 `build()` 中订阅** —— 切勿在 build 方法内部调用 `.listen()`；使用声明式构建器
+* **在 `build()`中订阅** —— 切勿在 build 方法内部调用`.listen()`；使用声明式构建器
 * **Stream/订阅泄漏** —— 所有手动订阅必须在 `dispose()`/`close()` 中取消
 * **缺少错误/加载状态** —— 每个异步操作必须明确地建模加载、成功和错误状态
 
@@ -91,7 +91,7 @@ model: sonnet
 
 **响应式突变解决方案 (MobX, GetX, Signals)：**
 
-* **在反应性 API 外部进行突变** —— 状态必须仅通过 `@action`, `.value`, `.obs` 等方式更改；直接突变会绕过跟踪
+* **在反应性 API 外部进行突变** —— 状态必须仅通过 `@action`,`.value`,`.obs` 等方式更改；直接突变会绕过跟踪
 * **缺少计算状态** —— 可推导的值应使用解决方案的计算机制，而不是冗余存储
 
 **跨组件依赖关系：**
@@ -104,10 +104,10 @@ model: sonnet
 
 * **过大的 `build()`** —— 超过约 80 行；将子树提取到单独的 widget 类
 * **`_build*()` 辅助方法** —— 返回 widget 的私有方法会阻止框架优化；提取到类中
-* **缺少 `const` 构造函数** —— 所有字段都是 final 的 widget 必须声明 `const` 以防止不必要的重建
-* **参数中的对象分配** —— 没有 `const` 的内联 `TextStyle(...)` 会导致重建
-* **`StatefulWidget` 过度使用** —— 当不需要可变局部状态时，优先使用 `StatelessWidget`
-* **列表项中缺少 `key`** —— 没有稳定 `ValueKey` 的 `ListView.builder` 项会导致状态错误
+* **缺少 `const`构造函数** —— 所有字段都是 final 的 widget 必须声明`const` 以防止不必要的重建
+* **参数中的对象分配** —— 没有 `const`的内联`TextStyle(...)` 会导致重建
+* **`StatefulWidget`过度使用** —— 当不需要可变局部状态时，优先使用`StatelessWidget`
+* **列表项中缺少 `key`** —— 没有稳定`ValueKey`的`ListView.builder` 项会导致状态错误
 * **硬编码的颜色/文本样式** —— 使用 `Theme.of(context).colorScheme`/`textTheme`；硬编码的样式会破坏深色模式
 * **硬编码的间距** —— 优先使用设计令牌或命名常量，而不是魔法数字
 
@@ -115,43 +115,43 @@ model: sonnet
 
 * **不必要的重建** —— 状态消费者包装了过多的树；缩小范围并使用选择器
 * **`build()` 中的昂贵工作** —— 在 build 中进行排序、过滤、正则表达式或 I/O 操作；在状态层进行计算
-* **`MediaQuery.of(context)` 过度使用** —— 使用特定的访问器 (`MediaQuery.sizeOf(context)`)
+* **`MediaQuery.of(context)`过度使用** —— 使用特定的访问器 (`MediaQuery.sizeOf(context)`)
 * **大型数据的具体列表构造函数** —— 使用 `ListView.builder`/`GridView.builder` 进行惰性构造
 * **缺少图像优化** —— 没有缓存，没有 `cacheWidth`/`cacheHeight`，使用全分辨率缩略图
-* **动画中的 `Opacity`** —— 使用 `AnimatedOpacity` 或 `FadeTransition`
-* **缺少 `const` 传播** —— `const` widget 会停止重建传播；尽可能使用
+* **动画中的 `Opacity`** —— 使用`AnimatedOpacity`或`FadeTransition`
+* **缺少 `const`传播** ——`const` widget 会停止重建传播；尽可能使用
 * **`IntrinsicHeight`/`IntrinsicWidth` 过度使用** —— 导致额外的布局传递；避免在可滚动列表中使用
 * **缺少 `RepaintBoundary`** —— 复杂的独立重绘子树应被包装
 
 ### Dart 语言习惯 (中)
 
-* **缺少类型注解 / 隐式 `dynamic`** —— 启用 `strict-casts`, `strict-inference`, `strict-raw-types` 来捕获这些问题
-* **`!` 感叹号过度使用** —— 优先使用 `?.`, `??`, `case var v?`, 或 `requireNotNull`
-* **捕获宽泛的异常** —— 没有 `on` 子句的 `catch (e)`；指定异常类型
-* **捕获 `Error` 子类型** —— `Error` 表示错误，而不是可恢复的条件
-* **使用 `var` 而 `final` 可用** —— 对于局部变量，优先使用 `final`；对于编译时常量，优先使用 `const`
+* **缺少类型注解 / 隐式 `dynamic`** —— 启用`strict-casts`,`strict-inference`,`strict-raw-types` 来捕获这些问题
+* **`!`感叹号过度使用** —— 优先使用`?.`,`??`,`case var v?`, 或`requireNotNull`
+* **捕获宽泛的异常** —— 没有 `on`子句的`catch (e)`；指定异常类型
+* **捕获 `Error`子类型** ——`Error` 表示错误，而不是可恢复的条件
+* **使用 `var`而`final`可用** —— 对于局部变量，优先使用`final`；对于编译时常量，优先使用`const`
 * **相对导入** —— 使用 `package:` 导入以确保一致性
-* **缺少 Dart 3 模式** —— 优先使用 switch 表达式和 `if-case`，而不是冗长的 `is` 检查
-* **生产环境中的 `print()`** —— 使用 `dart:developer` `log()` 或项目的日志记录包
+* **缺少 Dart 3 模式** —— 优先使用 switch 表达式和 `if-case`，而不是冗长的`is` 检查
+* **生产环境中的 `print()`** —— 使用`dart:developer` `log()` 或项目的日志记录包
 * **`late` 过度使用** —— 优先使用可空类型或构造函数初始化
-* **忽略 `Future` 返回值** —— 使用 `await` 或使用 `unawaited()` 标记
-* **未使用的 `async`** —— 标记为 `async` 但从不 `await` 的函数会增加不必要的开销
+* **忽略 `Future`返回值** —— 使用`await`或使用`unawaited()` 标记
+* **未使用的 `async`** —— 标记为`async`但从不`await` 的函数会增加不必要的开销
 * **暴露可变集合** —— 公共 API 应返回不可修改的视图
 * **循环中的字符串拼接** —— 使用 `StringBuffer` 进行迭代构建
-* **`const` 类中的可变字段** —— `const` 构造函数类中的字段必须是 final 的
+* **`const`类中的可变字段** ——`const` 构造函数类中的字段必须是 final 的
 
 ### 资源生命周期 (高)
 
-* **缺少 `dispose()`** —— `initState()` 中的每个资源（控制器、订阅、计时器）都必须被释放
-* **`BuildContext` 在 `await` 后使用** —— 在异步间隙后的导航/对话框之前检查 `context.mounted` (Flutter 3.7+)
-* **`setState` 在 `dispose` 之后** —— 异步回调必须在调用 `setState` 之前检查 `mounted`
+* **缺少 `dispose()`** ——`initState()` 中的每个资源（控制器、订阅、计时器）都必须被释放
+* **`BuildContext`在`await`后使用** —— 在异步间隙后的导航/对话框之前检查`context.mounted` (Flutter 3.7+)
+* **`setState`在`dispose`之后** —— 异步回调必须在调用`setState`之前检查`mounted`
 * **`BuildContext` 存储在长生命周期对象中** —— 切勿将上下文存储在单例或静态字段中
-* **未关闭的 `StreamController`** / **未取消的 `Timer`** —— 必须在 `dispose()` 中清理
+* **未关闭的 `StreamController`** / **未取消的`Timer`** —— 必须在`dispose()` 中清理
 * **重复的生命周期逻辑** —— 相同的初始化/释放块应提取到可重用模式中
 
 ### 错误处理 (高)
 
-* **缺少全局错误捕获** —— `FlutterError.onError` 和 `PlatformDispatcher.instance.onError` 都必须设置
+* **缺少全局错误捕获** —— `FlutterError.onError`和`PlatformDispatcher.instance.onError` 都必须设置
 * **没有错误报告服务** —— 应集成 Crashlytics/Sentry 或等效服务，并提供非致命错误报告
 * **缺少状态管理错误观察器** —— 将错误连接到报告系统 (BlocObserver, ProviderObserver 等)
 * **生产环境中的红屏** —— `ErrorWidget.builder` 未针对发布模式进行自定义
@@ -164,11 +164,11 @@ model: sonnet
 * **缺少黄金测试** —— 设计关键组件应有像素级回归测试
 * **未测试的状态转换** —— 所有路径（加载→成功，加载→错误，重试，空）都必须测试
 * **测试隔离被违反** —— 外部依赖必须被模拟；测试之间没有共享的可变状态
-* **不稳定的异步测试** —— 使用 `pumpAndSettle` 或显式的 `pump(Duration)`，而不是基于时间的假设
+* **不稳定的异步测试** —— 使用 `pumpAndSettle`或显式的`pump(Duration)`，而不是基于时间的假设
 
 ### 可访问性 (中)
 
-* **缺少语义标签** —— 图像没有 `semanticLabel`，图标没有 `tooltip`
+* **缺少语义标签** —— 图像没有 `semanticLabel`，图标没有`tooltip`
 * **点击目标过小** —— 交互式元素小于 48x48 像素
 * **仅颜色指示器** —— 仅通过颜色传达含义，没有图标/文本替代方案
 * **缺少 `ExcludeSemantics`/`MergeSemantics`** —— 装饰性元素和相关的 widget 组需要正确的语义
@@ -178,7 +178,7 @@ model: sonnet
 
 * **缺少 `SafeArea`** — 内容被凹口/状态栏遮挡
 * **返回导航失效** — Android 返回按钮或 iOS 侧滑返回未按预期工作
-* **缺少平台权限** — 未在 `AndroidManifest.xml` 或 `Info.plist` 中声明所需权限
+* **缺少平台权限** — 未在 `AndroidManifest.xml`或`Info.plist` 中声明所需权限
 * **无响应式布局** — 在平板/桌面/横屏模式下布局失效的固定布局
 * **文本溢出** — 未使用 `Flexible`/`Expanded`/`FittedBox` 的无限长文本
 * **混合导航模式** — `Navigator.push` 与声明式路由混合使用；请选择一种

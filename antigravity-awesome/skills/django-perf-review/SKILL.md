@@ -53,7 +53,7 @@ def user_list(request):
 
 # Template:
 # {% for user in users %}
-#     {{ user.profile.bio }}  ← triggers query per user
+# {{ user.profile.bio }}  ← triggers query per user
 # {% endfor %}
 
 # SOLUTION: Prefetch in view

@@ -12,9 +12,9 @@ teams running AI coding agents across multiple harnesses.
 Current AgentShield repository state:
 
 - AgentShield checkout on clean `main`.
-- `README.md`, `API.md`, `package.json`, `.github/workflows/*`, and
+- `README.md`,`API.md`,`package.json`,`.github/workflows/*`, and
   `src/`/`tests/` module layout.
-- Current supported user surfaces: `agentshield scan`, `agentshield init`,
+- Current supported user surfaces: `agentshield scan`,`agentshield init`,
   `agentshield miniclaw start`, scanner JSON, MiniClaw API, GitHub Action,
   HTML, SARIF, markdown, terminal, and JSON reports.
 - Current enterprise-like surfaces: policy packs, GitHub Action policy
@@ -62,9 +62,9 @@ Local Claude Code source inspection:
 
 - Reviewed only non-secret local file/module shape from a private Claude Code
   source snapshot.
-- Relevant surfaces observed: `tools/`, `utils/permissions/`, `utils/mcp/`,
-  `utils/hooks/`, `utils/plugins/`, `types/permissions.ts`,
-  `types/plugin.ts`, `remote/`, `tasks/`, `assistant/sessionHistory.ts`,
+- Relevant surfaces observed: `tools/`,`utils/permissions/`,`utils/mcp/`,
+  `utils/hooks/`,`utils/plugins/`,`types/permissions.ts`,
+  `types/plugin.ts`,`remote/`,`tasks/`,`assistant/sessionHistory.ts`,
   and session/history utilities.
 - No code was copied. The takeaway is that AgentShield should track permissions,
   plugins, MCP, hooks, remote sessions, task/subagent activity, and history as
@@ -127,8 +127,8 @@ multiplexers all create different security surfaces.
 
 Target capability:
 
-- A small adapter registry for `claude-code`, `opencode`, `codex`, `gemini`,
-  `zed`, `dmux`, `orca`, `superset`, and `generic-terminal`.
+- A small adapter registry for `claude-code`,`opencode`,`codex`,`gemini`,
+  `zed`,`dmux`,`orca`,`superset`, and`generic-terminal`.
 - Each adapter declares config paths, permission concepts, plugin surfaces,
   MCP/tooling conventions, history/session surfaces, and CI evidence.
 - Report output groups findings by harness and confidence, so template/docs
@@ -325,7 +325,7 @@ Why fifth:
 
 The AgentShield enterprise iteration is not complete until these are true:
 
-- Local `npm run typecheck`, `npm run lint`, `npm test`, and `npm run build`
+- Local `npm run typecheck`,`npm run lint`,`npm test`, and`npm run build`
   pass from the AgentShield repository root.
 - Built CLI smoke tests cover the new flags or report modes.
 - GitHub Action self-test covers the new CI-visible output.

@@ -6,18 +6,18 @@ Complete feature support across all platforms and skill modes.
 
 | Platform | Package Format | Upload | Enhancement | API Key Required |
 |----------|---------------|--------|-------------|------------------|
-| **Claude AI** | ZIP | ✅ Anthropic API | ✅ Sonnet 4 | ANTHROPIC_API_KEY |
-| **Google Gemini** | tar.gz | ✅ Files API | ✅ Gemini 2.0 | GOOGLE_API_KEY |
-| **OpenAI ChatGPT** | ZIP | ✅ Assistants API | ✅ GPT-4o | OPENAI_API_KEY |
-| **MiniMax** | ZIP | ❌ Manual | ❌ None | None |
-| **OpenCode** | ZIP | ❌ Manual | ❌ None | None |
-| **Kimi** | ZIP | ❌ Manual | ❌ None | None |
-| **DeepSeek** | ZIP | ❌ Manual | ❌ None | None |
-| **Qwen** | ZIP | ❌ Manual | ❌ None | None |
-| **OpenRouter** | ZIP | ❌ Manual | ❌ None | None |
-| **Together AI** | ZIP | ❌ Manual | ❌ None | None |
-| **Fireworks AI** | ZIP | ❌ Manual | ❌ None | None |
-| **Generic Markdown** | ZIP | ❌ Manual | ❌ None | None |
+| **Claude AI** | ZIP | PASS: Anthropic API | PASS: Sonnet 4 | ANTHROPIC_API_KEY |
+| **Google Gemini** | tar.gz | PASS: Files API | PASS: Gemini 2.0 | GOOGLE_API_KEY |
+| **OpenAI ChatGPT** | ZIP | PASS: Assistants API | PASS: GPT-4o | OPENAI_API_KEY |
+| **MiniMax** | ZIP | FAIL: Manual | FAIL: None | None |
+| **OpenCode** | ZIP | FAIL: Manual | FAIL: None | None |
+| **Kimi** | ZIP | FAIL: Manual | FAIL: None | None |
+| **DeepSeek** | ZIP | FAIL: Manual | FAIL: None | None |
+| **Qwen** | ZIP | FAIL: Manual | FAIL: None | None |
+| **OpenRouter** | ZIP | FAIL: Manual | FAIL: None | None |
+| **Together AI** | ZIP | FAIL: Manual | FAIL: None | None |
+| **Fireworks AI** | ZIP | FAIL: Manual | FAIL: None | None |
+| **Generic Markdown** | ZIP | FAIL: Manual | FAIL: None | None |
 
 ## Skill Mode Support
 
@@ -64,11 +64,11 @@ Complete feature support across all platforms and skill modes.
 | `notion` | All | Notion only | No (output is universal) | `[notion]` |
 | `chat` | All | Chat only | No (output is universal) | `[chat]` |
 | `unified` | All | Unified only | No (output is universal) | Varies by source |
-| `enhance` | Claude, Gemini, OpenAI | All | ✅ `--target` | None |
-| `package` | All | All | ✅ `--target` | None |
-| `upload` | Claude, Gemini, OpenAI | All | ✅ `--target` | None |
+| `enhance` | Claude, Gemini, OpenAI | All | PASS: `--target` | None |
+| `package` | All | All | PASS: `--target` | None |
+| `upload` | Claude, Gemini, OpenAI | All | PASS: `--target` | None |
 | `estimate` | All | Docs only | No (estimation is universal) | None |
-| `install` | All | All | ✅ `--target` | None |
+| `install` | All | All | PASS: `--target` | None |
 | `install-agent` | All | All | No (agent-specific paths) | None |
 
 ## MCP Tool Support
@@ -87,10 +87,10 @@ Complete feature support across all platforms and skill modes.
 | `scrape_pdf` | All | PDF only | No (output is universal) |
 | `scrape_generic` | All | 10 new types | No (output is universal) |
 | **Packaging Tools** |
-| `package_skill` | All | All | ✅ `target` parameter |
-| `upload_skill` | Claude, Gemini, OpenAI | All | ✅ `target` parameter |
-| `enhance_skill` | Claude, Gemini, OpenAI | All | ✅ `target` parameter |
-| `install_skill` | All | All | ✅ `target` parameter |
+| `package_skill` | All | All | PASS: `target` parameter |
+| `upload_skill` | Claude, Gemini, OpenAI | All | PASS: `target` parameter |
+| `enhance_skill` | Claude, Gemini, OpenAI | All | PASS: `target` parameter |
+| `install_skill` | All | All | PASS: `target` parameter |
 | **Splitting Tools** |
 | `split_config` | All | Docs + Unified | No |
 | `generate_router` | All | Docs only | No |

@@ -755,7 +755,7 @@
     "ruleId": "",
     "ruleTitle": "Use Functional setState Updates",
     "type": "bad",
-    "code": "function TodoList() {\n  const [items, setItems] = useState(initialItems)\n  \n  // Callback must depend on items, recreated on every items change\n  const addItems = useCallback((newItems: Item[]) => {\n    setItems([...items, ...newItems])\n  }, [items])  // ❌ items dependency causes recreations\n  \n  // Risk of stale closure if dependency is forgotten\n  const removeItem = useCallback((id: string) => {\n    setItems(items.filter(item => item.id !== id))\n  }, [])  // ❌ Missing items dependency - will use stale items!\n  \n  return <ItemsEditor items={items} onAdd={addItems} onRemove={removeItem} />\n}",
+    "code": "function TodoList() {\n  const [items, setItems] = useState(initialItems)\n  \n  // Callback must depend on items, recreated on every items change\n  const addItems = useCallback((newItems: Item[]) => {\n    setItems([...items, ...newItems])\n  }, [items])  // FAIL: items dependency causes recreations\n  \n  // Risk of stale closure if dependency is forgotten\n  const removeItem = useCallback((id: string) => {\n    setItems(items.filter(item => item.id !== id))\n  }, [])  // FAIL: Missing items dependency - will use stale items!\n  \n  return <ItemsEditor items={items} onAdd={addItems} onRemove={removeItem} />\n}",
     "language": "tsx",
     "description": "requires state as dependency"
   },
@@ -763,7 +763,7 @@
     "ruleId": "",
     "ruleTitle": "Use Functional setState Updates",
     "type": "good",
-    "code": "function TodoList() {\n  const [items, setItems] = useState(initialItems)\n  \n  // Stable callback, never recreated\n  const addItems = useCallback((newItems: Item[]) => {\n    setItems(curr => [...curr, ...newItems])\n  }, [])  // ✅ No dependencies needed\n  \n  // Always uses latest state, no stale closure risk\n  const removeItem = useCallback((id: string) => {\n    setItems(curr => curr.filter(item => item.id !== id))\n  }, [])  // ✅ Safe and stable\n  \n  return <ItemsEditor items={items} onAdd={addItems} onRemove={removeItem} />\n}",
+    "code": "function TodoList() {\n  const [items, setItems] = useState(initialItems)\n  \n  // Stable callback, never recreated\n  const addItems = useCallback((newItems: Item[]) => {\n    setItems(curr => [...curr, ...newItems])\n  }, [])  // PASS: No dependencies needed\n  \n  // Always uses latest state, no stale closure risk\n  const removeItem = useCallback((id: string) => {\n    setItems(curr => curr.filter(item => item.id !== id))\n  }, [])  // PASS: Safe and stable\n  \n  return <ItemsEditor items={items} onAdd={addItems} onRemove={removeItem} />\n}",
     "language": "tsx",
     "description": "stable callbacks, no stale closures"
   },

@@ -39,7 +39,7 @@ REPEAT  → Next test case
 User: /cpp-test I need a function to validate email addresses
 
 Agent:
-# TDD Session: Email Validator
+## TDD Session: Email Validator
 
 ## Step 1: Define Interface
 
@@ -202,13 +202,13 @@ INSTANTIATE_TEST_SUITE_P(Primes, PrimeTest, ::testing::Values(
 ## Coverage Commands
 
 ```bash
-# Build with coverage
+## Build with coverage
 cmake -DCMAKE_CXX_FLAGS="--coverage" -DCMAKE_EXE_LINKER_FLAGS="--coverage" -B build
 
-# Run tests
+## Run tests
 cmake --build build && ctest --test-dir build
 
-# Generate coverage report
+## Generate coverage report
 lcov --capture --directory build --output-file coverage.info
 lcov --remove coverage.info '/usr/*' --output-file coverage.info
 genhtml coverage.info --output-directory coverage_html
@@ -228,7 +228,7 @@ genhtml coverage.info --output-directory coverage_html
 **DO:**
 - Write test FIRST, before any implementation
 - Run tests after each change
-- Use `EXPECT_*` (continues) over `ASSERT_*` (stops) when appropriate
+- Use `EXPECT_*`(continues) over`ASSERT_*` (stops) when appropriate
 - Test behavior, not implementation details
 - Include edge cases (empty, null, max values, boundary conditions)
 

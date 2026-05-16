@@ -108,7 +108,7 @@ Current HEAD: <full-commit-sha>
 This workspace is externally managed (detached HEAD).
 I cannot create branches, push, or open PRs from here.
 
-⚠ These commits are on a detached HEAD. If you do not create a branch,
+WARNING: These commits are on a detached HEAD. If you do not create a branch,
 they may be lost when this workspace is cleaned up.
 
 If your host application provides these controls:

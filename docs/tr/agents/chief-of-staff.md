@@ -21,14 +21,14 @@ Tüm iletişim kanallarını — e-posta, Slack, LINE, Messenger ve takvim — b
 Her mesaj tam olarak bir katmana sınıflandırılır, öncelik sırasına göre uygulanır:
 
 ### 1. skip (otomatik arşivle)
-- `noreply`, `no-reply`, `notification`, `alert`'ten gelenler
-- `@github.com`, `@slack.com`, `@jira`, `@notion.so`'dan gelenler
+- `noreply`,`no-reply`,`notification`,`alert`'ten gelenler
+- `@github.com`,`@slack.com`,`@jira`,`@notion.so`'dan gelenler
 - Bot mesajları, kanal katılma/ayrılma, otomatik uyarılar
 - Resmi LINE hesapları, Messenger sayfa bildirimleri
 
 ### 2. info_only (yalnızca özet)
 - CC'ye alınan e-postalar, makbuzlar, grup sohbet konuşmaları
-- `@channel` / `@here` duyuruları
+- `@channel`/`@here` duyuruları
 - Soru içermeyen dosya paylaşımları
 
 ### 3. meeting_info (takvim çapraz referansı)
@@ -53,14 +53,14 @@ Tüm kanalları eşzamanlı olarak çekin:
 # E-posta (Gmail CLI üzerinden)
 gog gmail search "is:unread -category:promotions -category:social" --max 20 --json
 
-# Takvim
+## Takvim
 gog calendar events --today --all --max 30
 
-# LINE/Messenger için kanala özgü scriptler
+## LINE/Messenger için kanala özgü scriptler
 ```
 
 ```text
-# Slack (MCP üzerinden)
+## Slack (MCP üzerinden)
 conversations_search_messages(search_query: "YOUR_NAME", filter_date_during: "Today")
 channels_list(channel_types: "im,mpim") → conversations_history(limit: "4h")
 ```
@@ -100,12 +100,12 @@ Her action_required mesaj için:
 6. **Triyaj dosyaları** — LINE/Messenger taslak durumunu güncelleyin
 7. **Git commit & push** — Tüm bilgi dosyası değişikliklerini sürüm kontrolüne alın
 
-Bu kontrol listesi, tamamlanmayı tüm adımlar yapılana kadar engelleyen bir `PostToolUse` kancası tarafından zorunlu kılınır. Kanca `gmail send` / `conversations_add_message` komutlarını yakalar ve kontrol listesini bir sistem hatırlatıcısı olarak enjekte eder.
+Bu kontrol listesi, tamamlanmayı tüm adımlar yapılana kadar engelleyen bir `PostToolUse`kancası tarafından zorunlu kılınır. Kanca`gmail send`/`conversations_add_message` komutlarını yakalar ve kontrol listesini bir sistem hatırlatıcısı olarak enjekte eder.
 
 ## Brifing Çıktı Formatı
 
 ```
-# Bugünün Brifingı — [Tarih]
+## Bugünün Brifingı — [Tarih]
 
 ## Zamanlama (N)
 | Saat | Etkinlik | Konum | Hazırlık? |
@@ -131,7 +131,7 @@ Bu kontrol listesi, tamamlanmayı tüm adımlar yapılana kadar engelleyen bir `
 
 - **Güvenilirlik için istemler yerine kancalar**: LLM'ler talimatları ~%20 oranında unutur. `PostToolUse` kancaları kontrol listelerini araç seviyesinde zorunlu kılar — LLM fiziksel olarak bunları atlayamaz.
 - **Deterministik mantık için scriptler**: Takvim matematiği, saat dilimi işleme, boş slot hesaplama — `calendar-suggest.js` kullanın, LLM kullanmayın.
-- **Bilgi dosyaları bellektir**: `relationships.md`, `preferences.md`, `todo.md` durumsuz oturumlar boyunca git üzerinden kalıcıdır.
+- **Bilgi dosyaları bellektir**: `relationships.md`,`preferences.md`,`todo.md` durumsuz oturumlar boyunca git üzerinden kalıcıdır.
 - **Kurallar sistem enjektelidir**: `.claude/rules/*.md` dosyaları her oturumda otomatik yüklenir. İstem talimatlarının aksine, LLM bunları görmezden gelmeyi seçemez.
 
 ## Örnek Çağrılar

@@ -45,12 +45,12 @@ Read gan-harness/generator-state.md for what was built
 ### Step 2: Launch Browser Testing
 ```bash
 # The Generator should have left a dev server running
-# Use Playwright MCP to interact with the live app
+## Use Playwright MCP to interact with the live app
 
-# Navigate to the app
-playwright navigate http://localhost:${GAN_DEV_SERVER_PORT:-3000}
+## Navigate to the app
+playwright navigate <http://localhost:${GAN_DEV_SERVER_PORT:-3000}>
 
-# Take initial screenshot
+## Take initial screenshot
 playwright screenshot --name "initial-load"
 ```
 
@@ -125,7 +125,7 @@ weighted = (design * 0.3) + (originality * 0.2) + (craft * 0.3) + (functionality
 Write feedback to `gan-harness/feedback/feedback-NNN.md`:
 
 ```markdown
-# Evaluation — Iteration NNN
+## Evaluation — Iteration NNN
 
 ## Scores
 
@@ -168,7 +168,7 @@ Write feedback to `gan-harness/feedback/feedback-NNN.md`:
 
 1. **Every issue must have a "how to fix"** — Don't just say "design is generic." Say "Replace the gradient background (#667eea→#764ba2) with a solid color from the spec palette. Add a subtle texture or pattern for depth."
 
-2. **Reference specific elements** — Not "the layout needs work" but "the sidebar cards at 375px overflow their container. Set `max-width: 100%` and add `overflow: hidden`."
+2. **Reference specific elements** — Not "the layout needs work" but "the sidebar cards at 375px overflow their container. Set `max-width: 100%`and add`overflow: hidden`."
 
 3. **Quantify when possible** — "The CLS score is 0.15 (should be <0.1)" or "3 out of 7 features have no error state handling."
 
@@ -181,14 +181,14 @@ Write feedback to `gan-harness/feedback/feedback-NNN.md`:
 Use Playwright MCP or direct browser automation:
 
 ```bash
-# Navigate
+## Navigate
 npx playwright test --headed --browser=chromium
 
-# Or via MCP tools if available:
-# mcp__playwright__navigate { url: "http://localhost:3000" }
-# mcp__playwright__click { selector: "button.submit" }
-# mcp__playwright__fill { selector: "input[name=email]", value: "test@example.com" }
-# mcp__playwright__screenshot { name: "after-submit" }
+## Or via MCP tools if available:
+## mcp__playwright__navigate { url: "http://localhost:3000" }
+## mcp__playwright__click { selector: "button.submit" }
+## mcp__playwright__fill { selector: "input[name=email]", value: "test@example.com" }
+## mcp__playwright__screenshot { name: "after-submit" }
 ```
 
 If Playwright MCP is not available, fall back to:
@@ -209,7 +209,7 @@ Take screenshots only, analyze visually. Less thorough but works without MCP.
 For APIs/libraries: run tests, check build, analyze code quality. No browser.
 
 ```bash
-# Code-only evaluation
+## Code-only evaluation
 npm run build 2>&1 | tee /tmp/build-output.txt
 npm test 2>&1 | tee /tmp/test-output.txt
 npx eslint . 2>&1 | tee /tmp/lint-output.txt

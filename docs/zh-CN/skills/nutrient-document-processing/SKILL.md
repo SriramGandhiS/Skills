@@ -16,29 +16,29 @@ origin: ECC
 export NUTRIENT_API_KEY="pdf_live_..."
 ```
 
-所有请求都以 multipart POST 形式发送到 `https://api.nutrient.io/build`，并附带一个 `instructions` JSON 字段。
+所有请求都以 multipart POST 形式发送到 `https://api.nutrient.io/build`，并附带一个`instructions` JSON 字段。
 
 ## 操作
 
 ### 转换文档
 
 ```bash
-# DOCX to PDF
-curl -X POST https://api.nutrient.io/build \
+## DOCX to PDF
+curl -X POST <https://api.nutrient.io/build> \
   -H "Authorization: Bearer $NUTRIENT_API_KEY" \
   -F "document.docx=@document.docx" \
   -F 'instructions={"parts":[{"file":"document.docx"}]}' \
   -o output.pdf
 
-# PDF to DOCX
-curl -X POST https://api.nutrient.io/build \
+## PDF to DOCX
+curl -X POST <https://api.nutrient.io/build> \
   -H "Authorization: Bearer $NUTRIENT_API_KEY" \
   -F "document.pdf=@document.pdf" \
   -F 'instructions={"parts":[{"file":"document.pdf"}],"output":{"type":"docx"}}' \
   -o output.docx
 
-# HTML to PDF
-curl -X POST https://api.nutrient.io/build \
+## HTML to PDF
+curl -X POST <https://api.nutrient.io/build> \
   -H "Authorization: Bearer $NUTRIENT_API_KEY" \
   -F "index.html=@index.html" \
   -F 'instructions={"parts":[{"html":"index.html"}]}' \
@@ -50,15 +50,15 @@ curl -X POST https://api.nutrient.io/build \
 ### 提取文本和数据
 
 ```bash
-# Extract plain text
-curl -X POST https://api.nutrient.io/build \
+## Extract plain text
+curl -X POST <https://api.nutrient.io/build> \
   -H "Authorization: Bearer $NUTRIENT_API_KEY" \
   -F "document.pdf=@document.pdf" \
   -F 'instructions={"parts":[{"file":"document.pdf"}],"output":{"type":"text"}}' \
   -o output.txt
 
-# Extract tables as Excel
-curl -X POST https://api.nutrient.io/build \
+## Extract tables as Excel
+curl -X POST <https://api.nutrient.io/build> \
   -H "Authorization: Bearer $NUTRIENT_API_KEY" \
   -F "document.pdf=@document.pdf" \
   -F 'instructions={"parts":[{"file":"document.pdf"}],"output":{"type":"xlsx"}}' \
@@ -68,40 +68,40 @@ curl -X POST https://api.nutrient.io/build \
 ### OCR 扫描文档
 
 ```bash
-# OCR to searchable PDF (supports 100+ languages)
-curl -X POST https://api.nutrient.io/build \
+## OCR to searchable PDF (supports 100+ languages)
+curl -X POST <https://api.nutrient.io/build> \
   -H "Authorization: Bearer $NUTRIENT_API_KEY" \
   -F "scanned.pdf=@scanned.pdf" \
   -F 'instructions={"parts":[{"file":"scanned.pdf"}],"actions":[{"type":"ocr","language":"english"}]}' \
   -o searchable.pdf
 ```
 
-支持语言：通过 ISO 639-2 代码支持 100 多种语言（例如，`eng`, `deu`, `fra`, `spa`, `jpn`, `kor`, `chi_sim`, `chi_tra`, `ara`, `hin`, `rus`）。完整的语言名称如 `english` 或 `german` 也适用。查看 [完整的 OCR 语言表](https://www.nutrient.io/guides/document-engine/ocr/language-support/) 以获取所有支持的代码。
+支持语言：通过 ISO 639-2 代码支持 100 多种语言（例如，`eng`,`deu`,`fra`,`spa`,`jpn`,`kor`,`chi_sim`,`chi_tra`,`ara`,`hin`,`rus`）。完整的语言名称如`english`或`german` 也适用。查看 [完整的 OCR 语言表](https://www.nutrient.io/guides/document-engine/ocr/language-support/) 以获取所有支持的代码。
 
 ### 编辑敏感信息
 
 ```bash
-# Pattern-based (SSN, email)
-curl -X POST https://api.nutrient.io/build \
+## Pattern-based (SSN, email)
+curl -X POST <https://api.nutrient.io/build> \
   -H "Authorization: Bearer $NUTRIENT_API_KEY" \
   -F "document.pdf=@document.pdf" \
   -F 'instructions={"parts":[{"file":"document.pdf"}],"actions":[{"type":"redaction","strategy":"preset","strategyOptions":{"preset":"social-security-number"}},{"type":"redaction","strategy":"preset","strategyOptions":{"preset":"email-address"}}]}' \
   -o redacted.pdf
 
-# Regex-based
-curl -X POST https://api.nutrient.io/build \
+## Regex-based
+curl -X POST <https://api.nutrient.io/build> \
   -H "Authorization: Bearer $NUTRIENT_API_KEY" \
   -F "document.pdf=@document.pdf" \
   -F 'instructions={"parts":[{"file":"document.pdf"}],"actions":[{"type":"redaction","strategy":"regex","strategyOptions":{"regex":"\\b[A-Z]{2}\\d{6}\\b"}}]}' \
   -o redacted.pdf
 ```
 
-预设：`social-security-number`, `email-address`, `credit-card-number`, `international-phone-number`, `north-american-phone-number`, `date`, `time`, `url`, `ipv4`, `ipv6`, `mac-address`, `us-zip-code`, `vin`。
+预设：`social-security-number`,`email-address`,`credit-card-number`,`international-phone-number`,`north-american-phone-number`,`date`,`time`,`url`,`ipv4`,`ipv6`,`mac-address`,`us-zip-code`,`vin`。
 
 ### 添加水印
 
 ```bash
-curl -X POST https://api.nutrient.io/build \
+curl -X POST <https://api.nutrient.io/build> \
   -H "Authorization: Bearer $NUTRIENT_API_KEY" \
   -F "document.pdf=@document.pdf" \
   -F 'instructions={"parts":[{"file":"document.pdf"}],"actions":[{"type":"watermark","text":"CONFIDENTIAL","fontSize":72,"opacity":0.3,"rotation":-45}]}' \
@@ -111,8 +111,8 @@ curl -X POST https://api.nutrient.io/build \
 ### 数字签名
 
 ```bash
-# Self-signed CMS signature
-curl -X POST https://api.nutrient.io/build \
+## Self-signed CMS signature
+curl -X POST <https://api.nutrient.io/build> \
   -H "Authorization: Bearer $NUTRIENT_API_KEY" \
   -F "document.pdf=@document.pdf" \
   -F 'instructions={"parts":[{"file":"document.pdf"}],"actions":[{"type":"sign","signatureType":"cms"}]}' \
@@ -122,7 +122,7 @@ curl -X POST https://api.nutrient.io/build \
 ### 填写 PDF 表单
 
 ```bash
-curl -X POST https://api.nutrient.io/build \
+curl -X POST <https://api.nutrient.io/build> \
   -H "Authorization: Bearer $NUTRIENT_API_KEY" \
   -F "form.pdf=@form.pdf" \
   -F 'instructions={"parts":[{"file":"form.pdf"}],"actions":[{"type":"fillForm","formFields":{"name":"Jane Smith","email":"jane@example.com","date":"2026-02-06"}}]}' \

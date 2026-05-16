@@ -14,8 +14,8 @@
 ### Convenções Go
 
 - Siga Effective Go e o guia Go Code Review Comments
-- Use `errors.New` / `fmt.Errorf` com `%w` para wrapping — nunca string matching em erros
-- Sem funções `init()` — inicialização explícita em `main()` ou construtores
+- Use `errors.New`/`fmt.Errorf`com`%w` para wrapping — nunca string matching em erros
+- Sem funções `init()`— inicialização explícita em`main()` ou construtores
 - Sem estado global mutável — passe dependências via construtores
 - Context deve ser o primeiro parâmetro e propagado por todas as camadas
 
@@ -24,7 +24,7 @@
 - Todas as queries em `queries/` como SQL puro — sqlc gera código Go type-safe
 - Migrations em `migrations/` com golang-migrate — nunca alterar banco diretamente
 - Use transações para operações multi-etapa via `pgx.Tx`
-- Todas as queries devem usar placeholders parametrizados (`$1`, `$2`) — nunca string formatting
+- Todas as queries devem usar placeholders parametrizados (`$1`,`$2`) — nunca string formatting
 
 ### Tratamento de Erro
 
@@ -59,7 +59,7 @@ func toGRPCError(err error) error {
 - Tipos e funções exportados devem ter doc comments
 - Mantenha funções abaixo de 50 linhas — extraia helpers
 - Use table-driven tests para toda lógica com múltiplos casos
-- Prefira `struct{}` para canais de sinal, não `bool`
+- Prefira `struct{}`para canais de sinal, não`bool`
 
 ## Estrutura de Arquivos
 
@@ -199,18 +199,18 @@ func TestUserService_Create(t *testing.T) {
 ## Variáveis de Ambiente
 
 ```bash
-# Database
+## Database
 DATABASE_URL=postgres://user:pass@localhost:5432/myservice?sslmode=disable
 
-# gRPC
+## gRPC
 GRPC_PORT=50051
 REST_PORT=8080
 
-# Auth
+## Auth
 JWT_SECRET=           # Load from vault in production
 TOKEN_EXPIRY=24h
 
-# Observability
+## Observability
 LOG_LEVEL=info        # debug, info, warn, error
 OTEL_ENDPOINT=        # OpenTelemetry collector
 ```
@@ -226,42 +226,42 @@ OTEL_ENDPOINT=        # OpenTelemetry collector
 ### Comandos de Teste
 
 ```bash
-# Unit tests (fast, no external deps)
+## Unit tests (fast, no external deps)
 go test ./internal/... -short -count=1
 
-# Integration tests (requires Docker for testcontainers)
+## Integration tests (requires Docker for testcontainers)
 go test ./internal/repository/... -count=1 -timeout 120s
 
-# All tests with coverage
+## All tests with coverage
 go test ./... -coverprofile=coverage.out -count=1
 go tool cover -func=coverage.out  # summary
 go tool cover -html=coverage.out  # browser
 
-# Race detector
+## Race detector
 go test ./... -race -count=1
 ```
 
 ## Workflow ECC
 
 ```bash
-# Planning
+## Planning
 /plan "Add rate limiting to user endpoints"
 
-# Development
+## Development
 /go-test                  # TDD with Go-specific patterns
 
-# Review
+## Review
 /go-review                # Go idioms, error handling, concurrency
 /security-scan            # Secrets and vulnerabilities
 
-# Before merge
+## Before merge
 go vet ./...
 staticcheck ./...
 ```
 
 ## Fluxo Git
 
-- `feat:` novas features, `fix:` correções de bug, `refactor:` mudanças de código
+- `feat:`novas features,`fix:`correções de bug,`refactor:` mudanças de código
 - Branches de feature a partir da `main`, PRs obrigatórios
-- CI: `go vet`, `staticcheck`, `go test -race`, `golangci-lint`
+- CI: `go vet`,`staticcheck`,`go test -race`,`golangci-lint`
 - Deploy: imagem Docker gerada no CI e publicada em Kubernetes

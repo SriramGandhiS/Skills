@@ -1,4 +1,4 @@
-﻿---
+---
 name: timing
 description: Interpolation curves in Remotion - linear, easing, spring animations
 metadata:

@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
 # Test: loki share command
 # Tests the session report sharing via GitHub Gist (v6.30.0)
-#
-# Note: Not using -e to allow collecting all test results
+# # Note: Not using -e to allow collecting all test results
 
 set -uo pipefail
 

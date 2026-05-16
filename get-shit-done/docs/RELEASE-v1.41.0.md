@@ -130,7 +130,7 @@ npx get-shit-done-cc@latest
   ([#3028](https://github.com/gsd-build/get-shit-done/issues/3020))
 
 - **Windows update-check no longer silently fails** — passes `shell: true` on Windows
-  so `npm.cmd` resolves via PATHEXT; without this the statusline "⬆ /gsd-update"
+  so `npm.cmd` resolves via PATHEXT; without this the statusline " /gsd-update"
   indicator never rendered on Windows.
   ([#3102](https://github.com/gsd-build/get-shit-done/issues/3103))
 

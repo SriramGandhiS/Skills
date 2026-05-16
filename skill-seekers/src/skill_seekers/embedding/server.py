@@ -331,12 +331,12 @@ def main():
     port = int(os.getenv("EMBEDDING_PORT", "8000"))
     reload = os.getenv("EMBEDDING_RELOAD", "false").lower() == "true"
 
-    print(f"🚀 Starting Embedding API server on {host}:{port}")
-    print(f"📚 API documentation: http://{host}:{port}/docs")
-    print(f"🔍 Cache enabled: {cache_enabled}")
+    print(f" Starting Embedding API server on {host}:{port}")
+    print(f" API documentation: http://{host}:{port}/docs")
+    print(f" Cache enabled: {cache_enabled}")
 
     if cache_enabled:
-        print(f"💾 Cache database: {cache_db}")
+        print(f" Cache database: {cache_db}")
 
     uvicorn.run("skill_seekers.embedding.server:app", host=host, port=port, reload=reload)
 

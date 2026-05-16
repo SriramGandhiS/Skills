@@ -26,22 +26,22 @@ Use `/flutter-test` when:
 ## Commands Run
 
 ```bash
-# Run all tests
+## Run all tests
 flutter test 2>&1
 
-# Run with coverage
+## Run with coverage
 flutter test --coverage 2>&1
 
-# Run specific test file
+## Run specific test file
 flutter test test/unit/domain/usecases/get_user_test.dart 2>&1
 
-# Run tests matching a name pattern
+## Run tests matching a name pattern
 flutter test --name "CartBloc" 2>&1
 
-# Run integration tests (requires device/emulator)
+## Run integration tests (requires device/emulator)
 flutter test integration_test/ 2>&1
 
-# Update golden files when intentional visual changes are made
+## Update golden files when intentional visual changes are made
 flutter test --update-goldens 2>&1
 ```
 
@@ -51,7 +51,7 @@ flutter test --update-goldens 2>&1
 User: /flutter-test
 
 Agent:
-# Flutter Test Run
+## Flutter Test Run
 
 ## Test Execution
 
@@ -124,11 +124,11 @@ Test Status: PASS ✓
 |---------|-------------|
 | `Expected: <X> Actual: <Y>` | Update assertion or fix implementation |
 | `Widget not found` | Fix finder selector or update test after widget rename |
-| `Golden file not found` | Run `flutter test --update-goldens` to generate |
-| `Golden mismatch` | Inspect diff; run `--update-goldens` if change was intentional |
+| `Golden file not found`| Run`flutter test --update-goldens` to generate |
+| `Golden mismatch`| Inspect diff; run`--update-goldens` if change was intentional |
 | `MissingPluginException` | Mock platform channel in test setup |
-| `LateInitializationError` | Initialize `late` fields in `setUp()` |
-| `pumpAndSettle timed out` | Replace with explicit `pump(Duration)` calls |
+| `LateInitializationError`| Initialize`late`fields in`setUp()` |
+| `pumpAndSettle timed out`| Replace with explicit`pump(Duration)` calls |
 
 ## Related Commands
 

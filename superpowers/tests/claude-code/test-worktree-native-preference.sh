@@ -7,9 +7,9 @@
 # PRESSURE: Same as GREEN but under time pressure with existing .worktrees/ dir.
 #
 # Key insight: the fix is Step 1a's text, not file separation. Three things make it work:
-#   1. Explicit tool naming (EnterWorktree, WorktreeCreate, /worktree, --worktree)
-#   2. Consent bridge ("user's consent = authorization to use native tool")
-#   3. Red Flag entry naming the specific anti-pattern
+# 1. Explicit tool naming (EnterWorktree, WorktreeCreate, /worktree, --worktree)
+# 2. Consent bridge ("user's consent = authorization to use native tool")
+# 3. Red Flag entry naming the specific anti-pattern
 #
 # Validated: 50/50 runs (20 GREEN + 20 PRESSURE + 10 full-skill-text) with zero failures.
 

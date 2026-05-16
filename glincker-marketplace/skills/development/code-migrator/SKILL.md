@@ -10,7 +10,7 @@ keywords: [migration, modernization, refactoring, legacy-code, framework-upgrade
 
 # Code Migrator
 
-**⚡ UNIQUE FEATURE**: Automated legacy code modernization with AI-powered migration paths, dependency resolution, test generation, and risk analysis. Migrate between languages, frameworks, or architectural patterns with confidence.
+**UNIQUE FEATURE**: Automated legacy code modernization with AI-powered migration paths, dependency resolution, test generation, and risk analysis. Migrate between languages, frameworks, or architectural patterns with confidence.
 
 ## What This Skill Does
 
@@ -129,7 +129,7 @@ First migration skill with:
 
 3. **Execute Migration** (module by module):
 
-   **For each file/module**:
+**For each file/module**:
 
    a. **Read current code**:
    ```python
@@ -305,9 +305,9 @@ data = json.loads(response.read().decode('utf-8'))
    ```markdown
    # Migration Report: Python 2 → Python 3
 
-   **Date**: 2025-01-13
-   **Duration**: 3.2 hours
-   **Status**: ✅ Complete (3 items need manual review)
+**Date**: 2025-01-13
+**Duration**: 3.2 hours
+**Status**: PASS: Complete (3 items need manual review)
 
    ## Statistics
    - Files modified: 247
@@ -531,4 +531,4 @@ Apache License 2.0 - See [LICENSE](../../../LICENSE)
 
 ---
 
-**🌟 The most comprehensive code migration skill available - save weeks of manual work!**
+**The most comprehensive code migration skill available - save weeks of manual work!**

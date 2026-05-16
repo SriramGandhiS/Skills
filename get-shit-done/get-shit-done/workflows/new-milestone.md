@@ -229,7 +229,7 @@ Extract from init JSON: `researcher_model`, `synthesizer_model`, `roadmapper_mod
 
 **If `agents_installed` is false:** Display a warning before proceeding:
 ```
-⚠ GSD agents not installed. The following agents are missing from your agents directory:
+WARNING: GSD agents not installed. The following agents are missing from your agents directory:
   {missing_agents joined with newline}
 
 Subagent spawns (gsd-project-researcher, gsd-research-synthesizer, gsd-roadmapper) will fail
@@ -601,7 +601,7 @@ Print a summary:
 
 **[N] phases** | **[X] requirements** | Ready to build ✓
 
-## ▶ Next Up — [${PROJECT_CODE}] ${PROJECT_TITLE}
+## Next Up — [${PROJECT_CODE}] ${PROJECT_TITLE}
 
 **Phase [N]: [Phase Name]** — [Goal]
 

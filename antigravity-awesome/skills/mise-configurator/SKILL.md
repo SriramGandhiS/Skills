@@ -94,61 +94,61 @@ steps:
 
 ## Best Practices
 
-- ✅ Respect versions already pinned in the repository
-    
-- ✅ Keep configs minimal and readable
-    
-- ✅ Prefer stable runtime releases
-    
-- ✅ Generate CI examples with caching
+- PASS: Respect versions already pinned in the repository
 
-- ✅ Ask for target versions before pinning when the repository does not already declare them
+- PASS: Keep configs minimal and readable
 
-- ❌ Do not use floating `latest` or `lts` aliases in shared production configs unless explicitly requested
-    
-- ❌ Do not over-engineer unnecessary tool entries
-    
-- ❌ Do not ignore existing lockfiles or version files
-    
+- PASS: Prefer stable runtime releases
+
+- PASS: Generate CI examples with caching
+
+- PASS: Ask for target versions before pinning when the repository does not already declare them
+
+- FAIL: Do not use floating `latest` or `lts` aliases in shared production configs unless explicitly requested
+
+- FAIL: Do not over-engineer unnecessary tool entries
+
+- FAIL: Do not ignore existing lockfiles or version files
+
 
 ## Limitations
 
 - This skill does not replace environment-specific validation, testing, or expert review.
-    
+
 - Stop and ask for clarification if required inputs, permissions, or safety boundaries are missing.
-    
+
 - Runtime availability may vary by OS, shell, or CI platform.
-    
+
 - Some plugins or niche tools may require manual adjustment.
-    
+
 
 ## Security & Safety Notes
 
 - Review generated shell commands before execution.
-    
+
 - Confirm CI/CD permissions before modifying pipelines.
-    
+
 - Validate runtime versions against production requirements.
-    
+
 - Use only in authorized repositories and environments.
-    
+
 
 ## Common Pitfalls
 
-- **Problem:** Wrong runtime version selected  
-    **Solution:** Check repository lockfiles and pinned versions first.
-    
-- **Problem:** CI installs are slow  
-    **Solution:** Enable cache layers and reuse mise cache directories.
-    
-- **Problem:** Tool missing from registry  
-    **Solution:** Verify plugin support or install manually.
-    
+- **Problem:** Wrong runtime version selected
+**Solution:** Check repository lockfiles and pinned versions first.
+
+- **Problem:** CI installs are slow
+**Solution:** Enable cache layers and reuse mise cache directories.
+
+- **Problem:** Tool missing from registry
+**Solution:** Verify plugin support or install manually.
+
 
 ## Related Skills
 
 - `@docker-expert` - Use when building containerized development environments
-    
+
 - `@github-actions-templates` - Use for advanced workflow automation
-    
+
 - `@monorepo-architect` - Use for large multi-package repositories

@@ -20,7 +20,7 @@ Create a safe, reviewable ECC onboarding plan for the current project. This comm
 ## Safety Rules
 
 1. Default to dry-run. Do not modify `CLAUDE.md`, settings files, rules, skills, or install state until the user approves the concrete plan.
-2. Preserve existing project guidance. If `CLAUDE.md`, `.claude/settings.local.json`, `.cursor/`, `.codex/`, `.gemini/`, `.opencode/`, `.codebuddy/`, `.joycode/`, or `.qwen/` already exists, inspect it and propose a merge/append plan instead of overwriting.
+2. Preserve existing project guidance. If `CLAUDE.md`,`.claude/settings.local.json`,`.cursor/`,`.codex/`,`.gemini/`,`.opencode/`,`.codebuddy/`,`.joycode/`, or`.qwen/` already exists, inspect it and propose a merge/append plan instead of overwriting.
 3. Use ECC's installer and manifest tooling. Do not hand-copy files or clone arbitrary remotes as an install shortcut.
 4. Keep permissions narrow. Any generated settings should match detected build/test/lint tools and avoid broad shell access.
 5. Report exactly what would change before applying anything.
@@ -29,9 +29,9 @@ Create a safe, reviewable ECC onboarding plan for the current project. This comm
 
 Read the current project root and detect stack signals from:
 
-- package manager files: `package.json`, `package-lock.json`, `pnpm-lock.yaml`, `yarn.lock`, `bun.lockb`
-- language manifests: `pyproject.toml`, `requirements.txt`, `go.mod`, `Cargo.toml`, `pom.xml`, `build.gradle`, `build.gradle.kts`
-- framework files: `next.config.*`, `vite.config.*`, `tailwind.config.*`, `Dockerfile`, `docker-compose.yml`
+- package manager files: `package.json`,`package-lock.json`,`pnpm-lock.yaml`,`yarn.lock`,`bun.lockb`
+- language manifests: `pyproject.toml`,`requirements.txt`,`go.mod`,`Cargo.toml`,`pom.xml`,`build.gradle`,`build.gradle.kts`
+- framework files: `next.config.*`,`vite.config.*`,`tailwind.config.*`,`Dockerfile`,`docker-compose.yml`
 - ECC config: `ecc-install.json`
 - optional stack map: `config/project-stack-mappings.json` in the ECC repo
 
@@ -39,10 +39,10 @@ When the ECC checkout is available, use `config/project-stack-mappings.json` as 
 
 ## Planning Flow
 
-1. Identify the target harness. Default to `claude` unless the user asks for `cursor`, `codex`, `gemini`, `opencode`, `codebuddy`, `joycode`, or `qwen`.
+1. Identify the target harness. Default to `claude`unless the user asks for`cursor`,`codex`,`gemini`,`opencode`,`codebuddy`,`joycode`, or`qwen`.
 2. Detect stacks from project files and show the evidence for each match.
 3. Resolve the smallest useful ECC plan:
-   - project has an `ecc-install.json`: `node scripts/install-plan.js --config ecc-install.json --json`
+   - project has an `ecc-install.json`:`node scripts/install-plan.js --config ecc-install.json --json`
    - user named a profile: `node scripts/install-plan.js --profile <profile> --target <target> --json`
    - user named skills: `node scripts/install-plan.js --skills <skill-ids> --target <target> --json`
    - only language stacks are detected: use the legacy language install dry-run with those language names

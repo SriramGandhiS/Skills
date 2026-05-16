@@ -1,14 +1,14 @@
 # /// script
 # dependencies = [
-#     "transformers>=5.2.0",
-#     "accelerate>=1.1.0",
-#     "timm",
-#     "datasets>=4.0",
-#     "evaluate",
-#     "scikit-learn",
-#     "torchvision",
-#     "trackio",
-#     "huggingface_hub",
+# "transformers>=5.2.0",
+# "accelerate>=1.1.0",
+# "timm",
+# "datasets>=4.0",
+# "evaluate",
+# "scikit-learn",
+# "torchvision",
+# "trackio",
+# "huggingface_hub",
 # ]
 # ///
 
@@ -284,19 +284,19 @@ def main():
         num_labels=num_labels,
         label2id=label2id,
         id2label=id2label,
-        **common_pretrained_args,
+**common_pretrained_args,
     )
 
     model = AutoModelForImageClassification.from_pretrained(
         model_args.model_name_or_path,
         config=config,
         ignore_mismatched_sizes=model_args.ignore_mismatched_sizes,
-        **common_pretrained_args,
+**common_pretrained_args,
     )
 
     image_processor = AutoImageProcessor.from_pretrained(
         model_args.image_processor_name or model_args.model_name_or_path,
-        **common_pretrained_args,
+**common_pretrained_args,
     )
 
     # --- Build transforms ---

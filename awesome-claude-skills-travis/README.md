@@ -26,7 +26,7 @@ Skills employ a **progressive disclosure architecture** for efficiency:
 
 This design allows multiple Skills to remain available without overwhelming Claude's context window.
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Claude.ai Web Interface
 
@@ -56,7 +56,7 @@ client = anthropic.Client(api_key="your-api-key")
 # See API docs for full implementation details
 ```
 
-## 🎯 Official Skills
+## Official Skills
 
 ### Document Skills
 
@@ -89,12 +89,11 @@ Skills for working with complex file formats:
 
 - **[skill-creator](https://github.com/anthropics/skills/tree/main/skills/skill-creator)** - Interactive skill creation tool that guides you through building new skills with Q&A
 
-## 🌟 Community Skills
+## Community Skills
 
 > [!Warning]
 > Skills can execute arbitrary code in Claude's environment.
-> 
-> See [Security & Best Practices](#-security--best-practices) for more information
+> > See [Security & Best Practices](#-security--best-practices) for more information
 
 ### Collections & Libraries
 
@@ -103,12 +102,11 @@ Skills for working with complex file formats:
   - [superpowers-skills](https://github.com/obra/superpowers-skills) - Community-editable skills repository
   - [Blog: Superpowers](https://blog.fsck.com/2025/10/09/superpowers/) - Author's overview by Jesse Vincent
   - Installation: `/plugin marketplace add obra/superpowers-marketplace`
- 
+
 - **[obra/superpowers-lab](https://github.com/obra/superpowers-lab)** - Experimental skills for `Claude Code Superpowers` (see above)
   - Uses new techniques that are still being refined and tested (i.e. skills here may change over time)
   - [Blog post about its development](https://blog.fsck.com/2025/10/23/naming-claude-plugins/)
   - Install from `superpowers-marketplace` plugin
-
 
 ### Individual Skills
 
@@ -135,7 +133,7 @@ _More community skills coming soon! Submit a PR to add your skill._
 
 - **[yusufkaraaslan/Skill_Seekers](https://github.com/yusufkaraaslan/Skill_Seekers)** - Convert documentation websites into Claude Skills
 
-## ✏️ Creating Your First Skill
+## Creating Your First Skill
 
 <details>
 <summary><strong>Step-by-Step Guide</strong></summary>
@@ -208,7 +206,7 @@ The easiest way to create a skill is to use the built-in `skill-creator`:
 
 </details>
 
-## 📚 Official Documentation & Resources
+## Official Documentation & Resources
 
 ### Getting Started
 
@@ -227,7 +225,7 @@ The easiest way to create a skill is to use the built-in `skill-creator`:
 - [anthropics/skills](https://github.com/anthropics/skills) - Official public repository for Skills
 - [Claude Cookbooks - Skills](https://github.com/anthropics/claude-cookbooks/tree/main/skills) - Example notebooks and tutorials
 
-## 📅 Recent Updates
+## Recent Updates
 
 ### November 2025
 
@@ -237,10 +235,10 @@ The easiest way to create a skill is to use the built-in `skill-creator`:
 
 - **Oct 18**: Major community repositories emerge: [obra/superpowers](https://github.com/obra/superpowers) skills library
 - **Oct 17**: Community publishes practical tutorials on DEV.to and Medium
-- **Oct 16**: 🎉 **Claude Skills officially announced** - Available across Claude.ai, Code, and API
+- **Oct 16**:  **Claude Skills officially announced** - Available across Claude.ai, Code, and API
 - **Oct 16**: Initial skills released including docx, pdf, pptx, xlsx, algorithmic-art, canvas-design, and more
 
-## 💡 Skills vs Other Approaches
+## Skills vs Other Approaches
 
 ### Quick Reference: When to Use What
 
@@ -282,7 +280,7 @@ The easiest way to create a skill is to use the built-in `skill-creator`:
 | **Maintenance**   | Centralized updates                                 | Manual updates per conversation   |
 | **Composability** | Multiple skills stack automatically                 | Manual combination                |
 
-## 📖 Tutorials & Guides
+## Tutorials & Guides
 
 ### Written Tutorials
 
@@ -302,14 +300,14 @@ _Video tutorials coming soon! Have a good video about Claude Skills? Submit a PR
 - Enterprise deployment strategies
 </details>
 
-## 📰 Articles & Blog Posts
+## Articles & Blog Posts
 
 - [Skills Explained](https://claude.com/blog/skills-explained) - Official Anthropic blog post covering progressive disclosure, use cases, and when to use Skills vs other tools
 - [Simon Willison: Claude Skills are awesome, maybe a bigger deal than MCP](https://simonwillison.net/2025/Oct/16/claude-skills/) - Technical deep dive and analysis
 
-## 🔒 Security & Best Practices
+## Security & Best Practices
 
-⚠️ **Important**: Skills can execute arbitrary code in Claude's environment. Only install skills from trusted sources.
+WARNING: **Important**: Skills can execute arbitrary code in Claude's environment. Only install skills from trusted sources.
 
 <details>
 <summary><strong>Security Guidelines & Best Practices</strong></summary>
@@ -346,7 +344,7 @@ _Video tutorials coming soon! Have a good video about Claude Skills? Submit a PR
 
 </details>
 
-## 🛠️ Troubleshooting
+## Troubleshooting
 
 <details>
 <summary><strong>Known Issues & Common Problems</strong></summary>
@@ -396,7 +394,7 @@ _Video tutorials coming soon! Have a good video about Claude Skills? Submit a PR
 
 </details>
 
-## ❓ FAQ
+## FAQ
 
 <details>
 <summary><strong>Common Questions</strong></summary>
@@ -448,6 +446,6 @@ A: For skills from git repositories, pull the latest changes. For manually insta
 
 </details>
 
-## 🤝 Contributing
+## Contributing
 
 Contributions welcome! See [contribution guidelines](CONTRIBUTING.md) for details. To add a skill or resource: fork, add to appropriate section, submit PR.

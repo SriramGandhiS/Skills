@@ -144,7 +144,7 @@ relaxed and the tests updated accordingly.
 This document describes additive fields. The promise is:
 
 - A `STATE.md` file with **none** of the lifecycle fields populated renders
-  **byte-for-byte identically** to v1.38.x and earlier.
+**byte-for-byte identically** to v1.38.x and earlier.
 - Adding any lifecycle field is **opt-in per project** — the renderer falls
   through to the existing format when fields are absent.
 - The progress bar is opt-in even when `progress` block exists — only

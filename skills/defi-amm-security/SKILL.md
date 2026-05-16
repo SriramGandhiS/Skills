@@ -1,4 +1,4 @@
-﻿---
+---
 name: defi-amm-security
 description: Security checklist for Solidity AMM contracts, liquidity pools, and swap flows. Covers reentrancy, CEI ordering, donation or inflation attacks, oracle manipulation, slippage, admin controls, and integer math.
 origin: ECC direct-port adaptation
@@ -148,7 +148,7 @@ Prefer explicit acceptance for ownership transfer and gate every privileged path
 - ERC-20 transfers use `SafeERC20`
 - Deposits measure actual tokens received
 - Oracle reads use TWAP or another manipulation-resistant source
-- Swaps require `amountOutMin` and `deadline`
+- Swaps require `amountOutMin`and`deadline`
 - Overflow-sensitive reserve math uses safe primitives like `mulDiv`
 - Admin functions are access-controlled
 - Emergency pause exists and is tested

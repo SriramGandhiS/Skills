@@ -131,10 +131,10 @@ SELECT * FROM logs.requests LIMIT 100;
 - No implicit conversions
 
 ```sql
--- ✅ Correct
+-- PASS: Correct
 WHERE status = 200 AND method = 'GET' AND timestamp > '2025-01-01T00:00:00Z'
 
--- ❌ Wrong
+-- FAIL: Wrong
 WHERE status = '200'              -- string instead of integer
 WHERE timestamp > '2025-01-01'    -- missing time/timezone
 WHERE method = GET                -- unquoted string

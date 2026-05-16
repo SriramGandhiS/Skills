@@ -171,10 +171,10 @@ Always wrapped in `<SuspenseLoader>`.
 
 ### Forbidden Patterns
 
-❌ `isLoading`
-❌ manual spinners
-❌ fetch logic inside components
-❌ API calls without feature API layer
+FAIL: `isLoading`
+FAIL: manual spinners
+FAIL: fetch logic inside components
+FAIL: API calls without feature API layer
 
 ### API Layer Rules
 
@@ -209,8 +209,8 @@ export const Route = createFileRoute('/my-route/')({
 ### Grid Syntax (v7 Only)
 
 ```tsx
-<Grid size={{ xs: 12, md: 6 }} /> // ✅
-<Grid xs={12} md={6} />          // ❌
+<Grid size={{ xs: 12, md: 6 }} /> // PASS:
+<Grid xs={12} md={6} />          // FAIL:
 ```
 
 Theme access must always be type-safe.
@@ -221,8 +221,8 @@ Theme access must always be type-safe.
 
 ### Absolute Rule
 
-❌ Never return early loaders
-✅ Always rely on Suspense boundaries
+FAIL: Never return early loaders
+PASS: Always rely on Suspense boundaries
 
 ### User Feedback
 
@@ -320,12 +320,12 @@ export default MyComponent;
 
 ## 14. Anti-Patterns (Immediate Rejection)
 
-❌ Early loading returns
-❌ Feature logic in `components/`
-❌ Shared state via prop drilling instead of hooks
-❌ Inline API calls
-❌ Untyped responses
-❌ Multiple responsibilities in one component
+FAIL: Early loading returns
+FAIL: Feature logic in `components/`
+FAIL: Shared state via prop drilling instead of hooks
+FAIL: Inline API calls
+FAIL: Untyped responses
+FAIL: Multiple responsibilities in one component
 
 ---
 

@@ -1,4 +1,4 @@
-﻿---
+---
 name: cpp-testing
 description: Use only when writing/updating/fixing C++ tests, configuring GoogleTest/CTest, diagnosing failing or flaky tests, or adding coverage/sanitizers.
 origin: ECC
@@ -28,7 +28,7 @@ Agent-focused testing workflow for modern C++ (C++17/20) using GoogleTest/Google
 
 - **TDD loop**: red â†’ green â†’ refactor (tests first, minimal fix, then cleanups).
 - **Isolation**: prefer dependency injection and fakes over global state.
-- **Test layout**: `tests/unit`, `tests/integration`, `tests/testdata`.
+- **Test layout**: `tests/unit`,`tests/integration`,`tests/testdata`.
 - **Mocks vs fakes**: mock for interactions, fake for stateful behavior.
 - **CTest discovery**: use `gtest_discover_tests()` for stable test discovery.
 - **CI signal**: run subset first, then full suite with `--output-on-failure`.
@@ -149,7 +149,7 @@ TEST(ServiceTest, SendsNotifications) {
 ### CMake/CTest Quickstart
 
 ```cmake
-# CMakeLists.txt (excerpt)
+## CMakeLists.txt (excerpt)
 cmake_minimum_required(VERSION 3.20)
 project(example LANGUAGES CXX)
 
@@ -157,12 +157,12 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 include(FetchContent)
-# Prefer project-locked versions. If using a tag, use a pinned version per project policy.
+## Prefer project-locked versions. If using a tag, use a pinned version per project policy.
 set(GTEST_VERSION v1.17.0) # Adjust to project policy.
 FetchContent_Declare(
   googletest
   # Google Test framework (official repository)
-  URL https://github.com/google/googletest/archive/refs/tags/${GTEST_VERSION}.zip
+  URL <https://github.com/google/googletest/archive/refs/tags/${GTEST_VERSION}.zip>
 )
 FetchContent_MakeAvailable(googletest)
 
@@ -276,7 +276,7 @@ endif()
 
 - Keep tests deterministic and isolated
 - Prefer dependency injection over globals
-- Use `ASSERT_*` for preconditions, `EXPECT_*` for multiple checks
+- Use `ASSERT_*`for preconditions,`EXPECT_*` for multiple checks
 - Separate unit vs integration tests in CTest labels or directories
 - Run sanitizers in CI for memory and race detection
 

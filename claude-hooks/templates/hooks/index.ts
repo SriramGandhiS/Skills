@@ -19,8 +19,8 @@ const sessionStart: SessionStartHandler = async (payload) => {
   await saveSessionData('SessionStart', {...payload, hook_type: 'SessionStart'} as const)
 
   // Example: Log session start with source
-  console.log(`🚀 New session started from: ${payload.source}`)
-  console.log(`📍 Session ID: ${payload.session_id}`)
+  console.log(` New session started from: ${payload.source}`)
+  console.log(` Session ID: ${payload.session_id}`)
 
   // Example: Load user preferences or configuration
   // const userConfig = await loadUserPreferences()
@@ -30,9 +30,9 @@ const sessionStart: SessionStartHandler = async (payload) => {
 
   // Example: Apply different behavior based on session source
   if (payload.source === 'vscode') {
-    console.log('👨‍💻 VS Code session detected - enabling IDE-specific features')
+    console.log(' VS Code session detected - enabling IDE-specific features')
   } else if (payload.source === 'web') {
-    console.log('🌐 Web session detected')
+    console.log(' Web session detected')
   }
 
   // Add your custom session initialization logic here
@@ -49,17 +49,17 @@ const preToolUse: PreToolUseHandler = async (payload) => {
   // Example: Log when Claude is about to edit files
   if (payload.tool_name === 'Edit' && payload.tool_input) {
     const {file_path} = payload.tool_input as {file_path: string}
-    console.log(`📝 Claude is editing: ${file_path}`)
+    console.log(` Claude is editing: ${file_path}`)
   }
 
   // Example: Track bash commands
   if (payload.tool_name === 'Bash' && payload.tool_input && 'command' in payload.tool_input) {
     const command = (payload.tool_input as {command: string}).command
-    console.log(`🚀 Running command: ${command}`)
+    console.log(` Running command: ${command}`)
 
     // Block dangerous commands
     if (command.includes('rm -rf /') || command.includes('rm -rf ~')) {
-      console.error('❌ Dangerous command detected! Blocking execution.')
+      console.error('FAIL: Dangerous command detected! Blocking execution.')
       return {
         permissionDecision: 'deny',
         permissionDecisionReason: `Dangerous command detected: ${command}`,
@@ -80,7 +80,7 @@ const postToolUse: PostToolUseHandler = async (payload) => {
 
   // Example: React to successful file writes
   if (payload.tool_name === 'Write' && payload.tool_response) {
-    console.log(`✅ File written successfully!`)
+    console.log(`PASS: File written successfully!`)
   }
 
   // Add your custom post-processing logic here
@@ -93,7 +93,7 @@ const notification: NotificationHandler = async (payload) => {
   await saveSessionData('Notification', {...payload, hook_type: 'Notification'} as const)
 
   // Example: Log Claude's progress
-  console.log(`🔔 ${payload.message}`)
+  console.log(` ${payload.message}`)
 
   return {} // Return empty object to continue normally
 }
@@ -103,7 +103,7 @@ const stop: StopHandler = async (payload) => {
   await saveSessionData('Stop', {...payload, hook_type: 'Stop'} as const)
 
   // Example: Summary or cleanup logic
-  console.log(`👋 Session ended`)
+  console.log(` Session ended`)
 
   return {} // Return empty object to continue normally
 }
@@ -113,12 +113,12 @@ const subagentStop: SubagentStopHandler = async (payload) => {
   await saveSessionData('SubagentStop', {...payload, hook_type: 'SubagentStop'} as const)
 
   // Example: Log subagent completion
-  console.log(`🤖 Subagent task completed`)
+  console.log(` Subagent task completed`)
 
   // Add your custom subagent cleanup logic here
   // Note: Be careful with stop_hook_active to avoid infinite loops
   if (payload.stop_hook_active) {
-    console.log('⚠️  Stop hook is already active, skipping additional processing')
+    console.log('WARNING:  Stop hook is already active, skipping additional processing')
   }
 
   return {} // Return empty object to continue normally
@@ -129,19 +129,19 @@ const userPromptSubmit: UserPromptSubmitHandler = async (payload) => {
   await saveSessionData('UserPromptSubmit', {...payload, hook_type: 'UserPromptSubmit'} as const)
 
   // Example: Log user prompts
-  console.log(`💬 User prompt: ${payload.prompt}`)
+  console.log(` User prompt: ${payload.prompt}`)
 
   // Example: Add context files automatically based on prompt content
   const contextFiles: string[] = []
   if (payload.prompt.toLowerCase().includes('test')) {
     // Automatically include test files when user mentions testing
     contextFiles.push('**/*.test.ts', '**/*.test.js')
-    console.log('📁 Auto-adding test files to context')
+    console.log(' Auto-adding test files to context')
   }
 
   // Example: Validate or modify prompts
   if (payload.prompt.includes('delete all')) {
-    console.error('⚠️  Dangerous prompt detected! Blocking.')
+    console.error('WARNING:  Dangerous prompt detected! Blocking.')
     return {decision: 'block', reason: 'Prompts containing "delete all" are not allowed'}
   }
 
@@ -155,13 +155,13 @@ const preCompact: PreCompactHandler = async (payload) => {
   await saveSessionData('PreCompact', {...payload, hook_type: 'PreCompact'} as const)
 
   // Example: Log compact events
-  console.log(`🗜️  Compact triggered: ${payload.trigger}`)
+  console.log(`  Compact triggered: ${payload.trigger}`)
 
   // Example: Block automatic compaction during critical operations
   if (payload.trigger === 'auto') {
     // You could check if critical operations are in progress
     // For now, we'll allow all compactions
-    console.log('📋 Allowing automatic compaction')
+    console.log(' Allowing automatic compaction')
   }
 
   // Add your custom compaction logic here

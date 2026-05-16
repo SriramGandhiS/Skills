@@ -1,12 +1,10 @@
 #!/usr/bin/env bash
 # Verify the published get-shit-done-cc tarball actually contains
 # sdk/dist/cli.js and that the `query` subcommand is exposed.
-#
-# Guards regression of bug #2647: v1.38.3 shipped without sdk/dist/
+# # Guards regression of bug #2647: v1.38.3 shipped without sdk/dist/
 # because the outer `files` whitelist and `prepublishOnly` chain
 # drifted out of alignment. Any future drift fails release CI here.
-#
-# Run AFTER `npm run build:sdk` (so sdk/dist exists on disk) and
+# # Run AFTER `npm run build:sdk` (so sdk/dist exists on disk) and
 # before `npm publish`. Exits non-zero on any mismatch.
 
 set -euo pipefail

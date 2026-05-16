@@ -10,11 +10,11 @@ Sincronize a documentação com o codebase, gerando a partir de arquivos fonte d
 | `.env.example` | Environment variable documentation |
 | `openapi.yaml` / route files | API endpoint reference |
 | Source code exports | Public API documentation |
-| `Dockerfile` / `docker-compose.yml` | Infrastructure setup docs |
+| `Dockerfile`/`docker-compose.yml` | Infrastructure setup docs |
 
 ## Passo 2: Gerar Referência de Scripts
 
-1. Leia `package.json` (ou `Makefile`, `Cargo.toml`, `pyproject.toml`)
+1. Leia `package.json`(ou`Makefile`,`Cargo.toml`,`pyproject.toml`)
 2. Extraia todos os scripts/comandos com suas descrições
 3. Gere uma tabela de referência:
 
@@ -28,7 +28,7 @@ Sincronize a documentação com o codebase, gerando a partir de arquivos fonte d
 
 ## Passo 3: Gerar Documentação de Ambiente
 
-1. Leia `.env.example` (ou `.env.template`, `.env.sample`)
+1. Leia `.env.example`(ou`.env.template`,`.env.sample`)
 2. Extraia todas as variáveis e seus propósitos
 3. Categorize como required vs optional
 4. Documente formato esperado e valores válidos
@@ -36,8 +36,8 @@ Sincronize a documentação com o codebase, gerando a partir de arquivos fonte d
 ```markdown
 | Variable | Required | Description | Example |
 |----------|----------|-------------|---------|
-| `DATABASE_URL` | Yes | PostgreSQL connection string | `postgres://user:pass@host:5432/db` |
-| `LOG_LEVEL` | No | Logging verbosity (default: info) | `debug`, `info`, `warn`, `error` |
+| `DATABASE_URL`| Yes | PostgreSQL connection string |`postgres://user:pass@host:5432/db` |
+| `LOG_LEVEL`| No | Logging verbosity (default: info) |`debug`,`info`,`warn`,`error` |
 ```
 
 ## Passo 4: Atualizar Guia de Contribuição

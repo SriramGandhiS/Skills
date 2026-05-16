@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
 #===============================================================================
 # Shell-injection regression test for app-runner.sh _validate_app_command
-#
-# Verifies that LOKI_APP_COMMAND values containing shell metacharacters are
+# # Verifies that LOKI_APP_COMMAND values containing shell metacharacters are
 # rejected by _validate_app_command (covers v7.5.8 hardening).
 #===============================================================================
 

@@ -40,7 +40,7 @@ O agente e2e-runner vai:
 User: /e2e Test the market search and view flow
 
 Agent (e2e-runner):
-# E2E Test Generation: Market Search and View Flow
+## E2E Test Generation: Market Search and View Flow
 
 ## Test Scenario Identified
 
@@ -159,7 +159,7 @@ test.describe('Market Search and View Flow', () => {
 ## Rodando os Testes
 
 ```bash
-# Run the generated test
+## Run the generated test
 npx playwright test tests/e2e/markets/search-and-view.spec.ts
 
 Running 3 tests using 3 workers
@@ -220,13 +220,13 @@ Quando os testes rodam, os seguintes artefatos são capturados:
 ## Visualizando Artefatos
 
 ```bash
-# View HTML report in browser
+## View HTML report in browser
 npx playwright show-report
 
-# View specific trace file
+## View specific trace file
 npx playwright show-trace artifacts/trace-abc123.zip
 
-# Screenshots are saved in artifacts/ directory
+## Screenshots are saved in artifacts/ directory
 open artifacts/search-results.png
 ```
 
@@ -266,7 +266,7 @@ Configure em `playwright.config.ts` para ajustar navegadores.
 Adicione ao seu pipeline de CI:
 
 ```yaml
-# .github/workflows/e2e.yml
+## .github/workflows/e2e.yml
 - name: Install Playwright
   run: npx playwright install --with-deps
 
@@ -345,21 +345,21 @@ Para instalações manuais, o arquivo fonte fica em:
 ## Comandos Rápidos
 
 ```bash
-# Run all E2E tests
+## Run all E2E tests
 npx playwright test
 
-# Run specific test file
+## Run specific test file
 npx playwright test tests/e2e/markets/search.spec.ts
 
-# Run in headed mode (see browser)
+## Run in headed mode (see browser)
 npx playwright test --headed
 
-# Debug test
+## Debug test
 npx playwright test --debug
 
-# Generate test code
-npx playwright codegen http://localhost:3000
+## Generate test code
+npx playwright codegen <http://localhost:3000>
 
-# View report
+## View report
 npx playwright show-report
 ```

@@ -13,7 +13,7 @@ model: opus
 
 1. Goコンパイルエラーの診断
 2. `go vet`警告の修正
-3. `staticcheck` / `golangci-lint`問題の解決
+3. `staticcheck`/`golangci-lint`問題の解決
 4. モジュール依存関係の問題の処理
 5. 型エラーとインターフェース不一致の修正
 
@@ -22,21 +22,21 @@ model: opus
 問題を理解するために、これらを順番に実行:
 
 ```bash
-# 1. 基本ビルドチェック
+## 1. 基本ビルドチェック
 go build ./...
 
-# 2. 一般的な間違いのvet
+## 2. 一般的な間違いのvet
 go vet ./...
 
-# 3. 静的解析（利用可能な場合）
+## 3. 静的解析（利用可能な場合）
 staticcheck ./... 2>/dev/null || echo "staticcheck not installed"
 golangci-lint run 2>/dev/null || echo "golangci-lint not installed"
 
-# 4. モジュール検証
+## 4. モジュール検証
 go mod verify
 go mod tidy -v
 
-# 5. 依存関係のリスト
+## 5. 依存関係のリスト
 go list -m all
 ```
 
@@ -94,7 +94,7 @@ var ptr *int = &val
 
 **診断:**
 ```bash
-# 欠けているメソッドを見つける
+## 欠けているメソッドを見つける
 go doc package.Interface
 ```
 
@@ -126,10 +126,10 @@ go list -f '{{.ImportPath}} -> {{.Imports}}' ./...
 - パッケージ依存関係を再構築
 
 ```text
-# 前（サイクル）
+## 前（サイクル）
 package/a -> package/b -> package/a
 
-# 後（修正）
+## 後（修正）
 package/types  <- 共有型
 package/a -> package/types
 package/b -> package/types
@@ -141,15 +141,15 @@ package/b -> package/types
 
 **修正:**
 ```bash
-# 依存関係を追加
+## 依存関係を追加
 go get package/path@version
 
-# またはgo.modを更新
+## またはgo.modを更新
 go mod tidy
 
-# またはローカルパッケージの場合、go.modモジュールパスを確認
-# モジュール: github.com/user/project
-# インポート: github.com/user/project/internal/pkg
+## またはローカルパッケージの場合、go.modモジュールパスを確認
+## モジュール: github.com/user/project
+## インポート: github.com/user/project/internal/pkg
 ```
 
 ### 6. リターンの欠落
@@ -168,7 +168,7 @@ func Process() (int, error) {
 
 ### 7. 未使用の変数/インポート
 
-**エラー:** `x declared but not used` または `imported and not used`
+**エラー:** `x declared but not used`または`imported and not used`
 
 **修正:**
 ```go
@@ -242,33 +242,33 @@ var s string = "hello"
 ### replace ディレクティブの問題
 
 ```bash
-# 無効な可能性のあるローカルreplaceをチェック
+## 無効な可能性のあるローカルreplaceをチェック
 grep "replace" go.mod
 
-# 古いreplaceを削除
+## 古いreplaceを削除
 go mod edit -dropreplace=package/path
 ```
 
 ### バージョンの競合
 
 ```bash
-# バージョンが選択された理由を確認
+## バージョンが選択された理由を確認
 go mod why -m package
 
-# 特定のバージョンを取得
+## 特定のバージョンを取得
 go get package@v1.2.3
 
-# すべての依存関係を更新
+## すべての依存関係を更新
 go get -u ./...
 ```
 
 ### チェックサムの不一致
 
 ```bash
-# モジュールキャッシュをクリア
+## モジュールキャッシュをクリア
 go clean -modcache
 
-# 再ダウンロード
+## 再ダウンロード
 go mod download
 ```
 

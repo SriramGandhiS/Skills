@@ -20,7 +20,7 @@ stages:
     enabled: true
     prompt: >
       Analyze the message queue architecture.
-      
+
       Identify:
       1. Message broker used (RabbitMQ, SQS, Kafka, Redis, etc.)
       2. Queue topology (direct, topic, fanout, headers)
@@ -28,7 +28,7 @@ stages:
       4. Producer patterns and configuration
       5. Consumer patterns and configuration
       6. Message routing strategies
-      
+
       Output JSON with:
       - "broker": message broker technology
       - "topology": exchange and queue structure
@@ -44,7 +44,7 @@ stages:
     enabled: true
     prompt: >
       Document message structure and patterns.
-      
+
       Cover:
       1. Message envelope structure (headers, body, metadata)
       2. Message serialization (JSON, Avro, Protobuf)
@@ -52,7 +52,7 @@ stages:
       4. Message size limits and chunking
       5. Correlation IDs for tracing
       6. Message priorities (if supported)
-      
+
       Output JSON with:
       - "envelope": message structure
       - "serialization": serialization format
@@ -68,7 +68,7 @@ stages:
     enabled: true
     prompt: >
       Document consumer implementation patterns.
-      
+
       Include:
       1. Consumer group/worker pool configuration
       2. Prefetch/concurrency settings
@@ -76,7 +76,7 @@ stages:
       4. Dead letter queue (DLQ) configuration
       5. Poison pill handling
       6. Consumer scaling strategies
-      
+
       Output JSON with:
       - "worker_pools": concurrency configuration
       - "prefetch": prefetch settings
@@ -92,7 +92,7 @@ stages:
     enabled: true
     prompt: >
       Document reliability and durability patterns.
-      
+
       Cover:
       1. Message persistence configuration
       2. Delivery guarantees (at-most-once, at-least-once, exactly-once)
@@ -100,7 +100,7 @@ stages:
       4. Idempotency handling
       5. Retry policies and backoff
       6. Circuit breaker patterns
-      
+
       Output JSON with:
       - "persistence": message durability
       - "delivery_guarantees": delivery semantics
@@ -116,7 +116,7 @@ stages:
     enabled: true
     prompt: >
       Document queue monitoring and observability.
-      
+
       Include:
       1. Queue depth monitoring
       2. Consumer lag tracking
@@ -124,7 +124,7 @@ stages:
       4. Error and DLQ metrics
       5. Connection health monitoring
       6. Alerting thresholds
-      
+
       Output JSON with:
       - "queue_depth": backlog monitoring
       - "consumer_lag": lag metrics
@@ -140,7 +140,7 @@ stages:
     enabled: true
     prompt: >
       Document advanced message queue patterns.
-      
+
       Cover:
       1. Delayed/scheduled messages
       2. Message batching for throughput
@@ -148,7 +148,7 @@ stages:
       4. Message TTL and expiration
       5. Competing consumers pattern
       6. Saga pattern for distributed transactions
-      
+
       Output JSON with:
       - "delayed_messages": scheduling patterns
       - "batching": batch processing

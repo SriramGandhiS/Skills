@@ -38,7 +38,7 @@ class TestInstallSkillValidation:
 
         assert len(result) == 1
         assert isinstance(result[0], TextContent)
-        assert "❌ Error: Must provide either config_name or config_path" in result[0].text
+        assert "FAIL: Error: Must provide either config_name or config_path" in result[0].text
         assert "Examples:" in result[0].text
 
     @pytest.mark.asyncio
@@ -50,7 +50,7 @@ class TestInstallSkillValidation:
 
         assert len(result) == 1
         assert isinstance(result[0], TextContent)
-        assert "❌ Error: Cannot provide both config_name and config_path" in result[0].text
+        assert "FAIL: Error: Cannot provide both config_name and config_path" in result[0].text
         assert "Choose one:" in result[0].text
 
 
@@ -67,7 +67,7 @@ class TestInstallSkillDryRun:
         output = result[0].text
 
         # Verify dry run mode is indicated
-        assert "🔍 DRY RUN MODE" in output
+        assert " DRY RUN MODE" in output
         assert "Preview only, no actions taken" in output
 
         # Verify core phases are shown
@@ -89,7 +89,7 @@ class TestInstallSkillDryRun:
         output = result[0].text
 
         # Verify dry run mode
-        assert "🔍 DRY RUN MODE" in output
+        assert " DRY RUN MODE" in output
 
         # Verify core phases are shown (no fetch)
         assert "Scrape Documentation" in output
@@ -152,7 +152,7 @@ class TestInstallSkillPhaseOrchestration:
         mock_fetch.return_value = [
             TextContent(
                 type="text",
-                text="✅ Config fetched successfully\n\nConfig saved to: configs/react.json",
+                text="PASS: Config fetched successfully\n\nConfig saved to: configs/react.json",
             )
         ]
 
@@ -165,19 +165,19 @@ class TestInstallSkillPhaseOrchestration:
 
         # Mock scrape_docs response
         mock_scrape.return_value = [
-            TextContent(type="text", text="✅ Scraping complete\n\nSkill built at: output/react/")
+            TextContent(type="text", text="PASS: Scraping complete\n\nSkill built at: output/react/")
         ]
 
         # Mock enhancement subprocess
-        mock_subprocess.return_value = ("✅ Enhancement complete", "", 0)
+        mock_subprocess.return_value = ("PASS: Enhancement complete", "", 0)
 
         # Mock package response
         mock_package.return_value = [
-            TextContent(type="text", text="✅ Package complete\n\nSaved to: output/react.zip")
+            TextContent(type="text", text="PASS: Package complete\n\nSaved to: output/react.zip")
         ]
 
         # Mock upload response
-        mock_upload.return_value = [TextContent(type="text", text="✅ Upload successful")]
+        mock_upload.return_value = [TextContent(type="text", text="PASS: Upload successful")]
 
         # Mock env (has API key)
         mock_env_get.return_value = "sk-ant-test-key"
@@ -195,7 +195,7 @@ class TestInstallSkillPhaseOrchestration:
         assert "PHASE 5/5: Upload to Claude" in output
 
         # Verify workflow completion
-        assert "✅ WORKFLOW COMPLETE" in output
+        assert "PASS: WORKFLOW COMPLETE" in output
         assert "fetch_config" in output
         assert "scrape_docs" in output
         assert "enhance_skill" in output
@@ -221,14 +221,14 @@ class TestInstallSkillPhaseOrchestration:
         mock_open.return_value = mock_file
 
         # Mock scrape response
-        mock_scrape.return_value = [TextContent(type="text", text="✅ Scraping complete")]
+        mock_scrape.return_value = [TextContent(type="text", text="PASS: Scraping complete")]
 
         # Mock enhancement subprocess
-        mock_subprocess.return_value = ("✅ Enhancement complete", "", 0)
+        mock_subprocess.return_value = ("PASS: Enhancement complete", "", 0)
 
         # Mock package response
         mock_package.return_value = [
-            TextContent(type="text", text="✅ Package complete\n\nSaved to: output/custom.zip")
+            TextContent(type="text", text="PASS: Package complete\n\nSaved to: output/custom.zip")
         ]
 
         # Mock env (no API key - should skip upload)
@@ -264,7 +264,7 @@ class TestInstallSkillErrorHandling:
 
         # Mock fetch failure
         mock_fetch.return_value = [
-            TextContent(type="text", text="❌ Failed to fetch config: Network error")
+            TextContent(type="text", text="FAIL: Failed to fetch config: Network error")
         ]
 
         result = await install_skill_tool({"config_name": "react"})
@@ -272,7 +272,7 @@ class TestInstallSkillErrorHandling:
         output = result[0].text
 
         # Verify error is shown
-        assert "❌ Failed to fetch config" in output
+        assert "FAIL: Failed to fetch config" in output
 
     @pytest.mark.asyncio
     @patch("skill_seekers.mcp.tools.scraping_tools.scrape_docs_tool")
@@ -289,7 +289,7 @@ class TestInstallSkillErrorHandling:
 
         # Mock scrape failure
         mock_scrape.return_value = [
-            TextContent(type="text", text="❌ Scraping failed: Connection timeout")
+            TextContent(type="text", text="FAIL: Scraping failed: Connection timeout")
         ]
 
         result = await install_skill_tool({"config_path": "configs/test.json"})
@@ -297,7 +297,7 @@ class TestInstallSkillErrorHandling:
         output = result[0].text
 
         # Verify error is shown and workflow stops
-        assert "❌ Scraping failed" in output
+        assert "FAIL: Scraping failed" in output
         assert "WORKFLOW COMPLETE" not in output
 
     @pytest.mark.asyncio
@@ -315,7 +315,7 @@ class TestInstallSkillErrorHandling:
         mock_open.return_value = mock_file
 
         # Mock scrape success
-        mock_scrape.return_value = [TextContent(type="text", text="✅ Scraping complete")]
+        mock_scrape.return_value = [TextContent(type="text", text="PASS: Scraping complete")]
 
         # Mock enhancement failure
         mock_subprocess.return_value = ("", "Enhancement error: Claude not found", 1)
@@ -325,7 +325,7 @@ class TestInstallSkillErrorHandling:
         output = result[0].text
 
         # Verify error is shown
-        assert "❌ Enhancement failed" in output
+        assert "FAIL: Enhancement failed" in output
         assert "exit code 1" in output
 
 

@@ -1,4 +1,4 @@
-﻿---
+---
 name: gget
 description: gget CLI and Python workflow for quick genomic database queries, sequence lookup, BLAST-style searches, enrichment checks, and reproducible bioinformatics evidence logs.
 origin: community
@@ -85,8 +85,8 @@ choices:
 - `gget blat`: locate a sequence against supported genome assemblies.
 - `gget muscle`: run multiple sequence alignment.
 - `gget diamond`: run local sequence alignment against reference sequences.
-- `gget alphafold` and `gget pdb`: inspect protein-structure references.
-- `gget enrichr`, `gget opentargets`, `gget archs4`, `gget bgee`, `gget cbio`,
+- `gget alphafold`and`gget pdb`: inspect protein-structure references.
+- `gget enrichr`,`gget opentargets`,`gget archs4`,`gget bgee`,`gget cbio`,
   and `gget cosmic`: explore enrichment, target, expression, cancer, and disease
   association data.
 
@@ -137,7 +137,7 @@ For scientific outputs, include enough metadata to replay the query.
 ```markdown
 | Date | gget version | Module | Query | Species/assembly | Output | Notes |
 | --- | --- | --- | --- | --- | --- | --- |
-| 2026-05-11 | `gget --version` | search | `BRCA1 DNA repair` | human | `brca1-search.json` | Docs checked before run |
+| 2026-05-11 | `gget --version`| search |`BRCA1 DNA repair`| human |`brca1-search.json` | Docs checked before run |
 ```
 
 Also record:

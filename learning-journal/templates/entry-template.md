@@ -5,24 +5,22 @@ tags: [frontend, student, development-log]
 concepts: []
 ---
 
-# 🚀 Session Summary: {{SESSION_TITLE}}
+# Session Summary: {{SESSION_TITLE}}
 
-## 📖 What I Learned
-- 
-
-## 💻 Code Highlight
+## What I Learned
+- ## Code Highlight
 ```javascript
 // {{CODE_DESCRIPTION}}
 {{CODE_SNIPPET}}
 ```
 
-## 🧠 Architectural Decisions
-- Why: 
-- How: 
+## Architectural Decisions
+- Why:
+- How:
 
-## 🚩 Challenges & Solutions
-- **Challenge**: 
-- **Solution**: 
+## Challenges & Solutions
+- **Challenge**:
+- **Solution**:
 
-## ⏭️ Next Steps
-- 
+## SKIPPED: Next Steps
+-

@@ -263,34 +263,30 @@ data:
 
 ---
 # Usage Examples:
-#
-# 1. Mount as environment variables:
-#   envFrom:
-#   - configMapRef:
-#       name: <app-name>-config
-#
-# 2. Mount as files:
-#   volumeMounts:
-#   - name: config
-#     mountPath: /etc/app
-#   volumes:
-#   - name: config
-#     configMap:
-#       name: <app-name>-config-file
-#
-# 3. Mount specific keys as files:
-#   volumes:
-#   - name: nginx-config
-#     configMap:
-#       name: <app-name>-multi-config
-#       items:
-#       - key: nginx.conf
-#         path: nginx.conf
-#
-# 4. Use individual environment variables:
-#   env:
-#   - name: LOG_LEVEL
-#     valueFrom:
-#       configMapKeyRef:
-#         name: <app-name>-config
-#         key: LOG_LEVEL
+# # 1. Mount as environment variables:
+# envFrom:
+# - configMapRef:
+# name: <app-name>-config
+# # 2. Mount as files:
+# volumeMounts:
+# - name: config
+# mountPath: /etc/app
+# volumes:
+# - name: config
+# configMap:
+# name: <app-name>-config-file
+# # 3. Mount specific keys as files:
+# volumes:
+# - name: nginx-config
+# configMap:
+# name: <app-name>-multi-config
+# items:
+# - key: nginx.conf
+# path: nginx.conf
+# # 4. Use individual environment variables:
+# env:
+# - name: LOG_LEVEL
+# valueFrom:
+# configMapKeyRef:
+# name: <app-name>-config
+# key: LOG_LEVEL

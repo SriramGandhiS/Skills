@@ -424,7 +424,7 @@ class SignalFlowAnalyzer:
                 import logging
 
                 logger = logging.getLogger(__name__)
-                logger.info(f"📚 Generated signal how-to guides: {guide_file}")
+                logger.info(f" Generated signal how-to guides: {guide_file}")
         except Exception as e:
             import logging
 

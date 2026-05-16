@@ -53,7 +53,6 @@ def calculate_task_confidence(task) -> float:
     confidence = sum(scores[k] * weights[k] for k in scores)
     return round(confidence, 2)
 
-
 def assess_requirement_clarity(task) -> float:
     """Score 0.0-1.0 based on requirement specificity."""
     # Check for ambiguous language
@@ -69,7 +68,6 @@ def assess_requirement_clarity(task) -> float:
     if has_acceptance_criteria: base_score += 0.2
 
     return min(1.0, max(0.0, base_score))
-
 
 def assess_feasibility(task) -> float:
     """Score 0.0-1.0 based on technical feasibility."""
@@ -89,7 +87,6 @@ def assess_feasibility(task) -> float:
 
     return min(1.0, max(0.0, score))
 
-
 def check_resources(task) -> float:
     """Score 0.0-1.0 based on resource availability."""
     # Check API quotas
@@ -104,7 +101,6 @@ def check_resources(task) -> float:
 
     available_count = sum([apis_available, agents_available, budget_available])
     return available_count / 3.0
-
 
 def query_similar_tasks(task) -> float:
     """Score 0.0-1.0 based on historical success with similar tasks."""

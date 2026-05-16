@@ -33,20 +33,20 @@ python tools/scripts/manage_skill_dates.py list
 
 输出示例:
 ```
-📅 Skills with Date Added (example):
+ Skills with Date Added (example):
 ============================================================
   2025-02-26  │  recent-skill
   2025-02-20  │  another-new-skill
   2024-12-15  │  older-skill
   ...
 
-⏳ Skills without Date Added (example):
+ Skills without Date Added (example):
 ============================================================
   some-legacy-skill
   undated-skill
   ...
 
-📊 Coverage: example output only
+ Coverage: example output only
 ```
 
 ### 2. 添加缺失的日期
@@ -202,8 +202,8 @@ python tools/scripts/generate_skills_report.py --output reports/skills_report.js
 ### "Invalid date_added format"
 
 确保日期采用 `YYYY-MM-DD` 格式:
-- ✅ 正确: `2024-01-15`
-- ❌ 错误: `01/15/2024` 或 `2024-1-15`
+- PASS: 正确: `2024-01-15`
+- FAIL: 错误: `01/15/2024` 或 `2024-1-15`
 
 ### 未找到脚本
 

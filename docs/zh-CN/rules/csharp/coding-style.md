@@ -16,7 +16,7 @@ paths:
 
 ## 类型与模型
 
-* 对于不可变的值类型模型，优先使用 `record` 或 `record struct`
+* 对于不可变的值类型模型，优先使用 `record`或`record struct`
 * 对于具有标识和生命周期的实体或类型，使用 `class`
 * 对于服务边界和抽象，使用 `interface`
 * 避免在应用程序代码中使用 `dynamic`；优先使用泛型或显式模型
@@ -44,7 +44,7 @@ public static UserProfile Rename(UserProfile profile, string name) =>
 
 ## 异步与错误处理
 
-* 优先使用 `async`/`await`，而非阻塞调用如 `.Result` 或 `.Wait()`
+* 优先使用 `async`/`await`，而非阻塞调用如`.Result`或`.Wait()`
 * 通过公共异步 API 传递 `CancellationToken`
 * 抛出特定异常并使用结构化属性进行日志记录
 

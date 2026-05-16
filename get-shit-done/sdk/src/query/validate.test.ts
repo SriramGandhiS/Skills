@@ -563,7 +563,7 @@ describe('validateHealth', () => {
     await writeFile(join(planning, 'PROJECT.md'), '# Project\n\n## What This Is\n\nA project.\n\n## Core Value\n\nValue here.\n\n## Requirements\n\n- Req 1\n');
     await writeFile(join(planning, 'ROADMAP.md'), [
       '# Roadmap', '',
-      '## v1.0: Shipped ✅ SHIPPED', '',
+      '## v1.0: Shipped PASS: SHIPPED', '',
       '### Phase 1: Origin', '**Goal:** O', '',
       '### Phase 2: Continuation', '**Goal:** C', '',
       '## v1.1: Current', '',

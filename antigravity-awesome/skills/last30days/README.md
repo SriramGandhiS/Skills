@@ -114,7 +114,7 @@ This example shows /last30days learning **domain-specific prompting techniques**
 
 **Most mentioned use cases:**
 
-🏆 Top 5 by engagement:
+ Top 5 by engagement:
 
 1. **Email/Calendar automation** - mentioned 8x+ (r/selfhosted, @dreetje, @danpeguine, MacStories)
    - Morning briefings, spam filtering, auto-replies, recruiter declines
@@ -147,7 +147,7 @@ This example shows /last30days as a **product research tool** - discovering real
 **Research Output:**
 > ClawdBot setup varies by deployment style - Docker is the most recommended path, but users are also deploying via bare metal and cloud VMs. The community has converged on key best practices: use the setup wizard for initial config, start with conservative hardware (you can scale up), and configure authentication before exposing any endpoints.
 
-**🛠️ Setup patterns by engagement:**
+**Setup patterns by engagement:**
 
 | Pattern | Mentions | Key Sources |
 |---------|----------|-------------|
@@ -196,8 +196,7 @@ This example shows /last30days as a **setup guide aggregator** - pulling togethe
 
 **Research Output:**
 > The community has converged on JSON-structured prompts for UI work - multiple viral posts from @brindleyai, @bananababydoll, and @fofrAI use detailed JSON with nested objects for subject, scene, and style. The key workflow from @fofrAI: take an existing image, have Gemini generate a JSON prompt from it, then iterate. For iOS specifically, @paji_a and @chongdashu both documented using Nano Banana Pro for iOS app mockup designs in "vibe coding" workflows.
->
-> The web guides emphasize thinking in layers: define the window frame first, then UI layout (sidebars, nav bars, cards), then text on buttons/headings. Google's official prompting guide says to drop the "4k masterpiece trending on artstation" spam - Nano Banana Pro understands natural language. For tight layouts, use an 8pt grid and limit screens to 6-8 elements.
+> > The web guides emphasize thinking in layers: define the window frame first, then UI layout (sidebars, nav bars, cards), then text on buttons/headings. Google's official prompting guide says to drop the "4k masterpiece trending on artstation" spam - Nano Banana Pro understands natural language. For tight layouts, use an 8pt grid and limit screens to 6-8 elements.
 
 **Key patterns discovered:**
 1. JSON prompt format with nested sections (subject, scene, style, device)
@@ -266,7 +265,7 @@ This example shows /last30days learning **AI image generation prompting patterns
 **Research Output:**
 > The Claude Code skills ecosystem has exploded with marketplaces, curated lists, and viral skill announcements. The Remotion video skill got 17.3K likes on X. SkillsMP emerged as a marketplace with 60-87K+ skills. Multiple GitHub repos (awesome-claude-skills, Superpowers) are actively curated.
 
-**🏆 Most mentioned skills/resources:**
+**Most mentioned skills/resources:**
 
 | Rank | Skill/Resource | Mentions | Sources | Engagement |
 |------|----------------|----------|---------|------------|
@@ -402,8 +401,7 @@ This prompt was generated based on research from 10 Reddit threads (294 upvotes)
 
 **Research Output:**
 > JSON prompts are the dominant format for photorealistic people in Nano Banana Pro. Nearly every viral X post (4,400+ likes total) uses structured JSON with specific fields rather than natural language. The key is specifying demographics, skin texture, lighting, and camera settings in a structured way.
->
-> Recent caveat: Reddit reports Nano Banana Pro was "nerfed" in early January 2026 with reduced resolution and stricter moderation on faces. Starting a new chat can help if quality drops mid-session.
+> > Recent caveat: Reddit reports Nano Banana Pro was "nerfed" in early January 2026 with reduced resolution and stricter moderation on faces. Starting a new chat can help if quality drops mid-session.
 
 **Key patterns discovered:**
 1. JSON structure with prompt_type, subject, lighting, camera_settings fields
@@ -622,7 +620,7 @@ Or am I wide awake and in too deep
 [Outro: fade with glitchy effects]
 ```
 
-**The Result:** 🎵 [Listen to the track](assets/claude-code-rap.mp3)
+**The Result:**  [Listen to the track](assets/claude-code-rap.mp3)
 
 This example shows /last30days learning **music AI prompting patterns** (bracket structure, conversational style descriptions) and generating a complete song prompt that Suno turned into an actual banger.
 

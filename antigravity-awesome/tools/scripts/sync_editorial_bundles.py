@@ -796,10 +796,10 @@ def main() -> int:
         current_doc = (root / "docs" / "users" / "bundles.md").read_text(encoding="utf-8")
         if current_doc != expected_doc:
             raise SystemExit("docs/users/bundles.md is out of sync with data/editorial-bundles.json")
-        print("✅ Editorial bundles manifest and generated doc are in sync.")
+        print("PASS: Editorial bundles manifest and generated doc are in sync.")
         return 0
     sync_editorial_bundles(root)
-    print("✅ Editorial bundles synced.")
+    print("PASS: Editorial bundles synced.")
     return 0
 
 

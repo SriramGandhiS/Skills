@@ -1,12 +1,10 @@
 # Autonomi Enterprise - Single Node Evaluation
 # Usage: docker compose up -d
 # Dashboard: http://localhost:57374
-#
-# Observability mode (adds OTEL collector + Jaeger):
-#   docker compose --profile observability up -d
-#   Jaeger UI: http://localhost:16686
-#
-# See .env.example for all configurable variables.
+# # Observability mode (adds OTEL collector + Jaeger):
+# docker compose --profile observability up -d
+# Jaeger UI: http://localhost:16686
+# # See .env.example for all configurable variables.
 
 services:
   autonomi:

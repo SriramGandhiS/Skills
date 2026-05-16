@@ -50,13 +50,13 @@ When assisting with jobs:
 
 Before starting any job, verify:
 
-### ✅ **Account & Authentication**
+### PASS: **Account & Authentication**
 - Hugging Face Account with [Pro](https://hf.co/pro), [Team](https://hf.co/enterprise), or [Enterprise](https://hf.co/enterprise) plan (Jobs require paid plan)
 - Authenticated login: Check with `hf_whoami()`
-- **HF_TOKEN for Hub Access** ⚠️ CRITICAL - Required for any Hub operations (push models/datasets, download private repos, etc.)
+- **HF_TOKEN for Hub Access** WARNING: CRITICAL - Required for any Hub operations (push models/datasets, download private repos, etc.)
 - Token must have appropriate permissions (read for downloads, write for uploads)
 
-### ✅ **Token Usage** (See Token Usage section for details)
+### PASS: **Token Usage** (See Token Usage section for details)
 
 **When tokens are required:**
 - Pushing models/datasets to Hub
@@ -74,7 +74,7 @@ from huggingface_hub import get_token
 secrets={"HF_TOKEN": get_token()}
 ```
 
-**⚠️ CRITICAL:** The `$HF_TOKEN` placeholder is ONLY auto-replaced by the `hf_jobs` MCP tool. When using `HfApi().run_uv_job()`, you MUST pass the real token via `get_token()`. Passing the literal string `"$HF_TOKEN"` results in a 9-character invalid token and 401 errors.
+**WARNING: CRITICAL:** The `$HF_TOKEN` placeholder is ONLY auto-replaced by the `hf_jobs` MCP tool. When using `HfApi().run_uv_job()`, you MUST pass the real token via `get_token()`. Passing the literal string `"$HF_TOKEN"` results in a 9-character invalid token and 401 errors.
 
 ## Token Usage Guide
 
@@ -111,7 +111,7 @@ secrets={"HF_TOKEN": get_token()}
 ```python
 hf_jobs("uv", {
     "script": "your_script.py",
-    "secrets": {"HF_TOKEN": "$HF_TOKEN"}  # ✅ Automatic replacement
+    "secrets": {"HF_TOKEN": "$HF_TOKEN"}  # PASS: Automatic replacement
 })
 ```
 
@@ -132,7 +132,7 @@ hf_jobs("uv", {
 ```python
 hf_jobs("uv", {
     "script": "your_script.py",
-    "secrets": {"HF_TOKEN": "hf_abc123..."}  # ⚠️ Hardcoded token
+    "secrets": {"HF_TOKEN": "hf_abc123..."}  # WARNING: Hardcoded token
 })
 ```
 
@@ -151,7 +151,7 @@ hf_jobs("uv", {
 ```python
 hf_jobs("uv", {
     "script": "your_script.py",
-    "env": {"HF_TOKEN": "hf_abc123..."}  # ⚠️ Less secure than secrets
+    "env": {"HF_TOKEN": "hf_abc123..."}  # WARNING: Less secure than secrets
 })
 ```
 
@@ -260,11 +260,11 @@ data = {"text": ["Hello", "World"]}
 dataset = Dataset.from_dict(data)
 dataset.push_to_hub("username/my-dataset", token=os.environ["HF_TOKEN"])
 
-print("✅ Dataset pushed successfully!")
+print("PASS: Dataset pushed successfully!")
 """,
     "flavor": "cpu-basic",
     "timeout": "30m",
-    "secrets": {"HF_TOKEN": "$HF_TOKEN"}  # ✅ Token provided securely
+    "secrets": {"HF_TOKEN": "$HF_TOKEN"}  # PASS: Token provided securely
 })
 ```
 
@@ -349,7 +349,7 @@ run_uv_job("my_script.py", python="3.11")
 
 #### Working with Scripts
 
-⚠️ **Important:** There are *two* "script path" stories depending on how you run Jobs:
+WARNING: **Important:** There are *two* "script path" stories depending on how you run Jobs:
 
 - **Using the `hf_jobs()` MCP tool (recommended in this repo)**: the `script` value must be **inline code** (a string) or a **URL**. A local filesystem path (like `"./scripts/foo.py"`) won't exist inside the remote container.
 - **Using the `hf jobs uv run` CLI**: local file paths **do work** (the CLI uploads your script).
@@ -357,22 +357,22 @@ run_uv_job("my_script.py", python="3.11")
 **Common mistake with `hf_jobs()` MCP tool:**
 
 ```python
-# ❌ Will fail (remote container can't see your local path)
+# FAIL: Will fail (remote container can't see your local path)
 hf_jobs("uv", {"script": "./scripts/foo.py"})
 ```
 
 **Correct patterns with `hf_jobs()` MCP tool:**
 
 ```python
-# ✅ Inline: read the local script file and pass its *contents*
+# PASS: Inline: read the local script file and pass its *contents*
 from pathlib import Path
 script = Path("hf-jobs/scripts/foo.py").read_text()
 hf_jobs("uv", {"script": script})
 
-# ✅ URL: host the script somewhere reachable
+# PASS: URL: host the script somewhere reachable
 hf_jobs("uv", {"script": "https://huggingface.co/datasets/uv-scripts/.../raw/main/foo.py"})
 
-# ✅ URL from GitHub
+# PASS: URL from GitHub
 hf_jobs("uv", {"script": "https://raw.githubusercontent.com/huggingface/trl/main/trl/scripts/sft.py"})
 ```
 
@@ -497,7 +497,7 @@ hub_repo_details(["uv-scripts/classification"], repo_type="dataset", include_rea
 
 ## Critical: Saving Results
 
-**⚠️ EPHEMERAL ENVIRONMENT—MUST PERSIST RESULTS**
+**WARNING: EPHEMERAL ENVIRONMENT—MUST PERSIST RESULTS**
 
 The Jobs environment is temporary. All files are deleted when the job ends. If results aren't persisted, **ALL WORK IS LOST**.
 
@@ -574,7 +574,7 @@ Before submitting:
 
 ## Timeout Management
 
-**⚠️ DEFAULT: 30 MINUTES**
+**WARNING: DEFAULT: 30 MINUTES**
 
 Jobs automatically stop after the timeout. For long-running tasks like training, always set a custom timeout.
 

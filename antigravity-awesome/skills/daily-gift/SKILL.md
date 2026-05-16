@@ -66,13 +66,13 @@ Produce the final artifact. H5 gifts use p5.js/canvas with a quality floor set b
 
 ## Best Practices
 
-- ✅ Let the editorial judgment decide — not every day needs a gift
-- ✅ Generate 5+ concept candidates before selecting one
-- ✅ Check recent gifts for visual and thematic collision before rendering
-- ✅ Use the taste profile to personalize over time
-- ❌ Don't skip straight from thesis to rendering without a real creative concept
-- ❌ Don't default to "reflect on today" every time — vary content direction
-- ❌ Don't choose the format before locking the concept
+- PASS: Let the editorial judgment decide — not every day needs a gift
+- PASS: Generate 5+ concept candidates before selecting one
+- PASS: Check recent gifts for visual and thematic collision before rendering
+- PASS: Use the taste profile to personalize over time
+- FAIL: Don't skip straight from thesis to rendering without a real creative concept
+- FAIL: Don't default to "reflect on today" every time — vary content direction
+- FAIL: Don't choose the format before locking the concept
 
 ## Limitations
 

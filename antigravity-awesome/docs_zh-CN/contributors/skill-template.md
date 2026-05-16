@@ -73,7 +73,7 @@ A: 详细回答...
 
 ## 技能模板使用指南
 
-### 📋 前置内容字段说明
+### 前置内容字段说明
 
 **必需字段：**
 
@@ -102,7 +102,7 @@ tools: [claude, cursor, gemini]
 ---
 ```
 
-### 🎯 技能分类列表
+### 技能分类列表
 
 **开发类：**
 - `development` - 通用开发
@@ -142,7 +142,7 @@ tools: [claude, cursor, gemini]
 - `communication` - 沟通协作
 - `research` - 研究分析
 
-### ⚠️ 风险级别定义
+### WARNING: 风险级别定义
 
 **safe（安全）：**
 - 代码审查和设计建议
@@ -159,7 +159,7 @@ tools: [claude, cursor, gemini]
 - 生产环境更改
 - 安全相关操作
 
-### 🏷️ 标签规范
+### 标签规范
 
 **命名规则：**
 - 小写字母
@@ -172,7 +172,7 @@ tools: [claude, cursor, gemini]
 - 概念标签：`patterns`, `security`, `performance`, `testing`
 - 领域标签：`frontend`, `backend`, `mobile`, `api`
 
-### 🛠️ 工具支持
+### 工具支持
 
 **支持的工具：**
 - `claude` - Claude Code
@@ -183,7 +183,7 @@ tools: [claude, cursor, gemini]
 - `opencode` - OpenCode CLI
 - `kiro` - Kiro CLI
 
-### 📝 内容结构指南
+### 内容结构指南
 
 **必需章节：**
 
@@ -221,7 +221,7 @@ tools: [claude, cursor, gemini]
    - 技能的限制
    - 使用注意事项
 
-### ✅ 质量检查清单
+### PASS: 质量检查清单
 
 **内容质量：**
 - [ ] 描述清晰准确
@@ -241,7 +241,7 @@ tools: [claude, cursor, gemini]
 - [ ] 安全考虑周全
 - [ ] 错误处理合理
 
-### 🚀 提交指南
+### 提交指南
 
 **文件命名：**
 - 使用小写字母和连字符
@@ -269,24 +269,24 @@ skills/
 5. 运行验证：`npm run validate`
 6. 提交Pull Request
 
-### 📞 获取帮助
+### 获取帮助
 
 **资源链接：**
-- 📋 [技能结构详细说明](skill-anatomy.md)
-- 🎯 [质量标准](quality-bar.md)
-- 🤝 [社区讨论](https://github.com/sickn33/antigravity-awesome-skills/discussions)
-- 🐛 [问题报告](https://github.com/sickn33/antigravity-awesome-skills/issues)
+- [技能结构详细说明](skill-anatomy.md)
+- [质量标准](quality-bar.md)
+- [社区讨论](https://github.com/sickn33/antigravity-awesome-skills/discussions)
+- [问题报告](https://github.com/sickn33/antigravity-awesome-skills/issues)
 
 **联系方式：**
-- 📧 skills@antigravity-skills.org
-- 💬 Discord: #技能贡献频道
+- skills@antigravity-skills.org
+- Discord: #技能贡献频道
 
 ---
 
-## 🎉 开始贡献
+## 开始贡献
 
 感谢您考虑为Antigravity Awesome Skills贡献！使用这个模板，您可以帮助创建高质量、一致性的技能，让整个社区受益。
 
 如果您有任何疑问或需要指导，请随时联系我们。
 
-**期待您的贡献！** 🚀
+**期待您的贡献！**

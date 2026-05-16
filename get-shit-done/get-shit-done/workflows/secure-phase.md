@@ -78,7 +78,6 @@ Build: `{ threat_id, category, component, disposition, status, evidence }`
 
 ## 4. Present Threat Plan
 
-
 **Text mode (`workflow.text_mode: true` in config or `--text` flag):** Set `TEXT_MODE=true` if `--text` is present in `$ARGUMENTS` OR `text_mode` from init JSON is `true`. When TEXT_MODE is active, replace every `AskUserQuestion` call with a plain-text numbered list and ask the user to type their choice number. This is required for non-Claude runtimes (OpenAI Codex, Gemini CLI, etc.) where `AskUserQuestion` is not available.
 Call AskUserQuestion with threat table and options:
 1. "Verify all open threats" → Step 5
@@ -137,8 +136,8 @@ Handle return:
 ```
 GSD > PHASE {N} SECURITY BLOCKED
 {K} threats open — phase advancement blocked until threats_open: 0
-▶ Fix mitigations then re-run: /gsd-secure-phase {N}
-▶ Or document accepted risks in SECURITY.md and re-run.
+ Fix mitigations then re-run: /gsd-secure-phase {N}
+ Or document accepted risks in SECURITY.md and re-run.
 ```
 
 Do NOT emit next-phase routing. Stop here.
@@ -155,8 +154,8 @@ gsd-sdk query commit "docs(phase-${PHASE}): add/update security threat verificat
 ```
 GSD > PHASE {N} THREAT-SECURE
 threats_open: 0 — all threats have dispositions.
-▶ /gsd-validate-phase {N}    validate test coverage
-▶ /gsd-verify-work {N}       run UAT
+ /gsd-validate-phase {N}    validate test coverage
+ /gsd-verify-work {N}       run UAT
 ```
 
 Display `/clear` reminder.

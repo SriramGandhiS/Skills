@@ -35,10 +35,10 @@ model_id = "unsloth/Qwen3-VL-8B-Instruct"     # Vision model
 ```python
 # /// script
 # dependencies = [
-#     "unsloth",
-#     "trl",
-#     "datasets",
-#     "trackio",
+# "unsloth",
+# "trl",
+# "datasets",
+# "trackio",
 # ]
 # ///
 ```

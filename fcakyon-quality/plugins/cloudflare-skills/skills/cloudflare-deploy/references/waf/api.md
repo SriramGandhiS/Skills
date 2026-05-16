@@ -48,13 +48,13 @@ await client.rulesets.delete({ zone_id: 'zone_id', ruleset_id: 'ruleset_id' });
 
 | Action | Custom | Managed | Rate Limit | Description |
 |--------|--------|---------|------------|-------------|
-| `block` | ✅ | ❌ | ✅ | Block request with 403 |
-| `challenge` | ✅ | ❌ | ✅ | Show CAPTCHA challenge |
-| `js_challenge` | ✅ | ❌ | ✅ | JS-based challenge |
-| `managed_challenge` | ✅ | ❌ | ✅ | Smart challenge (recommended) |
-| `log` | ✅ | ❌ | ✅ | Log only, don't block |
-| `skip` | ✅ | ❌ | ❌ | Skip rule evaluation |
-| `execute` | ❌ | ✅ | ❌ | Deploy managed ruleset |
+| `block` | PASS: | FAIL: | PASS: | Block request with 403 |
+| `challenge` | PASS: | FAIL: | PASS: | Show CAPTCHA challenge |
+| `js_challenge` | PASS: | FAIL: | PASS: | JS-based challenge |
+| `managed_challenge` | PASS: | FAIL: | PASS: | Smart challenge (recommended) |
+| `log` | PASS: | FAIL: | PASS: | Log only, don't block |
+| `skip` | PASS: | FAIL: | FAIL: | Skip rule evaluation |
+| `execute` | FAIL: | PASS: | FAIL: | Deploy managed ruleset |
 
 ### Phases (Execution Order)
 
@@ -133,7 +133,7 @@ or              // Logical OR
   expression: 'http.request.uri.path starts_with "/api"',
   action_parameters: {
     ratelimit: {
-      // Characteristics define uniqueness: 'ip.src', 'cf.colo.id', 
+      // Characteristics define uniqueness: 'ip.src', 'cf.colo.id',
       // 'http.request.headers["key"][0]', 'http.request.cookies["session"][0]'
       characteristics: ['cf.colo.id', 'ip.src'], // Recommended: per-IP per-datacenter
       period: 60,                      // Time window in seconds

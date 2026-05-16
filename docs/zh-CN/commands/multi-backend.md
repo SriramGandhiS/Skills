@@ -31,7 +31,7 @@
 **调用语法**：
 
 ```
-# 新会话调用
+## 新会话调用
 Bash({
   command: "~/.claude/bin/codeagent-wrapper {{LITE_MODE_FLAG}}--backend codex - \"$PWD\" <<'EOF'
 ROLE_FILE: <角色提示路径>
@@ -46,7 +46,7 @@ EOF",
   description: "简要描述"
 })
 
-# 恢复会话调用
+## 恢复会话调用
 Bash({
   command: "~/.claude/bin/codeagent-wrapper {{LITE_MODE_FLAG}}--backend codex resume <SESSION_ID> - \"$PWD\" <<'EOF'
 ROLE_FILE: <角色提示路径>
@@ -70,13 +70,13 @@ EOF",
 | 规划 | `~/.claude/.ccg/prompts/codex/architect.md` |
 | 评审 | `~/.claude/.ccg/prompts/codex/reviewer.md` |
 
-**会话复用**：每次调用返回 `SESSION_ID: xxx`，在后续阶段使用 `resume xxx`。在第 2 阶段保存 `CODEX_SESSION`，在第 3 和第 5 阶段使用 `resume`。
+**会话复用**：每次调用返回 `SESSION_ID: xxx`，在后续阶段使用`resume xxx`。在第 2 阶段保存`CODEX_SESSION`，在第 3 和第 5 阶段使用`resume`。
 
 ***
 
 ## 沟通准则
 
-1. 在回复开头使用模式标签 `[Mode: X]`，初始值为 `[Mode: Research]`
+1. 在回复开头使用模式标签 `[Mode: X]`，初始值为`[Mode: Research]`
 2. 遵循严格序列：`Research → Ideation → Plan → Execute → Optimize → Review`
 3. 需要时（例如确认/选择/批准）使用 `AskUserQuestion` 工具进行用户交互
 
@@ -86,13 +86,13 @@ EOF",
 
 ### 阶段 0：提示词增强（可选）
 
-`[Mode: Prepare]` - 如果 ace-tool MCP 可用，调用 `mcp__ace-tool__enhance_prompt`，**将原始的 $ARGUMENTS 替换为增强后的结果，用于后续的 Codex 调用**。如果不可用，则按原样使用 `$ARGUMENTS`。
+`[Mode: Prepare]`- 如果 ace-tool MCP 可用，调用`mcp__ace-tool__enhance_prompt`，**将原始的 $ARGUMENTS 替换为增强后的结果，用于后续的 Codex 调用**。如果不可用，则按原样使用`$ARGUMENTS`。
 
 ### 阶段 1：研究
 
 `[Mode: Research]` - 理解需求并收集上下文
 
-1. **代码检索**（如果 ace-tool MCP 可用）：调用 `mcp__ace-tool__search_context` 来检索现有的 API、数据模型、服务架构。如果不可用，则使用内置工具：`Glob` 用于文件发现，`Grep` 用于符号/API 搜索，`Read` 用于上下文收集，`Task`（探索代理）用于更深入的探索。
+1. **代码检索**（如果 ace-tool MCP 可用）：调用 `mcp__ace-tool__search_context`来检索现有的 API、数据模型、服务架构。如果不可用，则使用内置工具：`Glob`用于文件发现，`Grep`用于符号/API 搜索，`Read`用于上下文收集，`Task`（探索代理）用于更深入的探索。
 2. 需求完整性评分（0-10）：>=7 继续，<7 停止并补充
 
 ### 阶段 2：构思

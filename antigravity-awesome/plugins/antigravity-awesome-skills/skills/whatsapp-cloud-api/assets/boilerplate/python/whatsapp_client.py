@@ -80,7 +80,7 @@ class WhatsAppClient:
             "document": {
                 "link": document_url,
                 "filename": filename,
-                **({"caption": caption} if caption else {}),
+**({"caption": caption} if caption else {}),
             },
         })
 
@@ -167,8 +167,8 @@ class WhatsAppClient:
             "location": {
                 "latitude": latitude,
                 "longitude": longitude,
-                **({"name": name} if name else {}),
-                **({"address": address} if address else {}),
+**({"name": name} if name else {}),
+**({"address": address} if address else {}),
             },
         })
 

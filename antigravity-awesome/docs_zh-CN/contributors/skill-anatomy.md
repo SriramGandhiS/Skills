@@ -4,7 +4,7 @@
 
 ---
 
-## 📁 基本文件夹结构
+## 基本文件夹结构
 
 ```
 skills/
@@ -165,10 +165,10 @@ tools: [claude, cursor, gemini]
 ```markdown
 ## 最佳实践
 
-- ✅ 这样做
-- ✅ 也这样做
-- ❌ 不要这样做
-- ❌ 避免这个
+- PASS: 这样做
+- PASS: 也这样做
+- FAIL: 不要这样做
+- FAIL: 避免这个
 ```
 
 #### 7. 常见陷阱
@@ -176,7 +176,7 @@ tools: [claude, cursor, gemini]
 ## 常见陷阱
 
 - **问题：**描述
-  **解决方案：**如何修复它
+**解决方案：**如何修复它
 ```
 
 #### 8. 安全与安全说明（针对命令/网络/攻击性技能）
@@ -212,36 +212,36 @@ tools: [claude, cursor, gemini]
 
 ### 使用清晰、直接的语言
 
-**❌ 不佳：**
+**FAIL: 不佳：**
 ```markdown
 您可能想要考虑检查用户是否有身份验证。
 ```
 
-**✅ 良好：**
+**PASS: 良好：**
 ```markdown
 在继续之前检查用户是否已通过身份验证。
 ```
 
 ### 使用动作动词
 
-**❌ 不佳：**
+**FAIL: 不佳：**
 ```markdown
 文件应该被创建...
 ```
 
-**✅ 良好：**
+**PASS: 良好：**
 ```markdown
 创建文件...
 ```
 
 ### 具体明确
 
-**❌ 不佳：**
+**FAIL: 不佳：**
 ```markdown
 正确设置数据库。
 ```
 
-**✅ 良好：**
+**PASS: 良好：**
 ```markdown
 1. 创建 PostgreSQL 数据库
 2. 运行迁移：`npm run migrate`
@@ -371,7 +371,7 @@ const example = "code";
 
 ---
 
-## ✅ 质量检查清单
+## PASS: 质量检查清单
 
 在完成技能之前：
 
@@ -401,7 +401,7 @@ const example = "code";
 
 ---
 
-## 🔍 真实示例分析
+## 真实示例分析
 
 让我们分析一个真实技能：`brainstorming`
 
@@ -413,9 +413,9 @@ description: "You MUST use this before any creative work..."
 ```
 
 **分析：**
-- ✅ 清晰的名称
-- ✅ 强有力的描述和紧迫感（"MUST use"）
-- ✅ 解释何时使用
+- PASS: 清晰的名称
+- PASS: 强有力的描述和紧迫感（"MUST use"）
+- PASS: 解释何时使用
 
 ```markdown
 # Brainstorming Ideas Into Designs
@@ -425,9 +425,9 @@ Help turn ideas into fully formed designs...
 ```
 
 **分析：**
-- ✅ 清晰的标题
-- ✅ 简洁的概述
-- ✅ 解释价值主张
+- PASS: 清晰的标题
+- PASS: 简洁的概述
+- PASS: 解释价值主张
 
 ```markdown
 ## The Process
@@ -438,9 +438,9 @@ Help turn ideas into fully formed designs...
 ```
 
 **分析：**
-- ✅ 分解为清晰的阶段
-- ✅ 具体、可操作的步骤
-- ✅ 易于遵循
+- PASS: 分解为清晰的阶段
+- PASS: 具体、可操作的步骤
+- PASS: 易于遵循
 
 ---
 
@@ -518,7 +518,7 @@ Help turn ideas into fully formed designs...
 
 ---
 
-## 💡 专业提示
+## 专业提示
 
 1. **从"使用时机"部分开始** - 这阐明了技能的目的
 2. **先编写示例** - 它们帮助您理解您在教什么
@@ -530,13 +530,13 @@ Help turn ideas into fully formed designs...
 
 ## 要避免的常见错误
 
-### ❌ 错误 1：太模糊
+### FAIL: 错误 1：太模糊
 ```markdown
 ## 指令
 使代码更好。
 ```
 
-**✅ 修复：**
+**PASS: 修复：**
 ```markdown
 ## 指令
 1. 将重复逻辑提取到函数中
@@ -544,35 +544,35 @@ Help turn ideas into fully formed designs...
 3. 为核心功能编写单元测试
 ```
 
-### ❌ 错误 2：太复杂
+### FAIL: 错误 2：太复杂
 ```markdown
 ## 指令
 [5000 字密集的技术术语]
 ```
 
-**✅ 修复：**
+**PASS: 修复：**
 分解为多个技能或使用渐进式披露
 
-### ❌ 错误 3：无示例
+### FAIL: 错误 3：无示例
 ```markdown
 ## 指令
 [没有任何代码示例的指令]
 ```
 
-**✅ 修复：**
+**PASS: 修复：**
 添加至少 2-3 个真实的示例
 
-### ❌ 错误 4：过时信息
+### FAIL: 错误 4：过时信息
 ```markdown
 使用 React 类组件...
 ```
 
-**✅ 修复：**
+**PASS: 修复：**
 使用当前最佳实践更新技能
 
 ---
 
-## 🎯 下一步
+## 下一步
 
 1. **阅读 3-5 个现有技能**以查看不同的风格
 2. **尝试技能模板**来自 [`../../CONTRIBUTING.md`](../../CONTRIBUTING.md)
@@ -582,4 +582,4 @@ Help turn ideas into fully formed designs...
 
 ---
 
-**记住：**每个专家都曾经是初学者。从简单开始，从反馈中学习，并随时间改进！🚀
+**记住：**每个专家都曾经是初学者。从简单开始，从反馈中学习，并随时间改进！

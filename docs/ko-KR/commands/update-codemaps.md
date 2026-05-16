@@ -26,7 +26,7 @@
 각 코드맵은 토큰 효율적이어야 합니다 — AI 컨텍스트 소비에 최적화:
 
 ```markdown
-# Backend 아키텍처
+## Backend 아키텍처
 
 ## 라우트
 POST /api/users → UserController.create → UserService.create → UserRepo.insert
@@ -46,11 +46,11 @@ src/repos/user.ts (데이터베이스 접근, 80줄)
 
 생성기는 파일 경로 패턴을 기반으로 영역을 자동 분류합니다:
 
-1. 프론트엔드: `app/`, `pages/`, `components/`, `hooks/`, `.tsx`, `.jsx`
-2. 백엔드: `api/`, `routes/`, `controllers/`, `services/`, `.route.ts`
-3. 데이터베이스: `db/`, `migrations/`, `prisma/`, `repositories/`
-4. 통합: `integrations/`, `adapters/`, `connectors/`, `plugins/`
-5. 워커: `workers/`, `jobs/`, `queues/`, `tasks/`, `cron/`
+1. 프론트엔드: `app/`,`pages/`,`components/`,`hooks/`,`.tsx`,`.jsx`
+2. 백엔드: `api/`,`routes/`,`controllers/`,`services/`,`.route.ts`
+3. 데이터베이스: `db/`,`migrations/`,`prisma/`,`repositories/`
+4. 통합: `integrations/`,`adapters/`,`connectors/`,`plugins/`
+5. 워커: `workers/`,`jobs/`,`queues/`,`tasks/`,`cron/`
 
 ## 4단계: 메타데이터 추가
 

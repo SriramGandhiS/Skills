@@ -23,7 +23,7 @@ origin: ECC
 | `CLAUDE.md` | 硬编码的密钥、自动运行指令、提示词注入模式 |
 | `settings.json` | 过于宽松的允许列表、缺失的拒绝列表、危险的绕过标志 |
 | `mcp.json` | 有风险的 MCP 服务器、硬编码的环境变量密钥、npx 供应链风险 |
-| `hooks/` | 通过 `${file}` 插值导致的命令注入、数据泄露、静默错误抑制 |
+| `hooks/`| 通过`${file}` 插值导致的命令注入、数据泄露、静默错误抑制 |
 | `agents/*.md` | 无限制的工具访问、提示词注入攻击面、缺失的模型规格 |
 
 ## 先决条件
@@ -31,13 +31,13 @@ origin: ECC
 必须安装 AgentShield。检查并在需要时安装：
 
 ```bash
-# Check if installed
+## Check if installed
 npx ecc-agentshield --version
 
-# Install globally (recommended)
+## Install globally (recommended)
 npm install -g ecc-agentshield
 
-# Or run directly via npx (no install needed)
+## Or run directly via npx (no install needed)
 npx ecc-agentshield scan .
 ```
 
@@ -48,29 +48,29 @@ npx ecc-agentshield scan .
 针对当前项目的 `.claude/` 目录运行：
 
 ```bash
-# Scan current project
+## Scan current project
 npx ecc-agentshield scan
 
-# Scan a specific path
+## Scan a specific path
 npx ecc-agentshield scan --path /path/to/.claude
 
-# Scan with minimum severity filter
+## Scan with minimum severity filter
 npx ecc-agentshield scan --min-severity medium
 ```
 
 ### 输出格式
 
 ```bash
-# Terminal output (default) — colored report with grade
+## Terminal output (default) — colored report with grade
 npx ecc-agentshield scan
 
-# JSON — for CI/CD integration
+## JSON — for CI/CD integration
 npx ecc-agentshield scan --format json
 
-# Markdown — for documentation
+## Markdown — for documentation
 npx ecc-agentshield scan --format markdown
 
-# HTML — self-contained dark-theme report
+## HTML — self-contained dark-theme report
 npx ecc-agentshield scan --format html > security-report.html
 ```
 
@@ -93,7 +93,7 @@ npx ecc-agentshield scan --fix
 运行对抗性的三智能体流程以进行更深入的分析：
 
 ```bash
-# Requires ANTHROPIC_API_KEY
+## Requires ANTHROPIC_API_KEY
 export ANTHROPIC_API_KEY=your-key
 npx ecc-agentshield scan --opus --stream
 ```

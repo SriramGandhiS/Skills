@@ -90,7 +90,7 @@ class AIEnhancer:
                 self._agent.log_mode()
             else:
                 logger.warning(
-                    f"⚠️  {self._agent.agent_display} not available. AI enhancement disabled."
+                    f"WARNING:  {self._agent.agent_display} not available. AI enhancement disabled."
                 )
                 self.enabled = False
 
@@ -127,13 +127,13 @@ class PatternEnhancer(AIEnhancer):
             batch_size = self.local_batch_size
             parallel_workers = self.local_parallel_workers
             logger.info(
-                f"🤖 Enhancing {len(patterns)} patterns with AI "
+                f" Enhancing {len(patterns)} patterns with AI "
                 f"(LOCAL mode: {batch_size} per batch, {parallel_workers} parallel workers)..."
             )
         else:
             batch_size = 5  # API mode uses smaller batches
             parallel_workers = 1  # API mode is sequential
-            logger.info(f"🤖 Enhancing {len(patterns)} detected patterns with AI...")
+            logger.info(f" Enhancing {len(patterns)} detected patterns with AI...")
 
         # Create batches
         batches = []
@@ -149,7 +149,7 @@ class PatternEnhancer(AIEnhancer):
                 batch_results = self._enhance_pattern_batch(batch)
                 enhanced.extend(batch_results)
 
-        logger.info(f"✅ Enhanced {len(enhanced)} patterns")
+        logger.info(f"PASS: Enhanced {len(enhanced)} patterns")
         return enhanced
 
     def _enhance_patterns_parallel(self, batches: list[list[dict]], workers: int) -> list[dict]:
@@ -175,7 +175,7 @@ class PatternEnhancer(AIEnhancer):
                     if total < 10 or completed % 5 == 0 or completed == total:
                         logger.info(f"   Progress: {completed}/{total} batches completed")
                 except Exception as e:
-                    logger.warning(f"⚠️  Batch {idx} failed: {e}")
+                    logger.warning(f"WARNING:  Batch {idx} failed: {e}")
                     results[idx] = batches[idx]  # Return unenhanced on failure
 
         # Flatten results
@@ -237,10 +237,10 @@ Format as JSON array matching input order. Be concise and actionable.
             return patterns
 
         except json.JSONDecodeError:
-            logger.warning("⚠️  Failed to parse AI response, returning patterns unchanged")
+            logger.warning("WARNING:  Failed to parse AI response, returning patterns unchanged")
             return patterns
         except Exception as e:
-            logger.warning(f"⚠️  Error processing AI analysis: {e}")
+            logger.warning(f"WARNING:  Error processing AI analysis: {e}")
             return patterns
 
 
@@ -265,13 +265,13 @@ class TestExampleEnhancer(AIEnhancer):
             batch_size = self.local_batch_size
             parallel_workers = self.local_parallel_workers
             logger.info(
-                f"🤖 Enhancing {len(examples)} test examples with AI "
+                f" Enhancing {len(examples)} test examples with AI "
                 f"(LOCAL mode: {batch_size} per batch, {parallel_workers} parallel workers)..."
             )
         else:
             batch_size = 5  # API mode uses smaller batches
             parallel_workers = 1  # API mode is sequential
-            logger.info(f"🤖 Enhancing {len(examples)} test examples with AI...")
+            logger.info(f" Enhancing {len(examples)} test examples with AI...")
 
         # Create batches
         batches = []
@@ -287,7 +287,7 @@ class TestExampleEnhancer(AIEnhancer):
                 batch_results = self._enhance_example_batch(batch)
                 enhanced.extend(batch_results)
 
-        logger.info(f"✅ Enhanced {len(enhanced)} examples")
+        logger.info(f"PASS: Enhanced {len(enhanced)} examples")
         return enhanced
 
     def _enhance_examples_parallel(self, batches: list[list[dict]], workers: int) -> list[dict]:
@@ -313,7 +313,7 @@ class TestExampleEnhancer(AIEnhancer):
                     if total < 10 or completed % 5 == 0 or completed == total:
                         logger.info(f"   Progress: {completed}/{total} batches completed")
                 except Exception as e:
-                    logger.warning(f"⚠️  Batch {idx} failed: {e}")
+                    logger.warning(f"WARNING:  Batch {idx} failed: {e}")
                     results[idx] = batches[idx]  # Return unenhanced on failure
 
         # Flatten results
@@ -371,10 +371,10 @@ Format as JSON array matching input order. Focus on educational value.
             return examples
 
         except json.JSONDecodeError:
-            logger.warning("⚠️  Failed to parse AI response, returning examples unchanged")
+            logger.warning("WARNING:  Failed to parse AI response, returning examples unchanged")
             return examples
         except Exception as e:
-            logger.warning(f"⚠️  Error processing AI analysis: {e}")
+            logger.warning(f"WARNING:  Error processing AI analysis: {e}")
             return examples
 
     def generate_tutorials(self, examples: list[dict]) -> dict[str, list[dict]]:

@@ -112,17 +112,17 @@ class TestInstallSkillE2E:
             mock_scrape.return_value = [
                 TextContent(
                     type="text",
-                    text=f"✅ Scraping complete\n\nSkill built at: {mock_scrape_output}",
+                    text=f"PASS: Scraping complete\n\nSkill built at: {mock_scrape_output}",
                 )
             ]
 
             # Mock enhancement subprocess (success)
-            mock_enhance.return_value = ("✅ Enhancement complete", "", 0)
+            mock_enhance.return_value = ("PASS: Enhancement complete", "", 0)
 
             # Mock package_skill to return success
             zip_path = str(tmp_path / "output" / "test-e2e.zip")
             mock_package.return_value = [
-                TextContent(type="text", text=f"✅ Package complete\n\nSaved to: {zip_path}")
+                TextContent(type="text", text=f"PASS: Package complete\n\nSaved to: {zip_path}")
             ]
 
             # Run the tool
@@ -146,7 +146,7 @@ class TestInstallSkillE2E:
             assert "Package Skill" in output
 
             # Check workflow completion
-            assert "✅ WORKFLOW COMPLETE" in output or "WORKFLOW COMPLETE" in output
+            assert "PASS: WORKFLOW COMPLETE" in output or "WORKFLOW COMPLETE" in output
 
             # Verify scrape_docs was called
             mock_scrape.assert_called_once()
@@ -180,7 +180,7 @@ class TestInstallSkillE2E:
             mock_fetch.return_value = [
                 TextContent(
                     type="text",
-                    text=f"✅ Config fetched successfully\n\nConfig saved to: {config_path}",
+                    text=f"PASS: Config fetched successfully\n\nConfig saved to: {config_path}",
                 )
             ]
 
@@ -193,17 +193,17 @@ class TestInstallSkillE2E:
             skill_dir = str(tmp_path / "output" / "react")
             mock_scrape.return_value = [
                 TextContent(
-                    type="text", text=f"✅ Scraping complete\n\nSkill built at: {skill_dir}"
+                    type="text", text=f"PASS: Scraping complete\n\nSkill built at: {skill_dir}"
                 )
             ]
 
             # Mock enhancement
-            mock_enhance.return_value = ("✅ Enhancement complete", "", 0)
+            mock_enhance.return_value = ("PASS: Enhancement complete", "", 0)
 
             # Mock package
             zip_path = str(tmp_path / "output" / "react.zip")
             mock_package.return_value = [
-                TextContent(type="text", text=f"✅ Package complete\n\nSaved to: {zip_path}")
+                TextContent(type="text", text=f"PASS: Package complete\n\nSaved to: {zip_path}")
             ]
 
             # Mock env (no API key - should skip upload)
@@ -234,7 +234,7 @@ class TestInstallSkillE2E:
             mock_fetch.assert_called_once()
 
             # Verify manual upload instructions shown (no API key)
-            assert "⚠️  ANTHROPIC_API_KEY not set" in output or "Manual upload" in output
+            assert "WARNING:  ANTHROPIC_API_KEY not set" in output or "Manual upload" in output
 
     @pytest.mark.asyncio
     async def test_e2e_dry_run_mode(self, test_config_file):
@@ -247,7 +247,7 @@ class TestInstallSkillE2E:
         output = result[0].text
 
         # Verify dry run indicators
-        assert "🔍 DRY RUN MODE" in output
+        assert " DRY RUN MODE" in output
         assert "Preview only, no actions taken" in output
 
         # Verify phases are shown
@@ -266,7 +266,7 @@ class TestInstallSkillE2E:
         with patch("skill_seekers.mcp.tools.scraping_tools.scrape_docs_tool") as mock_scrape:
             # Mock scrape failure
             mock_scrape.return_value = [
-                TextContent(type="text", text="❌ Scraping failed: Network timeout")
+                TextContent(type="text", text="FAIL: Scraping failed: Network timeout")
             ]
 
             result = await install_skill_tool(
@@ -276,7 +276,7 @@ class TestInstallSkillE2E:
             output = result[0].text
 
             # Verify error is propagated
-            assert "❌ Scraping failed" in output
+            assert "FAIL: Scraping failed" in output
             assert "WORKFLOW COMPLETE" not in output
 
     @pytest.mark.asyncio
@@ -295,7 +295,7 @@ class TestInstallSkillE2E:
             mock_scrape.return_value = [
                 TextContent(
                     type="text",
-                    text=f"✅ Scraping complete\n\nSkill built at: {mock_scrape_output}",
+                    text=f"PASS: Scraping complete\n\nSkill built at: {mock_scrape_output}",
                 )
             ]
 
@@ -309,7 +309,7 @@ class TestInstallSkillE2E:
             output = result[0].text
 
             # Verify error is shown
-            assert "❌ Enhancement failed" in output
+            assert "FAIL: Enhancement failed" in output
             assert "exit code 1" in output
 
 
@@ -350,7 +350,7 @@ class TestInstallSkillCLI_E2E:
 
         # Verify output
         output = result[0].text
-        assert "🔍 DRY RUN MODE" in output
+        assert " DRY RUN MODE" in output
         assert "PHASE" in output
         assert "This was a dry run" in output
 
@@ -401,14 +401,14 @@ class TestInstallSkillCLI_E2E:
         # Setup mocks
         skill_dir = str(tmp_path / "output" / "test-cli-e2e")
         mock_scrape.return_value = [
-            TextContent(type="text", text=f"✅ Scraping complete\n\nSkill built at: {skill_dir}")
+            TextContent(type="text", text=f"PASS: Scraping complete\n\nSkill built at: {skill_dir}")
         ]
 
-        mock_enhance.return_value = ("✅ Enhancement complete", "", 0)
+        mock_enhance.return_value = ("PASS: Enhancement complete", "", 0)
 
         zip_path = str(tmp_path / "output" / "test-cli-e2e.zip")
         mock_package.return_value = [
-            TextContent(type="text", text=f"✅ Package complete\n\nSaved to: {zip_path}")
+            TextContent(type="text", text=f"PASS: Package complete\n\nSaved to: {zip_path}")
         ]
 
         # Call the tool directly
@@ -427,7 +427,7 @@ class TestInstallSkillCLI_E2E:
         output = result[0].text
         assert "PHASE" in output
         assert "Enhancement" in output or "MANDATORY" in output
-        assert "WORKFLOW COMPLETE" in output or "✅" in output
+        assert "WORKFLOW COMPLETE" in output or "PASS:" in output
 
     def test_cli_via_unified_command(self, test_config_file):
         """E2E test: Using 'skill-seekers install' unified CLI (dry-run mode)."""
@@ -496,10 +496,10 @@ class TestInstallSkillE2E_RealFiles:
             patch("os.environ.get") as mock_env,
         ):
             # Mock enhancement (avoid needing Claude Code)
-            mock_enhance.return_value = ("✅ Enhancement complete", "", 0)
+            mock_enhance.return_value = ("PASS: Enhancement complete", "", 0)
 
             # Mock upload (avoid needing API key)
-            mock_upload.return_value = [TextContent(type="text", text="✅ Upload successful")]
+            mock_upload.return_value = [TextContent(type="text", text="PASS: Upload successful")]
 
             # Mock API key present
             mock_env.return_value = "sk-ant-test-key"
@@ -518,7 +518,7 @@ class TestInstallSkillE2E_RealFiles:
             output = result[0].text
 
             # Verify workflow completed
-            assert "WORKFLOW COMPLETE" in output or "✅" in output
+            assert "WORKFLOW COMPLETE" in output or "PASS:" in output
 
             # Verify enhancement was called
             assert mock_enhance.called
@@ -526,7 +526,7 @@ class TestInstallSkillE2E_RealFiles:
             # Verify workflow succeeded
             # We know scraping was real because we didn't mock scrape_docs_tool
             # Just check that workflow completed
-            assert "WORKFLOW COMPLETE" in output or "✅" in output
+            assert "WORKFLOW COMPLETE" in output or "PASS:" in output
 
             # The output directory should exist (created by scraping)
             _output_dir = tmp_path / "output"

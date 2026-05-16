@@ -170,17 +170,10 @@ Context: {context}
 
 Analysis:
 Strengths:
--
-
-Weaknesses:
--
-
-Opportunities:
--
-
-Threats:
--
-```
+- Weaknesses:
+- Opportunities:
+- Threats:
+- ```
 
 ## Question Answering Templates
 

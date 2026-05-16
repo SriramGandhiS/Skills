@@ -174,7 +174,7 @@ class HtmlToSkillConverter(SkillConverter):
         """
         from skill_seekers.cli.language_detector import LanguageDetector
 
-        print(f"\n🔍 Extracting from HTML: {self.html_path}")
+        print(f"\n Extracting from HTML: {self.html_path}")
 
         html_files = _collect_html_files(self.html_path)
         print(f"   Found {len(html_files)} HTML file(s)")
@@ -272,10 +272,10 @@ class HtmlToSkillConverter(SkillConverter):
         with open(self.data_file, "w", encoding="utf-8") as f:
             json.dump(result_data, f, indent=2, ensure_ascii=False, default=str)
 
-        print(f"\n💾 Saved extracted data to: {self.data_file}")
+        print(f"\n Saved extracted data to: {self.data_file}")
         self.extracted_data = result_data
         print(
-            f"✅ Extracted {len(all_sections)} sections, "
+            f"PASS: Extracted {len(all_sections)} sections, "
             f"{total_code_blocks} code blocks, "
             f"{total_images} images from {len(html_files)} file(s)"
         )
@@ -1089,11 +1089,11 @@ class HtmlToSkillConverter(SkillConverter):
         Returns:
             True on success.
         """
-        print(f"\n📂 Loading extracted data from: {json_path}")
+        print(f"\n Loading extracted data from: {json_path}")
         with open(json_path, encoding="utf-8") as f:
             self.extracted_data = json.load(f)
         total = self.extracted_data.get("total_sections", len(self.extracted_data.get("pages", [])))
-        print(f"✅ Loaded {total} sections")
+        print(f"PASS: Loaded {total} sections")
         return True
 
     def categorize_content(self) -> dict:
@@ -1107,7 +1107,7 @@ class HtmlToSkillConverter(SkillConverter):
         Returns:
             Dict mapping category keys to dicts with 'title' and 'pages'.
         """
-        print("\n📋 Categorizing content...")
+        print("\n Categorizing content...")
 
         categorized: dict[str, dict] = {}
         sections = self.extracted_data.get("pages", [])
@@ -1123,7 +1123,7 @@ class HtmlToSkillConverter(SkillConverter):
                     "title": basename,
                     "pages": sections,
                 }
-                print("✅ Created 1 category (single HTML file)")
+                print("PASS: Created 1 category (single HTML file)")
                 print(f"   - {basename}: {len(sections)} sections")
                 return categorized
 
@@ -1140,7 +1140,7 @@ class HtmlToSkillConverter(SkillConverter):
                     }
                 categorized[cat_key]["pages"].append(section)
 
-            print(f"✅ Created {len(categorized)} categories (multi-file)")
+            print(f"PASS: Created {len(categorized)} categories (multi-file)")
             for _key, cat_data in categorized.items():
                 print(f"   - {cat_data['title']}: {len(cat_data['pages'])} sections")
             return categorized
@@ -1195,7 +1195,7 @@ class HtmlToSkillConverter(SkillConverter):
             # No categorization — single category
             categorized["content"] = {"title": "Content", "pages": sections}
 
-        print(f"✅ Created {len(categorized)} categories")
+        print(f"PASS: Created {len(categorized)} categories")
         for _cat_key, cat_data in categorized.items():
             print(f"   - {cat_data['title']}: {len(cat_data['pages'])} sections")
 
@@ -1208,7 +1208,7 @@ class HtmlToSkillConverter(SkillConverter):
         an index file, and the main SKILL.md file. Delegates to private
         generator methods for each component.
         """
-        print(f"\n🏗️  Building skill: {self.name}")
+        print(f"\n  Building skill: {self.name}")
 
         # Create directories
         os.makedirs(f"{self.skill_dir}/references", exist_ok=True)
@@ -1219,7 +1219,7 @@ class HtmlToSkillConverter(SkillConverter):
         categorized = self.categorize_content()
 
         # Generate reference files
-        print("\n📝 Generating reference files...")
+        print("\n Generating reference files...")
         total_sections = len(categorized)
         section_num = 1
         for cat_key, cat_data in categorized.items():
@@ -1232,8 +1232,8 @@ class HtmlToSkillConverter(SkillConverter):
         # Generate SKILL.md
         self._generate_skill_md(categorized)
 
-        print(f"\n✅ Skill built successfully: {self.skill_dir}/")
-        print(f"\n📦 Next step: Package with: skill-seekers package {self.skill_dir}/")
+        print(f"\nPASS: Skill built successfully: {self.skill_dir}/")
+        print(f"\n Next step: Package with: skill-seekers package {self.skill_dir}/")
 
     # ------------------------------------------------------------------
     # Private generators
@@ -1290,7 +1290,7 @@ class HtmlToSkillConverter(SkillConverter):
                 heading_level = section.get("heading_level", "h1")
                 source = section.get("source_file", "")
 
-                f.write(f"---\n\n**📄 Source: Section {sec_num}**")
+                f.write(f"---\n\n** Source: Section {sec_num}**")
                 if source:
                     f.write(f" *({source})*")
                 f.write("\n\n")
@@ -1446,7 +1446,7 @@ class HtmlToSkillConverter(SkillConverter):
             # Document metadata
             metadata = self.extracted_data.get("metadata", {})
             if any(v for v in metadata.values() if v):
-                f.write("## 📋 Document Information\n\n")
+                f.write("##  Document Information\n\n")
                 if metadata.get("title"):
                     f.write(f"**Title:** {metadata['title']}\n\n")
                 if metadata.get("author"):
@@ -1462,7 +1462,7 @@ class HtmlToSkillConverter(SkillConverter):
                     f.write(f"**Source files:** {total_files} HTML files\n\n")
 
             # When to Use
-            f.write("## 💡 When to Use This Skill\n\n")
+            f.write("##  When to Use This Skill\n\n")
             f.write("Use this skill when you need to:\n")
             f.write(f"- Understand {self.name} concepts and fundamentals\n")
             f.write("- Look up API references and technical specifications\n")
@@ -1472,7 +1472,7 @@ class HtmlToSkillConverter(SkillConverter):
 
             # Section Overview
             total_sections = self.extracted_data.get("total_sections", 0)
-            f.write("## 📖 Section Overview\n\n")
+            f.write("##  Section Overview\n\n")
             f.write(f"**Total Sections:** {total_sections}\n\n")
             f.write("**Content Breakdown:**\n\n")
             for _cat_key, cat_data in categorized.items():
@@ -1484,7 +1484,7 @@ class HtmlToSkillConverter(SkillConverter):
             f.write(self._format_key_concepts())
 
             # Quick Reference patterns
-            f.write("## ⚡ Quick Reference\n\n")
+            f.write("##  Quick Reference\n\n")
             f.write(self._format_patterns_from_content())
 
             # Code examples (top 15, grouped by language)
@@ -1496,7 +1496,7 @@ class HtmlToSkillConverter(SkillConverter):
             top_code = all_code[:15]
 
             if top_code:
-                f.write("## 📝 Code Examples\n\n")
+                f.write("##  Code Examples\n\n")
                 f.write("*High-quality examples extracted from documentation*\n\n")
 
                 by_lang: dict[str, list] = {}
@@ -1525,7 +1525,7 @@ class HtmlToSkillConverter(SkillConverter):
                     all_tables.append((section.get("heading", ""), table))
 
             if all_tables:
-                f.write("## 📊 Table Summary\n\n")
+                f.write("##  Table Summary\n\n")
                 f.write(f"*{len(all_tables)} table(s) found in document*\n\n")
                 for section_heading, table in all_tables[:5]:
                     if section_heading:
@@ -1540,7 +1540,7 @@ class HtmlToSkillConverter(SkillConverter):
                         f.write("\n")
 
             # Statistics
-            f.write("## 📊 Documentation Statistics\n\n")
+            f.write("##  Documentation Statistics\n\n")
             f.write(f"- **Total Sections**: {total_sections}\n")
             f.write(f"- **Code Blocks**: {self.extracted_data.get('total_code_blocks', 0)}\n")
             f.write(f"- **Images/Diagrams**: {self.extracted_data.get('total_images', 0)}\n")
@@ -1556,7 +1556,7 @@ class HtmlToSkillConverter(SkillConverter):
                 f.write("\n")
 
             # Navigation
-            f.write("## 🗺️ Navigation\n\n")
+            f.write("##  Navigation\n\n")
             f.write("**Reference Files:**\n\n")
             for _cat_key, cat_data in categorized.items():
                 cat_file = self._sanitize_filename(cat_data["title"])
@@ -1602,7 +1602,7 @@ class HtmlToSkillConverter(SkillConverter):
         if not all_headings:
             return ""
 
-        content = "## 🔑 Key Concepts\n\n"
+        content = "##  Key Concepts\n\n"
         content += "*Main topics covered in this documentation*\n\n"
 
         h1_headings = [text for level, text in all_headings if level == "h1"]

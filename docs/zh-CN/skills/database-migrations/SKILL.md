@@ -129,16 +129,16 @@ END $$;
 ### 工作流
 
 ```bash
-# Create migration from schema changes
+## Create migration from schema changes
 npx prisma migrate dev --name add_user_avatar
 
-# Apply pending migrations in production
+## Apply pending migrations in production
 npx prisma migrate deploy
 
-# Reset database (dev only)
+## Reset database (dev only)
 npx prisma migrate reset
 
-# Generate client after schema changes
+## Generate client after schema changes
 npx prisma generate
 ```
 
@@ -164,7 +164,7 @@ model User {
 对于 Prisma 无法表达的操作（并发索引、数据回填）：
 
 ```bash
-# Create empty migration, then edit the SQL manually
+## Create empty migration, then edit the SQL manually
 npx prisma migrate dev --create-only --name add_email_index
 ```
 
@@ -179,13 +179,13 @@ CREATE INDEX CONCURRENTLY IF NOT EXISTS idx_users_email ON users (email);
 ### 工作流
 
 ```bash
-# Generate migration from schema changes
+## Generate migration from schema changes
 npx drizzle-kit generate
 
-# Apply migrations
+## Apply migrations
 npx drizzle-kit migrate
 
-# Push schema directly (dev only, no migration file)
+## Push schema directly (dev only, no migration file)
 npx drizzle-kit push
 ```
 
@@ -209,16 +209,16 @@ export const users = pgTable("users", {
 ### 工作流
 
 ```bash
-# Generate migration from model changes
+## Generate migration from model changes
 python manage.py makemigrations
 
-# Apply migrations
+## Apply migrations
 python manage.py migrate
 
-# Show migration status
+## Show migration status
 python manage.py showmigrations
 
-# Generate empty migration for custom SQL
+## Generate empty migration for custom SQL
 python manage.py makemigrations --empty app_name -n description
 ```
 
@@ -269,16 +269,16 @@ class Migration(migrations.Migration):
 ### 工作流
 
 ```bash
-# Create migration pair
+## Create migration pair
 migrate create -ext sql -dir migrations -seq add_user_avatar
 
-# Apply all pending migrations
+## Apply all pending migrations
 migrate -path migrations -database "$DATABASE_URL" up
 
-# Rollback last migration
+## Rollback last migration
 migrate -path migrations -database "$DATABASE_URL" down 1
 
-# Force version (fix dirty state)
+## Force version (fix dirty state)
 migrate -path migrations -database "$DATABASE_URL" force VERSION
 ```
 
@@ -317,7 +317,7 @@ Phase 3: CONTRACT
 
 ```
 Day 1：迁移添加新的 `new_status` 列（可空）
-Day 1：部署应用 v2 —— 同时写入 `status` 和 `new_status`
+Day 1：部署应用 v2 —— 同时写入 `status`和`new_status`
 Day 2：运行针对现有行的回填迁移
 Day 3：部署应用 v3 —— 仅从 `new_status` 读取
 Day 7：迁移删除旧的 `status` 列

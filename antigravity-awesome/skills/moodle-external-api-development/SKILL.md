@@ -45,9 +45,9 @@ use external_single_structure;
 use external_value;
 
 class your_api_name extends external_api {
-    
+
     // Three required methods will go here
-    
+
 }
 ```
 
@@ -119,7 +119,7 @@ public static function execute($userid, $courseid, $options = []) {
             WHERE userid = :userid
               AND courseid = :courseid
             LIMIT :limit";
-    
+
     $records = $DB->get_records_sql($sql, [
         'userid' => $params['userid'],
         'courseid' => $params['courseid'],
@@ -232,7 +232,7 @@ public static function execute($userid, $courseid) {
 
     try {
         self::log_debug("API called: userid=$userid, courseid=$courseid");
-        
+
         // Validate parameters
         $params = self::validate_parameters(self::execute_parameters(), [
             'userid' => $userid,
@@ -240,7 +240,7 @@ public static function execute($userid, $courseid) {
         ]);
 
         // Your logic here
-        
+
         self::log_debug("API completed successfully");
         return $result;
 
@@ -279,10 +279,10 @@ $transaction = $DB->start_delegated_transaction();
 try {
     // Insert record
     $recordid = $DB->insert_record('your_table', $dataobject);
-    
+
     // Update related records
     $DB->set_field('another_table', 'status', 1, ['recordid' => $recordid]);
-    
+
     // Commit transaction
     $transaction->allow_commit();
 } catch (\Exception $e) {
@@ -366,7 +366,7 @@ $DB->set_field('course_modules', 'availability', json_encode($restriction), ['id
 ```php
 private static function get_random_questions($categoryid, $tagname, $limit) {
     global $DB;
-    
+
     $sql = "SELECT q.id
             FROM {question} q
             INNER JOIN {question_versions} qv ON qv.questionid = q.id
@@ -378,12 +378,12 @@ private static function get_random_questions($categoryid, $tagname, $limit) {
               AND qc.id = :categoryid
               AND ti.itemtype = 'question'
               AND q.qtype = 'multichoice'";
-    
+
     $qids = $DB->get_fieldset_sql($sql, [
         'categoryid' => $categoryid,
         'tagname' => strtolower($tagname)
     ]);
-    
+
     shuffle($qids);
     return array_slice($qids, 0, $limit);
 }
@@ -439,7 +439,7 @@ require(['core/ajax'], function(ajax) {
 ## Common Pitfalls & Solutions
 
 ### 1. "Function not found" Error
-**Solution**: 
+**Solution**:
 - Purge caches: **Site administration > Development > Purge all caches**
 - Verify function name in services.php matches exactly
 - Check namespace and class name are correct

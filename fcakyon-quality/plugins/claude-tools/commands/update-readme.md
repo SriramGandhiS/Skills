@@ -65,7 +65,7 @@ One-line description.
 
 | Skill                                                            | Description | ZIP                                                                                                                                                                |
 | ---------------------------------------------------------------- | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| [`skill-name`](./plugins/plugin-name/skills/skill-name/SKILL.md) | Description | [![ZIP](https://img.shields.io/badge/⬇%20ZIP-2ea44f?style=flat-square)](https://github.com/fcakyon/claude-codex-settings/releases/latest/download/skill-name.zip) |
+| [`skill-name`](./plugins/plugin-name/skills/skill-name/SKILL.md) | Description | [![ZIP](https://img.shields.io/badge/%20ZIP-2ea44f?style=flat-square)](https://github.com/fcakyon/claude-codex-settings/releases/latest/download/skill-name.zip) |
 ```
 
 6. Also update the Installation section if plugin names have changed.

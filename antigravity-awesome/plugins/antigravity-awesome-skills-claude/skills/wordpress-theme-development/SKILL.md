@@ -352,7 +352,7 @@ body {
     /* New DataViews colors */
     --wp-dataviews-color-background: #ffffff;
     --wp-dataviews-color-border: #e0e0e0;
-    
+
     /* Navigation overlay */
     --wp-overlay-menu-background: #1a1a1a;
     --wp-overlay-menu-text: #ffffff;

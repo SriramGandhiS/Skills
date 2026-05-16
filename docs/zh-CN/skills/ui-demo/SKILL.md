@@ -26,7 +26,7 @@ origin: ECC
 
 ### 原因
 
-你无法为未见过的内容编写脚本。字段可能是 `<input>` 而非 `<textarea>`，下拉菜单可能是自定义组件而非 `<select>`，评论框可能支持 `@mentions` 或 `#tags`。假设会无声地破坏录制。
+你无法为未见过的内容编写脚本。字段可能是 `<input>`而非`<textarea>`，下拉菜单可能是自定义组件而非`<select>`，评论框可能支持`@mentions`或`#tags`。假设会无声地破坏录制。
 
 ### 方法
 
@@ -57,11 +57,11 @@ console.log(JSON.stringify(fields, null, 2));
 ### 需要关注的内容
 
 * **表单字段**：它们是 `<select>`、`<input>`、自定义下拉菜单还是组合框？
-* **选择选项**：转储选项的值和文本。占位符通常包含 `value="0"` 或 `value=""`，看起来非空。使用 `Array.from(el.options).map(o => ({ value: o.value, text: o.text }))`。跳过文本包含"选择"或值为 `"0"` 的选项。
+* **选择选项**：转储选项的值和文本。占位符通常包含 `value="0"`或`value=""`，看起来非空。使用`Array.from(el.options).map(o => ({ value: o.value, text: o.text }))`。跳过文本包含"选择"或值为`"0"` 的选项。
 * **富文本**：评论框是否支持 `@mentions`、`#tags`、Markdown 或表情符号？检查占位符文本。
 * **必填字段**：哪些字段会阻止表单提交？检查标签中的 `required`、`*`，并尝试提交空表单以查看验证错误。
 * **动态内容**：字段是否在填写其他字段后出现？
-* **按钮标签**：确切的文本，如 `"Submit"`、`"Submit Request"` 或 `"Send"`。
+* **按钮标签**：确切的文本，如 `"Submit"`、`"Submit Request"`或`"Send"`。
 * **表格列标题**：对于表格驱动的模态框，将每个 `input[type="number"]` 映射到其列标题，而不是假设所有数字输入都表示相同含义。
 
 ### 输出
@@ -333,7 +333,7 @@ async function showSubtitle(page, text) {
 }
 ```
 
-每次导航后，将 `injectSubtitleBar(page)` 与 `injectCursor(page)` 一起调用。
+每次导航后，将 `injectSubtitleBar(page)`与`injectCursor(page)` 一起调用。
 
 使用模式：
 
@@ -426,10 +426,10 @@ const REHEARSAL = process.argv.includes('--rehearse');
 使用方式：
 
 ```bash
-# Phase 2: Rehearse
+## Phase 2: Rehearse
 node demo-script.cjs --rehearse
 
-# Phase 3: Record
+## Phase 3: Record
 node demo-script.cjs
 ```
 
@@ -461,5 +461,5 @@ node demo-script.cjs
 8. 选择器失败被吞没 - 切勿使用静默捕获块。
 9. 字段类型被假设 - 先探索它们。
 10. 功能被假设 - 在编写脚本前检查实际 UI。
-11. 占位符选择值看起来真实 - 注意 `"0"` 和 `"Select..."`。
+11. 占位符选择值看起来真实 - 注意 `"0"`和`"Select..."`。
 12. 弹出窗口创建单独的视频 - 显式捕获弹出页面，必要时稍后合并。

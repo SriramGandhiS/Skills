@@ -1,17 +1,15 @@
 #!/usr/bin/env bash
 # Test Mutation Detector - Quality Gate #9
 # Verifies that test assertions exercise real code paths
-#
-# Usage: ./tests/detect-test-mutations.sh [--strict] [--commit HASH]
-#   --strict: Exit with error code on any finding (for CI)
-#   --commit HASH: Check specific commit for assertion value mutations
-#
-# Detects:
+# # Usage: ./tests/detect-test-mutations.sh [--strict] [--commit HASH]
+# --strict: Exit with error code on any finding (for CI)
+# --commit HASH: Check specific commit for assertion value mutations
+# # Detects:
 # 1. Shell tests where functions are redefined to return canned output
 # 2. Test files where all assertions check constant values
 # 3. Test files with assertion-to-test ratio below threshold
 # 4. Assertion value mutations: commits that change assertion expected values
-#    alongside implementation changes (sign of fitting tests to code)
+# alongside implementation changes (sign of fitting tests to code)
 
 set -uo pipefail
 

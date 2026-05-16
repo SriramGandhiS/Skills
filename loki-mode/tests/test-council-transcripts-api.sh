@@ -1,17 +1,14 @@
 #!/usr/bin/env bash
 # test-council-transcripts-api.sh -- bash E2E tests for the Bun council transcript writer.
-#
-# Scope (Dev D): writer-side only. Verifies that councilEvaluate (via Bun test
+# # Scope (Dev D): writer-side only. Verifies that councilEvaluate (via Bun test
 # harness) produces valid JSON files at the canonical path. Does NOT test the
 # dashboard API server (that is Dev B's scope).
-#
-# Usage:
-#   bash tests/test-council-transcripts-api.sh
-#
-# Requirements:
-#   - bun available on PATH
-#   - python3 available on PATH
-#   - Working loki-ts directory with compiled sources
+# # Usage:
+# bash tests/test-council-transcripts-api.sh
+# # Requirements:
+# - bun available on PATH
+# - python3 available on PATH
+# - Working loki-ts directory with compiled sources
 
 set -euo pipefail
 

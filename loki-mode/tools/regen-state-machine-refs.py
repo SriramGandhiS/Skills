@@ -55,9 +55,9 @@ FILE_ALIASES = {
 # Pattern matches `<file>:<num>(-<num>)? (func_name)` where the parenthesised
 # function name is optional and may appear with surrounding text.
 # Examples it must catch:
-#   autonomy/run.sh:7380 (council_should_stop)
-#   `run.sh:7380` (council_should_stop)
-#   `completion-council.sh:1311` (council_should_stop), ...
+# autonomy/run.sh:7380 (council_should_stop)
+# `run.sh:7380` (council_should_stop)
+# `completion-council.sh:1311` (council_should_stop), ...
 REF_RE = re.compile(
     r"`?(?P<file>[\w./-]+\.(?:sh|py))"      # file
     r":(?P<line>\d+)"                        # start line

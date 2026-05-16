@@ -2,8 +2,7 @@
 # Test: Loki CLI Commands
 # Tests non-destructive CLI commands that are safe to run without an active session.
 # These verify exit codes and expected output patterns.
-#
-# Note: Not using -e to allow collecting all test results
+# # Note: Not using -e to allow collecting all test results
 
 set -uo pipefail
 

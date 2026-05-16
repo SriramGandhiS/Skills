@@ -45,7 +45,7 @@ Window 1: [Train──────][Test]
 Window 2:     [Train──────][Test]
 Window 3:         [Train──────][Test]
 Window 4:             [Train──────][Test]
-                                     ─────▶ Time
+                                     ───── Time
 ```
 
 ## Implementation Patterns

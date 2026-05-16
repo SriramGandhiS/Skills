@@ -29,13 +29,13 @@ Analyze your repository's git history to extract coding patterns and generate SK
 ### Step 1: Gather Git Data
 
 ```bash
-# Get recent commits with file changes
+## Get recent commits with file changes
 git log --oneline -n ${COMMITS:-200} --name-only --pretty=format:"%H|%s|%ad" --date=short
 
-# Get commit frequency by file
+## Get commit frequency by file
 git log --oneline -n 200 --name-only | grep -v "^$" | grep -v "^[a-f0-9]" | sort | uniq -c | sort -rn | head -20
 
-# Get commit message patterns
+## Get commit message patterns
 git log --oneline -n 200 | cut -d' ' -f2- | head -50
 ```
 
@@ -64,7 +64,7 @@ source: local-git-analysis
 analyzed_commits: {count}
 ---
 
-# {Repo Name} Patterns
+## {Repo Name} Patterns
 
 ## Commit Conventions
 {detected commit message patterns}
@@ -92,7 +92,7 @@ domain: git
 source: local-repo-analysis
 ---
 
-# Use Conventional Commits
+## Use Conventional Commits
 
 ## Action
 Prefix commits with: feat:, fix:, chore:, docs:, test:, refactor:
@@ -115,7 +115,7 @@ source: local-git-analysis
 analyzed_commits: 150
 ---
 
-# My App Patterns
+## My App Patterns
 
 ## Commit Conventions
 
@@ -150,7 +150,7 @@ src/
 
 ## Testing Patterns
 
-- Test files: `__tests__/` directories or `.test.ts` suffix
+- Test files: `__tests__/`directories or`.test.ts` suffix
 - Coverage target: 80%+
 - Framework: Vitest
 ```

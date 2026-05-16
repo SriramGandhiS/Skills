@@ -170,7 +170,7 @@ See the references directory for complete documentation with examples and best p
         Args:
             package_path: Path to skill tar.gz file
             api_key: Google API key
-            **kwargs: Additional arguments
+**kwargs: Additional arguments
 
         Returns:
             Dictionary with upload result
@@ -303,7 +303,7 @@ See the references directory for complete documentation with examples and best p
         try:
             import google.generativeai as genai
         except ImportError:
-            print("❌ Error: google-generativeai package not installed")
+            print("FAIL: Error: google-generativeai package not installed")
             print("Install with: pip install google-generativeai")
             return False
 
@@ -312,11 +312,11 @@ See the references directory for complete documentation with examples and best p
         skill_md_path = skill_dir / "SKILL.md"
 
         # Read reference files
-        print("📖 Reading reference documentation...")
+        print(" Reading reference documentation...")
         references = self._read_reference_files(references_dir)
 
         if not references:
-            print("❌ No reference files found to analyze")
+            print("FAIL: No reference files found to analyze")
             return False
 
         print(f"  ✓ Read {len(references)} reference files")
@@ -327,14 +327,14 @@ See the references directory for complete documentation with examples and best p
         current_skill_md = None
         if skill_md_path.exists():
             current_skill_md = skill_md_path.read_text(encoding="utf-8")
-            print(f"  ℹ Found existing SKILL.md ({len(current_skill_md)} chars)")
+            print(f"   Found existing SKILL.md ({len(current_skill_md)} chars)")
         else:
-            print("  ℹ No existing SKILL.md, will create new one")
+            print("   No existing SKILL.md, will create new one")
 
         # Build enhancement prompt
         prompt = self._build_enhancement_prompt(skill_dir.name, references, current_skill_md)
 
-        print("\n🤖 Asking Gemini to enhance SKILL.md...")
+        print("\n Asking Gemini to enhance SKILL.md...")
         print(f"   Input: {len(prompt):,} characters")
 
         try:
@@ -351,16 +351,16 @@ See the references directory for complete documentation with examples and best p
             if skill_md_path.exists():
                 backup_path = skill_md_path.with_suffix(".md.backup")
                 skill_md_path.rename(backup_path)
-                print(f"  💾 Backed up original to: {backup_path.name}")
+                print(f"   Backed up original to: {backup_path.name}")
 
             # Save enhanced version
             skill_md_path.write_text(enhanced_content, encoding="utf-8")
-            print("  ✅ Saved enhanced SKILL.md")
+            print("  PASS: Saved enhanced SKILL.md")
 
             return True
 
         except Exception as e:
-            print(f"❌ Error calling Gemini API: {e}")
+            print(f"FAIL: Error calling Gemini API: {e}")
             return False
 
     def _read_reference_files(
@@ -397,7 +397,7 @@ See the references directory for complete documentation with examples and best p
                 total_chars += len(content)
 
             except Exception as e:
-                print(f"  ⚠️  Could not read {ref_file.name}: {e}")
+                print(f"  WARNING:  Could not read {ref_file.name}: {e}")
 
         return references
 

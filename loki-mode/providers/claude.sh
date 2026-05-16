@@ -5,19 +5,17 @@
 # Provider Functions (for external use)
 # =====================================
 # These functions provide a clean interface for external scripts:
-#   provider_detect()           - Check if CLI is installed
-#   provider_version()          - Get CLI version
-#   provider_invoke()           - Invoke with prompt (autonomous mode)
-#   provider_invoke_with_tier() - Invoke with tier-specific model selection
-#   provider_get_tier_param()   - Map tier name to model name
-#
-# Usage:
-#   source providers/claude.sh
-#   if provider_detect; then
-#       provider_invoke "Your prompt here"
-#   fi
-#
-# Note: autonomy/run.sh uses inline invocation for streaming support
+# provider_detect()           - Check if CLI is installed
+# provider_version()          - Get CLI version
+# provider_invoke()           - Invoke with prompt (autonomous mode)
+# provider_invoke_with_tier() - Invoke with tier-specific model selection
+# provider_get_tier_param()   - Map tier name to model name
+# # Usage:
+# source providers/claude.sh
+# if provider_detect; then
+# provider_invoke "Your prompt here"
+# fi
+# # Note: autonomy/run.sh uses inline invocation for streaming support
 # and real-time agent tracking. These functions are intended for
 # simpler scripts, wrappers, and external integrations.
 # =====================================
@@ -48,9 +46,9 @@ PROVIDER_MAX_PARALLEL=10
 # The Claude Code CLI resolves aliases (opus/sonnet/haiku) to the latest available
 # model at invocation time, so we pass aliases rather than dated IDs. The canonical
 # mapping lives in providers/model_catalog.json (single source of truth):
-#   opus   -> latest Opus   (e.g. claude-opus-4-7 -- 1M context, adaptive thinking)
-#   sonnet -> latest Sonnet (e.g. claude-sonnet-4-6)
-#   haiku  -> latest Haiku  (e.g. claude-haiku-4-5)
+# opus   -> latest Opus   (e.g. claude-opus-4-7 -- 1M context, adaptive thinking)
+# sonnet -> latest Sonnet (e.g. claude-sonnet-4-6)
+# haiku  -> latest Haiku  (e.g. claude-haiku-4-5)
 # Override per tier with LOKI_CLAUDE_MODEL_PLANNING, _DEVELOPMENT, _FAST.
 CLAUDE_DEFAULT_PLANNING="opus"
 CLAUDE_DEFAULT_DEVELOPMENT="opus"  # Opus for dev (was sonnet)

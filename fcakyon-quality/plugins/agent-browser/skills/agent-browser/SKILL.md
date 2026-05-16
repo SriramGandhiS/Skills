@@ -305,8 +305,8 @@ Iframes are auto-inlined in the snapshot — their refs work transparently:
 ```bash
 agent-browser snapshot -i
 # @e3 [Iframe] "payment-frame"
-#   @e4 [input] "Card number"
-#   @e5 [button] "Pay"
+# @e4 [input] "Card number"
+# @e5 [button] "Pay"
 
 agent-browser fill @e4 "4111111111111111"
 agent-browser click @e5

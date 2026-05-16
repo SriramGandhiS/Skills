@@ -75,7 +75,7 @@ When using Bash tool:
 - Warn about destructive operations
 
 ```markdown
-⚠️ This operation will delete files. Confirm with the user first.
+WARNING: This operation will delete files. Confirm with the user first.
 ```
 
 #### 5. Data Privacy
@@ -109,7 +109,7 @@ When installing and using skills:
 
 ### Skills Can Execute Code
 
-⚠️ **Important**: Skills can execute arbitrary code on your system through allowed tools.
+WARNING: **Important**: Skills can execute arbitrary code on your system through allowed tools.
 
 **Tools with elevated risk:**
 - `Bash` - Can run any shell command

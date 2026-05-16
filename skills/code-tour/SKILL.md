@@ -1,4 +1,4 @@
-﻿---
+---
 name: code-tour
 description: Create CodeTour `.tour` files â€” persona-targeted, step-by-step walkthroughs with real file and line anchors. Use for onboarding tours, architecture walkthroughs, PR tours, RCA tours, and structured "explain how this works" requests.
 origin: ECC
@@ -6,7 +6,7 @@ origin: ECC
 
 # Code Tour
 
-Create **CodeTour** `.tour` files for codebase walkthroughs that open directly to real files and line ranges. Tours live in `.tours/` and are meant for the CodeTour format, not ad hoc Markdown notes.
+Create **CodeTour** `.tour`files for codebase walkthroughs that open directly to real files and line ranges. Tours live in`.tours/` and are meant for the CodeTour format, not ad hoc Markdown notes.
 
 A good tour is a narrative for a specific reader:
 - what they are looking at
@@ -35,7 +35,7 @@ Examples:
 | Instead of code-tour | Use |
 | --- | --- |
 | A one-off explanation in chat is enough | answer directly |
-| The user wants prose docs, not a `.tour` artifact | `documentation-lookup` or repo docs editing |
+| The user wants prose docs, not a `.tour`artifact |`documentation-lookup` or repo docs editing |
 | The task is implementation or refactoring | do the implementation work |
 | The task is broad codebase onboarding without a tour artifact | `codebase-onboarding` |
 

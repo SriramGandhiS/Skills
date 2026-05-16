@@ -46,7 +46,7 @@ jdbcTemplate.query("SELECT * FROM orders WHERE name = ?", mapper, name);
 ## 输入验证
 
 * 在处理前，于系统边界处验证所有用户输入
-* 使用验证框架时，在 DTO 上使用 Bean 验证（`@NotNull`, `@NotBlank`, `@Size`）
+* 使用验证框架时，在 DTO 上使用 Bean 验证（`@NotNull`,`@NotBlank`,`@Size`）
 * 在使用文件路径和用户提供的字符串前，对其进行清理
 * 对于验证失败的输入，应拒绝并提供清晰的错误信息
 
@@ -72,7 +72,7 @@ public Order createOrder(String customerName, BigDecimal amount) {
 
 ## 依赖项安全
 
-* 运行 `mvn dependency:tree` 或 `./gradlew dependencies` 来审计传递依赖项
+* 运行 `mvn dependency:tree`或`./gradlew dependencies` 来审计传递依赖项
 * 使用 OWASP Dependency-Check 或 Snyk 扫描已知的 CVE
 * 保持依赖项更新——设置 Dependabot 或 Renovate
 

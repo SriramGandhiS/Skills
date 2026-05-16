@@ -29,7 +29,7 @@ origin: ECC
 6. 创建一个交互式 HTML 预览页面（自包含，无依赖）
 ```
 
-输出：`DESIGN.md` + `design-tokens.json` + `design-preview.html`
+输出：`DESIGN.md`+`design-tokens.json`+`design-preview.html`
 
 ### 模式2：视觉审查
 
@@ -75,7 +75,7 @@ origin: ECC
 **审查现有界面：**
 
 ```
-/design-system audit --url http://localhost:3000 --pages / /pricing /docs
+/design-system audit --url <http://localhost:3000> --pages / /pricing /docs
 ```
 
 **检测AI生成内容：**

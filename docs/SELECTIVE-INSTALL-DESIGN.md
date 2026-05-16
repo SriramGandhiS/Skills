@@ -202,7 +202,7 @@ Recommended user-facing profiles:
 - `full`
   everything classified and currently supported
 
-Profiles should be composable with additional `--with` and `--without` flags.
+Profiles should be composable with additional `--with`and`--without` flags.
 
 Example:
 
@@ -323,7 +323,7 @@ Optional future support:
 ### Field Semantics
 
 - `target`
-  selected harness target such as `claude`, `cursor`, or `antigravity`
+  selected harness target such as `claude`,`cursor`, or`antigravity`
 - `profile`
   baseline profile to start from
 - `include`
@@ -434,7 +434,7 @@ the current substrate into a cleaner user-facing component model.
 ## Mapping To Current ECC Manifests
 
 The current manifests do not yet expose a true user-facing `lang:*` /
-`framework:*` / `capability:*` taxonomy. That should be introduced as a
+`framework:*`/`capability:*` taxonomy. That should be introduced as a
 presentation layer on top of the existing modules, not as a second installer
 engine.
 
@@ -460,7 +460,7 @@ That avoids breaking the current selective-install substrate while improving UX.
 
 - implement component aliases
 - implement config-file parsing
-- implement `include` / `exclude`
+- implement `include`/`exclude`
 - implement `catalog`
 
 ### Phase 3: Stronger Target Semantics
@@ -482,7 +482,7 @@ It should be:
 
 1. keep the current manifest/runtime substrate
 2. add a user-facing component catalog and config file
-3. add `include` / `exclude` selection and catalog discovery
+3. add `include`/`exclude` selection and catalog discovery
 4. let the existing planner and lifecycle stack consume that model
 
 That is the shortest path from the current ECC codebase to a real selective

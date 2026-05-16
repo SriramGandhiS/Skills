@@ -56,7 +56,7 @@ class AzureStorageAdaptor(BaseStorageAdaptor):
 
         Args:
             container: Azure container name (required)
-            **kwargs: Additional Azure configuration
+**kwargs: Additional Azure configuration
         """
         super().__init__(**kwargs)
 

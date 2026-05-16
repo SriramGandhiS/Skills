@@ -11,7 +11,7 @@ PR前、大きな変更後、デプロイ前に実行します。
 
 ```bash
 mvn -T 4 clean verify -DskipTests
-# または
+## または
 ./gradlew clean assemble -x test
 ```
 
@@ -34,7 +34,7 @@ Gradle（設定されている場合）:
 ```bash
 mvn -T 4 test
 mvn jacoco:report   # 80%以上のカバレッジを確認
-# または
+## または
 ./gradlew test jacocoTestReport
 ```
 
@@ -45,12 +45,12 @@ mvn jacoco:report   # 80%以上のカバレッジを確認
 ## フェーズ4: セキュリティスキャン
 
 ```bash
-# 依存関係のCVE
+## 依存関係のCVE
 mvn org.owasp:dependency-check-maven:check
-# または
+## または
 ./gradlew dependencyCheckAnalyze
 
-# シークレット（git）
+## シークレット（git）
 git secrets --scan  # 設定されている場合
 ```
 
@@ -69,7 +69,7 @@ git diff
 ```
 
 チェックリスト:
-- デバッグログが残っていない（`System.out`、ガードなしの `log.debug`）
+- デバッグログが残っていない（`System.out`、ガードなしの`log.debug`）
 - 意味のあるエラーとHTTPステータス
 - 必要な場所にトランザクションと検証がある
 - 設定変更が文書化されている

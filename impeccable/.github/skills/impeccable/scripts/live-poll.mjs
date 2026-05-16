@@ -178,7 +178,7 @@ Options:
     // JSON but skips nested fields. One line is enough — the full checklist
     // is in reference/live.md.
     if (event._acceptResult?.carbonize === true) {
-      process.stderr.write('\n⚠ Carbonize cleanup REQUIRED before next poll. After cleanup, run live-complete.mjs --id ' + event.id + '. See reference/live.md "Required after accept".\n\n');
+      process.stderr.write('\nWARNING: Carbonize cleanup REQUIRED before next poll. After cleanup, run live-complete.mjs --id ' + event.id + '. See reference/live.md "Required after accept".\n\n');
     }
 
     // Print the event as JSON — the agent reads this from stdout

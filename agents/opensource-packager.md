@@ -33,9 +33,9 @@ You generate complete open-source packaging for a sanitized project. Your goal: 
 ### Step 1: Project Analysis
 
 Read and understand:
-- `package.json` / `requirements.txt` / `Cargo.toml` / `go.mod` (stack detection)
+- `package.json`/`requirements.txt`/`Cargo.toml`/`go.mod` (stack detection)
 - `docker-compose.yml` (services, ports, dependencies)
-- `Makefile` / `Justfile` (existing commands)
+- `Makefile`/`Justfile` (existing commands)
 - Existing `README.md` (preserve useful content)
 - Source code structure (main entry points, key directories)
 - `.env.example` (required configuration)
@@ -46,7 +46,7 @@ Read and understand:
 This is the most important file. Keep it under 100 lines — concise is critical.
 
 ```markdown
-# {Project Name}
+## {Project Name}
 
 **Version:** {version} | **Port:** {port} | **Stack:** {detected stack}
 
@@ -64,17 +64,17 @@ This is the most important file. Keep it under 100 lines — concise is critical
 ## Commands
 
 \`\`\`bash
-# Development
+## Development
 {install command}        # Install dependencies
 {dev server command}     # Start dev server
 {lint command}           # Run linter
 {build command}          # Production build
 
-# Testing
+## Testing
 {test command}           # Run tests
 {coverage command}       # Run with coverage
 
-# Docker
+## Docker
 cp .env.example .env
 docker compose up -d --build
 \`\`\`
@@ -119,21 +119,21 @@ See [CONTRIBUTING.md](CONTRIBUTING.md).
 #!/usr/bin/env bash
 set -euo pipefail
 
-# {Project Name} — First-time setup
-# Usage: ./setup.sh
+## {Project Name} — First-time setup
+## Usage: ./setup.sh
 
 echo "=== {Project Name} Setup ==="
 
-# Check prerequisites
+## Check prerequisites
 command -v {package_manager} >/dev/null 2>&1 || { echo "Error: {package_manager} is required."; exit 1; }
 
-# Environment
+## Environment
 if [ ! -f .env ]; then
   cp .env.example .env
   echo "Created .env from .env.example — edit it with your values"
 fi
 
-# Dependencies
+## Dependencies
 echo "Installing dependencies..."
 {npm install | pip install -r requirements.txt | cargo build | go mod download}
 
@@ -143,7 +143,7 @@ echo ""
 echo "Next steps:"
 echo "  1. Edit .env with your configuration"
 echo "  2. Run: {dev command}"
-echo "  3. Open: http://localhost:{port}"
+echo "  3. Open: <http://localhost:{port}>"
 echo "  4. Using Claude Code? CLAUDE.md has all the context."
 ```
 
@@ -158,7 +158,7 @@ After writing, make it executable: `chmod +x setup.sh`
 ### Step 4: Generate or Enhance README.md
 
 ```markdown
-# {Project Name}
+## {Project Name}
 
 {Description — 1-2 sentences}
 
@@ -171,7 +171,7 @@ After writing, make it executable: `chmod +x setup.sh`
 ## Quick Start
 
 \`\`\`bash
-git clone https://github.com/{org}/{repo}.git
+git clone <https://github.com/{org}/{repo}.git>
 cd {repo}
 ./setup.sh
 \`\`\`
@@ -230,7 +230,7 @@ Include: development setup, branch/PR workflow, code style notes from project an
 
 ### Step 7: Add GitHub Issue Templates (if .github/ exists or GitHub repo specified)
 
-Create `.github/ISSUE_TEMPLATE/bug_report.md` and `.github/ISSUE_TEMPLATE/feature_request.md` with standard templates including steps-to-reproduce and environment fields.
+Create `.github/ISSUE_TEMPLATE/bug_report.md`and`.github/ISSUE_TEMPLATE/feature_request.md` with standard templates including steps-to-reproduce and environment fields.
 
 ## Output Format
 
@@ -244,7 +244,7 @@ On completion, report:
 
 ### Example: Package a FastAPI service
 Input: `Package: /home/user/opensource-staging/my-api, License: MIT, Description: "Async task queue API"`
-Action: Detects Python + FastAPI + PostgreSQL from `requirements.txt` and `docker-compose.yml`, generates `CLAUDE.md` (62 lines), `setup.sh` with pip + alembic migrate steps, enhances existing `README.md`, adds `MIT LICENSE`
+Action: Detects Python + FastAPI + PostgreSQL from `requirements.txt`and`docker-compose.yml`, generates`CLAUDE.md`(62 lines),`setup.sh`with pip + alembic migrate steps, enhances existing`README.md`, adds`MIT LICENSE`
 Output: 5 files generated, setup.sh executable, "Using with Claude Code" section added
 
 ## Rules

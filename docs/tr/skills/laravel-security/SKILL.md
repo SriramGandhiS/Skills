@@ -18,17 +18,17 @@ Laravel uygulamalarını yaygın güvenlik açıklarına karşı korumak için k
 
 ## Nasıl Çalışır
 
-- Middleware temel korumalar sağlar (CSRF için `VerifyCsrfToken`, güvenlik başlıkları için `SecurityHeaders`).
-- Guard'lar ve policy'ler erişim kontrolünü zorlar (`auth:sanctum`, `$this->authorize`, policy middleware).
+- Middleware temel korumalar sağlar (CSRF için `VerifyCsrfToken`, güvenlik başlıkları için`SecurityHeaders`).
+- Guard'lar ve policy'ler erişim kontrolünü zorlar (`auth:sanctum`,`$this->authorize`, policy middleware).
 - Form Request'ler servislere ulaşmadan önce girişi doğrular ve şekillendirir (`UploadInvoiceRequest`).
 - Rate limiting, auth kontrolleri ile birlikte kötüye kullanım koruması ekler (`RateLimiter::for('login')`).
-- Veri güvenliği encrypted cast'lerden, mass-assignment korumalarından ve signed route'lardan gelir (`URL::temporarySignedRoute` + `signed` middleware).
+- Veri güvenliği encrypted cast'lerden, mass-assignment korumalarından ve signed route'lardan gelir (`URL::temporarySignedRoute`+`signed` middleware).
 
 ## Temel Güvenlik Ayarları
 
 - Production'da `APP_DEBUG=false`
 - `APP_KEY` ayarlanmalı ve tehlikeye girdiğinde döndürülmelidir
-- `SESSION_SECURE_COOKIE=true` ve `SESSION_SAME_SITE=lax` ayarlayın (veya hassas uygulamalar için `strict`)
+- `SESSION_SECURE_COOKIE=true`ve`SESSION_SAME_SITE=lax`ayarlayın (veya hassas uygulamalar için`strict`)
 - Doğru HTTPS algılama için güvenilir proxy'leri yapılandırın
 
 ## Session ve Cookie Sertleştirme
@@ -96,7 +96,7 @@ Route::put('/projects/{project}', [ProjectController::class, 'update'])
 
 ## Mass Assignment Koruması
 
-- `$fillable` veya `$guarded` kullanın ve `Model::unguard()` kullanmaktan kaçının
+- `$fillable`veya`$guarded`kullanın ve`Model::unguard()` kullanmaktan kaçının
 - DTO'ları veya açık attribute mapping'i tercih edin
 
 ## SQL Injection Önleme

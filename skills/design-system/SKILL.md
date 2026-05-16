@@ -1,4 +1,4 @@
-﻿---
+---
 name: design-system
 description: Use this skill to generate or audit design systems, check visual consistency, and review PRs that touch styling.
 origin: ECC
@@ -29,7 +29,7 @@ Analyzes your codebase and generates a cohesive design system:
 6. Create an interactive HTML preview page (self-contained, no deps)
 ```
 
-Output: `DESIGN.md` + `design-tokens.json` + `design-preview.html`
+Output: `DESIGN.md`+`design-tokens.json`+`design-preview.html`
 
 ### Mode 2: Visual Audit
 
@@ -73,7 +73,7 @@ Identifies generic AI-generated design patterns:
 
 **Audit existing UI:**
 ```
-/design-system audit --url http://localhost:3000 --pages / /pricing /docs
+/design-system audit --url <http://localhost:3000> --pages / /pricing /docs
 ```
 
 **Check for AI slop:**

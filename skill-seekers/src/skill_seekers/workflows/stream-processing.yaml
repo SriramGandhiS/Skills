@@ -20,7 +20,7 @@ stages:
     enabled: true
     prompt: >
       Analyze the stream processing platform.
-      
+
       Identify:
       1. Stream platform (Kafka, Kinesis, Pulsar, etc.)
       2. Processing framework (Flink, Spark Streaming, Kafka Streams)
@@ -28,7 +28,7 @@ stages:
       4. Stream topology
       5. Partitioning strategy
       6. Schema registry integration
-      
+
       Output JSON with:
       - "stream_platform": message streaming
       - "processing": processing engine
@@ -44,7 +44,7 @@ stages:
     enabled: true
     prompt: >
       Document stream processing patterns.
-      
+
       Cover:
       1. Stateless vs stateful processing
       2. Windowing (tumbling, sliding, session)
@@ -52,7 +52,7 @@ stages:
       4. Aggregations and grouping
       5. Filter and transformation
       6. Enrichment patterns
-      
+
       Output JSON with:
       - "state_management": state handling
       - "windowing": window types
@@ -68,7 +68,7 @@ stages:
     enabled: true
     prompt: >
       Document stream processing fault tolerance.
-      
+
       Include:
       1. Exactly-once processing semantics
       2. Checkpointing and savepoints
@@ -76,7 +76,7 @@ stages:
       4. Failure recovery procedures
       5. Replay capabilities
       6. Backpressure handling
-      
+
       Output JSON with:
       - "semantics": processing guarantees
       - "checkpointing": state snapshots
@@ -92,7 +92,7 @@ stages:
     enabled: true
     prompt: >
       Document stream processing observability.
-      
+
       Cover:
       1. Lag monitoring
       2. Throughput metrics
@@ -100,7 +100,7 @@ stages:
       4. Consumer group monitoring
       5. Watermark tracking
       6. Alerting on anomalies
-      
+
       Output JSON with:
       - "lag": consumer lag
       - "throughput": message rate
@@ -116,7 +116,7 @@ stages:
     enabled: true
     prompt: >
       Document stream processing use cases.
-      
+
       Include:
       1. Real-time analytics
       2. Event sourcing
@@ -124,7 +124,7 @@ stages:
       4. Recommendation engines
       5. Fraud detection
       6. IoT data processing
-      
+
       Output JSON with:
       - "analytics": real-time analysis
       - "event_sourcing": event streams

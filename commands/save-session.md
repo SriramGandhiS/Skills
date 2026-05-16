@@ -34,14 +34,14 @@ mkdir -p ~/.claude/session-data
 
 ### Step 3: Write the session file
 
-Create `~/.claude/session-data/YYYY-MM-DD-<short-id>-session.tmp`, using today's actual date and a short-id that satisfies the rules enforced by `SESSION_FILENAME_REGEX` in `session-manager.js`:
+Create `~/.claude/session-data/YYYY-MM-DD-<short-id>-session.tmp`, using today's actual date and a short-id that satisfies the rules enforced by`SESSION_FILENAME_REGEX`in`session-manager.js`:
 
-- Compatibility characters: letters `a-z` / `A-Z`, digits `0-9`, hyphens `-`, underscores `_`
+- Compatibility characters: letters `a-z`/`A-Z`, digits`0-9`, hyphens`-`, underscores`_`
 - Compatibility minimum length: 1 character
 - Recommended style for new files: lowercase letters, digits, and hyphens with 8+ characters to avoid collisions
 
-Valid examples: `abc123de`, `a1b2c3d4`, `frontend-worktree-1`, `ChezMoi_2`
-Avoid for new files: `A`, `test_id1`, `ABC123de`
+Valid examples: `abc123de`,`a1b2c3d4`,`frontend-worktree-1`,`ChezMoi_2`
+Avoid for new files: `A`,`test_id1`,`ABC123de`
 
 Full valid filename example: `2024-01-15-abc123de-session.tmp`
 
@@ -68,7 +68,7 @@ Wait for confirmation. Make edits if requested.
 ## Session File Format
 
 ```markdown
-# Session: YYYY-MM-DD
+## Session: YYYY-MM-DD
 
 **Started:** [approximate time if known]
 **Last Updated:** [current time]
@@ -184,7 +184,7 @@ required, services that need to be running, etc. Skip if standard setup.]
 ## Example Output
 
 ```markdown
-# Session: 2024-01-15
+## Session: 2024-01-15
 
 **Started:** ~2pm
 **Last Updated:** 5:30pm
@@ -226,7 +226,7 @@ refreshes without exposing the token to JavaScript.
 ## What Has NOT Been Tried Yet
 
 - Store JWT as httpOnly cookie in the login route response (most likely solution)
-- Use `cookies()` from `next/headers` to read token in server components
+- Use `cookies()`from`next/headers` to read token in server components
 - Write middleware.ts to protect routes by checking cookie existence
 
 ---

@@ -40,8 +40,8 @@ If no argument provided:
 
 If an argument is provided:
 
-- If it looks like a date (`YYYY-MM-DD`), search `~/.claude/session-data/` first, then the legacy
-  `~/.claude/sessions/`, for files matching `YYYY-MM-DD-session.tmp` (legacy format) or
+- If it looks like a date (`YYYY-MM-DD`), search`~/.claude/session-data/` first, then the legacy
+  `~/.claude/sessions/`, for files matching`YYYY-MM-DD-session.tmp` (legacy format) or
   `YYYY-MM-DD-<shortid>-session.tmp` (current format)
   and load the most recently modified variant for that date
 - If it looks like a file path, read that file directly
@@ -95,7 +95,7 @@ If no next step is defined — ask the user where to start, and optionally sugge
 
 ## Edge Cases
 
-**Multiple sessions for the same date** (`2024-01-15-session.tmp`, `2024-01-15-abc123de-session.tmp`):
+**Multiple sessions for the same date** (`2024-01-15-session.tmp`,`2024-01-15-abc123de-session.tmp`):
 Load the most recently modified matching file for that date, regardless of whether it uses the legacy no-id format or the current short-id format.
 
 **Session file references files that no longer exist:**

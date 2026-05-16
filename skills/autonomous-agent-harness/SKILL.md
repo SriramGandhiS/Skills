@@ -1,4 +1,4 @@
-﻿---
+---
 name: autonomous-agent-harness
 description: Transform Claude Code into a fully autonomous agent system with persistent memory, scheduled operations, computer use, and task queuing. Replaces standalone agent frameworks (Hermes, AutoGPT) by leveraging Claude Code's native crons, dispatch, MCP tools, and memory. Use when the user wants continuous autonomous operation, scheduled tasks, or a self-directing agent loop.
 origin: ECC
@@ -70,13 +70,13 @@ Use Claude Code's built-in memory system enhanced with MCP memory server for str
 **Memory patterns:**
 
 ```
-# Short-term: current session context
+## Short-term: current session context
 Use TodoWrite for in-session task tracking
 
-# Medium-term: project memory files
+## Medium-term: project memory files
 Write to ~/.claude/projects/*/memory/ for cross-session recall
 
-# Long-term: MCP knowledge graph
+## Long-term: MCP knowledge graph
 Use mcp__memory__create_entities for permanent structured data
 Use mcp__memory__create_relations for relationship mapping
 Use mcp__memory__add_observations for new facts about known entities
@@ -89,7 +89,7 @@ Use Claude Code's scheduled tasks to create recurring agent operations.
 **Setting up a cron:**
 
 ```
-# Via MCP tool
+## Via MCP tool
 mcp__scheduled-tasks__create_scheduled_task({
   name: "daily-pr-review",
   schedule: "0 9 * * 1-5",  # 9 AM weekdays
@@ -97,7 +97,7 @@ mcp__scheduled-tasks__create_scheduled_task({
   project_dir: "/path/to/repo"
 })
 
-# Via claude -p (programmatic mode)
+## Via claude -p (programmatic mode)
 echo "Review open PRs and summarize" | claude -p --project /path/to/repo
 ```
 
@@ -118,15 +118,15 @@ Trigger Claude Code agents remotely for event-driven workflows.
 **Dispatch patterns:**
 
 ```bash
-# Trigger from CI/CD
+## Trigger from CI/CD
 curl -X POST "https://api.anthropic.com/dispatch" \
   -H "Authorization: Bearer $ANTHROPIC_API_KEY" \
   -d '{"prompt": "Build failed on main. Diagnose and fix.", "project": "/repo"}'
 
-# Trigger from webhook
-# GitHub webhook â†’ dispatch â†’ Claude agent â†’ fix â†’ PR
+## Trigger from webhook
+## GitHub webhook â†’ dispatch â†’ Claude agent â†’ fix â†’ PR
 
-# Trigger from another agent
+## Trigger from another agent
 claude -p "Analyze the output of the security scan and create issues for findings"
 ```
 
@@ -152,10 +152,10 @@ Manage a persistent queue of tasks that survive session boundaries.
 **Implementation:**
 
 ```
-# Task persistence via memory
+## Task persistence via memory
 Write task queue to ~/.claude/projects/*/memory/task-queue.md
 
-# Task format
+## Task format
 ---
 name: task-queue
 type: project
@@ -211,17 +211,17 @@ Ensure these are in `~/.claude.json`:
 ### Step 2: Create Base Crons
 
 ```bash
-# Daily morning briefing
+## Daily morning briefing
 claude -p "Create a scheduled task: every weekday at 9am, review my GitHub notifications, open PRs, and calendar. Write a morning briefing to memory."
 
-# Continuous learning
+## Continuous learning
 claude -p "Create a scheduled task: every Sunday at 8pm, extract patterns from this week's sessions and update the learned skills."
 ```
 
 ### Step 3: Initialize Memory Graph
 
 ```bash
-# Bootstrap your identity and context
+## Bootstrap your identity and context
 claude -p "Create memory entities for: me (user profile), my projects, my key contacts. Add observations about current priorities."
 ```
 

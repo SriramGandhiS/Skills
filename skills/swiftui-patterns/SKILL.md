@@ -1,4 +1,4 @@
-﻿---
+---
 name: swiftui-patterns
 description: SwiftUI architecture patterns, state management with @Observable, view composition, navigation, performance optimization, and modern iOS/macOS UI best practices.
 ---
@@ -9,7 +9,7 @@ Modern SwiftUI patterns for building declarative, performant user interfaces on 
 
 ## When to Activate
 
-- Building SwiftUI views and managing state (`@State`, `@Observable`, `@Binding`)
+- Building SwiftUI views and managing state (`@State`,`@Observable`,`@Binding`)
 - Designing navigation flows with `NavigationStack`
 - Structuring view models and data flow
 - Optimizing rendering performance for lists and complex layouts
@@ -24,15 +24,15 @@ Choose the simplest wrapper that fits:
 | Wrapper | Use Case |
 |---------|----------|
 | `@State` | View-local value types (toggles, form fields, sheet presentation) |
-| `@Binding` | Two-way reference to parent's `@State` |
-| `@Observable` class + `@State` | Owned model with multiple properties |
+| `@Binding`| Two-way reference to parent's`@State` |
+| `@Observable`class +`@State` | Owned model with multiple properties |
 | `@Observable` class (no wrapper) | Read-only reference passed from parent |
-| `@Bindable` | Two-way binding to an `@Observable` property |
-| `@Environment` | Shared dependencies injected via `.environment()` |
+| `@Bindable`| Two-way binding to an`@Observable` property |
+| `@Environment`| Shared dependencies injected via`.environment()` |
 
 ### @Observable ViewModel
 
-Use `@Observable` (not `ObservableObject`) â€” it tracks property-level changes so SwiftUI only re-renders views that read the changed property:
+Use `@Observable`(not`ObservableObject`) â€” it tracks property-level changes so SwiftUI only re-renders views that read the changed property:
 
 ```swift
 @Observable
@@ -78,7 +78,7 @@ struct ItemListView: View {
 
 ### Environment Injection
 
-Replace `@EnvironmentObject` with `@Environment`:
+Replace `@EnvironmentObject`with`@Environment`:
 
 ```swift
 // Inject
@@ -138,7 +138,7 @@ extension View {
 
 ### Type-Safe NavigationStack
 
-Use `NavigationStack` with `NavigationPath` for programmatic, type-safe routing:
+Use `NavigationStack`with`NavigationPath` for programmatic, type-safe routing:
 
 ```swift
 @Observable
@@ -183,7 +183,7 @@ struct RootView: View {
 
 ### Use Lazy Containers for Large Collections
 
-`LazyVStack` and `LazyHStack` create views only when visible:
+`LazyVStack`and`LazyHStack` create views only when visible:
 
 ```swift
 ScrollView {
@@ -210,8 +210,8 @@ ForEach(items, id: \.stableID) { item in
 
 - Never perform I/O, network calls, or heavy computation inside `body`
 - Use `.task {}` for async work â€” it cancels automatically when the view disappears
-- Use `.sensoryFeedback()` and `.geometryGroup()` sparingly in scroll views
-- Minimize `.shadow()`, `.blur()`, and `.mask()` in lists â€” they trigger offscreen rendering
+- Use `.sensoryFeedback()`and`.geometryGroup()` sparingly in scroll views
+- Minimize `.shadow()`,`.blur()`, and`.mask()` in lists â€” they trigger offscreen rendering
 
 ### Equatable Conformance
 
@@ -247,10 +247,10 @@ Use `#Preview` macro with inline mock data for fast iteration:
 
 ## Anti-Patterns to Avoid
 
-- Using `ObservableObject` / `@Published` / `@StateObject` / `@EnvironmentObject` in new code â€” migrate to `@Observable`
-- Putting async work directly in `body` or `init` â€” use `.task {}` or explicit load methods
+- Using `ObservableObject`/`@Published`/`@StateObject`/`@EnvironmentObject`in new code â€” migrate to`@Observable`
+- Putting async work directly in `body`or`init`â€” use`.task {}` or explicit load methods
 - Creating view models as `@State` inside child views that don't own the data â€” pass from parent instead
-- Using `AnyView` type erasure â€” prefer `@ViewBuilder` or `Group` for conditional views
+- Using `AnyView`type erasure â€” prefer`@ViewBuilder`or`Group` for conditional views
 - Ignoring `Sendable` requirements when passing data to/from actors
 
 ## References

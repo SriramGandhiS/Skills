@@ -4080,7 +4080,7 @@
     {
       "id": "azure-communication-callingserver-java",
       "name": "azure-communication-callingserver-java",
-      "description": "⚠️ DEPRECATED: This SDK has been renamed to Call Automation. For new projects, use azure-communication-callautomation instead. This skill is for maintaining legacy code only.",
+      "description": "WARNING: DEPRECATED: This SDK has been renamed to Call Automation. For new projects, use azure-communication-callautomation instead. This skill is for maintaining legacy code only.",
       "category": "development",
       "tags": [
         "azure",
@@ -21133,7 +21133,7 @@
     {
       "id": "metasploit-framework",
       "name": "metasploit-framework",
-      "description": "⚠️ AUTHORIZED USE ONLY > This skill is for educational purposes or authorized security assessments only. > You must have explicit, written permission from the system owner before using this tool. > Misuse of this tool is illegal and strictly prohibited.",
+      "description": "WARNING: AUTHORIZED USE ONLY > This skill is for educational purposes or authorized security assessments only. > You must have explicit, written permission from the system owner before using this tool. > Misuse of this tool is illegal and strictly prohibited.",
       "category": "security",
       "tags": [
         "metasploit",

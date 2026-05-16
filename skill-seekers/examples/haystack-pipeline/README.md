@@ -4,10 +4,10 @@ Complete example showing how to use Skill Seekers with Haystack 2.x for building
 
 ## What This Example Does
 
-- ✅ Converts documentation into Haystack Documents
-- ✅ Creates an in-memory document store
-- ✅ Builds a BM25 retriever for semantic search
-- ✅ Shows complete RAG pipeline workflow
+- PASS: Converts documentation into Haystack Documents
+- PASS: Creates an in-memory document store
+- PASS: Builds a BM25 retriever for semantic search
+- PASS: Shows complete RAG pipeline workflow
 
 ## Prerequisites
 
@@ -57,7 +57,7 @@ documents = [
     for doc in docs_data
 ]
 
-print(f"📚 Loaded {len(documents)} documents")
+print(f" Loaded {len(documents)} documents")
 ```
 
 ### Step 2: Create Document Store
@@ -69,7 +69,7 @@ from haystack.document_stores.in_memory import InMemoryDocumentStore
 document_store = InMemoryDocumentStore()
 document_store.write_documents(documents)
 
-print(f"💾 Indexed {document_store.count_documents()} documents")
+print(f" Indexed {document_store.count_documents()} documents")
 ```
 
 ### Step 3: Build Retriever
@@ -88,7 +88,7 @@ results = retriever.run(
 
 # Display results
 for doc in results["documents"]:
-    print(f"\n📖 Source: {doc.meta.get('file', 'unknown')}")
+    print(f"\n Source: {doc.meta.get('file', 'unknown')}")
     print(f"   Category: {doc.meta.get('category', 'unknown')}")
     print(f"   Preview: {doc.content[:200]}...")
 ```
@@ -96,12 +96,12 @@ for doc in results["documents"]:
 ## Expected Output
 
 ```
-📚 Loaded 15 documents
-💾 Indexed 15 documents
+ Loaded 15 documents
+ Indexed 15 documents
 
-🔍 Query: How do I use useState hook?
+ Query: How do I use useState hook?
 
-📖 Source: hooks.md
+ Source: hooks.md
    Category: hooks
    Preview: # React Hooks
 
@@ -111,13 +111,13 @@ React Hooks are functions that let you "hook into" React state and lifecycle fea
 
 The useState Hook lets you add React state to function components...
 
-📖 Source: getting_started.md
+ Source: getting_started.md
    Category: getting started
    Preview: # Getting Started with React
 
 React is a JavaScript library for building user interfaces...
 
-📖 Source: best_practices.md
+ Source: best_practices.md
    Category: best practices
    Preview: # React Best Practices
 

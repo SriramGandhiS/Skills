@@ -2,8 +2,7 @@
 # gsd-hook-version: {{GSD_VERSION}}
 # gsd-session-state.sh — SessionStart hook: inject project state reminder
 # Outputs STATE.md head on every session start for orientation.
-#
-# OPT-IN: This hook is a no-op unless config.json has hooks.community: true.
+# # OPT-IN: This hook is a no-op unless config.json has hooks.community: true.
 # Enable with: "hooks": { "community": true } in .planning/config.json
 
 # Check opt-in config — exit silently if not enabled

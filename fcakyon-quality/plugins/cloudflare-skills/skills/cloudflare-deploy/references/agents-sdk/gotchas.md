@@ -4,16 +4,16 @@
 
 ### "setState() not syncing"
 
-**Cause:** Mutating state directly or not calling `setState()` after modifications  
+**Cause:** Mutating state directly or not calling `setState()` after modifications
 **Solution:** Always use `setState()` with immutable updates:
 ```ts
-// ❌ this.state.count++
-// ✅ this.setState({...this.state, count: this.state.count + 1})
+// FAIL: this.state.count++
+// PASS: this.setState({...this.state, count: this.state.count + 1})
 ```
 
 ### "Message history grows unbounded (AIChatAgent)"
 
-**Cause:** `this.messages` in `AIChatAgent` accumulates all messages indefinitely  
+**Cause:** `this.messages` in `AIChatAgent` accumulates all messages indefinitely
 **Solution:** Manually trim old messages periodically:
 ```ts
 export class ChatAgent extends AIChatAgent<Env> {
@@ -22,7 +22,7 @@ export class ChatAgent extends AIChatAgent<Env> {
     if (this.messages.length > 50) {
       this.messages = this.messages.slice(-50);
     }
-    
+
     return this.streamText({ model: openai("gpt-4"), messages: this.messages, onFinish });
   }
 }
@@ -33,8 +33,8 @@ export class ChatAgent extends AIChatAgent<Env> {
 **Cause:** Direct string interpolation in SQL queries
 **Solution:** Use parameterized queries:
 ```ts
-// ❌ this.sql`...WHERE id = '${userId}'`
-// ✅ this.sql`...WHERE id = ${userId}`
+// FAIL: this.sql`...WHERE id = '${userId}'`
+// PASS: this.sql`...WHERE id = ${userId}`
 ```
 
 ### "WebSocket connection timeout"
@@ -55,34 +55,34 @@ async checkSchedules() { if ((await this.getSchedules()).length > 800) console.w
 
 ### "AI Gateway unavailable"
 
-**Cause:** AI service timeout or quota exceeded  
+**Cause:** AI service timeout or quota exceeded
 **Solution:** Add error handling and fallbacks:
 ```ts
-try { 
-  return await this.env.AI.run(model, {prompt}); 
-} catch (e) { 
+try {
+  return await this.env.AI.run(model, {prompt});
+} catch (e) {
   console.error("AI error:", e);
-  return {error: "Unavailable"}; 
+  return {error: "Unavailable"};
 }
 ```
 
 ### "@callable method returns undefined"
 
-**Cause:** Method doesn't return JSON-serializable value, or has non-serializable types  
+**Cause:** Method doesn't return JSON-serializable value, or has non-serializable types
 **Solution:** Ensure return values are plain objects/arrays/primitives:
 ```ts
-// ❌ Returns class instance
+// FAIL: Returns class instance
 @callable()
 async getData() { return new Date(); }
 
-// ✅ Returns serializable object
+// PASS: Returns serializable object
 @callable()
 async getData() { return { timestamp: Date.now() }; }
 ```
 
 ### "Resumable stream not resuming"
 
-**Cause:** Stream ID must be deterministic for resumption to work  
+**Cause:** Stream ID must be deterministic for resumption to work
 **Solution:** Use AIChatAgent (automatic) or ensure consistent stream IDs:
 ```ts
 // AIChatAgent handles this automatically
@@ -93,7 +93,7 @@ export class ChatAgent extends AIChatAgent<Env> {
 
 ### "MCP connection loss on hibernation"
 
-**Cause:** MCP server connections don't survive hibernation  
+**Cause:** MCP server connections don't survive hibernation
 **Solution:** Re-register servers in `onStart()` or check connection status:
 ```ts
 onStart() {
@@ -104,7 +104,7 @@ onStart() {
 
 ### "Agent not found"
 
-**Cause:** Durable Object binding missing or incorrect class name  
+**Cause:** Durable Object binding missing or incorrect class name
 **Solution:** Verify DO binding in wrangler.jsonc and class name matches
 
 ## Rate Limits & Quotas

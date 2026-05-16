@@ -13,7 +13,7 @@
 
 Closes #
 
-> ⛔ **No `approved-feature` label on the issue = immediate close.**
+> **No `approved-feature` label on the issue = immediate close.**
 > Do not open this PR if a maintainer has not yet approved the feature spec.
 > Do not open this PR if you wrote code before the issue was approved.
 

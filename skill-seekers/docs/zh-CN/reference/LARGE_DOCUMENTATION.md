@@ -30,16 +30,16 @@ Complete guide for scraping and managing large documentation sites with Skill Se
 ### Why Split Large Documentation?
 
 **Benefits:**
-- ✅ Faster scraping (parallel execution)
-- ✅ More focused skills (better Claude performance)
-- ✅ Easier maintenance (update one topic at a time)
-- ✅ Better user experience (precise answers)
-- ✅ Avoids context window limits
+- PASS: Faster scraping (parallel execution)
+- PASS: More focused skills (better Claude performance)
+- PASS: Easier maintenance (update one topic at a time)
+- PASS: Better user experience (precise answers)
+- PASS: Avoids context window limits
 
 **Trade-offs:**
-- ⚠️ Multiple skills to manage
-- ⚠️ Initial setup more complex
-- ⚠️ Router adds one extra skill
+- WARNING: Multiple skills to manage
+- WARNING: Initial setup more complex
+- WARNING: Router adds one extra skill
 
 ---
 
@@ -78,7 +78,7 @@ python3 cli/split_config.py configs/godot.json --strategy category
 
 ---
 
-### 3. **Router + Categories** (Intelligent Hub) ⭐ RECOMMENDED
+### 3. **Router + Categories** (Intelligent Hub)  RECOMMENDED
 **Best for:** 10K+ pages, best user experience
 
 ```bash
@@ -129,7 +129,7 @@ python3 cli/doc_scraper.py --interactive
 
 # 2. Estimate pages (discovers it's large)
 python3 cli/estimate_pages.py configs/godot.json
-# Output: ⚠️  40,000 pages detected - splitting recommended
+# Output: WARNING:  40,000 pages detected - splitting recommended
 
 # 3. Auto-split with router
 python3 cli/split_config.py configs/godot.json --strategy router
@@ -292,7 +292,7 @@ for config in configs/godot-*.json; do
   python3 cli/doc_scraper.py --config $config
 done
 
-# Parallel (fast - 8 hours) ⭐
+# Parallel (fast - 8 hours)
 for config in configs/godot-*.json; do
   python3 cli/doc_scraper.py --config $config &
 done
@@ -414,12 +414,12 @@ wait
 
 **For 40K+ Page Documentation:**
 
-1. ✅ **Estimate first**: `python3 cli/estimate_pages.py config.json`
-2. ✅ **Split with router**: `python3 cli/split_config.py config.json --strategy router`
-3. ✅ **Scrape in parallel**: Multiple terminals or background jobs
-4. ✅ **Generate router**: `python3 cli/generate_router.py configs/*-*.json`
-5. ✅ **Package all**: `python3 cli/package_multi.py output/*/`
-6. ✅ **Upload to Claude**: All .zip files
+1. PASS: **Estimate first**: `python3 cli/estimate_pages.py config.json`
+2. PASS: **Split with router**: `python3 cli/split_config.py config.json --strategy router`
+3. PASS: **Scrape in parallel**: Multiple terminals or background jobs
+4. PASS: **Generate router**: `python3 cli/generate_router.py configs/*-*.json`
+5. PASS: **Package all**: `python3 cli/package_multi.py output/*/`
+6. PASS: **Upload to Claude**: All .zip files
 
 **Result:** Intelligent, fast, focused skills that work seamlessly together!
 

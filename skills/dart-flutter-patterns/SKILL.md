@@ -1,4 +1,4 @@
-﻿---
+---
 name: dart-flutter-patterns
 description: Production-ready Dart and Flutter patterns covering null safety, immutable state, async composition, widget architecture, popular state management frameworks (BLoC, Riverpod, Provider), GoRouter navigation, Dio networking, Freezed code generation, and clean architecture.
 origin: ECC
@@ -19,9 +19,9 @@ Use this skill when:
 ## How It Works
 
 This skill provides copy-paste-ready Dart/Flutter code patterns organized by concern:
-1. **Null safety** â€” avoid `!`, prefer `?.`/`??`/pattern matching
-2. **Immutable state** â€” sealed classes, `freezed`, `copyWith`
-3. **Async composition** â€” concurrent `Future.wait`, safe `BuildContext` after `await`
+1. **Null safety** â€” avoid `!`, prefer`?.`/`??`/pattern matching
+2. **Immutable state** â€” sealed classes, `freezed`,`copyWith`
+3. **Async composition** â€” concurrent `Future.wait`, safe`BuildContext`after`await`
 4. **Widget architecture** â€” extract to classes (not methods), `const` propagation, scoped rebuilds
 5. **State management** â€” BLoC/Cubit events, Riverpod notifiers and derived providers
 6. **Navigation** â€” GoRouter with reactive auth guards via `refreshListenable`

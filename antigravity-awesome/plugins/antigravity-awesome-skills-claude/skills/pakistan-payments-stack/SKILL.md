@@ -65,7 +65,7 @@ flowchart LR
   bank --> hook
   raast --> hook
   hook --> db[BillingDB]
-  db --> recon[ReconciliationJob] ``` 
+  db --> recon[ReconciliationJob] ```
 
 Data Model Requirements
 Use smallest currency unit (Rupee) as integer.

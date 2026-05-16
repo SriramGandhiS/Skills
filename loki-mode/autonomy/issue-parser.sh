@@ -2,19 +2,16 @@
 #===============================================================================
 # Loki Mode - GitHub Issue Parser (v5.14.0)
 # Parses GitHub issues and extracts structured data for PRD generation
-#
-# Usage:
-#   ./autonomy/issue-parser.sh <issue-ref>
-#   ./autonomy/issue-parser.sh https://github.com/owner/repo/issues/123
-#   ./autonomy/issue-parser.sh owner/repo#123
-#   ./autonomy/issue-parser.sh 123                # Uses current repo
-#
-# Output:
-#   Structured YAML format suitable for PRD generation
-#
-# Integration:
-#   loki parse-issue <ref>    # CLI integration
-#   source issue-parser.sh && parse_github_issue "ref"  # Script integration
+# # Usage:
+# ./autonomy/issue-parser.sh <issue-ref>
+# ./autonomy/issue-parser.sh https://github.com/owner/repo/issues/123
+# ./autonomy/issue-parser.sh owner/repo#123
+# ./autonomy/issue-parser.sh 123                # Uses current repo
+# # Output:
+# Structured YAML format suitable for PRD generation
+# # Integration:
+# loki parse-issue <ref>    # CLI integration
+# source issue-parser.sh && parse_github_issue "ref"  # Script integration
 #===============================================================================
 
 set -euo pipefail
@@ -82,10 +79,10 @@ get_current_repo() {
 
 # Parse issue reference to extract owner, repo, and issue number
 # Supports:
-#   - https://github.com/owner/repo/issues/123
-#   - owner/repo#123
-#   - #123 (uses current repo)
-#   - 123 (uses current repo)
+# - https://github.com/owner/repo/issues/123
+# - owner/repo#123
+# - #123 (uses current repo)
+# - 123 (uses current repo)
 parse_issue_ref() {
     local ref="$1"
     local owner="" repo="" number=""

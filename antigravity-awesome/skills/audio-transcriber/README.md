@@ -2,32 +2,32 @@
 
 Transform audio recordings into professional Markdown documentation with **intelligent atas/summaries using LLM integration** (Claude/Copilot CLI) and automatic prompt engineering.
 
-## 🆕 What's New in v1.1.0
+## What's New in v1.1.0
 
-- **🧠 LLM Integration** - Claude CLI (primary) or GitHub Copilot CLI (fallback) for intelligent processing
-- **✨ Smart Prompts** - Automatic integration with prompt-engineer skill
+- ** LLM Integration** - Claude CLI (primary) or GitHub Copilot CLI (fallback) for intelligent processing
+- ** Smart Prompts** - Automatic integration with prompt-engineer skill
   - User-provided prompts → automatically improved → user chooses version
   - No prompt → analyzes transcript → suggests format → generates structured prompt
-- **📊 Progress Indicators** - Visual progress bars (tqdm) and spinners (rich)
-- **📁 Timestamp Filenames** - `transcript-YYYYMMDD-HHMMSS.md` + `ata-YYYYMMDD-HHMMSS.md`
-- **🧹 Auto-Cleanup** - Removes temporary `metadata.json` and `transcription.json`
-- **🎨 Rich Terminal UI** - Beautiful formatted output with panels and colors
+- ** Progress Indicators** - Visual progress bars (tqdm) and spinners (rich)
+- ** Timestamp Filenames** - `transcript-YYYYMMDD-HHMMSS.md` + `ata-YYYYMMDD-HHMMSS.md`
+- ** Auto-Cleanup** - Removes temporary `metadata.json` and `transcription.json`
+- ** Rich Terminal UI** - Beautiful formatted output with panels and colors
 
 See **[CHANGELOG.md](./CHANGELOG.md)** for complete v1.1.0 details.
 
-## 🎯 Core Features
+## Core Features
 
-- **📝 Rich Markdown Output** - Structured reports with metadata tables, timestamps, and formatting
-- **🎙️ Speaker Diarization** - Automatically identifies and labels different speakers
-- **📊 Technical Metadata** - Extracts file size, duration, language, processing time
-- **📋 Intelligent Atas/Summaries** - Generated via LLM (Claude/Copilot) with customizable prompts
-- **💡 Executive Summaries** - AI-generated structured summaries with topics, decisions, action items
-- **🌍 Multi-language** - Supports 99 languages with auto-detection
-- **⚡ Zero Configuration** - Auto-discovers Faster-Whisper/Whisper installation
-- **🔒 Privacy-First** - 100% local Whisper processing, no cloud uploads
-- **🚀 Flexible Modes** - Transcript-only or intelligent processing with LLM
+- ** Rich Markdown Output** - Structured reports with metadata tables, timestamps, and formatting
+- ** Speaker Diarization** - Automatically identifies and labels different speakers
+- ** Technical Metadata** - Extracts file size, duration, language, processing time
+- ** Intelligent Atas/Summaries** - Generated via LLM (Claude/Copilot) with customizable prompts
+- ** Executive Summaries** - AI-generated structured summaries with topics, decisions, action items
+- ** Multi-language** - Supports 99 languages with auto-detection
+- ** Zero Configuration** - Auto-discovers Faster-Whisper/Whisper installation
+- ** Privacy-First** - 100% local Whisper processing, no cloud uploads
+- ** Flexible Modes** - Transcript-only or intelligent processing with LLM
 
-## 📦 Installation
+## Installation
 
 ### Quick Install (NPX)
 
@@ -91,7 +91,7 @@ cd /path/to/cli-ai-skills
 # Skill is already available if you cloned the repo
 ```
 
-## 🚀 Usage
+## Usage
 
 ### Basic Transcription
 
@@ -130,7 +130,7 @@ Activate the skill with any of these phrases:
 - "extract speech from audio"
 - "áudio para texto com metadados"
 
-## 📋 Use Cases
+## Use Cases
 
 ### 1. Team Meetings
 Record standups, planning sessions, or retrospectives and automatically generate:
@@ -163,12 +163,12 @@ Analyze podcasts, videos, YouTube content:
 - Chapter markers (timestamps)
 - Summary for show notes
 
-## 📊 Output Example
+## Output Example
 
 ```markdown
 # Audio Transcription Report
 
-## 📊 Metadata
+## Metadata
 
 | Field | Value |
 |-------|-------|
@@ -182,17 +182,17 @@ Analyze podcasts, videos, YouTube content:
 
 ---
 
-## 🎙️ Full Transcription
+## Full Transcription
 
-**[00:00:12 → 00:00:45]** *Speaker 1*  
+**[00:00:12 → 00:00:45]** *Speaker 1*
 Good morning everyone. Let's start with updates from the frontend team.
 
-**[00:00:46 → 00:01:23]** *Speaker 2*  
+**[00:00:46 → 00:01:23]** *Speaker 2*
 We completed the dashboard redesign and deployed to staging yesterday.
 
 ---
 
-## 📋 Meeting Minutes
+## Meeting Minutes
 
 ### Participants
 - Speaker 1 (Meeting Lead)
@@ -211,8 +211,8 @@ We completed the dashboard redesign and deployed to staging yesterday.
    - Target response time < 200ms
 
 ### Decisions Made
-- ✅ Approved dashboard for production deployment
-- ✅ Allocated 2 sprint points for API optimization
+- PASS: Approved dashboard for production deployment
+- PASS: Allocated 2 sprint points for API optimization
 
 ### Action Items
 - [ ] **Deploy dashboard to production** - Assigned to: Speaker 2 - Due: 2026-02-05
@@ -221,7 +221,7 @@ We completed the dashboard redesign and deployed to staging yesterday.
 
 ---
 
-## 📝 Executive Summary
+## Executive Summary
 
 The team standup covered progress on the dashboard redesign, which has been successfully completed and is ready for production deployment. The frontend team received positive feedback from QA and the design aligns with user requirements.
 
@@ -230,9 +230,9 @@ Backend performance concerns were raised regarding API response times. The team 
 Next steps include production deployment of the dashboard by end of week and scheduling user testing sessions to validate the new design with real users.
 
 ### Key Points
-- 🔹 Dashboard redesign complete and staging-approved
-- 🔹 API performance optimization prioritized
-- 🔹 User testing scheduled for next week
+- Dashboard redesign complete and staging-approved
+- API performance optimization prioritized
+- User testing scheduled for next week
 
 ### Next Steps
 1. Production deployment (Speaker 2)
@@ -240,7 +240,7 @@ Next steps include production deployment of the dashboard by end of week and sch
 3. User testing coordination (Speaker 5)
 ```
 
-## ⚙️ Configuration
+## Configuration
 
 No configuration needed! The skill automatically:
 - Detects Faster-Whisper or Whisper installation
@@ -248,7 +248,7 @@ No configuration needed! The skill automatically:
 - Selects appropriate model based on file size
 - Auto-detects language
 
-## 🔧 Troubleshooting
+## Troubleshooting
 
 ### "No transcription tool found"
 **Solution:** Install Whisper:
@@ -270,12 +270,12 @@ apt install ffmpeg   # Linux
 ```
 
 ### Poor speaker identification
-**Solution:** 
+**Solution:**
 - Ensure clear audio with minimal background noise
 - Use a better microphone for recordings
 - Try the "medium" or "large" Whisper model
 
-## 🛠️ Advanced Usage
+## Advanced Usage
 
 ### Custom Model Selection
 
@@ -298,43 +298,43 @@ Process specific file types only:
 copilot> transcribe audio: recordings/*.wav  # Only WAV files
 ```
 
-## 📚 FAQ
+## FAQ
 
-**Q: Does this work offline?**  
+**Q: Does this work offline?**
 A: Yes! 100% local processing, no internet required after initial model download.
 
-**Q: What's the difference between Whisper and Faster-Whisper?**  
+**Q: What's the difference between Whisper and Faster-Whisper?**
 A: Faster-Whisper is 4-5x faster with same quality. Always prefer it if available.
 
-**Q: Can I transcribe YouTube videos?**  
+**Q: Can I transcribe YouTube videos?**
 A: Not directly. Use a YouTube downloader first, then transcribe the audio file. Or use the `youtube-summarizer` skill instead.
 
-**Q: How accurate is speaker identification?**  
+**Q: How accurate is speaker identification?**
 A: Accuracy depends on audio quality. Clear recordings with distinct voices work best. Currently uses simple estimation; future versions will use advanced diarization.
 
-**Q: What languages are supported?**  
+**Q: What languages are supported?**
 A: 99 languages including English, Portuguese, Spanish, French, German, Chinese, Japanese, Arabic, and more.
 
-**Q: Can I edit the meeting minutes format?**  
+**Q: Can I edit the meeting minutes format?**
 A: Yes! Edit the Markdown template in SKILL.md Step 3.
 
-## 🔗 Related Skills
+## Related Skills
 
 - **youtube-summarizer** - Extract and summarize YouTube video transcripts
 - **prompt-engineer** - Optimize prompts for better AI summaries
 
-## 📄 License
+## License
 
-This skill is part of the cli-ai-skills repository.  
+This skill is part of the cli-ai-skills repository.
 MIT License - See repository LICENSE file.
 
-## 🤝 Contributing
+## Contributing
 
-Found a bug or have a feature request?  
+Found a bug or have a feature request?
 Open an issue in the [cli-ai-skills repository](https://github.com/yourusername/cli-ai-skills).
 
 ---
 
-**Version:** 1.0.0  
-**Author:** Eric Andrade  
+**Version:** 1.0.0
+**Author:** Eric Andrade
 **Created:** 2026-02-02

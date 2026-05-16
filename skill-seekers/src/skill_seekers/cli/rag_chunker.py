@@ -114,7 +114,7 @@ class RAGChunker:
         result = []
         for i, chunk_text in enumerate(chunks):
             chunk_metadata = {
-                **metadata,
+**metadata,
                 "chunk_index": i,
                 "total_chunks": len(chunks),
                 "estimated_tokens": self.estimate_tokens(chunk_text),
@@ -414,8 +414,8 @@ def main():
     output_path = args.output or args.skill_dir / "rag_chunks.json"
     chunker.save_chunks(chunks, output_path)
 
-    print(f"✅ Created {len(chunks)} chunks")
-    print(f"📄 Saved to: {output_path}")
+    print(f"PASS: Created {len(chunks)} chunks")
+    print(f" Saved to: {output_path}")
 
 
 if __name__ == "__main__":

@@ -12,7 +12,7 @@ This is the official documentation for **Skill Seekers** - the universal tool fo
 
 ## Where Should I Start?
 
-### 🚀 I'm New Here
+### I'm New Here
 
 Start with our **Getting Started** guides:
 
@@ -21,7 +21,7 @@ Start with our **Getting Started** guides:
 3. [Your First Skill](getting-started/03-your-first-skill.md) - Complete walkthrough
 4. [Next Steps](getting-started/04-next-steps.md) - Where to go from here
 
-### 📖 I Want to Learn
+### I Want to Learn
 
 Explore our **User Guides**:
 
@@ -32,7 +32,7 @@ Explore our **User Guides**:
 - [Workflows Guide](user-guide/05-workflows.md) - Enhancement workflows
 - [Troubleshooting](user-guide/06-troubleshooting.md) - Common issues
 
-### 📚 I Need Reference
+### I Need Reference
 
 Look up specific information:
 
@@ -42,7 +42,7 @@ Look up specific information:
 - [Config Format](reference/CONFIG_FORMAT.md) - JSON specification
 - [Environment Variables](reference/ENVIRONMENT_VARIABLES.md) - All env vars
 
-### 🚀 I'm Ready for Advanced Topics
+### I'm Ready for Advanced Topics
 
 Power user features:
 
@@ -209,4 +209,4 @@ MIT License - see [LICENSE](../LICENSE) file.
 
 ---
 
-*Happy skill building! 🚀*
+*Happy skill building! *

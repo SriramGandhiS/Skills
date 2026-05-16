@@ -52,7 +52,7 @@ Requirements:
   public async run(): Promise<void> {
     const {flags} = await this.parse(Init)
 
-    console.log(chalk.blue.bold('\n🪝 Claude Hooks Setup\n'))
+    console.log(chalk.blue.bold('\n Claude Hooks Setup\n'))
 
     // Check if Bun is installed
     const {spawn} = await import('node:child_process')
@@ -65,7 +65,7 @@ Requirements:
     })
 
     if (!checkBun) {
-      console.log(chalk.yellow('⚠️  Warning: Bun is not installed on your system'))
+      console.log(chalk.yellow('WARNING:  Warning: Bun is not installed on your system'))
       console.log(chalk.gray('   Bun is required to run Claude hooks'))
       console.log(chalk.gray('   Install it with: curl -fsSL https://bun.sh/install | bash\n'))
     }
@@ -114,9 +114,9 @@ Requirements:
       spinner.succeed('Hooks setup complete!')
 
       // Success message
-      console.log(chalk.green('\n✨ Claude Code hooks initialized!\n'))
+      console.log(chalk.green('\n Claude Code hooks initialized!\n'))
       if (flags.local) {
-        console.log(chalk.yellow('📝 Created settings.json.local for personal configuration\n'))
+        console.log(chalk.yellow(' Created settings.json.local for personal configuration\n'))
       }
       console.log(chalk.gray('Next steps:'))
       console.log(chalk.gray('1. Ensure Bun is installed (Bun is required to run Claude hooks)'))
@@ -128,23 +128,23 @@ Requirements:
       // Provide more detailed error messages
       if (error instanceof Error) {
         if (error.message.includes('Bun is not installed')) {
-          console.error(chalk.red('\n❌ Bun Not Found:'))
+          console.error(chalk.red('\nFAIL: Bun Not Found:'))
           console.error(chalk.yellow('   Bun is required to initialize the hook system.'))
           console.error(chalk.gray('   Please install Bun first:'))
           console.error(chalk.cyan('   curl -fsSL https://bun.sh/install | bash'))
           console.error(chalk.gray('\n   After installing, make sure Bun is in your PATH and run this command again.'))
         } else if (error.message.includes('EACCES') || error.message.includes('permission')) {
-          console.error(chalk.red('\n❌ Permission Error:'))
+          console.error(chalk.red('\nFAIL: Permission Error:'))
           console.error(chalk.yellow('   You do not have permission to write to this directory.'))
           console.error(chalk.gray('   Try running with elevated permissions or check directory ownership.'))
         } else if (error.message.includes('ENOENT')) {
-          console.error(chalk.red('\n❌ Path Error:'))
+          console.error(chalk.red('\nFAIL: Path Error:'))
           console.error(chalk.yellow('   Could not find or create the required directories.'))
         } else {
-          console.error(chalk.red('\n❌ Error:'), error.message)
+          console.error(chalk.red('\nFAIL: Error:'), error.message)
         }
       } else {
-        console.error(chalk.red('\n❌ Unknown error:'), error)
+        console.error(chalk.red('\nFAIL: Unknown error:'), error)
       }
 
       process.exit(1)
@@ -157,9 +157,9 @@ Requirements:
 
     try {
       await fs.copy(indexPath, backupPath)
-      console.log(chalk.green(`✅ Backed up existing index.ts to ${backupPath}`))
+      console.log(chalk.green(`PASS: Backed up existing index.ts to ${backupPath}`))
     } catch (error) {
-      console.error(chalk.red('❌ Failed to backup index.ts:'), error)
+      console.error(chalk.red('FAIL: Failed to backup index.ts:'), error)
       throw error
     }
   }
@@ -261,7 +261,7 @@ Requirements:
     } catch (error) {
       // File doesn't exist or is invalid JSON
       if (error instanceof Error && error.message.includes('JSON')) {
-        console.log(chalk.yellow('⚠️  Warning: Existing settings.json contains invalid JSON. Creating new settings.'))
+        console.log(chalk.yellow('WARNING:  Warning: Existing settings.json contains invalid JSON. Creating new settings.'))
       }
       // Continue with empty settings object
     }

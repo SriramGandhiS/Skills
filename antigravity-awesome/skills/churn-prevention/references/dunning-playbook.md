@@ -340,7 +340,7 @@ Don't rely on email alone. Show payment failures in the app:
 ### Banner Pattern
 ```
 ┌──────────────────────────────────────────────────────┐
-│ ⚠ Your payment of $29 failed. Update your card to    │
+│ WARNING: Your payment of $29 failed. Update your card to    │
 │ avoid losing access. [Update Payment →]  [Dismiss]   │
 └──────────────────────────────────────────────────────┘
 ```

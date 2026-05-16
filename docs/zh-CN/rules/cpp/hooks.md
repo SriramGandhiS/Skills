@@ -18,16 +18,16 @@ paths:
 在提交 C++ 更改前运行以下检查：
 
 ```bash
-# Format check
+## Format check
 clang-format --dry-run --Werror src/*.cpp src/*.hpp
 
-# Static analysis
+## Static analysis
 clang-tidy src/*.cpp -- -std=c++17
 
-# Build
+## Build
 cmake --build build
 
-# Tests
+## Tests
 ctest --test-dir build --output-on-failure
 ```
 

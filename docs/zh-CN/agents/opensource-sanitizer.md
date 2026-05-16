@@ -24,33 +24,33 @@ model: sonnet
 扫描每个文本文件（排除 `node_modules`、`.git`、`__pycache__`、`*.min.js`、二进制文件）：
 
 ```
-# API 密钥
+## API 密钥
 pattern: [A-Za-z0-9_]*(api[_-]?key|apikey|api[_-]?secret)[A-Za-z0-9_]*\s*[=:]\s*['"]?[A-Za-z0-9+/=_-]{16,}
 
-# AWS
+## AWS
 pattern: AKIA[0-9A-Z]{16}
 pattern: (?i)(aws_secret_access_key|aws_secret)\s*[=:]\s*['"]?[A-Za-z0-9+/=]{20,}
 
-# 包含凭据的数据库 URL
+## 包含凭据的数据库 URL
 pattern: (postgres|mysql|mongodb|redis)://[^:]+:[^@]+@[^\s'"]+
 
-# JWT 令牌（三段式：header.payload.signature）
+## JWT 令牌（三段式：header.payload.signature）
 pattern: eyJ[A-Za-z0-9_-]{20,}\.eyJ[A-Za-z0-9_-]{20,}\.[A-Za-z0-9_-]+
 
-# 私钥
+## 私钥
 pattern: -----BEGIN\s+(RSA\s+|EC\s+|DSA\s+|OPENSSH\s+)?PRIVATE KEY-----
 
-# GitHub 令牌（个人、服务器、OAuth、用户到服务器）
+## GitHub 令牌（个人、服务器、OAuth、用户到服务器）
 pattern: gh[pousr]_[A-Za-z0-9_]{36,}
 pattern: github_pat_[A-Za-z0-9_]{22,}
 
-# Google OAuth 密钥
+## Google OAuth 密钥
 pattern: GOCSPX-[A-Za-z0-9_-]+
 
-# Slack Webhook
-pattern: https://hooks\.slack\.com/services/T[A-Z0-9]+/B[A-Z0-9]+/[A-Za-z0-9]+
+## Slack Webhook
+pattern: <https://hooks\.slack\.com/services/T[A-Z0-9]+/B[A-Z0-9]+/[A-Za-z0-9]+>
 
-# SendGrid / Mailgun
+## SendGrid / Mailgun
 pattern: SG\.[A-Za-z0-9_-]{22}\.[A-Za-z0-9_-]{43}
 pattern: key-[A-Za-z0-9]{32}
 ```
@@ -58,7 +58,7 @@ pattern: key-[A-Za-z0-9]{32}
 #### 启发式模式（警告——需人工审查，不会自动失败）
 
 ```
-# 配置文件中的高熵字符串
+## 配置文件中的高熵字符串
 pattern: ^[A-Z_]+=[A-Za-z0-9+/=_-]{32,}$
 severity: WARNING (需要人工审核)
 ```
@@ -66,15 +66,15 @@ severity: WARNING (需要人工审核)
 ### 步骤 2：PII 扫描（关键）
 
 ```
-# 个人电子邮件地址（非 noreply@、info@ 等通用地址）
+## 个人电子邮件地址（非 noreply@、info@ 等通用地址）
 pattern: [a-zA-Z0-9._%+-]+@(gmail|yahoo|hotmail|outlook|protonmail|icloud)\.(com|net|org)
 severity: CRITICAL
 
-# 表示内部基础设施的私有 IP 地址
+## 表示内部基础设施的私有 IP 地址
 pattern: (192\.168\.\d+\.\d+|10\.\d+\.\d+\.\d+|172\.(1[6-9]|2\d|3[01])\.\d+\.\d+)
 severity: CRITICAL (若未在 .env.example 中记录为占位符)
 
-# SSH 连接字符串
+## SSH 连接字符串
 pattern: ssh\s+[a-z]+@[0-9.]+
 severity: CRITICAL
 ```
@@ -82,13 +82,13 @@ severity: CRITICAL
 ### 步骤 3：内部引用扫描（关键）
 
 ```
-# 指向特定用户主目录的绝对路径
+## 指向特定用户主目录的绝对路径
 pattern: /home/[a-z][a-z0-9_-]*/  (除 /home/user/ 之外的任何路径)
 pattern: /Users/[A-Za-z][A-Za-z0-9_-]*/  (macOS 主目录)
 pattern: C:\\Users\\[A-Za-z]  (Windows 主目录)
 severity: CRITICAL
 
-# 内部秘密文件引用
+## 内部秘密文件引用
 pattern: \.secrets/
 pattern: source\s+~/\.secrets/
 severity: CRITICAL
@@ -115,17 +115,17 @@ node_modules/、__pycache__/、.venv/、venv/
 
 * `.env.example` 存在
 * 代码中引用的每个环境变量在 `.env.example` 中都有条目
-* `docker-compose.yml`（如果存在）使用 `${VAR}` 语法，而非硬编码值
+* `docker-compose.yml`（如果存在）使用`${VAR}` 语法，而非硬编码值
 
 ### 步骤 6：Git 历史审计
 
 ```bash
-# Should be a single initial commit
+## Should be a single initial commit
 cd PROJECT_DIR
 git log --oneline | wc -l
-# If > 1, history was not cleaned — FAIL
+## If > 1, history was not cleaned — FAIL
 
-# Search history for potential secrets
+## Search history for potential secrets
 git log -p | grep -iE '(password|secret|api.?key|token)' | head -20
 ```
 
@@ -134,7 +134,7 @@ git log -p | grep -iE '(password|secret|api.?key|token)' | head -20
 在项目目录中生成 `SANITIZATION_REPORT.md`：
 
 ```markdown
-# 清理报告：{project-name}
+## 清理报告：{project-name}
 
 **日期：** {date}
 **审计人：** opensource-sanitizer v1.0.0
@@ -153,7 +153,7 @@ git log -p | grep -iE '(password|secret|api.?key|token)' | head -20
 
 ## 关键发现（发布前必须修复）
 
-1. **[密钥]** `src/config.py:42` — 硬编码的数据库密码：`DB_P...`（已截断）
+1. **[密钥]** `src/config.py:42`— 硬编码的数据库密码：`DB_P...`（已截断）
 2. **[内部引用]** `docker-compose.yml:15` — 引用了内部域名
 
 ## 警告（发布前需审查）

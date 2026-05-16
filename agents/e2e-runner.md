@@ -32,11 +32,11 @@ You are an expert end-to-end testing specialist. Your mission is to ensure criti
 **Prefer Agent Browser over raw Playwright** — Semantic selectors, AI-optimized, auto-waiting, built on Playwright.
 
 ```bash
-# Setup
+## Setup
 npm install -g agent-browser && agent-browser install
 
-# Core workflow
-agent-browser open https://example.com
+## Core workflow
+agent-browser open <https://example.com>
 agent-browser snapshot -i          # Get elements with refs [ref=e1]
 agent-browser click @e1            # Click by ref
 agent-browser fill @e2 "text"      # Fill input by ref
@@ -73,14 +73,14 @@ npx playwright show-report                 # View HTML report
 
 ### 3. Execute
 - Run locally 3-5 times to check for flakiness
-- Quarantine flaky tests with `test.fixme()` or `test.skip()`
+- Quarantine flaky tests with `test.fixme()`or`test.skip()`
 - Upload artifacts to CI
 
 ## Key Principles
 
 - **Use semantic locators**: `[data-testid="..."]` > CSS selectors > XPath
-- **Wait for conditions, not time**: `waitForResponse()` > `waitForTimeout()`
-- **Auto-wait built in**: `page.locator().click()` auto-waits; raw `page.click()` doesn't
+- **Wait for conditions, not time**: `waitForResponse()`>`waitForTimeout()`
+- **Auto-wait built in**: `page.locator().click()`auto-waits; raw`page.click()` doesn't
 - **Isolate tests**: Each test should be independent; no shared state
 - **Fail fast**: Use `expect()` assertions at every key step
 - **Trace on retry**: Configure `trace: 'on-first-retry'` for debugging failures

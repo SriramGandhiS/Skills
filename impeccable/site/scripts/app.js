@@ -68,7 +68,7 @@ function showLoadError(error) {
 	if (commandsGallery) {
 		commandsGallery.innerHTML = `
 			<div class="load-error" role="alert">
-				<div class="load-error-icon" aria-hidden="true">⚠</div>
+				<div class="load-error-icon" aria-hidden="true">WARNING:</div>
 				<h3 class="load-error-title">Failed to load commands</h3>
 				<p class="load-error-text">There was a problem loading the content. Please check your connection and try again.</p>
 				<button class="btn btn-secondary load-error-retry" onclick="location.reload()">
@@ -83,7 +83,7 @@ function showLoadError(error) {
 	if (patternsContainer) {
 		patternsContainer.innerHTML = `
 			<div class="load-error" role="alert">
-				<div class="load-error-icon" aria-hidden="true">⚠</div>
+				<div class="load-error-icon" aria-hidden="true">WARNING:</div>
 				<h3 class="load-error-title">Failed to load patterns</h3>
 				<p class="load-error-text">There was a problem loading the content. Please check your connection and try again.</p>
 				<button class="btn btn-secondary load-error-retry" onclick="location.reload()">

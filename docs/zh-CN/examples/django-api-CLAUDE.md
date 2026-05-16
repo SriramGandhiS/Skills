@@ -14,26 +14,26 @@
 ### Python 约定
 
 * 所有函数签名使用类型提示 — 使用 `from __future__ import annotations`
-* 不使用 `print()` 语句 — 使用 `logging.getLogger(__name__)`
-* 字符串格式化使用 f-strings，绝不使用 `%` 或 `.format()`
-* 文件操作使用 `pathlib.Path` 而非 `os.path`
+* 不使用 `print()`语句 — 使用`logging.getLogger(__name__)`
+* 字符串格式化使用 f-strings，绝不使用 `%`或`.format()`
+* 文件操作使用 `pathlib.Path`而非`os.path`
 * 导入排序使用 isort：标准库、第三方库、本地库（由 ruff 强制执行）
 
 ### 数据库
 
 * 所有查询使用 Django ORM — 原始 SQL 仅与 `.raw()` 和参数化查询一起使用
 * 迁移文件提交到 git — 生产中绝不使用 `--fake`
-* 使用 `select_related()` 和 `prefetch_related()` 防止 N+1 查询
-* 所有模型必须具有 `created_at` 和 `updated_at` 自动字段
-* 在 `filter()`、`order_by()` 或 `WHERE` 子句中使用的任何字段上建立索引
+* 使用 `select_related()`和`prefetch_related()` 防止 N+1 查询
+* 所有模型必须具有 `created_at`和`updated_at` 自动字段
+* 在 `filter()`、`order_by()`或`WHERE` 子句中使用的任何字段上建立索引
 
 ```python
-# BAD: N+1 query
+## BAD: N+1 query
 orders = Order.objects.all()
 for order in orders:
     print(order.customer.name)  # hits DB for each order
 
-# GOOD: Single query with join
+## GOOD: Single query with join
 orders = Order.objects.select_related("customer").all()
 ```
 
@@ -46,7 +46,7 @@ orders = Order.objects.select_related("customer").all()
 
 ### 序列化器
 
-* 简单 CRUD 使用 `ModelSerializer`，复杂验证使用 `Serializer`
+* 简单 CRUD 使用 `ModelSerializer`，复杂验证使用`Serializer`
 * 当输入/输出结构不同时，分离读写序列化器
 * 在序列化器层面进行验证，而非在视图中 — 视图应保持精简
 
@@ -76,7 +76,7 @@ class OrderDetailSerializer(serializers.ModelSerializer):
 * 绝不向客户端暴露内部错误细节
 
 ```python
-# core/exceptions.py
+## core/exceptions.py
 from rest_framework.exceptions import APIException
 
 class InsufficientStockError(APIException):
@@ -137,7 +137,7 @@ core/
 ### 服务层
 
 ```python
-# apps/orders/services.py
+## apps/orders/services.py
 from django.db import transaction
 
 def create_order(*, customer, product_id: uuid.UUID, quantity: int) -> Order:
@@ -165,7 +165,7 @@ def create_order(*, customer, product_id: uuid.UUID, quantity: int) -> Order:
 ### 视图模式
 
 ```python
-# apps/orders/views.py
+## apps/orders/views.py
 class OrderViewSet(viewsets.ModelViewSet):
     permission_classes = [IsAuthenticated]
     pagination_class = StandardPagination
@@ -195,7 +195,7 @@ class OrderViewSet(viewsets.ModelViewSet):
 ### 测试模式 (pytest + Factory Boy)
 
 ```python
-# apps/orders/tests/factories.py
+## apps/orders/tests/factories.py
 import factory
 from apps.accounts.tests.factories import UserFactory
 from apps.products.tests.factories import ProductFactory
@@ -209,7 +209,7 @@ class OrderFactory(factory.django.DjangoModelFactory):
     quantity = 1
     total = factory.LazyAttribute(lambda o: o.product.price * o.quantity)
 
-# apps/orders/tests/test_views.py
+## apps/orders/tests/test_views.py
 import pytest
 from rest_framework.test import APIClient
 
@@ -246,22 +246,22 @@ class TestCreateOrder:
 ## 环境变量
 
 ```bash
-# Django
+## Django
 SECRET_KEY=
 DEBUG=False
 ALLOWED_HOSTS=api.example.com
 
-# Database
+## Database
 DATABASE_URL=postgres://user:pass@localhost:5432/myapp
 
-# Redis (Celery broker + cache)
+## Redis (Celery broker + cache)
 REDIS_URL=redis://localhost:6379/0
 
-# JWT
+## JWT
 JWT_ACCESS_TOKEN_LIFETIME=15       # minutes
 JWT_REFRESH_TOKEN_LIFETIME=10080   # minutes (7 days)
 
-# Email
+## Email
 EMAIL_BACKEND=django.core.mail.backends.smtp.EmailBackend
 EMAIL_HOST=smtp.example.com
 ```
@@ -269,40 +269,40 @@ EMAIL_HOST=smtp.example.com
 ## 测试策略
 
 ```bash
-# Run all tests
+## Run all tests
 pytest --cov=apps --cov-report=term-missing
 
-# Run specific app tests
+## Run specific app tests
 pytest apps/orders/tests/ -v
 
-# Run with parallel execution
+## Run with parallel execution
 pytest -n auto
 
-# Only failing tests from last run
+## Only failing tests from last run
 pytest --lf
 ```
 
 ## ECC 工作流
 
 ```bash
-# Planning
+## Planning
 /plan "Add order refund system with Stripe integration"
 
-# Development with TDD
+## Development with TDD
 /tdd                    # pytest-based TDD workflow
 
-# Review
+## Review
 /python-review          # Python-specific code review
 /security-scan          # Django security audit
 /code-review            # General quality check
 
-# Verification
+## Verification
 /verify                 # Build, lint, test, security scan
 ```
 
 ## Git 工作流
 
-* `feat:` 新功能，`fix:` 错误修复，`refactor:` 代码变更
+* `feat:`新功能，`fix:`错误修复，`refactor:` 代码变更
 * 功能分支从 `main` 创建，需要 PR
 * CI：ruff（代码检查 + 格式化）、mypy（类型检查）、pytest（测试）、safety（依赖检查）
 * 部署：Docker 镜像，通过 Kubernetes 或 Railway 管理

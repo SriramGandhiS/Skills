@@ -1,4 +1,4 @@
-﻿# Route Loading Strategies
+# Route Loading Strategies
 
 Angular supports two main strategies for loading routes and components to balance initial load time and navigation responsiveness.
 

@@ -6,7 +6,7 @@ origin: ECC
 
 # 代码导览
 
-创建 **CodeTour** `.tour` 文件，用于代码库导览，可直接打开真实文件并定位到指定行范围。导览文件存放在 `.tours/` 目录中，专为 CodeTour 格式设计，而非临时性的 Markdown 笔记。
+创建 **CodeTour** `.tour`文件，用于代码库导览，可直接打开真实文件并定位到指定行范围。导览文件存放在`.tours/` 目录中，专为 CodeTour 格式设计，而非临时性的 Markdown 笔记。
 
 一个好的导览应针对特定读者讲述一个故事：
 
@@ -38,7 +38,7 @@ origin: ECC
 | 不使用代码导览的情况 | 使用 |
 | --- | --- |
 | 在聊天中一次性解释就足够了 | 直接回答 |
-| 用户想要散文式文档，而不是 `.tour` 产物 | `documentation-lookup` 或仓库文档编辑 |
+| 用户想要散文式文档，而不是 `.tour`产物 |`documentation-lookup` 或仓库文档编辑 |
 | 任务是实现或重构 | 执行实现工作 |
 | 任务是没有导览产物的广泛代码库入职 | `codebase-onboarding` |
 

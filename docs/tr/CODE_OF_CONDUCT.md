@@ -97,7 +97,7 @@ Bu Davranış Kuralları, [Contributor Covenant][homepage]'ın
 Topluluk Etki Kılavuzları, [Mozilla'nın davranış kuralları
 uygulama merdiveni](https://github.com/mozilla/diversity)'nden ilham almıştır.
 
-[homepage]: https://www.contributor-covenant.org
+[homepage]: <https://www.contributor-covenant.org>
 
 Bu davranış kuralları hakkında sık sorulan soruların cevapları için SSS'ye bakın:
 <https://www.contributor-covenant.org/faq>. Çeviriler şu adreste mevcuttur:

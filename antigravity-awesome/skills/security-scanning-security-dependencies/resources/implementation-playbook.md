@@ -373,7 +373,7 @@ jobs:
         run: |
           CRITICAL=$(grep -o '"severity":"CRITICAL"' *.json 2>/dev/null | wc -l || echo 0)
           if [ "$CRITICAL" -gt 0 ]; then
-            echo "❌ Found $CRITICAL critical vulnerabilities!"
+            echo "FAIL: Found $CRITICAL critical vulnerabilities!"
             exit 1
           fi
 ```
@@ -440,10 +440,10 @@ class VulnerabilityReporter:
 ## Executive Summary
 
 - **Total Vulnerabilities:** {scan_results['summary']['total_vulnerabilities']}
-- **Critical:** {scan_results['summary']['critical']} 🔴
-- **High:** {scan_results['summary']['high']} 🟠
-- **Medium:** {scan_results['summary']['medium']} 🟡
-- **Low:** {scan_results['summary']['low']} 🟢
+- **Critical:** {scan_results['summary']['critical']}
+- **High:** {scan_results['summary']['high']}
+- **Medium:** {scan_results['summary']['medium']}
+- **Low:** {scan_results['summary']['low']}
 
 ## Critical & High Severity
 

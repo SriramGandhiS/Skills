@@ -75,7 +75,7 @@ def package_skill(
     # Validate skill directory
     is_valid, error_msg = validate_skill_directory(skill_path)
     if not is_valid:
-        print(f"❌ Error: {error_msg}")
+        print(f"FAIL: Error: {error_msg}")
         return False, None
 
     # Run quality checks (unless skipped)
@@ -95,7 +95,7 @@ def package_skill(
             print("=" * 60)
             response = input("\nContinue with packaging? (y/n): ").strip().lower()
             if response != "y":
-                print("\n❌ Packaging cancelled by user")
+                print("\nFAIL: Packaging cancelled by user")
                 return False, None
             print()
         else:
@@ -108,7 +108,7 @@ def package_skill(
 
         adaptor = get_adaptor(target)
     except (ImportError, ValueError) as e:
-        print(f"❌ Error: {e}")
+        print(f"FAIL: Error: {e}")
         return False, None
 
     # Create package using adaptor
@@ -128,10 +128,10 @@ def package_skill(
     ]
 
     if target in RAG_PLATFORMS and not enable_chunking:
-        print(f"ℹ️  Auto-enabling chunking for {target} platform")
+        print(f"  Auto-enabling chunking for {target} platform")
         enable_chunking = True
 
-    print(f"📦 Packaging skill: {skill_name}")
+    print(f" Packaging skill: {skill_name}")
     print(f"   Target: {adaptor.PLATFORM_NAME}")
     print(f"   Source: {skill_path}")
 
@@ -153,7 +153,7 @@ def package_skill(
                 batch_size=batch_size,
             )
         elif streaming:
-            print("⚠️  Streaming not supported for this platform, using standard packaging")
+            print("WARNING:  Streaming not supported for this platform, using standard packaging")
             package_path = adaptor.package(
                 skill_path,
                 output_dir,
@@ -174,17 +174,17 @@ def package_skill(
 
         print(f"   Output: {package_path}")
     except Exception as e:
-        print(f"❌ Error creating package: {e}")
+        print(f"FAIL: Error creating package: {e}")
         return False, None
 
     # Get package size
     package_size = package_path.stat().st_size
-    print(f"\n✅ Package created: {package_path}")
+    print(f"\nPASS: Package created: {package_path}")
     print(f"   Size: {package_size:,} bytes ({format_file_size(package_size)})")
 
     # Open folder in file browser
     if open_folder_after:
-        print(f"\n📂 Opening folder: {package_path.parent}")
+        print(f"\n Opening folder: {package_path.parent}")
         open_folder(package_path.parent)
 
     # Print next-step instructions
@@ -192,7 +192,7 @@ def package_skill(
         print_upload_instructions(package_path)
     else:
         print()
-        print("ℹ️  Local target packaged successfully.")
+        print("  Local target packaged successfully.")
         print(f"   Install or copy from: {package_path}")
 
     return True, package_path
@@ -258,7 +258,7 @@ Examples:
             if not api_key:
                 # No API key - show helpful message but DON'T fail
                 print("\n" + "=" * 60)
-                print("💡 Automatic Upload")
+                print(" Automatic Upload")
                 print("=" * 60)
                 print()
                 print(f"To enable automatic upload to {adaptor.PLATFORM_NAME}:")
@@ -266,38 +266,38 @@ Examples:
                 print(f"  2. Set: export {adaptor.get_env_var_name()}=...")
                 print("  3. Run package command with --upload flag")
                 print()
-                print("For now, use manual upload (instructions above) ☝️")
+                print("For now, use manual upload (instructions above) ")
                 print("=" * 60)
                 # Exit successfully - packaging worked!
                 sys.exit(0)
 
             # API key exists - try upload
             print("\n" + "=" * 60)
-            print(f"📤 Uploading to {adaptor.PLATFORM_NAME}...")
+            print(f" Uploading to {adaptor.PLATFORM_NAME}...")
             print("=" * 60)
 
             result = adaptor.upload(package_path, api_key)
 
             if result["success"]:
-                print(f"\n✅ {result['message']}")
+                print(f"\nPASS: {result['message']}")
                 if result["url"]:
                     print(f"   View at: {result['url']}")
                 print("=" * 60)
                 sys.exit(0)
             else:
-                print(f"\n❌ Upload failed: {result['message']}")
+                print(f"\nFAIL: Upload failed: {result['message']}")
                 print()
-                print("💡 Try manual upload instead (instructions above) ☝️")
+                print(" Try manual upload instead (instructions above) ")
                 print("=" * 60)
                 # Exit successfully - packaging worked even if upload failed
                 sys.exit(0)
 
         except ImportError as e:
-            print(f"\n❌ Error: {e}")
+            print(f"\nFAIL: Error: {e}")
             print("Install required dependencies for this platform")
             sys.exit(1)
         except Exception as e:
-            print(f"\n❌ Upload error: {e}")
+            print(f"\nFAIL: Upload error: {e}")
             sys.exit(1)
 
     # Publish to marketplace if requested
@@ -315,14 +315,14 @@ Examples:
                 force=True,
             )
             if pub_result["success"]:
-                print(f"\n✅ {pub_result['message']}")
+                print(f"\nPASS: {pub_result['message']}")
                 print(f"   Plugin: {pub_result['plugin_path']}")
                 print(f"   Branch: {pub_result['branch']}")
                 print(f"   Commit: {pub_result['commit_sha']}")
             else:
-                print(f"\n⚠️  Marketplace publish failed: {pub_result['message']}")
+                print(f"\nWARNING:  Marketplace publish failed: {pub_result['message']}")
         except Exception as e:
-            print(f"\n⚠️  Marketplace publish failed: {e}")
+            print(f"\nWARNING:  Marketplace publish failed: {e}")
             print("   Packaging was successful — publish manually later.")
 
     sys.exit(0)

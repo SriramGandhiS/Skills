@@ -21,20 +21,20 @@ argument-hint: <path/to/plan.md>
 
 | 文件存在 | 包管理器 | 运行器 |
 |---|---|---|
-| `bun.lockb` | bun | `bun run` |
-| `pnpm-lock.yaml` | pnpm | `pnpm run` |
-| `yarn.lock` | yarn | `yarn` |
-| `package-lock.json` | npm | `npm run` |
-| `pyproject.toml` 或 `requirements.txt` | uv / pip | `uv run` 或 `python -m` |
-| `Cargo.toml` | cargo | `cargo` |
-| `go.mod` | go | `go` |
+| `bun.lockb`| bun |`bun run` |
+| `pnpm-lock.yaml`| pnpm |`pnpm run` |
+| `yarn.lock`| yarn |`yarn` |
+| `package-lock.json`| npm |`npm run` |
+| `pyproject.toml`或`requirements.txt`| uv / pip |`uv run`或`python -m` |
+| `Cargo.toml`| cargo |`cargo` |
+| `go.mod`| go |`go` |
 
 ### 验证脚本
 
 检查 `package.json`（或等效文件）中可用的脚本：
 
 ```bash
-# For Node.js projects
+## For Node.js projects
 cat package.json | grep -A 20 '"scripts"'
 ```
 
@@ -139,10 +139,10 @@ git pull --rebase origin $(git branch --show-current) 2>/dev/null || true
 ### 级别 1：静态分析
 
 ```bash
-# Type checking — zero errors required
+## Type checking — zero errors required
 [project type-check command]
 
-# Linting — fix automatically where possible
+## Linting — fix automatically where possible
 [project lint command]
 [project lint-fix command]
 ```
@@ -172,14 +172,14 @@ git pull --rebase origin $(git branch --show-current) 2>/dev/null || true
 ### 级别 4：集成测试（如适用）
 
 ```bash
-# Start server, run tests, stop server
+## Start server, run tests, stop server
 [project dev server command] &
 SERVER_PID=$!
 
-# Wait for server to be ready (adjust port as needed)
+## Wait for server to be ready (adjust port as needed)
 SERVER_READY=0
 for i in $(seq 1 30); do
-  if curl -sf http://localhost:PORT/health >/dev/null 2>&1; then
+  if curl -sf <http://localhost:PORT/health> >/dev/null 2>&1; then
     SERVER_READY=1
     break
   fi
@@ -220,7 +220,7 @@ mkdir -p .claude/PRPs/reports
 将报告写入 `.claude/PRPs/reports/{plan-name}-report.md`：
 
 ```markdown
-# 实现报告：[功能名称]
+## 实现报告：[功能名称]
 
 ## 摘要
 [已实现的内容]
@@ -278,7 +278,7 @@ mkdir -p .claude/PRPs/reports
 
 如果此实施是针对 PRD 阶段的：
 
-1. 将阶段状态从 `in-progress` 更新为 `complete`
+1. 将阶段状态从 `in-progress`更新为`complete`
 2. 添加报告路径作为参考
 
 ### 归档计划
@@ -330,7 +330,7 @@ mv "$ARGUMENTS" .claude/PRPs/plans/completed/
 | 阶段 2 | [下一步] |
 | ... | ... |
 
-> 下一步：运行 `/prp-pr` 创建拉取请求，或先运行 `/code-review` 审查更改。
+> 下一步：运行 `/prp-pr`创建拉取请求，或先运行`/code-review` 审查更改。
 ```
 
 ***

@@ -5,7 +5,7 @@
 **错误**：
 
 ```
-❌ 检测到由 registry/readme/catalog 脚本产生的未提交更改。
+FAIL: 检测到由 registry/readme/catalog 脚本产生的未提交更改。
 ```
 
 **原因**：

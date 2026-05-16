@@ -9,7 +9,7 @@ Limitations, troubleshooting, and common pitfalls for R2 SQL.
 **Cannot call R2 SQL from Workers/Pages code** - no binding exists.
 
 ```typescript
-// ❌ This doesn't exist
+// FAIL: This doesn't exist
 export default {
   async fetch(request, env) {
     const result = await env.R2_SQL.query("SELECT * FROM table");  // Not possible
@@ -32,17 +32,17 @@ Can only order by:
 **Cannot order by** regular non-partition columns.
 
 ```sql
--- ✅ Valid: ORDER BY partition key
+-- PASS: Valid: ORDER BY partition key
 SELECT * FROM logs.requests ORDER BY timestamp DESC LIMIT 100;
 
--- ✅ Valid: ORDER BY aggregation
+-- PASS: Valid: ORDER BY aggregation
 SELECT region, SUM(amount) FROM sales.transactions
 GROUP BY region ORDER BY SUM(amount) DESC;
 
--- ❌ Invalid: ORDER BY non-partition column
+-- FAIL: Invalid: ORDER BY non-partition column
 SELECT * FROM logs.requests ORDER BY user_id;
 
--- ❌ Invalid: ORDER BY alias (must repeat function)
+-- FAIL: Invalid: ORDER BY alias (must repeat function)
 SELECT region, SUM(amount) as total FROM sales.transactions
 GROUP BY region ORDER BY total;  -- Use ORDER BY SUM(amount)
 ```
@@ -53,17 +53,17 @@ Check partition spec: `DESCRIBE namespace.table_name`
 
 | Feature | Supported | Notes |
 |---------|-----------|-------|
-| SELECT, WHERE, GROUP BY, HAVING | ✅ | Standard support |
-| COUNT, SUM, AVG, MIN, MAX | ✅ | Standard aggregations |
-| ORDER BY partition/aggregation | ✅ | See above |
-| LIMIT | ✅ | Max 10,000 |
-| Column aliases | ❌ | No AS alias |
-| Expressions in SELECT | ❌ | No col1 + col2 |
-| ORDER BY non-partition | ❌ | Fails at runtime |
-| JOINs, subqueries, CTEs | ❌ | Denormalize at write time |
-| Window functions, UNION | ❌ | Use external engines |
-| INSERT/UPDATE/DELETE | ❌ | Use PyIceberg/Pipelines |
-| Nested columns, arrays, JSON | ❌ | Flatten at write time |
+| SELECT, WHERE, GROUP BY, HAVING | PASS: | Standard support |
+| COUNT, SUM, AVG, MIN, MAX | PASS: | Standard aggregations |
+| ORDER BY partition/aggregation | PASS: | See above |
+| LIMIT | PASS: | Max 10,000 |
+| Column aliases | FAIL: | No AS alias |
+| Expressions in SELECT | FAIL: | No col1 + col2 |
+| ORDER BY non-partition | FAIL: | Fails at runtime |
+| JOINs, subqueries, CTEs | FAIL: | Denormalize at write time |
+| Window functions, UNION | FAIL: | Use external engines |
+| INSERT/UPDATE/DELETE | FAIL: | Use PyIceberg/Pipelines |
+| Nested columns, arrays, JSON | FAIL: | Flatten at write time |
 
 **Workarounds:**
 - No JOINs: Denormalize data or use Spark/PyIceberg
@@ -73,22 +73,22 @@ Check partition spec: `DESCRIBE namespace.table_name`
 ## Common Errors
 
 ### "Column not found"
-**Cause:** Typo, column doesn't exist, or case mismatch  
+**Cause:** Typo, column doesn't exist, or case mismatch
 **Solution:** `DESCRIBE namespace.table_name` to check schema
 
 ### "Type mismatch"
 ```sql
--- ❌ Wrong types
+-- FAIL: Wrong types
 WHERE status = '200'              -- string instead of integer
 WHERE timestamp > '2025-01-01'    -- missing time/timezone
 
--- ✅ Correct types
+-- PASS: Correct types
 WHERE status = 200
 WHERE timestamp > '2025-01-01T00:00:00Z'
 ```
 
 ### "ORDER BY column not in partition key"
-**Cause:** Ordering by non-partition column  
+**Cause:** Ordering by non-partition column
 **Solution:** Use partition key, aggregation, or remove ORDER BY. Check: `DESCRIBE table`
 
 ### "Token authentication failed"
@@ -126,16 +126,16 @@ Max LIMIT is 10,000. For pagination, use WHERE filters with partition keys.
 **Causes:** Too many partitions, large LIMIT, no filters, small files
 
 ```sql
--- ❌ Slow: No filters
+-- FAIL: Slow: No filters
 SELECT * FROM logs.requests LIMIT 10000;
 
--- ✅ Fast: Filter on partition key
-SELECT * FROM logs.requests 
+-- PASS: Fast: Filter on partition key
+SELECT * FROM logs.requests
 WHERE timestamp >= '2025-01-15T00:00:00Z' AND timestamp < '2025-01-16T00:00:00Z'
 LIMIT 1000;
 
--- ✅ Faster: Multiple filters
-SELECT * FROM logs.requests 
+-- PASS: Faster: Multiple filters
+SELECT * FROM logs.requests
 WHERE timestamp >= '2025-01-15T00:00:00Z' AND status = 404 AND method = 'GET'
 LIMIT 1000;
 ```
@@ -150,12 +150,12 @@ LIMIT 1000;
 **Solution:** Add restrictive WHERE filters, reduce time range, query smaller intervals
 
 ```sql
--- ❌ Times out: Year-long aggregation
-SELECT status, COUNT(*) FROM logs.requests 
+-- FAIL: Times out: Year-long aggregation
+SELECT status, COUNT(*) FROM logs.requests
 WHERE timestamp >= '2024-01-01T00:00:00Z' GROUP BY status;
 
--- ✅ Faster: Month-long aggregation
-SELECT status, COUNT(*) FROM logs.requests 
+-- PASS: Faster: Month-long aggregation
+SELECT status, COUNT(*) FROM logs.requests
 WHERE timestamp >= '2025-01-01T00:00:00Z' AND timestamp < '2025-02-01T00:00:00Z'
 GROUP BY status;
 ```

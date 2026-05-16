@@ -26,7 +26,7 @@ from skill_seekers.cli.utils import read_reference_files
 try:
     import anthropic
 except ImportError:
-    print("❌ Error: anthropic package not installed")
+    print("FAIL: Error: anthropic package not installed")
     print("Install with: pip3 install anthropic")
     sys.exit(1)
 
@@ -52,7 +52,7 @@ class SkillEnhancer:
         client_kwargs = {"api_key": self.api_key}
         if base_url:
             client_kwargs["base_url"] = base_url
-            print(f"ℹ️  Using custom API base URL: {base_url}")
+            print(f"  Using custom API base URL: {base_url}")
 
         self.client = anthropic.Anthropic(**client_kwargs)
 
@@ -68,7 +68,7 @@ class SkillEnhancer:
         # Build prompt
         prompt = self._build_enhancement_prompt(references, current_skill_md)
 
-        print("\n🤖 Asking AI to enhance SKILL.md...")
+        print("\n Asking AI to enhance SKILL.md...")
         print(f"   Input: {len(prompt):,} characters")
 
         try:
@@ -88,13 +88,13 @@ class SkillEnhancer:
                     break
 
             if not enhanced_content:
-                print("❌ Error: No text content found in API response")
+                print("FAIL: Error: No text content found in API response")
                 return None
 
             return enhanced_content
 
         except Exception as e:
-            print(f"❌ Error calling AI API: {e}")
+            print(f"FAIL: Error calling AI API: {e}")
             return None
 
     def _is_video_source(self, references):
@@ -205,7 +205,7 @@ MULTI-REPOSITORY HANDLING:
 
         if len(repo_ids) > 1:
             prompt += f"""
-⚠️ MULTIPLE REPOSITORIES DETECTED: {", ".join(sorted(repo_ids))}
+WARNING: MULTIPLE REPOSITORIES DETECTED: {", ".join(sorted(repo_ids))}
 
 This skill combines codebase analysis from {len(repo_ids)} different repositories.
 Each repo has its own ARCHITECTURE.md, patterns, examples, and configuration.
@@ -432,11 +432,11 @@ Return ONLY the complete SKILL.md content, starting with the frontmatter (---).
         if self.skill_md_path.exists():
             backup_path = self.skill_md_path.with_suffix(".md.backup")
             self.skill_md_path.rename(backup_path)
-            print(f"  💾 Backed up original to: {backup_path.name}")
+            print(f"   Backed up original to: {backup_path.name}")
 
         # Save enhanced version
         self.skill_md_path.write_text(content, encoding="utf-8")
-        print("  ✅ Saved enhanced SKILL.md")
+        print("  PASS: Saved enhanced SKILL.md")
 
     def run(self):
         """Main enhancement workflow"""
@@ -445,13 +445,13 @@ Return ONLY the complete SKILL.md content, starting with the frontmatter (---).
         print(f"{'=' * 60}\n")
 
         # Read reference files
-        print("📖 Reading reference documentation...")
+        print(" Reading reference documentation...")
         references = read_reference_files(
             self.skill_dir, max_chars=API_CONTENT_LIMIT, preview_limit=API_PREVIEW_LIMIT
         )
 
         if not references:
-            print("❌ No reference files found to analyze")
+            print("FAIL: No reference files found to analyze")
             return False
 
         # Analyze sources
@@ -467,24 +467,24 @@ Return ONLY the complete SKILL.md content, starting with the frontmatter (---).
         # Read current SKILL.md
         current_skill_md = self.read_current_skill_md()
         if current_skill_md:
-            print(f"  ℹ Found existing SKILL.md ({len(current_skill_md)} chars)")
+            print(f"   Found existing SKILL.md ({len(current_skill_md)} chars)")
         else:
-            print("  ℹ No existing SKILL.md, will create new one")
+            print("   No existing SKILL.md, will create new one")
 
         # Enhance with AI
         enhanced = self.enhance_skill_md(references, current_skill_md)
 
         if not enhanced:
-            print("❌ Enhancement failed")
+            print("FAIL: Enhancement failed")
             return False
 
         print(f"  ✓ Generated enhanced SKILL.md ({len(enhanced)} chars)\n")
 
         # Save
-        print("💾 Saving enhanced SKILL.md...")
+        print(" Saving enhanced SKILL.md...")
         self.save_enhanced_skill_md(enhanced)
 
-        print("\n✅ Enhancement complete!")
+        print("\nPASS: Enhancement complete!")
         print("\nNext steps:")
         print(f"  1. Review: {self.skill_md_path}")
         print(
@@ -549,16 +549,16 @@ Examples:
     # Validate skill directory
     skill_dir = Path(args.skill_dir)
     if not skill_dir.exists():
-        print(f"❌ Error: Directory not found: {skill_dir}")
+        print(f"FAIL: Error: Directory not found: {skill_dir}")
         sys.exit(1)
 
     if not skill_dir.is_dir():
-        print(f"❌ Error: Not a directory: {skill_dir}")
+        print(f"FAIL: Error: Not a directory: {skill_dir}")
         sys.exit(1)
 
     # Dry run mode
     if args.dry_run:
-        print("🔍 DRY RUN MODE")
+        print(" DRY RUN MODE")
         print(f"   Would enhance: {skill_dir}")
         print(f"   References: {skill_dir / 'references'}")
         print(f"   SKILL.md: {skill_dir / 'SKILL.md'}")
@@ -582,7 +582,7 @@ Examples:
         adaptor = get_adaptor(args.target)
 
         if not adaptor.supports_enhancement():
-            print(f"❌ Error: {adaptor.PLATFORM_NAME} does not support AI enhancement")
+            print(f"FAIL: Error: {adaptor.PLATFORM_NAME} does not support AI enhancement")
             print("\nSupported platforms for enhancement:")
             print("  - Anthropic (Claude AI)")
             print("  - Google Gemini")
@@ -595,7 +595,7 @@ Examples:
             api_key = os.environ.get(adaptor.get_env_var_name(), "").strip()
 
         if not api_key:
-            print(f"❌ Error: {adaptor.get_env_var_name()} not set")
+            print(f"FAIL: Error: {adaptor.get_env_var_name()} not set")
             print(f"\nSet your API key for {adaptor.PLATFORM_NAME}:")
             print(f"  export {adaptor.get_env_var_name()}=...")
             print("Or provide it directly:")
@@ -611,7 +611,7 @@ Examples:
         success = adaptor.enhance(Path(skill_dir), api_key)
 
         if success:
-            print("\n✅ Enhancement complete!")
+            print("\nPASS: Enhancement complete!")
             print("\nNext steps:")
             print(f"  1. Review: {Path(skill_dir) / 'SKILL.md'}")
             print(
@@ -623,14 +623,14 @@ Examples:
         sys.exit(0 if success else 1)
 
     except ImportError as e:
-        print(f"❌ Error: {e}")
+        print(f"FAIL: Error: {e}")
         print("\nAdaptor system not available. Reinstall skill-seekers.")
         sys.exit(1)
     except ValueError as e:
-        print(f"❌ Error: {e}")
+        print(f"FAIL: Error: {e}")
         sys.exit(1)
     except Exception as e:
-        print(f"❌ Unexpected error: {e}")
+        print(f"FAIL: Unexpected error: {e}")
         import traceback
 
         traceback.print_exc()

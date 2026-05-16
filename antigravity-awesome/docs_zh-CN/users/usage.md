@@ -12,9 +12,9 @@
 
 当你运行 `npx antigravity-awesome-skills` 或克隆仓库时，你：
 
-✅ **下载了 1,436+ 个技能文件**到你的计算机（默认路径：`~/.gemini/antigravity/skills/`；如果你使用了 `--path`，则是自定义路径如 `~/.agent/skills/`）
-✅ **使它们对你的 AI 助手可用**
-❌ **并未自动启用所有技能**（它们只是在那里等待使用）
+PASS: **下载了 1,436+ 个技能文件**到你的计算机（默认路径：`~/.gemini/antigravity/skills/`；如果你使用了 `--path`，则是自定义路径如 `~/.agent/skills/`）
+PASS: **使它们对你的 AI 助手可用**
+FAIL: **并未自动启用所有技能**（它们只是在那里等待使用）
 
 把它想象成安装一个工具箱。你现在拥有所有工具，但你需要为每项工作**选择使用哪些工具**。
 
@@ -32,16 +32,16 @@
 
 **类比：**
 
-- 你安装了一个包含 1,436+ 个工具的工具箱（✅ 完成）
+- 你安装了一个包含 1,436+ 个工具的工具箱（PASS: 完成）
 - 捆绑包就像**贴有标签的整理托盘**，上面写着："如果你是木匠，从这 10 个工具开始"
 - 你不需要安装捆绑包——你从它们中**选择技能**
 
 ### 捆绑包不是什么
 
-❌ 单独的安装
-❌ 不同的下载命令
-❌ 大多数用户在正常安装期间需要激活的东西
-❌ 可调用的超级技能，如 `@essentials` 或 `/web-wizard`
+FAIL: 单独的安装
+FAIL: 不同的下载命令
+FAIL: 大多数用户在正常安装期间需要激活的东西
+FAIL: 可调用的超级技能，如 `@essentials` 或 `/web-wizard`
 
 ### 示例："Web Wizard" 捆绑包
 
@@ -380,10 +380,10 @@ Use @skill-creator to help me build a custom skill for [your task]
 
 既然你了解了如何使用技能：
 
-1. ✅ **现在就尝试一个技能** - 从 `@brainstorming` 开始，尝试任何想法
-2. 📚 **从你的角色捆绑包中选择 3-5 个技能**，来自 [bundles.md](bundles.md)
-3. 🔖 **将** [CATALOG.md](../../CATALOG.md) **加入书签**，当你需要特定东西时使用
-4. 🎯 **从** [workflows.md](workflows.md) **尝试一个工作流**，以获得完整的端到端流程
+1. PASS: **现在就尝试一个技能** - 从 `@brainstorming` 开始，尝试任何想法
+2. **从你的角色捆绑包中选择 3-5 个技能**，来自 [bundles.md](bundles.md)
+3. **将** [CATALOG.md](../../CATALOG.md) **加入书签**，当你需要特定东西时使用
+4. **从** [workflows.md](workflows.md) **尝试一个工作流**，以获得完整的端到端流程
 
 ---
 
@@ -421,4 +421,4 @@ Use @skill-creator to help me build a custom skill for [your task]
 3. [打开讨论](https://github.com/sickn33/antigravity-awesome-skills/discussions)
 4. [提交问题](https://github.com/sickn33/antigravity-awesome-skills/issues)以帮助我们改进此指南！
 
-记住：你并不孤单！这个项目的全部意义是让 AI 助手更易于使用。如果本指南没有帮助，请告诉我们，以便我们修复它。🙌
+记住：你并不孤单！这个项目的全部意义是让 AI 助手更易于使用。如果本指南没有帮助，请告诉我们，以便我们修复它。

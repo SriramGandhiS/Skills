@@ -66,12 +66,12 @@ We provide a webhook so that you can trigger your own deployments by pushing to 
 This section provides advanced configuration options for experienced users. It includes tools for custom commands within the container and volumes.
 
 - **Command**: Dokploy has a defined command to run the Docker Compose file, ensuring complete control through the UI. However, you can append flags or options to the command.
-  
+
   <Callout type="info" title="Using Private Registries with Docker Stack">
   If you're deploying with **Docker Stack** (Docker Swarm mode) using **replicas** and a **private registry**, you need to add the `--with-registry-auth` flag to ensure that registry credentials are properly distributed to all nodes in your swarm.
-  
+
   Without this flag, worker nodes may fail to pull images from private registries, resulting in authentication errors like "no such image" or "docker authentication failed".
-  
+
   This flag ensures that Docker shares the registry credentials with all swarm nodes during deployment, enabling them to authenticate and pull images from your private registry (GitHub Container Registry, Docker Hub private repos, etc.).
   </Callout>
 
@@ -100,15 +100,15 @@ Use bind mounts for simple persistence needs, configuration files, or when you n
 
 ```yaml
 volumes:
-  - "/folder:/path/in/container" ❌
+  - "/folder:/path/in/container" FAIL:
 ```
 
 Instead, use the `../files` folder to ensure your data persists between deployments:
 
 ```yaml
 volumes:
-  - "../files/my-database:/var/lib/mysql" ✅
-  - "../files/my-configs:/etc/my-app/config" ✅
+  - "../files/my-database:/var/lib/mysql" PASS:
+  - "../files/my-configs:/etc/my-app/config" PASS:
 ```
 
 **Use bind mounts when:**
@@ -146,12 +146,12 @@ volumes:
 
 | Feature | Bind Mounts (../files) | Named Volumes |
 |---------|----------------------|---------------|
-| Simple persistence | ✅ Yes | ✅ Yes |
-| Direct host access | ✅ Yes | ❌ No |
-| Automated backups | ❌ No | ✅ Yes |
-| Docker-managed | ❌ No | ✅ Yes |
-| Best for config files | ✅ Yes | ⚠️ Possible but less common |
-| Best for databases | ⚠️ Possible | ✅ Recommended |
+| Simple persistence | PASS: Yes | PASS: Yes |
+| Direct host access | PASS: Yes | FAIL: No |
+| Automated backups | FAIL: No | PASS: Yes |
+| Docker-managed | FAIL: No | PASS: Yes |
+| Best for config files | PASS: Yes | WARNING: Possible but less common |
+| Best for databases | WARNING: Possible | PASS: Recommended |
 
 **Important:** If you need to use files from your repository (configuration files, scripts, etc.), you must move them to Dokploy's File Mounts (via Advanced → Mounts) instead of mounting them directly from the repository. When using AutoDeploy, Dokploy performs a `git clone` on each deployment, which clears the repository directory. Mounting files directly from your repository using relative paths (e.g., `./` or `./config/file.conf`) will cause them to be lost or empty in subsequent deployments. See the [Troubleshooting guide](/docs/core/troubleshooting#using-files-from-your-repository) for more details.
 

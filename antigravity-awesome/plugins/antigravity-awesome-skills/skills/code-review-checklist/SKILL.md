@@ -107,7 +107,7 @@ Verify test coverage:
 
 ### Example Issues to Catch:
 
-**❌ Bad - Missing validation:**
+**FAIL: Bad - Missing validation:**
 \`\`\`javascript
 function createUser(email, password) {
   // No validation!
@@ -115,7 +115,7 @@ function createUser(email, password) {
 }
 \`\`\`
 
-**✅ Good - Proper validation:**
+**PASS: Good - Proper validation:**
 \`\`\`javascript
 function createUser(email, password) {
   if (!email || !isValidEmail(email)) {
@@ -163,24 +163,24 @@ function createUser(email, password) {
 
 ### Example Issues to Catch:
 
-**❌ Bad - SQL injection risk:**
+**FAIL: Bad - SQL injection risk:**
 \`\`\`javascript
 const query = \`SELECT * FROM users WHERE email = '\${email}'\`;
 db.query(query);
 \`\`\`
 
-**✅ Good - Parameterized query:**
+**PASS: Good - Parameterized query:**
 \`\`\`javascript
 const query = 'SELECT * FROM users WHERE email = $1';
 db.query(query, [email]);
 \`\`\`
 
-**❌ Bad - Hardcoded secret:**
+**FAIL: Bad - Hardcoded secret:**
 \`\`\`javascript
 const API_KEY = 'sk_live_abc123xyz';
 \`\`\`
 
-**✅ Good - Environment variable:**
+**PASS: Good - Environment variable:**
 \`\`\`javascript
 const API_KEY = process.env.API_KEY;
 if (!API_KEY) {
@@ -217,51 +217,51 @@ if (!API_KEY) {
 
 ### Example Issues to Catch:
 
-**❌ Bad - Unclear naming:**
+**FAIL: Bad - Unclear naming:**
 \`\`\`javascript
 function calc(a, b, c) {
   return a * b + c;
 }
 \`\`\`
 
-**✅ Good - Descriptive naming:**
+**PASS: Good - Descriptive naming:**
 \`\`\`javascript
 function calculateTotalPrice(quantity, unitPrice, tax) {
   return quantity * unitPrice + tax;
 }
 \`\`\`
 
-**❌ Bad - Function doing too much:**
+**FAIL: Bad - Function doing too much:**
 \`\`\`javascript
 function processOrder(order) {
   // Validate order
   if (!order.items) throw new Error('No items');
-  
+
   // Calculate total
   let total = 0;
   for (let item of order.items) {
     total += item.price * item.quantity;
   }
-  
+
   // Apply discount
   if (order.coupon) {
     total *= 0.9;
   }
-  
+
   // Process payment
   const payment = stripe.charge(total);
-  
+
   // Send email
   sendEmail(order.email, 'Order confirmed');
-  
+
   // Update inventory
   updateInventory(order.items);
-  
+
   return { orderId: order.id, total };
 }
 \`\`\`
 
-**✅ Good - Separated concerns:**
+**PASS: Good - Separated concerns:**
 \`\`\`javascript
 function processOrder(order) {
   validateOrder(order);
@@ -269,7 +269,7 @@ function processOrder(order) {
   const payment = processPayment(total);
   sendOrderConfirmation(order.email);
   updateInventory(order.items);
-  
+
   return { orderId: order.id, total };
 }
 \`\`\`
@@ -277,7 +277,7 @@ function processOrder(order) {
 
 ## Best Practices
 
-### ✅ Do This
+### PASS: Do This
 
 - **Review Small Changes** - Smaller PRs are easier to review thoroughly
 - **Check Tests First** - Verify tests pass and cover new code
@@ -290,7 +290,7 @@ function processOrder(order) {
 - **Consider Performance** - Think about scale and efficiency
 - **Check for Regressions** - Ensure existing functionality still works
 
-### ❌ Don't Do This
+### FAIL: Don't Do This
 
 - **Don't Approve Without Reading** - Actually review the code
 - **Don't Be Vague** - Provide specific feedback with examples

@@ -27,7 +27,7 @@
 
 要让 CLI 功能更像 MCP，而不实际使用 MCP（以及随之而来的减少的上下文窗口），可以考虑将功能打包成技能和命令。提取出 MCP 暴露的、使事情变得容易的工具，并将它们转化为命令。
 
-示例：与其始终加载 GitHub MCP，不如创建一个包装了 `gh pr create` 并带有你偏好选项的 `/gh-pr` 命令。与其让 Supabase MCP 消耗上下文，不如创建直接使用 Supabase CLI 的技能。
+示例：与其始终加载 GitHub MCP，不如创建一个包装了 `gh pr create`并带有你偏好选项的`/gh-pr` 命令。与其让 Supabase MCP 消耗上下文，不如创建直接使用 Supabase CLI 的技能。
 
 有了延迟加载，上下文窗口问题基本解决了。但令牌使用和成本问题并未以同样的方式解决。CLI + 技能的方法仍然是一种令牌优化方法。
 
@@ -37,7 +37,7 @@
 
 ### 上下文与记忆管理
 
-要在会话间共享记忆，最好的方法是使用一个技能或命令来总结和检查进度，然后保存到 `.claude` 文件夹中的一个 `.tmp` 文件中，并在会话结束前不断追加内容。第二天，它可以将其用作上下文，并从中断处继续。为每个会话创建一个新文件，这样你就不会将旧的上下文污染到新的工作中。
+要在会话间共享记忆，最好的方法是使用一个技能或命令来总结和检查进度，然后保存到 `.claude`文件夹中的一个`.tmp` 文件中，并在会话结束前不断追加内容。第二天，它可以将其用作上下文，并从中断处继续。为每个会话创建一个新文件，这样你就不会将旧的上下文污染到新的工作中。
 
 ![Session Storage File Tree](../../assets/images/longform/03-session-storage.png)
 *会话存储示例 -> <https://github.com/affaan-m/everything-claude-code/tree/main/examples/sessions>*
@@ -65,13 +65,13 @@ claude --system-prompt "$(cat memory.md)"
 **实际设置：**
 
 ```bash
-# Daily development
+## Daily development
 alias claude-dev='claude --system-prompt "$(cat ~/.claude/contexts/dev.md)"'
 
-# PR review mode
+## PR review mode
 alias claude-review='claude --system-prompt "$(cat ~/.claude/contexts/review.md)"'
 
-# Research/exploration mode
+## Research/exploration mode
 alias claude-research='claude --system-prompt "$(cat ~/.claude/contexts/research.md)"'
 ```
 
@@ -192,12 +192,12 @@ Boris 有关于并行化的建议。他曾建议在本地运行 5 个 Claude 实
 **用于并行实例的 Git Worktrees：**
 
 ```bash
-# Create worktrees for parallel work
+## Create worktrees for parallel work
 git worktree add ../project-feature-a feature-a
 git worktree add ../project-feature-b feature-b
 git worktree add ../project-refactor refactor-branch
 
-# Each worktree gets its own Claude instance
+## Each worktree gets its own Claude instance
 cd ../project-feature-a && claude
 ```
 
@@ -237,7 +237,7 @@ cd ../project-feature-a && claude
 
 **llms.txt 模式：**
 
-如果可用，你可以通过在你到达它们的文档页面后执行 `/llms.txt` 来在许多文档参考资料上找到一个 `llms.txt`。这会给你一个干净的、针对 LLM 优化的文档版本。
+如果可用，你可以通过在你到达它们的文档页面后执行 `/llms.txt`来在许多文档参考资料上找到一个`llms.txt`。这会给你一个干净的、针对 LLM 优化的文档版本。
 
 **理念：构建可重用的模式**
 

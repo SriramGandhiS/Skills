@@ -232,8 +232,8 @@ df_complex.checkpoint()  # Breaks lineage, materializes
 
 # Memory breakdown (8GB executor):
 # - spark.memory.fraction = 0.6 (60% = 4.8GB for execution + storage)
-#   - spark.memory.storageFraction = 0.5 (50% of 4.8GB = 2.4GB for cache)
-#   - Remaining 2.4GB for execution (shuffles, joins, sorts)
+# - spark.memory.storageFraction = 0.5 (50% of 4.8GB = 2.4GB for cache)
+# - Remaining 2.4GB for execution (shuffles, joins, sorts)
 # - 40% = 3.2GB for user data structures and internal metadata
 
 spark = (SparkSession.builder

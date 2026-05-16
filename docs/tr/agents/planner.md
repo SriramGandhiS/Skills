@@ -103,7 +103,7 @@ Detaylı adımları şunlarla oluşturun:
 Beklenen detay seviyesini gösteren tam bir plan:
 
 ```markdown
-# Implementation Plan: Stripe Subscription Billing
+## Implementation Plan: Stripe Subscription Billing
 
 ## Overview
 Ücretsiz/pro/enterprise katmanlarıyla abonelik faturalandırması ekleyin. Kullanıcılar

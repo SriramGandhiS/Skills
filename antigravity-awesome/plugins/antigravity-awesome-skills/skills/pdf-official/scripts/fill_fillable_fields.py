@@ -21,7 +21,7 @@ def fill_pdf_fields(input_pdf_path: str, fields_json_path: str, output_pdf_path:
             if page not in fields_by_page:
                 fields_by_page[page] = {}
             fields_by_page[page][field_id] = field["value"]
-    
+
     reader = PdfReader(input_pdf_path)
 
     has_error = False
@@ -51,7 +51,7 @@ def fill_pdf_fields(input_pdf_path: str, fields_json_path: str, output_pdf_path:
     # This seems to be necessary for many PDF viewers to format the form values correctly.
     # It may cause the viewer to show a "save changes" dialog even if the user doesn't make any changes.
     writer.set_need_appearances_writer(True)
-    
+
     with open(output_pdf_path, "wb") as f:
         writer.write(f)
 
@@ -67,7 +67,7 @@ def validation_error_for_field_value(field_info, field_value):
     elif field_type == "radio_group":
         option_values = [opt["value"] for opt in field_info["radio_options"]]
         if field_value not in option_values:
-            return f'ERROR: Invalid value "{field_value}" for radio group field "{field_id}". Valid values are: {option_values}' 
+            return f'ERROR: Invalid value "{field_value}" for radio group field "{field_id}". Valid values are: {option_values}'
     elif field_type == "choice":
         choice_values = [opt["value"] for opt in field_info["choice_options"]]
         if field_value not in choice_values:
@@ -77,11 +77,9 @@ def validation_error_for_field_value(field_info, field_value):
 
 # pypdf (at least version 5.7.0) has a bug when setting the value for a selection list field.
 # In _writer.py around line 966:
-#
-# if field.get(FA.FT, "/Tx") == "/Ch" and field_flags & FA.FfBits.Combo == 0:
-#     txt = "\n".join(annotation.get_inherited(FA.Opt, []))
-#
-# The problem is that for selection lists, `get_inherited` returns a list of two-element lists like
+# # if field.get(FA.FT, "/Tx") == "/Ch" and field_flags & FA.FfBits.Combo == 0:
+# txt = "\n".join(annotation.get_inherited(FA.Opt, []))
+# # The problem is that for selection lists, `get_inherited` returns a list of two-element lists like
 # [["value1", "Text 1"], ["value2", "Text 2"], ...]
 # This causes `join` to throw a TypeError because it expects an iterable of strings.
 # The horrible workaround is to patch `get_inherited` to return a list of the value strings.

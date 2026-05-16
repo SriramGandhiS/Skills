@@ -435,13 +435,13 @@ function installForTarget(tempDir, target, selectors = buildInstallSelectors({})
     if (fs.existsSync(gitDir)) {
       console.log(`  Migrating from full-repo install to skills-only layout…`);
       const backupPath = `${target.path}_backup_${Date.now()}`;
-      try { 
+      try {
         const stats = fs.lstatSync(target.path);
         const isSymlink = stats.isSymbolicLink();
-        const symlinkTarget = isSymlink ? 
+        const symlinkTarget = isSymlink ?
         fs.readlinkSync(target.path) : null;
         fs.renameSync(target.path, backupPath);
-        console.log(`  ⚠️  Safety Backup created at: ${backupPath}`);
+        console.log(`  WARNING:  Safety Backup created at: ${backupPath}`);
         if (isSymlink) {
           fs.symlinkSync(symlinkTarget, target.path, 'dir');
         } else {

@@ -1,4 +1,4 @@
-﻿# Voice Profile Schema
+# Voice Profile Schema
 
 Use this exact structure when building a reusable voice profile:
 

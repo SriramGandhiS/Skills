@@ -67,13 +67,13 @@ jobs:
           echo "exists=true" >> $GITHUB_OUTPUT
         else
           echo "exists=false" >> $GITHUB_OUTPUT
-          echo "⚠️  Config not found: $CONFIG_FILE"
+          echo "WARNING:  Config not found: $CONFIG_FILE"
         fi
 
     - name: Scrape documentation
       if: steps.check_config.outputs.exists == 'true'
       run: |
-        echo "📥 Scraping documentation for $SKILL_NAME..."
+        echo " Scraping documentation for $SKILL_NAME..."
         skill-seekers create "${{ steps.config.outputs.path }}" --max-pages 100
       continue-on-error: true
 
@@ -95,15 +95,15 @@ jobs:
         SKILL_DIR="output/$SKILL_NAME"
 
         if [ ! -d "$SKILL_DIR" ]; then
-          echo "❌ Skill directory not found: $SKILL_DIR"
+          echo "FAIL: Skill directory not found: $SKILL_DIR"
           exit 1
         fi
 
-        echo "📦 Exporting $SKILL_NAME to vector databases..."
+        echo " Exporting $SKILL_NAME to vector databases..."
 
         for target in $EXPORT_TARGETS; do
           echo ""
-          echo "🔹 Exporting to $target..."
+          echo " Exporting to $target..."
 
           # Use adaptor directly via CLI
           python3 -c "
@@ -115,9 +115,9 @@ jobs:
           "
 
           if [ $? -eq 0 ]; then
-            echo "✅ $target export complete"
+            echo "PASS: $target export complete"
           else
-            echo "❌ $target export failed"
+            echo "FAIL: $target export failed"
           fi
         done
 
@@ -127,7 +127,7 @@ jobs:
         SKILL_DIR="output/$SKILL_NAME"
 
         if [ -d "$SKILL_DIR" ]; then
-          echo "📊 Generating quality metrics..."
+          echo " Generating quality metrics..."
 
           python3 -c "
           from pathlib import Path
@@ -165,23 +165,23 @@ jobs:
       env:
         EXPORT_TARGETS: ${{ steps.targets.outputs.list }}
       run: |
-        echo "## 📦 Vector Database Export Summary: $SKILL_NAME" >> $GITHUB_STEP_SUMMARY
+        echo "##  Vector Database Export Summary: $SKILL_NAME" >> $GITHUB_STEP_SUMMARY
         echo "" >> $GITHUB_STEP_SUMMARY
 
         for target in $EXPORT_TARGETS; do
           FILE="output/${SKILL_NAME}-${target}.json"
           if [ -f "$FILE" ]; then
             SIZE=$(du -h "$FILE" | cut -f1)
-            echo "✅ **$target**: $SIZE" >> $GITHUB_STEP_SUMMARY
+            echo "PASS: **$target**: $SIZE" >> $GITHUB_STEP_SUMMARY
           else
-            echo "❌ **$target**: Export failed" >> $GITHUB_STEP_SUMMARY
+            echo "FAIL: **$target**: Export failed" >> $GITHUB_STEP_SUMMARY
           fi
         done
 
         echo "" >> $GITHUB_STEP_SUMMARY
 
         if [ -f "quality_report_${SKILL_NAME}.txt" ]; then
-          echo "### 📊 Quality Metrics" >> $GITHUB_STEP_SUMMARY
+          echo "###  Quality Metrics" >> $GITHUB_STEP_SUMMARY
           echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
           head -30 "quality_report_${SKILL_NAME}.txt" >> $GITHUB_STEP_SUMMARY
           echo "\`\`\`" >> $GITHUB_STEP_SUMMARY

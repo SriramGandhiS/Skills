@@ -158,7 +158,7 @@ version: {metadata.version}
         Args:
             package_path: Path to skill ZIP file
             api_key: Anthropic API key
-            **kwargs: Additional arguments (timeout, etc.)
+**kwargs: Additional arguments (timeout, etc.)
 
         Returns:
             Dictionary with upload result
@@ -334,7 +334,7 @@ version: {metadata.version}
         try:
             import anthropic
         except ImportError:
-            print("❌ Error: anthropic package not installed")
+            print("FAIL: Error: anthropic package not installed")
             print("Install with: pip install anthropic")
             return False
 
@@ -343,11 +343,11 @@ version: {metadata.version}
         skill_md_path = skill_dir / "SKILL.md"
 
         # Read reference files
-        print("📖 Reading reference documentation...")
+        print(" Reading reference documentation...")
         references = self._read_reference_files(references_dir)
 
         if not references:
-            print("❌ No reference files found to analyze")
+            print("FAIL: No reference files found to analyze")
             return False
 
         print(f"  ✓ Read {len(references)} reference files")
@@ -358,14 +358,14 @@ version: {metadata.version}
         current_skill_md = None
         if skill_md_path.exists():
             current_skill_md = skill_md_path.read_text(encoding="utf-8")
-            print(f"  ℹ Found existing SKILL.md ({len(current_skill_md)} chars)")
+            print(f"   Found existing SKILL.md ({len(current_skill_md)} chars)")
         else:
-            print("  ℹ No existing SKILL.md, will create new one")
+            print("   No existing SKILL.md, will create new one")
 
         # Build enhancement prompt
         prompt = self._build_enhancement_prompt(skill_dir.name, references, current_skill_md)
 
-        print("\n🤖 Asking Claude to enhance SKILL.md...")
+        print("\n Asking Claude to enhance SKILL.md...")
         print(f"   Input: {len(prompt):,} characters")
 
         try:
@@ -374,7 +374,7 @@ version: {metadata.version}
             base_url = os.environ.get("ANTHROPIC_BASE_URL")
             if base_url:
                 client_kwargs["base_url"] = base_url
-                print(f"ℹ️  Using custom API base URL: {base_url}")
+                print(f"  Using custom API base URL: {base_url}")
             client = anthropic.Anthropic(**client_kwargs)
 
             message = client.messages.create(
@@ -391,16 +391,16 @@ version: {metadata.version}
             if skill_md_path.exists():
                 backup_path = skill_md_path.with_suffix(".md.backup")
                 skill_md_path.rename(backup_path)
-                print(f"  💾 Backed up original to: {backup_path.name}")
+                print(f"   Backed up original to: {backup_path.name}")
 
             # Save enhanced version
             skill_md_path.write_text(enhanced_content, encoding="utf-8")
-            print("  ✅ Saved enhanced SKILL.md")
+            print("  PASS: Saved enhanced SKILL.md")
 
             return True
 
         except Exception as e:
-            print(f"❌ Error calling Claude API: {e}")
+            print(f"FAIL: Error calling Claude API: {e}")
             return False
 
     def _read_reference_files(
@@ -437,7 +437,7 @@ version: {metadata.version}
                 total_chars += len(content)
 
             except Exception as e:
-                print(f"  ⚠️  Could not read {ref_file.name}: {e}")
+                print(f"  WARNING:  Could not read {ref_file.name}: {e}")
 
         return references
 

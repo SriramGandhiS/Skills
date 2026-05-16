@@ -1,4 +1,4 @@
-﻿# Rendering Strategies
+# Rendering Strategies
 
 Angular supports multiple rendering strategies to optimize for SEO, performance, and interactivity.
 

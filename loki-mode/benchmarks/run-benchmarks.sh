@@ -4,32 +4,28 @@
 #===============================================================================
 # Loki Mode Benchmark Runner
 # Run HumanEval and SWE-bench benchmarks to validate multi-agent performance
-#
-# Usage:
-#   ./benchmarks/run-benchmarks.sh [benchmark] [options]
-#   ./benchmarks/run-benchmarks.sh humaneval              # Setup only
-#   ./benchmarks/run-benchmarks.sh humaneval --execute    # Direct Claude (baseline)
-#   ./benchmarks/run-benchmarks.sh humaneval --execute --loki  # Multi-agent Loki Mode
-#   ./benchmarks/run-benchmarks.sh humaneval --execute --limit 10  # First 10 problems
-#   ./benchmarks/run-benchmarks.sh swebench --execute     # Run SWE-bench
-#   ./benchmarks/run-benchmarks.sh all --execute          # Run all benchmarks
-#
-# Options:
-#   --execute       Actually run problems through Claude (vs just setup)
-#   --loki          Use Loki Mode multi-agent system (Architect->Engineer->QA->Reviewer)
-#   --limit N       Only run first N problems (useful for testing)
-#   --parallel N    Run N problems in parallel (default: 1)
-#   --model MODEL   Claude model to use (default: sonnet)
-#   --timeout N     Timeout per problem in seconds (default: 120)
-#   --retries N     Max RARV retry attempts for --loki mode (default: 3)
-#
-# Prerequisites:
-#   - Python 3.8+
-#   - Claude Code CLI
-#   - Git
-#
-# Results are saved to:
-#   ./benchmarks/results/YYYY-MM-DD-HH-MM-SS/
+# # Usage:
+# ./benchmarks/run-benchmarks.sh [benchmark] [options]
+# ./benchmarks/run-benchmarks.sh humaneval              # Setup only
+# ./benchmarks/run-benchmarks.sh humaneval --execute    # Direct Claude (baseline)
+# ./benchmarks/run-benchmarks.sh humaneval --execute --loki  # Multi-agent Loki Mode
+# ./benchmarks/run-benchmarks.sh humaneval --execute --limit 10  # First 10 problems
+# ./benchmarks/run-benchmarks.sh swebench --execute     # Run SWE-bench
+# ./benchmarks/run-benchmarks.sh all --execute          # Run all benchmarks
+# # Options:
+# --execute       Actually run problems through Claude (vs just setup)
+# --loki          Use Loki Mode multi-agent system (Architect->Engineer->QA->Reviewer)
+# --limit N       Only run first N problems (useful for testing)
+# --parallel N    Run N problems in parallel (default: 1)
+# --model MODEL   Claude model to use (default: sonnet)
+# --timeout N     Timeout per problem in seconds (default: 120)
+# --retries N     Max RARV retry attempts for --loki mode (default: 3)
+# # Prerequisites:
+# - Python 3.8+
+# - Claude Code CLI
+# - Git
+# # Results are saved to:
+# ./benchmarks/results/YYYY-MM-DD-HH-MM-SS/
 #===============================================================================
 
 set -uo pipefail

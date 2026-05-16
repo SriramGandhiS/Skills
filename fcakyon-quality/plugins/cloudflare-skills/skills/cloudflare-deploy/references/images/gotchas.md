@@ -72,17 +72,17 @@ const format = /image\/avif/.test(request.headers.get('Accept') || '') ? 'avif' 
 ## Anti-Patterns
 
 ```typescript
-// ❌ No caching - transforms every request
+// FAIL: No caching - transforms every request
 return env.IMAGES.input(buffer).transform({...}).output().response();
 
-// ❌ cover without both dimensions
+// FAIL: cover without both dimensions
 transform({ width: 800, fit: 'cover' })
 
-// ✅ Always set both for cover
+// PASS: Always set both for cover
 transform({ width: 800, height: 600, fit: 'cover' })
 
-// ❌ Exposes API token to client
-// ✅ Use Direct Creator Upload (patterns.md)
+// FAIL: Exposes API token to client
+// PASS: Use Direct Creator Upload (patterns.md)
 ```
 
 ## Debugging

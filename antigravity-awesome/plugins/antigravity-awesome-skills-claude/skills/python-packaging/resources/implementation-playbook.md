@@ -416,8 +416,8 @@ python -m build
 
 # This creates:
 # dist/
-#   my-package-1.0.0.tar.gz (source distribution)
-#   my_package-1.0.0-py3-none-any.whl (wheel)
+# my-package-1.0.0.tar.gz (source distribution)
+# my_package-1.0.0-py3-none-any.whl (wheel)
 
 # Check the distribution
 twine check dist/*

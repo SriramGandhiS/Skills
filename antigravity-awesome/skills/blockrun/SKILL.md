@@ -45,7 +45,7 @@ else:
 
 # At the end, report spending
 spending = client.get_spending()
-print(f"💰 Total spent: ${spending['total_usd']:.4f} across {spending['calls']} calls")
+print(f" Total spent: ${spending['total_usd']:.4f} across {spending['calls']} calls")
 ```
 
 ## When to Use

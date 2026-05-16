@@ -54,7 +54,7 @@ npx eslint . --plugin security
 | 硬编码的密钥 | 严重 | 使用 `process.env` |
 | 使用用户输入的 Shell 命令 | 严重 | 使用安全的 API 或 execFile |
 | 字符串拼接的 SQL | 严重 | 参数化查询 |
-| `innerHTML = userInput` | 高 | 使用 `textContent` 或 DOMPurify |
+| `innerHTML = userInput`| 高 | 使用`textContent` 或 DOMPurify |
 | `fetch(userProvidedUrl)` | 高 | 白名单允许的域名 |
 | 明文密码比较 | 严重 | 使用 `bcrypt.compare()` |
 | 路由上无认证检查 | 严重 | 添加认证中间件 |

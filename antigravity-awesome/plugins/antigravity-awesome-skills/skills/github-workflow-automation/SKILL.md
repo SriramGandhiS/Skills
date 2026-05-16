@@ -6,7 +6,7 @@ source: community
 date_added: "2026-02-27"
 ---
 
-# 🔧 GitHub Workflow Automation
+# GitHub Workflow Automation
 
 > Patterns for automating GitHub workflows with AI assistance, inspired by [Gemini CLI](https://github.com/google-gemini/gemini-cli) and modern DevOps practices.
 
@@ -75,18 +75,18 @@ jobs:
               messages: [{
                 role: "user",
                 content: `Review this PR diff and provide feedback:
-                
+
                 Changed files: ${{ steps.changed.outputs.files }}
-                
+
                 Diff:
                 ${{ steps.diff.outputs.diff }}
-                
+
                 Provide:
                 1. Summary of changes
                 2. Potential issues or bugs
                 3. Suggestions for improvement
                 4. Security concerns if any
-                
+
                 Format as GitHub markdown.`
               }]
             });
@@ -107,17 +107,17 @@ jobs:
 ````markdown
 # AI Review Structure
 
-## 📋 Summary
+## Summary
 
 Brief description of what this PR does.
 
-## ✅ What looks good
+## PASS: What looks good
 
 - Well-structured code
 - Good test coverage
 - Clear naming conventions
 
-## ⚠️ Potential Issues
+## WARNING: Potential Issues
 
 1. **Line 42**: Possible null pointer exception
    ```javascript
@@ -133,12 +133,12 @@ Brief description of what this PR does.
    // Add try-catch or .catch()
    ```
 
-## 💡 Suggestions
+## Suggestions
 
 - Consider extracting the validation logic into a separate function
 - Add JSDoc comments for public methods
 
-## 🔒 Security Notes
+## Security Notes
 
 - No sensitive data exposure detected
 - API key handling looks correct
@@ -236,7 +236,7 @@ To help us investigate, could you please provide:
 - Actual behavior
 - Environment (OS, version, etc.)
 
-This will help us resolve your issue faster. 🙏`
+This will help us resolve your issue faster. `
               });
             }
 ```
@@ -281,17 +281,17 @@ jobs:
       - uses: actions/stale@v9
         with:
           stale-issue-message: |
-            This issue has been automatically marked as stale because it has not had 
+            This issue has been automatically marked as stale because it has not had
             recent activity. It will be closed in 14 days if no further activity occurs.
 
             If this issue is still relevant:
             - Add a comment with an update
             - Remove the `stale` label
 
-            Thank you for your contributions! 🙏
+            Thank you for your contributions!
 
           stale-pr-message: |
-            This PR has been automatically marked as stale. Please update it or it 
+            This PR has been automatically marked as stale. Please update it or it
             will be closed in 14 days.
 
           days-before-stale: 60
@@ -484,7 +484,7 @@ jobs:
         with:
           payload: |
             {
-              "text": "🔄 Production rolled back to ${{ steps.stable.outputs.version }}",
+              "text": " Production rolled back to ${{ steps.stable.outputs.version }}",
               "blocks": [
                 {
                   "type": "section",
@@ -549,7 +549,7 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,
               issue_number: context.issue.number,
-              body: '✅ Successfully rebased onto main!'
+              body: 'PASS: Successfully rebased onto main!'
             })
 ```
 
@@ -569,12 +569,12 @@ async function smartCherryPick(commitHash: string, targetBranch: string) {
   // AI analysis
   const analysis = await ai.analyze(`
     I need to cherry-pick this commit to ${targetBranch}:
-    
+
     ${commitInfo}
-    
+
     Current state of affected files on ${targetBranch}:
     ${targetDiff}
-    
+
     Will there be conflicts? If so, suggest resolution strategy.
   `);
 
@@ -642,7 +642,7 @@ jobs:
           script: |
             const branches = `${{ steps.stale.outputs.branches }}`.split('\n').filter(Boolean);
 
-            const body = `## 🧹 Stale Branch Cleanup
+            const body = `##  Stale Branch Cleanup
 
 The following branches haven't been updated in over 30 days:
 
@@ -714,9 +714,9 @@ jobs:
           script: |
             const response = await ai.chat(`
               Context: ${process.env.CONTEXT}
-              
+
               Question: ${process.env.QUESTION}
-              
+
               Provide a helpful, specific answer. Include code examples if relevant.
             `);
 

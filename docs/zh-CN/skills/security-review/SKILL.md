@@ -234,7 +234,7 @@ const securityHeaders = [
       style-src 'self' 'unsafe-inline';
       img-src 'self' data: https:;
       font-src 'self';
-      connect-src 'self' https://api.example.com;
+      connect-src 'self' <https://api.example.com;>
     `.replace(/\s{2,}/g, ' ').trim()
   }
 ]
@@ -421,26 +421,26 @@ async function verifyTransaction(transaction: Transaction) {
 #### 定期更新
 
 ```bash
-# Check for vulnerabilities
+## Check for vulnerabilities
 npm audit
 
-# Fix automatically fixable issues
+## Fix automatically fixable issues
 npm audit fix
 
-# Update dependencies
+## Update dependencies
 npm update
 
-# Check for outdated packages
+## Check for outdated packages
 npm outdated
 ```
 
 #### 锁定文件
 
 ```bash
-# ALWAYS commit lock files
+## ALWAYS commit lock files
 git add package-lock.json
 
-# Use in CI/CD for reproducible builds
+## Use in CI/CD for reproducible builds
 npm ci  # Instead of npm install
 ```
 

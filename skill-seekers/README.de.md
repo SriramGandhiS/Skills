@@ -6,11 +6,9 @@
 
 [English](README.md) | [简体中文](README.zh-CN.md) | [日本語](README.ja.md) | [한국어](README.ko.md) | [Español](README.es.md) | [Français](README.fr.md) | Deutsch | [Português](README.pt-BR.md) | [Türkçe](README.tr.md) | [العربية](README.ar.md) | [हिन्दी](README.hi.md) | [Русский](README.ru.md)
 
-> ⚠️ **Hinweis zur maschinellen Übersetzung**
->
-> Dieses Dokument wurde automatisch durch KI übersetzt. Trotz Bemühungen um Qualität können ungenaue Ausdrücke vorkommen.
->
-> Gerne können Sie über [GitHub Issue #260](https://github.com/yusufkaraaslan/Skill_Seekers/issues/260) zur Verbesserung der Übersetzung beitragen! Ihr Feedback ist uns sehr wertvoll.
+> WARNING: **Hinweis zur maschinellen Übersetzung**
+> > Dieses Dokument wurde automatisch durch KI übersetzt. Trotz Bemühungen um Qualität können ungenaue Ausdrücke vorkommen.
+> > Gerne können Sie über [GitHub Issue #260](https://github.com/yusufkaraaslan/Skill_Seekers/issues/260) zur Verbesserung der Übersetzung beitragen! Ihr Feedback ist uns sehr wertvoll.
 
 [![Version](https://img.shields.io/badge/version-3.2.0-blue.svg)](https://github.com/yusufkaraaslan/Skill_Seekers/releases)
 [![Lizenz: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -31,7 +29,7 @@
 
 > **[Entwicklungsroadmap und Aufgaben ansehen](https://github.com/users/yusufkaraaslan/projects/2)** - 134 Aufgaben in 10 Kategorien — wählen Sie eine beliebige zum Mitwirken!
 
-## 🌐 Ökosystem
+## Ökosystem
 
 Skill Seekers ist ein Multi-Repository-Projekt. Hier finden Sie alles:
 

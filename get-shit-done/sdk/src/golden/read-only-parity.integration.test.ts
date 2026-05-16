@@ -72,16 +72,16 @@ describe('summary.extract golden parity (with array-of-objects fix)', () => {
     const gsdOutput = await captureGsdToolsOutput('summary-extract', ['sdk/src/golden/fixtures/summary-extract-sample.md'], REPO_ROOT);
     const registry = createRegistry();
     const sdkResult = await registry.dispatch('summary.extract', ['sdk/src/golden/fixtures/summary-extract-sample.md'], REPO_ROOT);
-    
+
     // The SDK correctly parses array-of-objects, whereas CJS parses them as strings.
     // Patch the CJS output to reflect the CodeRabbit bugfix.
     const patchedGsd = JSON.parse(JSON.stringify(gsdOutput));
     if (patchedGsd.tech_added && Array.isArray(patchedGsd.tech_added)) {
-      patchedGsd.tech_added = patchedGsd.tech_added.map((t: any) => 
+      patchedGsd.tech_added = patchedGsd.tech_added.map((t: any) =>
         t === 'name: typescript' ? { name: 'typescript' } : t
       );
     }
-    
+
     expect(sdkResult.data).toEqual(patchedGsd);
   });
 });

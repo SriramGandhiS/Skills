@@ -48,44 +48,44 @@ rsync -av --exclude='.git' --exclude='node_modules' --exclude='__pycache__' \
 扫描所有文件中的以下模式。将值提取到 `.env.example` 而非直接删除：
 
 ```
-# API 密钥和令牌
+## API 密钥和令牌
 [A-Za-z0-9_]*(KEY|TOKEN|SECRET|PASSWORD|PASS|API_KEY|AUTH)[A-Za-z0-9_]*\s*[=:]\s*['\"]?[A-Za-z0-9+/=_-]{8,}
 
-# AWS 凭证
+## AWS 凭证
 AKIA[0-9A-Z]{16}
 (?i)(aws_secret_access_key|aws_secret)\s*[=:]\s*['"]?[A-Za-z0-9+/=]{20,}
 
-# 数据库连接字符串
+## 数据库连接字符串
 (postgres|mysql|mongodb|redis):\/\/[^\s'"]+
 
-# JWT 令牌（三段式：header.payload.signature）
+## JWT 令牌（三段式：header.payload.signature）
 eyJ[A-Za-z0-9_-]+\.eyJ[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+
 
-# 私钥
+## 私钥
 -----BEGIN (RSA |EC |DSA )?PRIVATE KEY-----
 
-# GitHub 令牌（个人、服务器、OAuth、用户到服务器）
+## GitHub 令牌（个人、服务器、OAuth、用户到服务器）
 gh[pousr]_[A-Za-z0-9_]{36,}
 github_pat_[A-Za-z0-9_]{22,}
 
-# Google OAuth
+## Google OAuth
 GOCSPX-[A-Za-z0-9_-]+
 [0-9]+-[a-z0-9]+\.apps\.googleusercontent\.com
 
-# Slack Webhook
-https://hooks\.slack\.com/services/T[A-Z0-9]+/B[A-Z0-9]+/[A-Za-z0-9]+
+## Slack Webhook
+<https://hooks\.slack\.com/services/T[A-Z0-9]+/B[A-Z0-9]+/[A-Za-z0-9]+>
 
-# SendGrid / Mailgun
+## SendGrid / Mailgun
 SG\.[A-Za-z0-9_-]{22}\.[A-Za-z0-9_-]{43}
 key-[A-Za-z0-9]{32}
 
-# 通用环境变量文件密钥（警告 — 需人工审查，请勿自动移除）
+## 通用环境变量文件密钥（警告 — 需人工审查，请勿自动移除）
 ^[A-Z_]+=((?!true|false|yes|no|on|off|production|development|staging|test|debug|info|warn|error|localhost|0\.0\.0\.0|127\.0\.0\.1|\d+$).{16,})$
 ```
 
 **始终移除的文件：**
 
-* `.env` 及其变体（`.env.local`、`.env.production`、`.env.development`）
+* `.env`及其变体（`.env.local`、`.env.production`、`.env.development`）
 * `*.pem`、`*.key`、`*.p12`、`*.pfx`（私钥）
 * `credentials.json`、`service-account.json`
 * `.secrets/`、`secrets/`
@@ -95,7 +95,7 @@ key-[A-Za-z0-9]{32}
 
 **需剥离内容（而非移除）的文件：**
 
-* `docker-compose.yml` — 将硬编码值替换为 `${VAR_NAME}`
+* `docker-compose.yml`— 将硬编码值替换为`${VAR_NAME}`
 * `config/` 文件 — 将机密参数化
 * `nginx.conf` — 替换内部域名
 
@@ -104,9 +104,9 @@ key-[A-Za-z0-9]{32}
 | 模式 | 替换为 |
 |---------|-------------|
 | 自定义内部域名 | `your-domain.com` |
-| 绝对主目录路径 `/home/username/` | `/home/user/` 或 `$HOME/` |
-| 机密文件引用 `~/.secrets/` | `.env` |
-| 私有 IP `192.168.x.x`、`10.x.x.x` | `your-server-ip` |
+| 绝对主目录路径 `/home/username/`|`/home/user/`或`$HOME/` |
+| 机密文件引用 `~/.secrets/`|`.env` |
+| 私有 IP `192.168.x.x`、`10.x.x.x`|`your-server-ip` |
 | 内部服务 URL | 通用占位符 |
 | 个人邮箱地址 | `you@your-domain.com` |
 | 内部 GitHub 组织名 | `your-github-org` |
@@ -116,20 +116,20 @@ key-[A-Za-z0-9]{32}
 ### 步骤 5：生成 .env.example
 
 ```bash
-# Application Configuration
-# Copy this file to .env and fill in your values
-# cp .env.example .env
+## Application Configuration
+## Copy this file to .env and fill in your values
+## cp .env.example .env
 
-# === Required ===
+## === Required ===
 APP_NAME=my-project
 APP_DOMAIN=your-domain.com
 APP_PORT=8080
 
-# === Database ===
+## === Database ===
 DATABASE_URL=postgresql://user:password@localhost:5432/mydb
 REDIS_URL=redis://localhost:6379
 
-# === Secrets (REQUIRED — generate your own) ===
+## === Secrets (REQUIRED — generate your own) ===
 SECRET_KEY=change-me-to-a-random-string
 JWT_SECRET=change-me-to-a-random-string
 ```
@@ -151,7 +151,7 @@ replaced with configurable placeholders. See .env.example for configuration."
 在临时目录中创建 `FORK_REPORT.md`：
 
 ```markdown
-# Fork 报告：{project-name}
+## Fork 报告：{project-name}
 
 **来源：** {source-path}
 **目标：** {target-path}
@@ -190,7 +190,7 @@ replaced with configurable placeholders. See .env.example for configuration."
 ### 示例：分叉一个 FastAPI 服务
 
 输入：`Fork project: /home/user/my-api, Target: /home/user/opensource-staging/my-api, License: MIT`
-操作：复制文件，从 `DATABASE_URL` 中剥离 `docker-compose.yml`，将 `internal.company.com` 替换为 `your-domain.com`，创建包含 8 个变量的 `.env.example`，全新 git init
+操作：复制文件，从 `DATABASE_URL`中剥离`docker-compose.yml`，将`internal.company.com`替换为`your-domain.com`，创建包含 8 个变量的`.env.example`，全新 git init
 输出：`FORK_REPORT.md` 列出所有变更，临时目录已准备好供清理工具处理
 
 ## 规则

@@ -871,7 +871,7 @@ class ComfyUIGateway:
         workflow_id: str,
         poll_interval: float = 2.0,
         max_wait: float = 300.0,
-        **inputs: Any,
+**inputs: Any,
     ) -> dict:
         """
         Submit a job, poll until complete, and return the full result.

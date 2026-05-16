@@ -26,16 +26,15 @@ from skill_seekers.cli.sync_config import discover_urls, sync_config
 # ---------------------------------------------------------------------------
 
 # Simulates a docs site with this navigation structure:
-#
-#   /docs/                  (index — links to guide, api, faq)
-#   /docs/guide             (links to guide/install, guide/usage)
-#   /docs/guide/install     (leaf page)
-#   /docs/guide/usage       (leaf page, links back to guide)
-#   /docs/api               (links to api/auth, api/users)
-#   /docs/api/auth          (leaf page)
-#   /docs/api/users         (leaf page)
-#   /docs/faq               (leaf page)
-#   /blog/post-1            (outside /docs/ — should be excluded)
+# # /docs/                  (index — links to guide, api, faq)
+# /docs/guide             (links to guide/install, guide/usage)
+# /docs/guide/install     (leaf page)
+# /docs/guide/usage       (leaf page, links back to guide)
+# /docs/api               (links to api/auth, api/users)
+# /docs/api/auth          (leaf page)
+# /docs/api/users         (leaf page)
+# /docs/faq               (leaf page)
+# /blog/post-1            (outside /docs/ — should be excluded)
 
 _SITE_PAGES = {
     "/docs/": """<!DOCTYPE html><html><head><title>Docs Home</title></head><body>

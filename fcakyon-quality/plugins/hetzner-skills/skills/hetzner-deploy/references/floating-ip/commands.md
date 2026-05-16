@@ -31,7 +31,6 @@ hcloud floating-ip add-label [--overwrite] <floating-ip> <label>...
 
 * [hcloud floating-ip](hcloud_floating-ip.md)	 - Manage Floating IPs
 
-
 ---
 
 ## hcloud floating-ip assign
@@ -65,7 +64,6 @@ hcloud floating-ip assign <floating-ip> <server>
 ### SEE ALSO
 
 * [hcloud floating-ip](hcloud_floating-ip.md)	 - Manage Floating IPs
-
 
 ---
 
@@ -109,7 +107,6 @@ hcloud floating-ip create [options] --type <ipv4|ipv6> (--home-location <locatio
 
 * [hcloud floating-ip](hcloud_floating-ip.md)	 - Manage Floating IPs
 
-
 ---
 
 ## hcloud floating-ip delete
@@ -143,7 +140,6 @@ hcloud floating-ip delete <floating-ip>...
 ### SEE ALSO
 
 * [hcloud floating-ip](hcloud_floating-ip.md)	 - Manage Floating IPs
-
 
 ---
 
@@ -180,7 +176,6 @@ hcloud floating-ip describe [options] <floating-ip>
 
 * [hcloud floating-ip](hcloud_floating-ip.md)	 - Manage Floating IPs
 
-
 ---
 
 ## hcloud floating-ip disable-protection
@@ -215,7 +210,6 @@ hcloud floating-ip disable-protection <floating-ip> delete
 
 * [hcloud floating-ip](hcloud_floating-ip.md)	 - Manage Floating IPs
 
-
 ---
 
 ## hcloud floating-ip enable-protection
@@ -249,7 +243,6 @@ hcloud floating-ip enable-protection <floating-ip> delete
 ### SEE ALSO
 
 * [hcloud floating-ip](hcloud_floating-ip.md)	 - Manage Floating IPs
-
 
 ---
 
@@ -311,7 +304,6 @@ hcloud floating-ip list [options]
 
 * [hcloud floating-ip](hcloud_floating-ip.md)	 - Manage Floating IPs
 
-
 ---
 
 ## hcloud floating-ip remove-label
@@ -346,7 +338,6 @@ hcloud floating-ip remove-label <floating-ip> (--all | <label>...)
 ### SEE ALSO
 
 * [hcloud floating-ip](hcloud_floating-ip.md)	 - Manage Floating IPs
-
 
 ---
 
@@ -385,7 +376,6 @@ hcloud floating-ip set-rdns [--ip <ip>] (--hostname <hostname> | --reset) <float
 
 * [hcloud floating-ip](hcloud_floating-ip.md)	 - Manage Floating IPs
 
-
 ---
 
 ## hcloud floating-ip unassign
@@ -419,7 +409,6 @@ hcloud floating-ip unassign <floating-ip>
 ### SEE ALSO
 
 * [hcloud floating-ip](hcloud_floating-ip.md)	 - Manage Floating IPs
-
 
 ---
 

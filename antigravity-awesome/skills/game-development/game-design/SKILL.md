@@ -119,7 +119,7 @@ Just Right → Flow → Engagement
 
 ## 6. Anti-Patterns
 
-| ❌ Don't | ✅ Do |
+| FAIL: Don't | PASS: Do |
 |----------|-------|
 | Design in isolation | Playtest constantly |
 | Polish before fun | Prototype first |

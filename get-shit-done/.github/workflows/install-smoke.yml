@@ -1,15 +1,13 @@
 name: Install Smoke
 
 # Exercises the real install paths:
-#   tarball: `npm pack` → `npm install -g <tarball>` → assert gsd-sdk on PATH
-#   unpacked: `npm install -g <dir>` (no pack) → assert gsd-sdk on PATH + executable
-#
-# The tarball path is the canonical ship path. The unpacked path reproduces the
+# tarball: `npm pack` → `npm install -g <tarball>` → assert gsd-sdk on PATH
+# unpacked: `npm install -g <dir>` (no pack) → assert gsd-sdk on PATH + executable
+# # The tarball path is the canonical ship path. The unpacked path reproduces the
 # mode-644 failure class (issue #2453): npm does NOT chmod bin targets when
 # installing from an unpacked local directory, so any stale tsc output lacking
 # execute bits will be caught by the unpacked job before release.
-#
-# - PRs: path-filtered, minimal runner (ubuntu + Node LTS) for fast signal.
+# # - PRs: path-filtered, minimal runner (ubuntu + Node LTS) for fast signal.
 # - Push to release branches / main: full matrix.
 # - workflow_call: invoked from release.yml as a pre-publish gate.
 

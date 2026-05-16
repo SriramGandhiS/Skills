@@ -10,7 +10,7 @@ model: sonnet
 当被调用时：
 
 1. 运行 `git diff -- '*.go'` 查看最近的 Go 文件更改
-2. 如果可用，运行 `go vet ./...` 和 `staticcheck ./...`
+2. 如果可用，运行 `go vet ./...`和`staticcheck ./...`
 3. 关注修改过的 `.go` 文件
 4. 立即开始审查
 
@@ -29,9 +29,9 @@ model: sonnet
 ### 关键 -- 错误处理
 
 * **忽略的错误**：使用 `_` 丢弃错误
-* **缺少错误包装**：`return err` 没有 `fmt.Errorf("context: %w", err)`
+* **缺少错误包装**：`return err`没有`fmt.Errorf("context: %w", err)`
 * **对可恢复的错误使用 panic**：应使用错误返回
-* **缺少 errors.Is/As**：使用 `errors.Is(err, target)` 而非 `err == target`
+* **缺少 errors.Is/As**：使用 `errors.Is(err, target)`而非`err == target`
 
 ### 高 -- 并发
 

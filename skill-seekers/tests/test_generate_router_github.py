@@ -225,7 +225,7 @@ class TestRouterGeneratorWithGitHub:
         skill_md = generator.generate_skill_md()
 
         # Check GitHub metadata section
-        assert "⭐ 5,000" in skill_md
+        assert " 5,000" in skill_md
         assert "Python" in skill_md
         assert "OAuth 2.0 library" in skill_md
 
@@ -259,7 +259,7 @@ class TestRouterGeneratorWithGitHub:
         skill_md = generator.generate_skill_md()
 
         # Should not have GitHub-specific sections
-        assert "⭐" not in skill_md
+        assert "" not in skill_md
         assert "Repository Info" not in skill_md
         assert "Quick Start (from README)" not in skill_md
         assert "Common Issues (from GitHub)" not in skill_md
@@ -328,8 +328,8 @@ class TestSubSkillIssuesSection:
         assert "OAuth redirect fails" in issues_section
         assert "Issue #50" in issues_section
         assert "20 comments" in issues_section
-        assert "🔴" in issues_section  # Open issue icon
-        assert "✅" in issues_section  # Closed issue icon
+        assert "" in issues_section  # Open issue icon
+        assert "PASS:" in issues_section  # Closed issue icon
 
     def test_generate_subskill_issues_no_matches(self, tmp_path):
         """Test issues section when no issues match the topic."""
@@ -474,7 +474,7 @@ class TestIntegration:
 
         # Verify all Phase 4 enhancements present
         # 1. Repository metadata
-        assert "⭐ 10,000" in skill_md
+        assert " 10,000" in skill_md
         assert "Python" in skill_md
         assert "Fast MCP server framework" in skill_md
 

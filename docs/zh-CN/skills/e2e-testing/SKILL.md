@@ -228,7 +228,7 @@ use: {
 ## CI/CD 集成
 
 ```yaml
-# .github/workflows/e2e.yml
+## .github/workflows/e2e.yml
 name: E2E Tests
 on: [push, pull_request]
 
@@ -256,7 +256,7 @@ jobs:
 ## 测试报告模板
 
 ```markdown
-# E2E 测试报告
+## E2E 测试报告
 
 **日期：** YYYY-MM-DD HH:MM
 **持续时间：** Xm Ys

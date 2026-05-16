@@ -37,10 +37,10 @@ Every output must satisfy **all four**:
 4. **Cohesive Restraint**
    No random decoration. Every flourish must serve the aesthetic thesis.
 
-❌ No default layouts
-❌ No design-by-components
-❌ No “safe” palettes or fonts
-✅ Strong opinions, well executed
+FAIL: No default layouts
+FAIL: No design-by-components
+FAIL: No “safe” palettes or fonts
+PASS: Strong opinions, well executed
 
 ---
 
@@ -100,7 +100,7 @@ Examples (non-exhaustive):
 * Maximalist / Chaotic
 * Minimalist / Severe
 
-⚠️ Do not blend more than **two**.
+WARNING: Do not blend more than **two**.
 
 ### 3. Differentiation Anchor
 
@@ -229,12 +229,12 @@ Explicitly state:
 
 ## 7. Anti-Patterns (Immediate Failure)
 
-❌ Inter/Roboto/system fonts
-❌ Purple-on-white SaaS gradients
-❌ Default Tailwind/ShadCN layouts
-❌ Symmetrical, predictable sections
-❌ Overused AI design tropes
-❌ Decoration without intent
+FAIL: Inter/Roboto/system fonts
+FAIL: Purple-on-white SaaS gradients
+FAIL: Default Tailwind/ShadCN layouts
+FAIL: Symmetrical, predictable sections
+FAIL: Overused AI design tropes
+FAIL: Decoration without intent
 
 If the design could be mistaken for a template → restart.
 

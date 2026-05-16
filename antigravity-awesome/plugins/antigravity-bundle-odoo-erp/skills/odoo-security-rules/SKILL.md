@@ -35,11 +35,10 @@ access_hospital_patient_manager,hospital.patient.manager,model_hospital_patient,
 ```
 
 > **Note:** Use `base.group_erp_manager` for ERP managers, not `base.group_system` — that group is reserved for Odoo's technical superusers. Always create a custom group for module-specific manager roles:
->
-> ```xml
+> > ```xml
 > <record id="group_hospital_manager" model="res.groups">
->     <field name="name">Hospital Manager</field>
->     <field name="category_id" ref="base.module_category_hidden"/>
+> <field name="name">Hospital Manager</field>
+> <field name="category_id" ref="base.module_category_hidden"/>
 > </record>
 > ```
 
@@ -76,13 +75,13 @@ access_hospital_patient_manager,hospital.patient.manager,model_hospital_patient,
 
 ## Best Practices
 
-- ✅ **Do:** Start with the most restrictive access and open up as needed.
-- ✅ **Do:** Use `company_ids` (plural) in multi-company rules — it includes all companies the user belongs to.
-- ✅ **Do:** Test rules using a non-admin user in debug mode — `sudo()` bypasses all record rules entirely.
-- ✅ **Do:** Create dedicated security groups per module rather than reusing core Odoo groups.
-- ❌ **Don't:** Give `perm_unlink = 1` to regular users unless deletion is explicitly required by the business process.
-- ❌ **Don't:** Leave `group_id` blank in `ir.model.access.csv` unless you intend to grant public (unauthenticated) access.
-- ❌ **Don't:** Use `base.group_system` for module managers — that grants full technical access including server configurations.
+- PASS: **Do:** Start with the most restrictive access and open up as needed.
+- PASS: **Do:** Use `company_ids` (plural) in multi-company rules — it includes all companies the user belongs to.
+- PASS: **Do:** Test rules using a non-admin user in debug mode — `sudo()` bypasses all record rules entirely.
+- PASS: **Do:** Create dedicated security groups per module rather than reusing core Odoo groups.
+- FAIL: **Don't:** Give `perm_unlink = 1` to regular users unless deletion is explicitly required by the business process.
+- FAIL: **Don't:** Leave `group_id` blank in `ir.model.access.csv` unless you intend to grant public (unauthenticated) access.
+- FAIL: **Don't:** Use `base.group_system` for module managers — that grants full technical access including server configurations.
 
 ## Limitations
 

@@ -43,13 +43,13 @@ Your job is to **help the right reader take the right action**.
 Before writing any copy, gather or confirm the following.
 If information is missing, ask for it **before proceeding**.
 
-### 1️⃣ Page Purpose
+### 1⃣ Page Purpose
 
 - Page type (homepage, landing page, pricing, feature, about)
 - ONE primary action (CTA)
 - Secondary action (if any)
 
-### 2️⃣ Audience
+### 2⃣ Audience
 
 - Target customer or role
 - Primary problem they are trying to solve
@@ -57,14 +57,14 @@ If information is missing, ask for it **before proceeding**.
 - Main objections or hesitations
 - Language they use to describe the problem
 
-### 3️⃣ Product / Offer
+### 3⃣ Product / Offer
 
 - What is being offered
 - Key differentiator vs alternatives
 - Primary outcome or transformation
 - Available proof (numbers, testimonials, case studies)
 
-### 4️⃣ Context
+### 4⃣ Context
 
 - Traffic source (ads, organic, email, referrals)
 - Awareness level (unaware, problem-aware, solution-aware, product-aware)
@@ -242,7 +242,7 @@ This skill is complete ONLY when:
 Good copy does not persuade everyone.
 It persuades **the right person** to take **the right action**.
 
-If the copy feels clever but unclear,  
+If the copy feels clever but unclear,
 rewrite it until it feels obvious.
 
 ## When to Use

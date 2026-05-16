@@ -227,7 +227,7 @@ All requirements covered. Cross-phase integration verified. E2E flows complete.
 
 ───────────────────────────────────────────────────────────────
 
-## ▶ Next Up — [${PROJECT_CODE}] ${PROJECT_TITLE}
+## Next Up — [${PROJECT_CODE}] ${PROJECT_TITLE}
 
 **Complete milestone** — archive and tag
 
@@ -241,7 +241,7 @@ All requirements covered. Cross-phase integration verified. E2E flows complete.
 
 **If gaps_found:**
 
-## ⚠ Milestone {version} — Gaps Found
+## WARNING: Milestone {version} — Gaps Found
 
 **Score:** {N}/{M} requirements satisfied
 **Report:** .planning/v{version}-MILESTONE-AUDIT.md
@@ -272,7 +272,7 @@ Phases needing validation: run `/gsd-validate-phase {N}` for each flagged phase.
 
 ───────────────────────────────────────────────────────────────
 
-## ▶ Next Up — [${PROJECT_CODE}] ${PROJECT_TITLE}
+## Next Up — [${PROJECT_CODE}] ${PROJECT_TITLE}
 
 **Close the gaps inline** — gap planning happens as part of this audit's
 output (see the Unsatisfied Requirements, Cross-Phase Issues, Broken Flows,
@@ -303,7 +303,7 @@ they may close the gap retroactively without a new phase.
 
 **If tech_debt (no blockers but accumulated debt):**
 
-## ⚡ Milestone {version} — Tech Debt Review
+## Milestone {version} — Tech Debt Review
 
 **Score:** {N}/{M} requirements satisfied
 **Report:** .planning/v{version}-MILESTONE-AUDIT.md
@@ -321,7 +321,7 @@ All requirements met. No critical blockers. Accumulated tech debt needs review.
 
 ───────────────────────────────────────────────────────────────
 
-## ▶ Options
+## Options
 
 **A. Complete milestone** — accept debt, track in backlog
 

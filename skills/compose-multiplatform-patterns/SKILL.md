@@ -1,4 +1,4 @@
-﻿---
+---
 name: compose-multiplatform-patterns
 description: Compose Multiplatform and Jetpack Compose patterns for KMP projects â€” state management, navigation, theming, performance, and platform-specific UI.
 origin: ECC
@@ -212,7 +212,7 @@ actual fun PlatformStatusBar(darkIcons: Boolean) {
 
 ### Stable Types for Skippable Recomposition
 
-Mark classes as `@Stable` or `@Immutable` when all properties are stable:
+Mark classes as `@Stable`or`@Immutable` when all properties are stable:
 
 ```kotlin
 @Immutable
@@ -287,9 +287,9 @@ fun AppTheme(
 
 ## Anti-Patterns to Avoid
 
-- Using `mutableStateOf` in ViewModels when `MutableStateFlow` with `collectAsStateWithLifecycle` is safer for lifecycle
+- Using `mutableStateOf`in ViewModels when`MutableStateFlow`with`collectAsStateWithLifecycle` is safer for lifecycle
 - Passing `NavController` deep into composables â€” pass lambda callbacks instead
-- Heavy computation inside `@Composable` functions â€” move to ViewModel or `remember {}`
+- Heavy computation inside `@Composable`functions â€” move to ViewModel or`remember {}`
 - Using `LaunchedEffect(Unit)` as a substitute for ViewModel init â€” it re-runs on configuration change in some setups
 - Creating new object instances in composable parameters â€” causes unnecessary recomposition
 

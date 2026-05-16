@@ -74,7 +74,7 @@ jobs:
         ALL_PASSED=true
         SUMMARY_FILE="quality_summary.md"
 
-        echo "# 📊 Quality Metrics Dashboard" > $SUMMARY_FILE
+        echo "#  Quality Metrics Dashboard" > $SUMMARY_FILE
         echo "" >> $SUMMARY_FILE
         echo "**Threshold:** $THRESHOLD/100" >> $SUMMARY_FILE
         echo "" >> $SUMMARY_FILE
@@ -85,7 +85,7 @@ jobs:
           fi
 
           SKILL_NAME=$(basename "$skill_dir")
-          echo "🔍 Analyzing $SKILL_NAME..."
+          echo " Analyzing $SKILL_NAME..."
 
           # Run quality analysis
           python3 -c "
@@ -134,10 +134,10 @@ jobs:
         done
 
         if [ "$ALL_PASSED" = false ]; then
-          echo "❌ Some skills failed quality thresholds"
+          echo "FAIL: Some skills failed quality thresholds"
           exit 1
         else
-          echo "✅ All skills passed quality thresholds"
+          echo "PASS: All skills passed quality thresholds"
         fi
 
     - name: Upload quality reports

@@ -139,7 +139,6 @@ All {phase_count} phases done. Ready for final steps:
   → /gsd-complete-milestone — archive and wrap up
 ```
 
-
 **Text mode (`workflow.text_mode: true` in config or `--text` flag):** Set `TEXT_MODE=true` if `--text` is present in `$ARGUMENTS` OR `text_mode` from init JSON is `true`. When TEXT_MODE is active, replace every `AskUserQuestion` call with a plain-text numbered list and ask the user to type their choice number. This is required for non-Claude runtimes (OpenAI Codex, Gemini CLI, etc.) where `AskUserQuestion` is not available.
 Ask user via AskUserQuestion:
 - **question:** "All phases complete. What next?"
@@ -160,7 +159,7 @@ Handle responses:
 2. Collect the inline action (discuss recommendation, if any — there will be at most one since discuss is sequential).
 3. Build compound options:
 
-   **If there are ANY recommended actions (background, inline, or both):**
+**If there are ANY recommended actions (background, inline, or both):**
    Create ONE primary "Continue" option that dispatches ALL of them together:
    - Label: `"Continue"` — always this exact word
    - Below the label, list every action that will happen. Enumerate ALL recommended actions — do not cap or truncate:
@@ -173,7 +172,7 @@ Handle responses:
    - This dispatches all background agents first, then runs the inline discuss (if any).
    - If there is no inline discuss, the dashboard refreshes after spawning background agents.
 
-   **Important:** The Continue option must include EVERY action from `recommended_actions` — not just 2. If there are 3 actions, list 3. If there are 5, list 5.
+**Important:** The Continue option must include EVERY action from `recommended_actions` — not just 2. If there are 3 actions, list 3. If there are 5, list 5.
 
 4. Always add:
    - `"Refresh dashboard"`
@@ -183,7 +182,7 @@ Display recommendations compactly:
 
 ```
 ───────────────────────────────────────────────────────────────
-▶ Next Steps
+ Next Steps
 ───────────────────────────────────────────────────────────────
 
 Continue:

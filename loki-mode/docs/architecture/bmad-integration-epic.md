@@ -33,32 +33,32 @@ metadata, and produces a normalized PRD document suitable for prd-analyzer.py.
 **Acceptance Criteria:**
 
 - **Given** a directory containing `_bmad-output/planning-artifacts/prd-*.md`
-  **When** bmad-adapter.py is invoked with the project path
-  **Then** it discovers the PRD file automatically
+**When** bmad-adapter.py is invoked with the project path
+**Then** it discovers the PRD file automatically
 
 - **Given** a BMAD PRD with YAML frontmatter (`stepsCompleted`, `inputDocuments`, `workflowType`)
-  **When** the adapter parses it
-  **Then** frontmatter is extracted as metadata and stripped from the document body
+**When** the adapter parses it
+**Then** frontmatter is extracted as metadata and stripped from the document body
 
 - **Given** a BMAD PRD with sections like `## Executive Summary`, `## Project Classification`
-  **When** the adapter normalizes headings
-  **Then** sections are preserved as-is (no destructive remapping)
+**When** the adapter normalizes headings
+**Then** sections are preserved as-is (no destructive remapping)
 
 - **Given** a BMAD project with `architecture.md` alongside the PRD
-  **When** the adapter runs
-  **Then** architecture content is appended as supplementary context
+**When** the adapter runs
+**Then** architecture content is appended as supplementary context
 
 - **Given** a BMAD project with `epics.md`
-  **When** the adapter runs
-  **Then** epic/story data is extracted into a structured task list (JSON)
+**When** the adapter runs
+**Then** epic/story data is extracted into a structured task list (JSON)
 
 - **Given** a non-BMAD project directory (no `_bmad-output/`)
-  **When** the adapter is invoked
-  **Then** it exits with a clear error message and non-zero exit code
+**When** the adapter is invoked
+**Then** it exits with a clear error message and non-zero exit code
 
 - **Given** a BMAD project with incomplete workflow state (`stepsCompleted` missing entries)
-  **When** the adapter runs
-  **Then** it warns about incomplete artifacts but processes what exists
+**When** the adapter runs
+**Then** it warns about incomplete artifacts but processes what exists
 
 ---
 
@@ -76,28 +76,28 @@ Maintain full backward compatibility with freeform PRDs.
 **Acceptance Criteria:**
 
 - **Given** a BMAD PRD with `## Executive Summary`
-  **When** prd-analyzer.py scores it
-  **Then** the section is recognized (new heading pattern in `feature_list` or new dimension)
+**When** prd-analyzer.py scores it
+**Then** the section is recognized (new heading pattern in `feature_list` or new dimension)
 
 - **Given** a BMAD PRD with `## Functional Requirements` containing `FR1:` items
-  **When** prd-analyzer.py scores it
-  **Then** `feature_list` dimension scores HIGH
+**When** prd-analyzer.py scores it
+**Then** `feature_list` dimension scores HIGH
 
 - **Given** a BMAD PRD with `## Non-Functional Requirements` > `### Security`, `### Performance`
-  **When** prd-analyzer.py scores it
-  **Then** `security` and `deployment` dimensions score at least PARTIAL
+**When** prd-analyzer.py scores it
+**Then** `security` and `deployment` dimensions score at least PARTIAL
 
 - **Given** the `--architecture path/to/architecture.md` flag
-  **When** prd-analyzer.py runs
-  **Then** tech_stack, data_model, and api_spec dimensions are also scored from architecture.md
+**When** prd-analyzer.py runs
+**Then** tech_stack, data_model, and api_spec dimensions are also scored from architecture.md
 
 - **Given** a freeform PRD (no BMAD structure)
-  **When** prd-analyzer.py scores it
-  **Then** results are identical to the current version (zero regression)
+**When** prd-analyzer.py scores it
+**Then** results are identical to the current version (zero regression)
 
 - **Given** a BMAD PRD and a freeform PRD of equivalent completeness
-  **When** both are scored
-  **Then** BMAD PRD scores equal or higher (structured methodology bonus not required but allowed)
+**When** both are scored
+**Then** BMAD PRD scores equal or higher (structured methodology bonus not required but allowed)
 
 ---
 
@@ -116,32 +116,32 @@ is injected into build_prompt() as a supplementary context block.
 **Acceptance Criteria:**
 
 - **Given** `loki start --bmad-project ./my-project`
-  **When** `./my-project/_bmad-output/` exists with BMAD artifacts
-  **Then** artifacts are discovered, parsed, and loaded into `.loki/` state
+**When** `./my-project/_bmad-output/` exists with BMAD artifacts
+**Then** artifacts are discovered, parsed, and loaded into `.loki/` state
 
 - **Given** `loki start --bmad-project ./my-project`
-  **When** `./my-project/_bmad-output/` does NOT exist
-  **Then** CLI prints error and exits with non-zero code
+**When** `./my-project/_bmad-output/` does NOT exist
+**Then** CLI prints error and exits with non-zero code
 
 - **Given** BMAD artifacts are loaded
-  **When** build_prompt() constructs the iteration prompt
-  **Then** a `BMAD_CONTEXT` block is injected with architecture summary and active epic
+**When** build_prompt() constructs the iteration prompt
+**Then** a `BMAD_CONTEXT` block is injected with architecture summary and active epic
 
 - **Given** BMAD epics are loaded
-  **When** the task queue is populated
-  **Then** each BMAD story becomes a `.loki/queue/` task with priority and acceptance criteria
+**When** the task queue is populated
+**Then** each BMAD story becomes a `.loki/queue/` task with priority and acceptance criteria
 
 - **Given** `loki start ./prd.md` (no --bmad-project flag)
-  **When** the CLI runs
-  **Then** behavior is identical to current version (zero regression)
+**When** the CLI runs
+**Then** behavior is identical to current version (zero regression)
 
 - **Given** `loki start --bmad-project ./my-project --prd ./override.md`
-  **When** both flags are provided
-  **Then** the explicit PRD takes precedence; BMAD artifacts provide supplementary context only
+**When** both flags are provided
+**Then** the explicit PRD takes precedence; BMAD artifacts provide supplementary context only
 
 - **Given** the `--bmad-project` flag
-  **When** `loki help start` is run
-  **Then** the flag appears in help text with usage description
+**When** `loki help start` is run
+**Then** the flag appears in help text with usage description
 
 ---
 
@@ -159,20 +159,20 @@ to epics. Report consistency gaps as warnings (not blockers).
 **Acceptance Criteria:**
 
 - **Given** a BMAD project with product-brief, PRD, architecture, and epics
-  **When** the validator runs
-  **Then** it checks that PRD references product-brief themes
+**When** the validator runs
+**Then** it checks that PRD references product-brief themes
 
 - **Given** a BMAD PRD with 20 Functional Requirements and epics.md
-  **When** the validator runs
-  **Then** it reports how many FRs are covered by at least one epic story
+**When** the validator runs
+**Then** it reports how many FRs are covered by at least one epic story
 
 - **Given** a BMAD project missing architecture.md
-  **When** the validator runs
-  **Then** it warns about the missing artifact but does not block processing
+**When** the validator runs
+**Then** it warns about the missing artifact but does not block processing
 
 - **Given** an inconsistency (FR in PRD with no matching story in epics)
-  **When** the validator runs
-  **Then** the gap is reported as a warning in the adapter output
+**When** the validator runs
+**Then** the gap is reported as a warning in the adapter output
 
 ---
 
@@ -190,32 +190,32 @@ from BMAD's own templates populated with realistic data.
 **Acceptance Criteria:**
 
 - **Given** test fixtures in `tests/fixtures/bmad/` with realistic BMAD output
-  **When** `bash tests/test-bmad-integration.sh` runs
-  **Then** all tests pass with zero failures
+**When** `bash tests/test-bmad-integration.sh` runs
+**Then** all tests pass with zero failures
 
 - **Given** a fixture with a well-formed BMAD PRD
-  **When** the adapter and analyzer are run on it
-  **Then** quality score is >= 7.0/10
+**When** the adapter and analyzer are run on it
+**Then** quality score is >= 7.0/10
 
 - **Given** a fixture with a freeform PRD (non-BMAD)
-  **When** the analyzer scores it before and after the Story 1.2 changes
-  **Then** scores are identical (backward compatibility)
+**When** the analyzer scores it before and after the Story 1.2 changes
+**Then** scores are identical (backward compatibility)
 
 - **Given** a fixture with malformed BMAD artifacts (missing frontmatter, partial steps)
-  **When** the adapter processes it
-  **Then** it handles gracefully with warnings, no crashes
+**When** the adapter processes it
+**Then** it handles gracefully with warnings, no crashes
 
 - **Given** a fixture with incomplete artifact chain (PRD but no architecture)
-  **When** the adapter and validator run
-  **Then** processing succeeds with chain-gap warnings
+**When** the adapter and validator run
+**Then** processing succeeds with chain-gap warnings
 
 - **Given** the `--bmad-project` CLI flag
-  **When** tested against fixtures
-  **Then** discovery, loading, and prompt injection all work correctly
+**When** tested against fixtures
+**Then** discovery, loading, and prompt injection all work correctly
 
 - **Given** the test suite
-  **When** run after any code change
-  **Then** execution completes in under 30 seconds
+**When** run after any code change
+**Then** execution completes in under 30 seconds
 
 ---
 

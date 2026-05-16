@@ -27,16 +27,16 @@ model: opus
 
 ### 分析コマンド
 ```bash
-# 未使用のエクスポート/ファイル/依存関係のためにknipを実行
+## 未使用のエクスポート/ファイル/依存関係のためにknipを実行
 npx knip
 
-# 未使用の依存関係をチェック
+## 未使用の依存関係をチェック
 npx depcheck
 
-# 未使用のTypeScriptエクスポートを見つける
+## 未使用のTypeScriptエクスポートを見つける
 npx ts-prune
 
-# 未使用のdisable-directivesをチェック
+## 未使用のdisable-directivesをチェック
 npx eslint . --report-unused-disable-directives
 ```
 
@@ -91,7 +91,7 @@ e) テストがまだ合格することを確認
 この構造で`docs/DELETION_LOG.md`を作成/更新:
 
 ```markdown
-# コード削除ログ
+## コード削除ログ
 
 ## [YYYY-MM-DD] リファクタセッション
 

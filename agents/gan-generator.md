@@ -77,7 +77,7 @@ Write to `gan-harness/generator-state.md` after each iteration:
 - [Any issues you're aware of but couldn't fix]
 
 ## Dev Server
-- URL: http://localhost:3000
+- URL: <http://localhost:3000>
 - Status: running
 - Command: npm run dev
 ```

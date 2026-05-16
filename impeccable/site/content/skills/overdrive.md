@@ -12,7 +12,7 @@ Do not use it on operator tools, dashboards, or anything where reliability beats
 
 The skill picks one moment to make extraordinary and commits to it, rather than spreading effort across the whole interface. It then reaches for techniques most AI-generated UIs never touch: WebGL shaders, spring physics, Scroll Timeline, View Transitions, canvas animation, GPU-accelerated filters. Everything is budgeted, profiled, and tested at 60fps, with reduced-motion fallbacks baked in.
 
-Overdrive output is announced with `──── ⚡ OVERDRIVE ────` so you know you are entering a more ambitious mode. Expect larger diffs, new dependencies, and implementation depth beyond what other skills produce.
+Overdrive output is announced with `────  OVERDRIVE ────` so you know you are entering a more ambitious mode. Expect larger diffs, new dependencies, and implementation depth beyond what other skills produce.
 
 ## Try it
 

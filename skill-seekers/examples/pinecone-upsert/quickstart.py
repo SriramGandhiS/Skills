@@ -51,9 +51,9 @@ def create_index(pc: Pinecone, index_name: str, dimension: int = 1536) -> None:
         while not pc.describe_index(index_name).status["ready"]:
             print("Waiting for index to be ready...")
             time.sleep(1)
-        print(f"✅ Index created: {index_name}")
+        print(f"PASS: Index created: {index_name}")
     else:
-        print(f"ℹ️  Index already exists: {index_name}")
+        print(f"  Index already exists: {index_name}")
 
 
 def load_documents(json_path: str) -> List[Dict]:
@@ -69,7 +69,7 @@ def load_documents(json_path: str) -> List[Dict]:
     with open(json_path) as f:
         documents = json.load(f)
 
-    print(f"✅ Loaded {len(documents)} documents")
+    print(f"PASS: Loaded {len(documents)} documents")
 
     # Show category breakdown
     categories = {}
@@ -150,7 +150,7 @@ def batch_upsert(
     if vectors:
         index.upsert(vectors=vectors)
 
-    print(f"✅ Upserted all documents to Pinecone")
+    print(f"PASS: Upserted all documents to Pinecone")
 
     # Verify
     stats = index.describe_index_stats()
@@ -217,7 +217,7 @@ def interactive_search(index, openai_client: OpenAI) -> None:
         user_input = input("Query: ").strip()
 
         if user_input.lower() in ['quit', 'exit', 'q']:
-            print("\n👋 Goodbye!")
+            print("\n Goodbye!")
             break
 
         if not user_input:
@@ -235,7 +235,7 @@ def interactive_search(index, openai_client: OpenAI) -> None:
             elapsed = time.time() - start
 
             # Display results
-            print(f"\n🔍 Found {len(matches)} results ({elapsed*1000:.2f}ms)\n")
+            print(f"\n Found {len(matches)} results ({elapsed*1000:.2f}ms)\n")
 
             for i, match in enumerate(matches, 1):
                 print(f"Result {i}:")
@@ -246,7 +246,7 @@ def interactive_search(index, openai_client: OpenAI) -> None:
                 print()
 
         except Exception as e:
-            print(f"\n❌ Error: {e}\n")
+            print(f"\nFAIL: Error: {e}\n")
 
 
 def main():
@@ -264,20 +264,20 @@ def main():
 
     # Check API keys
     if not os.getenv("PINECONE_API_KEY"):
-        print("❌ PINECONE_API_KEY not set")
+        print("FAIL: PINECONE_API_KEY not set")
         print("\nSet environment variable:")
         print("  export PINECONE_API_KEY=your-api-key")
         return
 
     if not os.getenv("OPENAI_API_KEY"):
-        print("❌ OPENAI_API_KEY not set")
+        print("FAIL: OPENAI_API_KEY not set")
         print("\nSet environment variable:")
         print("  export OPENAI_API_KEY=sk-...")
         return
 
     # Check if documents exist
     if not Path(DOCS_PATH).exists():
-        print(f"❌ Documents not found at: {DOCS_PATH}")
+        print(f"FAIL: Documents not found at: {DOCS_PATH}")
         print("\nGenerate documents first:")
         print("  1. skill-seekers scrape --config configs/django.json")
         print("  2. skill-seekers package output/django --target langchain")
@@ -339,9 +339,9 @@ if __name__ == "__main__":
     try:
         main()
     except KeyboardInterrupt:
-        print("\n\n👋 Interrupted. Goodbye!")
+        print("\n\n Interrupted. Goodbye!")
     except Exception as e:
-        print(f"\n❌ Error: {e}")
+        print(f"\nFAIL: Error: {e}")
         import traceback
         traceback.print_exc()
         print("\nMake sure you have:")

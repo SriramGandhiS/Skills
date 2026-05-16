@@ -34,10 +34,10 @@ Convex is a **document-relational** database with a fully managed backend. Key d
 
 | Type            | Purpose                   | Can Read DB    | Can Write DB      | Can Call External APIs | Cached/Reactive |
 | :-------------- | :------------------------ | :------------- | :---------------- | :--------------------- | :-------------- |
-| **Query**       | Read data                 | ✅             | ❌                | ❌                     | ✅              |
-| **Mutation**    | Write data                | ✅             | ✅                | ❌                     | ❌              |
-| **Action**      | Side effects              | via `runQuery` | via `runMutation` | ✅                     | ❌              |
-| **HTTP Action** | Webhooks/custom endpoints | via `runQuery` | via `runMutation` | ✅                     | ❌              |
+| **Query**       | Read data                 | PASS:             | FAIL:                | FAIL:                     | PASS:              |
+| **Mutation**    | Write data                | PASS:             | PASS:                | FAIL:                     | FAIL:              |
+| **Action**      | Side effects              | via `runQuery` | via `runMutation` | PASS:                     | FAIL:              |
+| **HTTP Action** | Webhooks/custom endpoints | via `runQuery` | via `runMutation` | PASS:                     | FAIL:              |
 
 ## Project Setup
 
@@ -730,43 +730,43 @@ npx convex logs
 
 ## Best Practices
 
-- ✅ Define schemas — adds type safety across your entire stack
-- ✅ Use indexes for queries — avoids full table scans
-- ✅ Use compound indexes with equality filters first, range filter last
-- ✅ Rely on native determinism — `Date.now()` and `Math.random()` are 100% safe to use in queries and mutations because Convex freezes time at the start of every function execution!
-- ✅ Use `v.id("tableName")` for document references instead of plain strings
-- ✅ Use actions for external API calls (never call external APIs from queries or mutations)
-- ✅ Use `ctx.runQuery` / `ctx.runMutation` from actions — never access `ctx.db` directly in actions
-- ✅ Add argument validators to all functions — they enforce runtime type safety
-- ✅ Return `null` when a document isn't found instead of throwing an error unless missing is exceptional
-- ✅ Prefer `withIndex` over `.filter()` for query performance
+- PASS: Define schemas — adds type safety across your entire stack
+- PASS: Use indexes for queries — avoids full table scans
+- PASS: Use compound indexes with equality filters first, range filter last
+- PASS: Rely on native determinism — `Date.now()` and `Math.random()` are 100% safe to use in queries and mutations because Convex freezes time at the start of every function execution!
+- PASS: Use `v.id("tableName")` for document references instead of plain strings
+- PASS: Use actions for external API calls (never call external APIs from queries or mutations)
+- PASS: Use `ctx.runQuery` / `ctx.runMutation` from actions — never access `ctx.db` directly in actions
+- PASS: Add argument validators to all functions — they enforce runtime type safety
+- PASS: Return `null` when a document isn't found instead of throwing an error unless missing is exceptional
+- PASS: Prefer `withIndex` over `.filter()` for query performance
 
 ## Anti-Patterns to Avoid
 
-1. **❌ External API calls in queries/mutations**: Only actions can call external services. Queries and mutations run in the Convex transaction engine.
-2. **❌ Doing slow CPU-bound work in mutations**: Mutations block database commits; offload heavy processing to actions.
-3. **❌ Using `.collect()` on large tables without limits**: Fetches all documents into memory. Use `.take(N)` or `.paginate()`.
-4. **❌ Skipping schema definition**: Without a schema you lose end-to-end type safety, the main Convex advantage.
-5. **❌ Using `.filter()` instead of indexes**: `.filter()` does a full table scan. Define an index and use `.withIndex()`.
-6. **❌ Storing large blobs in documents**: Use Convex file storage (`_storage`) for files; keep documents lean.
-7. **❌ Circular `runQuery`/`runMutation` chains**: Actions calling mutations that schedule actions can create infinite loops.
+1. **FAIL: External API calls in queries/mutations**: Only actions can call external services. Queries and mutations run in the Convex transaction engine.
+2. **FAIL: Doing slow CPU-bound work in mutations**: Mutations block database commits; offload heavy processing to actions.
+3. **FAIL: Using `.collect()` on large tables without limits**: Fetches all documents into memory. Use `.take(N)` or `.paginate()`.
+4. **FAIL: Skipping schema definition**: Without a schema you lose end-to-end type safety, the main Convex advantage.
+5. **FAIL: Using `.filter()` instead of indexes**: `.filter()` does a full table scan. Define an index and use `.withIndex()`.
+6. **FAIL: Storing large blobs in documents**: Use Convex file storage (`_storage`) for files; keep documents lean.
+7. **FAIL: Circular `runQuery`/`runMutation` chains**: Actions calling mutations that schedule actions can create infinite loops.
 
 ## Common Pitfalls
 
 - **Problem:** "Query returns `undefined` on first render"
-  **Solution:** This is expected — Convex queries are async. Check for `undefined` before rendering (this means loading, not empty).
+**Solution:** This is expected — Convex queries are async. Check for `undefined` before rendering (this means loading, not empty).
 
 - **Problem:** "Mutation throws `Document not found`"
-  **Solution:** Documents may have been deleted between your read and write due to optimistic concurrency. Re-read inside the mutation.
+**Solution:** Documents may have been deleted between your read and write due to optimistic concurrency. Re-read inside the mutation.
 
 - **Problem:** "`process.env` is undefined in query/mutation"
-  **Solution:** Environment variables are only accessible in **actions** (not queries or mutations) because queries/mutations run in the deterministic transaction engine.
+**Solution:** Environment variables are only accessible in **actions** (not queries or mutations) because queries/mutations run in the deterministic transaction engine.
 
 - **Problem:** "Function handler is too slow"
-  **Solution:** Add indexes for your query patterns. Use `withIndex()` instead of `.filter()`. For complex operations, break into smaller mutations.
+**Solution:** Add indexes for your query patterns. Use `withIndex()` instead of `.filter()`. For complex operations, break into smaller mutations.
 
 - **Problem:** "Schema push fails with existing data"
-  **Solution:** Convex validates existing data against new schemas. Either migrate existing documents first, or use `v.optional()` for new fields.
+**Solution:** Convex validates existing data against new schemas. Either migrate existing documents first, or use `v.optional()` for new fields.
 
 ## Limitations
 

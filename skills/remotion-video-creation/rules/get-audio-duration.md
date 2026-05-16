@@ -1,4 +1,4 @@
-﻿---
+---
 name: get-audio-duration
 description: Getting the duration of an audio file in seconds with Mediabunny
 metadata:
@@ -36,7 +36,7 @@ console.log(duration); // e.g. 180.5 (seconds)
 
 ## Using with local files
 
-For local files, use `FileSource` instead of `UrlSource`:
+For local files, use `FileSource`instead of`UrlSource`:
 
 ```tsx
 import { Input, ALL_FORMATS, FileSource } from "mediabunny";

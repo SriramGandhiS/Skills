@@ -206,7 +206,7 @@ describe('state-snapshot — bug #3265 frontmatter precedence', () => {
 
   test('returns frontmatter status, not **Status:** value embedded in a body table cell', () => {
     // Reproduce the collision: frontmatter says "executing", but the body
-    // contains a Markdown table cell with "**Status:** to ✅ COMPLETE ..."
+    // contains a Markdown table cell with "**Status:** to PASS: COMPLETE ..."
     // which stateExtractField (bold pattern) would match before the YAML line.
     const stateContent = [
       '---',
@@ -221,7 +221,7 @@ describe('state-snapshot — bug #3265 frontmatter precedence', () => {
       '',
       '| Date | Task | Notes |',
       '|------|------|-------|',
-      '| 2026-05-01 | Reopened Plan 19.5-05. **Status:** to ✅ COMPLETE | done |',
+      '| 2026-05-01 | Reopened Plan 19.5-05. **Status:** to PASS: COMPLETE | done |',
       '',
       '**Current Phase:** 19',
       '**Current Plan:** archived-lane',

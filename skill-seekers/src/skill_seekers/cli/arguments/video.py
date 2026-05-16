@@ -16,7 +16,7 @@ from .common import add_all_standard_arguments
 
 # Video-specific argument definitions as data structure
 # NOTE: Shared args (name, description, output, enhance_level, api_key, dry_run,
-#       verbose, quiet, workflow args) are registered by add_all_standard_arguments().
+# verbose, quiet, workflow args) are registered by add_all_standard_arguments().
 VIDEO_ARGUMENTS: dict[str, dict[str, Any]] = {
     "url": {
         "flags": ("--url",),

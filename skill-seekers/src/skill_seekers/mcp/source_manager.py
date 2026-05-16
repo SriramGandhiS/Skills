@@ -189,7 +189,7 @@ class SourceManager:
 
         Args:
             name: Source identifier
-            **kwargs: Fields to update (git_url, branch, enabled, priority, etc.)
+**kwargs: Fields to update (git_url, branch, enabled, priority, etc.)
 
         Returns:
             Updated source dictionary

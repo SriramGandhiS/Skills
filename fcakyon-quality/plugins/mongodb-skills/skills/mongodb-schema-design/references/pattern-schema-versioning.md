@@ -108,7 +108,6 @@ while (migrateToV2(1000) > 0) {
   sleep(100)  // Throttle to reduce load
 }
 
-
 // Strategy 2: Aggregation pipeline update (MongoDB 4.2+)
 // Best for: Simple transformations, moderate collection sizes
 
@@ -143,7 +142,6 @@ db.users.updateMany(
     { $unset: ["name", "email"] }
   ]
 )
-
 
 // Strategy 3: Read-time migration (lazy migration)
 // Best for: Low-traffic documents, immediate consistency needed

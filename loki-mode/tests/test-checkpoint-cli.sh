@@ -4,8 +4,7 @@
 # Test: Checkpoint CLI Commands
 # Tests loki checkpoint subcommands: help, list, create, show, rollback
 # Exercises path traversal protection and empty-message handling.
-#
-# Note: Not using -e to allow collecting all test results
+# # Note: Not using -e to allow collecting all test results
 
 set -uo pipefail
 

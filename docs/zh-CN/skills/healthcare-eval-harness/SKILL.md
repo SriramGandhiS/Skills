@@ -24,7 +24,7 @@ version: "1.0.0"
 
 评估框架按顺序运行五个测试类别。前三个（CDSS 准确性、PHI 暴露、数据完整性）是严重关卡，要求 100% 通过率——单个故障即阻止部署。其余两个（临床工作流、集成）是高优先级关卡，要求 95% 以上通过率。
 
-每个类别对应一个 Jest 测试路径模式。CI 流水线使用 `--bail`（首次失败即停止）运行严重关卡，并使用 `--coverage --coverageThreshold` 强制执行覆盖率阈值。
+每个类别对应一个 Jest 测试路径模式。CI 流水线使用 `--bail`（首次失败即停止）运行严重关卡，并使用`--coverage --coverageThreshold` 强制执行覆盖率阈值。
 
 ### 评估类别
 
@@ -184,7 +184,7 @@ jq '{
   total: (.numTotalTests // 0),
   rate: (if (.numTotalTests // 0) == 0 then 0 else ((.numPassedTests // 0) / (.numTotalTests // 1) * 100) end)
 }' "$tmp_json"
-# Expected: { "passed": 21, "total": 22, "rate": 95.45 }
+## Expected: { "passed": 21, "total": 22, "rate": 95.45 }
 ```
 
 ### 示例 3：评估报告

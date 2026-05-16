@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
 # Test: loki metrics command
 # Tests the session productivity reporter (v6.32.0)
-#
-# Note: Not using -e to allow collecting all test results
+# # Note: Not using -e to allow collecting all test results
 
 set -uo pipefail
 

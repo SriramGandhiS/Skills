@@ -12,7 +12,7 @@ Before you begin, ensure you have the following:
 
 ### 1.1 Manual installation
 
-You can download pre-built binaries from our [GitHub releases](https://github.com/hetznercloud/cli/releases). 
+You can download pre-built binaries from our [GitHub releases](https://github.com/hetznercloud/cli/releases).
 Install them by extracting the archive and moving the binary to a directory in your `PATH`.
 
 On a 64-bit Linux system, it could look something like this:
@@ -220,12 +220,12 @@ You should see something like this:
 
 ```plaintext
 ID   NAME        DESCRIPTION                   LOCATION
-2    nbg1-dc3    Nuremberg 1 virtual DC 3      nbg1    
-3    hel1-dc2    Helsinki 1 virtual DC 2       hel1    
-4    fsn1-dc14   Falkenstein 1 virtual DC 14   fsn1    
-5    ash-dc1     Ashburn virtual DC 1          ash     
-6    hil-dc1     Hillsboro virtual DC 1        hil     
-7    sin-dc1     Singapore virtual DC 1        sin     
+2    nbg1-dc3    Nuremberg 1 virtual DC 3      nbg1
+3    hel1-dc2    Helsinki 1 virtual DC 2       hel1
+4    fsn1-dc14   Falkenstein 1 virtual DC 14   fsn1
+5    ash-dc1     Ashburn virtual DC 1          ash
+6    hil-dc1     Hillsboro virtual DC 1        hil
+7    sin-dc1     Singapore virtual DC 1        sin
 ```
 
 If you see this output, congratulations! You have successfully set up the hcloud CLI on your local machine.

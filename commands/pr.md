@@ -5,7 +5,7 @@ argument-hint: "[base-branch] (default: main)"
 
 # Create Pull Request
 
-**Input**: `$ARGUMENTS` — optional, may contain a base branch name and/or flags (e.g., `--draft`).
+**Input**: `$ARGUMENTS`— optional, may contain a base branch name and/or flags (e.g.,`--draft`).
 
 **Parse `$ARGUMENTS`**:
 - Extract any recognized flags (`--draft`)
@@ -28,8 +28,8 @@ git log origin/<base>..HEAD --oneline
 |---|---|---|
 | Not on base branch | Current branch ≠ base | Stop: "Switch to a feature branch first." |
 | Clean working directory | No uncommitted changes | Warn: "You have uncommitted changes. Commit or stash first." |
-| Has commits ahead | `git log origin/<base>..HEAD` not empty | Stop: "No commits ahead of `<base>`. Nothing to PR." |
-| No existing PR | `gh pr list --head <branch> --json number` is empty | Stop: "PR already exists: #<number>. Use `gh pr view <number> --web` to open it." |
+| Has commits ahead | `git log origin/<base>..HEAD`not empty | Stop: "No commits ahead of`<base>`. Nothing to PR." |
+| No existing PR | `gh pr list --head <branch> --json number`is empty | Stop: "PR already exists: #<number>. Use`gh pr view <number> --web` to open it." |
 
 If all checks pass, proceed.
 
@@ -41,7 +41,7 @@ If all checks pass, proceed.
 
 Search for PR template in order:
 
-1. `.github/PULL_REQUEST_TEMPLATE/` directory — if exists, list files and let user choose (or use `default.md`)
+1. `.github/PULL_REQUEST_TEMPLATE/`directory — if exists, list files and let user choose (or use`default.md`)
 2. `.github/PULL_REQUEST_TEMPLATE.md`
 3. `.github/pull_request_template.md`
 4. `docs/pull_request_template.md`
@@ -55,7 +55,7 @@ git log origin/<base>..HEAD --format="%h %s" --reverse
 ```
 
 Analyze commits to determine:
-- **PR title**: Use conventional commit format with type prefix — `feat: ...`, `fix: ...`, etc.
+- **PR title**: Use conventional commit format with type prefix — `feat: ...`,`fix: ...`, etc.
   - If multiple types, use the dominant one
   - If single commit, use its message as-is
 - **Change summary**: Group commits by type/area
@@ -71,7 +71,7 @@ Categorize changed files: source, tests, docs, config, migrations.
 
 ### Planning Artifacts
 
-Check for related artifacts produced by `/plan-prd`, `/plan`, or the legacy PRP workflow:
+Check for related artifacts produced by `/plan-prd`,`/plan`, or the legacy PRP workflow:
 - `.claude/prds/` — PRDs this PR implements a milestone of
 - `.claude/plans/` — Plans executed by this PR
 - `.claude/PRPs/prds/` — legacy PRP PRDs
@@ -177,8 +177,8 @@ Next steps:
 
 ## Edge Cases
 
-- **No `gh` CLI**: Stop with: "GitHub CLI (`gh`) is required. Install: <https://cli.github.com/>"
+- **No `gh`CLI**: Stop with: "GitHub CLI (`gh`) is required. Install: <https://cli.github.com/>"
 - **Not authenticated**: Stop with: "Run `gh auth login` first."
-- **Force push needed**: If remote has diverged and rebase was done, use `git push --force-with-lease` (never `--force`).
+- **Force push needed**: If remote has diverged and rebase was done, use `git push --force-with-lease`(never`--force`).
 - **Multiple PR templates**: If `.github/PULL_REQUEST_TEMPLATE/` has multiple files, list them and ask user to choose.
 - **Large PR (>20 files)**: Warn about PR size. Suggest splitting if changes are logically separable.

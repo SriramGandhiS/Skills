@@ -501,7 +501,6 @@ def transcribe_with_whisper(
 
     return segments, config.whisper_model
 
-
 def download_audio_only(url: str, output_dir: str) -> str:
     """Download only the audio stream using yt-dlp.
 
@@ -524,7 +523,6 @@ def download_audio_only(url: str, output_dir: str) -> str:
     with YoutubeDL(opts) as ydl:
         info = ydl.extract_info(url, download=True)
         return f"{output_dir}/audio_{info['id']}.wav"
-
 
 def extract_audio_ffmpeg(video_path: str, output_dir: str) -> str:
     """Extract audio from local video file using FFmpeg.
@@ -564,7 +562,6 @@ def parse_subtitle_file(subtitle_path: str) -> list[TranscriptSegment]:
         return _parse_vtt(subtitle_path)
     else:
         raise ValueError(f"Unsupported subtitle format: {ext}")
-
 
 def _parse_srt(path: str) -> list[TranscriptSegment]:
     """Parse SRT subtitle file.

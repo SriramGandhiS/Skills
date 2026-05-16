@@ -1,4 +1,4 @@
-﻿---
+---
 name: coding-standards
 description: Baseline cross-project coding conventions for naming, readability, immutability, and code-quality review. Use detailed frontend or backend skills for framework-specific patterns.
 origin: ECC
@@ -11,7 +11,7 @@ Baseline coding conventions applicable across projects.
 This skill is the shared floor, not the detailed framework playbook.
 
 - Use `frontend-patterns` for React, state, forms, rendering, and UI architecture.
-- Use `backend-patterns` or `api-design` for repository/service layers, endpoint design, validation, and server-specific concerns.
+- Use `backend-patterns`or`api-design` for repository/service layers, endpoint design, validation, and server-specific concerns.
 - Use `rules/common/coding-style.md` when you need the shortest reusable rule layer instead of a full skill walkthrough.
 
 ## When to Activate
@@ -266,7 +266,7 @@ PUT    /api/markets/:id          # Update market (full)
 PATCH  /api/markets/:id          # Update market (partial)
 DELETE /api/markets/:id          # Delete market
 
-# Query parameters for filtering
+## Query parameters for filtering
 GET /api/markets?status=active&limit=10&offset=0
 ```
 

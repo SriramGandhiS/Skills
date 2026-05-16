@@ -135,7 +135,6 @@ This section summarizes **how** each covered command is compared so readers do n
 
 These tests expect `sdkResult.data` to match the parsed CJS stdout JSON (possibly after shared normalization helpers):
 
-
 | SDK dispatch (representative) | Notes                                                                                                 |
 | ----------------------------- | ----------------------------------------------------------------------------------------------------- |
 | `generate-slug`               | Includes fixture + multi-word cases.                                                                  |
@@ -185,9 +184,7 @@ From `read-only-parity.integration.test.ts` (full `toEqual` on this repo):
 | `uat.render-checkpoint` | Fixture `sdk/src/golden/fixtures/uat-render-checkpoint-sample.md`; full JSON parity with `uat.cjs` `cmdRenderCheckpoint` (`file_path`, `test_number`, `test_name`, `checkpoint` — same box + `buildCheckpoint` text as CJS; `sanitizeForDisplay` on name/expected). |
 | `config-path` | Plain stdout path vs `{ path }` — compared with `path.normalize` in tests. |
 
-
 ### Normalized or field-omitted comparison
-
 
 | SDK / test  | Rule                                                                                                                                                                     |
 | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -195,11 +192,9 @@ From `read-only-parity.integration.test.ts` (full `toEqual` on this repo):
 | `extract.messages` / `extract-messages` | Fixture `sdk/src/golden/fixtures/extract-messages-sessions/` passed as `--path` (sessions root). `**output_file**` stripped before `toEqual` (temp path under `os.tmpdir()`); then the two JSONL files are compared byte-for-byte. Parity with `profile-pipeline.cjs` `cmdExtractMessages` (`streamExtractMessages`, `isGenuineUserMessage`, batch limit 300). |
 | `docs-init` | `existing_docs` sorted by `path` before compare; `**agents_installed`** and `**missing_agents**` omitted (subprocess vs in-process path resolution for `~/.claude/...`). |
 
-
 ### Structural, subset, or shape-only parity
 
 Assertions deliberately compare only selected fields (not full `toEqual`):
-
 
 | SDK dispatch (representative) | What is compared |
 | ----------------------------- | ---------------- |
@@ -210,19 +205,15 @@ Assertions deliberately compare only selected fields (not full `toEqual`):
 
 ### Time- and environment-dependent
 
-
 | Command             | Rule                                                                                                                                                                 |
 | ------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `current-timestamp` | `**full`**: same shape and valid ISO strings; not the same instant. `**date**`: same calendar day when the test does not cross midnight. `**filename**`: full `toEqual` (back-to-back capture vs SDK). |
 
-
 ### Conditional writes (not in `QUERY_MUTATION_COMMANDS`)
-
 
 | Command          | Rule                                                                                                                                       |
 | ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
 | `skill-manifest` | Disk writes only with `**--write`**; registry does not emit mutation events for this command (see **Mutation commands and events** above). |
-
 
 ### Registered but not in the golden suite
 
@@ -273,25 +264,20 @@ Authoritative CJS entry points: `runCommand` `switch (command)` in `get-shit-don
 
 **CLI-only (no SDK registry handler; intentional unless requirements change):**
 
-
 | CJS surface           | Justification                                                                                  |
 | --------------------- | ---------------------------------------------------------------------------------------------- |
 | `**graphify`**        | Depends on Graphify CLI / Python stack; not ported to the typed query layer.                   |
 | `**from-gsd2**`       | Legacy GSD2 → GSD migration (`gsd2-import.cjs`); CLI-only helper.                              |
 
-
 **SDK-only (registered dispatch without an equivalent `gsd-tools` top-level subcommand):**
-
 
 | SDK dispatch                                | Notes                                                                                                                                            |
 | ------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `**phases.archive`** / `**phases archive**` | CJS `phases` supports only `**list**` and `**clear**`; archive behavior is available via SDK (and workflows), not as `gsd-tools phases archive`. |
 
-
 ### Matrix: top-level `gsd-tools` command → SDK
 
 Disposition: **Registered** = handled in `createRegistry()` under the listed SDK name(s); **CLI-only** = no registry handler; **Alias** = same behavior, different primary dispatch string.
-
 
 | CJS `command` (first argv)                                                                                                              | SDK dispatch name(s)                                                      | Disposition             | Notes                                                                     |
 | --------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ----------------------- | ------------------------------------------------------------------------- |
@@ -339,7 +325,6 @@ Disposition: **Registered** = handled in `createRegistry()` under the listed SDK
 | `learnings`                                                                                                                             | `learnings.list`, `learnings.query`, …                                    | Registered              |                                                                           |
 | `detect-custom-files`                                                                                                                   | `detect-custom-files`                                                     | Registered              | Requires `--config-dir`.                                                  |
 | `from-gsd2`                                                                                                                             | —                                                                         | CLI-only                | See **CLI-only** table.                                                   |
-
 
 ---
 

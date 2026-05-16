@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
 # Test: loki init command (v6.28.0)
 # Tests project scaffolding: directory creation, config, templates, flags.
-#
-# Note: Not using -e to allow collecting all test results
+# # Note: Not using -e to allow collecting all test results
 
 set -uo pipefail
 

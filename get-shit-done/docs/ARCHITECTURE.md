@@ -281,7 +281,6 @@ This keeps callers thin adapters and centralizes transport decisions for SDK pub
 
 Node.js CLI utility (`gsd-tools.cjs`) with domain modules split across `get-shit-done/bin/lib/` (see [`docs/INVENTORY.md`](INVENTORY.md#cli-modules-33-shipped) for the authoritative roster):
 
-
 | Module                 | Responsibility                                                                                      |
 | ---------------------- | --------------------------------------------------------------------------------------------------- |
 | `core.cjs`             | Error handling, output formatting, shared utilities; compatibility re-exports for planning helpers |
@@ -304,7 +303,6 @@ Node.js CLI utility (`gsd-tools.cjs`) with domain modules split across `get-shit
 | `schema-detect.cjs`    | Schema-drift detection for ORM patterns (Prisma, Drizzle, etc.)                                     |
 | `profile-pipeline.cjs` | User behavioral profiling data pipeline, session file scanning                                      |
 | `profile-output.cjs`   | Profile rendering, USER-PROFILE.md and dev-preferences.md generation                                |
-
 
 ---
 
@@ -336,7 +334,6 @@ Orchestrator (workflow .md)
 
 Conceptual spawn-pattern taxonomy for the 21 primary agents. For the authoritative 31-agent roster (including the 10 advanced/specialized agents such as `gsd-pattern-mapper`, `gsd-code-reviewer`, `gsd-code-fixer`, `gsd-ai-researcher`, `gsd-domain-researcher`, `gsd-eval-planner`, `gsd-eval-auditor`, `gsd-framework-selector`, `gsd-debug-session-manager`, `gsd-intel-updater`), see [`docs/INVENTORY.md`](INVENTORY.md#agents-31-shipped).
 
-
 | Category         | Agents                                                                                  | Parallelism                                                                               |
 | ---------------- | --------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
 | **Researchers**  | gsd-project-researcher, gsd-phase-researcher, gsd-ui-researcher, gsd-advisor-researcher | 4 parallel (stack, features, architecture, pitfalls); advisor spawns during discuss-phase |
@@ -351,7 +348,6 @@ Conceptual spawn-pattern taxonomy for the 21 primary agents. For the authoritati
 | **Doc Writers**  | gsd-doc-writer, gsd-doc-verifier                                                        | Sequential (writer then verifier)                                                         |
 | **Profilers**    | gsd-user-profiler                                                                       | Sequential                                                                                |
 | **Analyzers**    | gsd-assumptions-analyzer                                                                | Sequential (during discuss-phase)                                                         |
-
 
 ### Wave Execution Model
 
@@ -639,13 +635,11 @@ Runtime Engine (Claude Code / Gemini CLI)
 
 ### Context Monitor Thresholds
 
-
 | Remaining Context | Level    | Agent Behavior                          |
 | ----------------- | -------- | --------------------------------------- |
 | > 35%             | Normal   | No warning injected                     |
 | ≤ 35%             | WARNING  | "Avoid starting new complex work"       |
 | ≤ 25%             | CRITICAL | "Context nearly exhausted, inform user" |
-
 
 Debounce: 5 tool uses between repeated warnings. Severity escalation (WARNING→CRITICAL) bypasses debounce.
 
@@ -703,7 +697,6 @@ The researcher → planner → executor pipeline includes a supply-chain gate ag
 
 GSD supports multiple AI coding runtimes through a unified command/workflow architecture:
 
-
 | Runtime      | Command Format | Agent System     | Config Location          |
 | ------------ | -------------- | ---------------- | ------------------------ |
 | Claude Code  | `/gsd-command` | Task spawning    | `~/.claude/`             |
@@ -716,7 +709,6 @@ GSD supports multiple AI coding runtimes through a unified command/workflow arch
 | Trae         | Skills         | Skills           | `~/.trae/`               |
 | Cline        | Rules          | Rules            | `.clinerules`            |
 | Augment Code | Skills         | Skills           | Augment config           |
-
 
 ### Abstraction Points
 

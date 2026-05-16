@@ -33,7 +33,7 @@ php artisan --version
 
 - `.env`'nin mevcut olduğunu ve gerekli anahtarların var olduğunu doğrulayın
 - Production ortamları için `APP_DEBUG=false` onaylayın
-- `APP_ENV`'in hedef deployment'la eşleştiğini onaylayın (`production`, `staging`)
+- `APP_ENV`'in hedef deployment'la eşleştiğini onaylayın (`production`,`staging`)
 
 Yerel olarak Laravel Sail kullanıyorsanız:
 
@@ -96,7 +96,7 @@ php artisan migrate:status
 ```
 
 - Yıkıcı migration'ları dikkatle inceleyin
-- Migration dosya isimlerinin `Y_m_d_His_*` formatını takip ettiğinden emin olun (örn. `2025_03_14_154210_create_orders_table.php`) ve değişikliği net bir şekilde açıklasın
+- Migration dosya isimlerinin `Y_m_d_His_*`formatını takip ettiğinden emin olun (örn.`2025_03_14_154210_create_orders_table.php`) ve değişikliği net bir şekilde açıklasın
 - Rollback'lerin mümkün olduğundan emin olun
 - `down()` metotlarını doğrulayın ve açık yedeklemeler olmadan geri alınamaz veri kaybından kaçının
 
@@ -111,7 +111,7 @@ php artisan view:cache
 
 - Cache warmup'larının production yapılandırmasında başarılı olduğundan emin olun
 - Kuyruk worker'larının ve zamanlayıcının yapılandırıldığını doğrulayın
-- Hedef ortamda `storage/` ve `bootstrap/cache/`'in yazılabilir olduğunu onaylayın
+- Hedef ortamda `storage/`ve`bootstrap/cache/`'in yazılabilir olduğunu onaylayın
 
 ## Faz 7: Kuyruk ve Zamanlayıcı Kontrolleri
 

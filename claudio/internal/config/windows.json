@@ -1,10 +1,10 @@
 {
-  "name": "windows-media-native-soundpack",  
+  "name": "windows-media-native-soundpack",
   "description": "Windows Media soundpack with native Windows paths for full tool coverage",
   "version": "2.0.0",
   "mappings": {
     "loading/bash-start.wav": "C:\\Windows\\Media\\Windows Navigation Start.wav",
-    "loading/edit-start.wav": "C:\\Windows\\Media\\dm\\Windows Hardware Insert.wav", 
+    "loading/edit-start.wav": "C:\\Windows\\Media\\dm\\Windows Hardware Insert.wav",
     "loading/read-start.wav": "C:\\Windows\\Media\\dm\\Windows Foreground.wav",
     "loading/write-start.wav": "C:\\Windows\\Media\\dm\\Windows Hardware Insert.wav",
     "loading/todowrite-start.wav": "C:\\Windows\\Media\\recycle.wav",
@@ -40,9 +40,9 @@
     "completion/completion.wav": "C:\\Windows\\Media\\Windows Restore.wav",
     "completion/stop.wav": "C:\\Windows\\Media\\Windows Minimize.wav",
     "interactive/notification-permission.wav": "C:\\Windows\\Media\\dm\\Windows User Account Control.wav",
-    
+
     "success/bash-success.wav": "C:\\Windows\\Media\\Windows Print complete.wav",
-    "success/edit-success.wav": "C:\\Windows\\Media\\Windows Print complete.wav", 
+    "success/edit-success.wav": "C:\\Windows\\Media\\Windows Print complete.wav",
     "success/read-success.wav": "C:\\Windows\\Media\\dm\\Windows Notify System Generic.wav",
     "success/write-success.wav": "C:\\Windows\\Media\\Windows Print complete.wav",
     "success/todowrite-success.wav": "C:\\Windows\\Media\\notify.wav",
@@ -85,7 +85,7 @@
 
     "error/bash-error.wav": "C:\\Windows\\Media\\Windows Critical Stop.wav",
     "error/edit-error.wav": "C:\\Windows\\Media\\dm\\Windows Hardware Fail.wav",
-    "error/read-error.wav": "C:\\Windows\\Media\\Windows Balloon.wav", 
+    "error/read-error.wav": "C:\\Windows\\Media\\Windows Balloon.wav",
     "error/write-error.wav": "C:\\Windows\\Media\\dm\\Windows Hardware Fail.wav",
     "error/todowrite-error.wav": "C:\\Windows\\Media\\Speech Misrecognition.wav",
     "error/grep-error.wav": "C:\\Windows\\Media\\Windows Error.wav",
@@ -102,7 +102,7 @@
     "error/task-error.wav": "C:\\Windows\\Media\\Windows Critical Stop.wav",
     "error/failure.wav": "C:\\Windows\\Media\\Windows Balloon.wav",
     "error/timeout.wav": "C:\\Windows\\Media\\Windows Battery Critical.wav",
-    
+
     "interactive/message-sent.wav": "C:\\Windows\\Media\\Windows Message Nudge.wav",
     "interactive/notification.wav": "C:\\Windows\\Media\\dm\\Windows User Account Control.wav",
     "interactive/prompt-submit.wav": "C:\\Windows\\Media\\Windows Message Nudge.wav",
@@ -112,7 +112,7 @@
     "interactive/stop.wav": "C:\\Windows\\Media\\Windows Shutdown.wav",
     "interactive/subagent-stop.wav": "C:\\Windows\\Media\\Windows Logoff Sound.wav",
     "interactive/compact.wav": "C:\\Windows\\Media\\Windows Recycle.wav",
-    
+
     "default.wav": "C:\\Windows\\Media\\Windows Default.wav"
   }
 }

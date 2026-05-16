@@ -1,16 +1,13 @@
 #!/bin/bash
-#
-# Generate iOS icon imagesets from Iconify API (275k+ open source icons)
+# # Generate iOS icon imagesets from Iconify API (275k+ open source icons)
 # Uses: curl (download SVG) + sips (SVG->PNG conversion, built into macOS)
-#
-# Usage:
-#   iconify_gen.sh <icon-id> <asset-name> [options]
-#   iconify_gen.sh search <query> [--prefix <collection>] [--limit <n>]
-#
-# Examples:
-#   iconify_gen.sh mdi:receipt-text-outline myExpenseIcon
-#   iconify_gen.sh search "business card"
-#   iconify_gen.sh search receipt --prefix mdi
+# # Usage:
+# iconify_gen.sh <icon-id> <asset-name> [options]
+# iconify_gen.sh search <query> [--prefix <collection>] [--limit <n>]
+# # Examples:
+# iconify_gen.sh mdi:receipt-text-outline myExpenseIcon
+# iconify_gen.sh search "business card"
+# iconify_gen.sh search receipt --prefix mdi
 
 set -euo pipefail
 

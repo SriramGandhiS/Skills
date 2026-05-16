@@ -8,13 +8,13 @@ Projenin build aracını tanımla ve build'i çalıştır:
 
 | İndikatör | Build Komutu |
 |-----------|---------------|
-| `build` script'i olan `package.json` | `npm run build` veya `pnpm build` |
-| `tsconfig.json` (sadece TypeScript) | `npx tsc --noEmit` |
-| `Cargo.toml` | `cargo build 2>&1` |
-| `pom.xml` | `mvn compile` |
-| `build.gradle` | `./gradlew compileJava` |
-| `go.mod` | `go build ./...` |
-| `pyproject.toml` | `python -m py_compile` veya `mypy .` |
+| `build`script'i olan`package.json`|`npm run build`veya`pnpm build` |
+| `tsconfig.json`(sadece TypeScript) |`npx tsc --noEmit` |
+| `Cargo.toml`|`cargo build 2>&1` |
+| `pom.xml`|`mvn compile` |
+| `build.gradle`|`./gradlew compileJava` |
+| `go.mod`|`go build ./...` |
+| `pyproject.toml`|`python -m py_compile`veya`mypy .` |
 
 ## Adım 2: Hataları Parse Et ve Grupla
 
@@ -39,7 +39,7 @@ Her hata için:
 - Bir düzeltme **çözdüğünden daha fazla hata oluşturuyorsa**
 - **Aynı hata 3 denemeden sonra devam ediyorsa** (muhtemelen daha derin bir sorun)
 - Düzeltme **mimari değişiklikler gerektiriyorsa** (sadece build düzeltmesi değil)
-- Build hataları **eksik bağımlılıklardan** kaynaklanıyorsa (`npm install`, `cargo add`, vb. gerekli)
+- Build hataları **eksik bağımlılıklardan** kaynaklanıyorsa (`npm install`,`cargo add`, vb. gerekli)
 
 ## Adım 5: Özet
 
@@ -56,7 +56,7 @@ Sonuçları göster:
 | Eksik modül/import | Paketin yüklü olup olmadığını kontrol et; install komutu öner |
 | Tip uyuşmazlığı | Her iki tip tanımını oku; daha dar olanı düzelt |
 | Döngüsel bağımlılık | Import grafiği ile döngüyü tanımla; extraction öner |
-| Versiyon çakışması | Versiyon kısıtlamaları için `package.json` / `Cargo.toml` kontrol et |
+| Versiyon çakışması | Versiyon kısıtlamaları için `package.json`/`Cargo.toml` kontrol et |
 | Build aracı yanlış yapılandırması | Config dosyasını oku; çalışan varsayılanlarla karşılaştır |
 
 Güvenlik için bir seferde bir hatayı düzelt. Refactoring yerine minimal diff'leri tercih et.

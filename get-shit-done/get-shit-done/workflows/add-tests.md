@@ -108,7 +108,6 @@ Read each file to verify classification. Don't classify based on filename alone.
 <step name="present_classification">
 Present the classification to the user for confirmation before proceeding:
 
-
 **Text mode (`workflow.text_mode: true` in config or `--text` flag):** Set `TEXT_MODE=true` if `--text` is present in `$ARGUMENTS` OR `text_mode` from init JSON is `true`. When TEXT_MODE is active, replace every `AskUserQuestion` call with a plain-text numbered list and ask the user to type their choice number. This is required for non-Claude runtimes (OpenAI Codex, Gemini CLI, etc.) where `AskUserQuestion` is not available.
 
 ```
@@ -232,7 +231,7 @@ For each approved TDD test:
    - **Test passes**: Good — the implementation satisfies the test. Verify the test checks meaningful behavior (not just that it compiles).
    - **Test fails with assertion error**: This may be a genuine bug discovered by the test. Flag it:
      ```
-     ⚠️ Potential bug found: {test name}
+     WARNING: Potential bug found: {test name}
      Expected: {expected}
      Actual: {actual}
      File: {implementation file}
@@ -261,13 +260,13 @@ For each approved E2E test:
    - **GREEN (passes)**: Record success
    - **RED (fails)**: Determine if it's a test issue or a genuine application bug. Flag bugs:
      ```
-     ⚠️ E2E failure: {test name}
+     WARNING: E2E failure: {test name}
      Scenario: {description}
      Error: {error message}
      ```
    - **Cannot run**: Report blocker. Do NOT mark as complete.
      ```
-     🛑 E2E blocker: {reason tests cannot run}
+      E2E blocker: {reason tests cannot run}
      ```
 
 **No-skip rule:** If E2E tests cannot execute (missing dependencies, environment issues), report the blocker and mark the test as incomplete. Never mark success without actually running the test.
@@ -315,7 +314,7 @@ Present next steps:
 ```
 ---
 
-## ▶ Next Up — [${PROJECT_CODE}] ${PROJECT_TITLE}
+## Next Up — [${PROJECT_CODE}] ${PROJECT_TITLE}
 
 {if bugs discovered:}
 **Fix discovered bugs:** `/gsd-quick fix the {N} test failures discovered in phase ${phase_number}`

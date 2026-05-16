@@ -2,10 +2,10 @@
 # /// script
 # requires-python = ">=3.10"
 # dependencies = [
-#     "trl>=0.12.0",
-#     "transformers>=4.36.0",
-#     "accelerate>=0.24.0",
-#     "trackio",
+# "trl>=0.12.0",
+# "transformers>=4.36.0",
+# "accelerate>=0.24.0",
+# "trackio",
 # ]
 # ///
 
@@ -32,12 +32,12 @@ from trl import DPOTrainer, DPOConfig
 
 
 # Load preference dataset
-print("📦 Loading dataset...")
+print(" Loading dataset...")
 dataset = load_dataset("trl-lib/ultrafeedback_binarized", split="train")
-print(f"✅ Dataset loaded: {len(dataset)} preference pairs")
+print(f"PASS: Dataset loaded: {len(dataset)} preference pairs")
 
 # Create train/eval split
-print("🔀 Creating train/eval split...")
+print(" Creating train/eval split...")
 dataset_split = dataset.train_test_split(test_size=0.1, seed=42)
 train_dataset = dataset_split["train"]
 eval_dataset = dataset_split["test"]
@@ -85,7 +85,7 @@ config = DPOConfig(
 
 # Initialize and train
 # Note: DPO requires an instruct-tuned model as the base
-print("🎯 Initializing trainer...")
+print(" Initializing trainer...")
 trainer = DPOTrainer(
     model="Qwen/Qwen2.5-0.5B-Instruct",  # Use instruct model, not base model
     train_dataset=train_dataset,
@@ -93,14 +93,14 @@ trainer = DPOTrainer(
     args=config,
 )
 
-print("🚀 Starting DPO training...")
+print(" Starting DPO training...")
 trainer.train()
 
-print("💾 Pushing to Hub...")
+print(" Pushing to Hub...")
 trainer.push_to_hub()
 
 # Finish Trackio tracking
 trackio.finish()
 
-print("✅ Complete! Model at: https://huggingface.co/username/qwen-dpo-aligned")
-print("📊 View metrics at: https://huggingface.co/spaces/username/trackio")
+print("PASS: Complete! Model at: https://huggingface.co/username/qwen-dpo-aligned")
+print(" View metrics at: https://huggingface.co/spaces/username/trackio")

@@ -14,7 +14,7 @@ paths:
 `~/.claude/settings.json` içinde yapılandır:
 
 - **Prettier**: Edit'ten sonra JS/TS dosyalarını otomatik formatla
-- **TypeScript check**: `.ts`/`.tsx` dosyalarını düzenledikten sonra `tsc` çalıştır
+- **TypeScript check**: `.ts`/`.tsx`dosyalarını düzenledikten sonra`tsc` çalıştır
 - **console.log uyarısı**: Düzenlenen dosyalarda `console.log` hakkında uyar
 
 ## Stop Hooks

@@ -4,16 +4,14 @@ name: Supply-Chain Provenance (Sigstore)
 # in keyless mode (OIDC token from GitHub Actions). Produces .sig + .pem
 # attached to the GitHub Release. Closes the W2-R6 supply-chain provenance
 # gap.
-#
-# Verification (downstream consumers):
-#   cosign verify-blob \
-#     --signature loki-mode-X.Y.Z.tgz.sig \
-#     --certificate loki-mode-X.Y.Z.tgz.pem \
-#     --certificate-identity-regexp 'https://github.com/asklokesh/loki-mode/.github/workflows/provenance.yml@.*' \
-#     --certificate-oidc-issuer https://token.actions.githubusercontent.com \
-#     loki-mode-X.Y.Z.tgz
-#
-# Triggers: only on release publish (after release.yml has tagged + uploaded).
+# # Verification (downstream consumers):
+# cosign verify-blob \
+# --signature loki-mode-X.Y.Z.tgz.sig \
+# --certificate loki-mode-X.Y.Z.tgz.pem \
+# --certificate-identity-regexp 'https://github.com/asklokesh/loki-mode/.github/workflows/provenance.yml@.*' \
+# --certificate-oidc-issuer https://token.actions.githubusercontent.com \
+# loki-mode-X.Y.Z.tgz
+# # Triggers: only on release publish (after release.yml has tagged + uploaded).
 
 on:
   release:

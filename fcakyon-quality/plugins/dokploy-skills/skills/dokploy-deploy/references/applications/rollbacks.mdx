@@ -82,9 +82,9 @@ When using registry-based rollbacks, Dokploy:
 - **Enables rollback to any deployment**: You can rollback to any previous deployment by using the image that was saved during that deployment
 
 This approach is different from Docker Swarm rollbacks because:
-- ✅ **Works with any deployment**: Not limited to health check failures
-- ✅ **Rollback to any version**: Can rollback to any previous deployment, not just the immediate previous one
-- ✅ **Uses registry storage**: Images are stored in your registry, making them persistent and accessible
+- PASS: **Works with any deployment**: Not limited to health check failures
+- PASS: **Rollback to any version**: Can rollback to any previous deployment, not just the immediate previous one
+- PASS: **Uses registry storage**: Images are stored in your registry, making them persistent and accessible
 
 <Callout type="info">
   Registry-based rollbacks require that your application is configured to use a Docker registry. The images are automatically pushed to your registry during each deployment, and Dokploy tracks which image corresponds to each deployment.

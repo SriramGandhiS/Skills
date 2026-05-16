@@ -12,12 +12,12 @@ description: 修复 Android 和 KMP 项目的 Gradle 构建错误
 
 | 指示符 | 构建命令 |
 |-----------|---------------|
-| `build.gradle.kts` + `composeApp/` (KMP) | `./gradlew composeApp:compileKotlinMetadata 2>&1` |
-| `build.gradle.kts` + `app/` (Android) | `./gradlew app:compileDebugKotlin 2>&1` |
-| `settings.gradle.kts` 包含模块 | `./gradlew assemble 2>&1` |
+| `build.gradle.kts`+`composeApp/`(KMP) |`./gradlew composeApp:compileKotlinMetadata 2>&1` |
+| `build.gradle.kts`+`app/`(Android) |`./gradlew app:compileDebugKotlin 2>&1` |
+| `settings.gradle.kts`包含模块 |`./gradlew assemble 2>&1` |
 | 配置了 Detekt | `./gradlew detekt 2>&1` |
 
-同时检查 `gradle.properties` 和 `local.properties` 以获取配置信息。
+同时检查 `gradle.properties`和`local.properties` 以获取配置信息。
 
 ## 步骤 2：解析并分组错误
 
@@ -64,7 +64,7 @@ description: 修复 Android 和 KMP 项目的 Gradle 构建错误
 
 | 错误 | 修复方法 |
 |-------|-----|
-| `commonMain` 中无法解析的引用 | 检查依赖项是否在 `commonMain.dependencies {}` 中 |
+| `commonMain`中无法解析的引用 | 检查依赖项是否在`commonMain.dependencies {}` 中 |
 | Expect 声明没有 actual 实现 | 在每个平台源码集中添加 `actual` 实现 |
 | Compose 编译器版本不匹配 | 在 `libs.versions.toml` 中统一 Kotlin 和 Compose 编译器版本 |
 | 重复类 | 使用 `./gradlew dependencies` 检查是否存在冲突的依赖项 |

@@ -71,10 +71,10 @@ pipe(
 ## vs Nullable
 
 ```typescript
-// ❌ Nullable - easy to forget checks
+// FAIL: Nullable - easy to forget checks
 const name = user?.profile?.name ?? 'Guest'
 
-// ✅ Option - explicit, composable
+// PASS: Option - explicit, composable
 pipe(
   O.fromNullable(user),
   O.flatMap(u => O.fromNullable(u.profile)),

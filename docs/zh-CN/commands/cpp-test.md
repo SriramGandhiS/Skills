@@ -40,7 +40,7 @@ REPEAT  → 下一个测试用例
 User: /cpp-test I need a function to validate email addresses
 
 Agent:
-# TDD Session: Email Validator
+## TDD Session: Email Validator
 
 ## Step 1: Define Interface
 
@@ -206,13 +206,13 @@ INSTANTIATE_TEST_SUITE_P(Primes, PrimeTest, ::testing::Values(
 ## 覆盖率命令
 
 ```bash
-# Build with coverage
+## Build with coverage
 cmake -DCMAKE_CXX_FLAGS="--coverage" -DCMAKE_EXE_LINKER_FLAGS="--coverage" -B build
 
-# Run tests
+## Run tests
 cmake --build build && ctest --test-dir build
 
-# Generate coverage report
+## Generate coverage report
 lcov --capture --directory build --output-file coverage.info
 lcov --remove coverage.info '/usr/*' --output-file coverage.info
 genhtml coverage.info --output-directory coverage_html
@@ -233,7 +233,7 @@ genhtml coverage.info --output-directory coverage_html
 
 * 先编写测试，再进行任何实现
 * 每次更改后运行测试
-* 在适当时使用 `EXPECT_*`（继续）而非 `ASSERT_*`（停止）
+* 在适当时使用 `EXPECT_*`（继续）而非`ASSERT_*`（停止）
 * 测试行为，而非实现细节
 * 包含边界情况（空值、null、最大值、边界条件）
 

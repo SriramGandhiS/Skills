@@ -72,7 +72,7 @@ description: Brief description shown in skill list and used for auto-activation
 origin: ECC
 ---
 
-# Skill Title
+## Skill Title
 
 Brief overview of what this skill covers.
 
@@ -108,9 +108,9 @@ Link to complementary skills.
 
 | Field | Required | Description |
 |-------|----------|-------------|
-| `name` | Yes | Lowercase, hyphenated identifier (e.g., `react-patterns`) |
+| `name`| Yes | Lowercase, hyphenated identifier (e.g.,`react-patterns`) |
 | `description` | Yes | One-line description for skill list and auto-activation |
-| `origin` | No | Source identifier (e.g., `ECC`, `community`, project name) |
+| `origin`| No | Source identifier (e.g.,`ECC`,`community`, project name) |
 | `tags` | No | Array of tags for categorization |
 | `version` | No | Skill version for tracking updates |
 
@@ -124,10 +124,10 @@ Good skills are **focused and actionable**:
 
 | PASS: Good Focus | FAIL: Too Broad |
 |---------------|--------------|
-| `react-hook-patterns` | `react` |
-| `postgresql-indexing` | `databases` |
-| `pytest-fixtures` | `python-testing` |
-| `nextjs-app-router` | `nextjs` |
+| `react-hook-patterns`|`react` |
+| `postgresql-indexing`|`databases` |
+| `pytest-fixtures`|`python-testing` |
+| `nextjs-app-router`|`nextjs` |
 
 ### Step 2: Create the Directory
 
@@ -145,7 +145,7 @@ name: your-skill-name
 description: Brief description of when to use this skill
 ---
 
-# Your Skill Title
+## Your Skill Title
 
 Brief overview (1-2 sentences).
 
@@ -200,7 +200,7 @@ Write content that Claude can **immediately use**:
 
 Focus on idiomatic code, naming conventions, and language-specific patterns.
 
-**Examples:** `python-patterns`, `golang-patterns`, `typescript-standards`
+**Examples:** `python-patterns`,`golang-patterns`,`typescript-standards`
 
 ```markdown
 ---
@@ -208,7 +208,7 @@ name: python-patterns
 description: Python idioms, best practices, and patterns for clean, idiomatic code.
 ---
 
-# Python Patterns
+## Python Patterns
 
 ## When to Activate
 
@@ -221,7 +221,7 @@ description: Python idioms, best practices, and patterns for clean, idiomatic co
 ### Context Managers
 
 \`\`\`python
-# Always use context managers for resources
+## Always use context managers for resources
 with open('file.txt') as f:
     content = f.read()
 \`\`\`
@@ -231,7 +231,7 @@ with open('file.txt') as f:
 
 Focus on framework-specific conventions, common patterns, and anti-patterns.
 
-**Examples:** `django-patterns`, `nextjs-patterns`, `springboot-patterns`
+**Examples:** `django-patterns`,`nextjs-patterns`,`springboot-patterns`
 
 ```markdown
 ---
@@ -239,7 +239,7 @@ name: django-patterns
 description: Django best practices for models, views, URLs, and templates.
 ---
 
-# Django Patterns
+## Django Patterns
 
 ## When to Activate
 
@@ -252,7 +252,7 @@ description: Django best practices for models, views, URLs, and templates.
 
 Define step-by-step processes for common development tasks.
 
-**Examples:** `tdd-workflow`, `code-review-workflow`, `deployment-checklist`
+**Examples:** `tdd-workflow`,`code-review-workflow`,`deployment-checklist`
 
 ```markdown
 ---
@@ -260,7 +260,7 @@ name: code-review-workflow
 description: Systematic code review process for quality and security.
 ---
 
-# Code Review Workflow
+## Code Review Workflow
 
 ## Steps
 
@@ -275,7 +275,7 @@ description: Systematic code review process for quality and security.
 
 Specialized knowledge for specific domains (security, performance, etc.).
 
-**Examples:** `security-review`, `performance-optimization`, `api-design`
+**Examples:** `security-review`,`performance-optimization`,`api-design`
 
 ```markdown
 ---
@@ -283,7 +283,7 @@ name: api-design
 description: REST and GraphQL API design patterns, versioning, and best practices.
 ---
 
-# API Design Patterns
+## API Design Patterns
 
 ## RESTful Conventions
 
@@ -298,7 +298,7 @@ description: REST and GraphQL API design patterns, versioning, and best practice
 
 Guidance for using specific tools, libraries, or services.
 
-**Examples:** `supabase-patterns`, `docker-patterns`, `mcp-server-patterns`
+**Examples:** `supabase-patterns`,`docker-patterns`,`mcp-server-patterns`
 
 ---
 
@@ -438,8 +438,8 @@ Need to fetch data?
 
 1. **Length**: 200-500 lines typical, 800 lines maximum
 2. **Code blocks**: Include language identifier
-3. **Headers**: Use `##` and `###` hierarchy
-4. **Lists**: Use `-` for unordered, `1.` for ordered
+3. **Headers**: Use `##`and`###` hierarchy
+4. **Lists**: Use `-`for unordered,`1.` for ordered
 5. **Tables**: For comparisons and references
 
 ---
@@ -454,7 +454,7 @@ name: language-standards
 description: Coding standards and best practices for [language].
 ---
 
-# [Language] Coding Standards
+## [Language] Coding Standards
 
 ## When to Activate
 
@@ -493,7 +493,7 @@ name: task-workflow
 description: Step-by-step workflow for [task].
 ---
 
-# [Task] Workflow
+## [Task] Workflow
 
 ## When to Activate
 
@@ -539,7 +539,7 @@ name: api-reference
 description: Quick reference for [API/Library].
 ---
 
-# [API/Library] Reference
+## [API/Library] Reference
 
 ## When to Activate
 
@@ -606,22 +606,22 @@ description: Quick reference for [API/Library].
 Test all code examples:
 
 ```bash
-# From the repo root
+## From the repo root
 npx tsc --noEmit skills/your-skill-name/examples/*.ts
 
-# Or from inside the skill directory
+## Or from inside the skill directory
 npx tsc --noEmit examples/*.ts
 
-# From the repo root
+## From the repo root
 python -m py_compile skills/your-skill-name/examples/*.py
 
-# Or from inside the skill directory
+## Or from inside the skill directory
 python -m py_compile examples/*.py
 
-# From the repo root
+## From the repo root
 go build ./skills/your-skill-name/examples/...
 
-# Or from inside the skill directory
+## Or from inside the skill directory
 go build ./examples/...
 ```
 
@@ -646,19 +646,19 @@ git checkout -b feat/skill-your-skill-name
 
 ```bash
 mkdir -p skills/your-skill-name
-# Create SKILL.md
+## Create SKILL.md
 ```
 
 ### 4. Validate
 
 ```bash
-# Check YAML frontmatter
+## Check YAML frontmatter
 head -10 skills/your-skill-name/SKILL.md
 
-# Verify structure
+## Verify structure
 ls -la skills/your-skill-name/
 
-# Run tests if available
+## Run tests if available
 npm test
 ```
 
@@ -715,7 +715,7 @@ description: Rust idioms, ownership patterns, and best practices for safe, idiom
 origin: ECC
 ---
 
-# Rust Patterns
+## Rust Patterns
 
 ## When to Activate
 
@@ -776,7 +776,7 @@ description: FastAPI patterns for routing, dependency injection, validation, and
 origin: ECC
 ---
 
-# FastAPI Patterns
+## FastAPI Patterns
 
 ## When to Activate
 
@@ -837,7 +837,7 @@ description: Systematic refactoring workflow for improving code quality without 
 origin: ECC
 ---
 
-# Refactoring Workflow
+## Refactoring Workflow
 
 ## When to Activate
 
@@ -863,10 +863,10 @@ origin: ECC
 ### Step 2: Ensure Tests Exist
 
 \`\`\`bash
-# Run tests to verify current behavior
+## Run tests to verify current behavior
 npm test
 
-# Check coverage for target files
+## Check coverage for target files
 npm run test:coverage
 \`\`\`
 
@@ -879,10 +879,10 @@ npm run test:coverage
 ### Step 4: Verify Behavior Unchanged
 
 \`\`\`bash
-# Run full test suite
+## Run full test suite
 npm test
 
-# Run E2E tests
+## Run E2E tests
 npm run test:e2e
 \`\`\`
 

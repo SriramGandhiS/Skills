@@ -2,8 +2,7 @@
 # Test: BMAD Integration Tests
 # Tests bmad-adapter.py and prd-analyzer.py with BMAD fixture projects.
 # Verifies discovery, normalization, epic extraction, validation, and scoring.
-#
-# Note: Not using -e to allow collecting all test results
+# # Note: Not using -e to allow collecting all test results
 
 set -uo pipefail
 

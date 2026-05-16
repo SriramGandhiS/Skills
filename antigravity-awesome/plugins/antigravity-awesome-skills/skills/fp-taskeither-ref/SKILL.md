@@ -90,7 +90,7 @@ pipe(
 ## vs async/await
 
 ```typescript
-// ❌ async/await - errors hidden
+// FAIL: async/await - errors hidden
 async function getUser(id: string) {
   try {
     const res = await fetch(`/api/users/${id}`)
@@ -100,7 +100,7 @@ async function getUser(id: string) {
   }
 }
 
-// ✅ TaskEither - errors typed and composable
+// PASS: TaskEither - errors typed and composable
 const getUser = (id: string) => pipe(
   TE.tryCatch(() => fetch(`/api/users/${id}`), toNetworkError),
   TE.flatMap(res => TE.tryCatch(() => res.json(), toParseError))

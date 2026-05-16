@@ -222,13 +222,13 @@ export function useApi<T>(
 ### 後端（pytest）
 
 ```bash
-# 執行所有測試
+## 執行所有測試
 poetry run pytest tests/
 
-# 執行帶覆蓋率的測試
+## 執行帶覆蓋率的測試
 poetry run pytest tests/ --cov=. --cov-report=html
 
-# 執行特定測試檔案
+## 執行特定測試檔案
 poetry run pytest tests/test_auth.py -v
 ```
 
@@ -253,13 +253,13 @@ async def test_health_check(client: AsyncClient):
 ### 前端（React Testing Library）
 
 ```bash
-# 執行測試
+## 執行測試
 npm run test
 
-# 執行帶覆蓋率的測試
+## 執行帶覆蓋率的測試
 npm run test -- --coverage
 
-# 執行 E2E 測試
+## 執行 E2E 測試
 npm run test:e2e
 ```
 
@@ -298,11 +298,11 @@ describe('WorkspacePanel', () => {
 ### 部署指令
 
 ```bash
-# 建置和部署前端
+## 建置和部署前端
 cd frontend && npm run build
 gcloud run deploy frontend --source .
 
-# 建置和部署後端
+## 建置和部署後端
 cd backend
 gcloud run deploy backend --source .
 ```
@@ -310,12 +310,12 @@ gcloud run deploy backend --source .
 ### 環境變數
 
 ```bash
-# 前端（.env.local）
+## 前端（.env.local）
 NEXT_PUBLIC_API_URL=https://api.example.com
 NEXT_PUBLIC_SUPABASE_URL=https://xxx.supabase.co
 NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJ...
 
-# 後端（.env）
+## 後端（.env）
 DATABASE_URL=postgresql://...
 ANTHROPIC_API_KEY=sk-ant-...
 SUPABASE_URL=https://xxx.supabase.co

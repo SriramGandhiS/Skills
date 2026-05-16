@@ -1,8 +1,8 @@
 # Phase 5 Research: Completion Council Inventory
 
-**File:** `autonomy/completion-council.sh`  
-**Lines of Code:** 1771  
-**Functions:** 19  
+**File:** `autonomy/completion-council.sh`
+**Lines of Code:** 1771
+**Functions:** 19
 **Date:** 2026-04-25
 
 ## 1. Complete Function Inventory
@@ -69,11 +69,11 @@ council_should_stop() [line 1605]
 ```
 **Prompt Template (lines 774–775):**
 ```
-"You are the REQUIREMENTS VERIFIER. Check if every requirement from the PRD has been 
-implemented. Look for missing features, incomplete implementations, and unmet acceptance 
+"You are the REQUIREMENTS VERIFIER. Check if every requirement from the PRD has been
+implemented. Look for missing features, incomplete implementations, and unmet acceptance
 criteria. Be thorough - check code structure, not just claims."
 ```
-**Input Evidence:** PRD (first 100 lines), git status, recent commits, test results, queue status, build state, convergence data (if not blind-validated).  
+**Input Evidence:** PRD (first 100 lines), git status, recent commits, test results, queue status, build state, convergence data (if not blind-validated).
 **Output Parse:** Extract `VOTE:APPROVE|REJECT|CANNOT_VALIDATE`, `REASON:`, `ISSUES: SEVERITY:description`
 
 ### 3.2 Test Auditor
@@ -86,11 +86,11 @@ criteria. Be thorough - check code structure, not just claims."
 ```
 **Prompt Template (lines 777–778):**
 ```
-"You are the TEST AUDITOR. Verify that adequate tests exist and pass. Check test 
-coverage, edge cases, error handling. Look at test results and build output. A project 
+"You are the TEST AUDITOR. Verify that adequate tests exist and pass. Check test
+coverage, edge cases, error handling. Look at test results and build output. A project
 without passing tests is NOT complete."
 ```
-**Input Evidence:** Same as requirements_verifier.  
+**Input Evidence:** Same as requirements_verifier.
 **Output Parse:** Same format.
 
 ### 3.3 Devil's Advocate
@@ -108,7 +108,7 @@ without passing tests is NOT complete."
 "ANTI-SYCOPHANCY CHECK: All council members unanimously APPROVED this project.
 Your job is to be the CONTRARIAN. Find ANY reason this should NOT be approved.
 [evidence]
-Look for: missing functionality, tests not actually passing, TODO/FIXME comments, 
+Look for: missing functionality, tests not actually passing, TODO/FIXME comments,
 inadequate docs, untested edge cases. Output VOTE:APPROVE or VOTE:REJECT"
 ```
 
@@ -138,7 +138,7 @@ if [ "$vote_result" = "REJECT" ] && [ "$COUNCIL_SEVERITY_THRESHOLD" != "low" ]; 
     if [ "$sev" = "$COUNCIL_SEVERITY_THRESHOLD" ]:
       threshold_reached=true
   done
-  
+
   # Apply error budget: if no blocking issues, check ratio
   if [ "$has_blocking_issue" = "false" ]; then
     ratio = non_blocking_count / total_issue_count
@@ -168,20 +168,20 @@ FUNCTION council_vote():
       approve_count++
     ELSE:
       reject_count++
-  
+
   # Step 2: Anti-sycophancy gate (v1 bash path)
   IF approve_count == COUNCIL_SIZE AND COUNCIL_SIZE >= 2:
     log_warn("Unanimous approval detected - anti-sycophancy check")
     contrarian_verdict = council_devils_advocate(evidence_file)
     contrarian_vote = parse(contrarian_verdict, "VOTE:")
-    
+
     IF contrarian_vote == REJECT OR CANNOT_VALIDATE:
       log_warn("Anti-sycophancy: Devil's advocate overrode unanimous approval")
       approve_count = approve_count - 1
       reject_count = reject_count + 1
     ELSE:
       log_info("Anti-sycophancy: Devil's advocate confirmed approval")
-  
+
   # Step 3: Tally
   threshold = ceiling(COUNCIL_SIZE * 2 / 3)
   IF approve_count >= threshold:
@@ -192,7 +192,7 @@ FUNCTION council_vote():
 FUNCTION council_evaluate():
   # Step 1: Aggregate
   aggregate_result = council_aggregate_votes()
-  
+
   # Step 2: If unanimous COMPLETE (v7 variant)
   IF aggregate_result == COMPLETE:
     complete_count = extract from round-N.json
@@ -258,9 +258,9 @@ FUNCTION council_evaluate():
    ) &
    disown 2>/dev/null || true
    ```
-   **Purpose:** Persist final council verdict to managed memory store for future augmentation.  
-   **Timeout:** 15 seconds.  
-   **Silent:** Errors suppressed.
+**Purpose:** Persist final council verdict to managed memory store for future augmentation.
+**Timeout:** 15 seconds.
+**Silent:** Errors suppressed.
 
 **No other background jobs detected.** Council member invocations are **sequential** (line 307: `while [ $member -le $COUNCIL_SIZE ]`). AI provider calls block waiting for response (lines 828, 911, etc.).
 

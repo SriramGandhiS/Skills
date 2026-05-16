@@ -11,7 +11,6 @@ metadata:
 
 This skill provides guidance for building voice AI agents with the LiveKit Agents SDK. It covers both LiveKit Cloud and self-hosted deployments, using the `lk` CLI for documentation access and project management. All factual information about APIs, methods, and configurations must come from live documentation.
 
-
 ## MANDATORY: Read This Checklist Before Starting
 
 Before writing ANY code, complete this checklist:
@@ -21,7 +20,6 @@ Before writing ANY code, complete this checklist:
 3. **Set up documentation access** - Install `lk` CLI for `lk docs` commands
 4. **Plan to write tests** - Every agent implementation MUST include tests (see testing section below)
 5. **Verify all APIs against live docs** - Never rely on model memory for LiveKit APIs
-
 
 ## Setup
 

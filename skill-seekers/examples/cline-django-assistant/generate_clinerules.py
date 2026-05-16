@@ -30,10 +30,10 @@ def run_command(cmd: list[str], description: str) -> bool:
         print(result.stderr, file=sys.stderr)
 
     if result.returncode != 0:
-        print(f"❌ ERROR: {description} failed with code {result.returncode}")
+        print(f"FAIL: ERROR: {description} failed with code {result.returncode}")
         return False
 
-    print(f"✅ SUCCESS: {description}")
+    print(f"PASS: SUCCESS: {description}")
     return True
 
 
@@ -67,7 +67,7 @@ def setup_mcp_server(project_path: Path) -> bool:
     with open(mcp_config_file, 'w') as f:
         json.dump(mcp_config, f, indent=2)
 
-    print(f"✅ Created: {mcp_config_file}")
+    print(f"PASS: Created: {mcp_config_file}")
     print(f"\nTo activate in Cline:")
     print(f"1. Open Cline panel in VS Code")
     print(f"2. Settings → MCP Servers → Load Configuration")
@@ -128,10 +128,10 @@ def main():
         ):
             return 1
     else:
-        print(f"\n⏭️  SKIPPED: Using existing {output_dir}")
+        print(f"\nSKIPPED:  SKIPPED: Using existing {output_dir}")
 
         if not output_dir.exists():
-            print(f"❌ ERROR: {output_dir} does not exist!")
+            print(f"FAIL: ERROR: {output_dir} does not exist!")
             print(f"Run without --skip-scrape to generate documentation first.")
             return 1
 
@@ -157,7 +157,7 @@ def main():
     source_skill = markdown_output / "SKILL.md"
 
     if not source_skill.exists():
-        print(f"❌ ERROR: {source_skill} does not exist!")
+        print(f"FAIL: ERROR: {source_skill} does not exist!")
         return 1
 
     if args.modular:
@@ -174,7 +174,7 @@ def main():
         core_rules = project_path / ".clinerules"
         with open(core_rules, 'w') as f:
             f.write(sections[0])
-        print(f"✅ Created: {core_rules}")
+        print(f"PASS: Created: {core_rules}")
 
         # Try to extract specific sections (simplified)
         # In a real implementation, this would be more sophisticated
@@ -183,28 +183,28 @@ def main():
             models_rules = project_path / ".clinerules.models"
             with open(models_rules, 'w') as f:
                 f.write('## ' + models_content)
-            print(f"✅ Created: {models_rules}")
+            print(f"PASS: Created: {models_rules}")
 
         views_content = next((s for s in sections if 'View' in s), None)
         if views_content:
             views_rules = project_path / ".clinerules.views"
             with open(views_rules, 'w') as f:
                 f.write('## ' + views_content)
-            print(f"✅ Created: {views_rules}")
+            print(f"PASS: Created: {views_rules}")
 
     else:
         # Single file
         dest_file = project_path / ".clinerules"
         shutil.copy(source_skill, dest_file)
-        print(f"✅ Copied: {dest_file}")
+        print(f"PASS: Copied: {dest_file}")
 
     # Step 4: Set up MCP server (optional)
     if args.with_mcp:
         if not setup_mcp_server(project_path):
-            print("⚠️  WARNING: MCP setup failed, but rules were created successfully")
+            print("WARNING:  WARNING: MCP setup failed, but rules were created successfully")
 
     print(f"\n{'='*60}")
-    print(f"✅ SUCCESS: Cline rules generated!")
+    print(f"PASS: SUCCESS: Cline rules generated!")
     print(f"{'='*60}")
     print(f"\nNext steps:")
     print(f"1. Open project in VS Code: code {project_path}")
@@ -215,7 +215,7 @@ def main():
     print(f"   'Create a Django blog app with posts and comments'")
 
     if args.with_mcp:
-        print(f"\n📡 MCP Server configured at:")
+        print(f"\n MCP Server configured at:")
         print(f"   {project_path / '.vscode' / 'mcp_config.json'}")
         print(f"   Load in Cline: Settings → MCP Servers → Load Configuration")
 

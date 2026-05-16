@@ -83,17 +83,17 @@ Este repositório contém apenas o código. Os guias explicam tudo.
 ### v2.0.0-rc.1 — Sincronização de Superfície, Fluxos Operacionais e ECC 2.0 Alpha (Abr 2026)
 
 - **Superfície pública sincronizada com o repositório real** — metadados, contagens de catálogo, manifests de plugin e documentação de instalação agora refletem a superfície OSS que realmente é entregue.
-- **Expansão dos fluxos operacionais e externos** — `brand-voice`, `social-graph-ranker`, `customer-billing-ops`, `google-workspace-ops` e skills relacionadas fortalecem a trilha operacional dentro do mesmo sistema.
-- **Ferramentas de mídia e lançamento** — `manim-video`, `remotion-video-creation` e os fluxos de publicação social colocam explicadores técnicos e lançamento no mesmo repositório.
+- **Expansão dos fluxos operacionais e externos** — `brand-voice`,`social-graph-ranker`,`customer-billing-ops`,`google-workspace-ops` e skills relacionadas fortalecem a trilha operacional dentro do mesmo sistema.
+- **Ferramentas de mídia e lançamento** — `manim-video`,`remotion-video-creation` e os fluxos de publicação social colocam explicadores técnicos e lançamento no mesmo repositório.
 - **Crescimento de framework e superfície de produto** — `nestjs-patterns`, superfícies de instalação mais ricas para Codex/OpenCode e melhorias de empacotamento cross-harness ampliam o uso além do Claude Code.
-- **ECC 2.0 alpha já está no repositório** — o plano de controle em Rust dentro de `ecc2/` já compila localmente e expõe `dashboard`, `start`, `sessions`, `status`, `stop`, `resume` e `daemon`.
+- **ECC 2.0 alpha já está no repositório** — o plano de controle em Rust dentro de `ecc2/`já compila localmente e expõe`dashboard`,`start`,`sessions`,`status`,`stop`,`resume`e`daemon`.
 - **Fortalecimento do ecossistema** — AgentShield, controles de custo do ECC Tools, trabalho no portal de billing e a renovação do site continuam sendo entregues ao redor do plugin principal.
 
 ### v1.9.0 — Instalação Seletiva e Expansão de Idiomas (Mar 2026)
 
-- **Arquitetura de instalação seletiva** — Pipeline de instalação baseado em manifesto com `install-plan.js` e `install-apply.js` para instalação de componentes direcionada. O state store rastreia o que está instalado e habilita atualizações incrementais.
-- **6 novos agentes** — `typescript-reviewer`, `pytorch-build-resolver`, `java-build-resolver`, `java-reviewer`, `kotlin-reviewer`, `kotlin-build-resolver` expandem a cobertura para 10 linguagens.
-- **Novas skills** — `pytorch-patterns` para fluxos de deep learning, `documentation-lookup` para pesquisa de referências de API, `bun-runtime` e `nextjs-turbopack` para toolchains JS modernas, além de 8 skills de domínio operacional e `mcp-server-patterns`.
+- **Arquitetura de instalação seletiva** — Pipeline de instalação baseado em manifesto com `install-plan.js`e`install-apply.js` para instalação de componentes direcionada. O state store rastreia o que está instalado e habilita atualizações incrementais.
+- **6 novos agentes** — `typescript-reviewer`,`pytorch-build-resolver`,`java-build-resolver`,`java-reviewer`,`kotlin-reviewer`,`kotlin-build-resolver` expandem a cobertura para 10 linguagens.
+- **Novas skills** — `pytorch-patterns`para fluxos de deep learning,`documentation-lookup`para pesquisa de referências de API,`bun-runtime`e`nextjs-turbopack`para toolchains JS modernas, além de 8 skills de domínio operacional e`mcp-server-patterns`.
 - **Infraestrutura de sessão e estado** — State store SQLite com CLI de consulta, adaptadores de sessão para gravação estruturada, fundação de evolução de skills para skills auto-aprimoráveis.
 - **Revisão de orquestração** — Pontuação de auditoria de harness tornado determinístico, status de orquestração e compatibilidade de launcher reforçados, prevenção de loop de observer com guarda de 5 camadas.
 - **Confiabilidade do observer** — Correção de explosão de memória com throttling e tail sampling, correção de acesso sandbox, lógica de início preguiçoso e guarda de reentrância.
@@ -105,8 +105,8 @@ Este repositório contém apenas o código. Os guias explicam tudo.
 
 - **Lançamento focado em harness** — O ECC agora é explicitamente enquadrado como um sistema de desempenho de harness de agentes, não apenas um pacote de configurações.
 - **Revisão de confiabilidade de hooks** — Fallback de raiz SessionStart, resumos de sessão na fase Stop e hooks baseados em scripts substituindo frágeis one-liners inline.
-- **Controles de runtime de hooks** — `ECC_HOOK_PROFILE=minimal|standard|strict` e `ECC_DISABLED_HOOKS=...` para controle em tempo de execução sem editar arquivos de hook.
-- **Novos comandos de harness** — `/harness-audit`, `/loop-start`, `/loop-status`, `/quality-gate`, `/model-route`.
+- **Controles de runtime de hooks** — `ECC_HOOK_PROFILE=minimal|standard|strict`e`ECC_DISABLED_HOOKS=...` para controle em tempo de execução sem editar arquivos de hook.
+- **Novos comandos de harness** — `/harness-audit`,`/loop-start`,`/loop-status`,`/quality-gate`,`/model-route`.
 - **NanoClaw v2** — roteamento de modelo, carregamento a quente de skill, ramificação/busca/exportação/compactação/métricas de sessão.
 - **Paridade entre harnesses** — comportamento unificado em Claude Code, Cursor, OpenCode e Codex app/CLI.
 - **997 testes internos passando** — suíte completa no verde após refatoração de hook/runtime e atualizações de compatibilidade.
@@ -120,10 +120,10 @@ Comece em menos de 2 minutos:
 ### Passo 1: Instalar o Plugin
 
 ```bash
-# Adicionar marketplace
-/plugin marketplace add https://github.com/affaan-m/everything-claude-code
+## Adicionar marketplace
+/plugin marketplace add <https://github.com/affaan-m/everything-claude-code>
 
-# Instalar plugin
+## Instalar plugin
 /plugin install ecc@ecc
 ```
 
@@ -132,41 +132,41 @@ Comece em menos de 2 minutos:
 > WARNING: **Importante:** Plugins do Claude Code não podem distribuir `rules` automaticamente. Instale-as manualmente:
 
 ```bash
-# Clone o repositório primeiro
-git clone https://github.com/affaan-m/everything-claude-code.git
+## Clone o repositório primeiro
+git clone <https://github.com/affaan-m/everything-claude-code.git>
 cd everything-claude-code
 
-# Instalar dependências (escolha seu gerenciador de pacotes)
+## Instalar dependências (escolha seu gerenciador de pacotes)
 npm install        # ou: pnpm install | yarn install | bun install
 
-# macOS/Linux
+## macOS/Linux
 ./install.sh typescript    # ou python ou golang ou swift ou php
-# ./install.sh typescript python golang swift php
-# ./install.sh --target cursor typescript
-# ./install.sh --target antigravity typescript
+## ./install.sh typescript python golang swift php
+## ./install.sh --target cursor typescript
+## ./install.sh --target antigravity typescript
 ```
 
 ```powershell
-# Windows PowerShell
+## Windows PowerShell
 .\install.ps1 typescript   # ou python ou golang ou swift ou php
-# .\install.ps1 typescript python golang swift php
-# .\install.ps1 --target cursor typescript
-# .\install.ps1 --target antigravity typescript
+## .\install.ps1 typescript python golang swift php
+## .\install.ps1 --target cursor typescript
+## .\install.ps1 --target antigravity typescript
 
-# O ponto de entrada de compatibilidade npm também funciona multiplataforma
+## O ponto de entrada de compatibilidade npm também funciona multiplataforma
 npx ecc-install typescript
 ```
 
 ### Passo 3: Começar a Usar
 
 ```bash
-# Experimente um comando (a instalação do plugin usa forma com namespace)
+## Experimente um comando (a instalação do plugin usa forma com namespace)
 /ecc:plan "Adicionar autenticação de usuário"
 
-# Instalação manual (Opção 2) usa a forma mais curta:
-# /plan "Adicionar autenticação de usuário"
+## Instalação manual (Opção 2) usa a forma mais curta:
+## /plan "Adicionar autenticação de usuário"
 
-# Verificar comandos disponíveis
+## Verificar comandos disponíveis
 /plugin list ecc@ecc
 ```
 
@@ -192,16 +192,16 @@ O plugin detecta automaticamente seu gerenciador de pacotes preferido (npm, pnpm
 Para definir seu gerenciador de pacotes preferido:
 
 ```bash
-# Via variável de ambiente
+## Via variável de ambiente
 export CLAUDE_PACKAGE_MANAGER=pnpm
 
-# Via config global
+## Via config global
 node scripts/setup-package-manager.js --global pnpm
 
-# Via config do projeto
+## Via config do projeto
 node scripts/setup-package-manager.js --project bun
 
-# Detectar configuração atual
+## Detectar configuração atual
 node scripts/setup-package-manager.js --detect
 ```
 
@@ -212,10 +212,10 @@ Ou use o comando `/setup-pm` no Claude Code.
 Use flags de runtime para ajustar rigor ou desabilitar hooks específicos temporariamente:
 
 ```bash
-# Perfil de rigor de hooks (padrão: standard)
+## Perfil de rigor de hooks (padrão: standard)
 export ECC_HOOK_PROFILE=standard
 
-# IDs de hooks separados por vírgula para desabilitar
+## IDs de hooks separados por vírgula para desabilitar
 export ECC_DISABLED_HOOKS="pre:bash:tmux-reminder,post:edit:typecheck"
 ```
 
@@ -265,16 +265,16 @@ Para recursos avançados (10k+ commits, PRs automáticos, compartilhamento em eq
 > Construído no Claude Code Hackathon (Cerebral Valley x Anthropic, Fev 2026). 1282 testes, 98% de cobertura, 102 regras de análise estática.
 
 ```bash
-# Verificação rápida (sem instalação necessária)
+## Verificação rápida (sem instalação necessária)
 npx ecc-agentshield scan
 
-# Corrigir automaticamente problemas seguros
+## Corrigir automaticamente problemas seguros
 npx ecc-agentshield scan --fix
 
-# Análise profunda com três agentes Opus 4.6
+## Análise profunda com três agentes Opus 4.6
 npx ecc-agentshield scan --opus --stream
 
-# Gerar configuração segura do zero
+## Gerar configuração segura do zero
 npx ecc-agentshield init
 ```
 
@@ -309,10 +309,10 @@ claude --version
 ### Opção 1: Instalar como Plugin (Recomendado)
 
 ```bash
-# Adicionar este repositório como marketplace
-/plugin marketplace add https://github.com/affaan-m/everything-claude-code
+## Adicionar este repositório como marketplace
+/plugin marketplace add <https://github.com/affaan-m/everything-claude-code>
 
-# Instalar o plugin
+## Instalar o plugin
 /plugin install ecc@ecc
 ```
 
@@ -338,7 +338,7 @@ Ou adicione diretamente ao seu `~/.claude/settings.json`:
 >
 > ```bash
 > # Clone o repositório primeiro
-> git clone https://github.com/affaan-m/everything-claude-code.git
+> git clone <https://github.com/affaan-m/everything-claude-code.git>
 >
 > # Opção A: Regras no nível do usuário (aplica a todos os projetos)
 > mkdir -p ~/.claude/rules
@@ -355,20 +355,20 @@ Ou adicione diretamente ao seu `~/.claude/settings.json`:
 ### Opção 2: Instalação Manual
 
 ```bash
-# Clonar o repositório
-git clone https://github.com/affaan-m/everything-claude-code.git
+## Clonar o repositório
+git clone <https://github.com/affaan-m/everything-claude-code.git>
 
-# Copiar agentes para sua config Claude
+## Copiar agentes para sua config Claude
 cp everything-claude-code/agents/*.md ~/.claude/agents/
 
-# Copiar regras (comuns + específicas da linguagem)
+## Copiar regras (comuns + específicas da linguagem)
 cp -r everything-claude-code/rules/common ~/.claude/rules/common
 cp -r everything-claude-code/rules/typescript ~/.claude/rules/typescript
 
-# Copiar comandos
+## Copiar comandos
 cp everything-claude-code/commands/*.md ~/.claude/commands/
 
-# Copiar skills (core vs nicho)
+## Copiar skills (core vs nicho)
 cp -r everything-claude-code/.agents/skills/* ~/.claude/skills/
 ```
 
@@ -459,7 +459,7 @@ Regras são diretrizes sempre seguidas, organizadas em `common/` (agnóstico à 
 <details>
 <summary><b>Meus hooks não estão funcionando / Vejo erros "Duplicate hooks file"</b></summary>
 
-Este é o problema mais comum. **NÃO adicione um campo `"hooks"` ao `.claude-plugin/plugin.json`.** O Claude Code v2.1+ carrega automaticamente `hooks/hooks.json` de plugins instalados. Declarar explicitamente causa erros de detecção de duplicatas.
+Este é o problema mais comum. **NÃO adicione um campo `"hooks"`ao`.claude-plugin/plugin.json`.** O Claude Code v2.1+ carrega automaticamente`hooks/hooks.json` de plugins instalados. Declarar explicitamente causa erros de detecção de duplicatas.
 </details>
 
 <details>
@@ -488,10 +488,10 @@ Veja [CONTRIBUTING.md](CONTRIBUTING.md). Em resumo:
 ## Executando Testes
 
 ```bash
-# Executar todos os testes
+## Executar todos os testes
 node tests/run-all.js
 
-# Executar arquivos de teste individuais
+## Executar arquivos de teste individuais
 node tests/lib/utils.test.js
 node tests/lib/package-manager.test.js
 node tests/hooks/hooks.test.js

@@ -9,7 +9,7 @@ description: "Learn how to use Docker Compose with Dokploy"
 In this tutorial, we will create a simple application using Docker Compose and route the traffic to an accessible domain.
 
 <Callout type="info">
-  **Note**: There are two ways to configure domains for Docker Compose applications:
+**Note**: There are two ways to configure domains for Docker Compose applications:
   1. **Using Dokploy Domains** (Recommended): Configure domains directly in the Dokploy UI through the **Domains** tab. See the [Domains guide](/docs/core/domains) for details.
   2. **Manual Configuration**: Configure domains using Traefik labels in your Docker Compose file (shown in this tutorial).
 
@@ -111,7 +111,7 @@ Deploy the application by clicking on "deploy" and wait for the deployment to co
 
 **Tips**:
 
-1. Set unique names for each router: `traefik.http.routers.<unique-name>` 
+1. Set unique names for each router: `traefik.http.routers.<unique-name>`
 2. Set unique names for each service: `traefik.http.services.<unique-name>`
 3. Ensure the network is linked to the `dokploy-network`
 4. Set the entry point to websecure and the certificate resolver to letsencrypt to generate certificates.

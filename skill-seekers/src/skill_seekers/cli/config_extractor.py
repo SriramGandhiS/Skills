@@ -898,37 +898,37 @@ def main():
         try:
             from skill_seekers.cli.config_enhancer import ConfigEnhancer
 
-            logger.info(f"🤖 Starting AI enhancement (mode: {enhance_mode})...")
+            logger.info(f" Starting AI enhancement (mode: {enhance_mode})...")
             enhancer = ConfigEnhancer(mode=enhance_mode)
             output_dict = enhancer.enhance_config_result(output_dict)
-            logger.info("✅ AI enhancement complete")
+            logger.info("PASS: AI enhancement complete")
         except ImportError:
-            logger.warning("⚠️  ConfigEnhancer not available, skipping enhancement")
+            logger.warning("WARNING:  ConfigEnhancer not available, skipping enhancement")
         except Exception as e:
-            logger.error(f"❌ AI enhancement failed: {e}")
+            logger.error(f"FAIL: AI enhancement failed: {e}")
 
     # Output
     if args.output:
         with open(args.output, "w") as f:
             json.dump(output_dict, f, indent=2)
-        print(f"✅ Saved config extraction results to: {args.output}")
+        print(f"PASS: Saved config extraction results to: {args.output}")
     else:
         print(json.dumps(output_dict, indent=2))
 
     # Summary
-    print("\n📊 Summary:")
+    print("\n Summary:")
     print(f"  Config files found: {result.total_files}")
     print(f"  Total settings: {result.total_settings}")
     print(f"  Detected patterns: {', '.join(result.detected_patterns.keys()) or 'None'}")
 
     if "ai_enhancements" in output_dict:
-        print(f"  ✨ AI enhancements: Yes ({enhance_mode} mode)")
+        print(f"   AI enhancements: Yes ({enhance_mode} mode)")
         insights = output_dict["ai_enhancements"].get("overall_insights", {})
         if insights.get("security_issues_found"):
-            print(f"  🔐 Security issues found: {insights['security_issues_found']}")
+            print(f"   Security issues found: {insights['security_issues_found']}")
 
     if result.errors:
-        print(f"\n⚠️  Errors: {len(result.errors)}")
+        print(f"\nWARNING:  Errors: {len(result.errors)}")
 
 
 if __name__ == "__main__":

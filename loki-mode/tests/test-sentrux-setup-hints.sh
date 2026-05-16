@@ -4,8 +4,7 @@
 # show actionable install commands instead of pointing to sibling subcommands.
 # Also verifies init-rules does NOT require the binary (writes a plain-text
 # TOML template) and must NOT show an install hint.
-#
-# All assertions run with a PATH that excludes any sentrux binary.
+# # All assertions run with a PATH that excludes any sentrux binary.
 
 set -uo pipefail
 

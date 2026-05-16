@@ -26,7 +26,7 @@ The companion library [go-rod/stealth](https://github.com/go-rod/stealth) inject
 
 ## Safety & Risk
 
-**Risk Level: 🔵 Safe**
+**Risk Level:  Safe**
 
 - **Read-Only by Default:** Default behavior is navigating and reading page content (scraping/testing).
 - **Isolated Contexts:** Browser contexts are sandboxed; cookies and storage do not persist unless explicitly saved.
@@ -489,40 +489,40 @@ See the `examples/` directory for complete, runnable Go files:
 
 ## Best Practices
 
-- ✅ **ALWAYS use `stealth.MustPage(browser)`** instead of `browser.MustPage()` for real-world sites.
-- ✅ **ALWAYS `defer browser.MustClose()`** immediately after connecting.
-- ✅ Use the error-returning API (not `Must*`) in production code.
-- ✅ Set explicit timeouts with `.Timeout()` — never rely on defaults for production.
-- ✅ Use `browser.MustIncognito().MustPage()` for isolated sessions.
-- ✅ Use `PagePool` for concurrent scraping instead of spawning unlimited pages.
-- ✅ Use `MustWaitStable()` before clicking elements that might be animating.
-- ✅ Use `MustWaitRequestIdle()` after actions that trigger AJAX calls.
-- ✅ Use `launcher.New().Headless(false).Devtools(true)` for debugging.
-- ❌ **NEVER** use `time.Sleep()` for waiting — use Rod's built-in wait methods.
-- ❌ **NEVER** create a new `Browser` per task — create one Browser, use multiple `Page` instances.
-- ❌ **NEVER** use `browser.MustPage()` for production scraping — use `stealth.MustPage()`.
-- ❌ **NEVER** ignore errors in production — always handle them explicitly.
-- ❌ **NEVER** forget to defer-close browsers, pages, and hijack routers.
+- PASS: **ALWAYS use `stealth.MustPage(browser)`** instead of `browser.MustPage()` for real-world sites.
+- PASS: **ALWAYS `defer browser.MustClose()`** immediately after connecting.
+- PASS: Use the error-returning API (not `Must*`) in production code.
+- PASS: Set explicit timeouts with `.Timeout()` — never rely on defaults for production.
+- PASS: Use `browser.MustIncognito().MustPage()` for isolated sessions.
+- PASS: Use `PagePool` for concurrent scraping instead of spawning unlimited pages.
+- PASS: Use `MustWaitStable()` before clicking elements that might be animating.
+- PASS: Use `MustWaitRequestIdle()` after actions that trigger AJAX calls.
+- PASS: Use `launcher.New().Headless(false).Devtools(true)` for debugging.
+- FAIL: **NEVER** use `time.Sleep()` for waiting — use Rod's built-in wait methods.
+- FAIL: **NEVER** create a new `Browser` per task — create one Browser, use multiple `Page` instances.
+- FAIL: **NEVER** use `browser.MustPage()` for production scraping — use `stealth.MustPage()`.
+- FAIL: **NEVER** ignore errors in production — always handle them explicitly.
+- FAIL: **NEVER** forget to defer-close browsers, pages, and hijack routers.
 
 ## Common Pitfalls
 
 - **Problem:** Element not found even though it exists on the page.
-  **Solution:** The element may be inside an iframe or shadow DOM. Use `page.MustSearch()` instead of `page.MustElement()` — it searches across all iframes and shadow DOMs.
+**Solution:** The element may be inside an iframe or shadow DOM. Use `page.MustSearch()` instead of `page.MustElement()` — it searches across all iframes and shadow DOMs.
 
 - **Problem:** Click doesn't work because the element is animating.
-  **Solution:** Call `el.MustWaitStable()` before `el.MustClick()`.
+**Solution:** Call `el.MustWaitStable()` before `el.MustClick()`.
 
 - **Problem:** Bot detection despite using stealth.
-  **Solution:** Combine `stealth.MustPage()` with: randomized viewport sizes, realistic User-Agent strings, human-like input delays between keystrokes, and random idle behaviors (scroll, hover).
+**Solution:** Combine `stealth.MustPage()` with: randomized viewport sizes, realistic User-Agent strings, human-like input delays between keystrokes, and random idle behaviors (scroll, hover).
 
 - **Problem:** Browser process leaks (zombie processes).
-  **Solution:** Always `defer browser.MustClose()`. Rod uses [leakless](https://github.com/ysmood/leakless) to kill zombies after main process crash, but explicit cleanup is preferred.
+**Solution:** Always `defer browser.MustClose()`. Rod uses [leakless](https://github.com/ysmood/leakless) to kill zombies after main process crash, but explicit cleanup is preferred.
 
 - **Problem:** Timeout errors on slow pages.
-  **Solution:** Use chained context: `page.Timeout(30 * time.Second).MustWaitLoad()`. For AJAX-heavy pages, use `MustWaitRequestIdle()` instead of `MustWaitLoad()`.
+**Solution:** Use chained context: `page.Timeout(30 * time.Second).MustWaitLoad()`. For AJAX-heavy pages, use `MustWaitRequestIdle()` instead of `MustWaitLoad()`.
 
 - **Problem:** HijackRequests router not intercepting requests.
-  **Solution:** You must call `go router.Run()` after setting up routes, and `defer router.MustStop()` for cleanup.
+**Solution:** You must call `go router.Run()` after setting up routes, and `defer router.MustStop()` for cleanup.
 
 ## Limitations
 

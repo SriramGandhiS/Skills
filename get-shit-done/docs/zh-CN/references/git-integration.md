@@ -231,7 +231,7 @@ a7f2d1 feat(checkout): Stripe payments with webhook verification
 - 减少对解析 SUMMARY.md 的依赖 = 更多上下文用于实际工作
 
 **失败恢复：**
-- 任务 1 已提交 ✅，任务 2 失败 ❌
+- 任务 1 已提交 PASS:，任务 2 失败 FAIL:
 - 下次会话中的 Claude：看到任务 1 完成，可以重试任务 2
 - 可以 `git reset --hard` 到最后一个成功的任务
 

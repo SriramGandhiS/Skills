@@ -92,7 +92,7 @@ describe('Semantic Search', () => {
 
 ```bash
 npm test
-# Tests should fail - we haven't implemented yet
+## Tests should fail - we haven't implemented yet
 ```
 
 ### 步骤 4: 实现代码
@@ -110,7 +110,7 @@ export async function searchMarkets(query: string) {
 
 ```bash
 npm test
-# Tests should now pass
+## Tests should now pass
 ```
 
 ### 步骤 6: 重构
@@ -126,7 +126,7 @@ npm test
 
 ```bash
 npm run test:coverage
-# Verify 80%+ coverage achieved
+## Verify 80%+ coverage achieved
 ```
 
 ## 测试模式
@@ -393,20 +393,20 @@ test('updates user', () => {
 
 ```bash
 npm test -- --watch
-# Tests run automatically on file changes
+## Tests run automatically on file changes
 ```
 
 ### 预提交钩子
 
 ```bash
-# Runs before every commit
+## Runs before every commit
 npm test && npm run lint
 ```
 
 ### CI/CD 集成
 
 ```yaml
-# GitHub Actions
+## GitHub Actions
 - name: Run Tests
   run: npm test -- --coverage
 - name: Upload Coverage

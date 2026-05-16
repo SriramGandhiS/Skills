@@ -23,10 +23,10 @@ def run_command(cmd: list, description: str) -> bool:
     result = subprocess.run(cmd, capture_output=True, text=True)
 
     if result.returncode != 0:
-        print(f"❌ Error: {result.stderr}")
+        print(f"FAIL: Error: {result.stderr}")
         return False
 
-    print(f"✅ Success!")
+    print(f"PASS: Success!")
     if result.stdout:
         # Print first 500 chars to avoid clutter
         output = result.stdout[:500]
@@ -46,7 +46,7 @@ def main():
     print("  1. Scrape React documentation (100 pages)")
     print("  2. Package for Cursor IDE")
     print("  3. Extract and copy to example-project/")
-    print("\n⏱️  Estimated time: 2-3 minutes\n")
+    print("\n  Estimated time: 2-3 minutes\n")
 
     # Step 1: Scrape React docs
     print("Starting workflow...")
@@ -61,7 +61,7 @@ def main():
         ],
         "Scraping React documentation",
     ):
-        print("\n❌ Failed to scrape React documentation")
+        print("\nFAIL: Failed to scrape React documentation")
         print("   Make sure skill-seekers is installed: pip install skill-seekers")
         sys.exit(1)
 
@@ -70,7 +70,7 @@ def main():
         ["skill-seekers", "package", "../../output/react", "--target", "claude"],
         "Packaging for Cursor",
     ):
-        print("\n❌ Failed to package for Cursor")
+        print("\nFAIL: Failed to package for Cursor")
         sys.exit(1)
 
     # Step 3: Extract ZIP
@@ -84,7 +84,7 @@ def main():
         ],
         "Extracting packaged skill",
     ):
-        print("\n❌ Failed to extract package")
+        print("\nFAIL: Failed to extract package")
         print("   Make sure unzip is installed")
         sys.exit(1)
 
@@ -93,7 +93,7 @@ def main():
     target = Path("example-project/.cursorrules")
 
     if not source.exists():
-        print(f"\n❌ Error: {source} not found")
+        print(f"\nFAIL: Error: {source} not found")
         sys.exit(1)
 
     target.parent.mkdir(parents=True, exist_ok=True)
@@ -102,14 +102,14 @@ def main():
     print(f"\n{'='*60}")
     print(f"STEP: Copying rules to project")
     print(f"{'='*60}")
-    print(f"✅ Copied {source} → {target}")
+    print(f"PASS: Copied {source} → {target}")
 
     # Success summary
     print("\n" + "=" * 60)
-    print("✅ Cursor rules generated successfully!")
+    print("PASS: Cursor rules generated successfully!")
     print("=" * 60)
-    print(f"\n📁 Rules file: {target.absolute()}")
-    print(f"📏 Size: {len(target.read_text())} characters")
+    print(f"\n Rules file: {target.absolute()}")
+    print(f" Size: {len(target.read_text())} characters")
 
     # Preview first 300 characters
     content = target.read_text()
@@ -117,9 +117,9 @@ def main():
     if len(content) > 300:
         preview += "..."
 
-    print(f"\n📖 Preview:\n{preview}")
+    print(f"\n Preview:\n{preview}")
 
-    print("\n🚀 Next steps:")
+    print("\n Next steps:")
     print("   1. Open example-project/ in Cursor:")
     print("      cursor example-project/")
     print("\n   2. Try these prompts:")
@@ -133,10 +133,10 @@ if __name__ == "__main__":
     try:
         main()
     except KeyboardInterrupt:
-        print("\n\n⚠️  Interrupted by user")
+        print("\n\nWARNING:  Interrupted by user")
         sys.exit(0)
     except Exception as e:
-        print(f"\n❌ Unexpected error: {e}")
+        print(f"\nFAIL: Unexpected error: {e}")
         import traceback
 
         traceback.print_exc()

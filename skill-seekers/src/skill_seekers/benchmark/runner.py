@@ -83,7 +83,7 @@ class BenchmarkRunner:
             with open(path, "w") as f:
                 f.write(report.model_dump_json(indent=2))
 
-            print(f"📊 Saved benchmark: {path}")
+            print(f" Saved benchmark: {path}")
 
         return report
 
@@ -109,7 +109,7 @@ class BenchmarkRunner:
         reports = {}
 
         for name, func in benchmarks.items():
-            print(f"\n🏃 Running benchmark: {name}")
+            print(f"\n Running benchmark: {name}")
             report = self.run(name, func, save=save)
             reports[name] = report
 
@@ -312,4 +312,4 @@ class BenchmarkRunner:
                 removed += 1
 
         if removed > 0:
-            print(f"🗑️  Removed {removed} old benchmark(s)")
+            print(f"  Removed {removed} old benchmark(s)")

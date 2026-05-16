@@ -90,7 +90,7 @@ Before generating, read these files:
 Use the Stitch MCP tools to generate the page:
 
 1. **Discover namespace**: Run `list_tools` to find the Stitch MCP prefix
-2. **Get or create project**: 
+2. **Get or create project**:
    - If `.stitch/metadata.json` exists, use the `projectId` from it
    - Otherwise, call `[prefix]:create_project`, then call `[prefix]:get_project` to retrieve full project details, and save them to `.stitch/metadata.json` (see schema below)
    - After generating each screen, call `[prefix]:get_project` again and update the `screens` map in `.stitch/metadata.json` with each screen's full metadata (id, sourceScreen, dimensions, canvas position)
@@ -137,7 +137,7 @@ Modify `.stitch/SITE.md`:
 
 **You MUST update `.stitch/next-prompt.md` before completing.** This keeps the loop alive.
 
-1. **Decide the next page**: 
+1. **Decide the next page**:
    - Check `.stitch/SITE.md` Section 5 (Roadmap) for pending items
    - If empty, pick from Section 6 (Creative Freedom)
    - Or invent something new that fits the site vision
@@ -254,11 +254,11 @@ This skill works best with the `design-md` skill:
 
 ## Common Pitfalls
 
-- ❌ Forgetting to update `.stitch/next-prompt.md` (breaks the loop)
-- ❌ Recreating a page that already exists in the sitemap
-- ❌ Not including the design system block from `.stitch/DESIGN.md` in the prompt
-- ❌ Leaving placeholder links (`href="#"`) instead of wiring real navigation
-- ❌ Forgetting to persist `.stitch/metadata.json` after creating a new project
+- FAIL: Forgetting to update `.stitch/next-prompt.md` (breaks the loop)
+- FAIL: Recreating a page that already exists in the sitemap
+- FAIL: Not including the design system block from `.stitch/DESIGN.md` in the prompt
+- FAIL: Leaving placeholder links (`href="#"`) instead of wiring real navigation
+- FAIL: Forgetting to persist `.stitch/metadata.json` after creating a new project
 
 ## Troubleshooting
 

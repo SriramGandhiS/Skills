@@ -128,9 +128,9 @@ class ConfigPublisher:
             from skill_seekers.cli.config_validator import validate_config
 
             validate_config(str(config_path))
-            logger.info(f"✅ Config validated: {config_name}")
+            logger.info(f"PASS: Config validated: {config_name}")
         except ValueError as e:
-            logger.warning(f"⚠️  Config validation warning: {e}")
+            logger.warning(f"WARNING:  Config validation warning: {e}")
             # Continue — validation warnings shouldn't block push
 
         # 3. Resolve source from registry
@@ -162,10 +162,10 @@ class ConfigPublisher:
             if repo_path.exists() and (repo_path / ".git").exists():
                 repo_obj = git.Repo(repo_path)
                 repo_obj.remotes.origin.pull(branch)
-                logger.info(f"📥 Pulled latest from {source_name}/{branch}")
+                logger.info(f" Pulled latest from {source_name}/{branch}")
             else:
                 repo_obj = git.Repo.clone_from(clone_url, repo_path, branch=branch)
-                logger.info(f"📥 Cloned {source_name} repo")
+                logger.info(f" Cloned {source_name} repo")
             # Clear token from cached .git/config by resetting to non-token URL
             repo_obj.remotes.origin.set_url(git_url)
         except git.GitCommandError as e:
@@ -174,7 +174,7 @@ class ConfigPublisher:
         # 6. Auto-detect category
         if category == "auto":
             category = detect_category(config)
-            logger.info(f"📂 Auto-detected category: {category}")
+            logger.info(f" Auto-detected category: {category}")
 
         # 7. Check if config already exists
         target_dir = repo_path / "configs" / category
@@ -189,7 +189,7 @@ class ConfigPublisher:
         # 8. Copy config to target directory
         target_dir.mkdir(parents=True, exist_ok=True)
         shutil.copy2(config_path, target_file)
-        logger.info(f"📄 Placed config at configs/{category}/{config_name}.json")
+        logger.info(f" Placed config at configs/{category}/{config_name}.json")
 
         # 9. Git commit and push
         repo = git.Repo(repo_path)
@@ -208,7 +208,7 @@ class ConfigPublisher:
         # Push
         try:
             repo.remotes.origin.push(target_branch)
-            logger.info(f"🚀 Pushed to {source_name}/{target_branch}")
+            logger.info(f" Pushed to {source_name}/{target_branch}")
         except git.GitCommandError as e:
             raise RuntimeError(
                 f"Failed to push to {source_name}. Check permissions for {token_env}. Error: {e}"

@@ -146,7 +146,7 @@ evolved_from:
   - regenerate-types
 ---
 
-# 新建数据表命令
+## 新建数据表命令
 
 [基于集群本能生成的内容]
 
@@ -168,7 +168,7 @@ evolved_from:
   - avoid-classes
 ---
 
-# 函数式模式技能
+## 函数式模式技能
 
 [基于聚类本能生成的内容]
 
@@ -187,7 +187,7 @@ evolved_from:
   - debug-reproduce
 ---
 
-# 调试器代理
+## 调试器代理
 
 [基于聚类本能生成的内容]
 

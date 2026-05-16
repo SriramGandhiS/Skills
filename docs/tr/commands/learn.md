@@ -36,7 +36,7 @@ Mevcut oturumu analiz et ve skill olarak kaydetmeye değer desenleri çıkar.
 `~/.claude/skills/learned/[desen-adi].md` konumunda bir skill dosyası oluştur:
 
 ```markdown
-# [Açıklayıcı Desen Adı]
+## [Açıklayıcı Desen Adı]
 
 **Çıkarıldı:** [Tarih]
 **Bağlam:** [Bunun ne zaman geçerli olduğunun kısa açıklaması]

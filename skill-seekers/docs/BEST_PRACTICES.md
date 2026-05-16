@@ -266,9 +266,9 @@ Always check quality before uploading:
 skill-seekers quality output/myskill/
 
 # Expected output:
-# ✅ Grade: A (Score: 95)
-# ✅ No errors
-# ⚠️  1 warning: Consider adding more code examples
+# PASS: Grade: A (Score: 95)
+# PASS: No errors
+# WARNING:  1 warning: Consider adding more code examples
 ```
 
 ### Quality Targets

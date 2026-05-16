@@ -16,7 +16,7 @@ top-level sections stable:
 | Field | Purpose | Primary Source |
 |---|---|---|
 | `context` | Model, harness, repo, branch, worktree, session id, and context-window pressure | statusline stdin, git, session adapters |
-| `toolCalls` | Recent tool counts, pending calls, stale calls, and last tool event | `loop-status`, `tool-usage.jsonl`, hook bridge |
+| `toolCalls`| Recent tool counts, pending calls, stale calls, and last tool event |`loop-status`,`tool-usage.jsonl`, hook bridge |
 | `activeAgents` | Current workers/subagents, runtime state, branch, worktree, objective, and handoff paths | dmux/orchestration snapshots |
 | `todos` | Current in-progress task and todo counts | Claude todos, local task files, plan metadata |
 | `checks` | Local and remote validation status with command/check URLs when available | CI, local commands, release gates |
@@ -26,7 +26,7 @@ top-level sections stable:
 | `sessionControls` | Supported operator actions for the current target | ECC CLI, dmux, git/GitHub |
 | `sync` | Linear, GitHub, and handoff publication state | status updates, work items, handoff writer |
 
-Fields can be `null`, empty arrays, or `"unknown"` when a harness cannot expose
+Fields can be `null`, empty arrays, or`"unknown"` when a harness cannot expose
 the signal. Producers should not invent incompatible names. Consumers should
 render missing sections as unavailable, not as green.
 

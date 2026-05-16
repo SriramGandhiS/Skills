@@ -77,11 +77,11 @@ export default {
 
 ## Best Practices
 
-- ✅ **Do:** Use `env.VAR_NAME` for secrets and environment variables.
-- ✅ **Do:** Use `Response.redirect()` for clean edge-side redirects.
-- ✅ **Do:** Use `wrangler tail` for live production debugging.
-- ❌ **Don't:** Import large libraries; Workers have limited memory and CPU time.
-- ❌ **Don't:** Use Node.js specific libraries (like `fs`, `path`) unless using Node.js compatibility mode.
+- PASS: **Do:** Use `env.VAR_NAME` for secrets and environment variables.
+- PASS: **Do:** Use `Response.redirect()` for clean edge-side redirects.
+- PASS: **Do:** Use `wrangler tail` for live production debugging.
+- FAIL: **Don't:** Import large libraries; Workers have limited memory and CPU time.
+- FAIL: **Don't:** Use Node.js specific libraries (like `fs`, `path`) unless using Node.js compatibility mode.
 
 ## Troubleshooting
 

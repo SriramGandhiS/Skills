@@ -89,17 +89,17 @@ class UnifiedCodebaseAnalyzer:
         Returns:
             AnalysisResult with all available streams
         """
-        print(f"🔍 Analyzing codebase: {source}")
-        print(f"📊 Analysis depth: {depth}")
+        print(f" Analyzing codebase: {source}")
+        print(f" Analysis depth: {depth}")
 
         # Step 1: Acquire source
         if self.is_github_url(source):
-            print("📦 Source type: GitHub repository")
+            print(" Source type: GitHub repository")
             return self._analyze_github(
                 source, depth, fetch_github_metadata, output_dir, interactive
             )
         else:
-            print("📁 Source type: Local directory")
+            print(" Source type: Local directory")
             return self._analyze_local(source, depth)
 
     def _analyze_github(
@@ -204,7 +204,7 @@ class UnifiedCodebaseAnalyzer:
         Returns:
             Dict with basic analysis
         """
-        print("📊 Running basic analysis (1-2 min)...")
+        print(" Running basic analysis (1-2 min)...")
 
         analysis = {
             "directory": str(directory),
@@ -216,7 +216,7 @@ class UnifiedCodebaseAnalyzer:
             "statistics": self.compute_statistics(directory),
         }
 
-        print(f"✅ Basic analysis complete: {len(analysis['files'])} files analyzed")
+        print(f"PASS: Basic analysis complete: {len(analysis['files'])} files analyzed")
         return analysis
 
     def c3x_analysis(self, directory: Path) -> dict:
@@ -237,13 +237,13 @@ class UnifiedCodebaseAnalyzer:
         Returns:
             Dict with full C3.x analysis
         """
-        print("📊 Running C3.x analysis (20-60 min)...")
+        print(" Running C3.x analysis (20-60 min)...")
 
         # Start with basic analysis
         basic = self.basic_analysis(directory)
 
         # Run full C3.x analysis using existing codebase_scraper
-        print("🔍 Running C3.x components (patterns, examples, guides, configs, architecture)...")
+        print(" Running C3.x components (patterns, examples, guides, configs, architecture)...")
 
         try:
             # Import codebase analyzer
@@ -276,7 +276,7 @@ class UnifiedCodebaseAnalyzer:
             # Merge with basic analysis
             c3x = {**basic, "analysis_type": "c3x", **c3x_data}
 
-            print("✅ C3.x analysis complete!")
+            print("PASS: C3.x analysis complete!")
             print(f"   - {len(c3x_data.get('c3_1_patterns', []))} design patterns detected")
             print(f"   - {c3x_data.get('c3_2_examples_count', 0)} test examples extracted")
             print(f"   - {len(c3x_data.get('c3_3_guides', []))} how-to guides generated")
@@ -286,12 +286,12 @@ class UnifiedCodebaseAnalyzer:
             return c3x
 
         except Exception as e:
-            print(f"⚠️  C3.x analysis failed: {e}")
+            print(f"WARNING:  C3.x analysis failed: {e}")
             print("   Falling back to basic analysis with placeholders")
 
             # Fall back to placeholders
             c3x = {
-                **basic,
+**basic,
                 "analysis_type": "c3x",
                 "c3_1_patterns": [],
                 "c3_2_examples": [],

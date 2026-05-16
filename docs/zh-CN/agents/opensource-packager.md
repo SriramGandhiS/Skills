@@ -25,9 +25,9 @@ model: sonnet
 
 阅读并理解：
 
-* `package.json` / `requirements.txt` / `Cargo.toml` / `go.mod`（技术栈检测）
+* `package.json`/`requirements.txt`/`Cargo.toml`/`go.mod`（技术栈检测）
 * `docker-compose.yml`（服务、端口、依赖项）
-* `Makefile` / `Justfile`（现有命令）
+* `Makefile`/`Justfile`（现有命令）
 * 现有的 `README.md`（保留有用内容）
 * 源代码结构（主要入口点、关键目录）
 * `.env.example`（所需配置）
@@ -38,7 +38,7 @@ model: sonnet
 这是最重要的文件。保持不超过 100 行——简洁至关重要。
 
 ```markdown
-# {项目名称}
+## {项目名称}
 
 **版本：** {version} | **端口：** {port} | **技术栈：** {detected stack}
 
@@ -56,17 +56,17 @@ model: sonnet
 ## 命令
 
 \`\`\`bash
-# 开发
+## 开发
 {install command}        # 安装依赖
 {dev server command}     # 启动开发服务器
 {lint command}           # 运行代码检查
 {build command}          # 生产构建
 
-# 测试
+## 测试
 {test command}           # 运行测试
 {coverage command}       # 运行覆盖率测试
 
-# Docker
+## Docker
 cp .env.example .env
 docker compose up -d --build
 \`\`\`
@@ -112,21 +112,21 @@ docker compose up -d --build
 #!/usr/bin/env bash
 set -euo pipefail
 
-# {Project Name} — First-time setup
-# Usage: ./setup.sh
+## {Project Name} — First-time setup
+## Usage: ./setup.sh
 
 echo "=== {Project Name} Setup ==="
 
-# Check prerequisites
+## Check prerequisites
 command -v {package_manager} >/dev/null 2>&1 || { echo "Error: {package_manager} is required."; exit 1; }
 
-# Environment
+## Environment
 if [ ! -f .env ]; then
   cp .env.example .env
   echo "Created .env from .env.example — edit it with your values"
 fi
 
-# Dependencies
+## Dependencies
 echo "Installing dependencies..."
 {npm install | pip install -r requirements.txt | cargo build | go mod download}
 
@@ -136,7 +136,7 @@ echo ""
 echo "Next steps:"
 echo "  1. Edit .env with your configuration"
 echo "  2. Run: {dev command}"
-echo "  3. Open: http://localhost:{port}"
+echo "  3. Open: <http://localhost:{port}>"
 echo "  4. Using Claude Code? CLAUDE.md has all the context."
 ```
 
@@ -152,7 +152,7 @@ echo "  4. Using Claude Code? CLAUDE.md has all the context."
 ### 步骤 4：生成或增强 README.md
 
 ```markdown
-# {项目名称}
+## {项目名称}
 
 {描述 — 1-2句话}
 
@@ -165,7 +165,7 @@ echo "  4. Using Claude Code? CLAUDE.md has all the context."
 ## 快速开始
 
 \`\`\`bash
-git clone https://github.com/{org}/{repo}.git
+git clone <https://github.com/{org}/{repo}.git>
 cd {仓库名称}
 ./setup.sh
 \`\`\`
@@ -225,7 +225,7 @@ claude    # 启动 Claude Code — 自动读取 CLAUDE.md
 
 ### 步骤 7：添加 GitHub Issue 模板（如果存在 .github/ 目录或指定了 GitHub 仓库）
 
-创建 `.github/ISSUE_TEMPLATE/bug_report.md` 和 `.github/ISSUE_TEMPLATE/feature_request.md`，包含标准模板，包括复现步骤和环境字段。
+创建 `.github/ISSUE_TEMPLATE/bug_report.md`和`.github/ISSUE_TEMPLATE/feature_request.md`，包含标准模板，包括复现步骤和环境字段。
 
 ## 输出格式
 
@@ -241,7 +241,7 @@ claude    # 启动 Claude Code — 自动读取 CLAUDE.md
 ### 示例：打包 FastAPI 服务
 
 输入：`Package: /home/user/opensource-staging/my-api, License: MIT, Description: "Async task queue API"`
-操作：从 `requirements.txt` 和 `docker-compose.yml` 检测到 Python + FastAPI + PostgreSQL，生成 `CLAUDE.md`（62 行）、包含 pip + alembic 迁移步骤的 `setup.sh`，增强现有的 `README.md`，添加 `MIT LICENSE`
+操作：从 `requirements.txt`和`docker-compose.yml`检测到 Python + FastAPI + PostgreSQL，生成`CLAUDE.md`（62 行）、包含 pip + alembic 迁移步骤的`setup.sh`，增强现有的`README.md`，添加`MIT LICENSE`
 输出：生成 5 个文件，setup.sh 可执行，添加了“与 Claude Code 一起使用”部分
 
 ## 规则

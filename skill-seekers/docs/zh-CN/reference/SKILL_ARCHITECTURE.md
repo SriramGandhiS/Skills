@@ -23,19 +23,19 @@ Complete guide for architecting complex multi-skill systems using the router/dis
 
 Claude recommends keeping skill files under **500 lines** for optimal performance. This guideline exists because:
 
-- ✅ **Better parsing** - AI can more effectively understand focused content
-- ✅ **Context efficiency** - Only relevant information loaded per task
-- ✅ **Maintainability** - Easier to debug, update, and manage
-- ✅ **Single responsibility** - Each skill does one thing well
+- PASS: **Better parsing** - AI can more effectively understand focused content
+- PASS: **Context efficiency** - Only relevant information loaded per task
+- PASS: **Maintainability** - Easier to debug, update, and manage
+- PASS: **Single responsibility** - Each skill does one thing well
 
 ### The Problem with Monolithic Skills
 
 As applications grow complex, developers often create skills that:
 
-- ❌ **Exceed 500 lines** - Too much information for effective parsing
-- ❌ **Mix concerns** - Handle multiple unrelated responsibilities
-- ❌ **Waste context** - Load entire file even when only small portion is relevant
-- ❌ **Hard to maintain** - Changes require careful navigation of large file
+- FAIL: **Exceed 500 lines** - Too much information for effective parsing
+- FAIL: **Mix concerns** - Handle multiple unrelated responsibilities
+- FAIL: **Waste context** - Load entire file even when only small portion is relevant
+- FAIL: **Hard to maintain** - Changes require careful navigation of large file
 
 ### The Solution: Skill Layering
 
@@ -55,26 +55,26 @@ As applications grow complex, developers often create skills that:
 
 | Skill Size | Complexity | Recommendation |
 |-----------|-----------|----------------|
-| < 500 lines | Single concern | ✅ **Keep monolithic** |
-| 500-1000 lines | Related concerns | ⚠️ **Consider splitting** |
-| 1000+ lines | Multiple concerns | ❌ **Must split** |
+| < 500 lines | Single concern | PASS: **Keep monolithic** |
+| 500-1000 lines | Related concerns | WARNING: **Consider splitting** |
+| 1000+ lines | Multiple concerns | FAIL: **Must split** |
 
 ### Split Indicators
 
 **You should split when:**
 
-- ✅ Skill exceeds 500 lines
-- ✅ Multiple distinct responsibilities (CRUD, workflows, etc.)
-- ✅ Different team members maintain different sections
-- ✅ Only portions are relevant to specific tasks
-- ✅ Context window frequently exceeded
+- PASS: Skill exceeds 500 lines
+- PASS: Multiple distinct responsibilities (CRUD, workflows, etc.)
+- PASS: Different team members maintain different sections
+- PASS: Only portions are relevant to specific tasks
+- PASS: Context window frequently exceeded
 
 **You can keep monolithic when:**
 
-- ✅ Under 500 lines
-- ✅ Single, cohesive responsibility
-- ✅ All content frequently relevant together
-- ✅ Simple, focused use case
+- PASS: Under 500 lines
+- PASS: Single, cohesive responsibility
+- PASS: All content frequently relevant together
+- PASS: Simple, focused use case
 
 ---
 
@@ -201,8 +201,8 @@ Managing cart items, quantities, totals.
 ```
 
 **Result:**
-- Router: 150 lines ✅
-- Each sub-skill: 200-400 lines ✅
+- Router: 150 lines PASS:
+- Each sub-skill: 200-400 lines PASS:
 - Total functionality: Unchanged
 - Context efficiency: 5x improvement
 
@@ -269,8 +269,8 @@ data_pipeline.md (Router)
 
 **Each sub-skill should have ONE clear purpose.**
 
-❌ **Bad:** `user_management.md` handles auth, profiles, permissions, notifications
-✅ **Good:**
+FAIL: **Bad:** `user_management.md` handles auth, profiles, permissions, notifications
+PASS: **Good:**
 - `user_authentication.md` - Login, logout, sessions
 - `user_profiles.md` - Profile CRUD
 - `user_permissions.md` - Roles, access control
@@ -280,15 +280,15 @@ data_pipeline.md (Router)
 
 **Make routing keywords explicit and unambiguous.**
 
-❌ **Bad:** Vague keywords like "data", "user", "process"
-✅ **Good:** Specific keywords like "login", "authenticate", "extract", "transform"
+FAIL: **Bad:** Vague keywords like "data", "user", "process"
+PASS: **Good:** Specific keywords like "login", "authenticate", "extract", "transform"
 
 ### 3. Minimize Router Complexity
 
 **Keep router lightweight - just routing logic.**
 
-❌ **Bad:** Router contains actual implementation code
-✅ **Good:** Router only contains:
+FAIL: **Bad:** Router contains actual implementation code
+PASS: **Good:** Router only contains:
 - Sub-skill descriptions
 - Routing keywords
 - Usage examples
@@ -298,15 +298,15 @@ data_pipeline.md (Router)
 
 **Group by responsibility, not by code structure.**
 
-❌ **Bad:** Split by file type (controllers, models, views)
-✅ **Good:** Split by feature (user_auth, product_catalog, order_processing)
+FAIL: **Bad:** Split by file type (controllers, models, views)
+PASS: **Good:** Split by feature (user_auth, product_catalog, order_processing)
 
 ### 5. Avoid Over-Splitting
 
 **Don't create sub-skills for trivial distinctions.**
 
-❌ **Bad:** Separate skills for "add_user" and "update_user"
-✅ **Good:** Single "user_management" skill covering all CRUD
+FAIL: **Bad:** Separate skills for "add_user" and "update_user"
+PASS: **Good:** Single "user_management" skill covering all CRUD
 
 ### 6. Document Dependencies
 
@@ -891,11 +891,11 @@ Keywords: order, purchase, payment, checkout, fulfillment
 
 ### Key Takeaways
 
-1. ✅ **500-line guideline** is important for optimal Claude performance
-2. ✅ **Router pattern** enables sophisticated applications while staying within limits
-3. ✅ **Single responsibility** - Each sub-skill does one thing well
-4. ✅ **Context efficiency** - Only load what's needed per task
-5. ✅ **Proven approach** - Already used successfully for large documentation
+1. PASS: **500-line guideline** is important for optimal Claude performance
+2. PASS: **Router pattern** enables sophisticated applications while staying within limits
+3. PASS: **Single responsibility** - Each sub-skill does one thing well
+4. PASS: **Context efficiency** - Only load what's needed per task
+5. PASS: **Proven approach** - Already used successfully for large documentation
 
 ### When to Apply This Pattern
 

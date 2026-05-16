@@ -20,7 +20,7 @@ stages:
     enabled: true
     prompt: >
       Analyze the API gateway platform and configuration.
-      
+
       Identify:
       1. Gateway technology (Kong, AWS API Gateway, Nginx, Envoy, etc.)
       2. Deployment mode (managed, self-hosted, Kubernetes)
@@ -28,7 +28,7 @@ stages:
       4. Multi-region or edge deployment
       5. High availability setup
       6. Version being used
-      
+
       Output JSON with:
       - "technology": gateway platform
       - "deployment_mode": hosting approach
@@ -44,7 +44,7 @@ stages:
     enabled: true
     prompt: >
       Document routing and traffic management.
-      
+
       Cover:
       1. Route matching rules (path, method, host)
       2. Upstream service definitions
@@ -52,7 +52,7 @@ stages:
       4. Path rewriting and transformation
       5. Header manipulation
       6. Redirect and forwarding rules
-      
+
       Output JSON with:
       - "route_rules": matching configuration
       - "upstreams": backend services
@@ -68,7 +68,7 @@ stages:
     enabled: true
     prompt: >
       Document gateway security policies.
-      
+
       Include:
       1. Authentication methods (JWT, API keys, OAuth)
       2. Rate limiting and throttling
@@ -77,7 +77,7 @@ stages:
       5. SSL/TLS termination
       6. WAF integration
       7. Bot protection
-      
+
       Output JSON with:
       - "authentication": auth methods
       - "rate_limiting": throttling rules
@@ -94,7 +94,7 @@ stages:
     enabled: true
     prompt: >
       Document advanced traffic management.
-      
+
       Cover:
       1. Canary deployments
       2. Blue-green deployments
@@ -103,7 +103,7 @@ stages:
       5. Retry policies
       6. Timeout configuration
       7. Request buffering
-      
+
       Output JSON with:
       - "canary": canary release config
       - "blue_green": blue-green setup
@@ -120,7 +120,7 @@ stages:
     enabled: true
     prompt: >
       Document gateway observability.
-      
+
       Include:
       1. Access logging configuration
       2. Metrics collection (latency, throughput, errors)
@@ -128,7 +128,7 @@ stages:
       4. Health check endpoints
       5. Alerting rules
       6. Dashboard setup
-      
+
       Output JSON with:
       - "access_logs": logging config
       - "metrics": key metrics
@@ -144,7 +144,7 @@ stages:
     enabled: true
     prompt: >
       Document gateway plugins and extensions.
-      
+
       Cover:
       1. Built-in plugins used
       2. Custom plugin development
@@ -152,7 +152,7 @@ stages:
       4. Plugin ordering and precedence
       5. Serverless/Lambda integration
       6. Request/response transformation
-      
+
       Output JSON with:
       - "built_in": standard plugins
       - "custom_plugins": custom extensions
@@ -168,7 +168,7 @@ stages:
     enabled: true
     prompt: >
       Document developer experience and portal.
-      
+
       Include:
       1. API documentation generation
       2. Developer portal setup
@@ -176,7 +176,7 @@ stages:
       4. Usage analytics for consumers
       5. Onboarding flows
       6. Sandbox/testing environment
-      
+
       Output JSON with:
       - "documentation": API docs
       - "portal": developer portal

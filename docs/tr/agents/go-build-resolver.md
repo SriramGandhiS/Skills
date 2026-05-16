@@ -13,7 +13,7 @@ Go build hata çözümleme uzmanısınız. Misyonunuz Go build hatalarını, `go
 
 1. Go derleme hatalarını tanılayın
 2. `go vet` uyarılarını düzeltin
-3. `staticcheck` / `golangci-lint` sorunlarını çözün
+3. `staticcheck`/`golangci-lint` sorunlarını çözün
 4. Modül bağımlılık sorunlarını ele alın
 5. Tür hatalarını ve interface uyumsuzluklarını düzeltin
 
@@ -49,12 +49,12 @@ go mod tidy -v
 | `cannot use X as type Y` | Tür uyuşmazlığı, işaretçi/değer | Tür dönüşümü veya başvuru kaldırma |
 | `X does not implement Y` | Eksik metod | Doğru alıcı ile metodu uygula |
 | `import cycle not allowed` | Döngüsel bağımlılık | Paylaşılan türleri yeni pakete çıkar |
-| `cannot find package` | Eksik bağımlılık | `go get pkg@version` veya `go mod tidy` |
+| `cannot find package`| Eksik bağımlılık |`go get pkg@version`veya`go mod tidy` |
 | `missing return` | Eksik kontrol akışı | Return ifadesi ekle |
 | `declared but not used` | Kullanılmamış var/import | Kaldır veya boş tanımlayıcı kullan |
-| `multiple-value in single-value context` | İşlenmemiş dönüş | `result, err := func()` |
+| `multiple-value in single-value context`| İşlenmemiş dönüş |`result, err := func()` |
 | `cannot assign to struct field in map` | Map değer mutasyonu | İşaretçi map kullan veya kopyala-değiştir-yeniden ata |
-| `invalid type assertion` | Interface olmayan üzerinde assert | Yalnızca `interface{}`'den assert et |
+| `invalid type assertion`| Interface olmayan üzerinde assert | Yalnızca`interface{}`'den assert et |
 
 ## Modül Sorun Giderme
 

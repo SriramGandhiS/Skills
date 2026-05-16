@@ -41,16 +41,16 @@ EOF",
 ```
 
 **Model Parameter Notes**:
-- `{{GEMINI_MODEL_FLAG}}`: When using `--backend gemini`, replace with `--gemini-model gemini-3-pro-preview` (note trailing space); use empty string for codex
+- `{{GEMINI_MODEL_FLAG}}`: When using`--backend gemini`, replace with`--gemini-model gemini-3-pro-preview` (note trailing space); use empty string for codex
 
 **Role Prompts**:
 
 | Phase | Codex | Gemini |
 |-------|-------|--------|
-| Analysis | `~/.claude/.ccg/prompts/codex/analyzer.md` | `~/.claude/.ccg/prompts/gemini/analyzer.md` |
-| Planning | `~/.claude/.ccg/prompts/codex/architect.md` | `~/.claude/.ccg/prompts/gemini/architect.md` |
+| Analysis | `~/.claude/.ccg/prompts/codex/analyzer.md`|`~/.claude/.ccg/prompts/gemini/analyzer.md` |
+| Planning | `~/.claude/.ccg/prompts/codex/architect.md`|`~/.claude/.ccg/prompts/gemini/architect.md` |
 
-**Session Reuse**: Each call returns `SESSION_ID: xxx` (typically output by wrapper), **MUST save** for subsequent `/ccg:execute` use.
+**Session Reuse**: Each call returns `SESSION_ID: xxx`(typically output by wrapper), **MUST save** for subsequent`/ccg:execute` use.
 
 **Wait for Background Tasks** (max timeout 600000ms = 10 minutes):
 
@@ -104,10 +104,10 @@ mcp__ace-tool__search_context({
 - **NEVER answer based on assumptions**
 
 **If ace-tool MCP is NOT available**, use Claude Code built-in tools as fallback:
-1. **Glob**: Find relevant files by pattern (e.g., `Glob("**/*.ts")`, `Glob("src/**/*.py")`)
+1. **Glob**: Find relevant files by pattern (e.g., `Glob("**/*.ts")`,`Glob("src/**/*.py")`)
 2. **Grep**: Search for key symbols, function names, class definitions (e.g., `Grep("className|functionName")`)
 3. **Read**: Read the discovered files to gather complete context
-4. **Task (Explore agent)**: For deeper exploration, use `Task` with `subagent_type: "Explore"` to search across the codebase
+4. **Task (Explore agent)**: For deeper exploration, use `Task`with`subagent_type: "Explore"` to search across the codebase
 
 #### 1.3 Completeness Check
 
@@ -140,7 +140,7 @@ Distribute **original requirement** (without preset opinions) to both models:
    - Focus: UI/UX impact, user experience, visual design
    - OUTPUT: Multi-perspective solutions + pros/cons analysis
 
-Wait for both models' complete results with `TaskOutput`. **Save SESSION_ID** (`CODEX_SESSION` and `GEMINI_SESSION`).
+Wait for both models' complete results with `TaskOutput`. **Save SESSION_ID** (`CODEX_SESSION`and`GEMINI_SESSION`).
 
 #### 2.2 Cross-Validation
 
@@ -204,7 +204,7 @@ Synthesize both analyses, generate **Step-by-step Implementation Plan**:
 **`/ccg:plan` responsibilities end here, MUST execute the following actions**:
 
 1. Present complete implementation plan to user (including pseudo-code)
-2. Save plan to `.claude/plan/<feature-name>.md` (extract feature name from requirement, e.g., `user-auth`, `payment-module`)
+2. Save plan to `.claude/plan/<feature-name>.md`(extract feature name from requirement, e.g.,`user-auth`,`payment-module`)
 3. Output prompt in **bold text** (MUST use actual saved file path):
 
 ---
@@ -236,7 +236,7 @@ Synthesize both analyses, generate **Step-by-step Implementation Plan**:
 After planning completes, save plan to:
 
 - **First planning**: `.claude/plan/<feature-name>.md`
-- **Iteration versions**: `.claude/plan/<feature-name>-v2.md`, `.claude/plan/<feature-name>-v3.md`...
+- **Iteration versions**: `.claude/plan/<feature-name>-v2.md`,`.claude/plan/<feature-name>-v3.md`...
 
 Plan file write should complete before presenting plan to user.
 
@@ -269,4 +269,4 @@ After user approves, **manually** execute:
 2. **No Y/N prompts** – Only present plan, let user decide next steps
 3. **Trust Rules** – Backend follows Codex, Frontend follows Gemini
 4. External models have **zero filesystem write access**
-5. **SESSION_ID Handoff** – Plan must include `CODEX_SESSION` / `GEMINI_SESSION` at end (for `/ccg:execute resume <SESSION_ID>` use)
+5. **SESSION_ID Handoff** – Plan must include `CODEX_SESSION`/`GEMINI_SESSION`at end (for`/ccg:execute resume <SESSION_ID>` use)

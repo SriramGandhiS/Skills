@@ -1,20 +1,17 @@
 #!/usr/bin/env bash
 #===============================================================================
 # Integration test: autonomy/lib/sentrux-gate.sh against the REAL sentrux binary.
-#
-# Skips with PASS if sentrux is not on PATH -- we ship the helper as opt-in,
+# # Skips with PASS if sentrux is not on PATH -- we ship the helper as opt-in,
 # so users without the binary should not see CI failures.
-#
-# When sentrux IS available, this test:
-#   1. Builds a tiny TypeScript fixture project,
-#   2. Calls sentrux_baseline_save to write .sentrux/baseline.json,
-#   3. Reads the baseline quality back via sentrux_baseline_quality,
-#   4. Calls sentrux_gate_diff on the same project (expects OK verdict),
-#   5. Adds a structural-degradation pattern (b.ts becomes a hub with 8 imports),
-#   6. Calls sentrux_gate_diff again and asserts the verdict is DEGRADED with
-#      after < before.
-#
-# This test exists because unit tests stub the binary; real sentrux output
+# # When sentrux IS available, this test:
+# 1. Builds a tiny TypeScript fixture project,
+# 2. Calls sentrux_baseline_save to write .sentrux/baseline.json,
+# 3. Reads the baseline quality back via sentrux_baseline_quality,
+# 4. Calls sentrux_gate_diff on the same project (expects OK verdict),
+# 5. Adds a structural-degradation pattern (b.ts becomes a hub with 8 imports),
+# 6. Calls sentrux_gate_diff again and asserts the verdict is DEGRADED with
+# after < before.
+# # This test exists because unit tests stub the binary; real sentrux output
 # format is the contract that ships, so we verify it directly.
 #===============================================================================
 

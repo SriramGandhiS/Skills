@@ -30,7 +30,7 @@ prove -l t/              # adds lib/ to @INC
 prove -lr -j8 t/         # recursive, 8 parallel jobs
 ```
 
-始终使用 `-l` 以确保 `lib/` 位于 `@INC` 上。
+始终使用 `-l`以确保`lib/`位于`@INC` 上。
 
 ## 覆盖率
 
@@ -48,7 +48,7 @@ cover -test
 ## 常见陷阱
 
 * 测试文件末尾始终使用 `done_testing`
-* 使用 `prove` 时切勿忘记 `-l` 标志
+* 使用 `prove`时切勿忘记`-l` 标志
 
 ## 参考
 

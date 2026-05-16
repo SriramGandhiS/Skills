@@ -10,16 +10,16 @@ disable-model-invocation: true
 ## 使用方法
 
 ```bash
-# 現在のパッケージマネージャーを検出
+## 現在のパッケージマネージャーを検出
 node scripts/setup-package-manager.js --detect
 
-# グローバル設定を指定
+## グローバル設定を指定
 node scripts/setup-package-manager.js --global pnpm
 
-# プロジェクト設定を指定
+## プロジェクト設定を指定
 node scripts/setup-package-manager.js --project bun
 
-# 利用可能なパッケージマネージャーをリスト表示
+## 利用可能なパッケージマネージャーをリスト表示
 node scripts/setup-package-manager.js --list
 ```
 
@@ -64,10 +64,10 @@ node scripts/setup-package-manager.js --list
 `CLAUDE_PACKAGE_MANAGER` を設定すると、他のすべての検出方法を上書きします:
 
 ```bash
-# Windows (PowerShell)
+## Windows (PowerShell)
 $env:CLAUDE_PACKAGE_MANAGER = "pnpm"
 
-# macOS/Linux
+## macOS/Linux
 export CLAUDE_PACKAGE_MANAGER=pnpm
 ```
 

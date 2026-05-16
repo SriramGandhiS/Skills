@@ -82,7 +82,7 @@ Finds and displays paths to Claude hook session logs for debugging and analysis:
 
     // Handle list flag
     if (flags.list) {
-      console.log(chalk.blue.bold('\n📋 Session Logs:\n'))
+      console.log(chalk.blue.bold('\n Session Logs:\n'))
       fileStats.forEach((stat, index) => {
         const isLatest = index === 0
         const marker = isLatest ? chalk.green('→') : ' '

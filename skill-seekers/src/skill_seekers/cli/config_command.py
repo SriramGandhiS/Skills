@@ -14,7 +14,7 @@ def show_welcome_message():
     print("""
 ╔═══════════════════════════════════════════════════════════════╗
 ║                                                               ║
-║              Welcome to Skill Seekers! 🎯                     ║
+║              Welcome to Skill Seekers!                      ║
 ║                                                               ║
 ║  Convert documentation into LLM skills for Claude, Gemini,   ║
 ║  OpenAI ChatGPT, and more!                                   ║
@@ -23,13 +23,13 @@ def show_welcome_message():
 
 Quick Start:
 
-  1️⃣  Set up GitHub token (optional, but recommended):
+  1⃣  Set up GitHub token (optional, but recommended):
       $ skill-seekers config --github
 
-  2️⃣  Scrape documentation:
+  2⃣  Scrape documentation:
       $ skill-seekers scrape --config configs/react.json
 
-  3️⃣  View available presets:
+  3⃣  View available presets:
       $ skill-seekers estimate --all
 
 For more help:
@@ -91,10 +91,10 @@ def main_menu():
             config.cleanup_old_progress()
             input("\nPress Enter to continue...")
         elif choice == "0":
-            print("\n✅ Configuration saved. Happy scraping! 🚀\n")
+            print("\nPASS: Configuration saved. Happy scraping! \n")
             break
         else:
-            print("❌ Invalid choice. Please try again.")
+            print("FAIL: Invalid choice. Please try again.")
 
 
 def github_token_menu():
@@ -111,7 +111,7 @@ def github_token_menu():
         if profiles:
             print("Current Profiles:\n")
             for p in profiles:
-                default = " ⭐ (default)" if p["is_default"] else ""
+                default = "  (default)" if p["is_default"] else ""
                 print(f"  • {p['name']}{default}")
                 if p["description"]:
                     print(f"    {p['description']}")
@@ -139,23 +139,23 @@ def github_token_menu():
         elif choice == "0":
             break
         else:
-            print("❌ Invalid choice. Please try again.")
+            print("FAIL: Invalid choice. Please try again.")
 
 
 def add_github_profile():
     """Add a new GitHub profile interactively."""
     config = get_config_manager()
 
-    print("\n📝 Add New GitHub Profile\n")
+    print("\n Add New GitHub Profile\n")
 
     # Profile name
     while True:
         name = input("Profile name (e.g., 'personal', 'work'): ").strip()
         if not name:
-            print("❌ Profile name cannot be empty.")
+            print("FAIL: Profile name cannot be empty.")
             continue
         if name in config.config["github"]["profiles"]:
-            print(f"❌ Profile '{name}' already exists.")
+            print(f"FAIL: Profile '{name}' already exists.")
             overwrite = input("Overwrite? [y/N]: ").strip().lower()
             if overwrite not in ["y", "yes"]:
                 continue
@@ -180,10 +180,10 @@ def add_github_profile():
     while True:
         token = input("\nGitHub token (ghp_...): ").strip()
         if not token:
-            print("❌ Token cannot be empty.")
+            print("FAIL: Token cannot be empty.")
             continue
         if not (token.startswith("ghp_") or token.startswith("github_pat_")):
-            print("⚠️  Warning: Token doesn't match GitHub format")
+            print("WARNING:  Warning: Token doesn't match GitHub format")
             proceed = input("Continue anyway? [y/N]: ").strip().lower()
             if proceed not in ["y", "yes"]:
                 continue
@@ -205,7 +205,7 @@ def add_github_profile():
     try:
         timeout = int(timeout_input)
     except ValueError:
-        print("⚠️  Invalid timeout, using default 30 minutes")
+        print("WARNING:  Invalid timeout, using default 30 minutes")
         timeout = 30
 
     # Set as default
@@ -225,7 +225,7 @@ def add_github_profile():
         set_as_default=set_default,
     )
 
-    print(f"\n✅ GitHub profile '{name}' added successfully!")
+    print(f"\nPASS: GitHub profile '{name}' added successfully!")
 
 
 def remove_github_profile():
@@ -234,10 +234,10 @@ def remove_github_profile():
 
     profiles = config.list_github_profiles()
     if not profiles:
-        print("\n❌ No profiles to remove.")
+        print("\nFAIL: No profiles to remove.")
         return
 
-    print("\n🗑️  Remove GitHub Profile\n")
+    print("\n  Remove GitHub Profile\n")
     print("Available profiles:")
     for idx, p in enumerate(profiles, 1):
         default = " (default)" if p["is_default"] else ""
@@ -255,9 +255,9 @@ def remove_github_profile():
             if confirm in ["y", "yes"]:
                 config.remove_github_profile(profile_name)
         else:
-            print("❌ Invalid choice.")
+            print("FAIL: Invalid choice.")
     except ValueError:
-        print("❌ Invalid input.")
+        print("FAIL: Invalid input.")
 
 
 def set_default_profile():
@@ -266,10 +266,10 @@ def set_default_profile():
 
     profiles = config.list_github_profiles()
     if not profiles:
-        print("\n❌ No profiles available.")
+        print("\nFAIL: No profiles available.")
         return
 
-    print("\n⭐ Set Default GitHub Profile\n")
+    print("\n Set Default GitHub Profile\n")
     print("Available profiles:")
     for idx, p in enumerate(profiles, 1):
         default = " (current default)" if p["is_default"] else ""
@@ -285,22 +285,22 @@ def set_default_profile():
             profile_name = profiles[choice_idx - 1]["name"]
             config.config["github"]["default_profile"] = profile_name
             config.save_config()
-            print(f"\n✅ Set '{profile_name}' as default profile")
+            print(f"\nPASS: Set '{profile_name}' as default profile")
         else:
-            print("❌ Invalid choice.")
+            print("FAIL: Invalid choice.")
     except ValueError:
-        print("❌ Invalid input.")
+        print("FAIL: Invalid input.")
 
 
 def open_github_token_page():
     """Open GitHub token creation page in browser."""
     url = "https://github.com/settings/tokens/new"
-    print(f"\n🌐 Opening {url}...")
+    print(f"\n Opening {url}...")
     try:
         webbrowser.open(url)
-        print("✅ Opened in browser")
+        print("PASS: Opened in browser")
     except Exception as e:
-        print(f"⚠️  Could not open browser: {e}")
+        print(f"WARNING:  Could not open browser: {e}")
         print(f"   Please visit: {url}")
 
 
@@ -315,7 +315,7 @@ def api_keys_menu():
     print("Current status:")
     for provider in ["anthropic", "google", "openai", "moonshot"]:
         key = config.get_api_key(provider)
-        status = "✅ Set" if key else "❌ Not set"
+        status = "PASS: Set" if key else "FAIL: Not set"
         source = ""
         if key:
             import os
@@ -349,21 +349,21 @@ def api_keys_menu():
         provider, url = provider_map[choice]
         set_api_key(provider, url)
     elif choice != "0":
-        print("❌ Invalid choice.")
+        print("FAIL: Invalid choice.")
 
 
 def set_api_key(provider: str, url: str):
     """Set an API key interactively."""
     config = get_config_manager()
 
-    print(f"\n🔑 Set {provider.capitalize()} API Key\n")
+    print(f"\n Set {provider.capitalize()} API Key\n")
     print(f"Get your API key at: {url}\n")
 
     open_now = input("Open in browser? [Y/n]: ").strip().lower()
     if open_now not in ["n", "no"]:
         try:
             webbrowser.open(url)
-            print("✅ Opened in browser\n")
+            print("PASS: Opened in browser\n")
         except Exception:
             pass
 
@@ -372,7 +372,7 @@ def set_api_key(provider: str, url: str):
     if key:
         config.set_api_key(provider, key)
     else:
-        print("⏭️  Skipped")
+        print("SKIPPED:  Skipped")
 
 
 def rate_limit_settings():
@@ -398,7 +398,7 @@ def rate_limit_settings():
         try:
             config.config["rate_limit"]["default_timeout_minutes"] = int(timeout_input)
         except ValueError:
-            print("⚠️  Invalid input, keeping current value")
+            print("WARNING:  Invalid input, keeping current value")
 
     # Auto-switch
     auto_switch_input = (
@@ -417,7 +417,7 @@ def rate_limit_settings():
         config.config["rate_limit"]["show_countdown"] = countdown_input in ["y", "yes"]
 
     config.save_config()
-    print("\n✅ Rate limit settings updated")
+    print("\nPASS: Rate limit settings updated")
 
 
 def resume_settings():
@@ -442,7 +442,7 @@ def resume_settings():
         try:
             config.config["resume"]["auto_save_interval_seconds"] = int(interval_input)
         except ValueError:
-            print("⚠️  Invalid input, keeping current value")
+            print("WARNING:  Invalid input, keeping current value")
 
     # Keep days
     days_input = input(
@@ -452,10 +452,10 @@ def resume_settings():
         try:
             config.config["resume"]["keep_progress_days"] = int(days_input)
         except ValueError:
-            print("⚠️  Invalid input, keeping current value")
+            print("WARNING:  Invalid input, keeping current value")
 
     config.save_config()
-    print("\n✅ Resume settings updated")
+    print("\nPASS: Resume settings updated")
 
 
 def test_connections():
@@ -471,7 +471,7 @@ def test_connections():
     profiles = config.list_github_profiles()
 
     if not profiles:
-        print("  ⚠️  No GitHub profiles configured")
+        print("  WARNING:  No GitHub profiles configured")
     else:
         import requests
 
@@ -487,11 +487,11 @@ def test_connections():
                     data = response.json()
                     remaining = data["rate"]["remaining"]
                     limit = data["rate"]["limit"]
-                    print(f"  ✅ {p['name']}: {remaining}/{limit} requests remaining")
+                    print(f"  PASS: {p['name']}: {remaining}/{limit} requests remaining")
                 else:
-                    print(f"  ❌ {p['name']}: Invalid token (status {response.status_code})")
+                    print(f"  FAIL: {p['name']}: Invalid token (status {response.status_code})")
             except Exception as e:
-                print(f"  ❌ {p['name']}: Connection failed - {e}")
+                print(f"  FAIL: {p['name']}: Connection failed - {e}")
 
     print()
 
@@ -501,23 +501,23 @@ def test_connections():
     # Anthropic
     anthropic_key = config.get_api_key("anthropic")
     if anthropic_key:
-        print("  ℹ️  Anthropic: Key configured (test would consume credits)")
+        print("    Anthropic: Key configured (test would consume credits)")
     else:
-        print("  ⚠️  Anthropic: Not configured")
+        print("  WARNING:  Anthropic: Not configured")
 
     # Google
     google_key = config.get_api_key("google")
     if google_key:
-        print("  ℹ️  Google: Key configured (test would consume quota)")
+        print("    Google: Key configured (test would consume quota)")
     else:
-        print("  ⚠️  Google: Not configured")
+        print("  WARNING:  Google: Not configured")
 
     # OpenAI
     openai_key = config.get_api_key("openai")
     if openai_key:
-        print("  ℹ️  OpenAI: Key configured (test would consume credits)")
+        print("    OpenAI: Key configured (test would consume credits)")
     else:
-        print("  ⚠️  OpenAI: Not configured")
+        print("  WARNING:  OpenAI: Not configured")
 
     input("\nPress Enter to continue...")
 

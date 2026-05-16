@@ -1,4 +1,4 @@
-﻿---
+---
 name: data-scraper-agent
 description: Build a fully automated AI-powered data collection agent for any public source â€” job boards, prices, news, GitHub, sports, anything. Scrapes on a schedule, enriches data with a free LLM (Gemini Flash), stores results in Notion/Sheets/Supabase, and learns from user feedback. Runs 100% free on GitHub Actions. Use when the user wants to monitor, collect, or track any public data automatically.
 origin: community
@@ -38,7 +38,7 @@ schedule   summarises Sheets /
 
 | Layer | Tool | Why |
 |---|---|---|
-| **Scraping** | `requests` + `BeautifulSoup` | No cost, covers 80% of public sites |
+| **Scraping** | `requests`+`BeautifulSoup` | No cost, covers 80% of public sites |
 | **JS-rendered sites** | `playwright` (free) | When HTML scraping fails |
 | **AI enrichment** | Gemini Flash via REST API | 500 req/day, 1M tokens/day â€” free |
 | **Storage** | Notion API | Free tier, great UI for review |
@@ -61,11 +61,11 @@ gemini-flash-lite-latest (fallback)
 Never call the LLM once per item. Always batch:
 
 ```python
-# BAD: 33 API calls for 33 items
+## BAD: 33 API calls for 33 items
 for item in items:
     result = call_ai(item)  # 33 calls â†’ hits rate limit
 
-# GOOD: 7 API calls for 33 items (batch size 5)
+## GOOD: 7 API calls for 33 items (batch size 5)
 for batch in chunks(items, size=5):
     results = call_ai(batch)  # 7 calls â†’ stays within free tier
 ```
@@ -137,7 +137,7 @@ my-agent/
 Template for any data source:
 
 ```python
-# scraper/sources/my_source.py
+## scraper/sources/my_source.py
 """
 [Source Name] â€” scrapes [what] from [where].
 Method: [REST API / HTML scraping / RSS feed]
@@ -203,7 +203,7 @@ for item in root.findall(".//item"):
 ### Step 4: Build the Gemini AI Client
 
 ```python
-# ai/client.py
+## ai/client.py
 import os, json, time, requests
 
 _last_call = 0.0
@@ -275,7 +275,7 @@ def _parse(resp) -> dict:
 ### Step 5: Build the AI Pipeline (Batch)
 
 ```python
-# ai/pipeline.py
+## ai/pipeline.py
 import json
 import yaml
 from pathlib import Path
@@ -320,18 +320,18 @@ def _build_prompt(batch, context, preference_prompt, config):
 
     return f"""Analyse these {len(batch)} items and return a JSON object.
 
-# Items
+## Items
 {items_text}
 
-# User Context
+## User Context
 {context[:800] if context else "Not provided"}
 
-# User Priorities
+## User Priorities
 {chr(10).join(f"- {p}" for p in priorities)}
 
 {preference_prompt}
 
-# Instructions
+## Instructions
 Return: {{"analyses": [{{"score": <0-100>, "summary": "<2 sentences>", "notes": "<why this matches or doesn't>"}} for each item in order]}}
 Be concise. Score 90+=excellent match, 70-89=good, 50-69=ok, <50=weak."""
 ```
@@ -341,7 +341,7 @@ Be concise. Score 90+=excellent match, 70-89=good, 50-69=ok, <50=weak."""
 ### Step 6: Build the Feedback Learning System
 
 ```python
-# ai/memory.py
+## ai/memory.py
 """Learn from user decisions to improve future scoring."""
 import json
 from pathlib import Path
@@ -383,7 +383,7 @@ def build_preference_prompt(feedback: dict, max_examples: int = 15) -> str:
 ### Step 7: Build Storage (Notion example)
 
 ```python
-# storage/notion_sync.py
+## storage/notion_sync.py
 import os
 from notion_client import Client
 from notion_client.errors import APIResponseError
@@ -450,7 +450,7 @@ def sync(db_id: str, items: list[dict]) -> tuple[int, int]:
 ### Step 8: Orchestrate in main.py
 
 ```python
-# scraper/main.py
+## scraper/main.py
 import os, sys, yaml
 from pathlib import Path
 from dotenv import load_dotenv
@@ -459,9 +459,9 @@ load_dotenv()
 
 from scraper.sources import my_source          # add your sources
 
-# NOTE: This example uses Notion. If storage.provider is "sheets" or "supabase",
-# replace this import with storage.sheets_sync or storage.supabase_sync and update
-# the env var and sync() call accordingly.
+## NOTE: This example uses Notion. If storage.provider is "sheets" or "supabase",
+## replace this import with storage.sheets_sync or storage.supabase_sync and update
+## the env var and sync() call accordingly.
 from storage.notion_sync import sync
 
 SOURCES = [
@@ -530,7 +530,7 @@ if __name__ == "__main__":
 ### Step 9: GitHub Actions Workflow
 
 ```yaml
-# .github/workflows/scraper.yml
+## .github/workflows/scraper.yml
 name: Data Scraper Agent
 
 on:
@@ -581,28 +581,28 @@ jobs:
 ### Step 10: config.yaml Template
 
 ```yaml
-# Customise this file â€” no code changes needed
+## Customise this file â€” no code changes needed
 
-# What to collect (pre-filter before AI)
+## What to collect (pre-filter before AI)
 filters:
   required_keywords: []      # item must contain at least one
   blocked_keywords: []       # item must not contain any
 
-# Your priorities â€” AI uses these for scoring
+## Your priorities â€” AI uses these for scoring
 priorities:
   - "example priority 1"
   - "example priority 2"
 
-# Storage
+## Storage
 storage:
   provider: "notion"         # notion | sheets | supabase | sqlite
 
-# Feedback learning
+## Feedback learning
 feedback:
   positive_statuses: ["Saved", "Applied", "Interested"]
   negative_statuses: ["Skip", "Rejected", "Not relevant"]
 
-# AI settings
+## AI settings
 ai:
   enabled: true
   model: "gemini-2.5-flash"
@@ -710,7 +710,7 @@ lxml==5.1.0
 python-dotenv==1.0.1
 pyyaml==6.0.2
 notion-client==2.2.1   # if using Notion
-# playwright==1.40.0   # uncomment for JS-rendered sites
+## playwright==1.40.0   # uncomment for JS-rendered sites
 ```
 
 ---
@@ -725,7 +725,7 @@ Before marking the agent complete:
 - [ ] Gemini client has model fallback chain (4 models)
 - [ ] Batch size â‰¤ 5 items per API call
 - [ ] `maxOutputTokens` â‰¥ 2048
-- [ ] `.env` is in `.gitignore`
+- [ ] `.env`is in`.gitignore`
 - [ ] `.env.example` provided for onboarding
 - [ ] `setup.py` creates DB schema on first run
 - [ ] `enrich_existing.py` backfills AI scores on old rows

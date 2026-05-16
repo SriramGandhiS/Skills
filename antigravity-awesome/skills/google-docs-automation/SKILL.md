@@ -13,7 +13,7 @@ metadata:
 
 Lightweight Google Docs integration with standalone OAuth authentication. No MCP server required.
 
-> **⚠️ Requires Google Workspace account.** Personal Gmail accounts are not supported.
+> **WARNING: Requires Google Workspace account.** Personal Gmail accounts are not supported.
 
 ## When to Use
 - You need to create, search, read, or edit Google Docs from local automation scripts.

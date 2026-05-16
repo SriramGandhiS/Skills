@@ -344,7 +344,7 @@ transcripts = [e["data"]["text"] for e in events if e.get("channel") == "transcr
 # Get visual descriptions from last 5 minutes
 import time
 cutoff = time.time() - 300
-recent_visual = [e for e in events 
+recent_visual = [e for e in events
                  if e.get("channel") == "visual_index" and e["unix_ts"] > cutoff]
 ```
 

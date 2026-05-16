@@ -45,26 +45,26 @@ python -c "import torch; x = torch.randn(2,3).cuda(); print('CUDA tensor test: O
 
 | Hata | Neden | Düzeltme |
 |-------|-------|-----|
-| `RuntimeError: mat1 and mat2 shapes cannot be multiplied` | Linear layer input boyut uyumsuzluğu | `in_features`'ı önceki katman çıktısına uyacak şekilde düzelt |
-| `RuntimeError: Expected all tensors to be on the same device` | Karışık CPU/GPU tensor'ları | Tüm tensor'lara ve modele `.to(device)` ekle |
-| `CUDA out of memory` | Batch çok büyük veya bellek sızıntısı | Batch boyutunu azalt, `torch.cuda.empty_cache()` ekle, gradient checkpointing kullan |
-| `RuntimeError: element 0 of tensors does not require grad` | Loss hesaplamasında detached tensor | Backward'dan önce `.detach()` veya `.item()`'ı kaldır |
+| `RuntimeError: mat1 and mat2 shapes cannot be multiplied`| Linear layer input boyut uyumsuzluğu |`in_features`'ı önceki katman çıktısına uyacak şekilde düzelt |
+| `RuntimeError: Expected all tensors to be on the same device`| Karışık CPU/GPU tensor'ları | Tüm tensor'lara ve modele`.to(device)` ekle |
+| `CUDA out of memory`| Batch çok büyük veya bellek sızıntısı | Batch boyutunu azalt,`torch.cuda.empty_cache()` ekle, gradient checkpointing kullan |
+| `RuntimeError: element 0 of tensors does not require grad`| Loss hesaplamasında detached tensor | Backward'dan önce`.detach()`veya`.item()`'ı kaldır |
 | `ValueError: Expected input batch_size X to match target batch_size Y` | Uyumsuz batch boyutları | DataLoader collation'ı veya model output reshape'ini düzelt |
-| `RuntimeError: one of the variables needed for gradient computation has been modified by an inplace operation` | In-place op autograd'ı bozar | `x += 1`'i `x = x + 1` ile değiştir, in-place relu'dan kaçın |
-| `RuntimeError: stack expects each tensor to be equal size` | DataLoader'da tutarsız tensor boyutları | Dataset `__getitem__`'da veya özel `collate_fn`'de padding/truncation ekle |
-| `RuntimeError: cuDNN error: CUDNN_STATUS_INTERNAL_ERROR` | cuDNN uyumsuzluğu veya bozuk durum | Test için `torch.backends.cudnn.enabled = False` ayarla, driver'ları güncelle |
+| `RuntimeError: one of the variables needed for gradient computation has been modified by an inplace operation`| In-place op autograd'ı bozar |`x += 1`'i`x = x + 1` ile değiştir, in-place relu'dan kaçın |
+| `RuntimeError: stack expects each tensor to be equal size`| DataLoader'da tutarsız tensor boyutları | Dataset`__getitem__`'da veya özel`collate_fn`'de padding/truncation ekle |
+| `RuntimeError: cuDNN error: CUDNN_STATUS_INTERNAL_ERROR`| cuDNN uyumsuzluğu veya bozuk durum | Test için`torch.backends.cudnn.enabled = False` ayarla, driver'ları güncelle |
 | `IndexError: index out of range in self` | Embedding index >= num_embeddings | Vocabulary boyutunu düzelt veya indeksleri clamp et |
-| `RuntimeError: Trying to backward through the graph a second time` | Yeniden kullanılan hesaplama grafiği | `retain_graph=True` ekle veya forward pass'i yeniden yapılandır |
+| `RuntimeError: Trying to backward through the graph a second time`| Yeniden kullanılan hesaplama grafiği |`retain_graph=True` ekle veya forward pass'i yeniden yapılandır |
 
 ## Shape Debug Etme
 
 Shape'ler belirsiz olduğunda, tanı print'leri ekleyin:
 
 ```python
-# Başarısız satırdan önce ekleyin:
+## Başarısız satırdan önce ekleyin:
 print(f"tensor.shape = {tensor.shape}, dtype = {tensor.dtype}, device = {tensor.device}")
 
-# Tam model shape izleme için:
+## Tam model shape izleme için:
 from torchsummary import summary
 summary(model, input_size=(C, H, W))
 ```
@@ -72,7 +72,7 @@ summary(model, input_size=(C, H, W))
 ## Bellek Debug Etme
 
 ```bash
-# GPU bellek kullanımını kontrol et
+## GPU bellek kullanımını kontrol et
 python -c "
 import torch
 print(f'Allocated: {torch.cuda.memory_allocated()/1e9:.2f} GB')

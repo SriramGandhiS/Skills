@@ -86,11 +86,11 @@ try {
 ## Variáveis de Ambiente
 
 ```bash
-# Required
+## Required
 DATABASE_URL=
 API_KEY=
 
-# Optional
+## Optional
 DEBUG=false
 ```
 
@@ -103,7 +103,7 @@ DEBUG=false
 
 ## Fluxo Git
 
-- Conventional commits: `feat:`, `fix:`, `refactor:`, `docs:`, `test:`
+- Conventional commits: `feat:`,`fix:`,`refactor:`,`docs:`,`test:`
 - Nunca commitar direto na main
 - PRs exigem revisão
 - Todos os testes devem passar antes do merge

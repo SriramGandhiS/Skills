@@ -218,7 +218,7 @@ const securityHeaders = [
       style-src 'self' 'unsafe-inline';
       img-src 'self' data: https:;
       font-src 'self';
-      connect-src 'self' https://api.example.com;
+      connect-src 'self' <https://api.example.com;>
     `.replace(/\s{2,}/g, ' ').trim()
   }
 ]
@@ -391,25 +391,25 @@ async function verifyTransaction(transaction: Transaction) {
 
 #### 定期的な更新
 ```bash
-# 脆弱性をチェック
+## 脆弱性をチェック
 npm audit
 
-# 自動修正可能な問題を修正
+## 自動修正可能な問題を修正
 npm audit fix
 
-# 依存関係を更新
+## 依存関係を更新
 npm update
 
-# 古いパッケージをチェック
+## 古いパッケージをチェック
 npm outdated
 ```
 
 #### ロックファイル
 ```bash
-# 常にロックファイルをコミット
+## 常にロックファイルをコミット
 git add package-lock.json
 
-# CI/CDで再現可能なビルドに使用
+## CI/CDで再現可能なビルドに使用
 npm ci  # npm installの代わりに
 ```
 

@@ -765,7 +765,7 @@ _default_sync: Optional[StateSync] = None
 
 def get_state_sync(
     loki_dir: Optional[Path] = None,
-    **kwargs
+**kwargs
 ) -> StateSync:
     """Get the default state sync instance."""
     global _default_sync

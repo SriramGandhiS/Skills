@@ -1,7 +1,7 @@
 # Environment Variables Reference - Skill Seekers
 
-> **Version:** 3.1.0  
-> **Last Updated:** 2026-02-16  
+> **Version:** 3.1.0
+> **Last Updated:** 2026-02-16
 > **Complete environment variable reference**
 
 ---

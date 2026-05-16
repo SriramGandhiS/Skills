@@ -317,7 +317,7 @@ attrs["ttl"] = int(time.time()) + (180 * 24 * 3600)
 
 | Voice | Idioma | Tipo | Recomendado |
 |-------|--------|------|-------------|
-| `Vitoria` | pt-BR | Neural | ✅ Auri PT-BR |
+| `Vitoria` | pt-BR | Neural | PASS: Auri PT-BR |
 | `Camila` | pt-BR | Neural | Alternativa |
 | `Ricardo` | pt-BR | Standard | Masculino |
 | `Ines` | pt-PT | Neural | Portugal |

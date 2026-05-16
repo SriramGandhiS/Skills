@@ -107,8 +107,7 @@ cp -r dist/cursor/.cursor your-project/
 > **Note:** Cursor skills require setup:
 > 1. Switch to Nightly channel in Cursor Settings → Beta
 > 2. Enable Agent Skills in Cursor Settings → Rules
->
-> [Learn more about Cursor skills](https://cursor.com/docs/context/skills)
+> > [Learn more about Cursor skills](https://cursor.com/docs/context/skills)
 
 **Claude Code:**
 ```bash
@@ -138,8 +137,7 @@ cp -r dist/gemini/.gemini your-project/
 > 1. Install preview version: `npm i -g @google/gemini-cli@preview`
 > 2. Run `/settings` and enable "Skills"
 > 3. Run `/skills list` to verify installation
->
-> [Learn more about Gemini CLI skills](https://geminicli.com/docs/cli/skills/)
+> > [Learn more about Gemini CLI skills](https://geminicli.com/docs/cli/skills/)
 
 **Codex CLI:**
 ```bash
@@ -172,8 +170,7 @@ cp -r dist/trae/.trae/skills/* ~/.trae/skills/
 > **Note:** Trae has two versions with different config directories:
 > - **Trae China**: `~/.trae-cn/skills/`
 > - **Trae International**: `~/.trae/skills/`
->
-> After copying, restart Trae IDE to activate the skills.
+> > After copying, restart Trae IDE to activate the skills.
 
 **Rovo Dev:**
 ```bash

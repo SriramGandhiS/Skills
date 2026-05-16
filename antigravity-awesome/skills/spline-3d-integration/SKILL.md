@@ -66,11 +66,11 @@ https://prod.spline.design/XXXXXXXXXXXXXXXX/scene.splinecode
 
 **Before copying the URL, tell the user to check Play Settings:**
 
-- ✅ Toggle **Hide Background** ON if the site has a dark or custom background
-- ✅ Toggle **Hide Spline Logo** ON if they have a paid plan
-- ✅ Set **Geometry Quality** to Performance for faster load
-- ✅ Disable **Page Scroll**, **Zoom**, **Pan** if those aren't needed (reduces hijacking risk)
-- ✅ Click **Generate Draft** or **Promote to Production** after any settings change — the URL does NOT auto-update
+- PASS: Toggle **Hide Background** ON if the site has a dark or custom background
+- PASS: Toggle **Hide Spline Logo** ON if they have a paid plan
+- PASS: Set **Geometry Quality** to Performance for faster load
+- PASS: Disable **Page Scroll**, **Zoom**, **Pan** if those aren't needed (reduces hijacking risk)
+- PASS: Click **Generate Draft** or **Promote to Production** after any settings change — the URL does NOT auto-update
 
 ---
 

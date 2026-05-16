@@ -1,7 +1,7 @@
 # MCP Reference - Skill Seekers
 
-> **Version:** 3.2.0  
-> **Last Updated:** 2026-03-15  
+> **Version:** 3.2.0
+> **Last Updated:** 2026-03-15
 > **Complete reference for 27 MCP tools**
 
 ---

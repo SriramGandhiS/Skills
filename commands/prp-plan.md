@@ -130,8 +130,8 @@ Compile findings into a single reference:
 
 | Category | File:Lines | Pattern | Key Snippet |
 |---|---|---|---|
-| Naming | `src/services/userService.ts:1-5` | camelCase services, PascalCase types | `export class UserService` |
-| Error | `src/middleware/errorHandler.ts:10-25` | Custom AppError class | `throw new AppError(...)` |
+| Naming | `src/services/userService.ts:1-5`| camelCase services, PascalCase types |`export class UserService` |
+| Error | `src/middleware/errorHandler.ts:10-25`| Custom AppError class |`throw new AppError(...)` |
 | ... | ... | ... | ... |
 
 ---
@@ -215,7 +215,7 @@ mkdir -p .claude/PRPs/plans
 ### Plan Template
 
 ````markdown
-# Plan: [Feature Name]
+## Plan: [Feature Name]
 
 ## Summary
 [2-3 sentence overview]
@@ -354,35 +354,35 @@ Code patterns discovered in the codebase. Follow these exactly.
 
 ### Static Analysis
 ```bash
-# Run type checker
+## Run type checker
 [project-specific type check command]
 ```
 EXPECT: Zero type errors
 
 ### Unit Tests
 ```bash
-# Run tests for affected area
+## Run tests for affected area
 [project-specific test command]
 ```
 EXPECT: All tests pass
 
 ### Full Test Suite
 ```bash
-# Run complete test suite
+## Run complete test suite
 [project-specific full test command]
 ```
 EXPECT: No regressions
 
 ### Database Validation (if applicable)
 ```bash
-# Verify schema/migrations
+## Verify schema/migrations
 [project-specific db command]
 ```
 EXPECT: Schema up to date
 
 ### Browser Validation (if applicable)
 ```bash
-# Start dev server and verify
+## Start dev server and verify
 [project-specific dev server command]
 ```
 EXPECT: Feature works as designed
@@ -433,7 +433,7 @@ Write the generated plan to:
 ### Update PRD (if input was a PRD)
 
 If this plan was generated from a PRD phase:
-1. Update the phase status from `pending` to `in-progress`
+1. Update the phase status from `pending`to`in-progress`
 2. Add the plan file path as a reference in the phase
 
 ### Report to User

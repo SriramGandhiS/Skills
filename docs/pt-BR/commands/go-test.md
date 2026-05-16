@@ -39,7 +39,7 @@ REPEAT  → Next test case
 User: /go-test I need a function to validate email addresses
 
 Agent:
-# TDD Session: Email Validator
+## TDD Session: Email Validator
 
 ## Step 1: Define Interface
 
@@ -215,19 +215,19 @@ func setupTestDB(t *testing.T) *sql.DB {
 ## Comandos de Cobertura
 
 ```bash
-# Basic coverage
+## Basic coverage
 go test -cover ./...
 
-# Coverage profile
+## Coverage profile
 go test -coverprofile=coverage.out ./...
 
-# View in browser
+## View in browser
 go tool cover -html=coverage.out
 
-# Coverage by function
+## Coverage by function
 go tool cover -func=coverage.out
 
-# With race detection
+## With race detection
 go test -race -cover ./...
 ```
 

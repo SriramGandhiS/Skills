@@ -1,13 +1,13 @@
 # Skill Seekers Intelligence System - Research Topics
 
 **Version:** 1.0
-**Status:** 🔬 Research Phase
+**Status:**  Research Phase
 **Last Updated:** 2026-01-20
 **Purpose:** Areas to research and experiment with before/during implementation
 
 ---
 
-## 🔬 Research Areas
+## Research Areas
 
 ### 1. Import Analysis Accuracy
 
@@ -73,9 +73,9 @@ from very_long_name import X as Y
 ```python
 # Dataset: 100 Python files + 20 skills
 # For each file:
-#   1. Manual: Which skills are relevant? (ground truth)
-#   2. Each model: Rank skills by similarity
-#   3. Measure: Precision@5, Recall@5, MRR
+# 1. Manual: Which skills are relevant? (ground truth)
+# 2. Each model: Rank skills by similarity
+# 3. Measure: Precision@5, Recall@5, MRR
 
 models = [
     "all-MiniLM-L6-v2",
@@ -96,7 +96,7 @@ print(results)
 
 | Model | Speed | Size | Accuracy | RAM | Winner? |
 |-------|-------|------|----------|-----|---------|
-| all-MiniLM-L6-v2 | 50ms | 80MB | 75% | 200MB | ✅ Best balance |
+| all-MiniLM-L6-v2 | 50ms | 80MB | 75% | 200MB | PASS: Best balance |
 | codebert-base | 200ms | 500MB | 85% | 1GB | Too slow/large |
 | paraphrase-multi | 100ms | 420MB | 78% | 500MB | Middle ground |
 
@@ -123,7 +123,7 @@ print(results)
 | Granularity | Skills | Skill Size | Context Usage | Accuracy |
 |-------------|--------|------------|---------------|----------|
 | Coarse | 3-5 | 500 lines | Low | Low (too broad) |
-| Medium | 10-15 | 200 lines | Medium | ✅ Good |
+| Medium | 10-15 | 200 lines | Medium | PASS: Good |
 | Fine | 50+ | 50 lines | High | Too specific |
 
 **Experiment:**
@@ -173,7 +173,7 @@ for name, engine in strategies.items():
 |----------|-----------|--------|-----|-------|---------|
 | Import-only | 90% | 75% | 82% | 50ms | Fast, precise |
 | Embedding-only | 75% | 85% | 80% | 100ms | Flexible |
-| Hybrid 70/30 | 88% | 82% | 85% | 80ms | ✅ Best balance |
+| Hybrid 70/30 | 88% | 82% | 85% | 80ms | PASS: Best balance |
 | Hybrid 50/50 | 85% | 85% | 85% | 80ms | Equal weight |
 
 **Success Criteria:**
@@ -218,10 +218,10 @@ for name, files, lang in projects:
 
 | Project | Files | Full | Incremental | Acceptable? |
 |---------|-------|------|-------------|-------------|
-| skill-seekers | 140 | 3 min | 30 sec | ✅ Yes |
-| fastapi | 500 | 8 min | 1 min | ✅ Yes |
-| react | 1000 | 15 min | 2 min | ⚠️ Borderline |
-| vscode | 5000 | 60 min | 10 min | ❌ Too slow |
+| skill-seekers | 140 | 3 min | 30 sec | PASS: Yes |
+| fastapi | 500 | 8 min | 1 min | PASS: Yes |
+| react | 1000 | 15 min | 2 min | WARNING: Borderline |
+| vscode | 5000 | 60 min | 10 min | FAIL: Too slow |
 
 **Optimizations if too slow:**
 1. Parallel analysis (multiprocessing)
@@ -302,12 +302,12 @@ if total_tokens > 150_000:  # Leave room for conversation
 
 | Language | Import Parse | Embedding | Overall | Support? |
 |----------|-------------|-----------|---------|----------|
-| Python | 90% | 85% | 88% | ✅ Excellent |
-| JavaScript | 80% | 85% | 83% | ✅ Good |
-| TypeScript | 85% | 85% | 85% | ✅ Good |
-| Go | 75% | 80% | 78% | ⚠️ Acceptable |
-| Rust | 70% | 80% | 75% | ⚠️ Acceptable |
-| Java | 65% | 80% | 73% | ⚠️ Basic |
+| Python | 90% | 85% | 88% | PASS: Excellent |
+| JavaScript | 80% | 85% | 83% | PASS: Good |
+| TypeScript | 85% | 85% | 85% | PASS: Good |
+| Go | 75% | 80% | 78% | WARNING: Acceptable |
+| Rust | 70% | 80% | 75% | WARNING: Acceptable |
+| Java | 65% | 80% | 73% | WARNING: Basic |
 
 **Success Criteria:**
 - [ ] Python: >85% accuracy (primary focus)
@@ -339,10 +339,10 @@ if total_tokens > 150_000:  # Leave room for conversation
 **Test Plan:**
 ```python
 # For each framework:
-#   1. Auto-generate skill
-#   2. Handcraft skill (1 hour of work)
-#   3. A/B test with 5 developers
-#   4. Measure: time to complete task, satisfaction
+# 1. Auto-generate skill
+# 2. Handcraft skill (1 hour of work)
+# 3. A/B test with 5 developers
+# 4. Measure: time to complete task, satisfaction
 
 frameworks = ["FastAPI", "React", "PostgreSQL"]
 
@@ -361,9 +361,9 @@ for framework in frameworks:
 
 | Framework | Auto | Hand | Difference | Acceptable? |
 |-----------|------|------|------------|-------------|
-| FastAPI | 7/10 | 9/10 | -2 | ✅ Close enough |
-| React | 6/10 | 9/10 | -3 | ⚠️ Needs work |
-| PostgreSQL | 5/10 | 9/10 | -4 | ❌ Too far |
+| FastAPI | 7/10 | 9/10 | -2 | PASS: Close enough |
+| React | 6/10 | 9/10 | -3 | WARNING: Needs work |
+| PostgreSQL | 5/10 | 9/10 | -4 | FAIL: Too far |
 
 **Optimization:**
 - If auto-generated is <7/10, use handcrafted
@@ -392,9 +392,9 @@ for framework in frameworks:
 ```python
 # Track a real project for 1 month
 # Measure:
-#   - How often code changes affect skills
-#   - How stale skills get if not updated
-#   - User tolerance for staleness
+# - How often code changes affect skills
+# - How stale skills get if not updated
+# - User tolerance for staleness
 
 project = "skill-seekers"
 duration = "30 days"
@@ -419,10 +419,10 @@ for freq in frequencies:
 
 | Frequency | Staleness | Perf Cost | CPU Usage | Acceptable? |
 |-----------|-----------|-----------|-----------|-------------|
-| Every commit | 0% | High | 50%+ | ❌ Too much |
-| Every merge | 5% | Medium | 10% | ✅ Good |
-| Daily | 15% | Low | 2% | ✅ Good |
-| Weekly | 40% | Very low | <1% | ⚠️ Too stale |
+| Every commit | 0% | High | 50%+ | FAIL: Too much |
+| Every merge | 5% | Medium | 10% | PASS: Good |
+| Daily | 15% | Low | 2% | PASS: Good |
+| Weekly | 40% | Very low | <1% | WARNING: Too stale |
 
 **Recommendation:** Update on merge to watched branches (main, dev)
 
@@ -469,10 +469,10 @@ for pattern in patterns:
 
 | Pattern | Ease | Control | Satisfaction | Winner? |
 |---------|------|---------|--------------|---------|
-| File Hooks | 9/10 | 7/10 | 8/10 | ✅ Automatic |
+| File Hooks | 9/10 | 7/10 | 8/10 | PASS: Automatic |
 | Command Palette | 6/10 | 10/10 | 7/10 | Power users |
 | Automatic | 10/10 | 5/10 | 7/10 | Too magic |
-| Hybrid | 9/10 | 9/10 | 9/10 | ✅✅ Best |
+| Hybrid | 9/10 | 9/10 | 9/10 | PASS:PASS: Best |
 
 **Recommendation:** Hybrid approach
 - Auto-load on file open (convenience)
@@ -488,7 +488,7 @@ for pattern in patterns:
 
 ---
 
-## 🧪 Experimental Ideas
+## Experimental Ideas
 
 ### Idea 1: Conversation-Aware Clustering
 
@@ -684,7 +684,7 @@ Least Helpful:
 
 ---
 
-## 📊 Research Checklist
+## Research Checklist
 
 ### Phase 0: Before Implementation
 - [ ] Import analysis accuracy (Research #1)
@@ -711,7 +711,7 @@ Least Helpful:
 
 ---
 
-## 🎯 Success Metrics
+## Success Metrics
 
 ### Technical Metrics
 - Import parse accuracy: >85%

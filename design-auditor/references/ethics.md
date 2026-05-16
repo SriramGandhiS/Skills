@@ -31,27 +31,27 @@ Not all patterns are equally detectable from design files or code. Declare confi
 
 | Pattern | Figma detectable? | Code detectable? | Confidence |
 |---|---|---|---|
-| Confirmshaming | ✅ Text content | ✅ String literals | 🟢 High |
-| CTA hierarchy inversion | ✅ Size, color, weight | ✅ Class/style comparison | 🟢 High |
-| Trick questions | ✅ Label text | ✅ Label + input text | 🟢 High |
-| Pre-checked consent | ❌ N/A | ✅ checked attribute | 🟢 High |
-| Countdown timers | ✅ Timer UI elements | ✅ JS timer / CSS | 🟢 High |
-| Guilt-based copy | ✅ Text content | ✅ String literals | 🟢 High |
-| Privacy zuckering | ✅ Toggle defaults | ✅ Default values | 🟢 High |
-| False scarcity (hardcoded) | ✅ Static text | ✅ Static strings | 🟡 Medium |
-| False social proof (hardcoded) | ✅ Static numbers | ✅ Static strings | 🟡 Medium |
-| Disguised ads | ✅ Visual similarity | ⚠️ Partial | 🟡 Medium |
-| Hidden costs | ⚠️ Multi-step flow only | ⚠️ Partial | 🟡 Medium |
-| Roach motel | ⚠️ Multi-screen flow | ⚠️ Route count | 🟡 Medium |
-| Bait and switch | ✅ CTA label vs outcome | ⚠️ Partial | 🟡 Medium |
-| Obstruction | ⚠️ Step count | ⚠️ Route complexity | 🟡 Medium |
-| Nagging | ⚠️ Multi-screen only | ⚠️ State logic | 🔴 Low |
-| Forced continuity | ❌ Requires backend | ❌ Requires backend | ❌ Not detectable |
-| Friend spam | ⚠️ Contact UI patterns | ✅ Pre-selected inputs | 🟡 Medium |
-| Visual misdirection | ✅ Layout analysis | ⚠️ Partial | 🟡 Medium |
+| Confirmshaming | PASS: Text content | PASS: String literals |  High |
+| CTA hierarchy inversion | PASS: Size, color, weight | PASS: Class/style comparison |  High |
+| Trick questions | PASS: Label text | PASS: Label + input text |  High |
+| Pre-checked consent | FAIL: N/A | PASS: checked attribute |  High |
+| Countdown timers | PASS: Timer UI elements | PASS: JS timer / CSS |  High |
+| Guilt-based copy | PASS: Text content | PASS: String literals |  High |
+| Privacy zuckering | PASS: Toggle defaults | PASS: Default values |  High |
+| False scarcity (hardcoded) | PASS: Static text | PASS: Static strings |  Medium |
+| False social proof (hardcoded) | PASS: Static numbers | PASS: Static strings |  Medium |
+| Disguised ads | PASS: Visual similarity | WARNING: Partial |  Medium |
+| Hidden costs | WARNING: Multi-step flow only | WARNING: Partial |  Medium |
+| Roach motel | WARNING: Multi-screen flow | WARNING: Route count |  Medium |
+| Bait and switch | PASS: CTA label vs outcome | WARNING: Partial |  Medium |
+| Obstruction | WARNING: Step count | WARNING: Route complexity |  Medium |
+| Nagging | WARNING: Multi-screen only | WARNING: State logic |  Low |
+| Forced continuity | FAIL: Requires backend | FAIL: Requires backend | FAIL: Not detectable |
+| Friend spam | WARNING: Contact UI patterns | PASS: Pre-selected inputs |  Medium |
+| Visual misdirection | PASS: Layout analysis | WARNING: Partial |  Medium |
 
-**When confidence is 🟡 Medium:** Flag as potential issue. State the detection limitation. Ask the user to verify.
-**When confidence is 🔴 Low:** Do not flag unless the user specifically requests a flow-level ethics review.
+**When confidence is  Medium:** Flag as potential issue. State the detection limitation. Ask the user to verify.
+**When confidence is  Low:** Do not flag unless the user specifically requests a flow-level ethics review.
 **When not detectable:** Do not guess or speculate. Note in the audit that pattern cannot be assessed from static design alone.
 
 ---
@@ -62,9 +62,9 @@ Ethics issues use a different severity framing from the rest of the audit. These
 
 | Severity | Label | Meaning | Score deduction |
 |---|---|---|---|
-| 🔴 | **Deceptive** | Actively misleads or coerces users. Violates user trust and in many jurisdictions consumer law. Must fix. | −15 pts |
-| 🟡 | **Questionable** | Persuasive in a way that may exploit users depending on context. Warrants review and justification. | −7 pts |
-| 🟢 | **Noted** | Persuasive element present. Ethical in standard use but worth documenting for transparency. | 0 pts (informational) |
+|  | **Deceptive** | Actively misleads or coerces users. Violates user trust and in many jurisdictions consumer law. Must fix. | −15 pts |
+|  | **Questionable** | Persuasive in a way that may exploit users depending on context. Warrants review and justification. | −7 pts |
+|  | **Noted** | Persuasive element present. Ethical in standard use but worth documenting for transparency. | 0 pts (informational) |
 
 Ethics score starts at 100. Floor is 0.
 
@@ -108,7 +108,7 @@ Search for button/link text containing patterns like:
 Also check: <a> and <button> elements near consent modals/popups
 ```
 
-**Severity:** 🔴 Deceptive
+**Severity:**  Deceptive
 
 **Fix:** Rewrite decline copy as a neutral, factual statement: "No thanks" / "Maybe later" / "Skip" / "Close". The user's choice to decline needs no editorial comment.
 
@@ -145,7 +145,7 @@ Also check:
   (Required by GDPR/ePrivacy — unequal styling = legal risk in EU, not just ethical risk)
 ```
 
-**Severity:** 🔴 Deceptive
+**Severity:**  Deceptive
 
 **Fix:** Actions of equal consequence to the user must receive equivalent visual weight. If two choices are both valid, style them at the same level (both secondary, or one primary/one outlined — not primary vs invisible text).
 
@@ -181,7 +181,7 @@ Correct pattern:
   (checked = opted in — clear, no negatives)
 ```
 
-**Severity:** 🔴 Deceptive
+**Severity:**  Deceptive
 
 **Fix:** Rewrite all consent labels as positive, first-person affirmative statements. Checking = consenting, always. "Send me updates", "Share my data with partners", "Enrol in loyalty programme". No negatives.
 
@@ -205,14 +205,14 @@ Correct pattern:
 **Code detection:**
 ```
 Search for elements with "ad", "sponsored", "promoted" labels:
-  → Label font-size < 12px → 🔴
-  → Label color contrast < 3:1 against card background → 🔴
-  → No visual distinction (border, background, icon) beyond text label alone → 🟡
-  → aria-label or role missing on ad container → 🟡
+  → Label font-size < 12px →
+  → Label color contrast < 3:1 against card background →
+  → No visual distinction (border, background, icon) beyond text label alone →
+  → aria-label or role missing on ad container →
     (screen readers need to know it's an advertisement)
 ```
 
-**Severity:** 🔴 Deceptive
+**Severity:**  Deceptive
 
 **Fix:** Sponsored/promoted content must be visually distinct from organic content. Use a consistent label ("Sponsored") in readable size (≥ 12px) with sufficient contrast, placed prominently (top-left of card). A background tint or border on sponsored cards provides a secondary visual signal.
 
@@ -237,16 +237,16 @@ Search for elements with "ad", "sponsored", "promoted" labels:
 **Code detection:**
 ```
 Check <a href> and <button> destinations vs their text content:
-  → "Free" in label but destination URL contains /payment, /checkout, /billing → 🟡
-  → "Learn more" linking to /signup or /register → 🟡
+  → "Free" in label but destination URL contains /payment, /checkout, /billing →
+  → "Learn more" linking to /signup or /register →
   → "Try for free" where the linked page requires credit card without this being
-     disclosed before the click → 🔴
+     disclosed before the click →
 
 Also check for pre-selected plan tiers on pricing/signup pages:
-  → Most expensive plan pre-selected by default → 🟡
+  → Most expensive plan pre-selected by default →
 ```
 
-**Severity:** 🔴 Deceptive (when credit card / payment is involved) · 🟡 Questionable (when destination is unexpected but not costly)
+**Severity:**  Deceptive (when credit card / payment is involved) ·  Questionable (when destination is unexpected but not costly)
 
 **Fix:** CTA labels must accurately describe the immediate next step. If a free trial requires a credit card, state it on the CTA: "Start free trial (card required)". Never pre-select the most expensive plan.
 
@@ -271,13 +271,13 @@ Also check for pre-selected plan tiers on pricing/signup pages:
 ```
 On checkout flows, look for:
   → Price displayed as number in early steps → different number in payment step
-    without an explicit fee breakdown element in between → 🔴
+    without an explicit fee breakdown element in between →
   → "Processing fee", "Service fee", "Convenience fee" elements that only appear
-    in the final checkout component → 🔴
-  → Fee disclosure only in <small> or footnote text → 🟡
+    in the final checkout component →
+  → Fee disclosure only in <small> or footnote text →
 ```
 
-**Severity:** 🔴 Deceptive
+**Severity:**  Deceptive
 
 **Fix:** Show the complete price — including all fees and taxes — from the first step where a price is shown, or as early as possible. If exact fees can't be calculated early, show an estimate with a clear "Final price at checkout" note.
 
@@ -305,13 +305,13 @@ On pricing/checkout/consent pages, find text containing:
   "terms", "cancel anytime" (verify it's actually easy to cancel — see Roach Motel)
 
 Flag if that text has:
-  → font-size < 13px → 🟡
-  → color contrast < 3:1 → 🔴 (also a Cat 2 issue)
-  → position: below the primary CTA in DOM order → 🟡
-  → opacity < 0.7 → 🟡
+  → font-size < 13px →
+  → color contrast < 3:1 →  (also a Cat 2 issue)
+  → position: below the primary CTA in DOM order →
+  → opacity < 0.7 →
 ```
 
-**Severity:** 🟡 Questionable (layout) · 🔴 Deceptive (when combined with hidden costs or false urgency)
+**Severity:**  Questionable (layout) ·  Deceptive (when combined with hidden costs or false urgency)
 
 **Fix:** Any text describing cost, commitment, or risk must meet the same visual standards as the CTA it accompanies. Minimum 13px, 4.5:1 contrast, positioned before or at the same level as the primary action button.
 
@@ -343,15 +343,15 @@ Navigation structure check:
   → Sign-up route: /signup → /payment → done (2 steps)
   → Cancel route: /account → /settings → /billing → /manage → /cancel
     → /confirm → /retention-offer → /final-confirm (7 steps)
-  → Step count ratio > 2:1 (cancel:signup) → 🔴
+  → Step count ratio > 2:1 (cancel:signup) →
 
 Also check:
-  → Cancel button leads to a retention modal before actual cancellation → 🟡
-    (one retention offer is acceptable; multiple forced offers before cancel = 🔴)
-  → "Delete account" option buried in settings hierarchy 3+ levels deep → 🟡
+  → Cancel button leads to a retention modal before actual cancellation →
+    (one retention offer is acceptable; multiple forced offers before cancel = )
+  → "Delete account" option buried in settings hierarchy 3+ levels deep →
 ```
 
-**Severity:** 🔴 Deceptive
+**Severity:**  Deceptive
 
 **Fix:** The path to exit a commitment must be no harder than the path to enter it. If sign-up is 2 steps, cancellation must be reachable in ≤ 3 steps. One genuine retention offer (e.g. "Before you go — would you like to pause instead?") is acceptable if the user can immediately proceed to cancel.
 
@@ -376,15 +376,15 @@ Also check:
 **Code detection:**
 ```
 On privacy/account deletion/unsubscribe flows:
-  → Login required to unsubscribe from email → 🔴
+  → Login required to unsubscribe from email →
     (one-click unsubscribe is the standard and legally required in many jurisdictions)
-  → Data deletion only available via support contact form, not self-serve → 🟡
-  → Account deletion requires email verification + 7-day wait + re-confirmation → 🟡
+  → Data deletion only available via support contact form, not self-serve →
+  → Account deletion requires email verification + 7-day wait + re-confirmation →
     (some delay is acceptable for security; making it confusing is not)
-  → Unsubscribe confirmation page has re-subscribe CTA more prominent than confirmation → 🟡
+  → Unsubscribe confirmation page has re-subscribe CTA more prominent than confirmation →
 ```
 
-**Severity:** 🔴 Deceptive (when it blocks legally required actions) · 🟡 Questionable (unnecessary friction on non-legal paths)
+**Severity:**  Deceptive (when it blocks legally required actions) ·  Questionable (unnecessary friction on non-legal paths)
 
 **Fix:** Unsubscribe must be one click from the email link. Account/data deletion must be self-serve and reachable in ≤ 3 steps. Privacy rights (GDPR, CCPA) are legal obligations, not optional UX choices.
 
@@ -409,18 +409,18 @@ On privacy/account deletion/unsubscribe flows:
 **Code detection:**
 ```
 Signup/onboarding forms:
-  → Marketing consent checkbox with required attribute → 🔴
+  → Marketing consent checkbox with required attribute →
     (<input type="checkbox" required> on a marketing opt-in)
-  → Social OAuth as sole login option (no email/password alternative) → 🟡
+  → Social OAuth as sole login option (no email/password alternative) →
   → Permission requests (geolocation, notifications) on first load with no
-    explanation of why they're needed → 🟡
+    explanation of why they're needed →
 
 Account connection flows:
-  → Third-party data connection presented as required step in core onboarding → 🟡
+  → Third-party data connection presented as required step in core onboarding →
     (should be optional or clearly labelled as optional)
 ```
 
-**Severity:** 🔴 Deceptive (when bundled with legally required consent) · 🟡 Questionable (when it restricts reasonable alternatives)
+**Severity:**  Deceptive (when bundled with legally required consent) ·  Questionable (when it restricts reasonable alternatives)
 
 **Fix:** Marketing consent must always be optional and unchecked by default. Core product functionality must be available without requiring unrelated data sharing. Offer email/password as an alternative to social login.
 
@@ -443,18 +443,18 @@ Account connection flows:
 **Code detection:**
 ```
 Look for localStorage/sessionStorage/cookie patterns:
-  → Prompt shown based on session count without a "permanently dismissed" flag → 🟡
-  → showRatingPrompt() called on every app open with no check for prior dismissal → 🟡
-  → Cookie consent banner that reappears after being dismissed (without clearing cookies) → 🔴
+  → Prompt shown based on session count without a "permanently dismissed" flag →
+  → showRatingPrompt() called on every app open with no check for prior dismissal →
+  → Cookie consent banner that reappears after being dismissed (without clearing cookies) →
 
 Pattern to flag:
-  if (sessionCount % 3 === 0) showPromoModal() // no dismissal check → 🟡
-  
+  if (sessionCount % 3 === 0) showPromoModal() // no dismissal check →
+
 Correct pattern:
   if (!localStorage.getItem('promoDismissed')) showPromoModal()
 ```
 
-**Severity:** 🟡 Questionable (after 1 dismissal) · 🔴 Deceptive (after explicit "don't show again")
+**Severity:**  Questionable (after 1 dismissal) ·  Deceptive (after explicit "don't show again")
 
 **Fix:** Every dismissible prompt must have a permanently effective dismiss option. After explicit dismissal, never show the same prompt again in the same session. Respect "not now" as a soft no; respect "don't show again" as a hard no.
 
@@ -485,18 +485,18 @@ Correct pattern:
 **Code detection:**
 ```
 Check default state of consent inputs:
-  → <input type="checkbox" checked> on any non-essential data sharing option → 🔴
-  → <toggle default="true"> on analytics/marketing/advertising categories → 🔴
-  → "Accept all" button present without equivalent "Reject all" button → 🔴
+  → <input type="checkbox" checked> on any non-essential data sharing option →
+  → <toggle default="true"> on analytics/marketing/advertising categories →
+  → "Accept all" button present without equivalent "Reject all" button →
     (GDPR requires symmetrical consent withdrawal)
 
 Cookie consent libraries:
-  → consentRequired: false for analytics category → 🔴
-  → Default consent: 'granted' for non-essential categories → 🔴
-  → Google Consent Mode with analytics_storage: 'granted' as default → 🔴
+  → consentRequired: false for analytics category →
+  → Default consent: 'granted' for non-essential categories →
+  → Google Consent Mode with analytics_storage: 'granted' as default →
 ```
 
-**Severity:** 🔴 Deceptive (legally non-compliant in GDPR jurisdictions)
+**Severity:**  Deceptive (legally non-compliant in GDPR jurisdictions)
 
 **Fix:** All non-essential data collection must default to OFF. "Accept all" and "Reject all" must be visually equivalent. Privacy settings must be reachable in ≤ 2 steps from any screen.
 
@@ -519,12 +519,12 @@ Cookie consent libraries:
 **Code detection:**
 ```
 Direct detection:
-  → <input type="checkbox" name="marketing" checked> → 🔴
-  → <input type="checkbox" name="newsletter" defaultChecked={true}> (React) → 🔴
-  → v-model with default true on consent checkbox (Vue) → 🔴
+  → <input type="checkbox" name="marketing" checked> →
+  → <input type="checkbox" name="newsletter" defaultChecked={true}> (React) →
+  → v-model with default true on consent checkbox (Vue) →
 
 Bundled consent:
-  → Single checkbox that covers both ToS acceptance AND marketing consent → 🔴
+  → Single checkbox that covers both ToS acceptance AND marketing consent →
     ("I agree to the Terms and want to receive marketing emails" — must be separate)
 
 Correct pattern:
@@ -532,7 +532,7 @@ Correct pattern:
   <input type="checkbox" name="terms" required> (ToS — required is acceptable)
 ```
 
-**Severity:** 🔴 Deceptive (legally non-compliant in GDPR/PECR jurisdictions)
+**Severity:**  Deceptive (legally non-compliant in GDPR/PECR jurisdictions)
 
 **Fix:** All marketing, data sharing, and third-party consent checkboxes must be unchecked by default. Terms of Service agreement can be required. Marketing consent must always be separate from ToS agreement and always optional.
 
@@ -556,16 +556,16 @@ Correct pattern:
 **Code detection:**
 ```
 Consent UI patterns:
-  → Mix of checkbox and toggle inputs within the same consent category group → 🟡
-  → Toggle without visible on/off or yes/no label → 🟡
-  → aria-checked missing on custom toggle elements → 🟡
-  → No save/apply button — changes auto-save without confirmation → 🟡
+  → Mix of checkbox and toggle inputs within the same consent category group →
+  → Toggle without visible on/off or yes/no label →
+  → aria-checked missing on custom toggle elements →
+  → No save/apply button — changes auto-save without confirmation →
     (user may not know their change was registered)
-  → Visually identical "on" and "off" toggle states (relies on position only) → 🟡
+  → Visually identical "on" and "off" toggle states (relies on position only) →
     (must pass 3:1 contrast between states)
 ```
 
-**Severity:** 🟡 Questionable
+**Severity:**  Questionable
 
 **Fix:** All consent controls within the same panel must use consistent interaction patterns. Toggles must have visible "On/Off" or "Yes/No" labels. A "Save preferences" button must confirm intent. Never auto-apply privacy changes.
 
@@ -589,16 +589,16 @@ Consent UI patterns:
 ```
 Price element tracking across checkout steps:
   → Price component shows different value on /checkout vs /payment
-    without a fee breakdown component between them → 🔴
-  → Optional add-ons (seats, luggage, insurance) defaulting to selected → 🟡
-  → "Booking fee", "Service fee" appearing only on the final step → 🔴
+    without a fee breakdown component between them →
+  → Optional add-ons (seats, luggage, insurance) defaulting to selected →
+  → "Booking fee", "Service fee" appearing only on the final step →
 
 Also flag:
-  → Required add-ons presented as optional during flow then added automatically → 🔴
-  → Total price element only present on the final confirmation step → 🟡
+  → Required add-ons presented as optional during flow then added automatically →
+  → Total price element only present on the final confirmation step →
 ```
 
-**Severity:** 🔴 Deceptive
+**Severity:**  Deceptive
 
 **Fix:** Show the total price (including all mandatory fees) from the first price display. Optional add-ons must be clearly optional and unselected by default. A running total that updates in real time as add-ons are selected is the ethical pattern.
 
@@ -626,19 +626,19 @@ Also flag:
 **Code detection:**
 ```
 Detect timer implementations:
-  → setInterval() or setTimeout() used to count down from a fixed number → 🟡
-  → Timer initialized from localStorage or sessionStorage (resets per session) → 🔴
-  → Timer initialized from a hardcoded future date that doesn't change → 🔴
-  → Timer that resets on page refresh (visible in network tab patterns) → 🔴
+  → setInterval() or setTimeout() used to count down from a fixed number →
+  → Timer initialized from localStorage or sessionStorage (resets per session) →
+  → Timer initialized from a hardcoded future date that doesn't change →
+  → Timer that resets on page refresh (visible in network tab patterns) →
 
 Real (acceptable) timers:
-  → Timer value fetched from API endpoint → ✅ (may be real)
-  → Timer initialized from a server-side expiry timestamp → ✅ (may be real)
-  
-Flag as 🟡 in all cases; upgrade to 🔴 if reset/artificial pattern is confirmed.
+  → Timer value fetched from API endpoint → PASS: (may be real)
+  → Timer initialized from a server-side expiry timestamp → PASS: (may be real)
+
+Flag as  in all cases; upgrade to  if reset/artificial pattern is confirmed.
 ```
 
-**Severity:** 🟡 Questionable (unverified) · 🔴 Deceptive (when reset pattern is confirmed)
+**Severity:**  Questionable (unverified) ·  Deceptive (when reset pattern is confirmed)
 
 **Fix:** Only use countdown timers for genuinely time-limited offers with a real end date. If the offer doesn't expire, remove the timer. If it does expire, ensure the timer value comes from a real server-side timestamp that does not reset.
 
@@ -662,19 +662,19 @@ Flag as 🟡 in all cases; upgrade to 🔴 if reset/artificial pattern is confir
 **Code detection:**
 ```
 Search string literals for scarcity language:
-  → "Only [number] left" as a hardcoded string → 🟡
-  → "Limited availability" with no data binding → 🟡
-  → "X people viewing this" with static/fake number → 🔴 (see D3)
+  → "Only [number] left" as a hardcoded string →
+  → "Limited availability" with no data binding →
+  → "X people viewing this" with static/fake number →  (see D3)
 
 Real (acceptable) scarcity:
-  → Scarcity number bound to inventory API: {stockCount} remaining → ✅
-  → Scarcity element only rendered when stock < threshold from real data → ✅
+  → Scarcity number bound to inventory API: {stockCount} remaining → PASS:
+  → Scarcity element only rendered when stock < threshold from real data → PASS:
 
 Also flag:
-  → "Low stock" label that appears regardless of actual inventory → 🟡
+  → "Low stock" label that appears regardless of actual inventory →
 ```
 
-**Severity:** 🟡 Questionable (hardcoded, unverifiable) · 🔴 Deceptive (confirmed inaccurate)
+**Severity:**  Questionable (hardcoded, unverifiable) ·  Deceptive (confirmed inaccurate)
 
 **Fix:** Scarcity indicators must be backed by real, real-time inventory data. If you can't connect scarcity claims to live data, remove them.
 
@@ -698,22 +698,22 @@ Also flag:
 **Code detection:**
 ```
 Search for social proof patterns with static values:
-  → "people viewing" or "viewing this" with hardcoded number → 🔴
+  → "people viewing" or "viewing this" with hardcoded number →
   → Random number generation for social proof:
-      Math.floor(Math.random() * 500) + 800 → 🔴 (extremely common pattern)
-  → "X sold today" as static string → 🟡
+      Math.floor(Math.random() * 500) + 800 →  (extremely common pattern)
+  → "X sold today" as static string →
 
 Real (acceptable) social proof:
-  → Viewer count fetched from WebSocket or real-time API → ✅
-  → Purchase count from real analytics data → ✅
-  → Review count from real review data → ✅
+  → Viewer count fetched from WebSocket or real-time API → PASS:
+  → Purchase count from real analytics data → PASS:
+  → Review count from real review data → PASS:
 
 Also flag:
-  → Testimonials without attribution (name, photo, company) → 🟢 Noted
-  → Review counts that can't be independently verified → 🟢 Noted
+  → Testimonials without attribution (name, photo, company) →  Noted
+  → Review counts that can't be independently verified →  Noted
 ```
 
-**Severity:** 🔴 Deceptive (fabricated numbers) · 🟡 Questionable (unverifiable claims)
+**Severity:**  Deceptive (fabricated numbers) ·  Questionable (unverifiable claims)
 
 **Fix:** All social proof numbers must reflect real data. Remove viewer counts if they can't be backed by real-time data. Real customer counts, real review scores, and real testimonials are all legitimate.
 
@@ -729,7 +729,7 @@ Also flag:
 
 **Definition:** UI copy uses shame, guilt, or implied self-judgement to pressure users into accepting offers, upgrading, or continuing engagement.
 
-**Real-world example:** An app that sends push notifications saying "You've been neglecting your goals 😔" or shows "You're falling behind your streak!"
+**Real-world example:** An app that sends push notifications saying "You've been neglecting your goals " or shows "You're falling behind your streak!"
 
 **Why it's harmful:** Using negative emotional states (guilt, shame, anxiety) as conversion tools exploits psychological vulnerabilities, particularly harmful for users with anxiety or perfectionism.
 
@@ -741,15 +741,15 @@ Also flag:
 **Code detection:**
 ```
 Search string literals for guilt/shame patterns:
-  → "You haven't [verbed] in X days" with implicit negative framing → 🟡
+  → "You haven't [verbed] in X days" with implicit negative framing →
   → "Don't lose your streak" (mild — acceptable) vs
-     "You're letting yourself down" (guilt — not acceptable) → 🔴
-  → "Your [friends/team/competitors] are [ahead/doing better]" → 🟡
-  → Notification copy containing "neglect", "fail", "behind", "disappointing" → 🔴
-  → Empty state copy implying the user is at fault for having no data → 🟡
+     "You're letting yourself down" (guilt — not acceptable) →
+  → "Your [friends/team/competitors] are [ahead/doing better]" →
+  → Notification copy containing "neglect", "fail", "behind", "disappointing" →
+  → Empty state copy implying the user is at fault for having no data →
 ```
 
-**Severity:** 🔴 Deceptive (explicit shame/guilt) · 🟡 Questionable (implied inadequacy)
+**Severity:**  Deceptive (explicit shame/guilt) ·  Questionable (implied inadequacy)
 
 **Fix:** Motivational copy should focus on positive outcomes, not negative self-image. "Keep the momentum going!" not "You're falling behind." "Resume where you left off" not "You've been neglecting this." Acknowledge inactivity neutrally; never shame it.
 
@@ -773,13 +773,13 @@ Search string literals for guilt/shame patterns:
 **Code detection:**
 ```
 Search for disproportionate warning language:
-  → "EXPOSED", "COMPROMISED", "AT RISK", "VULNERABLE" for non-critical states → 🟡
-  → Red alert styling on informational messages → 🟡 (also a Cat 2 issue)
-  → Modal that cannot be dismissed without taking an action (forced fear conversion) → 🔴
-  → "Your data could be stolen" messaging on a standard upsell prompt → 🔴
+  → "EXPOSED", "COMPROMISED", "AT RISK", "VULNERABLE" for non-critical states →
+  → Red alert styling on informational messages →  (also a Cat 2 issue)
+  → Modal that cannot be dismissed without taking an action (forced fear conversion) →
+  → "Your data could be stolen" messaging on a standard upsell prompt →
 ```
 
-**Severity:** 🟡 Questionable (exaggerated risk) · 🔴 Deceptive (fabricated risk used for conversion)
+**Severity:**  Questionable (exaggerated risk) ·  Deceptive (fabricated risk used for conversion)
 
 **Fix:** Risk communication should be proportionate to actual risk. Use appropriate severity levels: info, warning, error. Reserve red/alarm styling for genuine high-severity states. Never exaggerate risk to drive upgrades or signups.
 
@@ -802,16 +802,16 @@ Search for disproportionate warning language:
 **Code detection:**
 ```
 Patterns to flag:
-  → Notification badge count hidden behind interaction (revealed on click/hover) → 🟡
-  → "You almost had it" / "Items in your cart are selling out" language → 🟡
-  → Countdown on cart abandonment email links → 🟡
-  → Variable reward patterns: content that withholds gratification unpredictably → 🟡
+  → Notification badge count hidden behind interaction (revealed on click/hover) →
+  → "You almost had it" / "Items in your cart are selling out" language →
+  → Countdown on cart abandonment email links →
+  → Variable reward patterns: content that withholds gratification unpredictably →
     (infinite scroll with delayed content reveal, pull-to-refresh with spinner)
   → Push notification permission request immediately after first valuable action
-    (harvesting emotional high for permission) → 🟡
+    (harvesting emotional high for permission) →
 ```
 
-**Severity:** 🟡 Questionable
+**Severity:**  Questionable
 
 **Fix:** Notification counts should be visible without requiring interaction. Cart and wish-list reminders can reference real urgency but should not manufacture emotional pressure. Push notification permission requests should be contextual (triggered when a feature requires it), not timed to emotional peaks.
 

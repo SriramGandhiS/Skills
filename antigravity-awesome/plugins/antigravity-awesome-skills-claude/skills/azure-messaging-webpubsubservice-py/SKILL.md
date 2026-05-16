@@ -213,9 +213,9 @@ async def broadcast():
         hub="my-hub",
         credential=credential
     )
-    
+
     await client.send_to_all("Hello async!", content_type="text/plain")
-    
+
     await client.close()
     await credential.close()
 ```

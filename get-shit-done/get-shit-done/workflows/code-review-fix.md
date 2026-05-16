@@ -239,19 +239,19 @@ if [ "$AUTO_MODE" = "true" ]; then
   # Total fix passes = MAX_ITERATIONS. Loop uses -lt (not -le) intentionally.
   ITERATION=1
   MAX_ITERATIONS=3
-  
+
   while [ $ITERATION -lt $MAX_ITERATIONS ]; do
     ITERATION=$((ITERATION + 1))
-    
+
     echo ""
     echo "═══════════════════════════════════════════════════════"
     echo "  --auto: Starting iteration ${ITERATION}/${MAX_ITERATIONS}"
     echo "═══════════════════════════════════════════════════════"
     echo ""
-    
+
     # Re-review using same depth and file scope as original review
     echo "Re-reviewing phase ${PHASE_ARG} at ${REVIEW_DEPTH} depth..."
-    
+
     # Backup previous REVIEW.md and REVIEW-FIX.md before overwriting
     if [ -f "${REVIEW_PATH}" ]; then
       cp "${REVIEW_PATH}" "${REVIEW_PATH%.md}.iter${ITERATION}.md" 2>/dev/null || true
@@ -259,7 +259,7 @@ if [ "$AUTO_MODE" = "true" ]; then
     if [ -f "${FIX_REPORT_PATH}" ]; then
       cp "${FIX_REPORT_PATH}" "${FIX_REPORT_PATH%.md}.iter${ITERATION}.md" 2>/dev/null || true
     fi
-    
+
     # If original review had explicit file list, pass it safely to re-review agent
     FILES_CONFIG=""
     if [ ${#REVIEW_FILES_ARRAY[@]} -gt 0 ]; then
@@ -269,7 +269,7 @@ if [ "$AUTO_MODE" = "true" ]; then
   - ${f}"
       done
     fi
-    
+
     # Spawn gsd-code-reviewer agent to re-review
     # (This overwrites REVIEW_PATH with latest review state)
     Agent(subagent_type="gsd-code-reviewer", prompt="
@@ -284,7 +284,7 @@ Re-review the phase at ${REVIEW_DEPTH} depth. Write findings to ${REVIEW_PATH}.
 Do NOT commit the output — the orchestrator handles that.
 ")
     # ORCHESTRATOR RULE — CODEX RUNTIME: After calling Agent() above, stop working on this task immediately. Do not read more files, edit code, or run tests related to this task while the subagent is active. Wait for the subagent to return its result before proceeding.
-    
+
     # Check new REVIEW.md status
     NEW_STATUS=$(REVIEW_PATH="${REVIEW_PATH}" node -e "
       const fs = require('fs');
@@ -296,16 +296,16 @@ Do NOT commit the output — the orchestrator handles that.
         console.log('unknown');
       }
     " 2>/dev/null)
-    
+
     if [ "$NEW_STATUS" = "clean" ]; then
       echo ""
       echo "✓ All issues resolved after iteration ${ITERATION}."
       break
     fi
-    
+
     # Still has issues — spawn fixer again
     echo "Issues remain. Applying fixes for iteration ${ITERATION}..."
-    
+
     Agent(subagent_type="gsd-code-fixer", prompt="
 <files_to_read>
 ${REVIEW_PATH}
@@ -323,18 +323,18 @@ iteration: ${ITERATION}
 Read REVIEW.md findings, apply fixes, commit each atomically, write REVIEW-FIX.md (overwrite previous). Do NOT commit REVIEW-FIX.md.
 ")
     # ORCHESTRATOR RULE — CODEX RUNTIME: After calling Agent() above, stop working on this task immediately. Do not read more files, edit code, or run tests related to this task while the subagent is active. Wait for the subagent to return its result before proceeding.
-    
+
     # Check if fixer succeeded
     if [ ! -f "${FIX_REPORT_PATH}" ]; then
       echo "Warning: Iteration ${ITERATION} fixer failed to produce fix report. Stopping auto-loop."
       break
     fi
   done
-  
+
   # After loop completes
   if [ $ITERATION -ge $MAX_ITERATIONS ]; then
     echo ""
-    echo "⚠ Reached maximum iterations (${MAX_ITERATIONS}). Remaining issues documented in REVIEW-FIX.md."
+    echo "WARNING: Reached maximum iterations (${MAX_ITERATIONS}). Remaining issues documented in REVIEW-FIX.md."
   fi
 fi
 ```
@@ -358,10 +358,10 @@ if [ -f "${FIX_REPORT_PATH}" ]; then
     const match = content.match(/^---\n([\s\S]*?)\n---/);
     if (match && /status:/.test(match[1])) { console.log('valid'); } else { console.log('invalid'); }
   " 2>/dev/null)
-  
+
   if [ "$HAS_STATUS" = "valid" ]; then
     echo "REVIEW-FIX.md created at ${FIX_REPORT_PATH}"
-    
+
     if [ "$COMMIT_DOCS" = "true" ]; then
       gsd-sdk query commit \
         "docs(${PADDED_PHASE}): add code review fix report" \
@@ -391,7 +391,7 @@ if [ ! -f "${FIX_REPORT_PATH}" ]; then
   echo ""
   echo "═══════════════════════════════════════════════════════════════"
   echo ""
-  echo "  ⚠ No fix report generated"
+  echo "  WARNING: No fix report generated"
   echo ""
   echo "───────────────────────────────────────────────────────────────"
   echo ""
@@ -463,7 +463,7 @@ fi
 If status is "partial" or "none_fixed":
 ```bash
 if [ "$FIX_STATUS" = "partial" ] || [ "$FIX_STATUS" = "none_fixed" ]; then
-  echo "⚠ Some issues could not be fixed automatically."
+  echo "WARNING: Some issues could not be fixed automatically."
   echo ""
   echo "Full report: ${FIX_REPORT_PATH}"
   echo ""

@@ -20,7 +20,7 @@ stages:
     enabled: true
     prompt: >
       Analyze the serverless platform and configuration.
-      
+
       Identify:
       1. Cloud provider (AWS Lambda, Azure Functions, GCP Cloud Functions)
       2. Runtime and version (Node.js, Python, Go, Java)
@@ -28,7 +28,7 @@ stages:
       4. Function trigger types (HTTP, S3, SQS, EventBridge, etc.)
       5. Infrastructure as Code configuration
       6. Multi-region deployment strategy
-      
+
       Output JSON with:
       - "provider": serverless platform
       - "runtime": language runtime
@@ -44,7 +44,7 @@ stages:
     enabled: true
     prompt: >
       Document function design patterns and best practices.
-      
+
       Cover:
       1. Single-purpose function design
       2. Function composition patterns
@@ -52,7 +52,7 @@ stages:
       4. Input validation and parsing
       5. Response formatting
       6. Error handling strategies
-      
+
       Output JSON with:
       - "design_principles": function design
       - "composition": composing functions
@@ -68,7 +68,7 @@ stages:
     enabled: true
     prompt: >
       Document cold start optimization techniques.
-      
+
       Include:
       1. Dependency optimization (tree shaking, bundling)
       2. Runtime selection impact (Node.js vs Python vs Go)
@@ -76,7 +76,7 @@ stages:
       4. Provisioned concurrency configuration
       5. Initialization code optimization
       6. Lazy loading patterns
-      
+
       Output JSON with:
       - "dependency_opt": dependency management
       - "runtime_selection": runtime comparison
@@ -92,14 +92,14 @@ stages:
     enabled: true
     prompt: >
       Document state management in stateless functions.
-      
+
       Cover:
       1. External state storage (DynamoDB, Redis, S3)
       2. Caching layers (ElastiCache, DAX)
       3. Session management strategies
       4. Connection pooling (RDS Proxy, MongoDB)
       5. State machine orchestration (Step Functions)
-      
+
       Output JSON with:
       - "external_storage": state persistence
       - "caching": cache strategies
@@ -114,7 +114,7 @@ stages:
     enabled: true
     prompt: >
       Document serverless security patterns.
-      
+
       Include:
       1. IAM role configuration (least privilege)
       2. VPC and network isolation
@@ -122,7 +122,7 @@ stages:
       4. API Gateway security (throttling, WAF)
       5. Environment variable encryption
       6. Function-level authentication
-      
+
       Output JSON with:
       - "iam_roles": permission configuration
       - "network_isolation": VPC setup
@@ -138,7 +138,7 @@ stages:
     enabled: true
     prompt: >
       Document serverless observability patterns.
-      
+
       Cover:
       1. Structured logging (JSON format)
       2. Distributed tracing (X-Ray, OpenTelemetry)
@@ -146,7 +146,7 @@ stages:
       4. Log aggregation and analysis
       5. Cost monitoring and optimization
       6. Dead letter queue monitoring
-      
+
       Output JSON with:
       - "logging": structured logging
       - "tracing": trace collection
@@ -162,7 +162,7 @@ stages:
     enabled: true
     prompt: >
       Document serverless testing strategies.
-      
+
       Include:
       1. Local development (SAM, Serverless Offline)
       2. Unit testing handler functions
@@ -170,7 +170,7 @@ stages:
       4. Mocking cloud services
       5. Load testing serverless apps
       6. CI/CD for serverless deployments
-      
+
       Output JSON with:
       - "local_dev": local emulation
       - "unit_tests": handler testing

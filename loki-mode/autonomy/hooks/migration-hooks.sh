@@ -1,32 +1,28 @@
 #!/usr/bin/env bash
 #===============================================================================
 # Migration Hooks Engine
-#
-# Deterministic shell-level enforcement for migration pipelines.
+# # Deterministic shell-level enforcement for migration pipelines.
 # These hooks run WHETHER THE AGENT COOPERATES OR NOT.
 # They are NOT LLM calls. They are shell scripts with binary pass/fail.
-#
-# Lifecycle points:
-#   pre_file_edit    - Before agent modifies any source file (can BLOCK)
-#   post_file_edit   - After agent modifies a source file (runs tests)
-#   post_step        - After agent declares a migration step complete
-#   pre_phase_gate   - Before transitioning between phases
-#   on_agent_stop    - When agent tries to declare migration complete
-#
-# Configuration:
-#   .loki/migration-hooks.yaml (project-level, optional)
-#   Defaults applied when no config exists.
-#
-# Environment:
-#   LOKI_MIGRATION_ID     - Current migration identifier
-#   LOKI_MIGRATION_DIR    - Path to migration artifacts directory
-#   LOKI_CODEBASE_PATH    - Path to target codebase
-#   LOKI_CURRENT_PHASE    - Current migration phase
-#   LOKI_CURRENT_STEP     - Current step ID (during migrate phase)
-#   LOKI_TEST_COMMAND      - Test command to run (auto-detected or configured)
-#   LOKI_FEATURES_PATH    - Path to features.json
-#   LOKI_AGENT_ID         - ID of the current agent
-#   LOKI_FILE_PATH        - Path of file being modified (for file hooks)
+# # Lifecycle points:
+# pre_file_edit    - Before agent modifies any source file (can BLOCK)
+# post_file_edit   - After agent modifies a source file (runs tests)
+# post_step        - After agent declares a migration step complete
+# pre_phase_gate   - Before transitioning between phases
+# on_agent_stop    - When agent tries to declare migration complete
+# # Configuration:
+# .loki/migration-hooks.yaml (project-level, optional)
+# Defaults applied when no config exists.
+# # Environment:
+# LOKI_MIGRATION_ID     - Current migration identifier
+# LOKI_MIGRATION_DIR    - Path to migration artifacts directory
+# LOKI_CODEBASE_PATH    - Path to target codebase
+# LOKI_CURRENT_PHASE    - Current migration phase
+# LOKI_CURRENT_STEP     - Current step ID (during migrate phase)
+# LOKI_TEST_COMMAND      - Test command to run (auto-detected or configured)
+# LOKI_FEATURES_PATH    - Path to features.json
+# LOKI_AGENT_ID         - ID of the current agent
+# LOKI_FILE_PATH        - Path of file being modified (for file hooks)
 #===============================================================================
 
 set -euo pipefail

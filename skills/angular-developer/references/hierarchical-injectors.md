@@ -1,11 +1,11 @@
-﻿# Hierarchical Injectors
+# Hierarchical Injectors
 
 Angular's dependency injection system is hierarchical, meaning services can be scoped to different levels of the application.
 
 ## Types of Injector Hierarchies
 
-1. **`EnvironmentInjector` Hierarchy**: Configured via `@Injectable({ providedIn: 'root' })` or `ApplicationConfig.providers` during bootstrap. These are global singletons.
-2. **`ElementInjector` Hierarchy**: Created implicitly at each DOM element. Configured via the `providers` or `viewProviders` array in `@Component()` or `@Directive()`.
+1. **`EnvironmentInjector`Hierarchy**: Configured via`@Injectable({ providedIn: 'root' })`or`ApplicationConfig.providers` during bootstrap. These are global singletons.
+2. **`ElementInjector`Hierarchy**: Created implicitly at each DOM element. Configured via the`providers`or`viewProviders`array in`@Component()`or`@Directive()`.
 
 ## Resolution Rules
 
@@ -19,9 +19,9 @@ When a dependency is requested, Angular resolves it in two phases:
 
 You can alter how Angular searches for a dependency using the options object in `inject()`:
 
-- **`optional`**: If the dependency isn't found, return `null` instead of throwing an error.
-- **`self`**: Only check the current `ElementInjector`. Do not look up the parent tree.
-- **`skipSelf`**: Start searching in the parent `ElementInjector`, skipping the current element.
+- **`optional`**: If the dependency isn't found, return`null` instead of throwing an error.
+- **`self`**: Only check the current`ElementInjector`. Do not look up the parent tree.
+- **`skipSelf`**: Start searching in the parent`ElementInjector`, skipping the current element.
 - **`host`**: Stop searching when reaching the host component's view boundary.
 
 ```ts
@@ -35,7 +35,7 @@ export class Example {
 }
 ```
 
-## `providers` vs `viewProviders`
+## `providers`vs`viewProviders`
 
 When providing a service at the component level:
 

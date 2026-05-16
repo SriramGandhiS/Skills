@@ -6,7 +6,7 @@ source: community
 date_added: "2026-02-27"
 ---
 
-# 🤖 LLM Application Patterns
+# LLM Application Patterns
 
 > Production-ready patterns for building LLM applications, inspired by [Dify](https://github.com/langgenius/dify) and industry best practices.
 
@@ -30,7 +30,7 @@ RAG (Retrieval-Augmented Generation) grounds LLM responses in your data.
 
 ```
 ┌─────────────┐     ┌─────────────┐     ┌─────────────┐
-│   Ingest    │────▶│   Retrieve  │────▶│   Generate  │
+│   Ingest    │────│   Retrieve  │────│   Generate  │
 │  Documents  │     │   Context   │     │   Response  │
 └─────────────┘     └─────────────┘     └─────────────┘
       │                   │                   │

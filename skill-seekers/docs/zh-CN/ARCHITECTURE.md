@@ -227,7 +227,7 @@ When content becomes outdated:
 1. **Don't delete immediately** - Breaks external links
 2. **Add deprecation notice**:
    ```markdown
-   > ⚠️ **DEPRECATED**: This document is outdated.
+   > WARNING: **DEPRECATED**: This document is outdated.
    > See [New Guide](path/to/new.md) for current information.
    ```
 3. **Move to archive** after 6 months:

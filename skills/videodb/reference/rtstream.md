@@ -1,4 +1,4 @@
-﻿# RTStream Guide
+# RTStream Guide
 
 ## Overview
 

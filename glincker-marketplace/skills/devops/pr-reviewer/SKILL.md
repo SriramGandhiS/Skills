@@ -10,7 +10,7 @@ keywords: [devops, pr-review, code-review, automation, multi-agent, quality-assu
 
 # Autonomous PR Reviewer
 
-**⚡ UNIQUE FEATURE**: Multi-agent review system with specialized reviewers for security, performance, testing, and architecture - the first autonomous PR review skill with parallel agent coordination.
+**UNIQUE FEATURE**: Multi-agent review system with specialized reviewers for security, performance, testing, and architecture - the first autonomous PR review skill with parallel agent coordination.
 
 ## What This Skill Does
 
@@ -157,35 +157,35 @@ Provide:
    ```markdown
    # PR Review Summary
 
-   ## 📊 Overview
+   ##  Overview
    - Files changed: X
    - Lines added: Y
    - Lines removed: Z
    - Overall rating: [Excellent/Good/Needs Work/Reject]
 
-   ## 🔒 Security (Critical: X, High: Y, Medium: Z)
+   ##  Security (Critical: X, High: Y, Medium: Z)
    [Agent 1 findings summary]
 
-   ## ⚡ Performance (Issues: X)
+   ##  Performance (Issues: X)
    [Agent 2 findings summary]
 
-   ## ✅ Testing (Coverage: X%)
+   ## PASS: Testing (Coverage: X%)
    [Agent 3 findings summary]
 
-   ## 🏗️ Architecture
+   ##  Architecture
    [Agent 4 findings summary]
 
-   ## 📝 Style & Documentation
+   ##  Style & Documentation
    [Agent 5 findings summary]
 
-   ## 🎯 Action Items
+   ##  Action Items
    1. [Priority action with fix]
    2. [Priority action with fix]
 
-   ## 💡 Suggested Changes
+   ##  Suggested Changes
    [Code blocks with suggested improvements]
 
-   ## ✨ Highlights
+   ##  Highlights
    [Positive aspects of the PR]
    ```
 
@@ -219,17 +219,17 @@ Offer the user:
 
 **Output:**
 ```
-🔍 PR #123 Review Complete
+ PR #123 Review Complete
 
-📊 Overall: Good (minor improvements needed)
+ Overall: Good (minor improvements needed)
 
-🔒 Security: ✅ No issues found
-⚡ Performance: ⚠️ 1 issue found
-✅ Testing: ⚠️ Coverage 78% (target: 80%)
-🏗️ Architecture: ✅ Well designed
-📝 Style: ⚠️ 3 minor issues
+ Security: PASS: No issues found
+ Performance: WARNING: 1 issue found
+PASS: Testing: WARNING: Coverage 78% (target: 80%)
+ Architecture: PASS: Well designed
+ Style: WARNING: 3 minor issues
 
-📋 Action Items:
+ Action Items:
 1. Add database index for user_id column (performance)
 2. Add tests for error scenarios (testing)
 3. Update function documentation (style)
@@ -368,4 +368,4 @@ Apache License 2.0 - See [LICENSE](../../../LICENSE)
 
 ---
 
-**🌟 This is a UNIQUE skill not available in other marketplaces!**
+**This is a UNIQUE skill not available in other marketplaces!**

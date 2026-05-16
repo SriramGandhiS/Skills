@@ -2,7 +2,7 @@
 
 ## Schema Validation 2.0 Setup
 
-> ⚠️ **Classic Schema Validation deprecated.** Use Schema Validation 2.0.
+> WARNING: **Classic Schema Validation deprecated.** Use Schema Validation 2.0.
 
 **Upload schema (Dashboard):**
 ```

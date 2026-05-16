@@ -71,18 +71,18 @@ class Notifier:
 
     def _send_console(self, payload: WebhookPayload):
         """Print to console."""
-        print(f"\n📢 {payload.event.upper()}: {payload.skill_name}")
+        print(f"\n {payload.event.upper()}: {payload.skill_name}")
 
         if payload.changes:
             changes = payload.changes
             if changes.has_changes:
                 print(f"   Changes detected: {changes.change_count}")
                 if changes.added:
-                    print(f"   ✅ Added: {len(changes.added)} pages")
+                    print(f"   PASS: Added: {len(changes.added)} pages")
                 if changes.modified:
-                    print(f"   ✏️  Modified: {len(changes.modified)} pages")
+                    print(f"     Modified: {len(changes.modified)} pages")
                 if changes.deleted:
-                    print(f"   ❌ Deleted: {len(changes.deleted)} pages")
+                    print(f"   FAIL: Deleted: {len(changes.deleted)} pages")
             else:
                 print("   No changes detected")
 
@@ -96,9 +96,9 @@ class Notifier:
                 timeout=10,
             )
             response.raise_for_status()
-            print(f"✅ Webhook notification sent to {self.webhook_url}")
+            print(f"PASS: Webhook notification sent to {self.webhook_url}")
         except Exception as e:
-            print(f"❌ Failed to send webhook: {e}")
+            print(f"FAIL: Failed to send webhook: {e}")
 
     def _send_slack(self, payload: WebhookPayload):
         """Send to Slack via webhook."""
@@ -129,11 +129,11 @@ class Notifier:
 
             response = requests.post(self.slack_webhook, json=slack_payload, timeout=10)
             response.raise_for_status()
-            print("✅ Slack notification sent")
+            print("PASS: Slack notification sent")
         except Exception as e:
-            print(f"❌ Failed to send Slack notification: {e}")
+            print(f"FAIL: Failed to send Slack notification: {e}")
 
     def _send_email(self, payload: WebhookPayload):
         """Send email notification."""
         # TODO: Implement SMTP email sending
-        print(f"📧 Email notification (not implemented): {self.email_recipients}")
+        print(f" Email notification (not implemented): {self.email_recipients}")

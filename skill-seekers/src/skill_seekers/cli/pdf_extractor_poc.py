@@ -149,7 +149,7 @@ class PDFExtractor:
         # If page has very little text, it might be scanned
         if len(text) < 50 and self.use_ocr:
             if not TESSERACT_AVAILABLE:
-                self.log("⚠️  OCR requested but pytesseract not installed")
+                self.log("WARNING:  OCR requested but pytesseract not installed")
                 self.log("   Install with: pip install pytesseract Pillow")
                 return text
 
@@ -884,7 +884,7 @@ class PDFExtractor:
 
         Returns dict with metadata and pages array.
         """
-        print(f"\n📄 Extracting from: {self.pdf_path}")
+        print(f"\n Extracting from: {self.pdf_path}")
 
         # Open PDF (with password support - Priority 2)
         try:
@@ -893,19 +893,19 @@ class PDFExtractor:
             # Handle encrypted PDFs (Priority 2)
             if self.doc.is_encrypted:
                 if self.password:
-                    print("   🔐 PDF is encrypted, trying password...")
+                    print("    PDF is encrypted, trying password...")
                     if self.doc.authenticate(self.password):
-                        print("   ✅ Password accepted")
+                        print("   PASS: Password accepted")
                     else:
-                        print("   ❌ Invalid password")
+                        print("   FAIL: Invalid password")
                         return None
                 else:
-                    print("   ❌ PDF is encrypted but no password provided")
+                    print("   FAIL: PDF is encrypted but no password provided")
                     print("   Use --password option to provide password")
                     return None
 
         except Exception as e:
-            print(f"❌ Error opening PDF: {e}")
+            print(f"FAIL: Error opening PDF: {e}")
             return None
 
         print(f"   Pages: {len(self.doc)}")
@@ -920,23 +920,23 @@ class PDFExtractor:
         # Show feature status
         if self.use_ocr:
             status = (
-                "✅ enabled" if TESSERACT_AVAILABLE else "⚠️  not available (install pytesseract)"
+                "PASS: enabled" if TESSERACT_AVAILABLE else "WARNING:  not available (install pytesseract)"
             )
             print(f"   OCR: {status}")
         if self.extract_tables:
-            print("   Table extraction: ✅ enabled")
+            print("   Table extraction: PASS: enabled")
         if self.parallel:
-            status = "✅ enabled" if CONCURRENT_AVAILABLE else "⚠️  not available"
+            status = "PASS: enabled" if CONCURRENT_AVAILABLE else "WARNING:  not available"
             print(f"   Parallel processing: {status} ({self.max_workers} workers)")
         if self.use_cache:
-            print("   Caching: ✅ enabled")
+            print("   Caching: PASS: enabled")
 
         print("")
 
         # Extract each page (with parallel processing - Priority 3)
         if self.parallel and CONCURRENT_AVAILABLE and len(self.doc) > 5:
             print(
-                f"🚀 Extracting {len(self.doc)} pages in parallel ({self.max_workers} workers)..."
+                f" Extracting {len(self.doc)} pages in parallel ({self.max_workers} workers)..."
             )
             with concurrent.futures.ThreadPoolExecutor(max_workers=self.max_workers) as executor:
                 page_numbers = list(range(len(self.doc)))
@@ -948,11 +948,11 @@ class PDFExtractor:
                 self.pages.append(page_data)
 
         # Merge code blocks that span across pages
-        self.log("\n🔗 Merging code blocks across pages...")
+        self.log("\n Merging code blocks across pages...")
         self.pages = self.merge_continued_code_blocks(self.pages)
 
         # Create chunks
-        self.log(f"\n📦 Creating chunks (chunk_size={self.chunk_size})...")
+        self.log(f"\n Creating chunks (chunk_size={self.chunk_size})...")
         chunks = self.create_chunks(self.pages)
 
         # Build summary
@@ -1024,7 +1024,7 @@ class PDFExtractor:
         # Close document
         self.doc.close()
 
-        print("\n✅ Extraction complete:")
+        print("\nPASS: Extraction complete:")
         print(f"   Total characters: {total_chars:,}")
         print(f"   Code blocks found: {total_code_blocks}")
         print(f"   Headings found: {total_headings}")
@@ -1041,7 +1041,7 @@ class PDFExtractor:
 
         # Print quality statistics (NEW in B1.4)
         if quality_stats:
-            print("\n📊 Code Quality Statistics:")
+            print("\n Code Quality Statistics:")
             print(f"   Average quality: {quality_stats['average_quality']:.1f}/10")
             print(f"   Average confidence: {quality_stats['average_confidence']:.1%}")
             print(
@@ -1131,11 +1131,11 @@ Examples:
 
     # Validate input file
     if not os.path.exists(args.pdf_file):
-        print(f"❌ Error: File not found: {args.pdf_file}")
+        print(f"FAIL: Error: File not found: {args.pdf_file}")
         sys.exit(1)
 
     if not args.pdf_file.lower().endswith(".pdf"):
-        print("⚠️  Warning: File does not have .pdf extension")
+        print("WARNING:  Warning: File does not have .pdf extension")
 
     # Extract
     extractor = PDFExtractor(
@@ -1167,7 +1167,7 @@ Examples:
                 json.dump(result, f, indent=2, ensure_ascii=False)
             else:
                 json.dump(result, f, ensure_ascii=False)
-        print(f"\n💾 Saved to: {args.output}")
+        print(f"\n Saved to: {args.output}")
     else:
         # Print to stdout
         if args.pretty:

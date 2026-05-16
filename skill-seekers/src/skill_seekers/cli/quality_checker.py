@@ -420,7 +420,7 @@ def print_report(report: QualityReport, verbose: bool = False):
 
     # Errors
     if report.errors:
-        print(f"❌ ERRORS ({len(report.errors)}):")
+        print(f"FAIL: ERRORS ({len(report.errors)}):")
         for issue in report.errors:
             location = (
                 f" ({issue.file}:{issue.line})"
@@ -434,7 +434,7 @@ def print_report(report: QualityReport, verbose: bool = False):
 
     # Warnings
     if report.warnings:
-        print(f"⚠️  WARNINGS ({len(report.warnings)}):")
+        print(f"WARNING:  WARNINGS ({len(report.warnings)}):")
         for issue in report.warnings:
             location = (
                 f" ({issue.file}:{issue.line})"
@@ -448,7 +448,7 @@ def print_report(report: QualityReport, verbose: bool = False):
 
     # Info (only in verbose mode)
     if verbose and report.info:
-        print(f"ℹ️  INFO ({len(report.info)}):")
+        print(f"  INFO ({len(report.info)}):")
         for issue in report.info:
             location = f" ({issue.file})" if issue.file else ""
             print(f"   [{issue.category}] {issue.message}{location}")
@@ -456,11 +456,11 @@ def print_report(report: QualityReport, verbose: bool = False):
 
     # Summary
     if report.is_excellent:
-        print("✅ EXCELLENT! No issues found.")
+        print("PASS: EXCELLENT! No issues found.")
     elif not report.has_errors:
         print("✓ GOOD! No errors, but some warnings to review.")
     else:
-        print("❌ NEEDS IMPROVEMENT! Please fix errors before packaging.")
+        print("FAIL: NEEDS IMPROVEMENT! Please fix errors before packaging.")
 
     print()
 
@@ -498,7 +498,7 @@ Examples:
     # Check if directory exists
     skill_dir = Path(args.skill_directory)
     if not skill_dir.exists():
-        print(f"❌ Directory not found: {skill_dir}")
+        print(f"FAIL: Directory not found: {skill_dir}")
         sys.exit(1)
 
     # Run quality checks

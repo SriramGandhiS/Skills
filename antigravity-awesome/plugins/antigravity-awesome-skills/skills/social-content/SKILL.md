@@ -705,14 +705,14 @@ Take proven patterns and make them yours with these voice principles:
 
 **Specific > Vague**
 ```
-❌ "I made good revenue"
-✅ "I made $47,329"
+FAIL: "I made good revenue"
+PASS: "I made $47,329"
 
-❌ "It took a while"
-✅ "It took 47 days"
+FAIL: "It took a while"
+PASS: "It took 47 days"
 
-❌ "A lot of people"
-✅ "2,847 people"
+FAIL: "A lot of people"
+PASS: "2,847 people"
 ```
 
 **Short. Breathe. Land.**
@@ -722,9 +722,9 @@ Take proven patterns and make them yours with these voice principles:
 - Create rhythm: short, short, longer explanation
 
 ```
-❌ "I spent three years building my business the wrong way before I finally realized that the key to success was focusing on fewer things and doing them exceptionally well."
+FAIL: "I spent three years building my business the wrong way before I finally realized that the key to success was focusing on fewer things and doing them exceptionally well."
 
-✅ "I built wrong for 3 years.
+PASS: "I built wrong for 3 years.
 
 Then I figured it out.
 
@@ -741,9 +741,9 @@ Everything changed."
 - Connect the feeling to the lesson
 
 ```
-❌ "Here's what I learned about pricing"
+FAIL: "Here's what I learned about pricing"
 
-✅ "I was terrified to raise my prices.
+PASS: "I was terrified to raise my prices.
 
 My hands were shaking when I sent the email.
 

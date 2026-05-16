@@ -13,14 +13,14 @@ stages:
     enabled: true
     prompt: >
       Document feature engineering pipeline architecture.
-      
+
       Identify:
       1. Feature store usage (Feast, Tecton, etc.)
       2. Online vs offline features
       3. Feature transformation pipeline
       4. Feature validation
       5. Feature lineage
-      
+
       Output JSON with:
       - "feature_store": feature store setup
       - "online_offline": online vs offline distinction
@@ -34,14 +34,14 @@ stages:
     enabled: true
     prompt: >
       Document types of features and their handling.
-      
+
       Cover:
       1. Numerical features (scaling, normalization)
       2. Categorical features (encoding strategies)
       3. Text features (embedding, TF-IDF)
       4. Temporal features (datetime engineering)
       5. Geospatial features
-      
+
       Output JSON with:
       - "numerical": numerical handling
       - "categorical": encoding methods
@@ -55,14 +55,14 @@ stages:
     enabled: true
     prompt: >
       Document feature selection strategies.
-      
+
       Include:
       1. Correlation analysis
       2. Feature importance (tree-based)
       3. Statistical tests
       4. Dimensionality reduction (PCA, etc.)
       5. Recursive feature elimination
-      
+
       Output JSON with:
       - "correlation": correlation analysis
       - "importance": importance methods

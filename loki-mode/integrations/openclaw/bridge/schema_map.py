@@ -15,8 +15,7 @@ then maps to OpenClaw gateway message format.
 """
 
 # Mapping table: canonical event key -> OpenClaw message definition.
-#
-# Canonical keys use dot notation: "session.start", "phase.change", etc.
+# # Canonical keys use dot notation: "session.start", "phase.change", etc.
 # The map_event() function normalizes both Loki formats into these keys.
 LOKI_TO_OPENCLAW = {
     "session.start": {

@@ -26,11 +26,11 @@
 
 Git-based config sources allow you to fetch config files from **private/team git repositories** in addition to the public API. This unlocks:
 
-- 🔐 **Private configs** - Company/internal documentation
-- 👥 **Team collaboration** - Share configs across 3-5 person teams
-- 🏢 **Enterprise scale** - Support 500+ developers
-- 📦 **Custom collections** - Curated config repositories
-- 🌐 **Decentralized** - Like npm (public + private registries)
+- **Private configs** - Company/internal documentation
+- **Team collaboration** - Share configs across 3-5 person teams
+- **Enterprise scale** - Support 500+ developers
+- **Custom collections** - Curated config repositories
+- **Decentralized** - Like npm (public + private registries)
 
 ### How it works
 
@@ -259,19 +259,19 @@ list_config_sources(enabled_only=true)
 
 **Output:**
 ```
-📋 Config Sources (2 total)
+ Config Sources (2 total)
 
 ✓ **team**
-  📁 https://github.com/myorg/configs.git
-  🔖 Type: github | 🌿 Branch: main
-  🔑 Token: GITHUB_TOKEN | ⚡ Priority: 1
-  🕒 Added: 2025-12-21 10:00:00
+   https://github.com/myorg/configs.git
+   Type: github |  Branch: main
+   Token: GITHUB_TOKEN |  Priority: 1
+   Added: 2025-12-21 10:00:00
 
 ✓ **company**
-  📁 https://gitlab.company.com/configs.git
-  🔖 Type: gitlab | 🌿 Branch: develop
-  🔑 Token: GITLAB_TOKEN | ⚡ Priority: 2
-  🕒 Added: 2025-12-21 11:00:00
+   https://gitlab.company.com/configs.git
+   Type: gitlab |  Branch: develop
+   Token: GITLAB_TOKEN |  Priority: 2
+   Added: 2025-12-21 11:00:00
 ```
 
 ### remove_config_source
@@ -340,10 +340,10 @@ fetch_config(list_available=true)
 ### Environment Variables Only
 
 Tokens are **ONLY** stored in environment variables. This is:
-- ✅ **Secure** - Not in files, not in git
-- ✅ **Standard** - Same as GitHub CLI, Docker, etc.
-- ✅ **Temporary** - Cleared on logout
-- ✅ **Flexible** - Different tokens for different services
+- PASS: **Secure** - Not in files, not in git
+- PASS: **Standard** - Same as GitHub CLI, Docker, etc.
+- PASS: **Temporary** - Cleared on logout
+- PASS: **Flexible** - Different tokens for different services
 
 ### Creating Tokens
 
@@ -431,10 +431,10 @@ fetch_config(source="team", config_name="react-internal")
 ```
 
 **Benefits:**
-- ✅ Shared configs across team
-- ✅ Version controlled
-- ✅ Private to company
-- ✅ Easy updates (git push)
+- PASS: Shared configs across team
+- PASS: Version controlled
+- PASS: Private to company
+- PASS: Easy updates (git push)
 
 ### Enterprise (500+ developers)
 
@@ -478,11 +478,11 @@ fetch_config(config_name="react")  # Falls back to public API
 ```
 
 **Benefits:**
-- ✅ Centralized config management
-- ✅ Team-specific overrides
-- ✅ Fallback to public configs
-- ✅ Priority-based resolution
-- ✅ Scales to hundreds of developers
+- PASS: Centralized config management
+- PASS: Team-specific overrides
+- PASS: Fallback to public configs
+- PASS: Priority-based resolution
+- PASS: Scales to hundreds of developers
 
 ### Open Source Project
 
@@ -510,10 +510,10 @@ fetch_config(source="myproject", config_name="react")
 ```
 
 **Benefits:**
-- ✅ Curated configs for project
-- ✅ No API dependency
-- ✅ Community contributions via PR
-- ✅ Version controlled
+- PASS: Curated configs for project
+- PASS: No API dependency
+- PASS: Community contributions via PR
+- PASS: Version controlled
 
 ---
 
@@ -576,13 +576,13 @@ add_config_source(name="team", ..., priority=1)  # Checked first
 
 ### Security
 
-✅ **DO:**
+PASS: **DO:**
 - Use environment variables for tokens
 - Use private repos for sensitive configs
 - Rotate tokens regularly
 - Use fine-grained tokens (read-only if possible)
 
-❌ **DON'T:**
+FAIL: **DON'T:**
 - Commit tokens to git
 - Share tokens between people
 - Use personal tokens for teams (use service accounts)

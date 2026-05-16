@@ -20,7 +20,7 @@ stages:
     enabled: true
     prompt: >
       Analyze the build tool configuration.
-      
+
       Identify:
       1. Primary build tool (Vite, Webpack, esbuild, Rollup, Parcel)
       2. Configuration file structure
@@ -28,7 +28,7 @@ stages:
       4. Entry points and output configuration
       5. Dev server configuration
       6. Plugin ecosystem
-      
+
       Output JSON with:
       - "build_tool": primary tool and version
       - "config_structure": configuration files
@@ -44,7 +44,7 @@ stages:
     enabled: true
     prompt: >
       Document bundling and code splitting strategies.
-      
+
       Cover:
       1. Entry chunk configuration
       2. Code splitting (dynamic imports)
@@ -52,7 +52,7 @@ stages:
       4. Tree shaking configuration
       5. Module federation (if used)
       6. Chunk naming and preload
-      
+
       Output JSON with:
       - "entry_chunks": entry configuration
       - "code_splitting": dynamic imports
@@ -68,7 +68,7 @@ stages:
     enabled: true
     prompt: >
       Document static asset handling.
-      
+
       Include:
       1. CSS processing (PostCSS, Sass, Less)
       2. Image optimization
@@ -76,7 +76,7 @@ stages:
       4. Asset inlining thresholds
       5. Copy plugin configuration
       6. Public directory handling
-      
+
       Output JSON with:
       - "css_processing": CSS pipeline
       - "image_optimization": image handling
@@ -92,7 +92,7 @@ stages:
     enabled: true
     prompt: >
       Document transpilation and language support.
-      
+
       Cover:
       1. TypeScript compilation
       2. JSX/TSX transformation
@@ -100,7 +100,7 @@ stages:
       4. Target browser support
       5. Polyfill injection
       6. SWC integration (if used)
-      
+
       Output JSON with:
       - "typescript": TS compilation
       - "jsx": JSX transform
@@ -116,7 +116,7 @@ stages:
     enabled: true
     prompt: >
       Document development experience optimizations.
-      
+
       Include:
       1. Hot Module Replacement (HMR)
       2. Source map configuration
@@ -124,7 +124,7 @@ stages:
       4. Error overlay
       5. Dependency pre-bundling
       6. Build caching strategies
-      
+
       Output JSON with:
       - "hmr": hot reloading
       - "source_maps": debugging maps
@@ -140,7 +140,7 @@ stages:
     enabled: true
     prompt: >
       Document production build optimizations.
-      
+
       Cover:
       1. Minification (Terser, ESBuild)
       2. Compression (gzip, brotli)
@@ -148,7 +148,7 @@ stages:
       4. Content hashing
       5. CSS extraction and minification
       6. Bundle analysis
-      
+
       Output JSON with:
       - "minification": code minification
       - "compression": asset compression
@@ -164,7 +164,7 @@ stages:
     enabled: true
     prompt: >
       Document build testing and validation.
-      
+
       Include:
       1. Build success verification
       2. Bundle size monitoring
@@ -172,7 +172,7 @@ stages:
       4. Type checking integration
       5. Linting in build process
       6. Build reproducibility
-      
+
       Output JSON with:
       - "build_verification": success checks
       - "size_monitoring": bundle tracking

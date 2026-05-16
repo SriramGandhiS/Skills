@@ -33,14 +33,14 @@ function checkPlaywrightInstalled() {
  * Install Playwright if missing
  */
 function installPlaywright() {
-  console.log('📦 Playwright not found. Installing...');
+  console.log(' Playwright not found. Installing...');
   try {
     execSync('npm install', { stdio: 'inherit', cwd: __dirname });
     execSync('npx playwright install chromium', { stdio: 'inherit', cwd: __dirname });
-    console.log('✅ Playwright installed successfully');
+    console.log('PASS: Playwright installed successfully');
     return true;
   } catch (e) {
-    console.error('❌ Failed to install Playwright:', e.message);
+    console.error('FAIL: Failed to install Playwright:', e.message);
     console.error('Please run manually: cd', __dirname, '&& npm run setup');
     return false;
   }
@@ -55,24 +55,24 @@ function getCodeToExecute() {
   // Case 1: File path provided
   if (args.length > 0 && fs.existsSync(args[0])) {
     const filePath = path.resolve(args[0]);
-    console.log(`📄 Executing file: ${filePath}`);
+    console.log(` Executing file: ${filePath}`);
     return fs.readFileSync(filePath, 'utf8');
   }
 
   // Case 2: Inline code provided as argument
   if (args.length > 0) {
-    console.log('⚡ Executing inline code');
+    console.log(' Executing inline code');
     return args.join(' ');
   }
 
   // Case 3: Code from stdin
   if (!process.stdin.isTTY) {
-    console.log('📥 Reading from stdin');
+    console.log(' Reading from stdin');
     return fs.readFileSync(0, 'utf8');
   }
 
   // No input
-  console.error('❌ No code to execute');
+  console.error('FAIL: No code to execute');
   console.error('Usage:');
   console.error('  node run.js script.js          # Execute file');
   console.error('  node run.js "code here"        # Execute inline');
@@ -146,7 +146,7 @@ function getContextOptionsWithHeaders(options = {}) {
   try {
     ${code}
   } catch (error) {
-    console.error('❌ Automation error:', error.message);
+    console.error('FAIL: Automation error:', error.message);
     if (error.stack) {
       console.error(error.stack);
     }
@@ -163,7 +163,7 @@ function getContextOptionsWithHeaders(options = {}) {
   try {
     ${code}
   } catch (error) {
-    console.error('❌ Automation error:', error.message);
+    console.error('FAIL: Automation error:', error.message);
     if (error.stack) {
       console.error(error.stack);
     }
@@ -180,7 +180,7 @@ function getContextOptionsWithHeaders(options = {}) {
  * Main execution
  */
 async function main() {
-  console.log('🎭 Playwright Skill - Universal Executor\n');
+  console.log(' Playwright Skill - Universal Executor\n');
 
   // Clean up old temp files from previous runs
   cleanupOldTempFiles();
@@ -205,16 +205,16 @@ async function main() {
     fs.writeFileSync(tempFile, code, 'utf8');
 
     // Execute the code
-    console.log('🚀 Starting automation...\n');
+    console.log(' Starting automation...\n');
     require(tempFile);
 
     // Note: Temp file will be cleaned up on next run
     // This allows long-running async operations to complete safely
 
   } catch (error) {
-    console.error('❌ Execution failed:', error.message);
+    console.error('FAIL: Execution failed:', error.message);
     if (error.stack) {
-      console.error('\n📋 Stack trace:');
+      console.error('\n Stack trace:');
       console.error(error.stack);
     }
     process.exit(1);
@@ -223,6 +223,6 @@ async function main() {
 
 // Run main function
 main().catch(error => {
-  console.error('❌ Fatal error:', error.message);
+  console.error('FAIL: Fatal error:', error.message);
   process.exit(1);
 });

@@ -1,9 +1,8 @@
 # Release stream policy:
-#   dev   → @canary  (this workflow — preview builds for the long-lived integration branch)
-#   main  → @next    (RC train, see release.yml)
-#   main  → @latest  (stable cuts, see release.yml)
-#
-# Streams do not mix. The publish/tag steps below gate on `refs/heads/dev` so a
+# dev   → @canary  (this workflow — preview builds for the long-lived integration branch)
+# main  → @next    (RC train, see release.yml)
+# main  → @latest  (stable cuts, see release.yml)
+# # Streams do not mix. The publish/tag steps below gate on `refs/heads/dev` so a
 # workflow_dispatch run on any other branch (including main) completes the
 # build/test/dry-run validation but does not publish or tag.
 

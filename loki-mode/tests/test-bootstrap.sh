@@ -167,14 +167,14 @@ try:
         # LOCK_EX: Exclusive lock
         # LOCK_NB: Non-blocking (raise error if locked)
         fcntl.flock(f, fcntl.LOCK_EX | fcntl.LOCK_NB)
-        
+
         # Write status to indicate success
         with open(status_file, 'w') as sf:
             sf.write("locked")
-            
+
         # Hold lock for a short duration to simulate work
         time.sleep(0.1)
-        
+
         # Lock releases automatically when file is closed
 except IOError:
     # Failed to acquire lock (shouldn't happen in this isolated test)

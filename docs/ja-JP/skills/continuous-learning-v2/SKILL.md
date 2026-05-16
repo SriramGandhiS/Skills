@@ -32,7 +32,7 @@ domain: "code-style"
 source: "session-observation"
 ---
 
-# 関数型スタイルを優先
+## 関数型スタイルを優先
 
 ## Action
 適切な場合はクラスよりも関数型パターンを使用します。
@@ -97,9 +97,9 @@ source: "session-observation"
 **プラグインとしてインストールした場合**（推奨）：
 
 ```json
-プラグインの `hooks/hooks.json` が Claude Code v2.1+ で自動読み込みされるため、`~/.claude/settings.json` に追加の hook 設定は不要です。`observe.sh` はそこで既に登録されています。
+プラグインの `hooks/hooks.json`が Claude Code v2.1+ で自動読み込みされるため、`~/.claude/settings.json`に追加の hook 設定は不要です。`observe.sh` はそこで既に登録されています。
 
-以前に `observe.sh` を `~/.claude/settings.json` にコピーした場合は、重複した `PreToolUse` / `PostToolUse` ブロックを削除してください。重複登録は二重実行と `${CLAUDE_PLUGIN_ROOT}` 解決エラーを引き起こします。この変数はプラグイン管理の `hooks/hooks.json` でのみ展開されます。
+以前に `observe.sh`を`~/.claude/settings.json`にコピーした場合は、重複した`PreToolUse`/`PostToolUse`ブロックを削除してください。重複登録は二重実行と`${CLAUDE_PLUGIN_ROOT}`解決エラーを引き起こします。この変数はプラグイン管理の`hooks/hooks.json` でのみ展開されます。
 
 **`~/.claude/skills`に手動でインストールした場合**：
 

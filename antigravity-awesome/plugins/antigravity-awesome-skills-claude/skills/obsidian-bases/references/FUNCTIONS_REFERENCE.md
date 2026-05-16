@@ -72,7 +72,7 @@ When subtracting two dates, the result is a **Duration** type (not a number). Du
 
 ```yaml
 # Duration units: y/year/years, M/month/months, d/day/days,
-#                 w/week/weeks, h/hour/hours, m/minute/minutes, s/second/seconds
+# w/week/weeks, h/hour/hours, m/minute/minutes, s/second/seconds
 
 # Add/subtract durations
 "date + \"1M\""           # Add 1 month

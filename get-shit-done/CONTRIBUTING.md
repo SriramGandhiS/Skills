@@ -20,7 +20,7 @@ npm test
 
 GSD accepts three types of contributions. Each type has a different process and a different bar for acceptance. **Read this section before opening anything.**
 
-### 🐛 Fix (Bug Report)
+### Fix (Bug Report)
 
 A fix corrects something that is broken, crashes, produces wrong output, or behaves contrary to documented behavior.
 
@@ -34,7 +34,7 @@ A fix corrects something that is broken, crashes, produces wrong output, or beha
 
 ---
 
-### ⚡ Enhancement
+### Enhancement
 
 An enhancement improves an existing feature — better output, faster execution, cleaner UX, expanded edge-case handling. It does **not** add new commands, new workflows, or new concepts.
 
@@ -50,7 +50,7 @@ An enhancement improves an existing feature — better output, faster execution,
 
 ---
 
-### ✨ Feature
+### Feature
 
 A feature adds something new — a new command, a new workflow, a new concept, a new integration. Features have the highest bar because they add permanent maintenance burden to a solo-developer tool maintained by a small team.
 

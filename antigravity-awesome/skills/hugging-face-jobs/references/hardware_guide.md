@@ -140,9 +140,9 @@ Memory (GB) ≈ (Model params in billions) × 20 (full) or × 4 (LoRA)
 ```
 
 **Examples:**
-- Qwen2.5-0.5B inference: ~1-2GB ✅ fits t4-small
-- Qwen2.5-7B inference: ~14-28GB ✅ fits a10g-large
-- Qwen2.5-7B training: ~140GB ❌ not feasible without LoRA
+- Qwen2.5-0.5B inference: ~1-2GB PASS: fits t4-small
+- Qwen2.5-7B inference: ~14-28GB PASS: fits a10g-large
+- Qwen2.5-7B training: ~140GB FAIL: not feasible without LoRA
 
 ### Memory Optimization
 
@@ -283,7 +283,7 @@ FLAVORS = {
     # CPU
     "cpu-basic",      # Testing, lightweight
     "cpu-upgrade",    # Data processing
-    
+
     # GPU - Single
     "t4-small",       # 16GB - <1B models
     "t4-medium",      # 16GB - 1-3B models
@@ -291,12 +291,12 @@ FLAVORS = {
     "a10g-small",     # 24GB - 3-7B production
     "a10g-large",     # 24GB - 7-13B models
     "a100-large",     # 40GB - 13B+ models
-    
+
     # GPU - Multi
     "l4x4",           # 4x L4 (96GB total)
     "a10g-largex2",   # 2x A10G (48GB total)
     "a10g-largex4",   # 4x A10G (96GB total)
-    
+
     # TPU
     "v5e-1x1",        # TPU v5e 1x1
     "v5e-2x2",        # TPU v5e 2x2

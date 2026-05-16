@@ -1,11 +1,9 @@
 #!/usr/bin/env bash
 # Mock Detector - Quality Gate #8
 # Scans test files for problematic mock patterns that mask real failures
-#
-# Usage: ./tests/detect-mock-problems.sh [--strict]
-#   --strict: Exit with error code on any finding (for CI)
-#
-# Detects:
+# # Usage: ./tests/detect-mock-problems.sh [--strict]
+# --strict: Exit with error code on any finding (for CI)
+# # Detects:
 # 1. Tests that define inline functions and test them instead of importing real code
 # 2. Tautological assertions (assert on literal values)
 # 3. Conditional assertions that silently pass (if guards around expects)

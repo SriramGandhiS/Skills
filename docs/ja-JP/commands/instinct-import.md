@@ -30,7 +30,7 @@ python3 ~/.claude/skills/continuous-learning-v2/scripts/instinct-cli.py import <
 
 ```
 /instinct-import team-instincts.yaml
-/instinct-import https://github.com/org/repo/instincts.yaml
+/instinct-import <https://github.com/org/repo/instincts.yaml>
 /instinct-import --from-skill-creator acme/webapp
 ```
 

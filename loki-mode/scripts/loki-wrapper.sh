@@ -3,18 +3,16 @@
 # shellcheck disable=SC2155  # Declare and assign separately (acceptable here)
 # Loki Mode Wrapper Script
 # Provides true autonomy by auto-resuming on rate limits or interruptions
-#
-# How it works:
+# # How it works:
 # 1. Launches AI provider CLI with Loki Mode prompt (supports Claude, Codex, Gemini)
 # 2. Monitors the process - when Claude exits, checks exit code
 # 3. On rate limit (exit code != 0), waits with exponential backoff
 # 4. Restarts automatically, telling Claude to resume from checkpoint
 # 5. Continues until successful completion or max retries exceeded
-#
-# Usage:
-#   ./scripts/loki-wrapper.sh [PRD_PATH]
-#   ./scripts/loki-wrapper.sh ./docs/requirements.md
-#   ./scripts/loki-wrapper.sh  # Interactive mode
+# # Usage:
+# ./scripts/loki-wrapper.sh [PRD_PATH]
+# ./scripts/loki-wrapper.sh ./docs/requirements.md
+# ./scripts/loki-wrapper.sh  # Interactive mode
 
 set -uo pipefail
 

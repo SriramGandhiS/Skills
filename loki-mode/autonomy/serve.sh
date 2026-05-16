@@ -3,24 +3,21 @@
 # shellcheck disable=SC2155  # Declare and assign separately
 #===============================================================================
 # Loki Mode - API Server Launcher
-#
-# Usage:
-#   ./autonomy/serve.sh [OPTIONS]
-#   loki serve [OPTIONS]
-#
-# Options:
-#   --port, -p <port>   Port to listen on (default: 57374)
-#   --host, -h <host>   Host to bind to (default: localhost)
-#   --no-cors           Disable CORS
-#   --no-auth           Disable authentication
-#   --help              Show help message
-#
-# Environment Variables:
-#   LOKI_DASHBOARD_PORT Port (default: 57374)
-#   LOKI_DASHBOARD_HOST Host (default: localhost)
-#   LOKI_API_TOKEN      API token for remote access
-#   LOKI_TLS_CERT       Path to PEM certificate (enables HTTPS)
-#   LOKI_TLS_KEY        Path to PEM private key (enables HTTPS)
+# # Usage:
+# ./autonomy/serve.sh [OPTIONS]
+# loki serve [OPTIONS]
+# # Options:
+# --port, -p <port>   Port to listen on (default: 57374)
+# --host, -h <host>   Host to bind to (default: localhost)
+# --no-cors           Disable CORS
+# --no-auth           Disable authentication
+# --help              Show help message
+# # Environment Variables:
+# LOKI_DASHBOARD_PORT Port (default: 57374)
+# LOKI_DASHBOARD_HOST Host (default: localhost)
+# LOKI_API_TOKEN      API token for remote access
+# LOKI_TLS_CERT       Path to PEM certificate (enables HTTPS)
+# LOKI_TLS_KEY        Path to PEM private key (enables HTTPS)
 #===============================================================================
 
 set -euo pipefail

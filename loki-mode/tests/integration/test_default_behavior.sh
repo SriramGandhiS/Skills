@@ -1,14 +1,13 @@
 #!/usr/bin/env bash
 # tests/integration/test_default_behavior.sh
 # v7.0.0 invariant: with all managed flags off, v6.82.0 behavior is preserved.
-#
-# Specifically:
-#   1. Importing memory.managed_memory does NOT import anthropic.
-#   2. No .loki/managed/ directory is created in a clean project when the
-#      managed-memory modules are merely imported.
-#   3. is_enabled() returns False.
-#   4. `loki version` works WITHOUT ANTHROPIC_API_KEY set.
-#   5. Retrieving with flags off yields empty output and no API call.
+# # Specifically:
+# 1. Importing memory.managed_memory does NOT import anthropic.
+# 2. No .loki/managed/ directory is created in a clean project when the
+# managed-memory modules are merely imported.
+# 3. is_enabled() returns False.
+# 4. `loki version` works WITHOUT ANTHROPIC_API_KEY set.
+# 5. Retrieving with flags off yields empty output and no API call.
 
 set -u
 

@@ -1,4 +1,4 @@
-﻿---
+---
 name: hookify-rules
 description: This skill should be used when the user asks to create a hookify rule, write a hook rule, configure hookify, add a hookify rule, or needs guidance on hookify rule syntax and patterns.
 ---
@@ -56,10 +56,10 @@ You're adding an API key to a .env file. Ensure this file is in .gitignore!
 
 **Condition fields by event:**
 - bash: `command`
-- file: `file_path`, `new_text`, `old_text`, `content`
+- file: `file_path`,`new_text`,`old_text`,`content`
 - prompt: `user_prompt`
 
-**Operators:** `regex_match`, `contains`, `equals`, `not_contains`, `starts_with`, `ends_with`
+**Operators:** `regex_match`,`contains`,`equals`,`not_contains`,`starts_with`,`ends_with`
 
 All conditions must match for rule to trigger.
 
@@ -67,15 +67,15 @@ All conditions must match for rule to trigger.
 
 ### bash Events
 Match Bash command patterns:
-- Dangerous commands: `rm\s+-rf`, `dd\s+if=`, `mkfs`
-- Privilege escalation: `sudo\s+`, `su\s+`
+- Dangerous commands: `rm\s+-rf`,`dd\s+if=`,`mkfs`
+- Privilege escalation: `sudo\s+`,`su\s+`
 - Permission issues: `chmod\s+777`
 
 ### file Events
 Match Edit/Write/MultiEdit operations:
-- Debug code: `console\.log\(`, `debugger`
-- Security risks: `eval\(`, `innerHTML\s*=`
-- Sensitive files: `\.env$`, `credentials`, `\.pem$`
+- Debug code: `console\.log\(`,`debugger`
+- Security risks: `eval\(`,`innerHTML\s*=`
+- Sensitive files: `\.env$`,`credentials`,`\.pem$`
 
 ### stop Events
 Completion checks and reminders. Pattern `.*` matches always.
@@ -86,14 +86,14 @@ Match user prompt content for workflow enforcement.
 ## Pattern Writing Tips
 
 ### Regex Basics
-- Escape special chars: `.` to `\.`, `(` to `\(`
-- `\s` whitespace, `\d` digit, `\w` word char
-- `+` one or more, `*` zero or more, `?` optional
+- Escape special chars: `.`to`\.`,`(`to`\(`
+- `\s`whitespace,`\d`digit,`\w` word char
+- `+`one or more,`*`zero or more,`?` optional
 - `|` OR operator
 
 ### Common Pitfalls
-- **Too broad**: `log` matches "login", "dialog" â€” use `console\.log\(`
-- **Too specific**: `rm -rf /tmp` â€” use `rm\s+-rf`
+- **Too broad**: `log`matches "login", "dialog" â€” use`console\.log\(`
+- **Too specific**: `rm -rf /tmp`â€” use`rm\s+-rf`
 - **YAML escaping**: Use unquoted patterns; quoted strings need `\\s`
 
 ### Testing
@@ -105,7 +105,7 @@ python3 -c "import re; print(re.search(r'your_pattern', 'test text'))"
 
 - **Location**: `.claude/` directory in project root
 - **Naming**: `.claude/hookify.{descriptive-name}.local.md`
-- **Gitignore**: Add `.claude/*.local.md` to `.gitignore`
+- **Gitignore**: Add `.claude/*.local.md`to`.gitignore`
 
 ## Commands
 

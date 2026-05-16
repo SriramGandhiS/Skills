@@ -54,7 +54,7 @@ Note: vLLM dependencies are installed automatically via PEP 723 script headers w
 
 # IMPORTANT: Using This Skill
 
-## ⚠️ CRITICAL: Check for Existing PRs Before Creating New Ones
+## WARNING: CRITICAL: Check for Existing PRs Before Creating New Ones
 
 **Before creating ANY pull request with `--create-pr`, you MUST check for existing open PRs:**
 
@@ -86,8 +86,8 @@ uv run scripts/evaluation_manager.py extract-readme --help
 Key workflow (matches CLI help):
 
 1) `get-prs` → check for existing open PRs first
-2) `inspect-tables` → find table numbers/columns  
-3) `extract-readme --table N` → prints YAML by default  
+2) `inspect-tables` → find table numbers/columns
+3) `extract-readme --table N` → prints YAML by default
 4) add `--apply` (push) or `--create-pr` to write changes
 
 # Core Capabilities
@@ -122,7 +122,7 @@ Key workflow (matches CLI help):
 
 ## 5. Run Custom Model Evaluations with vLLM (NEW)
 
-⚠️ **Important:** This approach is only possible on devices with `uv` installed and sufficient GPU memory.
+WARNING: **Important:** This approach is only possible on devices with `uv` installed and sufficient GPU memory.
 **Benefits:** No need to use `hf_jobs()` MCP tool, can run scripts directly in terminal
 **When to use:** User working in local device directly  when GPU is available
 
@@ -558,7 +558,7 @@ When extracting evaluation tables with multiple models (either as columns or row
 - Finds the row in the first column matching the model name
 - Extracts all benchmark scores from that row only
 
-This ensures only the correct model's scores are extracted, never unrelated models or training checkpoints. 
+This ensures only the correct model's scores are extracted, never unrelated models or training checkpoints.
 
 ### Common Patterns
 

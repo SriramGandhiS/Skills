@@ -13,7 +13,7 @@
 
 Closes #
 
-> ⛔ **No `approved-enhancement` label on the issue = immediate close.**
+> **No `approved-enhancement` label on the issue = immediate close.**
 > Do not open this PR if a maintainer has not yet approved the enhancement proposal.
 
 ---

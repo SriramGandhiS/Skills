@@ -207,7 +207,7 @@ class Benchmark:
         *args,
         operation: str | None = None,
         track_memory: bool = False,
-        **kwargs,
+**kwargs,
     ) -> Any:
         """
         Measure function execution.
@@ -217,7 +217,7 @@ class Benchmark:
             *args: Positional arguments
             operation: Operation name (defaults to func.__name__)
             track_memory: Whether to track memory
-            **kwargs: Keyword arguments
+**kwargs: Keyword arguments
 
         Returns:
             Function result

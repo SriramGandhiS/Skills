@@ -40,8 +40,8 @@ description: 从 ~/.claude/session-data/ 加载最新的会话文件，并从上
 
 如果提供了参数：
 
-* 如果看起来像日期 (`YYYY-MM-DD`)，则先在 `~/.claude/session-data/` 中搜索，再回退到旧的 `~/.claude/sessions/`，匹配
-  `YYYY-MM-DD-session.tmp`（旧格式）或 `YYYY-MM-DD-<shortid>-session.tmp`（当前格式）的文件，
+* 如果看起来像日期 (`YYYY-MM-DD`)，则先在`~/.claude/session-data/`中搜索，再回退到旧的`~/.claude/sessions/`，匹配
+  `YYYY-MM-DD-session.tmp`（旧格式）或`YYYY-MM-DD-<shortid>-session.tmp`（当前格式）的文件，
   并加载该日期最近修改的版本
 * 如果看起来像文件路径，则直接读取该文件
 * 如果未找到，清晰报告并停止
@@ -94,7 +94,7 @@ PASS: 已完成：[数量] 项已确认
 
 ## 边界情况
 
-**同一日期有多个会话** (`2024-01-15-session.tmp`, `2024-01-15-abc123de-session.tmp`)：
+**同一日期有多个会话** (`2024-01-15-session.tmp`,`2024-01-15-abc123de-session.tmp`)：
 加载该日期最近修改的匹配文件，无论其使用的是旧的无ID格式还是当前的短ID格式。
 
 **会话文件引用了已不存在的文件：**

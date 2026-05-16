@@ -283,7 +283,7 @@ else
         # ============================================
         # STEP 5: Last resort - Whisper transcription
         # ============================================
-        echo "⚠ No subtitles available for this video."
+        echo "WARNING: No subtitles available for this video."
 
         # Get file size
         FILE_SIZE=$(yt-dlp --print "%(filesize_approx)s" -f "bestaudio" "$VIDEO_URL")
@@ -362,7 +362,7 @@ with open('$VTT_FILE', 'r') as f:
     rm "$VTT_FILE"
     echo "✓ Cleaned up temporary VTT file"
 else
-    echo "⚠ No VTT file found to convert"
+    echo "WARNING: No VTT file found to convert"
 fi
 
 echo "✓ Complete!"
@@ -407,9 +407,9 @@ echo "✓ Complete!"
 
 ### Best Practices:
 
-- ✅ Always check what's available before attempting download (`--list-subs`)
-- ✅ Verify success at each step before proceeding to next
-- ✅ Ask user before large downloads (audio files, Whisper models)
-- ✅ Clean up temporary files after processing
-- ✅ Provide clear feedback about what's happening at each stage
-- ✅ Handle errors gracefully with helpful messages
+- PASS: Always check what's available before attempting download (`--list-subs`)
+- PASS: Verify success at each step before proceeding to next
+- PASS: Ask user before large downloads (audio files, Whisper models)
+- PASS: Clean up temporary files after processing
+- PASS: Provide clear feedback about what's happening at each stage
+- PASS: Handle errors gracefully with helpful messages

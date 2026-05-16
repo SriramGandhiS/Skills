@@ -2,7 +2,7 @@
 
 Offload GSD's plan phase to Claude Code's ultraplan cloud infrastructure.
 
-⚠ **BETA feature.** Ultraplan is in research preview and may change. This workflow is
+WARNING: **BETA feature.** Ultraplan is in research preview and may change. This workflow is
 intentionally isolated from /gsd-plan-phase so upstream changes to ultraplan cannot
 affect the core planning pipeline.
 
@@ -14,7 +14,7 @@ Display the stage banner:
 
 ```text
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- GSD ► ULTRAPLAN PHASE  ⚠ BETA
+ GSD ► ULTRAPLAN PHASE  WARNING: BETA
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 Ultraplan is in research preview (Claude Code v2.1.91+).
 Use /gsd-plan-phase for stable local planning.

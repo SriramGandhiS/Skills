@@ -6,7 +6,7 @@ The skill collection now uses intelligent auto-categorization to eliminate "unca
 
 ## Current Status
 
-✅ Current repository indexed through the generated catalog
+PASS: Current repository indexed through the generated catalog
 - Most skills are in meaningful categories
 - A smaller tail still needs manual review or better keyword coverage
 - 11 primary categories
@@ -68,10 +68,10 @@ AUTO-CATEGORIZATION REPORT
 ======================================================================
 
 Summary:
-   ✅ Categorized: 776
-   ⏭️  Already categorized: 46
-   ❌ Failed to categorize: 124
-   📈 Total processed: full repository
+   PASS: Categorized: 776
+   SKIPPED:  Already categorized: 46
+   FAIL: Failed to categorize: 124
+    Total processed: full repository
 
 Sample changes:
    • 3d-web-experience
@@ -216,4 +216,4 @@ This will:
 
 ---
 
-**Result**: Much cleaner category filter with smart, meaningful organization! 🎉
+**Result**: Much cleaner category filter with smart, meaningful organization!

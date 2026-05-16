@@ -1,14 +1,11 @@
 #!/usr/bin/env bash
-#
-# license-audit.sh
-#
-# Print the license of every direct (non-dev) dependency listed in the root
+# # license-audit.sh
+# # Print the license of every direct (non-dev) dependency listed in the root
 # package.json and loki-ts/package.json. Verifies each is in the permissive
 # allowlist (MIT, Apache-2.0, BSD-2-Clause, BSD-3-Clause, ISC). Prints a
 # verdict line (LICENSE-AUDIT: PASS or LICENSE-AUDIT: REVIEW) and exits 0 on
 # PASS, 1 on REVIEW.
-#
-# No source files are modified. Stock macOS / Ubuntu CI tooling only.
+# # No source files are modified. Stock macOS / Ubuntu CI tooling only.
 
 set -euo pipefail
 
@@ -36,7 +33,7 @@ fi
 
 # Collect direct deps from each package.json.
 # Sections considered "direct production deps" for this audit:
-#   dependencies, optionalDependencies, peerDependencies
+# dependencies, optionalDependencies, peerDependencies
 # devDependencies are skipped (per --omit=dev semantics).
 collect_direct_deps() {
   local pkg_json="$1"
@@ -162,8 +159,7 @@ echo "==============================================================="
 # would have shipped undetected. Now we install --omit=dev into a temp
 # dir, run license-checker over the resolved tree, and add any
 # non-permissive transitive to OFFENDERS.
-#
-# Skipped if npm is in offline mode or the install step fails.
+# # Skipped if npm is in offline mode or the install step fails.
 TMPROOT="$(mktemp -d -t loki-license-audit-XXXXXX)"
 trap 'rm -rf "$TMPROOT"' EXIT
 cp "${REPO_ROOT}/package.json" "${TMPROOT}/" 2>/dev/null || true

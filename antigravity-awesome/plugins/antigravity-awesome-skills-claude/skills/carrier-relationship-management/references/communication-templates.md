@@ -1,8 +1,7 @@
 # Communication Templates — Carrier Relationship Management
 
 > **Reference Type:** Tier 3 — Load on demand when composing or reviewing carrier communications.
->
-> **Usage:** Each template includes variable placeholders in `{{double_braces}}` for direct substitution. Templates are organized by communication type and business context. Select the template matching your scenario, substitute variables, review tone guidance, and send.
+> > **Usage:** Each template includes variable placeholders in `{{double_braces}}` for direct substitution. Templates are organized by communication type and business context. Select the template matching your scenario, substitute variables, review tone guidance, and send.
 
 ---
 

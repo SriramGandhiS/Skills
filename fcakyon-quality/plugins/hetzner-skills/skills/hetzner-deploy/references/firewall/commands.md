@@ -31,7 +31,6 @@ hcloud firewall add-label [--overwrite] <firewall> <label>...
 
 * [hcloud firewall](hcloud_firewall.md)	 - Manage Firewalls
 
-
 ---
 
 ## hcloud firewall add-rule
@@ -72,7 +71,6 @@ hcloud firewall add-rule [options] (--direction in --source-ips <ips> | --direct
 
 * [hcloud firewall](hcloud_firewall.md)	 - Manage Firewalls
 
-
 ---
 
 ## hcloud firewall apply-to-resource
@@ -110,7 +108,6 @@ hcloud firewall apply-to-resource (--type server --server <server> | --type labe
 
 * [hcloud firewall](hcloud_firewall.md)	 - Manage Firewalls
 
-
 ---
 
 ## hcloud firewall create
@@ -128,7 +125,7 @@ hcloud firewall create [options] --name <name>
       --label stringToString   User-defined labels ('key=value') (can be specified multiple times) (default [])
       --name string            Name
   -o, --output stringArray     output options: json|yaml
-      --rules-file string      JSON file containing your routes (use - to read from stdin). The structure of the file needs to be the same as within the API: https://docs.hetzner.cloud/reference/cloud#firewalls-get-a-firewall 
+      --rules-file string      JSON file containing your routes (use - to read from stdin). The structure of the file needs to be the same as within the API: https://docs.hetzner.cloud/reference/cloud#firewalls-get-a-firewall
 ```
 
 ### Options inherited from parent commands
@@ -148,7 +145,6 @@ hcloud firewall create [options] --name <name>
 ### SEE ALSO
 
 * [hcloud firewall](hcloud_firewall.md)	 - Manage Firewalls
-
 
 ---
 
@@ -190,7 +186,6 @@ hcloud firewall delete-rule [options] (--direction in --source-ips <ips> | --dir
 
 * [hcloud firewall](hcloud_firewall.md)	 - Manage Firewalls
 
-
 ---
 
 ## hcloud firewall delete
@@ -224,7 +219,6 @@ hcloud firewall delete <firewall>...
 ### SEE ALSO
 
 * [hcloud firewall](hcloud_firewall.md)	 - Manage Firewalls
-
 
 ---
 
@@ -260,7 +254,6 @@ hcloud firewall describe [options] <firewall>
 ### SEE ALSO
 
 * [hcloud firewall](hcloud_firewall.md)	 - Manage Firewalls
-
 
 ---
 
@@ -316,7 +309,6 @@ hcloud firewall list [options]
 
 * [hcloud firewall](hcloud_firewall.md)	 - Manage Firewalls
 
-
 ---
 
 ## hcloud firewall remove-from-resource
@@ -354,7 +346,6 @@ hcloud firewall remove-from-resource (--type server --server <server> | --type l
 
 * [hcloud firewall](hcloud_firewall.md)	 - Manage Firewalls
 
-
 ---
 
 ## hcloud firewall remove-label
@@ -390,7 +381,6 @@ hcloud firewall remove-label <firewall> (--all | <label>...)
 
 * [hcloud firewall](hcloud_firewall.md)	 - Manage Firewalls
 
-
 ---
 
 ## hcloud firewall replace-rules
@@ -425,7 +415,6 @@ hcloud firewall replace-rules --rules-file <file> <firewall>
 ### SEE ALSO
 
 * [hcloud firewall](hcloud_firewall.md)	 - Manage Firewalls
-
 
 ---
 

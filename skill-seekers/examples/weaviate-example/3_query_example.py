@@ -25,7 +25,7 @@ try:
     from rich.table import Table
     from rich.panel import Panel
 except ImportError:
-    print("❌ Missing dependencies!")
+    print("FAIL: Missing dependencies!")
     print("Install with: pip install weaviate-client rich")
     sys.exit(1)
 
@@ -43,11 +43,11 @@ def connect_to_weaviate(url: str, api_key: str = None):
         if client.is_ready():
             return client
         else:
-            console.print("[red]❌ Weaviate is not ready[/red]")
+            console.print("[red]FAIL: Weaviate is not ready[/red]")
             sys.exit(1)
 
     except Exception as e:
-        console.print(f"[red]❌ Connection failed: {e}[/red]")
+        console.print(f"[red]FAIL: Connection failed: {e}[/red]")
         sys.exit(1)
 
 def hybrid_search_example(client, class_name: str = "React"):
@@ -270,8 +270,8 @@ def main():
     filtered_search(client, args.class_name)
     semantic_search(client, args.class_name)
 
-    console.print("\n[bold green]✅ All examples completed![/bold green]")
-    console.print("\n[cyan]💡 Tips:[/cyan]")
+    console.print("\n[bold green]PASS: All examples completed![/bold green]")
+    console.print("\n[cyan] Tips:[/cyan]")
     console.print("  • Adjust 'alpha' to balance keyword vs semantic search")
     console.print("  • Use filters to narrow results by metadata")
     console.print("  • Combine multiple filters with 'And'/'Or' operators")

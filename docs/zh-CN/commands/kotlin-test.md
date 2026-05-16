@@ -40,7 +40,7 @@ REPEAT  -> 进入下一个测试用例
 用户：/kotlin-test 我需要一个验证用户注册请求的函数
 
 代理：
-# TDD 会话：注册验证器
+## TDD 会话：注册验证器
 
 ## 第一步：定义接口
 
@@ -256,22 +256,22 @@ class AsyncServiceTest : FunSpec({
 ## 覆盖率命令
 
 ```bash
-# Run tests with coverage
+## Run tests with coverage
 ./gradlew koverHtmlReport
 
-# Verify coverage thresholds
+## Verify coverage thresholds
 ./gradlew koverVerify
 
-# XML report for CI
+## XML report for CI
 ./gradlew koverXmlReport
 
-# Open HTML report
+## Open HTML report
 open build/reports/kover/html/index.html
 
-# Run specific test class
+## Run specific test class
 ./gradlew test --tests "com.example.UserServiceTest"
 
-# Run with verbose output
+## Run with verbose output
 ./gradlew test --info
 ```
 

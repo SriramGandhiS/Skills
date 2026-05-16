@@ -1,4 +1,4 @@
-﻿---
+---
 name: literature-review
 description: Systematic literature-review workflow for academic, biomedical, technical, and scientific topics, including search planning, source screening, synthesis, citation checks, and evidence logging.
 origin: community
@@ -158,7 +158,7 @@ Before finalizing:
 ## Output Template
 
 ```markdown
-# Literature Review: <Topic>
+## Literature Review: <Topic>
 
 Generated: <date>
 Review type: <narrative | scoping | systematic | meta-analysis>

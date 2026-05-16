@@ -53,13 +53,13 @@ import { fileTypeFromBuffer } from "file-type";
 
 async function validateImage(buffer: Buffer) {
   const type = await fileTypeFromBuffer(buffer);
-  
+
   const allowedTypes = ["image/jpeg", "image/png", "image/webp"];
-  
+
   if (!type || !allowedTypes.includes(type.mime)) {
     throw new Error("Invalid file type");
   }
-  
+
   return type;
 }
 
@@ -137,18 +137,18 @@ import crypto from "crypto";
 function safeFilename(userFilename: string): string {
   // Extract just the base name
   const base = path.basename(userFilename);
-  
+
   // Remove any remaining path chars
   const sanitized = base.replace(/[^a-zA-Z0-9.-]/g, "_");
-  
+
   // Or better: generate new name entirely
   const ext = path.extname(userFilename).toLowerCase();
   const allowed = [".jpg", ".png", ".pdf"];
-  
+
   if (!allowed.includes(ext)) {
     throw new Error("Invalid extension");
   }
-  
+
   return crypto.randomUUID() + ext;
 }
 

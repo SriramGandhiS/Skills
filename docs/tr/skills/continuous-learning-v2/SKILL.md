@@ -59,7 +59,7 @@ project_id: "a1b2c3d4e5f6"
 project_name: "my-react-app"
 ---
 
-# Fonksiyonel Stili Tercih Et
+## Fonksiyonel Stili Tercih Et
 
 ## Aksiyon
 Uygun olduğunda sınıflar yerine fonksiyonel kalıpları kullan.
@@ -74,7 +74,7 @@ Uygun olduğunda sınıflar yerine fonksiyonel kalıpları kullan.
 - **Güven ağırlıklı** -- 0.3 = geçici, 0.9 = neredeyse kesin
 - **Alan etiketli** -- code-style, testing, git, debugging, workflow, vb.
 - **Kanıt destekli** -- hangi gözlemlerin oluşturduğunu takip eder
-- **Kapsam farkında** -- `project` (varsayılan) veya `global`
+- **Kapsam farkında** -- `project`(varsayılan) veya`global`
 
 ## Nasıl Çalışır
 
@@ -131,7 +131,7 @@ Sistem mevcut projenizi otomatik olarak tespit eder:
 3. **`git rev-parse --show-toplevel`** -- repo path kullanan yedek (makineye özgü)
 4. **Global yedek** -- proje tespit edilemezse, instinct'ler global kapsamına gider
 
-Her proje 12 karakterlik bir hash ID alır (örn. `a1b2c3d4e5f6`). `~/.claude/homunculus/projects.json` dosyasındaki kayıt dosyası ID'leri insanların okuyabileceği isimlerle eşler.
+Her proje 12 karakterlik bir hash ID alır (örn. `a1b2c3d4e5f6`).`~/.claude/homunculus/projects.json` dosyasındaki kayıt dosyası ID'leri insanların okuyabileceği isimlerle eşler.
 
 ## Hızlı Başlangıç
 
@@ -141,11 +141,11 @@ Her proje 12 karakterlik bir hash ID alır (örn. `a1b2c3d4e5f6`). `~/.claude/ho
 
 **Plugin olarak kuruluysa** (önerilen):
 
-`~/.claude/settings.json` içine ek hook bloğu eklemeyin. Claude Code v2.1+ eklentinin `hooks/hooks.json` dosyasını otomatik yükler; `observe.sh` zaten orada kayıtlıdır.
+`~/.claude/settings.json`içine ek hook bloğu eklemeyin. Claude Code v2.1+ eklentinin`hooks/hooks.json`dosyasını otomatik yükler;`observe.sh` zaten orada kayıtlıdır.
 
-Daha önce `observe.sh` satırlarını `~/.claude/settings.json` içine kopyaladıysanız, yinelenen `PreToolUse` / `PostToolUse` bloğunu kaldırın. Yinelenen kayıt hem çift çalıştırmaya yol açar hem de `${CLAUDE_PLUGIN_ROOT}` çözümleme hatası üretir; bu değişken yalnızca eklentiye ait `hooks/hooks.json` girdilerinde genişletilir.
+Daha önce `observe.sh`satırlarını`~/.claude/settings.json`içine kopyaladıysanız, yinelenen`PreToolUse`/`PostToolUse`bloğunu kaldırın. Yinelenen kayıt hem çift çalıştırmaya yol açar hem de`${CLAUDE_PLUGIN_ROOT}`çözümleme hatası üretir; bu değişken yalnızca eklentiye ait`hooks/hooks.json` girdilerinde genişletilir.
 
-**`~/.claude/skills` dizinine manuel kuruluysa**, aşağıdakini `~/.claude/settings.json` içine ekleyin:
+**`~/.claude/skills`dizinine manuel kuruluysa**, aşağıdakini`~/.claude/settings.json` içine ekleyin:
 
 ```json
 {
@@ -173,10 +173,10 @@ Daha önce `observe.sh` satırlarını `~/.claude/settings.json` içine kopyalad
 Sistem ilk kullanımda dizinleri otomatik oluşturur, ancak manuel olarak da oluşturabilirsiniz:
 
 ```bash
-# Global dizinler
+## Global dizinler
 mkdir -p ~/.claude/homunculus/{instincts/{personal,inherited},evolved/{agents,skills,commands},projects}
 
-# Proje dizinleri hook bir git repo'sunda ilk çalıştığında otomatik oluşturulur
+## Proje dizinleri hook bir git repo'sunda ilk çalıştığında otomatik oluşturulur
 ```
 
 ### 3. Instinct Komutlarını Kullanın
@@ -218,11 +218,11 @@ Arka plan gözlemcisini kontrol etmek için `config.json` dosyasını düzenleyi
 
 | Anahtar | Varsayılan | Açıklama |
 |-----|---------|-------------|
-| `observer.enabled` | `false` | Arka plan gözlemci agent'ını aktifleştir |
-| `observer.run_interval_minutes` | `5` | Gözlemcinin gözlemleri ne sıklıkla analiz ettiği |
-| `observer.min_observations_to_analyze` | `20` | Analiz çalışmadan önce minimum gözlem |
+| `observer.enabled`|`false` | Arka plan gözlemci agent'ını aktifleştir |
+| `observer.run_interval_minutes`|`5` | Gözlemcinin gözlemleri ne sıklıkla analiz ettiği |
+| `observer.min_observations_to_analyze`|`20` | Analiz çalışmadan önce minimum gözlem |
 
-Diğer davranışlar (gözlem yakalama, instinct eşikleri, proje kapsamı, yükseltme kriterleri) `instinct-cli.py` ve `observe.sh` içindeki kod varsayılanları aracılığıyla yapılandırılır.
+Diğer davranışlar (gözlem yakalama, instinct eşikleri, proje kapsamı, yükseltme kriterleri) `instinct-cli.py`ve`observe.sh` içindeki kod varsayılanları aracılığıyla yapılandırılır.
 
 ## Dosya Yapısı
 
@@ -278,13 +278,13 @@ Aynı instinct birden fazla projede yüksek güvenle göründüğünde, global k
 **Nasıl yükseltilir:**
 
 ```bash
-# Belirli bir instinct'i yükselt
+## Belirli bir instinct'i yükselt
 python3 instinct-cli.py promote prefer-explicit-errors
 
-# Tüm uygun instinct'leri otomatik yükselt
+## Tüm uygun instinct'leri otomatik yükselt
 python3 instinct-cli.py promote
 
-# Değişiklik yapmadan önizle
+## Değişiklik yapmadan önizle
 python3 instinct-cli.py promote --dry-run
 ```
 

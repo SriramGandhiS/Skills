@@ -9,7 +9,7 @@ try:
     from openai import OpenAI
     from rich.console import Console
 except ImportError:
-    print("❌ Missing dependencies! Run: pip install -r requirements.txt")
+    print("FAIL: Missing dependencies! Run: pip install -r requirements.txt")
     sys.exit(1)
 
 console = Console()
@@ -17,12 +17,12 @@ console = Console()
 # Check API key
 api_key = os.getenv("OPENAI_API_KEY")
 if not api_key:
-    console.print("[red]❌ OPENAI_API_KEY not set![/red]")
+    console.print("[red]FAIL: OPENAI_API_KEY not set![/red]")
     console.print("Set it with: export OPENAI_API_KEY=sk-...")
     sys.exit(1)
 
 # Load data
-console.print("📥 Loading skill data...")
+console.print(" Loading skill data...")
 with open("output/flask-faiss.json") as f:
     data = json.load(f)
 
@@ -30,10 +30,10 @@ documents = data["documents"]
 metadatas = data["metadatas"]
 ids = data["ids"]
 
-console.print(f"✅ Loaded {len(documents)} documents")
+console.print(f"PASS: Loaded {len(documents)} documents")
 
 # Generate embeddings
-console.print("\n🔄 Generating embeddings (this may take 30-60 seconds)...")
+console.print("\n Generating embeddings (this may take 30-60 seconds)...")
 console.print(f"   Cost: ~$0.001 for {len(documents)} documents")
 
 client = OpenAI(api_key=api_key)
@@ -49,10 +49,10 @@ for i, doc in enumerate(documents):
     if (i + 1) % 5 == 0:
         console.print(f"   Progress: {i+1}/{len(documents)}")
 
-console.print("✅ Embeddings generated!")
+console.print("PASS: Embeddings generated!")
 
 # Build FAISS index
-console.print("\n🏗️  Building FAISS index...")
+console.print("\n  Building FAISS index...")
 dimension = len(embeddings[0])  # 1536 for ada-002
 vectors = np.array(embeddings).astype('float32')
 
@@ -65,8 +65,8 @@ faiss.write_index(index, "flask.index")
 with open("flask_metadata.json", "w") as f:
     json.dump({"documents": documents, "metadatas": metadatas, "ids": ids}, f)
 
-console.print(f"✅ Index saved: flask.index")
-console.print(f"✅ Metadata saved: flask_metadata.json")
-console.print(f"\n💡 Total vectors: {index.ntotal}")
-console.print(f"💡 Dimension: {dimension}")
-console.print("\n➡️  Next: python 3_query_example.py")
+console.print(f"PASS: Index saved: flask.index")
+console.print(f"PASS: Metadata saved: flask_metadata.json")
+console.print(f"\n Total vectors: {index.ntotal}")
+console.print(f" Dimension: {dimension}")
+console.print("\n  Next: python 3_query_example.py")

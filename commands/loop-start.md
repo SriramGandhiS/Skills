@@ -10,7 +10,7 @@ Start a managed autonomous loop pattern with safety defaults.
 
 `/loop-start [pattern] [--mode safe|fast]`
 
-- `pattern`: `sequential`, `continuous-pr`, `rfc-dag`, `infinite`
+- `pattern`:`sequential`,`continuous-pr`,`rfc-dag`,`infinite`
 - `--mode`:
   - `safe` (default): strict quality gates and checkpoints
   - `fast`: reduced gates for speed
@@ -32,5 +32,5 @@ Start a managed autonomous loop pattern with safety defaults.
 ## Arguments
 
 $ARGUMENTS:
-- `<pattern>` optional (`sequential|continuous-pr|rfc-dag|infinite`)
+- `<pattern>`optional (`sequential|continuous-pr|rfc-dag|infinite`)
 - `--mode safe|fast` optional

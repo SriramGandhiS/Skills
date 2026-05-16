@@ -242,7 +242,7 @@ After writing each merged file, verify that user modifications survived the merg
 2. **Hunk presence check:** For each user-added section identified during diff analysis, search the merged output for at least the first significant line (non-blank, non-comment) of each addition. Missing signature lines indicate a dropped hunk.
 3. **Report warnings inline** (do not block):
    ```
-   ⚠ Potential dropped content in {file_path}:
+   WARNING: Potential dropped content in {file_path}:
      - Missing hunk near line {N}: "{first_line_preview}..." ({line_count} lines)
      - Backup available: {patches_dir}/{file_path}
    ```
@@ -258,7 +258,7 @@ After writing each merged file, verify that user modifications survived the merg
    - `line_count` — total lines in the hunk
    - `verified` — `yes` if the signature_line is present in the merged output, `no` otherwise
 
-5. **Track verification status** — add to per-file report: `Merged (verified)` vs `Merged (⚠ {N} hunks may be missing)`
+5. **Track verification status** — add to per-file report: `Merged (verified)` vs `Merged (WARNING: {N} hunks may be missing)`
 
 6. **Report status per file:**
    - `Merged` — user modifications applied cleanly (show summary of what was preserved)

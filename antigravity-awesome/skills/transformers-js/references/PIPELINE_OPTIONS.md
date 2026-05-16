@@ -32,26 +32,26 @@ The third parameter, `options`, allows you to configure how the model is loaded 
 interface PretrainedModelOptions {
   // Progress tracking
   progress_callback?: (info: ProgressInfo) => void;
-  
+
   // Model configuration
   config?: PretrainedConfig;
-  
+
   // Cache and loading
   cache_dir?: string;
   local_files_only?: boolean;
   revision?: string;
-  
+
   // Model-specific settings
   subfolder?: string;
   model_file_name?: string;
-  
+
   // Device and performance
   device?: DeviceType | Record<string, DeviceType>;
   dtype?: DataType | Record<string, DataType>;
-  
+
   // External data format (large models)
   use_external_data_format?: boolean | number | Record<string, boolean | number>;
-  
+
   // ONNX Runtime settings
   session_options?: InferenceSession.SessionOptions;
 }
@@ -72,7 +72,7 @@ const pipe = await pipeline('sentiment-analysis', null, {
       fileProgress[info.file] = info.progress;
       console.log(`${info.file}: ${info.progress.toFixed(1)}%`);
     }
-    
+
     if (info.status === 'done') {
       console.log(`✓ ${info.file} complete`);
     }
@@ -115,15 +115,15 @@ const pipe = await pipeline('image-classification', null, {
         progressContainer.appendChild(fileDiv);
         fileProgressBars[info.file] = fileDiv.querySelector('.progress-fill');
       }
-      
+
       // Update progress bar
       fileProgressBars[info.file].style.width = `${info.progress}%`;
-      
+
       const mb = (info.loaded / 1024 / 1024).toFixed(2);
       const totalMb = (info.total / 1024 / 1024).toFixed(2);
       statusDiv.textContent = `${info.file}: ${mb}/${totalMb} MB`;
     }
-    
+
     if (info.status === 'ready') {
       statusDiv.textContent = 'Model ready!';
     }
@@ -172,8 +172,6 @@ const pipe = await pipeline('sentiment-analysis', 'model-id', {
 - Only applies when `env.useFSCache = true` (Node.js)
 - Browser cache uses Cache API (configured via `env.cacheKey`)
 
-
-
 ### Local Files Only
 
 Prevent any network requests:
@@ -194,8 +192,6 @@ const pipe = await pipeline('sentiment-analysis', 'model-id', {
 - Model must already be cached or available locally
 - Throws error if model not found locally
 - Requires `env.allowLocalModels = true`
-
-
 
 ### Model Revision
 
@@ -247,8 +243,6 @@ const pipe = await pipeline('sentiment-analysis', 'model-id', {
 - Multiple model variants in same repo
 - Organizational preferences
 
-
-
 ### Model File Name
 
 Specify a custom model file name (without `.onnx` extension):
@@ -266,8 +260,6 @@ const pipe = await pipeline('text-generation', 'model-id', {
 - Encoder-decoder models with separate files
 
 **Note:** Currently only valid for encoder-only or decoder-only models.
-
-
 
 ## Device and Performance Options
 
@@ -313,8 +305,6 @@ const pipe = await pipeline('automatic-speech-recognition', 'model-id', {
 - Chrome/Edge 113+
 - Enable chrome://flags/#enable-unsafe-webgpu (if needed)
 - Adequate GPU memory
-
-
 
 ### Data Type (Quantization)
 
@@ -372,8 +362,6 @@ const pipe = await pipeline('automatic-speech-recognition', 'model-id', {
 | `q8` | Small | Fast | Good | Production, CPU inference |
 | `q4` | Smallest | Fastest | Acceptable | Edge devices, real-time apps |
 
-
-
 ### External Data Format
 
 For models >= 2GB, ONNX uses external data format:
@@ -413,8 +401,6 @@ const pipe = await pipeline('text-generation', 'large-model-id', {
 });
 ```
 
-
-
 ### Session Options
 
 Advanced ONNX Runtime configuration:
@@ -450,8 +436,6 @@ const pipe = await pipeline('sentiment-analysis', 'model-id', {
 - Debug model execution issues
 - Override dynamic shapes
 - Control memory usage
-
-
 
 ## Common Configuration Patterns
 

@@ -200,19 +200,19 @@ For each step:
 
 **Prohibited in Workflows** (Source: docs.temporal.io/workflows):
 
-- ❌ Threading, locks, synchronization primitives
-- ❌ Random number generation (`random()`)
-- ❌ Global state or static variables
-- ❌ System time (`datetime.now()`)
-- ❌ Direct file I/O or network calls
-- ❌ Non-deterministic libraries
+- FAIL: Threading, locks, synchronization primitives
+- FAIL: Random number generation (`random()`)
+- FAIL: Global state or static variables
+- FAIL: System time (`datetime.now()`)
+- FAIL: Direct file I/O or network calls
+- FAIL: Non-deterministic libraries
 
 **Allowed in Workflows**:
 
-- ✅ `workflow.now()` (deterministic time)
-- ✅ `workflow.random()` (deterministic random)
-- ✅ Pure functions and calculations
-- ✅ Calling activities (non-deterministic operations)
+- PASS: `workflow.now()` (deterministic time)
+- PASS: `workflow.random()` (deterministic random)
+- PASS: Pure functions and calculations
+- PASS: Calling activities (non-deterministic operations)
 
 ### Versioning Strategies
 

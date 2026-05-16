@@ -43,10 +43,10 @@ This script will:
 
 **Expected Output:**
 ```
-✅ ChromaDB data packaged successfully!
-📦 Output: output/vue-chroma.json
-📊 Total documents: 21
-📂 Categories: overview (1), guides (8), api (12)
+PASS: ChromaDB data packaged successfully!
+ Output: output/vue-chroma.json
+ Total documents: 21
+ Categories: overview (1), guides (8), api (12)
 ```
 
 **What's in the JSON?**
@@ -89,16 +89,16 @@ This script will:
 
 **Expected Output:**
 ```
-📊 Creating ChromaDB client...
-✅ Client created (in-memory)
+ Creating ChromaDB client...
+PASS: Client created (in-memory)
 
-📦 Creating collection: vue
-✅ Collection created!
+ Creating collection: vue
+PASS: Collection created!
 
-📤 Adding 21 documents to collection...
-✅ Successfully added 21 documents to ChromaDB
+ Adding 21 documents to collection...
+PASS: Successfully added 21 documents to ChromaDB
 
-🔍 Collection 'vue' now contains 21 documents
+ Collection 'vue' now contains 21 documents
 ```
 
 **Persistent Storage:**
@@ -379,11 +379,11 @@ chroma-example/
 
 | Feature | ChromaDB | Weaviate |
 |---------|----------|----------|
-| **Setup** | ✅ No server needed | ⚠️ Docker/Cloud required |
-| **API** | ✅ Very simple | ⚠️ More complex |
-| **Performance** | ✅ Fast for < 1M docs | ✅ Scales to billions |
-| **Hybrid Search** | ❌ Semantic only | ✅ Keyword + semantic |
-| **Production** | ✅ Good for small-medium | ✅ Built for scale |
+| **Setup** | PASS: No server needed | WARNING: Docker/Cloud required |
+| **API** | PASS: Very simple | WARNING: More complex |
+| **Performance** | PASS: Fast for < 1M docs | PASS: Scales to billions |
+| **Hybrid Search** | FAIL: Semantic only | PASS: Keyword + semantic |
+| **Production** | PASS: Good for small-medium | PASS: Built for scale |
 
 **Use Chroma for:** Development, prototypes, small-medium datasets (< 1M docs)
 **Use Weaviate for:** Production, large datasets (> 1M docs), hybrid search

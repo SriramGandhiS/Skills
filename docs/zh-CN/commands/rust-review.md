@@ -8,8 +8,8 @@ description: 全面的Rust代码审查，涵盖所有权、生命周期、错误
 
 ## 此命令的作用
 
-1. **验证自动化检查**：运行 `cargo check`、`cargo clippy -- -D warnings`、`cargo fmt --check` 和 `cargo test` —— 任何一项失败则停止
-2. **识别 Rust 变更**：通过 `git diff HEAD~1`（或针对 PR 使用 `git diff main...HEAD`）查找修改过的 `.rs` 文件
+1. **验证自动化检查**：运行 `cargo check`、`cargo clippy -- -D warnings`、`cargo fmt --check`和`cargo test` —— 任何一项失败则停止
+2. **识别 Rust 变更**：通过 `git diff HEAD~1`（或针对 PR 使用`git diff main...HEAD`）查找修改过的`.rs` 文件
 3. **运行安全审计**：如果可用，则执行 `cargo audit`
 4. **安全扫描**：检查不安全使用、命令注入、硬编码密钥
 5. **所有权审查**：分析不必要的克隆、生命周期问题、借用模式
@@ -30,7 +30,7 @@ description: 全面的Rust代码审查，涵盖所有权、生命周期、错误
 ### 关键（必须修复）
 
 * 生产代码路径中未经检查的 `unwrap()`/`expect()`
-* 没有 `// SAFETY:` 注释记录不变量的 `unsafe`
+* 没有 `// SAFETY:`注释记录不变量的`unsafe`
 * 查询中通过字符串插值导致的 SQL 注入
 * 在 `std::process::Command` 中通过未经验证的输入导致的命令注入
 * 硬编码凭据
@@ -39,7 +39,7 @@ description: 全面的Rust代码审查，涵盖所有权、生命周期、错误
 ### 高（应该修复）
 
 * 为满足借用检查器而进行的不必要的 `.clone()`
-* 参数为 `String`，而 `&str` 或 `impl AsRef<str>` 即可满足
+* 参数为 `String`，而`&str`或`impl AsRef<str>` 即可满足
 * 在异步上下文中的阻塞操作（`std::thread::sleep`、`std::fs`）
 * 共享类型上缺少 `Send`/`Sync` 约束
 * 对业务关键枚举使用通配符 `_ =>` 匹配
@@ -51,24 +51,24 @@ description: 全面的Rust代码审查，涵盖所有权、生命周期、错误
 * 已知大小时缺少 `with_capacity`
 * 未说明理由就抑制 clippy 警告
 * 公共 API 缺少 `///` 文档
-* 对于忽略返回值很可能是错误的非 `must_use` 返回类型，考虑使用 `#[must_use]`
+* 对于忽略返回值很可能是错误的非 `must_use`返回类型，考虑使用`#[must_use]`
 
 ## 运行的自动化检查
 
 ```bash
-# Build gate (must pass before review)
+## Build gate (must pass before review)
 cargo check
 
-# Lints and suggestions
+## Lints and suggestions
 cargo clippy -- -D warnings
 
-# Formatting
+## Formatting
 cargo fmt --check
 
-# Tests
+## Tests
 cargo test
 
-# Security audit (if available)
+## Security audit (if available)
 if command -v cargo-audit >/dev/null; then cargo audit; else echo "cargo-audit not installed"; fi
 ```
 
@@ -78,7 +78,7 @@ if command -v cargo-audit >/dev/null; then cargo audit; else echo "cargo-audit n
 User: /rust-review
 
 Agent:
-# Rust Code Review Report
+## Rust Code Review Report
 
 ## Files Reviewed
 - src/service/user.rs (modified)

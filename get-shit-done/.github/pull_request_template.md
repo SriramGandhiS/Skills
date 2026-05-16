@@ -1,4 +1,4 @@
-## ⚠️ Wrong template — please use the correct one for your PR type
+## WARNING: Wrong template — please use the correct one for your PR type
 
 Every PR must use a typed template. Using this default template is a reason for rejection.
 

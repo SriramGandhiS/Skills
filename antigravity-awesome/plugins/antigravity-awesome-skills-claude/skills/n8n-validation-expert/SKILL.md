@@ -112,7 +112,7 @@ const result1 = validate_node({
 });
 // → Error: Missing "name"
 
-// ⏱️  23 seconds thinking...
+//   23 seconds thinking...
 
 // Iteration 2
 config.name = "general";
@@ -124,7 +124,7 @@ const result2 = validate_node({
 });
 // → Error: Missing "text"
 
-// ⏱️  58 seconds fixing...
+//   58 seconds fixing...
 
 // Iteration 3
 config.text = "Hello!";
@@ -134,7 +134,7 @@ const result3 = validate_node({
   config,
   profile: "runtime"
 });
-// → Valid! ✅
+// → Valid! PASS:
 ```
 
 **This is normal!** Don't be discouraged by multiple iterations.
@@ -328,7 +328,7 @@ config.expression = "={{$node['HTTP Request'].json.data}}";
 {
   "type": "boolean",
   "operation": "equals",
-  "singleValue": true  // ❌ Wrong!
+  "singleValue": true  // FAIL: Wrong!
 }
 ```
 
@@ -337,7 +337,7 @@ config.expression = "={{$node['HTTP Request'].json.data}}";
 {
   "type": "boolean",
   "operation": "equals"
-  // singleValue removed ✅
+  // singleValue removed PASS:
 }
 ```
 
@@ -351,7 +351,7 @@ config.expression = "={{$node['HTTP Request'].json.data}}";
 {
   "type": "boolean",
   "operation": "isEmpty"
-  // Missing singleValue ❌
+  // Missing singleValue FAIL:
 }
 ```
 
@@ -360,7 +360,7 @@ config.expression = "={{$node['HTTP Request'].json.data}}";
 {
   "type": "boolean",
   "operation": "isEmpty",
-  "singleValue": true  // ✅ Added
+  "singleValue": true  // PASS: Added
 }
 ```
 
@@ -488,9 +488,9 @@ validate_node({
 #### 1. Check `valid` field
 ```javascript
 if (result.valid) {
-  // ✅ Configuration is valid
+  // PASS: Configuration is valid
 } else {
-  // ❌ Has errors - must fix before deployment
+  // FAIL: Has errors - must fix before deployment
 }
 ```
 
@@ -641,7 +641,7 @@ n8n_autofix_workflow({
 
 ## Best Practices
 
-### ✅ Do
+### PASS: Do
 
 - Validate after every significant change
 - Read error messages completely
@@ -652,7 +652,7 @@ n8n_autofix_workflow({
 - Use `get_node` when unclear about requirements
 - Document false positives you accept
 
-### ❌ Don't
+### FAIL: Don't
 
 - Skip validation before activation
 - Try to fix all errors at once

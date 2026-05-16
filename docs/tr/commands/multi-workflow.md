@@ -31,10 +31,10 @@ Kalite kontrol noktaları, MCP servisleri ve multi-model işbirliği ile yapıla
 
 ## Multi-Model Çağrı Spesifikasyonu
 
-**Çağrı sözdizimi** (parallel: `run_in_background: true`, sequential: `false`):
+**Çağrı sözdizimi** (parallel: `run_in_background: true`, sequential:`false`):
 
 ```
-# Yeni session çağrısı
+## Yeni session çağrısı
 Bash({
   command: "~/.claude/bin/codeagent-wrapper {{LITE_MODE_FLAG}}--backend <codex|gemini> {{GEMINI_MODEL_FLAG}}- \"$PWD\" <<'EOF'
 ROLE_FILE: <role prompt path>
@@ -49,7 +49,7 @@ EOF",
   description: "Brief description"
 })
 
-# Session devam ettirme çağrısı
+## Session devam ettirme çağrısı
 Bash({
   command: "~/.claude/bin/codeagent-wrapper {{LITE_MODE_FLAG}}--backend <codex|gemini> {{GEMINI_MODEL_FLAG}}resume <SESSION_ID> - \"$PWD\" <<'EOF'
 ROLE_FILE: <role prompt path>
@@ -66,19 +66,19 @@ EOF",
 ```
 
 **Model Parametre Notları**:
-- `{{GEMINI_MODEL_FLAG}}`: `--backend gemini` kullanırken, `--gemini-model gemini-3-pro-preview` ile değiştir (trailing space not edin); codex için boş string kullan
+- `{{GEMINI_MODEL_FLAG}}`:`--backend gemini`kullanırken,`--gemini-model gemini-3-pro-preview` ile değiştir (trailing space not edin); codex için boş string kullan
 
 **Role Prompts**:
 
 | Phase | Codex | Gemini |
 |-------|-------|--------|
-| Analysis | `~/.claude/.ccg/prompts/codex/analyzer.md` | `~/.claude/.ccg/prompts/gemini/analyzer.md` |
-| Planning | `~/.claude/.ccg/prompts/codex/architect.md` | `~/.claude/.ccg/prompts/gemini/architect.md` |
-| Review | `~/.claude/.ccg/prompts/codex/reviewer.md` | `~/.claude/.ccg/prompts/gemini/reviewer.md` |
+| Analysis | `~/.claude/.ccg/prompts/codex/analyzer.md`|`~/.claude/.ccg/prompts/gemini/analyzer.md` |
+| Planning | `~/.claude/.ccg/prompts/codex/architect.md`|`~/.claude/.ccg/prompts/gemini/architect.md` |
+| Review | `~/.claude/.ccg/prompts/codex/reviewer.md`|`~/.claude/.ccg/prompts/gemini/reviewer.md` |
 
-**Session Reuse**: Her çağrı `SESSION_ID: xxx` döndürür, sonraki fazlar için `resume xxx` subcommand kullan (not: `resume`, `--resume` değil).
+**Session Reuse**: Her çağrı `SESSION_ID: xxx`döndürür, sonraki fazlar için`resume xxx`subcommand kullan (not:`resume`,`--resume` değil).
 
-**Parallel Çağrılar**: Başlatmak için `run_in_background: true` kullan, sonuçları `TaskOutput` ile bekle. **Bir sonraki faza geçmeden önce tüm modellerin dönmesini MUTLAKA bekle**.
+**Parallel Çağrılar**: Başlatmak için `run_in_background: true`kullan, sonuçları`TaskOutput` ile bekle. **Bir sonraki faza geçmeden önce tüm modellerin dönmesini MUTLAKA bekle**.
 
 **Background Task'leri Bekle** (max timeout 600000ms = 10 dakika kullan):
 
@@ -95,7 +95,7 @@ TaskOutput({ task_id: "<task_id>", block: true, timeout: 600000 })
 
 ## İletişim Yönergeleri
 
-1. Yanıtlara mode etiketi `[Mode: X]` ile başla, ilk `[Mode: Research]`.
+1. Yanıtlara mode etiketi `[Mode: X]`ile başla, ilk`[Mode: Research]`.
 2. Katı sıra takip et: `Research → Ideation → Plan → Execute → Optimize → Review`.
 3. Her faz tamamlandıktan sonra kullanıcı onayı iste.
 4. Skor < 7 veya kullanıcı onaylamadığında zorla durdur.
@@ -119,8 +119,8 @@ node scripts/orchestrate-worktrees.js .claude/plan/workflow-e2e-test.json --exec
 
 `[Mode: Research]` - Requirement'ları anla ve context topla:
 
-1. **Prompt Enhancement** (ace-tool MCP mevcutsa): `mcp__ace-tool__enhance_prompt` çağır, **orijinal $ARGUMENTS'ı tüm sonraki Codex/Gemini çağrıları için enhanced sonuçla değiştir**. Mevcut değilse, `$ARGUMENTS`'ı olduğu gibi kullan.
-2. **Context Retrieval** (ace-tool MCP mevcutsa): `mcp__ace-tool__search_context` çağır. Mevcut değilse, built-in tool'ları kullan: dosya keşfi için `Glob`, sembol araması için `Grep`, context toplama için `Read`, daha derin keşif için `Task` (Explore agent).
+1. **Prompt Enhancement** (ace-tool MCP mevcutsa): `mcp__ace-tool__enhance_prompt`çağır, **orijinal $ARGUMENTS'ı tüm sonraki Codex/Gemini çağrıları için enhanced sonuçla değiştir**. Mevcut değilse,`$ARGUMENTS`'ı olduğu gibi kullan.
+2. **Context Retrieval** (ace-tool MCP mevcutsa): `mcp__ace-tool__search_context`çağır. Mevcut değilse, built-in tool'ları kullan: dosya keşfi için`Glob`, sembol araması için`Grep`, context toplama için`Read`, daha derin keşif için`Task` (Explore agent).
 3. **Requirement Tamamlılık Skoru** (0-10):
    - Hedef netliği (0-3), Beklenen sonuç (0-3), Kapsam sınırları (0-2), Kısıtlamalar (0-2)
    - ≥7: Devam et | <7: Dur, açıklayıcı sorular sor
@@ -133,9 +133,9 @@ node scripts/orchestrate-worktrees.js .claude/plan/workflow-e2e-test.json --exec
 - Codex: Analyzer prompt kullan, teknik fizibilite, çözümler, riskler çıktıla
 - Gemini: Analyzer prompt kullan, UI fizibilite, çözümler, UX değerlendirmesi çıktıla
 
-`TaskOutput` ile sonuçları bekle. **SESSION_ID'yi kaydet** (`CODEX_SESSION` ve `GEMINI_SESSION`).
+`TaskOutput`ile sonuçları bekle. **SESSION_ID'yi kaydet** (`CODEX_SESSION`ve`GEMINI_SESSION`).
 
-**Yukarıdaki `Multi-Model Çağrı Spesifikasyonu`'ndaki `ÖNEMLİ` talimatları takip et**
+**Yukarıdaki `Multi-Model Çağrı Spesifikasyonu`'ndaki`ÖNEMLİ` talimatları takip et**
 
 Her iki analizi sentezle, çözüm karşılaştırması çıktıla (en az 2 seçenek), kullanıcı seçimini bekle.
 
@@ -149,7 +149,7 @@ Her iki analizi sentezle, çözüm karşılaştırması çıktıla (en az 2 seç
 
 `TaskOutput` ile sonuçları bekle.
 
-**Yukarıdaki `Multi-Model Çağrı Spesifikasyonu`'ndaki `ÖNEMLİ` talimatları takip et**
+**Yukarıdaki `Multi-Model Çağrı Spesifikasyonu`'ndaki`ÖNEMLİ` talimatları takip et**
 
 **Claude Sentezi**: Codex backend planı + Gemini frontend planını benimsle, kullanıcı onayından sonra `.claude/plan/task-name.md`'ye kaydet.
 
@@ -171,7 +171,7 @@ Her iki analizi sentezle, çözüm karşılaştırması çıktıla (en az 2 seç
 
 `TaskOutput` ile sonuçları bekle. Review geri bildirimlerini entegre et, kullanıcı onayından sonra optimizasyonu çalıştır.
 
-**Yukarıdaki `Multi-Model Çağrı Spesifikasyonu`'ndaki `ÖNEMLİ` talimatları takip et**
+**Yukarıdaki `Multi-Model Çağrı Spesifikasyonu`'ndaki`ÖNEMLİ` talimatları takip et**
 
 ### Phase 6: Quality Review
 

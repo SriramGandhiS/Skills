@@ -50,20 +50,20 @@ Comandos slash que invocam fluxos de trabalho úteis:
 ## Início Rápido
 
 ```bash
-# 1. Fork e clone
+## 1. Fork e clone
 gh repo fork affaan-m/everything-claude-code --clone
 cd everything-claude-code
 
-# 2. Criar uma branch
+## 2. Criar uma branch
 git checkout -b feat/minha-contribuicao
 
-# 3. Adicionar sua contribuição (veja as seções abaixo)
+## 3. Adicionar sua contribuição (veja as seções abaixo)
 
-# 4. Testar localmente
+## 4. Testar localmente
 cp -r skills/minha-skill ~/.claude/skills/  # para skills
-# Em seguida teste com o Claude Code
+## Em seguida teste com o Claude Code
 
-# 5. Enviar PR
+## 5. Enviar PR
 git add . && git commit -m "feat: adicionar minha-skill" && git push -u origin feat/minha-contribuicao
 ```
 
@@ -90,7 +90,7 @@ description: Breve descrição mostrada na lista de skills
 origin: ECC
 ---
 
-# Título da Sua Skill
+## Título da Sua Skill
 
 Breve visão geral do que esta skill cobre.
 
@@ -192,10 +192,10 @@ Saída: [o que você retorna]
 
 | Campo | Descrição | Opções |
 |-------|-----------|--------|
-| `name` | Minúsculas, com hifens | `code-reviewer` |
+| `name`| Minúsculas, com hifens |`code-reviewer` |
 | `description` | Usado para decidir quando invocar | Seja específico! |
-| `tools` | Apenas o que é necessário | `Read, Write, Edit, Bash, Grep, Glob, WebFetch, Task` |
-| `model` | Nível de complexidade | `haiku` (simples), `sonnet` (codificação), `opus` (complexo) |
+| `tools`| Apenas o que é necessário |`Read, Write, Edit, Bash, Grep, Glob, WebFetch, Task` |
+| `model`| Nível de complexidade |`haiku`(simples),`sonnet`(codificação),`opus` (complexo) |
 
 ### Agentes de Exemplo
 
@@ -268,7 +268,7 @@ tool == "Bash" && tool_input.command matches "git push"
 
 - [ ] O matcher é específico (não excessivamente abrangente)
 - [ ] Inclui mensagens de erro/informação claras
-- [ ] Usa códigos de saída corretos (`exit 1` bloqueia, `exit 0` permite)
+- [ ] Usa códigos de saída corretos (`exit 1`bloqueia,`exit 0` permite)
 - [ ] Testado exaustivamente
 - [ ] Tem descrição
 
@@ -291,7 +291,7 @@ commands/seu-comando.md
 description: Breve descrição mostrada em /help
 ---
 
-# Nome do Comando
+## Nome do Comando
 
 ## Propósito
 
@@ -320,7 +320,7 @@ O que o usuário recebe.
 
 Skills e agentes podem usar ferramentas **MCP (Model Context Protocol)** para obter dados atualizados em vez de depender apenas de dados de treinamento. Isso é especialmente útil para documentação.
 
-- **Context7** é um servidor MCP que expõe `resolve-library-id` e `query-docs`. Use quando o usuário perguntar sobre bibliotecas, frameworks ou APIs para que as respostas reflitam a documentação atual.
+- **Context7** é um servidor MCP que expõe `resolve-library-id`e`query-docs`. Use quando o usuário perguntar sobre bibliotecas, frameworks ou APIs para que as respostas reflitam a documentação atual.
 - Ao contribuir com **skills** que dependem de docs em tempo real, descreva como usar as ferramentas MCP relevantes.
 - Ao contribuir com **agentes** que respondem perguntas sobre docs/API, inclua os nomes das ferramentas MCP do Context7 nas ferramentas do agente.
 
@@ -332,18 +332,18 @@ Skills e agentes podem usar ferramentas **MCP (Model Context Protocol)** para ob
 
 O ECC vem com subconjuntos de skills para outros harnesses:
 
-- **Codex:** `.agents/skills/` — skills listadas em `agents/openai.yaml` são carregadas pelo Codex.
+- **Codex:** `.agents/skills/`— skills listadas em`agents/openai.yaml` são carregadas pelo Codex.
 - **Cursor:** `.cursor/skills/` — um subconjunto de skills é incluído para Cursor.
 
 Ao **adicionar uma nova skill** que deve estar disponível no Codex ou Cursor:
 
 1. Adicione a skill em `skills/nome-da-sua-skill/` como de costume.
-2. Se deve estar disponível no **Codex**, adicione-a em `.agents/skills/` e garanta que seja referenciada em `agents/openai.yaml` se necessário.
+2. Se deve estar disponível no **Codex**, adicione-a em `.agents/skills/`e garanta que seja referenciada em`agents/openai.yaml` se necessário.
 3. Se deve estar disponível no **Cursor**, adicione-a em `.cursor/skills/`.
 
 ### Traduções
 
-Traduções ficam em `docs/` (ex: `docs/zh-CN`, `docs/zh-TW`, `docs/ja-JP`, `docs/ko-KR`, `docs/pt-BR`). Se você alterar agentes, comandos ou skills que são traduzidos, considere atualizar os arquivos de tradução correspondentes ou abrir uma issue.
+Traduções ficam em `docs/`(ex:`docs/zh-CN`,`docs/zh-TW`,`docs/ja-JP`,`docs/ko-KR`,`docs/pt-BR`). Se você alterar agentes, comandos ou skills que são traduzidos, considere atualizar os arquivos de tradução correspondentes ou abrir uma issue.
 
 ---
 
@@ -411,7 +411,7 @@ Como você testou isso.
 ## Nomenclatura de Arquivos
 
 - Use minúsculas com hifens: `python-reviewer.md`
-- Seja descritivo: `tdd-workflow.md` não `workflow.md`
+- Seja descritivo: `tdd-workflow.md`não`workflow.md`
 - Combine nome com nome do arquivo
 
 ---

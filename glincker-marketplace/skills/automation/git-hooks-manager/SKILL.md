@@ -66,7 +66,7 @@ npx husky init
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-echo "🔍 Running pre-commit checks..."
+echo " Running pre-commit checks..."
 
 # Run linter
 npm run lint || exit 1
@@ -77,7 +77,7 @@ npx lint-staged || exit 1
 # Run tests on staged files
 npm test -- --findRelatedTests $(git diff --cached --name-only --diff-filter=ACM | grep -E '\.(js|jsx|ts|tsx)$' | tr '\n' ' ') || exit 1
 
-echo "✅ Pre-commit checks passed!"
+echo "PASS: Pre-commit checks passed!"
 ```
 
 **Pre-push hook (.husky/pre-push)**:
@@ -86,7 +86,7 @@ echo "✅ Pre-commit checks passed!"
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-echo "🔍 Running pre-push checks..."
+echo " Running pre-push checks..."
 
 # Run full test suite
 npm test || exit 1
@@ -97,7 +97,7 @@ npm run type-check || exit 1
 # Build check
 npm run build || exit 1
 
-echo "✅ Pre-push checks passed!"
+echo "PASS: Pre-push checks passed!"
 ```
 
 **Commit-msg hook (.husky/commit-msg)**:
@@ -178,23 +178,23 @@ For projects without package managers:
 ```bash
 #!/bin/sh
 
-echo "🔍 Running pre-commit checks..."
+echo " Running pre-commit checks..."
 
 # Check for TODOs
 if git diff --cached | grep -i "TODO"; then
-    echo "❌ Found TODO comments. Please remove or track them properly."
+    echo "FAIL: Found TODO comments. Please remove or track them properly."
     exit 1
 fi
 
 # Check for console.log
 if git diff --cached --name-only | grep -E '\.(js|jsx|ts|tsx)$' | xargs grep -n "console\.log"; then
-    echo "❌ Found console.log statements. Please remove them."
+    echo "FAIL: Found console.log statements. Please remove them."
     exit 1
 fi
 
 # Check for hardcoded secrets
 if git diff --cached | grep -E '(password|secret|api_key|apikey)\s*=\s*["\'][^"\']+["\']'; then
-    echo "❌ Possible hardcoded secret detected!"
+    echo "FAIL: Possible hardcoded secret detected!"
     exit 1
 fi
 
@@ -203,13 +203,13 @@ for file in $(git diff --cached --name-only); do
     if [ -f "$file" ]; then
         size=$(wc -c < "$file")
         if [ $size -gt 1048576 ]; then # 1MB
-            echo "❌ File $file is too large (>1MB)"
+            echo "FAIL: File $file is too large (>1MB)"
             exit 1
         fi
     fi
 done
 
-echo "✅ Pre-commit checks passed!"
+echo "PASS: Pre-commit checks passed!"
 ```
 
 ## Hook Types

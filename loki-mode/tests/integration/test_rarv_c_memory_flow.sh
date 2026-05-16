@@ -2,15 +2,14 @@
 # tests/integration/test_rarv_c_memory_flow.sh
 # v7.0.0 invariant: with managed flags on and a FakeManagedClient injected,
 # a simulated RARV-C iteration:
-#   1. REASON augment runs (retrieve path executes, emits a retrieve event
-#      OR a retrieve_empty event -- either is acceptable).
-#   2. REFLECT shadow-write runs for a high-importance episode and emits a
-#      shadow-write success event.
-#   3. All events land in .loki/managed/events.ndjson.
-#   4. Local .loki/memory/ structure remains the same -- managed storage is
-#      a shadow, never a replacement.
-#
-# This is a BEHAVIORAL simulation of the code paths in autonomy/run.sh
+# 1. REASON augment runs (retrieve path executes, emits a retrieve event
+# OR a retrieve_empty event -- either is acceptable).
+# 2. REFLECT shadow-write runs for a high-importance episode and emits a
+# shadow-write success event.
+# 3. All events land in .loki/managed/events.ndjson.
+# 4. Local .loki/memory/ structure remains the same -- managed storage is
+# a shadow, never a replacement.
+# # This is a BEHAVIORAL simulation of the code paths in autonomy/run.sh
 # without booting the full runner. We exercise the actual Python modules.
 
 set -u

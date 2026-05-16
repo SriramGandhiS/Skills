@@ -59,12 +59,12 @@ Built-in cross-reference checks for controversial or ambiguous claims within the
 
 ## Best Practices
 
-- ✅ Use RecallMax at the start of long-running agent sessions
-- ✅ Enable auto-summarization for conversations beyond 20 turns
-- ✅ Use compression before hitting context window limits
-- ✅ Let the fact verifier run on high-stakes outputs
-- ❌ Don't inject unvetted external content without dedup
-- ❌ Don't skip summarization and rely on raw truncation
+- PASS: Use RecallMax at the start of long-running agent sessions
+- PASS: Enable auto-summarization for conversations beyond 20 turns
+- PASS: Use compression before hitting context window limits
+- PASS: Let the fact verifier run on high-stakes outputs
+- FAIL: Don't inject unvetted external content without dedup
+- FAIL: Don't skip summarization and rely on raw truncation
 
 ## Related Skills
 

@@ -37,8 +37,8 @@
 ## Quality Gates
 
 ### Location Page Limits
-- ⚠️ **WARNING** at 30+ location pages
-- 🛑 **HARD STOP** at 50+ location pages
+- WARNING: **WARNING** at 30+ location pages
+- **HARD STOP** at 50+ location pages
 
 ### Unique Content Requirements
 | Page Type | Min Words | Unique % |

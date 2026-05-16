@@ -1,4 +1,4 @@
-﻿---
+---
 name: pubmed-database
 description: Direct PubMed and NCBI E-utilities search workflows for biomedical literature, MeSH queries, PMID lookup, citation retrieval, and API-backed literature monitoring.
 origin: community
@@ -132,7 +132,7 @@ print(pmids)
 ```
 
 For batches, prefer NCBI history server parameters (`usehistory=y`,
-`WebEnv`, `query_key`) instead of passing very long PMID lists through URLs.
+`WebEnv`,`query_key`) instead of passing very long PMID lists through URLs.
 
 ## Output Discipline
 

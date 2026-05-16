@@ -160,17 +160,17 @@ Q2: What's the primary goal?
 
 ## Best Practices
 
-- ✅ Always mark one option per question as **(Recommended)**
-- ✅ Lead with a 1–2 sentence framing before the question widget
-- ✅ Group up to 3 related questions in a single `ask_user_input_v0` call
-- ✅ Re-evaluate after each round — stop as soon as you have enough context
-- ✅ Use `single_select` for mutually exclusive choices, `multi_select` when combinations are valid
-- ✅ State remaining assumptions explicitly before proceeding after Round 3
-- ❌ Don't ask 6 separate question calls when 2 grouped calls would do
-- ❌ Don't mark two options as Recommended in the same question
-- ❌ Don't use vague option labels like "Other" or "It depends" without elaborating
-- ❌ Don't mechanically label rounds in the UI ("Round 1:", "Round 2:")
-- ❌ Don't run a follow-up round for minor details that have safe defaults
+- PASS: Always mark one option per question as **(Recommended)**
+- PASS: Lead with a 1–2 sentence framing before the question widget
+- PASS: Group up to 3 related questions in a single `ask_user_input_v0` call
+- PASS: Re-evaluate after each round — stop as soon as you have enough context
+- PASS: Use `single_select` for mutually exclusive choices, `multi_select` when combinations are valid
+- PASS: State remaining assumptions explicitly before proceeding after Round 3
+- FAIL: Don't ask 6 separate question calls when 2 grouped calls would do
+- FAIL: Don't mark two options as Recommended in the same question
+- FAIL: Don't use vague option labels like "Other" or "It depends" without elaborating
+- FAIL: Don't mechanically label rounds in the UI ("Round 1:", "Round 2:")
+- FAIL: Don't run a follow-up round for minor details that have safe defaults
 
 ---
 
@@ -195,16 +195,16 @@ No `npm run security:docs` review is required for this skill.
 ## Common Pitfalls
 
 - **Problem:** Antigravity asks one good question, gets an answer, then proceeds without checking if new unknowns emerged.
-  **Solution:** Always re-run the trigger checklist mentally after each round before deciding to proceed.
+**Solution:** Always re-run the trigger checklist mentally after each round before deciding to proceed.
 
 - **Problem:** All options in a question look equally valid so Antigravity marks none as Recommended.
-  **Solution:** Pick the option that works for most users or is lowest-risk and mark it. "No preference" is rarely true.
+**Solution:** Pick the option that works for most users or is lowest-risk and mark it. "No preference" is rarely true.
 
 - **Problem:** Antigravity runs 4+ rounds trying to eliminate every unknown.
-  **Solution:** Hard cap at 3 rounds. After Round 3, state assumptions and proceed.
+**Solution:** Hard cap at 3 rounds. After Round 3, state assumptions and proceed.
 
 - **Problem:** Round 2 questions cover the same category as Round 1 (e.g., tone again).
-  **Solution:** Each round should unlock new dimensions, not re-ask resolved ones.
+**Solution:** Each round should unlock new dimensions, not re-ask resolved ones.
 
 ---
 

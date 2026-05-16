@@ -125,10 +125,10 @@ Let users control email frequency and topics
 **When to use**: Building marketing or notification systems
 
 Preferences:
-☑ Product updates (weekly)
-☑ New features (monthly)
+ Product updates (weekly)
+ New features (monthly)
 ☐ Marketing promotions
-☑ Account notifications (always)
+ Account notifications (always)
 
 # Respect preferences in all sends
 # Required for GDPR compliance

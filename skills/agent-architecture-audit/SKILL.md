@@ -1,4 +1,4 @@
-﻿---
+---
 name: agent-architecture-audit
 description: Full-stack diagnostic for agent and LLM applications. Audits the 12-layer agent stack for wrapper regression, memory pollution, tool discipline failures, hidden repair loops, and rendering corruption. Produces severity-ranked findings with code-first fixes. Essential for developers building agent applications, autonomous loops, or any LLM-powered feature.
 origin: oh-my-agent-check
@@ -28,7 +28,7 @@ A diagnostic workflow for agent systems that hide failures behind wrapper layers
 **Do not use for:**
 - General code debugging â€” use `agent-introspection-debugging`
 - Code review â€” use language-specific reviewer agents
-- Security scanning â€” use `security-review` or `security-review/scan`
+- Security scanning â€” use `security-review`or`security-review/scan`
 - Agent performance benchmarking â€” use `agent-eval`
 - Writing new features â€” use the appropriate workflow skill
 
@@ -128,22 +128,22 @@ Gather evidence from the codebase:
 Use `rg` to search for anti-patterns:
 
 ```bash
-# Tool requirements expressed only in prompt text (not code)
+## Tool requirements expressed only in prompt text (not code)
 rg "must.*tool|å¿…é¡».*å·¥å…·|required.*call" --type md
 
-# Tool execution without validation
+## Tool execution without validation
 rg "tool_call|toolCall|tool_use" --type py --type ts
 
-# Hidden LLM calls outside main agent loop
+## Hidden LLM calls outside main agent loop
 rg "completion|chat\.create|messages\.create|llm\.invoke"
 
-# Memory admission without user-correction priority
+## Memory admission without user-correction priority
 rg "memory.*admit|long.*term.*update|persist.*memory" --type py --type ts
 
-# Fallback loops that run additional LLM calls
+## Fallback loops that run additional LLM calls
 rg "fallback|retry.*llm|repair.*prompt|re-?prompt" --type py --type ts
 
-# Silent output mutation
+## Silent output mutation
 rg "mutate|rewrite.*response|transform.*output|shap" --type py --type ts
 ```
 

@@ -398,7 +398,7 @@ shopify {project_type} deploy
 
         # Check CLI
         if not self.check_cli_installed():
-            print("\n⚠ Shopify CLI not found!")
+            print("\nWARNING: Shopify CLI not found!")
             print("Install: npm install -g @shopify/cli@latest")
             sys.exit(1)
 

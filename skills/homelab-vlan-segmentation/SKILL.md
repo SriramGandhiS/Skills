@@ -1,4 +1,4 @@
-﻿---
+---
 name: homelab-vlan-segmentation
 description: Segmenting home networks into VLANs for IoT, guest, trusted, and server traffic using UniFi, pfSense/OPNsense, and MikroTik â€” including switch trunk config, firewall rules, and wireless SSID mapping.
 origin: community
@@ -122,18 +122,18 @@ Settings â†’ WiFi â†’ Create New WiFi
 ```
 Settings â†’ Traffic & Security â†’ Traffic Rules
 
-# Block IoT from reaching Trusted VLAN
+## Block IoT from reaching Trusted VLAN
   Action: Block
   Category: Local Network
   Source: IoT (192.168.20.0/24)
   Destination: Trusted (192.168.10.0/24)
 
-# Allow IoT to reach internet only
+## Allow IoT to reach internet only
   Action: Allow
   Source: IoT
   Destination: Internet
 
-# Block Guest from all local networks
+## Block Guest from all local networks
   Action: Block
   Source: Guest
   Destination: Local Networks
@@ -150,7 +150,7 @@ Interfaces â†’ Assignments â†’ VLANs â†’ Add
   VLAN Tag: 20
   Description: IoT
 
-# Repeat for each VLAN, then assign each VLAN to an interface:
+## Repeat for each VLAN, then assign each VLAN to an interface:
 Interfaces â†’ Assignments â†’ Add
   Select the VLAN you created â†’ click Add
   Enable the interface, set IP to gateway address (192.168.20.1/24)
@@ -169,9 +169,9 @@ Services â†’ DHCP Server â†’ Select your VLAN interface
 ### Firewall Rules (pfSense/OPNsense)
 
 ```
-# Rules are processed top-to-bottom, first match wins.
+## Rules are processed top-to-bottom, first match wins.
 
-# On the IoT interface (VLAN 20):
+## On the IoT interface (VLAN 20):
   Rule 1: Allow IoT â†’ Pi-hole DNS  â† MUST come before the RFC1918 block rule
     Protocol: UDP/TCP
     Source: IoT net
@@ -190,13 +190,13 @@ Services â†’ DHCP Server â†’ Select your VLAN interface
     Destination: any
     Action: Allow
 
-# On the Trusted interface (VLAN 10):
+## On the Trusted interface (VLAN 10):
   Allow all (trusted devices can reach everything)
     Source: Trusted net
     Destination: any
     Action: Allow
 
-# Additional exceptions for IoT devices that need specific local services:
+## Additional exceptions for IoT devices that need specific local services:
   Insert before Rule 2 (the RFC1918 block):
     Protocol: TCP
     Source: IoT net
@@ -207,39 +207,39 @@ Services â†’ DHCP Server â†’ Select your VLAN interface
 ## MikroTik Configuration
 
 ```
-# Step 1: Create a bridge with VLAN filtering enabled
+## Step 1: Create a bridge with VLAN filtering enabled
 /interface bridge
 add name=bridge vlan-filtering=yes
 
-# Step 2: Add physical ports to the bridge
-# Trunk port to router/uplink (tagged for all VLANs)
+## Step 2: Add physical ports to the bridge
+## Trunk port to router/uplink (tagged for all VLANs)
 /interface bridge port
 add bridge=bridge interface=ether1 frame-types=admit-only-vlan-tagged
 
-# Access port for trusted devices (untagged VLAN 10)
+## Access port for trusted devices (untagged VLAN 10)
 /interface bridge port
 add bridge=bridge interface=ether2 pvid=10 frame-types=admit-only-untagged-and-priority-tagged
 
-# Access port for IoT devices (untagged VLAN 20)
+## Access port for IoT devices (untagged VLAN 20)
 /interface bridge port
 add bridge=bridge interface=ether3 pvid=20 frame-types=admit-only-untagged-and-priority-tagged
 
-# Step 3: Define which VLANs are allowed on which ports
+## Step 3: Define which VLANs are allowed on which ports
 /interface bridge vlan
 add bridge=bridge tagged=ether1 untagged=ether2 vlan-ids=10
 add bridge=bridge tagged=ether1 untagged=ether3 vlan-ids=20
 
-# Step 4: Create VLAN interfaces on the bridge (gateway IPs)
+## Step 4: Create VLAN interfaces on the bridge (gateway IPs)
 /interface vlan
 add interface=bridge name=vlan10 vlan-id=10
 add interface=bridge name=vlan20 vlan-id=20
 
-# Step 5: Assign gateway IPs
+## Step 5: Assign gateway IPs
 /ip address
 add interface=vlan10 address=192.168.10.1/24
 add interface=vlan20 address=192.168.20.1/24
 
-# Step 6: DHCP pools and servers
+## Step 6: DHCP pools and servers
 /ip pool
 add name=pool-trusted ranges=192.168.10.100-192.168.10.254
 add name=pool-iot ranges=192.168.20.100-192.168.20.254
@@ -252,7 +252,7 @@ add interface=vlan20 address-pool=pool-iot name=dhcp-iot
 add address=192.168.10.0/24 gateway=192.168.10.1
 add address=192.168.20.0/24 gateway=192.168.20.1
 
-# Step 7: Firewall â€” block IoT from reaching trusted VLAN
+## Step 7: Firewall â€” block IoT from reaching trusted VLAN
 /ip firewall filter
 add chain=forward src-address=192.168.20.0/24 dst-address=192.168.10.0/24 \
     action=drop comment="Block IoT to Trusted"
@@ -261,17 +261,17 @@ add chain=forward src-address=192.168.20.0/24 dst-address=192.168.10.0/24 \
 ## Switch Trunk vs Access Ports
 
 ```
-# Trunk port: carries multiple VLANs (tagged) â€” connects switch-to-switch, switch-to-router, switch-to-AP
-# Access port: carries one VLAN (untagged) â€” connects to end devices (PC, camera, NAS)
+## Trunk port: carries multiple VLANs (tagged) â€” connects switch-to-switch, switch-to-router, switch-to-AP
+## Access port: carries one VLAN (untagged) â€” connects to end devices (PC, camera, NAS)
 
-# A managed switch port connected to your router should be a trunk:
+## A managed switch port connected to your router should be a trunk:
   Allowed VLANs: 10, 20, 30, 40, 99
 
-# A port connecting to a PC should be an access port:
+## A port connecting to a PC should be an access port:
   VLAN: 10 (trusted)
   No tagging â€” the PC does not know or care about VLANs
 
-# A port connecting to an AP must be a trunk:
+## A port connecting to an AP must be a trunk:
   The AP tags traffic from each SSID with the right VLAN ID
   Allowed VLANs: 10, 20, 40  (whichever SSIDs the AP serves)
 ```
@@ -279,20 +279,20 @@ add chain=forward src-address=192.168.20.0/24 dst-address=192.168.10.0/24 \
 ## Anti-Patterns
 
 ```
-# BAD: Creating VLANs without adding firewall rules
-# VLANs without firewall rules do not provide security â€” inter-VLAN routing is open by default
-# GOOD: Add explicit block rules immediately after creating VLANs
+## BAD: Creating VLANs without adding firewall rules
+## VLANs without firewall rules do not provide security â€” inter-VLAN routing is open by default
+## GOOD: Add explicit block rules immediately after creating VLANs
 
-# BAD: Putting the Pi-hole in the IoT VLAN
-# IoT devices can reach it but trusted devices cannot (without extra rules)
-# GOOD: Pi-hole in the Servers VLAN with a rule allowing all VLANs to reach port 53
+## BAD: Putting the Pi-hole in the IoT VLAN
+## IoT devices can reach it but trusted devices cannot (without extra rules)
+## GOOD: Pi-hole in the Servers VLAN with a rule allowing all VLANs to reach port 53
 
-# BAD: Native VLAN equals management VLAN
-# Untagged traffic landing in your management VLAN enables VLAN hopping attacks
-# GOOD: Use a dedicated unused VLAN as native (e.g. VLAN 999), keep management traffic tagged
+## BAD: Native VLAN equals management VLAN
+## Untagged traffic landing in your management VLAN enables VLAN hopping attacks
+## GOOD: Use a dedicated unused VLAN as native (e.g. VLAN 999), keep management traffic tagged
 
-# BAD: Same Wi-Fi password for IoT SSID and trusted SSID
-# Anyone who learns the password can connect IoT devices to the wrong segment
+## BAD: Same Wi-Fi password for IoT SSID and trusted SSID
+## Anyone who learns the password can connect IoT devices to the wrong segment
 ```
 
 ## Best Practices

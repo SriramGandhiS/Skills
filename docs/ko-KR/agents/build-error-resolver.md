@@ -46,13 +46,13 @@ npx eslint . --ext .ts,.tsx,.js,.jsx
 | 에러 | 수정 |
 |------|------|
 | `implicitly has 'any' type` | 타입 어노테이션 추가 |
-| `Object is possibly 'undefined'` | 옵셔널 체이닝 `?.` 또는 null 체크 |
-| `Property does not exist` | 인터페이스에 추가 또는 옵셔널 `?` 사용 |
+| `Object is possibly 'undefined'`| 옵셔널 체이닝`?.` 또는 null 체크 |
+| `Property does not exist`| 인터페이스에 추가 또는 옵셔널`?` 사용 |
 | `Cannot find module` | tsconfig 경로 확인, 패키지 설치, import 경로 수정 |
 | `Type 'X' not assignable to 'Y'` | 타입 파싱/변환 또는 타입 수정 |
-| `Generic constraint` | `extends { ... }` 추가 |
+| `Generic constraint`|`extends { ... }` 추가 |
 | `Hook called conditionally` | Hook을 최상위 레벨로 이동 |
-| `'await' outside async` | `async` 키워드 추가 |
+| `'await' outside async`|`async` 키워드 추가 |
 
 ## DO와 DON'T
 
@@ -83,13 +83,13 @@ npx eslint . --ext .ts,.tsx,.js,.jsx
 ## 빠른 복구
 
 ```bash
-# 핵 옵션: 모든 캐시 삭제
+## 핵 옵션: 모든 캐시 삭제
 rm -rf .next node_modules/.cache && npm run build
 
-# 의존성 재설치
+## 의존성 재설치
 rm -rf node_modules package-lock.json && npm install
 
-# ESLint 자동 수정 가능한 항목 수정
+## ESLint 자동 수정 가능한 항목 수정
 npx eslint . --fix
 ```
 

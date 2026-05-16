@@ -1,9 +1,9 @@
 # /// script
 # requires-python = ">=3.10"
 # dependencies = [
-#     "inspect-ai>=0.3.0",
-#     "inspect-evals",
-#     "openai",
+# "inspect-ai>=0.3.0",
+# "inspect-evals",
+# "openai",
 # ]
 # ///
 

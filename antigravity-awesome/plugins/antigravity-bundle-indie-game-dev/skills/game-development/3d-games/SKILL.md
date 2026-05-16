@@ -125,7 +125,7 @@ date_added: "2026-02-27"
 
 ## 7. Anti-Patterns
 
-| ❌ Don't | ✅ Do |
+| FAIL: Don't | PASS: Do |
 |----------|-------|
 | Mesh colliders everywhere | Simple shapes |
 | Real-time shadows on mobile | Baked or blob shadows |

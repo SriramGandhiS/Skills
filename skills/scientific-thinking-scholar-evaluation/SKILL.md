@@ -1,4 +1,4 @@
-﻿---
+---
 name: scholar-evaluation
 description: Structured scholarly-work evaluation for papers, proposals, literature reviews, methods sections, evidence quality, citation support, and research-writing feedback.
 origin: community
@@ -123,7 +123,7 @@ Use `N/A` for dimensions that do not apply.
 ## Output Template
 
 ```markdown
-# Scholar Evaluation: <Artifact>
+## Scholar Evaluation: <Artifact>
 
 ## Overall Assessment
 

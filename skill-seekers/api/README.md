@@ -2,7 +2,7 @@
 
 FastAPI backend for discovering and downloading Skill Seekers configuration files.
 
-## 🚀 Endpoints
+## Endpoints
 
 ### Base URL
 - **Production**: `https://skillseekersweb.com`
@@ -169,7 +169,7 @@ Visit: `https://skillseekersweb.com/docs`
 
 ---
 
-## 📦 Metadata Fields
+## Metadata Fields
 
 Each config includes the following metadata:
 
@@ -189,7 +189,7 @@ Each config includes the following metadata:
 
 ---
 
-## 🏗️ Categories
+## Categories
 
 Configs are auto-categorized into:
 
@@ -203,7 +203,7 @@ Configs are auto-categorized into:
 
 ---
 
-## 🏷️ Tags
+## Tags
 
 Common tags include:
 
@@ -214,7 +214,7 @@ Common tags include:
 
 ---
 
-## 🚀 Local Development
+## Local Development
 
 ### Setup
 
@@ -247,7 +247,7 @@ curl -O http://localhost:8000/api/download/react.json
 
 ---
 
-## 📝 Deployment
+## Deployment
 
 ### Render
 
@@ -260,7 +260,7 @@ This API is configured for Render deployment via `render.yaml`.
 
 ---
 
-## 🔗 Links
+## Links
 
 - **API Documentation**: https://skillseekersweb.com/docs
 - **GitHub Repository**: https://github.com/yusufkaraaslan/Skill_Seekers

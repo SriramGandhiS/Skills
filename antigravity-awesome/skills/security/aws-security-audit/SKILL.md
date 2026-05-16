@@ -250,10 +250,10 @@ def calculate_security_score():
     iam = boto3.client('iam')
     ec2 = boto3.client('ec2')
     s3 = boto3.client('s3')
-    
+
     score = 100
     issues = []
-    
+
     # Check MFA
     try:
         report = iam.get_credential_report()
@@ -264,7 +264,7 @@ def calculate_security_score():
             issues.append(f"{users_without_mfa} users without MFA")
     except:
         pass
-    
+
     # Check open security groups
     sgs = ec2.describe_security_groups()
     open_sgs = 0
@@ -274,24 +274,24 @@ def calculate_security_score():
                 if ip_range.get('CidrIp') == '0.0.0.0/0':
                     open_sgs += 1
                     break
-    
+
     if open_sgs > 0:
         score -= 15
         issues.append(f"{open_sgs} security groups open to internet")
-    
+
     # Check unencrypted volumes
     volumes = ec2.describe_volumes()
     unencrypted = sum(1 for v in volumes['Volumes'] if not v['Encrypted'])
-    
+
     if unencrypted > 0:
         score -= 20
         issues.append(f"{unencrypted} unencrypted EBS volumes")
-    
+
     print(f"Security Score: {score}/100")
     print("\nIssues Found:")
     for issue in issues:
         print(f"  - {issue}")
-    
+
     return score
 
 if __name__ == "__main__":

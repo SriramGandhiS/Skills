@@ -320,7 +320,7 @@ Tokens expire after 1 hour. Use the refresh token to get a new access token:
 
 ## Best Practices
 
-### ✅ Do This
+### PASS: Do This
 
 - **Be Consistent** - Use the same format for all endpoints
 - **Include Examples** - Provide working code examples in multiple languages
@@ -333,7 +333,7 @@ Tokens expire after 1 hour. Use the refresh token to get a new access token:
 - **Include Rate Limits** - Document any rate limiting policies
 - **Provide Postman Collection** - Make it easy to test your API
 
-### ❌ Don't Do This
+### FAIL: Don't Do This
 
 - **Don't Skip Error Cases** - Users need to know what can go wrong
 - **Don't Use Vague Descriptions** - "Gets data" is not helpful
@@ -396,7 +396,7 @@ Tokens expire after 1 hour. Use the refresh token to get a new access token:
 
 ### Problem: Documentation Gets Out of Sync
 **Symptoms:** Examples don't work, parameters are wrong, endpoints return different data
-**Solution:** 
+**Solution:**
 - Generate docs from code comments/annotations
 - Use tools like Swagger/OpenAPI
 - Add API tests that validate documentation

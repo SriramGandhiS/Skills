@@ -1,10 +1,7 @@
 #!/usr/bin/env bash
-#
-# Test Unified Memory Access Layer
+# # Test Unified Memory Access Layer
 # Tests: UnifiedMemoryAccess class, MemoryContext, retrieval, recording, suggestions
-#
-
-set -uo pipefail
+# set -uo pipefail
 # Note: Not using -e to allow collecting all test results
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"

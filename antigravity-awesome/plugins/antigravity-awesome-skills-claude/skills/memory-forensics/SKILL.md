@@ -344,16 +344,16 @@ typedef struct _MMVAD {
 
 # Common injection techniques
 # 1. Classic DLL Injection
-#    - VirtualAllocEx + WriteProcessMemory + CreateRemoteThread
+# - VirtualAllocEx + WriteProcessMemory + CreateRemoteThread
 
 # 2. Process Hollowing
-#    - CreateProcess (SUSPENDED) + NtUnmapViewOfSection + WriteProcessMemory
+# - CreateProcess (SUSPENDED) + NtUnmapViewOfSection + WriteProcessMemory
 
 # 3. APC Injection
-#    - QueueUserAPC targeting alertable threads
+# - QueueUserAPC targeting alertable threads
 
 # 4. Thread Execution Hijacking
-#    - SuspendThread + SetThreadContext + ResumeThread
+# - SuspendThread + SetThreadContext + ResumeThread
 ```
 
 ### Rootkit Detection

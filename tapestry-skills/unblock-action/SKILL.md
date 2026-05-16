@@ -67,12 +67,12 @@ If they say something vague ("think about it", "research"), push for the physica
 Format the result as a clean block:
 
 ```
-## 🎯 Unblocked
+## Unblocked
 
 **Output:** [concrete deliverable]
 **Today's scope:** [day-sized slice, or same as output if it fits]
 **Next action:** [verb + object — the literal first step]
-**Safe to try?** ✅ [one-line confirmation that this is good enough to start]
+**Safe to try?** PASS: [one-line confirmation that this is good enough to start]
 ```
 
 ## Style Rules

@@ -4,11 +4,11 @@ description: Manages multi-cycle /gsd-debug checkpoint and continuation loop in 
 tools: Read, Write, Bash, Grep, Glob, Agent, AskUserQuestion
 color: orange
 # hooks:
-#   PostToolUse:
-#     - matcher: "Write|Edit"
-#       hooks:
-#         - type: command
-#           command: "npx eslint --fix $FILE 2>/dev/null || true"
+# PostToolUse:
+# - matcher: "Write|Edit"
+# hooks:
+# - type: command
+# command: "npx eslint --fix $FILE 2>/dev/null || true"
 ---
 
 <role>

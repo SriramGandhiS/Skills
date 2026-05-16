@@ -75,7 +75,7 @@ conn = videodb.connect()
 1. 环境变量（如果已导出）
 2. 项目当前目录中的 `.env` 文件
 
-如果密钥缺失，`videodb.connect()` 会自动引发 `AuthenticationError`。
+如果密钥缺失，`videodb.connect()`会自动引发`AuthenticationError`。
 
 当简短的內联命令有效时，不要编写脚本文件。
 
@@ -114,7 +114,7 @@ pip install videodb python-dotenv
 用户必须使用**任一**方法设置 `VIDEO_DB_API_KEY`：
 
 * **在终端中导出**（在启动 Claude 之前）：`export VIDEO_DB_API_KEY=your-key`
-* **项目 `.env` 文件**：将 `VIDEO_DB_API_KEY=your-key` 保存在项目的 `.env` 文件中
+* **项目 `.env`文件**：将`VIDEO_DB_API_KEY=your-key`保存在项目的`.env` 文件中
 
 免费获取 API 密钥，请访问 [console.videodb.io](https://console.videodb.io)（50 次免费上传，无需信用卡）。
 
@@ -125,20 +125,20 @@ pip install videodb python-dotenv
 ### 上传媒体
 
 ```python
-# URL
+## URL
 video = coll.upload(url="https://example.com/video.mp4")
 
-# YouTube
+## YouTube
 video = coll.upload(url="https://www.youtube.com/watch?v=VIDEO_ID")
 
-# Local file
+## Local file
 video = coll.upload(file_path="/path/to/video.mp4")
 ```
 
 ### 转录 + 字幕
 
 ```python
-# force=True skips the error if the video is already indexed
+## force=True skips the error if the video is already indexed
 video.index_spoken_words(force=True)
 text = video.get_transcript_text()
 stream_url = video.add_subtitle()
@@ -151,8 +151,8 @@ from videodb.exceptions import InvalidRequestError
 
 video.index_spoken_words(force=True)
 
-# search() raises InvalidRequestError when no results are found.
-# Always wrap in try/except and treat "No results found" as empty.
+## search() raises InvalidRequestError when no results are found.
+## Always wrap in try/except and treat "No results found" as empty.
 try:
     results = video.search("product demo")
     shots = results.get_shots()
@@ -171,8 +171,8 @@ import re
 from videodb import SearchType, IndexType, SceneExtractionType
 from videodb.exceptions import InvalidRequestError
 
-# index_scenes() has no force parameter — it raises an error if a scene
-# index already exists. Extract the existing index ID from the error.
+## index_scenes() has no force parameter — it raises an error if a scene
+## index already exists. Extract the existing index ID from the error.
 try:
     scene_index_id = video.index_scenes(
         extraction_type=SceneExtractionType.shot_based,
@@ -185,7 +185,7 @@ except Exception as e:
     else:
         raise
 
-# Use score_threshold to filter low-relevance noise (recommended: 0.3+)
+## Use score_threshold to filter low-relevance noise (recommended: 0.3+)
 try:
     results = video.search(
         query="person writing on a whiteboard",
@@ -208,8 +208,8 @@ except InvalidRequestError as e:
 **重要提示：** 在构建时间线之前，请务必验证时间戳：
 
 * `start` 必须 >= 0（负值会被静默接受，但会产生损坏的输出）
-* `start` 必须 < `end`
-* `end` 必须 <= `video.length`
+* `start`必须 <`end`
+* `end`必须 <=`video.length`
 
 ```python
 from videodb.timeline import Timeline
@@ -226,7 +226,7 @@ stream_url = timeline.generate_stream()
 ```python
 from videodb import TranscodeMode, VideoConfig, AudioConfig
 
-# Change resolution, quality, or aspect ratio server-side
+## Change resolution, quality, or aspect ratio server-side
 job_id = conn.transcode(
     source="https://example.com/video.mp4",
     callback_url="https://example.com/webhook",
@@ -247,16 +247,16 @@ job_id = conn.transcode(
 ```python
 from videodb import ReframeMode
 
-# Always prefer reframing a short segment:
+## Always prefer reframing a short segment:
 reframed = video.reframe(start=0, end=60, target="vertical", mode=ReframeMode.smart)
 
-# Async reframe for full-length videos (returns None, result via webhook):
+## Async reframe for full-length videos (returns None, result via webhook):
 video.reframe(target="vertical", callback_url="https://example.com/webhook")
 
-# Presets: "vertical" (9:16), "square" (1:1), "landscape" (16:9)
+## Presets: "vertical" (9:16), "square" (1:1), "landscape" (16:9)
 reframed = video.reframe(start=0, end=60, target="square")
 
-# Custom dimensions
+## Custom dimensions
 reframed = video.reframe(start=0, end=60, target={"width": 1280, "height": 720})
 ```
 
@@ -289,12 +289,12 @@ except InvalidRequestError as e:
 
 | 场景 | 错误信息 | 解决方案 |
 |----------|--------------|----------|
-| 为已索引的视频建立索引 | `Spoken word index for video already exists` | 使用 `video.index_spoken_words(force=True)` 跳过已索引的情况 |
-| 场景索引已存在 | `Scene index with id XXXX already exists` | 使用 `re.search(r"id\s+([a-f0-9]+)", str(e))` 从错误中提取现有的 `scene_index_id` |
-| 搜索无匹配项 | `InvalidRequestError: No results found` | 捕获异常并视为空结果 (`shots = []`) |
-| 调整宽高比超时 | 长视频上无限期阻塞 | 使用 `start`/`end` 限制片段，或传递 `callback_url` 进行异步处理 |
-| Timeline 上的负时间戳 | 静默产生损坏的流 | 在创建 `VideoAsset` 之前，始终验证 `start >= 0` |
-| `generate_video()` / `create_collection()` 失败 | `Operation not allowed` 或 `maximum limit` | 计划限制的功能——告知用户关于计划限制 |
+| 为已索引的视频建立索引 | `Spoken word index for video already exists`| 使用`video.index_spoken_words(force=True)` 跳过已索引的情况 |
+| 场景索引已存在 | `Scene index with id XXXX already exists`| 使用`re.search(r"id\s+([a-f0-9]+)", str(e))`从错误中提取现有的`scene_index_id` |
+| 搜索无匹配项 | `InvalidRequestError: No results found`| 捕获异常并视为空结果 (`shots = []`) |
+| 调整宽高比超时 | 长视频上无限期阻塞 | 使用 `start`/`end`限制片段，或传递`callback_url` 进行异步处理 |
+| Timeline 上的负时间戳 | 静默产生损坏的流 | 在创建 `VideoAsset`之前，始终验证`start >= 0` |
+| `generate_video()`/`create_collection()`失败 |`Operation not allowed`或`maximum limit` | 计划限制的功能——告知用户关于计划限制 |
 
 ## 示例
 
@@ -370,12 +370,12 @@ recent_visual = [
 
 | 问题 | VideoDB 解决方案 |
 |---------|-----------------|
-| 平台拒绝视频宽高比或分辨率 | 使用 `VideoConfig` 的 `video.reframe()` 或 `conn.transcode()` |
-| 需要为 Twitter/Instagram/TikTok 调整视频大小 | `video.reframe(target="vertical")` 或 `target="square"` |
-| 需要更改分辨率（例如 1080p → 720p） | 使用 `VideoConfig(resolution=720)` 的 `conn.transcode()` |
-| 需要在视频上叠加音频/音乐 | 在 `Timeline` 上使用 `AudioAsset` |
-| 需要添加字幕 | `video.add_subtitle()` 或 `CaptionAsset` |
-| 需要合并/修剪片段 | 在 `Timeline` 上使用 `VideoAsset` |
+| 平台拒绝视频宽高比或分辨率 | 使用 `VideoConfig`的`video.reframe()`或`conn.transcode()` |
+| 需要为 Twitter/Instagram/TikTok 调整视频大小 | `video.reframe(target="vertical")`或`target="square"` |
+| 需要更改分辨率（例如 1080p → 720p） | 使用 `VideoConfig(resolution=720)`的`conn.transcode()` |
+| 需要在视频上叠加音频/音乐 | 在 `Timeline`上使用`AudioAsset` |
+| 需要添加字幕 | `video.add_subtitle()`或`CaptionAsset` |
+| 需要合并/修剪片段 | 在 `Timeline`上使用`VideoAsset` |
 | 需要生成画外音、音乐或音效 | `coll.generate_voice()`、`generate_music()`、`generate_sound_effect()` |
 
 ## 来源

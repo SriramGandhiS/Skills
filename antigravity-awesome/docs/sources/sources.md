@@ -1,4 +1,4 @@
-# 📜 Sources & Attributions
+# Sources & Attributions
 
 We believe in giving credit where credit is due.
 If you recognize your work here and it is not properly attributed, please open an Issue.

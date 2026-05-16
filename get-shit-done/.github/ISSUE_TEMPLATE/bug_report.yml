@@ -8,7 +8,7 @@ body:
       value: |
         Thanks for taking the time to report a bug. The more detail you provide, the faster we can fix it.
 
-        > **⚠️ Privacy Notice:** Some fields below ask for logs or config files that may contain **personally identifiable information (PII)** such as file paths with your username, API keys, project names, or system details. Before pasting any output, please:
+        > **WARNING: Privacy Notice:** Some fields below ask for logs or config files that may contain **personally identifiable information (PII)** such as file paths with your username, API keys, project names, or system details. Before pasting any output, please:
         > 1. Review it for sensitive data
         > 2. Redact usernames, paths, and API keys (e.g., replace `/Users/yourname/` with `/Users/REDACTED/`)
         > 3. Or run your logs through an anonymizer — we recommend **[presidio-anonymizer](https://microsoft.github.io/presidio/)** (open-source, local-only) or **[scrub](https://github.com/dssg/scrub)** before pasting
@@ -124,7 +124,7 @@ body:
       description: |
         Paste any error messages from the terminal. This will be rendered as code.
 
-        **⚠️ PII Warning:** Terminal output often contains your system username in file paths (e.g., `/Users/yourname/.claude/...`). Please redact before pasting.
+**WARNING: PII Warning:** Terminal output often contains your system username in file paths (e.g., `/Users/yourname/.claude/...`). Please redact before pasting.
       render: shell
     validations:
       required: false
@@ -136,9 +136,9 @@ body:
       description: |
         If the bug is related to planning, phases, or workflow behavior, paste your `.planning/config.json`.
 
-        **How to retrieve:** `cat .planning/config.json`
+**How to retrieve:** `cat .planning/config.json`
 
-        **⚠️ PII Warning:** This file may contain project-specific names. Redact if sensitive.
+**WARNING: PII Warning:** This file may contain project-specific names. Redact if sensitive.
       render: json
     validations:
       required: false
@@ -150,9 +150,9 @@ body:
       description: |
         If the bug involves incorrect state tracking or phase progression, include your `.planning/STATE.md`.
 
-        **How to retrieve:** `cat .planning/STATE.md`
+**How to retrieve:** `cat .planning/STATE.md`
 
-        **⚠️ PII Warning:** This file contains project names, phase descriptions, and timestamps. Redact any project names or details you don't want public.
+**WARNING: PII Warning:** This file contains project names, phase descriptions, and timestamps. Redact any project names or details you don't want public.
       render: markdown
     validations:
       required: false
@@ -164,12 +164,12 @@ body:
       description: |
         If the bug involves hooks, statusline, or runtime integration, include your runtime's settings.json.
 
-        **How to retrieve:**
+**How to retrieve:**
         - Claude Code: `cat ~/.claude/settings.json`
         - Gemini CLI: `cat ~/.gemini/settings.json`
         - OpenCode: `cat ~/.config/opencode/opencode.json` or `opencode.jsonc`
 
-        **⚠️ PII Warning:** This file may contain API keys, tokens, or custom paths. **Remove all API keys and tokens before pasting.** We recommend running through [presidio-anonymizer](https://microsoft.github.io/presidio/) or manually redacting any line containing "key", "token", or "secret".
+**WARNING: PII Warning:** This file may contain API keys, tokens, or custom paths. **Remove all API keys and tokens before pasting.** We recommend running through [presidio-anonymizer](https://microsoft.github.io/presidio/) or manually redacting any line containing "key", "token", or "secret".
       render: json
     validations:
       required: false
@@ -214,13 +214,13 @@ body:
       description: |
         Anything else — screenshots, screen recordings, related issues, or links.
 
-        **Useful diagnostics to include (if applicable):**
+**Useful diagnostics to include (if applicable):**
         - `npm list -g get-shit-done-cc` — confirms installed version
         - `ls -la ~/.claude/get-shit-done/` — confirms installation files (Claude Code)
         - `cat ~/.claude/get-shit-done/gsd-file-manifest.json` — file manifest for debugging install issues
         - `ls -la .planning/` — confirms planning directory state
 
-        **⚠️ PII Warning:** File listings and manifests contain your home directory path. Replace your username with `REDACTED`.
+**WARNING: PII Warning:** File listings and manifests contain your home directory path. Replace your username with `REDACTED`.
     validations:
       required: false
 

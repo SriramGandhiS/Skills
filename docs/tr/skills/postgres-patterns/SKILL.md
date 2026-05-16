@@ -22,22 +22,22 @@ PostgreSQL en iyi uygulamaları için hızlı referans. Detaylı kılavuz için 
 
 | Sorgu Kalıbı | İndeks Tipi | Örnek |
 |--------------|------------|---------|
-| `WHERE col = value` | B-tree (varsayılan) | `CREATE INDEX idx ON t (col)` |
-| `WHERE col > value` | B-tree | `CREATE INDEX idx ON t (col)` |
-| `WHERE a = x AND b > y` | Composite | `CREATE INDEX idx ON t (a, b)` |
-| `WHERE jsonb @> '{}'` | GIN | `CREATE INDEX idx ON t USING gin (col)` |
-| `WHERE tsv @@ query` | GIN | `CREATE INDEX idx ON t USING gin (col)` |
+| `WHERE col = value`| B-tree (varsayılan) |`CREATE INDEX idx ON t (col)` |
+| `WHERE col > value`| B-tree |`CREATE INDEX idx ON t (col)` |
+| `WHERE a = x AND b > y`| Composite |`CREATE INDEX idx ON t (a, b)` |
+| `WHERE jsonb @> '{}'`| GIN |`CREATE INDEX idx ON t USING gin (col)` |
+| `WHERE tsv @@ query`| GIN |`CREATE INDEX idx ON t USING gin (col)` |
 | Zaman serisi aralıkları | BRIN | `CREATE INDEX idx ON t USING brin (col)` |
 
 ### Veri Tipi Hızlı Referans
 
 | Kullanım Senaryosu | Doğru Tip | Kaçın |
 |----------|-------------|-------|
-| ID'ler | `bigint` | `int`, rastgele UUID |
-| String'ler | `text` | `varchar(255)` |
-| Timestamp'ler | `timestamptz` | `timestamp` |
-| Para | `numeric(10,2)` | `float` |
-| Flag'ler | `boolean` | `varchar`, `int` |
+| ID'ler | `bigint`|`int`, rastgele UUID |
+| String'ler | `text`|`varchar(255)` |
+| Timestamp'ler | `timestamptz`|`timestamp` |
+| Para | `numeric(10,2)`|`float` |
+| Flag'ler | `boolean`|`varchar`,`int` |
 
 ### Yaygın Kalıplar
 

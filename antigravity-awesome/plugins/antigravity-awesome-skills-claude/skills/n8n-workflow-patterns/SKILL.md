@@ -164,7 +164,7 @@ Trigger → IF → [True Path]
 ### Parallel Processing
 ```
 Trigger → [Branch 1] → Merge
-       └→ [Branch 2] ↗
+       └→ [Branch 2]
 ```
 **Use when**: Independent operations that can run simultaneously
 
@@ -190,8 +190,8 @@ Main Flow → [Success Path]
 
 **Solution**: Data is nested under `$json.body`
 ```javascript
-❌ {{$json.email}}
-✅ {{$json.body.email}}
+FAIL: {{$json.email}}
+PASS: {{$json.body.email}}
 ```
 See: n8n Expression Syntax skill
 
@@ -371,7 +371,7 @@ Use `search_templates` and `get_template` from n8n-mcp tools to find examples!
 
 ## Best Practices
 
-### ✅ Do
+### PASS: Do
 
 - Start with the simplest pattern that solves your problem
 - Plan your workflow structure before building
@@ -382,7 +382,7 @@ Use `search_templates` and `get_template` from n8n-mcp tools to find examples!
 - Document complex workflows (notes field)
 - Monitor workflow executions after deployment
 
-### ❌ Don't
+### FAIL: Don't
 
 - Build workflows in one shot (iterate! avg 56s between edits)
 - Skip validation before activation

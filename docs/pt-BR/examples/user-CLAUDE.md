@@ -70,7 +70,7 @@ Localizados em `~/.claude/agents/`:
 - 200-400 linhas típico, 800 máximo por arquivo
 
 ### Git
-- Conventional commits: `feat:`, `fix:`, `refactor:`, `docs:`, `test:`
+- Conventional commits: `feat:`,`fix:`,`refactor:`,`docs:`,`test:`
 - Sempre testar localmente antes de commitar
 - Commits pequenos e focados
 

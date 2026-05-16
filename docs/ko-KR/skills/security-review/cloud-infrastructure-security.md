@@ -24,7 +24,7 @@
 #### 최소 권한 원칙
 
 ```yaml
-# PASS: CORRECT: Minimal permissions
+## PASS: CORRECT: Minimal permissions
 iam_role:
   permissions:
     - s3:GetObject  # Only read access
@@ -32,7 +32,7 @@ iam_role:
   resources:
     - arn:aws:s3:::my-bucket/*  # Specific bucket only
 
-# FAIL: WRONG: Overly broad permissions
+## FAIL: WRONG: Overly broad permissions
 iam_role:
   permissions:
     - s3:*  # All S3 actions
@@ -43,7 +43,7 @@ iam_role:
 #### 다중 인증 (MFA)
 
 ```bash
-# ALWAYS enable MFA for root/admin accounts
+## ALWAYS enable MFA for root/admin accounts
 aws iam enable-mfa-device \
   --user-name admin \
   --serial-number arn:aws:iam::123456789:mfa/admin \
@@ -79,7 +79,7 @@ const apiKey = process.env.API_KEY; // Not rotated, not audited
 #### 시크릿 교체
 
 ```bash
-# Set up automatic rotation for database credentials
+## Set up automatic rotation for database credentials
 aws secretsmanager rotate-secret \
   --secret-id prod/db-password \
   --rotation-lambda-arn arn:aws:lambda:region:account:function:rotate \
@@ -99,7 +99,7 @@ aws secretsmanager rotate-secret \
 #### VPC 및 방화벽 구성
 
 ```terraform
-# PASS: CORRECT: Restricted security group
+## PASS: CORRECT: Restricted security group
 resource "aws_security_group" "app" {
   name = "app-sg"
 
@@ -118,7 +118,7 @@ resource "aws_security_group" "app" {
   }
 }
 
-# FAIL: WRONG: Open to the internet
+## FAIL: WRONG: Open to the internet
 resource "aws_security_group" "bad" {
   ingress {
     from_port   = 0
@@ -177,7 +177,7 @@ const logSecurityEvent = async (event: SecurityEvent) => {
 #### 보안 파이프라인 구성
 
 ```yaml
-# PASS: CORRECT: Secure GitHub Actions workflow
+## PASS: CORRECT: Secure GitHub Actions workflow
 name: Deploy
 
 on:
@@ -260,11 +260,11 @@ export default {
 #### WAF 규칙
 
 ```bash
-# Enable Cloudflare WAF managed rules
-# - OWASP Core Ruleset
-# - Cloudflare Managed Ruleset
-# - Rate limiting rules
-# - Bot protection
+## Enable Cloudflare WAF managed rules
+## - OWASP Core Ruleset
+## - Cloudflare Managed Ruleset
+## - Rate limiting rules
+## - Bot protection
 ```
 
 #### 확인 단계
@@ -281,7 +281,7 @@ export default {
 #### 자동 백업
 
 ```terraform
-# PASS: CORRECT: Automated RDS backups
+## PASS: CORRECT: Automated RDS backups
 resource "aws_db_instance" "main" {
   allocated_storage     = 20
   engine               = "postgres"
@@ -327,10 +327,10 @@ resource "aws_db_instance" "main" {
 ### S3 버킷 노출
 
 ```bash
-# FAIL: WRONG: Public bucket
+## FAIL: WRONG: Public bucket
 aws s3api put-bucket-acl --bucket my-bucket --acl public-read
 
-# PASS: CORRECT: Private bucket with specific access
+## PASS: CORRECT: Private bucket with specific access
 aws s3api put-bucket-acl --bucket my-bucket --acl private
 aws s3api put-bucket-policy --bucket my-bucket --policy file://policy.json
 ```
@@ -338,12 +338,12 @@ aws s3api put-bucket-policy --bucket my-bucket --policy file://policy.json
 ### RDS 공개 접근
 
 ```terraform
-# FAIL: WRONG
+## FAIL: WRONG
 resource "aws_db_instance" "bad" {
   publicly_accessible = true  # NEVER do this!
 }
 
-# PASS: CORRECT
+## PASS: CORRECT
 resource "aws_db_instance" "good" {
   publicly_accessible = false
   vpc_security_group_ids = [aws_security_group.db.id]

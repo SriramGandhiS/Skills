@@ -149,7 +149,7 @@ describe('init command', () => {
   it('should generate hooks with security patterns', async () => {
     const result = await runCommand(['init', '--yes'])
     expect(result.stdout).to.include('setup complete')
-    
+
     const indexContent = await fs.readFile('.claude/hooks/index.ts', 'utf8')
     expect(indexContent).to.include('DANGEROUS_FILE_OPS')
   })
@@ -280,4 +280,4 @@ Update README.md when:
 - Start a discussion for questions
 - Contact maintainers for security issues
 
-Thank you for contributing to claude-hooks! 🚀
+Thank you for contributing to claude-hooks!

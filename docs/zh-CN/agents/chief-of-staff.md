@@ -30,7 +30,7 @@ model: opus
 ### 2. info\_only (仅摘要)
 
 * 抄送邮件、收据、群聊闲聊
-* `@channel` / `@here` 公告
+* `@channel`/`@here` 公告
 * 没有提问的文件分享
 
 ### 3. meeting\_info (日历交叉引用)
@@ -57,14 +57,14 @@ model: opus
 # Email (via Gmail CLI)
 gog gmail search "is:unread -category:promotions -category:social" --max 20 --json
 
-# Calendar
+## Calendar
 gog calendar events --today --all --max 30
 
-# LINE/Messenger via channel-specific scripts
+## LINE/Messenger via channel-specific scripts
 ```
 
 ```text
-# Slack（通过 MCP）
+## Slack（通过 MCP）
 conversations_search_messages(search_query: "YOUR_NAME", filter_date_during: "Today")
 channels_list(channel_types: "im,mpim") → conversations_history(limit: "4h")
 ```
@@ -104,12 +104,12 @@ channels_list(channel_types: "im,mpim") → conversations_history(limit: "4h")
 6. **分类文件** — 更新 LINE/Messenger 草稿状态
 7. **Git 提交与推送** — 对知识文件的所有更改进行版本控制
 
-此清单由 `PostToolUse` 钩子强制执行，该钩子会阻止完成，直到所有步骤都完成。该钩子拦截 `gmail send` / `conversations_add_message` 并将清单作为系统提醒注入。
+此清单由 `PostToolUse`钩子强制执行，该钩子会阻止完成，直到所有步骤都完成。该钩子拦截`gmail send`/`conversations_add_message` 并将清单作为系统提醒注入。
 
 ## 简报输出格式
 
 ```
-# 今日简报 — [日期]
+## 今日简报 — [日期]
 
 ## 日程安排 (N)
 | 时间 | 事项 | 地点 | 准备? |

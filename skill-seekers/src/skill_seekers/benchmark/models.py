@@ -90,8 +90,8 @@ class ComparisonReport(BaseModel):
     def overall_improvement(self) -> str:
         """Overall improvement summary."""
         if self.speedup_factor > 1.1:
-            return f"✅ {(self.speedup_factor - 1) * 100:.1f}% faster"
+            return f"PASS: {(self.speedup_factor - 1) * 100:.1f}% faster"
         elif self.speedup_factor < 0.9:
-            return f"❌ {(1 - self.speedup_factor) * 100:.1f}% slower"
+            return f"FAIL: {(1 - self.speedup_factor) * 100:.1f}% slower"
         else:
-            return "⚠️  Similar performance"
+            return "WARNING:  Similar performance"

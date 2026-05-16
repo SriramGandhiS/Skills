@@ -31,7 +31,6 @@ hcloud datacenter describe [options] <datacenter>
 
 * [hcloud datacenter](hcloud_datacenter.md)	 - View Datacenters
 
-
 ---
 
 ## hcloud datacenter list
@@ -83,7 +82,6 @@ hcloud datacenter list [options]
 
 * [hcloud datacenter](hcloud_datacenter.md)	 - View Datacenters
 
-
 ---
 
 ## hcloud iso describe
@@ -118,7 +116,6 @@ hcloud iso describe [options] <iso>
 ### SEE ALSO
 
 * [hcloud iso](hcloud_iso.md)	 - View ISOs
-
 
 ---
 
@@ -175,7 +172,6 @@ hcloud iso list [options]
 
 * [hcloud iso](hcloud_iso.md)	 - View ISOs
 
-
 ---
 
 ## hcloud load-balancer-type describe
@@ -210,7 +206,6 @@ hcloud load-balancer-type describe [options] <load-balancer-type>
 ### SEE ALSO
 
 * [hcloud load-balancer-type](hcloud_load-balancer-type.md)	 - View Load Balancer Types
-
 
 ---
 
@@ -266,7 +261,6 @@ hcloud load-balancer-type list [options]
 
 * [hcloud load-balancer-type](hcloud_load-balancer-type.md)	 - View Load Balancer Types
 
-
 ---
 
 ## hcloud location describe
@@ -301,7 +295,6 @@ hcloud location describe [options] <location>
 ### SEE ALSO
 
 * [hcloud location](hcloud_location.md)	 - View Locations
-
 
 ---
 
@@ -358,7 +351,6 @@ hcloud location list [options]
 
 * [hcloud location](hcloud_location.md)	 - View Locations
 
-
 ---
 
 ## hcloud server-type describe
@@ -393,7 +385,6 @@ hcloud server-type describe [options] <server-type>
 ### SEE ALSO
 
 * [hcloud server-type](hcloud_server-type.md)	 - View Server Types
-
 
 ---
 
@@ -456,7 +447,6 @@ hcloud server-type list [options]
 
 * [hcloud server-type](hcloud_server-type.md)	 - View Server Types
 
-
 ---
 
 ## hcloud storage-box-type describe
@@ -491,7 +481,6 @@ hcloud storage-box-type describe [options] <storage-box-type>
 ### SEE ALSO
 
 * [hcloud storage-box-type](hcloud_storage-box-type.md)	 - View Storage Box Types
-
 
 ---
 

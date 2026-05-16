@@ -373,14 +373,14 @@ class MultiLanguageManager:
         languages = self.get_languages()
         total_docs = self.get_document_count()
 
-        lines.append("📊 Summary:")
+        lines.append(" Summary:")
         lines.append(f"   Languages: {len(languages)}")
         lines.append(f"   Total documents: {total_docs}")
         lines.append(f"   Primary language: {self.primary_language or 'Unknown'}")
         lines.append("")
 
         # Language breakdown
-        lines.append("🌍 Language Breakdown:")
+        lines.append(" Language Breakdown:")
         for lang in languages:
             count = self.get_document_count(lang)
             lang_name = self.detector.LANGUAGE_NAMES.get(lang, lang.upper())
@@ -390,7 +390,7 @@ class MultiLanguageManager:
 
         # Translation status
         status = self.get_translation_status()
-        lines.append("📝 Translation Status:")
+        lines.append(" Translation Status:")
         lines.append(f"   Source: {status.source_language}")
         lines.append(f"   Translated to: {', '.join(status.translated_languages) or 'None'}")
         lines.append(f"   Completeness: {status.completeness * 100:.1f}%")
@@ -418,13 +418,13 @@ def main():
 
     skill_dir = Path(args.skill_dir)
     if not skill_dir.exists():
-        print(f"❌ Error: Directory not found: {skill_dir}")
+        print(f"FAIL: Error: Directory not found: {skill_dir}")
         return 1
 
     manager = MultiLanguageManager()
 
     # Load skill documents
-    print("📥 Loading skill documents...")
+    print(" Loading skill documents...")
     skill_md = skill_dir / "SKILL.md"
     if skill_md.exists():
         manager.add_document(
@@ -442,7 +442,7 @@ def main():
     # Detect languages
     if args.detect:
         languages = manager.get_languages()
-        print(f"\n🌍 Detected languages: {', '.join(languages)}")
+        print(f"\n Detected languages: {', '.join(languages)}")
         for lang in languages:
             count = manager.get_document_count(lang)
             print(f"   {lang}: {count} documents")
@@ -456,7 +456,7 @@ def main():
         output_dir = Path(args.export)
         output_dir.mkdir(parents=True, exist_ok=True)
         exports = manager.export_by_language(output_dir)
-        print(f"\n✅ Exported {len(exports)} language files:")
+        print(f"\nPASS: Exported {len(exports)} language files:")
         for lang, path in exports.items():
             print(f"   {lang}: {path}")
 

@@ -415,7 +415,7 @@ class LocalSkillEnhancer:
         )
 
         if not references:
-            print("❌ No reference files found")
+            print("FAIL: No reference files found")
             return None
 
         # Analyze sources
@@ -429,9 +429,9 @@ class LocalSkillEnhancer:
         # Apply summarization if requested or if content is too large
         if use_summarization or total_ref_size > 30000:
             if not use_summarization:
-                print(f"  ⚠️  Large skill detected ({total_ref_size:,} chars)")
+                print(f"  WARNING:  Large skill detected ({total_ref_size:,} chars)")
                 print(
-                    f"  📊 Applying smart summarization (target: {int(summarization_ratio * 100)}% of original)"
+                    f"   Applying smart summarization (target: {int(summarization_ratio * 100)}% of original)"
                 )
                 print()
 
@@ -548,7 +548,7 @@ MULTI-REPOSITORY HANDLING:
 
         if len(repo_ids) > 1:
             prompt += f"""
-⚠️ MULTIPLE REPOSITORIES DETECTED: {", ".join(sorted(repo_ids))}
+WARNING: MULTIPLE REPOSITORIES DETECTED: {", ".join(sorted(repo_ids))}
 
 This skill combines codebase analysis from {len(repo_ids)} different repositories.
 Each repo has its own ARCHITECTURE.md, patterns, examples, and configuration.
@@ -707,17 +707,17 @@ After writing, the file SKILL.md should:
 
         # Validate
         if not self.skill_dir.exists():
-            print(f"❌ Directory not found: {self.skill_dir}")
+            print(f"FAIL: Directory not found: {self.skill_dir}")
             return False
 
         # Read reference files
-        print("📖 Reading reference documentation...")
+        print(" Reading reference documentation...")
         references = read_reference_files(
             self.skill_dir, max_chars=LOCAL_CONTENT_LIMIT, preview_limit=LOCAL_PREVIEW_LIMIT
         )
 
         if not references:
-            print("❌ No reference files found to analyze")
+            print("FAIL: No reference files found to analyze")
             return False
 
         print(f"  ✓ Read {len(references)} reference files")
@@ -728,14 +728,14 @@ After writing, the file SKILL.md should:
         use_summarization = total_size > 30000
 
         if use_summarization:
-            print("⚠️  LARGE SKILL DETECTED")
-            print(f"  📊 Reference content: {total_size:,} characters")
+            print("WARNING:  LARGE SKILL DETECTED")
+            print(f"   Reference content: {total_size:,} characters")
             if self.agent == "claude":
-                print("  💡 CLI agent limit: ~30,000-40,000 characters")
+                print("   CLI agent limit: ~30,000-40,000 characters")
             else:
-                print("  💡 Local CLI agents often have input limits; summarizing to be safe")
+                print("   Local CLI agents often have input limits; summarizing to be safe")
             print()
-            print("  🔧 Applying smart summarization to ensure success...")
+            print("   Applying smart summarization to ensure success...")
             print("     • Keeping introductions and overviews")
             print("     • Extracting best code examples")
             print("     • Preserving key concepts and headings")
@@ -743,7 +743,7 @@ After writing, the file SKILL.md should:
             print()
 
         # Create prompt
-        print("📝 Creating enhancement prompt...")
+        print(" Creating enhancement prompt...")
         prompt = self.create_enhancement_prompt(use_summarization=use_summarization)
 
         if not prompt:
@@ -771,7 +771,7 @@ After writing, the file SKILL.md should:
             return self._run_headless(prompt_file, timeout)
 
         # Terminal mode: Launch local agent in new terminal
-        print(f"🚀 Launching {self.agent_display} in new terminal...")
+        print(f" Launching {self.agent_display} in new terminal...")
         print("   This will:")
         print("   1. Open a new terminal window")
         print("   2. Run the local coding agent with the enhancement task")
@@ -784,7 +784,7 @@ After writing, the file SKILL.md should:
         shell_script = f"""#!/bin/bash
 {command_line}
 echo ""
-echo "✅ Enhancement complete!"
+echo "PASS: Enhancement complete!"
 echo "Press any key to close..."
 read -n 1
 rm {prompt_file}
@@ -808,7 +808,7 @@ rm {prompt_file}
             elif detection_method == "TERM_PROGRAM":
                 print(f"   Using terminal: {terminal_app} (inherited from current terminal)")
             elif detection_method.startswith("unknown TERM_PROGRAM"):
-                print(f"⚠️  {detection_method}")
+                print(f"WARNING:  {detection_method}")
                 print("   → Using Terminal.app as fallback")
             else:
                 print(f"   Using terminal: {terminal_app} (default)")
@@ -816,20 +816,20 @@ rm {prompt_file}
             try:
                 subprocess.Popen(["open", "-a", terminal_app, script_file])
             except Exception as e:
-                print(f"⚠️  Error launching {terminal_app}: {e}")
+                print(f"WARNING:  Error launching {terminal_app}: {e}")
                 print(f"\nManually run: {script_file}")
                 return False
         else:
-            print("⚠️  Auto-launch only works on macOS")
+            print("WARNING:  Auto-launch only works on macOS")
             print("\nManually run this command in a new terminal:")
             print(f"  {self._format_agent_command(prompt_file, include_permissions_flag=False)}")
             print("\nThen delete the prompt file:")
             print(f"  rm '{prompt_file}'")
             return False
 
-        print(f"✅ New terminal launched with {self.agent_display}!")
+        print(f"PASS: New terminal launched with {self.agent_display}!")
         print()
-        print("📊 Status:")
+        print(" Status:")
         print(f"  - Prompt file: {prompt_file}")
         print(f"  - Skill directory: {self.skill_dir.absolute()}")
         print(f"  - SKILL.md will be saved to: {self.skill_md_path.absolute()}")
@@ -837,10 +837,10 @@ rm {prompt_file}
             f"  - Original backed up to: {self.skill_md_path.with_suffix('.md.backup').absolute()}"
         )
         print()
-        print("⏳ Wait for the local agent to finish in the other terminal...")
+        print(" Wait for the local agent to finish in the other terminal...")
         print("   (Usually takes 30-60 seconds)")
         print()
-        print("💡 When done:")
+        print(" When done:")
         print(f"  1. Check the enhanced SKILL.md: {self.skill_md_path}")
         print(
             f"  2. If you don't like it, restore: mv {self.skill_md_path.with_suffix('.md.backup')} {self.skill_md_path}"
@@ -861,7 +861,7 @@ rm {prompt_file}
         """
         import time
 
-        print(f"✨ Running {self.agent_display} enhancement (headless mode)...")
+        print(f" Running {self.agent_display} enhancement (headless mode)...")
         print(f"   Timeout: {timeout} seconds ({timeout // 60} minutes)")
         print()
 
@@ -874,7 +874,7 @@ rm {prompt_file}
 
         try:
             # Run local agent command directly (this WAITS for completion)
-            print("   ⏳ Please wait...")
+            print("    Please wait...")
             print(f"   Working directory: {self.skill_dir}")
             print()
 
@@ -883,7 +883,7 @@ rm {prompt_file}
             )
 
             if error:
-                print(f"❌ {error}")
+                print(f"FAIL: {error}")
                 with contextlib.suppress(Exception):
                     os.unlink(prompt_file)
                 return False
@@ -898,7 +898,7 @@ rm {prompt_file}
                     new_size = self.skill_md_path.stat().st_size
 
                     if new_mtime > initial_mtime and new_size > initial_size:
-                        print(f"✅ Enhancement complete! ({elapsed:.1f} seconds)")
+                        print(f"PASS: Enhancement complete! ({elapsed:.1f} seconds)")
                         print(f"   SKILL.md updated: {new_size:,} bytes")
                         print()
 
@@ -908,7 +908,7 @@ rm {prompt_file}
 
                         return True
                     else:
-                        print("⚠️  Agent finished but SKILL.md was not updated")
+                        print("WARNING:  Agent finished but SKILL.md was not updated")
                         print(f"   Initial: mtime={initial_mtime}, size={initial_size}")
                         print(f"   Final:   mtime={new_mtime}, size={new_size}")
                         print("   This might indicate an error during enhancement")
@@ -922,12 +922,12 @@ rm {prompt_file}
                         print()
                         return False
                 else:
-                    print("❌ SKILL.md not found after enhancement")
+                    print("FAIL: SKILL.md not found after enhancement")
                     return False
             else:
                 # Exit code 75 = EX_TEMPFAIL (retryable temporary failure from Kimi CLI)
                 if result.returncode == 75:
-                    print(f"⚠️  {self.agent_display} returned temporary failure (exit code: 75)")
+                    print(f"WARNING:  {self.agent_display} returned temporary failure (exit code: 75)")
                     print(
                         "   This usually means a transient API issue (timeout, rate limit, or empty response)."
                     )
@@ -938,7 +938,7 @@ rm {prompt_file}
                         prompt_file, timeout, include_permissions_flag=True
                     )
                     if error:
-                        print(f"❌ {error}")
+                        print(f"FAIL: {error}")
                         with contextlib.suppress(Exception):
                             os.unlink(prompt_file)
                         return False
@@ -948,13 +948,13 @@ rm {prompt_file}
                             new_mtime = self.skill_md_path.stat().st_mtime
                             new_size = self.skill_md_path.stat().st_size
                             if new_mtime > initial_mtime and new_size > initial_size:
-                                print(f"✅ Enhancement complete on retry! ({elapsed:.1f} seconds)")
+                                print(f"PASS: Enhancement complete on retry! ({elapsed:.1f} seconds)")
                                 print(f"   SKILL.md updated: {new_size:,} bytes")
                                 print()
                                 with contextlib.suppress(Exception):
                                     os.unlink(prompt_file)
                                 return True
-                    print(f"❌ Retry also failed (exit code: {result_retry.returncode})")
+                    print(f"FAIL: Retry also failed (exit code: {result_retry.returncode})")
                     if result_retry.stderr:
                         stderr_lines = result_retry.stderr.strip().split("\n")
                         for line in stderr_lines[:10]:
@@ -964,7 +964,7 @@ rm {prompt_file}
                     print(f"     skill-seekers enhance {self.skill_dir} --target claude")
                     return False
 
-                print(f"❌ {self.agent_display} returned error (exit code: {result.returncode})")
+                print(f"FAIL: {self.agent_display} returned error (exit code: {result.returncode})")
                 if result.stderr:
                     stderr_lines = result.stderr.strip().split("\n")
                     for line in stderr_lines[:20]:
@@ -977,7 +977,7 @@ rm {prompt_file}
                         "root" in stderr_lower or "permission" in stderr_lower
                     ):
                         print()
-                        print("   ⚠️  This looks like a root/permission error.")
+                        print("   WARNING:  This looks like a root/permission error.")
                         print("   The CLI agent refuses to run as root (security policy).")
                         print("   Use API mode instead:")
                         print("     export ANTHROPIC_API_KEY=sk-ant-...")
@@ -986,7 +986,7 @@ rm {prompt_file}
 
         except subprocess.TimeoutExpired:
             elapsed = time.time() - start_time
-            print(f"\n⚠️  Enhancement timed out after {elapsed:.0f} seconds")
+            print(f"\nWARNING:  Enhancement timed out after {elapsed:.0f} seconds")
             print(f"   Timeout limit: {timeout} seconds")
             print()
             print("   Possible reasons:")
@@ -1006,7 +1006,7 @@ rm {prompt_file}
             return False
 
         except FileNotFoundError:
-            print(f"❌ '{self._build_agent_command(prompt_file, True)[0][0]}' command not found")
+            print(f"FAIL: '{self._build_agent_command(prompt_file, True)[0][0]}' command not found")
             print()
             print("   Make sure your local coding agent CLI is installed and on PATH.")
             print()
@@ -1015,7 +1015,7 @@ rm {prompt_file}
             return False
 
         except Exception as e:
-            print(f"❌ Unexpected error: {e}")
+            print(f"FAIL: Unexpected error: {e}")
             return False
 
     def _run_background(self, headless, timeout):
@@ -1105,14 +1105,14 @@ rm {prompt_file}
         thread = threading.Thread(target=background_worker, daemon=True)
         thread.start()
 
-        print("✅ Background enhancement started!")
+        print("PASS: Background enhancement started!")
         print()
-        print("📊 Monitoring:")
+        print(" Monitoring:")
         print(f"  - Status file: {self.status_file}")
         print(f"  - Check status: cat {self.status_file}")
         print(f"  - Or use: skill-seekers enhance-status {self.skill_dir}")
         print()
-        print("💡 The enhancement will continue in the background.")
+        print(" The enhancement will continue in the background.")
         print("   You can close this terminal - the process will keep running.")
         print()
 
@@ -1136,7 +1136,7 @@ rm {prompt_file}
         # Write initial status
         self.write_status("pending", "Starting daemon process...")
 
-        print("🔧 Creating daemon process...")
+        print(" Creating daemon process...")
 
         # Create Python script for daemon
         daemon_script = f'''#!/usr/bin/env python3
@@ -1260,28 +1260,28 @@ except Exception as e:
             status = self.read_status()
 
             if status and status.get("status") in ["pending", "running"]:
-                print("✅ Daemon process started successfully!")
+                print("PASS: Daemon process started successfully!")
                 print()
-                print("📊 Monitoring:")
+                print(" Monitoring:")
                 print(f"  - Status file: {self.status_file}")
                 print(f"  - Log file: {log_file}")
                 print(f"  - PID: {status.get('pid', 'unknown')}")
                 print()
-                print("💡 Commands:")
+                print(" Commands:")
                 print(f"  - Check status: cat {self.status_file}")
                 print(f"  - View logs: tail -f {log_file}")
                 print(f"  - Or use: skill-seekers enhance-status {self.skill_dir}")
                 print()
-                print("🔥 The daemon will continue running even if you close this terminal!")
+                print(" The daemon will continue running even if you close this terminal!")
                 print()
 
                 return True
             else:
-                print("❌ Daemon failed to start")
+                print("FAIL: Daemon failed to start")
                 return False
 
         except Exception as e:
-            print(f"❌ Failed to start daemon: {e}")
+            print(f"FAIL: Failed to start daemon: {e}")
             return False
 
 
@@ -1330,7 +1330,7 @@ def _run_api_enhance(target: str, api_key: str) -> None:
         i += 1
 
     if not skill_dir:
-        print("❌ Error: skill_directory is required")
+        print("FAIL: Error: skill_directory is required")
         sys.exit(1)
 
     new_argv = [sys.argv[0], skill_dir, "--target", target, "--api-key", api_key]
@@ -1458,7 +1458,7 @@ Force Mode (LOCAL only, Default ON):
     mode_count = sum([args.interactive_enhancement, args.background, args.daemon])
     if mode_count > 1:
         print(
-            "❌ Error: --interactive-enhancement, --background, and --daemon are mutually exclusive"
+            "FAIL: Error: --interactive-enhancement, --background, and --daemon are mutually exclusive"
         )
         print("   Choose only one mode")
         sys.exit(1)
@@ -1473,7 +1473,7 @@ Force Mode (LOCAL only, Default ON):
             agent_cmd=args.agent_cmd,
         )
     except ValueError as e:
-        print(f"❌ Error: {e}")
+        print(f"FAIL: Error: {e}")
         sys.exit(1)
     headless = not args.interactive_enhancement  # Invert: default is headless
     success = enhancer.run(

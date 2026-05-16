@@ -509,7 +509,7 @@ if __name__ == "__main__":
 
     # Print summary
     summary = detector.generate_summary(conflicts)
-    print("\n📊 Conflict Summary:")
+    print("\n Conflict Summary:")
     print(f"   Total conflicts: {summary['total']}")
     print(f"   APIs affected: {summary['apis_affected']}")
     print("\n   By Type:")
@@ -519,10 +519,10 @@ if __name__ == "__main__":
     print("\n   By Severity:")
     for severity, count in summary["by_severity"].items():
         if count > 0:
-            emoji = "🔴" if severity == "high" else "🟡" if severity == "medium" else "🟢"
+            emoji = "" if severity == "high" else "" if severity == "medium" else ""
             print(f"     {emoji} {severity}: {count}")
 
     # Save to file
     output_file = "conflicts.json"
     detector.save_conflicts(conflicts, output_file)
-    print(f"\n✅ Full report saved to: {output_file}")
+    print(f"\nPASS: Full report saved to: {output_file}")

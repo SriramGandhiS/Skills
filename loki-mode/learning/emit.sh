@@ -1,72 +1,59 @@
 #!/usr/bin/env bash
 # Loki Mode Learning Signal Emitter - Bash helper
-#
-# Emits learning signals by calling the Python learning emitter.
+# # Emits learning signals by calling the Python learning emitter.
 # This provides a consistent interface for bash scripts to emit signals.
-#
-# Usage:
-#   ./emit.sh <signal_type> [options]
-#
-# Signal Types:
-#   user_preference     - User choice/preference signals
-#   error_pattern       - Error and resolution patterns
-#   success_pattern     - Successful action sequences
-#   tool_efficiency     - Tool performance metrics
-#   workflow_pattern    - Multi-step workflow patterns
-#   context_relevance   - Context retrieval feedback
-#
-# Common Options:
-#   --source <source>   Signal source (cli, api, vscode, mcp, memory, dashboard)
-#   --action <action>   The action that triggered the signal
-#   --outcome <outcome> Result (success, failure, partial, unknown)
-#   --confidence <0-1>  Confidence in signal reliability
-#   --context <json>    Additional context as JSON
-#
-# Signal-Specific Options:
-#   user_preference:
-#     --key <key>       Preference key
-#     --value <value>   Preferred value
-#     --rejected <json> JSON array of rejected alternatives
-#
-#   error_pattern:
-#     --error-type <type>      Error category
-#     --error-message <msg>    Error message
-#     --resolution <text>      How error was resolved
-#     --recovery-steps <json>  JSON array of recovery steps
-#
-#   success_pattern:
-#     --pattern-name <name>       Pattern name
-#     --action-sequence <json>    JSON array of actions
-#     --duration <seconds>        Duration in seconds
-#
-#   tool_efficiency:
-#     --tool-name <name>          Tool name
-#     --tokens-used <n>           Tokens consumed
-#     --execution-time-ms <n>     Execution time in ms
-#     --success-rate <0-1>        Historical success rate
-#
-# Examples:
-#   # User preference signal
-#   ./emit.sh user_preference --source cli --action "provider_selection" \
-#       --key "provider" --value "claude" --rejected '["codex", "gemini"]'
-#
-#   # Error pattern signal
-#   ./emit.sh error_pattern --source cli --action "cmd_start" \
-#       --error-type "ConfigError" --error-message "Provider not found" \
-#       --resolution "Installed missing provider"
-#
-#   # Success pattern signal
-#   ./emit.sh success_pattern --source cli --action "session_complete" \
-#       --pattern-name "full_session" --action-sequence '["start", "run", "complete"]' \
-#       --duration 3600
-#
-#   # Tool efficiency signal
-#   ./emit.sh tool_efficiency --source cli --action "run_iteration" \
-#       --tool-name "claude" --execution-time-ms 45000 --outcome success
-#
-# Environment:
-#   LOKI_DIR          - Path to .loki directory (default: .loki)
-#   LOKI_SKILL_DIR    - Path to skill installation (auto-detected)
+# # Usage:
+# ./emit.sh <signal_type> [options]
+# # Signal Types:
+# user_preference     - User choice/preference signals
+# error_pattern       - Error and resolution patterns
+# success_pattern     - Successful action sequences
+# tool_efficiency     - Tool performance metrics
+# workflow_pattern    - Multi-step workflow patterns
+# context_relevance   - Context retrieval feedback
+# # Common Options:
+# --source <source>   Signal source (cli, api, vscode, mcp, memory, dashboard)
+# --action <action>   The action that triggered the signal
+# --outcome <outcome> Result (success, failure, partial, unknown)
+# --confidence <0-1>  Confidence in signal reliability
+# --context <json>    Additional context as JSON
+# # Signal-Specific Options:
+# user_preference:
+# --key <key>       Preference key
+# --value <value>   Preferred value
+# --rejected <json> JSON array of rejected alternatives
+# # error_pattern:
+# --error-type <type>      Error category
+# --error-message <msg>    Error message
+# --resolution <text>      How error was resolved
+# --recovery-steps <json>  JSON array of recovery steps
+# # success_pattern:
+# --pattern-name <name>       Pattern name
+# --action-sequence <json>    JSON array of actions
+# --duration <seconds>        Duration in seconds
+# # tool_efficiency:
+# --tool-name <name>          Tool name
+# --tokens-used <n>           Tokens consumed
+# --execution-time-ms <n>     Execution time in ms
+# --success-rate <0-1>        Historical success rate
+# # Examples:
+# # User preference signal
+# ./emit.sh user_preference --source cli --action "provider_selection" \
+# --key "provider" --value "claude" --rejected '["codex", "gemini"]'
+# # # Error pattern signal
+# ./emit.sh error_pattern --source cli --action "cmd_start" \
+# --error-type "ConfigError" --error-message "Provider not found" \
+# --resolution "Installed missing provider"
+# # # Success pattern signal
+# ./emit.sh success_pattern --source cli --action "session_complete" \
+# --pattern-name "full_session" --action-sequence '["start", "run", "complete"]' \
+# --duration 3600
+# # # Tool efficiency signal
+# ./emit.sh tool_efficiency --source cli --action "run_iteration" \
+# --tool-name "claude" --execution-time-ms 45000 --outcome success
+# # Environment:
+# LOKI_DIR          - Path to .loki directory (default: .loki)
+# LOKI_SKILL_DIR    - Path to skill installation (auto-detected)
 
 set -uo pipefail
 

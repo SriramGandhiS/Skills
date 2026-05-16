@@ -103,7 +103,7 @@ This does NOT block transition — it ensures the user sees the debt before conf
 <if mode="yolo">
 
 ```
-⚡ Auto-approved: Transition Phase [X] → Phase [X+1]
+ Auto-approved: Transition Phase [X] → Phase [X+1]
 Phase [X] complete — all [Y] plans finished.
 
 Proceeding to mark done and advance...
@@ -134,7 +134,7 @@ Phase [X] has incomplete plans:
 - {phase}-02-SUMMARY.md ✗ Missing
 - {phase}-03-SUMMARY.md ✗ Missing
 
-⚠️ Safety rail: Skipping plans requires confirmation (destructive action)
+WARNING: Safety rail: Skipping plans requires confirmation (destructive action)
 
 Options:
 1. Continue current phase (execute remaining plans)
@@ -354,8 +354,8 @@ Before:
 ```markdown
 ### Blockers/Concerns
 
-- ⚠️ [Phase 1] Database schema not indexed for common queries
-- ⚠️ [Phase 2] WebSocket reconnection behavior on flaky networks unknown
+- WARNING: [Phase 1] Database schema not indexed for common queries
+- WARNING: [Phase 2] WebSocket reconnection behavior on flaky networks unknown
 ```
 
 After (if database indexing was addressed in Phase 2):
@@ -363,7 +363,7 @@ After (if database indexing was addressed in Phase 2):
 ```markdown
 ### Blockers/Concerns
 
-- ⚠️ [Phase 2] WebSocket reconnection behavior on flaky networks unknown
+- WARNING: [Phase 2] WebSocket reconnection behavior on flaky networks unknown
 ```
 
 **Step complete when:**
@@ -465,7 +465,7 @@ Phase [X] marked complete.
 
 Next: Phase [X+1] — [Name]
 
-⚡ Auto-continuing: Plan Phase [X+1] in detail
+ Auto-continuing: Plan Phase [X+1] in detail
 ```
 
 Exit skill and invoke SlashCommand("/gsd-plan-phase [X+1] --auto ${GSD_WS}")
@@ -477,7 +477,7 @@ Phase [X] marked complete.
 
 Next: Phase [X+1] — [Name]
 
-⚡ Auto-continuing: Discuss Phase [X+1] first
+ Auto-continuing: Discuss Phase [X+1] first
 ```
 
 Exit skill and invoke SlashCommand("/gsd-discuss-phase [X+1] --auto ${GSD_WS}")
@@ -493,7 +493,7 @@ Exit skill and invoke SlashCommand("/gsd-discuss-phase [X+1] --auto ${GSD_WS}")
 
 ---
 
-## ▶ Next Up — [${PROJECT_CODE}] ${PROJECT_TITLE}
+## Next Up — [${PROJECT_CODE}] ${PROJECT_TITLE}
 
 **Phase [X+1]: [Name]** — [Goal from ROADMAP.md]
 
@@ -517,7 +517,7 @@ Exit skill and invoke SlashCommand("/gsd-discuss-phase [X+1] --auto ${GSD_WS}")
 
 ---
 
-## ▶ Next Up — [${PROJECT_CODE}] ${PROJECT_TITLE}
+## Next Up — [${PROJECT_CODE}] ${PROJECT_TITLE}
 
 **Phase [X+1]: [Name]** — [Goal from ROADMAP.md]
 <sub>✓ Context gathered, ready to plan</sub>
@@ -610,9 +610,9 @@ gsd-sdk query config-set workflow._auto_chain_active false
 ```
 Phase {X} marked complete.
 
-🎉 Milestone {version} is 100% complete — all {N} phases finished!
+ Milestone {version} is 100% complete — all {N} phases finished!
 
-⚡ Auto-continuing: Complete milestone and archive
+ Auto-continuing: Complete milestone and archive
 ```
 
 Exit skill and invoke SlashCommand("/gsd-complete-milestone {version} ${GSD_WS}")
@@ -624,11 +624,11 @@ Exit skill and invoke SlashCommand("/gsd-complete-milestone {version} ${GSD_WS}"
 ```
 ## ✓ Phase {X}: {Phase Name} Complete
 
-🎉 Milestone {version} is 100% complete — all {N} phases finished!
+ Milestone {version} is 100% complete — all {N} phases finished!
 
 ---
 
-## ▶ Next Up — [${PROJECT_CODE}] ${PROJECT_TITLE}
+## Next Up — [${PROJECT_CODE}] ${PROJECT_TITLE}
 
 **Complete Milestone {version}** — archive and prepare for next
 

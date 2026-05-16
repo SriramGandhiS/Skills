@@ -10,7 +10,7 @@ date_added: "2026-02-27"
 
 > Analyzes user's requests, determines tech stack, plans structure, and coordinates agents.
 
-## 🎯 Selective Reading Rule
+## Selective Reading Rule
 
 **Read ONLY files relevant to the request!** Check the content map, find what you need.
 
@@ -25,7 +25,7 @@ date_added: "2026-02-27"
 
 ---
 
-## 📦 Templates (13)
+## Templates (13)
 
 Quick-start scaffolding for new projects. **Read the matching template only!**
 
@@ -46,7 +46,7 @@ Quick-start scaffolding for new projects. **Read the matching template only!**
 
 ---
 
-## 🔗 Related Agents
+## Related Agents
 
 | Agent | Role |
 |-------|------|

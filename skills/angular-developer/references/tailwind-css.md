@@ -1,8 +1,8 @@
-﻿# Using Tailwind CSS with Angular
+# Using Tailwind CSS with Angular
 
 Tailwind CSS is a utility-first CSS framework that integrates seamlessly with Angular.
 
-**CRITICAL AGENT GUIDANCE: ALWAYS focus on Tailwind CSS v4 practices. DO NOT revert to old Tailwind v3 patterns (like creating `tailwind.config.js` with `@tailwind` directives) as this will break the application build. Modern Angular projects use Tailwind v4.**
+**CRITICAL AGENT GUIDANCE: ALWAYS focus on Tailwind CSS v4 practices. DO NOT revert to old Tailwind v3 patterns (like creating `tailwind.config.js`with`@tailwind` directives) as this will break the application build. Modern Angular projects use Tailwind v4.**
 
 ## Automated Setup (Recommended)
 
@@ -64,6 +64,6 @@ You can now use Tailwind classes directly in your component templates:
 
 ## Summary for AI Agents
 
-- **Do not use `@tailwind base; @tailwind components; @tailwind utilities;`**. Use `@import 'tailwindcss';`.
+- **Do not use `@tailwind base; @tailwind components; @tailwind utilities;`**. Use`@import 'tailwindcss';`.
 - **Do not create `tailwind.config.js`**. Configuration is managed directly in CSS via theme variables or using PostCSS configurations.
 - Stick strictly to v4 syntax and workflows.

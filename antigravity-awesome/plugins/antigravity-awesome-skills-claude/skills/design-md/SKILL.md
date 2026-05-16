@@ -49,7 +49,7 @@ To analyze a Stitch project, you must retrieve screen metadata and design assets
    - Review screen titles to identify the target screen (e.g., "Home", "Landing Page")
    - Extract the Screen ID from the screen's `name` field
 
-4. **Metadata fetch**: 
+4. **Metadata fetch**:
    - Call `[prefix]:get_screen` with both `projectId` and `screenId` (both as numeric IDs only)
    - This returns the complete screen object including:
      - `screenshot.downloadUrl` - Visual reference of the design
@@ -172,11 +172,11 @@ To use this skill for the Furniture Collection project:
 
 ## Common Pitfalls to Avoid
 
-- ❌ Using technical jargon without translation (e.g., "rounded-xl" instead of "generously rounded corners")
-- ❌ Omitting color codes or using only descriptive names
-- ❌ Forgetting to explain functional roles of design elements
-- ❌ Being too vague in atmosphere descriptions
-- ❌ Ignoring subtle design details like shadows or spacing patterns
+- FAIL: Using technical jargon without translation (e.g., "rounded-xl" instead of "generously rounded corners")
+- FAIL: Omitting color codes or using only descriptive names
+- FAIL: Forgetting to explain functional roles of design elements
+- FAIL: Being too vague in atmosphere descriptions
+- FAIL: Ignoring subtle design details like shadows or spacing patterns
 
 ## Limitations
 - Use this skill only when the task clearly matches the scope described above.

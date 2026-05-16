@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
 # tests/managed_memory/test_sdk_isolation.sh
 # v6.83.0 Phase 1: enforce that the anthropic SDK is imported from ONE place.
-#
-# Rationale: Phase 1 must keep blast-radius small. memory/managed_memory/ is
+# # Rationale: Phase 1 must keep blast-radius small. memory/managed_memory/ is
 # the only package permitted to `import anthropic`. If this test fails after
 # future work, decide deliberately whether to extend the allowlist or extract
 # a shim.

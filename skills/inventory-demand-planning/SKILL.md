@@ -1,4 +1,4 @@
-﻿---
+---
 name: inventory-demand-planning
 description: >
   Codified expertise for demand forecasting, safety stock optimization,
@@ -10,7 +10,7 @@ description: >
   managing promotions, or optimizing inventory levels.
 license: Apache-2.0
 version: 1.0.0
-homepage: https://github.com/affaan-m/everything-claude-code
+homepage: <https://github.com/affaan-m/everything-claude-code>
 origin: ECC
 metadata:
   author: evos

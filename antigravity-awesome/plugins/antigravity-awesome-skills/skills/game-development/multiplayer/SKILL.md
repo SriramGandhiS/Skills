@@ -122,7 +122,7 @@ Server: Validate → did projectile actually hit?
 
 ## 6. Anti-Patterns
 
-| ❌ Don't | ✅ Do |
+| FAIL: Don't | PASS: Do |
 |----------|-------|
 | Trust the client | Server is authority |
 | Send everything | Send only necessary |

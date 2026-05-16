@@ -34,19 +34,19 @@ origin: ECC
 **快速检查**（默认）：单次执行，报告结果
 
 ```
-/canary-watch https://myapp.com
+/canary-watch <https://myapp.com>
 ```
 
 **持续监控**：每 N 分钟检查一次，持续 M 小时
 
 ```
-/canary-watch https://myapp.com --interval 5m --duration 2h
+/canary-watch <https://myapp.com> --interval 5m --duration 2h
 ```
 
 **差异模式**：对比预发布环境与生产环境
 
 ```
-/canary-watch --compare https://staging.myapp.com https://myapp.com
+/canary-watch --compare <https://staging.myapp.com> <https://myapp.com>
 ```
 
 ### 告警阈值

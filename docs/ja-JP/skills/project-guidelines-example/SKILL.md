@@ -222,13 +222,13 @@ export function useApi<T>(
 ### バックエンド (pytest)
 
 ```bash
-# すべてのテストを実行
+## すべてのテストを実行
 poetry run pytest tests/
 
-# カバレッジ付きで実行
+## カバレッジ付きで実行
 poetry run pytest tests/ --cov=. --cov-report=html
 
-# 特定のテストファイルを実行
+## 特定のテストファイルを実行
 poetry run pytest tests/test_auth.py -v
 ```
 
@@ -253,13 +253,13 @@ async def test_health_check(client: AsyncClient):
 ### フロントエンド (React Testing Library)
 
 ```bash
-# テストを実行
+## テストを実行
 npm run test
 
-# カバレッジ付きで実行
+## カバレッジ付きで実行
 npm run test -- --coverage
 
-# E2Eテストを実行
+## E2Eテストを実行
 npm run test:e2e
 ```
 
@@ -298,11 +298,11 @@ describe('WorkspacePanel', () => {
 ### デプロイメントコマンド
 
 ```bash
-# フロントエンドのビルドとデプロイ
+## フロントエンドのビルドとデプロイ
 cd frontend && npm run build
 gcloud run deploy frontend --source .
 
-# バックエンドのビルドとデプロイ
+## バックエンドのビルドとデプロイ
 cd backend
 gcloud run deploy backend --source .
 ```
@@ -310,12 +310,12 @@ gcloud run deploy backend --source .
 ### 環境変数
 
 ```bash
-# フロントエンド (.env.local)
+## フロントエンド (.env.local)
 NEXT_PUBLIC_API_URL=https://api.example.com
 NEXT_PUBLIC_SUPABASE_URL=https://xxx.supabase.co
 NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJ...
 
-# バックエンド (.env)
+## バックエンド (.env)
 DATABASE_URL=postgresql://...
 ANTHROPIC_API_KEY=sk-ant-...
 SUPABASE_URL=https://xxx.supabase.co

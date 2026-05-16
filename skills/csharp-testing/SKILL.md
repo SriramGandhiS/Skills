@@ -1,4 +1,4 @@
-﻿---
+---
 name: csharp-testing
 description: C# and .NET testing patterns with xUnit, FluentAssertions, mocking, integration tests, and test organization best practices.
 origin: ECC
@@ -295,7 +295,7 @@ var order = new OrderBuilder()
 |---|---|
 | Testing implementation details | Test behavior and outcomes |
 | Shared mutable test state | Fresh instance per test (xUnit does this via constructors) |
-| `Thread.Sleep` in async tests | Use `Task.Delay` with timeout, or polling helpers |
+| `Thread.Sleep`in async tests | Use`Task.Delay` with timeout, or polling helpers |
 | Asserting on `ToString()` output | Assert on typed properties |
 | One giant assertion per test | One logical assertion per test |
 | Test names describing implementation | Name by behavior: `Method_ExpectedResult_WhenCondition` |
@@ -304,18 +304,18 @@ var order = new OrderBuilder()
 ## Running Tests
 
 ```bash
-# Run all tests
+## Run all tests
 dotnet test
 
-# Run with coverage
+## Run with coverage
 dotnet test --collect:"XPlat Code Coverage"
 
-# Run specific project
+## Run specific project
 dotnet test tests/MyApp.UnitTests/
 
-# Filter by test name
+## Filter by test name
 dotnet test --filter "FullyQualifiedName~OrderService"
 
-# Watch mode during development
+## Watch mode during development
 dotnet watch test --project tests/MyApp.UnitTests/
 ```

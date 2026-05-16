@@ -99,7 +99,7 @@ C:\Users\renat\skills\instagram\
 ├── static/
 │   └── dashboard.html                # Dashboard Chart.js
 └── data/
-    
+
 
 ## Instalação (Uma Vez)
 

@@ -522,7 +522,7 @@ def test_skill_builder_merged_apis():
 
         content = builder._format_merged_apis()
 
-        assert "✅ Verified APIs" in content
+        assert "PASS: Verified APIs" in content
         assert "test_api" in content
 
 
@@ -775,7 +775,7 @@ class TestWorkflowJsonConfig:
             "name": "test_workflow",
             "description": "Test workflow config",
             "sources": [],
-            **(extra_config or {}),
+**(extra_config or {}),
         }
         cfg_file = tmp_path / "config.json"
         cfg_file.write_text(json.dumps(config))

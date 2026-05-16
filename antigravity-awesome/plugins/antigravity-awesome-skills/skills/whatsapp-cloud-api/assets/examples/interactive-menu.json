@@ -10,7 +10,7 @@
         "type": "button",
         "header": {
           "type": "text",
-          "text": "Bem-vindo à Empresa Example! 👋"
+          "text": "Bem-vindo à Empresa Example! "
         },
         "body": {
           "text": "Olá! Sou o assistente virtual da Empresa Example. Como posso ajudar você hoje?"

@@ -4,7 +4,7 @@
 
 ---
 
-## 📁 Basic Folder Structure
+## Basic Folder Structure
 
 ```
 skills/
@@ -201,10 +201,10 @@ More instructions...
 ```markdown
 ## Best Practices
 
-- ✅ Do this
-- ✅ Also do this
-- ❌ Don't do this
-- ❌ Avoid this
+- PASS: Do this
+- PASS: Also do this
+- FAIL: Don't do this
+- FAIL: Avoid this
 ```
 
 #### 7. Common Pitfalls
@@ -212,7 +212,7 @@ More instructions...
 ## Common Pitfalls
 
 - **Problem:** Description
-  **Solution:** How to fix it
+**Solution:** How to fix it
 ```
 
 #### 8. Security & Safety Notes (for command/network/offensive skills)
@@ -248,36 +248,36 @@ add a dedicated section before final wrap-up:
 
 ### Use Clear, Direct Language
 
-**❌ Bad:**
+**FAIL: Bad:**
 ```markdown
 You might want to consider possibly checking if the user has authentication.
 ```
 
-**✅ Good:**
+**PASS: Good:**
 ```markdown
 Check if the user is authenticated before proceeding.
 ```
 
 ### Use Action Verbs
 
-**❌ Bad:**
+**FAIL: Bad:**
 ```markdown
 The file should be created...
 ```
 
-**✅ Good:**
+**PASS: Good:**
 ```markdown
 Create the file...
 ```
 
 ### Be Specific
 
-**❌ Bad:**
+**FAIL: Bad:**
 ```markdown
 Set up the database properly.
 ```
 
-**✅ Good:**
+**PASS: Good:**
 ```markdown
 1. Create a PostgreSQL database
 2. Run migrations: `npm run migrate`
@@ -407,7 +407,7 @@ Use consistent formatting:
 
 ---
 
-## ✅ Quality Checklist
+## PASS: Quality Checklist
 
 Before finalizing your skill:
 
@@ -437,7 +437,7 @@ Before finalizing your skill:
 
 ---
 
-## 🔍 Real-World Example Analysis
+## Real-World Example Analysis
 
 Let's analyze a real skill: `brainstorming`
 
@@ -449,9 +449,9 @@ description: "You MUST use this before any creative work..."
 ```
 
 **Analysis:**
-- ✅ Clear name
-- ✅ Strong description with urgency ("MUST use")
-- ✅ Explains when to use it
+- PASS: Clear name
+- PASS: Strong description with urgency ("MUST use")
+- PASS: Explains when to use it
 
 ```markdown
 # Brainstorming Ideas Into Designs
@@ -461,9 +461,9 @@ Help turn ideas into fully formed designs...
 ```
 
 **Analysis:**
-- ✅ Clear title
-- ✅ Concise overview
-- ✅ Explains the value proposition
+- PASS: Clear title
+- PASS: Concise overview
+- PASS: Explains the value proposition
 
 ```markdown
 ## The Process
@@ -474,9 +474,9 @@ Help turn ideas into fully formed designs...
 ```
 
 **Analysis:**
-- ✅ Broken into clear phases
-- ✅ Specific, actionable steps
-- ✅ Easy to follow
+- PASS: Broken into clear phases
+- PASS: Specific, actionable steps
+- PASS: Easy to follow
 
 ---
 
@@ -554,7 +554,7 @@ How to know if your skill is good:
 
 ---
 
-## 💡 Pro Tips
+## Pro Tips
 
 1. **Start with the "When to Use" section** - This clarifies the skill's purpose
 2. **Write examples first** - They help you understand what you're teaching
@@ -566,13 +566,13 @@ How to know if your skill is good:
 
 ## Common Mistakes to Avoid
 
-### ❌ Mistake 1: Too Vague
+### FAIL: Mistake 1: Too Vague
 ```markdown
 ## Instructions
 Make the code better.
 ```
 
-**✅ Fix:**
+**PASS: Fix:**
 ```markdown
 ## Instructions
 1. Extract repeated logic into functions
@@ -580,35 +580,35 @@ Make the code better.
 3. Write unit tests for core functionality
 ```
 
-### ❌ Mistake 2: Too Complex
+### FAIL: Mistake 2: Too Complex
 ```markdown
 ## Instructions
 [5000 words of dense technical jargon]
 ```
 
-**✅ Fix:**
+**PASS: Fix:**
 Break into multiple skills or use progressive disclosure
 
-### ❌ Mistake 3: No Examples
+### FAIL: Mistake 3: No Examples
 ```markdown
 ## Instructions
 [Instructions without any code examples]
 ```
 
-**✅ Fix:**
+**PASS: Fix:**
 Add at least 2-3 realistic examples
 
-### ❌ Mistake 4: Outdated Information
+### FAIL: Mistake 4: Outdated Information
 ```markdown
 Use React class components...
 ```
 
-**✅ Fix:**
+**PASS: Fix:**
 Keep skills updated with current best practices
 
 ---
 
-## 🎯 Next Steps
+## Next Steps
 
 1. **Read 3-5 existing skills** to see different styles
 2. **Try the skill template** from [`../../CONTRIBUTING.md`](../../CONTRIBUTING.md)
@@ -618,4 +618,4 @@ Keep skills updated with current best practices
 
 ---
 
-**Remember:** Every expert was once a beginner. Start simple, learn from feedback, and improve over time! 🚀
+**Remember:** Every expert was once a beginner. Start simple, learn from feedback, and improve over time!

@@ -113,7 +113,7 @@ date_added: "2026-02-27"
 
 ## 6. Anti-Patterns
 
-| ❌ Don't | ✅ Do |
+| FAIL: Don't | PASS: Do |
 |----------|-------|
 | Move camera without player | Player controls camera |
 | Drop below 90 FPS | Maintain frame rate |

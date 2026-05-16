@@ -1,4 +1,4 @@
-﻿---
+---
 name: measuring-text
 description: Measuring text dimensions, fitting text to containers, and checking overflow
 metadata:
@@ -136,7 +136,7 @@ const { width } = measureText({
 return <div style={fontStyle}>Hello</div>;
 ```
 
-**Avoid padding and border:** Use `outline` instead of `border` to prevent layout differences:
+**Avoid padding and border:** Use `outline`instead of`border` to prevent layout differences:
 
 ```tsx
 <div style={{ outline: "2px solid red" }}>Text</div>

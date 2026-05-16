@@ -198,7 +198,7 @@ function htmlToJsx(html) {
 /**
  * Render the variants block in either HTML or JSX, depending on commentSyntax.
  * In JSX:
- *   - comments use {/​* ... *​/} (already what commentSyntax.open is)
+ *   - comments use {/* ... */} (already what commentSyntax.open is)
  *   - <style>{`@scope ... { ... }`}</style> wraps CSS in a template literal so JSX
  *     doesn't choke on the {} in CSS
  *   - non-default visible variants use style={{display: 'none'}}

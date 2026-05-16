@@ -18,17 +18,17 @@ origin: ECC
 
 ## 工作原理
 
-* 中间件提供基础保护（通过 `VerifyCsrfToken` 实现 CSRF，通过 `SecurityHeaders` 实现安全标头）。
+* 中间件提供基础保护（通过 `VerifyCsrfToken`实现 CSRF，通过`SecurityHeaders` 实现安全标头）。
 * 守卫和策略强制执行访问控制（`auth:sanctum`、`$this->authorize`、策略中间件）。
 * 表单请求在输入到达服务之前进行验证和整形（`UploadInvoiceRequest`）。
 * 速率限制在身份验证控制之外增加滥用保护（`RateLimiter::for('login')`）。
-* 数据安全来自加密转换、批量赋值保护以及签名路由（`URL::temporarySignedRoute` + `signed` 中间件）。
+* 数据安全来自加密转换、批量赋值保护以及签名路由（`URL::temporarySignedRoute`+`signed` 中间件）。
 
 ## 核心安全设置
 
 * 生产环境中设置 `APP_DEBUG=false`
 * `APP_KEY` 必须设置，并在泄露时轮换
-* 设置 `SESSION_SECURE_COOKIE=true` 和 `SESSION_SAME_SITE=lax`（对于敏感应用，使用 `strict`）
+* 设置 `SESSION_SECURE_COOKIE=true`和`SESSION_SAME_SITE=lax`（对于敏感应用，使用`strict`）
 * 配置受信任的代理以正确检测 HTTPS
 
 ## 会话和 Cookie 强化
@@ -96,7 +96,7 @@ Route::put('/projects/{project}', [ProjectController::class, 'update'])
 
 ## 批量赋值保护
 
-* 使用 `$fillable` 或 `$guarded`，避免使用 `Model::unguard()`
+* 使用 `$fillable`或`$guarded`，避免使用`Model::unguard()`
 * 优先使用 DTO 或显式的属性映射
 
 ## SQL 注入防范

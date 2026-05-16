@@ -8,7 +8,7 @@ This command invokes the **rust-build-resolver** agent to incrementally fix Rust
 
 ## What This Command Does
 
-1. **Run Diagnostics**: Execute `cargo check`, `cargo clippy`, `cargo fmt --check`
+1. **Run Diagnostics**: Execute `cargo check`,`cargo clippy`,`cargo fmt --check`
 2. **Parse Errors**: Identify error codes and affected files
 3. **Fix Incrementally**: One error at a time
 4. **Verify Each Fix**: Re-run `cargo check` after each change
@@ -17,7 +17,7 @@ This command invokes the **rust-build-resolver** agent to incrementally fix Rust
 ## When to Use
 
 Use `/rust-build` when:
-- `cargo build` or `cargo check` fails with errors
+- `cargo build`or`cargo check` fails with errors
 - `cargo clippy` reports warnings
 - Borrow checker or lifetime errors block compilation
 - Cargo dependency resolution fails
@@ -26,19 +26,19 @@ Use `/rust-build` when:
 ## Diagnostic Commands Run
 
 ```bash
-# Primary build check
+## Primary build check
 cargo check 2>&1
 
-# Lints and suggestions
+## Lints and suggestions
 cargo clippy -- -D warnings 2>&1
 
-# Formatting check
+## Formatting check
 cargo fmt --check 2>&1
 
-# Dependency issues
+## Dependency issues
 cargo tree --duplicates
 
-# Security audit (if available)
+## Security audit (if available)
 if command -v cargo-audit >/dev/null; then cargo audit; else echo "cargo-audit not installed"; fi
 ```
 
@@ -48,7 +48,7 @@ if command -v cargo-audit >/dev/null; then cargo audit; else echo "cargo-audit n
 User: /rust-build
 
 Agent:
-# Rust Build Resolution
+## Rust Build Resolution
 
 ## Initial Diagnostics
 
@@ -79,13 +79,13 @@ if !map.contains_key("key") {
 
 ```bash
 $ cargo check
-# 2 errors remaining
+## 2 errors remaining
 ```
 
 ## Fix 2: Type Mismatch
 
 File: src/handler/api.rs:42
-Error: E0308 — mismatched types: expected `usize`, found `&str`
+Error: E0308 — mismatched types: expected `usize`, found`&str`
 
 ```rust
 // Changed
@@ -98,7 +98,7 @@ let count: usize = params.get("count")
 
 ```bash
 $ cargo check
-# 1 error remaining
+## 1 error remaining
 ```
 
 ## Fix 3: Unresolved Name
@@ -114,14 +114,14 @@ use crate::db;
 
 ```bash
 $ cargo check
-# Build successful!
+## Build successful!
 ```
 
 ## Final Verification
 
 ```bash
 $ cargo clippy -- -D warnings
-# No warnings
+## No warnings
 
 $ cargo test
 running 6 tests
@@ -154,9 +154,9 @@ Build Status: SUCCESS
 | `cannot borrow as mutable` | Restructure to end immutable borrow first; clone only if justified |
 | `does not live long enough` | Use owned type or add lifetime annotation |
 | `cannot move out of` | Restructure to take ownership; clone only as last resort |
-| `mismatched types` | Add `.into()`, `as`, or explicit conversion |
-| `trait X not implemented` | Add `#[derive(Trait)]` or implement manually |
-| `unresolved import` | Add to Cargo.toml or fix `use` path |
+| `mismatched types`| Add`.into()`,`as`, or explicit conversion |
+| `trait X not implemented`| Add`#[derive(Trait)]` or implement manually |
+| `unresolved import`| Add to Cargo.toml or fix`use` path |
 | `cannot find value` | Add import or fix path |
 
 ## Fix Strategy

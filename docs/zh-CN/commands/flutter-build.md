@@ -20,23 +20,23 @@ description: 逐步修复 Dart 分析器错误和 Flutter 构建失败。调用 
 
 * `flutter analyze` 报告错误
 * `flutter build` 在任何平台失败
-* `dart pub get` / `flutter pub get` 因版本冲突失败
+* `dart pub get`/`flutter pub get` 因版本冲突失败
 * `build_runner` 代码生成失败
 * 拉取更改后导致构建中断
 
 ## 运行的诊断命令
 
 ```bash
-# Analysis
+## Analysis
 flutter analyze 2>&1
 
-# Dependencies
+## Dependencies
 flutter pub get 2>&1
 
-# Code generation (if project uses build_runner)
+## Code generation (if project uses build_runner)
 dart run build_runner build --delete-conflicting-outputs 2>&1
 
-# Platform builds
+## Platform builds
 flutter build apk 2>&1
 flutter build web 2>&1
 ```
@@ -47,7 +47,7 @@ flutter build web 2>&1
 用户：/flutter-build
 
 代理：
-# Flutter 构建问题解决
+## Flutter 构建问题解决
 
 ## 初始诊断
 
@@ -130,12 +130,12 @@ $ flutter test
 
 | 错误 | 典型修复 |
 |-------|-------------|
-| `A value of type 'X?' can't be assigned to 'X'` | 添加 `?? default` 或空值保护 |
+| `A value of type 'X?' can't be assigned to 'X'`| 添加`?? default` 或空值保护 |
 | `The name 'X' isn't defined` | 添加导入或修正拼写错误 |
-| `Non-nullable instance field must be initialized` | 添加初始化器或 `late` |
+| `Non-nullable instance field must be initialized`| 添加初始化器或`late` |
 | `Version solving failed` | 调整 pubspec.yaml 中的版本约束 |
 | `Missing concrete implementation of 'X'` | 实现缺失的接口方法 |
-| `build_runner: Part of X expected` | 删除过时的 `.g.dart` 并重建 |
+| `build_runner: Part of X expected`| 删除过时的`.g.dart` 并重建 |
 
 ## 修复策略
 

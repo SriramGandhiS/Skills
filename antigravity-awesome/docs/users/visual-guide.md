@@ -30,38 +30,38 @@
 ```
 antigravity-awesome-skills/
 │
-├── 📄 README.md                         ← Overview and quick start
-├── 📄 CONTRIBUTING.md                  ← Contributor workflow
-├── 📄 CATALOG.md                       ← Full generated catalog
+├──  README.md                         ← Overview and quick start
+├──  CONTRIBUTING.md                  ← Contributor workflow
+├──  CATALOG.md                       ← Full generated catalog
 │
-├── 📁 skills/                          ← 1,450+ skills live here
+├──  skills/                          ← 1,450+ skills live here
 │   │
-│   ├── 📁 brainstorming/
-│   │   └── 📄 SKILL.md                 ← Skill definition
+│   ├──  brainstorming/
+│   │   └──  SKILL.md                 ← Skill definition
 │   │
-│   ├── 📁 stripe-integration/
-│   │   ├── 📄 SKILL.md
-│   │   └── 📁 examples/                ← Optional extras
+│   ├──  stripe-integration/
+│   │   ├──  SKILL.md
+│   │   └──  examples/                ← Optional extras
 │   │
-│   ├── 📁 game-development/
-│   │   └── 📁 2d-games/
-│   │       └── 📄 SKILL.md             ← Nested skills also supported
+│   ├──  game-development/
+│   │   └──  2d-games/
+│   │       └──  SKILL.md             ← Nested skills also supported
 │   │
 │   └── ... (1,450+ total)
 │
-├── 📁 apps/
-│   └── 📁 web-app/                     ← Interactive browser
+├──  apps/
+│   └──  web-app/                     ← Interactive browser
 │
-├── 📁 tools/
-│   ├── 📁 scripts/                     ← Validators and generators
-│   ├── 📁 lib/                         ← Shared helpers
-│   └── 📁 bin/                         ← Installer entrypoint
+├──  tools/
+│   ├──  scripts/                     ← Validators and generators
+│   ├──  lib/                         ← Shared helpers
+│   └──  bin/                         ← Installer entrypoint
 │
-└── 📁 docs/
-    ├── 📁 users/                       ← Getting started, bundles, workflows
-    ├── 📁 contributors/                ← Template, anatomy, quality bar
-    ├── 📁 maintainers/                 ← Release and maintenance docs
-    └── 📁 sources/                     ← Attribution and licenses
+└──  docs/
+    ├──  users/                       ← Getting started, bundles, workflows
+    ├──  contributors/                ← Template, anatomy, quality bar
+    ├──  maintainers/                 ← Release and maintenance docs
+    └──  sources/                     ← Attribution and licenses
 ```
 
 ---
@@ -197,10 +197,10 @@ If you want a workspace-style manual install instead, cloning into `.agent/skill
 ┌─────────────────────────────────────────┐
 │ File Explorer                           │
 ├─────────────────────────────────────────┤
-│ 📁 ~/.gemini/antigravity/skills/        │
-│   ├── 📁 brainstorming/                 │
-│   ├── 📁 stripe-integration/            │
-│   ├── 📁 react-best-practices/          │
+│  ~/.gemini/antigravity/skills/        │
+│   ├──  brainstorming/                 │
+│   ├──  stripe-integration/            │
+│   ├──  react-best-practices/          │
 │   └── ... (1,450+ total)                │
 └─────────────────────────────────────────┘
 ```
@@ -421,7 +421,7 @@ START HERE
 └────────┬────────┘
          │
          ↓
-    CONTRIBUTOR! 🎉
+    CONTRIBUTOR!
 ```
 
 ---
@@ -433,26 +433,26 @@ START HERE
 │                    QUICK REFERENCE                          │
 ├─────────────────────────────────────────────────────────────┤
 │                                                             │
-│  📥 INSTALL                                                 │
+│   INSTALL                                                 │
 │  npx antigravity-awesome-skills                             │
 │                                                             │
-│  🎯 USE                                                     │
+│   USE                                                     │
 │  @skill-name [your request]                                 │
 │                                                             │
-│  🔍 FIND                                                    │
+│   FIND                                                    │
 │  ls skills/ | grep "keyword"                                │
 │                                                             │
-│  ✅ VALIDATE                                                │
+│  PASS: VALIDATE                                                │
 │  npm run validate                                          │
 │                                                             │
-│  📝 CREATE                                                  │
+│   CREATE                                                  │
 │  1. mkdir skills/my-skill                                   │
 │  2. Create SKILL.md with frontmatter                        │
 │  3. Add content                                             │
 │  4. Test & validate                                         │
 │  5. Submit PR                                               │
 │                                                             │
-│  🆘 HELP                                                    │
+│   HELP                                                    │
 │  • docs/users/getting-started.md                            │
 │  • docs/users/faq.md                                        │
 │  • CONTRIBUTING.md                                          │
@@ -470,19 +470,19 @@ START HERE
 Day 1: Install skills
   │
   └─→ "Wow, @brainstorming helped me design my app!"
-  
+
 Day 3: Use 5 different skills
   │
   └─→ "These skills save me so much time!"
-  
+
 Week 1: Create first skill
   │
   └─→ "I shared my expertise as a skill!"
-  
+
 Week 2: Skill gets merged
   │
-  └─→ "My skill is helping others! 🎉"
-  
+  └─→ "My skill is helping others! "
+
 Month 1: Regular contributor
   │
   └─→ "I've contributed 5 skills and improved docs!"
@@ -492,12 +492,12 @@ Month 1: Regular contributor
 
 ## Next Steps
 
-1. ✅ **Understand** the visual structure
-2. ✅ **Install** skills in your AI tool
-3. ✅ **Try** 2-3 skills from different categories
-4. ✅ **Read** CONTRIBUTING.md
-5. ✅ **Create** your first skill
-6. ✅ **Share** with the community
+1. PASS: **Understand** the visual structure
+2. PASS: **Install** skills in your AI tool
+3. PASS: **Try** 2-3 skills from different categories
+4. PASS: **Read** CONTRIBUTING.md
+5. PASS: **Create** your first skill
+6. PASS: **Share** with the community
 
 ---
 
@@ -506,4 +506,4 @@ Month 1: Regular contributor
 - [skill-anatomy.md](../contributors/skill-anatomy.md) - Detailed breakdown
 - [CONTRIBUTING.md](../../CONTRIBUTING.md) - How to contribute
 
-**Ready to contribute?** You've got this! 💪
+**Ready to contribute?** You've got this!

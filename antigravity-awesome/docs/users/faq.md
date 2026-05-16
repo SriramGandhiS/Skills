@@ -42,30 +42,30 @@ For the longer explanation, read [skills-vs-mcp-tools.md](skills-vs-mcp-tools.md
 
 ### Which AI tools work with these skills?
 
-- ✅ **Claude Code** (Anthropic CLI)
-- ✅ **Gemini CLI** (Google)
-- ✅ **Codex CLI** (OpenAI)
-- ✅ **Cursor** (AI IDE)
-- ✅ **Antigravity IDE**
-- ✅ **OpenCode**
-- ✅ **Kiro CLI** (Amazon)
-- ✅ **Kiro IDE** (Amazon)
-- ✅ **AdaL CLI**
-- ⚠️ **GitHub Copilot** (partial support via copy-paste)
+- PASS: **Claude Code** (Anthropic CLI)
+- PASS: **Gemini CLI** (Google)
+- PASS: **Codex CLI** (OpenAI)
+- PASS: **Cursor** (AI IDE)
+- PASS: **Antigravity IDE**
+- PASS: **OpenCode**
+- PASS: **Kiro CLI** (Amazon)
+- PASS: **Kiro IDE** (Amazon)
+- PASS: **AdaL CLI**
+- WARNING: **GitHub Copilot** (partial support via copy-paste)
 
 ### Are these skills free to use?
 
 **Yes.** Original code and tooling are licensed under MIT, and original documentation/non-code written content is licensed under CC BY 4.0.
 
-- ✅ Free for personal use
-- ✅ Free for commercial use
-- ✅ You can modify them
+- PASS: Free for personal use
+- PASS: Free for commercial use
+- PASS: You can modify them
 
 See [../../LICENSE](../../LICENSE), [../../LICENSE-CONTENT](../../LICENSE-CONTENT), and [../sources/sources.md](../sources/sources.md) for attribution and third-party license details.
 
 ### How do these skills avoid overflowing the model context?
 
-Some host tools (for example custom agents built on Jetski/Cortex + Gemini) might be tempted to **concatenate every `SKILL.md` file into a single system prompt**.  
+Some host tools (for example custom agents built on Jetski/Cortex + Gemini) might be tempted to **concatenate every `SKILL.md` file into a single system prompt**.
 This is **not** how this repository is designed to be used, and it will almost certainly overflow the model’s context window if you concatenate the whole repository into one prompt.
 
 Instead, hosts should:
@@ -96,11 +96,11 @@ No. The public site is a static GitHub Pages deploy.
 
 We classify skills so you know what you're running. These values map directly to the `risk:` field in every `SKILL.md` frontmatter:
 
-- 🔵 **`none`**: Pure reference or planning content — no shell commands, no mutations, no network access.
-- ⚪ **`safe`**: Community skills that are non-destructive (read-only, planning, code review, analysis).
-- 🔴 **`critical`**: Skills that modify files, drop data, use network scanners, or perform destructive actions. **Use with caution.**
-- 🟣 **`offensive`**: Security-focused offensive techniques (pentesting, exploitation). **Authorized use only** — always confirm the target is in scope.
-- ⬜ **`unknown`**: Legacy or unclassified content. Review the skill manually before use.
+- **`none`**: Pure reference or planning content — no shell commands, no mutations, no network access.
+- **`safe`**: Community skills that are non-destructive (read-only, planning, code review, analysis).
+- **`critical`**: Skills that modify files, drop data, use network scanners, or perform destructive actions. **Use with caution.**
+- **`offensive`**: Security-focused offensive techniques (pentesting, exploitation). **Authorized use only** — always confirm the target is in scope.
+- **`unknown`**: Legacy or unclassified content. Review the skill manually before use.
 
 ### Can these skills hack my computer?
 
@@ -299,7 +299,7 @@ git pull origin main
 
 ## Using Skills
 
-> **💡 For a complete guide with examples, see [usage.md](usage.md)**
+> ** For a complete guide with examples, see [usage.md](usage.md)**
 
 ### How do I invoke a skill?
 
@@ -439,4 +439,4 @@ Maintainers regenerate and canonicalize those files on `main` after merge. If yo
 - Try `@test-driven-development` for better code quality
 - Explore `@skill-creator` to make your own skills
 
-**Still confused?** [Open a discussion](https://github.com/sickn33/antigravity-awesome-skills/discussions) and we'll help you out! 🙌
+**Still confused?** [Open a discussion](https://github.com/sickn33/antigravity-awesome-skills/discussions) and we'll help you out!

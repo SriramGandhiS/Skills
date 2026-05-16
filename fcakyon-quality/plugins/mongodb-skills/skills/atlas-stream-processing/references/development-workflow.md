@@ -85,8 +85,8 @@ atlas-streams-discover → action: "inspect-connection",
   - Https: valid for `$https` enrichment or sink
   - Lambda: valid for `$externalFunction` only
 - [ ] Connection name matches actual target (avoid confusion):
-  - ⚠️ BAD: connection "atlascluster" → actual target "ClusterRestoreTest"
-  - ✅ GOOD: connection "cluster-restore-test" → actual target "ClusterRestoreTest"
+  - WARNING: BAD: connection "atlascluster" → actual target "ClusterRestoreTest"
+  - PASS: GOOD: connection "cluster-restore-test" → actual target "ClusterRestoreTest"
 - [ ] For Cluster connections: verify the `clusterName` field points to the intended cluster
 
 **Step 3: Present validation summary to user**
@@ -94,10 +94,10 @@ atlas-streams-discover → action: "inspect-connection",
 Always show the user what connections will be used:
 ```
 "Before creating processor '<name>', I've verified your connections:
- - ✅ sample_stream_solar → Sample data (READY)
- - ⚠️ atlascluster → ClusterRestoreTest (READY)
+ - PASS: sample_stream_solar → Sample data (READY)
+ - WARNING: atlascluster → ClusterRestoreTest (READY)
       Warning: Connection name 'atlascluster' doesn't match actual cluster 'ClusterRestoreTest'
- - ✅ open-meteo-api → https://api.open-meteo.com/v1/... (READY)
+ - PASS: open-meteo-api → https://api.open-meteo.com/v1/... (READY)
 
 Proceed with processor creation?"
 ```

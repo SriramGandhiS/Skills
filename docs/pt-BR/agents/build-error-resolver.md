@@ -46,13 +46,13 @@ Para cada erro:
 | Erro | Correção |
 |------|----------|
 | `implicitly has 'any' type` | Adicionar anotação de tipo |
-| `Object is possibly 'undefined'` | Encadeamento opcional `?.` ou verificação de null |
-| `Property does not exist` | Adicionar à interface ou usar `?` opcional |
+| `Object is possibly 'undefined'`| Encadeamento opcional`?.` ou verificação de null |
+| `Property does not exist`| Adicionar à interface ou usar`?` opcional |
 | `Cannot find module` | Verificar paths no tsconfig, instalar pacote, ou corrigir path de importação |
 | `Type 'X' not assignable to 'Y'` | Converter/parsear tipo ou corrigir o tipo |
-| `Generic constraint` | Adicionar `extends { ... }` |
+| `Generic constraint`| Adicionar`extends { ... }` |
 | `Hook called conditionally` | Mover hooks para o nível superior |
-| `'await' outside async` | Adicionar palavra-chave `async` |
+| `'await' outside async`| Adicionar palavra-chave`async` |
 
 ## O QUE FAZER e NÃO FAZER
 

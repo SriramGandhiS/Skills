@@ -345,12 +345,12 @@ uv pip freeze --require-hashes > requirements.txt
 ```bash
 # Project structure
 # monorepo/
-#   packages/
-#     package-a/
-#       pyproject.toml
-#     package-b/
-#       pyproject.toml
-#   pyproject.toml (root)
+# packages/
+# package-a/
+# pyproject.toml
+# package-b/
+# pyproject.toml
+# pyproject.toml (root)
 
 # Root pyproject.toml
 [tool.uv.workspace]

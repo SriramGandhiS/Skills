@@ -6,7 +6,7 @@ export default {
   before: `
     <div style="width: 100%; max-width: 260px; display: flex; flex-direction: column; gap: 8px;">
       <div style="padding: 16px; background: #fff0f0; border-radius: 6px; text-align: center;">
-        <div style="font-size: 24px; margin-bottom: 8px;">⚠️</div>
+        <div style="font-size: 24px; margin-bottom: 8px;">WARNING:</div>
         <div style="font-size: 14px; color: #cc0000; font-weight: 500;">Error</div>
         <div style="font-size: 12px; color: #888; margin-top: 4px;">Something went wrong</div>
         <button style="margin-top: 12px; padding: 6px 12px; background: #ddd; border: none; border-radius: 4px; font-size: 12px; color: #666;">OK</button>

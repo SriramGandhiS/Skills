@@ -50,15 +50,15 @@ metadata:
 2. 从项目文件中检测技术栈：
    * `package.json` → Node.js / TypeScript / React / Next.js
    * `go.mod` → Go
-   * `pyproject.toml` / `requirements.txt` → Python
+   * `pyproject.toml`/`requirements.txt` → Python
    * `Cargo.toml` → Rust
-   * `build.gradle` / `pom.xml` → Java / Kotlin（然后检查构建文件中的`quarkus` → Quarkus，或`spring-boot` → Spring Boot）
+   * `build.gradle`/`pom.xml`→ Java / Kotlin（然后检查构建文件中的`quarkus`→ Quarkus，或`spring-boot` → Spring Boot）
    * `Package.swift` → Swift
    * `Gemfile` → Ruby
    * `composer.json` → PHP
-   * `*.csproj` / `*.sln` → .NET
-   * `Makefile` / `CMakeLists.txt` → C / C++
-   * `cpanfile` / `Makefile.PL` → Perl
+   * `*.csproj`/`*.sln` → .NET
+   * `Makefile`/`CMakeLists.txt` → C / C++
+   * `cpanfile`/`Makefile.PL` → Perl
 3. 记录检测到的技术栈，用于阶段 3 和阶段 4
 
 如果未找到项目文件（例如，提示是抽象的或用于新项目），则跳过检测并在阶段 4 标记“技术栈未知”。

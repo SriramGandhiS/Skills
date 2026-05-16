@@ -108,7 +108,7 @@ function listShippedFlagsByCommand() {
   return out;
 }
 
-describe('Bug #2954: help.md ↔ commands/gsd/ bidirectional parity', () => {
+describe('Bug #2954: help.md  commands/gsd/ bidirectional parity', () => {
   test('every /gsd-<name> referenced in help.md is a shipped command', () => {
     const helpContents = fs.readFileSync(HELP_MD, 'utf8');
     const referenced = extractSlashReferences(helpContents);

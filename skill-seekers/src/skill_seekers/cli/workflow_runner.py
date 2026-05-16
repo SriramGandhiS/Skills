@@ -113,16 +113,16 @@ def run_workflows(
     # ── Named workflows ────────────────────────────────────────────────────
     total = len(named_workflows) + (1 if inline_stages else 0)
     if total > 1:
-        logger.info(f"\n🔗 Chaining {total} workflow(s) in sequence")
+        logger.info(f"\n Chaining {total} workflow(s) in sequence")
 
     for idx, workflow_name in enumerate(named_workflows, 1):
-        header = f"\n{'=' * 80}\n🔄 Workflow {idx}/{total}: {workflow_name}\n{'=' * 80}"
+        header = f"\n{'=' * 80}\n Workflow {idx}/{total}: {workflow_name}\n{'=' * 80}"
         logger.info(header)
 
         try:
             engine = WorkflowEngine(workflow_name, agent=agent)
         except Exception as exc:
-            logger.error(f"❌ Failed to load workflow '{workflow_name}': {exc}")
+            logger.error(f"FAIL: Failed to load workflow '{workflow_name}': {exc}")
             logger.info("   Skipping this workflow and continuing...")
             continue
 
@@ -130,16 +130,16 @@ def run_workflows(
         logger.info(f"   Stages: {len(engine.workflow.stages)}")
 
         if dry_run:
-            logger.info("\n🔍 DRY RUN MODE - Previewing stages:")
+            logger.info("\n DRY RUN MODE - Previewing stages:")
             engine.preview(context=workflow_vars)
             continue  # Preview next workflow too
 
         try:
             engine.run(analysis_results={}, context=workflow_vars)
             executed.append(workflow_name)
-            logger.info(f"\n✅ Workflow '{workflow_name}' completed successfully!")
+            logger.info(f"\nPASS: Workflow '{workflow_name}' completed successfully!")
         except Exception as exc:
-            logger.error(f"❌ Workflow '{workflow_name}' failed: {exc}")
+            logger.error(f"FAIL: Workflow '{workflow_name}' failed: {exc}")
             import traceback
 
             traceback.print_exc()
@@ -149,7 +149,7 @@ def run_workflows(
         inline_idx = len(named_workflows) + 1
         header = (
             f"\n{'=' * 80}\n"
-            f"🔄 Workflow {inline_idx}/{total}: inline ({len(inline_stages)} stage(s))\n"
+            f" Workflow {inline_idx}/{total}: inline ({len(inline_stages)} stage(s))\n"
             f"{'=' * 80}"
         )
         logger.info(header)
@@ -157,30 +157,30 @@ def run_workflows(
         try:
             engine = _build_inline_engine(args)
         except Exception as exc:
-            logger.error(f"❌ Failed to build inline workflow: {exc}")
+            logger.error(f"FAIL: Failed to build inline workflow: {exc}")
         else:
             if dry_run:
-                logger.info("\n🔍 DRY RUN MODE - Previewing inline stages:")
+                logger.info("\n DRY RUN MODE - Previewing inline stages:")
                 engine.preview(context=workflow_vars)
             else:
                 try:
                     engine.run(analysis_results={}, context=workflow_vars)
                     executed.append("inline_workflow")
-                    logger.info("\n✅ Inline workflow completed successfully!")
+                    logger.info("\nPASS: Inline workflow completed successfully!")
                 except Exception as exc:
-                    logger.error(f"❌ Inline workflow failed: {exc}")
+                    logger.error(f"FAIL: Inline workflow failed: {exc}")
                     import traceback
 
                     traceback.print_exc()
 
     if dry_run:
-        logger.info("\n✅ Dry run complete! No changes made.")
+        logger.info("\nPASS: Dry run complete! No changes made.")
         logger.info("   Remove --workflow-dry-run to execute.")
         sys.exit(0)
 
     if executed:
         logger.info(f"\n{'=' * 80}")
-        logger.info(f"✅ {len(executed)} workflow(s) completed: {', '.join(executed)}")
+        logger.info(f"PASS: {len(executed)} workflow(s) completed: {', '.join(executed)}")
         logger.info(f"{'=' * 80}")
 
     return len(executed) > 0, executed

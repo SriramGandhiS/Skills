@@ -387,7 +387,6 @@ import torch.nn as nn
 import torch.nn.functional as F
 import torchvision.transforms as T
 
-
 class ProjectionHead(nn.Module):
     """MLP que projeta representações para espaço contrastivo"""
     def __init__(self, in_dim=512, hidden_dim=256, out_dim=128):
@@ -401,7 +400,6 @@ class ProjectionHead(nn.Module):
 
     def forward(self, x):
         return F.normalize(self.net(x), dim=-1)
-
 
 class SimCLRLoss(nn.Module):
     """NT-Xent Loss (Chen et al. 2020)"""
@@ -423,7 +421,6 @@ class SimCLRLoss(nn.Module):
         labels = torch.arange(B, device=z.device)
         labels = torch.cat([labels + B, labels])
         return F.cross_entropy(sim, labels)
-
 
 def get_ssl_augmentations(size=224):
     """

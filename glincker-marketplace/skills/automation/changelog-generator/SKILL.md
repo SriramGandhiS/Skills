@@ -179,7 +179,7 @@ revert:   → Reverted
 ```markdown
 ## [2.0.0] - 2025-01-15
 
-### ⚠️ BREAKING CHANGES
+### WARNING: BREAKING CHANGES
 - Removed support for Node.js 14
 - Changed API response format for /users endpoint
 - Renamed environment variable `API_KEY` to `APP_API_KEY`

@@ -172,8 +172,7 @@ trade-offs.
 
 > **DEPRECATED as of v7.2.0.** The Loki Mode VS Code extension is no longer
 > maintained. Use the dashboard at `loki dashboard start` instead.
->
-> The marketplace listing remains for users on v7.2.0 and earlier but will
+> > The marketplace listing remains for users on v7.2.0 and earlier but will
 > not receive further updates. The `vscode-extension/` source remains in the
 > repository for contributors who want to build the extension locally; it is
 > no longer published to the VS Code Marketplace and is not included in npm
@@ -419,7 +418,7 @@ For using Loki Mode through the Anthropic API Console (console.anthropic.com):
 1. Go to [Releases](https://github.com/asklokesh/loki-mode/releases)
 2. Download **`loki-mode-api-X.X.X.zip`** (note the `-api-` version)
 
-   **Important:** The API version has a different file structure than the web version.
+**Important:** The API version has a different file structure than the web version.
 
 ### Step 2: Upload to API Console
 

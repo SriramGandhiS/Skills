@@ -1,4 +1,4 @@
-﻿---
+---
 name: investor-outreach
 description: Draft cold emails, warm intro blurbs, follow-ups, update emails, and investor communications for fundraising. Use when the user wants outreach to angels, VCs, strategic investors, or accelerators and needs concise, personalized, investor-facing messaging.
 origin: ECC
@@ -26,7 +26,7 @@ Write investor communication that is short, concrete, and easy to act on.
 
 ## Voice Handling
 
-If the user's voice matters, run `brand-voice` first and reuse its `VOICE PROFILE`.
+If the user's voice matters, run `brand-voice`first and reuse its`VOICE PROFILE`.
 This skill should keep the investor-specific structure and ask discipline, not recreate its own parallel voice system.
 
 ## Hard Bans

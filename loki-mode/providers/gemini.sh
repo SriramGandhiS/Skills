@@ -5,19 +5,17 @@
 # Provider Functions (for external use)
 # =====================================
 # These functions provide a clean interface for external scripts:
-#   provider_detect()           - Check if CLI is installed
-#   provider_version()          - Get CLI version
-#   provider_invoke()           - Invoke with prompt (autonomous mode)
-#   provider_invoke_with_tier() - Invoke with tier-specific thinking level
-#   provider_get_tier_param()   - Map tier name to thinking level
-#
-# Usage:
-#   source providers/gemini.sh
-#   if provider_detect; then
-#       provider_invoke "Your prompt here"
-#   fi
-#
-# Note: autonomy/run.sh uses inline invocation for streaming support
+# provider_detect()           - Check if CLI is installed
+# provider_version()          - Get CLI version
+# provider_invoke()           - Invoke with prompt (autonomous mode)
+# provider_invoke_with_tier() - Invoke with tier-specific thinking level
+# provider_get_tier_param()   - Map tier name to thinking level
+# # Usage:
+# source providers/gemini.sh
+# if provider_detect; then
+# provider_invoke "Your prompt here"
+# fi
+# # Note: autonomy/run.sh uses inline invocation for streaming support
 # and real-time agent tracking. These functions are intended for
 # simpler scripts, wrappers, and external integrations.
 # =====================================

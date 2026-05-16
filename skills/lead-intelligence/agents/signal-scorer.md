@@ -1,4 +1,4 @@
-﻿---
+---
 name: signal-scorer
 description: Searches and ranks prospects by relevance signals across X, Exa, and LinkedIn. Assigns weighted scores based on role, industry, activity, influence, and location.
 tools:

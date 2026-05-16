@@ -1,18 +1,18 @@
 # /// script
 # dependencies = [
-#     "transformers>=5.2.0",
-#     "accelerate>=1.1.0",
-#     "albumentations >= 1.4.16",
-#     "timm",
-#     "datasets>=4.0",
-#     "torchmetrics",
-#     "pycocotools",
-#     "trackio",
-#     "huggingface_hub",
+# "transformers>=5.2.0",
+# "accelerate>=1.1.0",
+# "albumentations >= 1.4.16",
+# "timm",
+# "datasets>=4.0",
+# "torchmetrics",
+# "pycocotools",
+# "trackio",
+# "huggingface_hub",
 # ]
 # ///
 
-"""Finetuning any 🤗 Transformers model supported by AutoModelForObjectDetection for object detection leveraging the Trainer API."""
+"""Finetuning any  Transformers model supported by AutoModelForObjectDetection for object detection leveraging the Trainer API."""
 
 import logging
 import math
@@ -603,13 +603,13 @@ def main():
         model_args.config_name or model_args.model_name_or_path,
         label2id=label2id,
         id2label=id2label,
-        **common_pretrained_args,
+**common_pretrained_args,
     )
     model = AutoModelForObjectDetection.from_pretrained(
         model_args.model_name_or_path,
         config=config,
         ignore_mismatched_sizes=model_args.ignore_mismatched_sizes,
-        **common_pretrained_args,
+**common_pretrained_args,
     )
     image_processor = AutoImageProcessor.from_pretrained(
         model_args.image_processor_name or model_args.model_name_or_path,
@@ -618,7 +618,7 @@ def main():
         do_pad=True,
         pad_size={"height": data_args.image_square_size, "width": data_args.image_square_size},
         use_fast=data_args.use_fast,
-        **common_pretrained_args,
+**common_pretrained_args,
     )
 
     max_size = data_args.image_square_size

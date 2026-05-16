@@ -26,7 +26,7 @@ function makeCheckRun(name, status, conclusion, startedAt, id) {
 }
 
 {
-  const template = `# Pull Request Description\n\nIntro\n\n## Change Classification\n- [ ] Skill PR\n\n## Quality Bar Checklist ✅\n- [ ] Standards`;
+  const template = `# Pull Request Description\n\nIntro\n\n## Change Classification\n- [ ] Skill PR\n\n## Quality Bar Checklist PASS:\n- [ ] Standards`;
   const body = mergeBatch.normalizePrBody(
     `Short summary\n\n## Change Classification\n- [ ] Old item`,
     template,
@@ -34,7 +34,7 @@ function makeCheckRun(name, status, conclusion, startedAt, id) {
 
   assert.ok(body.startsWith("Short summary"));
   assert.ok(body.includes("## Change Classification"));
-  assert.ok(body.includes("## Quality Bar Checklist ✅"));
+  assert.ok(body.includes("## Quality Bar Checklist PASS:"));
   assert.ok(!body.includes("Old item"));
 }
 

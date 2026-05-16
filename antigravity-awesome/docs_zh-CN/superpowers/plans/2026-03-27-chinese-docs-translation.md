@@ -876,7 +876,7 @@ Translates all 68 missing documentation files from English to Chinese with consi
 - [ ] Glossary terminology reviewed for consistency
 - [ ] No markdown formatting issues
 
-🤖 Generated with [Claude Code](https://claude.com/claude-code)
+ Generated with [Claude Code](https://claude.com/claude-code)
 EOF
 )"
 ```
@@ -896,8 +896,8 @@ Check PR URL and ensure all commits included
 **Validation:** Link checking, glossary consistency, markdown linting
 
 **Success Criteria:**
-- ✅ All 68 files translated
-- ✅ Zero broken internal links
-- ✅ Terminology consistency ≥95%
-- ✅ Markdown linting passes
-- ✅ Ready for Chinese user review
+- PASS: All 68 files translated
+- PASS: Zero broken internal links
+- PASS: Terminology consistency ≥95%
+- PASS: Markdown linting passes
+- PASS: Ready for Chinese user review

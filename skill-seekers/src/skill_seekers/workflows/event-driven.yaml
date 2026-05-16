@@ -20,7 +20,7 @@ stages:
     enabled: true
     prompt: >
       Analyze the event-driven architecture.
-      
+
       Identify:
       1. Event bus/broker technology (Kafka, EventBridge, NATS, etc.)
       2. Event types and categories (domain, integration, notification)
@@ -28,7 +28,7 @@ stages:
       4. Event producers and consumers
       5. Event versioning strategy
       6. Event ordering and sequencing guarantees
-      
+
       Output JSON with:
       - "event_bus": broker technology
       - "event_types": event categorization
@@ -44,7 +44,7 @@ stages:
     enabled: true
     prompt: >
       Document event sourcing implementation (if applicable).
-      
+
       Cover:
       1. Event store selection and configuration
       2. Aggregate reconstruction from events
@@ -52,7 +52,7 @@ stages:
       4. Event versioning and migration
       5. Temporal queries (point-in-time state)
       6. Projections and read models
-      
+
       Output JSON with:
       - "event_store": storage technology
       - "aggregate_rebuild": reconstruction logic
@@ -68,7 +68,7 @@ stages:
     enabled: true
     prompt: >
       Document CQRS (Command Query Responsibility Segregation) patterns.
-      
+
       Include:
       1. Command handlers and validation
       2. Query handlers and optimization
@@ -76,7 +76,7 @@ stages:
       4. Event handlers for read model updates
       5. Consistency model (eventual vs strong)
       6. Sync vs async read model updates
-      
+
       Output JSON with:
       - "commands": command handling
       - "queries": query optimization
@@ -92,7 +92,7 @@ stages:
     enabled: true
     prompt: >
       Document saga pattern for distributed transactions.
-      
+
       Cover:
       1. Saga orchestration vs choreography
       2. Saga definition and steps
@@ -100,7 +100,7 @@ stages:
       4. Saga state management
       5. Failure handling and rollback
       6. Saga monitoring and timeouts
-      
+
       Output JSON with:
       - "pattern_type": orchestration or choreography
       - "saga_definition": saga structure
@@ -116,7 +116,7 @@ stages:
     enabled: true
     prompt: >
       Document event schema governance and evolution.
-      
+
       Include:
       1. Schema registry usage (Confluent, AWS Glue)
       2. Schema compatibility rules (backward, forward, full)
@@ -124,7 +124,7 @@ stages:
       4. Schema validation at producer/consumer
       5. Breaking change detection
       6. Schema documentation standards
-      
+
       Output JSON with:
       - "schema_registry": registry configuration
       - "compatibility": compatibility rules
@@ -140,7 +140,7 @@ stages:
     enabled: true
     prompt: >
       Document observability in event-driven systems.
-      
+
       Cover:
       1. Event tracing and correlation
       2. Event flow visualization
@@ -148,7 +148,7 @@ stages:
       4. Event processing lag
       5. Event delivery guarantees verification
       6. Alerting on event anomalies
-      
+
       Output JSON with:
       - "tracing": distributed tracing
       - "flow_visualization": event flow mapping

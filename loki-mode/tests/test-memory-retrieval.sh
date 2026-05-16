@@ -1,10 +1,7 @@
 #!/usr/bin/env bash
-#
-# Test Memory Retrieval System
+# # Test Memory Retrieval System
 # Tests: task type detection, weighted retrieval, similarity search, temporal retrieval
-#
-
-set -uo pipefail
+# set -uo pipefail
 # Note: Not using -e to allow collecting all test results
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"

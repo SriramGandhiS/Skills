@@ -47,7 +47,7 @@ def open_folder(folder_path: str | Path) -> bool:
     folder_path = Path(folder_path).resolve()
 
     if not folder_path.exists():
-        print(f"⚠️  Folder not found: {folder_path}")
+        print(f"WARNING:  Folder not found: {folder_path}")
         return False
 
     system = platform.system()
@@ -61,16 +61,16 @@ def open_folder(folder_path: str | Path) -> bool:
         elif system == "Windows":
             subprocess.run(["explorer", str(folder_path)], check=True)
         else:
-            print(f"⚠️  Unknown operating system: {system}")
+            print(f"WARNING:  Unknown operating system: {system}")
             return False
 
         return True
 
     except subprocess.CalledProcessError:
-        print("⚠️  Could not open folder automatically")
+        print("WARNING:  Could not open folder automatically")
         return False
     except FileNotFoundError:
-        print("⚠️  File browser not found on system")
+        print("WARNING:  File browser not found on system")
         return False
 
 
@@ -136,12 +136,12 @@ def print_upload_instructions(zip_path: str | Path) -> None:
     print("║                     NEXT STEP                            ║")
     print("╚══════════════════════════════════════════════════════════╝")
     print()
-    print(f"📤 Upload to platform: {get_upload_url()}")
+    print(f" Upload to platform: {get_upload_url()}")
     print()
     print(f"1. Go to {get_upload_url()}")
     print('2. Click "Upload Skill"')
     print(f"3. Select: {zip_path}")
-    print("4. Done! ✅")
+    print("4. Done! PASS:")
     print()
 
 
@@ -248,7 +248,7 @@ def read_reference_files(
     references: dict[str, dict] = {}
 
     if not references_dir.exists():
-        print(f"⚠ No references directory found at {references_dir}")
+        print(f"WARNING: No references directory found at {references_dir}")
         return references
 
     def _determine_source_metadata(relative_path: Path) -> tuple[str, str, str | None]:
@@ -351,7 +351,7 @@ def read_reference_files(
 
         # Stop if we've read enough
         if total_chars > max_chars:
-            print(f"  ℹ Limiting input to {max_chars:,} characters")
+            print(f"   Limiting input to {max_chars:,} characters")
             break
 
     return references

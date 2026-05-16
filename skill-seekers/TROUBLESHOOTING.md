@@ -111,7 +111,7 @@ FileNotFoundError: [Errno 2] No such file or directory: 'cli/doc_scraper.py'
 
 **Error:**
 ```
-❌ Error: Config file not found: configs/myconfig.json
+FAIL: Error: Config file not found: configs/myconfig.json
 ```
 
 **Understanding Config Locations:**
@@ -189,8 +189,8 @@ The tool searches for configs in this order:
      }
    }
    ```
-   ❌ **Bad:** `$REPO_PATH` or `/path/to/Skill_Seekers`
-   ✅ **Good:** `/Users/john/Projects/Skill_Seekers`
+   FAIL: **Bad:** `$REPO_PATH` or `/path/to/Skill_Seekers`
+   PASS: **Good:** `/Users/john/Projects/Skill_Seekers`
 
 3. **Test server manually:**
    ```bash

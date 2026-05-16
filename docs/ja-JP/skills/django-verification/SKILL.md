@@ -10,14 +10,14 @@ PR前、大きな変更後、デプロイ前に実行して、Djangoアプリケ
 ## フェーズ1: 環境チェック
 
 ```bash
-# Pythonバージョンを確認
+## Pythonバージョンを確認
 python --version  # プロジェクト要件と一致すること
 
-# 仮想環境をチェック
+## 仮想環境をチェック
 which python
 pip list --outdated
 
-# 環境変数を確認
+## 環境変数を確認
 python -c "import os; import environ; print('DJANGO_SECRET_KEY set' if os.environ.get('DJANGO_SECRET_KEY') else 'MISSING: DJANGO_SECRET_KEY')"
 ```
 
@@ -26,21 +26,21 @@ python -c "import os; import environ; print('DJANGO_SECRET_KEY set' if os.enviro
 ## フェーズ2: コード品質とフォーマット
 
 ```bash
-# 型チェック
+## 型チェック
 mypy . --config-file pyproject.toml
 
-# ruffでリンティング
+## ruffでリンティング
 ruff check . --fix
 
-# blackでフォーマット
+## blackでフォーマット
 black . --check
 black .  # 自動修正
 
-# インポートソート
+## インポートソート
 isort . --check-only
 isort .  # 自動修正
 
-# Django固有のチェック
+## Django固有のチェック
 python manage.py check --deploy
 ```
 
@@ -53,19 +53,19 @@ python manage.py check --deploy
 ## フェーズ3: マイグレーション
 
 ```bash
-# 未適用のマイグレーションをチェック
+## 未適用のマイグレーションをチェック
 python manage.py showmigrations
 
-# 欠落しているマイグレーションを作成
+## 欠落しているマイグレーションを作成
 python manage.py makemigrations --check
 
-# マイグレーション適用のドライラン
+## マイグレーション適用のドライラン
 python manage.py migrate --plan
 
-# マイグレーションを適用（テスト環境）
+## マイグレーションを適用（テスト環境）
 python manage.py migrate
 
-# マイグレーションの競合をチェック
+## マイグレーションの競合をチェック
 python manage.py makemigrations --merge  # 競合がある場合のみ
 ```
 
@@ -77,17 +77,17 @@ python manage.py makemigrations --merge  # 競合がある場合のみ
 ## フェーズ4: テスト + カバレッジ
 
 ```bash
-# pytestですべてのテストを実行
+## pytestですべてのテストを実行
 pytest --cov=apps --cov-report=html --cov-report=term-missing --reuse-db
 
-# 特定のアプリテストを実行
+## 特定のアプリテストを実行
 pytest apps/users/tests/
 
-# マーカーで実行
+## マーカーで実行
 pytest -m "not slow"  # 遅いテストをスキップ
 pytest -m integration  # 統合テストのみ
 
-# カバレッジレポート
+## カバレッジレポート
 open htmlcov/index.html
 ```
 
@@ -109,20 +109,20 @@ open htmlcov/index.html
 ## フェーズ5: セキュリティスキャン
 
 ```bash
-# 依存関係の脆弱性
+## 依存関係の脆弱性
 pip-audit
 safety check --full-report
 
-# Djangoセキュリティチェック
+## Djangoセキュリティチェック
 python manage.py check --deploy
 
-# Banditセキュリティリンター
+## Banditセキュリティリンター
 bandit -r . -f json -o bandit-report.json
 
-# シークレットスキャン（gitleaksがインストールされている場合）
+## シークレットスキャン（gitleaksがインストールされている場合）
 gitleaks detect --source . --verbose
 
-# 環境変数チェック
+## 環境変数チェック
 python -c "from django.core.exceptions import ImproperlyConfigured; from django.conf import settings; settings.DEBUG"
 ```
 
@@ -135,33 +135,33 @@ python -c "from django.core.exceptions import ImproperlyConfigured; from django.
 ## フェーズ6: Django管理コマンド
 
 ```bash
-# モデルの問題をチェック
+## モデルの問題をチェック
 python manage.py check
 
-# 静的ファイルを収集
+## 静的ファイルを収集
 python manage.py collectstatic --noinput --clear
 
-# スーパーユーザーを作成（テストに必要な場合）
+## スーパーユーザーを作成（テストに必要な場合）
 echo "from apps.users.models import User; User.objects.create_superuser('admin@example.com', 'admin')" | python manage.py shell
 
-# データベースの整合性
+## データベースの整合性
 python manage.py check --database default
 
-# キャッシュの検証（Redisを使用している場合）
+## キャッシュの検証（Redisを使用している場合）
 python -c "from django.core.cache import cache; cache.set('test', 'value', 10); print(cache.get('test'))"
 ```
 
 ## フェーズ7: パフォーマンスチェック
 
 ```bash
-# Django Debug Toolbar出力（N+1クエリをチェック）
-# DEBUG=Trueで開発モードで実行してページにアクセス
-# SQLパネルで重複クエリを探す
+## Django Debug Toolbar出力（N+1クエリをチェック）
+## DEBUG=Trueで開発モードで実行してページにアクセス
+## SQLパネルで重複クエリを探す
 
-# クエリ数分析
+## クエリ数分析
 django-admin debugsqlshell  # django-debug-sqlshellがインストールされている場合
 
-# 欠落しているインデックスをチェック
+## 欠落しているインデックスをチェック
 python manage.py shell << EOF
 from django.db import connection
 with connection.cursor() as cursor:
@@ -178,14 +178,14 @@ EOF
 ## フェーズ8: 静的アセット
 
 ```bash
-# npm依存関係をチェック（npmを使用している場合）
+## npm依存関係をチェック（npmを使用している場合）
 npm audit
 npm audit fix
 
-# 静的ファイルをビルド（webpack/viteを使用している場合）
+## 静的ファイルをビルド（webpack/viteを使用している場合）
 npm run build
 
-# 静的ファイルを検証
+## 静的ファイルを検証
 ls -la staticfiles/
 python manage.py findstatic css/style.css
 ```
@@ -193,12 +193,12 @@ python manage.py findstatic css/style.css
 ## フェーズ9: 構成レビュー
 
 ```python
-# Pythonシェルで実行して設定を検証
+## Pythonシェルで実行して設定を検証
 python manage.py shell << EOF
 from django.conf import settings
 import os
 
-# 重要なチェック
+## 重要なチェック
 checks = {
     'DEBUG is False': not settings.DEBUG,
     'SECRET_KEY set': bool(settings.SECRET_KEY and len(settings.SECRET_KEY) > 30),
@@ -217,7 +217,7 @@ EOF
 ## フェーズ10: ログ設定
 
 ```bash
-# ログ出力をテスト
+## ログ出力をテスト
 python manage.py shell << EOF
 import logging
 logger = logging.getLogger('django')
@@ -225,37 +225,37 @@ logger.warning('Test warning message')
 logger.error('Test error message')
 EOF
 
-# ログファイルをチェック（設定されている場合）
+## ログファイルをチェック（設定されている場合）
 tail -f /var/log/django/django.log
 ```
 
 ## フェーズ11: APIドキュメント（DRFの場合）
 
 ```bash
-# スキーマを生成
+## スキーマを生成
 python manage.py generateschema --format openapi-json > schema.json
 
-# スキーマを検証
-# schema.jsonが有効なJSONかチェック
+## スキーマを検証
+## schema.jsonが有効なJSONかチェック
 python -c "import json; json.load(open('schema.json'))"
 
-# Swagger UIにアクセス（drf-yasgを使用している場合）
-# ブラウザで http://localhost:8000/swagger/ を訪問
+## Swagger UIにアクセス（drf-yasgを使用している場合）
+## ブラウザで <http://localhost:8000/swagger/> を訪問
 ```
 
 ## フェーズ12: 差分レビュー
 
 ```bash
-# 差分統計を表示
+## 差分統計を表示
 git diff --stat
 
-# 実際の変更を表示
+## 実際の変更を表示
 git diff
 
-# 変更されたファイルを表示
+## 変更されたファイルを表示
 git diff --name-only
 
-# 一般的な問題をチェック
+## 一般的な問題をチェック
 git diff | grep -i "todo\|fixme\|hack\|xxx"
 git diff | grep "print("  # デバッグステートメント
 git diff | grep "DEBUG = True"  # デバッグモード
@@ -380,7 +380,7 @@ DJANGO 検証レポート
 ### GitHub Actionsの例
 
 ```yaml
-# .github/workflows/django-verification.yml
+## .github/workflows/django-verification.yml
 name: Django Verification
 
 on: [push, pull_request]

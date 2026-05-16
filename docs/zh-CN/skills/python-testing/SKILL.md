@@ -26,16 +26,16 @@ origin: ECC
 3. **重构**：在保持测试通过的同时改进代码
 
 ```python
-# Step 1: Write failing test (RED)
+## Step 1: Write failing test (RED)
 def test_add_numbers():
     result = add(2, 3)
     assert result == 5
 
-# Step 2: Write minimal implementation (GREEN)
+## Step 2: Write minimal implementation (GREEN)
 def add(a, b):
     return a + b
 
-# Step 3: Refactor if needed (REFACTOR)
+## Step 3: Refactor if needed (REFACTOR)
 ```
 
 ### 覆盖率要求
@@ -75,39 +75,39 @@ def test_list_append():
 ### 断言
 
 ```python
-# Equality
+## Equality
 assert result == expected
 
-# Inequality
+## Inequality
 assert result != unexpected
 
-# Truthiness
+## Truthiness
 assert result  # Truthy
 assert not result  # Falsy
 assert result is True  # Exactly True
 assert result is False  # Exactly False
 assert result is None  # Exactly None
 
-# Membership
+## Membership
 assert item in collection
 assert item not in collection
 
-# Comparisons
+## Comparisons
 assert result > 0
 assert 0 <= result <= 100
 
-# Type checking
+## Type checking
 assert isinstance(result, str)
 
-# Exception testing (preferred approach)
+## Exception testing (preferred approach)
 with pytest.raises(ValueError):
     raise ValueError("error message")
 
-# Check exception message
+## Check exception message
 with pytest.raises(ValueError, match="invalid input"):
     raise ValueError("invalid input provided")
 
-# Check exception attributes
+## Check exception attributes
 with pytest.raises(ValueError) as exc_info:
     raise ValueError("error message")
 assert str(exc_info.value) == "error message"
@@ -156,14 +156,14 @@ def test_database_query(database):
 ### 夹具作用域
 
 ```python
-# Function scope (default) - runs for each test
+## Function scope (default) - runs for each test
 @pytest.fixture
 def temp_file():
     with open("temp.txt", "w") as f:
         yield f
     os.remove("temp.txt")
 
-# Module scope - runs once per module
+## Module scope - runs once per module
 @pytest.fixture(scope="module")
 def module_db():
     db = Database(":memory:")
@@ -171,7 +171,7 @@ def module_db():
     yield db
     db.close()
 
-# Session scope - runs once per test session
+## Session scope - runs once per test session
 @pytest.fixture(scope="session")
 def shared_resource():
     resource = ExpensiveResource()
@@ -226,7 +226,7 @@ def test_without_fixture_call():
 ### 使用 Conftest.py 共享夹具
 
 ```python
-# tests/conftest.py
+## tests/conftest.py
 import pytest
 
 @pytest.fixture
@@ -313,18 +313,18 @@ def test_database_operations(db):
 ### 自定义标记器
 
 ```python
-# Mark slow tests
+## Mark slow tests
 @pytest.mark.slow
 def test_slow_operation():
     time.sleep(5)
 
-# Mark integration tests
+## Mark integration tests
 @pytest.mark.integration
 def test_api_integration():
     response = requests.get("https://api.example.com")
     assert response.status_code == 200
 
-# Mark unit tests
+## Mark unit tests
 @pytest.mark.unit
 def test_unit_logic():
     assert calculate(2, 3) == 5
@@ -333,16 +333,16 @@ def test_unit_logic():
 ### 运行特定测试
 
 ```bash
-# Run only fast tests
+## Run only fast tests
 pytest -m "not slow"
 
-# Run only integration tests
+## Run only integration tests
 pytest -m integration
 
-# Run integration or slow tests
+## Run integration or slow tests
 pytest -m "integration or slow"
 
-# Run tests marked as unit but not slow
+## Run tests marked as unit but not slow
 pytest -m "unit and not slow"
 ```
 
@@ -765,37 +765,37 @@ markers = [
 ## 运行测试
 
 ```bash
-# Run all tests
+## Run all tests
 pytest
 
-# Run specific file
+## Run specific file
 pytest tests/test_utils.py
 
-# Run specific test
+## Run specific test
 pytest tests/test_utils.py::test_function
 
-# Run with verbose output
+## Run with verbose output
 pytest -v
 
-# Run with coverage
+## Run with coverage
 pytest --cov=mypackage --cov-report=html
 
-# Run only fast tests
+## Run only fast tests
 pytest -m "not slow"
 
-# Run until first failure
+## Run until first failure
 pytest -x
 
-# Run and stop on N failures
+## Run and stop on N failures
 pytest --maxfail=3
 
-# Run last failed tests
+## Run last failed tests
 pytest --lf
 
-# Run tests with pattern
+## Run tests with pattern
 pytest -k "test_user"
 
-# Run with debugger on failure
+## Run with debugger on failure
 pytest --pdb
 ```
 

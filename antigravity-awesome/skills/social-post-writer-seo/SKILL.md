@@ -79,19 +79,19 @@ Create a post that is easy to understand, useful, and encourages engagement.
 - **Tone**: Insightful
 
 **Output**:
-☕️ Your morning coffee just got a clean energy upgrade! 
+ Your morning coffee just got a clean energy upgrade!
 Meet SolMug, a solar powered coffee mug concept for busy commutes.
 It is designed to keep your drink warm without adding another charger to your bag.
 A small change for your morning routine, with sustainability in mind.
-Check the link in bio to pre-order! 
+Check the link in bio to pre-order!
 #ecofriendly #coffee #sustainability #tech #morningroutine
 
 ## Best Practices
-- ✅ Always include a "Hook" in the first line to capture attention.
-- ✅ Use line breaks frequently to make the post scannable on mobile.
-- ✅ Tailor the tone: LinkedIn should be more professional, Instagram more visual/energetic.
-- ❌ Avoid using more than 10 hashtags; it can look like spam.
-- ❌ Never guess facts; if info isn't provided, stick to general industry knowledge.
+- PASS: Always include a "Hook" in the first line to capture attention.
+- PASS: Use line breaks frequently to make the post scannable on mobile.
+- PASS: Tailor the tone: LinkedIn should be more professional, Instagram more visual/energetic.
+- FAIL: Avoid using more than 10 hashtags; it can look like spam.
+- FAIL: Never guess facts; if info isn't provided, stick to general industry knowledge.
 
 ## Limitations
 - This skill does not generate image or video assets.
@@ -104,9 +104,9 @@ Check the link in bio to pre-order!
 
 ## Common Pitfalls
 - **Problem:** Post feels too "salesy".
-  **Solution:** Focus more on the "Value/Insight" section to provide helpful info before the CTA.
+**Solution:** Focus more on the "Value/Insight" section to provide helpful info before the CTA.
 - **Problem:** Low engagement on LinkedIn.
-  **Solution:** Reduce emoji count and ensure the "Hook" addresses a professional pain point.
+**Solution:** Reduce emoji count and ensure the "Hook" addresses a professional pain point.
 
 ## Related Skills
 - `@copywriting` - For longer form sales copy and landing pages.

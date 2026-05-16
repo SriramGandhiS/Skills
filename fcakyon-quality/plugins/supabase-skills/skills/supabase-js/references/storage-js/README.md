@@ -35,9 +35,8 @@
 - **Node.js 20 or later** (Node.js 18 support dropped as of October 31, 2025)
 - For browser support, all modern browsers are supported
 
-> ⚠️ **Node.js 18 Deprecation Notice**
->
-> Node.js 18 reached end-of-life on April 30, 2025. As announced in [our deprecation notice](https://github.com/orgs/supabase/discussions/37217), support for Node.js 18 was dropped on October 31, 2025.
+> WARNING: **Node.js 18 Deprecation Notice**
+> > Node.js 18 reached end-of-life on April 30, 2025. As announced in [our deprecation notice](https://github.com/orgs/supabase/discussions/37217), support for Node.js 18 was dropped on October 31, 2025.
 
 ## Features
 
@@ -101,8 +100,7 @@ const analyticsBucket = storageClient.analytics // Analytics API
 ```
 
 > **When to use each approach:**
->
-> - Use `supabase.storage` when working with other Supabase features (auth, database, etc.) in frontend applications
+> > - Use `supabase.storage` when working with other Supabase features (auth, database, etc.) in frontend applications
 > - Use `new StorageClient()` for backend applications, Edge Functions, or when you need to bypass RLS policies
 
 > **Note:** Refer to the [Storage Access Control guide](https://supabase.com/docs/guides/storage/access-control) for detailed information on creating RLS policies.
@@ -235,8 +233,8 @@ await storageClient.analytics.deleteBucket('analytics-data')
   const { data, error } = await storageClient.from('bucket').upload('path/to/file', fileBody)
   ```
 
-  > Note:  
-  > The path in `data.Key` is prefixed by the bucket ID and is not the value which should be passed to the `download` method in order to fetch the file.  
+  > Note:
+  > The path in `data.Key` is prefixed by the bucket ID and is not the value which should be passed to the `download` method in order to fetch the file.
   > To fetch the file via the `download` method, use `data.path` and `data.bucketId` as follows:
   >
   > ```javascript
@@ -798,8 +796,7 @@ const bucket = vectorClient.from('embeddings-prod')
 ```
 
 > **When to use each approach:**
->
-> - **Option 1**: When using other Supabase features (auth, database, realtime)
+> > - **Option 1**: When using other Supabase features (auth, database, realtime)
 > - **Option 2**: When working with both file storage and vectors
 > - **Option 3**: For dedicated vector-only applications without file storage
 

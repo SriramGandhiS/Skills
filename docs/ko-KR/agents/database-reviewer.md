@@ -36,8 +36,8 @@ psql -c "SELECT indexrelname, idx_scan, idx_tup_read FROM pg_stat_user_indexes O
 - 복합 인덱스 컬럼 순서 확인 (동등 조건 먼저, 범위 조건 나중)
 
 ### 2. 스키마 설계 (HIGH)
-- 적절한 타입 사용: ID는 `bigint`, 문자열은 `text`, 타임스탬프는 `timestamptz`, 금액은 `numeric`, 플래그는 `boolean`
-- 제약조건 정의: PK, `ON DELETE`가 있는 FK, `NOT NULL`, `CHECK`
+- 적절한 타입 사용: ID는 `bigint`, 문자열은`text`, 타임스탬프는`timestamptz`, 금액은`numeric`, 플래그는`boolean`
+- 제약조건 정의: PK, `ON DELETE`가 있는 FK,`NOT NULL`,`CHECK`
 - `lowercase_snake_case` 식별자 사용 (따옴표 붙은 혼합 대소문자 없음)
 
 ### 3. 보안 (CRITICAL)
@@ -52,16 +52,16 @@ psql -c "SELECT indexrelname, idx_scan, idx_tup_read FROM pg_stat_user_indexes O
 - **부분 인덱스 사용** — 소프트 삭제의 `WHERE deleted_at IS NULL`
 - **커버링 인덱스** — 테이블 룩업 방지를 위한 `INCLUDE (col)`
 - **큐에 SKIP LOCKED** — 워커 패턴에서 10배 처리량
-- **커서 페이지네이션** — `OFFSET` 대신 `WHERE id > $last`
-- **배치 삽입** — 루프 개별 삽입 대신 다중 행 `INSERT` 또는 `COPY`
+- **커서 페이지네이션** — `OFFSET`대신`WHERE id > $last`
+- **배치 삽입** — 루프 개별 삽입 대신 다중 행 `INSERT`또는`COPY`
 - **짧은 트랜잭션** — 외부 API 호출 중 잠금 유지 금지
 - **일관된 잠금 순서** — 데드락 방지를 위한 `ORDER BY id FOR UPDATE`
 
 ## 플래그해야 할 안티패턴
 
 - 프로덕션 코드에서 `SELECT *`
-- ID에 `int` (→ `bigint`), 이유 없이 `varchar(255)` (→ `text`)
-- 타임존 없는 `timestamp` (→ `timestamptz`)
+- ID에 `int`(→`bigint`), 이유 없이`varchar(255)`(→`text`)
+- 타임존 없는 `timestamp`(→`timestamptz`)
 - PK로 랜덤 UUID (→ UUIDv7 또는 IDENTITY)
 - 큰 테이블에서 OFFSET 페이지네이션
 - 매개변수화되지 않은 쿼리 (SQL 인젝션 위험)

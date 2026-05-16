@@ -28,7 +28,7 @@ SELECTED_AGENTS=()
 # =============================================================================
 echo "Step 1: Checking Python version..."
 if ! command -v python3 &> /dev/null; then
-    echo -e "${RED}❌ Error: python3 not found${NC}"
+    echo -e "${RED}FAIL: Error: python3 not found${NC}"
     echo "Please install Python 3.10 or higher"
     exit 1
 fi
@@ -38,7 +38,7 @@ PYTHON_MAJOR=$(echo $PYTHON_VERSION | cut -d'.' -f1)
 PYTHON_MINOR=$(echo $PYTHON_VERSION | cut -d'.' -f2)
 
 if [ "$PYTHON_MAJOR" -lt 3 ] || ([ "$PYTHON_MAJOR" -eq 3 ] && [ "$PYTHON_MINOR" -lt 10 ]); then
-    echo -e "${YELLOW}⚠ Warning: Python 3.10+ required${NC}"
+    echo -e "${YELLOW}WARNING: Warning: Python 3.10+ required${NC}"
     echo "Current version: $PYTHON_VERSION"
     exit 1
 else
@@ -73,7 +73,7 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
         # Fallback with --break-system-packages (for system Python)
         echo "Standard install failed, trying with --break-system-packages..."
         python3 -m pip install skill-seekers --break-system-packages || {
-            echo -e "${RED}❌ Failed to install skill-seekers${NC}"
+            echo -e "${RED}FAIL: Failed to install skill-seekers${NC}"
             echo "Try manually: python3 -m pip install skill-seekers"
             exit 1
         }
@@ -86,7 +86,7 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
         echo -e "${GREEN}✓${NC} skill-seekers command available"
         echo "  Version: $INSTALLED_VERSION"
     else
-        echo -e "${YELLOW}⚠${NC} skill-seekers command not found in PATH"
+        echo -e "${YELLOW}WARNING:${NC} skill-seekers command not found in PATH"
         echo "  Add ~/.local/bin to PATH: export PATH=\"\$HOME/.local/bin:\$PATH\""
     fi
 else
@@ -106,7 +106,7 @@ timeout 3 python3 -m skill_seekers.mcp.server_fastmcp 2>/dev/null || {
     if [ $? -eq 124 ]; then
         echo -e "  ${GREEN}✓${NC} Stdio transport working"
     else
-        echo -e "  ${YELLOW}⚠${NC} Stdio test inconclusive, but may still work"
+        echo -e "  ${YELLOW}WARNING:${NC} Stdio test inconclusive, but may still work"
     fi
 }
 
@@ -123,14 +123,14 @@ if python3 -c "import uvicorn" 2>/dev/null; then
         echo -e "  ${GREEN}✓${NC} HTTP transport working (port 8765)"
         HTTP_AVAILABLE=true
     else
-        echo -e "  ${YELLOW}⚠${NC} HTTP transport test failed (may need manual check)"
+        echo -e "  ${YELLOW}WARNING:${NC} HTTP transport test failed (may need manual check)"
         HTTP_AVAILABLE=false
     fi
 
     # Cleanup
     kill $HTTP_TEST_PID 2>/dev/null || true
 else
-    echo -e "  ${YELLOW}⚠${NC} uvicorn not installed (HTTP transport unavailable)"
+    echo -e "  ${YELLOW}WARNING:${NC} uvicorn not installed (HTTP transport unavailable)"
     echo "  Install with: pip3 install uvicorn"
     HTTP_AVAILABLE=false
 fi
@@ -155,7 +155,7 @@ else:
 " 2>/dev/null || echo "ERROR")
 
 if [ "$DETECTED_AGENTS" = "ERROR" ]; then
-    echo -e "${RED}❌ Error: Failed to run agent detector${NC}"
+    echo -e "${RED}FAIL: Error: Failed to run agent detector${NC}"
     echo "Falling back to manual configuration..."
     DETECTED_AGENTS="NONE"
 fi
@@ -297,7 +297,7 @@ if [ "$DETECTED_AGENTS" != "NONE" ]; then
 
                 # Check if config already exists
                 if [ -f "$config_path" ]; then
-                    echo -e "  ${YELLOW}⚠ Config file already exists${NC}"
+                    echo -e "  ${YELLOW}WARNING: Config file already exists${NC}"
 
                     # Create backup
                     BACKUP_PATH="${config_path}.backup.$(date +%Y%m%d_%H%M%S)"
@@ -306,7 +306,7 @@ if [ "$DETECTED_AGENTS" != "NONE" ]; then
 
                     # Check if skill-seeker already configured
                     if grep -q "skill-seeker" "$config_path" 2>/dev/null; then
-                        echo -e "  ${YELLOW}⚠ skill-seeker already configured${NC}"
+                        echo -e "  ${YELLOW}WARNING: skill-seeker already configured${NC}"
                         read -p "  Overwrite existing skill-seeker config? (y/n) " -n 1 -r
                         echo ""
                         if [[ ! $REPLY =~ ^[Yy]$ ]]; then
@@ -581,5 +581,5 @@ echo "  • View server logs (if HTTP):"
 echo "    ${CYAN}tail -f /tmp/skill-seekers-mcp.log${NC}"
 echo ""
 
-echo "Happy skill creating! 🚀"
+echo "Happy skill creating! "
 echo ""

@@ -59,7 +59,7 @@ class S3StorageAdaptor(BaseStorageAdaptor):
 
         Args:
             bucket: S3 bucket name (required)
-            **kwargs: Additional S3 configuration
+**kwargs: Additional S3 configuration
         """
         super().__init__(**kwargs)
 

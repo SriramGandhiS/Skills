@@ -578,16 +578,16 @@ def test_sorted_list_properties(lst):
 
 ```python
 # tests/
-#   __init__.py
-#   conftest.py           # Shared fixtures
-#   test_unit/            # Unit tests
-#     test_models.py
-#     test_utils.py
-#   test_integration/     # Integration tests
-#     test_api.py
-#     test_database.py
-#   test_e2e/            # End-to-end tests
-#     test_workflows.py
+# __init__.py
+# conftest.py           # Shared fixtures
+# test_unit/            # Unit tests
+# test_models.py
+# test_utils.py
+# test_integration/     # Integration tests
+# test_api.py
+# test_database.py
+# test_e2e/            # End-to-end tests
+# test_workflows.py
 ```
 
 ### Test Naming

@@ -61,7 +61,7 @@ async def test_http_server():
             response = requests.get("http://127.0.0.1:8765/sse", timeout=5, stream=True)
             print(f"   ✓ SSE endpoint is available (status: {response.status_code})")
         except Exception as e:
-            print(f"   ℹ SSE endpoint response: {e}")
+            print(f"    SSE endpoint response: {e}")
             print("   (This is expected - full SSE testing requires MCP client)")
 
         print()

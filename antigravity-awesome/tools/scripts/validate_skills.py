@@ -59,7 +59,7 @@ def parse_frontmatter(content, rel_path=None):
     fm_match = re.search(r'^---\s*\n(.*?)\n?---(?:\s*\n|$)', content, re.DOTALL)
     if not fm_match:
         return None, ["Missing or malformed YAML frontmatter"]
-    
+
     fm_text = fm_match.group(1)
     fm_errors = []
     try:
@@ -67,7 +67,7 @@ def parse_frontmatter(content, rel_path=None):
         metadata = normalize_yaml_value(metadata)
         if not isinstance(metadata, Mapping):
             return None, ["Frontmatter must be a YAML mapping/object."]
-        
+
         # Identification of the specific regression issue for better reporting
         if "description" in metadata:
             desc = metadata["description"]
@@ -75,7 +75,7 @@ def parse_frontmatter(content, rel_path=None):
                 fm_errors.append("description field is empty or whitespace only.")
             elif desc == "|":
                 fm_errors.append("description contains only the YAML block indicator '|', likely due to a parsing regression.")
-        
+
         return dict(metadata), fm_errors
     except yaml.YAMLError as e:
         return None, [f"YAML Syntax Error: {e}"]
@@ -95,95 +95,95 @@ def collect_validation_results(skills_dir, strict_mode=False):
     for root, dirs, files in os.walk(skills_dir):
         # Skip .disabled or hidden directories
         dirs[:] = [d for d in dirs if not d.startswith('.')]
-        
+
         if "SKILL.md" in files:
             skill_count += 1
             skill_path = os.path.join(root, "SKILL.md")
             if os.path.islink(skill_path):
-                warnings.append(f"⚠️  {os.path.relpath(skill_path, skills_dir)}: Skipping symlinked SKILL.md")
+                warnings.append(f"WARNING:  {os.path.relpath(skill_path, skills_dir)}: Skipping symlinked SKILL.md")
                 continue
             rel_path = os.path.relpath(skill_path, skills_dir)
-            
+
             try:
                 with open(skill_path, 'r', encoding='utf-8') as f:
                     content = f.read()
             except Exception as e:
-                errors.append(f"❌ {rel_path}: Unreadable file - {str(e)}")
+                errors.append(f"FAIL: {rel_path}: Unreadable file - {str(e)}")
                 continue
-            
+
             # 1. Frontmatter Check
             metadata, fm_errors = parse_frontmatter(content, rel_path)
             if metadata is None:
-                errors.append(f"❌ {rel_path}: Missing or malformed YAML frontmatter")
+                errors.append(f"FAIL: {rel_path}: Missing or malformed YAML frontmatter")
                 continue # Cannot proceed without metadata
-            
+
             if fm_errors:
                 for fe in fm_errors:
-                    errors.append(f"❌ {rel_path}: YAML Structure Error - {fe}")
+                    errors.append(f"FAIL: {rel_path}: YAML Structure Error - {fe}")
 
             # 2. Metadata Schema Checks
             if "name" not in metadata:
-                errors.append(f"❌ {rel_path}: Missing 'name' in frontmatter")
+                errors.append(f"FAIL: {rel_path}: Missing 'name' in frontmatter")
             elif metadata["name"] != os.path.basename(root):
-                errors.append(f"❌ {rel_path}: Name '{metadata['name']}' does not match folder name '{os.path.basename(root)}'")
+                errors.append(f"FAIL: {rel_path}: Name '{metadata['name']}' does not match folder name '{os.path.basename(root)}'")
 
             if "description" not in metadata or metadata["description"] is None:
-                errors.append(f"❌ {rel_path}: Missing 'description' in frontmatter")
+                errors.append(f"FAIL: {rel_path}: Missing 'description' in frontmatter")
             else:
                 # agentskills-ref checks for short descriptions
                 desc = metadata["description"]
                 if not isinstance(desc, str):
-                    errors.append(f"❌ {rel_path}: 'description' must be a string, got {type(desc).__name__}")
+                    errors.append(f"FAIL: {rel_path}: 'description' must be a string, got {type(desc).__name__}")
                 elif len(desc) > 300: # increased limit for multi-line support
-                    errors.append(f"❌ {rel_path}: Description is oversized ({len(desc)} chars). Must be concise.")
+                    errors.append(f"FAIL: {rel_path}: Description is oversized ({len(desc)} chars). Must be concise.")
 
             # Risk Validation (Quality Bar)
             if "risk" not in metadata:
-                msg = f"⚠️  {rel_path}: Missing 'risk' label (defaulting to 'unknown')"
-                if strict_mode: errors.append(msg.replace("⚠️", "❌"))
+                msg = f"WARNING:  {rel_path}: Missing 'risk' label (defaulting to 'unknown')"
+                if strict_mode: errors.append(msg.replace("WARNING:", "FAIL:"))
                 else: warnings.append(msg)
             elif metadata["risk"] not in valid_risk_levels:
-                errors.append(f"❌ {rel_path}: Invalid risk level '{metadata['risk']}'. Must be one of {valid_risk_levels}")
+                errors.append(f"FAIL: {rel_path}: Invalid risk level '{metadata['risk']}'. Must be one of {valid_risk_levels}")
 
             # Source Validation
             if "source" not in metadata:
-                msg = f"⚠️  {rel_path}: Missing 'source' attribution"
-                if strict_mode: errors.append(msg.replace("⚠️", "❌"))
+                msg = f"WARNING:  {rel_path}: Missing 'source' attribution"
+                if strict_mode: errors.append(msg.replace("WARNING:", "FAIL:"))
                 else: warnings.append(msg)
 
             source_repo = metadata.get("source_repo")
             if source_repo is not None:
                 if not isinstance(source_repo, str) or not SOURCE_REPO_PATTERN.fullmatch(source_repo.strip()):
                     errors.append(
-                        f"❌ {rel_path}: Invalid 'source_repo' format. Must be OWNER/REPO, got '{source_repo}'"
+                        f"FAIL: {rel_path}: Invalid 'source_repo' format. Must be OWNER/REPO, got '{source_repo}'"
                     )
 
             source_type = metadata.get("source_type")
             if source_type is not None:
                 if not isinstance(source_type, str) or source_type not in VALID_SOURCE_TYPES:
                     errors.append(
-                        f"❌ {rel_path}: Invalid 'source_type' value. Must be one of {sorted(VALID_SOURCE_TYPES)}"
+                        f"FAIL: {rel_path}: Invalid 'source_type' value. Must be one of {sorted(VALID_SOURCE_TYPES)}"
                     )
 
             # Date Added Validation (optional field)
             if "date_added" in metadata:
                 date_added = metadata["date_added"]
                 if not isinstance(date_added, str) or not date_pattern.match(date_added):
-                    errors.append(f"❌ {rel_path}: Invalid 'date_added' format. Must be YYYY-MM-DD (e.g., '2024-01-15'), got '{metadata['date_added']}'")
+                    errors.append(f"FAIL: {rel_path}: Invalid 'date_added' format. Must be YYYY-MM-DD (e.g., '2024-01-15'), got '{metadata['date_added']}'")
             else:
-                msg = f"ℹ️  {rel_path}: Missing 'date_added' field (optional, but recommended)"
+                msg = f"  {rel_path}: Missing 'date_added' field (optional, but recommended)"
                 advisories.append(msg)
 
             # 3. Content Checks (Triggers)
             if not has_when_to_use_section(content):
-                msg = f"⚠️  {rel_path}: Missing '## When to Use' section"
-                if strict_mode: errors.append(msg.replace("⚠️", "❌"))
+                msg = f"WARNING:  {rel_path}: Missing '## When to Use' section"
+                if strict_mode: errors.append(msg.replace("WARNING:", "FAIL:"))
                 else: warnings.append(msg)
 
             # 4. Security Guardrails
             if metadata.get("risk") == "offensive":
                 if not security_disclaimer_pattern.search(content):
-                    errors.append(f"🚨 {rel_path}: OFFENSIVE SKILL MISSING SECURITY DISCLAIMER! (Must contain 'AUTHORIZED USE ONLY')")
+                    errors.append(f" {rel_path}: OFFENSIVE SKILL MISSING SECURITY DISCLAIMER! (Must contain 'AUTHORIZED USE ONLY')")
 
             # 5. Dangling Links Validation
             # Look for markdown links: [text](href)
@@ -195,11 +195,11 @@ def collect_validation_results(skills_dir, strict_mode=False):
                     continue
                 if os.path.isabs(link_clean):
                     continue
-                
+
                 # Check if file exists relative to this skill file
                 target_path = os.path.normpath(os.path.join(root, link_clean))
                 if not os.path.exists(target_path):
-                    errors.append(f"❌ {rel_path}: Dangling link detected. Path '{link_clean}' (from '...({link})') does not exist locally.")
+                    errors.append(f"FAIL: {rel_path}: Dangling link detected. Path '{link_clean}' (from '...({link})') does not exist locally.")
 
     return {
         "skill_count": skill_count,
@@ -213,8 +213,8 @@ def collect_validation_results(skills_dir, strict_mode=False):
 def validate_skills(skills_dir, strict_mode=False):
     configure_utf8_output()
 
-    print(f"🔍 Validating skills in: {skills_dir}")
-    print(f"⚙️  Mode: {'STRICT (CI)' if strict_mode else 'Standard (Dev)'}")
+    print(f" Validating skills in: {skills_dir}")
+    print(f"  Mode: {'STRICT (CI)' if strict_mode else 'Standard (Dev)'}")
 
     results = collect_validation_results(skills_dir, strict_mode=strict_mode)
     warnings = results["warnings"]
@@ -223,29 +223,29 @@ def validate_skills(skills_dir, strict_mode=False):
     skill_count = results["skill_count"]
 
     # Reporting
-    print(f"\n📊 Checked {skill_count} skills.")
-    
+    print(f"\n Checked {skill_count} skills.")
+
     if warnings:
-        print(f"\n⚠️  Found {len(warnings)} Warnings:")
+        print(f"\nWARNING:  Found {len(warnings)} Warnings:")
         for w in warnings:
             print(w)
 
     if advisories:
-        print(f"\nℹ️  Found {len(advisories)} Advisories:")
+        print(f"\n  Found {len(advisories)} Advisories:")
         for advisory in advisories:
             print(advisory)
 
     if errors:
-        print(f"\n❌ Found {len(errors)} Critical Errors:")
+        print(f"\nFAIL: Found {len(errors)} Critical Errors:")
         for e in errors:
             print(e)
         return False
 
     if strict_mode and warnings:
-        print("\n❌ STRICT MODE: Failed due to warnings.")
+        print("\nFAIL: STRICT MODE: Failed due to warnings.")
         return False
 
-    print("\n✨ All skills passed validation!")
+    print("\n All skills passed validation!")
     return True
 
 if __name__ == "__main__":
@@ -255,7 +255,7 @@ if __name__ == "__main__":
 
     base_dir = str(find_repo_root(__file__))
     skills_path = os.path.join(base_dir, "skills")
-    
+
     success = validate_skills(skills_path, strict_mode=args.strict)
     if not success:
         sys.exit(1)

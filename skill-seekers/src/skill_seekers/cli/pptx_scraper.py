@@ -232,7 +232,7 @@ class PptxToSkillConverter(SkillConverter):
         """
         _check_pptx_deps()
 
-        print(f"\n🔍 Extracting from PowerPoint: {self.pptx_path}")
+        print(f"\n Extracting from PowerPoint: {self.pptx_path}")
 
         pptx_path = Path(self.pptx_path)
         if not pptx_path.exists():
@@ -321,10 +321,10 @@ class PptxToSkillConverter(SkillConverter):
         with open(self.data_file, "w", encoding="utf-8") as f:
             json.dump(result_data, f, indent=2, ensure_ascii=False, default=str)
 
-        print(f"\n💾 Saved extracted data to: {self.data_file}")
+        print(f"\n Saved extracted data to: {self.data_file}")
         self.extracted_data = result_data
         print(
-            f"✅ Extracted {len(sections)} sections ({len(all_slides)} slides), "
+            f"PASS: Extracted {len(sections)} sections ({len(all_slides)} slides), "
             f"{total_code_blocks} code blocks, "
             f"{total_image_count} images, "
             f"{total_tables} tables"
@@ -1020,11 +1020,11 @@ class PptxToSkillConverter(SkillConverter):
         Returns:
             True on success.
         """
-        print(f"\n📂 Loading extracted data from: {json_path}")
+        print(f"\n Loading extracted data from: {json_path}")
         with open(json_path, encoding="utf-8") as f:
             self.extracted_data = json.load(f)
         total = self.extracted_data.get("total_sections", len(self.extracted_data.get("pages", [])))
-        print(f"✅ Loaded {total} sections")
+        print(f"PASS: Loaded {total} sections")
         return True
 
     def categorize_content(self) -> dict[str, dict]:
@@ -1038,7 +1038,7 @@ class PptxToSkillConverter(SkillConverter):
             Dict mapping category keys to category dicts with 'title' and
             'pages' (list of sections).
         """
-        print("\n📋 Categorizing content...")
+        print("\n Categorizing content...")
 
         categorized: dict[str, dict] = {}
         sections = self.extracted_data.get("pages", [])
@@ -1051,7 +1051,7 @@ class PptxToSkillConverter(SkillConverter):
                 "title": pptx_basename,
                 "pages": sections,
             }
-            print("✅ Created 1 category (single PowerPoint source)")
+            print("PASS: Created 1 category (single PowerPoint source)")
             print(f"   - {pptx_basename}: {len(sections)} sections")
             return categorized
 
@@ -1102,7 +1102,7 @@ class PptxToSkillConverter(SkillConverter):
             # No categorization - single category
             categorized["content"] = {"title": "Content", "pages": sections}
 
-        print(f"✅ Created {len(categorized)} categories")
+        print(f"PASS: Created {len(categorized)} categories")
         for _cat_key, cat_data in categorized.items():
             print(f"   - {cat_data['title']}: {len(cat_data['pages'])} sections")
 
@@ -1118,7 +1118,7 @@ class PptxToSkillConverter(SkillConverter):
         - scripts/ — empty (reserved for future use)
         - assets/ — empty (reserved for image export)
         """
-        print(f"\n🏗️  Building skill: {self.name}")
+        print(f"\n  Building skill: {self.name}")
 
         # Create directories
         os.makedirs(f"{self.skill_dir}/references", exist_ok=True)
@@ -1129,7 +1129,7 @@ class PptxToSkillConverter(SkillConverter):
         categorized = self.categorize_content()
 
         # Generate reference files
-        print("\n📝 Generating reference files...")
+        print("\n Generating reference files...")
         total_sections = len(categorized)
         section_num = 1
         for cat_key, cat_data in categorized.items():
@@ -1142,8 +1142,8 @@ class PptxToSkillConverter(SkillConverter):
         # Generate SKILL.md
         self._generate_skill_md(categorized)
 
-        print(f"\n✅ Skill built successfully: {self.skill_dir}/")
-        print(f"\n📦 Next step: Package with: skill-seekers package {self.skill_dir}/")
+        print(f"\nPASS: Skill built successfully: {self.skill_dir}/")
+        print(f"\n Next step: Package with: skill-seekers package {self.skill_dir}/")
 
     # ------------------------------------------------------------------
     # Output generation (private)
@@ -1199,7 +1199,7 @@ class PptxToSkillConverter(SkillConverter):
                 heading_level = section.get("heading_level", "h1")
                 slide_range = section.get("slide_range", "")
 
-                f.write(f"---\n\n**📄 Source: Section {sec_num}**")
+                f.write(f"---\n\n** Source: Section {sec_num}**")
                 if slide_range:
                     f.write(f" (Slides {slide_range})")
                 f.write("\n\n")
@@ -1348,7 +1348,7 @@ class PptxToSkillConverter(SkillConverter):
             # Document metadata
             metadata = self.extracted_data.get("metadata", {})
             if any(v for v in metadata.values() if v):
-                f.write("## 📋 Presentation Information\n\n")
+                f.write("##  Presentation Information\n\n")
                 if metadata.get("title"):
                     f.write(f"**Title:** {metadata['title']}\n\n")
                 if metadata.get("author"):
@@ -1365,7 +1365,7 @@ class PptxToSkillConverter(SkillConverter):
                     f.write(f"**Slides:** {metadata['slide_count']}\n\n")
 
             # When to Use
-            f.write("## 💡 When to Use This Skill\n\n")
+            f.write("##  When to Use This Skill\n\n")
             f.write("Use this skill when you need to:\n")
             f.write(f"- Understand {self.name} concepts and fundamentals\n")
             f.write("- Review presentation content and key points\n")
@@ -1376,7 +1376,7 @@ class PptxToSkillConverter(SkillConverter):
             # Section Overview
             total_slides = self.extracted_data.get("total_slides", 0)
             total_sections = self.extracted_data.get("total_sections", 0)
-            f.write("## 📖 Section Overview\n\n")
+            f.write("##  Section Overview\n\n")
             f.write(f"**Total Slides:** {total_slides}\n\n")
             f.write(f"**Total Sections:** {total_sections}\n\n")
             f.write("**Content Breakdown:**\n\n")
@@ -1389,7 +1389,7 @@ class PptxToSkillConverter(SkillConverter):
             f.write(self._format_key_concepts())
 
             # Quick Reference patterns
-            f.write("## ⚡ Quick Reference\n\n")
+            f.write("##  Quick Reference\n\n")
             f.write(self._format_patterns_from_content())
 
             # Code examples (top 15, grouped by language)
@@ -1401,7 +1401,7 @@ class PptxToSkillConverter(SkillConverter):
             top_code = all_code[:15]
 
             if top_code:
-                f.write("## 📝 Code Examples\n\n")
+                f.write("##  Code Examples\n\n")
                 f.write("*High-quality examples extracted from presentation*\n\n")
 
                 by_lang: dict[str, list] = {}
@@ -1430,7 +1430,7 @@ class PptxToSkillConverter(SkillConverter):
                     all_tables.append((section.get("heading", ""), table))
 
             if all_tables:
-                f.write("## 📊 Table Summary\n\n")
+                f.write("##  Table Summary\n\n")
                 f.write(f"*{len(all_tables)} table(s) found in presentation*\n\n")
                 for section_heading, table in all_tables[:5]:
                     if section_heading:
@@ -1445,7 +1445,7 @@ class PptxToSkillConverter(SkillConverter):
                         f.write("\n")
 
             # Statistics
-            f.write("## 📊 Presentation Statistics\n\n")
+            f.write("##  Presentation Statistics\n\n")
             f.write(f"- **Total Slides**: {total_slides}\n")
             f.write(f"- **Total Sections**: {total_sections}\n")
             f.write(f"- **Code Blocks**: {self.extracted_data.get('total_code_blocks', 0)}\n")
@@ -1461,7 +1461,7 @@ class PptxToSkillConverter(SkillConverter):
                 f.write("\n")
 
             # Navigation
-            f.write("## 🗺️ Navigation\n\n")
+            f.write("##  Navigation\n\n")
             f.write("**Reference Files:**\n\n")
             for _cat_key, cat_data in categorized.items():
                 cat_file = self._sanitize_filename(cat_data["title"])
@@ -1506,7 +1506,7 @@ class PptxToSkillConverter(SkillConverter):
         if not all_headings:
             return ""
 
-        content = "## 🔑 Key Concepts\n\n"
+        content = "##  Key Concepts\n\n"
         content += "*Main topics covered in this presentation*\n\n"
 
         h1_headings = [text for level, text in all_headings if level == "h1"]

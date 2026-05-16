@@ -53,7 +53,7 @@ myproject/
 ### 拆分设置模式
 
 ```python
-# config/settings/base.py
+## config/settings/base.py
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
@@ -103,7 +103,7 @@ DATABASES = {
     }
 }
 
-# config/settings/development.py
+## config/settings/development.py
 from .base import *
 
 DEBUG = True
@@ -117,7 +117,7 @@ MIDDLEWARE += ['debug_toolbar.middleware.DebugToolbarMiddleware']
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
-# config/settings/production.py
+## config/settings/production.py
 from .base import *
 
 DEBUG = False
@@ -129,7 +129,7 @@ SECURE_HSTS_SECONDS = 31536000
 SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 SECURE_HSTS_PRELOAD = True
 
-# Logging
+## Logging
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
@@ -261,7 +261,7 @@ class Product(models.Model):
 
     objects = ProductQuerySet.as_manager()  # Use custom QuerySet
 
-# Usage
+## Usage
 Product.objects.active().with_category().in_stock()
 ```
 
@@ -289,7 +289,7 @@ class ProductManager(models.Manager):
         """Bulk update stock for multiple products."""
         return self.filter(id__in=product_ids).update(stock=quantity)
 
-# In model
+## In model
 class Product(models.Model):
     # ... fields ...
     custom = ProductManager()
@@ -474,7 +474,7 @@ def add_to_cart(request):
 ## 服务层模式
 
 ```python
-# apps/orders/services.py
+## apps/orders/services.py
 from typing import Optional
 from django.db import transaction
 from .models import Order, OrderItem
@@ -593,7 +593,7 @@ def get_popular_categories():
 ### 信号模式
 
 ```python
-# apps/users/signals.py
+## apps/users/signals.py
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.contrib.auth import get_user_model
@@ -612,7 +612,7 @@ def save_user_profile(sender, instance, **kwargs):
     """Save profile when user is saved."""
     instance.profile.save()
 
-# apps/users/apps.py
+## apps/users/apps.py
 from django.apps import AppConfig
 
 class UsersConfig(AppConfig):
@@ -629,7 +629,7 @@ class UsersConfig(AppConfig):
 ### 自定义中间件
 
 ```python
-# middleware/active_user_middleware.py
+## middleware/active_user_middleware.py
 import time
 from django.utils.deprecation import MiddlewareMixin
 
@@ -663,17 +663,17 @@ class RequestLoggingMiddleware(MiddlewareMixin):
 ### N+1 查询预防
 
 ```python
-# Bad - N+1 queries
+## Bad - N+1 queries
 products = Product.objects.all()
 for product in products:
     print(product.category.name)  # Separate query for each product
 
-# Good - Single query with select_related
+## Good - Single query with select_related
 products = Product.objects.select_related('category').all()
 for product in products:
     print(product.category.name)
 
-# Good - Prefetch for many-to-many
+## Good - Prefetch for many-to-many
 products = Product.objects.prefetch_related('tags').all()
 for product in products:
     for tag in product.tags.all():
@@ -700,19 +700,19 @@ class Product(models.Model):
 ### 批量操作
 
 ```python
-# Bulk create
+## Bulk create
 Product.objects.bulk_create([
     Product(name=f'Product {i}', price=10.00)
     for i in range(1000)
 ])
 
-# Bulk update
+## Bulk update
 products = Product.objects.all()[:100]
 for product in products:
     product.is_active = True
 Product.objects.bulk_update(products, ['is_active'])
 
-# Bulk delete
+## Bulk delete
 Product.objects.filter(stock=0).delete()
 ```
 

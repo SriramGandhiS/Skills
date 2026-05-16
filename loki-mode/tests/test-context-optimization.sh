@@ -1,10 +1,7 @@
 #!/usr/bin/env bash
-#
-# Test Context Window Optimization
+# # Test Context Window Optimization
 # Tests: token estimation, optimize_context, budget-aware retrieval, progressive disclosure
-#
-
-set -uo pipefail
+# set -uo pipefail
 # Note: Not using -e to allow collecting all test results
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"

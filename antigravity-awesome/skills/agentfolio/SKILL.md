@@ -34,9 +34,9 @@ This skill helps you:
    - Optionally filter by category (e.g., Dev Tools, Ops, Marketing, Productivity).
 
 2. **Search by intent**
-   - Start from the problem you want to solve:  
-     - “customer support agents”  
-     - “autonomous coding agents”  
+   - Start from the problem you want to solve:
+     - “customer support agents”
+     - “autonomous coding agents”
      - “research / analysis agents”
    - Use keywords in the AgentFolio search bar that match your domain or workflow.
 

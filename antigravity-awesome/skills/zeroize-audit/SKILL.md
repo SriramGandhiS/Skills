@@ -243,7 +243,6 @@ Analysis runs in two phases. For complete step-by-step guidance, see `{baseDir}/
 
 ---
 
-
 ## Output Format
 
 Each run produces two outputs:

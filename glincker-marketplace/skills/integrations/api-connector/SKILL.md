@@ -10,7 +10,7 @@ keywords: [api, integration, rest, graphql, webhooks, oauth, automation]
 
 # API Connector
 
-**⚡ UNIQUE FEATURE**: Natural language API integration for 100+ popular services. Automatically handles authentication (OAuth, API keys), builds requests, parses responses, and generates integration code. No API docs reading required!
+**UNIQUE FEATURE**: Natural language API integration for 100+ popular services. Automatically handles authentication (OAuth, API keys), builds requests, parses responses, and generates integration code. No API docs reading required!
 
 ## What This Skill Does
 
@@ -101,13 +101,13 @@ Connect to any API using plain English:
 
 3. **Setup Authentication** (if needed):
 
-   **For API Key auth**:
+**For API Key auth**:
    ```
    Ask user for API key
    Securely store in config (or use environment variable)
    ```
 
-   **For OAuth**:
+**For OAuth**:
    ```bash
    1. Generate OAuth URL
    2. User authorizes in browser
@@ -116,7 +116,7 @@ Connect to any API using plain English:
    5. Store tokens securely
    ```
 
-   **For JWT**:
+**For JWT**:
    ```
    Request credentials
    Generate JWT token
@@ -140,7 +140,7 @@ When user makes a request:
 
 2. **Build API Request**:
 
-   **Example 1: Slack Message**
+**Example 1: Slack Message**
    ```bash
    curl -X POST https://slack.com/api/chat.postMessage \
      -H "Authorization: Bearer ${SLACK_TOKEN}" \
@@ -151,7 +151,7 @@ When user makes a request:
      }'
    ```
 
-   **Example 2: GitHub Create Issue**
+**Example 2: GitHub Create Issue**
    ```bash
    curl -X POST https://api.github.com/repos/owner/repo/issues \
      -H "Authorization: token ${GITHUB_TOKEN}" \
@@ -163,7 +163,7 @@ When user makes a request:
      }'
    ```
 
-   **Example 3: Stripe Create Payment**
+**Example 3: Stripe Create Payment**
    ```bash
    curl -X POST https://api.stripe.com/v1/payment_intents \
      -u "${STRIPE_SECRET_KEY}:" \
@@ -196,7 +196,7 @@ When user makes a request:
 
 2. **Extract Relevant Data**:
    ```
-   ✅ Issue created successfully!
+   PASS: Issue created successfully!
 
    Issue #42: Bug: App crashes
    URL: https://github.com/owner/repo/issues/42
@@ -205,7 +205,7 @@ When user makes a request:
 
 3. **Handle Errors**:
    ```
-   ❌ API Error: Rate limit exceeded
+   FAIL: API Error: Rate limit exceeded
 
    Details:
    - Limit: 5000 requests/hour
@@ -283,7 +283,7 @@ console.log(`Message sent: ${result.ts}`);
 
 **Result**:
 ```
-✅ GitHub issue created!
+PASS: GitHub issue created!
 
 Issue #42: Fix login bug
 Repository: owner/my-repo
@@ -344,7 +344,7 @@ Would you like me to:
 
 **Result**:
 ```
-📊 Open Pull Requests Summary
+ Open Pull Requests Summary
 
 my-api: 3 open PRs
 - #42: Add authentication (2 days old)
@@ -356,7 +356,7 @@ my-frontend: 1 open PR
 
 Total: 4 open PRs across 2 repos
 
-Posted to #engineering on Slack ✅
+Posted to #engineering on Slack PASS:
 ```
 
 ## Configuration
@@ -518,4 +518,4 @@ Apache License 2.0 - See [LICENSE](../../../LICENSE)
 
 ---
 
-**🌟 Connect to any API without reading documentation - just ask!**
+**Connect to any API without reading documentation - just ask!**

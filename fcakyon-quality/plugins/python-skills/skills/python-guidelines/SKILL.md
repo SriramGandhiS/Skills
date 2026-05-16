@@ -10,8 +10,7 @@ description: This skill should be used when writing, reviewing, or refactoring P
 > Simple is better than complex. Flat is better than nested.
 > Errors should never pass silently. Unless explicitly silenced.
 > If the implementation is hard to explain, it's a bad idea.
->
-> -- The Zen of Python (PEP 20)
+> > -- The Zen of Python (PEP 20)
 
 ## Code Philosophy
 

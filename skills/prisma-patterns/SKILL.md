@@ -1,4 +1,4 @@
-﻿---
+---
 name: prisma-patterns
 description: Prisma ORM patterns for TypeScript backends â€” schema design, query optimization, transactions, pagination, and critical traps like updateMany returning count not records, $transaction timeouts, migrate dev resetting the DB, @updatedAt skipped on bulk writes, and serverless connection exhaustion.
 origin: ECC
@@ -15,13 +15,13 @@ Check the Prisma version before applying version-specific patterns:
 npx prisma --version
 ```
 
-Prisma 5 introduced `relationJoins`, which can load relations via JOIN rather than separate queries depending on query strategy and configuration. The `omit` field modifier and `prisma.$extends` Client Extensions API were also added. Note: `relationJoins` can cause row explosion on large 1:N relations or deep nested `include` â€” benchmark both approaches when relations may return many rows per parent.
+Prisma 5 introduced `relationJoins`, which can load relations via JOIN rather than separate queries depending on query strategy and configuration. The`omit`field modifier and`prisma.$extends`Client Extensions API were also added. Note:`relationJoins`can cause row explosion on large 1:N relations or deep nested`include` â€” benchmark both approaches when relations may return many rows per parent.
 
 ## When to Activate
 
 - Designing or modifying Prisma schema models and relations
 - Writing queries, transactions, or pagination logic
-- Using `updateMany`, `deleteMany`, or any bulk operation
+- Using `updateMany`,`deleteMany`, or any bulk operation
 - Running or planning database migrations
 - Deploying to serverless environments (Vercel, Lambda, Cloudflare Workers)
 - Implementing soft delete or multi-tenant row filtering
@@ -54,13 +54,13 @@ model User {
 }
 ```
 
-- Add `@@index` on every foreign key and column used in `WHERE` or `ORDER BY`.
+- Add `@@index`on every foreign key and column used in`WHERE`or`ORDER BY`.
 - Declare `deletedAt DateTime?` upfront when soft delete is a foreseeable requirement â€” adding it later requires a migration on a live table.
-- `updatedAt @updatedAt` is set automatically by Prisma on `update` and `upsert` only (see Anti-Patterns for bulk update trap).
+- `updatedAt @updatedAt`is set automatically by Prisma on`update`and`upsert` only (see Anti-Patterns for bulk update trap).
 
-### `include` vs `select`
+### `include`vs`select`
 
-| | `include` | `select` |
+| | `include`|`select` |
 |---|---|---|
 | Returns | All scalar fields + specified relations | Only specified fields |
 | Use when | You need most fields plus a relation | Hot paths, large tables, avoiding over-fetch |
@@ -151,7 +151,7 @@ for (const user of users) {
 const users = await prisma.user.findMany({ include: { posts: true } });
 ```
 
-With Prisma 5+ `relationJoins`, the `include` form uses a single JOIN. On large 1:N sets this may increase result set size â€” benchmark both approaches if the relation can return many rows per parent.
+With Prisma 5+ `relationJoins`, the`include` form uses a single JOIN. On large 1:N sets this may increase result set size â€” benchmark both approaches if the relation can return many rows per parent.
 
 ## Code Examples
 
@@ -176,7 +176,7 @@ async function getPosts(cursor?: string, limit = 20) {
 }
 ```
 
-Fetch `limit + 1` and pop â€” canonical way to detect `hasNextPage` without an extra count query. Always include a unique field (e.g. `id`) as a secondary `orderBy` to prevent unstable pagination when multiple rows share the same timestamp. Use offset pagination only when users need to jump to arbitrary pages (admin tables).
+Fetch `limit + 1`and pop â€” canonical way to detect`hasNextPage`without an extra count query. Always include a unique field (e.g.`id`) as a secondary`orderBy` to prevent unstable pagination when multiple rows share the same timestamp. Use offset pagination only when users need to jump to arbitrary pages (admin tables).
 
 ### Soft Delete
 
@@ -205,19 +205,19 @@ try {
 }
 ```
 
-Common codes: `P2002` unique violation Â· `P2025` not found Â· `P2003` foreign key violation.
+Common codes: `P2002`unique violation Â·`P2025`not found Â·`P2003` foreign key violation.
 
 Catch at the service boundary and translate to domain errors. Never expose raw Prisma messages to API consumers.
 
 ### Connection Pool â€” Serverless
 
-Embed connection params directly in `DATABASE_URL` â€” string concatenation breaks if the URL already has query parameters (e.g. `?schema=public`):
+Embed connection params directly in `DATABASE_URL`â€” string concatenation breaks if the URL already has query parameters (e.g.`?schema=public`):
 
 ```bash
-# .env â€” preferred: embed params in the URL
+## .env â€” preferred: embed params in the URL
 DATABASE_URL="postgresql://user:pass@host/db?connection_limit=1&pool_timeout=20"
 
-# With an external pooler (PgBouncer, Supabase pooler)
+## With an external pooler (PgBouncer, Supabase pooler)
 DATABASE_URL="postgresql://user:pass@host/db?pgbouncer=true&connection_limit=1"
 ```
 
@@ -245,7 +245,7 @@ await prisma.user.updateMany({ where: { id: { in: ids } }, data: { role: 'USER' 
 const updated = await prisma.user.findMany({ where: { id: { in: ids } } });
 ```
 
-Same applies to `deleteMany` â€” returns `{ count: n }`, never the deleted rows.
+Same applies to `deleteMany`â€” returns`{ count: n }`, never the deleted rows.
 
 ### `$transaction` interactive form times out after 5 seconds
 
@@ -271,13 +271,13 @@ await prisma.$transaction(async (tx) => { ... }, { timeout: 30_000 });
 `migrate dev` detects schema drift and may prompt to reset the DB, dropping all data.
 
 ```bash
-# NEVER on shared dev, staging, or production
+## NEVER on shared dev, staging, or production
 npx prisma migrate dev --name add_column
 
-# Safe everywhere except local solo dev
+## Safe everywhere except local solo dev
 npx prisma migrate deploy
 
-# Check drift without applying
+## Check drift without applying
 npx prisma migrate diff \
   --from-migrations ./prisma/migrations \
   --to-schema-datamodel ./prisma/schema.prisma \
@@ -293,7 +293,7 @@ Prisma checksums every migration file. Editing after apply causes `P3006 checksu
 Adding `NOT NULL` to an existing column or renaming a column in one migration will lock the table or drop data. Use expand-and-contract:
 
 ```bash
-# Step 1: create migration locally, then deploy
+## Step 1: create migration locally, then deploy
 npx prisma migrate dev --name add_new_column   # local only
 npx prisma migrate deploy                       # staging / production
 ```
@@ -304,14 +304,14 @@ await prisma.user.updateMany({ data: { newColumn: derivedValue } });
 ```
 
 ```bash
-# Step 3: create the NOT NULL constraint migration locally, then deploy
+## Step 3: create the NOT NULL constraint migration locally, then deploy
 npx prisma migrate dev --name make_new_column_required  # local only
 npx prisma migrate deploy                               # staging / production
 ```
 
-### `@updatedAt` does not fire on `updateMany`
+### `@updatedAt`does not fire on`updateMany`
 
-`@updatedAt` is set automatically only on `update` and `upsert`. Bulk writes leave it stale.
+`@updatedAt`is set automatically only on`update`and`upsert`. Bulk writes leave it stale.
 
 ```ts
 // BAD: updatedAt stays at its old value
@@ -326,9 +326,9 @@ await prisma.post.updateMany({
 
 ### Soft delete + `findUniqueOrThrow` leaks deleted records
 
-`findUniqueOrThrow` throws `P2025` only when the row does not exist in the DB. Soft-deleted rows still exist and are returned without error.
+`findUniqueOrThrow`throws`P2025` only when the row does not exist in the DB. Soft-deleted rows still exist and are returned without error.
 
-`findUniqueOrThrow` requires a unique constraint field in `where` â€” adding `deletedAt: null` alongside `id` breaks the type because `{ id, deletedAt }` is not a compound unique constraint. Use `findFirstOrThrow` instead.
+`findUniqueOrThrow`requires a unique constraint field in`where`â€” adding`deletedAt: null`alongside`id`breaks the type because`{ id, deletedAt }`is not a compound unique constraint. Use`findFirstOrThrow` instead.
 
 ```ts
 // BAD: returns soft-deleted user
@@ -341,7 +341,7 @@ const user = await prisma.user.findUniqueOrThrow({ where: { id, deletedAt: null 
 const user = await prisma.user.findFirstOrThrow({ where: { id, deletedAt: null } });
 ```
 
-### `deleteMany` without `where` deletes every row
+### `deleteMany`without`where` deletes every row
 
 ```ts
 // BAD: silently wipes the table
@@ -355,13 +355,13 @@ await prisma.post.deleteMany({ where: { authorId: userId } });
 
 | Rule | Reason |
 |---|---|
-| `migrate deploy` in CI/CD, `migrate dev` only locally | `migrate dev` can reset the DB on drift |
+| `migrate deploy`in CI/CD,`migrate dev`only locally |`migrate dev` can reset the DB on drift |
 | Map entities to response DTOs | Prevents leaking internal fields |
 | Catch `PrismaClientKnownRequestError` at service boundary | Translate to domain errors |
-| Prefer `*OrThrow` methods over manual null checks | Throws P2025 automatically; use `findFirstOrThrow` when filtering non-unique fields |
+| Prefer `*OrThrow`methods over manual null checks | Throws P2025 automatically; use`findFirstOrThrow` when filtering non-unique fields |
 | `connection_limit=1` + external pooler in serverless | Prevents connection exhaustion |
-| Always provide `where` on `deleteMany` | Prevents accidental table wipe |
-| Set `updatedAt: new Date()` manually in `updateMany` | `@updatedAt` skips bulk writes |
+| Always provide `where`on`deleteMany` | Prevents accidental table wipe |
+| Set `updatedAt: new Date()`manually in`updateMany`|`@updatedAt` skips bulk writes |
 
 ## Related Skills
 

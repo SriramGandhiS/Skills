@@ -48,14 +48,14 @@
 
 **Solution:** Split into separate Workers OR disable Smart Placement:
 ```jsonc
-// ❌ BAD - Assets routed away from user
+// FAIL: BAD - Assets routed away from user
 {
   "name": "pages-app",
   "placement": { "mode": "smart" },
   "assets": { "run_worker_first": true }
 }
 
-// ✅ GOOD - Assets at edge, API optimized
+// PASS: GOOD - Assets at edge, API optimized
 // frontend/wrangler.jsonc
 {
   "name": "frontend",
@@ -120,7 +120,7 @@ This is one of the most common and impactful Smart Placement misconfigurations.
 **Solution:** Convert to fetch-based Service Bindings:
 
 ```typescript
-// ❌ RPC - Smart Placement has NO EFFECT
+// FAIL: RPC - Smart Placement has NO EFFECT
 export class BackendRPC extends WorkerEntrypoint {
   async getData() {
     // ALWAYS runs at edge
@@ -128,7 +128,7 @@ export class BackendRPC extends WorkerEntrypoint {
   }
 }
 
-// ✅ Fetch - Smart Placement WORKS
+// PASS: Fetch - Smart Placement WORKS
 export default {
   async fetch(request: Request, env: Env): Promise<Response> {
     // Runs close to DATABASE when Smart Placement enabled

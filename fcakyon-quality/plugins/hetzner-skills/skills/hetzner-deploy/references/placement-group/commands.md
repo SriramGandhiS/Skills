@@ -31,7 +31,6 @@ hcloud placement-group add-label [--overwrite] <placement-group> <label>...
 
 * [hcloud placement-group](hcloud_placement-group.md)	 - Manage Placement Groups
 
-
 ---
 
 ## hcloud placement-group create
@@ -70,7 +69,6 @@ hcloud placement-group create [options] --name <name> --type <type>
 
 * [hcloud placement-group](hcloud_placement-group.md)	 - Manage Placement Groups
 
-
 ---
 
 ## hcloud placement-group delete
@@ -104,7 +102,6 @@ hcloud placement-group delete <placement-group>...
 ### SEE ALSO
 
 * [hcloud placement-group](hcloud_placement-group.md)	 - Manage Placement Groups
-
 
 ---
 
@@ -140,7 +137,6 @@ hcloud placement-group describe [options] <placement-group>
 ### SEE ALSO
 
 * [hcloud placement-group](hcloud_placement-group.md)	 - Manage Placement Groups
-
 
 ---
 
@@ -195,7 +191,6 @@ hcloud placement-group list [options]
 
 * [hcloud placement-group](hcloud_placement-group.md)	 - Manage Placement Groups
 
-
 ---
 
 ## hcloud placement-group remove-label
@@ -230,7 +225,6 @@ hcloud placement-group remove-label <placement-group> (--all | <label>...)
 ### SEE ALSO
 
 * [hcloud placement-group](hcloud_placement-group.md)	 - Manage Placement Groups
-
 
 ---
 

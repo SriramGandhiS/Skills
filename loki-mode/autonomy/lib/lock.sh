@@ -1,28 +1,23 @@
 #!/usr/bin/env bash
 # Loki Mode -- portable file locking helper.
-#
-# Why this exists:
-#   flock(1) is a Linux util-linux binary not shipped on macOS or BSDs.
-#   Bash callers that depend on it either degrade to non-atomic PID checks
-#   (race condition) or print a "flock not available" warning. This helper
-#   gives every bash caller one cross-platform primitive.
-#
-# Strategy:
-#   mkdir() is atomic on all POSIX filesystems -- exactly one concurrent
-#   caller wins the create. We use <target>.lockdir as the mutex, write a
-#   PID-stamped sentinel inside it for stale detection, and clean up via
-#   trap so a killed holder cannot wedge later callers.
-#
-# Public API:
-#   safe_acquire_lock <target> [timeout_seconds]   -> 0 on acquire, 1 on timeout
-#   safe_release_lock <target>                     -> always 0
-#   safe_with_lock   <target> <command...>         -> runs command under lock,
-#                                                     returns command's exit code
-#
-# Stale-lock policy: a lockdir whose sentinel PID is no longer alive AND
+# # Why this exists:
+# flock(1) is a Linux util-linux binary not shipped on macOS or BSDs.
+# Bash callers that depend on it either degrade to non-atomic PID checks
+# (race condition) or print a "flock not available" warning. This helper
+# gives every bash caller one cross-platform primitive.
+# # Strategy:
+# mkdir() is atomic on all POSIX filesystems -- exactly one concurrent
+# caller wins the create. We use <target>.lockdir as the mutex, write a
+# PID-stamped sentinel inside it for stale detection, and clean up via
+# trap so a killed holder cannot wedge later callers.
+# # Public API:
+# safe_acquire_lock <target> [timeout_seconds]   -> 0 on acquire, 1 on timeout
+# safe_release_lock <target>                     -> always 0
+# safe_with_lock   <target> <command...>         -> runs command under lock,
+# returns command's exit code
+# # Stale-lock policy: a lockdir whose sentinel PID is no longer alive AND
 # whose mtime is >30s old is reaped automatically.
-#
-# Acquire timing: poll every 50ms, default ceiling 5s.
+# # Acquire timing: poll every 50ms, default ceiling 5s.
 
 # Guard against double-source.
 if [ "${__LOKI_LOCK_SH_LOADED:-0}" = "1" ]; then

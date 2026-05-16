@@ -31,7 +31,7 @@ SELECTED_AGENTS=()
 # =============================================================================
 echo "Step 1: Checking Python version..."
 if ! command -v python3 &> /dev/null; then
-    echo -e "${RED}❌ Error: python3 not found${NC}"
+    echo -e "${RED}FAIL: Error: python3 not found${NC}"
     echo "Please install Python 3.10 or higher"
     exit 1
 fi
@@ -41,7 +41,7 @@ PYTHON_MAJOR=$(echo $PYTHON_VERSION | cut -d'.' -f1)
 PYTHON_MINOR=$(echo $PYTHON_VERSION | cut -d'.' -f2)
 
 if [ "$PYTHON_MAJOR" -lt 3 ] || ([ "$PYTHON_MAJOR" -eq 3 ] && [ "$PYTHON_MINOR" -lt 10 ]); then
-    echo -e "${YELLOW}⚠ Warning: Python 3.10+ recommended for best compatibility${NC}"
+    echo -e "${YELLOW}WARNING: Warning: Python 3.10+ recommended for best compatibility${NC}"
     echo "Current version: $PYTHON_VERSION"
     echo ""
     read -p "Continue anyway? (y/n) " -n 1 -r
@@ -78,7 +78,7 @@ elif [ -n "$VIRTUAL_ENV" ]; then
     echo -e "${GREEN}✓${NC} Already in virtual environment: $VIRTUAL_ENV"
 else
     VENV_PATH=""
-    echo -e "${YELLOW}⚠${NC} No virtual environment found"
+    echo -e "${YELLOW}WARNING:${NC} No virtual environment found"
 fi
 
 # Set Python command for MCP configuration
@@ -114,7 +114,7 @@ if [[ -n "$VIRTUAL_ENV" ]]; then
         echo "  Using venv Python: $PYTHON_CMD"
     fi
 elif [[ -d "venv" ]]; then
-    echo -e "${YELLOW}⚠${NC} Virtual environment found but not activated"
+    echo -e "${YELLOW}WARNING:${NC} Virtual environment found but not activated"
     echo "Activating venv..."
     source venv/bin/activate
     PIP_INSTALL_CMD="pip install"
@@ -122,7 +122,7 @@ elif [[ -d "venv" ]]; then
     PYTHON_CMD="$REPO_PATH/venv/bin/python3"
     echo -e "${GREEN}✓${NC} Using venv Python: $PYTHON_CMD"
 else
-    echo -e "${YELLOW}⚠${NC} No virtual environment found"
+    echo -e "${YELLOW}WARNING:${NC} No virtual environment found"
     echo "It's recommended to use a virtual environment to avoid conflicts."
     echo ""
     read -p "Would you like to create one now? (y/n) " -n 1 -r
@@ -131,7 +131,7 @@ else
     if [[ $REPLY =~ ^[Yy]$ ]]; then
         echo "Creating virtual environment..."
         python3 -m venv venv || {
-            echo -e "${RED}❌ Failed to create virtual environment${NC}"
+            echo -e "${RED}FAIL: Failed to create virtual environment${NC}"
             echo "Falling back to system install..."
             PIP_INSTALL_CMD="pip3 install --user --break-system-packages"
         }
@@ -158,7 +158,7 @@ echo ""
 if [[ $REPLY =~ ^[Yy]$ ]]; then
     echo "Installing package with MCP dependencies in editable mode..."
     $PIP_INSTALL_CMD -e ".[mcp]" || {
-        echo -e "${RED}❌ Failed to install package${NC}"
+        echo -e "${RED}FAIL: Failed to install package${NC}"
         exit 1
     }
 
@@ -183,7 +183,7 @@ timeout 3 $TEST_PYTHON -m skill_seekers.mcp.server_fastmcp 2>/dev/null || {
     if [ $? -eq 124 ]; then
         echo -e "  ${GREEN}✓${NC} Stdio transport working"
     else
-        echo -e "  ${YELLOW}⚠${NC} Stdio test inconclusive, but may still work"
+        echo -e "  ${YELLOW}WARNING:${NC} Stdio test inconclusive, but may still work"
     fi
 }
 
@@ -201,14 +201,14 @@ if $TEST_PYTHON -c "import uvicorn" 2>/dev/null; then
         echo -e "  ${GREEN}✓${NC} HTTP transport working (port 8765)"
         HTTP_AVAILABLE=true
     else
-        echo -e "  ${YELLOW}⚠${NC} HTTP transport test failed (may need manual check)"
+        echo -e "  ${YELLOW}WARNING:${NC} HTTP transport test failed (may need manual check)"
         HTTP_AVAILABLE=false
     fi
 
     # Cleanup
     kill $HTTP_TEST_PID 2>/dev/null || true
 else
-    echo -e "  ${YELLOW}⚠${NC} uvicorn not installed (HTTP transport unavailable)"
+    echo -e "  ${YELLOW}WARNING:${NC} uvicorn not installed (HTTP transport unavailable)"
     echo "  Install with: $PIP_INSTALL_CMD uvicorn"
     HTTP_AVAILABLE=false
 fi
@@ -235,7 +235,7 @@ else:
 " 2>/dev/null || echo "ERROR")
 
 if [ "$DETECTED_AGENTS" = "ERROR" ]; then
-    echo -e "${RED}❌ Error: Failed to run agent detector${NC}"
+    echo -e "${RED}FAIL: Error: Failed to run agent detector${NC}"
     echo "Falling back to manual configuration..."
     DETECTED_AGENTS="NONE"
 fi
@@ -377,7 +377,7 @@ if [ "$DETECTED_AGENTS" != "NONE" ]; then
 
                 # Check if config already exists
                 if [ -f "$config_path" ]; then
-                    echo -e "  ${YELLOW}⚠ Config file already exists${NC}"
+                    echo -e "  ${YELLOW}WARNING: Config file already exists${NC}"
 
                     # Create backup
                     BACKUP_PATH="${config_path}.backup.$(date +%Y%m%d_%H%M%S)"
@@ -386,7 +386,7 @@ if [ "$DETECTED_AGENTS" != "NONE" ]; then
 
                     # Check if skill-seeker already configured
                     if grep -q "skill-seeker" "$config_path" 2>/dev/null; then
-                        echo -e "  ${YELLOW}⚠ skill-seeker already configured${NC}"
+                        echo -e "  ${YELLOW}WARNING: skill-seeker already configured${NC}"
                         read -p "  Overwrite existing skill-seeker config? (y/n) " -n 1 -r
                         echo ""
                         if [[ ! $REPLY =~ ^[Yy]$ ]]; then
@@ -715,5 +715,5 @@ echo "  • View server logs (if HTTP):"
 echo "    ${CYAN}tail -f /tmp/skill-seekers-mcp.log${NC}"
 echo ""
 
-echo "Happy skill creating! 🚀"
+echo "Happy skill creating! "
 echo ""

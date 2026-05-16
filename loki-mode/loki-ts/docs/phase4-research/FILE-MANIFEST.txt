@@ -37,7 +37,7 @@ FIXTURE CORPUS
   fixture-1/output.txt
   fixture-1/.loki/skills/ (directory)
   fixture-1/.loki/logs/ (directory)
-  
+
   FIXTURE 2: Mid-run with Queue (Iteration 5, PRD)
   ------
   fixture-2/env.sh

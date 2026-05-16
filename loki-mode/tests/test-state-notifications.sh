@@ -1,8 +1,6 @@
 #!/usr/bin/env bash
-#
-# Test suite for State Change Notifications (SYN-016)
-#
-# Tests:
+# # Test suite for State Change Notifications (SYN-016)
+# # Tests:
 # 1. File-based notification channel
 # 2. In-memory notification channel
 # 3. Filtered subscriptions (file filter, change type filter)

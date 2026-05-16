@@ -16,12 +16,12 @@ origin: ECC
 
 ### 核心概念
 
-* **工具**：模型可以调用的操作（例如搜索、运行命令）。根据 SDK 版本，使用 `registerTool()` 或 `tool()` 注册。
-* **资源**：模型可以获取的只读数据（例如文件内容、API 响应）。根据 SDK 版本，使用 `registerResource()` 或 `resource()` 注册。处理程序通常接收一个 `uri` 参数。
+* **工具**：模型可以调用的操作（例如搜索、运行命令）。根据 SDK 版本，使用 `registerTool()`或`tool()` 注册。
+* **资源**：模型可以获取的只读数据（例如文件内容、API 响应）。根据 SDK 版本，使用 `registerResource()`或`resource()`注册。处理程序通常接收一个`uri` 参数。
 * **提示**：客户端可以呈现的可重用参数化提示模板（例如在 Claude Desktop 中）。使用 `registerPrompt()` 或等效方法注册。
 * **传输**：stdio 用于本地客户端（例如 Claude Desktop）；可流式 HTTP 是远程（Cursor、云端）的首选。传统 HTTP/SSE 用于向后兼容。
 
-Node/TypeScript SDK 可能暴露 `tool()` / `resource()` 或 `registerTool()` / `registerResource()`；官方 SDK 已随时间变化。请始终根据当前 [MCP 文档](https://modelcontextprotocol.io) 或 Context7 进行验证。
+Node/TypeScript SDK 可能暴露 `tool()`/`resource()`或`registerTool()`/`registerResource()`；官方 SDK 已随时间变化。请始终根据当前 [MCP 文档](https://modelcontextprotocol.io) 或 Context7 进行验证。
 
 ### 使用 stdio 连接
 
@@ -48,7 +48,7 @@ import { z } from "zod";
 const server = new McpServer({ name: "my-server", version: "1.0.0" });
 ```
 
-使用您的 SDK 版本提供的 API 注册工具和资源：某些版本使用 `server.tool(name, description, schema, handler)`（位置参数），其他版本使用 `server.tool({ name, description, inputSchema }, handler)` 或 `registerTool()`。资源同理——当 API 提供时，在处理程序中包含一个 `uri`。请查阅官方 MCP 文档或 Context7 以获取当前的 `@modelcontextprotocol/sdk` 签名，避免复制粘贴错误。
+使用您的 SDK 版本提供的 API 注册工具和资源：某些版本使用 `server.tool(name, description, schema, handler)`（位置参数），其他版本使用`server.tool({ name, description, inputSchema }, handler)`或`registerTool()`。资源同理——当 API 提供时，在处理程序中包含一个`uri`。请查阅官方 MCP 文档或 Context7 以获取当前的`@modelcontextprotocol/sdk` 签名，避免复制粘贴错误。
 
 使用 **Zod**（或 SDK 首选的模式格式）进行输入验证。
 

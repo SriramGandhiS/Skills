@@ -407,7 +407,7 @@ Quando um humano assume, ele deve ver o historico da conversa automatizada:
 ```typescript
 async function buildHandoffContext(session: Session): string {
   return `
-📋 Contexto da conversa:
+ Contexto da conversa:
 - Cliente: ${session.phone}
 - Departamento: ${session.data.department}
 - Estado anterior: ${session.state}
@@ -415,7 +415,7 @@ async function buildHandoffContext(session: Session): string {
 - Tentativas do bot: ${session.data.botAttempts || 0}
 - Tempo na conversa: ${getElapsedTime(session.data.startedAt)}
 
-📝 Histórico resumido:
+ Histórico resumido:
 ${session.data.history?.map(h => `[${h.from}] ${h.text}`).join('\n') || 'Sem histórico'}
   `.trim();
 }
@@ -459,7 +459,7 @@ function isWithinBusinessHours(): boolean {
 async function handleOffHours(phone: string): Promise<void> {
   // Enviar template (fora da janela de 24h pode nao ter sessao ativa)
   await sendText(phone,
-    '⏰ Nosso horário de atendimento é:\n' +
+    ' Nosso horário de atendimento é:\n' +
     'Seg-Qui: 8h às 18h\n' +
     'Sex: 8h às 17h\n' +
     'Sáb: 9h às 13h\n\n' +

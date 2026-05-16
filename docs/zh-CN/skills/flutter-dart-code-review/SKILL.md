@@ -17,30 +17,30 @@ origin: ECC
 * \[ ] 部件中无业务逻辑；部件纯粹是展示性的
 * \[ ] `pubspec.yaml` 是干净的 —— 没有未使用的依赖项，版本已适当固定
 * \[ ] `analysis_options.yaml` 包含严格的 lint 规则集，并启用了严格的分析器设置
-* \[ ] 生产代码中没有 `print()` 语句 —— 使用 `dart:developer` `log()` 或日志包
-* \[ ] 生成的文件 (`.g.dart`, `.freezed.dart`, `.gr.dart`) 是最新的或在 `.gitignore` 中
+* \[ ] 生产代码中没有 `print()`语句 —— 使用`dart:developer` `log()` 或日志包
+* \[ ] 生成的文件 (`.g.dart`,`.freezed.dart`,`.gr.dart`) 是最新的或在`.gitignore` 中
 * \[ ] 平台特定代码通过抽象进行隔离
 
 ***
 
 ## 2. Dart 语言陷阱
 
-* \[ ] **隐式动态类型**：缺少类型注解导致 `dynamic` —— 启用 `strict-casts`, `strict-inference`, `strict-raw-types`
+* \[ ] **隐式动态类型**：缺少类型注解导致 `dynamic`—— 启用`strict-casts`,`strict-inference`,`strict-raw-types`
 * \[ ] **空安全误用**：过度使用 `!`（感叹号操作符）而不是适当的空检查或 Dart 3 模式匹配 (`if (value case var v?)`)
 * \[ ] **类型提升失败**：在可以使用局部变量类型提升的地方使用了 `this.field`
-* \[ ] **捕获范围过宽**：`catch (e)` 没有 `on` 子句；应始终指定异常类型
+* \[ ] **捕获范围过宽**：`catch (e)`没有`on` 子句；应始终指定异常类型
 * \[ ] **捕获 `Error`**：`Error` 子类型表示错误，不应被捕获
-* \[ ] **未使用的 `async`**：标记为 `async` 但从未 `await` 的函数 —— 不必要的开销
-* \[ ] **`late` 过度使用**：在可使用可空类型或构造函数初始化更安全的地方使用了 `late`；将错误推迟到运行时
-* \[ ] **循环中的字符串拼接**：使用 `StringBuffer` 而不是 `+` 进行迭代式字符串构建
-* \[ ] **`const` 上下文中的可变状态**：`const` 构造器类中的字段不应是可变的
-* \[ ] **忽略 `Future` 返回值**：使用 `await` 或显式调用 `unawaited()` 来表明意图
-* \[ ] **在 `final` 可用时使用 `var`**：局部变量首选 `final`，编译时常量首选 `const`
+* \[ ] **未使用的 `async`**：标记为`async`但从未`await` 的函数 —— 不必要的开销
+* \[ ] **`late`过度使用**：在可使用可空类型或构造函数初始化更安全的地方使用了`late`；将错误推迟到运行时
+* \[ ] **循环中的字符串拼接**：使用 `StringBuffer`而不是`+` 进行迭代式字符串构建
+* \[ ] **`const`上下文中的可变状态**：`const` 构造器类中的字段不应是可变的
+* \[ ] **忽略 `Future`返回值**：使用`await`或显式调用`unawaited()` 来表明意图
+* \[ ] **在 `final`可用时使用`var`**：局部变量首选`final`，编译时常量首选`const`
 * \[ ] **相对导入**：为保持一致性，使用 `package:` 导入
 * \[ ] **暴露可变集合**：公共 API 应返回不可修改的视图，而不是原始的 `List`/`Map`
-* \[ ] **缺少 Dart 3 模式匹配**：优先使用 switch 表达式和 `if-case`，而不是冗长的 `is` 检查和手动类型转换
+* \[ ] **缺少 Dart 3 模式匹配**：优先使用 switch 表达式和 `if-case`，而不是冗长的`is` 检查和手动类型转换
 * \[ ] **为多重返回值使用一次性类**：使用 Dart 3 记录 `(String, int)` 代替一次性 DTO
-* \[ ] **生产代码中的 `print()`**：使用 `dart:developer` `log()` 或项目的日志包；`print()` 没有日志级别且无法过滤
+* \[ ] **生产代码中的 `print()`**：使用`dart:developer` `log()`或项目的日志包；`print()` 没有日志级别且无法过滤
 
 ***
 
@@ -57,28 +57,28 @@ origin: ECC
 ### Const 使用：
 
 * \[ ] 尽可能使用 `const` 构造器 —— 防止不必要的重建
-* \[ ] 对不变化的集合使用 `const` 字面量 (`const []`, `const {}`)
+* \[ ] 对不变化的集合使用 `const`字面量 (`const []`,`const {}`)
 * \[ ] 当所有字段都是 final 时，构造函数声明为 `const`
 
 ### Key 使用：
 
 * \[ ] 在列表/网格中使用 `ValueKey` 以在重新排序时保持状态
 * \[ ] 谨慎使用 `GlobalKey` —— 仅在确实需要跨树访问状态时使用
-* \[ ] 避免在 `build()` 中使用 `UniqueKey` —— 它会强制每帧都重建
+* \[ ] 避免在 `build()`中使用`UniqueKey` —— 它会强制每帧都重建
 * \[ ] 当身份基于数据对象而非单个值时，使用 `ObjectKey`
 
 ### 主题与设计系统：
 
-* \[ ] 颜色来自 `Theme.of(context).colorScheme` —— 没有硬编码的 `Colors.red` 或十六进制值
-* \[ ] 文本样式来自 `Theme.of(context).textTheme` —— 没有内联的 `TextStyle` 和原始字体大小
+* \[ ] 颜色来自 `Theme.of(context).colorScheme`—— 没有硬编码的`Colors.red` 或十六进制值
+* \[ ] 文本样式来自 `Theme.of(context).textTheme`—— 没有内联的`TextStyle` 和原始字体大小
 * \[ ] 已验证深色模式兼容性 —— 不假设浅色背景
 * \[ ] 间距和尺寸使用一致的设计令牌或常量，而不是魔法数字
 
 ### Build 方法复杂度：
 
 * \[ ] `build()` 中没有网络调用、文件 I/O 或繁重计算
-* \[ ] `build()` 中没有 `Future.then()` 或 `async` 工作
-* \[ ] `build()` 中没有创建订阅 (`.listen()`)
+* \[ ] `build()`中没有`Future.then()`或`async` 工作
+* \[ ] `build()`中没有创建订阅 (`.listen()`)
 * \[ ] `setState()` 局部化到尽可能小的子树
 
 ***
@@ -101,19 +101,19 @@ origin: ECC
 ### 不可变性与值相等性（适用于不可变状态解决方案：BLoC、Riverpod、Redux）：
 
 * \[ ] 状态对象是不可变的 —— 通过 `copyWith()` 或构造函数创建新实例，绝不就地修改
-* \[ ] 状态类正确实现 `==` 和 `hashCode`（比较中包含所有字段）
+* \[ ] 状态类正确实现 `==`和`hashCode`（比较中包含所有字段）
 * \[ ] 机制在整个项目中保持一致 —— 手动覆盖、`Equatable`、`freezed`、Dart 记录或其他方式
 * \[ ] 状态对象内部的集合不作为原始可变的 `List`/`Map` 暴露
 
 ### 响应式纪律（适用于响应式突变解决方案：MobX、GetX、Signals）：
 
-* \[ ] 状态仅通过解决方案的响应式 API 进行修改（MobX 中的 `@action`，Signals 上的 `.value`，GetX 中的 `.obs`）—— 直接字段修改会绕过变更跟踪
+* \[ ] 状态仅通过解决方案的响应式 API 进行修改（MobX 中的 `@action`，Signals 上的`.value`，GetX 中的`.obs`）—— 直接字段修改会绕过变更跟踪
 * \[ ] 派生值使用解决方案的计算机制，而不是冗余存储
 * \[ ] 反应和清理器被正确清理（MobX 中的 `ReactionDisposer`，Signals 中的 effect 清理）
 
 ### 状态形状设计：
 
-* \[ ] 互斥状态使用密封类型、联合变体或解决方案内置的异步状态类型（例如 Riverpod 的 `AsyncValue`）—— 而不是布尔标志 (`isLoading`, `isError`, `hasData`)
+* \[ ] 互斥状态使用密封类型、联合变体或解决方案内置的异步状态类型（例如 Riverpod 的 `AsyncValue`）—— 而不是布尔标志 (`isLoading`,`isError`,`hasData`)
 * \[ ] 每个异步操作都将加载、成功和错误建模为不同的状态
 * \[ ] UI 中详尽处理所有状态变体 —— 没有静默忽略的情况
 * \[ ] 错误状态携带用于显示的错误信息；加载状态不携带陈旧数据
@@ -154,18 +154,18 @@ class UserError extends UserState {
 
 ### 订阅与清理：
 
-* \[ ] 所有手动订阅 (`.listen()`) 在 `dispose()` / `close()` 中被取消
+* \[ ] 所有手动订阅 (`.listen()`) 在`dispose()`/`close()` 中被取消
 * \[ ] 流控制器在不再需要时关闭
 * \[ ] 定时器在清理生命周期中被取消
 * \[ ] 优先使用框架管理的生命周期，而不是手动订阅（声明式构建器优于 `.listen()`）
-* \[ ] 异步回调中在 `setState` 之前检查 `mounted`
-* \[ ] 在 `await` 之后使用 `BuildContext` 而不检查 `context.mounted`（Flutter 3.7+）—— 过时的上下文会导致崩溃
+* \[ ] 异步回调中在 `setState`之前检查`mounted`
+* \[ ] 在 `await`之后使用`BuildContext`而不检查`context.mounted`（Flutter 3.7+）—— 过时的上下文会导致崩溃
 * \[ ] 在异步间隙后，没有在验证部件仍然挂载的情况下进行导航、显示对话框或脚手架消息
 * \[ ] `BuildContext` 绝不存储在单例、状态管理器或静态字段中
 
 ### 本地状态与全局状态：
 
-* \[ ] 临时 UI 状态（复选框、滑块、动画）使用本地状态 (`setState`, `ValueNotifier`)
+* \[ ] 临时 UI 状态（复选框、滑块、动画）使用本地状态 (`setState`,`ValueNotifier`)
 * \[ ] 共享状态仅提升到所需的高度 —— 不过度全局化
 * \[ ] 功能作用域的状态在功能不再活跃时被正确清理
 
@@ -184,27 +184,27 @@ class UserError extends UserState {
 
 * \[ ] 不在 `build()` 中对大型集合进行排序、过滤或映射 —— 在状态管理层计算
 * \[ ] 不在 `build()` 中编译正则表达式
-* \[ ] `MediaQuery.of(context)` 的使用是具体的（例如，`MediaQuery.sizeOf(context)`）
+* \[ ] `MediaQuery.of(context)`的使用是具体的（例如，`MediaQuery.sizeOf(context)`）
 
 ### 图像优化：
 
 * \[ ] 网络图像使用缓存（适用于项目的任何缓存解决方案）
 * \[ ] 为目标设备使用适当的图像分辨率（不为缩略图加载 4K 图像）
-* \[ ] 使用带有 `cacheWidth`/`cacheHeight` 的 `Image.asset` 以按显示尺寸解码
+* \[ ] 使用带有 `cacheWidth`/`cacheHeight`的`Image.asset` 以按显示尺寸解码
 * \[ ] 为网络图像提供占位符和错误部件
 
 ### 懒加载：
 
-* \[ ] 对于大型或动态列表，使用 `ListView.builder` / `GridView.builder` 代替 `ListView(children: [...])`（对于小型、静态列表，具体构造器是可以的）
+* \[ ] 对于大型或动态列表，使用 `ListView.builder`/`GridView.builder`代替`ListView(children: [...])`（对于小型、静态列表，具体构造器是可以的）
 * \[ ] 为大型数据集实现分页
 * \[ ] 在 Web 构建中对重量级库使用延迟加载 (`deferred as`)
 
 ### 其他：
 
-* \[ ] 在动画中避免使用 `Opacity` 部件 —— 使用 `AnimatedOpacity` 或 `FadeTransition`
+* \[ ] 在动画中避免使用 `Opacity`部件 —— 使用`AnimatedOpacity`或`FadeTransition`
 * \[ ] 在动画中避免裁剪 —— 预裁剪图像
-* \[ ] 不在部件上重写 `operator ==` —— 使用 `const` 构造器代替
-* \[ ] 固有尺寸部件 (`IntrinsicHeight`, `IntrinsicWidth`) 谨慎使用（额外的布局传递）
+* \[ ] 不在部件上重写 `operator ==`—— 使用`const` 构造器代替
+* \[ ] 固有尺寸部件 (`IntrinsicHeight`,`IntrinsicWidth`) 谨慎使用（额外的布局传递）
 
 ***
 
@@ -233,9 +233,9 @@ class UserError extends UserState {
 
 ### 小部件测试质量：
 
-* \[ ] `pumpWidget` 和 `pump` 被正确用于异步操作
+* \[ ] `pumpWidget`和`pump` 被正确用于异步操作
 * \[ ] `find.byType`、`find.text`、`find.byKey` 使用得当
-* \[ ] 没有依赖于时序的不可靠测试——使用 `pumpAndSettle` 或显式的 `pump(Duration)`
+* \[ ] 没有依赖于时序的不可靠测试——使用 `pumpAndSettle`或显式的`pump(Duration)`
 * \[ ] 测试在 CI 中运行，失败会阻止合并
 
 ***
@@ -276,11 +276,11 @@ class UserError extends UserState {
 * \[ ] 在适当的地方使用平台自适应小部件
 * \[ ] 返回导航处理正确（Android 返回按钮，iOS 滑动返回）
 * \[ ] 通过 `SafeArea` 小部件处理状态栏和安全区域
-* \[ ] 平台特定权限在 `AndroidManifest.xml` 和 `Info.plist` 中声明
+* \[ ] 平台特定权限在 `AndroidManifest.xml`和`Info.plist` 中声明
 
 ### 响应式设计：
 
-* \[ ] 使用 `LayoutBuilder` 或 `MediaQuery` 实现响应式布局
+* \[ ] 使用 `LayoutBuilder`或`MediaQuery` 实现响应式布局
 * \[ ] 断点定义一致（手机、平板、桌面）
 * \[ ] 文本在小屏幕上不会溢出——使用 `Flexible`、`Expanded`、`FittedBox`
 * \[ ] 测试了横屏方向或明确锁定
@@ -351,7 +351,7 @@ class UserError extends UserState {
 ### 通用原则（适用于任何路由解决方案）：
 
 * \[ ] 一致使用一种路由方法——不混合命令式 `Navigator.push` 和声明式路由器
-* \[ ] 路由参数是类型化的——没有 `Map<String, dynamic>` 或 `Object?` 转换
+* \[ ] 路由参数是类型化的——没有 `Map<String, dynamic>`或`Object?` 转换
 * \[ ] 路由路径定义为常量、枚举或生成——没有散布在代码中的魔法字符串
 * \[ ] 认证守卫/重定向集中化——不在各个屏幕中重复
 * \[ ] 为 Android 和 iOS 配置深度链接
@@ -368,7 +368,7 @@ class UserError extends UserState {
 * \[ ] 重写 `FlutterError.onError` 以捕获框架错误（构建、布局、绘制）
 * \[ ] 设置 `PlatformDispatcher.instance.onError` 处理 Flutter 未捕获的异步错误
 * \[ ] 为发布模式自定义 `ErrorWidget.builder`（用户友好而非红屏）
-* \[ ] 在 `runApp` 周围使用全局错误捕获包装器（例如 `runZonedGuarded`，Sentry/Crashlytics 包装器）
+* \[ ] 在 `runApp`周围使用全局错误捕获包装器（例如`runZonedGuarded`，Sentry/Crashlytics 包装器）
 
 ### 错误报告：
 
@@ -457,12 +457,12 @@ class UserError extends UserState {
 
 | 原则 | BLoC/Cubit | Riverpod | Provider | GetX | MobX | Signals | 内置 |
 |-----------|-----------|----------|----------|------|------|---------|----------|
-| 状态容器 | `Bloc`/`Cubit` | `Notifier`/`AsyncNotifier` | `ChangeNotifier` | `GetxController` | `Store` | `signal()` | `StatefulWidget` |
-| UI 消费者 | `BlocBuilder` | `ConsumerWidget` | `Consumer` | `Obx`/`GetBuilder` | `Observer` | `Watch` | `setState` |
-| 选择器 | `BlocSelector`/`buildWhen` | `ref.watch(p.select(...))` | `Selector` | N/A | computed | `computed()` | N/A |
-| 副作用 | `BlocListener` | `ref.listen` | `Consumer` 回调 | `ever()`/`once()` | `reaction` | `effect()` | 回调 |
-| 处置 | 通过 `BlocProvider` 自动 | `.autoDispose` | 通过 `Provider` 自动 | `onClose()` | `ReactionDisposer` | 手动 | `dispose()` |
-| 测试 | `blocTest()` | `ProviderContainer` | 直接 `ChangeNotifier` | 在测试中 `Get.put` | 直接测试 store | 直接测试 signal | 小部件测试 |
+| 状态容器 | `Bloc`/`Cubit`|`Notifier`/`AsyncNotifier`|`ChangeNotifier`|`GetxController`|`Store`|`signal()`|`StatefulWidget` |
+| UI 消费者 | `BlocBuilder`|`ConsumerWidget`|`Consumer`|`Obx`/`GetBuilder`|`Observer`|`Watch`|`setState` |
+| 选择器 | `BlocSelector`/`buildWhen`|`ref.watch(p.select(...))`|`Selector`| N/A | computed |`computed()` | N/A |
+| 副作用 | `BlocListener`|`ref.listen`|`Consumer`回调 |`ever()`/`once()`|`reaction`|`effect()` | 回调 |
+| 处置 | 通过 `BlocProvider`自动 |`.autoDispose`| 通过`Provider`自动 |`onClose()`|`ReactionDisposer`| 手动 |`dispose()` |
+| 测试 | `blocTest()`|`ProviderContainer`| 直接`ChangeNotifier`| 在测试中`Get.put` | 直接测试 store | 直接测试 signal | 小部件测试 |
 
 ***
 

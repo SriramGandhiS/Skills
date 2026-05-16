@@ -20,7 +20,7 @@ origin: ECC
 
 ```bash
 mvn -T 4 clean verify -DskipTests
-# or
+## or
 ./gradlew clean assemble -x test
 ```
 
@@ -45,7 +45,7 @@ Gradle（如果已配置）：
 ```bash
 mvn -T 4 test
 mvn jacoco:report   # verify 80%+ coverage
-# or
+## or
 ./gradlew test jacocoTestReport
 ```
 
@@ -162,29 +162,29 @@ class UserControllerTest {
 ## 阶段 4：安全扫描
 
 ```bash
-# Dependency CVEs
+## Dependency CVEs
 mvn org.owasp:dependency-check-maven:check
-# or
+## or
 ./gradlew dependencyCheckAnalyze
 
-# Secrets in source
+## Secrets in source
 grep -rn "password\s*=\s*\"" src/ --include="*.java" --include="*.yml" --include="*.properties"
 grep -rn "sk-\|api_key\|secret" src/ --include="*.java" --include="*.yml"
 
-# Secrets (git history)
+## Secrets (git history)
 git secrets --scan  # if configured
 ```
 
 ### 常见安全发现
 
 ```
-# 检查 System.out.println（应使用日志记录器）
+## 检查 System.out.println（应使用日志记录器）
 grep -rn "System\.out\.print" src/main/ --include="*.java"
 
-# 检查响应中的原始异常消息
+## 检查响应中的原始异常消息
 grep -rn "e\.getMessage()" src/main/ --include="*.java"
 
-# 检查通配符 CORS 配置
+## 检查通配符 CORS 配置
 grep -rn "allowedOrigins.*\*" src/main/ --include="*.java"
 ```
 

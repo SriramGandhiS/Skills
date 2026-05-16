@@ -40,24 +40,24 @@
 
 ### 哪些 AI 工具可以使用这些技能？
 
-- ✅ **Claude Code** (Anthropic CLI)
-- ✅ **Gemini CLI** (Google)
-- ✅ **Codex CLI** (OpenAI)
-- ✅ **Cursor** (AI IDE)
-- ✅ **Antigravity IDE**
-- ✅ **OpenCode**
-- ✅ **Kiro CLI** (Amazon)
-- ✅ **Kiro IDE** (Amazon)
-- ✅ **AdaL CLI**
-- ⚠️ **GitHub Copilot**（通过复制粘贴部分支持）
+- PASS: **Claude Code** (Anthropic CLI)
+- PASS: **Gemini CLI** (Google)
+- PASS: **Codex CLI** (OpenAI)
+- PASS: **Cursor** (AI IDE)
+- PASS: **Antigravity IDE**
+- PASS: **OpenCode**
+- PASS: **Kiro CLI** (Amazon)
+- PASS: **Kiro IDE** (Amazon)
+- PASS: **AdaL CLI**
+- WARNING: **GitHub Copilot**（通过复制粘贴部分支持）
 
 ### 这些技能可以免费使用吗？
 
 **可以。**原始代码和工具采用 MIT 许可，原始文档/非代码书面内容采用 CC BY 4.0 许可。
 
-- ✅ 免费供个人使用
-- ✅ 免费供商业使用
-- ✅ 你可以修改它们
+- PASS: 免费供个人使用
+- PASS: 免费供商业使用
+- PASS: 你可以修改它们
 
 有关归属和第三方许可详细信息，请参阅 [../../LICENSE](../../LICENSE)、[../../LICENSE-CONTENT](../../LICENSE-CONTENT) 和 [../sources/sources.md](../sources/sources.md)。
 
@@ -87,11 +87,11 @@
 
 我们对技能进行分类，以便你知道你正在运行什么。这些值直接映射到每个 `SKILL.md` 前置元数据中的 `risk:` 字段：
 
-- 🔵 **`none`**：纯参考或规划内容 — 无 shell 命令、无变更、无网络访问。
-- ⚪ **`safe`**：非破坏性的社区技能（只读、规划、代码审查、分析）。
-- 🔴 **`critical`**：修改文件、删除数据、使用网络扫描器或执行破坏性操作的技能。**谨慎使用。**
-- 🟣 **`offensive`**：专注于安全性的进攻技术（渗透测试、利用）。**仅授权使用** — 始终确认目标在范围内。
-- ⬜ **`unknown`**：遗留或未分类的内容。在使用前手动检查技能。
+- **`none`**：纯参考或规划内容 — 无 shell 命令、无变更、无网络访问。
+- **`safe`**：非破坏性的社区技能（只读、规划、代码审查、分析）。
+- **`critical`**：修改文件、删除数据、使用网络扫描器或执行破坏性操作的技能。**谨慎使用。**
+- **`offensive`**：专注于安全性的进攻技术（渗透测试、利用）。**仅授权使用** — 始终确认目标在范围内。
+- **`unknown`**：遗留或未分类的内容。在使用前手动检查技能。
 
 ### 这些技能可以入侵我的计算机吗？
 
@@ -204,7 +204,7 @@ git pull origin main
 
 ## 使用技能
 
-> **💡 有关包含示例的完整指南，请参阅 [usage.md](usage.md)**
+> ** 有关包含示例的完整指南，请参阅 [usage.md](usage.md)**
 
 ### 如何调用技能？
 
@@ -342,4 +342,4 @@ npm run security:docs
 - 尝试 `@test-driven-development` 以获得更好的代码质量
 - 探索 `@skill-creator` 制作你自己的技能
 
-**仍然困惑？**[打开讨论](https://github.com/sickn33/antigravity-awesome-skills/discussions)，我们会帮助你！🙌
+**仍然困惑？**[打开讨论](https://github.com/sickn33/antigravity-awesome-skills/discussions)，我们会帮助你！

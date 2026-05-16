@@ -22,12 +22,12 @@ Sağlam, verimli ve bakımı kolay uygulamalar oluşturmak için idiomatic Pytho
 Python okunabilirliği önceliklendirir. Kod açık ve anlaşılması kolay olmalıdır.
 
 ```python
-# İyi: Açık ve okunabilir
+## İyi: Açık ve okunabilir
 def get_active_users(users: list[User]) -> list[User]:
     """Sağlanan listeden sadece aktif kullanıcıları döndür."""
     return [user for user in users if user.is_active]
 
-# Kötü: Zeki ama kafa karıştırıcı
+## Kötü: Zeki ama kafa karıştırıcı
 def get_active_users(u):
     return [x for x in u if x.a]
 ```
@@ -37,7 +37,7 @@ def get_active_users(u):
 Sihirden kaçının; kodunuzun ne yaptığı konusunda açık olun.
 
 ```python
-# İyi: Açık yapılandırma
+## İyi: Açık yapılandırma
 import logging
 
 logging.basicConfig(
@@ -45,7 +45,7 @@ logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
 )
 
-# Kötü: Gizli yan etkiler
+## Kötü: Gizli yan etkiler
 import some_module
 some_module.setup()  # Bu ne yapıyor?
 ```
@@ -55,14 +55,14 @@ some_module.setup()  # Bu ne yapıyor?
 Python, koşulları kontrol etmek yerine exception handling'i tercih eder.
 
 ```python
-# İyi: EAFP stili
+## İyi: EAFP stili
 def get_value(dictionary: dict, key: str) -> Any:
     try:
         return dictionary[key]
     except KeyError:
         return default_value
 
-# Kötü: LBYL (Atlamadan Önce Bak) stili
+## Kötü: LBYL (Atlamadan Önce Bak) stili
 def get_value(dictionary: dict, key: str) -> Any:
     if key in dictionary:
         return dictionary[key]
@@ -91,11 +91,11 @@ def process_user(
 ### Modern Type Hint'ler (Python 3.9+)
 
 ```python
-# Python 3.9+ - Built-in tipleri kullan
+## Python 3.9+ - Built-in tipleri kullan
 def process_items(items: list[str]) -> dict[str, int]:
     return {item: len(item) for item in items}
 
-# Python 3.8 ve öncesi - typing modülünü kullan
+## Python 3.8 ve öncesi - typing modülünü kullan
 from typing import List, Dict
 
 def process_items(items: List[str]) -> Dict[str, int]:
@@ -107,13 +107,13 @@ def process_items(items: List[str]) -> Dict[str, int]:
 ```python
 from typing import TypeVar, Union
 
-# Karmaşık tipler için type alias
+## Karmaşık tipler için type alias
 JSON = Union[dict[str, Any], list[Any], str, int, float, bool, None]
 
 def parse_json(data: str) -> JSON:
     return json.loads(data)
 
-# Generic tipler
+## Generic tipler
 T = TypeVar('T')
 
 def first(items: list[T]) -> T | None:
@@ -140,7 +140,7 @@ def render_all(items: list[Renderable]) -> str:
 ### Spesifik Exception Handling
 
 ```python
-# İyi: Spesifik exception'ları yakala
+## İyi: Spesifik exception'ları yakala
 def load_config(path: str) -> Config:
     try:
         with open(path) as f:
@@ -150,7 +150,7 @@ def load_config(path: str) -> Config:
     except json.JSONDecodeError as e:
         raise ConfigError(f"Invalid JSON in config: {path}") from e
 
-# Kötü: Bare except
+## Kötü: Bare except
 def load_config(path: str) -> Config:
     try:
         with open(path) as f:
@@ -185,7 +185,7 @@ class NotFoundError(AppError):
     """İstenen kaynak bulunamadığında raise edilir."""
     pass
 
-# Kullanım
+## Kullanım
 def get_user(user_id: str) -> User:
     user = db.find_user(user_id)
     if not user:
@@ -198,12 +198,12 @@ def get_user(user_id: str) -> User:
 ### Kaynak Yönetimi
 
 ```python
-# İyi: Context manager'ları kullanma
+## İyi: Context manager'ları kullanma
 def process_file(path: str) -> str:
     with open(path, 'r') as f:
         return f.read()
 
-# Kötü: Manuel kaynak yönetimi
+## Kötü: Manuel kaynak yönetimi
 def process_file(path: str) -> str:
     f = open(path, 'r')
     try:
@@ -225,7 +225,7 @@ def timer(name: str):
     elapsed = time.perf_counter() - start
     print(f"{name} took {elapsed:.4f} seconds")
 
-# Kullanım
+## Kullanım
 with timer("data processing"):
     process_large_dataset()
 ```
@@ -248,7 +248,7 @@ class DatabaseTransaction:
             self.connection.rollback()
         return False  # Exception'ları suppress etme
 
-# Kullanım
+## Kullanım
 with DatabaseTransaction(conn):
     user = conn.create_user(user_data)
     conn.create_profile(user.id, profile_data)
@@ -259,20 +259,20 @@ with DatabaseTransaction(conn):
 ### List Comprehension'ları
 
 ```python
-# İyi: Basit dönüşümler için list comprehension
+## İyi: Basit dönüşümler için list comprehension
 names = [user.name for user in users if user.is_active]
 
-# Kötü: Manuel döngü
+## Kötü: Manuel döngü
 names = []
 for user in users:
     if user.is_active:
         names.append(user.name)
 
-# Karmaşık comprehension'lar genişletilmelidir
-# Kötü: Çok karmaşık
+## Karmaşık comprehension'lar genişletilmelidir
+## Kötü: Çok karmaşık
 result = [x * 2 for x in items if x > 0 if x % 2 == 0]
 
-# İyi: Bir generator fonksiyonu kullan
+## İyi: Bir generator fonksiyonu kullan
 def filter_and_transform(items: Iterable[int]) -> list[int]:
     result = []
     for x in items:
@@ -284,10 +284,10 @@ def filter_and_transform(items: Iterable[int]) -> list[int]:
 ### Generator Expression'ları
 
 ```python
-# İyi: Lazy evaluation için generator
+## İyi: Lazy evaluation için generator
 total = sum(x * x for x in range(1_000_000))
 
-# Kötü: Büyük ara liste oluşturur
+## Kötü: Büyük ara liste oluşturur
 total = sum([x * x for x in range(1_000_000)])
 ```
 
@@ -300,7 +300,7 @@ def read_large_file(path: str) -> Iterator[str]:
         for line in f:
             yield line.strip()
 
-# Kullanım
+## Kullanım
 for line in read_large_file("huge.txt"):
     process(line)
 ```
@@ -322,7 +322,7 @@ class User:
     created_at: datetime = field(default_factory=datetime.now)
     is_active: bool = True
 
-# Kullanım
+## Kullanım
 user = User(
     id="123",
     name="Alice",
@@ -360,7 +360,7 @@ class Point(NamedTuple):
     def distance(self, other: 'Point') -> float:
         return ((self.x - other.x) ** 2 + (self.y - other.y) ** 2) ** 0.5
 
-# Kullanım
+## Kullanım
 p1 = Point(0, 0)
 p2 = Point(3, 4)
 print(p1.distance(p2))  # 5.0
@@ -389,7 +389,7 @@ def timer(func: Callable) -> Callable:
 def slow_function():
     time.sleep(1)
 
-# slow_function() yazdırır: slow_function took 1.0012s
+## slow_function() yazdırır: slow_function took 1.0012s
 ```
 
 ### Parametreli Decorator'lar
@@ -411,7 +411,7 @@ def repeat(times: int):
 def greet(name: str) -> str:
     return f"Hello, {name}!"
 
-# greet("Alice") döndürür ["Hello, Alice!", "Hello, Alice!", "Hello, Alice!"]
+## greet("Alice") döndürür ["Hello, Alice!", "Hello, Alice!", "Hello, Alice!"]
 ```
 
 ### Class Tabanlı Decorator'lar
@@ -433,7 +433,7 @@ class CountCalls:
 def process():
     pass
 
-# Her process() çağrısı çağrı sayısını yazdırır
+## Her process() çağrısı çağrı sayısını yazdırır
 ```
 
 ## Eşzamanlılık Desenleri
@@ -529,7 +529,7 @@ myproject/
 ### Import Konvansiyonları
 
 ```python
-# İyi: Import sırası - stdlib, third-party, local
+## İyi: Import sırası - stdlib, third-party, local
 import os
 import sys
 from pathlib import Path
@@ -540,19 +540,19 @@ from fastapi import FastAPI
 from mypackage.models import User
 from mypackage.utils import format_name
 
-# İyi: Otomatik import sıralama için isort kullanın
-# pip install isort
+## İyi: Otomatik import sıralama için isort kullanın
+## pip install isort
 ```
 
 ### Paket Export'ları için __init__.py
 
 ```python
-# mypackage/__init__.py
+## mypackage/__init__.py
 """mypackage - Örnek bir Python paketi."""
 
 __version__ = "1.0.0"
 
-# Ana class/fonksiyonları paket seviyesinde export et
+## Ana class/fonksiyonları paket seviyesinde export et
 from mypackage.models import User, Post
 from mypackage.utils import format_name
 
@@ -564,13 +564,13 @@ __all__ = ["User", "Post", "format_name"]
 ### Bellek Verimliliği için __slots__ Kullanma
 
 ```python
-# Kötü: Normal class __dict__ kullanır (daha fazla bellek)
+## Kötü: Normal class __dict__ kullanır (daha fazla bellek)
 class Point:
     def __init__(self, x: float, y: float):
         self.x = x
         self.y = y
 
-# İyi: __slots__ bellek kullanımını azaltır
+## İyi: __slots__ bellek kullanımını azaltır
 class Point:
     __slots__ = ['x', 'y']
 
@@ -582,12 +582,12 @@ class Point:
 ### Büyük Veri için Generator
 
 ```python
-# Kötü: Bellekte tam liste döndürür
+## Kötü: Bellekte tam liste döndürür
 def read_lines(path: str) -> list[str]:
     with open(path) as f:
         return [line.strip() for line in f]
 
-# İyi: Satırları birer birer yield eder
+## İyi: Satırları birer birer yield eder
 def read_lines(path: str) -> Iterator[str]:
     with open(path) as f:
         for line in f:
@@ -597,15 +597,15 @@ def read_lines(path: str) -> Iterator[str]:
 ### Döngülerde String Birleştirmekten Kaçının
 
 ```python
-# Kötü: String immutability nedeniyle O(n²)
+## Kötü: String immutability nedeniyle O(n²)
 result = ""
 for item in items:
     result += str(item)
 
-# İyi: join kullanarak O(n)
+## İyi: join kullanarak O(n)
 result = "".join(str(item) for item in items)
 
-# İyi: Oluşturma için StringIO kullanma
+## İyi: Oluşturma için StringIO kullanma
 from io import StringIO
 
 buffer = StringIO()
@@ -619,24 +619,24 @@ result = buffer.getvalue()
 ### Temel Komutlar
 
 ```bash
-# Kod formatlama
+## Kod formatlama
 black .
 isort .
 
-# Linting
+## Linting
 ruff check .
 pylint mypackage/
 
-# Type checking
+## Type checking
 mypy .
 
-# Test
+## Test
 pytest --cov=mypackage --cov-report=html
 
-# Güvenlik taraması
+## Güvenlik taraması
 bandit -r .
 
-# Dependency yönetimi
+## Dependency yönetimi
 pip-audit
 safety check
 ```
@@ -699,47 +699,47 @@ addopts = "--cov=mypackage --cov-report=term-missing"
 ## Kaçınılması Gereken Anti-Desenler
 
 ```python
-# Kötü: Mutable default argümanlar
+## Kötü: Mutable default argümanlar
 def append_to(item, items=[]):
     items.append(item)
     return items
 
-# İyi: None kullan ve yeni liste oluştur
+## İyi: None kullan ve yeni liste oluştur
 def append_to(item, items=None):
     if items is None:
         items = []
     items.append(item)
     return items
 
-# Kötü: type() ile tip kontrolü
+## Kötü: type() ile tip kontrolü
 if type(obj) == list:
     process(obj)
 
-# İyi: isinstance kullan
+## İyi: isinstance kullan
 if isinstance(obj, list):
     process(obj)
 
-# Kötü: None ile == ile karşılaştırma
+## Kötü: None ile == ile karşılaştırma
 if value == None:
     process()
 
-# İyi: is kullan
+## İyi: is kullan
 if value is None:
     process()
 
-# Kötü: from module import *
+## Kötü: from module import *
 from os.path import *
 
-# İyi: Açık import'lar
+## İyi: Açık import'lar
 from os.path import join, exists
 
-# Kötü: Bare except
+## Kötü: Bare except
 try:
     risky_operation()
 except:
     pass
 
-# İyi: Spesifik exception
+## İyi: Spesifik exception
 try:
     risky_operation()
 except SpecificError as e:

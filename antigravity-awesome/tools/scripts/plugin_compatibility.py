@@ -346,12 +346,12 @@ def main() -> int:
         current_report = json.loads(report_path.read_text(encoding="utf-8"))
         if current_report != expected_report:
             raise SystemExit("data/plugin-compatibility.json is out of sync")
-        print("✅ Plugin compatibility report is in sync.")
+        print("PASS: Plugin compatibility report is in sync.")
         return 0
 
     report_path.parent.mkdir(parents=True, exist_ok=True)
     report_path.write_text(json.dumps(expected_report, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
-    print("✅ Plugin compatibility report synced.")
+    print("PASS: Plugin compatibility report synced.")
     return 0
 
 

@@ -297,9 +297,9 @@ Type 'YES' to proceed, or anything else to cancel:
      ```markdown
      ### {track-id}: {title}
 
-     **Reason:** {reason}
-     **Archived:** YYYY-MM-DD
-     **Folder:** ./tracks/\_archive/{track-id}/
+**Reason:** {reason}
+**Archived:** YYYY-MM-DD
+**Folder:** ./tracks/\_archive/{track-id}/
      ```
 
 5. Git commit:

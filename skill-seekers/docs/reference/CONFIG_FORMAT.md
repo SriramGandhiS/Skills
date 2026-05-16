@@ -428,7 +428,7 @@ Combine multiple sources into one skill with conflict detection.
   "name": "react-complete",
   "description": "React docs + GitHub + examples",
   "merge_mode": "claude-enhanced",
-  
+
   "sources": [
     {
       "type": "docs",
@@ -458,7 +458,7 @@ Combine multiple sources into one skill with conflict detection.
       "directory": "./react-examples"
     }
   ],
-  
+
   "conflict_detection": {
     "enabled": true,
     "rules": [
@@ -468,7 +468,7 @@ Combine multiple sources into one skill with conflict detection.
       }
     ]
   },
-  
+
   "output_structure": {
     "group_by_source": false,
     "cross_reference": true
@@ -500,7 +500,7 @@ Unified configs support defining enhancement workflows at the top level:
   "name": "react-complete",
   "description": "React docs + GitHub with security enhancement",
   "merge_mode": "claude-enhanced",
-  
+
   "workflows": ["security-focus", "api-documentation"],
   "workflow_stages": [
     {
@@ -512,7 +512,7 @@ Unified configs support defining enhancement workflows at the top level:
     "focus_area": "performance",
     "detail_level": "comprehensive"
   },
-  
+
   "sources": [
     {"type": "docs", "base_url": "https://react.dev/"},
     {"type": "github", "repo": "facebook/react"}
@@ -622,7 +622,7 @@ Map URL patterns to content categories:
 {
   "categories": {
     "getting_started": [
-      "intro", "tutorial", "quickstart", 
+      "intro", "tutorial", "quickstart",
       "installation", "getting-started"
     ],
     "core_concepts": [

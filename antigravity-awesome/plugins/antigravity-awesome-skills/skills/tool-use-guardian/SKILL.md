@@ -67,11 +67,11 @@ Guardian tracks failure patterns per tool. After 3+ failures of the same type, i
 
 ## Best Practices
 
-- ✅ Let Guardian wrap all external tool calls automatically
-- ✅ Review Guardian's reliability reports to identify flaky tools
-- ✅ Use checkpoint recovery for long chains
-- ❌ Don't disable retry logic for rate-limited APIs
-- ❌ Don't ignore repeated failure warnings
+- PASS: Let Guardian wrap all external tool calls automatically
+- PASS: Review Guardian's reliability reports to identify flaky tools
+- PASS: Use checkpoint recovery for long chains
+- FAIL: Don't disable retry logic for rate-limited APIs
+- FAIL: Don't ignore repeated failure warnings
 
 ## Related Skills
 

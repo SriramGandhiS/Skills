@@ -16,7 +16,7 @@ Use this skill when making Python architecture decisions, choosing frameworks, d
 
 ---
 
-## ⚠️ How to Use This Skill
+## WARNING: How to Use This Skill
 
 This skill teaches **decision-making principles**, not fixed code to copy.
 
@@ -426,7 +426,7 @@ Before implementing:
 
 ## 11. Anti-Patterns to Avoid
 
-### ❌ DON'T:
+### FAIL: DON'T:
 - Default to Django for simple APIs (FastAPI may be better)
 - Use sync libraries in async code
 - Skip type hints for public APIs
@@ -434,7 +434,7 @@ Before implementing:
 - Ignore N+1 queries
 - Mix async and sync carelessly
 
-### ✅ DO:
+### PASS: DO:
 - Choose framework based on context
 - Ask about async requirements
 - Use Pydantic for validation

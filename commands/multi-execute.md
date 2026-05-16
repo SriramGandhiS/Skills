@@ -25,7 +25,7 @@ $ARGUMENTS
 **Call Syntax** (parallel: use `run_in_background: true`):
 
 ```
-# Resume session call (recommended) - Implementation Prototype
+## Resume session call (recommended) - Implementation Prototype
 Bash({
   command: "~/.claude/bin/codeagent-wrapper {{LITE_MODE_FLAG}}--backend <codex|gemini> {{GEMINI_MODEL_FLAG}}resume <SESSION_ID> - \"$PWD\" <<'EOF'
 ROLE_FILE: <role prompt path>
@@ -40,7 +40,7 @@ EOF",
   description: "Brief description"
 })
 
-# New session call - Implementation Prototype
+## New session call - Implementation Prototype
 Bash({
   command: "~/.claude/bin/codeagent-wrapper {{LITE_MODE_FLAG}}--backend <codex|gemini> {{GEMINI_MODEL_FLAG}}- \"$PWD\" <<'EOF'
 ROLE_FILE: <role prompt path>
@@ -82,16 +82,16 @@ EOF",
 ```
 
 **Model Parameter Notes**:
-- `{{GEMINI_MODEL_FLAG}}`: When using `--backend gemini`, replace with `--gemini-model gemini-3-pro-preview` (note trailing space); use empty string for codex
+- `{{GEMINI_MODEL_FLAG}}`: When using`--backend gemini`, replace with`--gemini-model gemini-3-pro-preview` (note trailing space); use empty string for codex
 
 **Role Prompts**:
 
 | Phase | Codex | Gemini |
 |-------|-------|--------|
-| Implementation | `~/.claude/.ccg/prompts/codex/architect.md` | `~/.claude/.ccg/prompts/gemini/frontend.md` |
-| Review | `~/.claude/.ccg/prompts/codex/reviewer.md` | `~/.claude/.ccg/prompts/gemini/reviewer.md` |
+| Implementation | `~/.claude/.ccg/prompts/codex/architect.md`|`~/.claude/.ccg/prompts/gemini/frontend.md` |
+| Review | `~/.claude/.ccg/prompts/codex/reviewer.md`|`~/.claude/.ccg/prompts/gemini/reviewer.md` |
 
-**Session Reuse**: If `/ccg:plan` provided SESSION_ID, use `resume <SESSION_ID>` to reuse context.
+**Session Reuse**: If `/ccg:plan`provided SESSION_ID, use`resume <SESSION_ID>` to reuse context.
 
 **Wait for Background Tasks** (max timeout 600000ms = 10 minutes):
 
@@ -160,7 +160,7 @@ mcp__ace-tool__search_context({
 1. **Glob**: Find target files from plan's "Key Files" table (e.g., `Glob("src/components/**/*.tsx")`)
 2. **Grep**: Search for key symbols, function names, type definitions across the codebase
 3. **Read**: Read the discovered files to gather complete context
-4. **Task (Explore agent)**: For broader exploration, use `Task` with `subagent_type: "Explore"`
+4. **Task (Explore agent)**: For broader exploration, use `Task`with`subagent_type: "Explore"`
 
 **After Retrieval**:
 - Organize retrieved code snippets
@@ -184,7 +184,7 @@ mcp__ace-tool__search_context({
 3. OUTPUT: `Unified Diff Patch ONLY. Strictly prohibit any actual modifications.`
 4. **Gemini is frontend design authority, its CSS/React/Vue prototype is the final visual baseline**
 5. **WARNING**: Ignore Gemini's backend logic suggestions
-6. If plan contains `GEMINI_SESSION`: prefer `resume <GEMINI_SESSION>`
+6. If plan contains `GEMINI_SESSION`: prefer`resume <GEMINI_SESSION>`
 
 #### Route B: Backend/Logic/Algorithms → Codex
 
@@ -192,7 +192,7 @@ mcp__ace-tool__search_context({
 2. Input: Plan content + retrieved context + target files
 3. OUTPUT: `Unified Diff Patch ONLY. Strictly prohibit any actual modifications.`
 4. **Codex is backend logic authority, leverage its logical reasoning and debug capabilities**
-5. If plan contains `CODEX_SESSION`: prefer `resume <CODEX_SESSION>`
+5. If plan contains `CODEX_SESSION`: prefer`resume <CODEX_SESSION>`
 
 #### Route C: Fullstack → Parallel Calls
 
@@ -200,9 +200,9 @@ mcp__ace-tool__search_context({
    - Gemini: Handle frontend part
    - Codex: Handle backend part
 2. Wait for both models' complete results with `TaskOutput`
-3. Each uses corresponding `SESSION_ID` from plan for `resume` (create new session if missing)
+3. Each uses corresponding `SESSION_ID`from plan for`resume` (create new session if missing)
 
-**Follow the `IMPORTANT` instructions in `Multi-Model Call Specification` above**
+**Follow the `IMPORTANT`instructions in`Multi-Model Call Specification` above**
 
 ---
 
@@ -303,10 +303,10 @@ After audit passes, report to user:
 ## Usage
 
 ```bash
-# Execute plan file
+## Execute plan file
 /ccg:execute .claude/plan/feature-name.md
 
-# Execute task directly (for plans already discussed in context)
+## Execute task directly (for plans already discussed in context)
 /ccg:execute implement user authentication based on previous plan
 ```
 

@@ -120,7 +120,7 @@ The CLI is working but the project isn't linked yet. This is the opportunity to 
    ```
    This reads the git remote URL and matches it to existing Vercel projects that deploy from that repo. It creates `.vercel/repo.json`. This is much more reliable than `vercel link` (without `--repo`), which tries to match by directory name and often fails when the local folder and Vercel project are named differently.
 
-   **If there is no git remote**, fall back to standard linking:
+**If there is no git remote**, fall back to standard linking:
    ```bash
    vercel link --scope <team-slug>
    ```

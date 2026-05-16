@@ -22,9 +22,9 @@ npm run claw
 
 | 变量 | 默认值 | 描述 |
 |----------|---------|-------------|
-| `CLAW_SESSION` | `default` | 会话名称（字母数字 + 连字符） |
+| `CLAW_SESSION`|`default` | 会话名称（字母数字 + 连字符） |
 | `CLAW_SKILLS` | *(空)* | 启动时加载的以逗号分隔的技能列表 |
-| `CLAW_MODEL` | `sonnet` | 会话的默认模型 |
+| `CLAW_MODEL`|`sonnet` | 会话的默认模型 |
 
 ## REPL 命令
 

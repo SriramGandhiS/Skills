@@ -6,25 +6,25 @@ labels: 'type: documentation'
 assignees: ''
 ---
 
-## 📚 Documentation Issue
+## Documentation Issue
 
 What documentation needs to be improved, added, or fixed?
 
-## 📍 Location
+## Location
 
 - **File:** [e.g., README.md, docs/CLAUDE.md]
 - **Section:** [e.g., Installation, Configuration]
 - **URL:** [if applicable]
 
-## ❌ Current State
+## FAIL: Current State
 
 Describe what's currently unclear, missing, or incorrect.
 
-## ✅ Proposed Improvement
+## PASS: Proposed Improvement
 
 How should the documentation be changed?
 
-## 🎯 Target Audience
+## Target Audience
 
 Who would benefit from this documentation improvement?
 - [ ] New users
@@ -32,10 +32,10 @@ Who would benefit from this documentation improvement?
 - [ ] Contributors
 - [ ] API users
 
-## 📝 Additional Context
+## Additional Context
 
 Any additional context or examples that would help.
 
-## 🔗 Related Issues
+## Related Issues
 
 Link to any related issues or PRs.

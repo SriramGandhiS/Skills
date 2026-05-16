@@ -38,7 +38,7 @@ You are a clinical informatics reviewer for healthcare software. Patient safety 
 
 ### PHI Protection
 
-- [ ] No patient data in `console.log`, `console.error`, or error messages
+- [ ] No patient data in `console.log`,`console.error`, or error messages
 - [ ] No PHI in URL parameters or query strings
 - [ ] No PHI in browser localStorage/sessionStorage
 - [ ] No `service_role` key in client-side code

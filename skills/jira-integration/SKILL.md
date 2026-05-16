@@ -1,4 +1,4 @@
-﻿---
+---
 name: jira-integration
 description: Use this skill when retrieving Jira tickets, analyzing requirements, updating ticket status, adding comments, or transitioning issues. Provides Jira API patterns via MCP or direct REST calls.
 origin: ECC
@@ -25,9 +25,9 @@ Install the `mcp-atlassian` MCP server. This exposes Jira tools directly to your
 
 **Requirements:**
 - Python 3.10+
-- `uvx` (from `uv`), installed via your package manager or the official `uv` installation documentation
+- `uvx`(from`uv`), installed via your package manager or the official`uv` installation documentation
 
-**Add to your MCP config** (e.g., `~/.claude.json` â†’ `mcpServers`):
+**Add to your MCP config** (e.g., `~/.claude.json`â†’`mcpServers`):
 
 ```json
 {
@@ -44,7 +44,7 @@ Install the `mcp-atlassian` MCP server. This exposes Jira tools directly to your
 }
 ```
 
-> **Security:** Never hardcode secrets. Prefer setting `JIRA_URL`, `JIRA_EMAIL`, and `JIRA_API_TOKEN` in your system environment (or a secrets manager). Only use the MCP `env` block for local, uncommitted config files.
+> **Security:** Never hardcode secrets. Prefer setting `JIRA_URL`,`JIRA_EMAIL`, and`JIRA_API_TOKEN`in your system environment (or a secrets manager). Only use the MCP`env` block for local, uncommitted config files.
 
 **To get a Jira API token:**
 1. Go to <https://id.atlassian.com/manage-profile/security/api-tokens>
@@ -59,7 +59,7 @@ If MCP is not available, use the Jira REST API v3 directly via `curl` or a helpe
 
 | Variable | Description |
 |----------|-------------|
-| `JIRA_URL` | Your Jira instance URL (e.g., `https://yourorg.atlassian.net`) |
+| `JIRA_URL`| Your Jira instance URL (e.g.,`https://yourorg.atlassian.net`) |
 | `JIRA_EMAIL` | Your Atlassian account email |
 | `JIRA_API_TOKEN` | API token from id.atlassian.com |
 
@@ -71,8 +71,8 @@ When the `mcp-atlassian` MCP server is configured, these tools are available:
 
 | Tool | Purpose | Example |
 |------|---------|---------|
-| `jira_search` | JQL queries | `project = PROJ AND status = "In Progress"` |
-| `jira_get_issue` | Fetch full issue details by key | `PROJ-1234` |
+| `jira_search`| JQL queries |`project = PROJ AND status = "In Progress"` |
+| `jira_get_issue`| Fetch full issue details by key |`PROJ-1234` |
 | `jira_create_issue` | Create issues (Task, Bug, Story, Epic) | New bug report |
 | `jira_update_issue` | Update fields (summary, description, assignee) | Change assignee |
 | `jira_transition_issue` | Change status | Move to "In Review" |
@@ -135,11 +135,11 @@ curl -s -X POST -u "$JIRA_EMAIL:$JIRA_API_TOKEN" \
 ### Transition a Ticket
 
 ```bash
-# 1. Get available transitions
+## 1. Get available transitions
 curl -s -u "$JIRA_EMAIL:$JIRA_API_TOKEN" \
   "$JIRA_URL/rest/api/3/issue/PROJ-1234/transitions" | jq '.transitions[] | {id, name: .name}'
 
-# 2. Execute transition (replace TRANSITION_ID)
+## 2. Execute transition (replace TRANSITION_ID)
 curl -s -X POST -u "$JIRA_EMAIL:$JIRA_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"transition": {"id": "TRANSITION_ID"}}' \
@@ -268,7 +268,7 @@ Coverage: XX%
 
 - **Never hardcode** Jira API tokens in source code or skill files
 - **Always use** environment variables or a secrets manager
-- **Add `.env`** to `.gitignore` in every project
+- **Add `.env`** to`.gitignore` in every project
 - **Rotate tokens** immediately if exposed in git history
 - **Use least-privilege** API tokens scoped to required projects
 - **Validate** that credentials are set before making API calls â€” fail fast with a clear message
@@ -279,8 +279,8 @@ Coverage: XX%
 |---|---|---|
 | `401 Unauthorized` | Invalid or expired API token | Regenerate at id.atlassian.com |
 | `403 Forbidden` | Token lacks project permissions | Check token scopes and project access |
-| `404 Not Found` | Wrong ticket key or base URL | Verify `JIRA_URL` and ticket key |
-| `spawn uvx ENOENT` | IDE cannot find `uvx` on PATH | Use full path (e.g., `~/.local/bin/uvx`) or set PATH in `~/.zprofile` |
+| `404 Not Found`| Wrong ticket key or base URL | Verify`JIRA_URL` and ticket key |
+| `spawn uvx ENOENT`| IDE cannot find`uvx`on PATH | Use full path (e.g.,`~/.local/bin/uvx`) or set PATH in`~/.zprofile` |
 | Connection timeout | Network/VPN issue | Check VPN connection and firewall rules |
 
 ## Best Practices

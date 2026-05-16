@@ -346,7 +346,7 @@ class GitHubScraper(SkillConverter):
             # Save extracted data
             self._save_data()
 
-            logger.info(f"✅ Scraping complete! Data saved to: {self.data_file}")
+            logger.info(f"PASS: Scraping complete! Data saved to: {self.data_file}")
             return self.extracted_data
 
         except RateLimitExceededException:
@@ -1033,7 +1033,7 @@ class GitHubToSkillConverter:
         # Generate reference files
         self._generate_references()
 
-        logger.info(f"✅ Skill built successfully: {self.skill_dir}/")
+        logger.info(f"PASS: Skill built successfully: {self.skill_dir}/")
 
     def _generate_skill_md(self):
         """Generate main SKILL.md file (rich version with C3.x data if available)."""
@@ -1081,7 +1081,7 @@ Use this skill when you need to:
 """
 
         # Add Quick Reference section (enhanced with C3.x if available)
-        skill_content += "\n## ⚡ Quick Reference\n\n"
+        skill_content += "\n##  Quick Reference\n\n"
 
         # Repository info
         skill_content += "### Repository Info\n"
@@ -1119,7 +1119,7 @@ Use this skill when you need to:
         skill_content += self._format_recent_releases() + "\n\n"
 
         # Available References
-        skill_content += "## 📖 Available References\n\n"
+        skill_content += "##  Available References\n\n"
         skill_content += "- `references/README.md` - Complete README documentation\n"
         skill_content += "- `references/CHANGELOG.md` - Version history and changes\n"
         skill_content += "- `references/issues.md` - Recent GitHub issues\n"
@@ -1150,7 +1150,7 @@ Use this skill when you need to:
                 )
 
         # Usage
-        skill_content += "\n## 💻 Usage\n\n"
+        skill_content += "\n##  Usage\n\n"
         skill_content += "See README.md for complete usage instructions and examples.\n\n"
 
         # Footer
@@ -1249,7 +1249,7 @@ Use this skill when you need to:
         if not high_value:
             return ""
 
-        content = "## 📝 Code Examples\n\n"
+        content = "##  Code Examples\n\n"
         content += "*High-quality examples from codebase (C3.2)*\n\n"
 
         # Top 10 examples
@@ -1271,7 +1271,7 @@ Use this skill when you need to:
         if not api_ref:
             return ""
 
-        content = "## 🔧 API Reference\n\n"
+        content = "##  API Reference\n\n"
         content += "*Extracted from codebase analysis (C2.5)*\n\n"
 
         # Top 5 modules
@@ -1294,7 +1294,7 @@ Use this skill when you need to:
         if not arch_data:
             return ""
 
-        content = "## 🏗️ Architecture Overview\n\n"
+        content = "##  Architecture Overview\n\n"
         content += "*From C3.7 codebase analysis*\n\n"
 
         # Architecture patterns
@@ -1315,7 +1315,7 @@ Use this skill when you need to:
             if total_deps > 0:
                 content += f"**Dependencies:** {total_deps} total"
                 if circular > 0:
-                    content += f" (⚠️  {circular} circular dependencies detected)"
+                    content += f" (WARNING:  {circular} circular dependencies detected)"
                 content += "\n\n"
 
         content += "*See `references/codebase_analysis/ARCHITECTURE.md` for complete overview*\n\n"
@@ -1328,7 +1328,7 @@ Use this skill when you need to:
         if not issues:
             return ""
 
-        content = "## ⚠️ Known Issues\n\n"
+        content = "## WARNING: Known Issues\n\n"
         content += "*Recent issues from GitHub*\n\n"
 
         # Top 5 issues
@@ -1501,7 +1501,7 @@ url: "{url}"
         # Build tree structure
         for item in file_tree:
             indent = "  " * item["path"].count("/")
-            icon = "📁" if item["type"] == "dir" else "📄"
+            icon = "" if item["type"] == "dir" else ""
             content += f"{indent}{icon} {os.path.basename(item['path'])}\n"
 
         content += "```\n"

@@ -22,9 +22,9 @@ origin: ECC
 ### 阶段 1：构建验证
 
 ```bash
-# Check if project builds
+## Check if project builds
 npm run build 2>&1 | tail -20
-# OR
+## OR
 pnpm build 2>&1 | tail -20
 ```
 
@@ -33,10 +33,10 @@ pnpm build 2>&1 | tail -20
 ### 阶段 2：类型检查
 
 ```bash
-# TypeScript projects
+## TypeScript projects
 npx tsc --noEmit 2>&1 | head -30
 
-# Python projects
+## Python projects
 pyright . 2>&1 | head -30
 ```
 
@@ -45,21 +45,21 @@ pyright . 2>&1 | head -30
 ### 阶段 3：代码规范检查
 
 ```bash
-# JavaScript/TypeScript
+## JavaScript/TypeScript
 npm run lint 2>&1 | head -30
 
-# Python
+## Python
 ruff check . 2>&1 | head -30
 ```
 
 ### 阶段 4：测试套件
 
 ```bash
-# Run tests with coverage
+## Run tests with coverage
 npm run test -- --coverage 2>&1 | tail -50
 
-# Check coverage threshold
-# Target: 80% minimum
+## Check coverage threshold
+## Target: 80% minimum
 ```
 
 报告：
@@ -72,18 +72,18 @@ npm run test -- --coverage 2>&1 | tail -50
 ### 阶段 5：安全扫描
 
 ```bash
-# Check for secrets
+## Check for secrets
 grep -rn "sk-" --include="*.ts" --include="*.js" . 2>/dev/null | head -10
 grep -rn "api_key" --include="*.ts" --include="*.js" . 2>/dev/null | head -10
 
-# Check for console.log
+## Check for console.log
 grep -rn "console.log" --include="*.ts" --include="*.tsx" src/ 2>/dev/null | head -10
 ```
 
 ### 阶段 6：差异审查
 
 ```bash
-# Show what changed
+## Show what changed
 git diff --stat
 git diff HEAD~1 --name-only
 ```

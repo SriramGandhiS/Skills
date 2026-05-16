@@ -1,4 +1,4 @@
-﻿---
+---
 name: perl-testing
 description: Perl testing patterns using Test2::V0, Test::More, prove runner, mocking, coverage with Devel::Cover, and TDD methodology.
 origin: ECC
@@ -22,8 +22,8 @@ Comprehensive testing strategies for Perl applications using Test2::V0, Test::Mo
 Always follow the RED-GREEN-REFACTOR cycle.
 
 ```perl
-# Step 1: RED â€” Write a failing test
-# t/unit/calculator.t
+## Step 1: RED â€” Write a failing test
+## t/unit/calculator.t
 use v5.36;
 use Test2::V0;
 
@@ -38,8 +38,8 @@ subtest 'addition' => sub {
 
 done_testing;
 
-# Step 2: GREEN â€” Write minimal implementation
-# lib/Calculator.pm
+## Step 2: GREEN â€” Write minimal implementation
+## lib/Calculator.pm
 package Calculator;
 use v5.36;
 use Moo;
@@ -50,8 +50,8 @@ sub add($self, $a, $b) {
 
 1;
 
-# Step 3: REFACTOR â€” Improve while tests stay green
-# Run: prove -lv t/unit/calculator.t
+## Step 3: REFACTOR â€” Improve while tests stay green
+## Run: prove -lv t/unit/calculator.t
 ```
 
 ## Test::More Fundamentals
@@ -64,29 +64,29 @@ The standard Perl testing module â€” widely used, ships with core.
 use v5.36;
 use Test::More;
 
-# Plan upfront or use done_testing
-# plan tests => 5;  # Fixed plan (optional)
+## Plan upfront or use done_testing
+## plan tests => 5;  # Fixed plan (optional)
 
-# Equality
+## Equality
 is($result, 42, 'returns correct value');
 isnt($result, 0, 'not zero');
 
-# Boolean
+## Boolean
 ok($user->is_active, 'user is active');
 ok(!$user->is_banned, 'user is not banned');
 
-# Deep comparison
+## Deep comparison
 is_deeply(
     $got,
     { name => 'Alice', roles => ['admin'] },
     'returns expected structure'
 );
 
-# Pattern matching
+## Pattern matching
 like($error, qr/not found/i, 'error mentions not found');
 unlike($output, qr/password/, 'output hides password');
 
-# Type check
+## Type check
 isa_ok($obj, 'MyApp::User');
 can_ok($obj, 'save', 'delete');
 
@@ -99,7 +99,7 @@ done_testing;
 use v5.36;
 use Test::More;
 
-# Skip tests conditionally
+## Skip tests conditionally
 SKIP: {
     skip 'No database configured', 2 unless $ENV{TEST_DB};
 
@@ -108,7 +108,7 @@ SKIP: {
     is($db->version, '15', 'correct PostgreSQL version');
 }
 
-# Mark expected failures
+## Mark expected failures
 TODO: {
     local $TODO = 'Caching not yet implemented';
     is($cache->get('key'), 'value', 'cache returns value');
@@ -135,7 +135,7 @@ Test2::V0 is the modern replacement for Test::More â€” richer assertions, b
 use v5.36;
 use Test2::V0;
 
-# Hash builder â€” check partial structure
+## Hash builder â€” check partial structure
 is(
     $user->to_hash,
     hash {
@@ -148,7 +148,7 @@ is(
     'user has expected fields'
 );
 
-# Array builder
+## Array builder
 is(
     $result,
     array {
@@ -159,7 +159,7 @@ is(
     'result matches expected list'
 );
 
-# Bag â€” order-independent comparison
+## Bag â€” order-independent comparison
 is(
     $tags,
     bag {
@@ -200,17 +200,17 @@ done_testing;
 use v5.36;
 use Test2::V0;
 
-# Test that code dies
+## Test that code dies
 like(
     dies { divide(10, 0) },
     qr/Division by zero/,
     'dies on division by zero'
 );
 
-# Test that code lives
+## Test that code lives
 ok(lives { divide(10, 2) }, 'division succeeds') or note($@);
 
-# Combined pattern
+## Combined pattern
 subtest 'error handling' => sub {
     ok(lives { parse_config('valid.json') }, 'valid config parses');
     like(
@@ -248,28 +248,28 @@ t/
 ### prove Commands
 
 ```bash
-# Run all tests
+## Run all tests
 prove -l t/
 
-# Verbose output
+## Verbose output
 prove -lv t/
 
-# Run specific test
+## Run specific test
 prove -lv t/unit/user.t
 
-# Recursive search
+## Recursive search
 prove -lr t/
 
-# Parallel execution (8 jobs)
+## Parallel execution (8 jobs)
 prove -lr -j8 t/
 
-# Run only failing tests from last run
+## Run only failing tests from last run
 prove -l --state=failed t/
 
-# Colored output with timer
+## Colored output with timer
 prove -l --color --timer t/
 
-# TAP output for CI
+## TAP output for CI
 prove -l --formatter TAP::Formatter::JUnit t/ > results.xml
 ```
 
@@ -310,7 +310,7 @@ subtest 'file processing' => sub {
 
 ### Shared Test Helpers
 
-Place reusable helpers in `t/lib/TestHelper.pm` and load with `use lib 't/lib'`. Export factory functions like `create_test_db()`, `create_temp_dir()`, and `fixture_path()` via `Exporter`.
+Place reusable helpers in `t/lib/TestHelper.pm`and load with`use lib 't/lib'`. Export factory functions like`create_test_db()`,`create_temp_dir()`, and`fixture_path()`via`Exporter`.
 
 ## Mocking
 
@@ -343,32 +343,32 @@ subtest 'mock external API' => sub {
     # Mock is automatically restored when $mock goes out of scope
 };
 
-# Bad: Monkey-patching without restoration
-# *MyApp::API::fetch_user = sub { ... };  # NEVER â€” leaks across tests
+## Bad: Monkey-patching without restoration
+## *MyApp::API::fetch_user = sub { ... };  # NEVER â€” leaks across tests
 ```
 
-For lightweight mock objects, use `Test::MockObject` to create injectable test doubles with `->mock()` and verify calls with `->called_ok()`.
+For lightweight mock objects, use `Test::MockObject`to create injectable test doubles with`->mock()`and verify calls with`->called_ok()`.
 
 ## Coverage with Devel::Cover
 
 ### Running Coverage
 
 ```bash
-# Basic coverage report
+## Basic coverage report
 cover -test
 
-# Or step by step
+## Or step by step
 perl -MDevel::Cover -Ilib t/unit/user.t
 cover
 
-# HTML report
+## HTML report
 cover -report html
 open cover_db/coverage.html
 
-# Specific thresholds
+## Specific thresholds
 cover -test -report text | grep 'Total'
 
-# CI-friendly: fail under threshold
+## CI-friendly: fail under threshold
 cover -test && cover -report text -select '^lib/' \
   | perl -ne 'if (/Total.*?(\d+\.\d+)/) { exit 1 if $1 < 80 }'
 ```
@@ -404,7 +404,7 @@ done_testing;
 - **Use Test2::V0**: Modern assertions, better diagnostics
 - **Use subtests**: Group related assertions, isolate state
 - **Mock external dependencies**: Network, database, file system
-- **Use `prove -l`**: Always include lib/ in `@INC`
+- **Use `prove -l`**: Always include lib/ in`@INC`
 - **Name tests clearly**: `'user login with invalid password fails'`
 - **Test edge cases**: Empty strings, undef, zero, boundary values
 - **Aim for 80%+ coverage**: Focus on business logic paths
@@ -442,12 +442,12 @@ done_testing;
 ### Forgetting `done_testing`
 
 ```perl
-# Bad: Test file runs but doesn't verify all tests executed
+## Bad: Test file runs but doesn't verify all tests executed
 use Test2::V0;
 is(1, 1, 'works');
-# Missing done_testing â€” silent bugs if test code is skipped
+## Missing done_testing â€” silent bugs if test code is skipped
 
-# Good: Always end with done_testing
+## Good: Always end with done_testing
 use Test2::V0;
 is(1, 1, 'works');
 done_testing;
@@ -456,11 +456,11 @@ done_testing;
 ### Missing `-l` Flag
 
 ```bash
-# Bad: Modules in lib/ not found
+## Bad: Modules in lib/ not found
 prove t/unit/user.t
-# Can't locate MyApp/User.pm in @INC
+## Can't locate MyApp/User.pm in @INC
 
-# Good: Include lib/ in @INC
+## Good: Include lib/ in @INC
 prove -l t/unit/user.t
 ```
 
@@ -470,6 +470,6 @@ Mock the *dependency*, not the code under test. If your test only verifies that 
 
 ### Test Pollution
 
-Use `my` variables inside subtests â€” never `our` â€” to prevent state leaking between tests.
+Use `my`variables inside subtests â€” never`our` â€” to prevent state leaking between tests.
 
 **Remember**: Tests are your safety net. Keep them fast, focused, and independent. Use Test2::V0 for new projects, prove for running, and Devel::Cover for accountability.

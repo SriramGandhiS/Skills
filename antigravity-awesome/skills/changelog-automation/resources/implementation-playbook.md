@@ -419,22 +419,22 @@ cz check --rev-range HEAD~5..HEAD
 ```markdown
 ## What's Changed
 
-### 🚀 Features
+### Features
 {{ range .Features }}
 - {{ .Title }} by @{{ .Author }} in #{{ .PR }}
 {{ end }}
 
-### 🐛 Bug Fixes
+### Bug Fixes
 {{ range .Fixes }}
 - {{ .Title }} by @{{ .Author }} in #{{ .PR }}
 {{ end }}
 
-### 📚 Documentation
+### Documentation
 {{ range .Docs }}
 - {{ .Title }} by @{{ .Author }} in #{{ .PR }}
 {{ end }}
 
-### 🔧 Maintenance
+### Maintenance
 {{ range .Chores }}
 - {{ .Title }} by @{{ .Author }} in #{{ .PR }}
 {{ end }}
@@ -458,11 +458,11 @@ by 40%. It also includes important security updates.
 
 ## Highlights
 
-### 🌙 Dark Mode
+### Dark Mode
 Users can now switch to dark mode from settings. The preference is
 automatically saved and synced across devices.
 
-### ⚡ Performance
+### Performance
 - Checkout flow is 40% faster
 - Reduced bundle size by 15%
 

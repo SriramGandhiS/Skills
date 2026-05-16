@@ -1,6 +1,6 @@
 # Using output options
 
-The CLI allows you to customize the output format of some commands using the `--output` flag. 
+The CLI allows you to customize the output format of some commands using the `--output` flag.
 This guide shows you how to use this feature and use it in combination with other tools.
 
 ## JSON
@@ -70,7 +70,7 @@ $ hcloud location list --output json
 Once again, you can use `jq` to filter the output. Following example shows how to get the names of all locations of which the network zone is `eu-central`:
 
 ```bash
-$ hcloud location list --output json | jq '[.[] | select(.network_zone == "eu-central") | .name]'    
+$ hcloud location list --output json | jq '[.[] | select(.network_zone == "eu-central") | .name]'
 [
   "fsn1",
   "nbg1",
@@ -96,7 +96,6 @@ network_zone: eu-central
 
 For YAML, you can use `yq` instead of `jq`.
 
-
 ```bash
 $ hcloud location list --output yaml | yq '.[] | [{"id": .id, "name": .name}]'
 - id: 1
@@ -115,7 +114,7 @@ $ hcloud location list --output yaml | yq '.[] | [{"id": .id, "name": .name}]'
 
 ## Go Template Format
 
-`describe` commands support the Go string template format as well. You can read up on the syntax in the 
+`describe` commands support the Go string template format as well. You can read up on the syntax in the
 [Go documentation](https://pkg.go.dev/text/template). The data structures passed to the template are defined
 by our API and can be found in [hcloud-go](https://pkg.go.dev/github.com/hetznercloud/hcloud-go/v2/hcloud/schema).
 
@@ -139,13 +138,13 @@ if not using JSON or YAML.
 This option removes the header from the output table.
 
 ```bash
-$ hcloud location list --output noheader 
-1   fsn1   Falkenstein DC Park 1   eu-central     DE   Falkenstein  
-2   nbg1   Nuremberg DC Park 1     eu-central     DE   Nuremberg    
-3   hel1   Helsinki DC Park 1      eu-central     FI   Helsinki     
-4   ash    Ashburn, VA             us-east        US   Ashburn, VA  
+$ hcloud location list --output noheader
+1   fsn1   Falkenstein DC Park 1   eu-central     DE   Falkenstein
+2   nbg1   Nuremberg DC Park 1     eu-central     DE   Nuremberg
+3   hel1   Helsinki DC Park 1      eu-central     FI   Helsinki
+4   ash    Ashburn, VA             us-east        US   Ashburn, VA
 5   hil    Hillsboro, OR           us-west        US   Hillsboro, OR
-6   sin    Singapore               ap-southeast   SG   Singapore   
+6   sin    Singapore               ap-southeast   SG   Singapore
 ```
 
 ### columns
@@ -153,13 +152,13 @@ $ hcloud location list --output noheader
 This option allows you to filter by columns.
 
 ```bash
-$ hcloud location list --output columns=id,name,network_zone 
+$ hcloud location list --output columns=id,name,network_zone
 ID   NAME   NETWORK ZONE
-1    fsn1   eu-central  
-2    nbg1   eu-central  
-3    hel1   eu-central  
-4    ash    us-east     
-5    hil    us-west     
+1    fsn1   eu-central
+2    nbg1   eu-central
+3    hel1   eu-central
+4    ash    us-east
+5    hil    us-west
 6    sin    ap-southeast
 ```
 

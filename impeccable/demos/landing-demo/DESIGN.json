@@ -208,7 +208,7 @@
       "kind": "card",
       "refersTo": "card",
       "description": "Tonal-layered card on cream-warm with hairline border. Flat, no shadow.",
-      "html": "<div class=\"ds-card\">\n  <div class=\"ds-card-icon\">⚡</div>\n  <h3 class=\"ds-card-title\">Lightning Fast</h3>\n  <p class=\"ds-card-body\">Move from idea to production in minutes.</p>\n</div>",
+      "html": "<div class=\"ds-card\">\n  <div class=\"ds-card-icon\"></div>\n  <h3 class=\"ds-card-title\">Lightning Fast</h3>\n  <p class=\"ds-card-body\">Move from idea to production in minutes.</p>\n</div>",
       "css": ".ds-card { background: #f4ebdc; border: 1px solid #e6dccb; border-radius: 20px; padding: 40px 32px; text-align: center; max-width: 280px; } .ds-card-icon { width: 56px; height: 56px; border-radius: 14px; background: #faf6ef; border: 1px solid #e6dccb; display: inline-flex; align-items: center; justify-content: center; font-size: 28px; margin-bottom: 24px; } .ds-card-title { font-family: 'Fraunces', Georgia, serif; font-weight: 500; font-size: 22px; letter-spacing: -0.01em; margin: 0 0 12px; color: #1f1a15; } .ds-card-body { font-family: 'Inter', system-ui, sans-serif; font-size: 15px; color: #5b4f44; margin: 0; line-height: 1.55; }"
     },
     {

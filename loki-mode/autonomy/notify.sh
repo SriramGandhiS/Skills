@@ -2,14 +2,13 @@
 #===============================================================================
 # Loki Mode - Multi-Channel Notification System
 # Version: 1.0.0
-#
-# Supports: Slack, Discord, Generic Webhooks
+# # Supports: Slack, Discord, Generic Webhooks
 # Environment Variables:
-#   LOKI_SLACK_WEBHOOK    - Slack incoming webhook URL
-#   LOKI_DISCORD_WEBHOOK  - Discord webhook URL
-#   LOKI_WEBHOOK_URL          - Generic webhook URL (any endpoint)
-#   LOKI_PROJECT              - Project name for notifications (optional)
-#   LOKI_NOTIFICATIONS        - Enable/disable all notifications (default: true)
+# LOKI_SLACK_WEBHOOK    - Slack incoming webhook URL
+# LOKI_DISCORD_WEBHOOK  - Discord webhook URL
+# LOKI_WEBHOOK_URL          - Generic webhook URL (any endpoint)
+# LOKI_PROJECT              - Project name for notifications (optional)
+# LOKI_NOTIFICATIONS        - Enable/disable all notifications (default: true)
 #===============================================================================
 
 # Notification settings - normalize boolean values (POSIX compatible)
@@ -65,10 +64,10 @@ _get_slack_color() {
 
 # Map event types to colors for Discord (decimal format)
 # Per requirements:
-#   session_start: blue (3447003)
-#   session_end: green (5763719)
-#   task_complete: green (5763719)
-#   error: red (15548997)
+# session_start: blue (3447003)
+# session_end: green (5763719)
+# task_complete: green (5763719)
+# error: red (15548997)
 _get_discord_color() {
     local event="$1"
     case "$event" in

@@ -227,13 +227,13 @@ From `vite.config.ts` lines 180-185:
 ### Usage Examples
 
 ```typescript
-// ✅ PREFERRED - Use aliases for absolute imports
+// PASS: PREFERRED - Use aliases for absolute imports
 import { apiClient } from '@/lib/apiClient';
 import { SuspenseLoader } from '~components/SuspenseLoader';
 import { postApi } from '~features/posts/api/postApi';
 import type { User } from '~types/user';
 
-// ❌ AVOID - Relative paths from deep nesting
+// FAIL: AVOID - Relative paths from deep nesting
 import { apiClient } from '../../../lib/apiClient';
 import { SuspenseLoader } from '../../../components/SuspenseLoader';
 ```
@@ -280,9 +280,9 @@ CustomAppBar.tsx
 ```
 
 **Avoid:**
-- camelCase: `myComponent.tsx` ❌
-- kebab-case: `my-component.tsx` ❌
-- All caps: `MYCOMPONENT.tsx` ❌
+- camelCase: `myComponent.tsx` FAIL:
+- kebab-case: `my-component.tsx` FAIL:
+- All caps: `MYCOMPONENT.tsx` FAIL:
 
 ### Hooks
 
@@ -426,10 +426,10 @@ export type { MyFeatureData, MyFeatureConfig } from './types';
 
 **Usage:**
 ```typescript
-// ✅ Clean import from feature index
+// PASS: Clean import from feature index
 import { MyFeatureMain, useMyFeature } from '~features/my-feature';
 
-// ❌ Avoid deep imports (but OK if needed)
+// FAIL: Avoid deep imports (but OK if needed)
 import { MyFeatureMain } from '~features/my-feature/components/MyFeatureMain';
 ```
 

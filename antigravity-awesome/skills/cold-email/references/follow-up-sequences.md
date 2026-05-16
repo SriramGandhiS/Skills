@@ -57,8 +57,7 @@ Leverages loss aversion — removing pressure while creating scarcity through wi
 **1-2-3 Format** (reduces friction to near zero):
 
 > Since I haven't heard back, I'll keep it simple. Reply with a number:
->
-> 1 — Interested, let's talk
+> > 1 — Interested, let's talk
 > 2 — Not now, check back in 3 months
 > 3 — Not interested, please stop
 

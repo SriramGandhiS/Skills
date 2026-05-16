@@ -22,7 +22,7 @@ client = Anthropic::Client.new
 client = Anthropic::Client.new(api_key: "your-api-key")
 ```
 
-> ⚠️ **Trailing underscores:** The Ruby SDK uses `system_:` and `send_(` (trailing underscore) to avoid shadowing `Kernel#system` and `Kernel#send`. Use these forms throughout managed-agents code.
+> WARNING: **Trailing underscores:** The Ruby SDK uses `system_:` and `send_(` (trailing underscore) to avoid shadowing `Kernel#system` and `Kernel#send`. Use these forms throughout managed-agents code.
 
 ---
 
@@ -43,7 +43,7 @@ puts "Environment ID: #{environment.id}" # env_...
 
 ## Create an Agent (required first step)
 
-> ⚠️ **There is no inline agent config.** `model`/`system_`/`tools` live on the agent object, not the session. Always start with `client.beta.agents.create()` — the session takes either `agent: agent.id` or the typed hash form `agent: {type: "agent", id: agent.id, version: agent.version}`.
+> WARNING: **There is no inline agent config.** `model`/`system_`/`tools` live on the agent object, not the session. Always start with `client.beta.agents.create()` — the session takes either `agent: agent.id` or the typed hash form `agent: {type: "agent", id: agent.id, version: agent.version}`.
 
 ### Minimal
 
@@ -101,7 +101,7 @@ client.beta.sessions.events.send_(
 )
 ```
 
-> 💡 **Stream-first:** Open the stream *before* (or concurrently with) sending the message. The stream only delivers events that occur after it opens — stream-after-send means early events arrive buffered in one batch. See [Steering Patterns](../../shared/managed-agents-events.md#steering-patterns).
+> **Stream-first:** Open the stream *before* (or concurrently with) sending the message. The stream only delivers events that occur after it opens — stream-after-send means early events arrive buffered in one batch. See [Steering Patterns](../../shared/managed-agents-events.md#steering-patterns).
 
 ---
 
@@ -136,7 +136,7 @@ stream.each do |event|
 end
 ```
 
-> ℹ️ Event `.type` is a Symbol (compare with `:"agent.message"`, not `"agent.message"`).
+> Event `.type` is a Symbol (compare with `:"agent.message"`, not `"agent.message"`).
 
 ### Reconnecting and Tailing
 
@@ -170,7 +170,7 @@ end
 
 ## Provide Custom Tool Result
 
-> ℹ️ The Ruby managed-agents bindings for `user.custom_tool_result` are not yet documented in this skill or in the apps source examples. Refer to `shared/managed-agents-events.md` for the wire format and the `anthropic` Ruby gem repository for the corresponding params.
+> The Ruby managed-agents bindings for `user.custom_tool_result` are not yet documented in this skill or in the apps source examples. Refer to `shared/managed-agents-events.md` for the wire format and the `anthropic` Ruby gem repository for the corresponding params.
 
 ---
 
@@ -229,7 +229,7 @@ client.beta.sessions.resources.delete(resource.id, session_id: session.id)
 
 ## List and Download Session Files
 
-> ℹ️ Listing and downloading files an agent wrote during a session is not yet documented for Ruby in this skill or in the apps source examples. See `shared/managed-agents-events.md` and the `anthropic` Ruby gem repository for the file list/download bindings.
+> Listing and downloading files an agent wrote during a session is not yet documented for Ruby in this skill or in the apps source examples. See `shared/managed-agents-events.md` and the `anthropic` Ruby gem repository for the file list/download bindings.
 
 ---
 

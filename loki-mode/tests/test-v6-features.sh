@@ -2,8 +2,8 @@
 #===============================================================================
 # Loki Mode v6.0.0 Feature Tests
 # Tests for: Dynamic Model Resolution, Issue Providers, loki run,
-#            Blind Validation, Adversarial Testing, Provider Timeout,
-#            Settings CLI, Export/Watch, Knowledge Graph Integration
+# Blind Validation, Adversarial Testing, Provider Timeout,
+# Settings CLI, Export/Watch, Knowledge Graph Integration
 #===============================================================================
 
 set -euo pipefail

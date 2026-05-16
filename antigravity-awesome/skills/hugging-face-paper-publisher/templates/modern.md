@@ -42,7 +42,7 @@ layout: modern
 Modern research requires clear, accessible communication. This template provides a clean, web-friendly format inspired by Distill and modern scientific publications.
 
 <div class="key-insight">
-💡 **Key Insight**: Present your main contribution upfront to engage readers immediately.
+**Key Insight**: Present your main contribution upfront to engage readers immediately.
 </div>
 
 ### Why This Matters
@@ -148,7 +148,7 @@ Present results clearly with tables and visualizations.
 </div>
 
 <div class="insight">
-🔍 **Observation**: Our method achieves state-of-the-art performance with fewer parameters.
+**Observation**: Our method achieves state-of-the-art performance with fewer parameters.
 </div>
 
 ### Analysis
@@ -190,7 +190,7 @@ Synthesize insights from your experiments.
 
 <div class="limitations">
 
-⚠️ **Current Limitations**:
+WARNING: **Current Limitations**:
 
 1. Performance on domain X is limited
 2. Computational requirements are high
@@ -232,9 +232,9 @@ Clearly articulate what's novel about your work.
 
 We presented **{{TITLE}}**, which achieves:
 
-1. ✅ **Main contribution 1**
-2. ✅ **Main contribution 2**
-3. ✅ **Main contribution 3**
+1. PASS: **Main contribution 1**
+2. PASS: **Main contribution 2**
+3. PASS: **Main contribution 3**
 
 Our results demonstrate [key finding], opening new directions for [future work].
 

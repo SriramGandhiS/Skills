@@ -25,7 +25,7 @@ What helps:
 - Consume stdin at the start of shell hooks (`input=$(cat)`).
 - Keep stdout quiet for simple allow/block hooks unless your hook explicitly requires structured stdout.
 - Send human-readable diagnostics to stderr.
-- Use the correct exit codes: `0` allow, `2` block, other non-zero values are treated as errors.
+- Use the correct exit codes: `0`allow,`2` block, other non-zero values are treated as errors.
 
 ```bash
 input=$(cat)

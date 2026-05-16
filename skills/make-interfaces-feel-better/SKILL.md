@@ -1,4 +1,4 @@
-﻿---
+---
 name: make-interfaces-feel-better
 description: Apply concrete design-engineering details that make interfaces feel polished. Use when reviewing or improving UI spacing, typography, borders, shadows, motion, hit areas, icons, text wrapping, and interaction states.
 origin: community
@@ -114,7 +114,7 @@ Never use `transition: all`. Specify the changed properties:
 ```
 
 Use `will-change` only for first-frame stutter on compositor-friendly
-properties such as `transform`, `opacity`, and `filter`. Never use
+properties such as `transform`,`opacity`, and`filter`. Never use
 `will-change: all`.
 
 ### Hit Areas
@@ -147,5 +147,5 @@ Omit principles that you checked but did not change.
 - Enter and exit animations are split, subtle, and interruptible where
   appropriate.
 - Buttons have tactile active states without exaggerated motion.
-- `transition: all` and `will-change: all` are absent.
+- `transition: all`and`will-change: all` are absent.
 - Small controls still have usable hit areas.

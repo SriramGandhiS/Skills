@@ -1,4 +1,4 @@
-﻿---
+---
 name: santa-method
 description: "Multi-agent adversarial verification with convergence loop. Two independent review agents must both pass before output ships."
 origin: "Ronald Skelton - Founder, RapportScore.ai"
@@ -69,7 +69,7 @@ Do NOT use for internal drafts, exploratory research, or tasks with deterministi
 Execute the primary task. No changes to your normal generation workflow. Santa Method is a post-generation verification layer, not a generation strategy.
 
 ```python
-# The generator runs as normal
+## The generator runs as normal
 output = generate(task_spec)
 ```
 
@@ -115,11 +115,11 @@ Be rigorous. Your job is to find problems, not to approve.
 ```
 
 ```python
-# Spawn reviewers in parallel (Claude Code subagents)
+## Spawn reviewers in parallel (Claude Code subagents)
 review_b = Agent(prompt=REVIEWER_PROMPT.format(...), description="Santa Reviewer B")
 review_c = Agent(prompt=REVIEWER_PROMPT.format(...), description="Santa Reviewer C")
 
-# Both run concurrently â€” neither sees the other
+## Both run concurrently â€” neither sees the other
 ```
 
 ### Rubric Design
@@ -195,7 +195,7 @@ for iteration in range(MAX_ITERATIONS):
     review_b = Agent(prompt=REVIEWER_PROMPT.format(output=output, ...))
     review_c = Agent(prompt=REVIEWER_PROMPT.format(output=output, ...))
 
-# Exhausted iterations â€” escalate
+## Exhausted iterations â€” escalate
 log_santa_result(output, MAX_ITERATIONS, "escalated")
 escalate_to_human(output, issues)
 ```
@@ -209,12 +209,12 @@ Critical: each review round uses **fresh agents**. Reviewers must not carry memo
 Subagents provide true context isolation. Each reviewer is a separate process with no shared state.
 
 ```bash
-# In a Claude Code session, use the Agent tool to spawn reviewers
-# Both agents run in parallel for speed
+## In a Claude Code session, use the Agent tool to spawn reviewers
+## Both agents run in parallel for speed
 ```
 
 ```python
-# Pseudocode for Agent tool invocation
+## Pseudocode for Agent tool invocation
 reviewer_b = Agent(
     description="Santa Review B",
     prompt=f"Review this output for quality...\n\nRUBRIC:\n{rubric}\n\nOUTPUT:\n{output}"

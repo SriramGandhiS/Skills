@@ -29,7 +29,7 @@ paths:
 
 ## 认证与会话安全
 
-* 使用 `password_hash()` / `password_verify()` 存储密码。
+* 使用 `password_hash()`/`password_verify()` 存储密码。
 * 在身份验证和权限变更后重新生成会话标识符。
 * 对状态变更的 Web 请求强制实施 CSRF 保护。
 

@@ -6,19 +6,19 @@ body:
   - type: markdown
     attributes:
       value: |
-        ## ⚠️ Read this before you fill anything out
+        ## WARNING: Read this before you fill anything out
 
         A feature adds something new to GSD — a new command, workflow, concept, or integration. Features have the **highest bar** for acceptance because every feature adds permanent maintenance burden to a project built for solo developers.
 
-        **Before opening this issue:**
+**Before opening this issue:**
         - Check [Discussions](https://github.com/gsd-build/get-shit-done/discussions) — has this been proposed and declined before?
         - Read [CONTRIBUTING.md](../../CONTRIBUTING.md#-feature) — understand what "approved-feature" means and why you must wait for it before writing code.
         - Ask yourself: *does this solve a real problem for a solo developer working with an AI coding tool, or is it a feature I personally want?*
 
-        **What happens after you submit:**
+**What happens after you submit:**
         A maintainer will review this spec. If it is incomplete, it will be **closed**, not revised. If it conflicts with GSD's design philosophy, it will be declined. If it is approved, it will be labeled `approved-feature` and you may begin coding.
 
-        **Do not open a PR until this issue is labeled `approved-feature`.**
+**Do not open a PR until this issue is labeled `approved-feature`.**
 
   - type: checkboxes
     id: preflight

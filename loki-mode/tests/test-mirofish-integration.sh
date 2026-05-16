@@ -3,8 +3,7 @@
 # Tests mirofish-adapter.py CLI modes, PRD extraction, report normalization,
 # task generation, fixture validation, loki CLI flag integration, and
 # graceful degradation.
-#
-# Note: Not using -e to allow collecting all test results
+# # Note: Not using -e to allow collecting all test results
 
 set -uo pipefail
 

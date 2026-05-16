@@ -1,8 +1,8 @@
 # Autonomi Loki Mode - High Availability Values
 # -----------------------------------------------
 # Use with: helm install autonomi ./deploy/helm/autonomi \
-#   -f deploy/helm/autonomi/values-production.yaml \
-#   -f deploy/helm/autonomi/values-ha.yaml
+# -f deploy/helm/autonomi/values-production.yaml \
+# -f deploy/helm/autonomi/values-ha.yaml
 
 controlplane:
   replicas: 3

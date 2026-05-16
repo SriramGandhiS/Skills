@@ -1,4 +1,4 @@
-﻿# Creating and Using Services
+# Creating and Using Services
 
 Services in Angular are reusable pieces of code that handle data fetching, business logic, or state management that multiple components or other services need to access.
 

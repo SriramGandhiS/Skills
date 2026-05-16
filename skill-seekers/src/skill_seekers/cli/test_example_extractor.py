@@ -96,7 +96,7 @@ class TestExample:
 
         # Add AI analysis if available (C3.6)
         if self.ai_analysis:
-            md += "\n**🤖 AI Analysis:**  \n"
+            md += "\n** AI Analysis:**  \n"
             if self.ai_analysis.get("explanation"):
                 md += f"*{self.ai_analysis['explanation']}*  \n"
             if self.ai_analysis.get("best_practices"):
@@ -989,7 +989,7 @@ class TestExampleExtractor:
 
                 self.ai_enhancer = TestExampleEnhancer()
             except Exception as e:
-                logger.warning(f"⚠️  Failed to initialize AI enhancer: {e}")
+                logger.warning(f"WARNING:  Failed to initialize AI enhancer: {e}")
                 self.enhance_with_ai = False
 
     def extract_from_directory(self, directory: Path, recursive: bool = True) -> ExampleReport:

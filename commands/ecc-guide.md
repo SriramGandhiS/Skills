@@ -37,7 +37,7 @@ Use these files as the canonical map:
 - `commands/` for maintained slash-command shims
 - `skills/*/SKILL.md` for reusable skill workflows
 - `agents/*.md` for delegated agent roles
-- `hooks/README.md` and `hooks/hooks.json` for hook behavior
+- `hooks/README.md`and`hooks/hooks.json` for hook behavior
 - `manifests/install-*.json` for selective install modules, components, and profiles
 - `scripts/ci/catalog.js --json` for live catalog counts when running inside ECC
 
@@ -59,7 +59,7 @@ Then ask what they want to do next.
 
 ### Topic Lookup
 
-For topics like `skills`, `commands`, `hooks`, `install`, or `agents`:
+For topics like `skills`,`commands`,`hooks`,`install`, or`agents`:
 
 1. Summarize the current surface in 3-6 bullets.
 2. Point to the canonical directories/files.
@@ -79,7 +79,7 @@ For `find: <query>`:
 
 For a specific feature name:
 
-1. Check exact paths first, such as `skills/<name>/SKILL.md`, `commands/<name>.md`, and `agents/<name>.md`.
+1. Check exact paths first, such as `skills/<name>/SKILL.md`,`commands/<name>.md`, and`agents/<name>.md`.
 2. If exact lookup fails, search with `rg`.
 3. Explain what the feature does, when to use it, and what file is canonical.
 4. Mention adjacent features only when they reduce confusion.

@@ -135,7 +135,7 @@ evolved_from:
   - regenerate-types
 ---
 
-# New Table Command
+## New Table Command
 
 [Kümelenmiş içgüdülere dayalı oluşturulan içerik]
 
@@ -155,7 +155,7 @@ evolved_from:
   - avoid-classes
 ---
 
-# Functional Patterns Skill
+## Functional Patterns Skill
 
 [Kümelenmiş içgüdülere dayalı oluşturulan içerik]
 ```
@@ -172,7 +172,7 @@ evolved_from:
   - debug-reproduce
 ---
 
-# Debugger Agent
+## Debugger Agent
 
 [Kümelenmiş içgüdülere dayalı oluşturulan içerik]
 ```

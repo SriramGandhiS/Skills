@@ -73,10 +73,10 @@ model User {
   email     String   @unique
   posts     Post[]   @relation("UserPosts")
   profile   Profile? @relation("UserProfile")
-  
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  
+
   @@index([email])
   @@map("users")
 }
@@ -86,7 +86,7 @@ model Post {
   title    String
   author   User   @relation("UserPosts", fields: [authorId], references: [id], onDelete: Cascade)
   authorId String
-  
+
   @@index([authorId])
   @@map("posts")
 }
@@ -286,16 +286,16 @@ const [user, profile] = await prisma.$transaction([
 // Interactive transaction with manual control
 const result = await prisma.$transaction(async (tx) => {
   const user = await tx.user.create({ data: userData });
-  
+
   // Business logic validation
   if (user.email.endsWith('@blocked.com')) {
     throw new Error('Email domain blocked');
   }
-  
+
   const profile = await tx.profile.create({
     data: { ...profileData, userId: user.id }
   });
-  
+
   return { user, profile };
 }, {
   maxWait: 5000,  // Wait for transaction slot
@@ -305,7 +305,7 @@ const result = await prisma.$transaction(async (tx) => {
 
 // Optimistic concurrency control
 const updateWithVersion = await prisma.post.update({
-  where: { 
+  where: {
     id: postId,
     version: currentVersion  // Only update if version matches
   },

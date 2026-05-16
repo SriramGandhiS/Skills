@@ -26,16 +26,16 @@ Her zaman TDD döngüsünü takip edin:
 3. **REFACTOR**: Testleri yeşil tutarken kodu iyileştir
 
 ```python
-# Adım 1: Başarısız test yaz (RED)
+## Adım 1: Başarısız test yaz (RED)
 def test_add_numbers():
     result = add(2, 3)
     assert result == 5
 
-# Adım 2: Minimal implementasyon yaz (GREEN)
+## Adım 2: Minimal implementasyon yaz (GREEN)
 def add(a, b):
     return a + b
 
-# Adım 3: Gerekirse refactor et (REFACTOR)
+## Adım 3: Gerekirse refactor et (REFACTOR)
 ```
 
 ### Coverage Gereksinimleri
@@ -75,39 +75,39 @@ def test_list_append():
 ### Assertion'lar
 
 ```python
-# Eşitlik
+## Eşitlik
 assert result == expected
 
-# Eşitsizlik
+## Eşitsizlik
 assert result != unexpected
 
-# Doğruluk değeri
+## Doğruluk değeri
 assert result  # Truthy
 assert not result  # Falsy
 assert result is True  # Tam olarak True
 assert result is False  # Tam olarak False
 assert result is None  # Tam olarak None
 
-# Üyelik
+## Üyelik
 assert item in collection
 assert item not in collection
 
-# Karşılaştırmalar
+## Karşılaştırmalar
 assert result > 0
 assert 0 <= result <= 100
 
-# Tip kontrolü
+## Tip kontrolü
 assert isinstance(result, str)
 
-# Exception testi (tercih edilen yaklaşım)
+## Exception testi (tercih edilen yaklaşım)
 with pytest.raises(ValueError):
     raise ValueError("error message")
 
-# Exception mesajını kontrol et
+## Exception mesajını kontrol et
 with pytest.raises(ValueError, match="invalid input"):
     raise ValueError("invalid input provided")
 
-# Exception niteliklerini kontrol et
+## Exception niteliklerini kontrol et
 with pytest.raises(ValueError) as exc_info:
     raise ValueError("error message")
 assert str(exc_info.value) == "error message"
@@ -156,14 +156,14 @@ def test_database_query(database):
 ### Fixture Scope'ları
 
 ```python
-# Function scope (varsayılan) - her test için çalışır
+## Function scope (varsayılan) - her test için çalışır
 @pytest.fixture
 def temp_file():
     with open("temp.txt", "w") as f:
         yield f
     os.remove("temp.txt")
 
-# Module scope - modül başına bir kez çalışır
+## Module scope - modül başına bir kez çalışır
 @pytest.fixture(scope="module")
 def module_db():
     db = Database(":memory:")
@@ -171,7 +171,7 @@ def module_db():
     yield db
     db.close()
 
-# Session scope - test oturumu başına bir kez çalışır
+## Session scope - test oturumu başına bir kez çalışır
 @pytest.fixture(scope="session")
 def shared_resource():
     resource = ExpensiveResource()
@@ -226,7 +226,7 @@ def test_without_fixture_call():
 ### Paylaşılan Fixture'lar için Conftest.py
 
 ```python
-# tests/conftest.py
+## tests/conftest.py
 import pytest
 
 @pytest.fixture
@@ -313,18 +313,18 @@ def test_database_operations(db):
 ### Özel Marker'lar
 
 ```python
-# Yavaş testleri işaretle
+## Yavaş testleri işaretle
 @pytest.mark.slow
 def test_slow_operation():
     time.sleep(5)
 
-# Entegrasyon testlerini işaretle
+## Entegrasyon testlerini işaretle
 @pytest.mark.integration
 def test_api_integration():
     response = requests.get("https://api.example.com")
     assert response.status_code == 200
 
-# Unit testleri işaretle
+## Unit testleri işaretle
 @pytest.mark.unit
 def test_unit_logic():
     assert calculate(2, 3) == 5
@@ -333,16 +333,16 @@ def test_unit_logic():
 ### Belirli Testleri Çalıştırma
 
 ```bash
-# Sadece hızlı testleri çalıştır
+## Sadece hızlı testleri çalıştır
 pytest -m "not slow"
 
-# Sadece entegrasyon testlerini çalıştır
+## Sadece entegrasyon testlerini çalıştır
 pytest -m integration
 
-# Entegrasyon veya yavaş testleri çalıştır
+## Entegrasyon veya yavaş testleri çalıştır
 pytest -m "integration or slow"
 
-# Unit olarak işaretlenmiş ama yavaş olmayan testleri çalıştır
+## Unit olarak işaretlenmiş ama yavaş olmayan testleri çalıştır
 pytest -m "unit and not slow"
 ```
 
@@ -765,37 +765,37 @@ markers = [
 ## Testleri Çalıştırma
 
 ```bash
-# Tüm testleri çalıştır
+## Tüm testleri çalıştır
 pytest
 
-# Belirli dosyayı çalıştır
+## Belirli dosyayı çalıştır
 pytest tests/test_utils.py
 
-# Belirli testi çalıştır
+## Belirli testi çalıştır
 pytest tests/test_utils.py::test_function
 
-# Verbose çıktı ile çalıştır
+## Verbose çıktı ile çalıştır
 pytest -v
 
-# Coverage ile çalıştır
+## Coverage ile çalıştır
 pytest --cov=mypackage --cov-report=html
 
-# Sadece hızlı testleri çalıştır
+## Sadece hızlı testleri çalıştır
 pytest -m "not slow"
 
-# İlk hataya kadar çalıştır
+## İlk hataya kadar çalıştır
 pytest -x
 
-# N hataya kadar çalıştır
+## N hataya kadar çalıştır
 pytest --maxfail=3
 
-# Son başarısız testleri çalıştır
+## Son başarısız testleri çalıştır
 pytest --lf
 
-# Pattern ile testleri çalıştır
+## Pattern ile testleri çalıştır
 pytest -k "test_user"
 
-# Hatada debugger ile çalıştır
+## Hatada debugger ile çalıştır
 pytest --pdb
 ```
 

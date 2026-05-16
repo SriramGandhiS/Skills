@@ -1,6 +1,6 @@
 # Custom Workflows Guide
 
-> **Skill Seekers v3.1.0**  
+> **Skill Seekers v3.1.0**
 > **Create custom AI enhancement workflows**
 
 ---
@@ -36,7 +36,7 @@ stages:
     target: skill_md
     prompt: |
       Improve the SKILL.md by adding...
-      
+
   - name: stage-two
     type: custom
     target: references
@@ -91,7 +91,7 @@ stages:
       - Benchmark results
       - Performance characteristics
       - Resource requirements
-      
+
   - name: optimization-guide
     type: custom
     target: references
@@ -221,7 +221,7 @@ stages:
     type: custom
     target: skill_md
     prompt: "Analyze security features"
-    
+
   - name: document
     type: custom
     target: skill_md
@@ -229,7 +229,7 @@ stages:
     prompt: |
       Based on previous analysis:
       {previous_results}
-      
+
       Create documentation...
 ```
 
@@ -255,19 +255,19 @@ stages:
       - Authorization checks
       - Data validation
       - Encryption usage
-      
+
   - name: threat-analysis
     type: custom
     target: skill_md
     uses_history: true
     prompt: |
       Based on assets: {all_history}
-      
+
       Analyze threats for {compliance_framework}:
       - Threat vectors
       - Attack scenarios
       - Risk ratings ({risk_level} focus)
-      
+
   - name: mitigation-guide
     type: custom
     target: references
@@ -322,7 +322,7 @@ stages:
 stages:
   - name: security-overview
   - name: vulnerability-analysis
-  
+
 # Bad
 stages:
   - name: stage1
@@ -335,7 +335,7 @@ stages:
 variables:
   # Target audience level: beginner, intermediate, expert
   audience: "intermediate"
-  
+
   # Security focus area: owasp, pci, hipaa
   compliance: "owasp"
 ```

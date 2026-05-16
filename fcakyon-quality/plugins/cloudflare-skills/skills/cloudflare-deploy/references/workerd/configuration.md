@@ -150,7 +150,7 @@ bindings = [
       apiToken = .envVar("CF_API_TOKEN")
     )
   )),
-  
+
   # Remote R2
   (name = "PROD_R2", r2Bucket = (
     remote = (
@@ -159,7 +159,7 @@ bindings = [
       apiToken = .envVar("CF_API_TOKEN")
     )
   )),
-  
+
   # Remote Durable Object
   (name = "PROD_DO", durableObjectNamespace = (
     remote = (
@@ -177,7 +177,7 @@ bindings = [
 ## Logging & Debugging
 ```capnp
 logging = (structuredLogging = true, stdoutPrefix = "OUT: ", stderrPrefix = "ERR: ")
-v8Flags = ["--expose-gc", "--max-old-space-size=2048"]  # ⚠️ Unsupported in production
+v8Flags = ["--expose-gc", "--max-old-space-size=2048"]  # WARNING: Unsupported in production
 ```
 
 See [patterns.md](./patterns.md) for multi-service examples, [gotchas.md](./gotchas.md) for config errors.

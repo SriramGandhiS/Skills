@@ -39,47 +39,47 @@ Calculate three scores out of 100. Sort all issues into Critical (fix before pub
 
 | Score | Status | Label |
 |-------|--------|-------|
-| 85–100 | ✅ Pass | Strong |
-| 70–84 | ⚠️ Warn | Acceptable |
-| 50–69 | 🔶 Weak | Needs work |
-| 0–49 | ❌ Fail | Do not publish |
+| 85–100 | PASS: Pass | Strong |
+| 70–84 | WARNING: Warn | Acceptable |
+| 50–69 |  Weak | Needs work |
+| 0–49 | FAIL: Fail | Do not publish |
 
 ## Examples
 
 ### Example: Audit Summary
-Overall Score:    84/100  ⚠️ Acceptable
-SEO Score:        88/100  ✅ Pass
-AEO Score:        74/100  ⚠️ Acceptable
-Readability:      91/100  ✅ Pass
+Overall Score:    84/100  WARNING: Acceptable
+SEO Score:        88/100  PASS: Pass
+AEO Score:        74/100  WARNING: Acceptable
+Readability:      91/100  PASS: Pass
 Verdict: Strong SEO foundation. AEO needs a TL;DR block
 and one more FAQ entry before publishing.
-🔴 Critical (fix before publishing):
+ Critical (fix before publishing):
 
 AEO: No TL;DR block found
 Fix: Add a 2–3 sentence direct-answer block in a
 blockquote immediately after the H1.
 
-🟡 Important (fix soon):
+ Important (fix soon):
 2. AEO: FAQ has 3 entries — minimum is 4
 Fix: Add one more FAQ entry using a secondary keyword
 as the question.
-Projected score after fixes: 93/100 ✅
+Projected score after fixes: 93/100 PASS:
 
 ## Best Practices
 
-- ✅ **Do:** Fix all Critical issues before publishing — they block AEO extraction
-- ✅ **Do:** Use the projected score to prioritise which fixes to make first
-- ✅ **Do:** Run the audit on both the landing page and blog post in the same session
-- ❌ **Don't:** Publish content scoring below 50/100 overall
-- ❌ **Don't:** Ignore AEO warnings — they directly affect AI engine citation probability
+- PASS: **Do:** Fix all Critical issues before publishing — they block AEO extraction
+- PASS: **Do:** Use the projected score to prioritise which fixes to make first
+- PASS: **Do:** Run the audit on both the landing page and blog post in the same session
+- FAIL: **Don't:** Publish content scoring below 50/100 overall
+- FAIL: **Don't:** Ignore AEO warnings — they directly affect AI engine citation probability
 
 ## Common Pitfalls
 
 - **Problem:** SEO score is high but AEO score is low
-  **Solution:** Traditional SEO tools miss AEO signals entirely. Run the AEO checklist separately and treat it as equally important.
+**Solution:** Traditional SEO tools miss AEO signals entirely. Run the AEO checklist separately and treat it as equally important.
 
 - **Problem:** Fix list is long and overwhelming
-  **Solution:** Work through Critical issues only first, re-run the audit, then tackle Important issues.
+**Solution:** Work through Critical issues only first, re-run the audit, then tackle Important issues.
 
 ## Related Skills
 

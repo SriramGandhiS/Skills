@@ -1,25 +1,22 @@
 #!/bin/bash
 # Continuous Learning - Session Evaluator
 # Runs on Stop hook to extract reusable patterns from Claude Code sessions
-#
-# Why Stop hook instead of UserPromptSubmit:
+# # Why Stop hook instead of UserPromptSubmit:
 # - Stop runs once at session end (lightweight)
 # - UserPromptSubmit runs every message (heavy, adds latency)
-#
-# Hook config (in ~/.claude/settings.json):
+# # Hook config (in ~/.claude/settings.json):
 # {
-#   "hooks": {
-#     "Stop": [{
-#       "matcher": "*",
-#       "hooks": [{
-#         "type": "command",
-#         "command": "~/.claude/skills/continuous-learning/evaluate-session.sh"
-#       }]
-#     }]
-#   }
+# "hooks": {
+# "Stop": [{
+# "matcher": "*",
+# "hooks": [{
+# "type": "command",
+# "command": "~/.claude/skills/continuous-learning/evaluate-session.sh"
+# }]
+# }]
 # }
-#
-# Patterns to detect: error_resolution, debugging_techniques, workarounds, project_specific
+# }
+# # Patterns to detect: error_resolution, debugging_techniques, workarounds, project_specific
 # Patterns to ignore: simple_typos, one_time_fixes, external_api_issues
 # Extracted skills saved to: ~/.claude/skills/learned/
 

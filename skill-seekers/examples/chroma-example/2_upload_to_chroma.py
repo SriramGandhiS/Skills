@@ -27,28 +27,28 @@ from pathlib import Path
 try:
     import chromadb
 except ImportError:
-    print("❌ chromadb not installed!")
+    print("FAIL: chromadb not installed!")
     print("Install it with: pip install chromadb")
     sys.exit(1)
 
 def create_client(persist_directory: str = None):
     """Create ChromaDB client."""
-    print("\n📊 Creating ChromaDB client...")
+    print("\n Creating ChromaDB client...")
 
     try:
         if persist_directory:
             # Persistent client (saves to disk)
             client = chromadb.PersistentClient(path=persist_directory)
-            print(f"✅ Client created (persistent: {persist_directory})\n")
+            print(f"PASS: Client created (persistent: {persist_directory})\n")
         else:
             # In-memory client (faster, but data lost on exit)
             client = chromadb.Client()
-            print("✅ Client created (in-memory)\n")
+            print("PASS: Client created (in-memory)\n")
 
         return client
 
     except Exception as e:
-        print(f"❌ Client creation failed: {e}")
+        print(f"FAIL: Client creation failed: {e}")
         sys.exit(1)
 
 def load_skill_data(filepath: str = "output/vue-chroma.json"):
@@ -56,7 +56,7 @@ def load_skill_data(filepath: str = "output/vue-chroma.json"):
     path = Path(filepath)
 
     if not path.exists():
-        print(f"❌ Skill file not found: {filepath}")
+        print(f"FAIL: Skill file not found: {filepath}")
         print("Run '1_generate_skill.py' first!")
         sys.exit(1)
 
@@ -65,7 +65,7 @@ def load_skill_data(filepath: str = "output/vue-chroma.json"):
 
 def create_collection(client, collection_name: str, reset: bool = False):
     """Create ChromaDB collection."""
-    print(f"📦 Creating collection: {collection_name}")
+    print(f" Creating collection: {collection_name}")
 
     try:
         # Check if collection exists
@@ -73,10 +73,10 @@ def create_collection(client, collection_name: str, reset: bool = False):
 
         if collection_name in existing_collections:
             if reset:
-                print(f"🗑️  Deleting existing collection...")
+                print(f"  Deleting existing collection...")
                 client.delete_collection(collection_name)
             else:
-                print(f"⚠️  Collection '{collection_name}' already exists")
+                print(f"WARNING:  Collection '{collection_name}' already exists")
                 response = input("Delete and recreate? [y/N]: ")
                 if response.lower() == "y":
                     client.delete_collection(collection_name)
@@ -89,18 +89,18 @@ def create_collection(client, collection_name: str, reset: bool = False):
             name=collection_name,
             metadata={"description": "Skill Seekers documentation"}
         )
-        print("✅ Collection created!\n")
+        print("PASS: Collection created!\n")
         return collection
 
     except Exception as e:
-        print(f"❌ Collection creation failed: {e}")
+        print(f"FAIL: Collection creation failed: {e}")
         sys.exit(1)
 
 def upload_documents(collection, data: dict):
     """Add documents to collection."""
     total = len(data["documents"])
 
-    print(f"📤 Adding {total} documents to collection...")
+    print(f" Adding {total} documents to collection...")
 
     try:
         # Add all documents in one batch
@@ -110,16 +110,16 @@ def upload_documents(collection, data: dict):
             ids=data["ids"]
         )
 
-        print(f"✅ Successfully added {total} documents to ChromaDB\n")
+        print(f"PASS: Successfully added {total} documents to ChromaDB\n")
 
     except Exception as e:
-        print(f"❌ Upload failed: {e}")
+        print(f"FAIL: Upload failed: {e}")
         sys.exit(1)
 
 def verify_upload(collection):
     """Verify documents were uploaded correctly."""
     count = collection.count()
-    print(f"🔍 Collection '{collection.name}' now contains {count} documents")
+    print(f" Collection '{collection.name}' now contains {count} documents")
 
 def main():
     parser = argparse.ArgumentParser(description="Upload skill to ChromaDB")
@@ -160,10 +160,10 @@ def main():
     verify_upload(collection)
 
     if args.persist:
-        print(f"\n💾 Data saved to: {args.persist}")
+        print(f"\n Data saved to: {args.persist}")
         print("   Use --persist flag to load it next time")
 
-    print("\n✅ Upload complete! Next step: python 3_query_example.py")
+    print("\nPASS: Upload complete! Next step: python 3_query_example.py")
 
     if args.persist:
         print(f"   python 3_query_example.py --persist {args.persist}")

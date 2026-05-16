@@ -175,16 +175,16 @@ describe('Regression: Auth System', () => {
 ## Pass/Fail Breakdown
 
 ### Critical Tests (15)
-- ✅ Passed: 14
-- ❌ Failed: 1
+- PASS: Passed: 14
+- FAIL: Failed: 1
 
 ### High Priority (20)
-- ✅ Passed: 18
-- ❌ Failed: 2
+- PASS: Passed: 18
+- FAIL: Failed: 2
 
 ### Medium Priority (10)
-- ✅ Passed: 8
-- 🚫 Blocked: 2
+- PASS: Passed: 8
+- Blocked: 2
 
 ## Failed Test Cases
 
@@ -227,9 +227,9 @@ describe('Regression: Auth System', () => {
 
 | Feature | Chrome | Firefox | Safari | Edge |
 |---------|--------|---------|--------|------|
-| Login | ✅ | ✅ | ⚠️ | ✅ |
-| Dashboard | ✅ | ✅ | ✅ | ✅ |
-| Checkout | ❌ | ✅ | ✅ | ✅ |
+| Login | PASS: | PASS: | WARNING: | PASS: |
+| Dashboard | PASS: | PASS: | PASS: | PASS: |
+| Checkout | FAIL: | PASS: | PASS: | PASS: |
 
 Issues:
 - Safari: Login form styling broken on iOS 15

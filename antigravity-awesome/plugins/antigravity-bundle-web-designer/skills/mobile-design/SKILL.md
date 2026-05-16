@@ -53,7 +53,7 @@ MFRI = (Platform Clarity + Accessibility Readiness)
 
 ## 2. Mandatory Thinking Before Any Work
 
-### ⛔ STOP: Ask Before Assuming (Required)
+### STOP: Ask Before Assuming (Required)
 
 If **any of the following are not explicitly stated**, you MUST ask before proceeding:
 
@@ -66,7 +66,7 @@ If **any of the following are not explicitly stated**, you MUST ask before proce
 | Devices    | Phone only or tablet too?                  | Layout & density rules                   |
 | Audience   | Consumer, enterprise, accessibility needs? | Touch & readability                      |
 
-🚫 **Never default to your favorite stack or pattern.**
+**Never default to your favorite stack or pattern.**
 
 ---
 
@@ -76,12 +76,12 @@ If **any of the following are not explicitly stated**, you MUST ask before proce
 
 | File                          | Purpose                            | Status            |
 | ----------------------------- | ---------------------------------- | ----------------- |
-| **mobile-design-thinking.md** | Anti-memorization, context-forcing | 🔴 REQUIRED FIRST |
-| **touch-psychology.md**       | Fitts’ Law, thumb zones, gestures  | 🔴 REQUIRED       |
-| **mobile-performance.md**     | 60fps, memory, battery             | 🔴 REQUIRED       |
-| **mobile-backend.md**         | Offline sync, push, APIs           | 🔴 REQUIRED       |
-| **mobile-testing.md**         | Device & E2E testing               | 🔴 REQUIRED       |
-| **mobile-debugging.md**       | Native vs JS debugging             | 🔴 REQUIRED       |
+| **mobile-design-thinking.md** | Anti-memorization, context-forcing |  REQUIRED FIRST |
+| **touch-psychology.md**       | Fitts’ Law, thumb zones, gestures  |  REQUIRED       |
+| **mobile-performance.md**     | 60fps, memory, battery             |  REQUIRED       |
+| **mobile-backend.md**         | Offline sync, push, APIs           |  REQUIRED       |
+| **mobile-testing.md**         | Device & E2E testing               |  REQUIRED       |
+| **mobile-debugging.md**       | Native vs JS debugging             |  REQUIRED       |
 
 ### Platform-Specific (Conditional)
 
@@ -91,15 +91,15 @@ If **any of the following are not explicitly stated**, you MUST ask before proce
 | Android        | platform-android.md |
 | Cross-platform | BOTH above          |
 
-> ❌ If you haven’t read the platform file, you are not allowed to design UI.
+> FAIL: If you haven’t read the platform file, you are not allowed to design UI.
 
 ---
 
 ## 4. AI Mobile Anti-Patterns (Hard Bans)
 
-### 🚫 Performance Sins (Non-Negotiable)
+### Performance Sins (Non-Negotiable)
 
-| ❌ Never                   | Why                  | ✅ Always                                |
+| FAIL: Never                   | Why                  | PASS: Always                                |
 | ------------------------- | -------------------- | --------------------------------------- |
 | ScrollView for long lists | Memory explosion     | FlatList / FlashList / ListView.builder |
 | Inline renderItem         | Re-renders all rows  | useCallback + memo                      |
@@ -110,9 +110,9 @@ If **any of the following are not explicitly stated**, you MUST ask before proce
 
 ---
 
-### 🚫 Touch & UX Sins
+### Touch & UX Sins
 
-| ❌ Never               | Why                  | ✅ Always          |
+| FAIL: Never               | Why                  | PASS: Always          |
 | --------------------- | -------------------- | ----------------- |
 | Touch <44–48px        | Miss taps            | Min touch target  |
 | Gesture-only action   | Excludes users       | Button fallback   |
@@ -122,9 +122,9 @@ If **any of the following are not explicitly stated**, you MUST ask before proce
 
 ---
 
-### 🚫 Security Sins
+### Security Sins
 
-| ❌ Never                | Why                | ✅ Always               |
+| FAIL: Never                | Why                | PASS: Always               |
 | ---------------------- | ------------------ | ---------------------- |
 | Tokens in AsyncStorage | Easily stolen      | SecureStore / Keychain |
 | Hardcoded secrets      | Reverse engineered | Env + secure storage   |
@@ -222,23 +222,17 @@ class Item extends StatelessWidget {
 Before writing **any code**, you must complete this:
 
 ```
-🧠 MOBILE CHECKPOINT
+ MOBILE CHECKPOINT
 
 Platform:     ___________
 Framework:    ___________
 Files Read:   ___________
 
 3 Principles I Will Apply:
-1.
-2.
-3.
+1. 2. 3. Anti-Patterns I Will Avoid:
+1. 2. ```
 
-Anti-Patterns I Will Avoid:
-1.
-2.
-```
-
-❌ Cannot complete → go back and read.
+FAIL: Cannot complete → go back and read.
 
 ---
 

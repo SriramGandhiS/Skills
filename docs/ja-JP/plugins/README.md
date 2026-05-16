@@ -11,12 +11,12 @@
 ### マーケットプレイスの追加
 
 ```bash
-# 公式 Anthropic マーケットプレイスを追加
-claude plugin marketplace add https://github.com/anthropics/claude-plugins-official
+## 公式 Anthropic マーケットプレイスを追加
+claude plugin marketplace add <https://github.com/anthropics/claude-plugins-official>
 
-# コミュニティマーケットプレイスを追加
-# mgrep plugin by @mixedbread-ai
-claud plugin marketplace add https://github.com/mixedbread-ai/mgrep
+## コミュニティマーケットプレイスを追加
+## mgrep plugin by @mixedbread-ai
+claud plugin marketplace add <https://github.com/mixedbread-ai/mgrep>
 ```
 
 ### 推奨マーケットプレイス
@@ -32,10 +32,10 @@ claud plugin marketplace add https://github.com/mixedbread-ai/mgrep
 ## プラグインのインストール
 
 ```bash
-# プラグインブラウザを開く
+## プラグインブラウザを開く
 /plugins
 
-# または直接インストール
+## または直接インストール
 claude plugin install typescript-lsp@claude-plugins-official
 ```
 
@@ -66,12 +66,12 @@ claude plugin install typescript-lsp@claude-plugins-official
 ## クイックセットアップ
 
 ```bash
-# マーケットプレイスを追加
-claude plugin marketplace add https://github.com/anthropics/claude-plugins-official
-# mgrep plugin by @mixedbread-ai
-claud plugin marketplace add https://github.com/mixedbread-ai/mgrep
+## マーケットプレイスを追加
+claude plugin marketplace add <https://github.com/anthropics/claude-plugins-official>
+## mgrep plugin by @mixedbread-ai
+claud plugin marketplace add <https://github.com/mixedbread-ai/mgrep>
 
-# /pluginsを開き、必要なものをインストール
+## /pluginsを開き、必要なものをインストール
 ```
 
 ---

@@ -17,7 +17,7 @@ Güvenli, performanslı ve bakım yapılabilir uygulamalar oluşturmak için idi
 
 ## Nasıl Çalışır
 
-Bu skill altı ana alanda idiomatic Rust kurallarını zorlar: derleme zamanında veri yarışlarını önlemek için ownership ve borrowing, kütüphaneler için `thiserror` ve uygulamalar için `anyhow` ile `Result`/`?` hata yayılımı, yasadışı durumları temsil edilemez yapmak için enum'lar ve kapsamlı desen eşleştirme, sıfır maliyetli soyutlama için trait'ler ve generic'ler, `Arc<Mutex<T>>`, channel'lar ve async/await ile güvenli eşzamanlılık ve domain'e göre düzenlenmiş minimal `pub` yüzeyleri.
+Bu skill altı ana alanda idiomatic Rust kurallarını zorlar: derleme zamanında veri yarışlarını önlemek için ownership ve borrowing, kütüphaneler için `thiserror`ve uygulamalar için`anyhow`ile`Result`/`?`hata yayılımı, yasadışı durumları temsil edilemez yapmak için enum'lar ve kapsamlı desen eşleştirme, sıfır maliyetli soyutlama için trait'ler ve generic'ler,`Arc<Mutex<T>>`, channel'lar ve async/await ile güvenli eşzamanlılık ve domain'e göre düzenlenmiş minimal`pub` yüzeyleri.
 
 ## Temel İlkeler
 
@@ -59,7 +59,7 @@ fn normalize(input: &str) -> Cow<'_, str> {
 
 ## Hata İşleme
 
-### `Result` ve `?` Kullanın — Production'da Asla `unwrap()` Kullanmayın
+### `Result`ve`?`Kullanın — Production'da Asla`unwrap()` Kullanmayın
 
 ```rust
 // İyi: Hataları context ile yayın
@@ -80,7 +80,7 @@ fn load_config_bad(path: &str) -> Config {
 }
 ```
 
-### Kütüphane Hataları için `thiserror`, Uygulama Hataları için `anyhow`
+### Kütüphane Hataları için `thiserror`, Uygulama Hataları için`anyhow`
 
 ```rust
 // Kütüphane kodu: yapılandırılmış, tiplendirilmiş hatalar
@@ -368,7 +368,7 @@ async fn fetch_all(urls: Vec<String>) -> Vec<Result<String>> {
 ```rust
 // Kabul edilebilir: Belgelenmiş değişmezlerle FFI sınırı (Rust 2024+)
 /// # Safety
-/// `ptr` başlatılmış bir `Widget`'a geçerli, hizalı bir pointer olmalıdır.
+/// `ptr`başlatılmış bir`Widget`'a geçerli, hizalı bir pointer olmalıdır.
 unsafe fn widget_from_raw<'a>(ptr: *const Widget) -> &'a Widget {
     // SAFETY: çağıran ptr'nin geçerli ve hizalı olduğunu garanti eder
     unsafe { &*ptr }
@@ -434,24 +434,24 @@ pub fn internal_helper() {} // pub(crate) veya private olmalı
 ### Temel Komutlar
 
 ```bash
-# Build ve kontrol
+## Build ve kontrol
 cargo build
 cargo check              # Codegen olmadan hızlı tip kontrolü
 cargo clippy             # Lint'ler ve öneriler
 cargo fmt                # Kodu formatla
 
-# Test etme
+## Test etme
 cargo test
 cargo test -- --nocapture    # println çıktısını göster
 cargo test --lib             # Sadece unit testler
 cargo test --test integration # Sadece entegrasyon testleri
 
-# Bağımlılıklar
+## Bağımlılıklar
 cargo audit              # Güvenlik denetimi
 cargo tree               # Bağımlılık ağacı
 cargo update             # Bağımlılıkları güncelle
 
-# Performans
+## Performans
 cargo bench              # Benchmark'ları çalıştır
 ```
 
@@ -461,14 +461,14 @@ cargo bench              # Benchmark'ları çalıştır
 |-------|----------|
 | Clone etme, borrow al | Ownership gerekmedikçe clone yerine `&T` geçir |
 | Yasadışı durumları temsil edilemez yap | Sadece geçerli durumları modellemek için enum'ları kullan |
-| `unwrap()` yerine `?` | Hataları yay, kütüphane/production kodunda asla panic |
+| `unwrap()`yerine`?` | Hataları yay, kütüphane/production kodunda asla panic |
 | Validate etme, parse et | Sınırda yapılandırılmamış veriyi tiplendirilmiş struct'lara dönüştür |
 | Tip güvenliği için newtype | Argüman değişimlerini önlemek için primitive'leri newtype'lara sar |
 | Döngüler yerine iterator'ları tercih et | Deklaratif zincirler daha net ve genellikle daha hızlı |
 | Result'larda `#[must_use]` | Çağıranların dönüş değerlerini işlemesini garanti et |
 | Esnek ownership için `Cow` | Borrow yeterli olduğunda allocation'lardan kaçın |
 | Kapsamlı eşleştirme | İş-kritik enum'lar için wildcard `_` yok |
-| Minimal `pub` yüzeyi | Dahili API'ler için `pub(crate)` kullan |
+| Minimal `pub`yüzeyi | Dahili API'ler için`pub(crate)` kullan |
 
 ## Kaçınılacak Anti-Desenler
 
@@ -496,4 +496,4 @@ async fn bad_async() {
 }
 ```
 
-**Unutmayın**: Derlenir ise muhtemelen doğrudur — ama sadece `unwrap()` kullanmaktan kaçınır, `unsafe`'i minimize eder ve tip sisteminin sizin için çalışmasına izin verirseniz.
+**Unutmayın**: Derlenir ise muhtemelen doğrudur — ama sadece `unwrap()`kullanmaktan kaçınır,`unsafe`'i minimize eder ve tip sisteminin sizin için çalışmasına izin verirseniz.

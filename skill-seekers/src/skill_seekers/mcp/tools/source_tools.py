@@ -79,7 +79,7 @@ async def fetch_config_tool(args: dict) -> list[TextContent]:
                 return [
                     TextContent(
                         type="text",
-                        text="❌ Error: config_name is required when using source parameter",
+                        text="FAIL: Error: config_name is required when using source parameter",
                     )
                 ]
 
@@ -88,7 +88,7 @@ async def fetch_config_tool(args: dict) -> list[TextContent]:
             try:
                 source = source_manager.get_source(source_name)
             except KeyError as e:
-                return [TextContent(type="text", text=f"❌ {str(e)}")]
+                return [TextContent(type="text", text=f"FAIL: {str(e)}")]
 
             git_url = source["git_url"]
             branch = source.get("branch", branch)
@@ -109,15 +109,15 @@ async def fetch_config_tool(args: dict) -> list[TextContent]:
                     force_refresh=force_refresh,
                 )
             except Exception as e:
-                return [TextContent(type="text", text=f"❌ Git error: {str(e)}")]
+                return [TextContent(type="text", text=f"FAIL: Git error: {str(e)}")]
 
             # Load config from repository
             try:
                 config_data = git_repo.get_config(repo_path, config_name)
             except FileNotFoundError as e:
-                return [TextContent(type="text", text=f"❌ {str(e)}")]
+                return [TextContent(type="text", text=f"FAIL: {str(e)}")]
             except ValueError as e:
-                return [TextContent(type="text", text=f"❌ {str(e)}")]
+                return [TextContent(type="text", text=f"FAIL: {str(e)}")]
 
             # Save to destination
             dest_path = Path(destination)
@@ -127,21 +127,21 @@ async def fetch_config_tool(args: dict) -> list[TextContent]:
             with open(config_file, "w") as f:
                 json.dump(config_data, f, indent=2)
 
-            result = f"""✅ Config fetched from git source successfully!
+            result = f"""PASS: Config fetched from git source successfully!
 
-📦 Config: {config_name}
-📂 Saved to: {config_file}
-🔗 Source: {source_name}
-🌿 Branch: {branch}
-📁 Repository: {git_url}
-🔄 Refreshed: {"Yes (forced)" if force_refresh else "No (used cache)"}
+ Config: {config_name}
+ Saved to: {config_file}
+ Source: {source_name}
+ Branch: {branch}
+ Repository: {git_url}
+ Refreshed: {"Yes (forced)" if force_refresh else "No (used cache)"}
 
 Next steps:
   1. Review config: cat {config_file}
   2. Estimate pages: Use estimate_pages tool
   3. Scrape docs: Use scrape_docs tool
 
-💡 Manage sources: Use add_config_source, list_config_sources, remove_config_source tools
+ Manage sources: Use add_config_source, list_config_sources, remove_config_source tools
 """
             return [TextContent(type="text", text=result)]
 
@@ -151,7 +151,7 @@ Next steps:
                 return [
                     TextContent(
                         type="text",
-                        text="❌ Error: config_name is required when using git_url parameter",
+                        text="FAIL: Error: config_name is required when using git_url parameter",
                     )
                 ]
 
@@ -168,17 +168,17 @@ Next steps:
                     force_refresh=force_refresh,
                 )
             except ValueError as e:
-                return [TextContent(type="text", text=f"❌ Invalid git URL: {str(e)}")]
+                return [TextContent(type="text", text=f"FAIL: Invalid git URL: {str(e)}")]
             except Exception as e:
-                return [TextContent(type="text", text=f"❌ Git error: {str(e)}")]
+                return [TextContent(type="text", text=f"FAIL: Git error: {str(e)}")]
 
             # Load config from repository
             try:
                 config_data = git_repo.get_config(repo_path, config_name)
             except FileNotFoundError as e:
-                return [TextContent(type="text", text=f"❌ {str(e)}")]
+                return [TextContent(type="text", text=f"FAIL: {str(e)}")]
             except ValueError as e:
-                return [TextContent(type="text", text=f"❌ {str(e)}")]
+                return [TextContent(type="text", text=f"FAIL: {str(e)}")]
 
             # Save to destination
             dest_path = Path(destination)
@@ -188,20 +188,20 @@ Next steps:
             with open(config_file, "w") as f:
                 json.dump(config_data, f, indent=2)
 
-            result = f"""✅ Config fetched from git URL successfully!
+            result = f"""PASS: Config fetched from git URL successfully!
 
-📦 Config: {config_name}
-📂 Saved to: {config_file}
-📁 Repository: {git_url}
-🌿 Branch: {branch}
-🔄 Refreshed: {"Yes (forced)" if force_refresh else "No (used cache)"}
+ Config: {config_name}
+ Saved to: {config_file}
+ Repository: {git_url}
+ Branch: {branch}
+ Refreshed: {"Yes (forced)" if force_refresh else "No (used cache)"}
 
 Next steps:
   1. Review config: cat {config_file}
   2. Estimate pages: Use estimate_pages tool
   3. Scrape docs: Use scrape_docs tool
 
-💡 Register this source: Use add_config_source to save for future use
+ Register this source: Use add_config_source to save for future use
 """
             return [TextContent(type="text", text=result)]
 
@@ -227,9 +227,9 @@ Next steps:
                     filters = data.get("filters")
 
                     # Format list output
-                    result = f"📋 Available Configs ({total} total)\n"
+                    result = f" Available Configs ({total} total)\n"
                     if filters:
-                        result += f"🔍 Filters: {filters}\n"
+                        result += f" Filters: {filters}\n"
                     result += "\n"
 
                     # Group by category
@@ -252,9 +252,9 @@ Next steps:
                                 result += f"    Tags: {tags}\n"
 
                     result += (
-                        "\n💡 To download a config, use: fetch_config with config_name='<name>'\n"
+                        "\n To download a config, use: fetch_config with config_name='<name>'\n"
                     )
-                    result += f"📚 API Docs: {API_BASE_URL}/docs\n"
+                    result += f" API Docs: {API_BASE_URL}/docs\n"
 
                     return [TextContent(type="text", text=result)]
 
@@ -263,7 +263,7 @@ Next steps:
                     return [
                         TextContent(
                             type="text",
-                            text="❌ Error: Please provide config_name or set list_available=true",
+                            text="FAIL: Error: Please provide config_name or set list_available=true",
                         )
                     ]
 
@@ -275,7 +275,7 @@ Next steps:
                     return [
                         TextContent(
                             type="text",
-                            text=f"❌ Config '{config_name}' not found. Use list_available=true to see available configs.",
+                            text=f"FAIL: Config '{config_name}' not found. Use list_available=true to see available configs.",
                         )
                     ]
 
@@ -288,7 +288,7 @@ Next steps:
                     return [
                         TextContent(
                             type="text",
-                            text=f"❌ Config '{config_name}' has no download_url. Contact support.",
+                            text=f"FAIL: Config '{config_name}' has no download_url. Contact support.",
                         )
                     ]
 
@@ -305,26 +305,26 @@ Next steps:
                     json.dump(config_data, f, indent=2)
 
                 # Build result message
-                result = f"""✅ Config downloaded successfully!
+                result = f"""PASS: Config downloaded successfully!
 
-📦 Config: {config_name}
-📂 Saved to: {config_file}
-📊 Category: {config_info.get("category", "uncategorized")}
-🏷️  Tags: {", ".join(config_info.get("tags", []))}
-📄 Type: {config_info.get("type", "unknown")}
-📝 Description: {config_info.get("description", "No description")}
+ Config: {config_name}
+ Saved to: {config_file}
+ Category: {config_info.get("category", "uncategorized")}
+  Tags: {", ".join(config_info.get("tags", []))}
+ Type: {config_info.get("type", "unknown")}
+ Description: {config_info.get("description", "No description")}
 
-🔗 Source: {config_info.get("primary_source", "N/A")}
-📏 Max pages: {config_info.get("max_pages", "N/A")}
-📦 File size: {config_info.get("file_size", "N/A")} bytes
-🕒 Last updated: {config_info.get("last_updated", "N/A")}
+ Source: {config_info.get("primary_source", "N/A")}
+ Max pages: {config_info.get("max_pages", "N/A")}
+ File size: {config_info.get("file_size", "N/A")} bytes
+ Last updated: {config_info.get("last_updated", "N/A")}
 
 Next steps:
   1. Review config: cat {config_file}
   2. Estimate pages: Use estimate_pages tool
   3. Scrape docs: Use scrape_docs tool
 
-💡 More configs: Use list_available=true to see all available configs
+ More configs: Use list_available=true to see all available configs
 """
 
                 return [TextContent(type="text", text=result)]
@@ -333,15 +333,15 @@ Next steps:
         return [
             TextContent(
                 type="text",
-                text=f"❌ HTTP Error: {str(e)}\n\nCheck your internet connection or try again later.",
+                text=f"FAIL: HTTP Error: {str(e)}\n\nCheck your internet connection or try again later.",
             )
         ]
     except json.JSONDecodeError as e:
         return [
-            TextContent(type="text", text=f"❌ JSON Error: Invalid response from API: {str(e)}")
+            TextContent(type="text", text=f"FAIL: JSON Error: Invalid response from API: {str(e)}")
         ]
     except Exception as e:
-        return [TextContent(type="text", text=f"❌ Error: {str(e)}")]
+        return [TextContent(type="text", text=f"FAIL: Error: {str(e)}")]
 
 
 async def submit_config_tool(args: dict) -> list[TextContent]:
@@ -367,7 +367,7 @@ async def submit_config_tool(args: dict) -> list[TextContent]:
         return [
             TextContent(
                 type="text",
-                text="❌ Error: PyGithub not installed.\n\nInstall with: pip install PyGithub",
+                text="FAIL: Error: PyGithub not installed.\n\nInstall with: pip install PyGithub",
             )
         ]
 
@@ -393,7 +393,7 @@ async def submit_config_tool(args: dict) -> list[TextContent]:
             config_file = Path(config_path)
             if not config_file.exists():
                 return [
-                    TextContent(type="text", text=f"❌ Error: Config file not found: {config_path}")
+                    TextContent(type="text", text=f"FAIL: Error: Config file not found: {config_path}")
                 ]
 
             with open(config_file) as f:
@@ -406,12 +406,12 @@ async def submit_config_tool(args: dict) -> list[TextContent]:
                 config_data = json.loads(config_json_str)
                 config_name = config_data.get("name", "unnamed")
             except json.JSONDecodeError as e:
-                return [TextContent(type="text", text=f"❌ Error: Invalid JSON: {str(e)}")]
+                return [TextContent(type="text", text=f"FAIL: Error: Invalid JSON: {str(e)}")]
 
         else:
             return [
                 TextContent(
-                    type="text", text="❌ Error: Must provide either config_path or config_json"
+                    type="text", text="FAIL: Error: Must provide either config_path or config_json"
                 )
             ]
 
@@ -420,7 +420,7 @@ async def submit_config_tool(args: dict) -> list[TextContent]:
             return [
                 TextContent(
                     type="text",
-                    text="❌ Error: ConfigValidator not available. Please ensure config_validator.py is in the CLI directory.",
+                    text="FAIL: Error: ConfigValidator not available. Please ensure config_validator.py is in the CLI directory.",
                 )
             ]
 
@@ -463,20 +463,20 @@ async def submit_config_tool(args: dict) -> list[TextContent]:
 
         except ValueError as validation_error:
             # Provide detailed validation feedback
-            error_msg = f"""❌ Config validation failed:
+            error_msg = f"""FAIL: Config validation failed:
 
 {str(validation_error)}
 
 Please fix these issues and try again.
 
-💡 Validation help:
+ Validation help:
 - Names: alphanumeric, hyphens, underscores only (e.g., "my-framework", "react_docs")
 - URLs: must start with http:// or https://
 - Selectors: should be a dict with keys like 'main_content', 'title', 'code_blocks'
 - Rate limit: non-negative number (default: 0.5)
 - Max pages: positive integer or -1 for unlimited
 
-📚 Example configs: https://github.com/yusufkaraaslan/skill-seekers-configs/tree/main/official
+ Example configs: https://github.com/yusufkaraaslan/skill-seekers-configs/tree/main/official
 """
             return [TextContent(type="text", text=error_msg)]
 
@@ -515,27 +515,27 @@ Please fix these issues and try again.
         if not is_unified:
             # Legacy config warnings
             if "max_pages" not in config_data:
-                warnings.append("⚠️ No max_pages set - will use default (100)")
+                warnings.append("WARNING: No max_pages set - will use default (100)")
             elif config_data.get("max_pages") in (None, -1):
                 warnings.append(
-                    "⚠️ Unlimited scraping enabled - may scrape thousands of pages and take hours"
+                    "WARNING: Unlimited scraping enabled - may scrape thousands of pages and take hours"
                 )
         else:
             # Unified config warnings
             for src in config_data.get("sources", []):
                 if src.get("type") == "documentation" and "max_pages" not in src:
                     warnings.append(
-                        "⚠️ No max_pages set for documentation source - will use default (100)"
+                        "WARNING: No max_pages set for documentation source - will use default (100)"
                     )
                 elif src.get("type") == "documentation" and src.get("max_pages") in (None, -1):
-                    warnings.append("⚠️ Unlimited scraping enabled for documentation source")
+                    warnings.append("WARNING: Unlimited scraping enabled for documentation source")
 
         # Check for GitHub token
         if not github_token:
             return [
                 TextContent(
                     type="text",
-                    text="❌ Error: GitHub token required.\n\nProvide github_token parameter or set GITHUB_TOKEN environment variable.\n\nCreate token at: https://github.com/settings/tokens",
+                    text="FAIL: Error: GitHub token required.\n\nProvide github_token parameter or set GITHUB_TOKEN environment variable.\n\nCreate token at: https://github.com/settings/tokens",
                 )
             ]
 
@@ -586,13 +586,13 @@ Please fix these issues and try again.
                 labels=["config-submission", "needs-review"],
             )
 
-            result = f"""✅ Config submitted successfully!
+            result = f"""PASS: Config submitted successfully!
 
-📝 Issue created: {issue.html_url}
-🏷️  Issue #{issue.number}
-📦 Config: {config_name}
-📊 Category: {category}
-🏷️  Labels: config-submission, needs-review
+ Issue created: {issue.html_url}
+  Issue #{issue.number}
+ Config: {config_name}
+ Category: {category}
+  Labels: config-submission, needs-review
 
 What happens next:
   1. Maintainers will review your config
@@ -600,8 +600,8 @@ What happens next:
   3. If approved, it will be added to official/{category}/
   4. The API will auto-update and your config becomes available!
 
-💡 Track your submission: {issue.html_url}
-📚 All configs: https://github.com/yusufkaraaslan/skill-seekers-configs
+ Track your submission: {issue.html_url}
+ All configs: https://github.com/yusufkaraaslan/skill-seekers-configs
 """
 
             return [TextContent(type="text", text=result)]
@@ -610,12 +610,12 @@ What happens next:
             return [
                 TextContent(
                     type="text",
-                    text=f"❌ GitHub Error: {str(e)}\n\nCheck your token permissions (needs 'repo' or 'public_repo' scope).",
+                    text=f"FAIL: GitHub Error: {str(e)}\n\nCheck your token permissions (needs 'repo' or 'public_repo' scope).",
                 )
             ]
 
     except Exception as e:
-        return [TextContent(type="text", text=f"❌ Error: {str(e)}")]
+        return [TextContent(type="text", text=f"FAIL: Error: {str(e)}")]
 
 
 async def add_config_source_tool(args: dict) -> list[TextContent]:
@@ -651,9 +651,9 @@ async def add_config_source_tool(args: dict) -> list[TextContent]:
     try:
         # Validate required parameters
         if not name:
-            return [TextContent(type="text", text="❌ Error: 'name' parameter is required")]
+            return [TextContent(type="text", text="FAIL: Error: 'name' parameter is required")]
         if not git_url:
-            return [TextContent(type="text", text="❌ Error: 'git_url' parameter is required")]
+            return [TextContent(type="text", text="FAIL: Error: 'git_url' parameter is required")]
 
         # Add source
         source_manager = SourceManager()
@@ -670,16 +670,16 @@ async def add_config_source_tool(args: dict) -> list[TextContent]:
         # Check if this is an update
         is_update = "updated_at" in source and source["added_at"] != source["updated_at"]
 
-        result = f"""✅ Config source {"updated" if is_update else "registered"} successfully!
+        result = f"""PASS: Config source {"updated" if is_update else "registered"} successfully!
 
-📛 Name: {source["name"]}
-📁 Repository: {source["git_url"]}
-🔖 Type: {source["type"]}
-🌿 Branch: {source["branch"]}
-🔑 Token env: {source.get("token_env", "None")}
-⚡ Priority: {source["priority"]} (lower = higher priority)
+ Name: {source["name"]}
+ Repository: {source["git_url"]}
+ Type: {source["type"]}
+ Branch: {source["branch"]}
+ Token env: {source.get("token_env", "None")}
+ Priority: {source["priority"]} (lower = higher priority)
 ✓ Enabled: {source["enabled"]}
-🕒 Added: {source["added_at"][:19]}
+ Added: {source["added_at"][:19]}
 
 Usage:
   # Fetch config from this source
@@ -691,15 +691,15 @@ Usage:
   # Remove this source
   remove_config_source(name="{source["name"]}")
 
-💡 Make sure to set {source.get("token_env", "GIT_TOKEN")} environment variable for private repos
+ Make sure to set {source.get("token_env", "GIT_TOKEN")} environment variable for private repos
 """
 
         return [TextContent(type="text", text=result)]
 
     except ValueError as e:
-        return [TextContent(type="text", text=f"❌ Validation Error: {str(e)}")]
+        return [TextContent(type="text", text=f"FAIL: Validation Error: {str(e)}")]
     except Exception as e:
-        return [TextContent(type="text", text=f"❌ Error: {str(e)}")]
+        return [TextContent(type="text", text=f"FAIL: Error: {str(e)}")]
 
 
 async def list_config_sources_tool(args: dict) -> list[TextContent]:
@@ -724,7 +724,7 @@ async def list_config_sources_tool(args: dict) -> list[TextContent]:
         sources = source_manager.list_sources(enabled_only=enabled_only)
 
         if not sources:
-            result = """📋 No config sources registered
+            result = """ No config sources registered
 
 To add a source:
   add_config_source(
@@ -732,12 +732,12 @@ To add a source:
     git_url="https://github.com/myorg/configs.git"
   )
 
-💡 Once added, use: fetch_config(source="team", config_name="...")
+ Once added, use: fetch_config(source="team", config_name="...")
 """
             return [TextContent(type="text", text=result)]
 
         # Format sources list
-        result = f"📋 Config Sources ({len(sources)} total"
+        result = f" Config Sources ({len(sources)} total"
         if enabled_only:
             result += ", enabled only"
         result += ")\n\n"
@@ -745,10 +745,10 @@ To add a source:
         for source in sources:
             status_icon = "✓" if source.get("enabled", True) else "✗"
             result += f"{status_icon} **{source['name']}**\n"
-            result += f"  📁 {source['git_url']}\n"
-            result += f"  🔖 Type: {source['type']} | 🌿 Branch: {source['branch']}\n"
-            result += f"  🔑 Token: {source.get('token_env', 'None')} | ⚡ Priority: {source['priority']}\n"
-            result += f"  🕒 Added: {source['added_at'][:19]}\n"
+            result += f"   {source['git_url']}\n"
+            result += f"   Type: {source['type']} |  Branch: {source['branch']}\n"
+            result += f"   Token: {source.get('token_env', 'None')} |  Priority: {source['priority']}\n"
+            result += f"   Added: {source['added_at'][:19]}\n"
             result += "\n"
 
         result += """Usage:
@@ -765,7 +765,7 @@ To add a source:
         return [TextContent(type="text", text=result)]
 
     except Exception as e:
-        return [TextContent(type="text", text=f"❌ Error: {str(e)}")]
+        return [TextContent(type="text", text=f"FAIL: Error: {str(e)}")]
 
 
 async def remove_config_source_tool(args: dict) -> list[TextContent]:
@@ -788,18 +788,18 @@ async def remove_config_source_tool(args: dict) -> list[TextContent]:
     try:
         # Validate required parameter
         if not name:
-            return [TextContent(type="text", text="❌ Error: 'name' parameter is required")]
+            return [TextContent(type="text", text="FAIL: Error: 'name' parameter is required")]
 
         # Remove source
         source_manager = SourceManager()
         removed = source_manager.remove_source(name)
 
         if removed:
-            result = f"""✅ Config source removed successfully!
+            result = f"""PASS: Config source removed successfully!
 
-📛 Removed: {name}
+ Removed: {name}
 
-⚠️  Note: Cached git repository data is NOT deleted
+WARNING:  Note: Cached git repository data is NOT deleted
 To free up disk space, manually delete: ~/.skill-seekers/cache/{name}/
 
 Next steps:
@@ -815,7 +815,7 @@ Next steps:
             sources = source_manager.list_sources()
             available = [s["name"] for s in sources]
 
-            result = f"""❌ Source '{name}' not found
+            result = f"""FAIL: Source '{name}' not found
 
 Available sources: {", ".join(available) if available else "none"}
 
@@ -825,7 +825,7 @@ To see all sources:
             return [TextContent(type="text", text=result)]
 
     except Exception as e:
-        return [TextContent(type="text", text=f"❌ Error: {str(e)}")]
+        return [TextContent(type="text", text=f"FAIL: Error: {str(e)}")]
 
 
 async def push_config_tool(args: dict) -> list[TextContent]:
@@ -853,9 +853,9 @@ async def push_config_tool(args: dict) -> list[TextContent]:
     force = args.get("force", False)
 
     if not config_path:
-        return [TextContent(type="text", text="❌ Missing required parameter: config_path")]
+        return [TextContent(type="text", text="FAIL: Missing required parameter: config_path")]
     if not source_name:
-        return [TextContent(type="text", text="❌ Missing required parameter: source_name")]
+        return [TextContent(type="text", text="FAIL: Missing required parameter: source_name")]
 
     try:
         from skill_seekers.mcp.config_publisher import ConfigPublisher
@@ -869,15 +869,15 @@ async def push_config_tool(args: dict) -> list[TextContent]:
             force=force,
         )
 
-        output = f"""✅ Config pushed successfully!
+        output = f"""PASS: Config pushed successfully!
 
-📄 Config: {result["config_name"]}
-📂 Path: {result["config_path"]}
-🏷️  Category: {result["category"]}
-📦 Source: {result["source"]}
-🔀 Branch: {result["branch"]}
-📝 Commit: {result["commit_sha"]}
-💬 Message: {result["message"]}
+ Config: {result["config_name"]}
+ Path: {result["config_path"]}
+  Category: {result["category"]}
+ Source: {result["source"]}
+ Branch: {result["branch"]}
+ Commit: {result["commit_sha"]}
+ Message: {result["message"]}
 
 To fetch this config:
   fetch_config(source="{result["source"]}", config_name="{result["config_name"]}")
@@ -885,4 +885,4 @@ To fetch this config:
         return [TextContent(type="text", text=output)]
 
     except Exception as e:
-        return [TextContent(type="text", text=f"❌ Push failed: {str(e)}")]
+        return [TextContent(type="text", text=f"FAIL: Push failed: {str(e)}")]

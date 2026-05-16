@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
 # Test: CLI Provider Flag Parsing
 # Tests --provider flag, LOKI_PROVIDER env var, default provider, and precedence
-#
-# This file tests the CLI interface for provider selection without invoking
+# # This file tests the CLI interface for provider selection without invoking
 # actual provider CLIs (claude, codex, gemini, cline, aider).
 
 set -uo pipefail

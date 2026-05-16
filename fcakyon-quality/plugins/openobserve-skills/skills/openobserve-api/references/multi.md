@@ -48,7 +48,7 @@ One can configure ZO_COLS_PER_RECORD_LIMIT to set desired value for allowed numb
 
 ## Timestamp
 
-By default we add a field `_timestamp` for each record with the value of `NOW` in microseconds (unix epoch value). 
+By default we add a field `_timestamp` for each record with the value of `NOW` in microseconds (unix epoch value).
 
 we support use of two fields to override the default value.
 

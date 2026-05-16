@@ -289,8 +289,8 @@ class StructuredLogger:
             '@timestamp': datetime.utcnow().isoformat() + 'Z',
             'level': level,
             'message': message,
-            **self.default_context,
-            **context
+**self.default_context,
+**context
         }
 
         trace_context = self._get_trace_context()

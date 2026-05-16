@@ -258,15 +258,15 @@ Returns a JSON payload describing all endpoints, their parameters (with types an
 ```bash
 gradio info gradio/calculator
 # {
-#   "/predict": {
-#     "parameters": [
-#       {"name": "num1", "required": true, "default": null, "type": {"type": "number"}},
-#       {"name": "operation", "required": true, "default": null, "type": {"enum": ["add", "subtract", "multiply", "divide"], "type": "string"}},
-#       {"name": "num2", "required": true, "default": null, "type": {"type": "number"}}
-#     ],
-#     "returns": [{"name": "output", "type": {"type": "number"}}],
-#     "description": ""
-#   }
+# "/predict": {
+# "parameters": [
+# {"name": "num1", "required": true, "default": null, "type": {"type": "number"}},
+# {"name": "operation", "required": true, "default": null, "type": {"enum": ["add", "subtract", "multiply", "divide"], "type": "string"}},
+# {"name": "num2", "required": true, "default": null, "type": {"type": "number"}}
+# ],
+# "returns": [{"name": "output", "type": {"type": "number"}}],
+# "description": ""
+# }
 # }
 ```
 

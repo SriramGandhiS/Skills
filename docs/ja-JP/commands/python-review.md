@@ -55,22 +55,22 @@ description: PEP 8準拠、型ヒント、セキュリティ、Pythonic慣用句
 ## 実行される自動チェック
 
 ```bash
-# 型チェック
+## 型チェック
 mypy .
 
-# リンティングとフォーマット
+## リンティングとフォーマット
 ruff check .
 black --check .
 isort --check-only .
 
-# セキュリティスキャン
+## セキュリティスキャン
 bandit -r .
 
-# 依存関係監査
+## 依存関係監査
 pip-audit
 safety check
 
-# テスト
+## テスト
 pytest --cov=app --cov-report=term-missing
 ```
 
@@ -80,7 +80,7 @@ pytest --cov=app --cov-report=term-missing
 User: /python-review
 
 Agent:
-# Pythonコードレビューレポート
+## Pythonコードレビューレポート
 
 ## レビューされたファイル
 - app/routes/user.py (変更)
@@ -203,17 +203,17 @@ with open("config.json") as f:  # 良い
 ## 関連
 
 - Agent: `agents/python-reviewer.md`
-- Skills: `skills/python-patterns/`, `skills/python-testing/`
+- Skills: `skills/python-patterns/`,`skills/python-testing/`
 
 ## 一般的な修正
 
 ### 型ヒントの追加
 ```python
-# 変更前
+## 変更前
 def calculate(x, y):
     return x + y
 
-# 変更後
+## 変更後
 from typing import Union
 
 def calculate(x: Union[int, float], y: Union[int, float]) -> Union[int, float]:
@@ -222,36 +222,36 @@ def calculate(x: Union[int, float], y: Union[int, float]) -> Union[int, float]:
 
 ### コンテキストマネージャーの使用
 ```python
-# 変更前
+## 変更前
 f = open("file.txt")
 data = f.read()
 f.close()
 
-# 変更後
+## 変更後
 with open("file.txt") as f:
     data = f.read()
 ```
 
 ### リスト内包表記の使用
 ```python
-# 変更前
+## 変更前
 result = []
 for item in items:
     if item.active:
         result.append(item.name)
 
-# 変更後
+## 変更後
 result = [item.name for item in items if item.active]
 ```
 
 ### 可変デフォルトの修正
 ```python
-# 変更前
+## 変更前
 def append(value, items=[]):
     items.append(value)
     return items
 
-# 変更後
+## 変更後
 def append(value, items=None):
     if items is None:
         items = []
@@ -261,23 +261,23 @@ def append(value, items=None):
 
 ### f-stringsの使用(Python 3.6+)
 ```python
-# 変更前
+## 変更前
 name = "Alice"
 greeting = "Hello, " + name + "!"
 greeting2 = "Hello, {}".format(name)
 
-# 変更後
+## 変更後
 greeting = f"Hello, {name}!"
 ```
 
 ### ループ内の文字列連結の修正
 ```python
-# 変更前
+## 変更前
 result = ""
 for item in items:
     result += str(item)
 
-# 変更後
+## 変更後
 result = "".join(str(item) for item in items)
 ```
 

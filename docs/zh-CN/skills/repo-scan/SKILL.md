@@ -18,11 +18,11 @@ origin: community
 ## 安装
 
 ```bash
-# Fetch only the pinned commit for reproducibility
+## Fetch only the pinned commit for reproducibility
 mkdir -p ~/.claude/skills/repo-scan
 git init repo-scan
 cd repo-scan
-git remote add origin https://github.com/haibindev/repo-scan.git
+git remote add origin <https://github.com/haibindev/repo-scan.git>
 git fetch --depth 1 origin 2742664
 git checkout --detach FETCH_HEAD
 cp -r . ~/.claude/skills/repo-scan

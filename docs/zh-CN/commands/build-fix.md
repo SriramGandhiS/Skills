@@ -8,13 +8,13 @@
 
 | 指示器 | 构建命令 |
 |-----------|---------------|
-| `package.json` 包含 `build` 脚本 | `npm run build` 或 `pnpm build` |
-| `tsconfig.json`（仅限 TypeScript） | `npx tsc --noEmit` |
-| `Cargo.toml` | `cargo build 2>&1` |
-| `pom.xml` | `mvn compile` |
-| `build.gradle` | `./gradlew compileJava` |
-| `go.mod` | `go build ./...` |
-| `pyproject.toml` | `python -m py_compile` 或 `mypy .` |
+| `package.json`包含`build`脚本 |`npm run build`或`pnpm build` |
+| `tsconfig.json`（仅限 TypeScript） |`npx tsc --noEmit` |
+| `Cargo.toml`|`cargo build 2>&1` |
+| `pom.xml`|`mvn compile` |
+| `build.gradle`|`./gradlew compileJava` |
+| `go.mod`|`go build ./...` |
+| `pyproject.toml`|`python -m py_compile`或`mypy .` |
 
 ## 步骤 2：解析并分组错误
 
@@ -58,7 +58,7 @@
 | 缺少模块/导入 | 检查包是否已安装；建议安装命令 |
 | 类型不匹配 | 读取两种类型定义；修复更窄的类型 |
 | 循环依赖 | 使用导入图识别循环；建议提取 |
-| 版本冲突 | 检查 `package.json` / `Cargo.toml` 中的版本约束 |
+| 版本冲突 | 检查 `package.json`/`Cargo.toml` 中的版本约束 |
 | 构建工具配置错误 | 读取配置文件；与有效的默认配置进行比较 |
 
 为了安全起见，一次只修复一个错误。优先使用最小的改动，而不是重构。

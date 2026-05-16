@@ -266,11 +266,11 @@ Replace `sleep(ms)` with `waitFor(() => condition)`.
 ## The Fix
 
 ```typescript
-// ❌ Bad
+// FAIL: Bad
 await sleep(2000);
 expect(element).toBeVisible();
 
-// ✅ Good
+// PASS: Good
 await waitFor(() => element.isVisible(), { timeout: 5000 });
 expect(element).toBeVisible();
 ```

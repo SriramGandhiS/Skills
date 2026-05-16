@@ -1,4 +1,4 @@
-﻿---
+---
 name: compositions
 description: Defining compositions, stills, folders, default props and dynamic metadata
 metadata:
@@ -30,7 +30,7 @@ export const RemotionRoot = () => {
 ## Default Props
 
 Pass `defaultProps` to provide initial values for your component.
-Values must be JSON-serializable (`Date`, `Map`, `Set`, and `staticFile()` are supported).
+Values must be JSON-serializable (`Date`,`Map`,`Set`, and`staticFile()` are supported).
 
 ```tsx
 import { Composition } from "remotion";
@@ -54,7 +54,7 @@ export const RemotionRoot = () => {
 };
 ```
 
-Use `type` declarations for props rather than `interface` to ensure `defaultProps` type safety.
+Use `type`declarations for props rather than`interface`to ensure`defaultProps` type safety.
 
 ## Folders
 
@@ -84,7 +84,7 @@ export const RemotionRoot = () => {
 
 ## Stills
 
-Use `<Still>` for single-frame images. It does not require `durationInFrames` or `fps`.
+Use `<Still>`for single-frame images. It does not require`durationInFrames`or`fps`.
 
 ```tsx
 import { Still } from "remotion";
@@ -143,4 +143,4 @@ export const RemotionRoot = () => {
 };
 ```
 
-The function can return `props`, `durationInFrames`, `width`, `height`, `fps`, and codec-related defaults. It runs once before rendering begins.
+The function can return `props`,`durationInFrames`,`width`,`height`,`fps`, and codec-related defaults. It runs once before rendering begins.

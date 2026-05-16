@@ -84,7 +84,7 @@ describe('Semantik Arama', () => {
 ### Adım 3: Testleri Çalıştırın (Başarısız Olmalı)
 ```bash
 npm test
-# Testler başarısız olmalı - henüz implement etmedik
+## Testler başarısız olmalı - henüz implement etmedik
 ```
 
 ### Adım 4: Kod Uygulayın
@@ -100,7 +100,7 @@ export async function searchMarkets(query: string) {
 ### Adım 5: Testleri Tekrar Çalıştırın
 ```bash
 npm test
-# Testler artık geçmeli
+## Testler artık geçmeli
 ```
 
 ### Adım 6: Refactor Edin
@@ -113,7 +113,7 @@ Testleri yeşil tutarken kod kalitesini iyileştirin:
 ### Adım 7: Kapsamı Doğrulayın
 ```bash
 npm run test:coverage
-# %80+ kapsam sağlandığını doğrula
+## %80+ kapsam sağlandığını doğrula
 ```
 
 ## Test Kalıpları
@@ -365,18 +365,18 @@ test('kullanıcı günceller', () => {
 ### Geliştirme Sırasında Watch Modu
 ```bash
 npm test -- --watch
-# Dosya değişikliklerinde testler otomatik çalışır
+## Dosya değişikliklerinde testler otomatik çalışır
 ```
 
 ### Pre-Commit Hook
 ```bash
-# Her commit öncesi çalışır
+## Her commit öncesi çalışır
 npm test && npm run lint
 ```
 
 ### CI/CD Entegrasyonu
 ```yaml
-# GitHub Actions
+## GitHub Actions
 - name: Run Tests
   run: npm test -- --coverage
 - name: Upload Coverage

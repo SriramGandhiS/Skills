@@ -1,4 +1,4 @@
-﻿---
+---
 name: springboot-verification
 description: "Verification loop for Spring Boot projects: build, static analysis, tests with coverage, security scans, and diff review before release or PR."
 origin: ECC
@@ -20,7 +20,7 @@ Run before PRs, after major changes, and pre-deploy.
 
 ```bash
 mvn -T 4 clean verify -DskipTests
-# or
+## or
 ./gradlew clean assemble -x test
 ```
 
@@ -43,7 +43,7 @@ Gradle (if configured):
 ```bash
 mvn -T 4 test
 mvn jacoco:report   # verify 80%+ coverage
-# or
+## or
 ./gradlew test jacocoTestReport
 ```
 
@@ -159,29 +159,29 @@ class UserControllerTest {
 ## Phase 4: Security Scan
 
 ```bash
-# Dependency CVEs
+## Dependency CVEs
 mvn org.owasp:dependency-check-maven:check
-# or
+## or
 ./gradlew dependencyCheckAnalyze
 
-# Secrets in source
+## Secrets in source
 grep -rn "password\s*=\s*\"" src/ --include="*.java" --include="*.yml" --include="*.properties"
 grep -rn "sk-\|api_key\|secret" src/ --include="*.java" --include="*.yml"
 
-# Secrets (git history)
+## Secrets (git history)
 git secrets --scan  # if configured
 ```
 
 ### Common Security Findings
 
 ```
-# Check for System.out.println (use logger instead)
+## Check for System.out.println (use logger instead)
 grep -rn "System\.out\.print" src/main/ --include="*.java"
 
-# Check for raw exception messages in responses
+## Check for raw exception messages in responses
 grep -rn "e\.getMessage()" src/main/ --include="*.java"
 
-# Check for wildcard CORS
+## Check for wildcard CORS
 grep -rn "allowedOrigins.*\*" src/main/ --include="*.java"
 ```
 
@@ -200,7 +200,7 @@ git diff
 ```
 
 Checklist:
-- No debugging logs left (`System.out`, `log.debug` without guards)
+- No debugging logs left (`System.out`,`log.debug` without guards)
 - Meaningful errors and HTTP statuses
 - Transactions and validation present where needed
 - Config changes documented

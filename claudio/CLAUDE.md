@@ -159,7 +159,7 @@ When `filename` is empty (default), logs are written to `~/.cache/claudio/logs/c
 
 Soundpacks use a category-based directory structure with 4 main categories:
 - `loading/` - PreToolUse events and thinking sounds
-- `success/` - PostToolUse success events  
+- `success/` - PostToolUse success events
 - `error/` - PostToolUse error events and failures
 - `interactive/` - UserPromptSubmit, Notification events
 

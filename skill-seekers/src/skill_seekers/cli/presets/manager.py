@@ -41,7 +41,7 @@ PRESETS = {
         },
         enhance_level=0,  # No AI enhancement (fast)
         estimated_time="1-2 minutes",
-        icon="⚡",
+        icon="",
     ),
     "standard": AnalysisPreset(
         name="Standard",
@@ -58,7 +58,7 @@ PRESETS = {
         },
         enhance_level=1,  # SKILL.md enhancement only
         estimated_time="5-10 minutes",
-        icon="🎯",
+        icon="",
     ),
     "comprehensive": AnalysisPreset(
         name="Comprehensive",
@@ -75,7 +75,7 @@ PRESETS = {
         },
         enhance_level=3,  # Full AI enhancement (all features)
         estimated_time="20-60 minutes",
-        icon="🚀",
+        icon="",
     ),
 }
 

@@ -1,7 +1,7 @@
 # Phase 5 Research: Provider System Architecture
 
-**Status**: Read-only deliverable for Loki Mode bash-to-Bun migration.  
-**Scope**: Inventory and analysis of /Users/lokesh/git/loki-mode/providers/  
+**Status**: Read-only deliverable for Loki Mode bash-to-Bun migration.
+**Scope**: Inventory and analysis of /Users/lokesh/git/loki-mode/providers/
 **Date**: April 25, 2026
 
 ## 1. Provider Loader (providers/loader.sh)
@@ -74,8 +74,8 @@ Upon successful load, each provider defines these PROVIDER_* variables (validate
 - `provider_get_tier_param(tier)` (line 121): Map tier to model name
 - `resolve_model_for_tier(tier)` (line 148): Tier-to-model resolution with maxTier cap
 
-**CLI Command**: `claude`  
-**Autonomous Flag**: `--dangerously-skip-permissions` (line 31)  
+**CLI Command**: `claude`
+**Autonomous Flag**: `--dangerously-skip-permissions` (line 31)
 **Prompt Delivery**: `-p <prompt>` flag (line 32)
 
 **Environment Required**:
@@ -115,8 +115,8 @@ Upon successful load, each provider defines these PROVIDER_* variables (validate
 - `provider_get_tier_param(tier)` (line 118): Tier to model name
 - `resolve_model_for_tier(tier)` (line 126): Single model, ignores tier
 
-**CLI Command**: `cline`  
-**Autonomous Flag**: `-y` (YOLO mode, line 33)  
+**CLI Command**: `cline`
+**Autonomous Flag**: `-y` (YOLO mode, line 33)
 **Prompt Delivery**: Positional argument (line 35)
 
 **Environment Required**:
@@ -156,8 +156,8 @@ Upon successful load, each provider defines these PROVIDER_* variables (validate
 - `provider_get_tier_param(tier)` (line 126): Map tier to effort (xhigh/high/low)
 - `resolve_model_for_tier(tier)` (line 142): Returns effort level, not model (BUG-PROV-012 note)
 
-**CLI Command**: `codex`  
-**Autonomous Flag**: `exec --full-auto` (line 35) with sandbox workspace-write  
+**CLI Command**: `codex`
+**Autonomous Flag**: `exec --full-auto` (line 35) with sandbox workspace-write
 **Prompt Delivery**: Positional after exec subcommand (line 35-37)
 
 **Environment Required**:
@@ -201,8 +201,8 @@ Upon successful load, each provider defines these PROVIDER_* variables (validate
 - `provider_get_tier_param(tier)` (line 243): Map tier to thinking level (high/medium/low)
 - `resolve_model_for_tier(tier)` (line 256): Tier to model (pro/flash)
 
-**CLI Command**: `gemini`  
-**Autonomous Flag**: `--approval-mode=yolo` (line 33)  
+**CLI Command**: `gemini`
+**Autonomous Flag**: `--approval-mode=yolo` (line 33)
 **Prompt Delivery**: Positional argument (line 36, -p flag deprecated per line 34)
 
 **Environment Required**:
@@ -252,8 +252,8 @@ Upon successful load, each provider defines these PROVIDER_* variables (validate
 - `provider_get_tier_param(tier)` (line 124): Tier to model name
 - `resolve_model_for_tier(tier)` (line 132): Single model, ignores tier
 
-**CLI Command**: `aider`  
-**Autonomous Flag**: `--yes-always` (line 33)  
+**CLI Command**: `aider`
+**Autonomous Flag**: `--yes-always` (line 33)
 **Prompt Delivery**: `--message <prompt>` flag (line 34)
 
 **Environment Required**:

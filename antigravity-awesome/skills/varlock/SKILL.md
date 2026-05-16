@@ -38,24 +38,24 @@ This skill ensures all sensitive data is properly protected.
 ### Rule 1: Never Echo Secrets
 
 ```bash
-# ❌ NEVER DO THIS - exposes secret to Claude's context
+# FAIL: NEVER DO THIS - exposes secret to Claude's context
 echo $CLERK_SECRET_KEY
 cat .env | grep SECRET
 printenv | grep API
 
-# ✅ DO THIS - validates without exposing
+# PASS: DO THIS - validates without exposing
 varlock load --quiet && echo "✓ Secrets validated"
 ```
 
 ### Rule 2: Never Read .env Directly
 
 ```bash
-# ❌ NEVER DO THIS - exposes all secrets
+# FAIL: NEVER DO THIS - exposes all secrets
 cat .env
 less .env
 Read tool on .env file
 
-# ✅ DO THIS - read schema (safe) not values
+# PASS: DO THIS - read schema (safe) not values
 cat .env.schema
 varlock load  # Shows masked values
 ```
@@ -63,21 +63,21 @@ varlock load  # Shows masked values
 ### Rule 3: Use Varlock for Validation
 
 ```bash
-# ❌ NEVER DO THIS - exposes secret in error
+# FAIL: NEVER DO THIS - exposes secret in error
 test -n "$API_KEY" && echo "Key: $API_KEY"
 
-# ✅ DO THIS - Varlock validates and masks
+# PASS: DO THIS - Varlock validates and masks
 varlock load
-# Output shows: API_KEY 🔐sensitive └ ▒▒▒▒▒
+# Output shows: API_KEY sensitive └ ▒▒▒▒▒
 ```
 
 ### Rule 4: Never Include Secrets in Commands
 
 ```bash
-# ❌ NEVER DO THIS - secret in command history
+# FAIL: NEVER DO THIS - secret in command history
 curl -H "Authorization: Bearer sk_live_xxx" https://api.example.com
 
-# ✅ DO THIS - use environment variable
+# PASS: DO THIS - use environment variable
 curl -H "Authorization: Bearer $API_KEY" https://api.example.com
 # Or better: varlock run -- curl ...
 ```
@@ -210,7 +210,7 @@ grep "^[A-Z]" .env.schema
 ```bash
 # Always validate environment first
 varlock load --quiet || {
-  echo "❌ Environment validation failed"
+  echo "FAIL: Environment validation failed"
   exit 1
 }
 
@@ -259,24 +259,24 @@ CMD ["varlock", "run", "--", "npm", "start"]
 ### When User Asks to "Check if API key is set"
 
 ```bash
-# ✅ Safe approach
+# PASS: Safe approach
 varlock load 2>&1 | grep "API_KEY"
-# Shows: ✅ API_KEY 🔐sensitive └ ▒▒▒▒▒
+# Shows: PASS: API_KEY sensitive └ ▒▒▒▒▒
 
-# ❌ Never do
+# FAIL: Never do
 echo $API_KEY
 ```
 
 ### When User Asks to "Debug authentication"
 
 ```bash
-# ✅ Safe approach - check presence and format
+# PASS: Safe approach - check presence and format
 varlock load  # Validates types and required fields
 
 # Check if key has correct prefix (without showing value)
 varlock load 2>&1 | grep -E "(CLERK|AUTH)"
 
-# ❌ Never do
+# FAIL: Never do
 printenv | grep KEY
 ```
 
@@ -369,7 +369,7 @@ varlock load  # Shows detailed errors
 # Add missing sensitivity:
 # Before: API_KEY=
 # After:  # @type=string @sensitive
-#         API_KEY=
+# API_KEY=
 ```
 
 ---

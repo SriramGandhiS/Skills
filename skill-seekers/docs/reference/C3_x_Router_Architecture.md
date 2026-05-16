@@ -405,18 +405,18 @@ output/fastmcp-e2e-test/
 **Current approach:** Only analyzes code
 
 **Missing valuable data:**
-- ❌ Common user problems (from open issues)
-- ❌ Known solutions (from closed issues)
-- ❌ Popular questions (from issue labels)
-- ❌ Official quick start (from README)
-- ❌ Contribution guide (from CONTRIBUTING.md)
-- ❌ Repository popularity (stars, forks)
+- FAIL: Common user problems (from open issues)
+- FAIL: Known solutions (from closed issues)
+- FAIL: Popular questions (from issue labels)
+- FAIL: Official quick start (from README)
+- FAIL: Contribution guide (from CONTRIBUTING.md)
+- FAIL: Repository popularity (stars, forks)
 
 **With three-stream GitHub architecture:**
-- ✅ All of the above automatically included
-- ✅ "Common Issues" section in SKILL.md
-- ✅ README content as quick reference
-- ✅ Real user problems addressed
+- PASS: All of the above automatically included
+- PASS: "Common Issues" section in SKILL.md
+- PASS: README content as quick reference
+- PASS: Real user problems addressed
 
 ### 2.4 Token Usage Scenarios
 
@@ -486,7 +486,7 @@ description: FastMCP framework for building MCP servers - use this skill to lear
 # FastMCP - Python Framework for MCP Servers
 
 **Repository:** https://github.com/jlowin/fastmcp
-**Stars:** ⭐ 1,234 | **Language:** Python | **Open Issues:** 12
+**Stars:**  1,234 | **Language:** Python | **Open Issues:** 12
 
 [From GitHub metadata - shows popularity and activity]
 
@@ -539,10 +539,10 @@ FastMCP uses a Service Layer Pattern with 206 Strategy pattern instances.
 **Size target:** 150 lines / 5KB
 
 **Data sources used:**
-- ✅ GitHub metadata (stars, issues count)
-- ✅ README.md (quick start)
-- ✅ GitHub issues (common problems)
-- ✅ C3.7 architecture (pattern info)
+- PASS: GitHub metadata (stars, issues count)
+- PASS: README.md (quick start)
+- PASS: GitHub issues (common problems)
+- PASS: C3.7 architecture (pattern info)
 
 ### 3.3 Enhanced Sub-Skill Template (OAuth Example)
 
@@ -591,7 +591,7 @@ GoogleProvider(app_id="...", app_secret="...")
 GoogleProvider(client_id="...", client_secret="...")
 ```
 
-⚠️ **Conflict detected:** Parameter names changed. Use current implementation.
+WARNING: **Conflict detected:** Parameter names changed. Use current implementation.
 
 [Hybrid content showing both docs and code]
 
@@ -620,11 +620,11 @@ GoogleProvider(client_id="...", client_secret="...")
 **Size target:** 250 lines / 8KB
 
 **Data sources used:**
-- ✅ C3.x test examples (real code)
-- ✅ README.md (official docs)
-- ✅ GitHub issues (common problems + solutions)
-- ✅ C3.x patterns (design patterns)
-- ✅ Conflict detection (docs vs code)
+- PASS: C3.x test examples (real code)
+- PASS: README.md (official docs)
+- PASS: GitHub issues (common problems + solutions)
+- PASS: C3.x patterns (design patterns)
+- PASS: Conflict detection (docs vs code)
 
 ---
 
@@ -796,22 +796,22 @@ class GitHubThreeStreamFetcher:
         """
 
         # STEP 1: Clone repository
-        print(f"📦 Cloning {repo_url}...")
+        print(f" Cloning {repo_url}...")
         local_path = self.clone_repo(repo_url)
 
         # STEP 2: Fetch GitHub metadata
-        print(f"🔍 Fetching GitHub metadata...")
+        print(f" Fetching GitHub metadata...")
         metadata = self.fetch_github_metadata(repo_url)
         issues = self.fetch_issues(repo_url, max_issues=100)
 
         # STEP 3: Classify files
-        print(f"📂 Classifying files...")
+        print(f" Classifying files...")
         code_files, doc_files = self.classify_files(local_path)
         print(f"  - Code: {len(code_files)} files")
         print(f"  - Docs: {len(doc_files)} files")
 
         # STEP 4: Analyze issues
-        print(f"🐛 Analyzing {len(issues)} issues...")
+        print(f" Analyzing {len(issues)} issues...")
         issue_insights = self.analyze_issues(issues)
 
         # STEP 5: Return 3 streams
@@ -997,7 +997,7 @@ class EnhancedSourceMerger:
 
         # LAYER 1: GitHub Code Stream (C3.x) - Ground Truth
         if github_three_streams and github_three_streams.code_stream:
-            print("📊 Layer 1: C3.x code analysis")
+            print(" Layer 1: C3.x code analysis")
             c3x_data = self.run_c3x_analysis(github_three_streams.code_stream)
 
             merged.patterns = c3x_data['patterns']
@@ -1008,7 +1008,7 @@ class EnhancedSourceMerger:
 
         # LAYER 2: HTML Documentation - Official Intent
         if html_docs:
-            print("📚 Layer 2: HTML documentation")
+            print(" Layer 2: HTML documentation")
             for topic, content in html_docs.items():
                 if topic in merged.topics:
                     # Detect conflicts with C3.x
@@ -1035,7 +1035,7 @@ class EnhancedSourceMerger:
 
         # LAYER 3: GitHub Docs Stream - Repo Documentation
         if github_three_streams and github_three_streams.docs_stream:
-            print("📄 Layer 3: GitHub documentation")
+            print(" Layer 3: GitHub documentation")
             docs = github_three_streams.docs_stream
 
             # Add README quick start
@@ -1056,7 +1056,7 @@ class EnhancedSourceMerger:
 
         # LAYER 4: GitHub Insights Stream - Community Knowledge
         if github_three_streams and github_three_streams.insights_stream:
-            print("🐛 Layer 4: GitHub insights")
+            print(" Layer 4: GitHub insights")
             insights = github_three_streams.insights_stream
 
             # Add common problems
@@ -1252,7 +1252,6 @@ class ThreeStreamData:
     docs_stream: DocsStream
     insights_stream: InsightsStream
 
-
 class GitHubThreeStreamFetcher:
     """
     Fetch from GitHub and split into 3 streams.
@@ -1310,7 +1309,6 @@ class GitHubThreeStreamFetcher:
         """Analyze issues to extract insights."""
         # Implementation from section 4.2
         pass
-
 
 # src/skill_seekers/cli/unified_codebase_analyzer.py
 
@@ -1424,7 +1422,7 @@ class UnifiedCodebaseAnalyzer:
 
         # Add C3.x components
         c3x = {
-            **basic,
+**basic,
             'c3_1_patterns': self.detect_patterns(directory),
             'c3_2_examples': self.extract_test_examples(directory),
             'c3_3_guides': self.build_how_to_guides(directory),
@@ -1439,7 +1437,6 @@ class UnifiedCodebaseAnalyzer:
     def is_github_url(self, source: str) -> bool:
         """Check if source is a GitHub URL."""
         return 'github.com' in source
-
 
 # src/skill_seekers/cli/c3x_to_router.py (Enhanced)
 
@@ -1479,24 +1476,24 @@ class EnhancedC3xToRouterPipeline:
         7. Validate quality
         """
 
-        print(f"🚀 Starting Enhanced C3.x to Router pipeline for {base_name}")
+        print(f" Starting Enhanced C3.x to Router pipeline for {base_name}")
 
         # Step 1: Define topics (enhanced with GitHub insights)
         topics = self.define_topics_enhanced(
             base_name,
             github_insights=self.github_data.insights_stream if self.github_data else None
         )
-        print(f"📋 Defined {len(topics)} topics: {list(topics.keys())}")
+        print(f" Defined {len(topics)} topics: {list(topics.keys())}")
 
         # Step 2: Filter data for each topic
         filtered_data = {}
         for topic_name, topic_config in topics.items():
-            print(f"🔍 Filtering data for topic: {topic_name}")
+            print(f" Filtering data for topic: {topic_name}")
             filtered_data[topic_name] = self.filter_for_topic(topic_config)
 
         # Step 3: Categorize GitHub issues by topic (NEW!)
         if self.github_data:
-            print(f"🐛 Categorizing GitHub issues by topic")
+            print(f" Categorizing GitHub issues by topic")
             issues_by_topic = self.categorize_issues_by_topic(
                 insights=self.github_data.insights_stream,
                 topics=list(topics.keys())
@@ -1507,20 +1504,20 @@ class EnhancedC3xToRouterPipeline:
                     filtered_data[topic_name].github_issues = issues
 
         # Step 4: Resolve cross-references
-        print(f"🔗 Resolving cross-references")
+        print(f" Resolving cross-references")
         filtered_data = self.resolve_cross_references(filtered_data, topics)
 
         # Step 5: Generate sub-skills (with GitHub issues)
         skill_paths = {}
         for topic_name, data in filtered_data.items():
-            print(f"📝 Generating sub-skill: {base_name}-{topic_name}")
+            print(f" Generating sub-skill: {base_name}-{topic_name}")
             skill_path = self.generate_sub_skill_enhanced(
                 base_name, topic_name, data, topics[topic_name]
             )
             skill_paths[f"{base_name}-{topic_name}"] = skill_path
 
         # Step 6: Generate router (with README + top issues)
-        print(f"🧭 Generating router skill: {base_name}")
+        print(f" Generating router skill: {base_name}")
         router_path = self.generate_router_enhanced(
             base_name,
             list(skill_paths.keys()),
@@ -1530,10 +1527,10 @@ class EnhancedC3xToRouterPipeline:
         skill_paths[base_name] = router_path
 
         # Step 7: Quality validation
-        print(f"✅ Validating quality")
+        print(f"PASS: Validating quality")
         self.validate_quality(skill_paths)
 
-        print(f"🎉 Pipeline complete! Generated {len(skill_paths)} skills")
+        print(f" Pipeline complete! Generated {len(skill_paths)} skills")
         return skill_paths
 
     def generate_sub_skill_enhanced(
@@ -1640,7 +1637,7 @@ description: {base_name.upper()} framework - use for overview and routing to spe
         if github_insights:
             metadata = github_insights.metadata
             md += f"""**Repository:** {repo_url}
-**Stars:** ⭐ {metadata.get('stars', 0)} | **Language:** {metadata.get('language', 'Unknown')} | **Open Issues:** {metadata.get('open_issues', 0)}
+**Stars:**  {metadata.get('stars', 0)} | **Language:** {metadata.get('language', 'Unknown')} | **Open Issues:** {metadata.get('open_issues', 0)}
 
 """
 
@@ -1757,9 +1754,9 @@ Based on {{ github_issues|length }} GitHub issues related to OAuth:
 - Status: {{ issue.state }}
 - Comments: {{ issue.comments }}
 {% if issue.state == 'closed' %}
-- ✅ Solution found (see issue for details)
+- PASS: Solution found (see issue for details)
 {% else %}
-- ⚠️ Open issue - community discussion ongoing
+- WARNING: Open issue - community discussion ongoing
 {% endif %}
 
 {% endfor %}
@@ -2001,7 +1998,7 @@ def validate_content_quality_enhanced(skill_md: str, has_github: bool):
     # NEW: GitHub checks
     if has_github:
         # Check for GitHub metadata
-        assert '⭐' in skill_md or 'Repository:' in skill_md, \
+        assert '' in skill_md or 'Repository:' in skill_md, \
             "Missing GitHub metadata"
 
         # Check for issue references
@@ -2020,7 +2017,7 @@ def validate_content_quality_enhanced(skill_md: str, has_github: bool):
 - Router must include top 5 common issues
 - Each sub-skill must include relevant issues (if any exist)
 - Issue references must be properly formatted (#42)
-- Closed issues should show "✅ Solution found"
+- Closed issues should show "PASS: Solution found"
 
 **Validation:**
 ```python
@@ -2029,7 +2026,7 @@ def validate_github_integration(skill_md: str, topic: str, github_insights: Insi
 
     # Check metadata present
     if topic == 'router':
-        assert '⭐' in skill_md, "Missing stars count"
+        assert '' in skill_md, "Missing stars count"
         assert 'Open Issues:' in skill_md, "Missing issue count"
 
     # Check issue formatting
@@ -2043,7 +2040,7 @@ def validate_github_integration(skill_md: str, topic: str, github_insights: Insi
     # Check solution indicators
     closed_issue_matches = re.findall(r'Issue #(\d+).*closed', skill_md, re.IGNORECASE)
     for match in closed_issue_matches:
-        assert '✅' in skill_md or 'Solution' in skill_md, \
+        assert 'PASS:' in skill_md or 'Solution' in skill_md, \
             f"Closed issue #{match} should indicate solution found"
 ```
 
@@ -2103,23 +2100,23 @@ def measure_token_efficiency_with_github(scenarios: List[Dict]):
 **NEW PHASE - Highest Priority**
 
 **Tasks:**
-1. Create `github_fetcher.py` ✅
+1. Create `github_fetcher.py` PASS:
    - Clone repository
    - Fetch GitHub API metadata
    - Fetch issues (open + closed)
    - Classify files (code vs docs)
 
-2. Create `GitHubThreeStreamFetcher` class ✅
+2. Create `GitHubThreeStreamFetcher` class PASS:
    - `fetch()` main method
    - `classify_files()` splitter
    - `analyze_issues()` insights extractor
 
-3. Integrate with `unified_codebase_analyzer.py` ✅
+3. Integrate with `unified_codebase_analyzer.py` PASS:
    - Detect GitHub URLs
    - Call three-stream fetcher
    - Return unified result
 
-4. Write tests ✅
+4. Write tests PASS:
    - Test file classification
    - Test issue analysis
    - Test real GitHub fetch (with token)
@@ -2131,17 +2128,17 @@ def measure_token_efficiency_with_github(scenarios: List[Dict]):
 ### Phase 2: Enhanced Source Merging (Day 2, 6 hours)
 
 **Tasks:**
-1. Update `source_merger.py` ✅
+1. Update `source_merger.py` PASS:
    - Add GitHub docs stream handling
    - Add GitHub insights stream handling
    - Categorize issues by topic
    - Create hybrid content with issue links
 
-2. Update topic definition ✅
+2. Update topic definition PASS:
    - Use GitHub issue labels
    - Weight issues in topic scoring
 
-3. Write tests ✅
+3. Write tests PASS:
    - Test issue categorization
    - Test hybrid content generation
    - Test conflict detection
@@ -2153,18 +2150,18 @@ def measure_token_efficiency_with_github(scenarios: List[Dict]):
 ### Phase 3: Router Generation with GitHub (Day 2-3, 6 hours)
 
 **Tasks:**
-1. Update router templates ✅
+1. Update router templates PASS:
    - Add README quick start section
    - Add repository stats
    - Add top 5 common issues
    - Link issues to sub-skills
 
-2. Update sub-skill templates ✅
+2. Update sub-skill templates PASS:
    - Add "Common Issues" section
    - Format issue references
    - Add solution indicators
 
-3. Write tests ✅
+3. Write tests PASS:
    - Test router with GitHub data
    - Test sub-skills with issues
    - Validate issue links
@@ -2176,18 +2173,18 @@ def measure_token_efficiency_with_github(scenarios: List[Dict]):
 ### Phase 4: Testing & Refinement (Day 3, 4 hours)
 
 **Tasks:**
-1. Run full E2E test on FastMCP ✅
+1. Run full E2E test on FastMCP PASS:
    - With GitHub three-stream
    - Validate all 3 streams present
    - Check issue integration
    - Measure token savings
 
-2. Manual testing ✅
+2. Manual testing PASS:
    - Test 10 real queries
    - Verify issue relevance
    - Check GitHub links work
 
-3. Performance optimization ✅
+3. Performance optimization PASS:
    - GitHub API rate limiting
    - Parallel stream processing
    - Caching GitHub data
@@ -2199,12 +2196,12 @@ def measure_token_efficiency_with_github(scenarios: List[Dict]):
 ### Phase 5: Documentation (Day 4, 2 hours)
 
 **Tasks:**
-1. Update documentation ✅
+1. Update documentation PASS:
    - This architecture document
    - CLI help text
    - README with GitHub example
 
-2. Create examples ✅
+2. Create examples PASS:
    - FastMCP with GitHub
    - React with GitHub
    - Add to official configs
@@ -2245,11 +2242,11 @@ def measure_token_efficiency_with_github(scenarios: List[Dict]):
 ```
 
 **Result:**
-- ✅ Code analyzed with C3.x
-- ✅ README/docs extracted
-- ✅ 100 issues analyzed
-- ✅ Router + 4 sub-skills generated
-- ✅ All skills include GitHub insights
+- PASS: Code analyzed with C3.x
+- PASS: README/docs extracted
+- PASS: 100 issues analyzed
+- PASS: Router + 4 sub-skills generated
+- PASS: All skills include GitHub insights
 
 ### Example 2: Documentation + GitHub (Multi-Source)
 
@@ -2277,12 +2274,12 @@ def measure_token_efficiency_with_github(scenarios: List[Dict]):
 ```
 
 **Result:**
-- ✅ HTML docs scraped (200 pages)
-- ✅ Code analyzed with C3.x
-- ✅ GitHub insights added
-- ✅ Conflicts detected (docs vs code)
-- ✅ Hybrid content generated
-- ✅ Router + sub-skills with all sources
+- PASS: HTML docs scraped (200 pages)
+- PASS: Code analyzed with C3.x
+- PASS: GitHub insights added
+- PASS: Conflicts detected (docs vs code)
+- PASS: Hybrid content generated
+- PASS: Router + sub-skills with all sources
 
 ### Example 3: Local Codebase (No GitHub)
 
@@ -2303,10 +2300,10 @@ def measure_token_efficiency_with_github(scenarios: List[Dict]):
 ```
 
 **Result:**
-- ✅ Code analyzed with C3.x
-- ❌ No GitHub insights (not applicable)
-- ✅ Router + sub-skills generated
-- ✅ Works without GitHub data
+- PASS: Code analyzed with C3.x
+- FAIL: No GitHub insights (not applicable)
+- PASS: Router + sub-skills generated
+- PASS: Works without GitHub data
 
 ---
 

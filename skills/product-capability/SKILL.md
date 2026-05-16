@@ -1,4 +1,4 @@
-﻿---
+---
 name: product-capability
 description: Translate PRD intent, roadmap asks, or product discussions into an implementation-ready capability plan that exposes constraints, invariants, interfaces, and unresolved decisions before multi-service work starts. Use when the user needs an ECC-native PRD-to-SRS lane instead of vague planning prose.
 origin: ECC
@@ -20,7 +20,7 @@ Use it when the gap is not "what should we build?" but "what exactly must be tru
 
 ## Canonical Artifact
 
-If the repo has a durable product-context file such as `PRODUCT.md`, `docs/product/`, or a program-spec directory, update it there.
+If the repo has a durable product-context file such as `PRODUCT.md`,`docs/product/`, or a program-spec directory, update it there.
 
 If no capability manifest exists yet, create one using the template at:
 

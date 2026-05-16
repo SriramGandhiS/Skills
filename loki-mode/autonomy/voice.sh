@@ -1,14 +1,12 @@
 #!/usr/bin/env bash
 # Loki Mode Voice Input Support (v1.0.0)
 # Enables voice-to-text for PRD dictation and command input
-#
-# Usage:
-#   ./autonomy/voice.sh listen        - Listen for voice input
-#   ./autonomy/voice.sh speak MESSAGE - Text-to-speech output
-#   ./autonomy/voice.sh dictate FILE  - Dictate to file
-#   ./autonomy/voice.sh status        - Check voice capabilities
-#
-# Requires: macOS with Dictation enabled, or Whisper API
+# # Usage:
+# ./autonomy/voice.sh listen        - Listen for voice input
+# ./autonomy/voice.sh speak MESSAGE - Text-to-speech output
+# ./autonomy/voice.sh dictate FILE  - Dictate to file
+# ./autonomy/voice.sh status        - Check voice capabilities
+# # Requires: macOS with Dictation enabled, or Whisper API
 
 set -euo pipefail
 

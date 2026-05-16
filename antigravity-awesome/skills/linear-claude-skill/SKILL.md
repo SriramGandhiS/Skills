@@ -17,7 +17,7 @@ Tools and workflows for managing issues, projects, and teams in Linear.
 
 ---
 
-## ⚠️ Tool Availability (READ FIRST)
+## WARNING: Tool Availability (READ FIRST)
 
 **This skill supports multiple tool backends. Use whichever is available:**
 
@@ -48,7 +48,7 @@ linear issues list
 
 ---
 
-## 🔐 Security: Varlock Integration
+## Security: Varlock Integration
 
 **CRITICAL**: Never expose API keys in terminal output or Claude's context.
 
@@ -68,7 +68,7 @@ cat .env.schema | grep LINEAR
 ### Unsafe Commands (NEVER Use)
 
 ```bash
-# ❌ NEVER - exposes key to Claude's context
+# FAIL: NEVER - exposes key to Claude's context
 linear config show
 echo $LINEAR_API_KEY
 printenv | grep LINEAR
@@ -207,7 +207,7 @@ See [Project Management Commands](#project-management-commands) for full referen
 
 #### Anti-Pattern to Avoid
 
-❌ Creating issues in a "holding" project and moving them later:
+FAIL: Creating issues in a "holding" project and moving them later:
 ```bash
 # Don't do this
 create-issue "Phase 6A" "New feature"  # Wrong project
@@ -347,10 +347,10 @@ Choose the right tool for the task:
 
 | Operation | Reliability | Notes |
 |-----------|-------------|-------|
-| Create issue | ✅ High | Full support |
-| Update status | ✅ High | Use `state: "Done"` directly |
-| List/Search issues | ✅ High | Supports filters, queries |
-| Add comment | ✅ High | Works with issue IDs |
+| Create issue | PASS: High | Full support |
+| Update status | PASS: High | Use `state: "Done"` directly |
+| List/Search issues | PASS: High | Supports filters, queries |
+| Add comment | PASS: High | Works with issue IDs |
 
 ### Quick Status Update
 

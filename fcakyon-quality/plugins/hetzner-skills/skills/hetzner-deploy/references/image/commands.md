@@ -31,7 +31,6 @@ hcloud image add-label [--overwrite] <image> <label>...
 
 * [hcloud image](hcloud_image.md)	 - Manage Images
 
-
 ---
 
 ## hcloud image delete
@@ -65,7 +64,6 @@ hcloud image delete <image>...
 ### SEE ALSO
 
 * [hcloud image](hcloud_image.md)	 - Manage Images
-
 
 ---
 
@@ -103,7 +101,6 @@ hcloud image describe [options] <image>
 
 * [hcloud image](hcloud_image.md)	 - Manage Images
 
-
 ---
 
 ## hcloud image disable-protection
@@ -138,7 +135,6 @@ hcloud image disable-protection <image> delete
 
 * [hcloud image](hcloud_image.md)	 - Manage Images
 
-
 ---
 
 ## hcloud image enable-protection
@@ -172,7 +168,6 @@ hcloud image enable-protection <image> delete
 ### SEE ALSO
 
 * [hcloud image](hcloud_image.md)	 - Manage Images
-
 
 ---
 
@@ -241,7 +236,6 @@ hcloud image list [options]
 
 * [hcloud image](hcloud_image.md)	 - Manage Images
 
-
 ---
 
 ## hcloud image remove-label
@@ -276,7 +270,6 @@ hcloud image remove-label <image> (--all | <label>...)
 ### SEE ALSO
 
 * [hcloud image](hcloud_image.md)	 - Manage Images
-
 
 ---
 

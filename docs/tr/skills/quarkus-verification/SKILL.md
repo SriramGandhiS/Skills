@@ -20,10 +20,10 @@ PR'lardan önce, büyük değişikliklerden sonra ve deployment öncesi çalış
 ## Faz 1: Build
 
 ```bash
-# Maven
+## Maven
 mvn clean verify -DskipTests
 
-# Gradle
+## Gradle
 ./gradlew clean assemble -x test
 ```
 
@@ -56,16 +56,16 @@ mvn sonar:sonar \
 ## Faz 3: Testler + Kapsam
 
 ```bash
-# Tüm testleri çalıştır
+## Tüm testleri çalıştır
 mvn clean test
 
-# Kapsam raporu oluştur
+## Kapsam raporu oluştur
 mvn jacoco:report
 
-# Kapsam eşiğini zorla (%80)
+## Kapsam eşiğini zorla (%80)
 mvn jacoco:check
 
-# Veya Gradle ile
+## Veya Gradle ile
 ./gradlew test jacocoTestReport jacocoTestCoverageVerification
 ```
 
@@ -176,10 +176,10 @@ CVE'ler için `target/dependency-check-report.html` raporunu inceleyin.
 ### Quarkus Güvenlik Denetimi
 
 ```bash
-# Güvenlik açığı olan extension'ları kontrol et
+## Güvenlik açığı olan extension'ları kontrol et
 mvn quarkus:audit
 
-# Tüm extension'ları listele
+## Tüm extension'ları listele
 mvn quarkus:list-extensions
 ```
 
@@ -187,7 +187,7 @@ mvn quarkus:list-extensions
 
 ```bash
 docker run -t owasp/zap2docker-stable zap-api-scan.py \
-  -t http://localhost:8080/q/openapi \
+  -t <http://localhost:8080/q/openapi> \
   -f openapi
 ```
 
@@ -207,18 +207,18 @@ docker run -t owasp/zap2docker-stable zap-api-scan.py \
 GraalVM native image uyumluluğunu test edin:
 
 ```bash
-# Native executable oluştur
+## Native executable oluştur
 mvn package -Dnative
 
-# Veya container ile
+## Veya container ile
 mvn package -Dnative -Dquarkus.native.container-build=true
 
-# Native executable'ı test et
+## Native executable'ı test et
 ./target/*-runner
 
-# Temel smoke testleri çalıştır
-curl http://localhost:8080/q/health/live
-curl http://localhost:8080/q/health/ready
+## Temel smoke testleri çalıştır
+curl <http://localhost:8080/q/health/live>
+curl <http://localhost:8080/q/health/ready>
 ```
 
 ### Native Image Sorun Giderme
@@ -276,17 +276,17 @@ k6 run load-test.js
 ## Faz 7: Sağlık Kontrolleri
 
 ```bash
-# Liveness
-curl http://localhost:8080/q/health/live
+## Liveness
+curl <http://localhost:8080/q/health/live>
 
-# Readiness
-curl http://localhost:8080/q/health/ready
+## Readiness
+curl <http://localhost:8080/q/health/ready>
 
-# Tüm sağlık kontrolleri
-curl http://localhost:8080/q/health
+## Tüm sağlık kontrolleri
+curl <http://localhost:8080/q/health>
 
-# Metrikler (etkinleştirilmişse)
-curl http://localhost:8080/q/metrics
+## Metrikler (etkinleştirilmişse)
+curl <http://localhost:8080/q/metrics>
 ```
 
 Beklenen yanıtlar:
@@ -305,38 +305,38 @@ Beklenen yanıtlar:
 ## Faz 8: Container Image Build
 
 ```bash
-# Container image oluştur
+## Container image oluştur
 mvn package -Dquarkus.container-image.build=true
 
-# Veya belirli registry ile
+## Veya belirli registry ile
 mvn package \
   -Dquarkus.container-image.build=true \
   -Dquarkus.container-image.registry=docker.io \
   -Dquarkus.container-image.group=myorg \
   -Dquarkus.container-image.tag=1.0.0
 
-# Container'ı test et
+## Container'ı test et
 docker run -p 8080:8080 myorg/my-quarkus-app:1.0.0
 ```
 
 ### Container Güvenlik Taraması
 
 ```bash
-# Trivy
+## Trivy
 trivy image myorg/my-quarkus-app:1.0.0
 
-# Grype
+## Grype
 grype myorg/my-quarkus-app:1.0.0
 ```
 
 ## Faz 9: Yapılandırma Doğrulama
 
 ```bash
-# Tüm yapılandırma özelliklerini kontrol et
+## Tüm yapılandırma özelliklerini kontrol et
 mvn quarkus:info
 
-# Tüm yapılandırma kaynaklarını listele
-curl http://localhost:8080/q/dev/io.quarkus.quarkus-vertx-http/config
+## Tüm yapılandırma kaynaklarını listele
+curl <http://localhost:8080/q/dev/io.quarkus.quarkus-vertx-http/config>
 ```
 
 ### Ortama Özgü Kontroller
@@ -358,7 +358,7 @@ curl http://localhost:8080/q/dev/io.quarkus.quarkus-vertx-http/config
 
 OpenAPI spec oluşturun:
 ```bash
-curl http://localhost:8080/q/openapi -o openapi.json
+curl <http://localhost:8080/q/openapi> -o openapi.json
 ```
 
 ## Doğrulama Kontrol Listesi

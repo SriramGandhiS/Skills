@@ -84,7 +84,7 @@ Continue (non-blocking).
 
 **If `SKETCH_FINDINGS_PATH` is not empty:**
 ```
-⚡ Sketch findings detected: {SKETCH_FINDINGS_PATH}
+ Sketch findings detected: {SKETCH_FINDINGS_PATH}
    Validated design decisions from /gsd-sketch will be loaded into the UI researcher.
    Pre-validated decisions (layout, palette, typography, spacing) should be treated as locked — not re-asked.
 ```
@@ -94,7 +94,6 @@ Continue (non-blocking).
 ```bash
 UI_SPEC_FILE=$(ls "${PHASE_DIR}"/*-UI-SPEC.md 2>/dev/null | head -1)
 ```
-
 
 **Text mode (`workflow.text_mode: true` in config or `--text` flag):** Set `TEXT_MODE=true` if `--text` is present in `$ARGUMENTS` OR `text_mode` from init JSON is `true`. When TEXT_MODE is active, replace every `AskUserQuestion` call with a plain-text numbered list and ask the user to type their choice number. This is required for non-Claude runtimes (OpenAI Codex, Gemini CLI, etc.) where `AskUserQuestion` is not available.
 **If exists:** Use AskUserQuestion:
@@ -278,7 +277,7 @@ Dimensions: 6/6 passed
 
 ───────────────────────────────────────────────────────────────
 
-## ▶ Next Up — [${PROJECT_CODE}] ${PROJECT_TITLE}
+## Next Up — [${PROJECT_CODE}] ${PROJECT_TITLE}
 
 {If CONTEXT.md exists for this phase:}
 **Plan Phase {N}** — planner will use UI-SPEC.md as design context

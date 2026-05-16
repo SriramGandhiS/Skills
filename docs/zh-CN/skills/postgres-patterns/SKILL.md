@@ -22,22 +22,22 @@ PostgreSQL 最佳实践快速参考。如需详细指导，请使用 `database-r
 
 | 查询模式 | 索引类型 | 示例 |
 |--------------|------------|---------|
-| `WHERE col = value` | B-tree（默认） | `CREATE INDEX idx ON t (col)` |
-| `WHERE col > value` | B-tree | `CREATE INDEX idx ON t (col)` |
-| `WHERE a = x AND b > y` | 复合索引 | `CREATE INDEX idx ON t (a, b)` |
-| `WHERE jsonb @> '{}'` | GIN | `CREATE INDEX idx ON t USING gin (col)` |
-| `WHERE tsv @@ query` | GIN | `CREATE INDEX idx ON t USING gin (col)` |
+| `WHERE col = value`| B-tree（默认） |`CREATE INDEX idx ON t (col)` |
+| `WHERE col > value`| B-tree |`CREATE INDEX idx ON t (col)` |
+| `WHERE a = x AND b > y`| 复合索引 |`CREATE INDEX idx ON t (a, b)` |
+| `WHERE jsonb @> '{}'`| GIN |`CREATE INDEX idx ON t USING gin (col)` |
+| `WHERE tsv @@ query`| GIN |`CREATE INDEX idx ON t USING gin (col)` |
 | 时间序列范围查询 | BRIN | `CREATE INDEX idx ON t USING brin (col)` |
 
 ### 数据类型快速参考
 
 | 使用场景 | 正确类型 | 避免使用 |
 |----------|-------------|-------|
-| ID | `bigint` | `int`，随机 UUID |
-| 字符串 | `text` | `varchar(255)` |
-| 时间戳 | `timestamptz` | `timestamp` |
-| 货币 | `numeric(10,2)` | `float` |
-| 标志位 | `boolean` | `varchar`，`int` |
+| ID | `bigint`|`int`，随机 UUID |
+| 字符串 | `text`|`varchar(255)` |
+| 时间戳 | `timestamptz`|`timestamp` |
+| 货币 | `numeric(10,2)`|`float` |
+| 标志位 | `boolean`|`varchar`，`int` |
 
 ### 常见模式
 

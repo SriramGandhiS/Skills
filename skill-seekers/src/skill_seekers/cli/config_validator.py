@@ -111,7 +111,7 @@ class UniSkillConfigValidator:
         # Check if legacy format (no sources array)
         if "sources" not in self.config:
             raise ValueError(
-                "\n❌ LEGACY CONFIG FORMAT DETECTED\n\n"
+                "\nFAIL: LEGACY CONFIG FORMAT DETECTED\n\n"
                 "   Legacy config format was removed in v2.11.0.\n"
                 "   All configs must now use unified format with 'sources' array.\n\n"
                 "   OLD FORMAT (removed):\n"
@@ -130,7 +130,7 @@ class UniSkillConfigValidator:
                 "       }\n"
                 "     ]\n"
                 "   }\n\n"
-                "   📖 See: https://skillseekersweb.com/docs/config-format\n"
+                "    See: https://skillseekersweb.com/docs/config-format\n"
             )
 
         return self._validate_unified()
@@ -184,7 +184,7 @@ class UniSkillConfigValidator:
         for i, source in enumerate(sources):
             self._validate_source(source, i)
 
-        logger.info(f"✅ Unified config valid: {len(sources)} sources")
+        logger.info(f"PASS: Unified config valid: {len(sources)} sources")
         return True
 
     def _validate_source(self, source: dict[str, Any], index: int):
@@ -553,7 +553,7 @@ if __name__ == "__main__":
     try:
         validator = validate_config(config_file)
 
-        print("\n✅ Config valid!")
+        print("\nPASS: Config valid!")
         print(f"   Name: {validator.config.get('name')}")
 
         sources = validator.config["sources"]
@@ -563,8 +563,8 @@ if __name__ == "__main__":
 
         if validator.needs_api_merge():
             merge_mode = validator.config.get("merge_mode", "rule-based")
-            print(f"   ⚠️  API merge required (mode: {merge_mode})")
+            print(f"   WARNING:  API merge required (mode: {merge_mode})")
 
     except ValueError as e:
-        print(f"\n❌ Config invalid: {e}")
+        print(f"\nFAIL: Config invalid: {e}")
         sys.exit(1)

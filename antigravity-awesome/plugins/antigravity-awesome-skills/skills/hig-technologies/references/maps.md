@@ -94,10 +94,10 @@ The system defines several place card styles, which specify the size, appearance
 
 For developer guidance, see [`MapItemDetailSelectionAccessoryStyle`](https://developer.apple.com/documentation/MapKit/MapItemDetailSelectionAccessoryStyle), [`MKSelectionAccessory.MapItemDetailPresentationStyle`](https://developer.apple.com/documentation/MapKit/MKSelectionAccessory/MapItemDetailPresentationStyle), and [`PlaceSelectionAccessoryStyle`](https://developer.apple.com/documentation/MapKitJS/PlaceSelectionAccessoryStyle).
 
-  * Full callout 
-  * Compact callout 
-  * Caption 
-  * Sheet 
+  * Full callout
+  * Compact callout
+  * Caption
+  * Sheet
 
 ![A screenshot of the full callout style place card in a map on iPad. The top of the place card contains a header image and the place name, category, and rating. The place card also includes a tile with operating hours; a tile with the website, phone number, and address; and a tile with an 'Open in Apple Maps' link.](https://docs-assets.developer.apple.com/published/7b978f0c16b84311c4d3f9f35d9c0fb4/maps-place-card-ipad-full%402x.png)
 
@@ -133,9 +133,9 @@ If you don’t display a place card directly within a map view, you must include
 
 Apps connected with specific venues like shopping malls and stadiums can design custom interactive maps that help people locate and navigate to indoor points of interest. Indoor maps can include overlays that highlight specific areas, such as rooms, kiosks, and other locations. They can also include text labels, icons, and routes.
 
-  * Example 1 
-  * Example 2 
-  * Example 3 
+  * Example 1
+  * Example 2
+  * Example 3
 
 ![A screenshot of a map on iPhone, displaying the San Jose International airport and the surrounding area. A card in the bottom half of the screen displays information and options, including the airport name and buttons for sharing, closing the card, navigating to the airport, calling the airport, visiting the airport's website, and more.](https://docs-assets.developer.apple.com/published/669a55f1fc7dd419351d60b4decfbbf5/indoor-maps-example1%402x.png)
 
@@ -197,9 +197,9 @@ For developer guidance, see [`WKInterfaceMap`](https://developer.apple.com/docum
 
 ## [Change log](https://developer.apple.com/design/human-interface-guidelines/maps#Change-log)
 
-Date| Changes  
----|---  
-December 18, 2024| Added guidance for place cards and included additional artwork.  
-September 12, 2023| Added artwork.  
-September 23, 2022| Added guidelines for presenting custom information, refined best practices, and consolidated guidance into one page.  
-  
+Date| Changes
+---|---
+December 18, 2024| Added guidance for place cards and included additional artwork.
+September 12, 2023| Added artwork.
+September 23, 2022| Added guidelines for presenting custom information, refined best practices, and consolidated guidance into one page.
+

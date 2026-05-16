@@ -49,7 +49,7 @@ Instance 3: v1 → v2  (son olarak güncelle)
 Blue  (v1) ← trafik
 Green (v2)   boşta, yeni versiyon çalışıyor
 
-# Doğrulamadan sonra:
+## Doğrulamadan sonra:
 Blue  (v1)   boşta (yedek haline gelir)
 Green (v2) ← trafik
 ```
@@ -66,11 +66,11 @@ Green (v2) ← trafik
 v1: %95 trafik
 v2:  %5 trafik  (canary)
 
-# Metrikler iyi görünüyorsa:
+## Metrikler iyi görünüyorsa:
 v1: %50 trafik
 v2: %50 trafik
 
-# Final:
+## Final:
 v2: %100 trafik
 ```
 
@@ -83,13 +83,13 @@ v2: %100 trafik
 ### Multi-Stage Dockerfile (Node.js)
 
 ```dockerfile
-# Stage 1: Bağımlılıkları yükle
+## Stage 1: Bağımlılıkları yükle
 FROM node:22-alpine AS deps
 WORKDIR /app
 COPY package.json package-lock.json ./
 RUN npm ci --production=false
 
-# Stage 2: Build
+## Stage 2: Build
 FROM node:22-alpine AS builder
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
@@ -97,7 +97,7 @@ COPY . .
 RUN npm run build
 RUN npm prune --production
 
-# Stage 3: Production image
+## Stage 3: Production image
 FROM node:22-alpine AS runner
 WORKDIR /app
 
@@ -112,7 +112,7 @@ ENV NODE_ENV=production
 EXPOSE 3000
 
 HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
-  CMD wget --no-verbose --tries=1 --spider http://localhost:3000/health || exit 1
+  CMD wget --no-verbose --tries=1 --spider <http://localhost:3000/health> || exit 1
 
 CMD ["node", "dist/server.js"]
 ```
@@ -135,7 +135,7 @@ USER appuser
 COPY --from=builder /server /server
 
 EXPOSE 8080
-HEALTHCHECK --interval=30s --timeout=3s CMD wget -qO- http://localhost:8080/health || exit 1
+HEALTHCHECK --interval=30s --timeout=3s CMD wget -qO- <http://localhost:8080/health> || exit 1
 CMD ["/server"]
 ```
 
@@ -168,7 +168,7 @@ CMD ["gunicorn", "config.wsgi:application", "--bind", "0.0.0.0:8000", "--workers
 ### Docker En İyi Uygulamaları
 
 ```
-# İYİ uygulamalar
+## İYİ uygulamalar
 - Belirli versiyon tag'leri kullanın (node:22-alpine, node:latest değil)
 - Image boyutunu minimize etmek için multi-stage build'ler
 - Root olmayan kullanıcı olarak çalıştır
@@ -177,7 +177,7 @@ CMD ["gunicorn", "config.wsgi:application", "--bind", "0.0.0.0:8000", "--workers
 - HEALTHCHECK talimatı ekleyin
 - docker-compose veya k8s'te kaynak limitleri ayarlayın
 
-# KÖTÜ uygulamalar
+## KÖTÜ uygulamalar
 - Root olarak çalıştırmak
 - :latest tag'lerini kullanmak
 - Tüm repo'yu tek COPY layer'da kopyalamak
@@ -333,14 +333,14 @@ startupProbe:
 ### Twelve-Factor App Kalıbı
 
 ```bash
-# Tüm yapılandırma ortam değişkenleri ile — asla kodda değil
+## Tüm yapılandırma ortam değişkenleri ile — asla kodda değil
 DATABASE_URL=postgres://user:pass@host:5432/db
 REDIS_URL=redis://host:6379/0
 API_KEY=${API_KEY}           # secrets manager tarafından enjekte edilir
 LOG_LEVEL=info
 PORT=3000
 
-# Ortama özgü davranış
+## Ortama özgü davranış
 NODE_ENV=production          # veya staging, development
 APP_ENV=production           # açık uygulama ortamı
 ```
@@ -368,16 +368,16 @@ export const env = envSchema.parse(process.env);
 ### Anında Rollback
 
 ```bash
-# Docker/Kubernetes: önceki image'a işaret et
+## Docker/Kubernetes: önceki image'a işaret et
 kubectl rollout undo deployment/app
 
-# Vercel: önceki deployment'ı yükselt
+## Vercel: önceki deployment'ı yükselt
 vercel rollback
 
-# Railway: önceki commit'i tekrar deploy et
+## Railway: önceki commit'i tekrar deploy et
 railway up --commit <previous-sha>
 
-# Veritabanı: migration'ı rollback et (geri alınabilirse)
+## Veritabanı: migration'ı rollback et (geri alınabilirse)
 npx prisma migrate resolve --rolled-back <migration-name>
 ```
 

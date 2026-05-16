@@ -18,7 +18,7 @@ origin: ECC
 
 ## 工作原理
 
-本技能在七个关键领域强制执行惯用的 Kotlin 约定：使用类型系统和安全调用运算符实现空安全；通过数据类的 `val` 和 `copy()` 实现不可变性；使用密封类和接口实现穷举类型层次结构；使用协程和 `Flow` 实现结构化并发；使用扩展函数在不使用继承的情况下添加行为；使用 `@DslMarker` 和 lambda 接收器构建类型安全的 DSL；以及使用 Gradle Kotlin DSL 进行构建配置。
+本技能在七个关键领域强制执行惯用的 Kotlin 约定：使用类型系统和安全调用运算符实现空安全；通过数据类的 `val`和`copy()`实现不可变性；使用密封类和接口实现穷举类型层次结构；使用协程和`Flow`实现结构化并发；使用扩展函数在不使用继承的情况下添加行为；使用`@DslMarker` 和 lambda 接收器构建类型安全的 DSL；以及使用 Gradle Kotlin DSL 进行构建配置。
 
 ## 示例
 
@@ -80,7 +80,7 @@ fun getUserEmail(userId: String): String {
 
 ### 2. 默认不可变性
 
-优先使用 `val` 而非 `var`，优先使用不可变集合而非可变集合。
+优先使用 `val`而非`var`，优先使用不可变集合而非可变集合。
 
 ```kotlin
 // Good: Immutable data
@@ -534,7 +534,7 @@ val first20 = fibonacci.take(20).toList()
 ### build.gradle.kts 配置
 
 ```kotlin
-// Check for latest versions: https://kotlinlang.org/docs/releases.html
+// Check for latest versions: <https://kotlinlang.org/docs/releases.html>
 plugins {
     kotlin("jvm") version "2.3.10"
     kotlin("plugin.serialization") version "2.3.10"
@@ -653,7 +653,7 @@ val (active, inactive) = users.partition { it.isActive }
 
 | 惯用法 | 描述 |
 |-------|-------------|
-| `val` 优于 `var` | 优先使用不可变变量 |
+| `val`优于`var` | 优先使用不可变变量 |
 | `data class` | 用于具有 equals/hashCode/copy 的值对象 |
 | `sealed class/interface` | 用于受限的类型层次结构 |
 | `value class` | 用于零开销的类型安全包装器 |

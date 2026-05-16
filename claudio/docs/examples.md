@@ -21,7 +21,7 @@ git push origin main
 **What You Hear:**
 1. `loading/git-start.wav` - Git add starting
 2. `success/git-success.wav` - Git add succeeded
-3. `loading/git-commit-start.wav` - Git commit starting  
+3. `loading/git-commit-start.wav` - Git commit starting
 4. `success/git-commit-success.wav` - Git commit succeeded
 5. `loading/git-push-start.wav` - Git push starting
 6. `success/git-push-success.wav` - Git push succeeded
@@ -205,7 +205,7 @@ npm run test:integration
 
 **Audio Timeline:**
 1. `loading/npm-start.wav` → `success/npm-success.wav` (backup)
-2. `loading/npm-start.wav` → `success/npm-success.wav` (migrate) 
+2. `loading/npm-start.wav` → `success/npm-success.wav` (migrate)
 3. `loading/npm-start.wav` → `success/npm-success.wav` (verify)
 4. `loading/npm-test-start.wav` → `success/npm-test-success.wav` (tests)
 
@@ -229,7 +229,7 @@ go test ./...
 
 **Audio Pattern:**
 - Loading sound → Error sound (test fails)
-- Loading sound → Success sound (investigation complete)  
+- Loading sound → Success sound (investigation complete)
 - Loading sound → Success sound (tests now pass)
 
 ### Pattern 2: Dependency Management

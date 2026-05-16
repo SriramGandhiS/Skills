@@ -14,8 +14,8 @@
 ### Go 规范
 
 * 遵循 Effective Go 和 Go Code Review Comments 指南
-* 使用 `errors.New` / `fmt.Errorf` 配合 `%w` 进行包装 — 绝不对错误进行字符串匹配
-* 不使用 `init()` 函数 — 在 `main()` 或构造函数中进行显式初始化
+* 使用 `errors.New`/`fmt.Errorf`配合`%w` 进行包装 — 绝不对错误进行字符串匹配
+* 不使用 `init()`函数 — 在`main()` 或构造函数中进行显式初始化
 * 没有全局可变状态 — 通过构造函数传递依赖项
 * Context 必须是第一个参数，并在所有层中传播
 
@@ -24,7 +24,7 @@
 * `queries/` 中的所有查询都使用纯 SQL — sqlc 生成类型安全的 Go 代码
 * 在 `migrations/` 中使用 golang-migrate 进行迁移 — 绝不直接更改数据库
 * 通过 `pgx.Tx` 为多步骤操作使用事务
-* 所有查询必须使用参数化占位符 (`$1`, `$2`) — 绝不使用字符串格式化
+* 所有查询必须使用参数化占位符 (`$1`,`$2`) — 绝不使用字符串格式化
 
 ### 错误处理
 
@@ -59,7 +59,7 @@ func toGRPCError(err error) error {
 * 导出的类型和函数必须有文档注释
 * 函数保持在 50 行以内 — 提取辅助函数
 * 对所有具有多个用例的逻辑使用表格驱动测试
-* 对于信号通道，优先使用 `struct{}`，而不是 `bool`
+* 对于信号通道，优先使用 `struct{}`，而不是`bool`
 
 ## 文件结构
 
@@ -199,18 +199,18 @@ func TestUserService_Create(t *testing.T) {
 ## 环境变量
 
 ```bash
-# Database
+## Database
 DATABASE_URL=postgres://user:pass@localhost:5432/myservice?sslmode=disable
 
-# gRPC
+## gRPC
 GRPC_PORT=50051
 REST_PORT=8080
 
-# Auth
+## Auth
 JWT_SECRET=           # Load from vault in production
 TOKEN_EXPIRY=24h
 
-# Observability
+## Observability
 LOG_LEVEL=info        # debug, info, warn, error
 OTEL_ENDPOINT=        # OpenTelemetry collector
 ```
@@ -226,42 +226,42 @@ OTEL_ENDPOINT=        # OpenTelemetry collector
 ### 测试命令
 
 ```bash
-# Unit tests (fast, no external deps)
+## Unit tests (fast, no external deps)
 go test ./internal/... -short -count=1
 
-# Integration tests (requires Docker for testcontainers)
+## Integration tests (requires Docker for testcontainers)
 go test ./internal/repository/... -count=1 -timeout 120s
 
-# All tests with coverage
+## All tests with coverage
 go test ./... -coverprofile=coverage.out -count=1
 go tool cover -func=coverage.out  # summary
 go tool cover -html=coverage.out  # browser
 
-# Race detector
+## Race detector
 go test ./... -race -count=1
 ```
 
 ## ECC 工作流
 
 ```bash
-# Planning
+## Planning
 /plan "Add rate limiting to user endpoints"
 
-# Development
+## Development
 /go-test                  # TDD with Go-specific patterns
 
-# Review
+## Review
 /go-review                # Go idioms, error handling, concurrency
 /security-scan            # Secrets and vulnerabilities
 
-# Before merge
+## Before merge
 go vet ./...
 staticcheck ./...
 ```
 
 ## Git 工作流
 
-* `feat:` 新功能，`fix:` 错误修复，`refactor:` 代码更改
+* `feat:`新功能，`fix:`错误修复，`refactor:` 代码更改
 * 从 `main` 创建功能分支，需要 PR
-* CI: `go vet`, `staticcheck`, `go test -race`, `golangci-lint`
+* CI: `go vet`,`staticcheck`,`go test -race`,`golangci-lint`
 * 部署: 在 CI 中构建 Docker 镜像，部署到 Kubernetes

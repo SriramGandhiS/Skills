@@ -37,7 +37,7 @@ user-invocable: false
 origin: auto-extracted
 ---
 
-# [描述性模式名称]
+## [描述性模式名称]
 
 **提取日期：** [日期]
 **上下文：** [简要描述此模式适用的场景]
@@ -58,7 +58,7 @@ origin: auto-extracted
 
    在评估草案**之前**，执行以下所有操作：
 
-   * \[ ] 使用关键字在 `~/.claude/skills/` 和相关项目的 `.claude/skills/` 文件中进行 grep 搜索，检查内容重叠
+   * \[ ] 使用关键字在 `~/.claude/skills/`和相关项目的`.claude/skills/` 文件中进行 grep 搜索，检查内容重叠
    * \[ ] 检查 MEMORY.md（项目级和全局级）以查找重叠内容
    * \[ ] 考虑是否追加到现有技能即可满足需求
    * \[ ] 确认这是一个可复用的模式，而非一次性修复

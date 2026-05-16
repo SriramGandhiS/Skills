@@ -48,11 +48,11 @@ Focus on: bugs, security vulnerabilities, performance issues, best practices, ed
 
 ## Severity
 
-- ❗ **CRITICAL**: Security vulnerabilities, data loss risks
-- ⚠️ **HIGH**: Bugs, breaking changes, significant performance issues
-- 💡 **MEDIUM**: Code quality, maintainability, best practices
-- 📝 **LOW**: Minor improvements, style issues
-- 💭 **SUGGESTION**: Optional improvements (only when truly helpful)
+- **CRITICAL**: Security vulnerabilities, data loss risks
+- WARNING: **HIGH**: Bugs, breaking changes, significant performance issues
+- **MEDIUM**: Code quality, maintainability, best practices
+- **LOW**: Minor improvements, style issues
+- **SUGGESTION**: Optional improvements (only when truly helpful)
 
 ## Output Format
 
@@ -63,13 +63,13 @@ Focus on: bugs, security vulnerabilities, performance issues, best practices, ed
 
 ### Issues
 
-❗ **CRITICAL**
+**CRITICAL**
 - `file.py:42` - Description. Fix: suggestion
 
-⚠️ **HIGH**
+WARNING: **HIGH**
 - `file.py:55` - Description. Fix: suggestion
 
-💡 **MEDIUM**
+**MEDIUM**
 - `file.py:60` - Description
 
 **Recommendation**: NEEDS_CHANGES

@@ -48,13 +48,13 @@ This is the most important thing to check. Failing contrast = failing accessibil
 ### Common Contrast Failures
 | Combo | Approximate Ratio | Status |
 |---|---|---|
-| #999 gray on white | ~2.8:1 | ❌ Fails AA |
-| #767676 on white | 4.54:1 | ✅ Barely passes AA |
-| #555 on white | ~7:1 | ✅ Passes AAA |
-| Light blue on white | Often fails | ❌ Check carefully |
-| Yellow on white | ~1.07:1 | ❌ Completely invisible |
-| White on mid-blue (#4A90E2) | ~3.3:1 | ❌ Fails for small text |
-| White on dark blue (#1E5BB5) | ~6.2:1 | ✅ Passes |
+| #999 gray on white | ~2.8:1 | FAIL: Fails AA |
+| #767676 on white | 4.54:1 | PASS: Barely passes AA |
+| #555 on white | ~7:1 | PASS: Passes AAA |
+| Light blue on white | Often fails | FAIL: Check carefully |
+| Yellow on white | ~1.07:1 | FAIL: Completely invisible |
+| White on mid-blue (#4A90E2) | ~3.3:1 | FAIL: Fails for small text |
+| White on dark blue (#1E5BB5) | ~6.2:1 | PASS: Passes |
 
 **Check tool**: During an audit, the inline **Contrast Checker** widget renders automatically when a contrast failure is found — it pre-populates the failing pair, shows all 5 WCAG levels live, and calculates the nearest passing hex fix. For standalone checking outside an audit: https://webaim.org/resources/contrastchecker/
 
@@ -111,12 +111,12 @@ When auditing HTML/CSS/React for contrast:
 4. If opacity < 1 on either layer: blend with white for light mode
    → effective_color = alpha_blend(color, white, opacity)
 5. Run luminance check on the resolved hex pair
-6. If ratio < 4.5:1 for body text → 🔴 Critical
-   If ratio < 3:1 for large text / UI components → 🔴 Critical
+6. If ratio < 4.5:1 for body text →  Critical
+   If ratio < 3:1 for large text / UI components →  Critical
 
 Common trap: text on a gradient background.
 → Check contrast against the lightest point of the gradient — this is worst case.
-→ Flag as 🟡 Warning even if some gradient stops pass.
+→ Flag as  Warning even if some gradient stops pass.
 ```
 
 ---
@@ -135,11 +135,11 @@ Common trap: text on a gradient background.
 ### The Color-Only Problem
 **Never rely on color alone** to communicate meaning. Approximately 8% of men have color blindness.
 
-❌ Bad: A red border on an error input (with no other indicator)  
-✅ Good: A red border + ⚠ icon + error message text
+FAIL: Bad: A red border on an error input (with no other indicator)
+PASS: Good: A red border + WARNING: icon + error message text
 
-❌ Bad: A green dot = online, red dot = offline (for colorblind users, they look the same)  
-✅ Good: Green dot labeled "Online" + Red dot labeled "Offline"
+FAIL: Bad: A green dot = online, red dot = offline (for colorblind users, they look the same)
+PASS: Good: Green dot labeled "Online" + Red dot labeled "Offline"
 
 ---
 

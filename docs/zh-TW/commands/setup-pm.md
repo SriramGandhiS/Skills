@@ -10,16 +10,16 @@ disable-model-invocation: true
 ## 使用方式
 
 ```bash
-# 偵測目前的套件管理器
+## 偵測目前的套件管理器
 node scripts/setup-package-manager.js --detect
 
-# 設定全域偏好
+## 設定全域偏好
 node scripts/setup-package-manager.js --global pnpm
 
-# 設定專案偏好
+## 設定專案偏好
 node scripts/setup-package-manager.js --project bun
 
-# 列出可用的套件管理器
+## 列出可用的套件管理器
 node scripts/setup-package-manager.js --list
 ```
 
@@ -64,10 +64,10 @@ node scripts/setup-package-manager.js --list
 設定 `CLAUDE_PACKAGE_MANAGER` 以覆蓋所有其他偵測方法：
 
 ```bash
-# Windows (PowerShell)
+## Windows (PowerShell)
 $env:CLAUDE_PACKAGE_MANAGER = "pnpm"
 
-# macOS/Linux
+## macOS/Linux
 export CLAUDE_PACKAGE_MANAGER=pnpm
 ```
 

@@ -162,7 +162,7 @@ class ArchitecturalPatternDetector:
 
                 self.ai_enhancer = AIEnhancer(agent=agent)
             except Exception as e:
-                logger.warning(f"⚠️  Failed to initialize AI enhancer: {e}")
+                logger.warning(f"WARNING:  Failed to initialize AI enhancer: {e}")
                 self.enhance_with_ai = False
 
     def analyze(self, directory: Path, files_analysis: list[dict]) -> ArchitecturalReport:
@@ -176,7 +176,7 @@ class ArchitecturalPatternDetector:
         Returns:
             ArchitecturalReport with detected patterns
         """
-        logger.info(f"🏗️  Analyzing architectural patterns in {directory}")
+        logger.info(f"  Analyzing architectural patterns in {directory}")
 
         # Build directory structure map
         dir_structure = self._analyze_directory_structure(directory)
@@ -205,7 +205,7 @@ class ArchitecturalPatternDetector:
         if self.enhance_with_ai and self.ai_enhancer and patterns:
             report.ai_analysis = self._enhance_with_ai(report)
 
-        logger.info(f"✅ Detected {len(patterns)} architectural patterns")
+        logger.info(f"PASS: Detected {len(patterns)} architectural patterns")
         return report
 
     def _analyze_directory_structure(self, directory: Path) -> dict[str, int]:
@@ -275,7 +275,7 @@ class ArchitecturalPatternDetector:
                 if import_matches >= 1 or (file_matches + dir_matches) >= 2:
                     detected.append(framework)
                     logger.info(
-                        f"  📦 Detected framework: {framework} "
+                        f"   Detected framework: {framework} "
                         f"(imports:{import_matches} path:{file_matches} dir:{dir_matches})"
                     )
                     # Return early to prevent web framework false positives
@@ -314,12 +314,12 @@ class ArchitecturalPatternDetector:
             if import_matches >= 1:
                 # Import-based detection (high confidence)
                 detected.append(framework)
-                logger.info(f"  📦 Detected framework: {framework} (imports:{import_matches})")
+                logger.info(f"   Detected framework: {framework} (imports:{import_matches})")
             elif (path_matches + dir_matches) >= 2:
                 # Path/directory-based detection (requires 2+ matches)
                 detected.append(framework)
                 logger.info(
-                    f"  📦 Detected framework: {framework} (path:{path_matches} dir:{dir_matches})"
+                    f"   Detected framework: {framework} (path:{path_matches} dir:{dir_matches})"
                 )
 
         return detected
@@ -648,5 +648,5 @@ Provide brief architectural insights and recommendations."""
             response = self.ai_enhancer._call_claude(summary, max_tokens=500)
             return {"insights": response} if response else {}
         except Exception as e:
-            logger.warning(f"⚠️  AI enhancement failed: {e}")
+            logger.warning(f"WARNING:  AI enhancement failed: {e}")
             return {}

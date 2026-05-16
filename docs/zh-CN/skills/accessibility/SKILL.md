@@ -21,7 +21,7 @@ origin: ECC
 * **语义映射**：使用原生元素而非通用容器，以提供内置的无障碍性。
 * **无障碍树**：辅助技术实际“读取”的 UI 表示。
 * **焦点管理**：控制键盘/屏幕阅读器光标的顺序和可见性。
-* **标签与提示**：通过 `aria-label`、`accessibilityLabel` 和 `contentDescription` 提供上下文。
+* **标签与提示**：通过 `aria-label`、`accessibilityLabel`和`contentDescription` 提供上下文。
 
 ## 工作原理
 
@@ -70,10 +70,10 @@ flowchart TD
 
 | 特性             | Web (HTML/ARIA)          | iOS (SwiftUI)                        | Android (Compose)                                           |
 | :--------------- | :----------------------- | :----------------------------------- | :---------------------------------------------------------- |
-| **主标签**       | `aria-label` / `<label>` | `.accessibilityLabel()`              | `contentDescription`                                        |
-| **辅助提示**     | `aria-describedby`       | `.accessibilityHint()`               | `Modifier.semantics { stateDescription = ... }`             |
-| **操作角色**     | `role="button"`          | `.accessibilityAddTraits(.isButton)` | `Modifier.semantics { role = Role.Button }`                 |
-| **实时更新**     | `aria-live="polite"`     | `.accessibilityLiveRegion(.polite)`  | `Modifier.semantics { liveRegion = LiveRegionMode.Polite }` |
+| **主标签**       | `aria-label`/`<label>`|`.accessibilityLabel()`|`contentDescription`                                        |
+| **辅助提示**     | `aria-describedby`|`.accessibilityHint()`|`Modifier.semantics { stateDescription = ... }`             |
+| **操作角色**     | `role="button"`|`.accessibilityAddTraits(.isButton)`|`Modifier.semantics { role = Role.Button }`                 |
+| **实时更新**     | `aria-live="polite"`|`.accessibilityLiveRegion(.polite)`|`Modifier.semantics { liveRegion = LiveRegionMode.Polite }` |
 
 ## 示例
 
@@ -114,7 +114,7 @@ Switch(
 
 ## 应避免的反模式
 
-* **Div 按钮**：使用 `<div>` 或 `<span>` 处理点击事件，但未添加角色和键盘支持。
+* **Div 按钮**：使用 `<div>`或`<span>` 处理点击事件，但未添加角色和键盘支持。
 * **仅用颜色传达含义**：仅通过颜色变化（例如，将边框变为红色）来指示错误或状态。
 * **未限制的模态焦点**：模态框未限制焦点，导致键盘用户在模态框打开时仍可导航背景内容。焦点必须被限制，并且可通过 `Escape` 键或显式关闭按钮退出（WCAG SC 2.1.2）。
 * **冗余替代文本**：在替代文本中使用“图像...”或“图片...”（屏幕阅读器已宣布“图像”角色）。

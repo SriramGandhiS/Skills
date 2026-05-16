@@ -1,4 +1,4 @@
-﻿# Visa Document Translator
+# Visa Document Translator
 
 Automatically translate visa application documents from images to professional English PDFs.
 

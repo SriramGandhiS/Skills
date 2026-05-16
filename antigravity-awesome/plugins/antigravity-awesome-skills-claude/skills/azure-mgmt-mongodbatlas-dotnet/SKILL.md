@@ -74,7 +74,7 @@ var subscription = await armClient.GetDefaultSubscriptionAsync();
 var resourceGroup = await subscription.GetResourceGroupAsync("my-resource-group");
 
 // Get organizations collection
-MongoDBAtlasOrganizationCollection organizations = 
+MongoDBAtlasOrganizationCollection organizations =
     resourceGroup.Value.GetMongoDBAtlasOrganizations();
 ```
 
@@ -132,7 +132,7 @@ Console.WriteLine($"Created: {organization.Id}");
 
 ```csharp
 // Option 1: From collection
-MongoDBAtlasOrganizationResource org = 
+MongoDBAtlasOrganizationResource org =
     await organizations.GetAsync("my-atlas-org");
 
 // Option 2: From resource identifier
@@ -141,7 +141,7 @@ var resourceId = MongoDBAtlasOrganizationResource.CreateResourceIdentifier(
     resourceGroupName: "my-resource-group",
     organizationName: "my-atlas-org"
 );
-MongoDBAtlasOrganizationResource org2 = 
+MongoDBAtlasOrganizationResource org2 =
     armClient.GetMongoDBAtlasOrganizationResource(resourceId);
 await org2.GetAsync(); // Fetch data
 ```
@@ -316,7 +316,7 @@ while (!operation.HasCompleted)
 
 ```csharp
 var org = await organizations.GetAsync("my-org");
-if (org.Value.Data.Properties?.ProvisioningState == 
+if (org.Value.Data.Properties?.ProvisioningState ==
     MongoDBAtlasResourceProvisioningState.Succeeded)
 {
     Console.WriteLine("Organization is ready");

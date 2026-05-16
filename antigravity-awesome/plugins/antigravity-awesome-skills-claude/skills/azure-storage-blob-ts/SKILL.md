@@ -16,7 +16,7 @@ SDK for Azure Blob Storage operations — upload, download, list, and manage blo
 npm install @azure/storage-blob @azure/identity
 ```
 
-**Current Version**: 12.x  
+**Current Version**: 12.x
 **Node.js**: >= 18.0.0
 
 ## Environment Variables
@@ -472,15 +472,15 @@ import {
 
 | Feature | Node.js | Browser |
 |---------|---------|---------|
-| `StorageSharedKeyCredential` | ✅ | ❌ |
-| `uploadFile()` | ✅ | ❌ |
-| `uploadStream()` | ✅ | ❌ |
-| `downloadToFile()` | ✅ | ❌ |
-| `downloadToBuffer()` | ✅ | ❌ |
-| `uploadData()` | ✅ | ✅ |
-| SAS generation | ✅ | ❌ |
-| DefaultAzureCredential | ✅ | ❌ |
-| Anonymous/SAS access | ✅ | ✅ |
+| `StorageSharedKeyCredential` | PASS: | FAIL: |
+| `uploadFile()` | PASS: | FAIL: |
+| `uploadStream()` | PASS: | FAIL: |
+| `downloadToFile()` | PASS: | FAIL: |
+| `downloadToBuffer()` | PASS: | FAIL: |
+| `uploadData()` | PASS: | PASS: |
+| SAS generation | PASS: | FAIL: |
+| DefaultAzureCredential | PASS: | FAIL: |
+| Anonymous/SAS access | PASS: | PASS: |
 
 ## When to Use
 This skill is applicable to execute the workflow or actions described in the overview.

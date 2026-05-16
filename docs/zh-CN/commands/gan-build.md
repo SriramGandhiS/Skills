@@ -26,7 +26,7 @@ description: 运行生成器/评估器构建循环，用于实现任务，具有
 除非设置了 `--skip-planner`：
 
 1. 通过任务工具启动 `gan-planner` 智能体，并传入用户的简要说明
-2. 等待其生成 `gan-harness/spec.md` 和 `gan-harness/eval-rubric.md`
+2. 等待其生成 `gan-harness/spec.md`和`gan-harness/eval-rubric.md`
 3. 向用户显示规范摘要
 4. 进入阶段2
 

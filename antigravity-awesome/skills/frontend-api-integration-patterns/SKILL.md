@@ -285,24 +285,24 @@ const deleteItem = async (id) => {
 
 ## Best Practices
 
-* ✅ Centralize API logic in a dedicated layer
-* ✅ Normalize errors using a custom error class
-* ✅ Always handle loading, error, and success states
-* ✅ Use AbortController for request cancellation
-* ✅ Retry only transient failures (5xx)
-* ✅ Use debouncing for input-driven APIs
-* ✅ Deduplicate identical requests
+* PASS: Centralize API logic in a dedicated layer
+* PASS: Normalize errors using a custom error class
+* PASS: Always handle loading, error, and success states
+* PASS: Use AbortController for request cancellation
+* PASS: Retry only transient failures (5xx)
+* PASS: Use debouncing for input-driven APIs
+* PASS: Deduplicate identical requests
 
 ---
 
 ## Anti-Patterns
 
-* ❌ Retrying 4xx errors
-* ❌ No request cancellation (memory leaks)
-* ❌ Race-condition-prone state updates
-* ❌ Swallowing errors silently
-* ❌ Global loading/error state for multiple requests
-* ❌ Calling APIs directly inside components repeatedly
+* FAIL: Retrying 4xx errors
+* FAIL: No request cancellation (memory leaks)
+* FAIL: Race-condition-prone state updates
+* FAIL: Swallowing errors silently
+* FAIL: Global loading/error state for multiple requests
+* FAIL: Calling APIs directly inside components repeatedly
 
 ---
 

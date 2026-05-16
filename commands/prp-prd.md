@@ -194,7 +194,7 @@ Create directory if needed: `mkdir -p .claude/PRPs/prds`
 ### PRD Template
 
 ```markdown
-# {Product/Feature Name}
+## {Product/Feature Name}
 
 ## Problem Statement
 

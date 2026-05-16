@@ -91,10 +91,10 @@ module.exports = {
 
 | Framework | script | args |
 |-----------|--------|------|
-| Vite | `node_modules/vite/bin/vite.js` | `--port {port}` |
-| Next.js | `node_modules/next/dist/bin/next` | `dev -p {port}` |
-| Nuxt | `node_modules/nuxt/bin/nuxt.mjs` | `dev --port {port}` |
-| Express | `src/index.js` or `server.js` | - |
+| Vite | `node_modules/vite/bin/vite.js`|`--port {port}` |
+| Next.js | `node_modules/next/dist/bin/next`|`dev -p {port}` |
+| Nuxt | `node_modules/nuxt/bin/nuxt.mjs`|`dev --port {port}` |
+| Express | `src/index.js`or`server.js` | - |
 
 ### Python Wrapper Script (start.cjs)
 

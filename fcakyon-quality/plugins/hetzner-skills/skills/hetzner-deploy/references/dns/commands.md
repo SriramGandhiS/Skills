@@ -31,7 +31,6 @@ hcloud zone add-label [--overwrite] <zone> <label>...
 
 * [hcloud zone](hcloud_zone.md)	 - Manage DNS Zones and Zone RRSets (records)
 
-
 ---
 
 ## hcloud zone add-records
@@ -89,7 +88,6 @@ hcloud zone add-records (--record <value>... | --records-file <file>) <zone> <na
 ### SEE ALSO
 
 * [hcloud zone](hcloud_zone.md)	 - Manage DNS Zones and Zone RRSets (records)
-
 
 ---
 
@@ -150,7 +148,6 @@ hcloud zone change-primary-nameservers --primary-nameservers-file <file> <zone>
 
 * [hcloud zone](hcloud_zone.md)	 - Manage DNS Zones and Zone RRSets (records)
 
-
 ---
 
 ## hcloud zone change-ttl
@@ -185,7 +182,6 @@ hcloud zone change-ttl --ttl <ttl> <zone>
 ### SEE ALSO
 
 * [hcloud zone](hcloud_zone.md)	 - Manage DNS Zones and Zone RRSets (records)
-
 
 ---
 
@@ -229,7 +225,6 @@ hcloud zone create [options] --name <name> [--mode secondary --primary-nameserve
 
 * [hcloud zone](hcloud_zone.md)	 - Manage DNS Zones and Zone RRSets (records)
 
-
 ---
 
 ## hcloud zone delete
@@ -263,7 +258,6 @@ hcloud zone delete <zone>...
 ### SEE ALSO
 
 * [hcloud zone](hcloud_zone.md)	 - Manage DNS Zones and Zone RRSets (records)
-
 
 ---
 
@@ -300,7 +294,6 @@ hcloud zone describe [options] <zone>
 
 * [hcloud zone](hcloud_zone.md)	 - Manage DNS Zones and Zone RRSets (records)
 
-
 ---
 
 ## hcloud zone disable-protection
@@ -335,7 +328,6 @@ hcloud zone disable-protection <zone> delete
 
 * [hcloud zone](hcloud_zone.md)	 - Manage DNS Zones and Zone RRSets (records)
 
-
 ---
 
 ## hcloud zone enable-protection
@@ -369,7 +361,6 @@ hcloud zone enable-protection <zone> delete
 ### SEE ALSO
 
 * [hcloud zone](hcloud_zone.md)	 - Manage DNS Zones and Zone RRSets (records)
-
 
 ---
 
@@ -406,7 +397,6 @@ hcloud zone export-zonefile [options] <zone>
 
 * [hcloud zone](hcloud_zone.md)	 - Manage DNS Zones and Zone RRSets (records)
 
-
 ---
 
 ## hcloud zone import-zonefile
@@ -442,7 +432,6 @@ hcloud zone import-zonefile --zonefile <file> <zone>
 ### SEE ALSO
 
 * [hcloud zone](hcloud_zone.md)	 - Manage DNS Zones and Zone RRSets (records)
-
 
 ---
 
@@ -506,7 +495,6 @@ hcloud zone list [options]
 
 * [hcloud zone](hcloud_zone.md)	 - Manage DNS Zones and Zone RRSets (records)
 
-
 ---
 
 ## hcloud zone remove-label
@@ -541,7 +529,6 @@ hcloud zone remove-label <zone> (--all | <label>...)
 ### SEE ALSO
 
 * [hcloud zone](hcloud_zone.md)	 - Manage DNS Zones and Zone RRSets (records)
-
 
 ---
 
@@ -600,7 +587,6 @@ hcloud zone remove-records (--record <value>... | --records-file <file>) <zone> 
 
 * [hcloud zone](hcloud_zone.md)	 - Manage DNS Zones and Zone RRSets (records)
 
-
 ---
 
 ## hcloud zone rrset
@@ -608,7 +594,6 @@ hcloud zone remove-records (--record <value>... | --records-file <file>) <zone> 
 Manage Zone RRSets (records)
 
 ### Synopsis
-
 
 For more details, see the documentation for Zones https://docs.hetzner.cloud/reference/cloud#zones
 or Zone RRSets https://docs.hetzner.cloud/reference/cloud#zone-rrsets.
@@ -652,7 +637,6 @@ user provider TXT records are not quoted, they will be formatted for you.
 * [hcloud zone rrset remove-records](hcloud_zone_rrset_remove-records.md)	 - Remove records from a Zone RRSet.
 * [hcloud zone rrset set-records](hcloud_zone_rrset_set-records.md)	 - Set the records of a Zone RRSet
 
-
 ---
 
 ## hcloud zone rrset add-label
@@ -687,7 +671,6 @@ hcloud zone rrset add-label [--overwrite] <zone> <name> <type> <label>...
 ### SEE ALSO
 
 * [hcloud zone rrset](hcloud_zone_rrset.md)	 - Manage Zone RRSets (records)
-
 
 ---
 
@@ -747,7 +730,6 @@ hcloud zone rrset add-records (--record <value>... | --records-file <file>) <zon
 
 * [hcloud zone rrset](hcloud_zone_rrset.md)	 - Manage Zone RRSets (records)
 
-
 ---
 
 ## hcloud zone rrset change-ttl
@@ -783,7 +765,6 @@ hcloud zone rrset change-ttl (--ttl <ttl> | --unset) <zone> <name> <type>
 ### SEE ALSO
 
 * [hcloud zone rrset](hcloud_zone_rrset.md)	 - Manage Zone RRSets (records)
-
 
 ---
 
@@ -845,7 +826,6 @@ hcloud zone rrset create [options] --name <name> --type <A|AAAA|CAA|CNAME|DS|HIN
 
 * [hcloud zone rrset](hcloud_zone_rrset.md)	 - Manage Zone RRSets (records)
 
-
 ---
 
 ## hcloud zone rrset delete
@@ -879,7 +859,6 @@ hcloud zone rrset delete <zone> <name> <type>
 ### SEE ALSO
 
 * [hcloud zone rrset](hcloud_zone_rrset.md)	 - Manage Zone RRSets (records)
-
 
 ---
 
@@ -916,7 +895,6 @@ hcloud zone rrset describe [options] <zone> <name> <type>
 
 * [hcloud zone rrset](hcloud_zone_rrset.md)	 - Manage Zone RRSets (records)
 
-
 ---
 
 ## hcloud zone rrset disable-protection
@@ -951,7 +929,6 @@ hcloud zone rrset disable-protection <zone> <name> <type> change
 
 * [hcloud zone rrset](hcloud_zone_rrset.md)	 - Manage Zone RRSets (records)
 
-
 ---
 
 ## hcloud zone rrset enable-protection
@@ -985,7 +962,6 @@ hcloud zone rrset enable-protection <zone> <name> <type> change
 ### SEE ALSO
 
 * [hcloud zone rrset](hcloud_zone_rrset.md)	 - Manage Zone RRSets (records)
-
 
 ---
 
@@ -1042,7 +1018,6 @@ hcloud zone rrset list [options] <zone>
 
 * [hcloud zone rrset](hcloud_zone_rrset.md)	 - Manage Zone RRSets (records)
 
-
 ---
 
 ## hcloud zone rrset remove-label
@@ -1077,7 +1052,6 @@ hcloud zone rrset remove-label <zone> <name> <type> (--all | <label>...)
 ### SEE ALSO
 
 * [hcloud zone rrset](hcloud_zone_rrset.md)	 - Manage Zone RRSets (records)
-
 
 ---
 
@@ -1135,7 +1109,6 @@ hcloud zone rrset remove-records (--record <value>... | --records-file <file>) <
 ### SEE ALSO
 
 * [hcloud zone rrset](hcloud_zone_rrset.md)	 - Manage Zone RRSets (records)
-
 
 ---
 
@@ -1195,7 +1168,6 @@ hcloud zone rrset set-records (--record <value>... | --records-file <file>) <zon
 ### SEE ALSO
 
 * [hcloud zone rrset](hcloud_zone_rrset.md)	 - Manage Zone RRSets (records)
-
 
 ---
 

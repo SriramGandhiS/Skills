@@ -36,7 +36,7 @@
 在 `~/.claude/skills/learned/[pattern-name].md` 创建一个技能文件：
 
 ```markdown
-# [Descriptive Pattern Name]
+## [Descriptive Pattern Name]
 
 **Extracted:** [Date]
 **Context:** [Brief description of when this applies]

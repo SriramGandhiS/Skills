@@ -14,9 +14,9 @@ Claude Code 工作階段的完整驗證系統。
 
 ### 階段 1：建置驗證
 ```bash
-# 檢查專案是否建置
+## 檢查專案是否建置
 npm run build 2>&1 | tail -20
-# 或
+## 或
 pnpm build 2>&1 | tail -20
 ```
 
@@ -24,10 +24,10 @@ pnpm build 2>&1 | tail -20
 
 ### 階段 2：型別檢查
 ```bash
-# TypeScript 專案
+## TypeScript 專案
 npx tsc --noEmit 2>&1 | head -30
 
-# Python 專案
+## Python 專案
 pyright . 2>&1 | head -30
 ```
 
@@ -35,20 +35,20 @@ pyright . 2>&1 | head -30
 
 ### 階段 3：Lint 檢查
 ```bash
-# JavaScript/TypeScript
+## JavaScript/TypeScript
 npm run lint 2>&1 | head -30
 
-# Python
+## Python
 ruff check . 2>&1 | head -30
 ```
 
 ### 階段 4：測試套件
 ```bash
-# 執行帶覆蓋率的測試
+## 執行帶覆蓋率的測試
 npm run test -- --coverage 2>&1 | tail -50
 
-# 檢查覆蓋率門檻
-# 目標：最低 80%
+## 檢查覆蓋率門檻
+## 目標：最低 80%
 ```
 
 報告：
@@ -59,17 +59,17 @@ npm run test -- --coverage 2>&1 | tail -50
 
 ### 階段 5：安全掃描
 ```bash
-# 檢查密鑰
+## 檢查密鑰
 grep -rn "sk-" --include="*.ts" --include="*.js" . 2>/dev/null | head -10
 grep -rn "api_key" --include="*.ts" --include="*.js" . 2>/dev/null | head -10
 
-# 檢查 console.log
+## 檢查 console.log
 grep -rn "console.log" --include="*.ts" --include="*.tsx" src/ 2>/dev/null | head -10
 ```
 
 ### 階段 6：差異審查
 ```bash
-# 顯示變更內容
+## 顯示變更內容
 git diff --stat
 git diff HEAD~1 --name-only
 ```

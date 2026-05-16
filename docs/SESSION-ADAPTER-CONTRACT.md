@@ -86,8 +86,8 @@ Every adapter MUST return a JSON-serializable object with this top-level shape:
 
 | Field | Type | Notes |
 | --- | --- | --- |
-| `schemaVersion` | string | MUST be exactly `ecc.session.v1` for this contract |
-| `adapterId` | string | Stable adapter identifier such as `dmux-tmux` or `claude-history` |
+| `schemaVersion`| string | MUST be exactly`ecc.session.v1` for this contract |
+| `adapterId`| string | Stable adapter identifier such as`dmux-tmux`or`claude-history` |
 | `session` | object | Canonical session metadata |
 | `workers` | array | Canonical worker records; may be empty |
 | `aggregates` | object | Derived worker counts |
@@ -97,7 +97,7 @@ Every adapter MUST return a JSON-serializable object with this top-level shape:
 | Field | Type | Notes |
 | --- | --- | --- |
 | `id` | string | Stable identifier within the adapter domain |
-| `kind` | string | High-level session family such as `orchestrated` or `history` |
+| `kind`| string | High-level session family such as`orchestrated`or`history` |
 | `state` | string | Canonical session state |
 | `sourceTarget` | object | Provenance for the target that opened the session |
 
@@ -105,7 +105,7 @@ Every adapter MUST return a JSON-serializable object with this top-level shape:
 
 | Field | Type | Notes |
 | --- | --- | --- |
-| `type` | string | Lookup class such as `plan`, `session`, `claude-history`, `claude-alias`, or `session-file` |
+| `type`| string | Lookup class such as`plan`,`session`,`claude-history`,`claude-alias`, or`session-file` |
 | `value` | string | Raw target value or resolved path |
 
 ### `workers[]`
@@ -125,7 +125,7 @@ Every adapter MUST return a JSON-serializable object with this top-level shape:
 
 | Field | Type | Notes |
 | --- | --- | --- |
-| `kind` | string | Runtime family such as `tmux-pane` or `claude-session` |
+| `kind`| string | Runtime family such as`tmux-pane`or`claude-session` |
 | `active` | boolean | Whether the runtime is active now |
 | `dead` | boolean | Whether the runtime is known dead/finished |
 
@@ -148,9 +148,9 @@ Every adapter MUST return a JSON-serializable object with this top-level shape:
 
 | Field | Type | Notes |
 | --- | --- | --- |
-| `workerCount` | integer | MUST equal `workers.length` |
-| `states` | object | Count map derived from `workers[].state` |
-| `healths` | object | Count map derived from `workers[].health` |
+| `workerCount`| integer | MUST equal`workers.length` |
+| `states`| object | Count map derived from`workers[].state` |
+| `healths`| object | Count map derived from`workers[].health` |
 
 ## Optional Fields
 
@@ -159,24 +159,24 @@ type:
 
 | Field | Type | Notes |
 | --- | --- | --- |
-| `session.repoRoot` | `string \| null` | Repo/worktree root when known |
-| `workers[].branch` | `string \| null` | Branch name when known |
-| `workers[].worktree` | `string \| null` | Worktree path when known |
-| `workers[].runtime.command` | `string \| null` | Active command when known |
-| `workers[].runtime.pid` | `number \| null` | Process id when known |
+| `session.repoRoot`|`string \| null` | Repo/worktree root when known |
+| `workers[].branch`|`string \| null` | Branch name when known |
+| `workers[].worktree`|`string \| null` | Worktree path when known |
+| `workers[].runtime.command`|`string \| null` | Active command when known |
+| `workers[].runtime.pid`|`number \| null` | Process id when known |
 | `workers[].artifacts.*` | adapter-defined | File paths or structured references owned by the adapter |
 
-Adapter-specific optional fields belong inside `runtime`, `artifacts`, or other
+Adapter-specific optional fields belong inside `runtime`,`artifacts`, or other
 documented nested objects. Adapters MUST NOT invent new top-level fields without
 updating this contract.
 
 ## State Semantics
 
-The contract intentionally keeps `session.state` and `workers[].state` flexible
+The contract intentionally keeps `session.state`and`workers[].state` flexible
 enough for multiple harnesses, but current adapters use these values:
 
 - `dmux-tmux`
-  - session states: `active`, `completed`, `failed`, `idle`, `missing`
+  - session states: `active`,`completed`,`failed`,`idle`,`missing`
   - worker states: derived from worker status files, for example `running` or
     `completed`
 - `claude-history`
@@ -217,7 +217,7 @@ Every ECC session adapter MUST:
 2. Return a snapshot that satisfies all required fields and types.
 3. Use `null` for unknown optional scalar values and empty arrays for unknown
    list values.
-4. Keep adapter-specific details nested under `runtime`, `artifacts`, or other
+4. Keep adapter-specific details nested under `runtime`,`artifacts`, or other
    documented nested objects.
 5. Ensure `aggregates.workerCount === workers.length`.
 6. Ensure `aggregates.states` matches the emitted worker states.
@@ -235,7 +235,7 @@ Consumers SHOULD:
 
 - rely only on documented fields for `ecc.session.v1`
 - ignore unknown optional fields
-- treat `adapterId`, `session.kind`, and `runtime.kind` as routing hints rather
+- treat `adapterId`,`session.kind`, and`runtime.kind` as routing hints rather
   than exhaustive enums
 - expect adapter-specific artifact keys inside `workers[].artifacts`
 
@@ -255,7 +255,7 @@ Consumers MUST NOT:
 - Session kind: `orchestrated`
 - Session source target: plan path or session name
 - Worker runtime kind: `tmux-pane`
-- Artifacts: `statusFile`, `taskFile`, `handoffFile`
+- Artifacts: `statusFile`,`taskFile`,`handoffFile`
 
 ### `claude-history`
 
@@ -265,7 +265,7 @@ Consumers MUST NOT:
 - Session source target: explicit history target, alias, or `.tmp` session file
 - Worker runtime kind: `claude-session`
 - Intent seed paths: parsed from `### Context to Load`
-- Artifacts: `sessionFile`, `context`
+- Artifacts: `sessionFile`,`context`
 
 ## Validation Reference
 

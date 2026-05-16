@@ -9,9 +9,9 @@ Assumes docx is already installed globally
 If not installed: `npm install -g docx`
 
 ```javascript
-const { Document, Packer, Paragraph, TextRun, Table, TableRow, TableCell, ImageRun, Media, 
-        Header, Footer, AlignmentType, PageOrientation, LevelFormat, ExternalHyperlink, 
-        InternalHyperlink, TableOfContents, HeadingLevel, BorderStyle, WidthType, TabStopType, 
+const { Document, Packer, Paragraph, TextRun, Table, TableRow, TableCell, ImageRun, Media,
+        Header, Footer, AlignmentType, PageOrientation, LevelFormat, ExternalHyperlink,
+        InternalHyperlink, TableOfContents, HeadingLevel, BorderStyle, WidthType, TabStopType,
         TabStopPosition, UnderlineType, ShadingType, VerticalAlign, SymbolRun, PageNumber,
         FootnoteReferenceRun, Footnote, PageBreak } = require('docx');
 
@@ -24,8 +24,8 @@ Packer.toBlob(doc).then(blob => { /* download logic */ }); // Browser
 ## Text & Formatting
 ```javascript
 // IMPORTANT: Never use \n for line breaks - always use separate Paragraph elements
-// ❌ WRONG: new TextRun("Line 1\nLine 2")
-// ✅ CORRECT: new Paragraph({ children: [new TextRun("Line 1")] }), new Paragraph({ children: [new TextRun("Line 2")] })
+// FAIL: WRONG: new TextRun("Line 1\nLine 2")
+// PASS: CORRECT: new Paragraph({ children: [new TextRun("Line 1")] }), new Paragraph({ children: [new TextRun("Line 2")] })
 
 // Basic text with all formatting options
 new Paragraph({
@@ -135,7 +135,7 @@ const doc = new Document({
         children: [new TextRun("First numbered item")] }),
       new Paragraph({ numbering: { reference: "first-numbered-list", level: 0 },
         children: [new TextRun("Second numbered item")] }),
-      // ⚠️ CRITICAL: Different reference = INDEPENDENT list that restarts at 1
+      // WARNING: CRITICAL: Different reference = INDEPENDENT list that restarts at 1
       // Same reference = CONTINUES previous numbering
       new Paragraph({ numbering: { reference: "second-numbered-list", level: 0 },
         children: [new TextRun("Starts at 1 again (because different reference)")] })
@@ -143,15 +143,15 @@ const doc = new Document({
   }]
 });
 
-// ⚠️ CRITICAL NUMBERING RULE: Each reference creates an INDEPENDENT numbered list
+// WARNING: CRITICAL NUMBERING RULE: Each reference creates an INDEPENDENT numbered list
 // - Same reference = continues numbering (1, 2, 3... then 4, 5, 6...)
 // - Different reference = restarts at 1 (1, 2, 3... then 1, 2, 3...)
 // Use unique reference names for each separate numbered section!
 
-// ⚠️ CRITICAL: NEVER use unicode bullets - they create fake lists that don't work properly
+// WARNING: CRITICAL: NEVER use unicode bullets - they create fake lists that don't work properly
 // new TextRun("• Item")           // WRONG
 // new SymbolRun({ char: "2022" }) // WRONG
-// ✅ ALWAYS use numbering config with LevelFormat.BULLET for real Word lists
+// PASS: ALWAYS use numbering config with LevelFormat.BULLET for real Word lists
 ```
 
 ## Tables
@@ -161,7 +161,7 @@ const tableBorder = { style: BorderStyle.SINGLE, size: 1, color: "CCCCCC" };
 const cellBorders = { top: tableBorder, bottom: tableBorder, left: tableBorder, right: tableBorder };
 
 new Table({
-  columnWidths: [4680, 4680], // ⚠️ CRITICAL: Set column widths at table level - values in DXA (twentieths of a point)
+  columnWidths: [4680, 4680], // WARNING: CRITICAL: Set column widths at table level - values in DXA (twentieths of a point)
   margins: { top: 100, bottom: 100, left: 180, right: 180 }, // Set once for all cells
   rows: [
     new TableRow({
@@ -170,10 +170,10 @@ new Table({
         new TableCell({
           borders: cellBorders,
           width: { size: 4680, type: WidthType.DXA }, // ALSO set width on each cell
-          // ⚠️ CRITICAL: Always use ShadingType.CLEAR to prevent black backgrounds in Word.
-          shading: { fill: "D5E8F0", type: ShadingType.CLEAR }, 
+          // WARNING: CRITICAL: Always use ShadingType.CLEAR to prevent black backgrounds in Word.
+          shading: { fill: "D5E8F0", type: ShadingType.CLEAR },
           verticalAlign: VerticalAlign.CENTER,
-          children: [new Paragraph({ 
+          children: [new Paragraph({
             alignment: AlignmentType.CENTER,
             children: [new TextRun({ text: "Header", bold: true, size: 22 })]
           })]
@@ -182,7 +182,7 @@ new Table({
           borders: cellBorders,
           width: { size: 4680, type: WidthType.DXA }, // ALSO set width on each cell
           shading: { fill: "D5E8F0", type: ShadingType.CLEAR },
-          children: [new Paragraph({ 
+          children: [new Paragraph({
             alignment: AlignmentType.CENTER,
             children: [new TextRun({ text: "Bullet Points", bold: true, size: 22 })]
           })]
@@ -200,13 +200,13 @@ new Table({
           borders: cellBorders,
           width: { size: 4680, type: WidthType.DXA }, // ALSO set width on each cell
           children: [
-            new Paragraph({ 
+            new Paragraph({
               numbering: { reference: "bullet-list", level: 0 },
-              children: [new TextRun("First bullet point")] 
+              children: [new TextRun("First bullet point")]
             }),
-            new Paragraph({ 
+            new Paragraph({
               numbering: { reference: "bullet-list", level: 0 },
-              children: [new TextRun("Second bullet point")] 
+              children: [new TextRun("Second bullet point")]
             })
           ]
         })
@@ -228,8 +228,8 @@ new Table({
 ## Links & Navigation
 ```javascript
 // TOC (requires headings) - CRITICAL: Use HeadingLevel only, NOT custom styles
-// ❌ WRONG: new Paragraph({ heading: HeadingLevel.HEADING_1, style: "customHeader", children: [new TextRun("Title")] })
-// ✅ CORRECT: new Paragraph({ heading: HeadingLevel.HEADING_1, children: [new TextRun("Title")] })
+// FAIL: WRONG: new Paragraph({ heading: HeadingLevel.HEADING_1, style: "customHeader", children: [new TextRun("Title")] })
+// PASS: CORRECT: new Paragraph({ heading: HeadingLevel.HEADING_1, children: [new TextRun("Title")] })
 new TableOfContents("Table of Contents", { hyperlink: true, headingStyleRange: "1-3" }),
 
 // External link
@@ -279,9 +279,9 @@ new Paragraph({
   children: [new TextRun("This starts on a new page")]
 })
 
-// ⚠️ CRITICAL: NEVER use PageBreak standalone - it will create invalid XML that Word cannot open
-// ❌ WRONG: new PageBreak() 
-// ✅ CORRECT: new Paragraph({ children: [new PageBreak()] })
+// WARNING: CRITICAL: NEVER use PageBreak standalone - it will create invalid XML that Word cannot open
+// FAIL: WRONG: new PageBreak()
+// PASS: CORRECT: new Paragraph({ children: [new PageBreak()] })
 ```
 
 ## Headers/Footers & Page Setup
@@ -296,13 +296,13 @@ const doc = new Document({
       }
     },
     headers: {
-      default: new Header({ children: [new Paragraph({ 
+      default: new Header({ children: [new Paragraph({
         alignment: AlignmentType.RIGHT,
         children: [new TextRun("Header Text")]
       })] })
     },
     footers: {
-      default: new Footer({ children: [new Paragraph({ 
+      default: new Footer({ children: [new Paragraph({
         alignment: AlignmentType.CENTER,
         children: [new TextRun("Page "), new TextRun({ children: [PageNumber.CURRENT] }), new TextRun(" of "), new TextRun({ children: [PageNumber.TOTAL_PAGES] })]
       })] })
@@ -326,7 +326,7 @@ new Paragraph({
 
 ## Constants & Quick Reference
 - **Underlines:** `SINGLE`, `DOUBLE`, `WAVY`, `DASH`
-- **Borders:** `SINGLE`, `DOUBLE`, `DASHED`, `DOTTED`  
+- **Borders:** `SINGLE`, `DOUBLE`, `DASHED`, `DOTTED`
 - **Numbering:** `DECIMAL` (1,2,3), `UPPER_ROMAN` (I,II,III), `LOWER_LETTER` (a,b,c)
 - **Tabs:** `LEFT`, `CENTER`, `RIGHT`, `DECIMAL`
 - **Symbols:** `"2022"` (•), `"00A9"` (©), `"00AE"` (®), `"2122"` (™), `"00B0"` (°), `"F070"` (✓), `"F0FC"` (✗)

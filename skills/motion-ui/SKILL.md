@@ -1,4 +1,4 @@
-﻿---
+---
 name: motion-ui
 description: "Production-ready UI motion system for React/Next.js. Use when implementing animations, transitions, or motion patterns."
 origin: ECC
@@ -62,7 +62,7 @@ npm install motion
 
 ### Version
 
-- `motion/react` - default for current Motion for React projects (package: `motion`)
+- `motion/react`- default for current Motion for React projects (package:`motion`)
 - `framer-motion` - legacy import path for projects that still depend on Framer Motion
 
 **Do not mix.** Mixing causes conflicting internal schedulers and broken `AnimatePresence` contexts â€” components from one package will not coordinate exit animations with components from the other.
@@ -97,7 +97,7 @@ export const motionTokens = {
     normal: 0.35,
     slow: 0.6
   },
-  // Use these as the `ease` value inside a `transition` object:
+  // Use these as the `ease`value inside a`transition` object:
   // transition={{ duration: motionTokens.duration.normal, ease: motionTokens.easing.smooth }}
   easing: {
     smooth: [0.22, 1, 0.36, 1] as [number, number, number, number],
@@ -212,22 +212,22 @@ export function FadeIn() {
 | Hover feedback | `whileHover` |
 | Tap / press feedback | `whileTap` |
 | Reveal on scroll | `whileInView` |
-| Scroll-linked value | `useScroll` + `useTransform` |
+| Scroll-linked value | `useScroll`+`useTransform` |
 | Conditional mount/unmount | `AnimatePresence` |
 | Small layout shifts (single element, < ~300px change) | `layout` prop |
 | Large layout shifts or full-page reflows | Avoid `layout`; use CSS transitions or page-level routing instead |
 | Complex, imperative sequences | `useAnimate` |
 
-> **Why avoid `layout` on large containers?** Framer's layout animation uses `transform` to reconcile positions, but on elements that span the full viewport or trigger deep reflow, the measurement cost causes visible jank and CLS. Prefer CSS Grid/Flexbox transitions or coordinate with `layoutId` on specific child elements only.
+> **Why avoid `layout`on large containers?** Framer's layout animation uses`transform`to reconcile positions, but on elements that span the full viewport or trigger deep reflow, the measurement cost causes visible jank and CLS. Prefer CSS Grid/Flexbox transitions or coordinate with`layoutId` on specific child elements only.
 
 #### Layout & Transitions
 
 - Shared element transitions â†’ `layoutId` (must be unique per mounted instance)
-- Enter / exit transitions â†’ `AnimatePresence` (see `mode` guidance below)
+- Enter / exit transitions â†’ `AnimatePresence`(see`mode` guidance below)
 
 #### AnimatePresence `mode`
 
-Always specify `mode` explicitly â€” the default (`"sync"`) runs enter and exit simultaneously, which causes visual overlap in most UI patterns.
+Always specify `mode`explicitly â€” the default (`"sync"`) runs enter and exit simultaneously, which causes visual overlap in most UI patterns.
 
 | `mode` | When to use |
 |---|---|
@@ -383,9 +383,9 @@ export function Example() {
 
 Check:
 
-- Wrong import (mixing `motion/react` and `framer-motion`)
+- Wrong import (mixing `motion/react`and`framer-motion`)
 - Missing `"use client"` directive in Next.js App Router
-- Missing `key` prop on `AnimatePresence` children
+- Missing `key`prop on`AnimatePresence` children
 - Hydration mismatch (initial state differs between SSR and client)
 - `layout` prop misuse on large containers causing reflow jank
 - State-driven animation not triggering (check dependency arrays)
@@ -397,7 +397,7 @@ Check:
 - No CLS
 - Keyboard works
 - Focus trapped in modals
-- ARIA roles correct (`role="dialog"`, `aria-modal="true"`)
+- ARIA roles correct (`role="dialog"`,`aria-modal="true"`)
 - Reduced motion respected (`useReducedMotion` + CSS media query)
 - No hydration warnings in Next.js
 - Animations stop cleanly on unmount (no memory leaks)
@@ -407,12 +407,12 @@ Check:
 
 ### Anti-Patterns
 
-- Animating layout properties (`width`, `height`, `top`, `left`)
+- Animating layout properties (`width`,`height`,`top`,`left`)
 - Infinite animations without purpose (always ask: what state does this communicate?)
 - Over-staggering lists (keep `staggerChildren` â‰¤ 0.1s; beyond that it feels slow)
 - Ignoring reduced motion preferences
 - Using `layout` on large or full-viewport containers
-- Omitting `mode` on `AnimatePresence` (default `"sync"` causes visual overlap)
+- Omitting `mode`on`AnimatePresence`(default`"sync"` causes visual overlap)
 - Using motion purely for decoration
 
 ---

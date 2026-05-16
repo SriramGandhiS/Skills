@@ -3,13 +3,12 @@ name: Bun Parity
 # Verifies bash-vs-bun byte-for-byte parity for the commands ported in
 # Phase 2/3 of the bash->Bun migration (ADR-001). Codifies the parity
 # invariant that has been hand-checked since v7.3.0.
-#
-# For every command in the matrix below this job:
-#   1. Captures stdout from the Bun route   (bin/loki <cmd>)
-#   2. Captures stdout from the bash route  (LOKI_LEGACY_BASH=1 bin/loki <cmd>)
-#   3. For --json variants: jq -S sort then diff
-#      For text variants:   direct diff
-#   4. Fails the job if ANY command differs.
+# # For every command in the matrix below this job:
+# 1. Captures stdout from the Bun route   (bin/loki <cmd>)
+# 2. Captures stdout from the bash route  (LOKI_LEGACY_BASH=1 bin/loki <cmd>)
+# 3. For --json variants: jq -S sort then diff
+# For text variants:   direct diff
+# 4. Fails the job if ANY command differs.
 
 on:
   push:

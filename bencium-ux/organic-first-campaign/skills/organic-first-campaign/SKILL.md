@@ -413,14 +413,14 @@ Given the selected concept + channel stack, produce:
    shape. Each action has an owner (if multiple people), an effort estimate, and a clear
    success signal.
 
-   **Capacity is a hard constraint.** After drafting the week-by-week list, sum total
+**Capacity is a hard constraint.** After drafting the week-by-week list, sum total
    weekly effort. If it exceeds the user's stated capacity (Stage 1 Q8, default 6h/week),
    cut the lowest-ROI actions until total effort fits inside the ceiling. Name the cuts
    explicitly: "I am cutting X and Y because the draft came to 14h/week and you said
    6h/week. These are the actions to re-add if you can carve out more time later."
    Do not ship a plan the user cannot execute.
 
-   **Earned-media actions must be specific or flagged.** Every earned-media action in
+**Earned-media actions must be specific or flagged.** Every earned-media action in
    the list must include:
    - (a) A **named target** (e.g., "Latent Space podcast, The Pragmatic Engineer
      newsletter"), *or* an explicit "target TBD — research is the week-1 action" flag.
@@ -438,7 +438,7 @@ Given the selected concept + channel stack, produce:
    research as the week-1 action and set success criteria for the research itself
    (e.g., "produce a ranked list of 15 targets with RSS + contact channel by Friday").
 
-   **Community-build is a multi-week sub-campaign, not a line item.** If a Slack /
+**Community-build is a multi-week sub-campaign, not a line item.** If a Slack /
    Discord / WhatsApp / Circle community node is in the channel stack, it gets its own
    block in the first-30-days list, not one line at 1h/week:
    - **Week 0 (before public announcement):** pick the platform, write the rules, seed

@@ -1,5 +1,5 @@
 <!-- registry-sync: version=11.0.0; skills=1450; stars=36771; updated_at=2026-05-08T07:33:35+00:00 -->
-# 🌌 Antigravity Awesome Skills: 1,450+ Agentic Skills for Claude Code, Gemini CLI, Cursor, Copilot & More
+# Antigravity Awesome Skills: 1,450+ Agentic Skills for Claude Code, Gemini CLI, Cursor, Copilot & More
 
 > **Installable GitHub library of 1,450+ agentic skills for Claude Code, Cursor, Codex CLI, Gemini CLI, Antigravity, and other AI coding assistants.**
 
@@ -7,9 +7,9 @@ Antigravity Awesome Skills is an installable GitHub library and npm installer fo
 
 You can use this repo to install a broad multi-tool skill library, start from role-based bundles, or jump into workflow-driven execution for planning, coding, debugging, testing, security review, infrastructure, product work, and growth tasks. The root README is intentionally a high-signal landing page: understand what the project is, install it quickly, choose the right tool path, and then follow deeper docs only when you need them.
 
-**Start here:** [Star the repo](https://github.com/sickn33/antigravity-awesome-skills/stargazers) · [Install in 1 minute](#installation) · [Choose your tool](#choose-your-tool) · [Best skills by tool](#best-skills-by-tool) · [📚 Browse 1,450+ Skills](#browse-1450-skills) · [Bundles](docs/users/bundles.md) · [Workflows](docs/users/workflows.md) · [Plugins for Claude Code and Codex](docs/users/plugins.md)
+**Start here:** [Star the repo](https://github.com/sickn33/antigravity-awesome-skills/stargazers) · [Install in 1 minute](#installation) · [Choose your tool](#choose-your-tool) · [Best skills by tool](#best-skills-by-tool) · [ Browse 1,450+ Skills](#browse-1450-skills) · [Bundles](docs/users/bundles.md) · [Workflows](docs/users/workflows.md) · [Plugins for Claude Code and Codex](docs/users/plugins.md)
 
-[![GitHub stars](https://img.shields.io/badge/⭐%2037%2C000%2B%20Stars-gold?style=for-the-badge)](https://github.com/sickn33/antigravity-awesome-skills/stargazers)
+[![GitHub stars](https://img.shields.io/badge/%2037%2C000%2B%20Stars-gold?style=for-the-badge)](https://github.com/sickn33/antigravity-awesome-skills/stargazers)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Claude Code](https://img.shields.io/badge/Claude%20Code-Anthropic-purple)](https://claude.ai)
 [![Cursor](https://img.shields.io/badge/Cursor-AI%20IDE-orange)](https://cursor.sh)
@@ -255,7 +255,7 @@ Support is optional. The project stays free and open-source for everyone.
 
 We stand on the shoulders of giants.
 
-👉 **[View the Full Attribution Ledger](docs/sources/sources.md)**
+**[View the Full Attribution Ledger](docs/sources/sources.md)**
 
 Key contributors and sources include:
 
@@ -615,7 +615,7 @@ We officially thank the following contributors for their help in making this rep
  </picture>
 </a>
 
-If Antigravity Awesome Skills has been useful, consider ⭐ starring the repo!
+If Antigravity Awesome Skills has been useful, consider  starring the repo!
 
 <!-- GitHub Topics (for maintainers): claude-code, gemini-cli, codex-cli, antigravity, cursor, github-copilot, opencode, agentic-skills, ai-coding, llm-tools, ai-agents, autonomous-coding, mcp, ai-developer-tools, ai-pair-programming, vibe-coding, skill, skills, SKILL.md, rules.md, CLAUDE.md, GEMINI.md, CURSOR.md -->
 

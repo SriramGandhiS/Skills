@@ -255,7 +255,7 @@ curl -X POST https://api.company.com/internal/feature-flags \
 
 ### Initial Notification (Internal)
 ```
-🚨 INCIDENT: Payment Service Degradation
+ INCIDENT: Payment Service Degradation
 
 Severity: SEV2
 Status: Investigating
@@ -273,7 +273,7 @@ Updates in #payments-incidents
 
 ### Status Update
 ```
-📊 UPDATE: Payment Service Incident
+ UPDATE: Payment Service Incident
 
 Status: Mitigating
 Impact: Reduced to ~5% failure rate
@@ -292,7 +292,7 @@ ETA to Resolution: ~15 minutes
 
 ### Resolution Notification
 ```
-✅ RESOLVED: Payment Service Incident
+PASS: RESOLVED: Payment Service Incident
 
 Duration: 45 minutes
 Impact: ~5,000 affected transactions

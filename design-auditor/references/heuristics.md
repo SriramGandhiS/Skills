@@ -36,10 +36,10 @@ When auditing in Korean, use the following terminology:
 | Jargon | 전문 용어 / 업계 용어 |
 
 **Korean severity labels (same as main audit):**
-- 🚫 차단 (Blocker)
-- 🔴 심각 (Critical)
-- 🟡 경고 (Warning)
-- 🟢 팁 (Tip)
+- 차단 (Blocker)
+- 심각 (Critical)
+- 경고 (Warning)
+- 팁 (Tip)
 
 **Korean heuristic note in reports:**
 > "H4(일관성), H5(오류 예방), H8(미적 디자인), H9(오류 복구)는 각각 카테고리 5, 7, 4, 11/12에서 다룹니다."
@@ -61,10 +61,10 @@ This category audits the 6 heuristics with genuine gaps: H1, H2, H3, H6, H7, H10
 
 The Usability Score is separate from the Overall Score and the Accessibility Score.
 Start at 100. Apply standard deduction tiers from the main audit:
-- 🚫 Blocker: −12pts (rare in heuristics — reserved for complete absence of fundamental feedback)
-- 🔴 Critical: −8pts
-- 🟡 Warning: −4pts
-- 🟢 Tip: −1pt
+- Blocker: −12pts (rare in heuristics — reserved for complete absence of fundamental feedback)
+- Critical: −8pts
+- Warning: −4pts
+- Tip: −1pt
 
 **Floor is 0.**
 
@@ -93,18 +93,18 @@ Display as: **Usability Score: X/100**
 **Figma detection:**
 - Identify primary action buttons (submit, save, send, confirm)
 - Check if a loading state variant exists in the component
-- Flag if: button has no loading/processing state → 🔴 Critical
+- Flag if: button has no loading/processing state →  Critical
 
 **Code detection:**
 ```
 Look for async action handlers on buttons:
   → onClick → async function / fetch / axios / supabase / API call
-  → Button has no disabled or loading state during the async operation → 🔴
+  → Button has no disabled or loading state during the async operation →
 
 Patterns to flag:
   <button onClick={handleSubmit}>Submit</button>
   async function handleSubmit() { await api.post(...) }
-  // No button.disabled = true or loading state set → 🔴
+  // No button.disabled = true or loading state set →
 
 Correct pattern:
   <button disabled={isLoading} onClick={handleSubmit}>
@@ -112,7 +112,7 @@ Correct pattern:
   </button>
 ```
 
-**Severity:** 🔴 Critical — users will click multiple times
+**Severity:**  Critical — users will click multiple times
 
 **Fix:** Every button that triggers an async action must have a loading state. Disable the button during processing. Show a spinner or "Saving…" label.
 
@@ -130,21 +130,21 @@ Correct pattern:
 ```
 Look for form submission handlers:
   → onSubmit / handleSubmit → async operation
-  → No toast, alert, redirect, or success message triggered after resolve → 🔴
+  → No toast, alert, redirect, or success message triggered after resolve →
 
 Patterns to flag:
   async function handleSubmit() {
     await api.post('/contact', data)
-    // Nothing happens after → 🔴
+    // Nothing happens after →
   }
 
 Correct patterns:
-  → toast.success('Message sent!') → ✅
-  → router.push('/success') → ✅
-  → setSubmitted(true) → show confirmation UI → ✅
+  → toast.success('Message sent!') → PASS:
+  → router.push('/success') → PASS:
+  → setSubmitted(true) → show confirmation UI → PASS:
 ```
 
-**Severity:** 🔴 Critical
+**Severity:**  Critical
 
 **Fix:** Every form submission must confirm completion. Use a toast for minor actions, a confirmation screen for significant ones (order placed, account created).
 
@@ -161,19 +161,19 @@ Correct patterns:
 **Code detection:**
 ```
 Multi-step flow patterns:
-  → Component with step/currentStep state and no progress indicator rendered → 🟡
+  → Component with step/currentStep state and no progress indicator rendered →
 
 Patterns to flag:
   const [step, setStep] = useState(1)
-  // No <ProgressBar step={step} total={4} /> or step indicator → 🟡
+  // No <ProgressBar step={step} total={4} /> or step indicator →
 
 Correct patterns:
-  → <StepIndicator current={2} total={4} /> → ✅
-  → <ProgressBar value={50} /> → ✅
-  → "Step 2 of 4" text label → ✅
+  → <StepIndicator current={2} total={4} /> → PASS:
+  → <ProgressBar value={50} /> → PASS:
+  → "Step 2 of 4" text label → PASS:
 ```
 
-**Severity:** 🟡 Warning
+**Severity:**  Warning
 
 **Fix:** Any flow with 3+ steps needs a visible progress indicator. Users need to know how far they are and how much remains.
 
@@ -200,17 +200,17 @@ Correct patterns:
 **Code detection:**
 ```
 Search string literals and error message strings for:
-  → Raw HTTP status codes shown to users: "Error 404", "500 Internal Server Error" → 🔴
+  → Raw HTTP status codes shown to users: "Error 404", "500 Internal Server Error" →
   → Developer terms in user-facing strings:
-    "Invalid payload" → 🔴
-    "Null value returned" → 🔴
-    "API request failed" → 🟡 (acceptable in some contexts)
-    "Connection timeout" → 🟡 (too technical — use "Connection lost. Check your internet.")
-  → Stack traces or file paths in error messages → 🔴
-  → i18n keys shown raw: "error.auth.token_expired" instead of resolved string → 🔴
+    "Invalid payload" →
+    "Null value returned" →
+    "API request failed" →  (acceptable in some contexts)
+    "Connection timeout" →  (too technical — use "Connection lost. Check your internet.")
+  → Stack traces or file paths in error messages →
+  → i18n keys shown raw: "error.auth.token_expired" instead of resolved string →
 ```
 
-**Severity:** 🔴 Critical (raw error codes, stack traces) · 🟡 Warning (developer terminology)
+**Severity:**  Critical (raw error codes, stack traces) ·  Warning (developer terminology)
 
 **Fix:** Translate all system language into user language:
 - "Error 404" → "We can't find that page"
@@ -227,24 +227,24 @@ Search string literals and error message strings for:
 **Figma detection:**
 - Identify icon + label pairs in nav, buttons, and actions
 - Flag if: an icon's conventional meaning doesn't match its function in this UI
-  - Floppy disk for save → ✅ (still universally understood)
-  - Magnifying glass for search → ✅
-  - Magnifying glass for "zoom in" (same icon as search in same product) → 🟡
-  - House icon for "Dashboard" (when user's home is elsewhere) → 🟢 Tip
-  - Hamburger menu on desktop in a non-menu context → 🟡
+  - Floppy disk for save → PASS: (still universally understood)
+  - Magnifying glass for search → PASS:
+  - Magnifying glass for "zoom in" (same icon as search in same product) →
+  - House icon for "Dashboard" (when user's home is elsewhere) →  Tip
+  - Hamburger menu on desktop in a non-menu context →
 
 **Code detection:**
 ```
 Icon component name vs aria-label or button context:
-  → <SearchIcon /> inside a button labeled "Zoom" → 🟡
-  → <TrashIcon /> used for "Archive" action → 🟡
-  → <HeartIcon /> used for "Bookmark" or "Save" (not favourites) → 🟡
-  
+  → <SearchIcon /> inside a button labeled "Zoom" →
+  → <TrashIcon /> used for "Archive" action →
+  → <HeartIcon /> used for "Bookmark" or "Save" (not favourites) →
+
 Check aria-label against icon component name for semantic mismatch:
-  <button aria-label="Delete"><ArchiveIcon /></button> → 🟡
+  <button aria-label="Delete"><ArchiveIcon /></button> →
 ```
 
-**Severity:** 🟡 Warning
+**Severity:**  Warning
 
 **Fix:** Use the icon that matches the action's real-world mental model. When an icon's meaning is ambiguous in context, always pair it with a visible text label.
 
@@ -262,16 +262,16 @@ Check aria-label against icon component name for semantic mismatch:
 
 **Code detection:**
 ```
-→ Hardcoded date format strings: "MM/DD/YYYY", new Date().toLocaleDateString() without locale → 🟡
-→ Hardcoded currency symbols ($, £, €) outside a locale formatter → 🟡
-→ Large numbers without thousand separators in UI text → 🟢 Tip
+→ Hardcoded date format strings: "MM/DD/YYYY", new Date().toLocaleDateString() without locale →
+→ Hardcoded currency symbols ($, £, €) outside a locale formatter →
+→ Large numbers without thousand separators in UI text →  Tip
 
 Correct patterns:
-  → new Intl.DateTimeFormat(userLocale, options).format(date) → ✅
-  → new Intl.NumberFormat(userLocale).format(number) → ✅
+  → new Intl.DateTimeFormat(userLocale, options).format(date) → PASS:
+  → new Intl.NumberFormat(userLocale).format(number) → PASS:
 ```
 
-**Severity:** 🟡 Warning
+**Severity:**  Warning
 
 **Fix:** Use `Intl.DateTimeFormat` and `Intl.NumberFormat` for all date and number rendering. Never hardcode format strings.
 
@@ -295,15 +295,15 @@ Correct patterns:
 **Code detection:**
 ```
 Modal/dialog patterns:
-  → <dialog>, role="dialog", or modal class with no close button → 🔴
-  → No Escape key handler on modal → 🟡
-  → No backdrop click handler (when modal is dismissible) → 🟡
+  → <dialog>, role="dialog", or modal class with no close button →
+  → No Escape key handler on modal →
+  → No backdrop click handler (when modal is dismissible) →
 
 Patterns to flag:
   <div role="dialog">
     <h2>Confirm action</h2>
     <button onClick={confirm}>Yes</button>
-    // No cancel/close button → 🔴
+    // No cancel/close button →
   </div>
 
 Correct pattern:
@@ -315,7 +315,7 @@ Correct pattern:
   </div>
 ```
 
-**Severity:** 🔴 Critical
+**Severity:**  Critical
 
 **Fix:** Every modal must have a visible close mechanism — an × button, a Cancel CTA, or both. Modals must also respond to Escape key. Never trap users in a modal without an exit.
 
@@ -333,12 +333,12 @@ Correct pattern:
 **Code detection:**
 ```
 Multi-step flow with no back:
-  → step > 1 rendered with no back button / setStep(step - 1) handler → 🟡
-  → Wizard flow with no cancel or exit path → 🟡
+  → step > 1 rendered with no back button / setStep(step - 1) handler →
+  → Wizard flow with no cancel or exit path →
 
 Patterns to flag:
   {step === 2 && <Step2 onNext={() => setStep(3)} />}
-  // No onBack prop or cancel option → 🟡
+  // No onBack prop or cancel option →
 
 Correct pattern:
   <Step2
@@ -348,7 +348,7 @@ Correct pattern:
   />
 ```
 
-**Severity:** 🟡 Warning (back navigation) · 🔴 Critical (no exit from a committed flow like checkout)
+**Severity:**  Warning (back navigation) ·  Critical (no exit from a committed flow like checkout)
 
 **Fix:** Every step in a multi-step flow must have a Back option. Long flows (3+ steps) must also have a Cancel or Save & Exit option so users can leave without losing progress.
 
@@ -368,20 +368,20 @@ Correct pattern:
 **Code detection:**
 ```
 Destructive action patterns:
-  → onClick={handleDelete} with no confirmation dialog triggered → 🟡
-  → window.confirm() used (browser native — poor UX but functional) → 🟢 Tip
-  → No toast with undo after soft-delete → 🟡
+  → onClick={handleDelete} with no confirmation dialog triggered →
+  → window.confirm() used (browser native — poor UX but functional) →  Tip
+  → No toast with undo after soft-delete →
 
 Patterns to flag:
   <button onClick={() => deleteItem(id)}>Delete</button>
-  // No confirmation, no undo → 🟡
+  // No confirmation, no undo →
 
 Correct patterns:
-  → Custom confirmation dialog: "Delete 'Project Alpha'? This cannot be undone." → ✅
-  → Soft-delete with toast: "Deleted — Undo" (5 second window) → ✅
+  → Custom confirmation dialog: "Delete 'Project Alpha'? This cannot be undone." → PASS:
+  → Soft-delete with toast: "Deleted — Undo" (5 second window) → PASS:
 ```
 
-**Severity:** 🟡 Warning (reversible actions) · 🔴 Critical (permanently destructive with no confirmation)
+**Severity:**  Warning (reversible actions) ·  Critical (permanently destructive with no confirmation)
 
 **Fix:** Permanent destructive actions must have a confirmation dialog that names the item being deleted. Reversible destructive actions should offer an Undo toast (3–5 seconds). Never use a generic "Are you sure?" — name the thing being deleted.
 
@@ -403,15 +403,15 @@ Correct patterns:
 **Code detection:**
 ```
 Icon-only nav items:
-  → <nav> or role="navigation" items with icon child but no visible text → 🟡
-  → aria-label present but no visible label → 🟡 (accessible but not heuristically ideal)
+  → <nav> or role="navigation" items with icon child but no visible text →
+  → aria-label present but no visible label →  (accessible but not heuristically ideal)
 
 Patterns to flag:
   <nav>
     <a href="/home"><HomeIcon /></a>
     <a href="/settings"><SettingsIcon /></a>
   </nav>
-  // Icons only, no labels → 🟡
+  // Icons only, no labels →
 
 Correct pattern:
   <a href="/home">
@@ -420,11 +420,11 @@ Correct pattern:
   </a>
 ```
 
-**Severity:** 🟡 Warning (primary nav) · 🟢 Tip (secondary/toolbar actions)
+**Severity:**  Warning (primary nav) ·  Tip (secondary/toolbar actions)
 
 **Fix:** Primary navigation items must have visible text labels alongside icons. Icon-only nav forces users to memorise icon meanings, which is a recall burden. Tooltips are acceptable for toolbars and secondary actions.
 
-**Context note:** Bottom navigation bars on mobile commonly use icon-only or icon+label layouts — flag icon-only on mobile bottom nav as 🟢 Tip (space constrained) not 🟡. Desktop sidebars and top nav always need labels.
+**Context note:** Bottom navigation bars on mobile commonly use icon-only or icon+label layouts — flag icon-only on mobile bottom nav as  Tip (space constrained) not . Desktop sidebars and top nav always need labels.
 
 ---
 
@@ -438,20 +438,20 @@ Correct pattern:
 **Code detection:**
 ```
 Floating label patterns that remove the label:
-  → input:focus + label { display: none } → 🔴
-  → placeholder used as label with no persistent label → 🔴
+  → input:focus + label { display: none } →
+  → placeholder used as label with no persistent label →
     (already flagged in Cat 12, reinforce here)
 
 Acceptable floating label:
-  → Label moves to top of field on focus, remains visible throughout → ✅
-  → Label + separate placeholder hint below field → ✅
+  → Label moves to top of field on focus, remains visible throughout → PASS:
+  → Label + separate placeholder hint below field → PASS:
 
 Problematic pattern:
-  → Label disappears entirely when user types, showing only the value → 🟡
+  → Label disappears entirely when user types, showing only the value →
     (user can't verify which field they're editing)
 ```
 
-**Severity:** 🔴 Critical (label disappears) · 🟡 Warning (label obscured during input)
+**Severity:**  Critical (label disappears) ·  Warning (label obscured during input)
 
 **Fix:** Labels must remain persistently visible — above the input, not inside it. If floating labels are used, ensure they persist at the top of the field during and after input, never disappear.
 
@@ -469,19 +469,19 @@ Problematic pattern:
 **Code detection:**
 ```
 Dropdown trigger after selection:
-  → Trigger button shows placeholder text even after selection → 🔴
-    e.g. <button>Select a category</button> after user selected "Design" → 🔴
+  → Trigger button shows placeholder text even after selection →
+    e.g. <button>Select a category</button> after user selected "Design" →
 
 Selected state in open dropdown:
-  → Selected option has no checkmark, highlight, or bold treatment → 🟡
-  → aria-selected="true" present but no visual distinction → 🟡
+  → Selected option has no checkmark, highlight, or bold treatment →
+  → aria-selected="true" present but no visual distinction →
 
 Filter active state:
-  → Active filter tag/pill has no visual distinction from inactive → 🟡
-  → Active filter count badge missing → 🟢 Tip
+  → Active filter tag/pill has no visual distinction from inactive →
+  → Active filter count badge missing →  Tip
 ```
 
-**Severity:** 🔴 Critical (trigger doesn't show selection) · 🟡 Warning (no visual distinction in list)
+**Severity:**  Critical (trigger doesn't show selection) ·  Warning (no visual distinction in list)
 
 **Fix:** Dropdown triggers must always show the currently selected value. Open dropdown lists must clearly mark the selected option with a checkmark, highlight, or bold. Active filters must be visually distinct from inactive ones.
 
@@ -503,19 +503,19 @@ Filter active state:
 **Code detection:**
 ```
 Keyboard shortcut accessibility:
-  → accesskey attributes used → ✅ (check for conflicts with browser shortcuts)
-  → Keyboard event listeners for shortcuts (Cmd+S, Ctrl+K, etc.) → ✅
+  → accesskey attributes used → PASS: (check for conflicts with browser shortcuts)
+  → Keyboard event listeners for shortcuts (Cmd+S, Ctrl+K, etc.) → PASS:
 
 Shortcut hint display:
-  → Shortcut exists in code but tooltip doesn't show it → 🟢 Tip
-  → No keyboard shortcuts at all on a complex productivity tool → 🟡
+  → Shortcut exists in code but tooltip doesn't show it →  Tip
+  → No keyboard shortcuts at all on a complex productivity tool →
 
 Look for:
-  → document.addEventListener('keydown', ...) with shortcut logic → if no hint shown → 🟢 Tip
+  → document.addEventListener('keydown', ...) with shortcut logic → if no hint shown →  Tip
   → useHotkeys / react-hotkeys / mousetrap library imported → check if hints are shown
 ```
 
-**Severity:** 🟢 Tip (general) · 🟡 Warning (on tools where power users are the primary audience)
+**Severity:**  Tip (general) ·  Warning (on tools where power users are the primary audience)
 
 **Fix:** Add keyboard shortcut hints to tooltips for frequently-used actions. Format: "Save (⌘S)" or "New item (⌘N)". This is low effort and high value for productivity tools.
 
@@ -532,20 +532,20 @@ Look for:
 **Code detection:**
 ```
 List/table with no bulk selection:
-  → Table/list component with no checkbox column → 🟡 if list implies management
-  → No selectedItems state in a list that clearly supports management operations → 🟡
+  → Table/list component with no checkbox column →  if list implies management
+  → No selectedItems state in a list that clearly supports management operations →
 
 Context signals that warrant bulk actions:
-  → Items have delete/archive/move actions → no bulk = 🟡
-  → List has 10+ items → no bulk = 🟡
-  → Admin interface → no bulk = 🟡
+  → Items have delete/archive/move actions → no bulk =
+  → List has 10+ items → no bulk =
+  → Admin interface → no bulk =
 
 Correct pattern:
-  → <input type="checkbox" onChange={handleSelectAll} /> in table header → ✅
-  → selectedItems.length > 0 && <BulkActionBar /> → ✅
+  → <input type="checkbox" onChange={handleSelectAll} /> in table header → PASS:
+  → selectedItems.length > 0 && <BulkActionBar /> → PASS:
 ```
 
-**Severity:** 🟡 Warning (clearly management-oriented lists) · 🟢 Tip (general lists)
+**Severity:**  Warning (clearly management-oriented lists) ·  Tip (general lists)
 
 **Fix:** Any list or table where users are expected to manage multiple items should support bulk selection. Add a checkbox column, a "Select all" header, and a contextual bulk action toolbar.
 
@@ -562,17 +562,17 @@ Correct pattern:
 **Code detection:**
 ```
 Persistence patterns:
-  → Frequently used form fields with no autocomplete/remembered values → 🟢 Tip
-  → Search component with no recent searches stored in localStorage → 🟢 Tip
-  → Settings changed by user with no persistence across sessions → 🟡
+  → Frequently used form fields with no autocomplete/remembered values →  Tip
+  → Search component with no recent searches stored in localStorage →  Tip
+  → Settings changed by user with no persistence across sessions →
 
 Positive signals:
-  → localStorage / sessionStorage used to remember user preferences → ✅
-  → Autocomplete with recent/suggested values → ✅
-  → "Remember me" / "Save as default" option on settings → ✅
+  → localStorage / sessionStorage used to remember user preferences → PASS:
+  → Autocomplete with recent/suggested values → PASS:
+  → "Remember me" / "Save as default" option on settings → PASS:
 ```
 
-**Severity:** 🟢 Tip (general) · 🟡 Warning (productivity tools where re-entering settings is frequent)
+**Severity:**  Tip (general) ·  Warning (productivity tools where re-entering settings is frequent)
 
 **Fix:** Persist user preferences across sessions using localStorage or a backend store. Add "Recently used" sections to frequently-accessed pickers. Autocomplete previous values in repeat-use form fields.
 
@@ -597,19 +597,19 @@ Positive signals:
 **Code detection:**
 ```
 Missing helper text patterns:
-  → <input type="password"> with no password requirements shown → 🟡
-  → <input type="tel"> with no format hint → 🟢 Tip
-  → <input maxLength={280}> with no character counter → 🟡
-  → <input type="file"> with no accepted types shown → 🟡
+  → <input type="password"> with no password requirements shown →
+  → <input type="tel"> with no format hint →  Tip
+  → <input maxLength={280}> with no character counter →
+  → <input type="file"> with no accepted types shown →
 
 Correct patterns:
   → <p id="password-hint">8+ chars, 1 number, 1 symbol</p>
-    <input aria-describedby="password-hint" type="password"> → ✅
-  → Character counter: {value.length}/280 → ✅
-  → Dropzone: "Accepted: JPG, PNG, PDF. Max 10MB." → ✅
+    <input aria-describedby="password-hint" type="password"> → PASS:
+  → Character counter: {value.length}/280 → PASS:
+  → Dropzone: "Accepted: JPG, PNG, PDF. Max 10MB." → PASS:
 ```
 
-**Severity:** 🟡 Warning (password, character-limited, formatted fields) · 🟢 Tip (simple fields)
+**Severity:**  Warning (password, character-limited, formatted fields) ·  Tip (simple fields)
 
 **Fix:** Every field with a specific format requirement, character limit, or file constraint must show that information before the user submits — not only in an error message after failure.
 
@@ -624,22 +624,22 @@ Correct patterns:
 **Figma detection:**
 - Read all error message text nodes
 - Flag if: error message states what went wrong but gives no actionable next step
-  - "Invalid email" alone → 🟡 (states the problem, no guidance)
-  - "Please enter a valid email address (e.g. name@example.com)" → ✅
+  - "Invalid email" alone →  (states the problem, no guidance)
+  - "Please enter a valid email address (e.g. name@example.com)" → PASS:
 
 **Code detection:**
 ```
 Error message strings:
-  → "Invalid input" → 🔴 (no information at all)
-  → "Error" → 🔴 (completely unhelpful)
-  → "Invalid email" → 🟡 (states problem, no fix)
-  → "Please enter a valid email (e.g. name@example.com)" → ✅
-  → "Password must be at least 8 characters" → ✅ (actionable)
+  → "Invalid input" →  (no information at all)
+  → "Error" →  (completely unhelpful)
+  → "Invalid email" →  (states problem, no fix)
+  → "Please enter a valid email (e.g. name@example.com)" → PASS:
+  → "Password must be at least 8 characters" → PASS: (actionable)
 
-Search for error strings shorter than 4 words → likely too vague → 🟡
+Search for error strings shorter than 4 words → likely too vague →
 ```
 
-**Severity:** 🔴 Critical (no information) · 🟡 Warning (states problem but no fix guidance)
+**Severity:**  Critical (no information) ·  Warning (states problem but no fix guidance)
 
 **Fix:** Every error message must: (1) say what went wrong, (2) say how to fix it. The format: "[What's wrong] — [how to fix it]". "Invalid email" → "Please enter a valid email address (e.g. name@example.com)."
 
@@ -654,16 +654,16 @@ Search for error strings shorter than 4 words → likely too vague → 🟡
 **Code detection:**
 ```
 Tooltip/help signal detection:
-  → Tooltip component or [?] icon near complex fields → ✅
-  → title attribute on non-interactive elements → 🟢 Tip (not keyboard accessible)
-  → aria-describedby with helper text → ✅
+  → Tooltip component or [?] icon near complex fields → PASS:
+  → title attribute on non-interactive elements →  Tip (not keyboard accessible)
+  → aria-describedby with helper text → PASS:
 
 Missing help patterns:
-  → Complex settings section (billing cycle, permissions, webhook config) with no help text → 🟡
-  → Technical fields (API key, webhook URL, CRON expression) with no explanation → 🟡
+  → Complex settings section (billing cycle, permissions, webhook config) with no help text →
+  → Technical fields (API key, webhook URL, CRON expression) with no explanation →
 ```
 
-**Severity:** 🟡 Warning (clearly complex or technical fields) · 🟢 Tip (generally non-obvious)
+**Severity:**  Warning (clearly complex or technical fields) ·  Tip (generally non-obvious)
 
 **Fix:** Add a tooltip or inline helper to any field or setting where a new user would reasonably not know what to enter or what the consequence of their choice is. Link to documentation for truly complex features.
 
@@ -681,16 +681,16 @@ Missing help patterns:
 **Code detection:**
 ```
 First-use detection:
-  → localStorage.getItem('hasOnboarded') check with no onboarding UI → 🟡
-  → Empty state component with no CTA or next-step guidance → 🟡
-  → Dashboard with no tutorial prompt on first login → 🟢 Tip
+  → localStorage.getItem('hasOnboarded') check with no onboarding UI →
+  → Empty state component with no CTA or next-step guidance →
+  → Dashboard with no tutorial prompt on first login →  Tip
 
 Correct patterns:
-  → {!hasOnboarded && <WelcomeTour />} → ✅
-  → Empty state: <p>No projects yet — <a href="/new">Create your first project</a></p> → ✅
+  → {!hasOnboarded && <WelcomeTour />} → PASS:
+  → Empty state: <p>No projects yet — <a href="/new">Create your first project</a></p> → PASS:
 ```
 
-**Severity:** 🟡 Warning (complex product with no onboarding) · 🟢 Tip (simple product)
+**Severity:**  Warning (complex product with no onboarding) ·  Tip (simple product)
 
 **Fix:** New users landing on an empty state need direction. Every empty state must tell the user what this section is for and how to populate it. Complex products should have a lightweight first-use tour or checklist.
 

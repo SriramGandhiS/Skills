@@ -1,6 +1,6 @@
 # Plano: Materializar Configuração no `new-project` (pt-BR)
 
-Data original: 2026-03-23  
+Data original: 2026-03-23
 Fonte canônica: `docs/superpowers/plans/2026-03-18-materialize-new-project-config.md`
 
 ---
@@ -43,10 +43,10 @@ Não inclui:
 
 ## Riscos e mitigação
 
-- **Risco:** configuração parcial em caso de falha no meio  
-  **Mitigação:** escrita atômica (arquivo temporário + replace)
-- **Risco:** inconsistência com defaults implícitos  
-  **Mitigação:** normalização centralizada com fallback explícito
+- **Risco:** configuração parcial em caso de falha no meio
+**Mitigação:** escrita atômica (arquivo temporário + replace)
+- **Risco:** inconsistência com defaults implícitos
+**Mitigação:** normalização centralizada com fallback explícito
 
 ## Verificação
 

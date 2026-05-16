@@ -68,7 +68,7 @@ Parse JSON for: `researcher_model`, `synthesizer_model`, `roadmapper_model`, `co
 
 **If `agents_installed` is false:** Display a warning before proceeding:
 ```
-⚠ GSD agents not installed. The following agents are missing from your agents directory:
+WARNING: GSD agents not installed. The following agents are missing from your agents directory:
   {missing_agents joined with newline}
 
 Subagent spawns (gsd-project-researcher, gsd-research-synthesizer, gsd-roadmapper) will fail
@@ -116,7 +116,6 @@ git init
 **If auto mode:** Skip to Step 4 (assume greenfield, synthesize PROJECT.md from provided document).
 
 **If `needs_codebase_map` is true** (from init — existing code detected but no codebase map):
-
 
 **Text mode (`workflow.text_mode: true` in config or `--text` flag):** Set `TEXT_MODE=true` if `--text` is present in `$ARGUMENTS` OR `text_mode` from init JSON is `true`. When TEXT_MODE is active, replace every `AskUserQuestion` call with a plain-text numbered list and ask the user to type their choice number. This is required for non-Claude runtimes (OpenAI Codex, Gemini CLI, etc.) where `AskUserQuestion` is not available.
 Use AskUserQuestion:
@@ -266,7 +265,7 @@ HAS_SKETCHES=$(ls .planning/sketches/MANIFEST.md 2>/dev/null)
 If any of these exist, surface them before questioning:
 
 ```
-⚡ Prior exploration detected:
+ Prior exploration detected:
 {if SPIKE_SKILL}  ✓ Spike findings skill: {path} — validated patterns from experiments
 {if SKETCH_SKILL}  ✓ Sketch findings skill: {path} — validated design decisions
 {if HAS_SPIKES && !SPIKE_SKILL}  ◆ Raw spikes in .planning/spikes/ — consider `/gsd-spike --wrap-up` to package findings
@@ -1348,7 +1347,7 @@ PHASE1_HAS_UI=$(echo "$PHASE1_SECTION" | grep -qi "UI hint.*yes" && echo "true" 
 ```
 ───────────────────────────────────────────────────────────────
 
-## ▶ Next Up — [${PROJECT_CODE}] ${PROJECT_TITLE}
+## Next Up — [${PROJECT_CODE}] ${PROJECT_TITLE}
 
 **Phase 1: [Phase Name]** — [Goal from ROADMAP.md]
 
@@ -1370,7 +1369,7 @@ PHASE1_HAS_UI=$(echo "$PHASE1_SECTION" | grep -qi "UI hint.*yes" && echo "true" 
 ```
 ───────────────────────────────────────────────────────────────
 
-## ▶ Next Up — [${PROJECT_CODE}] ${PROJECT_TITLE}
+## Next Up — [${PROJECT_CODE}] ${PROJECT_TITLE}
 
 **Phase 1: [Phase Name]** — [Goal from ROADMAP.md]
 

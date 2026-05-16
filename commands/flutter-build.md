@@ -8,7 +8,7 @@ This command invokes the **dart-build-resolver** agent to incrementally fix Dart
 
 ## What This Command Does
 
-1. **Run Diagnostics**: Execute `flutter analyze`, `flutter pub get`
+1. **Run Diagnostics**: Execute `flutter analyze`,`flutter pub get`
 2. **Parse Errors**: Group by file and sort by severity
 3. **Fix Incrementally**: One error at a time
 4. **Verify Each Fix**: Re-run analysis after each change
@@ -19,23 +19,23 @@ This command invokes the **dart-build-resolver** agent to incrementally fix Dart
 Use `/flutter-build` when:
 - `flutter analyze` reports errors
 - `flutter build` fails for any platform
-- `dart pub get` / `flutter pub get` fails with version conflicts
+- `dart pub get`/`flutter pub get` fails with version conflicts
 - `build_runner` fails to generate code
 - After pulling changes that break the build
 
 ## Diagnostic Commands Run
 
 ```bash
-# Analysis
+## Analysis
 flutter analyze 2>&1
 
-# Dependencies
+## Dependencies
 flutter pub get 2>&1
 
-# Code generation (if project uses build_runner)
+## Code generation (if project uses build_runner)
 dart run build_runner build --delete-conflicting-outputs 2>&1
 
-# Platform builds
+## Platform builds
 flutter build apk 2>&1
 flutter build web 2>&1
 ```
@@ -46,7 +46,7 @@ flutter build web 2>&1
 User: /flutter-build
 
 Agent:
-# Flutter Build Resolution
+## Flutter Build Resolution
 
 ## Initial Diagnostics
 
@@ -129,12 +129,12 @@ Build Status: PASS ✓
 
 | Error | Typical Fix |
 |-------|-------------|
-| `A value of type 'X?' can't be assigned to 'X'` | Add `?? default` or null guard |
+| `A value of type 'X?' can't be assigned to 'X'`| Add`?? default` or null guard |
 | `The name 'X' isn't defined` | Add import or fix typo |
-| `Non-nullable instance field must be initialized` | Add initializer or `late` |
+| `Non-nullable instance field must be initialized`| Add initializer or`late` |
 | `Version solving failed` | Adjust version constraints in pubspec.yaml |
 | `Missing concrete implementation of 'X'` | Implement missing interface method |
-| `build_runner: Part of X expected` | Delete stale `.g.dart` and rebuild |
+| `build_runner: Part of X expected`| Delete stale`.g.dart` and rebuild |
 
 ## Fix Strategy
 

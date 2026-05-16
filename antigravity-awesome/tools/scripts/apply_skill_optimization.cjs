@@ -228,7 +228,7 @@ async function main() {
       owner,
       repo,
       prNumber,
-      '⚠️ No changes to apply. The PR branch already matches the latest Tessl optimization.',
+      'WARNING: No changes to apply. The PR branch already matches the latest Tessl optimization.',
     );
     return;
   }
@@ -239,7 +239,7 @@ async function main() {
   const updatedFiles = [...optimizedFiles.keys()].map((item) => `\`${item}\``).join(', ');
   const improvements = extractKeyImprovements(reviewComment.body);
 
-  let body = `✅ Applied optimized ${updatedFiles} (${shortSha}).`;
+  let body = `PASS: Applied optimized ${updatedFiles} (${shortSha}).`;
   if (improvements.length > 0) {
     body += '\n\n**What changed:**';
     for (const item of improvements.slice(0, 3)) {

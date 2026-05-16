@@ -31,7 +31,6 @@ hcloud storage-box add-label [--overwrite] <storage-box> <label>...
 
 * [hcloud storage-box](hcloud_storage-box.md)	 - Manage Storage Boxes
 
-
 ---
 
 ## hcloud storage-box change-type
@@ -70,7 +69,6 @@ hcloud storage-box change-type <storage-box> <storage-box-type>
 ### SEE ALSO
 
 * [hcloud storage-box](hcloud_storage-box.md)	 - Manage Storage Boxes
-
 
 ---
 
@@ -119,7 +117,6 @@ hcloud storage-box create [options] --name <name> --type <type> --location <loca
 
 * [hcloud storage-box](hcloud_storage-box.md)	 - Manage Storage Boxes
 
-
 ---
 
 ## hcloud storage-box delete
@@ -153,7 +150,6 @@ hcloud storage-box delete <storage-box>...
 ### SEE ALSO
 
 * [hcloud storage-box](hcloud_storage-box.md)	 - Manage Storage Boxes
-
 
 ---
 
@@ -190,7 +186,6 @@ hcloud storage-box describe [options] <storage-box>
 
 * [hcloud storage-box](hcloud_storage-box.md)	 - Manage Storage Boxes
 
-
 ---
 
 ## hcloud storage-box disable-protection
@@ -224,7 +219,6 @@ hcloud storage-box disable-protection <storage-box> delete
 ### SEE ALSO
 
 * [hcloud storage-box](hcloud_storage-box.md)	 - Manage Storage Boxes
-
 
 ---
 
@@ -260,7 +254,6 @@ hcloud storage-box disable-snapshot-plan <storage-box>
 
 * [hcloud storage-box](hcloud_storage-box.md)	 - Manage Storage Boxes
 
-
 ---
 
 ## hcloud storage-box enable-protection
@@ -294,7 +287,6 @@ hcloud storage-box enable-protection <storage-box> delete
 ### SEE ALSO
 
 * [hcloud storage-box](hcloud_storage-box.md)	 - Manage Storage Boxes
-
 
 ---
 
@@ -348,7 +340,6 @@ hcloud storage-box enable-snapshot-plan [options] <storage-box>
 
 * [hcloud storage-box](hcloud_storage-box.md)	 - Manage Storage Boxes
 
-
 ---
 
 ## hcloud storage-box folders
@@ -384,7 +375,6 @@ hcloud storage-box folders <storage-box>
 ### SEE ALSO
 
 * [hcloud storage-box](hcloud_storage-box.md)	 - Manage Storage Boxes
-
 
 ---
 
@@ -445,7 +435,6 @@ hcloud storage-box list [options]
 
 * [hcloud storage-box](hcloud_storage-box.md)	 - Manage Storage Boxes
 
-
 ---
 
 ## hcloud storage-box remove-label
@@ -480,7 +469,6 @@ hcloud storage-box remove-label <storage-box> (--all | <label>...)
 ### SEE ALSO
 
 * [hcloud storage-box](hcloud_storage-box.md)	 - Manage Storage Boxes
-
 
 ---
 
@@ -517,7 +505,6 @@ hcloud storage-box reset-password --password <password> <storage-box>
 
 * [hcloud storage-box](hcloud_storage-box.md)	 - Manage Storage Boxes
 
-
 ---
 
 ## hcloud storage-box rollback-snapshot
@@ -552,7 +539,6 @@ hcloud storage-box rollback-snapshot --snapshot <snapshot> <storage-box>
 ### SEE ALSO
 
 * [hcloud storage-box](hcloud_storage-box.md)	 - Manage Storage Boxes
-
 
 ---
 
@@ -591,7 +577,6 @@ Manage Storage Box Snapshots
 * [hcloud storage-box snapshot remove-label](hcloud_storage-box_snapshot_remove-label.md)	 - Remove a label from a Storage Box Snapshot
 * [hcloud storage-box snapshot update](hcloud_storage-box_snapshot_update.md)	 - Update a Storage Box Snapshot
 
-
 ---
 
 ## hcloud storage-box snapshot add-label
@@ -626,7 +611,6 @@ hcloud storage-box snapshot add-label [--overwrite] <storage-box> <snapshot> <la
 ### SEE ALSO
 
 * [hcloud storage-box snapshot](hcloud_storage-box_snapshot.md)	 - Manage Storage Box Snapshots
-
 
 ---
 
@@ -665,7 +649,6 @@ hcloud storage-box snapshot create [--description <description>] <storage-box>
 
 * [hcloud storage-box snapshot](hcloud_storage-box_snapshot.md)	 - Manage Storage Box Snapshots
 
-
 ---
 
 ## hcloud storage-box snapshot delete
@@ -699,7 +682,6 @@ hcloud storage-box snapshot delete <storage-box> <snapshot>...
 ### SEE ALSO
 
 * [hcloud storage-box snapshot](hcloud_storage-box_snapshot.md)	 - Manage Storage Box Snapshots
-
 
 ---
 
@@ -735,7 +717,6 @@ hcloud storage-box snapshot describe [options] <storage-box> <snapshot>
 ### SEE ALSO
 
 * [hcloud storage-box snapshot](hcloud_storage-box_snapshot.md)	 - Manage Storage Box Snapshots
-
 
 ---
 
@@ -794,7 +775,6 @@ hcloud storage-box snapshot list [options] <storage-box>
 
 * [hcloud storage-box snapshot](hcloud_storage-box_snapshot.md)	 - Manage Storage Box Snapshots
 
-
 ---
 
 ## hcloud storage-box snapshot remove-label
@@ -830,7 +810,6 @@ hcloud storage-box snapshot remove-label <storage-box> <snapshot> (--all | <labe
 
 * [hcloud storage-box snapshot](hcloud_storage-box_snapshot.md)	 - Manage Storage Box Snapshots
 
-
 ---
 
 ## hcloud storage-box snapshot update
@@ -865,7 +844,6 @@ hcloud storage-box snapshot update [options] <storage-box> <snapshot>
 ### SEE ALSO
 
 * [hcloud storage-box snapshot](hcloud_storage-box_snapshot.md)	 - Manage Storage Box Snapshots
-
 
 ---
 
@@ -905,7 +883,6 @@ Manage Storage Box Subaccounts
 * [hcloud storage-box subaccount update](hcloud_storage-box_subaccount_update.md)	 - Update a Storage Box Subaccount
 * [hcloud storage-box subaccount update-access-settings](hcloud_storage-box_subaccount_update-access-settings.md)	 - Update access settings of the Storage Box Subaccount
 
-
 ---
 
 ## hcloud storage-box subaccount change-home-directory
@@ -940,7 +917,6 @@ hcloud storage-box subaccount change-home-directory --home-directory <home-direc
 ### SEE ALSO
 
 * [hcloud storage-box subaccount](hcloud_storage-box_subaccount.md)	 - Manage Storage Box Subaccounts
-
 
 ---
 
@@ -987,7 +963,6 @@ hcloud storage-box subaccount create [options] --password <password> --home-dire
 
 * [hcloud storage-box subaccount](hcloud_storage-box_subaccount.md)	 - Manage Storage Box Subaccounts
 
-
 ---
 
 ## hcloud storage-box subaccount delete
@@ -1021,7 +996,6 @@ hcloud storage-box subaccount delete <storage-box> <subaccount>...
 ### SEE ALSO
 
 * [hcloud storage-box subaccount](hcloud_storage-box_subaccount.md)	 - Manage Storage Box Subaccounts
-
 
 ---
 
@@ -1057,7 +1031,6 @@ hcloud storage-box subaccount describe [options] <storage-box> <subaccount>
 ### SEE ALSO
 
 * [hcloud storage-box subaccount](hcloud_storage-box_subaccount.md)	 - Manage Storage Box Subaccounts
-
 
 ---
 
@@ -1115,7 +1088,6 @@ hcloud storage-box subaccount list [options] <storage-box>
 
 * [hcloud storage-box subaccount](hcloud_storage-box_subaccount.md)	 - Manage Storage Box Subaccounts
 
-
 ---
 
 ## hcloud storage-box subaccount reset-password
@@ -1150,7 +1122,6 @@ hcloud storage-box subaccount reset-password --password <password> <storage-box>
 ### SEE ALSO
 
 * [hcloud storage-box subaccount](hcloud_storage-box_subaccount.md)	 - Manage Storage Box Subaccounts
-
 
 ---
 
@@ -1191,7 +1162,6 @@ hcloud storage-box subaccount update-access-settings [options] <storage-box> <su
 
 * [hcloud storage-box subaccount](hcloud_storage-box_subaccount.md)	 - Manage Storage Box Subaccounts
 
-
 ---
 
 ## hcloud storage-box subaccount update
@@ -1227,7 +1197,6 @@ hcloud storage-box subaccount update [options] <storage-box> <subaccount>
 ### SEE ALSO
 
 * [hcloud storage-box subaccount](hcloud_storage-box_subaccount.md)	 - Manage Storage Box Subaccounts
-
 
 ---
 
@@ -1267,7 +1236,6 @@ hcloud storage-box update-access-settings [options] <storage-box>
 ### SEE ALSO
 
 * [hcloud storage-box](hcloud_storage-box.md)	 - Manage Storage Boxes
-
 
 ---
 

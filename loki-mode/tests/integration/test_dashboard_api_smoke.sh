@@ -4,8 +4,7 @@
 # and /api/managed/status (Phase 5; may not exist in v6.83.1). Shut it down
 # cleanly. SKIP entirely if port 57374 is busy or the dashboard refuses to
 # start within a short budget.
-#
-# This is a smoke test. It does NOT exercise dashboard behavior end-to-end.
+# # This is a smoke test. It does NOT exercise dashboard behavior end-to-end.
 
 set -u
 

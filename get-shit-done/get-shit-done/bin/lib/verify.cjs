@@ -80,8 +80,8 @@ function cmdVerifySummary(cwd, summaryPath, checkFileCount, raw) {
   let selfCheck = 'not_found';
   const selfCheckPattern = /##\s*(?:Self[- ]?Check|Verification|Quality Check)/i;
   if (selfCheckPattern.test(content)) {
-    const passPattern = /(?:all\s+)?(?:pass|✓|✅|complete|succeeded)/i;
-    const failPattern = /(?:fail|✗|❌|incomplete|blocked)/i;
+    const passPattern = /(?:all\s+)?(?:pass|✓|PASS:|complete|succeeded)/i;
+    const failPattern = /(?:fail|✗|FAIL:|incomplete|blocked)/i;
     const checkSection = content.slice(content.search(selfCheckPattern));
     if (failPattern.test(checkSection)) {
       selfCheck = 'failed';

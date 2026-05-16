@@ -162,11 +162,11 @@ skill-seekers config --test
 ```
 
 Verifies:
-- ✅ GitHub token(s) validity and rate limits
-- ✅ Claude API connectivity
-- ✅ Gemini API connectivity
-- ✅ OpenAI API connectivity
-- ✅ Cloud storage access (if configured)
+- PASS: GitHub token(s) validity and rate limits
+- PASS: Claude API connectivity
+- PASS: Gemini API connectivity
+- PASS: OpenAI API connectivity
+- PASS: Cloud storage access (if configured)
 
 ## Deployment Options
 
@@ -370,14 +370,14 @@ groups:
 
 **Best Practices:**
 
-✅ **DO:**
+PASS: **DO:**
 - Store keys in environment variables or secret managers
 - Use different keys for dev/staging/prod
 - Rotate keys regularly (quarterly minimum)
 - Use least-privilege IAM roles for cloud services
 - Monitor key usage for anomalies
 
-❌ **DON'T:**
+FAIL: **DON'T:**
 - Commit keys to version control
 - Share keys via email/Slack
 - Use production keys in development

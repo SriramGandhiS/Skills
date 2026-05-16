@@ -6,15 +6,15 @@ Most beginner UIs only design the "happy path" — data loads perfectly and the 
 
 | State | When | Design Priority |
 |---|---|---|
-| **Default** | Nothing has happened yet | ✅ Always designed |
-| **Hover** | Cursor over an interactive element | 🟡 Sometimes missing |
-| **Focus** | Element selected via keyboard | ⚠️ Often forgotten |
-| **Active** | Element being pressed/clicked | 🟡 Sometimes missing |
-| **Loading** | Waiting for data or an action to complete | ⚠️ Often forgotten |
-| **Error** | Something went wrong | ⚠️ Often forgotten |
-| **Empty** | No data exists yet | ⚠️ Often forgotten |
-| **Disabled** | Action not available | 🟡 Sometimes missing |
-| **Success** | Action completed | ⚠️ Often forgotten |
+| **Default** | Nothing has happened yet | PASS: Always designed |
+| **Hover** | Cursor over an interactive element |  Sometimes missing |
+| **Focus** | Element selected via keyboard | WARNING: Often forgotten |
+| **Active** | Element being pressed/clicked |  Sometimes missing |
+| **Loading** | Waiting for data or an action to complete | WARNING: Often forgotten |
+| **Error** | Something went wrong | WARNING: Often forgotten |
+| **Empty** | No data exists yet | WARNING: Often forgotten |
+| **Disabled** | Action not available |  Sometimes missing |
+| **Success** | Action completed | WARNING: Often forgotten |
 
 Not every state applies to every component — a Button has no Empty state; a data table has no Active state. Use judgment. The States Coverage Map widget tracks all 9 and lets you mark cells N/A where a state genuinely can't apply.
 
@@ -172,68 +172,68 @@ When auditing HTML/CSS/React/Vue, the following state implementations can be ver
 ### Loading state
 ```
 aria-busy attribute:
-  → <section aria-busy="true"> during loading → ✅
-  → Loading state with no aria-busy → 🟢 Tip
+  → <section aria-busy="true"> during loading → PASS:
+  → Loading state with no aria-busy →  Tip
 
 Skeleton screen HTML pattern:
-  → <div class="skeleton" aria-hidden="true"> → ✅ (hidden from AT, decorative)
-  → Skeleton without aria-hidden → 🟢 Tip
+  → <div class="skeleton" aria-hidden="true"> → PASS: (hidden from AT, decorative)
+  → Skeleton without aria-hidden →  Tip
 
 Button loading pattern:
-  → <button disabled aria-disabled="true"><Spinner /> Saving...</button> → ✅
-  → <button> still interactive during async action → 🔴 Critical (double-submit risk)
+  → <button disabled aria-disabled="true"><Spinner /> Saving...</button> → PASS:
+  → <button> still interactive during async action →  Critical (double-submit risk)
 ```
 
 ### Error state
 ```
 aria-invalid:
-  → <input aria-invalid="true"> on a field with a validation error → ✅
-  → Error visible but aria-invalid missing → 🟡 Warning
+  → <input aria-invalid="true"> on a field with a validation error → PASS:
+  → Error visible but aria-invalid missing →  Warning
 
 aria-describedby linking error message:
-  → <input aria-describedby="field-error"> ... <span id="field-error">...</span> → ✅
-  → Error message not linked via aria-describedby → 🟡 Warning
+  → <input aria-describedby="field-error"> ... <span id="field-error">...</span> → PASS:
+  → Error message not linked via aria-describedby →  Warning
 
 role="alert" on dynamic errors:
-  → <div role="alert"> for errors injected after page load → ✅ (announced immediately)
-  → Errors injected into DOM without role="alert" or aria-live → 🟡 Warning
+  → <div role="alert"> for errors injected after page load → PASS: (announced immediately)
+  → Errors injected into DOM without role="alert" or aria-live →  Warning
 ```
 
 ### Success state (toasts and confirmations)
 ```
 aria-live on toast containers:
-  → <div aria-live="polite" aria-atomic="true"> wrapping toast area → ✅
-  → Toast visible in DOM but no aria-live → 🟡 Warning (screen readers miss it)
-  → role="status" is equivalent to aria-live="polite" → ✅
+  → <div aria-live="polite" aria-atomic="true"> wrapping toast area → PASS:
+  → Toast visible in DOM but no aria-live →  Warning (screen readers miss it)
+  → role="status" is equivalent to aria-live="polite" → PASS:
 
 Auto-dismiss timing:
-  → Toast dismissed < 2 seconds → 🟡 (too fast for screen readers to announce)
-  → Toast dismissed at 3–5 seconds → ✅
-  → Toast never auto-dismissed → 🟢 Tip (blocks UI permanently)
+  → Toast dismissed < 2 seconds →  (too fast for screen readers to announce)
+  → Toast dismissed at 3–5 seconds → PASS:
+  → Toast never auto-dismissed →  Tip (blocks UI permanently)
 ```
 
 ### Disabled state
 ```
 aria-disabled vs disabled attribute:
-  → <button disabled> removes from tab order (correct for forms) → ✅
-  → <button aria-disabled="true"> keeps in tab order (better for explaining why) → ✅
-  → Interactive element visually greyed out with neither disabled nor aria-disabled → 🔴
+  → <button disabled> removes from tab order (correct for forms) → PASS:
+  → <button aria-disabled="true"> keeps in tab order (better for explaining why) → PASS:
+  → Interactive element visually greyed out with neither disabled nor aria-disabled →
 
 cursor: not-allowed:
-  → disabled elements missing cursor: not-allowed → 🟢 Tip
-  → pointer-events: none alone (without aria-disabled) → 🟡 (keyboard still activatable)
+  → disabled elements missing cursor: not-allowed →  Tip
+  → pointer-events: none alone (without aria-disabled) →  (keyboard still activatable)
 
 Opacity for disabled visual:
-  → opacity: 0.5 or 0.4 on disabled elements → ✅
-  → opacity: 0.15 or lower → 🟡 (contrast too low, violates WCAG disabled contrast guideline)
+  → opacity: 0.5 or 0.4 on disabled elements → PASS:
+  → opacity: 0.15 or lower →  (contrast too low, violates WCAG disabled contrast guideline)
 ```
 
 ### Empty state
 ```
 Empty state detection in code:
-  → Conditional render: {items.length === 0 && <EmptyState />} → ✅
-  → Array renders with no empty state fallback → 🟡 Warning
-  → Search/filter result with no "no results" state → 🟡 Warning
+  → Conditional render: {items.length === 0 && <EmptyState />} → PASS:
+  → Array renders with no empty state fallback →  Warning
+  → Search/filter result with no "no results" state →  Warning
 
 Empty state accessibility:
   → Empty state illustration should have aria-hidden="true" (decorative)
@@ -243,12 +243,12 @@ Empty state accessibility:
 ### Focus state
 ```
 outline: none / outline: 0 detection:
-  → Any global *:focus { outline: none } → 🔴 Critical
-  → :focus-visible { outline: none } → 🔴 Critical (still removes focus for keyboard users)
-  → :focus { outline: none } with :focus-visible alternative → ✅ (progressive enhancement)
+  → Any global *:focus { outline: none } →  Critical
+  → :focus-visible { outline: none } →  Critical (still removes focus for keyboard users)
+  → :focus { outline: none } with :focus-visible alternative → PASS: (progressive enhancement)
 
 Focus ring visibility:
-  → :focus-visible with visible outline (2px solid, not just color change) → ✅
-  → Focus managed only via box-shadow (no outline) → 🟡 (Windows High Contrast Mode loses it)
-  → Recommended: outline: 2px solid var(--color-focus); outline-offset: 2px → ✅
+  → :focus-visible with visible outline (2px solid, not just color change) → PASS:
+  → Focus managed only via box-shadow (no outline) →  (Windows High Contrast Mode loses it)
+  → Recommended: outline: 2px solid var(--color-focus); outline-offset: 2px → PASS:
 ```

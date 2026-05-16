@@ -94,15 +94,15 @@ conditions:
 
 ### 正则表达式基础
 
-* 转义特殊字符：`.` 转义为 `\.`，`(` 转义为 `\(`
-* `\s` 空白字符，`\d` 数字，`\w` 单词字符
-* `+` 一个或多个，`*` 零个或多个，`?` 可选
+* 转义特殊字符：`.`转义为`\.`，`(`转义为`\(`
+* `\s`空白字符，`\d`数字，`\w` 单词字符
+* `+`一个或多个，`*`零个或多个，`?` 可选
 * `|` 或运算符
 
 ### 常见陷阱
 
-* **过于宽泛**：`log` 会匹配 "login"、"dialog"——请使用 `console\.log\(`
-* **过于具体**：`rm -rf /tmp`——请使用 `rm\s+-rf`
+* **过于宽泛**：`log`会匹配 "login"、"dialog"——请使用`console\.log\(`
+* **过于具体**：`rm -rf /tmp`——请使用`rm\s+-rf`
 * **YAML 转义**：使用无引号模式；带引号的字符串需要 `\\s`
 
 ### 测试
@@ -115,7 +115,7 @@ python3 -c "import re; print(re.search(r'your_pattern', 'test text'))"
 
 * **位置**：项目根目录下的 `.claude/` 目录
 * **命名**：`.claude/hookify.{descriptive-name}.local.md`
-* **Gitignore**：将 `.claude/*.local.md` 添加到 `.gitignore`
+* **Gitignore**：将 `.claude/*.local.md`添加到`.gitignore`
 
 ## 命令
 

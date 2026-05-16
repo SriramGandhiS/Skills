@@ -179,10 +179,10 @@ sudo nano /etc/samba/smb.conf
 
 # Add share:
 # [public]
-#    path = /srv/samba/share
-#    browsable = yes
-#    guest ok = yes
-#    read only = no
+# path = /srv/samba/share
+# browsable = yes
+# guest ok = yes
+# read only = no
 
 # Restart service
 sudo systemctl restart smbd

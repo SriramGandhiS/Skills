@@ -1,4 +1,4 @@
-﻿---
+---
 name: content-hash-cache-pattern
 description: Cache expensive file processing results using SHA-256 content hashes â€” path-independent, auto-invalidating, with service layer separation.
 origin: ECC
@@ -134,16 +134,16 @@ def extract_with_cache(
 ## Anti-Patterns to Avoid
 
 ```python
-# BAD: Path-based caching (breaks on file move/rename)
+## BAD: Path-based caching (breaks on file move/rename)
 cache = {"/path/to/file.pdf": result}
 
-# BAD: Adding cache logic inside the processing function (SRP violation)
+## BAD: Adding cache logic inside the processing function (SRP violation)
 def extract_text(path, *, cache_enabled=False, cache_dir=None):
     if cache_enabled:  # Now this function has two responsibilities
         ...
 
-# BAD: Using dataclasses.asdict() with nested frozen dataclasses
-# (can cause issues with complex nested types)
+## BAD: Using dataclasses.asdict() with nested frozen dataclasses
+## (can cause issues with complex nested types)
 data = dataclasses.asdict(entry)  # Use manual serialization instead
 ```
 

@@ -1,4 +1,4 @@
-﻿---
+---
 name: get-video-dimensions
 description: Getting the width and height of a video file with Mediabunny
 metadata:
@@ -44,7 +44,7 @@ console.log(dimensions.height); // e.g. 1080
 
 ## Using with local files
 
-For local files, use `FileSource` instead of `UrlSource`:
+For local files, use `FileSource`instead of`UrlSource`:
 
 ```tsx
 import { Input, ALL_FORMATS, FileSource } from "mediabunny";

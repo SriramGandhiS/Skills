@@ -4,11 +4,9 @@
 
 [English](README.md) | [简体中文](README.zh-CN.md) | 日本語 | [한국어](README.ko.md) | [Español](README.es.md) | [Français](README.fr.md) | [Deutsch](README.de.md) | [Português](README.pt-BR.md) | [Türkçe](README.tr.md) | [العربية](README.ar.md) | [हिन्दी](README.hi.md) | [Русский](README.ru.md)
 
-> ⚠️ **機械翻訳に関する注意**
->
-> この文書はAIによって自動翻訳されたものです。翻訳の品質向上に努めていますが、不正確な表現が含まれる場合があります。
->
-> 翻訳の改善にご協力いただける方は、[GitHub Issue #260](https://github.com/yusufkaraaslan/Skill_Seekers/issues/260) からフィードバックをお寄せください。
+> WARNING: **機械翻訳に関する注意**
+> > この文書はAIによって自動翻訳されたものです。翻訳の品質向上に努めていますが、不正確な表現が含まれる場合があります。
+> > 翻訳の改善にご協力いただける方は、[GitHub Issue #260](https://github.com/yusufkaraaslan/Skill_Seekers/issues/260) からフィードバックをお寄せください。
 
 [![バージョン](https://img.shields.io/badge/version-3.2.0-blue.svg)](https://github.com/yusufkaraaslan/Skill_Seekers/releases)
 [![ライセンス: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -23,13 +21,13 @@
 [![Twitter フォロー](https://img.shields.io/twitter/follow/_yUSyUS_?style=social)](https://x.com/_yUSyUS_)
 [![GitHub Stars](https://img.shields.io/github/stars/yusufkaraaslan/Skill_Seekers?style=social)](https://github.com/yusufkaraaslan/Skill_Seekers)
 
-**🧠 AI システムのデータレイヤー。** Skill Seekers はドキュメントサイト、GitHub リポジトリ、PDF、動画、Jupyter Notebook、Wiki など 17 種類以上のソースタイプを構造化されたナレッジアセットに変換します。AI スキル（Claude、Gemini、OpenAI）、RAG パイプライン（LangChain、LlamaIndex、Pinecone）、AI コーディングアシスタント（Cursor、Windsurf、Cline）を数分で構築できます。
+**AI システムのデータレイヤー。** Skill Seekers はドキュメントサイト、GitHub リポジトリ、PDF、動画、Jupyter Notebook、Wiki など 17 種類以上のソースタイプを構造化されたナレッジアセットに変換します。AI スキル（Claude、Gemini、OpenAI）、RAG パイプライン（LangChain、LlamaIndex、Pinecone）、AI コーディングアシスタント（Cursor、Windsurf、Cline）を数分で構築できます。
 
-> 🌐 **[SkillSeekersWeb.com にアクセス](https://skillseekersweb.com/)** - 24 以上のプリセット設定を閲覧、設定の共有、完全なドキュメントへのアクセス！
+> **[SkillSeekersWeb.com にアクセス](https://skillseekersweb.com/)** - 24 以上のプリセット設定を閲覧、設定の共有、完全なドキュメントへのアクセス！
 
-> 📋 **[開発ロードマップとタスクを確認](https://github.com/users/yusufkaraaslan/projects/2)** - 10 カテゴリで 134 タスク、好きなものを選んで貢献できます！
+> **[開発ロードマップとタスクを確認](https://github.com/users/yusufkaraaslan/projects/2)** - 10 カテゴリで 134 タスク、好きなものを選んで貢献できます！
 
-## 🌐 エコシステム
+## エコシステム
 
 Skill Seekers はマルチリポジトリプロジェクトです。各リポジトリの役割：
 
@@ -44,7 +42,7 @@ Skill Seekers はマルチリポジトリプロジェクトです。各リポジ
 
 > **貢献したいですか？** ウェブサイトと設定リポジトリは新しい貢献者に最適です！
 
-## 🧠 AI システムのデータレイヤー
+## AI システムのデータレイヤー
 
 **Skill Seekers は汎用的な前処理レイヤー**であり、生のドキュメントとそれを利用するすべての AI システムの間に位置します。Claude スキル、LangChain RAG パイプライン、Cursor の `.cursorrules` ファイルのいずれを構築する場合でも、データの準備作業は同じです。一度実行すれば、すべてのターゲットにエクスポートできます。
 
@@ -78,13 +76,13 @@ skill-seekers package output/react --target cursor      # → .cursorrules
 
 ### 選ばれる理由
 
-- ⚡ **99% 高速化** — 数日の手作業データ準備 → 15〜45 分
-- 🎯 **AI スキル品質** — サンプル、パターン、ガイドを含む 500 行以上の SKILL.md ファイル
-- 📊 **RAG 対応チャンク** — コードブロックを保持しコンテキストを維持するスマートチャンキング
-- 🔄 **17 種類のソースタイプ** — ドキュメント + GitHub + PDF + 動画 + ノートブック + Wiki などを 1 つのナレッジアセットに統合
-- 🌐 **一度の準備で全ターゲット** — 再スクレイピングなしで 16 プラットフォームにエクスポート
-- 🎬 **動画** — YouTube やローカル動画からコード、字幕、構造化知識を抽出
-- ✅ **実戦テスト済み** — 2,540 以上のテスト、24 以上のフレームワークプリセット、本番運用可能
+- **99% 高速化** — 数日の手作業データ準備 → 15〜45 分
+- **AI スキル品質** — サンプル、パターン、ガイドを含む 500 行以上の SKILL.md ファイル
+- **RAG 対応チャンク** — コードブロックを保持しコンテキストを維持するスマートチャンキング
+- **17 種類のソースタイプ** — ドキュメント + GitHub + PDF + 動画 + ノートブック + Wiki などを 1 つのナレッジアセットに統合
+- **一度の準備で全ターゲット** — 再スクレイピングなしで 16 プラットフォームにエクスポート
+- **動画** — YouTube やローカル動画からコード、字幕、構造化知識を抽出
+- PASS: **実戦テスト済み** — 2,540 以上のテスト、24 以上のフレームワークプリセット、本番運用可能
 
 ## クイックスタート
 
@@ -143,83 +141,83 @@ Skill Seekers は以下のステップで数日の手動前処理作業を代替
 
 ### AI スキルビルダー向け（Claude、Gemini、OpenAI）
 
-- 🎯 **本番グレードのスキル** — コード例、パターン、ガイドを含む 500 行以上の SKILL.md ファイル
-- 🔄 **強化ワークフロー** — `security-focus`、`architecture-comprehensive` またはカスタム YAML プリセットを適用
-- 🎮 **あらゆるドメイン** — ゲームエンジン（Godot、Unity）、フレームワーク（React、Django）、社内ツール
-- 🔧 **チーム向け** — 社内ドキュメント + コードを単一の信頼できるソースに統合
-- 📚 **高品質** — サンプル、クイックリファレンス、ナビゲーションガイド付きの AI 強化
+- **本番グレードのスキル** — コード例、パターン、ガイドを含む 500 行以上の SKILL.md ファイル
+- **強化ワークフロー** — `security-focus`、`architecture-comprehensive` またはカスタム YAML プリセットを適用
+- **あらゆるドメイン** — ゲームエンジン（Godot、Unity）、フレームワーク（React、Django）、社内ツール
+- **チーム向け** — 社内ドキュメント + コードを単一の信頼できるソースに統合
+- **高品質** — サンプル、クイックリファレンス、ナビゲーションガイド付きの AI 強化
 
 ### RAG ビルダー & AI エンジニア向け
 
-- 🤖 **RAG 対応データ** — 事前チャンク済みの LangChain `Documents`、LlamaIndex `TextNodes`、Haystack `Documents`
-- 🚀 **99% 高速化** — 数日の前処理 → 15〜45 分
-- 📊 **スマートメタデータ** — カテゴリ、ソース、タイプ → より高い検索精度
-- 🔄 **マルチソース** — 1 つのパイプラインでドキュメント + GitHub + PDF を統合
-- 🌐 **プラットフォーム非依存** — 再スクレイピングなしで任意のベクトル DB やフレームワークにエクスポート
+- **RAG 対応データ** — 事前チャンク済みの LangChain `Documents`、LlamaIndex `TextNodes`、Haystack `Documents`
+- **99% 高速化** — 数日の前処理 → 15〜45 分
+- **スマートメタデータ** — カテゴリ、ソース、タイプ → より高い検索精度
+- **マルチソース** — 1 つのパイプラインでドキュメント + GitHub + PDF を統合
+- **プラットフォーム非依存** — 再スクレイピングなしで任意のベクトル DB やフレームワークにエクスポート
 
 ### AI コーディングアシスタントユーザー向け
 
-- 💻 **Cursor / Windsurf / Cline** — `.cursorrules` / `.windsurfrules` / `.clinerules` を自動生成
-- 🎯 **永続的コンテキスト** — AI がフレームワークを「理解」し、繰り返しのプロンプトが不要に
-- 📚 **常に最新** — ドキュメント更新時に数分でコンテキストを更新
+- **Cursor / Windsurf / Cline** — `.cursorrules` / `.windsurfrules` / `.clinerules` を自動生成
+- **永続的コンテキスト** — AI がフレームワークを「理解」し、繰り返しのプロンプトが不要に
+- **常に最新** — ドキュメント更新時に数分でコンテキストを更新
 
 ## 主要機能
 
-### 🌐 ドキュメントスクレイピング
-- ✅ **llms.txt サポート** - LLM 対応ドキュメントファイルを自動検出し使用（10 倍高速）
-- ✅ **汎用スクレイパー** - あらゆるドキュメントサイトに対応
-- ✅ **スマート分類** - トピック別にコンテンツを自動整理
-- ✅ **コード言語検出** - Python、JavaScript、C++、GDScript などを認識
-- ✅ **24 以上のプリセット** - Godot、React、Vue、Django、FastAPI など
+### ドキュメントスクレイピング
+- PASS: **llms.txt サポート** - LLM 対応ドキュメントファイルを自動検出し使用（10 倍高速）
+- PASS: **汎用スクレイパー** - あらゆるドキュメントサイトに対応
+- PASS: **スマート分類** - トピック別にコンテンツを自動整理
+- PASS: **コード言語検出** - Python、JavaScript、C++、GDScript などを認識
+- PASS: **24 以上のプリセット** - Godot、React、Vue、Django、FastAPI など
 
-### 📄 PDF サポート
-- ✅ **基本 PDF 抽出** - PDF からテキスト、コード、画像を抽出
-- ✅ **スキャン PDF の OCR** - スキャンドキュメントからテキストを抽出
-- ✅ **パスワード保護 PDF** - 暗号化 PDF の処理
-- ✅ **テーブル抽出** - 複雑なテーブルの抽出
-- ✅ **並列処理** - 大規模 PDF で 3 倍高速
-- ✅ **インテリジェントキャッシュ** - 再実行時に 50% 高速
+### PDF サポート
+- PASS: **基本 PDF 抽出** - PDF からテキスト、コード、画像を抽出
+- PASS: **スキャン PDF の OCR** - スキャンドキュメントからテキストを抽出
+- PASS: **パスワード保護 PDF** - 暗号化 PDF の処理
+- PASS: **テーブル抽出** - 複雑なテーブルの抽出
+- PASS: **並列処理** - 大規模 PDF で 3 倍高速
+- PASS: **インテリジェントキャッシュ** - 再実行時に 50% 高速
 
-### 🎬 動画抽出
-- ✅ **YouTube & ローカル動画** - 動画から字幕、コード、構造化知識を抽出
-- ✅ **ビジュアルフレーム分析** - コードエディタ、ターミナル、スライドの OCR 抽出
-- ✅ **GPU 自動検出** - 正しい PyTorch ビルド（CUDA/ROCm/MPS/CPU）を自動インストール
-- ✅ **AI 強化** - 2 パス処理：OCR アーティファクトのクリーンアップ + 洗練された SKILL.md の生成
-- ✅ **時間トリミング** - `--start-time` と `--end-time` で特定のセクションを抽出
-- ✅ **プレイリストサポート** - YouTube プレイリスト内のすべての動画を一括処理
+### 動画抽出
+- PASS: **YouTube & ローカル動画** - 動画から字幕、コード、構造化知識を抽出
+- PASS: **ビジュアルフレーム分析** - コードエディタ、ターミナル、スライドの OCR 抽出
+- PASS: **GPU 自動検出** - 正しい PyTorch ビルド（CUDA/ROCm/MPS/CPU）を自動インストール
+- PASS: **AI 強化** - 2 パス処理：OCR アーティファクトのクリーンアップ + 洗練された SKILL.md の生成
+- PASS: **時間トリミング** - `--start-time` と `--end-time` で特定のセクションを抽出
+- PASS: **プレイリストサポート** - YouTube プレイリスト内のすべての動画を一括処理
 
-### 🐙 GitHub リポジトリ分析
-- ✅ **高度なコード分析** - Python、JavaScript、TypeScript、Java、C++、Go の AST 解析
-- ✅ **API 抽出** - 関数、クラス、メソッドのパラメータと型情報
-- ✅ **リポジトリメタデータ** - README、ファイルツリー、言語構成、スター/フォーク数
-- ✅ **GitHub Issues & PR** - ラベルとマイルストーン付きの Issue を取得
-- ✅ **CHANGELOG & リリース** - バージョン履歴を自動抽出
-- ✅ **コンフリクト検出** - ドキュメント化された API と実際のコード実装を比較
-- ✅ **MCP 統合** - 自然言語で操作：「GitHub リポジトリ facebook/react をスクレイプ」
+### GitHub リポジトリ分析
+- PASS: **高度なコード分析** - Python、JavaScript、TypeScript、Java、C++、Go の AST 解析
+- PASS: **API 抽出** - 関数、クラス、メソッドのパラメータと型情報
+- PASS: **リポジトリメタデータ** - README、ファイルツリー、言語構成、スター/フォーク数
+- PASS: **GitHub Issues & PR** - ラベルとマイルストーン付きの Issue を取得
+- PASS: **CHANGELOG & リリース** - バージョン履歴を自動抽出
+- PASS: **コンフリクト検出** - ドキュメント化された API と実際のコード実装を比較
+- PASS: **MCP 統合** - 自然言語で操作：「GitHub リポジトリ facebook/react をスクレイプ」
 
-### 🔄 統合マルチソーススクレイピング
-- ✅ **複数ソースの統合** - 1 つのスキルでドキュメント + GitHub + PDF を混合
-- ✅ **コンフリクト検出** - ドキュメントとコード間の不一致を自動検出
-- ✅ **インテリジェントマージ** - ルールベースまたは AI 駆動のコンフリクト解決
-- ✅ **透明なレポート** - ⚠️ 警告付きの並列比較
-- ✅ **ドキュメントギャップ分析** - 古いドキュメントや未文書化機能を特定
-- ✅ **唯一の信頼できるソース** - 意図（ドキュメント）と現実（コード）の両方を示す 1 つのスキル
-- ✅ **後方互換性** - レガシーの単一ソース設定は引き続き動作
+### 統合マルチソーススクレイピング
+- PASS: **複数ソースの統合** - 1 つのスキルでドキュメント + GitHub + PDF を混合
+- PASS: **コンフリクト検出** - ドキュメントとコード間の不一致を自動検出
+- PASS: **インテリジェントマージ** - ルールベースまたは AI 駆動のコンフリクト解決
+- PASS: **透明なレポート** - WARNING: 警告付きの並列比較
+- PASS: **ドキュメントギャップ分析** - 古いドキュメントや未文書化機能を特定
+- PASS: **唯一の信頼できるソース** - 意図（ドキュメント）と現実（コード）の両方を示す 1 つのスキル
+- PASS: **後方互換性** - レガシーの単一ソース設定は引き続き動作
 
-### 🤖 マルチ LLM プラットフォームサポート
-- ✅ **12 の LLM プラットフォーム** - Claude AI、Google Gemini、OpenAI ChatGPT、MiniMax AI、汎用 Markdown、OpenCode、Kimi、DeepSeek、Qwen、OpenRouter、Together AI、Fireworks AI
-- ✅ **汎用スクレイピング** - 同じドキュメントがすべてのプラットフォームで使用可能
-- ✅ **プラットフォーム固有のパッケージング** - 各 LLM に最適化されたフォーマット
-- ✅ **ワンコマンドエクスポート** - `--target` フラグでプラットフォームを選択
-- ✅ **オプション依存関係** - 必要なものだけインストール
-- ✅ **100% 後方互換** - 既存の Claude ワークフローは変更不要
+### マルチ LLM プラットフォームサポート
+- PASS: **12 の LLM プラットフォーム** - Claude AI、Google Gemini、OpenAI ChatGPT、MiniMax AI、汎用 Markdown、OpenCode、Kimi、DeepSeek、Qwen、OpenRouter、Together AI、Fireworks AI
+- PASS: **汎用スクレイピング** - 同じドキュメントがすべてのプラットフォームで使用可能
+- PASS: **プラットフォーム固有のパッケージング** - 各 LLM に最適化されたフォーマット
+- PASS: **ワンコマンドエクスポート** - `--target` フラグでプラットフォームを選択
+- PASS: **オプション依存関係** - 必要なものだけインストール
+- PASS: **100% 後方互換** - 既存の Claude ワークフローは変更不要
 
 | プラットフォーム | フォーマット | アップロード | 強化 | API キー | カスタムエンドポイント |
 |----------------|------------|------------|------|---------|-------------------|
-| **Claude AI** | ZIP + YAML | ✅ 自動 | ✅ あり | ANTHROPIC_API_KEY | ANTHROPIC_BASE_URL |
-| **Google Gemini** | tar.gz | ✅ 自動 | ✅ あり | GOOGLE_API_KEY | - |
-| **OpenAI ChatGPT** | ZIP + Vector Store | ✅ 自動 | ✅ あり | OPENAI_API_KEY | - |
-| **汎用 Markdown** | ZIP | ❌ 手動 | ❌ なし | - | - |
+| **Claude AI** | ZIP + YAML | PASS: 自動 | PASS: あり | ANTHROPIC_API_KEY | ANTHROPIC_BASE_URL |
+| **Google Gemini** | tar.gz | PASS: 自動 | PASS: あり | GOOGLE_API_KEY | - |
+| **OpenAI ChatGPT** | ZIP + Vector Store | PASS: 自動 | PASS: あり | OPENAI_API_KEY | - |
+| **汎用 Markdown** | ZIP | FAIL: 手動 | FAIL: なし | - | - |
 
 ```bash
 # Claude（デフォルト — 変更不要！）
@@ -241,7 +239,7 @@ skill-seekers package output/react/ --target markdown
 ```
 
 <details>
-<summary>🔧 <strong>Claude 互換 API の環境変数（例：GLM-4.7）</strong></summary>
+<summary> <strong>Claude 互換 API の環境変数（例：GLM-4.7）</strong></summary>
 
 Skill Seekers は任意の Claude 互換 API エンドポイントをサポートしています：
 
@@ -274,19 +272,19 @@ pip install skill-seekers[openai]
 pip install skill-seekers[all-llms]
 ```
 
-### 🔗 RAG フレームワーク統合
+### RAG フレームワーク統合
 
-- ✅ **LangChain Documents** - `page_content` + メタデータ付きの `Document` フォーマットに直接エクスポート
+- PASS: **LangChain Documents** - `page_content` + メタデータ付きの `Document` フォーマットに直接エクスポート
   - 最適な用途：QA チェーン、リトリーバー、ベクトルストア、エージェント
   - サンプル：[LangChain RAG パイプライン](examples/langchain-rag-pipeline/)
   - ガイド：[LangChain 統合](docs/integrations/LANGCHAIN.md)
 
-- ✅ **LlamaIndex TextNodes** - ユニーク ID + エンベディング付きの `TextNode` フォーマットにエクスポート
+- PASS: **LlamaIndex TextNodes** - ユニーク ID + エンベディング付きの `TextNode` フォーマットにエクスポート
   - 最適な用途：クエリエンジン、チャットエンジン、ストレージコンテキスト
   - サンプル：[LlamaIndex クエリエンジン](examples/llama-index-query-engine/)
   - ガイド：[LlamaIndex 統合](docs/integrations/LLAMA_INDEX.md)
 
-- ✅ **Pinecone 対応フォーマット** - ベクトルデータベースアップサートに最適化
+- PASS: **Pinecone 対応フォーマット** - ベクトルデータベースアップサートに最適化
   - 最適な用途：プロダクションベクトル検索、セマンティック検索、ハイブリッド検索
   - サンプル：[Pinecone アップサート](examples/pinecone-upsert/)
   - ガイド：[Pinecone 統合](docs/integrations/PINECONE.md)
@@ -310,26 +308,26 @@ skill-seekers package output/django --target markdown
 
 ---
 
-### 🧠 AI コーディングアシスタント統合
+### AI コーディングアシスタント統合
 
 任意のフレームワークドキュメントを 4 つ以上の AI アシスタント向けのエキスパートコーディングコンテキストに変換：
 
-- ✅ **Cursor IDE** - AI 駆動のコード提案用に `.cursorrules` を生成
+- PASS: **Cursor IDE** - AI 駆動のコード提案用に `.cursorrules` を生成
   - 最適な用途：フレームワーク固有のコード生成、一貫したパターン
   - ガイド：[Cursor 統合](docs/integrations/CURSOR.md)
   - サンプル：[Cursor React スキル](examples/cursor-react-skill/)
 
-- ✅ **Windsurf** - `.windsurfrules` で Windsurf AI アシスタントのコンテキストをカスタマイズ
+- PASS: **Windsurf** - `.windsurfrules` で Windsurf AI アシスタントのコンテキストをカスタマイズ
   - 最適な用途：IDE ネイティブの AI 支援、フローベースのコーディング
   - ガイド：[Windsurf 統合](docs/integrations/WINDSURF.md)
   - サンプル：[Windsurf FastAPI コンテキスト](examples/windsurf-fastapi-context/)
 
-- ✅ **Cline（VS Code）** - VS Code エージェント用のシステムプロンプト + MCP
+- PASS: **Cline（VS Code）** - VS Code エージェント用のシステムプロンプト + MCP
   - 最適な用途：VS Code でのインテリジェントなコード生成
   - ガイド：[Cline 統合](docs/integrations/CLINE.md)
   - サンプル：[Cline Django アシスタント](examples/cline-django-assistant/)
 
-- ✅ **Continue.dev** - IDE 非依存の AI コンテキストサーバー
+- PASS: **Continue.dev** - IDE 非依存の AI コンテキストサーバー
   - 最適な用途：マルチ IDE 環境（VS Code、JetBrains、Vim）、カスタム LLM プロバイダー
   - ガイド：[Continue 統合](docs/integrations/CONTINUE_DEV.md)
   - サンプル：[Continue ユニバーサルコンテキスト](examples/continue-dev-universal/)
@@ -354,13 +352,13 @@ cp output/django-claude/SKILL.md my-project/.clinerules
 
 ---
 
-### 🌊 3 ストリーム GitHub アーキテクチャ
-- ✅ **3 ストリーム分析** - GitHub リポジトリをコード、ドキュメント、インサイトの 3 ストリームに分割
-- ✅ **統合コードベースアナライザー** - GitHub URL とローカルパスの両方に対応
-- ✅ **C3.x 分析深度** - 「basic」（1〜2 分）または「c3x」（20〜60 分）分析を選択
-- ✅ **強化ルーター生成** - GitHub メタデータ、README クイックスタート、よくある問題
-- ✅ **Issue 統合** - GitHub Issues からのよくある問題と解決策
-- ✅ **スマートルーティングキーワード** - GitHub ラベルの重み付けが 2 倍でトピック検出精度を向上
+### 3 ストリーム GitHub アーキテクチャ
+- PASS: **3 ストリーム分析** - GitHub リポジトリをコード、ドキュメント、インサイトの 3 ストリームに分割
+- PASS: **統合コードベースアナライザー** - GitHub URL とローカルパスの両方に対応
+- PASS: **C3.x 分析深度** - 「basic」（1〜2 分）または「c3x」（20〜60 分）分析を選択
+- PASS: **強化ルーター生成** - GitHub メタデータ、README クイックスタート、よくある問題
+- PASS: **Issue 統合** - GitHub Issues からのよくある問題と解決策
+- PASS: **スマートルーティングキーワード** - GitHub ラベルの重み付けが 2 倍でトピック検出精度を向上
 
 **3 ストリームの説明：**
 - **ストリーム 1：コード** - 高度な C3.x 分析（パターン、サンプル、ガイド、設定、アーキテクチャ）
@@ -384,17 +382,17 @@ print(f"Stars: {result.github_insights['metadata']['stars']}")
 
 **完全なドキュメント**：[3 ストリーム実装サマリー](docs/IMPLEMENTATION_SUMMARY_THREE_STREAM.md)
 
-### 🔐 スマートレート制限管理と設定
-- ✅ **マルチトークン設定システム** - 複数の GitHub アカウント（個人、仕事、OSS）を管理
+### スマートレート制限管理と設定
+- PASS: **マルチトークン設定システム** - 複数の GitHub アカウント（個人、仕事、OSS）を管理
   - セキュアな設定ストレージ `~/.config/skill-seekers/config.json`（パーミッション 600）
   - プロファイルごとのレート制限戦略：`prompt`、`wait`、`switch`、`fail`
   - スマートフォールバックチェーン：CLI 引数 → 環境変数 → 設定ファイル → プロンプト
-- ✅ **対話式設定ウィザード** - 美しいターミナル UI で簡単セットアップ
-- ✅ **インテリジェントレート制限ハンドラー** - 無限待ちはもう終わり！
+- PASS: **対話式設定ウィザード** - 美しいターミナル UI で簡単セットアップ
+- PASS: **インテリジェントレート制限ハンドラー** - 無限待ちはもう終わり！
   - リアルタイムカウントダウンと自動プロファイル切り替え
   - 4 つの戦略：prompt（確認）、wait（カウントダウン）、switch（切り替え）、fail（中止）
-- ✅ **レジューム機能** - 中断されたジョブの再開
-- ✅ **CI/CD サポート** - `--non-interactive` フラグで自動化対応
+- PASS: **レジューム機能** - 中断されたジョブの再開
+- PASS: **CI/CD サポート** - `--non-interactive` フラグで自動化対応
 
 **クイックセットアップ：**
 ```bash
@@ -408,7 +406,7 @@ skill-seekers github --repo mycompany/private-repo --profile work
 skill-seekers github --repo owner/repo --non-interactive
 ```
 
-### 🎯 Bootstrap スキル — セルフホスティング
+### Bootstrap スキル — セルフホスティング
 
 skill-seekers 自体を Claude Code スキルとして生成：
 
@@ -417,26 +415,26 @@ skill-seekers 自体を Claude Code スキルとして生成：
 cp -r output/skill-seekers ~/.claude/skills/
 ```
 
-### 🔐 プライベート設定リポジトリ
-- ✅ **Git ベースの設定ソース** - プライベート/チーム Git リポジトリから設定を取得
-- ✅ **マルチソース管理** - GitHub、GitLab、Bitbucket リポジトリを無制限に登録
-- ✅ **チームコラボレーション** - 3〜5 人のチーム間でカスタム設定を共有
-- ✅ **エンタープライズサポート** - 500 人以上の開発者にスケール
-- ✅ **セキュア認証** - 環境変数トークン（GITHUB_TOKEN、GITLAB_TOKEN）
+### プライベート設定リポジトリ
+- PASS: **Git ベースの設定ソース** - プライベート/チーム Git リポジトリから設定を取得
+- PASS: **マルチソース管理** - GitHub、GitLab、Bitbucket リポジトリを無制限に登録
+- PASS: **チームコラボレーション** - 3〜5 人のチーム間でカスタム設定を共有
+- PASS: **エンタープライズサポート** - 500 人以上の開発者にスケール
+- PASS: **セキュア認証** - 環境変数トークン（GITHUB_TOKEN、GITLAB_TOKEN）
 
-### 🤖 コードベース分析（C3.x）
+### コードベース分析（C3.x）
 
 **C3.4：AI 強化付き設定パターン抽出**
-- ✅ **9 つの設定フォーマット** - JSON、YAML、TOML、ENV、INI、Python、JavaScript、Dockerfile、Docker Compose
-- ✅ **7 つのパターンタイプ** - データベース、API、ロギング、キャッシュ、メール、認証、サーバー設定
-- ✅ **AI 強化** - オプションのデュアルモード AI 分析（API + LOCAL）
-- ✅ **セキュリティ分析** - ハードコードされたシークレットや公開された認証情報を検出
+- PASS: **9 つの設定フォーマット** - JSON、YAML、TOML、ENV、INI、Python、JavaScript、Dockerfile、Docker Compose
+- PASS: **7 つのパターンタイプ** - データベース、API、ロギング、キャッシュ、メール、認証、サーバー設定
+- PASS: **AI 強化** - オプションのデュアルモード AI 分析（API + LOCAL）
+- PASS: **セキュリティ分析** - ハードコードされたシークレットや公開された認証情報を検出
 
 **C3.3：AI 強化操作ガイド**
-- ✅ **包括的な AI 強化** - 基本ガイドをプロフェッショナルなチュートリアルに変換
-- ✅ **5 つの自動改善** - ステップ説明、トラブルシューティング、前提条件、次のステップ、ユースケース
-- ✅ **デュアルモードサポート** - API モード（Claude API）または LOCAL モード（Claude Code CLI）
-- ✅ **LOCAL モードはコスト無料** - Claude Code Max プランで無料強化
+- PASS: **包括的な AI 強化** - 基本ガイドをプロフェッショナルなチュートリアルに変換
+- PASS: **5 つの自動改善** - ステップ説明、トラブルシューティング、前提条件、次のステップ、ユースケース
+- PASS: **デュアルモードサポート** - API モード（Claude API）または LOCAL モード（Claude Code CLI）
+- PASS: **LOCAL モードはコスト無料** - Claude Code Max プランで無料強化
 
 **使用方法：**
 ```bash
@@ -452,14 +450,14 @@ skill-seekers analyze --directory tests/ --enhance
 
 **完全なドキュメント：** [docs/HOW_TO_GUIDES.md](docs/HOW_TO_GUIDES.md#ai-enhancement-new)
 
-### 🔄 強化ワークフロープリセット
+### 強化ワークフロープリセット
 
 再利用可能な YAML 定義の強化パイプラインで、AI が生のドキュメントを洗練されたスキルに変換する方法を制御します。
 
-- ✅ **5 つの組み込みプリセット** — `default`、`minimal`、`security-focus`、`architecture-comprehensive`、`api-documentation`
-- ✅ **ユーザー定義プリセット** — `~/.config/skill-seekers/workflows/` にカスタムワークフローを追加
-- ✅ **複数ワークフローチェーン** — 1 つのコマンドで 2 つ以上のワークフローをチェーン
-- ✅ **完全な CLI 管理** — ワークフローの一覧表示、確認、コピー、追加、削除、検証
+- PASS: **5 つの組み込みプリセット** — `default`、`minimal`、`security-focus`、`architecture-comprehensive`、`api-documentation`
+- PASS: **ユーザー定義プリセット** — `~/.config/skill-seekers/workflows/` にカスタムワークフローを追加
+- PASS: **複数ワークフローチェーン** — 1 つのコマンドで 2 つ以上のワークフローをチェーン
+- PASS: **完全な CLI 管理** — ワークフローの一覧表示、確認、コピー、追加、削除、検証
 
 ```bash
 # 単一ワークフローの適用
@@ -503,20 +501,20 @@ stages:
     uses_history: true
 ```
 
-### ⚡ パフォーマンスとスケール
-- ✅ **非同期モード** - async/await で 2〜3 倍高速なスクレイピング（`--async` フラグを使用）
-- ✅ **大規模ドキュメントサポート** - インテリジェントな分割で 10K〜40K 以上のページを処理
-- ✅ **ルーター/ハブスキル** - 専用サブスキルへのインテリジェントルーティング
-- ✅ **並列スクレイピング** - 複数のスキルを同時処理
-- ✅ **チェックポイント/レジューム** - 長時間スクレイプでも進捗を失わない
-- ✅ **キャッシュシステム** - 一度スクレイプすれば即座にリビルド
+### パフォーマンスとスケール
+- PASS: **非同期モード** - async/await で 2〜3 倍高速なスクレイピング（`--async` フラグを使用）
+- PASS: **大規模ドキュメントサポート** - インテリジェントな分割で 10K〜40K 以上のページを処理
+- PASS: **ルーター/ハブスキル** - 専用サブスキルへのインテリジェントルーティング
+- PASS: **並列スクレイピング** - 複数のスキルを同時処理
+- PASS: **チェックポイント/レジューム** - 長時間スクレイプでも進捗を失わない
+- PASS: **キャッシュシステム** - 一度スクレイプすれば即座にリビルド
 
-### ✅ 品質保証
-- ✅ **完全テスト** - 2,540 以上のテスト、包括的なカバレッジ
+### PASS: 品質保証
+- PASS: **完全テスト** - 2,540 以上のテスト、包括的なカバレッジ
 
 ---
 
-## 📦 インストール
+## インストール
 
 ```bash
 # 基本インストール（ドキュメントスクレイピング、GitHub 分析、PDF、パッケージング）
@@ -560,7 +558,7 @@ skill-seekers-setup
 
 ---
 
-## 🚀 ワンコマンドインストールワークフロー
+## ワンコマンドインストールワークフロー
 
 **設定からスキルアップロードまでの最速の方法——完全自動化：**
 
@@ -580,16 +578,16 @@ skill-seekers install --config react --dry-run
 
 **実行フェーズ：**
 ```
-📥 フェーズ 1：設定の取得（設定名が指定された場合）
-📖 フェーズ 2：ドキュメントのスクレイピング
-✨ フェーズ 3：AI 強化
-📦 フェーズ 4：スキルのパッケージング
-☁️  フェーズ 5：Claude にアップロード（オプション、API キーが必要）
+ フェーズ 1：設定の取得（設定名が指定された場合）
+ フェーズ 2：ドキュメントのスクレイピング
+ フェーズ 3：AI 強化
+ フェーズ 4：スキルのパッケージング
+  フェーズ 5：Claude にアップロード（オプション、API キーが必要）
 ```
 
 ---
 
-## 📊 機能マトリックス
+## 機能マトリックス
 
 Skill Seekers は **12 の LLM プラットフォーム**、**17 種類のソースタイプ**、**5 つのスキルモード**をサポートし、機能は完全に同等です。
 
@@ -604,9 +602,9 @@ Skill Seekers は **12 の LLM プラットフォーム**、**17 種類のソー
 | 機能 | Claude | Gemini | OpenAI | Markdown |
 |------|--------|--------|--------|----------|
 | フォーマット | ZIP + YAML | tar.gz | ZIP + Vector | ZIP |
-| アップロード | ✅ API | ✅ API | ✅ API | ❌ 手動 |
-| 強化 | ✅ Sonnet 4 | ✅ 2.0 Flash | ✅ GPT-4o | ❌ なし |
-| 全スキルモード | ✅ | ✅ | ✅ | ✅ |
+| アップロード | PASS: API | PASS: API | PASS: API | FAIL: 手動 |
+| 強化 | PASS: Sonnet 4 | PASS: 2.0 Flash | PASS: GPT-4o | FAIL: なし |
+| 全スキルモード | PASS: | PASS: | PASS: | PASS: |
 
 ---
 
@@ -728,10 +726,10 @@ skill-seekers unified --config configs/myframework_unified.json
 ```
 
 **コンフリクト検出が自動的に発見するもの：**
-- 🔴 **コードに存在しない**（高）：文書化されているが未実装
-- 🟡 **ドキュメントに存在しない**（中）：実装されているが未文書化
-- ⚠️ **シグネチャ不一致**：パラメータ/型が異なる
-- ℹ️ **説明の不一致**：説明が異なる
+- **コードに存在しない**（高）：文書化されているが未実装
+- **ドキュメントに存在しない**（中）：実装されているが未文書化
+- WARNING: **シグネチャ不一致**：パラメータ/型が異なる
+- **説明の不一致**：説明が異なる
 
 **完全ガイド：** [docs/UNIFIED_SCRAPING.md](docs/UNIFIED_SCRAPING.md) を参照してください。
 
@@ -777,7 +775,7 @@ graph LR
 3. **強化**：AI がドキュメントを分析し、サンプル付きの包括的な SKILL.md を作成
 4. **パッケージ**：すべてを Claude 対応の `.zip` ファイルにバンドル
 
-## 📋 前提条件
+## 前提条件
 
 **開始前に以下を確認してください：**
 
@@ -785,11 +783,11 @@ graph LR
 2. **Git** - [ダウンロード](https://git-scm.com/) | 確認：`git --version`
 3. **15〜30 分**の初回セットアップ時間
 
-**初めての方は？** → **[こちらから開始：確実なクイックスタートガイド](BULLETPROOF_QUICKSTART.md)** 🎯
+**初めての方は？** → **[こちらから開始：確実なクイックスタートガイド](BULLETPROOF_QUICKSTART.md)**
 
 ---
 
-## 📤 Claude へのスキルアップロード
+## Claude へのスキルアップロード
 
 スキルのパッケージが完了したら、Claude にアップロードする必要があります：
 
@@ -828,7 +826,7 @@ Claude Code で直接聞くだけ：
 
 ---
 
-## 🤖 AI エージェントへのインストール
+## AI エージェントへのインストール
 
 Skill Seekers は 18 の AI コーディングエージェントにスキルを自動インストールできます。
 
@@ -864,7 +862,7 @@ skill-seekers install-agent output/react/ --agent cursor --dry-run
 
 ---
 
-## 🔌 MCP 統合（27 ツール）
+## MCP 統合（27 ツール）
 
 Skill Seekers は Claude Code、Cursor、Windsurf、VS Code + Cline、IntelliJ IDEA で使用できる MCP サーバーを提供します。
 
@@ -891,7 +889,7 @@ python -m skill_seekers.mcp.server_fastmcp --transport http --port 8765
 
 ---
 
-## ⚙️ 設定
+## 設定
 
 ### 利用可能なプリセット（24 以上）
 
@@ -955,7 +953,7 @@ skill-seekers scrape --config configs/myframework.json
 
 ---
 
-## 📊 作成されるもの
+## 作成されるもの
 
 ```
 output/
@@ -976,7 +974,7 @@ output/
 
 ---
 
-## 🐛 トラブルシューティング
+## トラブルシューティング
 
 ### コンテンツが抽出されない場合
 - `main_content` セレクタを確認してください
@@ -1022,7 +1020,7 @@ skill-seekers config --github
 
 ---
 
-## 📈 パフォーマンス
+## パフォーマンス
 
 | タスク | 時間 | 備考 |
 |-------|------|------|
@@ -1036,10 +1034,10 @@ skill-seekers config --github
 
 ---
 
-## 📚 ドキュメント
+## ドキュメント
 
 ### はじめに
-- **[BULLETPROOF_QUICKSTART.md](BULLETPROOF_QUICKSTART.md)** - 🎯 **初めての方はこちらから！**
+- **[BULLETPROOF_QUICKSTART.md](BULLETPROOF_QUICKSTART.md)** -  **初めての方はこちらから！**
 - **[QUICKSTART.md](QUICKSTART.md)** - 経験者向けクイックスタート
 - **[TROUBLESHOOTING.md](TROUBLESHOOTING.md)** - よくある問題と解決策
 - **[docs/QUICK_REFERENCE.md](docs/QUICK_REFERENCE.md)** - 1 ページチートシート
@@ -1061,10 +1059,10 @@ skill-seekers config --github
 
 ---
 
-## 📝 ライセンス
+## ライセンス
 
 MIT ライセンス - 詳細は [LICENSE](LICENSE) ファイルを参照してください
 
 ---
 
-スキル構築をお楽しみください！ 🚀
+スキル構築をお楽しみください！

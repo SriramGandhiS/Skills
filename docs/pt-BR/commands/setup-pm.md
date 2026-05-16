@@ -10,16 +10,16 @@ Configure seu package manager preferido para este projeto ou globalmente.
 ## Uso
 
 ```bash
-# Detect current package manager
+## Detect current package manager
 node scripts/setup-package-manager.js --detect
 
-# Set global preference
+## Set global preference
 node scripts/setup-package-manager.js --global pnpm
 
-# Set project preference
+## Set project preference
 node scripts/setup-package-manager.js --project bun
 
-# List available package managers
+## List available package managers
 node scripts/setup-package-manager.js --list
 ```
 
@@ -64,10 +64,10 @@ Ao determinar qual package manager usar, esta ordem é verificada:
 Defina `CLAUDE_PACKAGE_MANAGER` para sobrescrever todos os outros métodos de detecção:
 
 ```bash
-# Windows (PowerShell)
+## Windows (PowerShell)
 $env:CLAUDE_PACKAGE_MANAGER = "pnpm"
 
-# macOS/Linux
+## macOS/Linux
 export CLAUDE_PACKAGE_MANAGER=pnpm
 ```
 

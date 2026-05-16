@@ -92,9 +92,9 @@ def format_confirmation_message(message: str, is_amend: bool, files: list[str], 
 
     # Header
     if is_amend:
-        lines.append("💾 Amend Previous Commit?")
+        lines.append(" Amend Previous Commit?")
     else:
-        lines.append("💾 Create Commit?")
+        lines.append(" Create Commit?")
     lines.append("")
 
     # Commit message
@@ -121,7 +121,7 @@ def format_confirmation_message(message: str, is_amend: bool, files: list[str], 
 
     # Warning if no files staged
     if not files:
-        lines.append("⚠️  No files staged for commit")
+        lines.append("WARNING:  No files staged for commit")
 
     return "\n".join(lines)
 

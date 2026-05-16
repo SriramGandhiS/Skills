@@ -1,10 +1,10 @@
 {
-  "name": "darwin-system-native-soundpack",  
+  "name": "darwin-system-native-soundpack",
   "description": "macOS System soundpack with native macOS system sounds for full tool coverage",
   "version": "2.0.0",
   "mappings": {
     "loading/bash-start.wav": "/System/Library/Sounds/Purr.aiff",
-    "loading/edit-start.wav": "/System/Library/Sounds/Pop.aiff", 
+    "loading/edit-start.wav": "/System/Library/Sounds/Pop.aiff",
     "loading/read-start.wav": "/System/Library/Sounds/Tink.aiff",
     "loading/write-start.wav": "/System/Library/Sounds/Pop.aiff",
     "loading/todowrite-start.wav": "/System/Library/Sounds/Bottle.aiff",
@@ -35,9 +35,9 @@
     "system/session-start.wav": "/System/Library/Sounds/Blow.aiff",
     "completion/agent-complete.wav": "/System/Library/Sounds/Glass.aiff",
     "interactive/notification-permission.wav": "/System/Library/Sounds/Frog.aiff",
-    
+
     "success/bash-success.wav": "/System/Library/Sounds/Glass.aiff",
-    "success/edit-success.wav": "/System/Library/Sounds/Glass.aiff", 
+    "success/edit-success.wav": "/System/Library/Sounds/Glass.aiff",
     "success/read-success.wav": "/System/Library/Sounds/Tink.aiff",
     "success/write-success.wav": "/System/Library/Sounds/Glass.aiff",
     "success/todowrite-success.wav": "/System/Library/Sounds/Bottle.aiff",
@@ -65,10 +65,10 @@
     "success/complete.wav": "/System/Library/Sounds/Glass.aiff",
     "success/echo-success.wav": "/System/Library/Sounds/Glass.aiff",
     "success/go-build-success.wav": "/System/Library/Sounds/Blow.aiff",
-    
+
     "error/bash-error.wav": "/System/Library/Sounds/Sosumi.aiff",
     "error/edit-error.wav": "/System/Library/Sounds/Basso.aiff",
-    "error/read-error.wav": "/System/Library/Sounds/Funk.aiff", 
+    "error/read-error.wav": "/System/Library/Sounds/Funk.aiff",
     "error/write-error.wav": "/System/Library/Sounds/Basso.aiff",
     "error/todowrite-error.wav": "/System/Library/Sounds/Frog.aiff",
     "error/grep-error.wav": "/System/Library/Sounds/Sosumi.aiff",
@@ -85,7 +85,7 @@
     "error/task-error.wav": "/System/Library/Sounds/Sosumi.aiff",
     "error/failure.wav": "/System/Library/Sounds/Funk.aiff",
     "error/timeout.wav": "/System/Library/Sounds/Morse.aiff",
-    
+
     "interactive/message-sent.wav": "/System/Library/Sounds/Ping.aiff",
     "interactive/notification.wav": "/System/Library/Sounds/Frog.aiff",
     "interactive/prompt-submit.wav": "/System/Library/Sounds/Ping.aiff",
@@ -95,7 +95,7 @@
     "interactive/stop.wav": "/System/Library/Sounds/Basso.aiff",
     "interactive/subagent-stop.wav": "/System/Library/Sounds/Funk.aiff",
     "interactive/compact.wav": "/System/Library/Sounds/Bottle.aiff",
-    
+
     "default.wav": "/System/Library/Sounds/Ping.aiff"
   }
 }

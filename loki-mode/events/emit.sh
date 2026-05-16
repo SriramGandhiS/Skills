@@ -1,38 +1,32 @@
 #!/usr/bin/env bash
 # Loki Mode Event Emitter - Bash helper for emitting events
-#
-# Usage:
-#   ./emit.sh <type> <source> <action> [key=value ...]
-#
-# Examples:
-#   ./emit.sh session cli start provider=claude
-#   ./emit.sh task runner complete task_id=task-001
-#   ./emit.sh error hook failed error="Command blocked"
-#
-# Environment:
-#   LOKI_DIR - Path to .loki directory (default: .loki)
-#
-# Sourcing:
-#   This script can also be sourced (LOKI_EMIT_LIB_ONLY=1) to expose the
-#   safe_append_event_jsonl() helper without performing an emit.
+# # Usage:
+# ./emit.sh <type> <source> <action> [key=value ...]
+# # Examples:
+# ./emit.sh session cli start provider=claude
+# ./emit.sh task runner complete task_id=task-001
+# ./emit.sh error hook failed error="Command blocked"
+# # Environment:
+# LOKI_DIR - Path to .loki directory (default: .loki)
+# # Sourcing:
+# This script can also be sourced (LOKI_EMIT_LIB_ONLY=1) to expose the
+# safe_append_event_jsonl() helper without performing an emit.
 
 # safe_append_event_jsonl <events_jsonl_path> <line>
-#
-# Cross-process serialized append to .loki/events.jsonl. POSIX append is
+# # Cross-process serialized append to .loki/events.jsonl. POSIX append is
 # atomic only for writes <PIPE_BUF (typically 4KB) and not all filesystems
 # honor it; under parallel-worktree contention bare `>>` can interleave
 # partial JSONL lines. This helper serializes appends across processes.
-#
-# Strategy (v7.5.10):
-#   - Prefer flock(1) when available (Linux, util-linux). Uses an
-#     exclusive lock on a sentinel FD bound to <events>.lock so the lock
-#     is released automatically when the subshell exits.
-#   - Fall back to a mkdir() mutex on macOS / BSDs where flock is not
-#     installed by default. mkdir is atomic on POSIX -- exactly one
-#     concurrent caller wins the create. We retry with backoff up to
-#     ~5s, and treat a stale lockdir (>30s old) as abandonable.
-#   - The newline is appended by the helper -- callers pass the JSON
-#     payload only.
+# # Strategy (v7.5.10):
+# - Prefer flock(1) when available (Linux, util-linux). Uses an
+# exclusive lock on a sentinel FD bound to <events>.lock so the lock
+# is released automatically when the subshell exits.
+# - Fall back to a mkdir() mutex on macOS / BSDs where flock is not
+# installed by default. mkdir is atomic on POSIX -- exactly one
+# concurrent caller wins the create. We retry with backoff up to
+# ~5s, and treat a stale lockdir (>30s old) as abandonable.
+# - The newline is appended by the helper -- callers pass the JSON
+# payload only.
 safe_append_event_jsonl() {
     local events_path="$1"
     local line="$2"

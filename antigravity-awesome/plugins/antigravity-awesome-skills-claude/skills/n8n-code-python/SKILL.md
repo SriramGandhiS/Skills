@@ -11,7 +11,7 @@ Expert guidance for writing Python code in n8n Code nodes.
 
 ---
 
-## ⚠️ Important: JavaScript First
+## WARNING: Important: JavaScript First
 
 **Recommendation**: Use **JavaScript for 95% of use cases**. Only use Python when:
 - You need specific Python standard library functions
@@ -37,7 +37,7 @@ processed = []
 for item in items:
     processed.append({
         "json": {
-            **item["json"],
+**item["json"],
             "processed": True,
             "timestamp": datetime.now().isoformat()
         }
@@ -99,7 +99,7 @@ item = _input.item
 
 return [{
     "json": {
-        **item["json"],
+**item["json"],
         "processed": True,
         "processed_at": datetime.now().isoformat()
     }
@@ -208,7 +208,7 @@ current_item = _input.item
 
 return [{
     "json": {
-        **current_item["json"],
+**current_item["json"],
         "item_processed": True
     }
 }]
@@ -242,15 +242,15 @@ return [{
 **MOST COMMON MISTAKE**: Webhook data is nested under `["body"]`
 
 ```python
-# ❌ WRONG - Will raise KeyError
+# FAIL: WRONG - Will raise KeyError
 name = _json["name"]
 email = _json["email"]
 
-# ✅ CORRECT - Webhook data is under ["body"]
+# PASS: CORRECT - Webhook data is under ["body"]
 name = _json["body"]["name"]
 email = _json["body"]["email"]
 
-# ✅ SAFER - Use .get() for safe access
+# PASS: SAFER - Use .get() for safe access
 webhook_data = _json.get("body", {})
 name = webhook_data.get("name")
 ```
@@ -268,7 +268,7 @@ name = webhook_data.get("name")
 ### Correct Return Formats
 
 ```python
-# ✅ Single result
+# PASS: Single result
 return [{
     "json": {
         "field1": value1,
@@ -276,13 +276,13 @@ return [{
     }
 }]
 
-# ✅ Multiple results
+# PASS: Multiple results
 return [
     {"json": {"id": 1, "data": "first"}},
     {"json": {"id": 2, "data": "second"}}
 ]
 
-# ✅ List comprehension
+# PASS: List comprehension
 transformed = [
     {"json": {"id": item["json"]["id"], "processed": True}}
     for item in _input.all()
@@ -290,10 +290,10 @@ transformed = [
 ]
 return transformed
 
-# ✅ Empty result (when no data to return)
+# PASS: Empty result (when no data to return)
 return []
 
-# ✅ Conditional return
+# PASS: Conditional return
 if should_process:
     return [{"json": processed_data}]
 else:
@@ -303,18 +303,18 @@ else:
 ### Incorrect Return Formats
 
 ```python
-# ❌ WRONG: Dictionary without list wrapper
+# FAIL: WRONG: Dictionary without list wrapper
 return {
     "json": {"field": value}
 }
 
-# ❌ WRONG: List without json wrapper
+# FAIL: WRONG: List without json wrapper
 return [{"field": value}]
 
-# ❌ WRONG: Plain string
+# FAIL: WRONG: Plain string
 return "processed"
 
-# ❌ WRONG: Incomplete structure
+# FAIL: WRONG: Incomplete structure
 return [{"data": value}]  # Should be {"json": value}
 ```
 
@@ -331,44 +331,44 @@ return [{"data": value}]  # Should be {"json": value}
 ### What's NOT Available
 
 ```python
-# ❌ NOT AVAILABLE - Will raise ModuleNotFoundError
-import requests  # ❌ No
-import pandas  # ❌ No
-import numpy  # ❌ No
-import scipy  # ❌ No
-from bs4 import BeautifulSoup  # ❌ No
-import lxml  # ❌ No
+# FAIL: NOT AVAILABLE - Will raise ModuleNotFoundError
+import requests  # FAIL: No
+import pandas  # FAIL: No
+import numpy  # FAIL: No
+import scipy  # FAIL: No
+from bs4 import BeautifulSoup  # FAIL: No
+import lxml  # FAIL: No
 ```
 
 ### What IS Available (Standard Library)
 
 ```python
-# ✅ AVAILABLE - Standard library only
-import json  # ✅ JSON parsing
-import datetime  # ✅ Date/time operations
-import re  # ✅ Regular expressions
-import base64  # ✅ Base64 encoding/decoding
-import hashlib  # ✅ Hashing functions
-import urllib.parse  # ✅ URL parsing
-import math  # ✅ Math functions
-import random  # ✅ Random numbers
-import statistics  # ✅ Statistical functions
+# PASS: AVAILABLE - Standard library only
+import json  # PASS: JSON parsing
+import datetime  # PASS: Date/time operations
+import re  # PASS: Regular expressions
+import base64  # PASS: Base64 encoding/decoding
+import hashlib  # PASS: Hashing functions
+import urllib.parse  # PASS: URL parsing
+import math  # PASS: Math functions
+import random  # PASS: Random numbers
+import statistics  # PASS: Statistical functions
 ```
 
 ### Workarounds
 
 **Need HTTP requests?**
-- ✅ Use **HTTP Request node** before Code node
-- ✅ Or switch to **JavaScript** and use `$helpers.httpRequest()`
+- PASS: Use **HTTP Request node** before Code node
+- PASS: Or switch to **JavaScript** and use `$helpers.httpRequest()`
 
 **Need data analysis (pandas/numpy)?**
-- ✅ Use Python **statistics** module for basic stats
-- ✅ Or switch to **JavaScript** for most operations
-- ✅ Manual calculations with lists and dictionaries
+- PASS: Use Python **statistics** module for basic stats
+- PASS: Or switch to **JavaScript** for most operations
+- PASS: Manual calculations with lists and dictionaries
 
 **Need web scraping (BeautifulSoup)?**
-- ✅ Use **HTTP Request node** + **HTML Extract node**
-- ✅ Or switch to **JavaScript** with regex/string methods
+- PASS: Use **HTTP Request node** + **HTML Extract node**
+- PASS: Or switch to **JavaScript** with regex/string methods
 
 **See**: STANDARD_LIBRARY.md for complete reference
 
@@ -457,7 +457,7 @@ for item in items:
 
     validated.append({
         "json": {
-            **data,
+**data,
             "valid": len(errors) == 0,
             "errors": errors if errors else None
         }
@@ -499,10 +499,10 @@ else:
 ### #1: Importing External Libraries (Python-Specific!)
 
 ```python
-# ❌ WRONG: Trying to import external library
+# FAIL: WRONG: Trying to import external library
 import requests  # ModuleNotFoundError!
 
-# ✅ CORRECT: Use HTTP Request node or JavaScript
+# PASS: CORRECT: Use HTTP Request node or JavaScript
 # Add HTTP Request node before Code node
 # OR switch to JavaScript and use $helpers.httpRequest()
 ```
@@ -510,12 +510,12 @@ import requests  # ModuleNotFoundError!
 ### #2: Empty Code or Missing Return
 
 ```python
-# ❌ WRONG: No return statement
+# FAIL: WRONG: No return statement
 items = _input.all()
 # Processing...
 # Forgot to return!
 
-# ✅ CORRECT: Always return data
+# PASS: CORRECT: Always return data
 items = _input.all()
 # Processing...
 return [{"json": item["json"]} for item in items]
@@ -524,33 +524,33 @@ return [{"json": item["json"]} for item in items]
 ### #3: Incorrect Return Format
 
 ```python
-# ❌ WRONG: Returning dict instead of list
+# FAIL: WRONG: Returning dict instead of list
 return {"json": {"result": "success"}}
 
-# ✅ CORRECT: List wrapper required
+# PASS: CORRECT: List wrapper required
 return [{"json": {"result": "success"}}]
 ```
 
 ### #4: KeyError on Dictionary Access
 
 ```python
-# ❌ WRONG: Direct access crashes if missing
+# FAIL: WRONG: Direct access crashes if missing
 name = _json["user"]["name"]  # KeyError!
 
-# ✅ CORRECT: Use .get() for safe access
+# PASS: CORRECT: Use .get() for safe access
 name = _json.get("user", {}).get("name", "Unknown")
 ```
 
 ### #5: Webhook Body Nesting
 
 ```python
-# ❌ WRONG: Direct access to webhook data
+# FAIL: WRONG: Direct access to webhook data
 email = _json["email"]  # KeyError!
 
-# ✅ CORRECT: Webhook data under ["body"]
+# PASS: CORRECT: Webhook data under ["body"]
 email = _json["body"]["email"]
 
-# ✅ BETTER: Safe access with .get()
+# PASS: BETTER: Safe access with .get()
 email = _json.get("body", {}).get("email", "no-email")
 ```
 
@@ -607,20 +607,20 @@ average = mean([1, 2, 3, 4, 5])
 ### 1. Always Use .get() for Dictionary Access
 
 ```python
-# ✅ SAFE: Won't crash if field missing
+# PASS: SAFE: Won't crash if field missing
 value = item["json"].get("field", "default")
 
-# ❌ RISKY: Crashes if field doesn't exist
+# FAIL: RISKY: Crashes if field doesn't exist
 value = item["json"]["field"]
 ```
 
 ### 2. Handle None/Null Values Explicitly
 
 ```python
-# ✅ GOOD: Default to 0 if None
+# PASS: GOOD: Default to 0 if None
 amount = item["json"].get("amount") or 0
 
-# ✅ GOOD: Check for None explicitly
+# PASS: GOOD: Check for None explicitly
 text = item["json"].get("text")
 if text is None:
     text = ""
@@ -629,10 +629,10 @@ if text is None:
 ### 3. Use List Comprehensions for Filtering
 
 ```python
-# ✅ PYTHONIC: List comprehension
+# PASS: PYTHONIC: List comprehension
 valid = [item for item in items if item["json"].get("active")]
 
-# ❌ VERBOSE: Manual loop
+# FAIL: VERBOSE: Manual loop
 valid = []
 for item in items:
     if item["json"].get("active"):
@@ -642,7 +642,7 @@ for item in items:
 ### 4. Return Consistent Structure
 
 ```python
-# ✅ CONSISTENT: Always list with "json" key
+# PASS: CONSISTENT: Always list with "json" key
 return [{"json": result}]  # Single result
 return results  # Multiple results (already formatted)
 return []  # No results
@@ -662,22 +662,22 @@ print(f"First item: {items[0] if items else 'None'}")
 ## When to Use Python vs JavaScript
 
 ### Use Python When:
-- ✅ You need `statistics` module for statistical operations
-- ✅ You're significantly more comfortable with Python syntax
-- ✅ Your logic maps well to list comprehensions
-- ✅ You need specific standard library functions
+- PASS: You need `statistics` module for statistical operations
+- PASS: You're significantly more comfortable with Python syntax
+- PASS: Your logic maps well to list comprehensions
+- PASS: You need specific standard library functions
 
 ### Use JavaScript When:
-- ✅ You need HTTP requests ($helpers.httpRequest())
-- ✅ You need advanced date/time (DateTime/Luxon)
-- ✅ You want better n8n integration
-- ✅ **For 95% of use cases** (recommended)
+- PASS: You need HTTP requests ($helpers.httpRequest())
+- PASS: You need advanced date/time (DateTime/Luxon)
+- PASS: You want better n8n integration
+- PASS: **For 95% of use cases** (recommended)
 
 ### Consider Other Nodes When:
-- ❌ Simple field mapping → Use **Set** node
-- ❌ Basic filtering → Use **Filter** node
-- ❌ Simple conditionals → Use **IF** or **Switch** node
-- ❌ HTTP requests only → Use **HTTP Request** node
+- FAIL: Simple field mapping → Use **Set** node
+- FAIL: Basic filtering → Use **Filter** node
+- FAIL: Simple conditionals → Use **IF** or **Switch** node
+- FAIL: HTTP requests only → Use **HTTP Request** node
 
 ---
 

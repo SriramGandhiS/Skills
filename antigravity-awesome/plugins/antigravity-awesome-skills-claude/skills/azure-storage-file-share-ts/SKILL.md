@@ -16,7 +16,7 @@ SDK for Azure File Share operations — SMB file shares, directories, and file o
 npm install @azure/storage-file-share @azure/identity
 ```
 
-**Current Version**: 12.x  
+**Current Version**: 12.x
 **Node.js**: >= 18.0.0
 
 ## Environment Variables
@@ -484,14 +484,14 @@ import {
 
 | Feature | Node.js | Browser |
 |---------|---------|---------|
-| `StorageSharedKeyCredential` | ✅ | ❌ |
-| `uploadFile()` | ✅ | ❌ |
-| `uploadStream()` | ✅ | ❌ |
-| `downloadToFile()` | ✅ | ❌ |
-| `downloadToBuffer()` | ✅ | ❌ |
-| SAS generation | ✅ | ❌ |
-| DefaultAzureCredential | ✅ | ❌ |
-| Anonymous/SAS access | ✅ | ✅ |
+| `StorageSharedKeyCredential` | PASS: | FAIL: |
+| `uploadFile()` | PASS: | FAIL: |
+| `uploadStream()` | PASS: | FAIL: |
+| `downloadToFile()` | PASS: | FAIL: |
+| `downloadToBuffer()` | PASS: | FAIL: |
+| SAS generation | PASS: | FAIL: |
+| DefaultAzureCredential | PASS: | FAIL: |
+| Anonymous/SAS access | PASS: | PASS: |
 
 ## When to Use
 This skill is applicable to execute the workflow or actions described in the overview.

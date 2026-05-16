@@ -59,7 +59,7 @@ class QdrantAdaptor(SkillAdaptor):
             skill_dir: Path to skill directory
             metadata: Skill metadata
             enable_chunking: Enable intelligent chunking for large documents
-            **kwargs: Additional chunking parameters
+**kwargs: Additional chunking parameters
 
         Returns:
             JSON string containing Qdrant-compatible data
@@ -239,16 +239,16 @@ class QdrantAdaptor(SkillAdaptor):
         # Write to file
         output_path.write_text(qdrant_json, encoding="utf-8")
 
-        print(f"\n✅ Qdrant data packaged successfully!")
-        print(f"📦 Output: {output_path}")
+        print(f"\nPASS: Qdrant data packaged successfully!")
+        print(f" Output: {output_path}")
 
         # Parse and show stats
         data = json.loads(qdrant_json)
 
-        print(f"📊 Collection: {data['collection_name']}")
-        print(f"📐 Total points: {len(data['points'])}")
-        print(f"📏 Vector size: {data['config']['vector_size']}")
-        print(f"📊 Distance metric: {data['config']['distance']}")
+        print(f" Collection: {data['collection_name']}")
+        print(f" Total points: {len(data['points'])}")
+        print(f" Vector size: {data['config']['vector_size']}")
+        print(f" Distance metric: {data['config']['distance']}")
 
         # Show category breakdown
         categories = {}
@@ -256,7 +256,7 @@ class QdrantAdaptor(SkillAdaptor):
             cat = point["payload"].get("category", "unknown")
             categories[cat] = categories.get(cat, 0) + 1
 
-        print("📁 Categories:")
+        print(" Categories:")
         for cat, count in sorted(categories.items()):
             print(f"   - {cat}: {count}")
 
@@ -272,7 +272,7 @@ class QdrantAdaptor(SkillAdaptor):
         Args:
             package_path: Path to JSON file
             api_key: Not used (Qdrant can use API keys for cloud)
-            **kwargs: Not used
+**kwargs: Not used
 
         Returns:
             Result with usage instructions
@@ -296,8 +296,8 @@ client = QdrantClient(host="localhost", port=6333)
 
 # Option 2: Qdrant Cloud
 # client = QdrantClient(
-#     url="https://your-cluster.qdrant.io",
-#     api_key="your-api-key"
+# url="https://your-cluster.qdrant.io",
+# api_key="your-api-key"
 # )
 
 # Create collection
@@ -343,7 +343,7 @@ client.upsert(
     collection_name=collection_name,
     points=points_to_upload
 )
-print(f"✅ Uploaded {{len(points_to_upload)}} points to Qdrant")
+print(f"PASS: Uploaded {{len(points_to_upload)}} points to Qdrant")
 
 # Search with metadata filtering
 def search(query_text: str, category_filter: str = None, k: int = 5):
@@ -481,7 +481,7 @@ similar = client.recommend(
 
     def enhance(self, _skill_dir: Path, _api_key: str) -> bool:
         """Qdrant format doesn't support enhancement."""
-        print("❌ Qdrant format does not support enhancement")
+        print("FAIL: Qdrant format does not support enhancement")
         print("   Enhance before packaging:")
         print("   skill-seekers enhance output/skill/ --mode LOCAL")
         print("   skill-seekers package output/skill/ --target qdrant")

@@ -95,8 +95,7 @@ In November 2025, Google's Chromium team reversed its 2022 decision and announce
   srcset="image-400.jpg 400w, image-800.jpg 800w, image-1200.jpg 1200w"
   sizes="(max-width: 600px) 400px, (max-width: 1200px) 800px, 1200px"
   alt="Description"
->
-```
+> ```
 
 ### Lazy Loading
 - `loading="lazy"` on below-fold images
@@ -162,11 +161,11 @@ Add `decoding="async"` to non-LCP images to prevent image decoding from blocking
 | Metric | Status | Count |
 |--------|--------|-------|
 | Total Images | - | XX |
-| Missing Alt Text | ❌ | XX |
-| Oversized (>200KB) | ⚠️ | XX |
-| Wrong Format | ⚠️ | XX |
-| No Dimensions | ⚠️ | XX |
-| Not Lazy Loaded | ⚠️ | XX |
+| Missing Alt Text | FAIL: | XX |
+| Oversized (>200KB) | WARNING: | XX |
+| Wrong Format | WARNING: | XX |
+| No Dimensions | WARNING: | XX |
+| Not Lazy Loaded | WARNING: | XX |
 
 ### Prioritized Optimization List
 

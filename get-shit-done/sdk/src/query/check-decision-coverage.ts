@@ -265,7 +265,7 @@ function resolvePath(p: string, projectDir: string): string {
 function buildPlanMessage(uncovered: GateUncoveredItem[]): string {
   if (uncovered.length === 0) return 'All trackable CONTEXT.md decisions are covered by plans.';
   const lines = [
-    `## ⚠ Decision Coverage Gap`,
+    `## WARNING: Decision Coverage Gap`,
     ``,
     `${uncovered.length} CONTEXT.md decision(s) are not covered by any plan:`,
     ``,

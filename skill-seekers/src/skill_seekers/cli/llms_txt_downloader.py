@@ -78,12 +78,12 @@ class LlmsTxtDownloader:
 
                 # Validate content is not empty
                 if len(content) < 100:
-                    print(f"⚠️  Content too short ({len(content)} chars), rejecting")
+                    print(f"WARNING:  Content too short ({len(content)} chars), rejecting")
                     return None
 
                 # Validate content looks like markdown
                 if not self._is_markdown(content):
-                    print("⚠️  Content doesn't look like markdown")
+                    print("WARNING:  Content doesn't look like markdown")
                     return None
 
                 return content
@@ -92,12 +92,12 @@ class LlmsTxtDownloader:
                 if attempt < self.max_retries - 1:
                     # Calculate exponential backoff delay: 1s, 2s, 4s, etc.
                     delay = 2**attempt
-                    print(f"⚠️  Attempt {attempt + 1}/{self.max_retries} failed: {e}")
+                    print(f"WARNING:  Attempt {attempt + 1}/{self.max_retries} failed: {e}")
                     print(f"   Retrying in {delay}s...")
                     time.sleep(delay)
                 else:
                     print(
-                        f"❌ Failed to download {self.url} after {self.max_retries} attempts: {e}"
+                        f"FAIL: Failed to download {self.url} after {self.max_retries} attempts: {e}"
                     )
                     return None
 

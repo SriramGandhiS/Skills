@@ -10,7 +10,7 @@ Analise a estrutura do codebase e gere documentação arquitetural enxuta em tok
 
 ## Passo 2: Gerar Codemaps
 
-Crie ou atualize codemaps em `docs/CODEMAPS/` (ou `.reports/codemaps/`):
+Crie ou atualize codemaps em `docs/CODEMAPS/`(ou`.reports/codemaps/`):
 
 | File | Contents |
 |------|----------|
@@ -25,7 +25,7 @@ Crie ou atualize codemaps em `docs/CODEMAPS/` (ou `.reports/codemaps/`):
 Cada codemap deve ser enxuto em tokens — otimizado para consumo de contexto por IA:
 
 ```markdown
-# Backend Architecture
+## Backend Architecture
 
 ## Routes
 POST /api/users → UserController.create → UserService.create → UserRepo.insert

@@ -1,4 +1,4 @@
-﻿---
+---
 name: security-review
 description: Use this skill when adding authentication, handling user input, working with secrets, creating API endpoints, or implementing payment/sensitive features. Provides comprehensive security checklist and patterns.
 origin: ECC
@@ -210,7 +210,7 @@ function renderUserContent(html: string) {
 #### Content Security Policy
 
 Start strict and loosen only with a documented removal plan. Do not default to
-`'unsafe-inline'` or `'unsafe-eval'`; they neutralize much of CSP's protection
+`'unsafe-inline'`or`'unsafe-eval'`; they neutralize much of CSP's protection
 and should be treated as temporary compatibility debt.
 
 ```typescript
@@ -227,7 +227,7 @@ const securityHeaders = [
       style-src 'self';
       img-src 'self' data: https:;
       font-src 'self';
-      connect-src 'self' https://api.example.com;
+      connect-src 'self' <https://api.example.com;>
     `.replace(/\s{2,}/g, ' ').trim()
   }
 ]
@@ -400,25 +400,25 @@ async function verifyTransaction(transaction: Transaction) {
 
 #### Regular Updates
 ```bash
-# Check for vulnerabilities
+## Check for vulnerabilities
 npm audit
 
-# Fix automatically fixable issues
+## Fix automatically fixable issues
 npm audit fix
 
-# Update dependencies
+## Update dependencies
 npm update
 
-# Check for outdated packages
+## Check for outdated packages
 npm outdated
 ```
 
 #### Lock Files
 ```bash
-# ALWAYS commit lock files
+## ALWAYS commit lock files
 git add package-lock.json
 
-# Use in CI/CD for reproducible builds
+## Use in CI/CD for reproducible builds
 npm ci  # Instead of npm install
 ```
 

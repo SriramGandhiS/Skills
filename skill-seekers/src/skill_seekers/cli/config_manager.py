@@ -100,7 +100,7 @@ class ConfigManager:
             config = self._merge_with_defaults(config)
             return config
         except (OSError, json.JSONDecodeError) as e:
-            print(f"⚠️  Warning: Could not load config file: {e}")
+            print(f"WARNING:  Warning: Could not load config file: {e}")
             print("   Using default configuration.")
             return self.DEFAULT_CONFIG.copy()
 
@@ -129,7 +129,7 @@ class ConfigManager:
                 self.config_file.chmod(stat.S_IRUSR | stat.S_IWUSR)
 
         except OSError as e:
-            print(f"❌ Error saving config: {e}")
+            print(f"FAIL: Error saving config: {e}")
             sys.exit(1)
 
     # GitHub Token Management
@@ -148,7 +148,7 @@ class ConfigManager:
             raise ValueError("Profile name cannot be empty")
 
         if not token.startswith("ghp_") and not token.startswith("github_pat_"):
-            print("⚠️  Warning: Token doesn't match GitHub format (ghp_* or github_pat_*)")
+            print("WARNING:  Warning: Token doesn't match GitHub format (ghp_* or github_pat_*)")
 
         profile = {
             "token": token,
@@ -164,9 +164,9 @@ class ConfigManager:
             self.config["github"]["default_profile"] = name
 
         self.save_config()
-        print(f"✅ Added GitHub profile: {name}")
+        print(f"PASS: Added GitHub profile: {name}")
         if set_as_default:
-            print("✅ Set as default profile")
+            print("PASS: Set as default profile")
 
     def remove_github_profile(self, name: str):
         """Remove a GitHub profile."""
@@ -181,7 +181,7 @@ class ConfigManager:
             self.config["github"]["default_profile"] = remaining[0] if remaining else None
 
         self.save_config()
-        print(f"✅ Removed GitHub profile: {name}")
+        print(f"PASS: Removed GitHub profile: {name}")
 
     def list_github_profiles(self) -> list[dict[str, Any]]:
         """List all GitHub profiles."""
@@ -219,7 +219,7 @@ class ConfigManager:
             if profile:
                 return profile["token"]
             else:
-                print(f"⚠️  Warning: Profile '{profile_name}' not found")
+                print(f"WARNING:  Warning: Profile '{profile_name}' not found")
 
         # 2. Check environment variable
         env_token = os.getenv("GITHUB_TOKEN")
@@ -300,7 +300,7 @@ class ConfigManager:
 
         self.config["api_keys"][provider] = key
         self.save_config()
-        print(f"✅ Set {provider.capitalize()} API key")
+        print(f"PASS: Set {provider.capitalize()} API key")
 
     def get_api_key(self, provider: str) -> str | None:
         """
@@ -400,7 +400,7 @@ class ConfigManager:
                 deleted_count += 1
 
         if deleted_count > 0:
-            print(f"🧹 Cleaned up {deleted_count} old progress file(s)")
+            print(f" Cleaned up {deleted_count} old progress file(s)")
 
     # AI Enhancement Settings
 
@@ -484,7 +484,7 @@ class ConfigManager:
 
     def display_config_summary(self):
         """Display current configuration summary."""
-        print("\n📋 Skill Seekers Configuration\n")
+        print("\n Skill Seekers Configuration\n")
         print(f"Config file: {self.config_file}")
         print(f"Custom configs dir: {self.config_dir / 'configs'}")
         print(f"Progress dir: {self.progress_dir}\n")
@@ -508,7 +508,7 @@ class ConfigManager:
         print("API Keys:")
         for provider in ["anthropic", "google", "openai"]:
             key = self.get_api_key(provider)
-            status = "✅ Set" if key else "❌ Not set"
+            status = "PASS: Set" if key else "FAIL: Not set"
             source = ""
             if key:
                 if os.getenv(provider.upper() + "_API_KEY"):
@@ -536,7 +536,7 @@ class ConfigManager:
         # Resumable jobs
         jobs = self.list_resumable_jobs()
         if jobs:
-            print(f"\n📦 Resumable Jobs: {len(jobs)}")
+            print(f"\n Resumable Jobs: {len(jobs)}")
             for job in jobs[:5]:  # Show max 5
                 print(f"  • {job['job_id']}")
                 if job.get("progress"):

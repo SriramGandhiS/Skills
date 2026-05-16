@@ -28,7 +28,7 @@ npx eslint . --plugin security
 ## Fluxo de Revisão
 
 ### 1. Varredura Inicial
-- Executar `npm audit`, `eslint-plugin-security`, buscar segredos hardcoded
+- Executar `npm audit`,`eslint-plugin-security`, buscar segredos hardcoded
 - Revisar áreas de alto risco: auth, endpoints de API, queries de banco, uploads de arquivo, pagamentos, webhooks
 
 ### 2. Verificação OWASP Top 10
@@ -51,7 +51,7 @@ Sinalizar estes padrões imediatamente:
 | Segredos hardcoded | CRÍTICO | Usar `process.env` |
 | Comando shell com input de usuário | CRÍTICO | Usar APIs seguras ou execFile |
 | SQL com concatenação de strings | CRÍTICO | Queries parametrizadas |
-| `innerHTML = userInput` | ALTO | Usar `textContent` ou DOMPurify |
+| `innerHTML = userInput`| ALTO | Usar`textContent` ou DOMPurify |
 | `fetch(userProvidedUrl)` | ALTO | Lista branca de domínios permitidos |
 | Comparação de senha em texto plano | CRÍTICO | Usar `bcrypt.compare()` |
 | Sem verificação de auth na rota | CRÍTICO | Adicionar middleware de autenticação |

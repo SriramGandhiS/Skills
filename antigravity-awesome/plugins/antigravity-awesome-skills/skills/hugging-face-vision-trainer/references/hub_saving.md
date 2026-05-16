@@ -96,7 +96,7 @@ training_args = TrainingArguments(
     num_train_epochs=10,
     per_device_train_batch_size=8,
 
-    # ✅ CRITICAL: Hub push configuration
+    # PASS: CRITICAL: Hub push configuration
     push_to_hub=True,
     hub_model_id="myusername/cppe5-detector",
 
@@ -104,7 +104,7 @@ training_args = TrainingArguments(
     hub_strategy="checkpoint",  # Push checkpoints during training
 )
 
-# ✅ CRITICAL: Authenticate with Hub BEFORE creating Trainer
+# PASS: CRITICAL: Authenticate with Hub BEFORE creating Trainer
 from huggingface_hub import login
 hf_token = os.environ.get("HF_TOKEN") or os.environ.get("hfjob")
 if hf_token:
@@ -132,11 +132,11 @@ trainer = Trainer(
 
 trainer.train()
 
-# ✅ Push final model and processor
+# PASS: Push final model and processor
 trainer.push_to_hub()
 image_processor.push_to_hub("myusername/cppe5-detector")
 
-print("✅ Model saved to: https://huggingface.co/myusername/cppe5-detector")
+print("PASS: Model saved to: https://huggingface.co/myusername/cppe5-detector")
 ```
 
 **Submit with authentication:**
@@ -146,7 +146,7 @@ hf_jobs("uv", {
     "script": training_script_content,  # Pass script content as a string, NOT a filename
     "flavor": "a10g-large",
     "timeout": "4h",
-    "secrets": {"HF_TOKEN": "$HF_TOKEN"}  # ✅ Required!
+    "secrets": {"HF_TOKEN": "$HF_TOKEN"}  # PASS: Required!
 })
 ```
 
@@ -172,7 +172,7 @@ When `push_to_hub=True`:
 # After training completes
 trainer.push_to_hub()
 
-# ✅ Also push the image processor
+# PASS: Also push the image processor
 image_processor.push_to_hub(
     repo_id="username/model-name",
     commit_message="Upload image processor"
@@ -259,7 +259,7 @@ For a complete guide on token types, `$HF_TOKEN` automatic replacement, `secrets
 **Recommended:** Always pass tokens via `secrets` (encrypted server-side):
 
 ```python
-"secrets": {"HF_TOKEN": "$HF_TOKEN"}  # ✅ Automatic replacement with your logged-in token
+"secrets": {"HF_TOKEN": "$HF_TOKEN"}  # PASS: Automatic replacement with your logged-in token
 ```
 
 ## Verification Checklist
@@ -415,9 +415,9 @@ hf_jobs("logs", {"job_id": "your-job-id"})
 ```
 Pushing model to username/detector-name...
 Upload file pytorch_model.bin: 100%
-✅ Model pushed successfully
+PASS: Model pushed successfully
 Pushing image processor...
-✅ Image processor pushed successfully
+PASS: Image processor pushed successfully
 ```
 
 ## Example: Full Production Setup
@@ -426,11 +426,11 @@ Pushing image processor...
 # production_detector.py
 # /// script
 # dependencies = [
-#     "transformers>=4.30.0",
-#     "torch>=2.0.0",
-#     "torchvision>=0.15.0",
-#     "datasets>=2.12.0",
-#     "evaluate>=0.4.0"
+# "transformers>=4.30.0",
+# "torch>=2.0.0",
+# "torchvision>=0.15.0",
+# "datasets>=2.12.0",
+# "evaluate>=0.4.0"
 # ]
 # ///
 
@@ -454,11 +454,11 @@ NUM_CLASSES = 5
 id2label = {0: "Coverall", 1: "Face_Shield", 2: "Gloves", 3: "Goggles", 4: "Mask"}
 label2id = {v: k for k, v in id2label.items()}
 
-print(f"🔧 Loading dataset: {DATASET_NAME}")
+print(f" Loading dataset: {DATASET_NAME}")
 dataset = load_dataset(DATASET_NAME, split="train")
-print(f"✅ Dataset loaded: {len(dataset)} examples")
+print(f"PASS: Dataset loaded: {len(dataset)} examples")
 
-print(f"🔧 Loading model: {MODEL_NAME}")
+print(f" Loading model: {MODEL_NAME}")
 image_processor = AutoImageProcessor.from_pretrained(MODEL_NAME)
 model = AutoModelForObjectDetection.from_pretrained(
     MODEL_NAME,
@@ -467,7 +467,7 @@ model = AutoModelForObjectDetection.from_pretrained(
     label2id=label2id,
     ignore_mismatched_sizes=True
 )
-print("✅ Model loaded")
+print("PASS: Model loaded")
 
 # Configure with comprehensive Hub settings
 training_args = TrainingArguments(
@@ -503,7 +503,7 @@ training_args = TrainingArguments(
     dataloader_num_workers=4,
 )
 
-# ✅ CRITICAL: Authenticate with Hub BEFORE creating Trainer
+# PASS: CRITICAL: Authenticate with Hub BEFORE creating Trainer
 # login() saves the token globally so ALL hub operations can find it.
 from huggingface_hub import login
 hf_token = os.environ.get("HF_TOKEN") or os.environ.get("hfjob")
@@ -531,22 +531,22 @@ trainer = Trainer(
     data_collator=collate_fn,
 )
 
-print("🚀 Starting training...")
+print(" Starting training...")
 trainer.train()
 
-print("💾 Pushing final model to Hub...")
+print(" Pushing final model to Hub...")
 trainer.push_to_hub(
     commit_message="Upload trained DETR model on CPPE-5",
     tags=["object-detection", "detr", "cppe-5", "vision"],
 )
 
-print("💾 Pushing image processor to Hub...")
+print(" Pushing image processor to Hub...")
 image_processor.push_to_hub(
     repo_id=HUB_MODEL_ID,
     commit_message="Upload image processor"
 )
 
-print("✅ Training complete!")
+print("PASS: Training complete!")
 print(f"Model available at: https://huggingface.co/{HUB_MODEL_ID}")
 print(f"\nTo use your model:")
 print(f"```python")

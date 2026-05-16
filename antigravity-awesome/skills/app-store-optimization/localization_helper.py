@@ -93,7 +93,7 @@ class LocalizationHelper:
             for market in self.PRIORITY_MARKETS[tier]:
                 if market['language'] != current_market:
                     recommended_markets.append({
-                        **market,
+**market,
                         'tier': tier,
                         'estimated_translation_cost': self._estimate_translation_cost(
                             market['language']

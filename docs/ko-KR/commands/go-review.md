@@ -8,8 +8,8 @@ description: 관용적 패턴, 동시성 안전성, 에러 처리, 보안에 대
 
 ## 이 커맨드가 하는 것
 
-1. **Go 변경사항 식별**: `git diff`로 수정된 `.go` 파일 찾기
-2. **정적 분석 실행**: `go vet`, `staticcheck`, `golangci-lint` 실행
+1. **Go 변경사항 식별**: `git diff`로 수정된`.go` 파일 찾기
+2. **정적 분석 실행**: `go vet`,`staticcheck`,`golangci-lint` 실행
 3. **보안 스캔**: SQL 인젝션, 커맨드 인젝션, 레이스 컨디션 검사
 4. **동시성 리뷰**: 고루틴 안전성, 채널 사용, 뮤텍스 패턴 분석
 5. **관용적 Go 검사**: Go 컨벤션과 모범 사례 준수 여부 확인
@@ -52,17 +52,17 @@ description: 관용적 패턴, 동시성 안전성, 에러 처리, 보안에 대
 ## 실행되는 자동 검사
 
 ```bash
-# 정적 분석
+## 정적 분석
 go vet ./...
 
-# 고급 검사 (설치된 경우)
+## 고급 검사 (설치된 경우)
 staticcheck ./...
 golangci-lint run
 
-# 레이스 감지
+## 레이스 감지
 go build -race ./...
 
-# 보안 취약점
+## 보안 취약점
 govulncheck ./...
 ```
 
@@ -72,7 +72,7 @@ govulncheck ./...
 User: /go-review
 
 Agent:
-# Go 코드 리뷰 보고서
+## Go 코드 리뷰 보고서
 
 ## 리뷰된 파일
 - internal/handler/user.go (수정됨)
@@ -145,4 +145,4 @@ return fmt.Errorf("get user %s: %w", userID, err)
 ## 관련 항목
 
 - 에이전트: `agents/go-reviewer.md`
-- 스킬: `skills/golang-patterns/`, `skills/golang-testing/`
+- 스킬: `skills/golang-patterns/`,`skills/golang-testing/`

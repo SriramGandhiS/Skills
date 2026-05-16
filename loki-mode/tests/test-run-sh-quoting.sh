@@ -1,14 +1,12 @@
 #!/usr/bin/env bash
 #===============================================================================
 # Regression tests for autonomy/run.sh v7.5.8 hardening:
-#
-#   A) sed-escape: project_name / project_path containing the sed delimiter
-#      ('|') or other RHS-special chars ('&', '\\', '/') must not break the
-#      generate_dashboard() substitution.
-#
-#   B) LOKI_MONOREPO_TEST_CMD whitelist: the env override is eval'd, so we
-#      MUST reject anything outside [A-Za-z0-9_./= -] before eval. This test
-#      sets the env var to "; rm -rf /" and confirms rejection.
+# # A) sed-escape: project_name / project_path containing the sed delimiter
+# ('|') or other RHS-special chars ('&', '\\', '/') must not break the
+# generate_dashboard() substitution.
+# # B) LOKI_MONOREPO_TEST_CMD whitelist: the env override is eval'd, so we
+# MUST reject anything outside [A-Za-z0-9_./= -] before eval. This test
+# sets the env var to "; rm -rf /" and confirms rejection.
 #===============================================================================
 
 set -u

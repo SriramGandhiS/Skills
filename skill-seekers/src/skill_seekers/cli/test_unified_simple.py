@@ -165,14 +165,14 @@ if __name__ == "__main__":
         test_config_validation_errors()
 
         print("\n" + "=" * 60)
-        print("✅ All integration tests passed!")
+        print("PASS: All integration tests passed!")
         print("=" * 60)
 
     except AssertionError as e:
-        print(f"\n❌ Test failed: {e}")
+        print(f"\nFAIL: Test failed: {e}")
         sys.exit(1)
     except Exception as e:
-        print(f"\n❌ Unexpected error: {e}")
+        print(f"\nFAIL: Unexpected error: {e}")
         import traceback
 
         traceback.print_exc()

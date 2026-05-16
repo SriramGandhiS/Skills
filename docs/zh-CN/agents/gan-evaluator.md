@@ -39,12 +39,12 @@ color: red
 
 ```bash
 # The Generator should have left a dev server running
-# Use Playwright MCP to interact with the live app
+## Use Playwright MCP to interact with the live app
 
-# Navigate to the app
-playwright navigate http://localhost:${GAN_DEV_SERVER_PORT:-3000}
+## Navigate to the app
+playwright navigate <http://localhost:${GAN_DEV_SERVER_PORT:-3000}>
 
-# Take initial screenshot
+## Take initial screenshot
 playwright screenshot --name "initial-load"
 ```
 
@@ -126,7 +126,7 @@ weighted = (design * 0.3) + (originality * 0.2) + (craft * 0.3) + (functionality
 向 `gan-harness/feedback/feedback-NNN.md` 撰写反馈：
 
 ```markdown
-# 评估 — 迭代 NNN
+## 评估 — 迭代 NNN
 
 ## 评分
 
@@ -169,7 +169,7 @@ weighted = (design * 0.3) + (originality * 0.2) + (craft * 0.3) + (functionality
 
 1. **每个问题都必须有“如何修复”** ——不要只说“设计很通用”。要说“将渐变背景（#667eea→#764ba2）替换为规范调色板中的纯色。添加微妙的纹理或图案以增加深度。”
 
-2. **引用具体元素** ——不要说“布局需要改进”，而要说“侧边栏卡片在375px处溢出其容器。设置 `max-width: 100%` 并添加 `overflow: hidden`。”
+2. **引用具体元素** ——不要说“布局需要改进”，而要说“侧边栏卡片在375px处溢出其容器。设置 `max-width: 100%`并添加`overflow: hidden`。”
 
 3. **尽可能量化** ——“CLS分数为0.15（应小于0.1）”或“7个功能中有3个没有错误状态处理。”
 
@@ -182,14 +182,14 @@ weighted = (design * 0.3) + (originality * 0.2) + (craft * 0.3) + (functionality
 使用Playwright MCP或直接浏览器自动化：
 
 ```bash
-# Navigate
+## Navigate
 npx playwright test --headed --browser=chromium
 
-# Or via MCP tools if available:
-# mcp__playwright__navigate { url: "http://localhost:3000" }
-# mcp__playwright__click { selector: "button.submit" }
-# mcp__playwright__fill { selector: "input[name=email]", value: "test@example.com" }
-# mcp__playwright__screenshot { name: "after-submit" }
+## Or via MCP tools if available:
+## mcp__playwright__navigate { url: "http://localhost:3000" }
+## mcp__playwright__click { selector: "button.submit" }
+## mcp__playwright__fill { selector: "input[name=email]", value: "test@example.com" }
+## mcp__playwright__screenshot { name: "after-submit" }
 ```
 
 如果Playwright MCP不可用，则回退到：
@@ -214,7 +214,7 @@ npx playwright test --headed --browser=chromium
 对于API/库：运行测试，检查构建，分析代码质量。无需浏览器。
 
 ```bash
-# Code-only evaluation
+## Code-only evaluation
 npm run build 2>&1 | tee /tmp/build-output.txt
 npm test 2>&1 | tee /tmp/test-output.txt
 npx eslint . 2>&1 | tee /tmp/lint-output.txt

@@ -52,7 +52,7 @@ docs/CODEMAPS/
 ### 4. Formato de Codemap
 
 ```markdown
-# Codemap de [Área]
+## Codemap de [Área]
 
 **Última Atualização:** YYYY-MM-DD
 **Pontos de Entrada:** lista dos arquivos principais

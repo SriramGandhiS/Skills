@@ -28,25 +28,25 @@ model: opus
 
 ### 診断コマンド
 ```bash
-# TypeScript型チェック（出力なし）
+## TypeScript型チェック（出力なし）
 npx tsc --noEmit
 
-# TypeScriptの見やすい出力
+## TypeScriptの見やすい出力
 npx tsc --noEmit --pretty
 
-# すべてのエラーを表示（最初で停止しない）
+## すべてのエラーを表示（最初で停止しない）
 npx tsc --noEmit --pretty --incremental false
 
-# 特定ファイルをチェック
+## 特定ファイルをチェック
 npx tsc --noEmit path/to/file.ts
 
-# ESLintチェック
+## ESLintチェック
 npx eslint . --ext .ts,.tsx,.js,.jsx
 
-# Next.jsビルド（プロダクション）
+## Next.jsビルド（プロダクション）
 npm run build
 
-# デバッグ付きNext.jsビルド
+## デバッグ付きNext.jsビルド
 npm run build -- --debug
 ```
 
@@ -390,7 +390,7 @@ function processData(data: Array<{ value: number }>) {
 ## ビルドエラーレポート形式
 
 ```markdown
-# ビルドエラー解決レポート
+## ビルドエラー解決レポート
 
 **日付:** YYYY-MM-DD
 **ビルド対象:** Next.jsプロダクション / TypeScriptチェック / ESLint
@@ -491,29 +491,29 @@ Parameter 'market' implicitly has an 'any' type.
 ## クイックリファレンスコマンド
 
 ```bash
-# エラーをチェック
+## エラーをチェック
 npx tsc --noEmit
 
-# Next.jsをビルド
+## Next.jsをビルド
 npm run build
 
-# キャッシュをクリアして再ビルド
+## キャッシュをクリアして再ビルド
 rm -rf .next node_modules/.cache
 npm run build
 
-# 特定のファイルをチェック
+## 特定のファイルをチェック
 npx tsc --noEmit src/path/to/file.ts
 
-# 欠落している依存関係をインストール
+## 欠落している依存関係をインストール
 npm install
 
-# ESLintの問題を自動修正
+## ESLintの問題を自動修正
 npx eslint . --fix
 
-# TypeScriptを更新
+## TypeScriptを更新
 npm install --save-dev typescript@latest
 
-# node_modulesを検証
+## node_modulesを検証
 rm -rf node_modules package-lock.json
 npm install
 ```

@@ -19,14 +19,14 @@ origin: ECC
 ## 阶段 1: 环境检查
 
 ```bash
-# Verify Python version
+## Verify Python version
 python --version  # Should match project requirements
 
-# Check virtual environment
+## Check virtual environment
 which python
 pip list --outdated
 
-# Verify environment variables
+## Verify environment variables
 python -c "import os; import environ; print('DJANGO_SECRET_KEY set' if os.environ.get('DJANGO_SECRET_KEY') else 'MISSING: DJANGO_SECRET_KEY')"
 ```
 
@@ -35,21 +35,21 @@ python -c "import os; import environ; print('DJANGO_SECRET_KEY set' if os.enviro
 ## 阶段 2: 代码质量与格式化
 
 ```bash
-# Type checking
+## Type checking
 mypy . --config-file pyproject.toml
 
-# Linting with ruff
+## Linting with ruff
 ruff check . --fix
 
-# Formatting with black
+## Formatting with black
 black . --check
 black .  # Auto-fix
 
-# Import sorting
+## Import sorting
 isort . --check-only
 isort .  # Auto-fix
 
-# Django-specific checks
+## Django-specific checks
 python manage.py check --deploy
 ```
 
@@ -63,19 +63,19 @@ python manage.py check --deploy
 ## 阶段 3: 数据库迁移
 
 ```bash
-# Check for unapplied migrations
+## Check for unapplied migrations
 python manage.py showmigrations
 
-# Create missing migrations
+## Create missing migrations
 python manage.py makemigrations --check
 
-# Dry-run migration application
+## Dry-run migration application
 python manage.py migrate --plan
 
-# Apply migrations (test environment)
+## Apply migrations (test environment)
 python manage.py migrate
 
-# Check for migration conflicts
+## Check for migration conflicts
 python manage.py makemigrations --merge  # Only if conflicts exist
 ```
 
@@ -88,17 +88,17 @@ python manage.py makemigrations --merge  # Only if conflicts exist
 ## 阶段 4: 测试与覆盖率
 
 ```bash
-# Run all tests with pytest
+## Run all tests with pytest
 pytest --cov=apps --cov-report=html --cov-report=term-missing --reuse-db
 
-# Run specific app tests
+## Run specific app tests
 pytest apps/users/tests/
 
-# Run with markers
+## Run with markers
 pytest -m "not slow"  # Skip slow tests
 pytest -m integration  # Only integration tests
 
-# Coverage report
+## Coverage report
 open htmlcov/index.html
 ```
 
@@ -121,20 +121,20 @@ open htmlcov/index.html
 ## 阶段 5: 安全扫描
 
 ```bash
-# Dependency vulnerabilities
+## Dependency vulnerabilities
 pip-audit
 safety check --full-report
 
-# Django security checks
+## Django security checks
 python manage.py check --deploy
 
-# Bandit security linter
+## Bandit security linter
 bandit -r . -f json -o bandit-report.json
 
-# Secret scanning (if gitleaks is installed)
+## Secret scanning (if gitleaks is installed)
 gitleaks detect --source . --verbose
 
-# Environment variable check
+## Environment variable check
 python -c "from django.core.exceptions import ImproperlyConfigured; from django.conf import settings; settings.DEBUG"
 ```
 
@@ -148,33 +148,33 @@ python -c "from django.core.exceptions import ImproperlyConfigured; from django.
 ## 阶段 6: Django 管理命令
 
 ```bash
-# Check for model issues
+## Check for model issues
 python manage.py check
 
-# Collect static files
+## Collect static files
 python manage.py collectstatic --noinput --clear
 
-# Create superuser (if needed for tests)
+## Create superuser (if needed for tests)
 echo "from apps.users.models import User; User.objects.create_superuser('admin@example.com', 'admin')" | python manage.py shell
 
-# Database integrity
+## Database integrity
 python manage.py check --database default
 
-# Cache verification (if using Redis)
+## Cache verification (if using Redis)
 python -c "from django.core.cache import cache; cache.set('test', 'value', 10); print(cache.get('test'))"
 ```
 
 ## 阶段 7: 性能检查
 
 ```bash
-# Django Debug Toolbar output (check for N+1 queries)
-# Run in dev mode with DEBUG=True and access a page
-# Look for duplicate queries in SQL panel
+## Django Debug Toolbar output (check for N+1 queries)
+## Run in dev mode with DEBUG=True and access a page
+## Look for duplicate queries in SQL panel
 
-# Query count analysis
+## Query count analysis
 django-admin debugsqlshell  # If django-debug-sqlshell installed
 
-# Check for missing indexes
+## Check for missing indexes
 python manage.py shell << EOF
 from django.db import connection
 with connection.cursor() as cursor:
@@ -192,14 +192,14 @@ EOF
 ## 阶段 8: 静态资源
 
 ```bash
-# Check for npm dependencies (if using npm)
+## Check for npm dependencies (if using npm)
 npm audit
 npm audit fix
 
-# Build static files (if using webpack/vite)
+## Build static files (if using webpack/vite)
 npm run build
 
-# Verify static files
+## Verify static files
 ls -la staticfiles/
 python manage.py findstatic css/style.css
 ```
@@ -207,12 +207,12 @@ python manage.py findstatic css/style.css
 ## 阶段 9: 配置审查
 
 ```python
-# Run in Python shell to verify settings
+## Run in Python shell to verify settings
 python manage.py shell << EOF
 from django.conf import settings
 import os
 
-# Critical checks
+## Critical checks
 checks = {
     'DEBUG is False': not settings.DEBUG,
     'SECRET_KEY set': bool(settings.SECRET_KEY and len(settings.SECRET_KEY) > 30),
@@ -231,7 +231,7 @@ EOF
 ## 阶段 10: 日志配置
 
 ```bash
-# Test logging output
+## Test logging output
 python manage.py shell << EOF
 import logging
 logger = logging.getLogger('django')
@@ -239,37 +239,37 @@ logger.warning('Test warning message')
 logger.error('Test error message')
 EOF
 
-# Check log files (if configured)
+## Check log files (if configured)
 tail -f /var/log/django/django.log
 ```
 
 ## 阶段 11: API 文档（如果使用 DRF）
 
 ```bash
-# Generate schema
+## Generate schema
 python manage.py generateschema --format openapi-json > schema.json
 
-# Validate schema
-# Check if schema.json is valid JSON
+## Validate schema
+## Check if schema.json is valid JSON
 python -c "import json; json.load(open('schema.json'))"
 
-# Access Swagger UI (if using drf-yasg)
-# Visit http://localhost:8000/swagger/ in browser
+## Access Swagger UI (if using drf-yasg)
+## Visit <http://localhost:8000/swagger/> in browser
 ```
 
 ## 阶段 12: 差异审查
 
 ```bash
-# Show diff statistics
+## Show diff statistics
 git diff --stat
 
-# Show actual changes
+## Show actual changes
 git diff
 
-# Show changed files
+## Show changed files
 git diff --name-only
 
-# Check for common issues
+## Check for common issues
 git diff | grep -i "todo\|fixme\|hack\|xxx"
 git diff | grep "print("  # Debug statements
 git diff | grep "DEBUG = True"  # Debug mode
@@ -395,7 +395,7 @@ DJANGO 验证报告
 ### GitHub Actions 示例
 
 ```yaml
-# .github/workflows/django-verification.yml
+## .github/workflows/django-verification.yml
 name: Django Verification
 
 on: [push, pull_request]

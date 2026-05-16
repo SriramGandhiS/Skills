@@ -253,7 +253,7 @@ The sketch-findings skill will auto-load when building the UI.
 
 ───────────────────────────────────────────────────────────────
 
-## ▶ Next Up
+## Next Up
 
 **Explore frontier sketches** — see what else is worth sketching based on what we've explored
 

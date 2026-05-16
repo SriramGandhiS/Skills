@@ -2845,7 +2845,7 @@ six Wave 1 agents shipped real, verified-by-file work.
   post-edit: zero `loki_debug`/`LOKI_DEBUG` references in
   autonomy/loki, bin/loki-mode.js unchanged from pre-session
   contents, .gitignore had no scheduled_tasks.lock entry.
-  **Partially redone**: scheduled_tasks.lock added to .gitignore
+**Partially redone**: scheduled_tasks.lock added to .gitignore
   this commit. LOKI_DEBUG and the banner are deferred to a
   follow-up patch (touching ~22K-line autonomy/loki responsibly
   needs its own scope).
@@ -4769,7 +4769,6 @@ multi-persona debate (MoMoA) into a native Loki subsystem.
 ### Changed
 - ProjectWorkspace preview panel now tracks navigation history with back/forward controls and editable URL bar
 - PRDInput accepts initialPrd prop to support template injection from TemplatesPage
-
 
 ## [6.42.0] - 2026-03-20
 
@@ -11168,55 +11167,55 @@ For existing `.loki/` projects:
 ### Added
 - **Claude Code Best Practices** - Integrated patterns from "Claude Code in Action" course:
 
-  **CLAUDE.md Generation:**
+**CLAUDE.md Generation:**
   - Comprehensive codebase summary generated on bootstrap
   - Included in EVERY Claude request for persistent context
   - Contains: project summary, architecture, key files, critical patterns
   - Auto-updated by agents on significant changes
 
-  **Three Memory Levels:**
+**Three Memory Levels:**
   1. **Project Memory**: `.loki/CONTINUITY.md` + `CLAUDE.md` (shared, committed)
   2. **Agent Memory**: `.loki/memory/ledgers/` (per-agent, not committed)
   3. **Global Memory**: `.loki/rules/` (permanent patterns, committed)
 
-  **Plan Mode Pattern:**
+**Plan Mode Pattern:**
   - Research phase (read-only, find all relevant files)
   - Planning phase (create detailed plan, NO code yet)
   - Review checkpoint (get approval before implementing)
   - Implementation phase (execute plan systematically)
   - Use for: multi-file refactoring, architecture decisions, complex features
 
-  **Thinking Mode:**
+**Thinking Mode:**
   - Trigger with "Ultra think" prefix
   - Extended reasoning budget for complex logic
   - Use for: subtle bugs, performance optimization, security assessment, architectural trade-offs
 
 - **Hooks System (Quality Gates)**:
 
-  **Pre-Tool-Use Hooks** - Block execution (exit code 2):
+**Pre-Tool-Use Hooks** - Block execution (exit code 2):
   - Prevent writes to auto-generated files
   - Validate implementation matches spec before write
   - Example: `.loki/hooks/pre-write.sh`
 
-  **Post-Tool-Use Hooks** - Auto-fix after execution:
+**Post-Tool-Use Hooks** - Auto-fix after execution:
   - Type checking (TypeScript/mypy) with auto-fix feedback
   - Auto-formatting (Prettier, Black, gofmt)
   - Update CLAUDE.md on architecture changes
   - Example: `.loki/hooks/post-write.sh`
 
-  **Deduplication Hook** - Prevent AI slop:
+**Deduplication Hook** - Prevent AI slop:
   - Launches separate Claude instance to detect duplicates
   - Suggests existing functions to reuse
   - Example: `.loki/hooks/post-write-deduplicate.sh`
 
 - **Problem-Solving Workflows**:
 
-  **3-Step Pattern** (for non-trivial tasks):
+**3-Step Pattern** (for non-trivial tasks):
   1. Identify & Analyze: Grep/Read relevant files, create mental model
   2. Request Planning: Describe feature, get implementation plan (NO CODE)
   3. Implement Plan: Execute systematically, test after each file
 
-  **Test-Driven Development Pattern:**
+**Test-Driven Development Pattern:**
   1. Context Gathering: Read code, understand patterns, review spec
   2. Test Design: Ask Claude to suggest tests based on spec
   3. Test Implementation: Implement tests → FAIL (red phase)
@@ -11256,7 +11255,7 @@ For existing `.loki/` projects:
 ### Added
 - **Spec-Driven Development (SDD)** - Specifications as source of truth BEFORE code:
 
-  **Philosophy**: `Spec → Tests from Spec → Code to Satisfy Spec → Validation`
+**Philosophy**: `Spec → Tests from Spec → Code to Satisfy Spec → Validation`
 
   - OpenAPI 3.1 specifications written FIRST (before architecture/code)
   - Spec is executable contract between frontend/backend
@@ -11264,7 +11263,7 @@ For existing `.loki/` projects:
   - Enables parallel development (frontend mocks from spec)
   - Documentation auto-generated from spec (always accurate)
 
-  **Workflow**:
+**Workflow**:
   1. Parse PRD and extract API requirements
   2. Generate OpenAPI spec with all endpoints, schemas, error codes
   3. Validate spec with Spectral linter
@@ -11273,26 +11272,26 @@ For existing `.loki/` projects:
   6. Code implements ONLY what's in spec
   7. CI/CD validates implementation against spec
 
-  **Spec Storage**: `.loki/specs/openapi.yaml`
+**Spec Storage**: `.loki/specs/openapi.yaml`
 
-  **Spec Precedence**: Spec > PRD, Spec > Code, Spec > Documentation
+**Spec Precedence**: Spec > PRD, Spec > Code, Spec > Documentation
 
 - **Model Context Protocol (MCP) Integration** - Standardized agent communication:
 
-  **Architecture**:
+**Architecture**:
   - Each swarm is an MCP server (engineering, operations, business, data, growth)
   - Orchestrator is MCP client consuming swarm servers
   - Standardized tool/resource exchange protocol
   - Composable, interoperable agents
 
-  **Benefits**:
+**Benefits**:
   1. **Composability**: Mix agents from different sources
   2. **Interoperability**: Work with GitHub Copilot, other AI assistants
   3. **Modularity**: Each swarm is independent, replaceable
   4. **Discoverability**: Listed in GitHub MCP Registry
   5. **Reusability**: Other teams can use Loki agents standalone
 
-  **MCP Servers Implemented**:
+**MCP Servers Implemented**:
   - `loki-engineering-swarm`: Frontend, backend, database, QA agents
     - Tools: implement-feature, run-tests, review-code, refactor-code
     - Resources: loki://engineering/state, loki://engineering/continuity
@@ -11301,12 +11300,12 @@ For existing `.loki/` projects:
   - `loki-business-swarm`: Marketing, sales, legal agents
     - Tools: create-marketing-campaign, generate-sales-materials
 
-  **External MCP Integration**:
+**External MCP Integration**:
   - GitHub MCP (create PRs, manage issues)
   - Playwright MCP (browser automation, E2E tests)
   - Notion MCP (knowledge base, documentation)
 
-  **MCP Directory**: `.loki/mcp/` with servers/, orchestrator.ts, registry.yaml
+**MCP Directory**: `.loki/mcp/` with servers/, orchestrator.ts, registry.yaml
 
 - **Spec Evolution & Versioning**:
   - Semver for API versions (breaking → major, new endpoints → minor, fixes → patch)
@@ -11356,21 +11355,21 @@ Loki Mode now combines the best practices from GitHub's ecosystem:
 ### Added
 - **Quality Control Principles** - Integrated GitHub's "Speed Without Control" framework:
 
-  **Principle 1: Guardrails, Not Just Acceleration**
+**Principle 1: Guardrails, Not Just Acceleration**
   - Static analysis before AI review (CodeQL, ESLint, Pylint, type checking)
   - Automated detection of unused vars, duplicated logic, code smells
   - Cyclomatic complexity limits (max 15 per function)
   - Secret scanning to prevent credential leaks
   - 5 quality gate categories with blocking rules
 
-  **Principle 2: Structured Prompting for Subagents**
+**Principle 2: Structured Prompting for Subagents**
   - All subagent dispatches must include: GOAL, CONSTRAINTS, CONTEXT, OUTPUT FORMAT
   - Goals explain "what success looks like" (not just actions)
   - Constraints define boundaries (dependencies, compatibility, performance)
   - Context includes CONTINUITY.md, ledgers, learnings, architecture decisions
   - Output format specifies deliverables (tests, docs, benchmarks)
 
-  **Principle 3: Document Decisions, Not Just Code**
+**Principle 3: Document Decisions, Not Just Code**
   - Every completed task requires decision documentation
   - WHY: Problem, root cause, solution chosen, alternatives considered
   - WHAT: Files modified, APIs changed, behavior changes, dependencies

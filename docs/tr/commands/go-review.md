@@ -8,8 +8,8 @@ Bu komut, Go'ya özel kapsamlı kod incelemesi için **go-reviewer** agent'ını
 
 ## Bu Komut Ne Yapar
 
-1. **Go Değişikliklerini Tanımla**: `git diff` ile değiştirilmiş `.go` dosyalarını bul
-2. **Static Analiz Çalıştır**: `go vet`, `staticcheck` ve `golangci-lint` yürüt
+1. **Go Değişikliklerini Tanımla**: `git diff`ile değiştirilmiş`.go` dosyalarını bul
+2. **Static Analiz Çalıştır**: `go vet`,`staticcheck`ve`golangci-lint` yürüt
 3. **Güvenlik Taraması**: SQL injection, command injection, race condition'ları kontrol et
 4. **Eşzamanlılık İncelemesi**: Goroutine güvenliğini, channel kullanımını, mutex desenlerini analiz et
 5. **İdiomatic Go Kontrolü**: Kodun Go kurallarına ve en iyi uygulamalara uyduğunu doğrula
@@ -52,17 +52,17 @@ Bu komut, Go'ya özel kapsamlı kod incelemesi için **go-reviewer** agent'ını
 ## Çalıştırılan Otomatik Kontroller
 
 ```bash
-# Static analiz
+## Static analiz
 go vet ./...
 
-# Gelişmiş kontroller (kuruluysa)
+## Gelişmiş kontroller (kuruluysa)
 staticcheck ./...
 golangci-lint run
 
-# Race tespiti
+## Race tespiti
 go build -race ./...
 
-# Güvenlik açıklıkları
+## Güvenlik açıklıkları
 govulncheck ./...
 ```
 
@@ -72,7 +72,7 @@ govulncheck ./...
 Kullanıcı: /go-review
 
 Agent:
-# Go Kod İnceleme Raporu
+## Go Kod İnceleme Raporu
 
 ## İncelenen Dosyalar
 - internal/handler/user.go (değiştirildi)
@@ -145,4 +145,4 @@ return fmt.Errorf("get user %s: %w", userID, err)
 ## İlgili
 
 - Agent: `agents/go-reviewer.md`
-- Skills: `skills/golang-patterns/`, `skills/golang-testing/`
+- Skills: `skills/golang-patterns/`,`skills/golang-testing/`

@@ -238,10 +238,10 @@ public <T> T withRetry(Supplier<T> supplier, int maxRetries) {
 
 1. 您的应用程序位于可信的反向代理（nginx、AWS ALB 等）之后
 2. 您已将 `ForwardedHeaderFilter` 注册为 bean
-3. 您已在应用属性中配置了 `server.forward-headers-strategy=NATIVE` 或 `FRAMEWORK`
+3. 您已在应用属性中配置了 `server.forward-headers-strategy=NATIVE`或`FRAMEWORK`
 4. 您的代理配置为覆盖（而非追加）`X-Forwarded-For` 头
 
-当 `ForwardedHeaderFilter` 被正确配置时，`request.getRemoteAddr()` 将自动从转发的头中返回正确的客户端 IP。
+当 `ForwardedHeaderFilter`被正确配置时，`request.getRemoteAddr()` 将自动从转发的头中返回正确的客户端 IP。
 没有此配置时，请直接使用 `request.getRemoteAddr()`——它返回的是直接连接的 IP，这是唯一可信的值。
 
 ```java
@@ -256,13 +256,13 @@ public class RateLimitFilter extends OncePerRequestFilter {
    * Spring to handle forwarded headers properly for accurate client IP detection:
    *
    * 1. Set server.forward-headers-strategy=NATIVE (for cloud platforms) or FRAMEWORK in
-   *    application.properties/yaml
+   * application.properties/yaml
    * 2. If using FRAMEWORK strategy, register ForwardedHeaderFilter:
    *
-   *    @Bean
-   *    ForwardedHeaderFilter forwardedHeaderFilter() {
-   *        return new ForwardedHeaderFilter();
-   *    }
+   * @Bean
+   * ForwardedHeaderFilter forwardedHeaderFilter() {
+   * return new ForwardedHeaderFilter();
+   * }
    *
    * 3. Ensure your proxy overwrites (not appends) the X-Forwarded-For header to prevent spoofing
    * 4. Configure server.tomcat.remoteip.trusted-proxies or equivalent for your container
@@ -308,6 +308,6 @@ public class RateLimitFilter extends OncePerRequestFilter {
 * 启用 `spring.mvc.problemdetails.enabled=true` 以获得 RFC 7807 错误 (Spring Boot 3+)
 * 根据工作负载配置 HikariCP 连接池大小，设置超时
 * 对查询使用 `@Transactional(readOnly = true)`
-* 在适当的地方通过 `@NonNull` 和 `Optional` 强制执行空值安全
+* 在适当的地方通过 `@NonNull`和`Optional` 强制执行空值安全
 
 **记住**：保持控制器精简、服务专注、仓库简单，并集中处理错误。为可维护性和可测试性进行优化。

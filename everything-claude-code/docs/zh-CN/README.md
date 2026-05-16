@@ -176,10 +176,8 @@
 ### 步骤 2：安装规则（必需）
 
 > WARNING: **重要提示：** Claude Code 插件无法自动分发 `rules`。
->
-> 如果你已经通过 `/plugin install` 安装了 ECC，**不要再运行 `./install.sh --profile full`、`.\install.ps1 --profile full` 或 `npx ecc-install --profile full`**。插件已经会自动加载 ECC 的技能、命令和 hooks；此时再执行完整安装，会把同一批内容再次复制到用户目录，导致技能重复以及运行时行为重复。
->
-> 对于插件安装路径，请只手动复制你需要的 `rules/` 目录。只有在你完全不走插件安装、而是选择“纯手动安装 ECC”时，才应该使用完整安装器。
+> > 如果你已经通过 `/plugin install` 安装了 ECC，**不要再运行 `./install.sh --profile full`、`.\install.ps1 --profile full` 或 `npx ecc-install --profile full`**。插件已经会自动加载 ECC 的技能、命令和 hooks；此时再执行完整安装，会把同一批内容再次复制到用户目录，导致技能重复以及运行时行为重复。
+> > 对于插件安装路径，请只手动复制你需要的 `rules/` 目录。只有在你完全不走插件安装、而是选择“纯手动安装 ECC”时，才应该使用完整安装器。
 
 ```bash
 # Clone the repo first
@@ -630,20 +628,17 @@ Claude Code v2.1+ **会自动加载** 任何已安装插件中的 `hooks/hooks.j
 这将使您能够立即访问所有命令、代理、技能和钩子。
 
 > **注意：** Claude Code 插件系统不支持通过插件分发 `rules` ([上游限制](https://code.claude.com/docs/en/plugins-reference))。您需要手动安装规则：
->
-> ```bash
+> > ```bash
 > # 首先克隆仓库
 > git clone https://github.com/affaan-m/everything-claude-code.git
->
-> # 选项 A：用户级规则（适用于所有项目）
+> > # 选项 A：用户级规则（适用于所有项目）
 > mkdir -p ~/.claude/rules
 > cp -r everything-claude-code/rules/common ~/.claude/rules/common
 > cp -r everything-claude-code/rules/typescript ~/.claude/rules/typescript   # 选择您的技术栈
 > cp -r everything-claude-code/rules/python ~/.claude/rules/python
 > cp -r everything-claude-code/rules/golang ~/.claude/rules/golang
 > cp -r everything-claude-code/rules/php ~/.claude/rules/php
->
-> # 选项 B：项目级规则（仅适用于当前项目）
+> > # 选项 B：项目级规则（仅适用于当前项目）
 > mkdir -p .claude/rules
 > cp -r everything-claude-code/rules/common .claude/rules/common
 > cp -r everything-claude-code/rules/typescript .claude/rules/typescript     # 选择您的技术栈

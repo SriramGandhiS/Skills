@@ -1,4 +1,4 @@
-﻿# Injection Context
+# Injection Context
 
 The `inject()` function can only be used when code is executing within an **injection context**.
 
@@ -6,9 +6,9 @@ The `inject()` function can only be used when code is executing within an **inje
 
 An injection context is automatically available in:
 
-1. **Field initializers** of classes instantiated by DI (`@Injectable`, `@Component`, `@Directive`, `@Pipe`).
+1. **Field initializers** of classes instantiated by DI (`@Injectable`,`@Component`,`@Directive`,`@Pipe`).
 2. **Constructors** of classes instantiated by DI.
-3. **Factory functions** specified in `useFactory` or `InjectionToken` configurations.
+3. **Factory functions** specified in `useFactory`or`InjectionToken` configurations.
 4. **Functional APIs** executed by Angular (e.g., functional route guards, resolvers, interceptors).
 
 ```ts
@@ -31,7 +31,7 @@ export class Example {
 
 ## `runInInjectionContext`
 
-If you need to run a function within an injection context (often needed for dynamic component creation or testing), use `runInInjectionContext`. This requires access to an existing injector (like `EnvironmentInjector` or `Injector`).
+If you need to run a function within an injection context (often needed for dynamic component creation or testing), use `runInInjectionContext`. This requires access to an existing injector (like`EnvironmentInjector`or`Injector`).
 
 ```ts
 import {Injectable, inject, EnvironmentInjector, runInInjectionContext} from '@angular/core';

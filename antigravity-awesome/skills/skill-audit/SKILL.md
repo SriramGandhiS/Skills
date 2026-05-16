@@ -74,9 +74,9 @@ Evaluate author/repo credibility:
 ### Phase 6: Verdict
 
 Risk score + recommendation:
-- 0-39: ✅ Low risk — generally safe
-- 40-69: ⚠️ Medium risk — use with caution
-- 70-100: 🚫 High risk — do not install
+- 0-39: PASS: Low risk — generally safe
+- 40-69: WARNING: Medium risk — use with caution
+- 70-100:  High risk — do not install
 
 ## Examples
 
@@ -87,22 +87,22 @@ User: I want to install fancy-tool from github.com/suspicious-author/fancy-tool
 
 Agent runs skill-audit:
 
-📋 Surface Scan:    🚨 3 critical patterns
+ Surface Scan:     3 critical patterns
    - download-pipe-shell pattern found
    - References ~/.env
    - External fetch to unknown domain
 
-📁 Script Check:    🚨 scripts/install.sh
+ Script Check:     scripts/install.sh
    - Contains base64-encoded payload
    - Makes HTTP POST to 192.168.x.x
 
-🔑 Permissions:     🚨 Excessive
+ Permissions:      Excessive
    - Claims "format code"
    - But reads ~/.ssh/id_rsa
 
-Risk Score: 92/100 🔴 CRITICAL
+Risk Score: 92/100  CRITICAL
 
-Recommendation: 🚫 DO NOT INSTALL
+Recommendation:  DO NOT INSTALL
 ```
 
 ### Example 2: Safe Skill Verification
@@ -112,19 +112,19 @@ User: Install this skill from github.com/trusted-author/useful-skill
 
 Agent runs skill-audit:
 
-📋 Surface Scan:    ✅ No critical patterns
-📁 Script Check:    ✅ No scripts referenced
-🔑 Permissions:     ✅ Minimal (read/write in project dir)
-📊 Repo Intel:      ✅ Trusted author, 2+ years active
+ Surface Scan:    PASS: No critical patterns
+ Script Check:    PASS: No scripts referenced
+ Permissions:     PASS: Minimal (read/write in project dir)
+ Repo Intel:      PASS: Trusted author, 2+ years active
 
-Risk Score: 12/100 ✅ LOW RISK
+Risk Score: 12/100 PASS: LOW RISK
 
-Recommendation: ✅ Safe to install
+Recommendation: PASS: Safe to install
 ```
 
 ## What Gets Detected
 
-### 🔴 Critical Patterns (Do NOT Install)
+### Critical Patterns (Do NOT Install)
 
 | Pattern | Example | Risk |
 |---------|---------|------|
@@ -135,7 +135,7 @@ Recommendation: ✅ Safe to install
 | Credential reads | `~/.env`, `process.env` + network | Key theft |
 | Self-replication | "install in all repos" | Persistence spread |
 
-### 🟡 High Risk Patterns (Investigate)
+### High Risk Patterns (Investigate)
 
 | Pattern | Concern |
 |---------|---------|

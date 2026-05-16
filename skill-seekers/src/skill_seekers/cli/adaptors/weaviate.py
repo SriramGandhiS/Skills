@@ -127,7 +127,7 @@ class WeaviateAdaptor(SkillAdaptor):
             skill_dir: Path to skill directory
             metadata: Skill metadata
             enable_chunking: Enable intelligent chunking for large documents
-            **kwargs: Additional chunking parameters
+**kwargs: Additional chunking parameters
 
         Returns:
             JSON string containing Weaviate objects and schema
@@ -280,17 +280,17 @@ class WeaviateAdaptor(SkillAdaptor):
         # Write to file
         output_path.write_text(weaviate_json, encoding="utf-8")
 
-        print(f"\n✅ Weaviate objects packaged successfully!")
-        print(f"📦 Output: {output_path}")
+        print(f"\nPASS: Weaviate objects packaged successfully!")
+        print(f" Output: {output_path}")
 
         # Parse and show stats
         data = json.loads(weaviate_json)
         objects = data["objects"]
         schema = data["schema"]
 
-        print(f"📊 Total objects: {len(objects)}")
-        print(f"📐 Schema class: {data['class_name']}")
-        print(f"📋 Properties: {len(schema['properties'])}")
+        print(f" Total objects: {len(objects)}")
+        print(f" Schema class: {data['class_name']}")
+        print(f" Properties: {len(schema['properties'])}")
 
         # Show category breakdown
         categories = {}
@@ -298,7 +298,7 @@ class WeaviateAdaptor(SkillAdaptor):
             cat = obj["properties"].get("category", "unknown")
             categories[cat] = categories.get(cat, 0) + 1
 
-        print("📁 Categories:")
+        print(" Categories:")
         for cat, count in sorted(categories.items()):
             print(f"   - {cat}: {count}")
 
@@ -311,7 +311,7 @@ class WeaviateAdaptor(SkillAdaptor):
         Args:
             package_path: Path to packaged JSON
             api_key: Weaviate API key (for Weaviate Cloud)
-            **kwargs:
+**kwargs:
                 weaviate_url: Weaviate URL (default: http://localhost:8080)
                 use_cloud: Use Weaviate Cloud (default: False)
                 cluster_url: Weaviate Cloud cluster URL
@@ -337,7 +337,7 @@ class WeaviateAdaptor(SkillAdaptor):
         try:
             if kwargs.get("use_cloud") and api_key:
                 # Weaviate Cloud
-                print(f"🌐 Connecting to Weaviate Cloud: {kwargs.get('cluster_url')}")
+                print(f" Connecting to Weaviate Cloud: {kwargs.get('cluster_url')}")
                 client = weaviate.Client(
                     url=kwargs.get("cluster_url"),
                     auth_client_secret=weaviate.AuthApiKey(api_key=api_key),
@@ -345,7 +345,7 @@ class WeaviateAdaptor(SkillAdaptor):
             else:
                 # Local Weaviate instance
                 weaviate_url = kwargs.get("weaviate_url", "http://localhost:8080")
-                print(f"🌐 Connecting to Weaviate at: {weaviate_url}")
+                print(f" Connecting to Weaviate at: {weaviate_url}")
                 client = weaviate.Client(url=weaviate_url)
 
             # Test connection
@@ -364,10 +364,10 @@ class WeaviateAdaptor(SkillAdaptor):
         # Create schema
         try:
             client.schema.create_class(data["schema"])
-            print(f"✅ Created schema: {data['class_name']}")
+            print(f"PASS: Created schema: {data['class_name']}")
         except Exception as e:
             if "already exists" in str(e).lower():
-                print(f"ℹ️  Schema already exists: {data['class_name']}")
+                print(f"  Schema already exists: {data['class_name']}")
             else:
                 return {"success": False, "message": f"Schema creation failed: {e}"}
 
@@ -380,7 +380,7 @@ class WeaviateAdaptor(SkillAdaptor):
 
                 if embedding_function == "openai":
                     # Generate embeddings with OpenAI
-                    print("🔄 Generating OpenAI embeddings and uploading...")
+                    print(" Generating OpenAI embeddings and uploading...")
                     embeddings = self._generate_openai_embeddings(
                         [obj["properties"]["content"] for obj in data["objects"]],
                         api_key=kwargs.get("openai_api_key"),
@@ -415,7 +415,7 @@ class WeaviateAdaptor(SkillAdaptor):
 
                 else:
                     # No embeddings - Weaviate will use its configured vectorizer
-                    print("🔄 Uploading objects (Weaviate will generate embeddings)...")
+                    print(" Uploading objects (Weaviate will generate embeddings)...")
                     for i, obj in enumerate(data["objects"]):
                         batch.add_data_object(
                             data_object=obj["properties"],
@@ -427,7 +427,7 @@ class WeaviateAdaptor(SkillAdaptor):
                             print(f"  ✓ Uploaded {i + 1}/{len(data['objects'])} objects")
 
             count = len(data["objects"])
-            print(f"✅ Upload complete! {count} objects added to Weaviate")
+            print(f"PASS: Upload complete! {count} objects added to Weaviate")
 
             return {
                 "success": True,
@@ -486,7 +486,7 @@ class WeaviateAdaptor(SkillAdaptor):
         Returns:
             False
         """
-        print("❌ Weaviate format does not support enhancement")
+        print("FAIL: Weaviate format does not support enhancement")
         print("   Enhance before packaging:")
         print("   skill-seekers enhance output/skill/ --mode LOCAL")
         print("   skill-seekers package output/skill/ --target weaviate")

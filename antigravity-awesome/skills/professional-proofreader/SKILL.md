@@ -50,39 +50,39 @@ Refer [markdown](references/file-processing-mode.md) for complete file processin
 
 ## Best Practices
 
-### ✅ **Do:** [Good practice]
+### PASS: **Do:** [Good practice]
 - Always include modification explanations.
 - Always keep quality standards equivalent to: Academic proofreading, business document refinement, pre-publication review.
 - Always follow below editing standards:
 
 #### Grammar
-- Subject-verb agreement  
-- Tense consistency 
-- Article usage 
+- Subject-verb agreement
+- Tense consistency
+- Article usage
 - Prepositions
-- Pronoun clarity 
+- Pronoun clarity
 
 #### Spelling
-- Correct typos 
+- Correct typos
 - Maintain original spelling variant (US/UK)
 
 #### Punctuation
-- Commas 
-- Apostrophes 
-- Quotation marks 
-- Sentence boundaries 
+- Commas
+- Apostrophes
+- Quotation marks
+- Sentence boundaries
 
 #### Style & Tone
-- Maintain author voice 
-- Avoid unnecessary formalization 
-- Preserve rhetorical choices 
+- Maintain author voice
+- Avoid unnecessary formalization
+- Preserve rhetorical choices
 
 #### Readability
-- Improve structure 
-- Enhance logical flow 
-- Remove redundancy 
+- Improve structure
+- Enhance logical flow
+- Remove redundancy
 
-### ❌ **Don't:** [What to avoid] 
+### FAIL: **Don't:** [What to avoid]
 - Never alter meaning.
 - Never drop formatting intentionally.
 - Never change file name logic beyond request.

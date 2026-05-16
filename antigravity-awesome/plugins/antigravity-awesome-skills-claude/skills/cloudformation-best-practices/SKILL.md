@@ -67,11 +67,11 @@ Outputs:
 
 ## Best Practices
 
-- ✅ **Do:** Use `Outputs` with `Export` for cross-stack references
-- ✅ **Do:** Add `DeletionPolicy` and `UpdateReplacePolicy` on stateful resources
-- ✅ **Do:** Use `cfn-lint` and `cfn-nag` in CI pipelines
-- ❌ **Don't:** Hardcode ARNs or account IDs — use `!Sub` with pseudo parameters
-- ❌ **Don't:** Put all resources in a single monolithic template
+- PASS: **Do:** Use `Outputs` with `Export` for cross-stack references
+- PASS: **Do:** Add `DeletionPolicy` and `UpdateReplacePolicy` on stateful resources
+- PASS: **Do:** Use `cfn-lint` and `cfn-nag` in CI pipelines
+- FAIL: **Don't:** Hardcode ARNs or account IDs — use `!Sub` with pseudo parameters
+- FAIL: **Don't:** Put all resources in a single monolithic template
 
 ## Troubleshooting
 

@@ -12,8 +12,7 @@ source: community
 # Makepad Event/Action Skill
 
 > **Version:** makepad-widgets (dev branch) | **Last Updated:** 2026-01-19
->
-> Check for updates: https://crates.io/crates/makepad-widgets
+> > Check for updates: https://crates.io/crates/makepad-widgets
 
 You are an expert at Makepad event and action handling. Help users by:
 - **Handling events**: Mouse, keyboard, touch, lifecycle events

@@ -54,16 +54,16 @@ Here are the hidden assumptions embedded in your framing:
 
 | # | Assumption | Type | Reasoning |
 |---|-----------|------|-----------|
-| A1 | A degree is just a piece of paper | 🟡 Convention | Was increasingly true 2015-2022 in tech; now shifting back as market tightens |
-| A2 | This opportunity won't come again | ⚫ Interest-driven | The CEO benefits from you believing this. Urgency is a recruiting tactic |
-| A3 | Early equity is worth more than salary | 🟡 Convention + ⚫ Interest-driven | Statistically, most startup equity becomes worthless. VC-backed mythology promotes this narrative |
-| A4 | The startup world values skills over credentials | 🟡 Convention | True at some companies, but many still filter by degree, especially post-2024 hiring freezes |
-| A5 | I can always go back and finish later | 🔴 Subjective belief | Based on intention, not evidence. Dropout re-enrollment rates are low |
-| A6 | A startup will accelerate my career faster | 🔴 Subjective belief | Survivorship bias — you see dropouts who succeeded, not the majority who struggled |
-| A7 | I'm ready for startup intensity | 🔴 Subjective belief | Self-assessment often overestimates readiness for ambiguity and stress |
-| A8 | The CEO is competent and trustworthy | 🔴 Subjective belief | Based on limited interactions. Have you done due diligence on the founder? |
-| A9 | Failed startup experience is still valuable | 🟡 Convention | Accepted wisdom in startup culture, but hiring managers increasingly want concrete results |
-| A10 | My excitement = genuine fit | 🔴 Subjective belief | Excitement fades after 3 months. How do you distinguish excitement from novelty? |
+| A1 | A degree is just a piece of paper |  Convention | Was increasingly true 2015-2022 in tech; now shifting back as market tightens |
+| A2 | This opportunity won't come again |  Interest-driven | The CEO benefits from you believing this. Urgency is a recruiting tactic |
+| A3 | Early equity is worth more than salary |  Convention +  Interest-driven | Statistically, most startup equity becomes worthless. VC-backed mythology promotes this narrative |
+| A4 | The startup world values skills over credentials |  Convention | True at some companies, but many still filter by degree, especially post-2024 hiring freezes |
+| A5 | I can always go back and finish later |  Subjective belief | Based on intention, not evidence. Dropout re-enrollment rates are low |
+| A6 | A startup will accelerate my career faster |  Subjective belief | Survivorship bias — you see dropouts who succeeded, not the majority who struggled |
+| A7 | I'm ready for startup intensity |  Subjective belief | Self-assessment often overestimates readiness for ambiguity and stress |
+| A8 | The CEO is competent and trustworthy |  Subjective belief | Based on limited interactions. Have you done due diligence on the founder? |
+| A9 | Failed startup experience is still valuable |  Convention | Accepted wisdom in startup culture, but hiring managers increasingly want concrete results |
+| A10 | My excitement = genuine fit |  Subjective belief | Excitement fades after 3 months. How do you distinguish excitement from novelty? |
 
 ---
 
@@ -71,9 +71,9 @@ Here are the hidden assumptions embedded in your framing:
 
 | Rank | Assumption | Fragility | Impact | Risk Score | Verification Question |
 |------|-----------|-----------|--------|------------|----------------------|
-| 🔴 1 | A3: Early equity is worth more than salary | 4 | 5 | **20** | What's the company's current revenue? Runway? Valuation methodology? Have you had a lawyer review the equity terms? |
-| 🔴 2 | A8: The CEO is competent and trustworthy | 4 | 4 | **16** | Have you talked to other people who've worked with this person? Checked their track record? Asked about previous ventures? |
-| 🟡 3 | A5: I can always go back and finish later | 4 | 4 | **16** | What's the actual re-enrollment rate at your university for students who take leave? What would the financial and logistical cost be? |
+|  1 | A3: Early equity is worth more than salary | 4 | 5 | **20** | What's the company's current revenue? Runway? Valuation methodology? Have you had a lawyer review the equity terms? |
+|  2 | A8: The CEO is competent and trustworthy | 4 | 4 | **16** | Have you talked to other people who've worked with this person? Checked their track record? Asked about previous ventures? |
+|  3 | A5: I can always go back and finish later | 4 | 4 | **16** | What's the actual re-enrollment rate at your university for students who take leave? What would the financial and logistical cost be? |
 
 **The uncomfortable truth you may not want to hear:**
 

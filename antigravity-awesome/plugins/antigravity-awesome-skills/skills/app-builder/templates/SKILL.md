@@ -12,7 +12,7 @@ date_added: "2026-02-27"
 
 ---
 
-## 🎯 Selective Reading Rule
+## Selective Reading Rule
 
 **Read ONLY the template matching user's project type!**
 

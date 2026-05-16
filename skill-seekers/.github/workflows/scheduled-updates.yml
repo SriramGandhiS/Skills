@@ -62,7 +62,7 @@ jobs:
           echo "update=true" >> $GITHUB_OUTPUT
         else
           echo "update=false" >> $GITHUB_OUTPUT
-          echo "⏭️  Skipping $FRAMEWORK (not in update list)"
+          echo "SKIPPED:  Skipping $FRAMEWORK (not in update list)"
         fi
 
     - name: Check for existing skill
@@ -72,16 +72,16 @@ jobs:
         SKILL_DIR="output/$FRAMEWORK"
         if [ -d "$SKILL_DIR" ]; then
           echo "exists=true" >> $GITHUB_OUTPUT
-          echo "📦 Found existing skill at $SKILL_DIR"
+          echo " Found existing skill at $SKILL_DIR"
         else
           echo "exists=false" >> $GITHUB_OUTPUT
-          echo "🆕 No existing skill found"
+          echo " No existing skill found"
         fi
 
     - name: Incremental update (if exists)
       if: steps.should_update.outputs.update == 'true' && steps.check_existing.outputs.exists == 'true'
       run: |
-        echo "⚡ Performing incremental update for $FRAMEWORK..."
+        echo " Performing incremental update for $FRAMEWORK..."
 
         SKILL_DIR="output/$FRAMEWORK"
 
@@ -112,12 +112,12 @@ jobs:
     - name: Full scrape (if new or manual)
       if: steps.should_update.outputs.update == 'true' && steps.check_existing.outputs.exists == 'false'
       run: |
-        echo "📥 Performing full scrape for $FRAMEWORK..."
+        echo " Performing full scrape for $FRAMEWORK..."
 
         CONFIG_FILE="configs/${FRAMEWORK}.json"
 
         if [ ! -f "$CONFIG_FILE" ]; then
-          echo "⚠️  Config not found: $CONFIG_FILE"
+          echo "WARNING:  Config not found: $CONFIG_FILE"
           exit 0
         fi
 
@@ -130,11 +130,11 @@ jobs:
         SKILL_DIR="output/$FRAMEWORK"
 
         if [ ! -d "$SKILL_DIR" ]; then
-          echo "⚠️  Skill directory not found"
+          echo "WARNING:  Skill directory not found"
           exit 0
         fi
 
-        echo "📊 Generating quality metrics..."
+        echo " Generating quality metrics..."
 
         python3 -c "
         import sys, os
@@ -161,7 +161,7 @@ jobs:
         SKILL_DIR="output/$FRAMEWORK"
 
         if [ -d "$SKILL_DIR" ]; then
-          echo "📦 Packaging $FRAMEWORK for Claude AI..."
+          echo " Packaging $FRAMEWORK for Claude AI..."
           skill-seekers package "$SKILL_DIR" --target claude
         fi
 
@@ -182,7 +182,7 @@ jobs:
     steps:
     - name: Create summary
       run: |
-        echo "## 🔄 Scheduled Skills Update" >> $GITHUB_STEP_SUMMARY
+        echo "##  Scheduled Skills Update" >> $GITHUB_STEP_SUMMARY
         echo "" >> $GITHUB_STEP_SUMMARY
         echo "**Date:** $(date -u '+%Y-%m-%d %H:%M UTC')" >> $GITHUB_STEP_SUMMARY
         echo "" >> $GITHUB_STEP_SUMMARY

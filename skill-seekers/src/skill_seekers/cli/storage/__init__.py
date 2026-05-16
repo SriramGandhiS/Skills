@@ -34,7 +34,7 @@ def get_storage_adaptor(provider: str, **kwargs) -> BaseStorageAdaptor:
 
     Args:
         provider: Storage provider name ('s3', 'gcs', 'azure')
-        **kwargs: Provider-specific configuration
+**kwargs: Provider-specific configuration
 
     Returns:
         Storage adaptor instance

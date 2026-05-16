@@ -203,7 +203,7 @@
 
 #### LinkedIn Post Framework
 ```
-🎯 Hook/Pattern Interrupt
+ Hook/Pattern Interrupt
 
 Context paragraph explaining the situation or challenge.
 
@@ -251,7 +251,7 @@ Question to encourage engagement?
 
 12/ Recap in 3 key points:
     - Point 1
-    - Point 2  
+    - Point 2
     - Point 3
 
 13/ CTA: If you found this helpful, [action]
@@ -270,18 +270,17 @@ Here's what I learned:
 [Key insight or lesson]
 
 3 things that changed everything:
-1️⃣ [First point]
-2️⃣ [Second point]
-3️⃣ [Third point]
+1⃣ [First point]
+2⃣ [Second point]
+3⃣ [Third point]
 
 [Call-out or question to audience]
 
 Drop a [emoji] if you've experienced this too!
 
-What's your biggest challenge with [topic]? Let me know below 👇
+What's your biggest challenge with [topic]? Let me know below
 
--
-#hashtag1 #hashtag2 #hashtag3 #hashtag4 #hashtag5
+- #hashtag1 #hashtag2 #hashtag3 #hashtag4 #hashtag5
 [10-30 relevant hashtags total]
 ```
 

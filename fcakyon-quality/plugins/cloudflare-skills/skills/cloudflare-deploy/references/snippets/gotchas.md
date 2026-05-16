@@ -15,9 +15,9 @@ Code takes >5ms CPU. Simplify logic or move to Workers.
 ### 1201: "Multiple origin fetches"
 Call `fetch(request)` exactly once:
 ```javascript
-// ❌ Multiple origin fetches
+// FAIL: Multiple origin fetches
 const r1 = await fetch(request); const r2 = await fetch(request);
-// ✅ Single fetch, reuse response
+// PASS: Single fetch, reuse response
 const response = await fetch(request);
 ```
 
@@ -61,9 +61,9 @@ curl -H "X-Test: true" https://example.com -v
 
 ## Available APIs
 
-**✅ Available:** `fetch()`, `Request`, `Response`, `Headers`, `URL`, `crypto.subtle`, `crypto.randomUUID()`, `atob()`/`btoa()`, `JSON`
+**PASS: Available:** `fetch()`, `Request`, `Response`, `Headers`, `URL`, `crypto.subtle`, `crypto.randomUUID()`, `atob()`/`btoa()`, `JSON`
 
-**❌ NOT Available:** `caches`, `KV`, `D1`, `R2`, `Durable Objects`, `WebSocket`, `HTMLRewriter`, `import`, Node.js APIs
+**FAIL: NOT Available:** `caches`, `KV`, `D1`, `R2`, `Durable Objects`, `WebSocket`, `HTMLRewriter`, `import`, Node.js APIs
 
 ## Limits
 

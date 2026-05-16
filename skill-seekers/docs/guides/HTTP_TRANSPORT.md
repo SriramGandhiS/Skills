@@ -139,7 +139,7 @@ python -m skill_seekers.mcp.server_fastmcp --http --port 3000
 
 ### Allow External Connections
 ```bash
-# Listen on all interfaces (⚠️ use with caution!)
+# Listen on all interfaces (WARNING: use with caution!)
 python -m skill_seekers.mcp.server_fastmcp --http --host 0.0.0.0 --port 8000
 ```
 
@@ -156,7 +156,7 @@ python -m skill_seekers.mcp.server_fastmcp --http --log-level DEBUG
 - Safe for local development and testing
 
 ### Remote Access
-- **⚠️ Warning**: Binding to `0.0.0.0` allows network access
+- **WARNING: Warning**: Binding to `0.0.0.0` allows network access
 - Implement authentication/authorization for production
 - Consider using reverse proxy (nginx, Apache) with SSL/TLS
 - Use firewall rules to restrict access
@@ -302,8 +302,8 @@ For issues or questions:
 ## Changelog
 
 ### Version 2.1.1+
-- ✅ Added HTTP transport support
-- ✅ Added health check endpoint
-- ✅ Added CORS middleware
-- ✅ Added command-line argument parsing
-- ✅ Maintained backward compatibility with stdio
+- PASS: Added HTTP transport support
+- PASS: Added health check endpoint
+- PASS: Added CORS middleware
+- PASS: Added command-line argument parsing
+- PASS: Maintained backward compatibility with stdio

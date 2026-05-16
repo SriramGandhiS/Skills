@@ -52,7 +52,7 @@ milestone sequence or remove stale entries.
 
 7. **Report summary:**
    ```
-   ## 📋 Backlog Review Complete
+   ##  Backlog Review Complete
 
    Promoted: {list of promoted items with new phase numbers}
    Kept: {list of items remaining in backlog}

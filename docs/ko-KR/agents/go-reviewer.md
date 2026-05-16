@@ -9,7 +9,7 @@ model: sonnet
 
 호출 시:
 1. `git diff -- '*.go'`로 최근 Go 파일 변경사항 확인
-2. `go vet ./...`과 `staticcheck ./...` 실행 (가능한 경우)
+2. `go vet ./...`과`staticcheck ./...` 실행 (가능한 경우)
 3. 수정된 `.go` 파일에 집중
 4. 즉시 리뷰 시작
 
@@ -26,9 +26,9 @@ model: sonnet
 
 ### CRITICAL -- 에러 처리
 - **무시된 에러**: `_`로 에러 폐기
-- **에러 래핑 누락**: `fmt.Errorf("context: %w", err)` 없이 `return err`
+- **에러 래핑 누락**: `fmt.Errorf("context: %w", err)`없이`return err`
 - **복구 가능한 에러에 Panic**: 에러 반환 사용
-- **errors.Is/As 누락**: `err == target` 대신 `errors.Is(err, target)` 사용
+- **errors.Is/As 누락**: `err == target`대신`errors.Is(err, target)` 사용
 
 ### HIGH -- 동시성
 - **고루틴 누수**: 취소 메커니즘 없음 (`context.Context` 사용)

@@ -1,18 +1,15 @@
 #!/usr/bin/env bash
 # tests/integration/run_integration_suite.sh
 # v7.0.0 integration suite orchestrator (Team T7).
-#
-# Runs every tests/integration/test_*.sh in a fixed order, tallies
+# # Runs every tests/integration/test_*.sh in a fixed order, tallies
 # PASS/FAIL/SKIP, and prints a final summary line. Exits non-zero only if
 # one or more tests FAIL. Skipped tests (e.g. dashboard port busy) are
 # treated as clean exits.
-#
-# Per-test contract:
-#   exit 0  -> PASS (or SKIP with a "^SKIP" line on stdout)
-#   exit 2  -> SKIP (environment not suitable)
-#   other   -> FAIL
-#
-# Individual tests print grep-friendly "^PASS", "^FAIL", "^SKIP" lines so
+# # Per-test contract:
+# exit 0  -> PASS (or SKIP with a "^SKIP" line on stdout)
+# exit 2  -> SKIP (environment not suitable)
+# other   -> FAIL
+# # Individual tests print grep-friendly "^PASS", "^FAIL", "^SKIP" lines so
 # callers can filter output cheaply.
 
 set -u

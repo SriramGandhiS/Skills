@@ -179,12 +179,9 @@ Clarity Gate **enforces** their presence where epistemically required ("Should u
 ## Critical Limitation
 
 > **Clarity Gate verifies FORM, not TRUTH.**
->
-> This skill checks whether claims are properly marked as uncertain—it cannot verify if claims are actually true. 
->
-> **Risk:** An LLM can hallucinate facts INTO a document, then "pass" Clarity Gate by adding source markers to false claims.
->
-> **Solution:** HITL (Human-In-The-Loop) verification is **MANDATORY** before declaring PASS.
+> > This skill checks whether claims are properly marked as uncertain—it cannot verify if claims are actually true.
+> > **Risk:** An LLM can hallucinate facts INTO a document, then "pass" Clarity Gate by adding source markers to false claims.
+> > **Solution:** HITL (Human-In-The-Loop) verification is **MANDATORY** before declaring PASS.
 
 ---
 
@@ -559,7 +556,7 @@ After running Clarity Gate, report:
 ### Critical (will cause hallucination)
 - [issue + location + fix]
 
-### Warning (could cause equivocation)  
+### Warning (could cause equivocation)
 - [issue + location + fix]
 
 ### Temporal (date/time issues)
@@ -631,7 +628,7 @@ Reply "confirmed" or flag any I misread.
 ## What This Skill Does NOT Do
 
 - Does not classify document types (use Stream Coding for that)
-- Does not restructure documents 
+- Does not restructure documents
 - Does not add deep links or references
 - Does not evaluate writing quality
 - **Does not check factual accuracy autonomously** (requires HITL)

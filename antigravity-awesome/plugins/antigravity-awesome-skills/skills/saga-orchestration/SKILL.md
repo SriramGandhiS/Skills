@@ -188,7 +188,7 @@ class SagaOrchestrator(ABC):
             {
                 "saga_id": saga.saga_id,
                 "step_name": step.name,
-                **saga.data
+**saga.data
             }
         )
 
@@ -207,7 +207,7 @@ class SagaOrchestrator(ABC):
                         "saga_id": saga.saga_id,
                         "step_name": step.name,
                         "original_result": step.result,
-                        **saga.data
+**saga.data
                     }
                 )
 

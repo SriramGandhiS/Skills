@@ -17,7 +17,7 @@ Rode ferramentas de análise com base no tipo do projeto:
 
 Se nenhuma ferramenta estiver disponível, use Grep para encontrar exports com zero imports:
 ```
-# Find exports, then check if they're imported anywhere
+## Find exports, then check if they're imported anywhere
 ```
 
 ## Passo 2: Categorizar Achados
@@ -43,7 +43,7 @@ Para cada item SAFE:
 ## Passo 4: Tratar Itens CAUTION
 
 Antes de deletar itens CAUTION:
-- Procure imports dinâmicos: `import()`, `require()`, `__import__`
+- Procure imports dinâmicos: `import()`,`require()`,`__import__`
 - Procure referências em string: nomes de rota, nomes de componente em configs
 - Verifique se é exportado por API pública de pacote
 - Verifique ausência de consumidores externos (dependents, se publicado)

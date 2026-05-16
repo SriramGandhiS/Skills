@@ -372,7 +372,7 @@ export default function refreshSkillsPlugin() {
                     }
 
                     if (result.upToDate) {
-                        console.log('[Sync] ✅ Already up to date!');
+                        console.log('[Sync] PASS: Already up to date!');
                         res.end(JSON.stringify({ success: true, upToDate: true }));
                         return;
                     }
@@ -385,11 +385,11 @@ export default function refreshSkillsPlugin() {
                         count = Array.isArray(data) ? data.length : 0;
                     }
 
-                    console.log(`[Sync] ✅ Successfully synced ${count} skills!`);
+                    console.log(`[Sync] PASS: Successfully synced ${count} skills!`);
                     res.end(JSON.stringify({ success: true, upToDate: false, count }));
 
                 } catch (err) {
-                    console.error('[Sync] ❌ Failed:', err.message);
+                    console.error('[Sync] FAIL: Failed:', err.message);
                     res.statusCode = 500;
                     res.end(JSON.stringify({ success: false, error: err.message }));
                 }

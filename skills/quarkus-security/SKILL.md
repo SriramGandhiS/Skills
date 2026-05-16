@@ -1,4 +1,4 @@
-﻿---
+---
 name: quarkus-security
 description: Quarkus Security best practices for authentication, authorization, JWT/OIDC, RBAC, input validation, CSRF, secrets management, and dependency security.
 origin: ECC
@@ -53,7 +53,7 @@ Configuration (application.properties):
 mp.jwt.verify.publickey.location=publicKey.pem
 mp.jwt.verify.issuer=https://auth.example.com
 
-# OIDC
+## OIDC
 quarkus.oidc.auth-server-url=https://auth.example.com/realms/myrealm
 quarkus.oidc.client-id=backend-service
 quarkus.oidc.credentials.secret=${OIDC_SECRET}
@@ -294,7 +294,7 @@ public class UserService {
 ## CORS Configuration
 
 ```properties
-# application.properties
+## application.properties
 quarkus.http.cors=true
 quarkus.http.cors.origins=https://app.example.com,https://admin.example.com
 quarkus.http.cors.methods=GET,POST,PUT,DELETE
@@ -307,14 +307,14 @@ quarkus.http.cors.access-control-allow-credentials=true
 ## Secrets Management
 
 ```properties
-# application.properties - NO SECRETS HERE
+## application.properties - NO SECRETS HERE
 
-# Use environment variables
+## Use environment variables
 quarkus.datasource.username=${DB_USER}
 quarkus.datasource.password=${DB_PASSWORD}
 quarkus.oidc.credentials.secret=${OIDC_CLIENT_SECRET}
 
-# Or use Vault
+## Or use Vault
 quarkus.vault.url=https://vault.example.com
 quarkus.vault.authentication.kubernetes.role=my-role
 ```
@@ -439,13 +439,13 @@ public class SensitiveResource {
 ## Dependency Security Scanning
 
 ```bash
-# Maven
+## Maven
 mvn org.owasp:dependency-check-maven:check
 
-# Gradle
+## Gradle
 ./gradlew dependencyCheckAnalyze
 
-# Check Quarkus extensions
+## Check Quarkus extensions
 quarkus extension list --installable
 ```
 

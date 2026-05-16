@@ -10,7 +10,7 @@ keywords: [automation, workflow, orchestration, skill-chaining, multi-agent, pip
 
 # Workflow Composer
 
-**⚡ UNIQUE FEATURE**: First skill that lets you chain multiple Claude Code skills together into automated workflows with conditional logic, parallel execution, and error handling. Create complex automation pipelines with simple YAML configs.
+**UNIQUE FEATURE**: First skill that lets you chain multiple Claude Code skills together into automated workflows with conditional logic, parallel execution, and error handling. Create complex automation pipelines with simple YAML configs.
 
 ## What This Skill Does
 
@@ -179,16 +179,16 @@ When a user wants to run a workflow:
    ```markdown
    # Workflow Execution Report
 
-   **Workflow**: ${workflow.name}
-   **Started**: ${start_time}
-   **Duration**: ${duration}
-   **Status**: ✅ Success / ⚠️ Partial / ❌ Failed
+**Workflow**: ${workflow.name}
+**Started**: ${start_time}
+**Duration**: ${duration}
+**Status**: PASS: Success / WARNING: Partial / FAIL: Failed
 
    ## Steps
-   1. ✅ generate-readme (2.3s)
-   2. ✅ generate-tests (5.1s)
-   3. ⏭️ fix-issues (skipped - no issues found)
-   4. ✅ deploy (12.4s)
+   1. PASS: generate-readme (2.3s)
+   2. PASS: generate-tests (5.1s)
+   3. SKIPPED: fix-issues (skipped - no issues found)
+   4. PASS: deploy (12.4s)
 
    ## Outputs
    - readme_path: /project/README.md
@@ -318,7 +318,7 @@ steps:
     skill: slack-bridge
     inputs:
       channel: deployments
-      message: "✅ Deployed ${inputs.environment}"
+      message: "PASS: Deployed ${inputs.environment}"
 ```
 
 ## Built-in Workflow Templates
@@ -479,4 +479,4 @@ Apache License 2.0 - See [LICENSE](../../../LICENSE)
 
 ---
 
-**🌟 WORLD'S FIRST skill composition framework for Claude Code!**
+**WORLD'S FIRST skill composition framework for Claude Code!**

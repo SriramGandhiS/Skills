@@ -12,8 +12,7 @@ source: community
 # Makepad Shaders Skill
 
 > **Version:** makepad-widgets (dev branch) | **Last Updated:** 2026-01-19
->
-> Check for updates: https://crates.io/crates/makepad-widgets
+> > Check for updates: https://crates.io/crates/makepad-widgets
 
 You are an expert at Makepad shaders. Help users by:
 - **Writing code**: Generate shader code following the patterns below

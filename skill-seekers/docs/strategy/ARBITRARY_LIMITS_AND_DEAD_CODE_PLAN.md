@@ -1,17 +1,17 @@
 # Implementation Plan: Arbitrary Limits & Dead Code
 
-**Generated:** 2026-02-24  
-**Scope:** Remove harmful arbitrary limits and implement critical TODO items  
+**Generated:** 2026-02-24
+**Scope:** Remove harmful arbitrary limits and implement critical TODO items
 **Priority:** P0 (Critical) - P3 (Backlog)
 
 ---
 
 ## Part 1: Arbitrary Limits to Remove
 
-### 🔴 P0 - Critical (Fix Immediately)
+### P0 - Critical (Fix Immediately)
 
 #### 1.1 Enhancement Code Block Limit
-**File:** `src/skill_seekers/cli/enhance_skill_local.py:341`  
+**File:** `src/skill_seekers/cli/enhance_skill_local.py:341`
 **Current:**
 ```python
 for _idx, block in code_blocks[:5]:  # Max 5 code blocks
@@ -34,13 +34,13 @@ for idx, block in code_blocks:
 for _idx, block in selected_blocks:
 ```
 
-**Effort:** 2 hours  
-**Impact:** High - Massive improvement in enhancement quality  
+**Effort:** 2 hours
+**Impact:** High - Massive improvement in enhancement quality
 **Breaking Change:** No
 
 ---
 
-### 🟠 P1 - High Priority (Next Sprint)
+### P1 - High Priority (Next Sprint)
 
 #### 1.2 Reference File Code Truncation
 **Files:**
@@ -62,14 +62,14 @@ for _idx, block in selected_blocks:
 # Keep truncation only for SKILL.md summaries (if needed)
 ```
 
-**Effort:** 1 hour  
-**Impact:** High - Reference files become actually usable  
+**Effort:** 1 hour
+**Impact:** High - Reference files become actually usable
 **Breaking Change:** No (output improves)
 
 ---
 
 #### 1.3 Table Row Limit in References
-**File:** `src/skill_seekers/cli/word_scraper.py:595`  
+**File:** `src/skill_seekers/cli/word_scraper.py:595`
 
 **Current:**
 ```python
@@ -80,13 +80,13 @@ for row in rows[:5]:
 
 **Solution:** Remove `[:5]` limit from reference file generation. Keep limit only for SKILL.md summaries.
 
-**Effort:** 30 minutes  
-**Impact:** Medium  
+**Effort:** 30 minutes
+**Impact:** Medium
 **Breaking Change:** No
 
 ---
 
-### 🟡 P2 - Medium Priority (Backlog)
+### P2 - Medium Priority (Backlog)
 
 #### 1.4 Pattern/Example Limits in Analysis
 **Files:**
@@ -98,8 +98,8 @@ for row in rows[:5]:
 
 **Solution:** Make configurable via `--max-patterns` flag with sensible default (50 instead of 5-10).
 
-**Effort:** 3 hours  
-**Impact:** Medium - Better pattern coverage  
+**Effort:** 3 hours
+**Impact:** Medium - Better pattern coverage
 **Breaking Change:** No
 
 ---
@@ -122,8 +122,8 @@ parser.add_argument("--max-issues", type=int, default=50)
 parser.add_argument("--max-releases", type=int, default=10)
 ```
 
-**Effort:** 2 hours  
-**Impact:** Medium - User control  
+**Effort:** 2 hours
+**Impact:** Medium - User control
 **Breaking Change:** No
 
 ---
@@ -143,13 +143,13 @@ else:
     display_items = items[:5]  # Truncated for readability
 ```
 
-**Effort:** 2 hours  
-**Impact:** Low-Medium  
+**Effort:** 2 hours
+**Impact:** Low-Medium
 **Breaking Change:** No
 
 ---
 
-### 🟢 P3 - Low Priority / Keep As Is
+### P3 - Low Priority / Keep As Is
 
 These limits are justified and should remain:
 
@@ -168,7 +168,7 @@ These limits are justified and should remain:
 
 These are **data flow bugs** - the correct language is available upstream but hardcoded to `"python"` downstream.
 
-### 🔴 P0 - Critical
+### P0 - Critical
 
 #### 1.b.1 Test Example Code Snippets
 **File:** `src/skill_seekers/cli/unified_skill_builder.py:1298`
@@ -188,8 +188,8 @@ lang = ex.get("language", "text")
 f.write(f"\n```{lang}\n{ex['code_snippet'][:300]}\n```\n")
 ```
 
-**Effort:** 1 minute  
-**Impact:** Medium - Syntax highlighting now correct  
+**Effort:** 1 minute
+**Impact:** Medium - Syntax highlighting now correct
 **Breaking Change:** No
 
 ---
@@ -229,18 +229,18 @@ HowToGuide(
 
 **Note:** The `primary_workflow` dict already carries the language field (populated by test example extractor upstream at line 169). Zero new imports needed.
 
-**Effort:** 5 minutes  
-**Impact:** Medium - AI receives correct language context  
+**Effort:** 5 minutes
+**Impact:** Medium - AI receives correct language context
 **Breaking Change:** No
 
 ---
 
 ## Part 2: Dead Code / TODO Implementation
 
-### 🔴 P0 - Critical TODOs (Implement Now)
+### P0 - Critical TODOs (Implement Now)
 
 #### 2.1 SMTP Email Notifications
-**File:** `src/skill_seekers/sync/notifier.py:138`  
+**File:** `src/skill_seekers/sync/notifier.py:138`
 
 **Current:**
 ```python
@@ -253,22 +253,22 @@ def _send_email_smtp(self, to_email: str, subject: str, body: str) -> bool:
     """Send email via SMTP."""
     import smtplib
     from email.mime.text import MIMEText
-    
+
     smtp_host = os.environ.get("SKILL_SEEKERS_SMTP_HOST", "localhost")
     smtp_port = int(os.environ.get("SKILL_SEEKERS_SMTP_PORT", "587"))
     smtp_user = os.environ.get("SKILL_SEEKERS_SMTP_USER")
     smtp_pass = os.environ.get("SKILL_SEEKERS_SMTP_PASS")
-    
+
     if not all([smtp_user, smtp_pass]):
         logger.warning("SMTP credentials not configured")
         return False
-    
+
     try:
         msg = MIMEText(body)
         msg["Subject"] = subject
         msg["From"] = smtp_user
         msg["To"] = to_email
-        
+
         with smtplib.SMTP(smtp_host, smtp_port) as server:
             server.starttls()
             server.login(smtp_user, smtp_pass)
@@ -279,13 +279,13 @@ def _send_email_smtp(self, to_email: str, subject: str, body: str) -> bool:
         return False
 ```
 
-**Effort:** 4 hours  
-**Dependencies:** Environment variables for SMTP config  
+**Effort:** 4 hours
+**Dependencies:** Environment variables for SMTP config
 **Breaking Change:** No
 
 ---
 
-### 🟠 P1 - High Priority (Next Sprint)
+### P1 - High Priority (Next Sprint)
 
 #### 2.2 Auto-Update Integration
 **File:** `src/skill_seekers/sync/monitor.py:201`
@@ -301,7 +301,7 @@ def _send_email_smtp(self, to_email: str, subject: str, body: str) -> bool:
 def _rebuild_skill(self, config_path: str) -> bool:
     """Rebuild skill when changes detected."""
     import subprocess
-    
+
     # Use existing create command
     result = subprocess.run(
         ["skill-seekers", "create", config_path, "--force"],
@@ -309,12 +309,12 @@ def _rebuild_skill(self, config_path: str) -> bool:
         text=True,
         timeout=300  # 5 minute timeout
     )
-    
+
     return result.returncode == 0
 ```
 
-**Effort:** 3 hours  
-**Dependencies:** Ensure `skill-seekers` CLI available in PATH  
+**Effort:** 3 hours
+**Dependencies:** Ensure `skill-seekers` CLI available in PATH
 **Breaking Change:** No
 
 ---
@@ -338,13 +338,13 @@ if confidence < 0.3:
     language = "text"  # Fallback
 ```
 
-**Effort:** 1 hour  
-**Dependencies:** Existing LanguageDetector class  
+**Effort:** 1 hour
+**Dependencies:** Existing LanguageDetector class
 **Breaking Change:** No
 
 ---
 
-### 🟡 P2 - Medium Priority (Backlog)
+### P2 - Medium Priority (Backlog)
 
 #### 2.4 Custom Transform System
 **File:** `src/skill_seekers/cli/enhancement_workflow.py:439`
@@ -368,8 +368,8 @@ transforms:
     replacement: "## "
 ```
 
-**Effort:** 8 hours  
-**Impact:** Medium - Power user feature  
+**Effort:** 8 hours
+**Impact:** Medium - Power user feature
 **Breaking Change:** No
 
 ---
@@ -389,13 +389,13 @@ transforms:
 
 **Recommendation:** Start with SQLite + `sqlite-vec` for zero-config setup.
 
-**Effort:** 6 hours  
-**Dependencies:** New dependency `sqlite-vec`  
+**Effort:** 6 hours
+**Dependencies:** New dependency `sqlite-vec`
 **Breaking Change:** No
 
 ---
 
-### 🟢 P3 - Backlog / Low Priority
+### P3 - Backlog / Low Priority
 
 #### 2.6 URL Resolution in Sync Monitor
 **File:** `src/skill_seekers/sync/monitor.py:136`
@@ -407,8 +407,8 @@ transforms:
 
 **Note:** Current implementation uses placeholder URLs. Full implementation requires scraper to expose URL list.
 
-**Effort:** 4 hours  
-**Impact:** Low - Current implementation works for basic use  
+**Effort:** 4 hours
+**Impact:** Low - Current implementation works for basic use
 **Breaking Change:** No
 
 ---

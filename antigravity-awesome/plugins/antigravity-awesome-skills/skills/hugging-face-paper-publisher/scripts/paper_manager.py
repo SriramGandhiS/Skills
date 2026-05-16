@@ -2,10 +2,10 @@
 # /// script
 # requires-python = ">=3.10"
 # dependencies = [
-#     "huggingface_hub",
-#     "pyyaml",
-#     "requests",
-#     "python-dotenv",
+# "huggingface_hub",
+# "pyyaml",
+# "requests",
+# "python-dotenv",
 # ]
 # ///
 """

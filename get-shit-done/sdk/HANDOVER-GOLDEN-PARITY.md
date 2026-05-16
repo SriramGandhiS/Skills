@@ -2,7 +2,7 @@
 
 Use this document at the start of a new session so work continues in context without re-deriving history.
 
-**Related:** `HANDOVER-PARITY-DOCS.md` (#2302 scope); **`sdk/src/query/QUERY-HANDLERS.md`** (golden matrix, CJS↔SDK routing).
+**Related:** `HANDOVER-PARITY-DOCS.md` (#2302 scope); **`sdk/src/query/QUERY-HANDLERS.md`** (golden matrix, CJSSDK routing).
 
 ---
 
@@ -82,20 +82,20 @@ Use this document at the start of a new session so work continues in context wit
 
 These were fixed by **aligning the TypeScript handler with the CJS implementation**, then adding a row to `READ_ONLY_JSON_PARITY_ROWS`.
 
-1. **Find the CJS source of truth**  
-   - `scan-sessions`: `get-shit-done/bin/lib/profile-pipeline.cjs` → `cmdScanSessions`  
-   - `workstream status`: `get-shit-done/bin/lib/workstream.cjs` → `cmdWorkstreamStatus`  
+1. **Find the CJS source of truth**
+   - `scan-sessions`: `get-shit-done/bin/lib/profile-pipeline.cjs` → `cmdScanSessions`
+   - `workstream status`: `get-shit-done/bin/lib/workstream.cjs` → `cmdWorkstreamStatus`
    - `gsd-tools.cjs` `runCommand` switch shows the top-level command and argv.
 
-2. **Implement or adjust the SDK module**  
+2. **Implement or adjust the SDK module**
    - Example: `sdk/src/query/profile-scan-sessions.ts` mirrors the project-array build from `cmdScanSessions`; `scanSessions` in `profile.ts` parses `--path` / `--verbose`, throws when no sessions root (same error text as CJS), returns `{ data: projects }` where `projects` matches CJS JSON array.
 
 3. **Add a parity row** in `read-only-golden-rows.ts` with `canonical`, `sdkArgs`, `cjs`, `cjsArgs` (must match what `execFile(node, [gsdToolsPath, command, ...args])` expects).
 
-4. **Run**  
+4. **Run**
    `cd sdk && npm run build && npx vitest run src/golden/read-only-parity.integration.test.ts src/golden/golden-policy.test.ts --project integration --project unit`
 
-5. **Policy**  
+5. **Policy**
    `readOnlyGoldenCanonicals()` picks up new canonicals automatically; no manual duplicate if the canonical is already in the JSON row list.
 
 **When not to copy line-for-line:** subprocess-only concerns (e.g. `agents_installed` / `missing_agents` differing from in-process `~` resolution). Then **normalize in the test** (see `golden.integration.test.ts` `docs-init`: sort `existing_docs`, omit install fields)—**document in QUERY-HANDLERS.md**, do not delete the assertion.

@@ -10,7 +10,7 @@ date_added: "2026-02-27"
 
 > Measure, analyze, optimize - in that order.
 
-## 🔧 Runtime Scripts
+## Runtime Scripts
 
 **Execute these for automated profiling:**
 
@@ -133,7 +133,7 @@ date_added: "2026-02-27"
 
 ## 7. Anti-Patterns
 
-| ❌ Don't | ✅ Do |
+| FAIL: Don't | PASS: Do |
 |----------|-------|
 | Guess at problems | Profile first |
 | Micro-optimize | Fix biggest issue |

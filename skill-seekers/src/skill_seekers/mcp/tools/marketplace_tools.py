@@ -39,9 +39,9 @@ async def add_marketplace_tool(args: dict) -> list[TextContent]:
 
     try:
         if not name:
-            return [TextContent(type="text", text="❌ Error: 'name' parameter is required")]
+            return [TextContent(type="text", text="FAIL: Error: 'name' parameter is required")]
         if not git_url:
-            return [TextContent(type="text", text="❌ Error: 'git_url' parameter is required")]
+            return [TextContent(type="text", text="FAIL: Error: 'git_url' parameter is required")]
 
         author = {"name": author_name, "email": author_email}
 
@@ -57,15 +57,15 @@ async def add_marketplace_tool(args: dict) -> list[TextContent]:
 
         is_update = marketplace["added_at"] != marketplace["updated_at"]
 
-        result = f"""✅ Marketplace {"updated" if is_update else "registered"} successfully!
+        result = f"""PASS: Marketplace {"updated" if is_update else "registered"} successfully!
 
-📛 Name: {marketplace["name"]}
-📁 Repository: {marketplace["git_url"]}
-🌿 Branch: {marketplace["branch"]}
-🔑 Token env: {marketplace["token_env"]}
-👤 Author: {marketplace["author"]["name"]} <{marketplace["author"]["email"]}>
+ Name: {marketplace["name"]}
+ Repository: {marketplace["git_url"]}
+ Branch: {marketplace["branch"]}
+ Token env: {marketplace["token_env"]}
+ Author: {marketplace["author"]["name"]} <{marketplace["author"]["email"]}>
 ✓ Enabled: {marketplace["enabled"]}
-🕒 Added: {marketplace["added_at"][:19]}
+ Added: {marketplace["added_at"][:19]}
 
 Usage:
   # Publish a skill to this marketplace
@@ -74,14 +74,14 @@ Usage:
   # List all marketplaces
   list_marketplaces()
 
-💡 Set {marketplace["token_env"]} environment variable for private repos
+ Set {marketplace["token_env"]} environment variable for private repos
 """
         return [TextContent(type="text", text=result)]
 
     except ValueError as e:
-        return [TextContent(type="text", text=f"❌ Validation Error: {str(e)}")]
+        return [TextContent(type="text", text=f"FAIL: Validation Error: {str(e)}")]
     except Exception as e:
-        return [TextContent(type="text", text=f"❌ Error: {str(e)}")]
+        return [TextContent(type="text", text=f"FAIL: Error: {str(e)}")]
 
 
 async def list_marketplaces_tool(args: dict) -> list[TextContent]:
@@ -95,7 +95,7 @@ async def list_marketplaces_tool(args: dict) -> list[TextContent]:
         marketplaces = manager.list_marketplaces(enabled_only=enabled_only)
 
         if not marketplaces:
-            result = """📋 No marketplaces registered
+            result = """ No marketplaces registered
 
 To add a marketplace:
   add_marketplace(
@@ -105,11 +105,11 @@ To add a marketplace:
     author_email="team@example.com"
   )
 
-💡 Once added, use: publish_to_marketplace(skill_dir="...", marketplace="my-plugins")
+ Once added, use: publish_to_marketplace(skill_dir="...", marketplace="my-plugins")
 """
             return [TextContent(type="text", text=result)]
 
-        result = f"📋 Plugin Marketplaces ({len(marketplaces)} total"
+        result = f" Plugin Marketplaces ({len(marketplaces)} total"
         if enabled_only:
             result += ", enabled only"
         result += ")\n\n"
@@ -119,10 +119,10 @@ To add a marketplace:
             author = mp.get("author", {})
             author_str = f"{author.get('name', '')} <{author.get('email', '')}>"
             result += f"{status_icon} **{mp['name']}**\n"
-            result += f"  📁 {mp['git_url']}\n"
-            result += f"  🌿 Branch: {mp['branch']} | 🔑 Token: {mp['token_env']}\n"
-            result += f"  👤 Author: {author_str}\n"
-            result += f"  🕒 Added: {mp['added_at'][:19]}\n"
+            result += f"   {mp['git_url']}\n"
+            result += f"   Branch: {mp['branch']} |  Token: {mp['token_env']}\n"
+            result += f"   Author: {author_str}\n"
+            result += f"   Added: {mp['added_at'][:19]}\n"
             result += "\n"
 
         result += """Usage:
@@ -138,7 +138,7 @@ To add a marketplace:
         return [TextContent(type="text", text=result)]
 
     except Exception as e:
-        return [TextContent(type="text", text=f"❌ Error: {str(e)}")]
+        return [TextContent(type="text", text=f"FAIL: Error: {str(e)}")]
 
 
 async def remove_marketplace_tool(args: dict) -> list[TextContent]:
@@ -149,31 +149,31 @@ async def remove_marketplace_tool(args: dict) -> list[TextContent]:
 
     try:
         if not name:
-            return [TextContent(type="text", text="❌ Error: 'name' parameter is required")]
+            return [TextContent(type="text", text="FAIL: Error: 'name' parameter is required")]
 
         manager = MarketplaceManager()
         removed = manager.remove_marketplace(name)
 
         if removed:
-            result = f"""✅ Marketplace removed successfully!
+            result = f"""PASS: Marketplace removed successfully!
 
-📛 Removed: {name}
+ Removed: {name}
 
-⚠️  Note: Cached repository data is NOT deleted
+WARNING:  Note: Cached repository data is NOT deleted
 To free disk space, manually delete: ~/.skill-seekers/cache/marketplace_{name}/
 """
             return [TextContent(type="text", text=result)]
         else:
             sources = manager.list_marketplaces()
             available = [m["name"] for m in sources]
-            result = f"""❌ Marketplace '{name}' not found
+            result = f"""FAIL: Marketplace '{name}' not found
 
 Available marketplaces: {", ".join(available) if available else "none"}
 """
             return [TextContent(type="text", text=result)]
 
     except Exception as e:
-        return [TextContent(type="text", text=f"❌ Error: {str(e)}")]
+        return [TextContent(type="text", text=f"FAIL: Error: {str(e)}")]
 
 
 async def publish_to_marketplace_tool(args: dict) -> list[TextContent]:
@@ -190,9 +190,9 @@ async def publish_to_marketplace_tool(args: dict) -> list[TextContent]:
 
     try:
         if not skill_dir:
-            return [TextContent(type="text", text="❌ Error: 'skill_dir' parameter is required")]
+            return [TextContent(type="text", text="FAIL: Error: 'skill_dir' parameter is required")]
         if not marketplace:
-            return [TextContent(type="text", text="❌ Error: 'marketplace' parameter is required")]
+            return [TextContent(type="text", text="FAIL: Error: 'marketplace' parameter is required")]
 
         publisher = MarketplacePublisher()
         result = publisher.publish(
@@ -206,21 +206,21 @@ async def publish_to_marketplace_tool(args: dict) -> list[TextContent]:
         )
 
         if result["success"]:
-            output = f"""✅ Skill published to marketplace successfully!
+            output = f"""PASS: Skill published to marketplace successfully!
 
-📦 Plugin: {result["plugin_path"]}
-🏪 Marketplace: {marketplace}
-🏷️  Category: {category}
-🌿 Branch: {result["branch"]}
-📝 Commit: {result["commit_sha"]}
+ Plugin: {result["plugin_path"]}
+ Marketplace: {marketplace}
+  Category: {category}
+ Branch: {result["branch"]}
+ Commit: {result["commit_sha"]}
 
 {result["message"]}
 """
             return [TextContent(type="text", text=output)]
         else:
-            return [TextContent(type="text", text=f"❌ Publish failed: {result['message']}")]
+            return [TextContent(type="text", text=f"FAIL: Publish failed: {result['message']}")]
 
     except (FileNotFoundError, KeyError, ValueError, RuntimeError) as e:
-        return [TextContent(type="text", text=f"❌ {str(e)}")]
+        return [TextContent(type="text", text=f"FAIL: {str(e)}")]
     except Exception as e:
-        return [TextContent(type="text", text=f"❌ Error: {str(e)}")]
+        return [TextContent(type="text", text=f"FAIL: Error: {str(e)}")]

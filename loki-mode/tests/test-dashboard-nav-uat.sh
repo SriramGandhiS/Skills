@@ -1,14 +1,11 @@
 #!/usr/bin/env bash
 # Test: Dashboard Navigation UAT (v7.5.15)
-#
-# Closes UAT gaps from v7.5.12 dashboard testing:
-#   1. loki web vs loki dashboard confusion (clarify in --help)
-#   3. Escalations feature has no sidebar entry (add nav item + stub)
-#
-# Gap #2 (parent-shell exit dependency) is NOT covered here -- it requires
+# # Closes UAT gaps from v7.5.12 dashboard testing:
+# 1. loki web vs loki dashboard confusion (clarify in --help)
+# 3. Escalations feature has no sidebar entry (add nav item + stub)
+# # Gap #2 (parent-shell exit dependency) is NOT covered here -- it requires
 # deeper investigation than the v7.5.15 scope.
-#
-# Run: bash tests/test-dashboard-nav-uat.sh
+# # Run: bash tests/test-dashboard-nav-uat.sh
 
 set -uo pipefail
 

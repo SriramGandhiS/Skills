@@ -42,7 +42,7 @@ public class Order {
 
 * `PascalCase` 用于类、接口、记录、枚举
 * `camelCase` 用于方法、字段、参数、局部变量
-* `SCREAMING_SNAKE_CASE` 用于 `static final` 常量
+* `SCREAMING_SNAKE_CASE`用于`static final` 常量
 * 包名：全小写，使用反向域名（`com.example.app.service`）
 
 ## 现代 Java 特性
@@ -76,7 +76,7 @@ String label = switch (status) {
 ## Optional 的使用
 
 * 从可能没有结果的查找方法中返回 `Optional<T>`
-* 使用 `map()`、`flatMap()`、`orElseThrow()` —— 绝不直接调用 `get()` 而不先检查 `isPresent()`
+* 使用 `map()`、`flatMap()`、`orElseThrow()`—— 绝不直接调用`get()`而不先检查`isPresent()`
 * 绝不将 `Optional` 用作字段类型或方法参数
 
 ```java

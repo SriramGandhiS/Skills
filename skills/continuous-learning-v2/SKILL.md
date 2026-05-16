@@ -1,4 +1,4 @@
-﻿---
+---
 name: continuous-learning-v2
 description: Instinct-based learning system that observes sessions via hooks, creates atomic instincts with confidence scoring, and evolves them into skills/commands/agents. v2.1 adds project-scoped instincts to prevent cross-project contamination.
 origin: ECC
@@ -60,7 +60,7 @@ project_id: "a1b2c3d4e5f6"
 project_name: "my-react-app"
 ---
 
-# Prefer Functional Style
+## Prefer Functional Style
 
 ## Action
 Use functional patterns over classes when appropriate.
@@ -75,7 +75,7 @@ Use functional patterns over classes when appropriate.
 - **Confidence-weighted** -- 0.3 = tentative, 0.9 = near certain
 - **Domain-tagged** -- code-style, testing, git, debugging, workflow, etc.
 - **Evidence-backed** -- tracks what observations created it
-- **Scope-aware** -- `project` (default) or `global`
+- **Scope-aware** -- `project`(default) or`global`
 
 ## How It Works
 
@@ -132,7 +132,7 @@ The system automatically detects your current project:
 3. **`git rev-parse --show-toplevel`** -- fallback using repo path (machine-specific)
 4. **Global fallback** -- if no project is detected, instincts go to global scope
 
-Each project gets a 12-character hash ID (e.g., `a1b2c3d4e5f6`). A registry file at `${XDG_DATA_HOME:-~/.local/share}/ecc-homunculus/projects.json` maps IDs to human-readable names.
+Each project gets a 12-character hash ID (e.g., `a1b2c3d4e5f6`). A registry file at`${XDG_DATA_HOME:-~/.local/share}/ecc-homunculus/projects.json` maps IDs to human-readable names.
 
 ### Data Directory
 
@@ -154,11 +154,11 @@ bash skills/continuous-learning-v2/scripts/migrate-homunculus.sh
 
 **If installed as a plugin** (recommended):
 
-No extra `settings.json` hook block is required. Claude Code v2.1+ auto-loads the plugin `hooks/hooks.json`, and `observe.sh` is already registered there.
+No extra `settings.json`hook block is required. Claude Code v2.1+ auto-loads the plugin`hooks/hooks.json`, and`observe.sh` is already registered there.
 
-If you previously copied `observe.sh` into `~/.claude/settings.json`, remove that duplicate `PreToolUse` / `PostToolUse` block. Duplicating the plugin hook causes double execution and `${CLAUDE_PLUGIN_ROOT}` resolution errors because that variable is only available inside plugin-managed `hooks/hooks.json` entries.
+If you previously copied `observe.sh`into`~/.claude/settings.json`, remove that duplicate`PreToolUse`/`PostToolUse`block. Duplicating the plugin hook causes double execution and`${CLAUDE_PLUGIN_ROOT}`resolution errors because that variable is only available inside plugin-managed`hooks/hooks.json` entries.
 
-**If installed manually** to `~/.claude/skills`, add this to your `~/.claude/settings.json`:
+**If installed manually** to `~/.claude/skills`, add this to your`~/.claude/settings.json`:
 
 ```json
 {
@@ -186,10 +186,10 @@ If you previously copied `observe.sh` into `~/.claude/settings.json`, remove tha
 The system creates directories automatically on first use, but you can also create them manually:
 
 ```bash
-# Global directories
+## Global directories
 mkdir -p "${XDG_DATA_HOME:-$HOME/.local/share}/ecc-homunculus"/{instincts/{personal,inherited},evolved/{agents,skills,commands},projects}
 
-# Project directories are auto-created when the hook first runs in a git repo
+## Project directories are auto-created when the hook first runs in a git repo
 ```
 
 ### 3. Use the Instinct Commands
@@ -231,11 +231,11 @@ Edit `config.json` to control the background observer:
 
 | Key | Default | Description |
 |-----|---------|-------------|
-| `observer.enabled` | `false` | Enable the background observer agent |
-| `observer.run_interval_minutes` | `5` | How often the observer analyzes observations |
-| `observer.min_observations_to_analyze` | `20` | Minimum observations before analysis runs |
+| `observer.enabled`|`false` | Enable the background observer agent |
+| `observer.run_interval_minutes`|`5` | How often the observer analyzes observations |
+| `observer.min_observations_to_analyze`|`20` | Minimum observations before analysis runs |
 
-Other behavior (observation capture, instinct thresholds, project scoping, promotion criteria) is configured via code defaults in `instinct-cli.py` and `observe.sh`.
+Other behavior (observation capture, instinct thresholds, project scoping, promotion criteria) is configured via code defaults in `instinct-cli.py`and`observe.sh`.
 
 ## File Structure
 
@@ -291,13 +291,13 @@ When the same instinct appears in multiple projects with high confidence, it's a
 **How to promote:**
 
 ```bash
-# Promote a specific instinct
+## Promote a specific instinct
 python3 instinct-cli.py promote prefer-explicit-errors
 
-# Auto-promote all qualifying instincts
+## Auto-promote all qualifying instincts
 python3 instinct-cli.py promote
 
-# Preview without changes
+## Preview without changes
 python3 instinct-cli.py promote --dry-run
 ```
 
@@ -336,7 +336,7 @@ Hooks fire **100% of the time**, deterministically. This means:
 ## Backward Compatibility
 
 v2.1 is fully compatible with v2.0 and v1:
-- Existing global instincts can be migrated from `~/.claude/homunculus/instincts/` with `scripts/migrate-homunculus.sh`
+- Existing global instincts can be migrated from `~/.claude/homunculus/instincts/`with`scripts/migrate-homunculus.sh`
 - Existing `~/.claude/skills/learned/` skills from v1 still work
 - Stop hook still runs (but now also feeds into v2)
 - Gradual migration: run both in parallel

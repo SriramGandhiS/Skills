@@ -391,26 +391,26 @@ ls -la skills/python/foundry/agents
 
 ### 1.1 Client Imports
 
-#### ✅ CORRECT: Main Client
+#### PASS: CORRECT: Main Client
 \`\`\`python
 from azure.ai.mymodule import MyClient
 from azure.identity import DefaultAzureCredential
 \`\`\`
 
-#### ❌ INCORRECT: Wrong Module Path
+#### FAIL: INCORRECT: Wrong Module Path
 \`\`\`python
 from azure.ai.mymodule.models import MyClient  # Wrong - Client is not in models
 \`\`\`
 
 ## 2. Authentication Patterns
 
-#### ✅ CORRECT: DefaultAzureCredential
+#### PASS: CORRECT: DefaultAzureCredential
 \`\`\`python
 credential = DefaultAzureCredential()
 client = MyClient(endpoint, credential)
 \`\`\`
 
-#### ❌ INCORRECT: Hardcoded Credentials
+#### FAIL: INCORRECT: Hardcoded Credentials
 \`\`\`python
 client = MyClient(endpoint, api_key="hardcoded")  # Security risk
 \`\`\`
@@ -451,7 +451,7 @@ scenarios:
       import os
       from azure.identity import DefaultAzureCredential
       from azure.ai.mymodule import MyClient
-      
+
       credential = DefaultAzureCredential()
       client = MyClient(
           endpoint=os.environ["AZURE_ENDPOINT"],

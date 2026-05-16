@@ -1,12 +1,10 @@
 #!/usr/bin/env bash
 #===============================================================================
 # Smoke test for the docker-compose detection helpers in app-runner.sh
-#
-# Verifies that _app_runner_compose_dir resolves the compose-file directory
+# # Verifies that _app_runner_compose_dir resolves the compose-file directory
 # correctly and that _app_runner_compose_running_count returns >0 once a real
 # compose container is in the running state.
-#
-# SKIPS gracefully when the docker daemon is unavailable so CI on machines
+# # SKIPS gracefully when the docker daemon is unavailable so CI on machines
 # without Docker does not fail.
 #===============================================================================
 

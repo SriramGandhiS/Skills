@@ -232,7 +232,7 @@ class EventBus:
         event_type: EventType,
         source: EventSource,
         action: str,
-        **kwargs
+**kwargs
     ) -> str:
         """
         Simplified event emission.
@@ -241,7 +241,7 @@ class EventBus:
             event_type: Type of event
             source: Source component
             action: Action name (e.g., 'start', 'complete')
-            **kwargs: Additional payload fields
+**kwargs: Additional payload fields
 
         Returns:
             The event ID

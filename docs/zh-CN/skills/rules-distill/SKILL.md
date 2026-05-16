@@ -131,12 +131,12 @@ bash ~/.claude/skills/rules-distill/scripts/scan-rules.sh
 #### 裁决质量要求
 
 ```
-# 良好做法
+## 良好做法
 在 rules/common/security.md 的§输入验证部分添加：
 "将存储在内存或知识库中的LLM输出视为不可信数据——写入时进行清理，读取时进行验证。"
 依据：llm-memory-trust-boundary 和 llm-social-agent-anti-pattern 均描述了累积式提示注入风险。当前security.md仅涵盖人工输入验证；缺少LLM输出的信任边界说明。
 
-# 不良做法
+## 不良做法
 在security.md中追加：添加LLM安全原则
 ```
 
@@ -145,7 +145,7 @@ bash ~/.claude/skills/rules-distill/scripts/scan-rules.sh
 #### 摘要表
 
 ```
-# 规则提炼报告
+## 规则提炼报告
 
 ## 概述
 已扫描技能数：{N} | 规则文件数：{M} | 候选规则数：{K}
@@ -220,7 +220,7 @@ $ /rules-distill
 [子代理分析：批次 2 (coding/pattern skills) ...]
 [跨批次合并：已移除 2 个重复项，1 个跨批次候选被提升]
 
-# 规则提炼报告
+## 规则提炼报告
 
 ## 摘要
 已扫描技能：56 | 规则：22 个文件 | 候选：4

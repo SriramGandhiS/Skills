@@ -24,7 +24,7 @@ The `skill-orchestrator` is a meta-skill designed to enhance the AI agent's abil
 ## Core Concepts
 
 ### Task Evaluation Guardrails
-Not every task requires a specialized skill. For straightforward issues (e.g., small CSS fixes, simple script writing, renaming a variable), **DO NOT USE** specialized skills. Over-engineering simple tasks wastes tokens and time. 
+Not every task requires a specialized skill. For straightforward issues (e.g., small CSS fixes, simple script writing, renaming a variable), **DO NOT USE** specialized skills. Over-engineering simple tasks wastes tokens and time.
 
 Additionally, the orchestrator is strictly forbidden from creating new skills. Its sole purpose is to combine and use existing skills provided by the community or present in the current environment.
 
@@ -90,9 +90,9 @@ To build institutional knowledge, the orchestrator relies on the `agent-memory-m
 ### Example 2: Recording a New Skill Combination
 ```javascript
 // Using the agent-memory-mcp tool after successfully building a complex feature
-memory_write({ 
-  key: "combination-ecommerce-checkout", 
-  type: "skill_combination", 
+memory_write({
+  key: "combination-ecommerce-checkout",
+  type: "skill_combination",
   content: "For e-commerce checkouts, using @stripe-integration combined with @react-state-management and @postgresql effectively handles the full flow from UI state to payment processing to order recording.",
   tags: ["ecommerce", "checkout", "stripe", "react"]
 })
@@ -101,9 +101,9 @@ memory_write({
 ### Example 3: Retrieving a Combination
 ```javascript
 // At the start of a new e-commerce task
-memory_search({ 
-  query: "ecommerce checkout", 
-  type: "skill_combination" 
+memory_search({
+  query: "ecommerce checkout",
+  type: "skill_combination"
 })
 // Returns the key "combination-ecommerce-checkout", which you then read:
 memory_read({ key: "combination-ecommerce-checkout" })
@@ -111,12 +111,12 @@ memory_read({ key: "combination-ecommerce-checkout" })
 
 ## Best Practices
 
-- ✅ **Do:** Always evaluate task complexity *before* looking for skills.
-- ✅ **Do:** Keep the number of orchestrated skills as small as possible.
-- ✅ **Do:** Use highly descriptive keys when running `memory_write` so they are easy to search later.
-- ❌ **Don't:** Use this skill for simple bug fixes or UI tweaks.
-- ❌ **Don't:** Combine skills that have overlapping and conflicting instructions without a clear plan to resolve the conflict.
-- ❌ **Don't:** Attempt to construct, generate, or create new skills. Only combine what is available.
+- PASS: **Do:** Always evaluate task complexity *before* looking for skills.
+- PASS: **Do:** Keep the number of orchestrated skills as small as possible.
+- PASS: **Do:** Use highly descriptive keys when running `memory_write` so they are easy to search later.
+- FAIL: **Don't:** Use this skill for simple bug fixes or UI tweaks.
+- FAIL: **Don't:** Combine skills that have overlapping and conflicting instructions without a clear plan to resolve the conflict.
+- FAIL: **Don't:** Attempt to construct, generate, or create new skills. Only combine what is available.
 
 ## Related Skills
 

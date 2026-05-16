@@ -22,5 +22,5 @@ subprocess.run([
 ], check=True)
 
 output = Path("output/flask-faiss.json")
-print(f"\n✅ Ready: {output} ({output.stat().st_size/1024:.1f} KB)")
+print(f"\nPASS: Ready: {output} ({output.stat().st_size/1024:.1f} KB)")
 print("Next: python 2_build_faiss_index.py (requires OPENAI_API_KEY)")

@@ -20,7 +20,7 @@ stages:
     enabled: true
     prompt: >
       Analyze the data validation framework.
-      
+
       Identify:
       1. Validation libraries (Zod, Yup, Joi, Pydantic, Cerberus)
       2. Schema definition patterns
@@ -28,7 +28,7 @@ stages:
       4. Compile-time type checking (TypeScript, mypy)
       5. Validation timing (input, processing, output)
       6. Cross-field validation support
-      
+
       Output JSON with:
       - "libraries": validation tools used
       - "schema_patterns": schema definition style
@@ -44,7 +44,7 @@ stages:
     enabled: true
     prompt: >
       Document data quality validation patterns.
-      
+
       Cover:
       1. Null/undefined handling
       2. Type coercion and strictness
@@ -53,7 +53,7 @@ stages:
       5. Enum and constrained values
       6. String length and content validation
       7. Date/time validation
-      
+
       Output JSON with:
       - "null_handling": nullable field rules
       - "type_strictness": coercion policies
@@ -70,7 +70,7 @@ stages:
     enabled: true
     prompt: >
       Document schema evolution and versioning strategies.
-      
+
       Include:
       1. Backward compatibility rules
       2. Forward compatibility considerations
@@ -78,7 +78,7 @@ stages:
       4. Migration strategies
       5. Schema versioning (v1, v2, etc.)
       6. Deprecation policies
-      
+
       Output JSON with:
       - "backward_compat": backward rules
       - "forward_compat": forward rules
@@ -94,7 +94,7 @@ stages:
     enabled: true
     prompt: >
       Document validation integration points.
-      
+
       Cover:
       1. API request/response validation
       2. Database model validation
@@ -102,7 +102,7 @@ stages:
       4. Configuration validation
       5. External API response validation
       6. File upload validation
-      
+
       Output JSON with:
       - "api_validation": request/response
       - "db_validation": model validation
@@ -118,7 +118,7 @@ stages:
     enabled: true
     prompt: >
       Document validation error handling and reporting.
-      
+
       Include:
       1. Error message formatting
       2. Localization of error messages
@@ -126,7 +126,7 @@ stages:
       4. Error path tracking (nested fields)
       5. Custom error codes
       6. Error logging and monitoring
-      
+
       Output JSON with:
       - "message_format": error text
       - "localization": i18n support
@@ -142,7 +142,7 @@ stages:
     enabled: true
     prompt: >
       Document validation testing strategies.
-      
+
       Cover:
       1. Unit testing validators
       2. Property-based testing
@@ -150,7 +150,7 @@ stages:
       4. Schema compliance testing
       5. Mutation testing
       6. Performance testing validation
-      
+
       Output JSON with:
       - "unit_tests": validator testing
       - "property_tests": generative testing

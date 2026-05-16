@@ -1,12 +1,12 @@
 # /// script
 # dependencies = [
-#     "transformers>=5.2.0",
-#     "accelerate>=1.1.0",
-#     "datasets>=4.0",
-#     "torchvision",
-#     "monai",
-#     "trackio",
-#     "huggingface_hub",
+# "transformers>=5.2.0",
+# "accelerate>=1.1.0",
+# "datasets>=4.0",
+# "torchvision",
+# "monai",
+# "trackio",
+# "huggingface_hub",
 # ]
 # ///
 

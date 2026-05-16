@@ -554,8 +554,7 @@ await page.screenshot({ path: 'desktop.png' });
     rounded-lg
   "
   aria-label="Descriptive label"
->
-  Action
+> Action
 </button>
 ```
 
@@ -574,14 +573,13 @@ await page.screenshot({ path: 'desktop.png' });
     focus:bg-blue-600 focus:text-white
     focus:rounded-lg
   "
->
-  Skip to main content
+> Skip to main content
 </a>
 ```
 
 ## Best Practices Summary
 
-✅ **Do:**
+PASS: **Do:**
 - Start with mobile design first
 - Use relative units (rem, em, %) for flexibility
 - Test on real devices, not just emulators
@@ -592,7 +590,7 @@ await page.screenshot({ path: 'desktop.png' });
 - Use CSS Grid and Flexbox for flexible layouts
 - Provide adequate spacing between interactive elements
 
-❌ **Don't:**
+FAIL: **Don't:**
 - Design for desktop first and scale down
 - Use fixed pixel widths for layout containers
 - Rely solely on browser DevTools for testing

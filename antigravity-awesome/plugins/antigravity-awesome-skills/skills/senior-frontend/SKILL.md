@@ -393,8 +393,7 @@ Reference: `references/frontend_best_practices.md`
   aria-label="Close dialog"
   onClick={onClose}
   className="focus-visible:ring-2 focus-visible:ring-blue-500"
->
-  <XIcon aria-hidden="true" />
+> <XIcon aria-hidden="true" />
 </button>
 
 // Skip link for keyboard users

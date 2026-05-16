@@ -66,10 +66,10 @@
 ### 第一步：安裝外掛程式
 
 ```bash
-# 新增市集
-/plugin marketplace add https://github.com/affaan-m/everything-claude-code
+## 新增市集
+/plugin marketplace add <https://github.com/affaan-m/everything-claude-code>
 
-# 安裝外掛程式
+## 安裝外掛程式
 /plugin install ecc@ecc
 ```
 
@@ -78,23 +78,23 @@
 > WARNING: **重要提示：** Claude Code 外掛程式無法自動分發 `rules`，需要手動安裝：
 
 ```bash
-# 首先複製儲存庫
-git clone https://github.com/affaan-m/everything-claude-code.git
+## 首先複製儲存庫
+git clone <https://github.com/affaan-m/everything-claude-code.git>
 
-# 複製規則（應用於所有專案）
+## 複製規則（應用於所有專案）
 cp -r everything-claude-code/rules/* ~/.claude/rules/
 ```
 
 ### 第三步：開始使用
 
 ```bash
-# 嘗試一個指令（外掛安裝使用命名空間形式）
+## 嘗試一個指令（外掛安裝使用命名空間形式）
 /ecc:plan "新增使用者認證"
 
-# 手動安裝（選項2）使用簡短形式：
-# /plan "新增使用者認證"
+## 手動安裝（選項2）使用簡短形式：
+## /plan "新增使用者認證"
 
-# 查看可用指令
+## 查看可用指令
 /plugin list ecc@ecc
 ```
 
@@ -120,16 +120,16 @@ cp -r everything-claude-code/rules/* ~/.claude/rules/
 設定您偏好的套件管理器：
 
 ```bash
-# 透過環境變數
+## 透過環境變數
 export CLAUDE_PACKAGE_MANAGER=pnpm
 
-# 透過全域設定
+## 透過全域設定
 node scripts/setup-package-manager.js --global pnpm
 
-# 透過專案設定
+## 透過專案設定
 node scripts/setup-package-manager.js --project bun
 
-# 偵測目前設定
+## 偵測目前設定
 node scripts/setup-package-manager.js --detect
 ```
 
@@ -251,7 +251,7 @@ everything-claude-code/
 - **模式擷取** - 從您的提交歷史學習
 
 ```bash
-# 安裝 GitHub App 後，技能會出現在：
+## 安裝 GitHub App 後，技能會出現在：
 ~/.claude/skills/generated/
 ```
 
@@ -266,10 +266,10 @@ everything-claude-code/
 使用本儲存庫最簡單的方式 - 安裝為 Claude Code 外掛程式：
 
 ```bash
-# 將此儲存庫新增為市集
-/plugin marketplace add https://github.com/affaan-m/everything-claude-code
+## 將此儲存庫新增為市集
+/plugin marketplace add <https://github.com/affaan-m/everything-claude-code>
 
-# 安裝外掛程式
+## 安裝外掛程式
 /plugin install ecc@ecc
 ```
 
@@ -300,31 +300,31 @@ everything-claude-code/
 如果您偏好手動控制安裝內容：
 
 ```bash
-# 複製儲存庫
-git clone https://github.com/affaan-m/everything-claude-code.git
+## 複製儲存庫
+git clone <https://github.com/affaan-m/everything-claude-code.git>
 
-# 將代理程式複製到您的 Claude 設定
+## 將代理程式複製到您的 Claude 設定
 cp everything-claude-code/agents/*.md ~/.claude/agents/
 
-# 複製規則
+## 複製規則
 cp everything-claude-code/rules/*.md ~/.claude/rules/
 
-# 複製指令
+## 複製指令
 cp everything-claude-code/commands/*.md ~/.claude/commands/
 
-# 複製技能
+## 複製技能
 cp -r everything-claude-code/skills/* ~/.claude/skills/
 ```
 
 #### 將鉤子新增到 settings.json
 
-僅在手動安裝時，才將 `hooks/hooks.json` 中的鉤子複製到您的 `~/.claude/settings.json`。
+僅在手動安裝時，才將 `hooks/hooks.json`中的鉤子複製到您的`~/.claude/settings.json`。
 
-如果您是透過 `/plugin install` 安裝 ECC，請不要再把這些鉤子複製到 `settings.json`。Claude Code v2.1+ 會自動載入外掛中的 `hooks/hooks.json`，重複註冊會導致重複執行以及 `${CLAUDE_PLUGIN_ROOT}` 無法解析。
+如果您是透過 `/plugin install`安裝 ECC，請不要再把這些鉤子複製到`settings.json`。Claude Code v2.1+ 會自動載入外掛中的`hooks/hooks.json`，重複註冊會導致重複執行以及`${CLAUDE_PLUGIN_ROOT}` 無法解析。
 
 #### 設定 MCP
 
-將 `mcp-configs/mcp-servers.json` 中所需的 MCP 伺服器複製到您的 `~/.claude.json`。
+將 `mcp-configs/mcp-servers.json`中所需的 MCP 伺服器複製到您的`~/.claude.json`。
 
 **重要：** 將 `YOUR_*_HERE` 佔位符替換為您實際的 API 金鑰。
 
@@ -352,7 +352,7 @@ You are a senior code reviewer...
 技能是由指令或代理程式調用的工作流程定義：
 
 ```markdown
-# TDD Workflow
+## TDD Workflow
 
 1. Define interfaces first
 2. Write failing tests (RED)
@@ -393,10 +393,10 @@ You are a senior code reviewer...
 外掛程式包含完整的測試套件：
 
 ```bash
-# 執行所有測試
+## 執行所有測試
 node tests/run-all.js
 
-# 執行個別測試檔案
+## 執行個別測試檔案
 node tests/lib/utils.test.js
 node tests/lib/package-manager.test.js
 node tests/hooks/hooks.test.js

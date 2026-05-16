@@ -1,14 +1,12 @@
 #!/usr/bin/env bash
 # tests/test-events-jsonl-concurrency.sh
-#
-# v7.5.10 smoke test: verify safe_append_event_jsonl() in events/emit.sh
+# # v7.5.10 smoke test: verify safe_append_event_jsonl() in events/emit.sh
 # serializes concurrent appends to .loki/events.jsonl. Spawns N parallel
 # writers and asserts:
-#   1) The expected number of lines were written.
-#   2) Every line is well-formed JSON (no interleaved/torn writes).
-#   3) Every unique payload appears exactly once.
-#
-# Exit 0 on success, non-zero on failure.
+# 1) The expected number of lines were written.
+# 2) Every line is well-formed JSON (no interleaved/torn writes).
+# 3) Every unique payload appears exactly once.
+# # Exit 0 on success, non-zero on failure.
 
 set -u
 

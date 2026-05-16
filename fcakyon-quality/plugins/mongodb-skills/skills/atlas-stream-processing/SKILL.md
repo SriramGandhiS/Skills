@@ -180,19 +180,19 @@ Know what each connection type can do before creating pipelines:
 
 | Connection Type | As Source ($source) | As Sink ($merge / $emit) | Mid-Pipeline | Notes |
 |-----------------|---------------------|--------------------------|--------------|-------|
-| **Cluster** | ✅ Change streams | ✅ $merge to collections | ✅ $lookup | Change streams monitor insert/update/delete/replace operations |
-| **Kafka** | ✅ Topic consumer | ✅ $emit to topics | ❌ | Source MUST include `topic` field |
-| **Sample Stream** | ✅ Sample data | ❌ Not valid | ❌ | Testing/demo only |
-| **S3** | ❌ Not valid | ✅ $emit to buckets | ❌ | Sink only - use `path`, `format`, `compression`. Supports AWS PrivateLink. |
-| **Https** | ❌ Not valid | ✅ $https as sink | ✅ $https enrichment | Can be used mid-pipeline for enrichment OR as final sink stage |
-| **AWSLambda** | ❌ Not valid | ✅ $externalFunction (async only) | ✅ $externalFunction (sync or async) | **Sink:** `execution: "async"` required. **Mid-pipeline:** `execution: "sync"` or `"async"` |
-| **AWS Kinesis** | ✅ Stream consumer | ✅ $emit to streams | ❌ | Similar to Kafka pattern |
-| **SchemaRegistry** | ❌ Not valid | ❌ Not valid | ✅ Schema resolution | **Metadata only** - used by Kafka connections for Avro schemas |
+| **Cluster** | PASS: Change streams | PASS: $merge to collections | PASS: $lookup | Change streams monitor insert/update/delete/replace operations |
+| **Kafka** | PASS: Topic consumer | PASS: $emit to topics | FAIL: | Source MUST include `topic` field |
+| **Sample Stream** | PASS: Sample data | FAIL: Not valid | FAIL: | Testing/demo only |
+| **S3** | FAIL: Not valid | PASS: $emit to buckets | FAIL: | Sink only - use `path`, `format`, `compression`. Supports AWS PrivateLink. |
+| **Https** | FAIL: Not valid | PASS: $https as sink | PASS: $https enrichment | Can be used mid-pipeline for enrichment OR as final sink stage |
+| **AWSLambda** | FAIL: Not valid | PASS: $externalFunction (async only) | PASS: $externalFunction (sync or async) | **Sink:** `execution: "async"` required. **Mid-pipeline:** `execution: "sync"` or `"async"` |
+| **AWS Kinesis** | PASS: Stream consumer | PASS: $emit to streams | FAIL: | Similar to Kafka pattern |
+| **SchemaRegistry** | FAIL: Not valid | FAIL: Not valid | PASS: Schema resolution | **Metadata only** - used by Kafka connections for Avro schemas |
 
 **Common connection usage mistakes to avoid:**
-- ❌ Using `$externalFunction` as sink with `execution: "sync"` → Must use `execution: "async"` for sink stage
-- ❌ Forgetting change streams exist → Atlas Cluster is a powerful source, not just a sink
-- ❌ Using `$merge` with Kafka → Use `$emit` for Kafka sinks
+- FAIL: Using `$externalFunction` as sink with `execution: "sync"` → Must use `execution: "async"` for sink stage
+- FAIL: Forgetting change streams exist → Atlas Cluster is a powerful source, not just a sink
+- FAIL: Using `$merge` with Kafka → Use `$emit` for Kafka sinks
 
 See [references/connection-configs.md](references/connection-configs.md) for detailed connection configuration schemas by type.
 

@@ -1,4 +1,4 @@
-﻿---
+---
 name: springboot-security
 description: Spring Security best practices for authn/authz, validation, CSRF, secrets, headers, rate limiting, and dependency security in Java Spring Boot services.
 origin: ECC
@@ -21,7 +21,7 @@ Use when adding auth, handling input, creating endpoints, or dealing with secret
 ## Authentication
 
 - Prefer stateless JWT or opaque tokens with revocation list
-- Use `httpOnly`, `Secure`, `SameSite=Strict` cookies for sessions
+- Use `httpOnly`,`Secure`,`SameSite=Strict` cookies for sessions
 - Validate tokens with `OncePerRequestFilter` or resource server
 
 ```java
@@ -50,7 +50,7 @@ public class JwtAuthFilter extends OncePerRequestFilter {
 ## Authorization
 
 - Enable method security: `@EnableMethodSecurity`
-- Use `@PreAuthorize("hasRole('ADMIN')")` or `@PreAuthorize("@authz.canEdit(#id)")`
+- Use `@PreAuthorize("hasRole('ADMIN')")`or`@PreAuthorize("@authz.canEdit(#id)")`
 - Deny by default; expose only required scopes
 
 ```java
@@ -76,7 +76,7 @@ public class AdminController {
 ## Input Validation
 
 - Use Bean Validation with `@Valid` on controllers
-- Apply constraints on DTOs: `@NotBlank`, `@Email`, `@Size`, custom validators
+- Apply constraints on DTOs: `@NotBlank`,`@Email`,`@Size`, custom validators
 - Sanitize any HTML with a whitelist before rendering
 
 ```java
@@ -153,21 +153,21 @@ http
 - Rotate tokens and DB credentials regularly
 
 ```yaml
-# BAD: Hardcoded in application.yml
+## BAD: Hardcoded in application.yml
 spring:
   datasource:
     password: mySecretPassword123
 
-# GOOD: Environment variable placeholder
+## GOOD: Environment variable placeholder
 spring:
   datasource:
     password: ${DB_PASSWORD}
 
-# GOOD: Spring Cloud Vault integration
+## GOOD: Spring Cloud Vault integration
 spring:
   cloud:
     vault:
-      uri: https://vault.example.com
+      uri: <https://vault.example.com>
       token: ${VAULT_TOKEN}
 ```
 

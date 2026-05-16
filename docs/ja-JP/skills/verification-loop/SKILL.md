@@ -14,9 +14,9 @@ Claude Codeセッション向けの包括的な検証システム。
 
 ### フェーズ1: ビルド検証
 ```bash
-# プロジェクトがビルドできるか確認
+## プロジェクトがビルドできるか確認
 npm run build 2>&1 | tail -20
-# または
+## または
 pnpm build 2>&1 | tail -20
 ```
 
@@ -24,10 +24,10 @@ pnpm build 2>&1 | tail -20
 
 ### フェーズ2: 型チェック
 ```bash
-# TypeScriptプロジェクト
+## TypeScriptプロジェクト
 npx tsc --noEmit 2>&1 | head -30
 
-# Pythonプロジェクト
+## Pythonプロジェクト
 pyright . 2>&1 | head -30
 ```
 
@@ -35,20 +35,20 @@ pyright . 2>&1 | head -30
 
 ### フェーズ3: Lintチェック
 ```bash
-# JavaScript/TypeScript
+## JavaScript/TypeScript
 npm run lint 2>&1 | head -30
 
-# Python
+## Python
 ruff check . 2>&1 | head -30
 ```
 
 ### フェーズ4: テストスイート
 ```bash
-# カバレッジ付きでテストを実行
+## カバレッジ付きでテストを実行
 npm run test -- --coverage 2>&1 | tail -50
 
-# カバレッジ閾値を確認
-# 目標: 最低80%
+## カバレッジ閾値を確認
+## 目標: 最低80%
 ```
 
 報告:
@@ -59,17 +59,17 @@ npm run test -- --coverage 2>&1 | tail -50
 
 ### フェーズ5: セキュリティスキャン
 ```bash
-# シークレットを確認
+## シークレットを確認
 grep -rn "sk-" --include="*.ts" --include="*.js" . 2>/dev/null | head -10
 grep -rn "api_key" --include="*.ts" --include="*.js" . 2>/dev/null | head -10
 
-# console.logを確認
+## console.logを確認
 grep -rn "console.log" --include="*.ts" --include="*.tsx" src/ 2>/dev/null | head -10
 ```
 
 ### フェーズ6: 差分レビュー
 ```bash
-# 変更内容を表示
+## 変更内容を表示
 git diff --stat
 git diff HEAD~1 --name-only
 ```

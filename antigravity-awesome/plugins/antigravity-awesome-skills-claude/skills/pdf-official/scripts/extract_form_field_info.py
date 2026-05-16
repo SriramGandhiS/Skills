@@ -52,12 +52,12 @@ def make_field_dict(field, field_id):
 
 # Returns a list of fillable PDF fields:
 # [
-#   {
-#     "field_id": "name",
-#     "page": 1,
-#     "type": ("text", "checkbox", "radio_group", or "choice")
-#     // Per-type additional fields described in forms.md
-#   },
+# {
+# "field_id": "name",
+# "page": 1,
+# "type": ("text", "checkbox", "radio_group", or "choice")
+# // Per-type additional fields described in forms.md
+# },
 # ]
 def get_field_info(reader: PdfReader):
     fields = reader.get_fields()
@@ -130,7 +130,7 @@ def get_field_info(reader: PdfReader):
             rect = f.get("rect") or [0, 0, 0, 0]
         adjusted_position = [-rect[1], rect[0]]
         return [f.get("page"), adjusted_position]
-    
+
     sorted_fields = fields_with_location + list(radio_fields_by_id.values())
     sorted_fields.sort(key=sort_key)
 

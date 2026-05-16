@@ -49,11 +49,11 @@ These standards apply to **all platforms** (Claude, Gemini, OpenAI, generic).
 **Why**: Clearly describes the activity or capability the skill provides.
 
 **Examples**:
-- ✅ "Building React Applications"
-- ✅ "Working with Django REST Framework"
-- ✅ "Analyzing Godot 4.x Projects"
-- ❌ "React Documentation" (passive, unclear)
-- ❌ "Django Guide" (vague)
+- PASS: "Building React Applications"
+- PASS: "Working with Django REST Framework"
+- PASS: "Analyzing Godot 4.x Projects"
+- FAIL: "React Documentation" (passive, unclear)
+- FAIL: "Django Guide" (vague)
 
 **Implementation**:
 ```yaml
@@ -73,10 +73,10 @@ description: Building modern React applications with hooks, routing, and state m
 ```
 
 **Examples**:
-- ✅ "Building modern React applications with TypeScript, hooks, and routing. Use when implementing React components, managing state, or configuring build tools."
-- ✅ "Analyzing Godot 4.x game projects with GDScript patterns. Use when debugging game logic, optimizing performance, or implementing new features in Godot."
-- ❌ "I will help you with React" (first person, vague)
-- ❌ "Documentation for Django" (no when clause)
+- PASS: "Building modern React applications with TypeScript, hooks, and routing. Use when implementing React components, managing state, or configuring build tools."
+- PASS: "Analyzing Godot 4.x game projects with GDScript patterns. Use when debugging game logic, optimizing performance, or implementing new features in Godot."
+- FAIL: "I will help you with React" (first person, vague)
+- FAIL: "Documentation for Django" (no when clause)
 
 ### 3. Token Budget (Progressive Disclosure)
 
@@ -137,31 +137,31 @@ description: [What + When in third person]
 
 [1-2 sentence elevator pitch]
 
-## 💡 When to Use This Skill
+## When to Use This Skill
 
 [3-5 specific scenarios with trigger phrases]
 
-## ⚡ Quick Reference
+## Quick Reference
 
 [30-second overview, most common patterns]
 
-## 📝 Code Examples
+## Code Examples
 
 [Real-world, tested, copy-paste ready]
 
-## 🔧 API Reference
+## API Reference
 
 [Core APIs, signatures, parameters - link to full reference]
 
-## 🏗️ Architecture
+## Architecture
 
 [Key patterns, design decisions, trade-offs]
 
-## ⚠️ Common Issues
+## WARNING: Common Issues
 
 [Known problems, workarounds, gotchas]
 
-## 📚 References
+## References
 
 [Links to deeper documentation]
 ```
@@ -268,7 +268,7 @@ tags:                         # Discovery keywords
 - **Resource access**: References loaded on-demand via file reads
 
 **Best Practices**:
-- Use emojis for section headers (improves scannability): 💡 ⚡ 📝 🔧 🏗️ ⚠️ 📚
+- Use emojis for section headers (improves scannability):      WARNING:
 - Include "trigger phrases" in description: "when implementing...", "when debugging...", "when configuring..."
 - Keep Quick Reference ultra-concise (user sees this first)
 - Link to references explicitly: "See `references/api.md` for complete API"
@@ -494,183 +494,183 @@ Use this rubric to assess AI skill quality on a **10-point scale**.
 #### 1. Discovery & Metadata (10%)
 
 **10/10 - Excellent**:
-- ✅ Name in gerund form, clear and specific
-- ✅ Description: third person, what + when, <1024 chars
-- ✅ Trigger phrases that match user intent
-- ✅ Appropriate tags for discovery
-- ✅ Version and platform metadata present
+- PASS: Name in gerund form, clear and specific
+- PASS: Description: third person, what + when, <1024 chars
+- PASS: Trigger phrases that match user intent
+- PASS: Appropriate tags for discovery
+- PASS: Version and platform metadata present
 
 **7/10 - Good**:
-- ✅ Name clear but not gerund form
-- ✅ Description has what + when but verbose
-- ⚠️ Some trigger phrases missing
-- ✅ Tags present
+- PASS: Name clear but not gerund form
+- PASS: Description has what + when but verbose
+- WARNING: Some trigger phrases missing
+- PASS: Tags present
 
 **4/10 - Poor**:
-- ⚠️ Name vague or passive
-- ⚠️ Description missing "when" clause
-- ⚠️ No trigger phrases
-- ❌ Missing tags
+- WARNING: Name vague or passive
+- WARNING: Description missing "when" clause
+- WARNING: No trigger phrases
+- FAIL: Missing tags
 
 **1/10 - Failing**:
-- ❌ No metadata or incomprehensible name
-- ❌ Description is first person or generic
+- FAIL: No metadata or incomprehensible name
+- FAIL: Description is first person or generic
 
 #### 2. Conciseness & Token Economy (15%)
 
 **10/10 - Excellent**:
-- ✅ Main SKILL.md <5,000 tokens
-- ✅ No redundancy or filler content
-- ✅ Every sentence provides unique value
-- ✅ Progressive disclosure (references on-demand)
-- ✅ Quick Reference <500 tokens
+- PASS: Main SKILL.md <5,000 tokens
+- PASS: No redundancy or filler content
+- PASS: Every sentence provides unique value
+- PASS: Progressive disclosure (references on-demand)
+- PASS: Quick Reference <500 tokens
 
 **7/10 - Good**:
-- ✅ Main SKILL.md <7,000 tokens
-- ⚠️ Minor redundancy (5-10% waste)
-- ✅ Most content valuable
-- ⚠️ Some references inline instead of separate
+- PASS: Main SKILL.md <7,000 tokens
+- WARNING: Minor redundancy (5-10% waste)
+- PASS: Most content valuable
+- WARNING: Some references inline instead of separate
 
 **4/10 - Poor**:
-- ⚠️ Main SKILL.md 7,000-10,000 tokens
-- ⚠️ Significant redundancy (20%+ waste)
-- ⚠️ Verbose explanations, filler words
-- ⚠️ Poor reference organization
+- WARNING: Main SKILL.md 7,000-10,000 tokens
+- WARNING: Significant redundancy (20%+ waste)
+- WARNING: Verbose explanations, filler words
+- WARNING: Poor reference organization
 
 **1/10 - Failing**:
-- ❌ Main SKILL.md >10,000 tokens
-- ❌ Massive redundancy, encyclopedic content
-- ❌ No progressive disclosure
+- FAIL: Main SKILL.md >10,000 tokens
+- FAIL: Massive redundancy, encyclopedic content
+- FAIL: No progressive disclosure
 
 #### 3. Structural Organization (15%)
 
 **10/10 - Excellent**:
-- ✅ Clear hierarchy: Quick Ref → Core → Extended → References
-- ✅ Logical flow (discovery → usage → deep dive)
-- ✅ Emojis for scannability
-- ✅ Proper use of headings (##, ###)
-- ✅ Table of contents for long documents
+- PASS: Clear hierarchy: Quick Ref → Core → Extended → References
+- PASS: Logical flow (discovery → usage → deep dive)
+- PASS: Emojis for scannability
+- PASS: Proper use of headings (##, ###)
+- PASS: Table of contents for long documents
 
 **7/10 - Good**:
-- ✅ Most sections present
-- ⚠️ Flow could be improved
-- ✅ Headings used correctly
-- ⚠️ No emojis or TOC
+- PASS: Most sections present
+- WARNING: Flow could be improved
+- PASS: Headings used correctly
+- WARNING: No emojis or TOC
 
 **4/10 - Poor**:
-- ⚠️ Missing key sections
-- ⚠️ Illogical flow (advanced before basic)
-- ⚠️ Inconsistent heading levels
-- ❌ Wall of text, no structure
+- WARNING: Missing key sections
+- WARNING: Illogical flow (advanced before basic)
+- WARNING: Inconsistent heading levels
+- FAIL: Wall of text, no structure
 
 **1/10 - Failing**:
-- ❌ No structure, single massive block
-- ❌ Missing required sections
+- FAIL: No structure, single massive block
+- FAIL: Missing required sections
 
 #### 4. Code Example Quality (20%)
 
 **10/10 - Excellent**:
-- ✅ 5-10 examples covering 80% of use cases
-- ✅ All examples tested/validated
-- ✅ Complete (copy-paste ready)
-- ✅ Progressive complexity (basic → advanced)
-- ✅ Annotated with brief explanations
-- ✅ Correct language detection
-- ✅ Real-world patterns (not toy examples)
+- PASS: 5-10 examples covering 80% of use cases
+- PASS: All examples tested/validated
+- PASS: Complete (copy-paste ready)
+- PASS: Progressive complexity (basic → advanced)
+- PASS: Annotated with brief explanations
+- PASS: Correct language detection
+- PASS: Real-world patterns (not toy examples)
 
 **7/10 - Good**:
-- ✅ 3-5 examples
-- ✅ Most tested
-- ⚠️ Some incomplete (require modification)
-- ✅ Some progression
-- ⚠️ Light annotations
+- PASS: 3-5 examples
+- PASS: Most tested
+- WARNING: Some incomplete (require modification)
+- PASS: Some progression
+- WARNING: Light annotations
 
 **4/10 - Poor**:
-- ⚠️ 1-2 examples only
-- ⚠️ Untested or broken examples
-- ⚠️ Fragments, not complete
-- ⚠️ All same complexity level
-- ❌ No annotations
+- WARNING: 1-2 examples only
+- WARNING: Untested or broken examples
+- WARNING: Fragments, not complete
+- WARNING: All same complexity level
+- FAIL: No annotations
 
 **1/10 - Failing**:
-- ❌ No examples or all broken
-- ❌ Incorrect language tags
-- ❌ Toy examples only
+- FAIL: No examples or all broken
+- FAIL: Incorrect language tags
+- FAIL: Toy examples only
 
 #### 5. Accuracy & Correctness (20%)
 
 **10/10 - Excellent**:
-- ✅ All information factually correct
-- ✅ Current best practices (2026)
-- ✅ No deprecated patterns
-- ✅ Correct API signatures
-- ✅ Accurate version information
-- ✅ No hallucinated features
+- PASS: All information factually correct
+- PASS: Current best practices (2026)
+- PASS: No deprecated patterns
+- PASS: Correct API signatures
+- PASS: Accurate version information
+- PASS: No hallucinated features
 
 **7/10 - Good**:
-- ✅ Mostly accurate
-- ⚠️ 1-2 minor errors or outdated details
-- ✅ Core patterns correct
-- ⚠️ Some version ambiguity
+- PASS: Mostly accurate
+- WARNING: 1-2 minor errors or outdated details
+- PASS: Core patterns correct
+- WARNING: Some version ambiguity
 
 **4/10 - Poor**:
-- ⚠️ Multiple factual errors
-- ⚠️ Deprecated patterns presented as current
-- ⚠️ API signatures incorrect
-- ⚠️ Mixing versions
+- WARNING: Multiple factual errors
+- WARNING: Deprecated patterns presented as current
+- WARNING: API signatures incorrect
+- WARNING: Mixing versions
 
 **1/10 - Failing**:
-- ❌ Fundamentally incorrect information
-- ❌ Hallucinated APIs or features
-- ❌ Dangerous or insecure patterns
+- FAIL: Fundamentally incorrect information
+- FAIL: Hallucinated APIs or features
+- FAIL: Dangerous or insecure patterns
 
 #### 6. Actionability (10%)
 
 **10/10 - Excellent**:
-- ✅ User can immediately apply knowledge
-- ✅ Step-by-step instructions for complex tasks
-- ✅ Common workflows documented
-- ✅ Troubleshooting guidance
-- ✅ Links to deeper resources when needed
+- PASS: User can immediately apply knowledge
+- PASS: Step-by-step instructions for complex tasks
+- PASS: Common workflows documented
+- PASS: Troubleshooting guidance
+- PASS: Links to deeper resources when needed
 
 **7/10 - Good**:
-- ✅ Most tasks actionable
-- ⚠️ Some workflows missing steps
-- ✅ Basic troubleshooting present
-- ⚠️ Some dead-end references
+- PASS: Most tasks actionable
+- WARNING: Some workflows missing steps
+- PASS: Basic troubleshooting present
+- WARNING: Some dead-end references
 
 **4/10 - Poor**:
-- ⚠️ Theoretical knowledge, unclear application
-- ⚠️ Missing critical steps
-- ❌ No troubleshooting
-- ⚠️ Broken links
+- WARNING: Theoretical knowledge, unclear application
+- WARNING: Missing critical steps
+- FAIL: No troubleshooting
+- WARNING: Broken links
 
 **1/10 - Failing**:
-- ❌ Pure reference, no guidance
-- ❌ Cannot use information without external help
+- FAIL: Pure reference, no guidance
+- FAIL: Cannot use information without external help
 
 #### 7. Cross-Platform Compatibility (10%)
 
 **10/10 - Excellent**:
-- ✅ Follows Open Agent Skills standard
-- ✅ Works on Claude, Gemini, OpenAI, Markdown
-- ✅ No platform-specific dependencies
-- ✅ Proper file structure
-- ✅ Valid YAML frontmatter
+- PASS: Follows Open Agent Skills standard
+- PASS: Works on Claude, Gemini, OpenAI, Markdown
+- PASS: No platform-specific dependencies
+- PASS: Proper file structure
+- PASS: Valid YAML frontmatter
 
 **7/10 - Good**:
-- ✅ Works on 2-3 platforms
-- ⚠️ Minor platform-specific tweaks needed
-- ✅ Standard structure
+- PASS: Works on 2-3 platforms
+- WARNING: Minor platform-specific tweaks needed
+- PASS: Standard structure
 
 **4/10 - Poor**:
-- ⚠️ Only works on 1 platform
-- ⚠️ Non-standard structure
-- ⚠️ Invalid YAML
+- WARNING: Only works on 1 platform
+- WARNING: Non-standard structure
+- WARNING: Invalid YAML
 
 **1/10 - Failing**:
-- ❌ Platform-locked, proprietary format
-- ❌ Cannot be ported
+- FAIL: Platform-locked, proprietary format
+- FAIL: Cannot be ported
 
 ### Overall Grade Calculation
 
@@ -702,13 +702,13 @@ Total Score = (Discovery × 0.10) +
 
 **Example**:
 ```markdown
-❌ BAD:
+FAIL: BAD:
 React was created by Jordan Walke, a software engineer at Facebook,
 in 2011. It was first deployed on Facebook's newsfeed in 2011 and
 later on Instagram in 2012. It was open-sourced at JSConf US in May
 2013. Over the years, React has evolved significantly...
 
-✅ GOOD:
+PASS: GOOD:
 React is a component-based UI library. Build reusable components,
 manage state with hooks, and efficiently update the DOM.
 ```
@@ -721,10 +721,10 @@ manage state with hooks, and efficiently update the DOM.
 
 **Example**:
 ```yaml
-❌ BAD:
+FAIL: BAD:
 description: I will help you build React applications with best practices
 
-✅ GOOD:
+PASS: GOOD:
 description: Building modern React applications with TypeScript, hooks,
   and routing. Use when implementing components or managing state.
 ```
@@ -737,14 +737,14 @@ description: Building modern React applications with TypeScript, hooks,
 
 **Example**:
 ```markdown
-❌ BAD (85 tokens):
+FAIL: BAD (85 tokens):
 When you are working on a project and you need to manage state in your
 React application, you have several different options available to you.
 One option is to use the useState hook, which is great for managing
 local component state. Another option is to use useReducer, which is
 better for more complex state logic.
 
-✅ GOOD (28 tokens):
+PASS: GOOD (28 tokens):
 State management options:
 - Local state → useState (simple values)
 - Complex logic → useReducer (state machines)
@@ -759,7 +759,7 @@ State management options:
 
 **Example**:
 ```typescript
-❌ BAD:
+FAIL: BAD:
 function Example() {
   const [data, setData] = useState();  // No type, no initial value
   useEffect(() => {
@@ -768,7 +768,7 @@ function Example() {
   return <div>{data}</div>;  // TypeScript error
 }
 
-✅ GOOD:
+PASS: GOOD:
 interface User {
   id: number;
   name: string;
@@ -795,10 +795,10 @@ function Example() {
 
 **Example**:
 ```yaml
-❌ BAD:
+FAIL: BAD:
 description: Documentation for React hooks and component patterns
 
-✅ GOOD:
+PASS: GOOD:
 description: Building React applications with hooks and components.
   Use when implementing UI components, managing state, or optimizing
   React performance.
@@ -812,11 +812,11 @@ description: Building React applications with hooks and components.
 
 **Example**:
 ```
-❌ BAD:
+FAIL: BAD:
 references/
 ├── everything.md  (20,000+ tokens)
 
-✅ GOOD:
+PASS: GOOD:
 references/
 ├── index.md
 ├── api/
@@ -838,10 +838,10 @@ references/
 
 **Example**:
 ```markdown
-❌ BAD (deprecated in React 18):
+FAIL: BAD (deprecated in React 18):
 Use componentDidMount() and componentWillUnmount() for side effects.
 
-✅ GOOD (current as of 2026):
+PASS: GOOD (current as of 2026):
 Use useEffect() hook for side effects in function components.
 ```
 

@@ -39,10 +39,10 @@ model: sonnet
 ### 高 — Pythonic 模式
 
 * 使用列表推导式而非 C 风格循环
-* 使用 `isinstance()` 而非 `type() ==`
+* 使用 `isinstance()`而非`type() ==`
 * 使用 `Enum` 而非魔术数字
 * 在循环中使用 `"".join()` 而非字符串拼接
-* **可变默认参数**: `def f(x=[])` — 使用 `def f(x=None)`
+* **可变默认参数**: `def f(x=[])`— 使用`def f(x=None)`
 
 ### 高 — 代码质量
 
@@ -61,10 +61,10 @@ model: sonnet
 
 * PEP 8：导入顺序、命名、间距
 * 公共函数缺少文档字符串
-* 使用 `print()` 而非 `logging`
+* 使用 `print()`而非`logging`
 * `from module import *` — 命名空间污染
-* `value == None` — 使用 `value is None`
-* 遮蔽内置名称 (`list`, `dict`, `str`)
+* `value == None`— 使用`value is None`
+* 遮蔽内置名称 (`list`,`dict`,`str`)
 
 ## 诊断命令
 
@@ -93,7 +93,7 @@ pytest --cov=app --cov-report=term-missing # Test coverage
 
 ## 框架检查
 
-* **Django**: 使用 `select_related`/`prefetch_related` 处理 N+1，使用 `atomic()` 处理多步骤、迁移
+* **Django**: 使用 `select_related`/`prefetch_related`处理 N+1，使用`atomic()` 处理多步骤、迁移
 * **FastAPI**: CORS 配置、Pydantic 验证、响应模型、异步中无阻塞操作
 * **Flask**: 正确的错误处理器、CSRF 保护
 

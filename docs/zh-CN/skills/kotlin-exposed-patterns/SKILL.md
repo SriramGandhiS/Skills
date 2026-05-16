@@ -19,7 +19,7 @@ origin: ECC
 
 ## 工作原理
 
-Exposed 提供两种查询风格：用于直接类似 SQL 表达式的 DSL 和用于实体生命周期管理的 DAO。HikariCP 通过 `HikariConfig` 配置来管理可重用的数据库连接池。Flyway 在启动时运行版本化的 SQL 迁移脚本以保持模式同步。所有数据库操作都在 `newSuspendedTransaction` 块内运行，以确保协程安全和原子性。仓储模式将 Exposed 查询包装在接口之后，使业务逻辑与数据层解耦，并且测试可以使用内存中的 H2 数据库。
+Exposed 提供两种查询风格：用于直接类似 SQL 表达式的 DSL 和用于实体生命周期管理的 DAO。HikariCP 通过 `HikariConfig`配置来管理可重用的数据库连接池。Flyway 在启动时运行版本化的 SQL 迁移脚本以保持模式同步。所有数据库操作都在`newSuspendedTransaction` 块内运行，以确保协程安全和原子性。仓储模式将 Exposed 查询包装在接口之后，使业务逻辑与数据层解耦，并且测试可以使用内存中的 H2 数据库。
 
 ## 示例
 
@@ -712,8 +712,8 @@ dependencies {
 | `Table.update({ condition }) { }` | 更新匹配的行 |
 | `Table.deleteWhere { }` | 删除匹配的行 |
 | `Table.batchInsert(items) { }` | 高效的批量插入 |
-| `innerJoin` / `leftJoin` | 连接表 |
-| `orderBy` / `limit` / `offset` | 排序和分页 |
-| `count()` / `sum()` / `avg()` | 聚合函数 |
+| `innerJoin`/`leftJoin` | 连接表 |
+| `orderBy`/`limit`/`offset` | 排序和分页 |
+| `count()`/`sum()`/`avg()` | 聚合函数 |
 
 **记住**：对于简单查询使用 DSL 风格，当需要实体生命周期管理时使用 DAO 风格。始终使用 `newSuspendedTransaction` 以获得协程支持，并将数据库操作包装在仓储接口之后以提高可测试性。

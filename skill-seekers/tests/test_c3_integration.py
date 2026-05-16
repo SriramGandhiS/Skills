@@ -350,7 +350,7 @@ class TestC3Integration:
             content = f.read()
 
         # Verify C3.x summary section exists
-        assert "## 🏗️ Architecture & Code Analysis" in content
+        assert "##  Architecture & Code Analysis" in content
         assert "Primary Architecture" in content
         assert "MVC" in content
         assert "Design Patterns" in content

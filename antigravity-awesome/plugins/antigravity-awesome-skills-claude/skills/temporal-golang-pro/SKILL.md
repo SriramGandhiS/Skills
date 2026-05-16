@@ -28,19 +28,19 @@ Expert-level guide for building resilient, scalable, and deterministic distribut
 
 ## Step-by-Step Guide
 
-1.  **Gather Context**: Proactively ask for:
+1. **Gather Context**: Proactively ask for:
     - Target **Temporal Cluster** (Cloud vs. Self-hosted) and **Namespace**.
     - **Task Queue** names and expected throughput.
     - **Security requirements** (mTLS paths, authentication).
     - **Failure modes** and desired retry/timeout policies.
-2.  **Verify Determinism**: Before suggesting workflow code, verify against these **5 Rules**:
+2. **Verify Determinism**: Before suggesting workflow code, verify against these **5 Rules**:
     - No native Go concurrency (goroutines).
     - No native time (`time.Now`, `time.Sleep`).
     - No non-deterministic map iteration (must sort keys).
     - No direct external I/O or network calls.
     - No non-deterministic random numbers.
-3.  **Implement Incrementally**: Start with shared Protobuf/Data classes, then Activities, then Workflows, and finally Workers.
-4.  **Leverage Resources**: If the implementation requires advanced patterns (Sagas, Interceptors, Replay Testing), explicitly refer to the implementation playbook and testing strategies.
+3. **Implement Incrementally**: Start with shared Protobuf/Data classes, then Activities, then Workflows, and finally Workers.
+4. **Leverage Resources**: If the implementation requires advanced patterns (Sagas, Interceptors, Replay Testing), explicitly refer to the implementation playbook and testing strategies.
 
 ## Capabilities
 
@@ -177,15 +177,15 @@ func ApprovalWorkflow(ctx workflow.Context) (string, error) {
 
 ## Best Practices
 
-- ✅ **Do:** Always handle errors from `ExecuteActivity` and `client.Dial`.
-- ✅ **Do:** Use `workflow.Go` and `workflow.Channel` for concurrency.
-- ✅ **Do:** Sort map keys before iteration to maintain determinism.
-- ✅ **Do:** Use `activity.RecordHeartbeat` for activities lasting > 1 minute.
-- ✅ **Do:** Test logic compatibility using `replayer.ReplayWorkflowHistoryFromJSON`.
-- ❌ **Don't:** Swallow errors with `_` or `log.Fatal` in production workers.
-- ❌ **Don't:** Perform direct Network/Disk I/O inside a Workflow function.
-- ❌ **Don't:** Rely on native `time.Now()` or `rand.Int()`.
-- ❌ **Don't:** Apply this to simple cron jobs that don't require durability.
+- PASS: **Do:** Always handle errors from `ExecuteActivity` and `client.Dial`.
+- PASS: **Do:** Use `workflow.Go` and `workflow.Channel` for concurrency.
+- PASS: **Do:** Sort map keys before iteration to maintain determinism.
+- PASS: **Do:** Use `activity.RecordHeartbeat` for activities lasting > 1 minute.
+- PASS: **Do:** Test logic compatibility using `replayer.ReplayWorkflowHistoryFromJSON`.
+- FAIL: **Don't:** Swallow errors with `_` or `log.Fatal` in production workers.
+- FAIL: **Don't:** Perform direct Network/Disk I/O inside a Workflow function.
+- FAIL: **Don't:** Rely on native `time.Now()` or `rand.Int()`.
+- FAIL: **Don't:** Apply this to simple cron jobs that don't require durability.
 
 ## Troubleshooting
 

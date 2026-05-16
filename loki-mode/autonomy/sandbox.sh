@@ -2,27 +2,24 @@
 #===============================================================================
 # Loki Mode - Docker Sandbox Manager
 # Provides isolated container execution for enhanced security
-#
-# Usage:
-#   ./autonomy/sandbox.sh start [OPTIONS] [PRD_PATH]
-#   ./autonomy/sandbox.sh stop
-#   ./autonomy/sandbox.sh status
-#   ./autonomy/sandbox.sh shell
-#
-# Environment Variables:
-#   LOKI_SANDBOX_IMAGE    - Docker image to use (default: loki-mode:sandbox)
-#   LOKI_SANDBOX_NETWORK  - Network mode: bridge, none, host (default: bridge)
-#   LOKI_SANDBOX_CPUS     - CPU limit (default: 2)
-#   LOKI_SANDBOX_MEMORY   - Memory limit (default: 4g)
-#   LOKI_SANDBOX_READONLY - Mount project as read-only (default: false)
-#
-# Security Features:
-#   - Seccomp profile restricts dangerous syscalls
-#   - No new privileges flag prevents privilege escalation
-#   - Dropped capabilities reduce attack surface
-#   - Resource limits prevent DoS
-#   - Optional read-only filesystem
-#   - API keys mounted read-only
+# # Usage:
+# ./autonomy/sandbox.sh start [OPTIONS] [PRD_PATH]
+# ./autonomy/sandbox.sh stop
+# ./autonomy/sandbox.sh status
+# ./autonomy/sandbox.sh shell
+# # Environment Variables:
+# LOKI_SANDBOX_IMAGE    - Docker image to use (default: loki-mode:sandbox)
+# LOKI_SANDBOX_NETWORK  - Network mode: bridge, none, host (default: bridge)
+# LOKI_SANDBOX_CPUS     - CPU limit (default: 2)
+# LOKI_SANDBOX_MEMORY   - Memory limit (default: 4g)
+# LOKI_SANDBOX_READONLY - Mount project as read-only (default: false)
+# # Security Features:
+# - Seccomp profile restricts dangerous syscalls
+# - No new privileges flag prevents privilege escalation
+# - Dropped capabilities reduce attack surface
+# - Resource limits prevent DoS
+# - Optional read-only filesystem
+# - API keys mounted read-only
 #===============================================================================
 
 set -euo pipefail

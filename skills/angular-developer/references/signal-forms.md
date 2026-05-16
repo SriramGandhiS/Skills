@@ -1,4 +1,4 @@
-﻿# Signal Forms
+# Signal Forms
 
 Signal Forms are recommended for new forms when the target Angular version supports them. They provide a reactive, type-safe, and model-driven way to manage form state using Angular Signals.
 
@@ -157,24 +157,24 @@ userForm = form(this.userModel, (schemaPath) => {
 
 ## Binding
 
-Import `FormField` and use the `[formField]` directive.
+Import `FormField`and use the`[formField]` directive.
 
 ```ts
 import {FormField} from '@angular/forms/signals';
 ```
 
-All props on state, such as `disabled`, `hidden`, `readonly` and `name` are bound automatically.
+All props on state, such as `disabled`,`hidden`,`readonly`and`name` are bound automatically.
 Do _NOT_ bind the `name` field.
 
 **CRITICAL: FORBIDDEN ATTRIBUTES**
 When using `[formField]`, you MUST NOT set the following attributes in the template (either static or bound):
 
-- `min`, `max` (Use validators in the schema instead)
-- `value`, `[value]`, `[attr.value]` (Already handled by `[formField]`)
-- `[attr.min]`, `[attr.max]`
-- `[disabled]`, `[readonly]` (Already handled by `[formField]`)
+- `min`,`max` (Use validators in the schema instead)
+- `value`,`[value]`,`[attr.value]`(Already handled by`[formField]`)
+- `[attr.min]`,`[attr.max]`
+- `[disabled]`,`[readonly]`(Already handled by`[formField]`)
 
-Do NOT do this: `<input min="1" [formField]>` or `<input [value]="val" [formField]>`.
+Do NOT do this: `<input min="1" [formField]>`or`<input [value]="val" [formField]>`.
 
 ```html
 <!-- Input -->
@@ -194,7 +194,7 @@ Do NOT do this: `<input min="1" [formField]>` or `<input [value]="val" [formFiel
 
 ## Reactive Forms
 
-**Do NOT import** `FormControl`, `FormGroup`, `FormArray`, or `FormBuilder` from `@angular/forms`. Signal Forms replace these concepts entirely.
+**Do NOT import** `FormControl`,`FormGroup`,`FormArray`, or`FormBuilder`from`@angular/forms`. Signal Forms replace these concepts entirely.
 Signal forms does NOT have a builder.
 
 ## Accessing State
@@ -246,7 +246,7 @@ form.client.addresses.length  // No "()"
 
 Use the `submit()` function. It automatically marks all fields as touched before running the action.
 
-**CRITICAL**: The callback to `submit()` MUST be `async` and MUST return a Promise.
+**CRITICAL**: The callback to `submit()`MUST be`async` and MUST return a Promise.
 
 ```ts
 import { submit } from '@angular/forms/signals';
@@ -284,7 +284,7 @@ When there are no errors, return undefined
 
 ### Context
 
-Functions passed to rules like `validate()`, `disabled()`, `applyWhen` take a context object. It is **CRITICAL** to understand its structure:
+Functions passed to rules like `validate()`,`disabled()`,`applyWhen` take a context object. It is **CRITICAL** to understand its structure:
 
 ```ts
 validate(
@@ -309,7 +309,7 @@ validate(
 
 ### IMPORTANT: Paths are NOT Signals
 
-Inside the `form()` callback, `schemaPath` and its children (e.g., `schemaPath.user.name`) are **NOT** signals and are **NOT** callable.
+Inside the `form()`callback,`schemaPath`and its children (e.g.,`schemaPath.user.name`) are **NOT** signals and are **NOT** callable.
 
 ```ts
 // WRONG - This will throw an error:
@@ -342,7 +342,7 @@ applyEach(s.items, (item, index) => {
 
 - In the template use `@for` to iterate over the items.
 - To remove an item from an array, just remove appropriate item from the array in the data.
-- **`select` binding**: You CAN bind to `<select [formField]="form.country">`. Ensure options have `value` attributes.
+- **`select`binding**: You CAN bind to`<select [formField]="form.country">`. Ensure options have`value` attributes.
 
 ### Nested @for Loops
 
@@ -370,13 +370,13 @@ track $index) {
 <button [disabled]="taxForm.invalid()" />
 ```
 
-Do NOT use `[disabled]` on an input. `[formField]` will do this.
-Do NOT use `[readonly]` on an input. `[formField]` will do this.
-If you need to disable or readonly a field, use `disabled()` or `readonly()` rules in the schema.
+Do NOT use `[disabled]`on an input.`[formField]` will do this.
+Do NOT use `[readonly]`on an input.`[formField]` will do this.
+If you need to disable or readonly a field, use `disabled()`or`readonly()` rules in the schema.
 
 ### Async Validation
 
-Do not use `validate()` for async, instead use `validateAsync()`:
+Do not use `validate()`for async, instead use`validateAsync()`:
 
 **CRITICAL**:
 
@@ -435,7 +435,7 @@ validateAsync(s.username, {
 
 ### Using Resource
 
-**CRITICAL**: In Angular's `resource()`, use `params` for the input signal.
+**CRITICAL**: In Angular's `resource()`, use`params` for the input signal.
 
 ```ts
 // CORRECT
@@ -508,30 +508,30 @@ form(
 
 | Error Scenario         | WRONG (Common Mistake)                        | RIGHT (Correct Way)                                         |
 | :--------------------- | :-------------------------------------------- | :---------------------------------------------------------- |
-| **Accessing Flags**    | `form.field.valid()`                          | `form.field().valid()`                                      |
-| **Accessing value**    | `form.field.value()`                          | `form.field().value()`                                      |
-| **Setting value**      | `form.field.set(x)`                           | Update model signal: `this.model.update(...)`               |
-| **Form root flags**    | `form.invalid()`                              | `form().invalid()`                                          |
-| **Double-calling**     | `form.field()()`                              | `form.field().value()`                                      |
-| **Rules Context**      | `({ touched }) => touched()`                  | `({ state }) => state.touched()`                            |
-| **Calling Paths**      | `applyWhen(p.foo, () => p.foo() === 'x')`     | `applyWhen(p.foo, ({ valueOf }) => valueOf(p.foo) === 'x')` |
-| **applyWhen args**     | `applyWhen(condition, () => {...})`           | `applyWhen(path, condition, schemaFn)` - needs 3 args       |
-| **Array length**       | `form.items().length`                         | `form.items.length` (structural)                            |
+| **Accessing Flags**    | `form.field.valid()`|`form.field().valid()`                                      |
+| **Accessing value**    | `form.field.value()`|`form.field().value()`                                      |
+| **Setting value**      | `form.field.set(x)`| Update model signal:`this.model.update(...)`               |
+| **Form root flags**    | `form.invalid()`|`form().invalid()`                                          |
+| **Double-calling**     | `form.field()()`|`form.field().value()`                                      |
+| **Rules Context**      | `({ touched }) => touched()`|`({ state }) => state.touched()`                            |
+| **Calling Paths**      | `applyWhen(p.foo, () => p.foo() === 'x')`|`applyWhen(p.foo, ({ valueOf }) => valueOf(p.foo) === 'x')` |
+| **applyWhen args**     | `applyWhen(condition, () => {...})`|`applyWhen(path, condition, schemaFn)` - needs 3 args       |
+| **Array length**       | `form.items().length`|`form.items.length` (structural)                            |
 | **Multi-select array** | `<select [formField]="form.tags">` (string[]) | Use checkboxes for array fields                             |
-| **readonly attribute** | `<input readonly [formField]>`                | Use `readonly()` rule in schema                             |
-| **min/max attributes** | `<input min="1" max="10">`                    | Use `min()` and `max()` rules in schema                     |
-| **value binding**      | `<input [value]="val">`                       | Do NOT use `[value]` with `[formField]`                     |
-| **when option**        | `pattern(p.x, /.../, {when: ...})`            | `when` only works with `required()`                         |
-| **Submit callback**    | `submit(form, () => { ... })`                 | `submit(form, async () => { ... })`                         |
-| **Async params**       | `params: s.field`                             | `params: ({ value }) => value()`                            |
-| **Async onError**      | Omitting `onError`                            | `onError` is REQUIRED in `validateAsync`                    |
-| **resource() API**     | `request: signal`                             | `params: signal`                                            |
-| **applyEach args**     | `applyEach(s.items, (item, index) => ...)`    | `applyEach(s.items, (item) => ...)`                         |
-| **Nested @for**        | `$parent.$index`                              | Use `let outerIndex = $index`                               |
-| **FormState import**   | `import { FormState }`                        | `FormState` does not exist, use `FieldState`                |
-| **Null in model**      | `signal({ name: null })`                      | `signal({ name: '' })` or `signal({ age: 0 })`              |
-| **Validate syntax**    | `validate(s.field, { value } => ...)`         | `validate(s.field, ({ value }) => ...)`                     |
-| **Checkbox Array**     | `[formField]="form.tags"` (string[])          | Checkboxes ONLY bind to `boolean`                           |
+| **readonly attribute** | `<input readonly [formField]>`| Use`readonly()` rule in schema                             |
+| **min/max attributes** | `<input min="1" max="10">`| Use`min()`and`max()` rules in schema                     |
+| **value binding**      | `<input [value]="val">`| Do NOT use`[value]`with`[formField]`                     |
+| **when option**        | `pattern(p.x, /.../, {when: ...})`|`when`only works with`required()`                         |
+| **Submit callback**    | `submit(form, () => { ... })`|`submit(form, async () => { ... })`                         |
+| **Async params**       | `params: s.field`|`params: ({ value }) => value()`                            |
+| **Async onError**      | Omitting `onError`|`onError`is REQUIRED in`validateAsync`                    |
+| **resource() API**     | `request: signal`|`params: signal`                                            |
+| **applyEach args**     | `applyEach(s.items, (item, index) => ...)`|`applyEach(s.items, (item) => ...)`                         |
+| **Nested @for**        | `$parent.$index`| Use`let outerIndex = $index`                               |
+| **FormState import**   | `import { FormState }`|`FormState`does not exist, use`FieldState`                |
+| **Null in model**      | `signal({ name: null })`|`signal({ name: '' })`or`signal({ age: 0 })`              |
+| **Validate syntax**    | `validate(s.field, { value } => ...)`|`validate(s.field, ({ value }) => ...)`                     |
+| **Checkbox Array**     | `[formField]="form.tags"`(string[])          | Checkboxes ONLY bind to`boolean`                           |
 
 ## Big Form Example
 
@@ -780,7 +780,7 @@ this.model.update((m) => ({...m, address: {...m.address, street: 'Main St'}}));
 
 ### `Type 'string[]' is not assignable to type 'string'`
 
-**Problem**: Binding `[formField]` to an array field with a single-value `<select>`.
+**Problem**: Binding `[formField]`to an array field with a single-value`<select>`.
 
 ```html
 <!-- WRONG - assignees is string[], select expects string -->

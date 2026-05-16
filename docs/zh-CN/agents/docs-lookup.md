@@ -17,7 +17,7 @@ model: sonnet
 
 ## 工作流程
 
-环境可能会在带前缀的名称下暴露 Context7 工具（例如 `mcp__context7__resolve-library-id`、`mcp__context7__query-docs`）。使用你环境中可用的工具名称（参见代理的 `tools` 列表）。
+环境可能会在带前缀的名称下暴露 Context7 工具（例如 `mcp__context7__resolve-library-id`、`mcp__context7__query-docs`）。使用你环境中可用的工具名称（参见代理的`tools` 列表）。
 
 ### 步骤 1：解析库
 

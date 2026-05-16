@@ -58,7 +58,7 @@ const result = await pipe('I love transformers!');
 await classifier.dispose();
 ```
 
-**⚠️ Memory Management:** All pipelines must be disposed with `pipe.dispose()` when finished to prevent memory leaks. See examples in [Code Examples](./references/EXAMPLES.md) for cleanup patterns across different environments.
+**WARNING: Memory Management:** All pipelines must be disposed with `pipe.dispose()` when finished to prevent memory leaks. See examples in [Code Examples](./references/EXAMPLES.md) for cleanup patterns across different environments.
 
 ### 2. Model Selection
 You can specify a custom model as the second argument:
@@ -479,12 +479,12 @@ const fileProgress = {};
 
 function onProgress(info) {
   console.log(`${info.status}: ${info.file}`);
-  
+
   if (info.status === 'progress') {
     fileProgress[info.file] = info.progress;
     console.log(`${info.file}: ${info.progress.toFixed(1)}%`);
   }
-  
+
   if (info.status === 'done') {
     console.log(`✓ ${info.file} complete`);
   }

@@ -8,7 +8,7 @@ try:
     from rich.console import Console
     from rich.table import Table
 except ImportError:
-    print("❌ Run: pip install qdrant-client rich")
+    print("FAIL: Run: pip install qdrant-client rich")
     exit(1)
 
 console = Console()
@@ -78,5 +78,5 @@ for i, point in enumerate(result[0], 1):
     console.print(f"[bold]{i}. {point.payload['file']}[/bold]")
     console.print(f"   {point.payload['content'][:100]}...\n")
 
-console.print("✅ Query examples completed!")
-console.print("\n[yellow]💡 Note:[/yellow] For vector search, add embeddings to points!")
+console.print("PASS: Query examples completed!")
+console.print("\n[yellow] Note:[/yellow] For vector search, add embeddings to points!")

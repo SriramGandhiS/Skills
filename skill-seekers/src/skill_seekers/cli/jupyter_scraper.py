@@ -233,7 +233,7 @@ class JupyterToSkillConverter(SkillConverter):
         Saves intermediate JSON to {name}_extracted.json. Returns True on success.
         """
         _check_jupyter_deps()
-        print(f"\n🔍 Extracting from Jupyter Notebook: {self.notebook_path}")
+        print(f"\n Extracting from Jupyter Notebook: {self.notebook_path}")
 
         path = Path(self.notebook_path)
         if not path.exists():
@@ -259,7 +259,7 @@ class JupyterToSkillConverter(SkillConverter):
                 nb_data = self._parse_single_notebook(nb_file)
             except Exception as e:
                 logger.warning("Failed to parse notebook %s: %s", nb_file, e)
-                print(f"   ⚠️  Skipping {nb_file.name}: {e}")
+                print(f"   WARNING:  Skipping {nb_file.name}: {e}")
                 continue
 
             if not combined_metadata:
@@ -279,7 +279,7 @@ class JupyterToSkillConverter(SkillConverter):
             total_raw_cells += nb_data["raw_cell_count"]
             all_imports.extend(nb_data["imports"])
             print(
-                f"   📓 {nb_file.name}: {nb_data['code_cell_count']} code, "
+                f"    {nb_file.name}: {nb_data['code_cell_count']} code, "
                 f"{nb_data['markdown_cell_count']} markdown, {nb_data['raw_cell_count']} raw cells"
             )
 
@@ -317,10 +317,10 @@ class JupyterToSkillConverter(SkillConverter):
         os.makedirs(os.path.dirname(self.data_file) or ".", exist_ok=True)
         with open(self.data_file, "w", encoding="utf-8") as f:
             json.dump(result_data, f, indent=2, ensure_ascii=False, default=str)
-        print(f"\n💾 Saved extracted data to: {self.data_file}")
+        print(f"\n Saved extracted data to: {self.data_file}")
         self.extracted_data = result_data
         print(
-            f"✅ Extracted {len(all_sections)} sections, "
+            f"PASS: Extracted {len(all_sections)} sections, "
             f"{total_code_blocks} code blocks, {total_markdown_cells} markdown cells"
         )
         return True
@@ -625,16 +625,16 @@ class JupyterToSkillConverter(SkillConverter):
 
     def load_extracted_data(self, json_path: str) -> bool:
         """Load previously extracted data from JSON."""
-        print(f"\n📂 Loading extracted data from: {json_path}")
+        print(f"\n Loading extracted data from: {json_path}")
         with open(json_path, encoding="utf-8") as f:
             self.extracted_data = json.load(f)
         total = self.extracted_data.get("total_sections", len(self.extracted_data.get("pages", [])))
-        print(f"✅ Loaded {total} sections")
+        print(f"PASS: Loaded {total} sections")
         return True
 
     def categorize_content(self) -> dict[str, dict]:
         """Categorize sections based on cell type and topic keywords."""
-        print("\n📋 Categorizing content...")
+        print("\n Categorizing content...")
         categorized: dict[str, dict] = {}
         sections = self.extracted_data.get("pages", [])
 
@@ -645,7 +645,7 @@ class JupyterToSkillConverter(SkillConverter):
                 "title": nb_basename,
                 "pages": sections,
             }
-            print(f"✅ Created 1 category (single notebook source)")
+            print(f"PASS: Created 1 category (single notebook source)")
             print(f"   - {nb_basename}: {len(sections)} sections")
             return categorized
 
@@ -717,26 +717,26 @@ class JupyterToSkillConverter(SkillConverter):
         return f"{text} {heading} {code}"
 
     def _print_categories(self, categorized: dict[str, dict]) -> None:
-        print(f"✅ Created {len(categorized)} categories")
+        print(f"PASS: Created {len(categorized)} categories")
         for cat_data in categorized.values():
             print(f"   - {cat_data['title']}: {len(cat_data['pages'])} sections")
 
     def build_skill(self) -> None:
         """Build complete skill directory structure."""
-        print(f"\n🏗️  Building skill: {self.name}")
+        print(f"\n  Building skill: {self.name}")
         os.makedirs(f"{self.skill_dir}/references", exist_ok=True)
         os.makedirs(f"{self.skill_dir}/scripts", exist_ok=True)
         os.makedirs(f"{self.skill_dir}/assets", exist_ok=True)
 
         categorized = self.categorize_content()
-        print("\n📝 Generating reference files...")
+        print("\n Generating reference files...")
         total_categories = len(categorized)
         for section_num, (cat_key, cat_data) in enumerate(categorized.items(), 1):
             self._generate_reference_file(cat_key, cat_data, section_num, total_categories)
         self._generate_index(categorized)
         self._generate_skill_md(categorized)
-        print(f"\n✅ Skill built successfully: {self.skill_dir}/")
-        print(f"\n📦 Next step: Package with: skill-seekers package {self.skill_dir}/")
+        print(f"\nPASS: Skill built successfully: {self.skill_dir}/")
+        print(f"\n Next step: Package with: skill-seekers package {self.skill_dir}/")
 
     # ------------------------------------------------------------------
     # Private generation methods
@@ -776,7 +776,7 @@ class JupyterToSkillConverter(SkillConverter):
                 heading_level = section.get("heading_level", "h1")
                 cell_type = section.get("cell_type", "markdown")
 
-                f.write(f"---\n\n**📄 Source: Section {sec_num}**")
+                f.write(f"---\n\n** Source: Section {sec_num}**")
                 if cell_type == "code":
                     ec = section.get("execution_count")
                     f.write(f" (Code Cell{f' [In {ec}]' if ec else ''})")
@@ -889,14 +889,14 @@ class JupyterToSkillConverter(SkillConverter):
             has_ks = isinstance(ks, dict) and ks.get("display_name")
             has_li = isinstance(li, dict) and li.get("name")
             if has_ks or has_li:
-                f.write("## 📋 Notebook Information\n\n")
+                f.write("##  Notebook Information\n\n")
                 if has_ks:
                     f.write(f"**Kernel:** {ks['display_name']}\n\n")
                 if has_li:
                     ver = li.get("version", "")
                     f.write(f"**Language:** {li['name']}{' ' + ver if ver else ''}\n\n")
 
-            f.write("## 💡 When to Use This Skill\n\nUse this skill when you need to:\n")
+            f.write("##  When to Use This Skill\n\nUse this skill when you need to:\n")
             f.write(f"- Understand {self.name} concepts and analysis workflow\n")
             f.write("- Reference code examples and their outputs\n")
             f.write("- Reproduce data analysis or computation steps\n")
@@ -904,7 +904,7 @@ class JupyterToSkillConverter(SkillConverter):
             f.write("- Find library usage patterns and best practices\n\n")
 
             total_sections = ed.get("total_sections", 0)
-            f.write(f"## 📖 Section Overview\n\n**Total Sections:** {total_sections}\n\n")
+            f.write(f"##  Section Overview\n\n**Total Sections:** {total_sections}\n\n")
             f.write("**Content Breakdown:**\n\n")
             for cd in categorized.values():
                 f.write(f"- **{cd['title']}**: {len(cd['pages'])} sections\n")
@@ -914,14 +914,14 @@ class JupyterToSkillConverter(SkillConverter):
 
             imports = ed.get("imports", [])
             if imports:
-                f.write(f"## 📦 Dependencies\n\n*{len(imports)} package(s) imported*\n\n")
+                f.write(f"##  Dependencies\n\n*{len(imports)} package(s) imported*\n\n")
                 for imp in imports[:20]:
                     f.write(f"- `{imp}`\n")
                 if len(imports) > 20:
                     f.write(f"- ... and {len(imports) - 20} more\n")
                 f.write("\n")
 
-            f.write("## ⚡ Quick Reference\n\n")
+            f.write("##  Quick Reference\n\n")
             f.write(self._format_patterns_from_content())
 
             # Top code examples
@@ -931,7 +931,7 @@ class JupyterToSkillConverter(SkillConverter):
             all_code.sort(key=lambda x: x.get("quality_score", 0), reverse=True)
             top_code = all_code[:15]
             if top_code:
-                f.write("## 📝 Code Examples\n\n*High-quality code cells from notebook*\n\n")
+                f.write("##  Code Examples\n\n*High-quality code cells from notebook*\n\n")
                 by_lang: dict[str, list] = {}
                 for c in top_code:
                     by_lang.setdefault(c.get("language", "unknown"), []).append(c)
@@ -947,7 +947,7 @@ class JupyterToSkillConverter(SkillConverter):
                         f.write(code_text[:500] + ("\n..." if len(code_text) > 500 else ""))
                         f.write("\n```\n\n")
 
-            f.write("## 📊 Notebook Statistics\n\n")
+            f.write("##  Notebook Statistics\n\n")
             f.write(f"- **Total Sections**: {total_sections}\n")
             f.write(f"- **Code Cells**: {ed.get('total_code_blocks', 0)}\n")
             f.write(f"- **Markdown Cells**: {ed.get('total_markdown_cells', 0)}\n")
@@ -961,7 +961,7 @@ class JupyterToSkillConverter(SkillConverter):
                     f.write(f"- {lang}: {count} code cells\n")
                 f.write("\n")
 
-            f.write("## 🗺️ Navigation\n\n**Reference Files:**\n\n")
+            f.write("##  Navigation\n\n**Reference Files:**\n\n")
             for cd in categorized.values():
                 cat_file = self._sanitize_filename(cd["title"])
                 f.write(f"- `references/{cat_file}.md` - {cd['title']}\n")
@@ -990,7 +990,7 @@ class JupyterToSkillConverter(SkillConverter):
                     all_headings.append((sub.get("level", "h3"), st))
         if not all_headings:
             return ""
-        content = "## 🔑 Key Concepts\n\n*Main topics covered in this notebook*\n\n"
+        content = "##  Key Concepts\n\n*Main topics covered in this notebook*\n\n"
         h1s = [text for lvl, text in all_headings if lvl == "h1"]
         h2s = [text for lvl, text in all_headings if lvl == "h2"]
         if h1s:

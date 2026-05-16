@@ -15,7 +15,7 @@ from ..sync import SyncMonitor
 
 def handle_signal(_signum, _frame):
     """Handle interrupt signals."""
-    print("\n🛑 Stopping sync monitor...")
+    print("\n Stopping sync monitor...")
     sys.exit(0)
 
 
@@ -32,9 +32,9 @@ def start_command(args):
     try:
         monitor.start()
 
-        print(f"\n📊 Monitoring {args.config}")
+        print(f"\n Monitoring {args.config}")
         print(f"   Check interval: {args.interval}s ({args.interval // 60}m)")
-        print(f"   Auto-update: {'✅ enabled' if args.auto_update else '❌ disabled'}")
+        print(f"   Auto-update: {'PASS: enabled' if args.auto_update else 'FAIL: disabled'}")
         print("\nPress Ctrl+C to stop\n")
 
         # Keep running
@@ -44,7 +44,7 @@ def start_command(args):
             time.sleep(1)
 
     except KeyboardInterrupt:
-        print("\n🛑 Stopping...")
+        print("\n Stopping...")
         monitor.stop()
 
 
@@ -55,11 +55,11 @@ def check_command(args):
         check_interval=3600,  # Not used for single check
     )
 
-    print(f"🔍 Checking {args.config} for changes...")
+    print(f" Checking {args.config} for changes...")
 
     report = monitor.check_now(generate_diffs=args.diff)
 
-    print(f"\n📊 Results:")
+    print(f"\n Results:")
     print(f"   Total pages: {report.total_pages}")
     print(f"   Added: {len(report.added)}")
     print(f"   Modified: {len(report.modified)}")
@@ -67,16 +67,16 @@ def check_command(args):
     print(f"   Unchanged: {report.unchanged}")
 
     if report.has_changes:
-        print(f"\n✨ Detected {report.change_count} changes!")
+        print(f"\n Detected {report.change_count} changes!")
 
         if args.verbose:
             if report.added:
-                print("\n✅ Added pages:")
+                print("\nPASS: Added pages:")
                 for change in report.added:
                     print(f"   • {change.url}")
 
             if report.modified:
-                print("\n✏️  Modified pages:")
+                print("\n  Modified pages:")
                 for change in report.modified:
                     print(f"   • {change.url}")
                     if change.diff and args.diff:
@@ -85,11 +85,11 @@ def check_command(args):
                             print(f"        {line}")
 
             if report.deleted:
-                print("\n❌ Deleted pages:")
+                print("\nFAIL: Deleted pages:")
                 for change in report.deleted:
                     print(f"   • {change.url}")
     else:
-        print("\n✅ No changes detected")
+        print("\nPASS: No changes detected")
 
 
 def stats_command(args):
@@ -98,14 +98,14 @@ def stats_command(args):
 
     stats = monitor.stats()
 
-    print(f"\n📊 Statistics for {stats['skill_name']}:")
+    print(f"\n Statistics for {stats['skill_name']}:")
     print(f"   Status: {stats['status']}")
     print(f"   Last check: {stats['last_check'] or 'Never'}")
     print(f"   Last change: {stats['last_change'] or 'Never'}")
     print(f"   Total checks: {stats['total_checks']}")
     print(f"   Total changes: {stats['total_changes']}")
     print(f"   Tracked pages: {stats['tracked_pages']}")
-    print(f"   Running: {'✅ Yes' if stats['running'] else '❌ No'}")
+    print(f"   Running: {'PASS: Yes' if stats['running'] else 'FAIL: No'}")
 
 
 def reset_command(args):
@@ -113,13 +113,13 @@ def reset_command(args):
     state_file = Path(f"{args.skill_name}_sync.json")
 
     if state_file.exists():
-        if args.force or input(f"⚠️  Reset state for {args.skill_name}? [y/N]: ").lower() == "y":
+        if args.force or input(f"WARNING:  Reset state for {args.skill_name}? [y/N]: ").lower() == "y":
             state_file.unlink()
-            print(f"✅ State reset for {args.skill_name}")
+            print(f"PASS: State reset for {args.skill_name}")
         else:
-            print("❌ Reset cancelled")
+            print("FAIL: Reset cancelled")
     else:
-        print(f"ℹ️  No state file found for {args.skill_name}")
+        print(f"  No state file found for {args.skill_name}")
 
 
 def main():
@@ -199,7 +199,7 @@ Examples:
         elif args.command == "reset":
             reset_command(args)
     except Exception as e:
-        print(f"\n❌ Error: {e}", file=sys.stderr)
+        print(f"\nFAIL: Error: {e}", file=sys.stderr)
         sys.exit(1)
 
 

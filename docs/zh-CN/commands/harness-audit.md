@@ -6,8 +6,8 @@
 
 `/harness-audit [scope] [--format text|json]`
 
-* `scope` (可选): `repo` (默认), `hooks`, `skills`, `commands`, `agents`
-* `--format`: 输出样式 (`text` 默认, `json` 用于自动化)
+* `scope`(可选):`repo`(默认),`hooks`,`skills`,`commands`,`agents`
+* `--format`: 输出样式 (`text`默认,`json` 用于自动化)
 
 ## 确定性引擎
 
@@ -37,7 +37,7 @@ node scripts/harness-audit.js <scope> --format <text|json>
 
 返回：
 
-1. `overall_score` 分（满分 `max_score` 分；`repo` 为 70 分；范围限定审计则分数更小）
+1. `overall_score`分（满分`max_score`分；`repo` 为 70 分；范围限定审计则分数更小）
 2. 类别分数及具体发现项
 3. 失败的检查及其确切的文件路径
 4. 确定性输出的前 3 项行动（`top_actions`）
@@ -48,7 +48,7 @@ node scripts/harness-audit.js <scope> --format <text|json>
 * 直接使用脚本输出；不要手动重新评分。
 * 如果请求 `--format json`，则原样返回脚本的 JSON 输出。
 * 如果请求文本输出，则总结失败的检查和首要行动。
-* 包含来自 `checks[]` 和 `top_actions[]` 的确切文件路径。
+* 包含来自 `checks[]`和`top_actions[]` 的确切文件路径。
 
 ## 结果示例
 

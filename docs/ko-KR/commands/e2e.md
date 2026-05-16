@@ -40,7 +40,7 @@ e2e-runner 에이전트가 수행하는 작업:
 User: /e2e 마켓 검색 및 조회 흐름 테스트
 
 Agent (e2e-runner):
-# E2E 테스트 생성: 마켓 검색 및 조회 흐름
+## E2E 테스트 생성: 마켓 검색 및 조회 흐름
 
 ## 식별된 테스트 시나리오
 
@@ -159,7 +159,7 @@ test.describe('Market Search and View Flow', () => {
 ## 테스트 실행
 
 ```bash
-# 생성된 테스트 실행
+## 생성된 테스트 실행
 npx playwright test tests/e2e/markets/search-and-view.spec.ts
 
 Running 3 tests using 3 workers
@@ -220,13 +220,13 @@ PASS: CI/CD 통합 준비가 완료된 E2E 테스트 모음!
 ## 아티팩트 확인
 
 ```bash
-# 브라우저에서 HTML 보고서 확인
+## 브라우저에서 HTML 보고서 확인
 npx playwright show-report
 
-# 특정 트레이스 파일 확인
+## 특정 트레이스 파일 확인
 npx playwright show-trace artifacts/trace-abc123.zip
 
-# 스크린샷은 artifacts/ 디렉토리에 저장됨
+## 스크린샷은 artifacts/ 디렉토리에 저장됨
 open artifacts/search-results.png
 ```
 
@@ -266,7 +266,7 @@ WARNING:  불안정한 테스트 감지됨: tests/e2e/markets/trade.spec.ts
 CI 파이프라인에 추가:
 
 ```yaml
-# .github/workflows/e2e.yml
+## .github/workflows/e2e.yml
 - name: Install Playwright
   run: npx playwright install --with-deps
 
@@ -314,21 +314,21 @@ CI 파이프라인에 추가:
 ## 빠른 커맨드
 
 ```bash
-# 모든 E2E 테스트 실행
+## 모든 E2E 테스트 실행
 npx playwright test
 
-# 특정 테스트 파일 실행
+## 특정 테스트 파일 실행
 npx playwright test tests/e2e/markets/search.spec.ts
 
-# headed 모드로 실행 (브라우저 표시)
+## headed 모드로 실행 (브라우저 표시)
 npx playwright test --headed
 
-# 테스트 디버그
+## 테스트 디버그
 npx playwright test --debug
 
-# 테스트 코드 생성
-npx playwright codegen http://localhost:3000
+## 테스트 코드 생성
+npx playwright codegen <http://localhost:3000>
 
-# 보고서 확인
+## 보고서 확인
 npx playwright show-report
 ```

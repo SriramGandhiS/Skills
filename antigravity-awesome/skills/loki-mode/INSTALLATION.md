@@ -127,7 +127,7 @@ For using Loki Mode through the Anthropic API Console (console.anthropic.com):
 1. Go to [Releases](https://github.com/asklokesh/loki-mode/releases)
 2. Download **`loki-mode-api-X.X.X.zip`** (note the `-api-` version)
 
-   **Important:** The API version has a different file structure than the web version.
+**Important:** The API version has a different file structure than the web version.
 
 ### Step 2: Upload to API Console
 

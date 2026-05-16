@@ -179,8 +179,8 @@ def _shadow_write_blob(
                     except (TypeError, json.JSONDecodeError):
                         existing_doc = {}
                     merged = {
-                        **existing_doc,
-                        **payload,
+**existing_doc,
+**payload,
                         "_merged_versions": (
                             existing_doc.get("_merged_versions", [])
                             + [existing_sha]

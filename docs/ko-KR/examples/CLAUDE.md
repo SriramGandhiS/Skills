@@ -86,11 +86,11 @@ try {
 ## 환경 변수
 
 ```bash
-# 필수
+## 필수
 DATABASE_URL=
 API_KEY=
 
-# 선택
+## 선택
 DEBUG=false
 ```
 
@@ -103,7 +103,7 @@ DEBUG=false
 
 ## Git 워크플로우
 
-- Conventional commits: `feat:`, `fix:`, `refactor:`, `docs:`, `test:`
+- Conventional commits: `feat:`,`fix:`,`refactor:`,`docs:`,`test:`
 - main 브랜치에 직접 커밋 금지
 - PR은 리뷰 필수
 - 병합 전 모든 테스트 통과 필수

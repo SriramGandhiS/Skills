@@ -77,7 +77,7 @@ wrangler deploy
 
 ### Native Binding (Recommended)
 
-**When**: Building Workers/Pages with TypeScript  
+**When**: Building Workers/Pages with TypeScript
 **Why**: Zero external dependencies, best performance, native types
 
 ```typescript
@@ -86,7 +86,7 @@ await env.AI.run(model, input);
 
 ### REST API
 
-**When**: External services, non-Workers environments, testing  
+**When**: External services, non-Workers environments, testing
 **Why**: Standard HTTP, works anywhere
 
 ```bash
@@ -97,7 +97,7 @@ curl https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai/run/@cf/meta/
 
 ### Vercel AI SDK Integration
 
-**When**: Using Vercel AI SDK features (streaming UI, tool calling abstractions)  
+**When**: Using Vercel AI SDK features (streaming UI, tool calling abstractions)
 **Why**: Unified interface across providers
 
 ```typescript
@@ -130,8 +130,8 @@ const model = openai('model-name', {
 | Neurons/day | 10,000 | Pay per use |
 | Rate limit | Varies by model | Higher (contact support) |
 | Context window | Model dependent (2K-8K) | Same |
-| Streaming | ✅ Supported | ✅ Supported |
-| Function calling | ✅ Supported (select models) | ✅ Supported |
+| Streaming | PASS: Supported | PASS: Supported |
+| Function calling | PASS: Supported (select models) | PASS: Supported |
 
 **Pricing**: Free 10K neurons/day, then pay per neuron consumed (varies by model)
 

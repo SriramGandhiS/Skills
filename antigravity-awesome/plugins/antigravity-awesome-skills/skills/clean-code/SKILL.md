@@ -10,7 +10,7 @@ date_added: "2026-02-27"
 
 This skill embodies the principles of "Clean Code" by Robert C. Martin (Uncle Bob). Use it to transform "code that works" into "code that is clean."
 
-## 🧠 Core Philosophy
+## Core Philosophy
 > "Code is clean if it can be read, and enhanced by a developer other than its original author." — Grady Booch
 
 ## When to Use
@@ -38,7 +38,7 @@ Use this skill when:
 
 ## 3. Comments
 - **Don't Comment Bad Code—Rewrite It**: Most comments are a sign of failure to express ourselves in code.
-- **Explain Yourself in Code**: 
+- **Explain Yourself in Code**:
   ```python
   # Check if employee is eligible for full benefits
   if employee.flags & HOURLY and employee.age > 65:
@@ -85,7 +85,7 @@ Use this skill when:
 - **Viscosity**: Hard to do the right thing.
 - **Needless Complexity/Repetition**.
 
-## 🛠️ Implementation Checklist
+## Implementation Checklist
 - [ ] Is this function smaller than 20 lines?
 - [ ] Does this function do exactly one thing?
 - [ ] Are all names searchable and intention-revealing?

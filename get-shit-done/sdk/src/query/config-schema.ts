@@ -11,7 +11,7 @@
  * DYNAMIC_KEY_PATTERN_SOURCES produce identical regex source strings.
  *
  * See #2653 — CJS/SDK drift caused config-set to reject documented
- * keys. #2479 added CJS↔docs parity; #2653 adds CJS↔SDK parity.
+ * keys. #2479 added CJSdocs parity; #2653 adds CJSSDK parity.
  */
 
 /** Exact-match config key paths accepted by config-set. */

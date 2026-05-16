@@ -36,7 +36,7 @@ Extended thinking varsayılan olarak etkindir ve dahili akıl yürütme için 31
 
 Extended thinking kontrolü:
 - **Toggle**: Option+T (macOS) / Alt+T (Windows/Linux)
-- **Config**: `~/.claude/settings.json` içinde `alwaysThinkingEnabled` ayarla
+- **Config**: `~/.claude/settings.json`içinde`alwaysThinkingEnabled` ayarla
 - **Budget cap**: `export MAX_THINKING_TOKENS=10000`
 - **Verbose mode**: Thinking çıktısını görmek için Ctrl+O
 

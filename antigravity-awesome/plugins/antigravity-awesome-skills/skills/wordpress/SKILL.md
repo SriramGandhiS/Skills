@@ -448,35 +448,35 @@ add_action('save_post', function($post_id, $post) {
     if (wp_is_post_autosave($post_id) || wp_is_post_revision($post_id)) {
         return;
     }
-    
+
     // Skip if excerpt already exists
     if (!empty($post->post_excerpt)) {
         return;
     }
-    
+
     $content = strip_tags($post->post_content);
     if (empty($content)) {
         return;
     }
-    
+
     // Check if AI client is available
     if (!function_exists('wp_ai_client_prompt')) {
         return;
     }
-    
+
     // Build prompt with input
     $result = wp_ai_client_prompt(
         'Create a brief 2-sentence summary of this content: ' . substr($content, 0, 1000)
     );
-    
+
     if (is_wp_error($result)) {
         return; // Silently fail - don't block post saving
     }
-    
+
     // Use temperature for consistent output
     $result->using_temperature(0.3);
     $summary = $result->generate_text();
-    
+
     if ($summary && !is_wp_error($summary)) {
         wp_update_post([
             'ID' => $post_id,
@@ -539,28 +539,28 @@ add_action('wp_abilities_api_init', function() {
 function my_plugin_generate_summary_handler($input) {
     $post_id = isset($input['post_id']) ? absint($input['post_id']) : 0;
     $post = get_post($post_id);
-    
+
     if (!$post) {
         return new WP_Error('invalid_post', 'Post not found');
     }
-    
+
     $content = strip_tags($post->post_content);
     if (empty($content)) {
         return ['summary' => ''];
     }
-    
+
     if (!function_exists('wp_ai_client_prompt')) {
         return new WP_Error('ai_unavailable', 'AI client not available');
     }
-    
+
     $result = wp_ai_client_prompt('Summarize in 2 sentences: ' . substr($content, 0, 1000))
         ->using_temperature(0.3)
         ->generate_text();
-    
+
     if (is_wp_error($result)) {
         return $result;
     }
-    
+
     return ['summary' => sanitize_textarea_field($result)];
 }
 ```

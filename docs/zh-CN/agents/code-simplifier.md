@@ -22,7 +22,7 @@ tools: [Read, Write, Edit, Bash, Grep, Glob]
 
 * 将深层嵌套的逻辑提取为具名函数
 * 在更清晰的情况下用提前返回替代复杂条件判断
-* 使用 `async` / `await` 简化回调链
+* 使用 `async`/`await` 简化回调链
 * 移除死代码和未使用的导入
 
 ### 可读性

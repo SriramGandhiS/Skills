@@ -99,10 +99,10 @@ Make it easy for agents to self-check when rationalizing:
 Add to description: symptoms of when you're ABOUT to violate:
 
 ```yaml
-# ❌ BAD: Only describes what skill does
+# FAIL: BAD: Only describes what skill does
 description: TDD methodology for writing code
 
-# ✅ GOOD: Includes pre-violation symptoms
+# PASS: GOOD: Includes pre-violation symptoms
 description: Use when implementing any feature or bugfix, before writing implementation code
 metadata:
   triggers: new feature, bug fix, code change

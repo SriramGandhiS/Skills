@@ -153,15 +153,15 @@ Find the file path in the bullet, read it, confirm the gap matches.
 
 ## Best Practices
 
-- ✅ Always cite the exact bullet from `concerns[].bullet` — they're already action-oriented
-- ✅ Lead with score + delta in a single sentence, then concerns
-- ✅ End with a specific follow-up question naming a concern
-- ✅ Read prior `.commitshow/audit.json` before re-running (within 1h)
-- ✅ Use `--refresh` after the user merges a fix so the next audit reflects it
-- ❌ Don't dump full JSON to the user
-- ❌ Don't list strengths unless the user explicitly asks
-- ❌ Don't apply fixes without approval — show diff first
-- ❌ Don't fault private repos for not auditing — explain why and suggest making public
+- PASS: Always cite the exact bullet from `concerns[].bullet` — they're already action-oriented
+- PASS: Lead with score + delta in a single sentence, then concerns
+- PASS: End with a specific follow-up question naming a concern
+- PASS: Read prior `.commitshow/audit.json` before re-running (within 1h)
+- PASS: Use `--refresh` after the user merges a fix so the next audit reflects it
+- FAIL: Don't dump full JSON to the user
+- FAIL: Don't list strengths unless the user explicitly asks
+- FAIL: Don't apply fixes without approval — show diff first
+- FAIL: Don't fault private repos for not auditing — explain why and suggest making public
 
 ## Limitations
 
@@ -181,16 +181,16 @@ Find the file path in the bullet, read it, confirm the gap matches.
 ## Common Pitfalls
 
 - **Problem:** Audit returns `not_found` for a private repo
-  **Solution:** The engine pulls public GitHub signals only. Either make the repo public or use `--no-network` for local-only deterministic checks.
+**Solution:** The engine pulls public GitHub signals only. Either make the repo public or use `--no-network` for local-only deterministic checks.
 
 - **Problem:** Rate limit hit (`429`)
-  **Solution:** Wait until next day (limits reset 00:00 UTC) or sign in at commit.show for higher per-repo caps.
+**Solution:** Wait until next day (limits reset 00:00 UTC) or sign in at commit.show for higher per-repo caps.
 
 - **Problem:** Score seems too low for a polished library / CLI
-  **Solution:** The engine biases toward app form. CLI / library / scaffold gets a partial substitute score capped around 45/50 on the audit pillar. Calibration acknowledged trade-off.
+**Solution:** The engine biases toward app form. CLI / library / scaffold gets a partial substitute score capped around 45/50 on the audit pillar. Calibration acknowledged trade-off.
 
 - **Problem:** `concerns[]` is empty after re-running
-  **Solution:** Re-audit may have hit cache. Use `--refresh` to force-bypass.
+**Solution:** Re-audit may have hit cache. Use `--refresh` to force-bypass.
 
 ## Related Skills
 

@@ -33,7 +33,7 @@ pip install -q datasets transformers accelerate timm trackio
 pip install -q -U albumentations>=1.4.5 torchmetrics pycocotools
 ```
 
-You'll use 🤗 Datasets to load a dataset from the Hugging Face Hub, 🤗 Transformers to train your model,
+You'll use  Datasets to load a dataset from the Hugging Face Hub,  Transformers to train your model,
 and `albumentations` to augment the data.
 
 We encourage you to share your model with the community. Log in to your Hugging Face account to upload it to the Hub.
@@ -161,7 +161,7 @@ To get an even better understanding of the data, visualize an example in the dat
 >>> image
 ```
 
-    
+
 
 To visualize the bounding boxes with associated labels, you can get the labels from the dataset's metadata, specifically
 the `category` field.
@@ -209,7 +209,7 @@ Before passing the images to the `image_processor`, apply two preprocessing tran
 
 First, to make sure the model does not overfit on the training data, you can apply image augmentation with any data augmentation library. Here we use [Albumentations](https://albumentations.ai/docs/).
 This library ensures that transformations affect the image and update the bounding boxes accordingly.
-The 🤗 Datasets library documentation has a detailed [guide on how to augment images for object detection](https://huggingface.co/docs/datasets/object_detection),
+The  Datasets library documentation has a detailed [guide on how to augment images for object detection](https://huggingface.co/docs/datasets/object_detection),
 and it uses the exact same dataset as an example. Apply some geometric and color transformations to the image. For additional augmentation options, explore the [Albumentations Demo Space](https://huggingface.co/spaces/qubvel-hf/albumentations-demo).
 
 ```py
@@ -299,7 +299,7 @@ Now you can combine the image and annotation transformations to use on a batch o
 ...     return result
 ```
 
-Apply this preprocessing function to the entire dataset using 🤗 Datasets [with_transform](https://huggingface.co/docs/datasets/v4.5.0/en/package_reference/main_classes#datasets.Dataset.with_transform) method. This method applies
+Apply this preprocessing function to the entire dataset using  Datasets [with_transform](https://huggingface.co/docs/datasets/v4.5.0/en/package_reference/main_classes#datasets.Dataset.with_transform) method. This method applies
 transformations on the fly when you load an element of the dataset.
 
 At this point, you can check what an example from the dataset looks like after the transformations. You should see a tensor
@@ -695,5 +695,5 @@ Let's plot the result:
 >>> image
 ```
 
-    
+
 

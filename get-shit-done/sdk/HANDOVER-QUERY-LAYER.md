@@ -9,13 +9,11 @@ Paste this document (or `@sdk/HANDOVER-QUERY-LAYER.md`) at the start of a new se
 
 ### Scope anchors (do not confuse issues)
 
-
 | Role                                    | GitHub                                                                                 | Notes                                                                                                                                                                                                                                       |
 | --------------------------------------- | -------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Product / requirements anchor**       | [#2007](https://github.com/gsd-build/get-shit-done/issues/2007)                        | Problem statement, user stories, and target architecture for the SDK-first migration. **Do not** treat its original acceptance-checklist boxes as proof of what is merged upstream; work was split into phased PRs after maintainer review. |
 | **Phase 3 execution scope**             | [#2302](https://github.com/gsd-build/get-shit-done/issues/2302) **+ this handover**    | What this branch is actually doing now: registry/CLI parity, docs, harness gaps, runner alignment follow-ups as listed below.                                                                                                               |
 | **Patch mine (if local tree is short)** | [PR #2008](https://github.com/gsd-build/get-shit-done/pull/2008) and matching branches | Large pre-phasing PR; cherry-pick or compare when something looks missing vs that line of work.                                                                                                                                             |
-
 
 ---
 
@@ -54,13 +52,11 @@ Previously `state.json` and `state.load` were easy to confuse: CJS has two diffe
 
 ## Query surface completeness (snapshot)
 
-
 | Status                   | Surface                                                                                          |
 | ------------------------ | ------------------------------------------------------------------------------------------------ |
 | **Registered**           | Essentially all `gsd-tools.cjs` `runCommand` surfaces, including `phase.add-batch`.          |
 | **CLI-only (by design)** | `graphify`, `from-gsd2` — not in `createRegistry()`; documented in `QUERY-HANDLERS.md`.  |
 | **SDK-only extra**       | `phases.archive` — no `gsd-tools phases archive` subcommand (CJS has `list` / `clear` only). |
-
 
 **Programmatic API:** `createRegistry()` / `registry.dispatch('dotted.name', args, projectDir)`.
 
@@ -72,7 +68,6 @@ Previously `state.json` and `state.load` were easy to confuse: CJS has two diffe
 
 ## Canonical files
 
-
 | Path                                        | Role                                                                                   |
 | ------------------------------------------- | -------------------------------------------------------------------------------------- |
 | `sdk/src/query/index.ts`                    | `createRegistry()`, `QUERY_MUTATION_COMMANDS`, handler wiring.                         |
@@ -83,7 +78,6 @@ Previously `state.json` and `state.load` were easy to confuse: CJS has two diffe
 | `sdk/src/golden/golden.integration.test.ts` | Golden parity vs `captureGsdToolsOutput()`.                                            |
 | `docs/CLI-TOOLS.md`                         | User-facing CLI; links to parity sections.                                             |
 
-
 Related handovers: `HANDOVER-GOLDEN-PARITY.md`, `HANDOVER-PARITY-DOCS.md` (older parity-doc brief; content largely folded into `QUERY-HANDLERS.md`).
 
 ---
@@ -92,12 +86,10 @@ Related handovers: `HANDOVER-GOLDEN-PARITY.md`, `HANDOVER-PARITY-DOCS.md` (older
 
 Work that moves **deterministic** orchestration out of AI/bash and into **SDK queries** (historically `gsd-tools.cjs`) has **two layers**. Do not confuse them:
 
-
 | Layer                    | Goal                                                                                                                                                                         | What “done” looks like                                                                  |
 | ------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
 | **Parity / migration**   | Existing CLI behavior is **stable and testable** in the registry so callers can use `gsd-sdk query` instead of `node …/gsd-tools.cjs` without silent drift.                  | Goldens + `QUERY-HANDLERS.md`; same JSON/`--raw` contracts as CJS.                      |
 | **Offloading decisions** | **New or consolidated** queries replace repeated `grep`, `ls` piped to `wc -l`, many `config-get`s, and inline `node -e` in workflows — so the model does less parsing and branching. | Fewer inline shell blocks; measurable token/step reduction on representative workflows. |
-
 
 Phase 3–style registry work mainly advances **parity**. The `decision-routing-audit.md` proposals are mostly **offloading** — they assume parity exists for commands workflows already call.
 
@@ -116,7 +108,7 @@ Source: `.planning/research/decision-routing-audit.md` §3. **Tier** = priority 
 | 3.7 | `check completion <scope>` | 2 | Phase or milestone completion rollup. |
 | 3.8 | `check verification-status <phase>` | 3 | VERIFICATION.md parsing for routing. |
 | 3.9 | `check ship-ready <phase>` | 3 | Ship preflight (`ship.md`). |
-| 3.10 | `route workflow-steps <workflow>` | ❌ **Do not implement** | Pre-computed step lists are unsound when mid-workflow writes change state. See `review-and-risks.md` §3.6. |
+| 3.10 | `route workflow-steps <workflow>` | FAIL: **Do not implement** | Pre-computed step lists are unsound when mid-workflow writes change state. See `review-and-risks.md` §3.6. |
 
 **Not in audit:** `phase-artifact-counts` was only an example in an older handover line; there is no §3.11 for it — add via a new research doc if needed.
 
@@ -161,7 +153,7 @@ npx vitest run src/golden/golden.integration.test.ts --project integration
 
 ## Success criteria (query-layer slice)
 
-- Parity expectations and CJS↔SDK matrix documented in one place (`QUERY-HANDLERS.md`).
+- Parity expectations and CJSSDK matrix documented in one place (`QUERY-HANDLERS.md`).
 - `gsd-sdk query` understands two-token command patterns like `gsd-tools`.
 - `phase add-batch` implemented and registered; **only** intentional CLI-only gaps remain (**graphify**, **from-gsd2**).
 

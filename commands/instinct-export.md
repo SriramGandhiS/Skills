@@ -28,7 +28,7 @@ Exports instincts to a shareable format. Perfect for:
    - `project`: current project only
    - `global`: global only
    - `all`: project + global merged (default)
-3. Apply filters (`--domain`, `--min-confidence`)
+3. Apply filters (`--domain`,`--min-confidence`)
 4. Write YAML-style export to file (or stdout if no output path provided)
 
 ## Output Format
@@ -36,10 +36,10 @@ Exports instincts to a shareable format. Perfect for:
 Creates a YAML file:
 
 ```yaml
-# Instincts Export
-# Generated: 2025-01-22
-# Source: personal
-# Count: 12 instincts
+## Instincts Export
+## Generated: 2025-01-22
+## Source: personal
+## Count: 12 instincts
 
 ---
 id: prefer-functional-style
@@ -52,7 +52,7 @@ project_id: a1b2c3d4e5f6
 project_name: my-app
 ---
 
-# Prefer Functional Style
+## Prefer Functional Style
 
 ## Action
 Use functional patterns over classes.
@@ -63,4 +63,4 @@ Use functional patterns over classes.
 - `--domain <name>`: Export only specified domain
 - `--min-confidence <n>`: Minimum confidence threshold
 - `--output <file>`: Output file path (prints to stdout when omitted)
-- `--scope <project|global|all>`: Export scope (default: `all`)
+- `--scope <project|global|all>`: Export scope (default:`all`)

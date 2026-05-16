@@ -18,10 +18,10 @@
 ## 运行测试
 
 ```bash
-# Run all tests
+## Run all tests
 node tests/run-all.js
 
-# Run individual test files
+## Run individual test files
 node tests/lib/utils.test.js
 node tests/lib/package-manager.test.js
 node tests/hooks/hooks.test.js
@@ -67,4 +67,4 @@ node tests/hooks/hooks.test.js
 - 命令：带有描述前言的 Markdown
 - 钩子：带有匹配器和钩子数组的 JSON
 
-文件命名：小写字母并用连字符连接（例如 `python-reviewer.md`, `tdd-workflow.md`）
+文件命名：小写字母并用连字符连接（例如 `python-reviewer.md`,`tdd-workflow.md`）

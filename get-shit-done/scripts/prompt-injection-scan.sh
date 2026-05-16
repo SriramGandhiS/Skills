@@ -1,15 +1,13 @@
 #!/usr/bin/env bash
 # prompt-injection-scan.sh — Scan files for prompt injection patterns
-#
-# Usage:
-#   scripts/prompt-injection-scan.sh --diff origin/main   # CI mode: scan changed .md files
-#   scripts/prompt-injection-scan.sh --file path/to/file   # Scan a single file
-#   scripts/prompt-injection-scan.sh --dir agents/          # Scan all files in a directory
-#
-# Exit codes:
-#   0 = clean
-#   1 = findings detected
-#   2 = usage error
+# # Usage:
+# scripts/prompt-injection-scan.sh --diff origin/main   # CI mode: scan changed .md files
+# scripts/prompt-injection-scan.sh --file path/to/file   # Scan a single file
+# scripts/prompt-injection-scan.sh --dir agents/          # Scan all files in a directory
+# # Exit codes:
+# 0 = clean
+# 1 = findings detected
+# 2 = usage error
 set -euo pipefail
 
 # ─── Patterns ────────────────────────────────────────────────────────────────

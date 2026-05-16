@@ -1,4 +1,4 @@
-﻿---
+---
 name: transcribe-captions
 description: Transcribing audio to generate captions in Remotion
 metadata:

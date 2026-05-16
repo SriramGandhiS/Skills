@@ -59,7 +59,7 @@ Blueprint 自动检测 git/gh 可用性。如果具备 git + GitHub CLI，它会
 * **分支/PR/CI 工作流** — 内置于每个步骤中。当 git/gh 缺失时，优雅降级为直接模式。
 * **并行步骤检测** — 依赖图识别出没有共享文件或输出依赖的步骤。
 * **计划变更协议** — 步骤可以按照正式协议和审计追踪进行拆分、插入、跳过、重新排序或放弃。
-* **零运行时风险** — 纯 Markdown 技能。整个仓库仅包含 `.md` 文件 — 无钩子、无 shell 脚本、无可执行代码、无 `package.json`、无构建步骤。安装或调用时，除了 Claude Code 的原生 Markdown 技能加载器外，不运行任何内容。
+* **零运行时风险** — 纯 Markdown 技能。整个仓库仅包含 `.md`文件 — 无钩子、无 shell 脚本、无可执行代码、无`package.json`、无构建步骤。安装或调用时，除了 Claude Code 的原生 Markdown 技能加载器外，不运行任何内容。
 
 ## 安装
 
@@ -84,7 +84,7 @@ git checkout <reviewed-full-sha>          # pin to a specific reviewed commit
 
 ### 独立安装（内嵌副本）
 
-如果您在完整 ECC 安装之外仅内嵌此技能，请将 ECC 仓库中已审查的文件复制到 `~/.claude/skills/blueprint/SKILL.md`。内嵌副本没有 git 远程仓库，因此应通过从已审查的 ECC 提交中重新复制文件来更新，而不是运行 `git pull`。
+如果您在完整 ECC 安装之外仅内嵌此技能，请将 ECC 仓库中已审查的文件复制到 `~/.claude/skills/blueprint/SKILL.md`。内嵌副本没有 git 远程仓库，因此应通过从已审查的 ECC 提交中重新复制文件来更新，而不是运行`git pull`。
 
 ## 要求
 

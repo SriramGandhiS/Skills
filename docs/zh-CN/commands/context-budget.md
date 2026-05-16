@@ -21,7 +21,7 @@ $ARGUMENTS
 
 运行 **context-budget** 技能（`skills/context-budget/SKILL.md`），并输入以下内容：
 
-1. 如果 `$ARGUMENTS` 中存在 `--verbose` 标志，则传递该标志
+1. 如果 `$ARGUMENTS`中存在`--verbose` 标志，则传递该标志
 2. 除非用户另行指定，否则假设为 200K 上下文窗口（Claude Sonnet 默认值）
 3. 遵循技能的四个阶段：清单 → 分类 → 检测问题 → 报告
 4. 向用户输出格式化的上下文预算报告

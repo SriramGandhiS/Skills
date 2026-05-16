@@ -208,19 +208,19 @@ function updateDesignTokens(tokens, colors) {
 function main() {
   const dryRun = process.argv.includes('--dry-run');
 
-  console.log('🔄 Syncing brand guidelines → design tokens\n');
+  console.log(' Syncing brand guidelines → design tokens\n');
 
   // Read brand guidelines
   const guidelinesPath = path.resolve(process.cwd(), BRAND_GUIDELINES);
   if (!fs.existsSync(guidelinesPath)) {
-    console.error(`❌ Brand guidelines not found: ${guidelinesPath}`);
+    console.error(`FAIL: Brand guidelines not found: ${guidelinesPath}`);
     process.exit(1);
   }
   const guidelinesContent = fs.readFileSync(guidelinesPath, 'utf-8');
 
   // Extract colors
   const colors = extractColorsFromMarkdown(guidelinesContent);
-  console.log('📊 Extracted colors:');
+  console.log(' Extracted colors:');
   console.log(`   Primary: ${colors.primary.name} (${colors.primary.base})`);
   console.log(`   Secondary: ${colors.secondary.name} (${colors.secondary.base})`);
   console.log(`   Accent: ${colors.accent.name} (${colors.accent.base})\n`);
@@ -236,15 +236,15 @@ function main() {
   tokens = updateDesignTokens(tokens, colors);
 
   if (dryRun) {
-    console.log('📋 Would update design-tokens.json:');
+    console.log(' Would update design-tokens.json:');
     console.log(JSON.stringify(tokens.primitive.color, null, 2).slice(0, 500) + '...');
-    console.log('\n⏭️  Dry run - no files changed');
+    console.log('\nSKIPPED:  Dry run - no files changed');
     return;
   }
 
   // Write updated tokens
   fs.writeFileSync(tokensPath, JSON.stringify(tokens, null, 2));
-  console.log(`✅ Updated: ${DESIGN_TOKENS_JSON}`);
+  console.log(`PASS: Updated: ${DESIGN_TOKENS_JSON}`);
 
   // Regenerate CSS
   const generateScript = path.resolve(process.cwd(), GENERATE_TOKENS_SCRIPT);
@@ -254,13 +254,13 @@ function main() {
         cwd: process.cwd(),
         stdio: 'inherit'
       });
-      console.log(`✅ Regenerated: ${DESIGN_TOKENS_CSS}`);
+      console.log(`PASS: Regenerated: ${DESIGN_TOKENS_CSS}`);
     } catch (e) {
-      console.error('⚠️  Failed to regenerate CSS:', e.message);
+      console.error('WARNING:  Failed to regenerate CSS:', e.message);
     }
   }
 
-  console.log('\n✨ Brand sync complete!');
+  console.log('\n Brand sync complete!');
 }
 
 main();

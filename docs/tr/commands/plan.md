@@ -39,7 +39,7 @@ Planner agent'ı şunları yapacaktır:
 Kullanıcı: /plan Piyasalar çözüldüğünde gerçek zamanlı bildirimler eklemeye ihtiyacım var
 
 Agent (planner):
-# Uygulama Planı: Gerçek Zamanlı Piyasa Çözüm Bildirimleri
+## Uygulama Planı: Gerçek Zamanlı Piyasa Çözüm Bildirimleri
 
 ## Gereksinim Yeniden İfadesi
 - Kullanıcılar takip ettikleri piyasalar çözüldüğünde bildirim alsın

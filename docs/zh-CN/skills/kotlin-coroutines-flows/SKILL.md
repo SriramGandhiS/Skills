@@ -43,7 +43,7 @@ LaunchedEffect(key) { fetchData() }
 
 ### 并行分解
 
-使用 `coroutineScope` + `async` 处理并行工作：
+使用 `coroutineScope`+`async` 处理并行工作：
 
 ```kotlin
 suspend fun loadDashboard(): Dashboard = coroutineScope {
@@ -179,7 +179,7 @@ withContext(Dispatchers.IO) { database.query() }
 withContext(Dispatchers.Main) { updateUi() }
 ```
 
-在 KMP 中，使用 `Dispatchers.Default` 和 `Dispatchers.Main`（在所有平台上可用）。`Dispatchers.IO` 仅适用于 JVM/Android——在其他平台上使用 `Dispatchers.Default` 或通过依赖注入提供。
+在 KMP 中，使用 `Dispatchers.Default`和`Dispatchers.Main`（在所有平台上可用）。`Dispatchers.IO`仅适用于 JVM/Android——在其他平台上使用`Dispatchers.Default` 或通过依赖注入提供。
 
 ## 取消
 
@@ -272,11 +272,11 @@ class FakeItemRepository : ItemRepository {
 ## 应避免的反模式
 
 * 使用 `GlobalScope`——会导致协程泄漏，且无法结构化取消
-* 在没有作用域的情况下于 `init {}` 中收集 Flow——应使用 `viewModelScope.launch`
-* 将 `MutableStateFlow` 与可变集合一起使用——始终使用不可变副本：`_state.update { it.copy(list = it.list + newItem) }`
+* 在没有作用域的情况下于 `init {}`中收集 Flow——应使用`viewModelScope.launch`
+* 将 `MutableStateFlow`与可变集合一起使用——始终使用不可变副本：`_state.update { it.copy(list = it.list + newItem) }`
 * 捕获 `CancellationException`——应让其传播以实现正确的取消
 * 使用 `flowOn(Dispatchers.Main)` 进行收集——收集调度器是调用方的调度器
-* 在 `@Composable` 中创建 `Flow` 而不使用 `remember`——每次重组都会重新创建 Flow
+* 在 `@Composable`中创建`Flow`而不使用`remember`——每次重组都会重新创建 Flow
 
 ## 参考
 

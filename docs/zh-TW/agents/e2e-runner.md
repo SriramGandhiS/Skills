@@ -21,10 +21,10 @@ model: opus
 
 ### Agent Browser 設定
 ```bash
-# 全域安裝 agent-browser
+## 全域安裝 agent-browser
 npm install -g agent-browser
 
-# 安裝 Chromium（必要）
+## 安裝 Chromium（必要）
 agent-browser install
 ```
 
@@ -33,24 +33,24 @@ agent-browser install
 Agent Browser 使用針對 AI Agent 優化的快照 + refs 系統：
 
 ```bash
-# 開啟頁面並取得具有互動元素的快照
-agent-browser open https://example.com
+## 開啟頁面並取得具有互動元素的快照
+agent-browser open <https://example.com>
 agent-browser snapshot -i  # 回傳具有 refs 的元素，如 [ref=e1]
 
-# 使用來自快照的元素參考進行互動
+## 使用來自快照的元素參考進行互動
 agent-browser click @e1                      # 依 ref 點擊元素
 agent-browser fill @e2 "user@example.com"   # 依 ref 填入輸入
 agent-browser fill @e3 "password123"        # 填入密碼欄位
 agent-browser click @e4                      # 點擊提交按鈕
 
-# 等待條件
+## 等待條件
 agent-browser wait visible @e5               # 等待元素
 agent-browser wait navigation                # 等待頁面載入
 
-# 截圖
+## 截圖
 agent-browser screenshot after-login.png
 
-# 取得文字內容
+## 取得文字內容
 agent-browser get text @e1
 ```
 
@@ -192,10 +192,10 @@ export class MarketsPage {
 
 ### 識別不穩定測試
 ```bash
-# 多次執行測試以檢查穩定性
+## 多次執行測試以檢查穩定性
 npx playwright test tests/markets/search.spec.ts --repeat-each=10
 
-# 執行特定測試帶重試
+## 執行特定測試帶重試
 npx playwright test tests/markets/search.spec.ts --retries=3
 ```
 

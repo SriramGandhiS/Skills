@@ -86,13 +86,13 @@ npx skills add lewiswigmore/agent-skills --skill vscode-extension-guide-en
 ## Common Pitfalls
 
 - **Problem:** Extension not loading
-  **Solution:** Check `activationEvents`. Since VS Code 1.74, these are auto-detected for contributed commands/views.
+**Solution:** Check `activationEvents`. Since VS Code 1.74, these are auto-detected for contributed commands/views.
 
 - **Problem:** Command not found
-  **Solution:** Match the command ID exactly between package.json and your code.
+**Solution:** Match the command ID exactly between package.json and your code.
 
 - **Problem:** Webview content not displaying
-  **Solution:** Check your Content Security Policy. Use the webview's `cspSource` property.
+**Solution:** Check your Content Security Policy. Use the webview's `cspSource` property.
 
 ## Related Skills
 

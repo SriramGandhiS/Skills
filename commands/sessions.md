@@ -4,7 +4,7 @@ description: Manage Claude Code session history, aliases, and session metadata.
 
 # Sessions Command
 
-Manage Claude Code session history - list, load, alias, and edit sessions stored in `~/.claude/session-data/` with legacy reads from `~/.claude/sessions/`.
+Manage Claude Code session history - list, load, alias, and edit sessions stored in `~/.claude/session-data/`with legacy reads from`~/.claude/sessions/`.
 
 ## Usage
 
@@ -291,8 +291,8 @@ if (aliases.length === 0) {
 
 ## Operator Notes
 
-- Session files persist `Project`, `Branch`, and `Worktree` in the header so `/sessions info` can disambiguate parallel tmux/worktree runs.
-- For command-center style monitoring, combine `/sessions info`, `git diff --stat`, and the cost metrics emitted by `scripts/hooks/cost-tracker.js`.
+- Session files persist `Project`,`Branch`, and`Worktree`in the header so`/sessions info` can disambiguate parallel tmux/worktree runs.
+- For command-center style monitoring, combine `/sessions info`,`git diff --stat`, and the cost metrics emitted by`scripts/hooks/cost-tracker.js`.
 
 ## Arguments
 
@@ -304,7 +304,7 @@ $ARGUMENTS:
 - `load <id|alias>` - Load session content
 - `alias <id> <name>` - Create alias for session
 - `alias --remove <name>` - Remove alias
-- `unalias <name>` - Same as `--remove`
+- `unalias <name>`- Same as`--remove`
 - `info <id|alias>` - Show session statistics
 - `aliases` - List all aliases
 - `help` - Show this help
@@ -312,28 +312,28 @@ $ARGUMENTS:
 ## Examples
 
 ```bash
-# List all sessions
+## List all sessions
 /sessions list
 
-# Create an alias for today's session
+## Create an alias for today's session
 /sessions alias 2026-02-01 today
 
-# Load session by alias
+## Load session by alias
 /sessions load today
 
-# Show session info
+## Show session info
 /sessions info today
 
-# Remove alias
+## Remove alias
 /sessions alias --remove today
 
-# List all aliases
+## List all aliases
 /sessions aliases
 ```
 
 ## Notes
 
-- Sessions are stored as markdown files in `~/.claude/session-data/` with legacy reads from `~/.claude/sessions/`
+- Sessions are stored as markdown files in `~/.claude/session-data/`with legacy reads from`~/.claude/sessions/`
 - Aliases are stored in `~/.claude/session-aliases.json`
 - Session IDs can be shortened (first 4-8 characters usually unique enough)
 - Use aliases for frequently referenced sessions

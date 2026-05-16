@@ -6,11 +6,9 @@
 
 [English](README.md) | [简体中文](README.zh-CN.md) | [日本語](README.ja.md) | [한국어](README.ko.md) | Español | [Français](README.fr.md) | [Deutsch](README.de.md) | [Português](README.pt-BR.md) | [Türkçe](README.tr.md) | [العربية](README.ar.md) | [हिन्दी](README.hi.md) | [Русский](README.ru.md)
 
-> ⚠️ **Aviso de traducción automática**
->
-> Este documento ha sido traducido automáticamente por IA. Aunque nos esforzamos por garantizar la calidad, pueden existir expresiones inexactas.
->
-> ¡Ayúdanos a mejorar la traducción a través de [GitHub Issue #260](https://github.com/yusufkaraaslan/Skill_Seekers/issues/260)! Tu retroalimentación es muy valiosa para nosotros.
+> WARNING: **Aviso de traducción automática**
+> > Este documento ha sido traducido automáticamente por IA. Aunque nos esforzamos por garantizar la calidad, pueden existir expresiones inexactas.
+> > ¡Ayúdanos a mejorar la traducción a través de [GitHub Issue #260](https://github.com/yusufkaraaslan/Skill_Seekers/issues/260)! Tu retroalimentación es muy valiosa para nosotros.
 
 [![Versión](https://img.shields.io/badge/version-3.2.0-blue.svg)](https://github.com/yusufkaraaslan/Skill_Seekers/releases)
 [![Licencia: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -25,13 +23,13 @@
 [![Seguir en Twitter](https://img.shields.io/twitter/follow/_yUSyUS_?style=social)](https://x.com/_yUSyUS_)
 [![Estrellas en GitHub](https://img.shields.io/github/stars/yusufkaraaslan/Skill_Seekers?style=social)](https://github.com/yusufkaraaslan/Skill_Seekers)
 
-**🧠 La capa de datos para sistemas de IA.** Skill Seekers convierte sitios de documentación, repositorios de GitHub, PDFs, videos, notebooks, wikis y más de 10 tipos de fuentes adicionales en activos de conocimiento estructurado, listos para potenciar AI Skills (Claude, Gemini, OpenAI), pipelines RAG (LangChain, LlamaIndex, Pinecone) y asistentes de programación con IA (Cursor, Windsurf, Cline) en minutos, no en horas.
+**La capa de datos para sistemas de IA.** Skill Seekers convierte sitios de documentación, repositorios de GitHub, PDFs, videos, notebooks, wikis y más de 10 tipos de fuentes adicionales en activos de conocimiento estructurado, listos para potenciar AI Skills (Claude, Gemini, OpenAI), pipelines RAG (LangChain, LlamaIndex, Pinecone) y asistentes de programación con IA (Cursor, Windsurf, Cline) en minutos, no en horas.
 
-> 🌐 **[Visita SkillSeekersWeb.com](https://skillseekersweb.com/)** - ¡Explora más de 24 configuraciones predefinidas, comparte tus configuraciones y accede a la documentación completa!
+> **[Visita SkillSeekersWeb.com](https://skillseekersweb.com/)** - ¡Explora más de 24 configuraciones predefinidas, comparte tus configuraciones y accede a la documentación completa!
 
-> 📋 **[Ver hoja de ruta y tareas de desarrollo](https://github.com/users/yusufkaraaslan/projects/2)** - ¡134 tareas en 10 categorías, elige cualquiera para contribuir!
+> **[Ver hoja de ruta y tareas de desarrollo](https://github.com/users/yusufkaraaslan/projects/2)** - ¡134 tareas en 10 categorías, elige cualquiera para contribuir!
 
-## 🌐 Ecosistema
+## Ecosistema
 
 Skill Seekers es un proyecto multi-repositorio. Aquí es donde vive todo:
 
@@ -46,7 +44,7 @@ Skill Seekers es un proyecto multi-repositorio. Aquí es donde vive todo:
 
 > **¿Quieres contribuir?** ¡Los repos del sitio web y configuraciones son excelentes puntos de partida para nuevos colaboradores!
 
-## 🧠 La capa de datos para sistemas de IA
+## La capa de datos para sistemas de IA
 
 **Skill Seekers es la capa universal de preprocesamiento** que se ubica entre la documentación sin procesar y cada sistema de IA que la consume. Ya sea que estés construyendo Claude Skills, un pipeline RAG con LangChain o un archivo `.cursorrules` para Cursor, la preparación de datos es idéntica. Lo haces una vez y exportas a todos los destinos.
 
@@ -80,15 +78,15 @@ skill-seekers package output/react --target cursor      # → .cursorrules
 
 ### Por qué es importante
 
-- ⚡ **99% más rápido** — Días de preparación manual → 15–45 minutos
-- 🎯 **Calidad de AI Skill** — Archivos SKILL.md de más de 500 líneas con ejemplos, patrones y guías
-- 📊 **Fragmentos listos para RAG** — Fragmentación inteligente que preserva bloques de código y mantiene el contexto
-- 🎬 **Videos** — Extrae código, transcripciones y conocimiento estructurado de YouTube y videos locales
-- 🔄 **Multi-fuente** — Combina 17 tipos de fuentes (docs, GitHub, PDFs, videos, notebooks, wikis y más) en un solo activo de conocimiento
-- 🌐 **Una preparación, todos los destinos** — Exporta el mismo activo a 16 plataformas sin volver a extraer
-- ✅ **Probado en producción** — Más de 2.540 tests, más de 24 presets de frameworks, listo para producción
+- **99% más rápido** — Días de preparación manual → 15–45 minutos
+- **Calidad de AI Skill** — Archivos SKILL.md de más de 500 líneas con ejemplos, patrones y guías
+- **Fragmentos listos para RAG** — Fragmentación inteligente que preserva bloques de código y mantiene el contexto
+- **Videos** — Extrae código, transcripciones y conocimiento estructurado de YouTube y videos locales
+- **Multi-fuente** — Combina 17 tipos de fuentes (docs, GitHub, PDFs, videos, notebooks, wikis y más) en un solo activo de conocimiento
+- **Una preparación, todos los destinos** — Exporta el mismo activo a 16 plataformas sin volver a extraer
+- PASS: **Probado en producción** — Más de 2.540 tests, más de 24 presets de frameworks, listo para producción
 
-## 🚀 Inicio rápido (3 comandos)
+## Inicio rápido (3 comandos)
 
 ```bash
 # 1. Instalar
@@ -189,84 +187,84 @@ En lugar de pasar días en preprocesamiento manual, Skill Seekers:
 
 ### Para constructores de AI Skills (Claude, Gemini, OpenAI)
 
-- 🎯 **Skills de nivel producción** — Archivos SKILL.md de más de 500 líneas con ejemplos de código, patrones y guías
-- 🔄 **Flujos de mejora** — Aplica presets como `security-focus`, `architecture-comprehensive` o YAML personalizados
-- 🎮 **Cualquier dominio** — Motores de juegos (Godot, Unity), frameworks (React, Django), herramientas internas
-- 🔧 **Equipos** — Combina documentación interna + código en una única fuente de verdad
-- 📚 **Calidad** — Mejorado con IA, incluye ejemplos, referencia rápida y guía de navegación
+- **Skills de nivel producción** — Archivos SKILL.md de más de 500 líneas con ejemplos de código, patrones y guías
+- **Flujos de mejora** — Aplica presets como `security-focus`, `architecture-comprehensive` o YAML personalizados
+- **Cualquier dominio** — Motores de juegos (Godot, Unity), frameworks (React, Django), herramientas internas
+- **Equipos** — Combina documentación interna + código en una única fuente de verdad
+- **Calidad** — Mejorado con IA, incluye ejemplos, referencia rápida y guía de navegación
 
 ### Para constructores de RAG e ingenieros de IA
 
-- 🤖 **Datos listos para RAG** — `Documents` de LangChain, `TextNodes` de LlamaIndex y `Documents` de Haystack pre-fragmentados
-- 🚀 **99% más rápido** — Días de preprocesamiento → 15–45 minutos
-- 📊 **Metadatos inteligentes** — Categorías, fuentes, tipos → mayor precisión en la recuperación
-- 🔄 **Multi-fuente** — Combina docs + GitHub + PDFs + videos en un solo pipeline
-- 🌐 **Agnóstico de plataforma** — Exporta a cualquier base de datos vectorial o framework sin volver a extraer
+- **Datos listos para RAG** — `Documents` de LangChain, `TextNodes` de LlamaIndex y `Documents` de Haystack pre-fragmentados
+- **99% más rápido** — Días de preprocesamiento → 15–45 minutos
+- **Metadatos inteligentes** — Categorías, fuentes, tipos → mayor precisión en la recuperación
+- **Multi-fuente** — Combina docs + GitHub + PDFs + videos en un solo pipeline
+- **Agnóstico de plataforma** — Exporta a cualquier base de datos vectorial o framework sin volver a extraer
 
 ### Para usuarios de asistentes de programación con IA
 
-- 💻 **Cursor / Windsurf / Cline** — Genera `.cursorrules` / `.windsurfrules` / `.clinerules` automáticamente
-- 🎯 **Contexto persistente** — La IA "conoce" tus frameworks sin necesidad de repetir prompts
-- 📚 **Siempre actualizado** — Actualiza el contexto en minutos cuando cambia la documentación
+- **Cursor / Windsurf / Cline** — Genera `.cursorrules` / `.windsurfrules` / `.clinerules` automáticamente
+- **Contexto persistente** — La IA "conoce" tus frameworks sin necesidad de repetir prompts
+- **Siempre actualizado** — Actualiza el contexto en minutos cuando cambia la documentación
 
 ## Funcionalidades clave
 
-### 🌐 Extracción de documentación
-- ✅ **Soporte para llms.txt** - Detecta y usa automáticamente archivos de documentación optimizados para LLM (10 veces más rápido)
-- ✅ **Scraper universal** - Funciona con CUALQUIER sitio web de documentación
-- ✅ **Categorización inteligente** - Organiza automáticamente el contenido por tema
-- ✅ **Detección de lenguajes de código** - Reconoce Python, JavaScript, C++, GDScript, etc.
-- ✅ **Más de 24 presets listos para usar** - Godot, React, Vue, Django, FastAPI y más
+### Extracción de documentación
+- PASS: **Soporte para llms.txt** - Detecta y usa automáticamente archivos de documentación optimizados para LLM (10 veces más rápido)
+- PASS: **Scraper universal** - Funciona con CUALQUIER sitio web de documentación
+- PASS: **Categorización inteligente** - Organiza automáticamente el contenido por tema
+- PASS: **Detección de lenguajes de código** - Reconoce Python, JavaScript, C++, GDScript, etc.
+- PASS: **Más de 24 presets listos para usar** - Godot, React, Vue, Django, FastAPI y más
 
-### 📄 Soporte para PDF
-- ✅ **Extracción básica de PDF** - Extrae texto, código e imágenes de archivos PDF
-- ✅ **OCR para PDFs escaneados** - Extrae texto de documentos escaneados
-- ✅ **PDFs protegidos con contraseña** - Maneja PDFs cifrados
-- ✅ **Extracción de tablas** - Extrae tablas complejas de PDFs
-- ✅ **Procesamiento en paralelo** - 3 veces más rápido para PDFs grandes
-- ✅ **Caché inteligente** - 50% más rápido en ejecuciones posteriores
+### Soporte para PDF
+- PASS: **Extracción básica de PDF** - Extrae texto, código e imágenes de archivos PDF
+- PASS: **OCR para PDFs escaneados** - Extrae texto de documentos escaneados
+- PASS: **PDFs protegidos con contraseña** - Maneja PDFs cifrados
+- PASS: **Extracción de tablas** - Extrae tablas complejas de PDFs
+- PASS: **Procesamiento en paralelo** - 3 veces más rápido para PDFs grandes
+- PASS: **Caché inteligente** - 50% más rápido en ejecuciones posteriores
 
-### 🎬 Extracción de video
-- ✅ **YouTube y videos locales** - Extrae transcripciones, código en pantalla y conocimiento estructurado de videos
-- ✅ **Análisis visual de fotogramas** - Extracción OCR de editores de código, terminales, diapositivas y diagramas
-- ✅ **Detección automática de GPU** - Instala automáticamente la compilación correcta de PyTorch (CUDA/ROCm/MPS/CPU)
-- ✅ **Mejora con IA** - Dos pasadas: limpieza de artefactos OCR + generación de SKILL.md pulido
-- ✅ **Recorte temporal** - Extrae secciones específicas con `--start-time` y `--end-time`
-- ✅ **Soporte para listas de reproducción** - Procesa por lotes todos los videos de una lista de reproducción de YouTube
-- ✅ **Respaldo con Vision API** - Usa Claude Vision para fotogramas OCR de baja confianza
+### Extracción de video
+- PASS: **YouTube y videos locales** - Extrae transcripciones, código en pantalla y conocimiento estructurado de videos
+- PASS: **Análisis visual de fotogramas** - Extracción OCR de editores de código, terminales, diapositivas y diagramas
+- PASS: **Detección automática de GPU** - Instala automáticamente la compilación correcta de PyTorch (CUDA/ROCm/MPS/CPU)
+- PASS: **Mejora con IA** - Dos pasadas: limpieza de artefactos OCR + generación de SKILL.md pulido
+- PASS: **Recorte temporal** - Extrae secciones específicas con `--start-time` y `--end-time`
+- PASS: **Soporte para listas de reproducción** - Procesa por lotes todos los videos de una lista de reproducción de YouTube
+- PASS: **Respaldo con Vision API** - Usa Claude Vision para fotogramas OCR de baja confianza
 
-### 🐙 Análisis de repositorios de GitHub
-- ✅ **Análisis profundo de código** - Análisis AST para Python, JavaScript, TypeScript, Java, C++, Go
-- ✅ **Extracción de APIs** - Funciones, clases, métodos con parámetros y tipos
-- ✅ **Metadatos del repositorio** - README, árbol de archivos, desglose de lenguajes, estrellas/forks
-- ✅ **GitHub Issues y PRs** - Obtiene issues abiertos/cerrados con etiquetas e hitos
-- ✅ **CHANGELOG y releases** - Extrae automáticamente el historial de versiones
-- ✅ **Detección de conflictos** - Compara APIs documentadas vs. implementación real del código
-- ✅ **Integración MCP** - Lenguaje natural: "Extrae el repositorio de GitHub facebook/react"
+### Análisis de repositorios de GitHub
+- PASS: **Análisis profundo de código** - Análisis AST para Python, JavaScript, TypeScript, Java, C++, Go
+- PASS: **Extracción de APIs** - Funciones, clases, métodos con parámetros y tipos
+- PASS: **Metadatos del repositorio** - README, árbol de archivos, desglose de lenguajes, estrellas/forks
+- PASS: **GitHub Issues y PRs** - Obtiene issues abiertos/cerrados con etiquetas e hitos
+- PASS: **CHANGELOG y releases** - Extrae automáticamente el historial de versiones
+- PASS: **Detección de conflictos** - Compara APIs documentadas vs. implementación real del código
+- PASS: **Integración MCP** - Lenguaje natural: "Extrae el repositorio de GitHub facebook/react"
 
-### 🔄 Extracción unificada multi-fuente
-- ✅ **Combina múltiples fuentes** - Mezcla documentación + GitHub + PDF en un solo skill
-- ✅ **Detección de conflictos** - Encuentra automáticamente discrepancias entre docs y código
-- ✅ **Fusión inteligente** - Resolución de conflictos basada en reglas o potenciada por IA
-- ✅ **Informes transparentes** - Comparación lado a lado con advertencias ⚠️
-- ✅ **Análisis de brechas en documentación** - Identifica docs obsoletos y funcionalidades no documentadas
-- ✅ **Fuente única de verdad** - Un solo skill que muestra tanto la intención (docs) como la realidad (código)
-- ✅ **Compatible con versiones anteriores** - Las configuraciones de fuente única legacy siguen funcionando
+### Extracción unificada multi-fuente
+- PASS: **Combina múltiples fuentes** - Mezcla documentación + GitHub + PDF en un solo skill
+- PASS: **Detección de conflictos** - Encuentra automáticamente discrepancias entre docs y código
+- PASS: **Fusión inteligente** - Resolución de conflictos basada en reglas o potenciada por IA
+- PASS: **Informes transparentes** - Comparación lado a lado con advertencias WARNING:
+- PASS: **Análisis de brechas en documentación** - Identifica docs obsoletos y funcionalidades no documentadas
+- PASS: **Fuente única de verdad** - Un solo skill que muestra tanto la intención (docs) como la realidad (código)
+- PASS: **Compatible con versiones anteriores** - Las configuraciones de fuente única legacy siguen funcionando
 
-### 🤖 Soporte para múltiples plataformas LLM
-- ✅ **12 plataformas LLM** - Claude AI, Google Gemini, OpenAI ChatGPT, MiniMax AI, Markdown genérico, OpenCode, Kimi, DeepSeek, Qwen, OpenRouter, Together AI, Fireworks AI
-- ✅ **Extracción universal** - La misma documentación funciona para todas las plataformas
-- ✅ **Empaquetado específico por plataforma** - Formatos optimizados para cada LLM
-- ✅ **Exportación con un solo comando** - El flag `--target` selecciona la plataforma
-- ✅ **Dependencias opcionales** - Instala solo lo que necesitas
-- ✅ **100% compatible con versiones anteriores** - Los flujos de trabajo existentes de Claude no cambian
+### Soporte para múltiples plataformas LLM
+- PASS: **12 plataformas LLM** - Claude AI, Google Gemini, OpenAI ChatGPT, MiniMax AI, Markdown genérico, OpenCode, Kimi, DeepSeek, Qwen, OpenRouter, Together AI, Fireworks AI
+- PASS: **Extracción universal** - La misma documentación funciona para todas las plataformas
+- PASS: **Empaquetado específico por plataforma** - Formatos optimizados para cada LLM
+- PASS: **Exportación con un solo comando** - El flag `--target` selecciona la plataforma
+- PASS: **Dependencias opcionales** - Instala solo lo que necesitas
+- PASS: **100% compatible con versiones anteriores** - Los flujos de trabajo existentes de Claude no cambian
 
 | Plataforma | Formato | Carga | Mejora | API Key | Endpoint personalizado |
 |------------|---------|-------|--------|---------|------------------------|
-| **Claude AI** | ZIP + YAML | ✅ Automática | ✅ Sí | ANTHROPIC_API_KEY | ANTHROPIC_BASE_URL |
-| **Google Gemini** | tar.gz | ✅ Automática | ✅ Sí | GOOGLE_API_KEY | - |
-| **OpenAI ChatGPT** | ZIP + Vector Store | ✅ Automática | ✅ Sí | OPENAI_API_KEY | - |
-| **Markdown genérico** | ZIP | ❌ Manual | ❌ No | - | - |
+| **Claude AI** | ZIP + YAML | PASS: Automática | PASS: Sí | ANTHROPIC_API_KEY | ANTHROPIC_BASE_URL |
+| **Google Gemini** | tar.gz | PASS: Automática | PASS: Sí | GOOGLE_API_KEY | - |
+| **OpenAI ChatGPT** | ZIP + Vector Store | PASS: Automática | PASS: Sí | OPENAI_API_KEY | - |
+| **Markdown genérico** | ZIP | FAIL: Manual | FAIL: No | - | - |
 
 ```bash
 # Claude (predeterminado - ¡sin cambios necesarios!)
@@ -289,7 +287,7 @@ skill-seekers package output/react/ --target markdown
 ```
 
 <details>
-<summary>🔧 <strong>Variables de entorno para APIs compatibles con Claude (ej. GLM-4.7)</strong></summary>
+<summary> <strong>Variables de entorno para APIs compatibles con Claude (ej. GLM-4.7)</strong></summary>
 
 Skill Seekers soporta cualquier endpoint de API compatible con Claude:
 
@@ -322,19 +320,19 @@ pip install skill-seekers[openai]
 pip install skill-seekers[all-llms]
 ```
 
-### 🔗 Integraciones con frameworks RAG
+### Integraciones con frameworks RAG
 
-- ✅ **LangChain Documents** - Exportación directa al formato `Document` con `page_content` + metadatos
+- PASS: **LangChain Documents** - Exportación directa al formato `Document` con `page_content` + metadatos
   - Ideal para: cadenas QA, recuperadores, almacenes de vectores, agentes
   - Ejemplo: [Pipeline RAG con LangChain](examples/langchain-rag-pipeline/)
   - Guía: [Integración con LangChain](docs/integrations/LANGCHAIN.md)
 
-- ✅ **LlamaIndex TextNodes** - Exportación al formato `TextNode` con IDs únicos + embeddings
+- PASS: **LlamaIndex TextNodes** - Exportación al formato `TextNode` con IDs únicos + embeddings
   - Ideal para: motores de consulta, motores de chat, contexto de almacenamiento
   - Ejemplo: [Motor de consulta LlamaIndex](examples/llama-index-query-engine/)
   - Guía: [Integración con LlamaIndex](docs/integrations/LLAMA_INDEX.md)
 
-- ✅ **Formato listo para Pinecone** - Optimizado para carga en bases de datos vectoriales
+- PASS: **Formato listo para Pinecone** - Optimizado para carga en bases de datos vectoriales
   - Ideal para: búsqueda vectorial en producción, búsqueda semántica, búsqueda híbrida
   - Ejemplo: [Carga en Pinecone](examples/pinecone-upsert/)
   - Guía: [Integración con Pinecone](docs/integrations/PINECONE.md)
@@ -358,29 +356,29 @@ skill-seekers package output/django --target markdown
 
 ---
 
-### 🧠 Integraciones con asistentes de programación con IA
+### Integraciones con asistentes de programación con IA
 
 Transforma cualquier documentación de framework en contexto experto de programación para más de 4 asistentes de IA:
 
-- ✅ **Cursor IDE** - Genera `.cursorrules` para sugerencias de código potenciadas por IA
+- PASS: **Cursor IDE** - Genera `.cursorrules` para sugerencias de código potenciadas por IA
   - Ideal para: generación de código específica por framework, patrones consistentes
   - Funciona con: Cursor IDE (fork de VS Code)
   - Guía: [Integración con Cursor](docs/integrations/CURSOR.md)
   - Ejemplo: [Skill de React para Cursor](examples/cursor-react-skill/)
 
-- ✅ **Windsurf** - Personaliza el contexto del asistente IA de Windsurf con `.windsurfrules`
+- PASS: **Windsurf** - Personaliza el contexto del asistente IA de Windsurf con `.windsurfrules`
   - Ideal para: asistencia IA nativa del IDE, programación basada en flujos
   - Funciona con: Windsurf IDE de Codeium
   - Guía: [Integración con Windsurf](docs/integrations/WINDSURF.md)
   - Ejemplo: [Contexto FastAPI para Windsurf](examples/windsurf-fastapi-context/)
 
-- ✅ **Cline (VS Code)** - Prompts de sistema + MCP para el agente de VS Code
+- PASS: **Cline (VS Code)** - Prompts de sistema + MCP para el agente de VS Code
   - Ideal para: generación de código agéntica en VS Code
   - Funciona con: extensión Cline para VS Code
   - Guía: [Integración con Cline](docs/integrations/CLINE.md)
   - Ejemplo: [Asistente Django para Cline](examples/cline-django-assistant/)
 
-- ✅ **Continue.dev** - Servidores de contexto para IA independiente del IDE
+- PASS: **Continue.dev** - Servidores de contexto para IA independiente del IDE
   - Ideal para: entornos multi-IDE (VS Code, JetBrains, Vim), proveedores LLM personalizados
   - Funciona con: cualquier IDE con el plugin Continue.dev
   - Guía: [Integración con Continue](docs/integrations/CONTINUE_DEV.md)
@@ -410,13 +408,13 @@ python examples/continue-dev-universal/context_server.py
 
 ---
 
-### 🌊 Arquitectura de tres flujos para GitHub
-- ✅ **Análisis de triple flujo** - Divide los repos de GitHub en flujos de Código, Documentación e Insights
-- ✅ **Analizador de código unificado** - Funciona con URLs de GitHub Y rutas locales
-- ✅ **C3.x como profundidad de análisis** - Elige entre 'basic' (1–2 min) o 'c3x' (20–60 min)
-- ✅ **Generación mejorada del router** - Metadatos de GitHub, inicio rápido del README, problemas comunes
-- ✅ **Integración de issues** - Problemas principales y soluciones desde GitHub Issues
-- ✅ **Palabras clave de enrutamiento inteligente** - Etiquetas de GitHub con peso 2x para mejor detección de temas
+### Arquitectura de tres flujos para GitHub
+- PASS: **Análisis de triple flujo** - Divide los repos de GitHub en flujos de Código, Documentación e Insights
+- PASS: **Analizador de código unificado** - Funciona con URLs de GitHub Y rutas locales
+- PASS: **C3.x como profundidad de análisis** - Elige entre 'basic' (1–2 min) o 'c3x' (20–60 min)
+- PASS: **Generación mejorada del router** - Metadatos de GitHub, inicio rápido del README, problemas comunes
+- PASS: **Integración de issues** - Problemas principales y soluciones desde GitHub Issues
+- PASS: **Palabras clave de enrutamiento inteligente** - Etiquetas de GitHub con peso 2x para mejor detección de temas
 
 **Los tres flujos explicados:**
 - **Flujo 1: Código** - Análisis profundo C3.x (patrones, ejemplos, guías, configuraciones, arquitectura)
@@ -448,28 +446,28 @@ print(f"Problemas comunes: {len(result.github_insights['common_problems'])}")
 
 **Documentación completa**: [Resumen de implementación de tres flujos](docs/IMPLEMENTATION_SUMMARY_THREE_STREAM.md)
 
-### 🔐 Gestión inteligente de límites de tasa y configuración
-- ✅ **Sistema de configuración multi-token** - Gestiona múltiples cuentas de GitHub (personal, trabajo, OSS)
+### Gestión inteligente de límites de tasa y configuración
+- PASS: **Sistema de configuración multi-token** - Gestiona múltiples cuentas de GitHub (personal, trabajo, OSS)
   - Almacenamiento seguro de configuración en `~/.config/skill-seekers/config.json` (permisos 600)
   - Estrategias de límite de tasa por perfil: `prompt`, `wait`, `switch`, `fail`
   - Timeout configurable por perfil (predeterminado: 30 min, evita esperas indefinidas)
   - Cadena inteligente de respaldo: argumento CLI → variable de entorno → archivo de configuración → prompt
   - Gestión de API keys para Claude, Gemini, OpenAI
-- ✅ **Asistente de configuración interactivo** - Interfaz de terminal atractiva para fácil configuración
+- PASS: **Asistente de configuración interactivo** - Interfaz de terminal atractiva para fácil configuración
   - Integración con navegador para creación de tokens (abre automáticamente GitHub, etc.)
   - Validación de tokens y pruebas de conexión
   - Visualización de estado con códigos de color
-- ✅ **Manejador inteligente de límites de tasa** - ¡No más esperas indefinidas!
+- PASS: **Manejador inteligente de límites de tasa** - ¡No más esperas indefinidas!
   - Advertencia anticipada sobre límites de tasa (60/hora vs 5000/hora)
   - Detección en tiempo real desde las respuestas de la API de GitHub
   - Temporizadores de cuenta regresiva en vivo con progreso
   - Cambio automático de perfil cuando se alcanza el límite
   - Cuatro estrategias: prompt (preguntar), wait (cuenta regresiva), switch (cambiar a otro), fail (abortar)
-- ✅ **Capacidad de reanudación** - Continúa trabajos interrumpidos
+- PASS: **Capacidad de reanudación** - Continúa trabajos interrumpidos
   - Auto-guardado de progreso en intervalos configurables (predeterminado: 60 seg)
   - Lista todos los trabajos reanudables con detalles de progreso
   - Limpieza automática de trabajos antiguos (predeterminado: 7 días)
-- ✅ **Soporte CI/CD** - Modo no interactivo para automatización
+- PASS: **Soporte CI/CD** - Modo no interactivo para automatización
   - Flag `--non-interactive` que falla rápidamente sin prompts
   - Flag `--profile` para seleccionar una cuenta de GitHub específica
   - Mensajes de error claros para logs de pipelines
@@ -496,7 +494,7 @@ skill-seekers resume github_react_20260117_143022
 - **switch** - Intenta automáticamente el siguiente perfil disponible (para configuraciones multi-cuenta)
 - **fail** - Falla inmediatamente con error claro (perfecto para CI/CD)
 
-### 🎯 Skill Bootstrap - Auto-alojamiento
+### Skill Bootstrap - Auto-alojamiento
 
 Genera skill-seekers como un Claude Code Skill para usarlo dentro de Claude:
 
@@ -509,38 +507,38 @@ cp -r output/skill-seekers ~/.claude/skills/
 ```
 
 **Lo que obtienes:**
-- ✅ **Documentación completa del skill** - Todos los comandos CLI y patrones de uso
-- ✅ **Referencia de comandos CLI** - Cada herramienta y sus opciones documentadas
-- ✅ **Ejemplos de inicio rápido** - Flujos de trabajo comunes y mejores prácticas
-- ✅ **Documentación de API auto-generada** - Análisis de código, patrones y ejemplos
+- PASS: **Documentación completa del skill** - Todos los comandos CLI y patrones de uso
+- PASS: **Referencia de comandos CLI** - Cada herramienta y sus opciones documentadas
+- PASS: **Ejemplos de inicio rápido** - Flujos de trabajo comunes y mejores prácticas
+- PASS: **Documentación de API auto-generada** - Análisis de código, patrones y ejemplos
 
-### 🔐 Repositorios de configuración privados
-- ✅ **Fuentes de configuración basadas en Git** - Obtén configuraciones desde repositorios git privados/de equipo
-- ✅ **Gestión multi-fuente** - Registra repositorios ilimitados de GitHub, GitLab, Bitbucket
-- ✅ **Colaboración en equipo** - Comparte configuraciones personalizadas entre equipos de 3–5 personas
-- ✅ **Soporte empresarial** - Escala a más de 500 desarrolladores con resolución basada en prioridad
-- ✅ **Autenticación segura** - Tokens como variables de entorno (GITHUB_TOKEN, GITLAB_TOKEN)
-- ✅ **Caché inteligente** - Clona una vez, obtiene actualizaciones automáticamente
-- ✅ **Modo offline** - Trabaja con configuraciones en caché cuando no hay conexión
+### Repositorios de configuración privados
+- PASS: **Fuentes de configuración basadas en Git** - Obtén configuraciones desde repositorios git privados/de equipo
+- PASS: **Gestión multi-fuente** - Registra repositorios ilimitados de GitHub, GitLab, Bitbucket
+- PASS: **Colaboración en equipo** - Comparte configuraciones personalizadas entre equipos de 3–5 personas
+- PASS: **Soporte empresarial** - Escala a más de 500 desarrolladores con resolución basada en prioridad
+- PASS: **Autenticación segura** - Tokens como variables de entorno (GITHUB_TOKEN, GITLAB_TOKEN)
+- PASS: **Caché inteligente** - Clona una vez, obtiene actualizaciones automáticamente
+- PASS: **Modo offline** - Trabaja con configuraciones en caché cuando no hay conexión
 
-### 🤖 Análisis de código (C3.x)
+### Análisis de código (C3.x)
 
 **C3.4: Extracción de patrones de configuración con mejora por IA**
-- ✅ **9 formatos de configuración** - JSON, YAML, TOML, ENV, INI, Python, JavaScript, Dockerfile, Docker Compose
-- ✅ **7 tipos de patrones** - Configuraciones de base de datos, API, logging, caché, correo, autenticación, servidor
-- ✅ **Mejora con IA** - Análisis IA opcional en modo dual (API + LOCAL)
+- PASS: **9 formatos de configuración** - JSON, YAML, TOML, ENV, INI, Python, JavaScript, Dockerfile, Docker Compose
+- PASS: **7 tipos de patrones** - Configuraciones de base de datos, API, logging, caché, correo, autenticación, servidor
+- PASS: **Mejora con IA** - Análisis IA opcional en modo dual (API + LOCAL)
   - Explica qué hace cada configuración
   - Sugiere mejores prácticas y mejoras
   - **Análisis de seguridad** - Encuentra secretos codificados y credenciales expuestas
-- ✅ **Auto-documentación** - Genera documentación JSON + Markdown de todas las configuraciones
-- ✅ **Integración MCP** - Herramienta `extract_config_patterns` con soporte de mejora
+- PASS: **Auto-documentación** - Genera documentación JSON + Markdown de todas las configuraciones
+- PASS: **Integración MCP** - Herramienta `extract_config_patterns` con soporte de mejora
 
 **C3.3: Guías prácticas mejoradas con IA**
-- ✅ **Mejora integral con IA** - Transforma guías básicas en tutoriales profesionales
-- ✅ **5 mejoras automáticas** - Descripciones de pasos, solución de problemas, prerrequisitos, siguientes pasos, casos de uso
-- ✅ **Soporte de modo dual** - Modo API (Claude API) o modo LOCAL (Claude Code CLI)
-- ✅ **Sin costos con modo LOCAL** - Mejora GRATUITA usando tu plan Claude Code Max
-- ✅ **Transformación de calidad** - Plantillas de 75 líneas → guías completas de más de 500 líneas
+- PASS: **Mejora integral con IA** - Transforma guías básicas en tutoriales profesionales
+- PASS: **5 mejoras automáticas** - Descripciones de pasos, solución de problemas, prerrequisitos, siguientes pasos, casos de uso
+- PASS: **Soporte de modo dual** - Modo API (Claude API) o modo LOCAL (Claude Code CLI)
+- PASS: **Sin costos con modo LOCAL** - Mejora GRATUITA usando tu plan Claude Code Max
+- PASS: **Transformación de calidad** - Plantillas de 75 líneas → guías completas de más de 500 líneas
 
 **Uso:**
 ```bash
@@ -556,14 +554,14 @@ skill-seekers analyze --directory tests/ --enhance
 
 **Documentación completa:** [docs/HOW_TO_GUIDES.md](docs/HOW_TO_GUIDES.md#ai-enhancement-new)
 
-### 🔄 Presets de flujo de trabajo de mejora
+### Presets de flujo de trabajo de mejora
 
 Pipelines de mejora reutilizables definidos en YAML que controlan cómo la IA transforma tu documentación sin procesar en un skill pulido.
 
-- ✅ **5 presets incluidos** — `default`, `minimal`, `security-focus`, `architecture-comprehensive`, `api-documentation`
-- ✅ **Presets definidos por el usuario** — añade flujos personalizados a `~/.config/skill-seekers/workflows/`
-- ✅ **Múltiples flujos de trabajo** — encadena dos o más flujos en un solo comando
-- ✅ **CLI completamente gestionado** — lista, inspecciona, copia, añade, elimina y valida flujos de trabajo
+- PASS: **5 presets incluidos** — `default`, `minimal`, `security-focus`, `architecture-comprehensive`, `api-documentation`
+- PASS: **Presets definidos por el usuario** — añade flujos personalizados a `~/.config/skill-seekers/workflows/`
+- PASS: **Múltiples flujos de trabajo** — encadena dos o más flujos en un solo comando
+- PASS: **CLI completamente gestionado** — lista, inspecciona, copia, añade, elimina y valida flujos de trabajo
 
 ```bash
 # Aplicar un solo flujo de trabajo
@@ -607,20 +605,20 @@ stages:
     uses_history: true
 ```
 
-### ⚡ Rendimiento y escalabilidad
-- ✅ **Modo asíncrono** - Extracción 2–3x más rápida con async/await (usa el flag `--async`)
-- ✅ **Soporte para documentación grande** - Maneja documentos de 10K–40K+ páginas con división inteligente
-- ✅ **Skills Router/Hub** - Enrutamiento inteligente hacia sub-skills especializados
-- ✅ **Extracción en paralelo** - Procesa múltiples skills simultáneamente
-- ✅ **Checkpoint/Reanudación** - Nunca pierdas progreso en extracciones largas
-- ✅ **Sistema de caché** - Extrae una vez, reconstruye instantáneamente
+### Rendimiento y escalabilidad
+- PASS: **Modo asíncrono** - Extracción 2–3x más rápida con async/await (usa el flag `--async`)
+- PASS: **Soporte para documentación grande** - Maneja documentos de 10K–40K+ páginas con división inteligente
+- PASS: **Skills Router/Hub** - Enrutamiento inteligente hacia sub-skills especializados
+- PASS: **Extracción en paralelo** - Procesa múltiples skills simultáneamente
+- PASS: **Checkpoint/Reanudación** - Nunca pierdas progreso en extracciones largas
+- PASS: **Sistema de caché** - Extrae una vez, reconstruye instantáneamente
 
-### ✅ Garantía de calidad
-- ✅ **Completamente probado** - Más de 2.540 tests con cobertura completa
+### PASS: Garantía de calidad
+- PASS: **Completamente probado** - Más de 2.540 tests con cobertura completa
 
 ---
 
-## 📦 Instalación
+## Instalación
 
 ```bash
 # Instalación básica (extracción de documentación, análisis de GitHub, PDF, empaquetado)
@@ -667,7 +665,7 @@ skill-seekers-setup
 
 ---
 
-## 🚀 Flujo de trabajo de instalación con un solo comando
+## Flujo de trabajo de instalación con un solo comando
 
 **La forma más rápida de ir desde la configuración hasta el skill subido - automatización completa:**
 
@@ -689,11 +687,11 @@ skill-seekers install --config react --dry-run
 
 **Fases ejecutadas:**
 ```
-📥 FASE 1: Obtener configuración (si se proporciona nombre de configuración)
-📖 FASE 2: Extraer documentación
-✨ FASE 3: Mejora con IA (OBLIGATORIA - sin opción de omitir)
-📦 FASE 4: Empaquetar skill
-☁️  FASE 5: Subir a Claude (opcional, requiere API key)
+ FASE 1: Obtener configuración (si se proporciona nombre de configuración)
+ FASE 2: Extraer documentación
+ FASE 3: Mejora con IA (OBLIGATORIA - sin opción de omitir)
+ FASE 4: Empaquetar skill
+  FASE 5: Subir a Claude (opcional, requiere API key)
 ```
 
 **Requisitos:**
@@ -702,7 +700,7 @@ skill-seekers install --config react --dry-run
 
 ---
 
-## 📊 Matriz de funcionalidades
+## Matriz de funcionalidades
 
 Skill Seekers soporta **12 plataformas LLM**, **17 tipos de fuentes** y paridad total de funcionalidades en todos los destinos.
 
@@ -716,9 +714,9 @@ Consulta la [Matriz completa de funcionalidades](docs/FEATURE_MATRIX.md) para in
 | Funcionalidad | Claude | Gemini | OpenAI | Markdown |
 |---------------|--------|--------|--------|----------|
 | Formato | ZIP + YAML | tar.gz | ZIP + Vector | ZIP |
-| Carga | ✅ API | ✅ API | ✅ API | ❌ Manual |
-| Mejora | ✅ Sonnet 4 | ✅ 2.0 Flash | ✅ GPT-4o | ❌ Ninguna |
-| Todos los modos de skill | ✅ | ✅ | ✅ | ✅ |
+| Carga | PASS: API | PASS: API | PASS: API | FAIL: Manual |
+| Mejora | PASS: Sonnet 4 | PASS: 2.0 Flash | PASS: GPT-4o | FAIL: Ninguna |
+| Todos los modos de skill | PASS: | PASS: | PASS: | PASS: |
 
 ---
 
@@ -841,10 +839,10 @@ skill-seekers unified --config configs/myframework_unified.json
 ```
 
 **La detección de conflictos encuentra automáticamente:**
-- 🔴 **Falta en el código** (alto): Documentado pero no implementado
-- 🟡 **Falta en la documentación** (medio): Implementado pero no documentado
-- ⚠️ **Discrepancia de firma**: Parámetros/tipos diferentes
-- ℹ️ **Discrepancia de descripción**: Explicaciones diferentes
+- **Falta en el código** (alto): Documentado pero no implementado
+- **Falta en la documentación** (medio): Implementado pero no documentado
+- WARNING: **Discrepancia de firma**: Parámetros/tipos diferentes
+- **Discrepancia de descripción**: Explicaciones diferentes
 
 **Guía completa:** Consulta [docs/UNIFIED_SCRAPING.md](docs/UNIFIED_SCRAPING.md) para documentación completa.
 
@@ -891,7 +889,7 @@ graph LR
 3. **Mejorar**: La IA analiza los docs y crea un SKILL.md completo con ejemplos
 4. **Empaquetar**: Agrupa todo en un archivo `.zip` listo para Claude
 
-## 📋 Prerrequisitos
+## Prerrequisitos
 
 **Antes de empezar, asegúrate de tener:**
 
@@ -899,11 +897,11 @@ graph LR
 2. **Git** - [Descargar](https://git-scm.com/) | Verificar: `git --version`
 3. **15–30 minutos** para la configuración inicial
 
-**¿Primera vez?** → **[Empieza aquí: Guía de inicio rápido a prueba de fallos](BULLETPROOF_QUICKSTART.md)** 🎯
+**¿Primera vez?** → **[Empieza aquí: Guía de inicio rápido a prueba de fallos](BULLETPROOF_QUICKSTART.md)**
 
 ---
 
-## 📤 Subir skills a Claude
+## Subir skills a Claude
 
 Una vez empaquetado tu skill, necesitas subirlo a Claude:
 
@@ -942,7 +940,7 @@ En Claude Code, simplemente pide:
 
 ---
 
-## 🤖 Instalación en agentes de IA
+## Instalación en agentes de IA
 
 Skill Seekers puede instalar automáticamente skills en 18 agentes de programación con IA.
 
@@ -978,7 +976,7 @@ skill-seekers install-agent output/react/ --agent cursor --dry-run
 
 ---
 
-## 🔌 Integración MCP (26 herramientas)
+## Integración MCP (26 herramientas)
 
 Skill Seekers incluye un servidor MCP para usar desde Claude Code, Cursor, Windsurf, VS Code + Cline o IntelliJ IDEA.
 
@@ -1003,7 +1001,7 @@ python -m skill_seekers.mcp.server_fastmcp --transport http --port 8765
 
 ---
 
-## ⚙️ Configuración
+## Configuración
 
 ### Presets disponibles (más de 24)
 
@@ -1067,7 +1065,7 @@ La herramienta busca en este orden:
 
 ---
 
-## 📊 Lo que se crea
+## Lo que se crea
 
 ```
 output/
@@ -1088,7 +1086,7 @@ output/
 
 ---
 
-## 🐛 Solución de problemas
+## Solución de problemas
 
 ### ¿No se extrajo contenido?
 - Verifica tu selector `main_content`
@@ -1134,7 +1132,7 @@ skill-seekers config --github
 
 ---
 
-## 📈 Rendimiento
+## Rendimiento
 
 | Tarea | Tiempo | Notas |
 |-------|--------|-------|
@@ -1150,10 +1148,10 @@ skill-seekers config --github
 
 ---
 
-## 📚 Documentación
+## Documentación
 
 ### Primeros pasos
-- **[BULLETPROOF_QUICKSTART.md](BULLETPROOF_QUICKSTART.md)** - 🎯 **¡EMPIEZA AQUÍ si eres nuevo!**
+- **[BULLETPROOF_QUICKSTART.md](BULLETPROOF_QUICKSTART.md)** -  **¡EMPIEZA AQUÍ si eres nuevo!**
 - **[QUICKSTART.md](QUICKSTART.md)** - Inicio rápido para usuarios experimentados
 - **[TROUBLESHOOTING.md](TROUBLESHOOTING.md)** - Problemas comunes y soluciones
 - **[docs/QUICK_REFERENCE.md](docs/QUICK_REFERENCE.md)** - Hoja de referencia rápida
@@ -1175,16 +1173,16 @@ skill-seekers config --github
 
 ---
 
-## 📝 Licencia
+## Licencia
 
 Licencia MIT - consulta el archivo [LICENSE](LICENSE) para más detalles
 
 ---
 
-¡Feliz construcción de skills! 🚀
+¡Feliz construcción de skills!
 
 ---
 
-## 🔒 Seguridad
+## Seguridad
 
 [![Insignia de evaluación de seguridad MseeP.ai](https://mseep.net/pr/yusufkaraaslan-skill-seekers-badge.png)](https://mseep.ai/app/yusufkaraaslan-skill-seekers)

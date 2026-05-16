@@ -8,7 +8,7 @@ This command invokes the **kotlin-build-resolver** agent to incrementally fix Ko
 
 ## What This Command Does
 
-1. **Run Diagnostics**: Execute `./gradlew build`, `detekt`, `ktlintCheck`
+1. **Run Diagnostics**: Execute `./gradlew build`,`detekt`,`ktlintCheck`
 2. **Parse Errors**: Group by file and sort by severity
 3. **Fix Incrementally**: One error at a time
 4. **Verify Each Fix**: Re-run build after each change
@@ -26,17 +26,17 @@ Use `/kotlin-build` when:
 ## Diagnostic Commands Run
 
 ```bash
-# Primary build check
+## Primary build check
 ./gradlew build 2>&1
 
-# Static analysis
+## Static analysis
 ./gradlew detekt 2>&1 || echo "detekt not configured"
 ./gradlew ktlintCheck 2>&1 || echo "ktlint not configured"
 
-# Dependency issues
+## Dependency issues
 ./gradlew dependencies --configuration runtimeClasspath 2>&1 | head -100
 
-# Optional deep refresh when caches or dependency metadata are suspect
+## Optional deep refresh when caches or dependency metadata are suspect
 ./gradlew build --refresh-dependencies
 ```
 
@@ -46,7 +46,7 @@ Use `/kotlin-build` when:
 User: /kotlin-build
 
 Agent:
-# Kotlin Build Resolution
+## Kotlin Build Resolution
 
 ## Initial Diagnostics
 
@@ -72,7 +72,7 @@ import com.example.repository.UserRepository
 
 ```bash
 $ ./gradlew build
-# 2 errors remaining
+## 2 errors remaining
 ```
 
 ## Fix 2: Type Mismatch
@@ -90,7 +90,7 @@ val count = call.parameters["count"]?.toIntOrNull()
 
 ```bash
 $ ./gradlew build
-# 1 error remaining
+## 1 error remaining
 ```
 
 ## Fix 3: Non-Exhaustive When
@@ -109,17 +109,17 @@ when (user.role) {
 
 ```bash
 $ ./gradlew build
-# Build successful!
+## Build successful!
 ```
 
 ## Final Verification
 
 ```bash
 $ ./gradlew detekt
-# No issues
+## No issues
 
 $ ./gradlew test
-# All tests passed
+## All tests passed
 ```
 
 ## Summary
@@ -141,8 +141,8 @@ Build Status: PASS: SUCCESS
 | `Unresolved reference: X` | Add import or dependency |
 | `Type mismatch` | Fix type conversion or assignment |
 | `'when' must be exhaustive` | Add missing sealed class branches |
-| `Suspend function can only be called from coroutine` | Add `suspend` modifier |
-| `Smart cast impossible` | Use local `val` or `let` |
+| `Suspend function can only be called from coroutine`| Add`suspend` modifier |
+| `Smart cast impossible`| Use local`val`or`let` |
 | `None of the following candidates is applicable` | Fix argument types |
 | `Could not resolve dependency` | Fix version or add repository |
 

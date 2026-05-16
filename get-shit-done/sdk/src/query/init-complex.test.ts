@@ -290,7 +290,7 @@ describe('initManager', () => {
     const MULTI_MILESTONE = [
       '# Roadmap',
       '',
-      '## Milestone v1.0: Old — ✅ SHIPPED 2026-01-01',
+      '## Milestone v1.0: Old — PASS: SHIPPED 2026-01-01',
       '',
       'Shipped.',
       '',

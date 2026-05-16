@@ -26,8 +26,8 @@ In visionOS and tvOS, the built-in video player also provides _transport control
 
 Here are some examples that show how padding can affect video display on iPhone Xs.
 
-  * Result of padding a 4:3 video 
-  * Result of padding a 21:9 video 
+  * Result of padding a 4:3 video
+  * Result of padding a 21:9 video
 
 ![An illustration of iPhone in landscape orientation. A blue rectangle shows the AVKit safe area within the screen. Overlaying the safe area and extending beyond it on all sides is a purple rectangle that represents the 4:3 video area, which doesn't include any embedded padding.](https://docs-assets.developer.apple.com/published/d0ed256c73ed2b5b8cba4baf20d437e1/video-fill-4-3-right%402x.png)
 
@@ -127,14 +127,14 @@ In watchOS, the system manages video playback. Apps can play short video clips w
 
 **Use the recommended sizes and encoding values for media assets.** In particular, avoid scaling video clips, which affects performance and results in a suboptimal appearance. The following table lists the recommended encoding and resolution values for video assets. The audio encoding values apply to both movies and audio-only assets.
 
-Attribute| Value  
----|---  
-Video codec| H.264 High Profile  
-Video bit rate| 160 kbps at up to 30 fps  
-Resolution (full screen)| 208x260 px (portrait orientation)  
-Resolution (16:9)| 320x180 px (landscape orientation)  
-Audio| 64 kbps HE-AAC  
-  
+Attribute| Value
+---|---
+Video codec| H.264 High Profile
+Video bit rate| 160 kbps at up to 30 fps
+Resolution (full screen)| 208x260 px (portrait orientation)
+Resolution (16:9)| 320x180 px (landscape orientation)
+Audio| 64 kbps HE-AAC
+
 **Avoid creating a poster image that looks like a system control.** You want people to understand that they can tap a movie element for playback; you don’t want to confuse people by making movie elements look like something else.
 
 **Consider creating a poster image that represents a video clip’s contents.** When people tap a poster image, the system replaces the image with the video and begins inline playback. A relevant poster image can help people make an informed decision about whether to view the video. In general, avoid creating a poster image that has nothing to do with the content or that people might mistake for a control.
@@ -165,8 +165,8 @@ Audio| 64 kbps HE-AAC
 
 ## [Change log](https://developer.apple.com/design/human-interface-guidelines/playing-video#Change-log)
 
-Date| Changes  
----|---  
-September 12, 2023| Corrected the recommended width for a thumbnail in visionOS.  
-June 21, 2023| Updated to include guidance for visionOS.  
-  
+Date| Changes
+---|---
+September 12, 2023| Corrected the recommended width for a thumbnail in visionOS.
+June 21, 2023| Updated to include guidance for visionOS.
+

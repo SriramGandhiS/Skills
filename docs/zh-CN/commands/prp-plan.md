@@ -131,8 +131,8 @@ argument-hint: <feature description | path/to/prd.md>
 
 | 类别 | 文件:行 | 模式 | 关键片段 |
 |---|---|---|---|
-| 命名 | `src/services/userService.ts:1-5` | 服务使用 camelCase，类型使用 PascalCase | `export class UserService` |
-| 错误 | `src/middleware/errorHandler.ts:10-25` | 自定义 AppError 类 | `throw new AppError(...)` |
+| 命名 | `src/services/userService.ts:1-5`| 服务使用 camelCase，类型使用 PascalCase |`export class UserService` |
+| 错误 | `src/middleware/errorHandler.ts:10-25`| 自定义 AppError 类 |`throw new AppError(...)` |
 | ... | ... | ... | ... |
 
 ***
@@ -219,7 +219,7 @@ mkdir -p .claude/PRPs/plans
 ### 计划模板
 
 ````markdown
-# 计划：[功能名称]
+## 计划：[功能名称]
 
 ## 摘要
 [2-3句概述]
@@ -358,35 +358,35 @@ mkdir -p .claude/PRPs/plans
 
 ### 静态分析
 ```bash
-# Run type checker
+## Run type checker
 [project-specific type check command]
 ```
 预期：零类型错误
 
 ### 单元测试
 ```bash
-# Run tests for affected area
+## Run tests for affected area
 [project-specific test command]
 ```
 预期：所有测试通过
 
 ### 完整测试套件
 ```bash
-# Run complete test suite
+## Run complete test suite
 [project-specific full test command]
 ```
 预期：无回归
 
 ### 数据库验证（如适用）
 ```bash
-# Verify schema/migrations
+## Verify schema/migrations
 [project-specific db command]
 ```
 预期：Schema 为最新
 
 ### 浏览器验证（如适用）
 ```bash
-# Start dev server and verify
+## Start dev server and verify
 [project-specific dev server command]
 ```
 预期：功能按设计工作
@@ -437,7 +437,7 @@ Write the generated plan to:
 ### Update PRD (if input was a PRD)
 
 If this plan was generated from a PRD phase:
-1. Update the phase status from `pending` to `in-progress`
+1. Update the phase status from `pending`to`in-progress`
 2. Add the plan file path as a reference in the phase
 
 ### Report to User

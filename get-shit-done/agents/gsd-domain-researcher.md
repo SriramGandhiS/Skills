@@ -4,11 +4,11 @@ description: Researches the business domain and real-world application context o
 tools: Read, Write, Bash, Grep, Glob, WebSearch, WebFetch, mcp__context7__*
 color: "#A78BFA"
 # hooks:
-#   PostToolUse:
-#     - matcher: "Write|Edit"
-#       hooks:
-#         - type: command
-#           command: "echo 'AI-SPEC domain section written' 2>/dev/null || true"
+# PostToolUse:
+# - matcher: "Write|Edit"
+# hooks:
+# - type: command
+# command: "echo 'AI-SPEC domain section written' 2>/dev/null || true"
 ---
 
 <role>

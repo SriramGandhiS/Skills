@@ -1,15 +1,13 @@
 #!/usr/bin/env bash
 # secret-scan.sh — Check files for accidentally committed secrets/credentials
-#
-# Usage:
-#   scripts/secret-scan.sh --diff origin/main   # CI mode: scan changed files
-#   scripts/secret-scan.sh --file path/to/file   # Scan a single file
-#   scripts/secret-scan.sh --dir agents/          # Scan all files in a directory
-#
-# Exit codes:
-#   0 = clean
-#   1 = findings detected
-#   2 = usage error
+# # Usage:
+# scripts/secret-scan.sh --diff origin/main   # CI mode: scan changed files
+# scripts/secret-scan.sh --file path/to/file   # Scan a single file
+# scripts/secret-scan.sh --dir agents/          # Scan all files in a directory
+# # Exit codes:
+# 0 = clean
+# 1 = findings detected
+# 2 = usage error
 set -euo pipefail
 
 # ─── Secret Patterns ─────────────────────────────────────────────────────────

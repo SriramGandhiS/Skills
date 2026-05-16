@@ -658,7 +658,7 @@ Resume file: None
 ### Phase 55
 - stuff
 
-## v12.0 Focus — ✅ SHIPPED 2026-04-20
+## v12.0 Focus — PASS: SHIPPED 2026-04-20
 
 ### Phase 60
 - shipped stuff

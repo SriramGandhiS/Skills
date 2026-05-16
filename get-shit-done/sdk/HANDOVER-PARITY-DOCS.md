@@ -35,7 +35,6 @@ Add or extend a dedicated section (prefer `QUERY-HANDLERS.md` under a heading li
 
 Cover at least:
 
-
 | Category                      | Examples to document                                                                                                                  |
 | ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
 | **Full JSON parity**          | Commands where tests use `toEqual` on `sdkResult.data` vs CJS stdout JSON.                                                            |
@@ -46,14 +45,13 @@ Cover at least:
 | **Environment / time**        | `current-timestamp`: structure and format, not same instant.                                                                      |
 | **Not in golden suite**       | Commands registered but not (yet) covered — list as **coverage gap** or **out of scope for golden** with rationale.                   |
 
-
 ### B) CJS-only matrix
 
 Build the table by **diffing** `get-shit-done/bin/gsd-tools.cjs` `switch (command)` top-level cases against `createRegistry()` registrations in `sdk/src/query/index.ts`.
 
 **Already documented as product-out-of-scope for registry:** **graphify**, **from-gsd2** / **gsd2-import**.
 
-**Already documented as naming/alias differences (registered, different string):** **summary-extract** ↔ **summary.extract**; top-level **scaffold** ↔ **phase.scaffold**.
+**Already documented as naming/alias differences (registered, different string):** **summary-extract**  **summary.extract**; top-level **scaffold**  **phase.scaffold**.
 
 Matrix columns (suggested):
 
@@ -66,14 +64,12 @@ Optional: footnote that `detect-custom-files` skips multi-repo root resolution i
 
 ## Files likely to edit
 
-
 | Path                              | Role                                                              |
 | --------------------------------- | ----------------------------------------------------------------- |
 | `sdk/src/query/QUERY-HANDLERS.md` | Primary home for exceptions + matrix, or link hub.                |
 | `sdk/PARITY.md`                   | Optional dedicated file if QUERY-HANDLERS becomes too long.       |
 | `docs/CLI-TOOLS.md`               | Short “Parity & registry” subsection with links into `sdk/` docs. |
 | `sdk/HANDOVER-GOLDEN-PARITY.md`   | Optional one-line pointer to new parity doc section when done.    |
-
 
 ## Out of scope for *this* handover session
 

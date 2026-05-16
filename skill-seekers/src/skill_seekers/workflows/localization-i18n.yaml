@@ -20,7 +20,7 @@ stages:
     enabled: true
     prompt: >
       Analyze the internationalization framework setup.
-      
+
       Identify:
       1. i18n library (react-i18next, vue-i18n, FormatJS, etc.)
       2. Locale detection strategy
@@ -28,7 +28,7 @@ stages:
       4. Translation file organization
       5. Formatting (dates, numbers, plurals)
       6. ICU message format usage
-      
+
       Output JSON with:
       - "library": i18n library and config
       - "locale_detection": how locale is determined
@@ -44,7 +44,7 @@ stages:
     enabled: true
     prompt: >
       Document the translation management workflow.
-      
+
       Cover:
       1. Translation key naming conventions
       2. Translation management platform (Crowdin, Lokalise, etc.)
@@ -52,7 +52,7 @@ stages:
       4. Translation file synchronization
       5. Translation review process
       6. Missing translation handling
-      
+
       Output JSON with:
       - "key_naming": naming patterns
       - "tms_platform": translation platform
@@ -68,7 +68,7 @@ stages:
     enabled: true
     prompt: >
       Document RTL (Right-to-Left) language support.
-      
+
       Include:
       1. Layout mirroring strategies
       2. CSS logical properties usage
@@ -76,7 +76,7 @@ stages:
       4. Text alignment handling
       5. Bidirectional text support
       6. Testing RTL layouts
-      
+
       Output JSON with:
       - "layout_mirroring": RTL layout
       - "logical_properties": CSS approach
@@ -92,7 +92,7 @@ stages:
     enabled: true
     prompt: >
       Document locale-specific formatting.
-      
+
       Cover:
       1. Date and time formatting
       2. Number and currency formatting
@@ -100,7 +100,7 @@ stages:
       4. List formatting
       5. Display names (weekdays, months)
       6. Collation and sorting
-      
+
       Output JSON with:
       - "dates": date formatting
       - "numbers": number formatting
@@ -116,7 +116,7 @@ stages:
     enabled: true
     prompt: >
       Document content and feature localization.
-      
+
       Include:
       1. Locale-specific content variations
       2. Feature flagging by locale
@@ -124,7 +124,7 @@ stages:
       4. SEO for multiple locales
       5. Legal/privacy content localization
       6. Cultural adaptation considerations
-      
+
       Output JSON with:
       - "content_variations": locale content
       - "feature_flags": locale features
@@ -140,7 +140,7 @@ stages:
     enabled: true
     prompt: >
       Document internationalization testing.
-      
+
       Cover:
       1. Pseudo-localization testing
       2. String length variations
@@ -148,7 +148,7 @@ stages:
       4. Layout breaking tests
       5. Translation completeness
       6. Functional testing per locale
-      
+
       Output JSON with:
       - "pseudo_locale": pseudo-localization
       - "string_length": length testing

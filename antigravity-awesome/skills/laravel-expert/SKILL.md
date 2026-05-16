@@ -10,8 +10,8 @@ date_added: "2026-02-27"
 
 ## Skill Metadata
 
-Name: laravel-expert  
-Focus: General Laravel Development  
+Name: laravel-expert
+Focus: General Laravel Development
 Scope: Laravel Framework (10/11+)
 
 ---

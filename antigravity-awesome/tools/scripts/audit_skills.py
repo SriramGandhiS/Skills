@@ -414,7 +414,7 @@ def write_markdown_report(report: dict[str, object], destination: str | Path) ->
 
 def print_summary(report: dict[str, object]) -> None:
     summary = report["summary"]
-    print("🔎 Skills audit completed")
+    print(" Skills audit completed")
     print(f"   Skills scanned: {summary['skills_scanned']}")
     print(f"   Ready: {summary['skills_ok']}")
     print(f"   Warning only: {summary['skills_with_warnings_only']}")
@@ -460,11 +460,11 @@ def main() -> int:
 
     if args.json_out:
         Path(args.json_out).write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
-        print(f"📝 Wrote JSON audit report to {args.json_out}")
+        print(f" Wrote JSON audit report to {args.json_out}")
 
     if args.markdown_out:
         write_markdown_report(report, args.markdown_out)
-        print(f"📝 Wrote Markdown audit report to {args.markdown_out}")
+        print(f" Wrote Markdown audit report to {args.markdown_out}")
 
     summary = report["summary"]
     if summary["errors"] > 0:

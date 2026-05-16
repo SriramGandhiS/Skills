@@ -1,25 +1,25 @@
 # Pull Request
 
-## 📋 Description
+## Description
 
 Brief description of changes made.
 
-## 🔗 Related Issues
+## Related Issues
 
 Closes #(issue number)
 Relates to #(issue number)
 
-## 🎯 Type of Change
+## Type of Change
 
-- [ ] 🐛 Bug fix (non-breaking change which fixes an issue)
-- [ ] ✨ New feature (non-breaking change which adds functionality)
-- [ ] 💥 Breaking change (fix or feature that would cause existing functionality to not work as expected)
-- [ ] 📚 Documentation update
-- [ ] ♻️ Code refactoring
-- [ ] ⚡ Performance improvement
-- [ ] 🧪 Test update
+- [ ]  Bug fix (non-breaking change which fixes an issue)
+- [ ]  New feature (non-breaking change which adds functionality)
+- [ ]  Breaking change (fix or feature that would cause existing functionality to not work as expected)
+- [ ]  Documentation update
+- [ ]  Code refactoring
+- [ ]  Performance improvement
+- [ ]  Test update
 
-## ✅ Checklist
+## PASS: Checklist
 
 - [ ] My code follows the style guidelines of this project
 - [ ] I have performed a self-review of my own code
@@ -30,7 +30,7 @@ Relates to #(issue number)
 - [ ] New and existing unit tests pass locally with my changes
 - [ ] Any dependent changes have been merged and published
 
-## 🧪 Testing
+## Testing
 
 Describe the tests you ran to verify your changes.
 
@@ -39,10 +39,10 @@ Describe the tests you ran to verify your changes.
 - OS:
 - Dependencies installed:
 
-## 📸 Screenshots (if applicable)
+## Screenshots (if applicable)
 
 Add screenshots to demonstrate visual changes.
 
-## 📝 Additional Notes
+## Additional Notes
 
 Any additional information reviewers should know.

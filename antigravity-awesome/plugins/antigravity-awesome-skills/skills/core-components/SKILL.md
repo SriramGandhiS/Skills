@@ -82,8 +82,7 @@ Base layout component with token support:
   padding="$4"
   backgroundColor="$backgroundPrimary"
   borderRadius="$lg"
->
-  {children}
+> {children}
 </Box>
 ```
 
@@ -112,8 +111,7 @@ Typography with token support:
   fontSize="$lg"
   fontWeight="$semibold"
   color="$textPrimary"
->
-  Hello World
+> Hello World
 </Text>
 ```
 
@@ -128,8 +126,7 @@ Interactive button with variants:
   size="md"
   isLoading={loading}
   isDisabled={disabled}
->
-  Click Me
+> Click Me
 </Button>
 ```
 
@@ -203,8 +200,7 @@ const MyScreen = () => (
   alignItems="center"
   borderBottomWidth={1}
   borderColor="$borderLight"
->
-  <Avatar source={{ uri: imageUrl }} size="md" />
+> <Avatar source={{ uri: imageUrl }} size="md" />
   <VStack flex={1}>
     <Text fontWeight="$semibold">{title}</Text>
     <Text color="$textSecondary" fontSize="$sm">{subtitle}</Text>

@@ -20,22 +20,22 @@
 
 | 钩子 | 匹配器 | 行为 | 退出码 |
 |------|---------|----------|-----------|
-| **开发服务器拦截器** | `Bash` | 在 tmux 外阻止 `npm run dev` 等命令 — 确保日志可访问 | 2 (拦截) |
+| **开发服务器拦截器** | `Bash`| 在 tmux 外阻止`npm run dev` 等命令 — 确保日志可访问 | 2 (拦截) |
 | **Tmux 提醒器** | `Bash` | 对长时间运行命令（npm test、cargo build、docker）建议使用 tmux | 0 (警告) |
-| **Git 推送提醒器** | `Bash` | 在 `git push` 前提醒检查变更 | 0 (警告) |
-| **文档文件警告器** | `Write` | 对非标准 `.md`/`.txt` 文件发出警告（允许 README、CLAUDE、CONTRIBUTING、CHANGELOG、LICENSE、SKILL、docs/、skills/）；跨平台路径处理 | 0 (警告) |
-| **策略性压缩提醒器** | `Edit\|Write` | 建议在逻辑间隔（约每 50 次工具调用）手动执行 `/compact` | 0 (警告) |
+| **Git 推送提醒器** | `Bash`| 在`git push` 前提醒检查变更 | 0 (警告) |
+| **文档文件警告器** | `Write`| 对非标准`.md`/`.txt` 文件发出警告（允许 README、CLAUDE、CONTRIBUTING、CHANGELOG、LICENSE、SKILL、docs/、skills/）；跨平台路径处理 | 0 (警告) |
+| **策略性压缩提醒器** | `Edit\|Write`| 建议在逻辑间隔（约每 50 次工具调用）手动执行`/compact` | 0 (警告) |
 
 ### PostToolUse 钩子
 
 | 钩子 | 匹配器 | 功能 |
 |------|---------|-------------|
-| **PR 记录器** | `Bash` | 在 `gh pr create` 后记录 PR URL 和审查命令 |
+| **PR 记录器** | `Bash`| 在`gh pr create` 后记录 PR URL 和审查命令 |
 | **构建分析** | `Bash` | 构建命令后的后台分析（异步，非阻塞） |
 | **质量门** | `Edit\|Write\|MultiEdit` | 在编辑后运行快速质量检查 |
 | **Prettier 格式化** | `Edit` | 编辑后使用 Prettier 自动格式化 JS/TS 文件 |
-| **TypeScript 检查** | `Edit` | 在编辑 `.ts`/`.tsx` 文件后运行 `tsc --noEmit` |
-| **console.log 警告** | `Edit` | 警告编辑的文件中存在 `console.log` 语句 |
+| **TypeScript 检查** | `Edit`| 在编辑`.ts`/`.tsx`文件后运行`tsc --noEmit` |
+| **console.log 警告** | `Edit`| 警告编辑的文件中存在`console.log` 语句 |
 
 ### 生命周期钩子
 
@@ -43,7 +43,7 @@
 |------|-------|-------------|
 | **会话开始** | `SessionStart` | 加载先前上下文并检测包管理器 |
 | **预压缩** | `PreCompact` | 在上下文压缩前保存状态 |
-| **Console.log 审计** | `Stop` | 每次响应后检查所有修改的文件是否有 `console.log` |
+| **Console.log 审计** | `Stop`| 每次响应后检查所有修改的文件是否有`console.log` |
 | **会话摘要** | `Stop` | 当转录路径可用时持久化会话状态 |
 | **模式提取** | `Stop` | 评估会话以提取可抽取的模式（持续学习） |
 | **成本追踪器** | `Stop` | 发出轻量级的运行成本遥测标记 |
@@ -53,7 +53,7 @@
 
 ### 禁用钩子
 
-在 `hooks.json` 中移除或注释掉钩子条目。如果作为插件安装，请在您的 `~/.claude/settings.json` 中覆盖：
+在 `hooks.json`中移除或注释掉钩子条目。如果作为插件安装，请在您的`~/.claude/settings.json` 中覆盖：
 
 ```json
 {
@@ -74,10 +74,10 @@
 使用环境变量控制钩子行为，无需编辑 `hooks.json`：
 
 ```bash
-# minimal | standard | strict (default: standard)
+## minimal | standard | strict (default: standard)
 export ECC_HOOK_PROFILE=standard
 
-# Disable specific hook IDs (comma-separated)
+## Disable specific hook IDs (comma-separated)
 export ECC_DISABLED_HOOKS="pre:bash:tmux-reminder,post:edit:typecheck"
 ```
 

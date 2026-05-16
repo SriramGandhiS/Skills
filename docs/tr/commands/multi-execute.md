@@ -21,7 +21,7 @@ $ARGUMENTS
 **Çağrı Sözdizimi** (parallel: `run_in_background: true` kullan):
 
 ```
-# Session devam ettirme çağrısı (önerilen) - Implementation Prototype
+## Session devam ettirme çağrısı (önerilen) - Implementation Prototype
 Bash({
   command: "~/.claude/bin/codeagent-wrapper {{LITE_MODE_FLAG}}--backend <codex|gemini> {{GEMINI_MODEL_FLAG}}resume <SESSION_ID> - \"$PWD\" <<'EOF'
 ROLE_FILE: <role prompt path>
@@ -36,7 +36,7 @@ EOF",
   description: "Brief description"
 })
 
-# Yeni session çağrısı - Implementation Prototype
+## Yeni session çağrısı - Implementation Prototype
 Bash({
   command: "~/.claude/bin/codeagent-wrapper {{LITE_MODE_FLAG}}--backend <codex|gemini> {{GEMINI_MODEL_FLAG}}- \"$PWD\" <<'EOF'
 ROLE_FILE: <role prompt path>
@@ -78,16 +78,16 @@ EOF",
 ```
 
 **Model Parametre Notları**:
-- `{{GEMINI_MODEL_FLAG}}`: `--backend gemini` kullanırken, `--gemini-model gemini-3-pro-preview` ile değiştir (trailing space not edin); codex için boş string kullan
+- `{{GEMINI_MODEL_FLAG}}`:`--backend gemini`kullanırken,`--gemini-model gemini-3-pro-preview` ile değiştir (trailing space not edin); codex için boş string kullan
 
 **Role Prompts**:
 
 | Phase | Codex | Gemini |
 |-------|-------|--------|
-| Implementation | `~/.claude/.ccg/prompts/codex/architect.md` | `~/.claude/.ccg/prompts/gemini/frontend.md` |
-| Review | `~/.claude/.ccg/prompts/codex/reviewer.md` | `~/.claude/.ccg/prompts/gemini/reviewer.md` |
+| Implementation | `~/.claude/.ccg/prompts/codex/architect.md`|`~/.claude/.ccg/prompts/gemini/frontend.md` |
+| Review | `~/.claude/.ccg/prompts/codex/reviewer.md`|`~/.claude/.ccg/prompts/gemini/reviewer.md` |
 
-**Session Reuse**: `/ccg:plan` SESSION_ID sağladıysa, context'i yeniden kullanmak için `resume <SESSION_ID>` kullan.
+**Session Reuse**: `/ccg:plan`SESSION_ID sağladıysa, context'i yeniden kullanmak için`resume <SESSION_ID>` kullan.
 
 **Background Task'leri Bekle** (max timeout 600000ms = 10 dakika):
 
@@ -156,7 +156,7 @@ mcp__ace-tool__search_context({
 1. **Glob**: Planın "Key Files" tablosundan hedef dosyaları bul (örn., `Glob("src/components/**/*.tsx")`)
 2. **Grep**: Codebase genelinde anahtar semboller, fonksiyon adları, tip tanımlarını ara
 3. **Read**: Tam context toplamak için keşfedilen dosyaları oku
-4. **Task (Explore agent)**: Daha geniş keşif için, `Task`'ı `subagent_type: "Explore"` ile kullan
+4. **Task (Explore agent)**: Daha geniş keşif için, `Task`'ı`subagent_type: "Explore"` ile kullan
 
 **Retrieval Sonrası**:
 - Alınan kod snippet'lerini organize et
@@ -180,7 +180,7 @@ mcp__ace-tool__search_context({
 3. OUTPUT: `Unified Diff Patch ONLY. Strictly prohibit any actual modifications.`
 4. **Gemini frontend tasarım otoritesidir, CSS/React/Vue prototype'ı nihai görsel temeldir**
 5. **UYARI**: Gemini'nin backend logic önerilerini yoksay
-6. Plan `GEMINI_SESSION` içeriyorsa: `resume <GEMINI_SESSION>` tercih et
+6. Plan `GEMINI_SESSION`içeriyorsa:`resume <GEMINI_SESSION>` tercih et
 
 #### Route B: Backend/Logic/Algorithms → Codex
 
@@ -188,7 +188,7 @@ mcp__ace-tool__search_context({
 2. Input: Plan içeriği + alınan context + hedef dosyalar
 3. OUTPUT: `Unified Diff Patch ONLY. Strictly prohibit any actual modifications.`
 4. **Codex backend logic otoritesidir, mantıksal akıl yürütme ve debug yeteneklerinden faydalan**
-5. Plan `CODEX_SESSION` içeriyorsa: `resume <CODEX_SESSION>` tercih et
+5. Plan `CODEX_SESSION`içeriyorsa:`resume <CODEX_SESSION>` tercih et
 
 #### Route C: Fullstack → Parallel Çağrılar
 
@@ -196,9 +196,9 @@ mcp__ace-tool__search_context({
    - Gemini: Frontend kısmını ele al
    - Codex: Backend kısmını ele al
 2. `TaskOutput` ile her iki modelin tam sonuçlarını bekle
-3. Her biri `resume` için plandan ilgili `SESSION_ID`'yi kullanır (eksikse yeni session oluştur)
+3. Her biri `resume`için plandan ilgili`SESSION_ID`'yi kullanır (eksikse yeni session oluştur)
 
-**Yukarıdaki `Multi-Model Çağrı Spesifikasyonu`'ndaki `ÖNEMLİ` talimatları takip et**
+**Yukarıdaki `Multi-Model Çağrı Spesifikasyonu`'ndaki`ÖNEMLİ` talimatları takip et**
 
 ---
 
@@ -254,7 +254,7 @@ mcp__ace-tool__search_context({
    - Input: Değiştirilen Diff + hedef dosyalar
    - Odak: Erişilebilirlik, tasarım tutarlılığı, kullanıcı deneyimi
 
-`TaskOutput` ile her iki modelin tam review sonuçlarını bekle. Context tutarlılığı için Phase 3 session'larını yeniden kullanmayı tercih et (`resume <SESSION_ID>`).
+`TaskOutput`ile her iki modelin tam review sonuçlarını bekle. Context tutarlılığı için Phase 3 session'larını yeniden kullanmayı tercih et (`resume <SESSION_ID>`).
 
 #### 5.2 Entegre Et ve Düzelt
 
@@ -299,10 +299,10 @@ Audit geçtikten sonra, kullanıcıya rapor et:
 ## Kullanım
 
 ```bash
-# Plan dosyasını çalıştır
+## Plan dosyasını çalıştır
 /ccg:execute .claude/plan/feature-name.md
 
-# Task'i doğrudan çalıştır (context'te zaten tartışılmış planlar için)
+## Task'i doğrudan çalıştır (context'te zaten tartışılmış planlar için)
 /ccg:execute implement user authentication based on previous plan
 ```
 

@@ -153,7 +153,7 @@ def _run_local_mode(args) -> int:
             agent_cmd=getattr(args, "agent_cmd", None),
         )
     except ValueError as exc:
-        print(f"❌ Error: {exc}")
+        print(f"FAIL: Error: {exc}")
         return 1
 
     interactive = getattr(args, "interactive_enhancement", False)
@@ -215,17 +215,17 @@ Examples:
     # Validate skill directory
     skill_dir = Path(args.skill_directory)
     if not skill_dir.exists():
-        print(f"❌ Error: Directory not found: {skill_dir}")
+        print(f"FAIL: Error: Directory not found: {skill_dir}")
         return 1
     if not skill_dir.is_dir():
-        print(f"❌ Error: Not a directory: {skill_dir}")
+        print(f"FAIL: Error: Not a directory: {skill_dir}")
         return 1
 
     mode, target = _pick_mode(args)
 
     # Dry run — just show what would happen
     if getattr(args, "dry_run", False):
-        print("🔍 DRY RUN MODE")
+        print(" DRY RUN MODE")
         print(f"   Skill directory : {skill_dir}")
         print(f"   Selected mode   : {mode.upper()}")
         if mode == "api":
@@ -241,12 +241,12 @@ Examples:
         return 0
 
     if mode == "api":
-        print(f"🤖 Enhancement mode: API ({target})")
+        print(f" Enhancement mode: API ({target})")
         return _run_api_mode(args, target)
 
     # LOCAL mode — check for root before attempting
     if _is_root():
-        print("❌ Cannot run LOCAL enhancement as root.")
+        print("FAIL: Cannot run LOCAL enhancement as root.")
         print()
         print("   AI coding agent refuses to execute as root (Docker/VPS security policy).")
         print("   Use API mode instead by setting one of these environment variables:")
@@ -260,7 +260,7 @@ Examples:
         return 1
 
     agent_name = os.environ.get("SKILL_SEEKER_AGENT", "claude").strip() or "claude"
-    print(f"🤖 Enhancement mode: LOCAL ({agent_name})")
+    print(f" Enhancement mode: LOCAL ({agent_name})")
     return _run_local_mode(args)
 
 

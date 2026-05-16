@@ -175,9 +175,9 @@ react-openai.zip
 - Includes `openai_metadata.json` for assistant configuration
 
 **Unique features:**
-- ✅ Semantic search across documentation
-- ✅ Vector Store for efficient retrieval
-- ✅ File search tool enabled by default
+- PASS: Semantic search across documentation
+- PASS: Vector Store for efficient retrieval
+- PASS: File search tool enabled by default
 
 ---
 
@@ -322,8 +322,8 @@ Use valid platform names:
 --target markdown
 
 # Invalid
---target anthropic  ❌
---target google     ❌
+--target anthropic  FAIL:
+--target google     FAIL:
 ```
 
 ### "API key not set"
@@ -370,7 +370,7 @@ Make sure to use `--target` parameter when packaging.
 |---------|--------|--------|--------|----------|
 | **File Format** | ZIP | tar.gz | ZIP | ZIP |
 | **Main File** | SKILL.md | system_instructions.md | assistant_instructions.txt | README.md + DOCUMENTATION.md |
-| **Frontmatter** | ✅ YAML | ❌ Plain MD | ❌ Plain Text | ❌ Plain MD |
+| **Frontmatter** | PASS: YAML | FAIL: Plain MD | FAIL: Plain Text | FAIL: Plain MD |
 | **References** | references/ | references/ | vector_store_files/ | references/ |
 | **Metadata** | In frontmatter | gemini_metadata.json | openai_metadata.json | manifest.json |
 
@@ -378,18 +378,18 @@ Make sure to use `--target` parameter when packaging.
 
 | Feature | Claude | Gemini | OpenAI | Markdown |
 |---------|--------|--------|--------|----------|
-| **API Upload** | ✅ Yes | ✅ Yes | ✅ Yes | ❌ Manual only |
-| **Manual Upload** | ✅ Yes | ✅ Yes | ✅ Yes | ✅ Yes (distribute) |
-| **MCP Support** | ✅ Full | ✅ Full | ✅ Full | ✅ Package only |
+| **API Upload** | PASS: Yes | PASS: Yes | PASS: Yes | FAIL: Manual only |
+| **Manual Upload** | PASS: Yes | PASS: Yes | PASS: Yes | PASS: Yes (distribute) |
+| **MCP Support** | PASS: Full | PASS: Full | PASS: Full | PASS: Package only |
 | **Web Interface** | claude.ai/skills | aistudio.google.com | platform.openai.com/assistants | N/A |
 
 ### Enhancement Comparison
 
 | Feature | Claude | Gemini | OpenAI | Markdown |
 |---------|--------|--------|--------|----------|
-| **AI Enhancement** | ✅ Sonnet 4 | ✅ Gemini 2.0 | ✅ GPT-4o | ❌ No |
-| **Local Mode** | ✅ Yes (free) | ❌ No | ❌ No | ❌ N/A |
-| **API Mode** | ✅ Yes | ✅ Yes | ✅ Yes | ❌ N/A |
+| **AI Enhancement** | PASS: Sonnet 4 | PASS: Gemini 2.0 | PASS: GPT-4o | FAIL: No |
+| **Local Mode** | PASS: Yes (free) | FAIL: No | FAIL: No | FAIL: N/A |
+| **API Mode** | PASS: Yes | PASS: Yes | PASS: Yes | FAIL: N/A |
 | **Format Changes** | Keeps YAML | → Plain MD | → Plain Text | N/A |
 
 ---

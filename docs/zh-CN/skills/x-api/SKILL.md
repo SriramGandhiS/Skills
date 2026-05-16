@@ -24,7 +24,7 @@ origin: ECC
 最佳适用场景：读取密集型操作、搜索、公开数据。
 
 ```bash
-# Environment setup
+## Environment setup
 export X_BEARER_TOKEN="your-bearer-token"
 ```
 
@@ -35,7 +35,7 @@ import requests
 bearer = os.environ["X_BEARER_TOKEN"]
 headers = {"Authorization": f"Bearer {bearer}"}
 
-# Search recent tweets
+## Search recent tweets
 resp = requests.get(
     "https://api.x.com/2/tweets/search/recent",
     headers=headers,
@@ -49,7 +49,7 @@ tweets = resp.json()
 必需用于：发布推文、管理账户、私信。
 
 ```bash
-# Environment setup — source before use
+## Environment setup — source before use
 export X_API_KEY="your-api-key"
 export X_API_SECRET="your-api-secret"
 export X_ACCESS_TOKEN="your-access-token"
@@ -138,16 +138,16 @@ resp = requests.get(
 ### 上传媒体并发布
 
 ```python
-# Media upload uses v1.1 endpoint
+## Media upload uses v1.1 endpoint
 
-# Step 1: Upload media
+## Step 1: Upload media
 media_resp = oauth.post(
     "https://upload.twitter.com/1.1/media/upload.json",
     files={"media": open("image.png", "rb")}
 )
 media_id = media_resp.json()["media_id_string"]
 
-# Step 2: Post with media
+## Step 2: Post with media
 resp = oauth.post(
     "https://api.x.com/2/tweets",
     json={"text": "Check this out", "media": {"media_ids": [media_id]}}
@@ -159,7 +159,7 @@ resp = oauth.post(
 X API 的速率限制因端点、认证方法和账户等级而异，并且会随时间变化。请始终：
 
 * 在硬编码假设之前，查看当前的 X 开发者文档
-* 在运行时读取 `x-rate-limit-remaining` 和 `x-rate-limit-reset` 头部信息
+* 在运行时读取 `x-rate-limit-remaining`和`x-rate-limit-reset` 头部信息
 * 自动退避，而不是依赖代码中的静态表格
 
 ```python
@@ -190,7 +190,7 @@ else:
 ## 安全性
 
 * **切勿硬编码令牌。** 使用环境变量或 `.env` 文件。
-* **切勿提交 `.env` 文件。** 将其添加到 `.gitignore`。
+* **切勿提交 `.env`文件。** 将其添加到`.gitignore`。
 * **如果令牌暴露，请轮换令牌。** 在 developer.x.com 重新生成。
 * **当不需要写权限时，使用只读令牌。**
 * **安全存储 OAuth 密钥** — 不要存储在源代码或日志中。

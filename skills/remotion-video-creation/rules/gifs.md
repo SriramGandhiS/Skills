@@ -1,4 +1,4 @@
-﻿---
+---
 name: gif
 description: Displaying GIFs, APNG, AVIF and WebP in Remotion
 metadata:
@@ -66,7 +66,7 @@ Control what happens when the animation finishes:
 
 ## Styling
 
-Use the `style` prop for additional CSS (use `width` and `height` props for sizing):
+Use the `style`prop for additional CSS (use`width`and`height` props for sizing):
 
 ```tsx
 <AnimatedImage
@@ -84,7 +84,7 @@ Use the `style` prop for additional CSS (use `width` and `height` props for sizi
 
 ## Getting GIF duration
 
-Use `getGifDurationInSeconds()` from `@remotion/gif` to get the duration of a GIF.
+Use `getGifDurationInSeconds()`from`@remotion/gif` to get the duration of a GIF.
 
 ```bash
 npx remotion add @remotion/gif # If project uses npm
@@ -117,7 +117,7 @@ const calculateMetadata: CalculateMetadataFunction = async () => {
 
 ## Alternative
 
-If `<AnimatedImage>` does not work (only supported in Chrome and Firefox), you can use `<Gif>` from `@remotion/gif` instead.
+If `<AnimatedImage>`does not work (only supported in Chrome and Firefox), you can use`<Gif>`from`@remotion/gif` instead.
 
 ```bash
 npx remotion add @remotion/gif # If project uses npm
@@ -135,4 +135,4 @@ export const MyComposition = () => {
 };
 ```
 
-The `<Gif>` component has the same props as `<AnimatedImage>` but only supports GIF files.
+The `<Gif>`component has the same props as`<AnimatedImage>` but only supports GIF files.

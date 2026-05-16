@@ -12,7 +12,7 @@ paths:
 * 切勿在源代码中硬编码 API 密钥、令牌或凭证
 * 使用环境变量：`std::env::var("API_KEY")`
 * 如果启动时缺少必需的密钥，应快速失败
-* 将 `.env` 文件保存在 `.gitignore` 中
+* 将 `.env`文件保存在`.gitignore` 中
 
 ```rust
 // BAD
@@ -77,7 +77,7 @@ impl Email {
 ## 不安全代码
 
 * 尽量减少 `unsafe` 块 —— 优先使用安全的抽象
-* 每个 `unsafe` 块必须附带一个 `// SAFETY:` 注释来解释其不变量
+* 每个 `unsafe`块必须附带一个`// SAFETY:` 注释来解释其不变量
 * 切勿为了方便而使用 `unsafe` 来绕过借用检查器
 * 在代码审查时审核所有 `unsafe` 代码 —— 若无合理解释，应视为危险信号
 * 优先使用 `safe` 作为 C 库的 FFI 包装器
@@ -103,13 +103,13 @@ unsafe { &*ptr }
 * 最小化依赖项数量 —— 添加新 crate 前进行评估
 
 ```bash
-# Security audit
+## Security audit
 cargo audit
 
-# Deny advisories, duplicate versions, and restricted licenses
+## Deny advisories, duplicate versions, and restricted licenses
 cargo deny check
 
-# Inspect dependency tree
+## Inspect dependency tree
 cargo tree
 cargo tree -d  # Show duplicates only
 ```
@@ -118,7 +118,7 @@ cargo tree -d  # Show duplicates only
 
 * 切勿在 API 响应中暴露内部路径、堆栈跟踪或数据库错误
 * 在服务器端记录详细错误；向客户端返回通用消息
-* 使用 `tracing` 或 `log` 进行结构化的服务器端日志记录
+* 使用 `tracing`或`log` 进行结构化的服务器端日志记录
 
 ```rust
 // Map errors to appropriate status codes and generic messages

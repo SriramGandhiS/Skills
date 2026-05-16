@@ -6,13 +6,13 @@
 # Each session gets its own directory to avoid conflicts.
 #
 # Options:
-#   --project-dir <path>  Store session files under <path>/.superpowers/brainstorm/
-#                         instead of /tmp. Files persist after server stops.
-#   --host <bind-host>    Host/interface to bind (default: 127.0.0.1).
-#                         Use 0.0.0.0 in remote/containerized environments.
-#   --url-host <host>     Hostname shown in returned URL JSON.
-#   --foreground          Run server in the current terminal (no backgrounding).
-#   --background          Force background mode (overrides Codex auto-foreground).
+# --project-dir <path>  Store session files under <path>/.superpowers/brainstorm/
+# instead of /tmp. Files persist after server stops.
+# --host <bind-host>    Host/interface to bind (default: 127.0.0.1).
+# Use 0.0.0.0 in remote/containerized environments.
+# --url-host <host>     Hostname shown in returned URL JSON.
+# --foreground          Run server in the current terminal (no backgrounding).
+# --background          Force background mode (overrides Codex auto-foreground).
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 

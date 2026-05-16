@@ -1,4 +1,4 @@
-﻿---
+---
 name: flox-environments
 description: "Create reproducible, cross-platform development environments with Flox â€” a declarative environment manager built on Nix. ALWAYS use this skill when the user needs to: set up a project with system-level dependencies (compilers, databases, native libraries like openssl, libvips, BLAS, LAPACK); configure reproducible toolchains for Python, Node.js, Rust, Go, C/C++, Java, Ruby, Elixir, PHP, or any language; manage environments that must work identically across macOS and Linux; pin exact package versions for a team; run local services (PostgreSQL, Redis, Kafka) alongside development tools; onboard new developers with a single command; or solve 'works on my machine' problems. Especially valuable for AI-assisted and vibe coding â€” Flox lets agents install tools into a project-scoped environment without sudo, system pollution, or sandbox restrictions, and the resulting environment is committed to the repo so anyone can reproduce it instantly. Use this skill even if the user doesn't mention Flox â€” if they describe needing reproducible, declarative, cross-platform dev environments with system packages, this is the right tool. Also use when the user mentions .flox/, manifest.toml, flox activate, or FloxHub."
 origin: Flox
@@ -24,13 +24,13 @@ If the user just needs a single language runtime with no system dependencies, st
 
 ## Core Concepts
 
-Flox environments are defined in `.flox/env/manifest.toml` and activated with `flox activate`. The manifest declares packages, environment variables, setup hooks, and shell configuration â€” everything needed to reproduce the environment anywhere.
+Flox environments are defined in `.flox/env/manifest.toml`and activated with`flox activate`. The manifest declares packages, environment variables, setup hooks, and shell configuration â€” everything needed to reproduce the environment anywhere.
 
 **Key paths:**
 - `.flox/env/manifest.toml` â€” Environment definition (commit this)
-- `$FLOX_ENV` â€” Runtime path to installed packages (like `/usr` â€” contains `bin/`, `lib/`, `include/`)
+- `$FLOX_ENV`â€” Runtime path to installed packages (like`/usr`â€” contains`bin/`,`lib/`,`include/`)
 - `$FLOX_ENV_CACHE` â€” Persistent local storage for caches, venvs, data (survives rebuilds)
-- `$FLOX_ENV_PROJECT` â€” Project root directory (where `.flox/` lives)
+- `$FLOX_ENV_PROJECT`â€” Project root directory (where`.flox/` lives)
 
 ## Essential Commands
 
@@ -48,31 +48,31 @@ flox edit                       # Edit manifest interactively
 ## Manifest Structure
 
 ```toml
-# .flox/env/manifest.toml
+## .flox/env/manifest.toml
 
 [install]
-# Packages to install â€” the core of the environment
+## Packages to install â€” the core of the environment
 ripgrep.pkg-path = "ripgrep"
 jq.pkg-path = "jq"
 
 [vars]
-# Static environment variables
+## Static environment variables
 DATABASE_URL = "postgres://localhost:5432/myapp"
 
 [hook]
-# Non-interactive setup scripts (run every activation)
+## Non-interactive setup scripts (run every activation)
 on-activate = """
   echo "Environment ready"
 """
 
 [profile]
-# Shell functions and aliases (available in interactive shell)
+## Shell functions and aliases (available in interactive shell)
 common = """
   alias dev="npm run dev"
 """
 
 [options]
-# Supported platforms
+## Supported platforms
 systems = ["x86_64-linux", "aarch64-linux", "x86_64-darwin", "aarch64-darwin"]
 ```
 
@@ -102,15 +102,15 @@ postgres.version = "16.2"         # Exact version
 
 ```toml
 [install]
-# Linux-only tools
+## Linux-only tools
 valgrind.pkg-path = "valgrind"
 valgrind.systems = ["x86_64-linux", "aarch64-linux"]
 
-# macOS frameworks
+## macOS frameworks
 Security.pkg-path = "darwin.apple_sdk.frameworks.Security"
 Security.systems = ["x86_64-darwin", "aarch64-darwin"]
 
-# GNU tools on macOS (where BSD defaults differ)
+## GNU tools on macOS (where BSD defaults differ)
 coreutils.pkg-path = "coreutils"
 coreutils.systems = ["x86_64-darwin", "aarch64-darwin"]
 ```
@@ -227,7 +227,7 @@ common = """
 gcc.pkg-path = "gcc13"
 gcc.pkg-group = "compilers"
 
-# IMPORTANT: gcc alone doesn't expose libstdc++ headers â€” you need gcc-unwrapped
+## IMPORTANT: gcc alone doesn't expose libstdc++ headers â€” you need gcc-unwrapped
 gcc-unwrapped.pkg-path = "gcc-unwrapped"
 gcc-unwrapped.pkg-group = "libraries"
 
@@ -245,7 +245,7 @@ gdb.systems = ["x86_64-linux", "aarch64-linux"]
 
 ### Hooks â€” Non-Interactive Setup
 
-Hooks run on every activation. Keep them fast and idempotent. Rule of thumb: **if it should happen automatically, put it in `[hook]`; if the user should be able to type it, put it in `[profile]`.**
+Hooks run on every activation. Keep them fast and idempotent. Rule of thumb: **if it should happen automatically, put it in `[hook]`; if the user should be able to type it, put it in`[profile]`.**
 
 ```toml
 [hook]
@@ -276,11 +276,11 @@ common = """
 ### Absolute Paths
 
 ```toml
-# BAD â€” breaks on other machines
+## BAD â€” breaks on other machines
 [vars]
 PROJECT_DIR = "/home/alice/projects/myapp"
 
-# GOOD â€” use Flox environment variables
+## GOOD â€” use Flox environment variables
 [vars]
 PROJECT_DIR = "$FLOX_ENV_PROJECT"
 ```
@@ -288,7 +288,7 @@ PROJECT_DIR = "$FLOX_ENV_PROJECT"
 ### Using exit in Hooks
 
 ```toml
-# BAD â€” kills the shell
+## BAD â€” kills the shell
 [hook]
 on-activate = """
   if [ ! -f config.json ]; then
@@ -297,7 +297,7 @@ on-activate = """
   fi
 """
 
-# GOOD â€” return from hook, don't exit
+## GOOD â€” return from hook, don't exit
 [hook]
 on-activate = """
   if [ ! -f config.json ]; then
@@ -310,12 +310,12 @@ on-activate = """
 ### Storing Secrets in Manifest
 
 ```toml
-# BAD â€” manifest is committed to git
+## BAD â€” manifest is committed to git
 [vars]
 API_KEY = "<set-at-runtime>"
 
-# GOOD â€” reference external config or pass at runtime
-# Use: API_KEY="<your-api-key>" flox activate
+## GOOD â€” reference external config or pass at runtime
+## Use: API_KEY="<your-api-key>" flox activate
 [vars]
 API_KEY = "${API_KEY:-}"
 ```
@@ -323,13 +323,13 @@ API_KEY = "${API_KEY:-}"
 ### Slow Hooks Without Idempotency Guards
 
 ```toml
-# BAD â€” reinstalls every activation
+## BAD â€” reinstalls every activation
 [hook]
 on-activate = """
   pip install -r requirements.txt
 """
 
-# GOOD â€” skip if already installed
+## GOOD â€” skip if already installed
 [hook]
 on-activate = """
   if [ ! -f "$FLOX_ENV_CACHE/.deps_installed" ]; then
@@ -342,13 +342,13 @@ on-activate = """
 ### Putting User Commands in Hooks
 
 ```toml
-# BAD â€” hook functions aren't available in the interactive shell
+## BAD â€” hook functions aren't available in the interactive shell
 [hook]
 on-activate = """
   deploy() { kubectl apply -f k8s/; }
 """
 
-# GOOD â€” use [profile] for user-invokable functions
+## GOOD â€” use [profile] for user-invokable functions
 [profile]
 common = """
   deploy() { kubectl apply -f k8s/; }
@@ -416,7 +416,7 @@ Flox environments are git-native. Commit the `.flox/` directory and every collab
 ```bash
 git add .flox/
 git commit -m "Add Flox environment"
-# Teammates just run:
+## Teammates just run:
 git clone <repo> && cd <repo> && flox activate
 ```
 
@@ -434,7 +434,7 @@ Compose environments with `[include]`:
 base.floxhub = "myorg/python-base"
 
 [install]
-# Project-specific additions on top of base
+## Project-specific additions on top of base
 fastapi.pkg-path = "python311Packages.fastapi"
 ```
 
@@ -452,17 +452,17 @@ Flox is ideal for AI-assisted development and vibe coding workflows. When an AI 
 **Agent workflow pattern:**
 
 ```bash
-# Agent discovers it needs a tool (e.g., jq for JSON processing)
+## Agent discovers it needs a tool (e.g., jq for JSON processing)
 flox search jq                    # Verify the package exists
 flox install jq                   # Install into project environment
 
-# Or for more control, edit the manifest directly
+## Or for more control, edit the manifest directly
 tmp_manifest="$(mktemp)"
 flox list -c > "$tmp_manifest"
-# Add the package to [install] section, then apply
+## Add the package to [install] section, then apply
 flox edit -f "$tmp_manifest"
 
-# Run a command with the tool available
+## Run a command with the tool available
 flox activate -- jq '.results[]' data.json
 ```
 
@@ -480,7 +480,7 @@ flox search <package> --all       # Broader package search (case-sensitive)
 **Common issues:**
 - **Package not found:** Search is case-sensitive â€” try `flox search --all`
 - **File conflicts between packages:** Add `priority` to the package that should win
-- **Hook failures:** Use `return` not `exit`; guard with `${FLOX_ENV_CACHE:-}`
+- **Hook failures:** Use `return`not`exit`; guard with`${FLOX_ENV_CACHE:-}`
 - **Stale dependencies:** Delete the `$FLOX_ENV_CACHE/.deps_installed` flag file
 
 ## Related Skills

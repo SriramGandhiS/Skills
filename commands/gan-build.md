@@ -15,14 +15,14 @@ This command orchestrates a three-agent build loop inspired by Anthropic's March
 
 ### Phase 0: Setup
 1. Create `gan-harness/` directory in project root
-2. Create subdirectories: `gan-harness/feedback/`, `gan-harness/screenshots/`
+2. Create subdirectories: `gan-harness/feedback/`,`gan-harness/screenshots/`
 3. Initialize git if not already initialized
 4. Log start time and configuration
 
 ### Phase 1: Planning (Planner Agent)
 Unless `--skip-planner` is set:
 1. Launch the `gan-planner` agent via Task tool with the user's brief
-2. Wait for it to produce `gan-harness/spec.md` and `gan-harness/eval-rubric.md`
+2. Wait for it to produce `gan-harness/spec.md`and`gan-harness/eval-rubric.md`
 3. Display the spec summary to the user
 4. Proceed to Phase 2
 

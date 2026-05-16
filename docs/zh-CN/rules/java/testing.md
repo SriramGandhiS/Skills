@@ -9,7 +9,7 @@ paths:
 
 ## 测试框架
 
-* **JUnit 5** (`@Test`, `@ParameterizedTest`, `@Nested`, `@DisplayName`)
+* **JUnit 5** (`@Test`,`@ParameterizedTest`,`@Nested`,`@DisplayName`)
 * **AssertJ** 用于流式断言 (`assertThat(result).isEqualTo(expected)`)
 * **Mockito** 用于模拟依赖
 * **Testcontainers** 用于需要数据库或服务的集成测试
@@ -24,7 +24,7 @@ src/test/java/com/example/app/
   integration/       # 跨层集成测试
 ```
 
-在 `src/test/java` 中镜像 `src/main/java` 的包结构。
+在 `src/test/java`中镜像`src/main/java` 的包结构。
 
 ## 单元测试模式
 

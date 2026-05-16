@@ -19,18 +19,18 @@ def upload_command(args):
     )
 
     if Path(args.local_path).is_dir():
-        print(f"📁 Uploading directory: {args.local_path}")
+        print(f" Uploading directory: {args.local_path}")
         uploaded_files = adaptor.upload_directory(
             args.local_path, args.remote_path, exclude_patterns=args.exclude
         )
-        print(f"✅ Uploaded {len(uploaded_files)} files")
+        print(f"PASS: Uploaded {len(uploaded_files)} files")
         if args.verbose:
             for file_path in uploaded_files:
                 print(f"  - {file_path}")
     else:
-        print(f"📄 Uploading file: {args.local_path}")
+        print(f" Uploading file: {args.local_path}")
         url = adaptor.upload_file(args.local_path, args.remote_path)
-        print(f"✅ Upload complete: {url}")
+        print(f"PASS: Upload complete: {url}")
 
 
 def download_command(args):
@@ -41,16 +41,16 @@ def download_command(args):
 
     # Check if remote path is a directory (ends with /)
     if args.remote_path.endswith("/"):
-        print(f"📁 Downloading directory: {args.remote_path}")
+        print(f" Downloading directory: {args.remote_path}")
         downloaded_files = adaptor.download_directory(args.remote_path, args.local_path)
-        print(f"✅ Downloaded {len(downloaded_files)} files")
+        print(f"PASS: Downloaded {len(downloaded_files)} files")
         if args.verbose:
             for file_path in downloaded_files:
                 print(f"  - {file_path}")
     else:
-        print(f"📄 Downloading file: {args.remote_path}")
+        print(f" Downloading file: {args.remote_path}")
         adaptor.download_file(args.remote_path, args.local_path)
-        print(f"✅ Download complete: {args.local_path}")
+        print(f"PASS: Download complete: {args.local_path}")
 
 
 def list_command(args):
@@ -59,7 +59,7 @@ def list_command(args):
         args.provider, bucket=args.bucket, container=args.container, **parse_extra_args(args.extra)
     )
 
-    print(f"📋 Listing files: {args.prefix or '(root)'}")
+    print(f" Listing files: {args.prefix or '(root)'}")
     files = adaptor.list_files(args.prefix, args.max_results)
 
     if not files:
@@ -89,14 +89,14 @@ def delete_command(args):
     )
 
     if not args.force:
-        response = input(f"⚠️  Delete {args.remote_path}? [y/N]: ")
+        response = input(f"WARNING:  Delete {args.remote_path}? [y/N]: ")
         if response.lower() != "y":
-            print("❌ Deletion cancelled")
+            print("FAIL: Deletion cancelled")
             return
 
-    print(f"🗑️  Deleting: {args.remote_path}")
+    print(f"  Deleting: {args.remote_path}")
     adaptor.delete_file(args.remote_path)
-    print("✅ Deletion complete")
+    print("PASS: Deletion complete")
 
 
 def url_command(args):
@@ -105,10 +105,10 @@ def url_command(args):
         args.provider, bucket=args.bucket, container=args.container, **parse_extra_args(args.extra)
     )
 
-    print(f"🔗 Generating signed URL: {args.remote_path}")
+    print(f" Generating signed URL: {args.remote_path}")
     url = adaptor.get_file_url(args.remote_path, args.expires_in)
     print(f"\n{url}\n")
-    print(f"⏱️  Expires in: {args.expires_in} seconds ({args.expires_in // 3600}h)")
+    print(f"  Expires in: {args.expires_in} seconds ({args.expires_in // 3600}h)")
 
 
 def copy_command(args):
@@ -117,9 +117,9 @@ def copy_command(args):
         args.provider, bucket=args.bucket, container=args.container, **parse_extra_args(args.extra)
     )
 
-    print(f"📋 Copying: {args.source_path} → {args.dest_path}")
+    print(f" Copying: {args.source_path} → {args.dest_path}")
     adaptor.copy_file(args.source_path, args.dest_path)
-    print("✅ Copy complete")
+    print("PASS: Copy complete")
 
 
 def format_size(size_bytes: int) -> str:
@@ -243,10 +243,10 @@ Provider-specific options:
 
     # Validate bucket/container based on provider
     if args.provider in ["s3", "gcs"] and not args.bucket:
-        print(f"❌ Error: --bucket is required for {args.provider.upper()}", file=sys.stderr)
+        print(f"FAIL: Error: --bucket is required for {args.provider.upper()}", file=sys.stderr)
         sys.exit(1)
     elif args.provider == "azure" and not args.container:
-        print("❌ Error: --container is required for Azure", file=sys.stderr)
+        print("FAIL: Error: --container is required for Azure", file=sys.stderr)
         sys.exit(1)
 
     try:
@@ -265,10 +265,10 @@ Provider-specific options:
             copy_command(args)
 
     except FileNotFoundError as e:
-        print(f"❌ Error: {e}", file=sys.stderr)
+        print(f"FAIL: Error: {e}", file=sys.stderr)
         sys.exit(1)
     except Exception as e:
-        print(f"❌ Error: {e}", file=sys.stderr)
+        print(f"FAIL: Error: {e}", file=sys.stderr)
         if args.verbose:
             import traceback
 

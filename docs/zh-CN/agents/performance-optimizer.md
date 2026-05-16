@@ -21,24 +21,24 @@ model: sonnet
 ## 分析命令
 
 ```bash
-# Bundle analysis
+## Bundle analysis
 npx bundle-analyzer
 npx source-map-explorer build/static/js/*.js
 
-# Lighthouse performance audit
-npx lighthouse https://your-app.com --view
+## Lighthouse performance audit
+npx lighthouse <https://your-app.com> --view
 
-# Node.js profiling
+## Node.js profiling
 node --prof your-app.js
 node --prof-process isolate-*.log
 
-# Memory analysis
+## Memory analysis
 node --inspect your-app.js  # Then use Chrome DevTools
 
-# React profiling (in browser)
-# React DevTools > Profiler tab
+## React profiling (in browser)
+## React DevTools > Profiler tab
 
-# Network analysis
+## Network analysis
 npx webpack-bundle-analyzer
 ```
 
@@ -136,13 +136,13 @@ const sortedItems = useMemo(
 **打包分析检查清单：**
 
 ```bash
-# Analyze bundle composition
+## Analyze bundle composition
 npx webpack-bundle-analyzer build/static/js/*.js
 
-# Check for duplicate dependencies
+## Check for duplicate dependencies
 npx duplicate-package-checker-analyzer
 
-# Find largest files
+## Find largest files
 du -sh node_modules/* | sort -hr | head -20
 ```
 
@@ -308,17 +308,17 @@ useEffect(() => {
 **内存泄漏检测：**
 
 ```bash
-# Chrome DevTools Memory tab:
-# 1. Take heap snapshot
-# 2. Perform action
-# 3. Take another snapshot
-# 4. Compare to find objects that shouldn't exist
-# 5. Look for detached DOM nodes, event listeners, closures
+## Chrome DevTools Memory tab:
+## 1. Take heap snapshot
+## 2. Perform action
+## 3. Take another snapshot
+## 4. Compare to find objects that shouldn't exist
+## 5. Look for detached DOM nodes, event listeners, closures
 
-# Node.js memory debugging
+## Node.js memory debugging
 node --inspect app.js
-# Open chrome://inspect
-# Take heap snapshots and compare
+## Open chrome://inspect
+## Take heap snapshots and compare
 ```
 
 ## 性能测试
@@ -326,14 +326,14 @@ node --inspect app.js
 ### Lighthouse 审计
 
 ```bash
-# Run full lighthouse audit
-npx lighthouse https://your-app.com --view --preset=desktop
+## Run full lighthouse audit
+npx lighthouse <https://your-app.com> --view --preset=desktop
 
-# CI mode for automated checks
-npx lighthouse https://your-app.com --output=json --output-path=./lighthouse.json
+## CI mode for automated checks
+npx lighthouse <https://your-app.com> --output=json --output-path=./lighthouse.json
 
-# Check specific metrics
-npx lighthouse https://your-app.com --only-categories=performance
+## Check specific metrics
+npx lighthouse <https://your-app.com> --only-categories=performance
 ```
 
 ### 性能预算
@@ -366,7 +366,7 @@ getTTFB(console.log); // Time to First Byte
 ## 性能报告模板
 
 ````markdown
-# 性能审计报告
+## 性能审计报告
 
 ## 执行摘要
 - **总体评分**：X/100

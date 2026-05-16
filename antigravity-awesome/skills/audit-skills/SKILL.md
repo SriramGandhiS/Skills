@@ -106,24 +106,24 @@ Generates a security report with a score (0-10), platform target identification,
 
 ## Best Practices
 
-- ✅ Perform non-intrusive analysis
-- ✅ Check for privilege escalation patterns
-- ✅ Look for information disclosure vulnerabilities
-- ✅ Analyze cross-platform threats
-- ❌ Don't execute potentially malicious code during audit
-- ❌ Don't modify the code being audited
-- ❌ Don't ignore mobile-specific security concerns
+- PASS: Perform non-intrusive analysis
+- PASS: Check for privilege escalation patterns
+- PASS: Look for information disclosure vulnerabilities
+- PASS: Analyze cross-platform threats
+- FAIL: Don't execute potentially malicious code during audit
+- FAIL: Don't modify the code being audited
+- FAIL: Don't ignore mobile-specific security concerns
 
 ## Common Pitfalls
 
 - **Problem:** Executing code during audit
-  **Solution:** Stick to static analysis methods only
+**Solution:** Stick to static analysis methods only
 
 - **Problem:** Missing cross-platform threats
-  **Solution:** Check for platform-specific security issues on all supported platforms
+**Solution:** Check for platform-specific security issues on all supported platforms
 
 - **Problem:** Failing to detect obfuscated payloads
- **Solution:** Look for encoding patterns like Base64, Hex, XOR loops, and atob()
+**Solution:** Look for encoding patterns like Base64, Hex, XOR loops, and atob()
 
 ## Related Skills
 

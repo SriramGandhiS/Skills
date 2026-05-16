@@ -42,7 +42,6 @@ Works across **Claude Code**, **Codex**, **Cursor**, **OpenCode**, **Gemini**, *
 
 ECC v2.0.0-rc.1 adds the public Hermes operator story on top of that reusable layer: start with the [Hermes setup guide](docs/HERMES-SETUP.md), then review the [rc.1 release notes](docs/releases/2.0.0-rc.1/release-notes.md) and [cross-harness architecture](docs/architecture/cross-harness.md).
 
-
 ---
 
 <table>
@@ -285,14 +284,10 @@ This is intentional. Anthropic marketplace/plugin installs are keyed by a canoni
 ### Step 2: Install Rules Only If You Need Them
 
 > WARNING: **Important:** Claude Code plugins cannot distribute `rules` automatically.
->
-> If you already installed ECC via `/plugin install`, **do not run `./install.sh --profile full`, `.\install.ps1 --profile full`, or `npx ecc-install --profile full` afterward**. The plugin already loads ECC skills, commands, and hooks. Running the full installer after a plugin install copies those same surfaces into your user directories and can create duplicate skills plus duplicate runtime behavior.
->
-> For plugin installs, manually copy only the `rules/` directories you want under `~/.claude/rules/ecc/`. Start with `rules/common` plus one language or framework pack you actually use. Do not copy every rules directory unless you explicitly want all of that context in Claude.
->
-> Use the full installer only when you are doing a fully manual ECC install instead of the plugin path.
->
-> If your local Claude setup was wiped or reset, that does not mean you need to repurchase ECC. Start with `node scripts/ecc.js list-installed`, then run `node scripts/ecc.js doctor` and `node scripts/ecc.js repair` before reinstalling anything. That usually restores ECC-managed files without rebuilding your setup. If the problem is account or marketplace access for ECC Tools, handle billing/account recovery separately.
+> > If you already installed ECC via `/plugin install`, **do not run `./install.sh --profile full`, `.\install.ps1 --profile full`, or `npx ecc-install --profile full` afterward**. The plugin already loads ECC skills, commands, and hooks. Running the full installer after a plugin install copies those same surfaces into your user directories and can create duplicate skills plus duplicate runtime behavior.
+> > For plugin installs, manually copy only the `rules/` directories you want under `~/.claude/rules/ecc/`. Start with `rules/common` plus one language or framework pack you actually use. Do not copy every rules directory unless you explicitly want all of that context in Claude.
+> > Use the full installer only when you are doing a fully manual ECC install instead of the plugin path.
+> > If your local Claude setup was wiped or reset, that does not mean you need to repurchase ECC. Start with `node scripts/ecc.js list-installed`, then run `node scripts/ecc.js doctor` and `node scripts/ecc.js repair` before reinstalling anything. That usually restores ECC-managed files without rebuilding your setup. If the problem is account or marketplace access for ECC Tools, handle billing/account recovery separately.
 
 ```bash
 # Clone the repo first
@@ -415,16 +410,12 @@ python3 ./ecc_dashboard.py
 ### Multi-model commands require additional setup
 
 > WARNING: `multi-*` commands are **not** covered by the base plugin/rules install above.
->
-> To use `/multi-plan`, `/multi-execute`, `/multi-backend`, `/multi-frontend`, and `/multi-workflow`, you must also install the `ccg-workflow` runtime.
->
-> Initialize it with `npx ccg-workflow`.
->
-> That runtime provides the external dependencies these commands expect, including:
+> > To use `/multi-plan`, `/multi-execute`, `/multi-backend`, `/multi-frontend`, and `/multi-workflow`, you must also install the `ccg-workflow` runtime.
+> > Initialize it with `npx ccg-workflow`.
+> > That runtime provides the external dependencies these commands expect, including:
 > - `~/.claude/bin/codeagent-wrapper`
 > - `~/.claude/.ccg/prompts/*`
->
-> Without `ccg-workflow`, these `multi-*` commands will not run correctly.
+> > Without `ccg-workflow`, these `multi-*` commands will not run correctly.
 
 ---
 
@@ -843,20 +834,17 @@ Or add directly to your `~/.claude/settings.json`:
 This gives you instant access to all commands, agents, skills, and hooks.
 
 > **Note:** The Claude Code plugin system does not support distributing `rules` via plugins ([upstream limitation](https://code.claude.com/docs/en/plugins-reference)). You need to install rules manually:
->
-> ```bash
+> > ```bash
 > # Clone the repo first
 > git clone https://github.com/affaan-m/everything-claude-code.git
->
-> # Option A: User-level rules (applies to all projects)
+> > # Option A: User-level rules (applies to all projects)
 > mkdir -p ~/.claude/rules/ecc
 > cp -r everything-claude-code/rules/common ~/.claude/rules/ecc/
 > cp -r everything-claude-code/rules/typescript ~/.claude/rules/ecc/   # pick your stack
 > cp -r everything-claude-code/rules/python ~/.claude/rules/ecc/
 > cp -r everything-claude-code/rules/golang ~/.claude/rules/ecc/
 > cp -r everything-claude-code/rules/php ~/.claude/rules/ecc/
->
-> # Option B: Project-level rules (applies to current project only)
+> > # Option B: Project-level rules (applies to current project only)
 > mkdir -p .claude/rules/ecc
 > cp -r everything-claude-code/rules/common .claude/rules/ecc/
 > cp -r everything-claude-code/rules/typescript .claude/rules/ecc/     # pick your stack

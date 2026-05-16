@@ -155,11 +155,8 @@ After gathering information, create `.agents/product-marketing-context.md` with 
 **Decision-makers:**
 **Primary use case:**
 **Jobs to be done:**
--
-**Use cases:**
--
-
-## Personas
+- **Use cases:**
+- ## Personas
 | Persona | Cares about | Challenge | Value we promise |
 |---------|-------------|-----------|------------------|
 | | | | |
@@ -167,8 +164,7 @@ After gathering information, create `.agents/product-marketing-context.md` with 
 ## Problems & Pain Points
 **Core problem:**
 **Why alternatives fall short:**
--
-**What it costs them:**
+- **What it costs them:**
 **Emotional tension:**
 
 ## Competitive Landscape
@@ -178,8 +174,7 @@ After gathering information, create `.agents/product-marketing-context.md` with 
 
 ## Differentiation
 **Key differentiators:**
--
-**How we do it differently:**
+- **How we do it differently:**
 **Why that's better:**
 **Why customers choose us:**
 

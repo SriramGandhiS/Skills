@@ -29,7 +29,7 @@ command: /instinct-export
    * `project`: 仅限当前项目
    * `global`: 仅限全局
    * `all`: 项目与全局合并（默认）
-3. 应用过滤器（`--domain`, `--min-confidence`）
+3. 应用过滤器（`--domain`,`--min-confidence`）
 4. 将 YAML 格式的导出写入文件（如果未提供输出路径，则写入标准输出）
 
 ## 输出格式
@@ -37,10 +37,10 @@ command: /instinct-export
 创建一个 YAML 文件：
 
 ```yaml
-# Instincts Export
-# Generated: 2025-01-22
-# Source: personal
-# Count: 12 instincts
+## Instincts Export
+## Generated: 2025-01-22
+## Source: personal
+## Count: 12 instincts
 
 ---
 id: prefer-functional-style
@@ -53,7 +53,7 @@ project_id: a1b2c3d4e5f6
 project_name: my-app
 ---
 
-# Prefer Functional Style
+## Prefer Functional Style
 
 ## Action
 Use functional patterns over classes.

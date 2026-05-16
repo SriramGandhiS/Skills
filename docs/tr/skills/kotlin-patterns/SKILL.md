@@ -18,7 +18,7 @@ Sağlam, verimli ve sürdürülebilir uygulamalar oluşturmak için idiomatic Ko
 
 ## Nasıl Çalışır
 
-Bu skill yedi temel alanda idiomatic Kotlin konvansiyonlarını uygular: tip sistemi ve safe-call operatörleri kullanarak null safety, `val` ve data class'larda `copy()` ile immutability, exhaustive tip hiyerarşileri için sealed class'lar ve interface'ler, coroutine'ler ve `Flow` ile yapılandırılmış eşzamanlılık, inheritance olmadan davranış eklemek için extension fonksiyonlar, `@DslMarker` ve lambda receiver'lar kullanarak tip güvenli DSL builder'lar, ve build yapılandırması için Gradle Kotlin DSL.
+Bu skill yedi temel alanda idiomatic Kotlin konvansiyonlarını uygular: tip sistemi ve safe-call operatörleri kullanarak null safety, `val`ve data class'larda`copy()`ile immutability, exhaustive tip hiyerarşileri için sealed class'lar ve interface'ler, coroutine'ler ve`Flow`ile yapılandırılmış eşzamanlılık, inheritance olmadan davranış eklemek için extension fonksiyonlar,`@DslMarker` ve lambda receiver'lar kullanarak tip güvenli DSL builder'lar, ve build yapılandırması için Gradle Kotlin DSL.
 
 ## Örnekler
 
@@ -77,7 +77,7 @@ fun getUserEmail(userId: String): String {
 
 ### 2. Varsayılan Olarak Immutability
 
-`var` yerine `val` tercih edin, mutable koleksiyonlar yerine immutable olanları.
+`var`yerine`val` tercih edin, mutable koleksiyonlar yerine immutable olanları.
 
 ```kotlin
 // İyi: Immutable veri
@@ -379,7 +379,7 @@ val page = html {
 ### build.gradle.kts Yapılandırması
 
 ```kotlin
-// En son versiyonları kontrol et: https://kotlinlang.org/docs/releases.html
+// En son versiyonları kontrol et: <https://kotlinlang.org/docs/releases.html>
 plugins {
     kotlin("jvm") version "2.3.10"
     kotlin("plugin.serialization") version "2.3.10"
@@ -474,7 +474,7 @@ fun withdraw(account: Account, amount: Money): Account {
 
 | İdiyom | Açıklama |
 |-------|-------------|
-| `val` over `var` | Immutable değişkenleri tercih et |
+| `val`over`var` | Immutable değişkenleri tercih et |
 | `data class` | equals/hashCode/copy ile value objeler için |
 | `sealed class/interface` | Kısıtlı tip hiyerarşileri için |
 | `value class` | Sıfır maliyetli tip güvenli sarmalayıcılar için |

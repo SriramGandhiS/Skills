@@ -27,9 +27,9 @@ export default {
 interface TraceItem {
   scriptName: string;           // Producer Worker name
   eventTimestamp: number;        // Epoch milliseconds
-  outcome: 'ok' | 'exception' | 'exceededCpu' | 'exceededMemory' 
+  outcome: 'ok' | 'exception' | 'exceededCpu' | 'exceededMemory'
          | 'canceled' | 'scriptNotFound' | 'responseStreamDisconnected' | 'unknown';
-  
+
   event?: {
     request?: {
       url: string;               // Redacted by default
@@ -42,19 +42,19 @@ interface TraceItem {
       status: number;
     };
   };
-  
+
   logs: Array<{
     timestamp: number;           // Epoch milliseconds
     level: 'debug' | 'info' | 'log' | 'warn' | 'error';
     message: unknown[];          // Args passed to console function
   }>;
-  
+
   exceptions: Array<{
     timestamp: number;           // Epoch milliseconds
     name: string;                // Error type (Error, TypeError, etc.)
     message: string;             // Error description
   }>;
-  
+
   diagnosticsChannelEvents: Array<{
     channel: string;
     message: unknown;
@@ -70,10 +70,10 @@ interface TraceItem {
 All timestamps are **epoch milliseconds**, not seconds:
 
 ```typescript
-// ✅ CORRECT - use directly with Date
+// PASS: CORRECT - use directly with Date
 const date = new Date(event.eventTimestamp);
 
-// ❌ WRONG - don't multiply by 1000
+// FAIL: WRONG - don't multiply by 1000
 const date = new Date(event.eventTimestamp * 1000);
 ```
 
@@ -100,7 +100,7 @@ Redacted values show as `"REDACTED"`.
 export default {
   async tail(events, env, ctx) {
     for (const event of events) {
-      // ⚠️ Use with extreme caution
+      // WARNING: Use with extreme caution
       const unredacted = event.event?.request?.getUnredacted();
       // unredacted.url and unredacted.headers contain raw values
     }
@@ -137,7 +137,7 @@ export default {
       url: event.event?.request?.url,
       status: event.event?.response?.status,
     }));
-    
+
     ctx.waitUntil(
       fetch(env.LOG_ENDPOINT, {
         method: "POST",
@@ -158,12 +158,12 @@ export default {
 - CPU limit exceeded → `outcome='exceededCpu'`
 
 ```typescript
-// ✅ Check outcome for script execution status
+// PASS: Check outcome for script execution status
 if (event.outcome === 'exception') {
   // Script threw uncaught exception
 }
 
-// ✅ Check HTTP status separately
+// PASS: Check HTTP status separately
 if (event.event?.response?.status === 500) {
   // HTTP 500 returned (script may have handled error)
 }
@@ -174,10 +174,10 @@ if (event.event?.response?.status === 500) {
 `log.message` is `unknown[]` and may contain non-serializable objects:
 
 ```typescript
-// ❌ May fail with circular references or BigInt
+// FAIL: May fail with circular references or BigInt
 JSON.stringify(events);
 
-// ✅ Safe serialization
+// PASS: Safe serialization
 const safePayload = events.map(event => ({
   ...event,
   logs: event.logs.map(log => ({

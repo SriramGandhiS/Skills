@@ -19,7 +19,7 @@ All enhancement modes now support **multiple local coding agents**:
 
 | Agent | Display Name | Default | Notes |
 |-------|--------------|---------|-------|
-| **claude** | Claude Code | ✅ Yes | Your Claude Code Max plan (no API costs) |
+| **claude** | Claude Code | PASS: Yes | Your Claude Code Max plan (no API costs) |
 | **kimi** | Kimi Code CLI | No | Uses `kimi --print` with stdin |
 | **codex** | OpenAI Codex CLI | No | Uses `codex exec --full-auto` |
 | **copilot** | GitHub Copilot CLI | No | Uses `gh copilot chat` |
@@ -74,9 +74,9 @@ skill-seekers enhance output/react/
 ### Security
 
 Custom commands are validated for security:
-- ✅ Blocks dangerous shell characters: `;`, `&`, `|`, `$`, `` ` ``, `\n`, `\r`
-- ✅ Validates executable exists in PATH
-- ✅ Safe parsing with `shlex.split()`
+- PASS: Blocks dangerous shell characters: `;`, `&`, `|`, `$`, `` ` ``, `\n`, `\r`
+- PASS: Validates executable exists in PATH
+- PASS: Safe parsing with `shlex.split()`
 
 **Example rejection:**
 ```bash
@@ -115,7 +115,7 @@ Agent names are normalized with smart alias support:
 | **Blocks** | Yes (waits) | No (returns) | No (returns) | No (separate window) |
 | **Survives parent exit** | No | No | **Yes** | Yes |
 | **Progress monitoring** | Direct output | Status file | Status file + logs | Visual in terminal |
-| **Force mode** | ✅ Yes | ✅ Yes | ✅ Yes | ❌ No |
+| **Force mode** | PASS: Yes | PASS: Yes | PASS: Yes | FAIL: No |
 | **Best for** | CI/CD | Scripts | Long tasks | Manual work |
 
 ## Usage Examples
@@ -161,8 +161,8 @@ skill-seekers enhance output/react/ --background --agent codex
 skill-seekers enhance output/react/ --background --agent copilot
 
 # Returns immediately with status file created
-# ✅ Background enhancement started!
-# 📊 Status file: output/react/.enhancement_status.json
+# PASS: Background enhancement started!
+# Status file: output/react/.enhancement_status.json
 ```
 
 **Behavior**:
@@ -246,10 +246,10 @@ skill-seekers enhance output/react/ --no-force
 ```
 
 **Use cases**:
-- ✅ CI/CD automation (default ON)
-- ✅ Batch processing multiple skills (default ON)
-- ✅ Unattended execution (default ON)
-- ⚠️ Use `--no-force` if you need manual confirmation prompts
+- PASS: CI/CD automation (default ON)
+- PASS: Batch processing multiple skills (default ON)
+- PASS: Unattended execution (default ON)
+- WARNING: Use `--no-force` if you need manual confirmation prompts
 
 ## Status File Format
 
@@ -288,12 +288,11 @@ skill-seekers enhance-status output/react/
 # ============================================================
 # ENHANCEMENT STATUS: RUNNING
 # ============================================================
-#
-# 🔄 Status: RUNNING
-#    Message: Running Claude Code enhancement...
-#    Progress: [██████████░░░░░░░░░░] 50%
-#    PID: 12345
-#    Timestamp: 2026-01-03T12:34:56.789012
+# # Status: RUNNING
+# Message: Running Claude Code enhancement...
+# Progress: [██████████░░░░░░░░░░] 50%
+# PID: 12345
+# Timestamp: 2026-01-03T12:34:56.789012
 ```
 
 ### Watch Mode (Real-time)
@@ -354,9 +353,9 @@ done
 
     # Check if enhancement succeeded
     if [ $? -eq 0 ]; then
-      echo "✅ Enhancement successful"
+      echo "PASS: Enhancement successful"
     else
-      echo "❌ Enhancement failed"
+      echo "FAIL: Enhancement failed"
       exit 1
     fi
 ```
@@ -491,7 +490,7 @@ export ANTHROPIC_BASE_URL=https://your-endpoint.com/v1
 | **Speed** | 30-60 seconds | 20-40 seconds |
 | **Quality** | 9/10 | 9/10 (same) |
 | **Modes** | 4 modes | 1 mode only |
-| **Automation** | ✅ Full support | ✅ Full support |
+| **Automation** | PASS: Full support | PASS: Full support |
 | **Best for** | Personal use, small teams | CI/CD, high volume |
 
 ## Best Practices

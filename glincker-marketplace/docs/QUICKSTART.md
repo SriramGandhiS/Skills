@@ -192,7 +192,7 @@ author: Your Name
 
 ## Best Practices
 
-### ✅ Do
+### PASS: Do
 
 - **Start small**: Begin with a simple, focused skill
 - **Test thoroughly**: Verify all examples and edge cases
@@ -201,7 +201,7 @@ author: Your Name
 - **Security first**: Review for vulnerabilities
 - **Get feedback**: Ask in Discussions before submitting
 
-### ❌ Don't
+### FAIL: Don't
 
 - Request unnecessary tools (`allowed-tools: ["*"]`)
 - Include hardcoded secrets or credentials

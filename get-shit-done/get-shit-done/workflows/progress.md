@@ -89,7 +89,7 @@ Use this instead of manually reading/parsing ROADMAP.md.
   </step>
 
 <step name="report">
-> ⚠️ Context authority: PROJECT.md, STATE.md, and ROADMAP.md are the authoritative sources
+> WARNING: Context authority: PROJECT.md, STATE.md, and ROADMAP.md are the authoritative sources
 > for project name, milestone, current phase, and next-step routing. CLAUDE.md ## Project
 > blocks are a secondary config aid that may be significantly stale — do NOT use the
 > CLAUDE.md project description as a source for any progress report field.
@@ -153,11 +153,11 @@ When `MVP_MODE=true`, the per-phase progress block adds a **user-flow status** s
 
 ```
 Phase 1 — User Auth MVP
-  ✅ Walking Skeleton complete           ← from SKELETON.md existence
-  ✅ Register flow working               ← from PLAN.md task with summary
-  ✅ Login flow working                  ← from PLAN.md task with summary
-  🔄 Password reset (in progress)        ← from PLAN.md task without summary
-  ⬜ Email verification                  ← from PLAN.md task not yet started
+  PASS: Walking Skeleton complete           ← from SKELETON.md existence
+  PASS: Register flow working               ← from PLAN.md task with summary
+  PASS: Login flow working                  ← from PLAN.md task with summary
+   Password reset (in progress)        ← from PLAN.md task without summary
+   Email verification                  ← from PLAN.md task not yet started
 ```
 
 **User-flow filter:** Tasks whose names are technical-sounding ("Wire DB schema", "Create migration", "Bump deps") are NOT rendered as user-flow status lines. Heuristic: a task name is user-flow-shaped if it ends in "flow", "page", "screen", or starts with a verb the user would recognize ("Register", "Login", "Upload", "View"). Tasks that fail the heuristic still count toward the standard task progress total but don't appear in the user-flow sub-block.
@@ -241,7 +241,7 @@ Read its `<objective>` section.
 ```
 ---
 
-## ▶ Next Up — [${PROJECT_CODE}] ${PROJECT_TITLE}
+## Next Up — [${PROJECT_CODE}] ${PROJECT_TITLE}
 
 **{phase}-{plan}: [Plan Name]** — [objective summary from PLAN.md]
 
@@ -270,7 +270,7 @@ PHASE_HAS_UI=$(echo "$PHASE_SECTION" | grep -qi "UI hint.*yes" && echo "true" ||
 ```
 ---
 
-## ▶ Next Up — [${PROJECT_CODE}] ${PROJECT_TITLE}
+## Next Up — [${PROJECT_CODE}] ${PROJECT_TITLE}
 
 **Phase {N}: {Name}** — {Goal from ROADMAP.md}
 <sub>✓ Context gathered, ready to plan</sub>
@@ -287,7 +287,7 @@ PHASE_HAS_UI=$(echo "$PHASE_SECTION" | grep -qi "UI hint.*yes" && echo "true" ||
 ```
 ---
 
-## ▶ Next Up — [${PROJECT_CODE}] ${PROJECT_TITLE}
+## Next Up — [${PROJECT_CODE}] ${PROJECT_TITLE}
 
 **Phase {N}: {Name}** — {Goal from ROADMAP.md}
 
@@ -310,7 +310,7 @@ PHASE_HAS_UI=$(echo "$PHASE_SECTION" | grep -qi "UI hint.*yes" && echo "true" ||
 ```
 ---
 
-## ▶ Next Up — [${PROJECT_CODE}] ${PROJECT_TITLE}
+## Next Up — [${PROJECT_CODE}] ${PROJECT_TITLE}
 
 **Phase {N}: {Name}** — {Goal from ROADMAP.md}
 
@@ -336,7 +336,7 @@ UAT.md exists with gaps (diagnosed issues). User needs to plan fixes.
 ```
 ---
 
-## ⚠ UAT Gaps Found
+## WARNING: UAT Gaps Found
 
 **{phase_num}-UAT.md** has {N} gaps requiring fixes.
 
@@ -418,7 +418,7 @@ NEXT_HAS_UI=$(echo "$NEXT_PHASE_SECTION" | grep -qi "UI hint.*yes" && echo "true
 
 ## ✓ Phase {Z} Complete
 
-## ▶ Next Up — [${PROJECT_CODE}] ${PROJECT_TITLE}
+## Next Up — [${PROJECT_CODE}] ${PROJECT_TITLE}
 
 **Phase {Z+1}: {Name}** — {Goal from ROADMAP.md}
 
@@ -443,7 +443,7 @@ NEXT_HAS_UI=$(echo "$NEXT_PHASE_SECTION" | grep -qi "UI hint.*yes" && echo "true
 
 ## ✓ Phase {Z} Complete
 
-## ▶ Next Up — [${PROJECT_CODE}] ${PROJECT_TITLE}
+## Next Up — [${PROJECT_CODE}] ${PROJECT_TITLE}
 
 **Phase {Z+1}: {Name}** — {Goal from ROADMAP.md}
 
@@ -467,11 +467,11 @@ NEXT_HAS_UI=$(echo "$NEXT_PHASE_SECTION" | grep -qi "UI hint.*yes" && echo "true
 ```
 ---
 
-## 🎉 Milestone Complete
+## Milestone Complete
 
 All {N} phases finished!
 
-## ▶ Next Up — [${PROJECT_CODE}] ${PROJECT_TITLE}
+## Next Up — [${PROJECT_CODE}] ${PROJECT_TITLE}
 
 **Complete Milestone** — archive and prepare for next
 
@@ -502,7 +502,7 @@ Read MILESTONES.md to find the last completed milestone version.
 
 Ready to plan the next milestone.
 
-## ▶ Next Up — [${PROJECT_CODE}] ${PROJECT_TITLE}
+## Next Up — [${PROJECT_CODE}] ${PROJECT_TITLE}
 
 **Start Next Milestone** — questioning → research → requirements → roadmap
 
@@ -537,13 +537,13 @@ If `--forensic` IS present: after the standard report and routing suggestion hav
 
 Running 6 deep checks against project state...
 
-Run each check in order. For each check, emit ✓ (pass) or ⚠ (warning) with concrete evidence when a problem is found.
+Run each check in order. For each check, emit ✓ (pass) or WARNING: (warning) with concrete evidence when a problem is found.
 
 **Check 1 — STATE vs artifact consistency**
 
 Read STATE.md `status` / `stopped_at` fields (from the STATE snapshot already loaded). Compare against the artifact count from the roadmap analysis. If STATE.md claims the current phase is pending/mid-flight but the artifact count shows it as complete (all PLAN.md files have matching SUMMARY.md files), flag inconsistency. Emit:
 - ✓ `STATE.md consistent with artifact count` — if both agree
-- ⚠ `STATE.md claims [status] but artifact count shows phase complete` — with the specific values
+- WARNING: `STATE.md claims [status] but artifact count shows phase complete` — with the specific values
 
 **Check 2 — Orphaned handoff files**
 
@@ -555,7 +555,7 @@ Also check `.planning/continue-here.md`.
 
 Emit:
 - ✓ `No orphaned handoff files` — if none found
-- ⚠ `Orphaned handoff files found` — list each file path, add: `→ Work was paused mid-flight. Read the handoff before continuing.`
+- WARNING: `Orphaned handoff files found` — list each file path, add: `→ Work was paused mid-flight. Read the handoff before continuing.`
 
 **Check 3 — Deferred scope drift**
 
@@ -568,7 +568,7 @@ For each match, extract the referenced phase number. Cross-reference against ROA
 
 Emit:
 - ✓ `All deferred scope captured in ROADMAP` — if no mismatches
-- ⚠ `Deferred scope references phase(s) not in ROADMAP` — list: file, reference text, missing phase number
+- WARNING: `Deferred scope references phase(s) not in ROADMAP` — list: file, reference text, missing phase number
 
 **Check 4 — Memory-flagged pending work**
 
@@ -581,7 +581,7 @@ If found, grep for entries containing: `pending`, `status`, `deferred`, `not yet
 
 Emit:
 - ✓ `No memory entries flagging pending work` — if none found or no MEMORY.md
-- ⚠ `Memory entries flag pending/deferred work` — list the matching lines (max 5, truncated at 80 chars)
+- WARNING: `Memory entries flag pending/deferred work` — list the matching lines (max 5, truncated at 80 chars)
 
 **Check 5 — Blocking operational todos**
 
@@ -594,7 +594,7 @@ For files found, scan for keywords indicating operational blockers: `script`, `c
 
 Emit:
 - ✓ `No blocking operational todos` — if no pending todos or none match operational keywords
-- ⚠ `Blocking operational todos found` — list the file names and matching keywords (max 5)
+- WARNING: `Blocking operational todos found` — list the file names and matching keywords (max 5)
 
 **Check 6 — Uncommitted code**
 
@@ -606,7 +606,7 @@ If output is non-empty (modified/staged files outside `.planning/`), flag as unc
 
 Emit:
 - ✓ `Working tree clean` — if no modified files outside `.planning/`
-- ⚠ `Uncommitted changes in source files` — list up to 10 file paths
+- WARNING: `Uncommitted changes in source files` — list up to 10 file paths
 
 ---
 

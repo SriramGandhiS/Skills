@@ -29,10 +29,10 @@ def run_command(cmd: list[str], description: str) -> bool:
         print(result.stderr, file=sys.stderr)
 
     if result.returncode != 0:
-        print(f"❌ ERROR: {description} failed with code {result.returncode}")
+        print(f"FAIL: ERROR: {description} failed with code {result.returncode}")
         return False
 
-    print(f"✅ SUCCESS: {description}")
+    print(f"PASS: SUCCESS: {description}")
     return True
 
 
@@ -84,10 +84,10 @@ def main():
         ):
             return 1
     else:
-        print(f"\n⏭️  SKIPPED: Using existing {output_dir}")
+        print(f"\nSKIPPED:  SKIPPED: Using existing {output_dir}")
 
         if not output_dir.exists():
-            print(f"❌ ERROR: {output_dir} does not exist!")
+            print(f"FAIL: ERROR: {output_dir} does not exist!")
             print(f"Run without --skip-scrape to generate documentation first.")
             return 1
 
@@ -119,7 +119,7 @@ def main():
         # Single file (no splitting needed)
         source_skill = markdown_output / "SKILL.md"
         if not source_skill.exists():
-            print(f"❌ ERROR: {source_skill} does not exist!")
+            print(f"FAIL: ERROR: {source_skill} does not exist!")
             return 1
 
         # Create rules directory
@@ -128,7 +128,7 @@ def main():
         # Copy as single rule file
         dest_file = rules_dir / "fastapi.md"
         shutil.copy(source_skill, dest_file)
-        print(f"✅ Copied: {dest_file}")
+        print(f"PASS: Copied: {dest_file}")
     else:
         # Multiple rule files
         rules_dir.mkdir(parents=True, exist_ok=True)
@@ -136,10 +136,10 @@ def main():
         for rule_file in source_rules.glob("*.md"):
             dest_file = rules_dir / rule_file.name
             shutil.copy(rule_file, dest_file)
-            print(f"✅ Copied: {dest_file}")
+            print(f"PASS: Copied: {dest_file}")
 
     print(f"\n{'='*60}")
-    print(f"✅ SUCCESS: Rules generated and copied!")
+    print(f"PASS: SUCCESS: Rules generated and copied!")
     print(f"{'='*60}")
     print(f"\nRules location: {rules_dir}")
     print(f"\nNext steps:")

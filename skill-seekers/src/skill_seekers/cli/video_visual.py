@@ -1184,7 +1184,7 @@ def _fix_intra_line_duplication(line: str) -> str:
 
 # Compiled patterns for _clean_ocr_line
 _RE_LEADING_LINE_NUMBER = re.compile(r"^\s*\d{1,4}(?:\s+|\t)")
-_RE_COLLAPSE_MARKERS = re.compile(r"[▶▼►◄…⋯⋮]")
+_RE_COLLAPSE_MARKERS = re.compile(r"[▼►◄…⋯⋮]")
 _RE_IDE_TAB_BAR = re.compile(
     r"^\s*(?:File|Edit|Assets|Window|Help|View|Tools|Debug|Run|Terminal)\s+",
     re.IGNORECASE,

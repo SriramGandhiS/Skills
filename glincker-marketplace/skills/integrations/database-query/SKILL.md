@@ -10,7 +10,7 @@ keywords: [database, sql, query, natural-language, postgresql, mysql, mongodb, o
 
 # Database Query (Natural Language)
 
-**⚡ UNIQUE FEATURE**: Query any database using natural language - automatically generates optimized SQL/NoSQL queries, explains query plans, suggests indexes, and visualizes results. Supports PostgreSQL, MySQL, MongoDB, SQLite, and more.
+**UNIQUE FEATURE**: Query any database using natural language - automatically generates optimized SQL/NoSQL queries, explains query plans, suggests indexes, and visualizes results. Supports PostgreSQL, MySQL, MongoDB, SQLite, and more.
 
 ## What This Skill Does
 
@@ -99,13 +99,13 @@ When user makes a request:
 
 2. **Generate Query**:
 
-   **Example 1**: "Show me all active users"
+**Example 1**: "Show me all active users"
    ```sql
    -- PostgreSQL/MySQL
    SELECT * FROM users WHERE status = 'active';
    ```
 
-   **Example 2**: "Count orders by status for last 7 days"
+**Example 2**: "Count orders by status for last 7 days"
    ```sql
    SELECT status, COUNT(*) as count
    FROM orders
@@ -114,7 +114,7 @@ When user makes a request:
    ORDER BY count DESC;
    ```
 
-   **Example 3**: "Find top 10 customers by revenue"
+**Example 3**: "Find top 10 customers by revenue"
    ```sql
    SELECT
      c.name,
@@ -127,7 +127,7 @@ When user makes a request:
    LIMIT 10;
    ```
 
-   **Example 4**: MongoDB aggregation
+**Example 4**: MongoDB aggregation
    ```javascript
    db.orders.aggregate([
      { $match: { status: "completed" } },
@@ -189,7 +189,7 @@ Before execution:
 
 2. **Confirmation for Writes**:
    ```
-   ⚠️ This query will modify data:
+   WARNING: This query will modify data:
 
    UPDATE users SET status = 'inactive'
    WHERE last_login < '2024-01-01'
@@ -305,7 +305,7 @@ SELECT * FROM orders WHERE customer_name LIKE 'John%';
 2. Detects: Sequential scan on 10M rows
 3. Suggests:
    ```
-   ⚠️ Performance Issue Detected:
+   WARNING: Performance Issue Detected:
 
    Problem: Full table scan (10,485,234 rows)
    Solution: Add an index on customer_name
@@ -471,4 +471,4 @@ Apache License 2.0 - See [LICENSE](../../../LICENSE)
 
 ---
 
-**🌟 The most advanced natural language database query skill available!**
+**The most advanced natural language database query skill available!**

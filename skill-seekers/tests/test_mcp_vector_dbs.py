@@ -75,7 +75,7 @@ def test_export_to_weaviate(test_skill_dir):
 
     # Check result content
     text = result[0].text
-    assert "✅ Weaviate Export Complete!" in text
+    assert "PASS: Weaviate Export Complete!" in text
     assert "test_skill-weaviate.json" in text
     assert "weaviate.Client" in text  # Check for usage instructions
 
@@ -98,7 +98,7 @@ def test_export_to_chroma(test_skill_dir):
 
     # Check result content
     text = result[0].text
-    assert "✅ Chroma Export Complete!" in text
+    assert "PASS: Chroma Export Complete!" in text
     assert "test_skill-chroma.json" in text
     assert "chromadb" in text  # Check for usage instructions
 
@@ -121,7 +121,7 @@ def test_export_to_faiss(test_skill_dir):
 
     # Check result content
     text = result[0].text
-    assert "✅ FAISS Export Complete!" in text
+    assert "PASS: FAISS Export Complete!" in text
     assert "test_skill-faiss.json" in text
     assert "import faiss" in text  # Check for usage instructions
 
@@ -144,7 +144,7 @@ def test_export_to_qdrant(test_skill_dir):
 
     # Check result content
     text = result[0].text
-    assert "✅ Qdrant Export Complete!" in text
+    assert "PASS: Qdrant Export Complete!" in text
     assert "test_skill-qdrant.json" in text
     assert "QdrantClient" in text  # Check for usage instructions
 
@@ -159,7 +159,7 @@ def test_export_with_default_output_dir(test_skill_dir):
     assert isinstance(result, list)
     assert len(result) == 1
     text = result[0].text
-    assert "✅" in text
+    assert "PASS:" in text
     assert "test_skill-weaviate.json" in text
 
 
@@ -172,7 +172,7 @@ def test_export_missing_skill_dir():
     assert isinstance(result, list)
     assert len(result) == 1
     text = result[0].text
-    assert "❌ Error" in text
+    assert "FAIL: Error" in text
     assert "not found" in text
 
 
@@ -199,7 +199,7 @@ def test_all_exports_create_files(test_skill_dir):
         # Check success
         assert isinstance(result, list)
         text = result[0].text
-        assert "✅" in text
+        assert "PASS:" in text
 
         # Check file exists
         expected_file = output_dir / f"test_skill-{target}.json"

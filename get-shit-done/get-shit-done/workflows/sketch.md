@@ -327,7 +327,7 @@ After all sketches complete:
 
 ───────────────────────────────────────────────────────────────
 
-## ▶ Next Up
+## Next Up
 
 **Package findings** — wrap design decisions into a reusable skill
 

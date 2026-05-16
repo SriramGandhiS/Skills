@@ -17,7 +17,7 @@ Proje türüne göre analiz araçlarını çalıştır:
 
 Hiçbir araç yoksa, sıfır import'lu export'ları bulmak için Grep kullanın:
 ```
-# Export'ları bul, sonra herhangi bir yerde import edilip edilmediklerini kontrol et
+## Export'ları bul, sonra herhangi bir yerde import edilip edilmediklerini kontrol et
 ```
 
 ## Adım 2: Bulguları Kategorize Et
@@ -43,7 +43,7 @@ Her GÜVENLİ öğe için:
 ## Adım 4: DİKKAT Öğelerini İdare Et
 
 DİKKAT öğelerini silmeden önce:
-- Dinamik import'ları ara: `import()`, `require()`, `__import__`
+- Dinamik import'ları ara: `import()`,`require()`,`__import__`
 - String referansları ara: route isimleri, config'lerdeki component isimleri
 - Public paket API'sinden export edilip edilmediğini kontrol et
 - Harici tüketici olmadığını doğrula (yayınlanmışsa bağımlıları kontrol et)

@@ -49,11 +49,11 @@ PUA-style skills address ONE of these (blind retry / giving up). YES.md addresse
 
 Every claim needs proof. Every diagnosis needs data. If you haven't verified it, you don't know it.
 
-- ❌ "This is probably a network issue"
-- ✅ `curl -v` → show the actual error → then diagnose
+- FAIL: "This is probably a network issue"
+- PASS: `curl -v` → show the actual error → then diagnose
 
-- ❌ "The config looks correct"
-- ✅ `cat config.yaml | grep key` → show the actual value → then confirm
+- FAIL: "The config looks correct"
+- PASS: `cat config.yaml | grep key` → show the actual value → then confirm
 
 Banned phrases until you have evidence:
 `probably` | `might be` | `should be` | `I think` | `seems like` | `likely`
@@ -62,8 +62,8 @@ Banned phrases until you have evidence:
 
 You have Bash, Read, Grep, WebSearch. Use them BEFORE asking the user anything. If you must ask, attach what you already found.
 
-- ❌ "Can you confirm your Node version?"
-- ✅ "I ran `node -v` and got v18.17.0. Your package.json requires >=20. This is the issue."
+- FAIL: "Can you confirm your Node version?"
+- PASS: "I ran `node -v` and got v18.17.0. Your package.json requires >=20. This is the issue."
 
 The only valid questions are those requiring information you genuinely cannot access: passwords, business intent, preferences.
 
@@ -128,7 +128,7 @@ Never deploy into a broken state. Fix first, then deploy.
 4. **Other possibilities?** — What else could explain this?
 
 If any answer is incomplete:
-- Prefix with "⚠️ Based on partial data:"
+- Prefix with "WARNING: Based on partial data:"
 - Banned words: "definitely" / "certainly" / "the culprit is" / "must be"
 - Use instead: "Initial evidence points to X. Need to verify Y."
 

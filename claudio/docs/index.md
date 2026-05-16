@@ -42,7 +42,7 @@ Or manually configure Claude Code:
 {
   "hooks": {
     "PostToolUse": "claudio",
-    "PreToolUse": "claudio", 
+    "PreToolUse": "claudio",
     "UserPromptSubmit": "claudio"
   }
 }
@@ -54,7 +54,7 @@ Or manually configure Claude Code:
 
 ```
 1. Look for: success/git-commit-success.wav
-2. Not found? Try: success/git-success.wav  
+2. Not found? Try: success/git-success.wav
 3. Still nothing? Try: success/bash-success.wav
 4. Nope? Try: success/tool-complete.wav
 5. Come on: success/success.wav
@@ -65,11 +65,11 @@ Or manually configure Claude Code:
 
 ```
 1. Look for: loading/git-commit-start.wav
-2. Not found? Try: loading/git-commit.wav  
+2. Not found? Try: loading/git-commit.wav
 3. Still nothing? Try: loading/git-start.wav
 4. Nope? Try: loading/git.wav (command-only)
 5. How about: loading/bash-start.wav
-6. Maybe: loading/bash.wav  
+6. Maybe: loading/bash.wav
 7. OK: loading/tool-start.wav
 8. Come on: loading/loading.wav
 9. Fine: default.wav
@@ -87,7 +87,7 @@ You can be as specific or as lazy as you want with your sound pack. Got a sound 
 **After success** - plays success sounds
 - `git-commit-success.wav` → `git-success.wav` → `bash-success.wav` → etc.
 
-**After errors** - plays error sounds  
+**After errors** - plays error sounds
 - `git-error.wav` when git fails
 - `bash-error.wav` for general bash failures
 - `error.wav` when all else fails
@@ -102,7 +102,7 @@ The parsing is pretty clever. It knows that `npm install express` should trigger
 **By default, Claudio just works.** It automatically detects your platform and uses system sounds:
 
 - **macOS:** Uses built-in system sounds like Glass.aiff, Purr.aiff, Hero.aiff
-- **Windows:** Uses Windows Media sounds (Windows Ding.wav, Windows Error.wav, etc.)  
+- **Windows:** Uses Windows Media sounds (Windows Ding.wav, Windows Error.wav, etc.)
 - **WSL:** Maps to Windows sounds via `/mnt/c/Windows/Media/`
 - **Linux:** Falls back to basic directory soundpack
 
@@ -112,7 +112,7 @@ If you want custom sounds, the default directory structure is:
 
 ```
 loading/     # stuff that's about to happen
-success/     # stuff that worked  
+success/     # stuff that worked
 error/       # stuff that didn't work
 interactive/ # you did something
 default.wav  # the sound of giving up
@@ -130,7 +130,7 @@ You can make your own soundpack two ways:
   "description": "Maps to my favorite sounds",
   "mappings": {
     "success/git-commit-success.wav": "/System/Library/Sounds/Glass.aiff",
-    "success/bash-success.wav": "/usr/share/sounds/alsa/Front_Right.wav", 
+    "success/bash-success.wav": "/usr/share/sounds/alsa/Front_Right.wav",
     "error/bash-error.wav": "/mnt/c/Windows/Media/Windows Error.wav",
     "loading/loading.wav": "/home/user/my-sounds/thinking.mp3",
     "default.wav": "/usr/share/sounds/alsa/Front_Center.wav"
@@ -147,7 +147,7 @@ Lives in `/etc/xdg/claudio/config.json`:
 ```json
 {
   "volume": 0.5,
-  "default_soundpack": "default", 
+  "default_soundpack": "default",
   "soundpack_paths": [],
   "enabled": true,
   "log_level": "warn",
@@ -193,7 +193,7 @@ The JSON that Claude Code sends looks like this:
 ```json
 {
   "hook_event_name": "PostToolUse",
-  "tool_name": "Bash", 
+  "tool_name": "Bash",
   "tool_input": {"command": "git commit -m 'fix'"},
   "tool_response": {"stdout": "committed", "stderr": ""}
 }

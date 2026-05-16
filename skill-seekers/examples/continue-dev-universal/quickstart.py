@@ -29,10 +29,10 @@ def run_command(cmd: list[str], description: str) -> bool:
         print(result.stderr, file=sys.stderr)
 
     if result.returncode != 0:
-        print(f"❌ ERROR: {description} failed with code {result.returncode}")
+        print(f"FAIL: ERROR: {description} failed with code {result.returncode}")
         return False
 
-    print(f"✅ SUCCESS: {description}")
+    print(f"PASS: SUCCESS: {description}")
     return True
 
 
@@ -81,9 +81,9 @@ def create_continue_config(framework: str, port: int = 8765) -> Path:
 
     if not existing:
         config.setdefault("contextProviders", []).append(provider)
-        print(f"✅ Added {framework} context provider to Continue config")
+        print(f"PASS: Added {framework} context provider to Continue config")
     else:
-        print(f"⏭️  {framework} context provider already exists in Continue config")
+        print(f"SKIPPED:  {framework} context provider already exists in Continue config")
 
     # Save config
     with open(config_path, 'w') as f:
@@ -138,10 +138,10 @@ def main():
         ):
             return 1
     else:
-        print(f"\n⏭️  SKIPPED: Using existing {output_dir}")
+        print(f"\nSKIPPED:  SKIPPED: Using existing {output_dir}")
 
         if not output_dir.exists():
-            print(f"❌ ERROR: {output_dir} does not exist!")
+            print(f"FAIL: ERROR: {output_dir} does not exist!")
             print(f"Run without --skip-scrape to generate documentation first.")
             return 1
 
@@ -164,11 +164,11 @@ def main():
     print(f"{'='*60}")
 
     config_path = create_continue_config(framework, args.port)
-    print(f"✅ Continue config updated: {config_path}")
+    print(f"PASS: Continue config updated: {config_path}")
 
     # Step 4: Instructions for starting server
     print(f"\n{'='*60}")
-    print(f"✅ SUCCESS: Setup complete!")
+    print(f"PASS: SUCCESS: Setup complete!")
     print(f"{'='*60}")
     print(f"\nNext steps:")
     print(f"\n1. Start context server:")

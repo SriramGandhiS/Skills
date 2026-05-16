@@ -31,7 +31,6 @@ hcloud primary-ip add-label [--overwrite] <primary-ip> <label>...
 
 * [hcloud primary-ip](hcloud_primary-ip.md)	 - Manage Primary IPs
 
-
 ---
 
 ## hcloud primary-ip assign
@@ -66,7 +65,6 @@ hcloud primary-ip assign --server <server> <primary-ip>
 ### SEE ALSO
 
 * [hcloud primary-ip](hcloud_primary-ip.md)	 - Manage Primary IPs
-
 
 ---
 
@@ -119,7 +117,6 @@ hcloud primary-ip create [options] --type <ipv4|ipv6> --name <name>
 
 * [hcloud primary-ip](hcloud_primary-ip.md)	 - Manage Primary IPs
 
-
 ---
 
 ## hcloud primary-ip delete
@@ -153,7 +150,6 @@ hcloud primary-ip delete <primary-ip>...
 ### SEE ALSO
 
 * [hcloud primary-ip](hcloud_primary-ip.md)	 - Manage Primary IPs
-
 
 ---
 
@@ -190,7 +186,6 @@ hcloud primary-ip describe [options] <primary-ip>
 
 * [hcloud primary-ip](hcloud_primary-ip.md)	 - Manage Primary IPs
 
-
 ---
 
 ## hcloud primary-ip disable-protection
@@ -225,7 +220,6 @@ hcloud primary-ip disable-protection <primary-ip> [delete]
 
 * [hcloud primary-ip](hcloud_primary-ip.md)	 - Manage Primary IPs
 
-
 ---
 
 ## hcloud primary-ip enable-protection
@@ -259,7 +253,6 @@ hcloud primary-ip enable-protection <primary-ip> [delete]
 ### SEE ALSO
 
 * [hcloud primary-ip](hcloud_primary-ip.md)	 - Manage Primary IPs
-
 
 ---
 
@@ -322,7 +315,6 @@ hcloud primary-ip list [options]
 
 * [hcloud primary-ip](hcloud_primary-ip.md)	 - Manage Primary IPs
 
-
 ---
 
 ## hcloud primary-ip remove-label
@@ -357,7 +349,6 @@ hcloud primary-ip remove-label <primary-ip> (--all | <label>...)
 ### SEE ALSO
 
 * [hcloud primary-ip](hcloud_primary-ip.md)	 - Manage Primary IPs
-
 
 ---
 
@@ -396,7 +387,6 @@ hcloud primary-ip set-rdns [--ip <ip>] (--hostname <hostname> | --reset) <primar
 
 * [hcloud primary-ip](hcloud_primary-ip.md)	 - Manage Primary IPs
 
-
 ---
 
 ## hcloud primary-ip unassign
@@ -430,7 +420,6 @@ hcloud primary-ip unassign <primary-ip>
 ### SEE ALSO
 
 * [hcloud primary-ip](hcloud_primary-ip.md)	 - Manage Primary IPs
-
 
 ---
 

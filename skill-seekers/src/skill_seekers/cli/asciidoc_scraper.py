@@ -159,7 +159,7 @@ class AsciiDocToSkillConverter(SkillConverter):
         _check_asciidoc_deps()
         from skill_seekers.cli.language_detector import LanguageDetector
 
-        print(f"\n🔍 Extracting from AsciiDoc: {self.asciidoc_path}")
+        print(f"\n Extracting from AsciiDoc: {self.asciidoc_path}")
         path = Path(self.asciidoc_path)
         if not path.exists():
             raise FileNotFoundError(f"AsciiDoc path not found: {self.asciidoc_path}")
@@ -233,10 +233,10 @@ class AsciiDocToSkillConverter(SkillConverter):
         with open(self.data_file, "w", encoding="utf-8") as f:
             json.dump(result_data, f, indent=2, ensure_ascii=False, default=str)
 
-        print(f"\n💾 Saved extracted data to: {self.data_file}")
+        print(f"\n Saved extracted data to: {self.data_file}")
         self.extracted_data = result_data
         print(
-            f"✅ Extracted {len(all_sections)} sections, {total_code_blocks} code blocks, "
+            f"PASS: Extracted {len(all_sections)} sections, {total_code_blocks} code blocks, "
             f"{result_data['total_tables']} tables, {result_data['total_admonitions']} admonitions"
         )
         return True
@@ -564,16 +564,16 @@ class AsciiDocToSkillConverter(SkillConverter):
 
     def load_extracted_data(self, json_path: str) -> bool:
         """Load previously extracted data from JSON file."""
-        print(f"\n📂 Loading extracted data from: {json_path}")
+        print(f"\n Loading extracted data from: {json_path}")
         with open(json_path, encoding="utf-8") as f:
             self.extracted_data = json.load(f)
         total = self.extracted_data.get("total_sections", len(self.extracted_data.get("pages", [])))
-        print(f"✅ Loaded {total} sections")
+        print(f"PASS: Loaded {total} sections")
         return True
 
     def categorize_content(self) -> dict:
         """Categorize sections by source file, headings, or keywords."""
-        print("\n📋 Categorizing content...")
+        print("\n Categorizing content...")
         categorized: dict[str, dict] = {}
         sections = self.extracted_data.get("pages", [])
         path = Path(self.asciidoc_path) if self.asciidoc_path else None
@@ -581,7 +581,7 @@ class AsciiDocToSkillConverter(SkillConverter):
         if path and path.is_file():
             key = self._sanitize_filename(path.stem)
             categorized[key] = {"title": path.stem, "pages": sections}
-            print(f"✅ Created 1 category (single file): {path.stem}: {len(sections)} sections")
+            print(f"PASS: Created 1 category (single file): {path.stem}: {len(sections)} sections")
             return categorized
 
         if path and path.is_dir():
@@ -590,7 +590,7 @@ class AsciiDocToSkillConverter(SkillConverter):
                 key = self._sanitize_filename(src_stem)
                 categorized.setdefault(key, {"title": src_stem, "pages": []})["pages"].append(s)
             if categorized:
-                print(f"✅ Created {len(categorized)} categories (by source file)")
+                print(f"PASS: Created {len(categorized)} categories (by source file)")
                 for cat in categorized.values():
                     print(f"   - {cat['title']}: {len(cat['pages'])} sections")
                 return categorized
@@ -625,26 +625,26 @@ class AsciiDocToSkillConverter(SkillConverter):
         else:
             categorized["content"] = {"title": "Content", "pages": sections}
 
-        print(f"✅ Created {len(categorized)} categories")
+        print(f"PASS: Created {len(categorized)} categories")
         for cat in categorized.values():
             print(f"   - {cat['title']}: {len(cat['pages'])} sections")
         return categorized
 
     def build_skill(self) -> None:
         """Build complete skill directory structure."""
-        print(f"\n🏗️  Building skill: {self.name}")
+        print(f"\n  Building skill: {self.name}")
         for subdir in ("references", "scripts", "assets"):
             os.makedirs(f"{self.skill_dir}/{subdir}", exist_ok=True)
 
         categorized = self.categorize_content()
-        print("\n📝 Generating reference files...")
+        print("\n Generating reference files...")
         total_cats = len(categorized)
         for i, (cat_key, cat_data) in enumerate(categorized.items(), 1):
             self._generate_reference_file(cat_key, cat_data, i, total_cats)
         self._generate_index(categorized)
         self._generate_skill_md(categorized)
-        print(f"\n✅ Skill built successfully: {self.skill_dir}/")
-        print(f"\n📦 Next step: Package with: skill-seekers package {self.skill_dir}/")
+        print(f"\nPASS: Skill built successfully: {self.skill_dir}/")
+        print(f"\n Next step: Package with: skill-seekers package {self.skill_dir}/")
 
     # ------------------------------------------------------------------
     # Private generation methods
@@ -677,7 +677,7 @@ class AsciiDocToSkillConverter(SkillConverter):
                 sec_num = section.get("section_number", "?")
                 heading = section.get("heading", "")
                 hl = section.get("heading_level", "h1")
-                f.write(f"---\n\n**📄 Source: Section {sec_num}**\n\n")
+                f.write(f"---\n\n** Source: Section {sec_num}**\n\n")
                 if heading:
                     f.write(f"{'#' * (int(hl[1]) + 1)} {heading}\n\n")
                 for sub in section.get("headings", []):
@@ -762,7 +762,7 @@ class AsciiDocToSkillConverter(SkillConverter):
             # Document metadata
             meta = ed.get("metadata", {})
             if any(v for v in meta.values() if v):
-                f.write("## 📋 Document Information\n\n")
+                f.write("##  Document Information\n\n")
                 for key, label in [
                     ("title", "Title"),
                     ("author", "Author"),
@@ -773,7 +773,7 @@ class AsciiDocToSkillConverter(SkillConverter):
                     if meta.get(key):
                         f.write(f"**{label}:** {meta[key]}\n\n")
 
-            f.write("## 💡 When to Use This Skill\n\nUse this skill when you need to:\n")
+            f.write("##  When to Use This Skill\n\nUse this skill when you need to:\n")
             f.write(f"- Understand {self.name} concepts and fundamentals\n")
             f.write("- Look up API references and technical specifications\n")
             f.write("- Find code examples and implementation patterns\n")
@@ -782,7 +782,7 @@ class AsciiDocToSkillConverter(SkillConverter):
 
             # Section Overview
             f.write(
-                f"## 📖 Section Overview\n\n**Total Sections:** {ed.get('total_sections', 0)}\n\n"
+                f"##  Section Overview\n\n**Total Sections:** {ed.get('total_sections', 0)}\n\n"
             )
             f.write("**Content Breakdown:**\n\n")
             for cd in categorized.values():
@@ -790,14 +790,14 @@ class AsciiDocToSkillConverter(SkillConverter):
             f.write("\n")
 
             f.write(self._format_key_concepts())
-            f.write("## ⚡ Quick Reference\n\n")
+            f.write("##  Quick Reference\n\n")
             f.write(self._format_patterns_from_content())
 
             # Code examples (top 15 grouped by language)
             all_code = [c for s in ed.get("pages", []) for c in s.get("code_samples", [])]
             all_code.sort(key=lambda x: x.get("quality_score", 0), reverse=True)
             if all_code[:15]:
-                f.write("## 📝 Code Examples\n\n*High-quality examples from documentation*\n\n")
+                f.write("##  Code Examples\n\n*High-quality examples from documentation*\n\n")
                 by_lang: dict[str, list] = {}
                 for c in all_code[:15]:
                     by_lang.setdefault(c.get("language", "unknown"), []).append(c)
@@ -816,7 +816,7 @@ class AsciiDocToSkillConverter(SkillConverter):
                 (s.get("heading", ""), t) for s in ed.get("pages", []) for t in s.get("tables", [])
             ]
             if all_tables:
-                f.write(f"## 📊 Table Summary\n\n*{len(all_tables)} table(s) found*\n\n")
+                f.write(f"##  Table Summary\n\n*{len(all_tables)} table(s) found*\n\n")
                 for sh, t in all_tables[:5]:
                     if sh:
                         f.write(f"**From section: {sh}**\n\n")
@@ -831,7 +831,7 @@ class AsciiDocToSkillConverter(SkillConverter):
             # Admonition summary
             all_adm = [a for s in ed.get("pages", []) for a in s.get("admonitions", [])]
             if all_adm:
-                f.write("## ⚠️ Admonition Summary\n\n")
+                f.write("## WARNING: Admonition Summary\n\n")
                 by_type: dict[str, list[str]] = {}
                 for a in all_adm:
                     by_type.setdefault(a.get("type", "NOTE"), []).append(a.get("text", ""))
@@ -842,7 +842,7 @@ class AsciiDocToSkillConverter(SkillConverter):
                         f.write(f"> {txt[:120]}{'...' if len(txt) > 120 else ''}\n\n")
 
             # Statistics
-            f.write("## 📊 Documentation Statistics\n\n")
+            f.write("##  Documentation Statistics\n\n")
             for key, label in [
                 ("total_sections", "Total Sections"),
                 ("total_code_blocks", "Code Blocks"),
@@ -859,7 +859,7 @@ class AsciiDocToSkillConverter(SkillConverter):
                 f.write("\n")
 
             # Navigation
-            f.write("## 🗺️ Navigation\n\n**Reference Files:**\n\n")
+            f.write("##  Navigation\n\n**Reference Files:**\n\n")
             for cd in categorized.values():
                 cf = self._sanitize_filename(cd["title"])
                 f.write(f"- `references/{cf}.md` - {cd['title']}\n")
@@ -886,7 +886,7 @@ class AsciiDocToSkillConverter(SkillConverter):
                     all_h.append((sub.get("level", "h3"), t))
         if not all_h:
             return ""
-        content = "## 🔑 Key Concepts\n\n*Main topics covered in this documentation*\n\n"
+        content = "##  Key Concepts\n\n*Main topics covered in this documentation*\n\n"
         h1s = [t for lv, t in all_h if lv == "h1"]
         h2s = [t for lv, t in all_h if lv == "h2"]
         if h1s:

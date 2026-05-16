@@ -237,7 +237,7 @@ PUT    /api/markets/:id          # 更新市場（完整）
 PATCH  /api/markets/:id          # 更新市場（部分）
 DELETE /api/markets/:id          # 刪除市場
 
-# 過濾用查詢參數
+## 過濾用查詢參數
 GET /api/markets?status=active&limit=10&offset=0
 ```
 

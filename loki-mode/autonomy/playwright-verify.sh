@@ -1,28 +1,23 @@
 #!/usr/bin/env bash
 #===============================================================================
 # Playwright Smoke Test Module (v5.46.0)
-#
-# Runs lightweight smoke tests against a running user application to verify
+# # Runs lightweight smoke tests against a running user application to verify
 # it loads correctly. Advisory only - failures do NOT block iterations or
 # council approval.
-#
-# Functions:
-#   playwright_verify_init()        - Check/install Playwright
-#   playwright_verify_app(url)      - Run smoke test against URL
-#   playwright_verify_should_run()  - Check if verification should run
-#   playwright_verify_summary()     - One-line summary for prompt injection
-#   playwright_verify_as_evidence() - Formatted output for council evidence
-#
-# Environment Variables:
-#   LOKI_PLAYWRIGHT_ENABLED    - Enable/disable (default: true)
-#   LOKI_PLAYWRIGHT_INTERVAL   - Run every N iterations (default: 5)
-#   LOKI_PLAYWRIGHT_TIMEOUT    - Page load timeout in ms (default: 15000)
-#
-# Data:
-#   .loki/verification/playwright-results.json  - Last results
-#   .loki/verification/screenshots/             - Captured screenshots
-#
-#===============================================================================
+# # Functions:
+# playwright_verify_init()        - Check/install Playwright
+# playwright_verify_app(url)      - Run smoke test against URL
+# playwright_verify_should_run()  - Check if verification should run
+# playwright_verify_summary()     - One-line summary for prompt injection
+# playwright_verify_as_evidence() - Formatted output for council evidence
+# # Environment Variables:
+# LOKI_PLAYWRIGHT_ENABLED    - Enable/disable (default: true)
+# LOKI_PLAYWRIGHT_INTERVAL   - Run every N iterations (default: 5)
+# LOKI_PLAYWRIGHT_TIMEOUT    - Page load timeout in ms (default: 15000)
+# # Data:
+# .loki/verification/playwright-results.json  - Last results
+# .loki/verification/screenshots/             - Captured screenshots
+# #===============================================================================
 
 # Configuration
 PLAYWRIGHT_ENABLED=${LOKI_PLAYWRIGHT_ENABLED:-true}

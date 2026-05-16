@@ -123,7 +123,7 @@ await step.do('charge', async () => {
 Params and step returns must be `Rpc.Serializable<T>`:
 
 ```typescript
-// ✅ Valid types
+// PASS: Valid types
 type ValidParams = {
   userId: string;
   count: number;
@@ -131,7 +131,7 @@ type ValidParams = {
   metadata: Record<string, unknown>;
 };
 
-// ❌ Invalid types
+// FAIL: Invalid types
 type InvalidParams = {
   callback: () => void;      // Functions not serializable
   symbol: symbol;            // Symbols not serializable
@@ -140,10 +140,10 @@ type InvalidParams = {
 
 // Step returns follow same rules
 const result = await step.do('fetch', async () => {
-  return { userId: '123', data: [1, 2, 3] }; // ✅ Plain object
+  return { userId: '123', data: [1, 2, 3] }; // PASS: Plain object
 });
 
-// ✅ ReadableStream<Uint8Array> for large binary output (bypasses non-stream step result size limit)
+// PASS: ReadableStream<Uint8Array> for large binary output (bypasses non-stream step result size limit)
 const stream = await step.do('read from R2', async () => {
   const obj = await this.env.BUCKET.get('large-file.csv');
   return obj.body; // Return the ReadableStream directly

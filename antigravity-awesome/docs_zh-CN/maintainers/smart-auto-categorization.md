@@ -6,7 +6,7 @@
 
 ## 当前状态
 
-✅ 当前仓库通过生成的目录索引
+PASS: 当前仓库通过生成的目录索引
 - 大多数技能都在有意义的类别中
 - 较小的尾部仍需要手动审查或更好的关键词覆盖
 - 11 个主要类别
@@ -68,10 +68,10 @@ AUTO-CATEGORIZATION REPORT
 ======================================================================
 
 Summary:
-   ✅ Categorized: 776
-   ⏭️  Already categorized: 46
-   ❌ Failed to categorize: 124
-   📈 Total processed: full repository
+   PASS: Categorized: 776
+   SKIPPED:  Already categorized: 46
+   FAIL: Failed to categorize: 124
+    Total processed: full repository
 
 Sample changes:
    • 3d-web-experience
@@ -216,4 +216,4 @@ python tools/scripts/generate_index.py
 
 ---
 
-**结果**: 更清晰的类别过滤器，具有智能、有意义的组织！🎉
+**结果**: 更清晰的类别过滤器，具有智能、有意义的组织！

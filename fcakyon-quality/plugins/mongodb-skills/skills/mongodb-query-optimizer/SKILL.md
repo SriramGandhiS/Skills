@@ -13,8 +13,8 @@ license: Apache-2.0
 
 Invoke **only** when the user wants:
 
-- Query/index **optimization** or **performance** help  
-- **Why** a query is slow or **how to speed it up**  
+- Query/index **optimization** or **performance** help
+- **Why** a query is slow or **how to speed it up**
 - **Slow queries** on their cluster and/or **how to optimize them**
 
 Do **not** invoke for routine query authoring unless the user has requested help with optimization, slow queries, or indexing.
@@ -25,7 +25,7 @@ Do **not** invoke for routine query authoring unless the user has requested help
 
 If the user wants to examine slow queries, or is looking for general performance suggestions (not regarding any particular query):
 
-- Use MongoDB MCP server **atlas-get-performance-advisor** tool to fetch slow query logs and performance advisor output  
+- Use MongoDB MCP server **atlas-get-performance-advisor** tool to fetch slow query logs and performance advisor output
 - Make suggestions based on this information
 
 If Atlas MCP Server for Atlas is not configured or you don’t have enough information to run **atlas-get-performance-advisor** against the correct cluster, tell the user that general performance analysis requires Atlas MCP Server configuration with API credentials, and suggest they configure it or ask about a specific query instead.
@@ -34,7 +34,7 @@ If Atlas MCP Server for Atlas is not configured or you don’t have enough infor
 
 If the user is asking about a particular query:
 
-- Use **collection-indexes**, **explain**, and **find** MCP tools to get existing indexes on the collection, explain() output for the query, and a sample document from the collection  
+- Use **collection-indexes**, **explain**, and **find** MCP tools to get existing indexes on the collection, explain() output for the query, and a sample document from the collection
 - Use **atlas-get-performance-advisor MCP** tool to fetch slow query logs and performance advisor output
 
 Then make an optimization suggestion based on collected information and MongoDB best practices and examples from reference files. Prefer creating an index that fully covers the query if possible. If you cannot use MongoDB MCP Server then still try to make a suggestion.
@@ -114,12 +114,12 @@ If the MongoDB MCP server is not set up, follow best indexing practices.
 
 **User:** "Can you help with optimizing slow queries on my cluster?”
 
-1. **Run atlas-get-performance-advisor:**  
+1. **Run atlas-get-performance-advisor:**
    - Try to get the cluster name from the connection string and deduce the project name you need in atlas-list-projects; if you are not sure, then ask the user for cluster name and project id.
-   - Use slowQueryLogs to fetch slow query logs from the past 24 hours  
-   - Use suggestedIndexes  
-   - Use dropIndexSuggestions  
-   - Use schemaSuggestions  
+   - Use slowQueryLogs to fetch slow query logs from the past 24 hours
+   - Use suggestedIndexes
+   - Use dropIndexSuggestions
+   - Use schemaSuggestions
 2. **Diagnose and Recommend:** Based on slow query logs and performance advisor advice, you can create the compound index `{status: 1, region: 1, date: -1}` on the `db.orders` collection to optimize queries such as `find({status: 'shipped', region: 'US'}).sort({date: -1})`
 
 Examine all performance advisor output as well as slow query logs. Provide information on what is being improved and why, and focus on suggestions that have the potential for greatest impact (e.g., indexes that affect the most queries, or queries that have the worst performance).

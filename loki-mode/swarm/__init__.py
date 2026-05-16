@@ -1,7 +1,6 @@
 # Loki Mode Swarm Intelligence System
 # Implements swarm coordination patterns for multi-agent collaboration.
-#
-# Features:
+# # Features:
 # - Agent registry with capability tracking
 # - Voting-based decision making
 # - Consensus mechanisms

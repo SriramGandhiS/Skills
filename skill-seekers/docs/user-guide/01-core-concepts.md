@@ -1,6 +1,6 @@
 # Core Concepts
 
-> **Skill Seekers v3.2.0**  
+> **Skill Seekers v3.2.0**
 > **Understanding how Skill Seekers works**
 
 ---
@@ -326,7 +326,7 @@ skill-seekers chat --export slack-export/
 
 ```
 ┌─────────────┐     ┌──────────────┐
-│   Source    │────▶│   Scraper    │
+│   Source    │────│   Scraper    │
 │ (URL/repo/  │     │ (extracts    │
 │  PDF/local) │     │  content)    │
 └─────────────┘     └──────────────┘
@@ -343,7 +343,7 @@ skill-seekers chat --export slack-export/
 
 ```
 ┌──────────────┐     ┌──────────────┐
-│   Raw Data   │────▶│   Builder    │
+│   Raw Data   │────│   Builder    │
 │ (pages/files/│     │ (organizes   │
 │  commits)    │     │  by category)│
 └──────────────┘     └──────────────┘
@@ -360,7 +360,7 @@ skill-seekers chat --export slack-export/
 
 ```
 ┌──────────────┐     ┌──────────────┐
-│   SKILL.md   │────▶│  Enhancer    │
+│   SKILL.md   │────│  Enhancer    │
 │  (basic)     │     │ (AI improves │
 │              │     │  quality)    │
 └──────────────┘     └──────────────┘
@@ -381,7 +381,7 @@ skill-seekers chat --export slack-export/
 
 ```
 ┌──────────────┐     ┌──────────────┐
-│   Skill Dir  │────▶│   Packager   │
+│   Skill Dir  │────│   Packager   │
 │ (structured  │     │ (creates     │
 │  content)    │     │  platform    │
 │              │     │  format)     │
@@ -399,7 +399,7 @@ skill-seekers chat --export slack-export/
 
 ```
 ┌──────────────┐     ┌──────────────┐
-│   Package    │────▶│   Platform   │
+│   Package    │────│   Platform   │
 │ (.zip/.tar)  │     │ (Claude/     │
 │              │     │  Gemini/etc) │
 └──────────────┘     └──────────────┘

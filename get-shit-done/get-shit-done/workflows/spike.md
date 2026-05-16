@@ -340,7 +340,7 @@ gsd-sdk query commit "docs(spike-NNN): [VERDICT] — [key finding]" --files .pla
 **j.** Report:
 ```
 ◆ Spike NNN: {name}
-  Verdict: {VALIDATED ✓ / INVALIDATED ✗ / PARTIAL ⚠}
+  Verdict: {VALIDATED ✓ / INVALIDATED ✗ / PARTIAL WARNING:}
   Key findings: {not just verdict — investigation trail, surprises, edge cases explored}
   Impact: {effect on remaining spikes}
 ```
@@ -417,7 +417,7 @@ gsd-sdk query commit "docs(spikes): update conventions" --files .planning/spikes
 
 ───────────────────────────────────────────────────────────────
 
-## ▶ Next Up
+## Next Up
 
 **Package findings** — wrap spike knowledge into an implementation blueprint
 

@@ -31,13 +31,13 @@ git status --short
 |---|---|---|
 | *(空白/空)* | 暂存所有内容 | `git add -A` |
 | `staged` | 使用已暂存的内容 | *(不执行 git add)* |
-| `*.ts` 或 `*.py` 等 | 暂存匹配的 glob 模式 | `git add '*.ts'` |
-| `except tests` | 暂存所有内容，然后取消暂存测试文件 | `git add -A && git reset -- '**/*.test.*' '**/*.spec.*' '**/test_*' 2>/dev/null \|\| true` |
-| `only new files` | 仅暂存未跟踪文件 | `git ls-files --others --exclude-standard \| grep . && git ls-files --others --exclude-standard \| xargs git add` |
-| `the auth changes` | 从状态/差异中解析 — 查找与认证相关的文件 | `git add <matched files>` |
+| `*.ts`或`*.py`等 | 暂存匹配的 glob 模式 |`git add '*.ts'` |
+| `except tests`| 暂存所有内容，然后取消暂存测试文件 |`git add -A && git reset -- '**/*.test.*' '**/*.spec.*' '**/test_*' 2>/dev/null \|\| true` |
+| `only new files`| 仅暂存未跟踪文件 |`git ls-files --others --exclude-standard \| grep . && git ls-files --others --exclude-standard \| xargs git add` |
+| `the auth changes`| 从状态/差异中解析 — 查找与认证相关的文件 |`git add <matched files>` |
 | 具体文件名 | 暂存这些文件 | `git add <files>` |
 
-对于自然语言输入（如"认证相关的变更"），交叉引用 `git status` 输出和 `git diff` 以识别相关文件。向用户展示你暂存了哪些文件及其原因。
+对于自然语言输入（如"认证相关的变更"），交叉引用 `git status`输出和`git diff` 以识别相关文件。向用户展示你暂存了哪些文件及其原因。
 
 ```bash
 git add <determined files>

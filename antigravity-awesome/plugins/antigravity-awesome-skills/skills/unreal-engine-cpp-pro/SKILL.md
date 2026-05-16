@@ -29,16 +29,16 @@ Do not use this skill when:
 
 ## Core Principles
 
-1.  **UObject & Garbage Collection**:
+1. **UObject & Garbage Collection**:
     *   Always use `UPROPERTY()` for `UObject*` member variables to ensure they are tracked by the Garbage Collector (GC).
     *   Use `TStrongObjectPtr<>` if you need to keep a root reference outside of a UObject graph, but prefer `addToRoot()` generally.
     *   Understand the `IsValid()` check vs `nullptr`. `IsValid()` handles pending kill state safely.
 
-2.  **Unreal Reflection System**:
+2. **Unreal Reflection System**:
     *   Use `UCLASS()`, `USTRUCT()`, `UENUM()`, `UFUNCTION()` to expose types to the reflection system and Blueprints.
     *   Minimize `BlueprintReadWrite` when possible; prefer `BlueprintReadOnly` for state that shouldn't be trampled by logic in UI/Level BPs.
 
-3.  **Performance First**:
+3. **Performance First**:
     *   **Tick**: Disable Ticking (`bCanEverTick = false`) by default. Only enable it if absolutely necessary. Prefer timers (`GetWorldTimerManager()`) or event-driven logic.
     *   **Casting**: Avoid `Cast<T>()` in hot loops. Cache references in `BeginPlay`.
     *   **Structs vs Classes**: Use `F` structs for data-heavy, non-UObject types to reduce overhead.

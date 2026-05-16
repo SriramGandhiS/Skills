@@ -26,9 +26,9 @@ origin: ECC
 **要求：**
 
 * Python 3.10+
-* `uvx`（来自 `uv`），通过您的包管理器或官方 `uv` 安装文档进行安装
+* `uvx`（来自`uv`），通过您的包管理器或官方`uv` 安装文档进行安装
 
-**添加到您的 MCP 配置**（例如，`~/.claude.json` → `mcpServers`）：
+**添加到您的 MCP 配置**（例如，`~/.claude.json`→`mcpServers`）：
 
 ```json
 {
@@ -45,7 +45,7 @@ origin: ECC
 }
 ```
 
-> **安全：** 切勿在源代码中硬编码密钥。建议在系统环境（或密钥管理器）中设置 `JIRA_URL`、`JIRA_EMAIL` 和 `JIRA_API_TOKEN`。仅对本地未提交的配置文件使用 MCP `env` 块。
+> **安全：** 切勿在源代码中硬编码密钥。建议在系统环境（或密钥管理器）中设置 `JIRA_URL`、`JIRA_EMAIL`和`JIRA_API_TOKEN`。仅对本地未提交的配置文件使用 MCP`env` 块。
 
 **获取 Jira API 令牌：**
 
@@ -61,7 +61,7 @@ origin: ECC
 
 | 变量 | 描述 |
 |----------|-------------|
-| `JIRA_URL` | 您的 Jira 实例 URL（例如，`https://yourorg.atlassian.net`） |
+| `JIRA_URL`| 您的 Jira 实例 URL（例如，`https://yourorg.atlassian.net`） |
 | `JIRA_EMAIL` | 您的 Atlassian 账户邮箱 |
 | `JIRA_API_TOKEN` | 来自 id.atlassian.com 的 API 令牌 |
 
@@ -73,8 +73,8 @@ origin: ECC
 
 | 工具 | 用途 | 示例 |
 |------|---------|---------|
-| `jira_search` | JQL 查询 | `project = PROJ AND status = "In Progress"` |
-| `jira_get_issue` | 按键获取完整问题详情 | `PROJ-1234` |
+| `jira_search`| JQL 查询 |`project = PROJ AND status = "In Progress"` |
+| `jira_get_issue`| 按键获取完整问题详情 |`PROJ-1234` |
 | `jira_create_issue` | 创建问题（任务、缺陷、故事、史诗） | 新建缺陷报告 |
 | `jira_update_issue` | 更新字段（摘要、描述、经办人） | 更改经办人 |
 | `jira_transition_issue` | 更改状态 | 移至“评审中” |
@@ -137,11 +137,11 @@ curl -s -X POST -u "$JIRA_EMAIL:$JIRA_API_TOKEN" \
 ### 转换工单
 
 ```bash
-# 1. Get available transitions
+## 1. Get available transitions
 curl -s -u "$JIRA_EMAIL:$JIRA_API_TOKEN" \
   "$JIRA_URL/rest/api/3/issue/PROJ-1234/transitions" | jq '.transitions[] | {id, name: .name}'
 
-# 2. Execute transition (replace TRANSITION_ID)
+## 2. Execute transition (replace TRANSITION_ID)
 curl -s -X POST -u "$JIRA_EMAIL:$JIRA_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"transition": {"id": "TRANSITION_ID"}}' \
@@ -277,7 +277,7 @@ Coverage: XX%
 
 * **切勿在**源代码或技能文件中硬编码 Jira API 令牌
 * **始终使用**环境变量或密钥管理器
-* **将 `.env`** 添加到每个项目的 `.gitignore` 中
+* **将 `.env`** 添加到每个项目的`.gitignore` 中
 * **如果令牌暴露在 git 历史中，立即轮换**
 * **使用最小权限** API 令牌，范围限定在所需项目
 * **在发出 API 调用前验证**凭据是否已设置 — 快速失败并给出清晰消息
@@ -288,8 +288,8 @@ Coverage: XX%
 |---|---|---|
 | `401 Unauthorized` | API 令牌无效或已过期 | 在 id.atlassian.com 重新生成 |
 | `403 Forbidden` | 令牌缺少项目权限 | 检查令牌范围和项目访问权限 |
-| `404 Not Found` | 工单键或基础 URL 错误 | 验证 `JIRA_URL` 和工单键 |
-| `spawn uvx ENOENT` | IDE 在 PATH 中找不到 `uvx` | 使用完整路径（例如，`~/.local/bin/uvx`）或在 `~/.zprofile` 中设置 PATH |
+| `404 Not Found`| 工单键或基础 URL 错误 | 验证`JIRA_URL` 和工单键 |
+| `spawn uvx ENOENT`| IDE 在 PATH 中找不到`uvx`| 使用完整路径（例如，`~/.local/bin/uvx`）或在`~/.zprofile` 中设置 PATH |
 | 连接超时 | 网络/VPN 问题 | 检查 VPN 连接和防火墙规则 |
 
 ## 最佳实践

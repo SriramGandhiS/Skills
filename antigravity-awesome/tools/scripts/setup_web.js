@@ -8,7 +8,7 @@ const ROOT_DIR = findProjectRoot(__dirname);
 const WEB_APP_PUBLIC = path.join(ROOT_DIR, 'apps', 'web-app', 'public');
 
 // 2. Copy skills directory content
-// Note: Symlinking is better, but Windows often requires admin for symlinks. 
+// Note: Symlinking is better, but Windows often requires admin for symlinks.
 // We will try to copy for reliability in this environment.
 function copyFolderSync(from, to, rootDir = from) {
     if (!fs.existsSync(to)) fs.mkdirSync(to, { recursive: true });
@@ -79,7 +79,7 @@ function main() {
 
     copyFolderSync(sourceSkills, destSkills, sourceSkills);
 
-    console.log('✅ Web app assets setup complete!');
+    console.log('PASS: Web app assets setup complete!');
 }
 
 if (require.main === module) {

@@ -129,16 +129,16 @@ END $$;
 ### İş Akışı
 
 ```bash
-# Şema değişikliklerinden migration oluştur
+## Şema değişikliklerinden migration oluştur
 npx prisma migrate dev --name add_user_avatar
 
-# Üretimde bekleyen migration'ları uygula
+## Üretimde bekleyen migration'ları uygula
 npx prisma migrate deploy
 
-# Veritabanını sıfırla (sadece dev)
+## Veritabanını sıfırla (sadece dev)
 npx prisma migrate reset
 
-# Şema değişikliklerinden sonra client oluştur
+## Şema değişikliklerinden sonra client oluştur
 npx prisma generate
 ```
 
@@ -164,7 +164,7 @@ model User {
 Prisma'nın ifade edemediği operasyonlar için (concurrent indeksler, veri backfill'leri):
 
 ```bash
-# Boş migration oluştur, sonra SQL'i manuel düzenle
+## Boş migration oluştur, sonra SQL'i manuel düzenle
 npx prisma migrate dev --create-only --name add_email_index
 ```
 
@@ -179,13 +179,13 @@ CREATE INDEX CONCURRENTLY IF NOT EXISTS idx_users_email ON users (email);
 ### İş Akışı
 
 ```bash
-# Şema değişikliklerinden migration oluştur
+## Şema değişikliklerinden migration oluştur
 npx drizzle-kit generate
 
-# Migration'ları uygula
+## Migration'ları uygula
 npx drizzle-kit migrate
 
-# Şemayı doğrudan push et (sadece dev, migration dosyası yok)
+## Şemayı doğrudan push et (sadece dev, migration dosyası yok)
 npx drizzle-kit push
 ```
 
@@ -209,16 +209,16 @@ export const users = pgTable("users", {
 ### İş Akışı
 
 ```bash
-# Model değişikliklerinden migration oluştur
+## Model değişikliklerinden migration oluştur
 python manage.py makemigrations
 
-# Migration'ları uygula
+## Migration'ları uygula
 python manage.py migrate
 
-# Migration durumunu göster
+## Migration durumunu göster
 python manage.py showmigrations
 
-# Özel SQL için boş migration oluştur
+## Özel SQL için boş migration oluştur
 python manage.py makemigrations --empty app_name -n description
 ```
 
@@ -253,16 +253,16 @@ class Migration(migrations.Migration):
 ### İş Akışı
 
 ```bash
-# Migration çifti oluştur
+## Migration çifti oluştur
 migrate create -ext sql -dir migrations -seq add_user_avatar
 
-# Tüm bekleyen migration'ları uygula
+## Tüm bekleyen migration'ları uygula
 migrate -path migrations -database "$DATABASE_URL" up
 
-# Son migration'ı rollback et
+## Son migration'ı rollback et
 migrate -path migrations -database "$DATABASE_URL" down 1
 
-# Versiyonu zorla (dirty durumu düzelt)
+## Versiyonu zorla (dirty durumu düzelt)
 migrate -path migrations -database "$DATABASE_URL" force VERSION
 ```
 

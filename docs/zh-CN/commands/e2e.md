@@ -41,7 +41,7 @@ e2e-runner 代理将：
 用户：/e2e 测试市场搜索和查看流程
 
 代理（e2e-runner）：
-# E2E 测试生成：市场搜索和查看流程
+## E2E 测试生成：市场搜索和查看流程
 
 ## 已识别测试场景
 
@@ -161,7 +161,7 @@ test.describe('Market Search and View Flow', () => {
 ## 运行测试
 
 ```bash
-# Run the generated test
+## Run the generated test
 npx playwright test tests/e2e/markets/search-and-view.spec.ts
 
 Running 3 tests using 3 workers
@@ -222,13 +222,13 @@ PASS: E2E 测试套件已准备好进行 CI/CD 集成！
 ## 查看产物
 
 ```bash
-# 在浏览器中查看 HTML 报告
+## 在浏览器中查看 HTML 报告
 npx playwright show-report
 
-# 查看特定的追踪文件
+## 查看特定的追踪文件
 npx playwright show-trace artifacts/trace-abc123.zip
 
-# 截图保存在 artifacts/ 目录中
+## 截图保存在 artifacts/ 目录中
 open artifacts/search-results.png
 
 ````
@@ -270,7 +270,7 @@ WARNING:  FLAKY TEST DETECTED: tests/e2e/markets/trade.spec.ts
 添加到您的 CI 流水线：
 
 ```yaml
-# .github/workflows/e2e.yml
+## .github/workflows/e2e.yml
 - name: Install Playwright
   run: npx playwright install --with-deps
 
@@ -354,21 +354,21 @@ WARNING:  FLAKY TEST DETECTED: tests/e2e/markets/trade.spec.ts
 ## 快速命令
 
 ```bash
-# Run all E2E tests
+## Run all E2E tests
 npx playwright test
 
-# Run specific test file
+## Run specific test file
 npx playwright test tests/e2e/markets/search.spec.ts
 
-# Run in headed mode (see browser)
+## Run in headed mode (see browser)
 npx playwright test --headed
 
-# Debug test
+## Debug test
 npx playwright test --debug
 
-# Generate test code
-npx playwright codegen http://localhost:3000
+## Generate test code
+npx playwright codegen <http://localhost:3000>
 
-# View report
+## View report
 npx playwright show-report
 ```

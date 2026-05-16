@@ -46,13 +46,13 @@ Her hata için:
 | Hata | Düzeltme |
 |-------|-----|
 | `implicitly has 'any' type` | Tip annotation ekle |
-| `Object is possibly 'undefined'` | Optional chaining `?.` veya null kontrolü |
-| `Property does not exist` | Interface'e ekle veya optional `?` kullan |
+| `Object is possibly 'undefined'`| Optional chaining`?.` veya null kontrolü |
+| `Property does not exist`| Interface'e ekle veya optional`?` kullan |
 | `Cannot find module` | tsconfig path'lerini kontrol et, paketi yükle veya import yolunu düzelt |
 | `Type 'X' not assignable to 'Y'` | Tipi parse/dönüştür veya tipi düzelt |
-| `Generic constraint` | `extends { ... }` ekle |
+| `Generic constraint`|`extends { ... }` ekle |
 | `Hook called conditionally` | Hook'ları en üst seviyeye taşı |
-| `'await' outside async` | `async` keyword ekle |
+| `'await' outside async`|`async` keyword ekle |
 
 ## YAPIN ve YAPMAYIN
 
@@ -83,13 +83,13 @@ Her hata için:
 ## Hızlı Kurtarma
 
 ```bash
-# Nükleer seçenek: tüm cache'leri temizle
+## Nükleer seçenek: tüm cache'leri temizle
 rm -rf .next node_modules/.cache && npm run build
 
-# Bağımlılıkları yeniden yükle
+## Bağımlılıkları yeniden yükle
 rm -rf node_modules package-lock.json && npm install
 
-# ESLint otomatik düzeltilebilir
+## ESLint otomatik düzeltilebilir
 npx eslint . --fix
 ```
 

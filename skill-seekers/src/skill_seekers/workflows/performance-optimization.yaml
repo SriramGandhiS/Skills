@@ -20,7 +20,7 @@ stages:
     enabled: true
     prompt: >
       Analyze this codebase for performance bottlenecks.
-      
+
       Look for:
       1. Nested loops and O(n²) or worse algorithms
       2. Synchronous I/O operations blocking execution
@@ -28,7 +28,7 @@ stages:
       4. Repeated computations that could be cached
       5. N+1 query problems in database operations
       6. Unnecessary object allocations in hot paths
-      
+
       Output JSON with "bottlenecks" array, each having:
       - location (file/function)
       - severity (critical/high/medium/low)
@@ -42,12 +42,12 @@ stages:
     enabled: true
     prompt: >
       Calculate Big-O complexity for key functions and algorithms.
-      
+
       For each significant function:
       1. Time complexity (best/average/worst case)
       2. Space complexity
       3. Identify if complexity can be improved
-      
+
       Output JSON with:
       - "complexity_analysis": array of functions with their complexity
       - "optimization_opportunities": functions where complexity can be reduced
@@ -59,14 +59,14 @@ stages:
     enabled: true
     prompt: >
       Based on the bottlenecks identified, suggest caching strategies.
-      
+
       Recommend:
       1. Memoization candidates (pure functions with expensive computations)
       2. Response caching for API endpoints
       3. Database query result caching
       4. Static asset caching strategies
       5. Cache invalidation approaches
-      
+
       Output JSON with:
       - "memoization_candidates": functions to memoize
       - "cache_layers": recommended caching layers
@@ -79,13 +79,13 @@ stages:
     enabled: true
     prompt: >
       Create actionable performance optimization recommendations.
-      
+
       Provide:
       1. Quick wins (low effort, high impact)
       2. Medium-term improvements (significant effort, good ROI)
       3. Long-term architectural changes
       4. Performance monitoring recommendations
-      
+
       Output JSON with:
       - "quick_wins": array of immediate optimizations
       - "medium_term": improvements for next sprint

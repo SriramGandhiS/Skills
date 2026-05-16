@@ -202,10 +202,10 @@ Why: Elegant serif + readable sans = sophisticated
 
 ```
 BRAND PERSONALITY:
-- Formal ↔ Casual: _______ (1-10 scale)
-- Professional ↔ Friendly: _______ (1-10 scale)
-- Serious ↔ Playful: _______ (1-10 scale)
-- Authoritative ↔ Conversational: _______ (1-10 scale)
+- Formal  Casual: _______ (1-10 scale)
+- Professional  Friendly: _______ (1-10 scale)
+- Serious  Playful: _______ (1-10 scale)
+- Authoritative  Conversational: _______ (1-10 scale)
 
 MICROCOPY EXAMPLES:
 - Button label (submit form): _______
@@ -234,7 +234,7 @@ Animation: Quick (precise, efficient, no-nonsense)
 Personality: Casual (8), Friendly (9), Playful (7)
 Button: "Let's go!"
 Error: "Hmm, that email doesn't look right"
-Success: "Nice! You're all set 🎉"
+Success: "Nice! You're all set "
 Animation: Moderate (smooth, friendly bounce)
 ```
 

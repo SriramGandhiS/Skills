@@ -1,4 +1,4 @@
-﻿---
+---
 name: product-lens
 description: Use this skill to validate the "why" before building, run product diagnostics, and pressure-test product direction before the request becomes an implementation contract.
 origin: ECC

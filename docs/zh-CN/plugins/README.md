@@ -11,11 +11,11 @@
 ### 添加市场
 
 ```bash
-# Add official Anthropic marketplace
-claude plugin marketplace add https://github.com/anthropics/claude-plugins-official
+## Add official Anthropic marketplace
+claude plugin marketplace add <https://github.com/anthropics/claude-plugins-official>
 
-# Add community marketplaces (mgrep by @mixedbread-ai)
-claude plugin marketplace add https://github.com/mixedbread-ai/mgrep
+## Add community marketplaces (mgrep by @mixedbread-ai)
+claude plugin marketplace add <https://github.com/mixedbread-ai/mgrep>
 ```
 
 ### 推荐市场
@@ -31,10 +31,10 @@ claude plugin marketplace add https://github.com/mixedbread-ai/mgrep
 ## 安装插件
 
 ```bash
-# Open plugins browser
+## Open plugins browser
 /plugins
 
-# Or install directly
+## Or install directly
 claude plugin install typescript-lsp@claude-plugins-official
 ```
 
@@ -69,11 +69,11 @@ claude plugin install typescript-lsp@claude-plugins-official
 ## 快速设置
 
 ```bash
-# Add marketplaces
-claude plugin marketplace add https://github.com/anthropics/claude-plugins-official
-claude plugin marketplace add https://github.com/mixedbread-ai/mgrep
+## Add marketplaces
+claude plugin marketplace add <https://github.com/anthropics/claude-plugins-official>
+claude plugin marketplace add <https://github.com/mixedbread-ai/mgrep>
 
-# Open /plugins and install what you need
+## Open /plugins and install what you need
 ```
 
 ***

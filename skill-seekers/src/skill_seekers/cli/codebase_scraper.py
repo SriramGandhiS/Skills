@@ -819,12 +819,12 @@ def process_markdown_docs(
 
     # AI Enhancement (if enabled and enhance_level >= 2)
     if enhance_with_ai and ai_mode != "none" and processed_docs:
-        logger.info("🤖 Enhancing documentation analysis with AI...")
+        logger.info(" Enhancing documentation analysis with AI...")
         try:
             processed_docs = _enhance_docs_with_ai(processed_docs, ai_mode, agent=agent)
-            logger.info("✅ AI documentation enhancement complete")
+            logger.info("PASS: AI documentation enhancement complete")
         except Exception as e:
-            logger.warning(f"⚠️  AI enhancement failed: {e}")
+            logger.warning(f"WARNING:  AI enhancement failed: {e}")
 
     # Save processed docs to output
     docs_output_dir = output_dir / "documentation"
@@ -883,16 +883,16 @@ def process_markdown_docs(
         with open(summary_json, "w", encoding="utf-8") as f:
             json.dump(extraction_summary, f, indent=2)
 
-        logger.info(f"📊 Extraction Summary:")
+        logger.info(f" Extraction Summary:")
         logger.info(f"   - Enhanced files: {enhanced_count}/{len(processed_docs)}")
         logger.info(f"   - Tables extracted: {total_tables}")
         logger.info(f"   - Cross-references: {total_xrefs}")
         logger.info(f"   - Code blocks: {total_code_blocks}")
 
     logger.info(
-        f"✅ Processed {len(processed_docs)} documentation files in {len(categories)} categories"
+        f"PASS: Processed {len(processed_docs)} documentation files in {len(categories)} categories"
     )
-    logger.info(f"📁 Saved to: {docs_output_dir}")
+    logger.info(f" Saved to: {docs_output_dir}")
 
     return index_data
 
@@ -914,7 +914,7 @@ def _enhance_docs_with_ai(docs: list[dict], ai_mode: str, agent: str | None = No
     client = AgentClient(mode=ai_mode, agent=agent)
 
     if not client.is_available():
-        logger.warning("⚠️  No AI agent available for documentation enhancement")
+        logger.warning("WARNING:  No AI agent available for documentation enhancement")
         return docs
 
     # Batch documents for efficiency
@@ -1024,7 +1024,7 @@ def analyze_codebase(
     if enhance_level > 0:
         level_names = {1: "SKILL.md only", 2: "SKILL.md+Architecture+Config", 3: "full"}
         logger.info(
-            f"🤖 AI Enhancement Level: {enhance_level} ({level_names.get(enhance_level, 'unknown')})"
+            f" AI Enhancement Level: {enhance_level} ({level_names.get(enhance_level, 'unknown')})"
         )
     # Resolve directory to absolute path to avoid relative_to() errors
     directory = Path(directory).resolve()
@@ -1088,7 +1088,7 @@ def analyze_codebase(
                     {
                         "file": str(file_path.relative_to(directory)),
                         "language": language,
-                        **analysis,
+**analysis,
                     }
                 )
                 analyzed_count += 1
@@ -1100,14 +1100,14 @@ def analyze_codebase(
             logger.warning(f"Error analyzing {file_path}: {e}")
             continue
 
-    logger.info(f"✅ Successfully analyzed {analyzed_count} files")
+    logger.info(f"PASS: Successfully analyzed {analyzed_count} files")
 
     # Save results
     output_json = output_dir / "code_analysis.json"
     with open(output_json, "w", encoding="utf-8") as f:
         json.dump(results, f, indent=2)
 
-    logger.info(f"📁 Saved analysis to: {output_json}")
+    logger.info(f" Saved analysis to: {output_json}")
 
     # Build API reference if requested
     if build_api_reference and results["files"]:
@@ -1115,8 +1115,8 @@ def analyze_codebase(
         builder = APIReferenceBuilder(results)
         api_output_dir = output_dir / "api_reference"
         generated_files = builder.build_reference(api_output_dir)
-        logger.info(f"✅ Generated {len(generated_files)} API reference files")
-        logger.info(f"📁 API reference: {api_output_dir}")
+        logger.info(f"PASS: Generated {len(generated_files)} API reference files")
+        logger.info(f" API reference: {api_output_dir}")
 
     # Build dependency graph if requested (C2.6)
     if build_dependency_graph:
@@ -1143,14 +1143,14 @@ def analyze_codebase(
         # Detect circular dependencies
         cycles = dep_analyzer.detect_cycles()
         if cycles:
-            logger.warning(f"⚠️  Found {len(cycles)} circular dependencies:")
+            logger.warning(f"WARNING:  Found {len(cycles)} circular dependencies:")
             for i, cycle in enumerate(cycles[:5], 1):  # Show first 5
                 cycle_str = " → ".join(cycle) + f" → {cycle[0]}"
                 logger.warning(f"  {i}. {cycle_str}")
             if len(cycles) > 5:
                 logger.warning(f"  ... and {len(cycles) - 5} more")
         else:
-            logger.info("✅ No circular dependencies found")
+            logger.info("PASS: No circular dependencies found")
 
         # Save dependency graph data
         dep_output_dir = output_dir / "dependencies"
@@ -1160,12 +1160,12 @@ def analyze_codebase(
         dep_json = dep_output_dir / "dependency_graph.json"
         with open(dep_json, "w", encoding="utf-8") as f:
             json.dump(dep_analyzer.export_json(), f, indent=2)
-        logger.info(f"📁 Saved dependency graph: {dep_json}")
+        logger.info(f" Saved dependency graph: {dep_json}")
 
         # Export as Mermaid diagram
         mermaid_file = dep_output_dir / "dependency_graph.mmd"
         mermaid_file.write_text(dep_analyzer.export_mermaid())
-        logger.info(f"📁 Saved Mermaid diagram: {mermaid_file}")
+        logger.info(f" Saved Mermaid diagram: {mermaid_file}")
 
         # Save statistics
         stats = dep_analyzer.get_statistics()
@@ -1173,7 +1173,7 @@ def analyze_codebase(
         with open(stats_file, "w", encoding="utf-8") as f:
             json.dump(stats, f, indent=2)
         logger.info(
-            f"📊 Statistics: {stats['total_files']} files, "
+            f" Statistics: {stats['total_files']} files, "
             f"{stats['total_dependencies']} dependencies, "
             f"{stats['circular_dependencies']} cycles"
         )
@@ -1210,7 +1210,7 @@ def analyze_codebase(
 
         # Step 2: Enhance ALL patterns at once (batched across all files)
         if enhance_patterns and pattern_results:
-            logger.info("🤖 Enhancing patterns with AI (batched)...")
+            logger.info(" Enhancing patterns with AI (batched)...")
             from skill_seekers.cli.ai_enhancer import PatternEnhancer
 
             enhancer = PatternEnhancer()
@@ -1274,12 +1274,12 @@ def analyze_codebase(
                 )
 
             # Log results with breakdown by confidence
-            logger.info(f"✅ Detected {stats['total']} patterns in {len(pattern_results)} files")
-            logger.info(f"   🔴 Critical (≥0.80): {stats['critical_count']} patterns")
-            logger.info(f"   🟠 High (≥0.70): {stats['high_confidence_count']} patterns")
-            logger.info(f"   🟡 Medium (≥0.60): {stats['medium_count']} patterns")
-            logger.info(f"   ⚪ Low (<0.60): {stats['low_count']} patterns")
-            logger.info(f"📁 Saved to: {pattern_output}/")
+            logger.info(f"PASS: Detected {stats['total']} patterns in {len(pattern_results)} files")
+            logger.info(f"    Critical (≥0.80): {stats['critical_count']} patterns")
+            logger.info(f"    High (≥0.70): {stats['high_confidence_count']} patterns")
+            logger.info(f"    Medium (≥0.60): {stats['medium_count']} patterns")
+            logger.info(f"    Low (<0.60): {stats['low_count']} patterns")
+            logger.info(f" Saved to: {pattern_output}/")
         else:
             logger.info("No design patterns detected")
 
@@ -1315,10 +1315,10 @@ def analyze_codebase(
                 examples_md.write_text(example_report.to_markdown(), encoding="utf-8")
 
                 logger.info(
-                    f"✅ Extracted {example_report.total_examples} test examples "
+                    f"PASS: Extracted {example_report.total_examples} test examples "
                     f"({example_report.high_value_count} high-value)"
                 )
-                logger.info(f"📁 Saved to: {examples_output}")
+                logger.info(f" Saved to: {examples_output}")
             else:
                 logger.info("No test examples extracted")
 
@@ -1361,8 +1361,8 @@ def analyze_codebase(
                     with open(collection_json, "w", encoding="utf-8") as f:
                         json.dump(guide_collection.to_dict(), f, indent=2)
 
-                    logger.info(f"✅ Built {guide_collection.total_guides} how-to guides")
-                    logger.info(f"📁 Saved to: {tutorials_dir}")
+                    logger.info(f"PASS: Built {guide_collection.total_guides} how-to guides")
+                    logger.info(f" Saved to: {tutorials_dir}")
                 else:
                     logger.info("No how-to guides generated (insufficient workflow examples)")
             else:
@@ -1389,12 +1389,12 @@ def analyze_codebase(
                     try:
                         from skill_seekers.cli.config_enhancer import ConfigEnhancer
 
-                        logger.info(f"🤖 Enhancing config analysis with AI (mode: {ai_mode})...")
+                        logger.info(f" Enhancing config analysis with AI (mode: {ai_mode})...")
                         enhancer = ConfigEnhancer(mode=ai_mode, agent=agent)
                         result_dict = enhancer.enhance_config_result(result_dict)
-                        logger.info("✅ AI enhancement complete")
+                        logger.info("PASS: AI enhancement complete")
                     except Exception as e:
-                        logger.warning(f"⚠️  Config AI enhancement failed: {e}")
+                        logger.warning(f"WARNING:  Config AI enhancement failed: {e}")
 
                 # Save results
                 config_output = output_dir / "config_patterns"
@@ -1414,7 +1414,7 @@ def analyze_codebase(
                 total_patterns = sum(len(cf.patterns) for cf in extraction_result.config_files)
 
                 logger.info(
-                    f"✅ Extracted {len(extraction_result.config_files)} config files "
+                    f"PASS: Extracted {len(extraction_result.config_files)} config files "
                     f"with {total_settings} settings and {total_patterns} detected patterns"
                 )
 
@@ -1422,10 +1422,10 @@ def analyze_codebase(
                     insights = result_dict["ai_enhancements"].get("overall_insights", {})
                     if insights.get("security_issues_found"):
                         logger.info(
-                            f"🔐 Security issues found: {insights['security_issues_found']}"
+                            f" Security issues found: {insights['security_issues_found']}"
                         )
 
-                logger.info(f"📁 Saved to: {config_output}")
+                logger.info(f" Saved to: {config_output}")
             else:
                 logger.info("No configuration files found")
 
@@ -1451,16 +1451,16 @@ def analyze_codebase(
             json.dump(arch_report.to_dict(), f, indent=2)
 
         if arch_report.patterns:
-            logger.info(f"🏗️  Detected {len(arch_report.patterns)} architectural patterns")
+            logger.info(f"  Detected {len(arch_report.patterns)} architectural patterns")
             for pattern in arch_report.patterns:
                 logger.info(f"   - {pattern.pattern_name} (confidence: {pattern.confidence:.2f})")
         else:
             logger.info("No clear architectural patterns detected")
 
         if arch_report.frameworks_detected:
-            logger.info(f"📦 Detected {len(arch_report.frameworks_detected)} frameworks")
+            logger.info(f" Detected {len(arch_report.frameworks_detected)} frameworks")
 
-        logger.info(f"📁 Saved to: {arch_json}")
+        logger.info(f" Saved to: {arch_json}")
     else:
         logger.info("No architectural patterns or frameworks detected")
 
@@ -1479,12 +1479,12 @@ def analyze_codebase(
             signal_analysis = signal_analyzer.analyze()
 
             stats = signal_analysis["statistics"]
-            logger.info(f"📡 Signal Analysis Complete:")
+            logger.info(f" Signal Analysis Complete:")
             logger.info(f"   - {stats['total_signals']} signal declarations")
             logger.info(f"   - {stats['total_connections']} signal connections")
             logger.info(f"   - {stats['total_emissions']} signal emissions")
             logger.info(f"   - {len(signal_analysis['patterns'])} patterns detected")
-            logger.info(f"📁 Saved to: {signal_output}")
+            logger.info(f" Saved to: {signal_output}")
         except Exception as e:
             logger.warning(f"Signal flow analysis failed: {e}")
 
@@ -1507,7 +1507,7 @@ def analyze_codebase(
 
             if docs_data and docs_data.get("total_files", 0) > 0:
                 logger.info(
-                    f"✅ Extracted {docs_data['total_files']} documentation files "
+                    f"PASS: Extracted {docs_data['total_files']} documentation files "
                     f"in {len(docs_data.get('categories', {}))} categories"
                 )
             else:
@@ -1612,7 +1612,7 @@ Use this skill when you need to:
 - Explore test examples and real-world usage
 - Navigate the codebase structure efficiently
 
-## ⚡ Quick Reference
+## Quick Reference
 
 ### Codebase Statistics
 
@@ -1628,23 +1628,23 @@ Use this skill when you need to:
     # Analysis features performed
     skill_content += "**Analysis Performed:**\n"
     if build_api_reference:
-        skill_content += "- ✅ API Reference (C2.5)\n"
+        skill_content += "- PASS: API Reference (C2.5)\n"
     if build_dependency_graph:
-        skill_content += "- ✅ Dependency Graph (C2.6)\n"
+        skill_content += "- PASS: Dependency Graph (C2.6)\n"
     if detect_patterns:
-        skill_content += "- ✅ Design Patterns (C3.1)\n"
+        skill_content += "- PASS: Design Patterns (C3.1)\n"
     if extract_test_examples:
-        skill_content += "- ✅ Test Examples (C3.2)\n"
+        skill_content += "- PASS: Test Examples (C3.2)\n"
     if extract_config_patterns:
-        skill_content += "- ✅ Configuration Patterns (C3.4)\n"
-    skill_content += "- ✅ Architectural Analysis (C3.7)\n"
+        skill_content += "- PASS: Configuration Patterns (C3.4)\n"
+    skill_content += "- PASS: Architectural Analysis (C3.7)\n"
     if extract_docs:
-        skill_content += "- ✅ Project Documentation (C3.9)\n"
+        skill_content += "- PASS: Project Documentation (C3.9)\n"
 
     # Check if signal flow analysis was performed
     has_signal_analysis = (output_dir / "signals" / "signal_flow.json").exists()
     if has_signal_analysis:
-        skill_content += "- ✅ Signal Flow Analysis (C3.10)\n"
+        skill_content += "- PASS: Signal Flow Analysis (C3.10)\n"
 
     skill_content += "\n"
 
@@ -1689,7 +1689,7 @@ Use this skill when you need to:
             skill_content += docs_content
 
     # Available references
-    skill_content += "## 📚 Available References\n\n"
+    skill_content += "##  Available References\n\n"
     skill_content += "This skill includes detailed reference documentation:\n\n"
 
     refs_added = False
@@ -1737,7 +1737,7 @@ Use this skill when you need to:
     skill_path.write_text(skill_content, encoding="utf-8")
 
     line_count = len(skill_content.split("\n"))
-    logger.info(f"✅ Generated SKILL.md: {skill_path} ({line_count} lines)")
+    logger.info(f"PASS: Generated SKILL.md: {skill_path} ({line_count} lines)")
 
     # Generate references/ directory structure
     _generate_references(output_dir)
@@ -1794,7 +1794,7 @@ def _format_patterns_section(output_dir: Path) -> str:
     if not pattern_counts:
         return ""
 
-    content = "### 🎨 Design Patterns Detected\n\n"
+    content = "###  Design Patterns Detected\n\n"
     content += "*From C3.1 codebase analysis (confidence > 0.7)*\n\n"
 
     # Top 5 pattern types
@@ -1832,7 +1832,7 @@ def _format_examples_section(output_dir: Path) -> str:
     if not high_value:
         return ""
 
-    content = "## 📝 Code Examples\n\n"
+    content = "##  Code Examples\n\n"
     content += "*High-quality examples extracted from test files (C3.2)*\n\n"
 
     # Top 10 examples
@@ -1869,7 +1869,7 @@ def _format_api_section(output_dir: Path) -> str:
     if len(api_content) > 500:
         preview += "..."
 
-    content = "## 🔧 API Reference\n\n"
+    content = "##  API Reference\n\n"
     content += "*Extracted from codebase analysis (C2.5)*\n\n"
     content += preview + "\n\n"
     content += "*See `references/api_reference/` for complete API documentation*\n\n"
@@ -1892,7 +1892,7 @@ def _format_architecture_section(output_dir: Path) -> str:
     if not patterns:
         return ""
 
-    content = "## 🏗️ Architecture Overview\n\n"
+    content = "##  Architecture Overview\n\n"
     content += "*From C3.7 architectural analysis*\n\n"
 
     content += "**Detected Architectural Patterns:**\n\n"
@@ -1929,7 +1929,7 @@ def _format_config_section(output_dir: Path) -> str:
     total_settings = sum(len(cf.get("settings", [])) for cf in config_files)
     total_patterns = sum(len(cf.get("patterns", [])) for cf in config_files)
 
-    content = "## ⚙️ Configuration Patterns\n\n"
+    content = "##  Configuration Patterns\n\n"
     content += "*From C3.4 configuration analysis*\n\n"
     content += f"**Configuration Files Analyzed:** {len(config_files)}\n"
     content += f"**Total Settings:** {total_settings}\n"
@@ -1970,7 +1970,7 @@ def _format_signal_flow_section(output_dir: Path, results: dict[str, Any]) -> st
     if stats.get("total_signals", 0) == 0:
         return ""
 
-    content = "## 📡 Signal Flow Analysis\n\n"
+    content = "##  Signal Flow Analysis\n\n"
     content += "*From C3.10 signal flow analysis (Godot Event System)*\n\n"
 
     # Statistics
@@ -2032,7 +2032,7 @@ def _format_documentation_section(_output_dir: Path, docs_data: dict[str, Any]) 
     categories = docs_data.get("categories", {})
     files = docs_data.get("files", [])
 
-    content = "## 📖 Project Documentation\n\n"
+    content = "##  Project Documentation\n\n"
     content += "*Extracted from markdown files in the project (C3.9)*\n\n"
     content += f"**Total Documentation Files:** {docs_data['total_files']}\n"
     content += f"**Categories:** {len(categories)}\n\n"
@@ -2142,7 +2142,7 @@ def _generate_references(output_dir: Path):
             shutil.rmtree(source_dir)
             logger.debug(f"Cleaned up duplicate {source}/ directory")
 
-    logger.info(f"✅ Generated references directory: {references_dir}")
+    logger.info(f"PASS: Generated references directory: {references_dir}")
 
 
 class CodebaseAnalyzer(SkillConverter):

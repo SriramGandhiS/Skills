@@ -91,10 +91,10 @@ For every audit, you MUST generate a table in this exact format:
 
 ## Best Practices
 
-- ✅ **Provide FIX + STRUCTURAL DESIGN**: Do not just report; provide the technical fix and the architectural redesign.
-- ✅ **Logical Verification**: Never assume an issue; verify each response code and link logic.
-- ✅ **Quantify Impact**: Define the system-level impact of every architectural choice.
-- ❌ **No Fluff**: Focus on actionable, engineering-level structured output.
+- PASS: **Provide FIX + STRUCTURAL DESIGN**: Do not just report; provide the technical fix and the architectural redesign.
+- PASS: **Logical Verification**: Never assume an issue; verify each response code and link logic.
+- PASS: **Quantify Impact**: Define the system-level impact of every architectural choice.
+- FAIL: **No Fluff**: Focus on actionable, engineering-level structured output.
 
 ## Common Pitfalls
 

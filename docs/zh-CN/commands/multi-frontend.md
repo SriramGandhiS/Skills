@@ -31,7 +31,7 @@
 **调用语法**:
 
 ```
-# 新会话调用
+## 新会话调用
 Bash({
   command: "~/.claude/bin/codeagent-wrapper {{LITE_MODE_FLAG}}--backend gemini --gemini-model gemini-3-pro-preview - \"$PWD\" <<'EOF'
 ROLE_FILE: <角色提示文件路径>
@@ -46,7 +46,7 @@ EOF",
   description: "简要描述"
 })
 
-# 恢复会话调用
+## 恢复会话调用
 Bash({
   command: "~/.claude/bin/codeagent-wrapper {{LITE_MODE_FLAG}}--backend gemini --gemini-model gemini-3-pro-preview resume <SESSION_ID> - \"$PWD\" <<'EOF'
 ROLE_FILE: <角色提示文件路径>
@@ -70,13 +70,13 @@ EOF",
 | 规划 | `~/.claude/.ccg/prompts/gemini/architect.md` |
 | 评审 | `~/.claude/.ccg/prompts/gemini/reviewer.md` |
 
-**会话重用**: 每次调用返回 `SESSION_ID: xxx`，在后续阶段使用 `resume xxx`。在阶段 2 保存 `GEMINI_SESSION`，在阶段 3 和 5 使用 `resume`。
+**会话重用**: 每次调用返回 `SESSION_ID: xxx`，在后续阶段使用`resume xxx`。在阶段 2 保存`GEMINI_SESSION`，在阶段 3 和 5 使用`resume`。
 
 ***
 
 ## 沟通指南
 
-1. 以模式标签 `[Mode: X]` 开始响应，初始为 `[Mode: Research]`
+1. 以模式标签 `[Mode: X]`开始响应，初始为`[Mode: Research]`
 2. 遵循严格顺序: `Research → Ideation → Plan → Execute → Optimize → Review`
 3. 需要时（例如确认/选择/批准）使用 `AskUserQuestion` 工具进行用户交互
 
@@ -86,13 +86,13 @@ EOF",
 
 ### 阶段 0: 提示词增强（可选）
 
-`[Mode: Prepare]` - 如果 ace-tool MCP 可用，调用 `mcp__ace-tool__enhance_prompt`，**用增强后的结果替换原始的 $ARGUMENTS，供后续 Gemini 调用使用**。如果不可用，则按原样使用 `$ARGUMENTS`。
+`[Mode: Prepare]`- 如果 ace-tool MCP 可用，调用`mcp__ace-tool__enhance_prompt`，**用增强后的结果替换原始的 $ARGUMENTS，供后续 Gemini 调用使用**。如果不可用，则按原样使用`$ARGUMENTS`。
 
 ### 阶段 1: 研究
 
 `[Mode: Research]` - 理解需求并收集上下文
 
-1. **代码检索**（如果 ace-tool MCP 可用）：调用 `mcp__ace-tool__search_context` 来检索现有的组件、样式、设计系统。如果不可用，使用内置工具：`Glob` 用于文件发现，`Grep` 用于组件/样式搜索，`Read` 用于上下文收集，`Task`（探索代理）用于更深层次的探索。
+1. **代码检索**（如果 ace-tool MCP 可用）：调用 `mcp__ace-tool__search_context`来检索现有的组件、样式、设计系统。如果不可用，使用内置工具：`Glob`用于文件发现，`Grep`用于组件/样式搜索，`Read`用于上下文收集，`Task`（探索代理）用于更深层次的探索。
 2. 需求完整性评分（0-10分）：>=7 继续，<7 停止并补充
 
 ### 阶段 2: 构思

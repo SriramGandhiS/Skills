@@ -1,4 +1,4 @@
-﻿---
+---
 name: database-migrations
 description: Database migration best practices for schema changes, data migrations, rollbacks, and zero-downtime deployments across PostgreSQL, MySQL, and common ORMs (Prisma, Drizzle, Kysely, Django, TypeORM, golang-migrate).
 origin: ECC
@@ -129,16 +129,16 @@ END $$;
 ### Workflow
 
 ```bash
-# Create migration from schema changes
+## Create migration from schema changes
 npx prisma migrate dev --name add_user_avatar
 
-# Apply pending migrations in production
+## Apply pending migrations in production
 npx prisma migrate deploy
 
-# Reset database (dev only)
+## Reset database (dev only)
 npx prisma migrate reset
 
-# Generate client after schema changes
+## Generate client after schema changes
 npx prisma generate
 ```
 
@@ -164,7 +164,7 @@ model User {
 For operations Prisma cannot express (concurrent indexes, data backfills):
 
 ```bash
-# Create empty migration, then edit the SQL manually
+## Create empty migration, then edit the SQL manually
 npx prisma migrate dev --create-only --name add_email_index
 ```
 
@@ -179,13 +179,13 @@ CREATE INDEX CONCURRENTLY IF NOT EXISTS idx_users_email ON users (email);
 ### Workflow
 
 ```bash
-# Generate migration from schema changes
+## Generate migration from schema changes
 npx drizzle-kit generate
 
-# Apply migrations
+## Apply migrations
 npx drizzle-kit migrate
 
-# Push schema directly (dev only, no migration file)
+## Push schema directly (dev only, no migration file)
 npx drizzle-kit push
 ```
 
@@ -209,19 +209,19 @@ export const users = pgTable("users", {
 ### Workflow (kysely-ctl)
 
 ```bash
-# Initialize config file (kysely.config.ts)
+## Initialize config file (kysely.config.ts)
 kysely init
 
-# Create a new migration file
+## Create a new migration file
 kysely migrate make add_user_avatar
 
-# Apply all pending migrations
+## Apply all pending migrations
 kysely migrate latest
 
-# Rollback last migration
+## Rollback last migration
 kysely migrate down
 
-# Show migration status
+## Show migration status
 kysely migrate list
 ```
 
@@ -303,16 +303,16 @@ if (error) {
 ### Workflow
 
 ```bash
-# Generate migration from model changes
+## Generate migration from model changes
 python manage.py makemigrations
 
-# Apply migrations
+## Apply migrations
 python manage.py migrate
 
-# Show migration status
+## Show migration status
 python manage.py showmigrations
 
-# Generate empty migration for custom SQL
+## Generate empty migration for custom SQL
 python manage.py makemigrations --empty app_name -n description
 ```
 
@@ -363,16 +363,16 @@ class Migration(migrations.Migration):
 ### Workflow
 
 ```bash
-# Create migration pair
+## Create migration pair
 migrate create -ext sql -dir migrations -seq add_user_avatar
 
-# Apply all pending migrations
+## Apply all pending migrations
 migrate -path migrations -database "$DATABASE_URL" up
 
-# Rollback last migration
+## Rollback last migration
 migrate -path migrations -database "$DATABASE_URL" down 1
 
-# Force version (fix dirty state)
+## Force version (fix dirty state)
 migrate -path migrations -database "$DATABASE_URL" force VERSION
 ```
 

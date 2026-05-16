@@ -6,7 +6,7 @@ When a user's question matches a scenario type, use the corresponding checklist 
 
 ---
 
-## 🇨🇳 中文场景
+## 中文场景
 
 ---
 
@@ -122,7 +122,7 @@ When a user's question matches a scenario type, use the corresponding checklist 
 
 ---
 
-## 🇺🇸 English Scenarios
+## English Scenarios
 
 ---
 

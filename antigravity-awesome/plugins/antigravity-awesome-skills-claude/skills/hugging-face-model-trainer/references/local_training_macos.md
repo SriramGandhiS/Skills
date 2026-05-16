@@ -135,7 +135,7 @@ trainer = SFTTrainer(model=model, train_dataset=ds, peft_config=lora,
                      args=SFTConfig(**sft_kwargs), processing_class=tokenizer)
 trainer.train()
 trainer.save_model(cfg.out_dir)
-print(f"✅ Saved to: {cfg.out_dir}")
+print(f"PASS: Saved to: {cfg.out_dir}")
 ```
 
 </details>

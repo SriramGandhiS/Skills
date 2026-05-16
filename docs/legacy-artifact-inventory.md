@@ -52,7 +52,7 @@ Expected result:
 | Artifact | State | Evidence | Action |
 | --- | --- | --- | --- |
 | `_legacy-documents-*` directories | Archive/no-action | No matching directories exist in the tracked checkout as of 2026-05-12. | Re-run the scan before release. If any appear, add each directory to this table before publishing. |
-| `legacy-command-shims/` | Archive/no-action | `legacy-command-shims/README.md` states these retired short-name shims are opt-in and no longer loaded by the default plugin command surface. | Keep as an explicit compatibility archive. Do not move these back into the default plugin surface without a migration decision. |
+| `legacy-command-shims/`| Archive/no-action |`legacy-command-shims/README.md` states these retired short-name shims are opt-in and no longer loaded by the default plugin command surface. | Keep as an explicit compatibility archive. Do not move these back into the default plugin surface without a migration decision. |
 | Closed-stale PR salvage ledger | Landed | `docs/stale-pr-salvage-ledger.md` records useful stale work recovered through maintainer PRs. | Continue using the ledger pattern for future stale closures. |
 | #1687 zh-CN localization tail | Translator/manual review | Large safe subsets landed in #1746-#1752; remaining pieces require translator/manual review per salvage ledger. | Do not blindly cherry-pick. Split by docs, commands, agents, and skills if a translator review lane opens. |
 
@@ -64,8 +64,8 @@ release assets.
 
 | Artifact | State | Evidence | Action |
 | --- | --- | --- | --- |
-| `../_legacy-documents-ecc-everything-claude-code-2026-04-30` | Archive/no-action | Separate legacy checkout on `fix/configure-ecc-skill-copy-paths-1483` at `b78ddbd0`; useful configure-ecc and install-path concepts have been superseded by current install docs and tests. The checkout also has untracked localized project-guidelines examples and a Finder duplicate `skills/social-graph-ranker/SKILL 2.md`. | Do not import wholesale. If configure-ecc copy-root regressions reappear, use this branch only as source-attributed archaeology and port through a fresh maintainer branch. Leave Finder duplicates out of source control. |
-| `../_legacy-documents-ecc-context-2026-04-30` | Milestone-tracked | Archived `ECC-context` repo is four commits ahead of its origin and contains context, gameplan, knowledge, marketing, AgentShield, and ECC Tools planning material. It also contains local/private surfaces such as `.env` and local settings. | Keep as a sanitized extraction source for roadmap, launch, AgentShield, and ECC Tools work. Never copy raw context, secrets, personal paths, private settings, or unpublished drafts into this repo. Port only focused, public-safe content with attribution. |
+| `../_legacy-documents-ecc-everything-claude-code-2026-04-30`| Archive/no-action | Separate legacy checkout on`fix/configure-ecc-skill-copy-paths-1483`at`b78ddbd0`; useful configure-ecc and install-path concepts have been superseded by current install docs and tests. The checkout also has untracked localized project-guidelines examples and a Finder duplicate`skills/social-graph-ranker/SKILL 2.md`. | Do not import wholesale. If configure-ecc copy-root regressions reappear, use this branch only as source-attributed archaeology and port through a fresh maintainer branch. Leave Finder duplicates out of source control. |
+| `../_legacy-documents-ecc-context-2026-04-30`| Milestone-tracked | Archived`ECC-context`repo is four commits ahead of its origin and contains context, gameplan, knowledge, marketing, AgentShield, and ECC Tools planning material. It also contains local/private surfaces such as`.env` and local settings. | Keep as a sanitized extraction source for roadmap, launch, AgentShield, and ECC Tools work. Never copy raw context, secrets, personal paths, private settings, or unpublished drafts into this repo. Port only focused, public-safe content with attribution. |
 
 ## Workspace Legacy Import Rules
 
@@ -85,7 +85,7 @@ The compatibility archive currently contains 12 retired command shims:
 | Shim | Preferred current direction |
 | --- | --- |
 | `agent-sort.md` | Use maintained command or skill routing where available. |
-| `claw.md` | Use maintained `scripts/claw.js` / `npm run claw` surfaces. |
+| `claw.md`| Use maintained`scripts/claw.js`/`npm run claw` surfaces. |
 | `context-budget.md` | Use maintained token/context budgeting skills. |
 | `devfleet.md` | Use maintained agent/harness orchestration docs and skills. |
 | `docs.md` | Use current documentation and release checklist workflows. |

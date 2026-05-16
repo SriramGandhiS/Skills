@@ -1,4 +1,4 @@
-﻿---
+---
 name: cpp-coding-standards
 description: C++ coding standards based on the C++ Core Guidelines (isocpp.github.io). Use when writing, reviewing, or refactoring C++ code to enforce modern, safe, and idiomatic practices.
 origin: ECC
@@ -14,7 +14,7 @@ Comprehensive coding standards for modern C++ (C++17/20/23) derived from the [C+
 - Reviewing or refactoring existing C++ code
 - Making architectural decisions in C++ projects
 - Enforcing consistent style across a C++ codebase
-- Choosing between language features (e.g., `enum` vs `enum class`, raw pointer vs smart pointer)
+- Choosing between language features (e.g., `enum`vs`enum class`, raw pointer vs smart pointer)
 
 ### When NOT to Use
 
@@ -134,7 +134,7 @@ static_assert(factorial(5) == 120);
 
 | Rule | Summary |
 |------|---------|
-| **C.2** | Use `class` if invariant exists; `struct` if data members vary independently |
+| **C.2** | Use `class`if invariant exists;`struct` if data members vary independently |
 | **C.9** | Minimize exposure of members |
 | **C.20** | If you can avoid defining default operations, do (Rule of Zero) |
 | **C.21** | If you define or `=delete` any copy/move/destructor, handle them all (Rule of Five) |
@@ -142,7 +142,7 @@ static_assert(factorial(5) == 120);
 | **C.41** | A constructor should create a fully initialized object |
 | **C.46** | Declare single-argument constructors `explicit` |
 | **C.67** | A polymorphic class should suppress public copy/move |
-| **C.128** | Virtual functions: specify exactly one of `virtual`, `override`, or `final` |
+| **C.128** | Virtual functions: specify exactly one of `virtual`,`override`, or`final` |
 
 ### Rule of Zero
 
@@ -228,10 +228,10 @@ private:
 | **R.3** | A raw pointer (`T*`) is non-owning |
 | **R.5** | Prefer scoped objects; don't heap-allocate unnecessarily |
 | **R.10** | Avoid `malloc()`/`free()` |
-| **R.11** | Avoid calling `new` and `delete` explicitly |
-| **R.20** | Use `unique_ptr` or `shared_ptr` to represent ownership |
-| **R.21** | Prefer `unique_ptr` over `shared_ptr` unless sharing ownership |
-| **R.22** | Use `make_shared()` to make `shared_ptr`s |
+| **R.11** | Avoid calling `new`and`delete` explicitly |
+| **R.20** | Use `unique_ptr`or`shared_ptr` to represent ownership |
+| **R.21** | Prefer `unique_ptr`over`shared_ptr` unless sharing ownership |
+| **R.22** | Use `make_shared()`to make`shared_ptr`s |
 
 ### Smart Pointer Usage
 
@@ -285,7 +285,7 @@ private:
 - Naked `new`/`delete` (R.11)
 - `malloc()`/`free()` in C++ code (R.10)
 - Multiple resource allocations in a single expression (R.13 -- exception safety hazard)
-- `shared_ptr` where `unique_ptr` suffices (R.21)
+- `shared_ptr`where`unique_ptr` suffices (R.21)
 
 ## Expressions & Statements (ES.*)
 
@@ -296,11 +296,11 @@ private:
 | **ES.5** | Keep scopes small |
 | **ES.20** | Always initialize an object |
 | **ES.23** | Prefer `{}` initializer syntax |
-| **ES.25** | Declare objects `const` or `constexpr` unless modification is intended |
+| **ES.25** | Declare objects `const`or`constexpr` unless modification is intended |
 | **ES.28** | Use lambdas for complex initialization of `const` variables |
 | **ES.45** | Avoid magic constants; use symbolic constants |
 | **ES.46** | Avoid narrowing/lossy arithmetic conversions |
-| **ES.47** | Use `nullptr` rather than `0` or `NULL` |
+| **ES.47** | Use `nullptr`rather than`0`or`NULL` |
 | **ES.48** | Avoid casts |
 | **ES.50** | Don't cast away `const` |
 
@@ -325,8 +325,8 @@ const auto config = [&] {
 ### Anti-Patterns
 
 - Uninitialized variables (ES.20)
-- Using `0` or `NULL` as pointer (ES.47 -- use `nullptr`)
-- C-style casts (ES.48 -- use `static_cast`, `const_cast`, etc.)
+- Using `0`or`NULL`as pointer (ES.47 -- use`nullptr`)
+- C-style casts (ES.48 -- use `static_cast`,`const_cast`, etc.)
 - Casting away `const` (ES.50)
 - Magic numbers without named constants (ES.45)
 - Mixing signed and unsigned arithmetic (ES.100)
@@ -442,7 +442,7 @@ constexpr int MAX_SENSORS = 256;
 | **CP.21** | Use `std::scoped_lock` to acquire multiple mutexes |
 | **CP.22** | Never call unknown code while holding a lock |
 | **CP.42** | Don't wait without a condition |
-| **CP.44** | Remember to name your `lock_guard`s and `unique_lock`s |
+| **CP.44** | Remember to name your `lock_guard`s and`unique_lock`s |
 | **CP.100** | Don't use lock-free programming unless you absolutely have to |
 
 ### Safe Locking
@@ -503,7 +503,7 @@ void transfer(Account& from, Account& to, double amount) {
 | **T.10** | Specify concepts for all template arguments |
 | **T.11** | Use standard concepts whenever possible |
 | **T.13** | Prefer shorthand notation for simple concepts |
-| **T.43** | Prefer `using` over `typedef` |
+| **T.43** | Prefer `using`over`typedef` |
 | **T.120** | Use template metaprogramming only when you really need to |
 | **T.144** | Don't specialize function templates (overload instead) |
 
@@ -541,7 +541,7 @@ void save(const T& obj, const std::string& path);
 - Unconstrained templates in visible namespaces (T.47)
 - Specializing function templates instead of overloading (T.144)
 - Template metaprogramming where `constexpr` suffices (T.120)
-- `typedef` instead of `using` (T.43)
+- `typedef`instead of`using` (T.43)
 
 ## Standard Library (SL.*)
 
@@ -551,11 +551,11 @@ void save(const T& obj, const std::string& path);
 |------|---------|
 | **SL.1** | Use libraries wherever possible |
 | **SL.2** | Prefer the standard library to other libraries |
-| **SL.con.1** | Prefer `std::array` or `std::vector` over C arrays |
+| **SL.con.1** | Prefer `std::array`or`std::vector` over C arrays |
 | **SL.con.2** | Prefer `std::vector` by default |
 | **SL.str.1** | Use `std::string` to own character sequences |
 | **SL.str.2** | Use `std::string_view` to refer to character sequences |
-| **SL.io.50** | Avoid `endl` (use `'\n'` -- `endl` forces a flush) |
+| **SL.io.50** | Avoid `endl`(use`'\n'`--`endl` forces a flush) |
 
 ```cpp
 // SL.con.1 + SL.con.2: Prefer vector/array over C arrays
@@ -578,7 +578,7 @@ std::cout << "result: " << value << '\n';
 | Rule | Summary |
 |------|---------|
 | **Enum.1** | Prefer enumerations over macros |
-| **Enum.3** | Prefer `enum class` over plain `enum` |
+| **Enum.3** | Prefer `enum class`over plain`enum` |
 | **Enum.5** | Don't use ALL_CAPS for enumerators |
 | **Enum.6** | Avoid unnamed enumerations |
 
@@ -598,9 +598,9 @@ enum { RED, GREEN, BLUE };           // Enum.3 + Enum.5 + Enum.6 violation
 
 | Rule | Summary |
 |------|---------|
-| **SF.1** | Use `.cpp` for code files and `.h` for interface files |
+| **SF.1** | Use `.cpp`for code files and`.h` for interface files |
 | **SF.7** | Don't write `using namespace` at global scope in a header |
-| **SF.8** | Use `#include` guards for all `.h` files |
+| **SF.8** | Use `#include`guards for all`.h` files |
 | **SF.11** | Header files should be self-contained |
 | **NL.5** | Avoid encoding type information in names (no Hungarian notation) |
 | **NL.8** | Use a consistent naming style |
@@ -659,7 +659,7 @@ private:
 
 - `using namespace std;` in a header at global scope (SF.7)
 - Headers that depend on inclusion order (SF.10, SF.11)
-- Hungarian notation like `strName`, `iCount` (NL.5)
+- Hungarian notation like `strName`,`iCount` (NL.5)
 - ALL_CAPS for anything other than macros (NL.9)
 
 ## Performance (Per.*)
@@ -707,8 +707,8 @@ Before marking C++ work complete:
 - [ ] Objects initialized at declaration (ES.20)
 - [ ] Variables are `const`/`constexpr` by default (Con.1, ES.25)
 - [ ] Member functions are `const` where possible (Con.2)
-- [ ] `enum class` instead of plain `enum` (Enum.3)
-- [ ] `nullptr` instead of `0`/`NULL` (ES.47)
+- [ ] `enum class`instead of plain`enum` (Enum.3)
+- [ ] `nullptr`instead of`0`/`NULL` (ES.47)
 - [ ] No narrowing conversions (ES.46)
 - [ ] No C-style casts (ES.48)
 - [ ] Single-argument constructors are `explicit` (C.46)
@@ -719,5 +719,5 @@ Before marking C++ work complete:
 - [ ] Headers have include guards and are self-contained (SF.8, SF.11)
 - [ ] Locks use RAII (`scoped_lock`/`lock_guard`) (CP.20)
 - [ ] Exceptions are custom types, thrown by value, caught by reference (E.14, E.15)
-- [ ] `'\n'` instead of `std::endl` (SL.io.50)
+- [ ] `'\n'`instead of`std::endl` (SL.io.50)
 - [ ] No magic numbers (ES.45)

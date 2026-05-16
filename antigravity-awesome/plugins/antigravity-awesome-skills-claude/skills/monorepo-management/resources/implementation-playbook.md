@@ -58,12 +58,12 @@ cd my-monorepo
 
 # Structure:
 # apps/
-#   web/          - Next.js app
-#   docs/         - Documentation site
+# web/          - Next.js app
+# docs/         - Documentation site
 # packages/
-#   ui/           - Shared UI components
-#   config/       - Shared configurations
-#   tsconfig/     - Shared TypeScript configs
+# ui/           - Shared UI components
+# config/       - Shared configurations
+# tsconfig/     - Shared TypeScript configs
 # turbo.json      - Turborepo configuration
 # package.json    - Root package.json
 ```

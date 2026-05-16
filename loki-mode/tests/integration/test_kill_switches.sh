@@ -2,13 +2,11 @@
 # tests/integration/test_kill_switches.sh
 # v7.0.0 invariant: every managed-memory code path fails gracefully under any
 # of these hostile conditions:
-#
-#   1. Unreachable API (connection refused; base URL points to a dead socket).
-#   2. ANTHROPIC_API_KEY missing entirely.
-#   3. SDK not installed (import anthropic fails).
-#   4. Beta header rejected (simulated 400 via a FakeClient with a raiser).
-#
-# In every case the retrieve/shadow-write CLIs MUST exit 0 and emit at least
+# # 1. Unreachable API (connection refused; base URL points to a dead socket).
+# 2. ANTHROPIC_API_KEY missing entirely.
+# 3. SDK not installed (import anthropic fails).
+# 4. Beta header rejected (simulated 400 via a FakeClient with a raiser).
+# # In every case the retrieve/shadow-write CLIs MUST exit 0 and emit at least
 # one fallback event (or stay completely silent for kill switches that trip
 # BEFORE any network attempt, e.g. missing API key).
 

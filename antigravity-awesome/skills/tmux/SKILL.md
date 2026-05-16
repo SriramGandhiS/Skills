@@ -349,19 +349,19 @@ tmux attach -t shared
 ## Common Pitfalls
 
 - **Problem:** `tmux` commands from a script fail with "no server running"
-  **Solution:** Start the server first with `tmux start-server`, or create a detached session before running other commands.
+**Solution:** Start the server first with `tmux start-server`, or create a detached session before running other commands.
 
 - **Problem:** Pane size is 0x0 when creating a detached session
-  **Solution:** Pass explicit dimensions: `tmux new-session -d -s name -x 200 -y 50`.
+**Solution:** Pass explicit dimensions: `tmux new-session -d -s name -x 200 -y 50`.
 
 - **Problem:** `send-keys` types the text but doesn't run the command
-  **Solution:** Ensure you pass `Enter` (capital E) as a second argument: `tmux send-keys -t target "cmd" Enter`.
+**Solution:** Ensure you pass `Enter` (capital E) as a second argument: `tmux send-keys -t target "cmd" Enter`.
 
 - **Problem:** Script creates a duplicate session each run
-  **Solution:** Guard with `tmux has-session -t name 2>/dev/null || tmux new-session -d -s name`.
+**Solution:** Guard with `tmux has-session -t name 2>/dev/null || tmux new-session -d -s name`.
 
 - **Problem:** Copy-mode selection doesn't work as expected
-  **Solution:** Confirm `mode-keys vi` or `mode-keys emacs` is set to match your preference in `~/.tmux.conf`.
+**Solution:** Confirm `mode-keys vi` or `mode-keys emacs` is set to match your preference in `~/.tmux.conf`.
 
 ## Related Skills
 

@@ -26,11 +26,11 @@ All dynamic content in n8n uses **double curly braces**:
 
 **Examples**:
 ```
-✅ {{$json.email}}
-✅ {{$json.body.name}}
-✅ {{$node["HTTP Request"].json.data}}
-❌ $json.email  (no braces - treated as literal text)
-❌ {$json.email}  (single braces - invalid)
+PASS: {{$json.email}}
+PASS: {{$json.body.name}}
+PASS: {{$node["HTTP Request"].json.data}}
+FAIL: $json.email  (no braces - treated as literal text)
+FAIL: {$json.email}  (single braces - invalid)
 ```
 
 ---
@@ -85,7 +85,7 @@ Access environment variables:
 
 ---
 
-## 🚨 CRITICAL: Webhook Data Structure
+## CRITICAL: Webhook Data Structure
 
 **Most Common Mistake**: Webhook data is **NOT** at the root!
 
@@ -96,7 +96,7 @@ Access environment variables:
   "headers": {...},
   "params": {...},
   "query": {...},
-  "body": {           // ⚠️ USER DATA IS HERE!
+  "body": {           // WARNING: USER DATA IS HERE!
     "name": "John",
     "email": "john@example.com",
     "message": "Hello"
@@ -107,12 +107,12 @@ Access environment variables:
 ### Correct Webhook Data Access
 
 ```javascript
-❌ WRONG: {{$json.name}}
-❌ WRONG: {{$json.email}}
+FAIL: WRONG: {{$json.name}}
+FAIL: WRONG: {{$json.email}}
 
-✅ CORRECT: {{$json.body.name}}
-✅ CORRECT: {{$json.body.email}}
-✅ CORRECT: {{$json.body.message}}
+PASS: CORRECT: {{$json.body.name}}
+PASS: CORRECT: {{$json.body.email}}
+PASS: CORRECT: {{$json.body.message}}
 ```
 
 **Why**: Webhook node wraps incoming data under `.body` property to preserve headers, params, and query parameters.
@@ -170,16 +170,16 @@ https://api.example.com/users/{{$json.body.user_id}}
 
 ## When NOT to Use Expressions
 
-### ❌ Code Nodes
+### FAIL: Code Nodes
 
 Code nodes use **direct JavaScript access**, NOT expressions!
 
 ```javascript
-// ❌ WRONG in Code node
+// FAIL: WRONG in Code node
 const email = '={{$json.email}}';
 const name = '{{$json.body.name}}';
 
-// ✅ CORRECT in Code node
+// PASS: CORRECT in Code node
 const email = $json.email;
 const name = $json.body.name;
 
@@ -188,23 +188,23 @@ const email = $input.item.json.email;
 const allItems = $input.all();
 ```
 
-### ❌ Webhook Paths
+### FAIL: Webhook Paths
 
 ```javascript
-// ❌ WRONG
+// FAIL: WRONG
 path: "{{$json.user_id}}/webhook"
 
-// ✅ CORRECT
+// PASS: CORRECT
 path: "user-webhook"  // Static paths only
 ```
 
-### ❌ Credential Fields
+### FAIL: Credential Fields
 
 ```javascript
-// ❌ WRONG
+// FAIL: WRONG
 apiKey: "={{$env.API_KEY}}"
 
-// ✅ CORRECT
+// PASS: CORRECT
 Use n8n credential system, not expressions
 ```
 
@@ -217,8 +217,8 @@ Use n8n credential system, not expressions
 Expressions **must** be wrapped in double curly braces.
 
 ```javascript
-❌ $json.field
-✅ {{$json.field}}
+FAIL: $json.field
+PASS: {{$json.field}}
 ```
 
 ### 2. Use Quotes for Spaces
@@ -226,11 +226,11 @@ Expressions **must** be wrapped in double curly braces.
 Field or node names with spaces require **bracket notation**:
 
 ```javascript
-❌ {{$json.field name}}
-✅ {{$json['field name']}}
+FAIL: {{$json.field name}}
+PASS: {{$json['field name']}}
 
-❌ {{$node.HTTP Request.json}}
-✅ {{$node["HTTP Request"].json}}
+FAIL: {{$node.HTTP Request.json}}
+PASS: {{$node["HTTP Request"].json}}
 ```
 
 ### 3. Match Exact Node Names
@@ -238,9 +238,9 @@ Field or node names with spaces require **bracket notation**:
 Node references are **case-sensitive**:
 
 ```javascript
-❌ {{$node["http request"].json}}  // lowercase
-❌ {{$node["Http Request"].json}}  // wrong case
-✅ {{$node["HTTP Request"].json}}  // exact match
+FAIL: {{$node["http request"].json}}  // lowercase
+FAIL: {{$node["Http Request"].json}}  // wrong case
+PASS: {{$node["HTTP Request"].json}}  // exact match
 ```
 
 ### 4. No Nested {{}}
@@ -248,8 +248,8 @@ Node references are **case-sensitive**:
 Don't double-wrap expressions:
 
 ```javascript
-❌ {{{$json.field}}}
-✅ {{$json.field}}
+FAIL: {{{$json.field}}}
+PASS: {{$json.field}}
 ```
 
 ---
@@ -473,7 +473,7 @@ Hello {{$json.name}}!
 
 ## Best Practices
 
-### ✅ Do
+### PASS: Do
 
 - Always use {{ }} for dynamic content
 - Use bracket notation for field names with spaces
@@ -481,7 +481,7 @@ Hello {{$json.name}}!
 - Use $node for data from other nodes
 - Test expressions in expression editor
 
-### ❌ Don't
+### FAIL: Don't
 
 - Don't use expressions in Code nodes
 - Don't forget quotes around node names with spaces

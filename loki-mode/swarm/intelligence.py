@@ -765,7 +765,7 @@ class SwarmCoordinator:
         # Register the agent
         if agent_type in AGENT_TYPES:
             registered = self.registry.register(agent_type, metadata={
-                **agent_config,
+**agent_config,
                 "spawned_dynamically": True,
                 "spawn_reason": reason,
             })

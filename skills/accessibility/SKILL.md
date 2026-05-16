@@ -1,4 +1,4 @@
-﻿---
+---
 name: accessibility
 description: Design, implement, and audit inclusive digital products using WCAG 2.2 Level AA
   standards. Use this skill to generate semantic ARIA for Web and accessibility traits for Web and Native platforms (iOS/Android).
@@ -22,7 +22,7 @@ This skill ensures that digital interfaces are Perceivable, Operable, Understand
 - **Semantic Mapping**: Using native elements over generic containers to provide built-in accessibility.
 - **Accessibility Tree**: The representation of the UI that assistive technologies actually "read."
 - **Focus Management**: Controlling the order and visibility of the keyboard/screen reader cursor.
-- **Labeling & Hints**: Providing context through `aria-label`, `accessibilityLabel`, and `contentDescription`.
+- **Labeling & Hints**: Providing context through `aria-label`,`accessibilityLabel`, and`contentDescription`.
 
 ## How It Works
 
@@ -71,10 +71,10 @@ flowchart TD
 
 | Feature            | Web (HTML/ARIA)          | iOS (SwiftUI)                        | Android (Compose)                                           |
 | :----------------- | :----------------------- | :----------------------------------- | :---------------------------------------------------------- |
-| **Primary Label**  | `aria-label` / `<label>` | `.accessibilityLabel()`              | `contentDescription`                                        |
-| **Secondary Hint** | `aria-describedby`       | `.accessibilityHint()`               | `Modifier.semantics { stateDescription = ... }`             |
-| **Action Role**    | `role="button"`          | `.accessibilityAddTraits(.isButton)` | `Modifier.semantics { role = Role.Button }`                 |
-| **Live Updates**   | `aria-live="polite"`     | `.accessibilityLiveRegion(.polite)`  | `Modifier.semantics { liveRegion = LiveRegionMode.Polite }` |
+| **Primary Label**  | `aria-label`/`<label>`|`.accessibilityLabel()`|`contentDescription`                                        |
+| **Secondary Hint** | `aria-describedby`|`.accessibilityHint()`|`Modifier.semantics { stateDescription = ... }`             |
+| **Action Role**    | `role="button"`|`.accessibilityAddTraits(.isButton)`|`Modifier.semantics { role = Role.Button }`                 |
+| **Live Updates**   | `aria-live="polite"`|`.accessibilityLiveRegion(.polite)`|`Modifier.semantics { liveRegion = LiveRegionMode.Polite }` |
 
 ## Examples
 
@@ -115,7 +115,7 @@ Switch(
 
 ## Anti-Patterns to Avoid
 
-- **Div-Buttons**: Using a `<div>` or `<span>` for a click event without adding a role and keyboard support.
+- **Div-Buttons**: Using a `<div>`or`<span>` for a click event without adding a role and keyboard support.
 - **Color-Only Meaning**: Indicating an error or status _only_ with a color change (e.g., turning a border red).
 - **Uncontained Modal Focus**: Modals that don't trap focus, allowing keyboard users to navigate background content while the modal is open. Focus must be contained _and_ escapable via the `Escape` key or an explicit close button (WCAG SC 2.1.2).
 - **Redundant Alt Text**: Using "Image of..." or "Picture of..." in alt text (screen readers already announce the role "Image").

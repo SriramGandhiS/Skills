@@ -54,11 +54,11 @@ python3 cli/unified_scraper.py --config configs/react_unified.json
 ```
 
 The tool will:
-1. ✅ **Phase 1**: Scrape all sources (any of the 17 supported types)
-2. ✅ **Phase 2**: Detect conflicts between sources
-3. ✅ **Phase 3**: Merge conflicts intelligently (pairwise synthesis or generic merge)
-4. ✅ **Phase 4**: Build unified skill with conflict transparency
-5. ✅ **Phase 5**: Apply enhancement workflows (optional)
+1. PASS: **Phase 1**: Scrape all sources (any of the 17 supported types)
+2. PASS: **Phase 2**: Detect conflicts between sources
+3. PASS: **Phase 3**: Merge conflicts intelligently (pairwise synthesis or generic merge)
+4. PASS: **Phase 4**: Build unified skill with conflict transparency
+5. PASS: **Phase 5**: Apply enhancement workflows (optional)
 
 ### 3. Package and Upload
 
@@ -422,17 +422,17 @@ output/skill-name/
 
 Complete React knowledge base combining official documentation and React codebase insights.
 
-## 📚 Sources
+## Sources
 
 This skill combines knowledge from multiple sources:
 
-- ✅ **Documentation**: https://react.dev/
+- PASS: **Documentation**: https://react.dev/
   - Pages: 200
-- ✅ **GitHub Repository**: facebook/react
+- PASS: **GitHub Repository**: facebook/react
   - Code Analysis: surface
   - Issues: 100
 
-## ⚠️ Data Quality
+## WARNING: Data Quality
 
 **5 conflicts detected** between sources.
 
@@ -442,11 +442,11 @@ This skill combines knowledge from multiple sources:
 
 See `references/conflicts.md` for detailed conflict information.
 
-## 🔧 API Reference
+## API Reference
 
 *Merged from documentation and code analysis*
 
-### ✅ Verified APIs
+### PASS: Verified APIs
 
 *Documentation and code agree*
 
@@ -454,13 +454,13 @@ See `references/conflicts.md` for detailed conflict information.
 
 ...
 
-### ⚠️ APIs with Conflicts
+### WARNING: APIs with Conflicts
 
 *Documentation and code differ*
 
 #### `useEffect(callback, deps?)`
 
-⚠️ **Conflict**: Documentation signature differs from code implementation
+WARNING: **Conflict**: Documentation signature differs from code implementation
 
 **Documentation says:**
 ```
@@ -763,10 +763,10 @@ python3 cli/test_unified_simple.py
 ```
 
 Tests validate:
-- ✅ Unified config validation
-- ✅ Backward compatibility with legacy configs
-- ✅ Mixed source type support
-- ✅ Error handling for invalid configs
+- PASS: Unified config validation
+- PASS: Backward compatibility with legacy configs
+- PASS: Mixed source type support
+- PASS: Error handling for invalid configs
 
 ## Architecture
 
@@ -926,25 +926,25 @@ For issues, questions, or suggestions:
 ## Changelog
 
 **v3.2.0 (March 2026)**: 17 source types supported
-- ✅ 13 new source types: Word, EPUB, Video, Jupyter, HTML, OpenAPI, AsciiDoc, PowerPoint, RSS/Atom, Man pages, Confluence, Notion, Slack/Discord
-- ✅ Generic merge system (`_generic_merge()`) for combining any source type combination
-- ✅ Pairwise synthesis for docs+github+pdf combos
-- ✅ `complex-merge.yaml` workflow preset for AI-powered multi-source merging
+- PASS: 13 new source types: Word, EPUB, Video, Jupyter, HTML, OpenAPI, AsciiDoc, PowerPoint, RSS/Atom, Man pages, Confluence, Notion, Slack/Discord
+- PASS: Generic merge system (`_generic_merge()`) for combining any source type combination
+- PASS: Pairwise synthesis for docs+github+pdf combos
+- PASS: `complex-merge.yaml` workflow preset for AI-powered multi-source merging
 
 **v3.1.0 (February 2026)**: Enhancement workflow support
-- ✅ Full workflow system integration (Phase 5)
-- ✅ All workflow flags supported (--enhance-workflow, --enhance-stage, --var, --workflow-dry-run)
-- ✅ Workflow configuration in JSON configs
-- ✅ Global --enhance-level and --api-key CLI overrides
-- ✅ Local source type support (codebase analysis)
+- PASS: Full workflow system integration (Phase 5)
+- PASS: All workflow flags supported (--enhance-workflow, --enhance-stage, --var, --workflow-dry-run)
+- PASS: Workflow configuration in JSON configs
+- PASS: Global --enhance-level and --api-key CLI overrides
+- PASS: Local source type support (codebase analysis)
 
 **v2.0 (October 2025)**: Unified multi-source scraping feature complete
-- ✅ Config validation for unified format
-- ✅ Deep code analysis with AST parsing
-- ✅ Conflict detection (4 types, 3 severity levels)
-- ✅ Rule-based merging
-- ✅ Claude-enhanced merging
-- ✅ Unified skill builder with inline conflict warnings
-- ✅ MCP integration with auto-detection
-- ✅ Backward compatibility with legacy configs
-- ✅ Comprehensive tests and documentation
+- PASS: Config validation for unified format
+- PASS: Deep code analysis with AST parsing
+- PASS: Conflict detection (4 types, 3 severity levels)
+- PASS: Rule-based merging
+- PASS: Claude-enhanced merging
+- PASS: Unified skill builder with inline conflict warnings
+- PASS: MCP integration with auto-detection
+- PASS: Backward compatibility with legacy configs
+- PASS: Comprehensive tests and documentation

@@ -13,7 +13,7 @@ date_added: "2026-02-27"
 
 ---
 
-## ⚠️ How to Use This Skill
+## WARNING: How to Use This Skill
 
 This skill teaches **deployment principles**, not bash scripts to copy.
 
@@ -205,7 +205,7 @@ What are you deploying?
 
 ## 8. Anti-Patterns
 
-| ❌ Don't | ✅ Do |
+| FAIL: Don't | PASS: Do |
 |----------|-------|
 | Deploy on Friday | Deploy early in week |
 | Rush deployment | Follow the process |

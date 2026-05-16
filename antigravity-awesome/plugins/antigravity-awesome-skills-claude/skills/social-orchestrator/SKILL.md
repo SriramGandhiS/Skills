@@ -52,7 +52,7 @@ A mesma mensagem adaptada inteligentemente e amplificacao.
 [Conteudo Central]
         ↓
   [Adaptador por Canal]
-  ↙      ↓         ↘
+        ↓
 IG      TG        WA
 Foto   Mensagem  Template
 +      +botao    +link
@@ -194,24 +194,24 @@ CONTEUDO CENTRAL:
 
 ↓ Instagram:
 [Imagem produto elegante]
-"Conhece a Auri? 🤖
+"Conhece a Auri?
 A Alexa ficou mais inteligente.
 Claude + Alexa = seu assistente ideal.
-👉 Link na bio.
+ Link na bio.
 #IA #Alexa #Auri #AssistenteDeVoz"
 
 ↓ Telegram:
-"🚀 Auri chegou!
+" Auri chegou!
 
 A gente integrou Claude na Alexa e o resultado é incrivel.
 
-[▶️ Ver demo] [📲 Testar agora] [❓ Saber mais]"
+[ Ver demo] [ Testar agora] [ Saber mais]"
 
 ↓ WhatsApp:
 "Oi! A Auri acaba de ser lançada.
 Alexa + Claude = assistente ultra-inteligente.
 Acesse: auri.com.br
-Responda para saber mais 😊"
+Responda para saber mais "
 ```
 
 ---
@@ -234,19 +234,19 @@ Para cada operacao cross-canal, reportar:
 SOCIAL-ORCHESTRATOR — [acao]
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-✅ Instagram: [status + url/id do post]
-✅ Telegram: [status + message_id]
-✅ WhatsApp: [status + message_id]
+PASS: Instagram: [status + url/id do post]
+PASS: Telegram: [status + message_id]
+PASS: WhatsApp: [status + message_id]
 
-📊 Preview de Alcance Estimado:
+ Preview de Alcance Estimado:
    Instagram: ~X seguidores
    Telegram: ~Y membros
    WhatsApp: ~Z contatos
 
-⚠️ Alertas:
+WARNING: Alertas:
    [qualquer problema ou adaptacao necessaria]
 
-🎯 Proxima Acao Recomendada:
+ Proxima Acao Recomendada:
    [quando/como engajar com respostas]
 ```
 

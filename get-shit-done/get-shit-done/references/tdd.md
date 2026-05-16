@@ -272,7 +272,7 @@ After completing a `type: tdd` plan, the executor validates the git log:
 ```bash
 # Check for RED gate commit
 git log --oneline --grep="^test(${PHASE}-${PLAN})" | head -1
-# Check for GREEN gate commit  
+# Check for GREEN gate commit
 git log --oneline --grep="^feat(${PHASE}-${PLAN})" | head -1
 # Check for optional REFACTOR gate commit
 git log --oneline --grep="^refactor(${PHASE}-${PLAN})" | head -1
@@ -301,7 +301,7 @@ TDD Plans: {count} | Gate violations: {count}
 | {id} |  ✓  |   ✗   |    —     | FAIL   |
 
 {If violations exist:}
-⚠ Gate violations are advisory — review before advancing.
+WARNING: Gate violations are advisory — review before advancing.
 ```
 
 ### What the Review Checks

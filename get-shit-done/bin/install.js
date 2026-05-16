@@ -155,7 +155,7 @@ if (process.platform === 'win32') {
 
   if (isWSL) {
     console.error(`
-${yellow}⚠ Detected WSL with Windows-native Node.js.${reset}
+${yellow}WARNING: Detected WSL with Windows-native Node.js.${reset}
 
 This causes path resolution issues that prevent correct installation.
 Please install a Linux-native Node.js inside WSL:
@@ -828,7 +828,7 @@ function resolveKiloConfigPath(configDir) {
 }
 
 /**
- * Strip JSONC comments (// and /* *​/) from a string to produce valid JSON.
+ * Strip JSONC comments (// and /* */) from a string to produce valid JSON.
  * Handles comments inside strings correctly (does not strip them).
  */
 function stripJsonComments(text) {
@@ -898,7 +898,7 @@ function readSettings(settingsPath) {
       }
     } catch (e) {
       // If even JSONC stripping fails, warn instead of silently returning {}
-      console.warn('  ' + yellow + '⚠' + reset + '  Warning: Could not parse ' + settingsPath + ' — file may be malformed. Existing settings preserved.');
+      console.warn('  ' + yellow + 'WARNING:' + reset + '  Warning: Could not parse ' + settingsPath + ' — file may be malformed. Existing settings preserved.');
       return null;
     }
   }
@@ -5188,7 +5188,7 @@ function convertClaudeToGeminiToml(content) {
  * Copy commands to a flat structure for OpenCode
  * OpenCode expects: command/gsd-help.md (invoked as /gsd-help)
  * Source structure: commands/gsd/help.md
- * 
+ *
  * @param {string} srcDir - Source directory (e.g., commands/gsd/)
  * @param {string} destDir - Destination directory (e.g., command/)
  * @param {string} prefix - Prefix for filenames (e.g., 'gsd')
@@ -6243,7 +6243,7 @@ function uninstall(isGlobal, runtime = 'claude') {
 
   // Check if target directory exists
   if (!fs.existsSync(targetDir)) {
-    console.log(`  ${yellow}⚠${reset} Directory does not exist: ${locationLabel}`);
+    console.log(`  ${yellow}WARNING:${reset} Directory does not exist: ${locationLabel}`);
     console.log(`  Nothing to uninstall.\n`);
     return;
   }
@@ -6760,7 +6760,7 @@ function uninstall(isGlobal, runtime = 'claude') {
   }
 
   if (removedCount === 0) {
-    console.log(`  ${yellow}⚠${reset} No GSD files found to remove.`);
+    console.log(`  ${yellow}WARNING:${reset} No GSD files found to remove.`);
   }
 
   console.log(`
@@ -6856,7 +6856,7 @@ function configureOpencodePermissions(isGlobal = true, configDir = null) {
     } catch (e) {
       // Cannot parse - DO NOT overwrite user's config
       const configFile = path.basename(configPath);
-      console.log(`  ${yellow}⚠${reset} Could not parse ${configFile} - skipping permission config`);
+      console.log(`  ${yellow}WARNING:${reset} Could not parse ${configFile} - skipping permission config`);
       console.log(`    ${dim}Reason: ${e.message}${reset}`);
       console.log(`    ${dim}Your config was NOT modified. Fix the syntax manually if needed.${reset}`);
       return;
@@ -6936,7 +6936,7 @@ function configureKiloPermissions(isGlobal = true, configDir = null) {
     } catch (e) {
       // Cannot parse - DO NOT overwrite user's config
       const configFile = path.basename(configPath);
-      console.log(`  ${yellow}⚠${reset} Could not parse ${configFile} - skipping permission config`);
+      console.log(`  ${yellow}WARNING:${reset} Could not parse ${configFile} - skipping permission config`);
       console.log(`    ${dim}Reason: ${e.message}${reset}`);
       console.log(`    ${dim}Your config was NOT modified. Fix the syntax manually if needed.${reset}`);
       return;
@@ -7856,7 +7856,7 @@ function install(isGlobal, runtime = 'claude') {
 
     if (userScopeHasGsd) {
       console.log(
-        `  ${yellow}⚠${reset}  Skipping commands/gsd/ for local install — GSD is already installed at user scope (${homeGeminiGsd}).`
+        `  ${yellow}WARNING:${reset}  Skipping commands/gsd/ for local install — GSD is already installed at user scope (${homeGeminiGsd}).`
       );
       console.log(
         `      Gemini conflict-detects across scopes and would rename every /gsd:* command to /workspace.gsd:* and /user.gsd:*.`
@@ -8156,7 +8156,7 @@ function install(isGlobal, runtime = 'claude') {
         const expectedShHooks = ['gsd-session-state.sh', 'gsd-validate-commit.sh', 'gsd-phase-boundary.sh'];
         for (const sh of expectedShHooks) {
           if (!fs.existsSync(path.join(hooksDest, sh))) {
-            console.warn(`  ${yellow}⚠${reset}  Missing expected hook: ${sh}`);
+            console.warn(`  ${yellow}WARNING:${reset}  Missing expected hook: ${sh}`);
           }
         }
       } else {
@@ -8220,7 +8220,7 @@ function install(isGlobal, runtime = 'claude') {
     scanForLeakedPaths(targetDir);
     if (leakedPaths.length > 0) {
       const totalLeaks = leakedPaths.reduce((sum, l) => sum + l.count, 0);
-      console.warn(`\n  ${yellow}⚠${reset}  Found ${totalLeaks} unreplaced .claude path reference(s) in ${leakedPaths.length} file(s):`);
+      console.warn(`\n  ${yellow}WARNING:${reset}  Found ${totalLeaks} unreplaced .claude path reference(s) in ${leakedPaths.length} file(s):`);
       for (const leak of leakedPaths.slice(0, 5)) {
         console.warn(`     ${dim}${leak.file}${reset} (${leak.count})`);
       }
@@ -8488,7 +8488,7 @@ function install(isGlobal, runtime = 'claude') {
             // resolveNodeRunner() returned null — process.execPath unavailable.
             // Match the settings.json branch's warn-and-skip behavior rather
             // than emit a broken bare-node hook (the #2979 / #3017 failure mode).
-            console.warn(`  ${yellow}⚠${reset}  Skipping Codex SessionStart hook registration — Node executable path unavailable (process.execPath is empty). See #2979 / #3002 / #3017.`);
+            console.warn(`  ${yellow}WARNING:${reset}  Skipping Codex SessionStart hook registration — Node executable path unavailable (process.execPath is empty). See #2979 / #3002 / #3017.`);
           }
         }
       }
@@ -8675,7 +8675,7 @@ function install(isGlobal, runtime = 'claude') {
     || !readGuardCommand
     || !readInjectionScannerCommand;
   if (anyJsHookCommandNull) {
-    console.warn(`  ${yellow}⚠${reset}  Skipping managed JS hook registration — Node executable path unavailable (process.execPath is empty). See #2979 / #3002.`);
+    console.warn(`  ${yellow}WARNING:${reset}  Skipping managed JS hook registration — Node executable path unavailable (process.execPath is empty). See #2979 / #3002.`);
   }
 
   // Enable experimental agents for Gemini CLI (required for custom sub-agents)
@@ -8718,7 +8718,7 @@ function install(isGlobal, runtime = 'claude') {
       });
       console.log(`  ${green}✓${reset} Configured update check hook`);
     } else if (!hasGsdUpdateHook && !fs.existsSync(checkUpdateFile)) {
-      console.warn(`  ${yellow}⚠${reset}  Skipped update check hook — gsd-check-update.js not found at target`);
+      console.warn(`  ${yellow}WARNING:${reset}  Skipped update check hook — gsd-check-update.js not found at target`);
     }
 
     // Configure post-tool hook for context window monitoring
@@ -8744,7 +8744,7 @@ function install(isGlobal, runtime = 'claude') {
       });
       console.log(`  ${green}✓${reset} Configured context window monitor hook`);
     } else if (!hasContextMonitorHook && !fs.existsSync(contextMonitorFile)) {
-      console.warn(`  ${yellow}⚠${reset}  Skipped context monitor hook — gsd-context-monitor.js not found at target`);
+      console.warn(`  ${yellow}WARNING:${reset}  Skipped context monitor hook — gsd-context-monitor.js not found at target`);
     } else {
       // Migrate existing context monitor hooks: add matcher and timeout if missing
       for (const entry of settings.hooks[postToolEvent]) {
@@ -8792,7 +8792,7 @@ function install(isGlobal, runtime = 'claude') {
       });
       console.log(`  ${green}✓${reset} Configured prompt injection guard hook`);
     } else if (!hasPromptGuardHook && !fs.existsSync(promptGuardFile)) {
-      console.warn(`  ${yellow}⚠${reset}  Skipped prompt guard hook — gsd-prompt-guard.js not found at target`);
+      console.warn(`  ${yellow}WARNING:${reset}  Skipped prompt guard hook — gsd-prompt-guard.js not found at target`);
     }
 
     // Configure PreToolUse hook for read-before-edit guidance (#1628)
@@ -8816,7 +8816,7 @@ function install(isGlobal, runtime = 'claude') {
       });
       console.log(`  ${green}✓${reset} Configured read-before-edit guard hook`);
     } else if (!hasReadGuardHook && !fs.existsSync(readGuardFile)) {
-      console.warn(`  ${yellow}⚠${reset}  Skipped read guard hook — gsd-read-guard.js not found at target`);
+      console.warn(`  ${yellow}WARNING:${reset}  Skipped read guard hook — gsd-read-guard.js not found at target`);
     }
 
     // Configure PostToolUse hook for read-time prompt injection scanning (#2201)
@@ -8840,7 +8840,7 @@ function install(isGlobal, runtime = 'claude') {
       });
       console.log(`  ${green}✓${reset} Configured read injection scanner hook`);
     } else if (!hasReadInjectionScannerHook && !fs.existsSync(readInjectionScannerFile)) {
-      console.warn(`  ${yellow}⚠${reset}  Skipped read injection scanner hook — gsd-read-injection-scanner.js not found at target`);
+      console.warn(`  ${yellow}WARNING:${reset}  Skipped read injection scanner hook — gsd-read-injection-scanner.js not found at target`);
     }
 
     // Community hooks — registered on install but opt-in at runtime.
@@ -8872,7 +8872,7 @@ function install(isGlobal, runtime = 'claude') {
       });
       console.log(`  ${green}✓${reset} Configured workflow guard hook (opt-in via hooks.workflow_guard)`);
     } else if (!hasWorkflowGuardHook && !fs.existsSync(workflowGuardFile)) {
-      console.warn(`  ${yellow}⚠${reset}  Skipped workflow guard hook — gsd-workflow-guard.js not found at target`);
+      console.warn(`  ${yellow}WARNING:${reset}  Skipped workflow guard hook — gsd-workflow-guard.js not found at target`);
     }
 
     // Configure commit validation hook (Conventional Commits enforcement, opt-in)
@@ -8899,7 +8899,7 @@ function install(isGlobal, runtime = 'claude') {
       });
       console.log(`  ${green}✓${reset} Configured commit validation hook (opt-in via config)`);
     } else if (!hasValidateCommitHook && !fs.existsSync(validateCommitFile)) {
-      console.warn(`  ${yellow}⚠${reset}  Skipped commit validation hook — gsd-validate-commit.sh not found at target`);
+      console.warn(`  ${yellow}WARNING:${reset}  Skipped commit validation hook — gsd-validate-commit.sh not found at target`);
     }
 
     // Configure session state orientation hook (opt-in)
@@ -8921,7 +8921,7 @@ function install(isGlobal, runtime = 'claude') {
       });
       console.log(`  ${green}✓${reset} Configured session state orientation hook (opt-in via config)`);
     } else if (!hasSessionStateHook && !fs.existsSync(sessionStateFile)) {
-      console.warn(`  ${yellow}⚠${reset}  Skipped session state hook — gsd-session-state.sh not found at target`);
+      console.warn(`  ${yellow}WARNING:${reset}  Skipped session state hook — gsd-session-state.sh not found at target`);
     }
 
     // Configure phase boundary detection hook (opt-in)
@@ -8945,7 +8945,7 @@ function install(isGlobal, runtime = 'claude') {
       });
       console.log(`  ${green}✓${reset} Configured phase boundary detection hook (opt-in via config)`);
     } else if (!hasPhaseBoundaryHook && !fs.existsSync(phaseBoundaryFile)) {
-      console.warn(`  ${yellow}⚠${reset}  Skipped phase boundary hook — gsd-phase-boundary.sh not found at target`);
+      console.warn(`  ${yellow}WARNING:${reset}  Skipped phase boundary hook — gsd-phase-boundary.sh not found at target`);
     }
   }
 
@@ -8988,12 +8988,12 @@ function finishInstall(settingsPath, settings, statuslineCommand, shouldInstallS
       // profile-level settings.json in Claude Code, so writing here would silently clobber
       // any profile-level statusLine the user has configured (#2248).
       // Pass --force-statusline to override this guard.
-      console.log(`  ${yellow}⚠${reset} Skipping statusLine for local install (avoids overriding profile-level settings; use --force-statusline to override)`);
+      console.log(`  ${yellow}WARNING:${reset} Skipping statusLine for local install (avoids overriding profile-level settings; use --force-statusline to override)`);
     } else if (!statuslineCommand) {
       // #3002 CR: don't write { type: 'command', command: null } — the
       // runtime's settings schema rejects null commands and the failure
       // surfaces as a confusing parse error rather than a usable diagnostic.
-      console.warn(`  ${yellow}⚠${reset}  Skipped statusline registration — Node executable path unavailable (process.execPath is empty). See #2979 / #3002.`);
+      console.warn(`  ${yellow}WARNING:${reset}  Skipped statusline registration — Node executable path unavailable (process.execPath is empty). See #2979 / #3002.`);
     } else {
       settings.statusLine = {
         type: 'command',
@@ -9010,7 +9010,7 @@ function finishInstall(settingsPath, settings, statuslineCommand, shouldInstallS
   const { shouldInstallBanner, bannerCommand } = bannerOpts;
   if (shouldInstallBanner && settings && !isOpencode && !isKilo && !isCodex && !isCopilot && !isCursor && !isWindsurf && !isTrae && !isCline) {
     if (!bannerCommand) {
-      console.warn(`  ${yellow}⚠${reset}  Skipped update banner registration — Node executable path unavailable. See #2979 / #3002.`);
+      console.warn(`  ${yellow}WARNING:${reset}  Skipped update banner registration — Node executable path unavailable. See #2979 / #3002.`);
     } else {
       if (!settings.hooks) settings.hooks = {};
       if (!settings.hooks.SessionStart) settings.hooks.SessionStart = [];
@@ -9022,7 +9022,7 @@ function finishInstall(settingsPath, settings, statuslineCommand, shouldInstallS
       if (alreadyRegistered) {
         // Idempotent re-install: don't double-register.
       } else if (!bannerInstalled) {
-        console.warn(`  ${yellow}⚠${reset}  Skipped update banner — gsd-update-banner.js not found at target`);
+        console.warn(`  ${yellow}WARNING:${reset}  Skipped update banner — gsd-update-banner.js not found at target`);
       } else {
         const entry = buildUpdateBannerHookEntry(bannerCommand);
         if (entry) {
@@ -9071,7 +9071,7 @@ function finishInstall(settingsPath, settings, statuslineCommand, shouldInstallS
         console.log(`  ${green}✓${reset} Set resolve_model_ids: "omit" in ~/.gsd/defaults.json`);
       }
     } catch (e) {
-      console.log(`  ${yellow}⚠${reset} Could not write ~/.gsd/defaults.json: ${e.message}`);
+      console.log(`  ${yellow}WARNING:${reset} Could not write ~/.gsd/defaults.json: ${e.message}`);
     }
   }
 
@@ -9142,7 +9142,7 @@ function handleStatusline(settings, isInteractive, callback) {
   }
 
   if (!isInteractive) {
-    console.log(`  ${yellow}⚠${reset} Skipping statusline (already configured)`);
+    console.log(`  ${yellow}WARNING:${reset} Skipping statusline (already configured)`);
     console.log(`    Use ${cyan}--force-statusline${reset} to replace\n`);
     callback(false);
     return;
@@ -9156,7 +9156,7 @@ function handleStatusline(settings, isInteractive, callback) {
   });
 
   console.log(`
-  ${yellow}⚠${reset} Existing statusline detected\n
+  ${yellow}WARNING:${reset} Existing statusline detected\n
   Your current statusline:
     ${dim}command: ${existingCmd}${reset}
 
@@ -9539,12 +9539,12 @@ function maybeSuggestPathExport(globalBin, homeDir) {
   if (onPath) return;
 
   if (homePathCoveredByRc(globalBin, homeDir)) {
-    console.log(`  ${yellow}⚠${reset} ${bold}gsd-sdk${reset}'s directory is already on your PATH via an rc file entry — try reopening your shell (or ${cyan}source ~/.zshrc${reset}).`);
+    console.log(`  ${yellow}WARNING:${reset} ${bold}gsd-sdk${reset}'s directory is already on your PATH via an rc file entry — try reopening your shell (or ${cyan}source ~/.zshrc${reset}).`);
     return;
   }
 
   console.log('');
-  console.log(`  ${yellow}⚠${reset} ${bold}${globalBin}${reset} is not on your PATH.`);
+  console.log(`  ${yellow}WARNING:${reset} ${bold}${globalBin}${reset} is not on your PATH.`);
   console.log(`    Add it with one of:`);
   console.log(`      ${cyan}echo 'export PATH="${globalBin}:$PATH"' >> ~/.zshrc${reset}`);
   console.log(`      ${cyan}echo 'export PATH="${globalBin}:$PATH"' >> ~/.bashrc${reset}`);
@@ -9736,7 +9736,7 @@ function installSdkIfNeeded(opts) {
   // case like a global install (fail fast with an actionable diagnostic)
   // instead of silently skipping.
   if (opts.isLocal && !opts.forceSdk && !fs.existsSync(sdkCliPath)) {
-    console.warn(`\n  ${yellow}⚠${reset}  Skipping SDK check for local install — sdk/dist/cli.js not found at ${sdkCliPath}.`);
+    console.warn(`\n  ${yellow}WARNING:${reset}  Skipping SDK check for local install — sdk/dist/cli.js not found at ${sdkCliPath}.`);
     return;
   }
 
@@ -9792,7 +9792,7 @@ function installSdkIfNeeded(opts) {
       shimDir = path.dirname(linked);
       onPath = isGsdSdkOnPath(persistentPath);
       if (onPath) {
-        console.log(`  ${dim}↪ linked gsd-sdk → ${linked}${reset}`);
+        console.log(`  ${dim} linked gsd-sdk → ${linked}${reset}`);
       }
     }
   }
@@ -9844,7 +9844,7 @@ function installSdkIfNeeded(opts) {
       runDir: __dirname,
     });
     console.log('');
-    console.log(`  ${yellow}⚠${reset} GSD SDK files are present but ${bold}gsd-sdk${reset} is not on your PATH.`);
+    console.log(`  ${yellow}WARNING:${reset} GSD SDK files are present but ${bold}gsd-sdk${reset} is not on your PATH.`);
     console.log(`    Workflows that call ${cyan}gsd-sdk query …${reset} will fail with "command not found".`);
     if (ir.shimLocationLine) console.log(`    ${ir.shimLocationLine}`);
     for (const line of ir.actionLines) console.log(`    ${line}`);

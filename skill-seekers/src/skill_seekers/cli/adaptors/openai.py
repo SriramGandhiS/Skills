@@ -185,7 +185,7 @@ Always prioritize accuracy by consulting the attached documentation files before
         Args:
             package_path: Path to skill ZIP file
             api_key: OpenAI API key
-            **kwargs: Additional arguments (model, etc.)
+**kwargs: Additional arguments (model, etc.)
 
         Returns:
             Dictionary with upload result
@@ -345,7 +345,7 @@ Always prioritize accuracy by consulting the attached documentation files before
         try:
             from openai import OpenAI
         except ImportError:
-            print("❌ Error: openai package not installed")
+            print("FAIL: Error: openai package not installed")
             print("Install with: pip install openai")
             return False
 
@@ -354,11 +354,11 @@ Always prioritize accuracy by consulting the attached documentation files before
         skill_md_path = skill_dir / "SKILL.md"
 
         # Read reference files
-        print("📖 Reading reference documentation...")
+        print(" Reading reference documentation...")
         references = self._read_reference_files(references_dir)
 
         if not references:
-            print("❌ No reference files found to analyze")
+            print("FAIL: No reference files found to analyze")
             return False
 
         print(f"  ✓ Read {len(references)} reference files")
@@ -369,14 +369,14 @@ Always prioritize accuracy by consulting the attached documentation files before
         current_skill_md = None
         if skill_md_path.exists():
             current_skill_md = skill_md_path.read_text(encoding="utf-8")
-            print(f"  ℹ Found existing SKILL.md ({len(current_skill_md)} chars)")
+            print(f"   Found existing SKILL.md ({len(current_skill_md)} chars)")
         else:
-            print("  ℹ No existing SKILL.md, will create new one")
+            print("   No existing SKILL.md, will create new one")
 
         # Build enhancement prompt
         prompt = self._build_enhancement_prompt(skill_dir.name, references, current_skill_md)
 
-        print("\n🤖 Asking GPT-4o to enhance SKILL.md...")
+        print("\n Asking GPT-4o to enhance SKILL.md...")
         print(f"   Input: {len(prompt):,} characters")
 
         try:
@@ -402,16 +402,16 @@ Always prioritize accuracy by consulting the attached documentation files before
             if skill_md_path.exists():
                 backup_path = skill_md_path.with_suffix(".md.backup")
                 skill_md_path.rename(backup_path)
-                print(f"  💾 Backed up original to: {backup_path.name}")
+                print(f"   Backed up original to: {backup_path.name}")
 
             # Save enhanced version
             skill_md_path.write_text(enhanced_content, encoding="utf-8")
-            print("  ✅ Saved enhanced SKILL.md")
+            print("  PASS: Saved enhanced SKILL.md")
 
             return True
 
         except Exception as e:
-            print(f"❌ Error calling OpenAI API: {e}")
+            print(f"FAIL: Error calling OpenAI API: {e}")
             return False
 
     def _read_reference_files(
@@ -448,7 +448,7 @@ Always prioritize accuracy by consulting the attached documentation files before
                 total_chars += len(content)
 
             except Exception as e:
-                print(f"  ⚠️  Could not read {ref_file.name}: {e}")
+                print(f"  WARNING:  Could not read {ref_file.name}: {e}")
 
         return references
 

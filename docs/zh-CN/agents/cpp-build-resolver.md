@@ -45,10 +45,10 @@ cppcheck --enable=all src/ 2>/dev/null || echo "cppcheck not available"
 | `undefined reference to X` | 缺少实现或库 | 添加源文件或链接库 |
 | `no matching function for call` | 参数类型错误 | 修正类型或添加重载 |
 | `expected ';'` | 语法错误 | 修正语法 |
-| `use of undeclared identifier` | 缺少包含或拼写错误 | 添加 `#include` 或修正名称 |
-| `multiple definition of` | 符号重复 | 使用 `inline`，移到 .cpp 文件，或添加包含守卫 |
+| `use of undeclared identifier`| 缺少包含或拼写错误 | 添加`#include` 或修正名称 |
+| `multiple definition of`| 符号重复 | 使用`inline`，移到 .cpp 文件，或添加包含守卫 |
 | `cannot convert X to Y` | 类型不匹配 | 添加类型转换或修正类型 |
-| `incomplete type` | 在需要完整类型的地方使用了前向声明 | 添加 `#include` |
+| `incomplete type`| 在需要完整类型的地方使用了前向声明 | 添加`#include` |
 | `template argument deduction failed` | 模板参数错误 | 修正模板参数 |
 | `no member named X in Y` | 拼写错误或错误的类 | 修正成员名称 |
 | `CMake Error` | 配置问题 | 修复 CMakeLists.txt |

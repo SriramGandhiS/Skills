@@ -10,11 +10,11 @@
 | `.env.example` | 环境变量文档 |
 | `openapi.yaml` / 路由文件 | API 端点参考 |
 | 源代码导出 | 公共 API 文档 |
-| `Dockerfile` / `docker-compose.yml` | 基础设施设置文档 |
+| `Dockerfile`/`docker-compose.yml` | 基础设施设置文档 |
 
 ## 步骤 2：生成脚本参考
 
-1. 读取 `package.json` (或 `Makefile`, `Cargo.toml`, `pyproject.toml`)
+1. 读取 `package.json`(或`Makefile`,`Cargo.toml`,`pyproject.toml`)
 2. 提取所有脚本/命令及其描述
 3. 生成参考表格：
 
@@ -28,7 +28,7 @@
 
 ## 步骤 3：生成环境文档
 
-1. 读取 `.env.example` (或 `.env.template`, `.env.sample`)
+1. 读取 `.env.example`(或`.env.template`,`.env.sample`)
 2. 提取所有变量及其用途
 3. 按必需项与可选项分类
 4. 记录预期格式和有效值
@@ -36,8 +36,8 @@
 ```markdown
 | 变量 | 必需 | 描述 | 示例 |
 |----------|----------|-------------|---------|
-| `DATABASE_URL` | 是 | PostgreSQL 连接字符串 | `postgres://user:pass@host:5432/db` |
-| `LOG_LEVEL` | 否 | 日志详细程度（默认：info） | `debug`, `info`, `warn`, `error` |
+| `DATABASE_URL`| 是 | PostgreSQL 连接字符串 |`postgres://user:pass@host:5432/db` |
+| `LOG_LEVEL`| 否 | 日志详细程度（默认：info） |`debug`,`info`,`warn`,`error` |
 ```
 
 ## 步骤 4：更新贡献指南

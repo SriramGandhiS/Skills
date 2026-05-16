@@ -4,9 +4,9 @@
 # with drift detection and repo-wide audit for missed files.
 #
 # Usage:
-#   bump-version.sh <new-version>   Bump all declared files to new version
-#   bump-version.sh --check         Report current versions (detect drift)
-#   bump-version.sh --audit         Check + grep repo for old version strings
+# bump-version.sh <new-version>   Bump all declared files to new version
+# bump-version.sh --check         Report current versions (detect drift)
+# bump-version.sh --audit         Check + grep repo for old version strings
 #
 set -euo pipefail
 

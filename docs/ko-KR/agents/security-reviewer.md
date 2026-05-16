@@ -28,7 +28,7 @@ npx eslint . --plugin security
 ## 리뷰 워크플로우
 
 ### 1. 초기 스캔
-- `npm audit`, `eslint-plugin-security` 실행, 하드코딩된 시크릿 검색
+- `npm audit`,`eslint-plugin-security` 실행, 하드코딩된 시크릿 검색
 - 고위험 영역 검토: 인증, API 엔드포인트, DB 쿼리, 파일 업로드, 결제, 웹훅
 
 ### 2. OWASP Top 10 점검
@@ -51,7 +51,7 @@ npx eslint . --plugin security
 | 하드코딩된 시크릿 | CRITICAL | `process.env` 사용 |
 | 사용자 입력으로 셸 커맨드 | CRITICAL | 안전한 API 또는 execFile 사용 |
 | 문자열 연결 SQL | CRITICAL | 매개변수화된 쿼리 |
-| `innerHTML = userInput` | HIGH | `textContent` 또는 DOMPurify 사용 |
+| `innerHTML = userInput`| HIGH |`textContent` 또는 DOMPurify 사용 |
 | `fetch(userProvidedUrl)` | HIGH | 허용 도메인 화이트리스트 |
 | 평문 비밀번호 비교 | CRITICAL | `bcrypt.compare()` 사용 |
 | 라우트에 인증 검사 없음 | CRITICAL | 인증 미들웨어 추가 |

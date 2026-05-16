@@ -157,7 +157,7 @@ Reasons:
 ### Phase 1: Scaffold (this branch, no behavior change)
 - Create `loki-ts/` directory parallel to `autonomy/`
 - `package.json` with Bun as engine, TypeScript config
-- Port ONE simple command: `loki ts-version` (proves the toolchain) 
+- Port ONE simple command: `loki ts-version` (proves the toolchain)
 - Add Bun to CI matrix (alongside existing Node/Python)
 - **No user-visible change.** All existing commands route to bash.
 

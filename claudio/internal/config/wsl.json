@@ -1,10 +1,10 @@
 {
-  "name": "windows-media-enhanced-soundpack",  
+  "name": "windows-media-enhanced-soundpack",
   "description": "Comprehensive Windows Media soundpack with full tool coverage and fallback chains",
   "version": "2.0.0",
   "mappings": {
     "loading/bash-start.wav": "/mnt/c/Windows/Media/Windows Navigation Start.wav",
-    "loading/edit-start.wav": "/mnt/c/Windows/Media/dm/Windows Hardware Insert.wav", 
+    "loading/edit-start.wav": "/mnt/c/Windows/Media/dm/Windows Hardware Insert.wav",
     "loading/read-start.wav": "/mnt/c/Windows/Media/dm/Windows Foreground.wav",
     "loading/write-start.wav": "/mnt/c/Windows/Media/dm/Windows Hardware Insert.wav",
     "loading/todowrite-start.wav": "/mnt/c/Windows/Media/recycle.wav",
@@ -36,7 +36,7 @@
     "completion/stop.wav": "/mnt/c/Windows/Media/Windows Minimize.wav",
 
     "success/bash-success.wav": "/mnt/c/Windows/Media/Windows Print complete.wav",
-    "success/edit-success.wav": "/mnt/c/Windows/Media/Windows Print complete.wav", 
+    "success/edit-success.wav": "/mnt/c/Windows/Media/Windows Print complete.wav",
     "success/read-success.wav": "/mnt/c/Windows/Media/dm/Windows Notify System Generic.wav",
     "success/write-success.wav": "/mnt/c/Windows/Media/Windows Print complete.wav",
     "success/todowrite-success.wav": "/mnt/c/Windows/Media/notify.wav",
@@ -74,7 +74,7 @@
 
     "error/bash-error.wav": "/mnt/c/Windows/Media/Windows Critical Stop.wav",
     "error/edit-error.wav": "/mnt/c/Windows/Media/dm/Windows Hardware Fail.wav",
-    "error/read-error.wav": "/mnt/c/Windows/Media/Windows Balloon.wav", 
+    "error/read-error.wav": "/mnt/c/Windows/Media/Windows Balloon.wav",
     "error/write-error.wav": "/mnt/c/Windows/Media/dm/Windows Hardware Fail.wav",
     "error/todowrite-error.wav": "/mnt/c/Windows/Media/Speech Misrecognition.wav",
     "error/grep-error.wav": "/mnt/c/Windows/Media/Windows Error.wav",
@@ -91,7 +91,7 @@
     "error/task-error.wav": "/mnt/c/Windows/Media/Windows Critical Stop.wav",
     "error/failure.wav": "/mnt/c/Windows/Media/Windows Balloon.wav",
     "error/timeout.wav": "/mnt/c/Windows/Media/Windows Battery Critical.wav",
-    
+
     "interactive/message-sent.wav": "/mnt/c/Windows/Media/Windows Message Nudge.wav",
     "interactive/notification.wav": "/mnt/c/Windows/Media/dm/Windows User Account Control.wav",
     "interactive/prompt-submit.wav": "/mnt/c/Windows/Media/Windows Message Nudge.wav",
@@ -101,7 +101,7 @@
     "interactive/stop.wav": "/mnt/c/Windows/Media/Windows Shutdown.wav",
     "interactive/subagent-stop.wav": "/mnt/c/Windows/Media/Windows Logoff Sound.wav",
     "interactive/compact.wav": "/mnt/c/Windows/Media/Windows Recycle.wav",
-    
+
     "default.wav": "/mnt/c/Windows/Media/Windows Default.wav"
   }
 }

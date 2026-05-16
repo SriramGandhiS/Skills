@@ -1,4 +1,4 @@
-﻿---
+---
 name: stitch-design-taste
 description: Semantic Design System Skill for Google Stitch. Generates agent-friendly DESIGN.md files that enforce premium, anti-generic UI standards â€” strict typography, calibrated color, asymmetric layouts, perpetual micro-motion, and hardware-accelerated performance.
 ---
@@ -47,9 +47,9 @@ For each color provide: **Descriptive Name** + **Hex Code** + **Functional Role*
 ### 3. Establish Typography Rules
 - **Display/Headlines:** Track-tight, controlled scale. Not screaming. Hierarchy through weight and color, not just massive size
 - **Body:** Relaxed leading, max 65 characters per line
-- **Font Selection:** `Inter` is BANNED for premium/creative contexts. Force unique character: `Geist`, `Outfit`, `Cabinet Grotesk`, or `Satoshi`
-- **Serif Ban:** Generic serif fonts (`Times New Roman`, `Georgia`, `Garamond`, `Palatino`) are BANNED. If serif is needed for editorial/creative contexts, use only distinctive modern serifs: `Fraunces`, `Gambarino`, `Editorial New`, or `Instrument Serif`. Serif is always BANNED in dashboards or software UIs
-- **Dashboard Constraint:** Use Sans-Serif pairings exclusively (`Geist` + `Geist Mono` or `Satoshi` + `JetBrains Mono`)
+- **Font Selection:** `Inter`is BANNED for premium/creative contexts. Force unique character:`Geist`,`Outfit`,`Cabinet Grotesk`, or`Satoshi`
+- **Serif Ban:** Generic serif fonts (`Times New Roman`,`Georgia`,`Garamond`,`Palatino`) are BANNED. If serif is needed for editorial/creative contexts, use only distinctive modern serifs:`Fraunces`,`Gambarino`,`Editorial New`, or`Instrument Serif`. Serif is always BANNED in dashboards or software UIs
+- **Dashboard Constraint:** Use Sans-Serif pairings exclusively (`Geist`+`Geist Mono`or`Satoshi`+`JetBrains Mono`)
 - **High-Density Override:** When density exceeds 7, all numbers must use Monospace
 
 ### 4. Define the Hero Section
@@ -75,13 +75,13 @@ For each component type, describe shape, color, shadow depth, and interaction be
 - The generic "3 equal cards horizontally" feature row is BANNED â€” use 2-column Zig-Zag, asymmetric grid, or horizontal scroll
 - CSS Grid over Flexbox math â€” never use `calc()` percentage hacks
 - Contain layouts using max-width constraints (e.g., 1400px centered)
-- Full-height sections must use `min-h-[100dvh]` â€” never `h-screen` (iOS Safari catastrophic jump)
+- Full-height sections must use `min-h-[100dvh]`â€” never`h-screen` (iOS Safari catastrophic jump)
 
 ### 7. Define Responsive Rules
 Every design must work across all viewports:
 - **Mobile-First Collapse (< 768px):** All multi-column layouts collapse to single column. No exceptions
 - **No Horizontal Scroll:** Horizontal overflow on mobile is a critical failure
-- **Typography Scaling:** Headlines scale via `clamp()`. Body text minimum `1rem`/`14px`
+- **Typography Scaling:** Headlines scale via `clamp()`. Body text minimum`1rem`/`14px`
 - **Touch Targets:** All interactive elements minimum `44px` tap target
 - **Image Behavior:** Inline typography images (photos between words) stack below headline on mobile
 - **Navigation:** Desktop horizontal nav collapses to clean mobile menu
@@ -91,13 +91,13 @@ Every design must work across all viewports:
 - **Spring Physics default:** `stiffness: 100, damping: 20` â€” premium, weighty feel. No linear easing
 - **Perpetual Micro-Interactions:** Every active component should have an infinite loop state (Pulse, Typewriter, Float, Shimmer)
 - **Staggered Orchestration:** Never mount lists instantly â€” use cascade delays for waterfall reveals
-- **Performance:** Animate exclusively via `transform` and `opacity`. Never animate `top`, `left`, `width`, `height`. Grain/noise filters on fixed pseudo-elements only
+- **Performance:** Animate exclusively via `transform`and`opacity`. Never animate`top`,`left`,`width`,`height`. Grain/noise filters on fixed pseudo-elements only
 
 ### 9. List Anti-Patterns (AI Tells)
 Encode these as explicit "NEVER DO" rules in the DESIGN.md:
 - No emojis anywhere
 - No `Inter` font
-- No generic serif fonts (`Times New Roman`, `Georgia`, `Garamond`) â€” distinctive modern serifs only if needed
+- No generic serif fonts (`Times New Roman`,`Georgia`,`Garamond`) â€” distinctive modern serifs only if needed
 - No pure black (`#000000`)
 - No neon/outer glow shadows
 - No oversaturated accents
@@ -106,7 +106,7 @@ Encode these as explicit "NEVER DO" rules in the DESIGN.md:
 - No overlapping elements â€” clean spatial separation always
 - No 3-column equal card layouts
 - No generic names ("John Doe", "Acme", "Nexus")
-- No fake round numbers (`99.99%`, `50%`)
+- No fake round numbers (`99.99%`,`50%`)
 - No AI copywriting clichÃ©s ("Elevate", "Seamless", "Unleash", "Next-Gen")
 - No filler UI text: "Scroll to explore", "Swipe down", scroll arrows, bouncing chevrons
 - No broken Unsplash links â€” use `picsum.photos` or SVG avatars
@@ -115,7 +115,7 @@ Encode these as explicit "NEVER DO" rules in the DESIGN.md:
 ## Output Format (DESIGN.md Structure)
 
 ```markdown
-# Design System: [Project Title]
+## Design System: [Project Title]
 
 ## 1. Visual Theme & Atmosphere
 (Evocative description of the mood, density, variance, and motion intensity.

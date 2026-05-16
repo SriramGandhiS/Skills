@@ -1,6 +1,6 @@
-[🇰🇷 한국어 버전 →](./README_KR.md)
+[ 한국어 버전 →](./README_KR.md)
 
-# 🎨 Design Auditor — Claude Skill
+# Design Auditor — Claude Skill
 
 A Claude skill that audits designs against **19 professional design categories** — built for developers, non-designers, and anyone who wants expert design validation without needing to know the rules themselves.
 
@@ -18,8 +18,8 @@ Drop in a Figma link, paste your CSS, upload a screenshot, or share a wireframe 
 - A separate **Accessibility Score** (WCAG coverage across Cat 2, 6, 7, 15, 16)
 - A separate **Ethics Score** (dark patterns and manipulative design across Cat 18)
 - A separate **Usability Score** (Cat 19 — H1/H2/H3/H6/H7/H10, with Nielsen cross-reference for H4/H5/H8/H9)
-- A **🚫 Blocker tier** for legal/compliance violations (WCAG AA, GDPR, PECR) — separate from Critical issues
-- Issues ranked by severity (🚫 Blocker / 🔴 Critical / 🟡 Warning / 🟢 Tip)
+- A ** Blocker tier** for legal/compliance violations (WCAG AA, GDPR, PECR) — separate from Critical issues
+- Issues ranked by severity ( Blocker /  Critical /  Warning /  Tip)
 - **Color blindness context** — every failing color pair annotated with the affected blindness type
 - **SVG accessibility checks** — decorative vs. meaningful SVG patterns, aria-hidden, role="img"
 - **Design System detection** — MUI, Chakra, shadcn/ui, Ant Design, Radix, Bootstrap (system-specific fixes)
@@ -112,30 +112,30 @@ Once installed, just talk to Claude naturally:
 ## Example Output
 
 ```
-## 🔍 Design Audit Report
+## Design Audit Report
 
 **Input:** Checkout flow · 3 frames
 **Type:** Figma MCP
-**Confidence:** 🟢 High
+**Confidence:**  High
 **Component health:** 71% coverage · 2 detached instances · 8 unnamed layers
 **Code Connect:** 8 components mapped · 3 unmapped
 
 ### Overall Score: 62/100
-100 − (1 × 🚫 12) − (2 × 🔴 8) − (4 × 🟡 4) − (2 × 🟢 1) = 62/100
+100 − (1 ×  12) − (2 ×  8) − (4 ×  4) − (2 ×  1) = 62/100
 A legal compliance failure and contrast issues are the main drag.
 
-### Accessibility Score: 55/100 — significant gaps ⚠️ Contains legal compliance failures
+### Accessibility Score: 55/100 — significant gaps WARNING: Contains legal compliance failures
 ### Ethics Score: 85/100 — minor concerns
 
-### 🚫 Blockers (−12pts each)
+### Blockers (−12pts each)
 - **Text contrast failure** — #aaa on white = 2.3:1 → Fix: use #595959 (7:1)
   Legal basis: WCAG 2.1 SC 1.4.3
 
-### 🔴 Critical Issues (−8pts each)
+### Critical Issues (−8pts each)
 - **Missing form labels** — placeholder-only inputs lose label on type
   → Fix: add <label> above each input.
 
-### 🟡 Warnings (−4pts each)
+### Warnings (−4pts each)
 - **Off-grid spacing** — padding: 13px → Fix: use 12px or 16px
 - **CTA hierarchy inversion** — "Accept all" primary, "Reject all" grey text
   → Fix: equivalent visual weight (GDPR requirement)
@@ -175,7 +175,7 @@ design-auditor/
 **Behavioural patterns from nudges.fyi, bug fixes, and visual report improvements.**
 
 **New: 5 behavioural pattern additions**
-- **Overchoice Paradox → Cat 4** — 4+ equal-weight sibling actions with no primary → 🟡; 6+ → 🔴. Exempt: lists, nav menus, data tables
+- **Overchoice Paradox → Cat 4** — 4+ equal-weight sibling actions with no primary → ; 6+ → . Exempt: lists, nav menus, data tables
 - **Peak-End Rule → Cat 11** — audits success/completion screens for memorability: named action, next step, positive visual signal, auto-redirect timing
 - **Goal Gradient Theory → Cat 11** — detects multi-step flows with no progress bar, static fill bars, missing step totals, and `aria-valuenow` gaps
 - **Decoy Pricing → Cat 18 Group A** — 3-column pricing with one tier strictly dominated on every axis
@@ -185,7 +185,7 @@ design-auditor/
 - Cat 18 pattern count updated: 20 → 22 (both READMEs)
 - Cat 6 SVG `<use>`: added `xlink:href` legacy check alongside `href`
 - Cat 19 H1 "Multi-step progress" cross-references new Cat 11 Goal Gradient checks to avoid double-flagging
-- Scores panel: Ethics Score formula caveat added — `🔴 −15 · 🟡 −7 · 🟢 0`, distinct from standard formula
+- Scores panel: Ethics Score formula caveat added — ` −15 ·  −7 ·  0`, distinct from standard formula
 - `heuristics.md` separator in skill structure: `-` → `—`
 - README Cat 11 row updated to mention Peak-End Rule and Goal Gradient
 
@@ -193,7 +193,7 @@ design-auditor/
 - Radar chart: binary purple/red → three-colour scale — purple (8–10) · amber (6–7) · red (≤ 5)
 - Radar chart: fallback to Score by Category table when Visualizer unavailable (EN + KR)
 - Issue Priority Matrix: Korean axis labels added — `수정 난이도` (x) · `개선 효과` (y)
-- Score by Category table: score band footnote — `≥ 8 ✅ · 5–7 🟡 · ≤ 4 🔴` (EN + KR)
+- Score by Category table: score band footnote — `≥ 8 PASS: · 5–7  · ≤ 4 ` (EN + KR)
 - Re-audit delta: before/after bar pair rendered via Visualizer with colour-coded delta badge
 - Teach Me mode: 3-card Visualizer layout after lessons, each card clickable via `sendPrompt()`
 
@@ -203,7 +203,7 @@ design-auditor/
 
 **Code parity, design system detection, accessibility improvements, and bug fixes.**
 
-- **Code superpowers** — added `📋 Code input:` blocks to Cat 4 (Visual Hierarchy), Cat 5 (Consistency), Cat 11 (States), Cat 12 (Microcopy), Cat 14 (Elevation), Cat 15 (Iconography) — completing all 19 categories
+- **Code superpowers** — added ` Code input:` blocks to Cat 4 (Visual Hierarchy), Cat 5 (Consistency), Cat 11 (States), Cat 12 (Microcopy), Cat 14 (Elevation), Cat 15 (Iconography) — completing all 19 categories
 - **Design System detection** — auto-detects MUI, Chakra UI, shadcn/ui, Ant Design, Radix, Bootstrap; system-specific issue types and fix paths
 - **Color blindness context** — every failing color pair annotated with affected blindness type (Deuteranopia, Protanopia, Tritanopia)
 - **SVG accessibility** — decorative `aria-hidden`, meaningful `role="img"` + `<title>`, icon-button label checks across Cat 6 and Cat 15
@@ -212,7 +212,7 @@ design-auditor/
 - **Nielsen cross-reference** — H4/H5/H8/H9 mapped in scores panel to Cat 5/7/4/11–12
 - **"Teach Me" mode** — explains design principles behind top 3 issues (beginner + expert depth, full Korean)
 - **Scoring formula** — Blockers now explicit: `100 − (blockers × 12) − (criticals × 8) − (warnings × 4) − (tips × 1)`
-- **Dev Handoff Report** — added missing 🟢 Tips section; Korean translation included
+- **Dev Handoff Report** — added missing  Tips section; Korean translation included
 - **Output** — mini bar column in Score by Category table; Design System + Auto Layout rows in report header; Cat 9 `color-scheme` meta tag check
 - **Bug fixes** — category count "17" → "19" throughout; Cat 18/19 numbering corrected; `i19n.md` → `i18n.md`; Korean README category count corrected
 
@@ -224,13 +224,13 @@ design-auditor/
 
 **Dev Handoff Report restructured:**
 - `━━━` dividers between all sections for consistent visual separation
-- Blockers separated into their own section (`🚫 BLOCKERS — fix before any other work`) above Critical Fixes — previously grouped together
+- Blockers separated into their own section (` BLOCKERS — fix before any other work`) above Critical Fixes — previously grouped together
 - All four scores in the metadata table: Overall, A11y, Ethics, Usability (with conditional notes for Ethics and Usability)
 - Code Connect mapping table included in template
 - Consistent `━━━`-wrapped footer
 
 **Wireframe to Spec restructured:**
-- All 8 sections now have `━━━` dividers with emoji headers (📐 📏 🔤 🧩 ✍️ 🖱️ ♿ ❓)
+- All 8 sections now have `━━━` dividers with emoji headers (       )
 - Context notes moved into section headers directly after each `━━━` block, instead of scattered inline
 
 **Korean support added for both:**
@@ -260,7 +260,7 @@ Audited all changes made since v1.2.4 for missing Korean support and filled ever
 **`heuristics.md` Korean support added:**
 
 - **Korean terminology table** — 22 key UX terms with Korean equivalents (사용성 휴리스틱, 로딩 상태, 진행 표시기, 온보딩, 일괄 작업, etc.)
-- **Korean severity labels** — 🚫 차단 · 🔴 심각 · 🟡 경고 · 🟢 팁
+- **Korean severity labels** —  차단 ·  심각 ·  경고 ·  팁
 - **Korean heuristic note** — Standard report note translated
 - **Usability Score bands** — All four bands bilingual in the ref file
 - **Quick Reference Checklist** — All 19 checklist items translated (e.g. "비동기 작업 버튼에 로딩 상태 있음", "파괴적 작업에 확인 대화상자 있음")
@@ -293,26 +293,26 @@ The skill now recognises and audits from any URL type, not just Figma links.
 
 | URL Type | Confidence | How it's handled |
 |---|---|---|
-| Live website (`https://...`) | 🟡 Medium | `web_fetch`, login handling, multi-page offer |
-| Vercel / Netlify preview | 🟡 Medium | Same as live website |
-| GitHub file URL | 🟢 High | Converts to raw URL, full code audit |
-| GitHub repo URL | 🟡 Medium | Browses key files, scope selector widget |
-| CodeSandbox / StackBlitz | 🟡–🟢 | Source if accessible, preview fallback |
-| CodePen | 🟡 Medium | Debug URL fetch, source extraction |
-| Storybook | 🟡 Medium | Component/variant detection from URL path |
+| Live website (`https://...`) |  Medium | `web_fetch`, login handling, multi-page offer |
+| Vercel / Netlify preview |  Medium | Same as live website |
+| GitHub file URL |  High | Converts to raw URL, full code audit |
+| GitHub repo URL |  Medium | Browses key files, scope selector widget |
+| CodeSandbox / StackBlitz | – | Source if accessible, preview fallback |
+| CodePen |  Medium | Debug URL fetch, source extraction |
+| Storybook |  Medium | Component/variant detection from URL path |
 
 Each URL type has a dedicated spec: how to fetch, what confidence to set, what limitations to declare in the report header, how to handle login walls, and what to offer the user after the audit.
 
-GitHub file URLs get full 🟢 High confidence — raw source is treated identically to pasted code. All other URL types get 🟡 Medium with explicit limitation notes in the report header.
+GitHub file URLs get full  High confidence — raw source is treated identically to pasted code. All other URL types get  Medium with explicit limitation notes in the report header.
 
 **Agent compliance — mandatory output enforcement**
 
 Following reports of third-party agents (e.g. TRAE Solo) producing free-form UX reviews instead of scored reports, two mandatory enforcement notices were added:
 
-- `⚠️ OUTPUT FORMAT IS MANDATORY — DO NOT DEVIATE` at the top of Step 2
-- `⚠️ MANDATORY — ALL AGENTS — NO EXCEPTIONS` at the top of the Strict Output Template
+- `WARNING: OUTPUT FORMAT IS MANDATORY — DO NOT DEVIATE` at the top of Step 2
+- `WARNING: MANDATORY — ALL AGENTS — NO EXCEPTIONS` at the top of the Strict Output Template
 
-Both explicitly prohibit substituting a generic critique for the scored report. Skipping the score is never acceptable — agents must estimate and flag with 🟡 Medium confidence if uncertain.
+Both explicitly prohibit substituting a generic critique for the scored report. Skipping the score is never acceptable — agents must estimate and flag with  Medium confidence if uncertain.
 
 **Input widget updated** — "Live URL" and "GitHub URL" added as input type options alongside Figma, Screenshot, and Code.
 
@@ -357,14 +357,14 @@ Wireframe-specific trigger phrases added to YAML description. Stale version stam
 
 | Severity | Deduction | Basis |
 |---|---|---|
-| 🚫 Blocker | −12pts | Legal/compliance — WCAG AA, GDPR, PECR |
-| 🔴 Critical | −8pts | Usability failure |
-| 🟡 Warning | −4pts | Degrades experience |
-| 🟢 Tip | −1pt | Polish |
+|  Blocker | −12pts | Legal/compliance — WCAG AA, GDPR, PECR |
+|  Critical | −8pts | Usability failure |
+|  Warning | −4pts | Degrades experience |
+|  Tip | −1pt | Polish |
 
 Blocker examples: contrast below 4.5:1 (SC 1.4.3), keyboard-inaccessible element (SC 2.1.1), missing alt (SC 1.1.1), pre-checked marketing consent (GDPR), skip link missing (SC 2.4.1).
 
-Accessibility Score updated: Blockers use −12. Any Blocker appends "⚠️ Contains legal compliance failures".
+Accessibility Score updated: Blockers use −12. Any Blocker appends "WARNING: Contains legal compliance failures".
 
 **Trigger vocabulary expanded** — 15+ new phrases: "is this GDPR compliant", "check my onboarding", "review my checkout", "is this manipulative", "any dark patterns here", "is my form accessible", and more.
 
@@ -379,7 +379,7 @@ Accessibility Score updated: Blockers use −12. Any Blocker appends "⚠️ Con
 
 20 manipulative patterns across 5 groups: Deceptive Interface, Coercive Flows, Consent & Privacy, False Urgency & Scarcity, Emotional Manipulation.
 
-Ethics severity model: 🔴 Deceptive (−15pts) · 🟡 Questionable (−7pts) · 🟢 Noted (0pts). Ethics Score shown alongside Accessibility Score.
+Ethics severity model:  Deceptive (−15pts) ·  Questionable (−7pts) ·  Noted (0pts). Ethics Score shown alongside Accessibility Score.
 
 New `ethics.md` reference file — 877 lines with full pattern taxonomy, detection signals, and Ethical Persuasion reference.
 

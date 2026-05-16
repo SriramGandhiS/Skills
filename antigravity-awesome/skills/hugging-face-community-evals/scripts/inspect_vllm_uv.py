@@ -1,11 +1,11 @@
 # /// script
 # requires-python = ">=3.10"
 # dependencies = [
-#     "inspect-ai>=0.3.0",
-#     "inspect-evals",
-#     "vllm>=0.4.0",
-#     "torch>=2.0.0",
-#     "transformers>=4.40.0",
+# "inspect-ai>=0.3.0",
+# "inspect-evals",
+# "vllm>=0.4.0",
+# "torch>=2.0.0",
+# "transformers>=4.40.0",
 # ]
 # ///
 

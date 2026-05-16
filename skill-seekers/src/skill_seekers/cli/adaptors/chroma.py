@@ -60,7 +60,7 @@ class ChromaAdaptor(SkillAdaptor):
             skill_dir: Path to skill directory
             metadata: Skill metadata
             enable_chunking: Enable intelligent chunking for large documents
-            **kwargs: Additional chunking parameters (chunk_max_tokens, preserve_code_blocks)
+**kwargs: Additional chunking parameters (chunk_max_tokens, preserve_code_blocks)
 
         Returns:
             JSON string containing Chroma-compatible data
@@ -192,14 +192,14 @@ class ChromaAdaptor(SkillAdaptor):
         # Write to file
         output_path.write_text(chroma_json, encoding="utf-8")
 
-        print(f"\n✅ Chroma data packaged successfully!")
-        print(f"📦 Output: {output_path}")
+        print(f"\nPASS: Chroma data packaged successfully!")
+        print(f" Output: {output_path}")
 
         # Parse and show stats
         data = json.loads(chroma_json)
 
-        print(f"📊 Total documents: {len(data['documents'])}")
-        print(f"📂 Collection name: {data['collection_name']}")
+        print(f" Total documents: {len(data['documents'])}")
+        print(f" Collection name: {data['collection_name']}")
 
         # Show category breakdown
         categories = {}
@@ -207,7 +207,7 @@ class ChromaAdaptor(SkillAdaptor):
             cat = meta.get("category", "unknown")
             categories[cat] = categories.get(cat, 0) + 1
 
-        print("📁 Categories:")
+        print(" Categories:")
         for cat, count in sorted(categories.items()):
             print(f"   - {cat}: {count}")
 
@@ -220,7 +220,7 @@ class ChromaAdaptor(SkillAdaptor):
         Args:
             package_path: Path to packaged JSON
             api_key: Not used for Chroma (uses URL instead)
-            **kwargs:
+**kwargs:
                 chroma_url: ChromaDB URL (default: http://localhost:8000)
                 collection_name: Override collection name
                 distance_function: "cosine", "l2", or "ip" (default: "cosine")
@@ -250,11 +250,11 @@ class ChromaAdaptor(SkillAdaptor):
         try:
             if persist_directory:
                 # Local persistent storage
-                print(f"📁 Using persistent storage: {persist_directory}")
+                print(f" Using persistent storage: {persist_directory}")
                 client = chromadb.PersistentClient(path=persist_directory)
             elif chroma_url:
                 # Remote HTTP client
-                print(f"🌐 Connecting to ChromaDB at: {chroma_url}")
+                print(f" Connecting to ChromaDB at: {chroma_url}")
                 # Parse URL
                 if "://" in chroma_url:
                     _scheme, host_port = chroma_url.split("://", 1)
@@ -271,7 +271,7 @@ class ChromaAdaptor(SkillAdaptor):
                 client = chromadb.HttpClient(host=host, port=port)
             else:
                 # Default: local persistent client
-                print("📁 Using default persistent storage: ./chroma_db")
+                print(" Using default persistent storage: ./chroma_db")
                 client = chromadb.PersistentClient(path="./chroma_db")
 
         except Exception as e:
@@ -287,13 +287,13 @@ class ChromaAdaptor(SkillAdaptor):
         try:
             # Try to get existing collection
             collection = client.get_collection(name=collection_name)
-            print(f"ℹ️  Using existing collection: {collection_name}")
+            print(f"  Using existing collection: {collection_name}")
         except Exception:
             try:
                 # Create new collection
                 metadata = {"hnsw:space": distance_function}
                 collection = client.create_collection(name=collection_name, metadata=metadata)
-                print(f"✅ Created collection: {collection_name} (distance: {distance_function})")
+                print(f"PASS: Created collection: {collection_name} (distance: {distance_function})")
             except Exception as e:
                 return {
                     "success": False,
@@ -306,7 +306,7 @@ class ChromaAdaptor(SkillAdaptor):
         try:
             if embedding_function == "openai":
                 # Generate embeddings with OpenAI
-                print("🔄 Generating OpenAI embeddings...")
+                print(" Generating OpenAI embeddings...")
                 embeddings = self._generate_openai_embeddings(
                     data["documents"], api_key=kwargs.get("openai_api_key")
                 )
@@ -318,7 +318,7 @@ class ChromaAdaptor(SkillAdaptor):
                 )
             elif embedding_function == "sentence-transformers":
                 # Use sentence-transformers
-                print("🔄 Generating sentence-transformer embeddings...")
+                print(" Generating sentence-transformer embeddings...")
                 try:
                     from chromadb.utils import embedding_functions
 
@@ -337,14 +337,14 @@ class ChromaAdaptor(SkillAdaptor):
                     }
             else:
                 # No embeddings - Chroma will auto-generate
-                print("🔄 Using Chroma's default embedding function...")
+                print(" Using Chroma's default embedding function...")
                 collection.add(
                     documents=data["documents"], metadatas=data["metadatas"], ids=data["ids"]
                 )
 
             count = len(data["documents"])
-            print(f"✅ Uploaded {count} documents to ChromaDB")
-            print(f"📊 Collection '{collection_name}' now has {collection.count()} total documents")
+            print(f"PASS: Uploaded {count} documents to ChromaDB")
+            print(f" Collection '{collection_name}' now has {collection.count()} total documents")
 
             return {
                 "success": True,
@@ -401,7 +401,7 @@ class ChromaAdaptor(SkillAdaptor):
         Returns:
             False
         """
-        print("❌ Chroma format does not support enhancement")
+        print("FAIL: Chroma format does not support enhancement")
         print("   Enhance before packaging:")
         print("   skill-seekers enhance output/skill/ --mode LOCAL")
         print("   skill-seekers package output/skill/ --target chroma")

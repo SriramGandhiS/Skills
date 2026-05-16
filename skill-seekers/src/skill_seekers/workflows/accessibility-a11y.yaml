@@ -13,7 +13,7 @@ stages:
     enabled: true
     prompt: >
       Audit this codebase for accessibility (a11y) compliance.
-      
+
       Check for:
       1. Missing alt text on images
       2. Form inputs without labels
@@ -23,9 +23,9 @@ stages:
       6. Missing skip links
       7. Non-semantic HTML usage
       8. Interactive elements without keyboard support
-      
+
       Reference WCAG 2.1 AA guidelines.
-      
+
       Output JSON with:
       - "violations": array of issues found
       - "severity": critical/serious/moderate/minor
@@ -39,14 +39,14 @@ stages:
     enabled: true
     prompt: >
       Document proper ARIA usage patterns for this codebase.
-      
+
       For each component/pattern:
       1. Required ARIA attributes
       2. Roles and their purposes
       3. State management (aria-expanded, aria-selected, etc.)
       4. Live regions for dynamic content
       5. Common ARIA mistakes to avoid
-      
+
       Output JSON with:
       - "aria_patterns": array of patterns
       - "anti_patterns": common mistakes
@@ -59,14 +59,14 @@ stages:
     enabled: true
     prompt: >
       Document keyboard accessibility requirements.
-      
+
       Include:
       1. Tab order and focus management
       2. Keyboard shortcuts (and how to make them discoverable)
       3. Focus trapping for modals/dropdowns
       4. Escape key behavior
       5. Arrow key navigation patterns
-      
+
       Output JSON with:
       - "tab_order": expected navigation flow
       - "shortcuts": keyboard shortcuts
@@ -80,14 +80,14 @@ stages:
     enabled: true
     prompt: >
       Document screen reader testing and support.
-      
+
       Include:
       1. Screen reader announcements for dynamic content
       2. Alternative text strategies
       3. Complex component descriptions
       4. Testing with NVDA, JAWS, VoiceOver
       5. Common screen reader quirks
-      
+
       Output JSON with:
       - "announcement_patterns": how to announce changes
       - "testing_guide": screen reader testing steps

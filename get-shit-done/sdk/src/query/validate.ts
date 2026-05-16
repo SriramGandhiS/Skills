@@ -451,7 +451,7 @@ export const validateHealth: QueryHandler = async (args, projectDir, workstream)
       } catch { /* intentionally empty */ }
 
       // Union in every phase declared anywhere in ROADMAP.md — current milestone,
-      // shipped milestones (inside <details> / ✅ SHIPPED sections), and any
+      // shipped milestones (inside <details> / PASS: SHIPPED sections), and any
       // preamble/Backlog. We deliberately do NOT filter by current milestone.
       try {
         const roadmapRaw = await readFile(roadmapPath, 'utf-8');

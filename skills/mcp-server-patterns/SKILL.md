@@ -1,4 +1,4 @@
-﻿---
+---
 name: mcp-server-patterns
 description: Build MCP servers with Node/TypeScript SDK â€” tools, resources, prompts, Zod validation, stdio vs Streamable HTTP. Use Context7 or official MCP docs for latest API.
 origin: ECC
@@ -18,12 +18,12 @@ Use when: implementing a new MCP server, adding tools or resources, choosing std
 
 ### Core concepts
 
-- **Tools**: Actions the model can invoke (e.g. search, run a command). Register with `registerTool()` or `tool()` depending on SDK version.
-- **Resources**: Read-only data the model can fetch (e.g. file contents, API responses). Register with `registerResource()` or `resource()`. Handlers typically receive a `uri` argument.
+- **Tools**: Actions the model can invoke (e.g. search, run a command). Register with `registerTool()`or`tool()` depending on SDK version.
+- **Resources**: Read-only data the model can fetch (e.g. file contents, API responses). Register with `registerResource()`or`resource()`. Handlers typically receive a`uri` argument.
 - **Prompts**: Reusable, parameterised prompt templates the client can surface (e.g. in Claude Desktop). Register with `registerPrompt()` or equivalent.
 - **Transport**: stdio for local clients (e.g. Claude Desktop); Streamable HTTP is preferred for remote (Cursor, cloud). Legacy HTTP/SSE is for backward compatibility.
 
-The Node/TypeScript SDK may expose `tool()` / `resource()` or `registerTool()` / `registerResource()`; the official SDK has changed over time. Always verify against the current [MCP docs](https://modelcontextprotocol.io) or Context7.
+The Node/TypeScript SDK may expose `tool()`/`resource()`or`registerTool()`/`registerResource()`; the official SDK has changed over time. Always verify against the current [MCP docs](https://modelcontextprotocol.io) or Context7.
 
 ### Connecting with stdio
 
@@ -50,7 +50,7 @@ import { z } from "zod";
 const server = new McpServer({ name: "my-server", version: "1.0.0" });
 ```
 
-Register tools and resources using the API your SDK version provides: some versions use `server.tool(name, description, schema, handler)` (positional args), others use `server.tool({ name, description, inputSchema }, handler)` or `registerTool()`. Same for resources â€” include a `uri` in the handler when the API provides it. Check the official MCP docs or Context7 for the current `@modelcontextprotocol/sdk` signatures to avoid copy-paste errors.
+Register tools and resources using the API your SDK version provides: some versions use `server.tool(name, description, schema, handler)`(positional args), others use`server.tool({ name, description, inputSchema }, handler)`or`registerTool()`. Same for resources â€” include a`uri`in the handler when the API provides it. Check the official MCP docs or Context7 for the current`@modelcontextprotocol/sdk` signatures to avoid copy-paste errors.
 
 Use **Zod** (or the SDKâ€™s preferred schema format) for input validation.
 

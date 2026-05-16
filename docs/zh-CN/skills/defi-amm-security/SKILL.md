@@ -148,7 +148,7 @@ contract MyAMM is Ownable2Step {
 * ERC-20 转账使用 `SafeERC20`
 * 存款衡量实际收到的代币
 * 预言机读取使用 TWAP 或其他抗操纵源
-* 交换需要 `amountOutMin` 和 `deadline`
+* 交换需要 `amountOutMin`和`deadline`
 * 对溢出敏感的储备金计算使用安全原语，如 `mulDiv`
 * 管理函数受访问控制
 * 存在紧急暂停功能并经过测试

@@ -20,7 +20,7 @@ PR'lardan önce, büyük değişikliklerden sonra ve deployment öncesi çalış
 
 ```bash
 mvn -T 4 clean verify -DskipTests
-# veya
+## veya
 ./gradlew clean assemble -x test
 ```
 
@@ -43,7 +43,7 @@ Gradle (yapılandırılmışsa):
 ```bash
 mvn -T 4 test
 mvn jacoco:report   # 80%+ kapsam doğrula
-# veya
+## veya
 ./gradlew test jacocoTestReport
 ```
 
@@ -159,29 +159,29 @@ class UserControllerTest {
 ## Faz 4: Güvenlik Taraması
 
 ```bash
-# Bağımlılık CVE'leri
+## Bağımlılık CVE'leri
 mvn org.owasp:dependency-check-maven:check
-# veya
+## veya
 ./gradlew dependencyCheckAnalyze
 
-# Kaynakta gizli bilgiler
+## Kaynakta gizli bilgiler
 grep -rn "password\s*=\s*\"" src/ --include="*.java" --include="*.yml" --include="*.properties"
 grep -rn "sk-\|api_key\|secret" src/ --include="*.java" --include="*.yml"
 
-# Gizli bilgiler (git geçmişi)
+## Gizli bilgiler (git geçmişi)
 git secrets --scan  # yapılandırılmışsa
 ```
 
 ### Yaygın Güvenlik Bulguları
 
 ```
-# System.out.println kontrolü (yerine logger kullan)
+## System.out.println kontrolü (yerine logger kullan)
 grep -rn "System\.out\.print" src/main/ --include="*.java"
 
-# Yanıtlarda ham exception mesajları kontrolü
+## Yanıtlarda ham exception mesajları kontrolü
 grep -rn "e\.getMessage()" src/main/ --include="*.java"
 
-# Wildcard CORS kontrolü
+## Wildcard CORS kontrolü
 grep -rn "allowedOrigins.*\*" src/main/ --include="*.java"
 ```
 
@@ -200,7 +200,7 @@ git diff
 ```
 
 Kontrol listesi:
-- Debug logları kalmamış (`System.out`, koruma olmadan `log.debug`)
+- Debug logları kalmamış (`System.out`, koruma olmadan`log.debug`)
 - Anlamlı hatalar ve HTTP durumları
 - Gerekli yerlerde transaction'lar ve validation mevcut
 - Config değişiklikleri belgelenmiş

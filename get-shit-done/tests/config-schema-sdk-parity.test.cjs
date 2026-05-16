@@ -1,7 +1,7 @@
 'use strict';
 
 /**
- * CJS↔SDK config-schema parity (#2653).
+ * CJSSDK config-schema parity (#2653).
  *
  * The SDK has its own config-set handler at sdk/src/query/config-mutation.ts,
  * which validates keys against sdk/src/query/config-schema.ts. That allowlist

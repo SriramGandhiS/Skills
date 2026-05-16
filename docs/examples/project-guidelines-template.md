@@ -224,13 +224,13 @@ export function useApi<T>(
 ### Backend (pytest)
 
 ```bash
-# Run all tests
+## Run all tests
 poetry run pytest tests/
 
-# Run with coverage
+## Run with coverage
 poetry run pytest tests/ --cov=. --cov-report=html
 
-# Run specific test file
+## Run specific test file
 poetry run pytest tests/test_auth.py -v
 ```
 
@@ -255,13 +255,13 @@ async def test_health_check(client: AsyncClient):
 ### Frontend (React Testing Library)
 
 ```bash
-# Run tests
+## Run tests
 npm run test
 
-# Run with coverage
+## Run with coverage
 npm run test -- --coverage
 
-# Run E2E tests
+## Run E2E tests
 npm run test:e2e
 ```
 
@@ -300,11 +300,11 @@ describe('WorkspacePanel', () => {
 ### Deployment Commands
 
 ```bash
-# Build and deploy frontend
+## Build and deploy frontend
 cd frontend && npm run build
 gcloud run deploy frontend --source .
 
-# Build and deploy backend
+## Build and deploy backend
 cd backend
 gcloud run deploy backend --source .
 ```
@@ -312,12 +312,12 @@ gcloud run deploy backend --source .
 ### Environment Variables
 
 ```bash
-# Frontend (.env.local)
+## Frontend (.env.local)
 NEXT_PUBLIC_API_URL=https://api.example.com
 NEXT_PUBLIC_SUPABASE_URL=https://xxx.supabase.co
 NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJ...
 
-# Backend (.env)
+## Backend (.env)
 DATABASE_URL=postgresql://...
 ANTHROPIC_API_KEY=sk-ant-...
 SUPABASE_URL=https://xxx.supabase.co

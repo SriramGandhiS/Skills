@@ -21,7 +21,7 @@ def package_skill(skill_dir: Path) -> bool:
         )
         return result.returncode == 0
     except Exception as e:
-        print(f"❌ Error packaging {skill_dir}: {e}")
+        print(f"FAIL: Error packaging {skill_dir}: {e}")
         return False
 
 
@@ -53,19 +53,19 @@ Examples:
 
     for skill_dir in skill_dirs:
         if not skill_dir.exists():
-            print(f"⚠️  Skipping (not found): {skill_dir}")
+            print(f"WARNING:  Skipping (not found): {skill_dir}")
             continue
 
         if not (skill_dir / "SKILL.md").exists():
-            print(f"⚠️  Skipping (no SKILL.md): {skill_dir}")
+            print(f"WARNING:  Skipping (no SKILL.md): {skill_dir}")
             continue
 
-        print(f"📦 Packaging: {skill_dir.name}")
+        print(f" Packaging: {skill_dir.name}")
         if package_skill(skill_dir):
             success_count += 1
-            print("   ✅ Success")
+            print("   PASS: Success")
         else:
-            print("   ❌ Failed")
+            print("   FAIL: Failed")
         print("")
 
     print(f"{'=' * 60}")

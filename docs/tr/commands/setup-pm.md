@@ -10,16 +10,16 @@ Bu proje veya global olarak tercih ettiğiniz paket yöneticisini yapılandırı
 ## Kullanım
 
 ```bash
-# Mevcut paket yöneticisini tespit et
+## Mevcut paket yöneticisini tespit et
 node scripts/setup-package-manager.js --detect
 
-# Global tercihi ayarla
+## Global tercihi ayarla
 node scripts/setup-package-manager.js --global pnpm
 
-# Proje tercihini ayarla
+## Proje tercihini ayarla
 node scripts/setup-package-manager.js --project bun
 
-# Mevcut paket yöneticilerini listele
+## Mevcut paket yöneticilerini listele
 node scripts/setup-package-manager.js --list
 ```
 
@@ -64,10 +64,10 @@ Hangi paket yöneticisinin kullanılacağını belirlerken, şu sıra kontrol ed
 Tüm diğer tespit yöntemlerini geçersiz kılmak için `CLAUDE_PACKAGE_MANAGER` ayarlayın:
 
 ```bash
-# Windows (PowerShell)
+## Windows (PowerShell)
 $env:CLAUDE_PACKAGE_MANAGER = "pnpm"
 
-# macOS/Linux
+## macOS/Linux
 export CLAUDE_PACKAGE_MANAGER=pnpm
 ```
 

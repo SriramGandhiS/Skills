@@ -33,7 +33,7 @@ async function screenshotAntipatterns() {
     return;
   }
 
-  console.log(`📸 Taking screenshots of ${files.length} anti-pattern example(s)...\n`);
+  console.log(` Taking screenshots of ${files.length} anti-pattern example(s)...\n`);
 
   const browser = await chromium.launch();
   const context = await browser.newContext({
@@ -76,7 +76,7 @@ async function screenshotAntipatterns() {
   }
 
   await browser.close();
-  console.log(`\n✨ Done! Screenshots saved to ${path.relative(ROOT_DIR, OUTPUT_DIR)}/`);
+  console.log(`\n Done! Screenshots saved to ${path.relative(ROOT_DIR, OUTPUT_DIR)}/`);
 }
 
 // Check if dev server is running
@@ -92,7 +92,7 @@ async function checkServer() {
 async function main() {
   const serverRunning = await checkServer();
   if (!serverRunning) {
-    console.error('❌ Dev server not running. Please start it with: bun run dev');
+    console.error('FAIL: Dev server not running. Please start it with: bun run dev');
     process.exit(1);
   }
 

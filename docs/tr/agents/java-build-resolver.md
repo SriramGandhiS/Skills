@@ -52,36 +52,36 @@ Bunları sırayla çalıştırın:
 | `method X in class Y cannot be applied to given types` | Yanlış argüman tipleri veya sayısı | Argümanları düzelt veya overload'ları kontrol et |
 | `variable X might not have been initialized` | İlklendirilmemiş yerel değişken | Kullanmadan önce değişkeni ilklendirin |
 | `non-static method X cannot be referenced from a static context` | Instance metod statik olarak çağrılıyor | Instance oluştur veya metodu statik yap |
-| `reached end of file while parsing` | Eksik kapanış parantezi | Eksik `}` ekle |
-| `package X does not exist` | Eksik dependency veya yanlış import | `pom.xml`/`build.gradle`'a dependency ekle |
+| `reached end of file while parsing`| Eksik kapanış parantezi | Eksik`}` ekle |
+| `package X does not exist`| Eksik dependency veya yanlış import |`pom.xml`/`build.gradle`'a dependency ekle |
 | `error: cannot access X, class file not found` | Eksik geçişli dependency | Açık dependency ekle |
 | `Annotation processor threw uncaught exception` | Lombok/MapStruct yanlış konfigürasyon | Annotation processor kurulumunu kontrol et |
 | `Could not resolve: group:artifact:version` | Eksik repository veya yanlış versiyon | Repository ekle veya POM'da versiyonu düzelt |
-| `The following artifacts could not be resolved` | Private repo veya ağ sorunu | Repository credential'larını veya `settings.xml`'i kontrol et |
-| `COMPILATION ERROR: Source option X is no longer supported` | Java versiyon uyumsuzluğu | `maven.compiler.source` / `targetCompatibility`'yi güncelle |
+| `The following artifacts could not be resolved`| Private repo veya ağ sorunu | Repository credential'larını veya`settings.xml`'i kontrol et |
+| `COMPILATION ERROR: Source option X is no longer supported`| Java versiyon uyumsuzluğu |`maven.compiler.source`/`targetCompatibility`'yi güncelle |
 
 ## Maven Sorun Giderme
 
 ```bash
-# Çakışmalar için dependency tree'sini kontrol et
+## Çakışmalar için dependency tree'sini kontrol et
 ./mvnw dependency:tree -Dverbose
 
-# Snapshot'ları zorla güncelle ve yeniden indir
+## Snapshot'ları zorla güncelle ve yeniden indir
 ./mvnw clean install -U
 
-# Dependency çakışmalarını analiz et
+## Dependency çakışmalarını analiz et
 ./mvnw dependency:analyze
 
-# Etkin POM'u kontrol et (çözümlenmiş miras)
+## Etkin POM'u kontrol et (çözümlenmiş miras)
 ./mvnw help:effective-pom
 
-# Annotation processor'ları debug et
+## Annotation processor'ları debug et
 ./mvnw compile -X 2>&1 | grep -i "processor\|lombok\|mapstruct"
 
-# Derleme hatalarını izole etmek için testleri atla
+## Derleme hatalarını izole etmek için testleri atla
 ./mvnw compile -DskipTests
 
-# Kullanımdaki Java versiyonunu kontrol et
+## Kullanımdaki Java versiyonunu kontrol et
 ./mvnw --version
 java -version
 ```
@@ -89,35 +89,35 @@ java -version
 ## Gradle Sorun Giderme
 
 ```bash
-# Çakışmalar için dependency tree'sini kontrol et
+## Çakışmalar için dependency tree'sini kontrol et
 ./gradlew dependencies --configuration runtimeClasspath
 
-# Dependency'leri zorla yenile
+## Dependency'leri zorla yenile
 ./gradlew build --refresh-dependencies
 
-# Gradle build cache'ini temizle
+## Gradle build cache'ini temizle
 ./gradlew clean && rm -rf .gradle/build-cache/
 
-# Debug çıktısı ile çalıştır
+## Debug çıktısı ile çalıştır
 ./gradlew build --debug 2>&1 | tail -50
 
-# Dependency insight'ı kontrol et
+## Dependency insight'ı kontrol et
 ./gradlew dependencyInsight --dependency <name> --configuration runtimeClasspath
 
-# Java toolchain'i kontrol et
+## Java toolchain'i kontrol et
 ./gradlew -q javaToolchains
 ```
 
 ## Spring Boot Özel
 
 ```bash
-# Spring Boot application context'inin yüklendiğini doğrula
+## Spring Boot application context'inin yüklendiğini doğrula
 ./mvnw spring-boot:run -Dspring-boot.run.arguments="--spring.profiles.active=test"
 
-# Eksik bean'leri veya circular dependency'leri kontrol et
+## Eksik bean'leri veya circular dependency'leri kontrol et
 ./mvnw test -Dtest=*ContextLoads* -q
 
-# Lombok'un annotation processor olarak (sadece dependency değil) konfigüre edildiğini doğrula
+## Lombok'un annotation processor olarak (sadece dependency değil) konfigüre edildiğini doğrula
 grep -A5 "annotationProcessorPaths\|annotationProcessor" pom.xml build.gradle
 ```
 
@@ -129,7 +129,7 @@ grep -A5 "annotationProcessorPaths\|annotationProcessor" pom.xml build.gradle
 - **Her zaman** her düzeltmeden sonra build'i çalıştırarak doğrulayın
 - Semptomları bastırmak yerine kök nedeni düzeltin
 - Logic değiştirmek yerine eksik import'ları eklemeyi tercih edin
-- Komutları çalıştırmadan önce build tool'unu onaylamak için `pom.xml`, `build.gradle` veya `build.gradle.kts`'yi kontrol edin
+- Komutları çalıştırmadan önce build tool'unu onaylamak için `pom.xml`,`build.gradle`veya`build.gradle.kts`'yi kontrol edin
 
 ## Durdurma Koşulları
 

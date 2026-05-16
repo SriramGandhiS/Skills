@@ -117,11 +117,11 @@ done
 
 ## Best Practices
 
-- ✅ Use `--deterministic` in CI and automation to ensure reproducible output
-- ✅ Run on the final draft, not intermediate iterations
-- ✅ Combine with the `avoid-ai-writing` skill for both generation-time guidance and post-processing
-- ❌ Don't run on code files — unslop targets prose, not source code
-- ❌ Don't skip review after unslop: automated cleanup can occasionally change meaning; read the output
+- PASS: Use `--deterministic` in CI and automation to ensure reproducible output
+- PASS: Run on the final draft, not intermediate iterations
+- PASS: Combine with the `avoid-ai-writing` skill for both generation-time guidance and post-processing
+- FAIL: Don't run on code files — unslop targets prose, not source code
+- FAIL: Don't skip review after unslop: automated cleanup can occasionally change meaning; read the output
 
 ## Limitations
 

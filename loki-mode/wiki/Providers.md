@@ -196,9 +196,9 @@ loki provider show
 loki provider list
 # Output:
 # Available providers:
-#   claude  (installed, default)
-#   codex   (installed)
-#   gemini  (installed)
+# claude  (installed, default)
+# codex   (installed)
+# gemini  (installed)
 ```
 
 ### Get Provider Info

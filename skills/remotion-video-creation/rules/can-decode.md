@@ -1,4 +1,4 @@
-﻿---
+---
 name: can-decode
 description: Check if a video can be decoded by the browser using Mediabunny
 metadata:

@@ -20,7 +20,7 @@ stages:
     enabled: true
     prompt: >
       Analyze webhook design patterns.
-      
+
       Identify:
       1. Webhook payload structure
       2. Event types and naming
@@ -28,7 +28,7 @@ stages:
       4. Delivery guarantees (at-least-once)
       5. Event ordering guarantees
       6. Payload size limits
-      
+
       Output JSON with:
       - "payload_structure": JSON schema
       - "event_types": event catalog
@@ -44,7 +44,7 @@ stages:
     enabled: true
     prompt: >
       Document webhook security and verification.
-      
+
       Cover:
       1. Signature verification (HMAC)
       2. Timestamp validation (replay protection)
@@ -52,7 +52,7 @@ stages:
       4. TLS requirements
       5. Secret rotation
       6. Webhook secret management
-      
+
       Output JSON with:
       - "signature_verification": HMAC checking
       - "timestamp_validation": replay prevention
@@ -68,7 +68,7 @@ stages:
     enabled: true
     prompt: >
       Document webhook delivery handling.
-      
+
       Include:
       1. Retry strategies (exponential backoff)
       2. Retry limits and timeouts
@@ -76,7 +76,7 @@ stages:
       4. Delivery status tracking
       5. Idempotency handling
       6. Concurrent delivery handling
-      
+
       Output JSON with:
       - "retry_strategy": backoff config
       - "retry_limits": max attempts
@@ -92,7 +92,7 @@ stages:
     enabled: true
     prompt: >
       Document webhook consumer implementation.
-      
+
       Cover:
       1. Endpoint design and routing
       2. Request parsing and validation
@@ -100,7 +100,7 @@ stages:
       4. Response requirements (2xx status)
       5. Error response handling
       6. Webhook testing strategies
-      
+
       Output JSON with:
       - "endpoint": URL design
       - "parsing": request handling
@@ -116,7 +116,7 @@ stages:
     enabled: true
     prompt: >
       Document webhook subscription management.
-      
+
       Include:
       1. Subscription registration
       2. Event type filtering
@@ -124,7 +124,7 @@ stages:
       4. Subscription status monitoring
       5. Unsubscribe mechanisms
       6. Webhook logs and debugging
-      
+
       Output JSON with:
       - "registration": signup flow
       - "filtering": event selection

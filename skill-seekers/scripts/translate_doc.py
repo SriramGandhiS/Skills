@@ -27,9 +27,9 @@ def translate_with_anthropic(content: str, api_key: str) -> str:
     """Translate content using Anthropic Claude API."""
     try:
         import anthropic
-        
+
         client = anthropic.Anthropic(api_key=api_key)
-        
+
         system_prompt = """You are a professional technical translator translating Skill Seekers documentation from English to Simplified Chinese.
 
 Translation rules:
@@ -56,7 +56,7 @@ Output ONLY the translated content, no explanations."""
                 }
             ]
         )
-        
+
         return message.content[0].text
     except Exception as e:
         print(f"Translation API error: {e}")
@@ -68,36 +68,30 @@ def add_translation_header(content: str, original_file: Path, target_lang: str) 
     version = get_version()
     date = datetime.now().strftime("%Y-%m-%d")
     original_name = original_file.name
-    
+
     # Calculate relative path from docs/
     try:
         relative_path = original_file.relative_to("docs")
         original_link = f"../{relative_path}"
     except ValueError:
         original_link = f"../{original_file.name}"
-    
+
     header = f"""> **注意：** 本文档是 [{original_name}]({original_link}) 的中文翻译。
-> 
-> - **最后翻译日期：** {date}
+> > - **最后翻译日期：** {date}
 > - **英文原文版本：** {version}
-> - **翻译状态：** ⚠️ 待审阅
->
-> 如果本文档与英文版本有冲突，请以英文版本为准。
-> 
-> ---
-> 
-> **Note:** This document is a Chinese translation of [{original_name}]({original_link}).
-> 
-> - **Last translated:** {date}
+> - **翻译状态：** WARNING: 待审阅
+> > 如果本文档与英文版本有冲突，请以英文版本为准。
+> > ---
+> > **Note:** This document is a Chinese translation of [{original_name}]({original_link}).
+> > - **Last translated:** {date}
 > - **Original version:** {version}
-> - **Translation status:** ⚠️ Pending review
->
-> If there are conflicts, the English version takes precedence.
+> - **Translation status:** WARNING: Pending review
+> > If there are conflicts, the English version takes precedence.
 
 ---
 
 """
-    
+
     return header + content
 
 
@@ -105,19 +99,19 @@ def fix_links(content: str, original_file: Path) -> str:
     """Fix internal links to point to Chinese versions."""
     # Pattern for markdown links: [text](path)
     # We need to convert links to other docs to point to zh-CN versions
-    
+
     def replace_link(match):
         text = match.group(1)
         path = match.group(2)
-        
+
         # Skip external links
         if path.startswith(('http://', 'https://', '#', 'mailto:')):
             return match.group(0)
-        
+
         # Skip anchor-only links
         if path.startswith('#'):
             return match.group(0)
-        
+
         # For relative links to other md files, adjust path
         if path.endswith('.md'):
             # If it's a relative link, it should point to zh-CN version
@@ -131,68 +125,68 @@ def fix_links(content: str, original_file: Path) -> str:
                 else:
                     new_path = 'zh-CN/' + path
                 return f'[{text}]({new_path})'
-        
+
         return match.group(0)
-    
+
     # Replace markdown links
     content = re.sub(r'\[([^\]]+)\]\(([^)]+)\)', replace_link, content)
-    
+
     return content
 
 
 def translate_file(input_path: str, target_lang: str = "zh-CN"):
     """Translate a documentation file."""
     input_file = Path(input_path).resolve()
-    
+
     if not input_file.exists():
-        print(f"❌ File not found: {input_file}")
+        print(f"FAIL: File not found: {input_file}")
         return False
-    
+
     # Read English content
     with open(input_file, 'r', encoding='utf-8') as f:
         content = f.read()
-    
+
     # Remove existing translation header if present (for re-translation)
     if '> **注意：**' in content[:500]:
         # Find the separator and remove everything before it
         separator_pos = content.find('---\n\n')
         if separator_pos != -1:
             content = content[separator_pos + 5:]
-    
+
     # Translate content
     api_key = os.environ.get('ANTHROPIC_API_KEY')
     if api_key:
-        print(f"🤖 Translating with Claude API: {input_file.name}")
+        print(f" Translating with Claude API: {input_file.name}")
         translated = translate_with_anthropic(content, api_key)
         if translated:
             content = translated
         else:
-            print(f"⚠️  Translation failed, keeping original content for: {input_file.name}")
+            print(f"WARNING:  Translation failed, keeping original content for: {input_file.name}")
     else:
-        print(f"⚠️  No ANTHROPIC_API_KEY, skipping translation for: {input_file.name}")
+        print(f"WARNING:  No ANTHROPIC_API_KEY, skipping translation for: {input_file.name}")
         return False
-    
+
     # Fix internal links
     content = fix_links(content, input_file)
-    
+
     # Add translation header
     content = add_translation_header(content, input_file, target_lang)
-    
+
     # Determine output path
     try:
         relative_path = input_file.relative_to(Path("docs").resolve())
     except ValueError:
         # If file is not in docs/, use just the filename
         relative_path = Path(input_file.name)
-    
+
     output_file = Path("docs") / target_lang / relative_path
     output_file.parent.mkdir(parents=True, exist_ok=True)
-    
+
     # Write translated content
     with open(output_file, 'w', encoding='utf-8') as f:
         f.write(content)
-    
-    print(f"✅ Created: {output_file}")
+
+    print(f"PASS: Created: {output_file}")
     return True
 
 
@@ -215,28 +209,28 @@ def main():
         action="store_true",
         help="Translate all documentation files"
     )
-    
+
     args = parser.parse_args()
-    
+
     if args.batch:
         # Translate all docs
         docs_dir = Path("docs")
         files_to_translate = []
-        
+
         for pattern in ["**/*.md"]:
             files = list(docs_dir.glob(pattern))
             for f in files:
                 # Skip already translated files and archive
                 if "zh-CN" not in str(f) and "archive" not in str(f):
                     files_to_translate.append(f)
-        
-        print(f"🔄 Batch translating {len(files_to_translate)} files...")
+
+        print(f" Batch translating {len(files_to_translate)} files...")
         success_count = 0
         for f in files_to_translate:
             if translate_file(str(f), args.target_lang):
                 success_count += 1
-        
-        print(f"\n✅ Successfully translated {success_count}/{len(files_to_translate)} files")
+
+        print(f"\nPASS: Successfully translated {success_count}/{len(files_to_translate)} files")
     else:
         # Translate single file
         translate_file(args.file, args.target_lang)

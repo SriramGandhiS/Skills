@@ -3422,7 +3422,7 @@ class TestCleanOcrLine(unittest.TestCase):
     def test_strips_collapse_markers(self):
         from skill_seekers.cli.video_visual import _clean_ocr_line
 
-        self.assertNotIn("▶", _clean_ocr_line("▶ class Card"))
+        self.assertNotIn("", _clean_ocr_line(" class Card"))
         self.assertNotIn("▼", _clean_ocr_line("▼ Properties"))
 
     def test_preserves_normal_code(self):

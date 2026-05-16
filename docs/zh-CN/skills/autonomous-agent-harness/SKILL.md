@@ -71,13 +71,13 @@ origin: ECC
 **内存模式：**
 
 ```
-# 短期：当前会话上下文
+## 短期：当前会话上下文
 使用 TodoWrite 进行会话内任务追踪
 
-# 中期：项目记忆文件
+## 中期：项目记忆文件
 写入 ~/.claude/projects/*/memory/ 以实现跨会话回忆
 
-# 长期：MCP 知识图谱
+## 长期：MCP 知识图谱
 使用 mcp__memory__create_entities 创建永久结构化数据
 使用 mcp__memory__create_relations 进行关系映射
 使用 mcp__memory__add_observations 添加关于已知实体的新事实
@@ -90,7 +90,7 @@ origin: ECC
 **设置定时任务：**
 
 ```
-# Via MCP tool
+## Via MCP tool
 mcp__scheduled-tasks__create_scheduled_task({
   name: "daily-pr-review",
   schedule: "0 9 * * 1-5",  # 工作日上午9点
@@ -98,7 +98,7 @@ mcp__scheduled-tasks__create_scheduled_task({
   project_dir: "/path/to/repo"
 })
 
-# Via claude -p (程序化模式)
+## Via claude -p (程序化模式)
 echo "Review open PRs and summarize" | claude -p --project /path/to/repo
 ```
 
@@ -119,15 +119,15 @@ echo "Review open PRs and summarize" | claude -p --project /path/to/repo
 **调度模式：**
 
 ```bash
-# Trigger from CI/CD
+## Trigger from CI/CD
 curl -X POST "https://api.anthropic.com/dispatch" \
   -H "Authorization: Bearer $ANTHROPIC_API_KEY" \
   -d '{"prompt": "Build failed on main. Diagnose and fix.", "project": "/repo"}'
 
-# Trigger from webhook
-# GitHub webhook → dispatch → Claude agent → fix → PR
+## Trigger from webhook
+## GitHub webhook → dispatch → Claude agent → fix → PR
 
-# Trigger from another agent
+## Trigger from another agent
 claude -p "Analyze the output of the security scan and create issues for findings"
 ```
 
@@ -155,10 +155,10 @@ claude -p "Analyze the output of the security scan and create issues for finding
 **实现：**
 
 ```
-# 通过记忆实现任务持久化
+## 通过记忆实现任务持久化
 将任务队列写入 ~/.claude/projects/*/memory/task-queue.md
 
-# 任务格式
+## 任务格式
 ---
 name: task-queue
 type: project
@@ -214,17 +214,17 @@ description: 用于自主操作的持久化任务队列
 ### 步骤 2：创建基础定时任务
 
 ```bash
-# Daily morning briefing
+## Daily morning briefing
 claude -p "Create a scheduled task: every weekday at 9am, review my GitHub notifications, open PRs, and calendar. Write a morning briefing to memory."
 
-# Continuous learning
+## Continuous learning
 claude -p "Create a scheduled task: every Sunday at 8pm, extract patterns from this week's sessions and update the learned skills."
 ```
 
 ### 步骤 3：初始化内存图谱
 
 ```bash
-# Bootstrap your identity and context
+## Bootstrap your identity and context
 claude -p "Create memory entities for: me (user profile), my projects, my key contacts. Add observations about current priorities."
 ```
 

@@ -52,20 +52,20 @@
 ## クイックスタート
 
 ```bash
-# 1. Fork とクローン
+## 1. Fork とクローン
 gh repo fork affaan-m/everything-claude-code --clone
 cd everything-claude-code
 
-# 2. ブランチを作成
+## 2. ブランチを作成
 git checkout -b feat/my-contribution
 
-# 3. 貢献を追加（以下のセクション参照）
+## 3. 貢献を追加（以下のセクション参照）
 
-# 4. ローカルでテスト
+## 4. ローカルでテスト
 cp -r skills/my-skill ~/.claude/skills/  # スキルの場合
-# その後、Claude Codeでテスト
+## その後、Claude Codeでテスト
 
-# 5. PR を送信
+## 5. PR を送信
 git add . && git commit -m "feat: add my-skill" && git push
 ```
 
@@ -91,7 +91,7 @@ name: your-skill-name
 description: スキルリストに表示される短い説明
 ---
 
-# Your Skill Title
+## Your Skill Title
 
 このスキルがカバーする内容の概要。
 
@@ -193,10 +193,10 @@ Output: [返すもの]
 
 | フィールド | 説明 | オプション |
 |-------|-------------|---------|
-| `name` | 小文字、ハイフン区切り | `code-reviewer` |
+| `name`| 小文字、ハイフン区切り |`code-reviewer` |
 | `description` | 呼び出すかどうかを判断するために使用 | 具体的に！ |
-| `tools` | 必要なものだけ | `Read, Write, Edit, Bash, Grep, Glob, WebFetch, Task` |
-| `model` | 複雑さレベル | `haiku`（シンプル）、`sonnet`（コーディング）、`opus`（複雑） |
+| `tools`| 必要なものだけ |`Read, Write, Edit, Bash, Grep, Glob, WebFetch, Task` |
+| `model`| 複雑さレベル |`haiku`（シンプル）、`sonnet`（コーディング）、`opus`（複雑） |
 
 ### サンプルエージェント
 
@@ -317,7 +317,7 @@ commands/your-command.md
 description: /help に表示される短い説明
 ---
 
-# Command Name
+## Command Name
 
 ## Purpose
 

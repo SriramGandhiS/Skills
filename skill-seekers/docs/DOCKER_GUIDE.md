@@ -188,7 +188,7 @@ from skill_seekers.cli.adaptors import get_adaptor
 for target in [\"weaviate\", \"chroma\", \"faiss\", \"qdrant\"]:
     adaptor = get_adaptor(target)
     adaptor.package(Path(\"/output/react\"), Path(\"/output\"))
-    print(f\"✅ Exported to {target}\")
+    print(f\"PASS: Exported to {target}\")
   '
 "
 ```
@@ -534,7 +534,7 @@ services:
 ## Best Practices
 
 ### 1. Use Multi-Stage Builds
-✅ Already implemented in Dockerfile
+PASS: Already implemented in Dockerfile
 - Builder stage for dependencies
 - Runtime stage for production
 

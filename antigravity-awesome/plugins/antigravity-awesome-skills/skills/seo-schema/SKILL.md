@@ -160,7 +160,7 @@ When generating schema for a page:
 ### Validation Results
 | Schema | Type | Status | Issues |
 |--------|------|--------|--------|
-| ... | ... | ✅/⚠️/❌ | ... |
+| ... | ... | PASS:/WARNING:/FAIL: | ... |
 
 ### Recommendations
 - Missing schema opportunities

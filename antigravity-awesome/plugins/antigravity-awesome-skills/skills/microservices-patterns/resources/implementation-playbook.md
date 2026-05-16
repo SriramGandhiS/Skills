@@ -194,7 +194,7 @@ class APIGateway:
         response = await self.http_client.request(
             method,
             f"{self.order_service_url}{path}",
-            **kwargs
+**kwargs
         )
         response.raise_for_status()
         return response.json()

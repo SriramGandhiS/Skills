@@ -35,7 +35,7 @@ cd ~/path/to/my-project
 | 模式 | 触发条件 | 持续时间 |
 |------|---------|---------|
 | 快速扫描 | `results.json` 存在（默认） | 5–10 分钟 |
-| 全面盘点 | `results.json` 不存在，或 `/skill-stocktake full` | 20–30 分钟 |
+| 全面盘点 | `results.json`不存在，或`/skill-stocktake full` | 20–30 分钟 |
 
 **结果缓存：** `~/.claude/skills/skill-stocktake/results.json`
 
@@ -95,7 +95,7 @@ Agent(
 
 `{ "verdict": "Keep"|"Improve"|"Update"|"Retire"|"Merge into [X]", "reason": "..." }`
 
-**分块指导：** 每个子代理调用处理约 20 个技能，以保持上下文可管理。在每个块之后将中间结果保存到 `results.json` (`status: "in_progress"`)。
+**分块指导：** 每个子代理调用处理约 20 个技能，以保持上下文可管理。在每个块之后将中间结果保存到 `results.json`(`status: "in_progress"`)。
 
 所有技能评估完成后：设置 `status: "completed"`，进入第 3 阶段。
 
@@ -165,7 +165,7 @@ Agent(
 `~/.claude/skills/skill-stocktake/results.json`：
 
 **`evaluated_at`**：必须设置为评估完成时的实际 UTC 时间。
-通过 Bash 获取：`date -u +%Y-%m-%dT%H:%M:%SZ`。切勿使用仅日期的近似值，如 `T00:00:00Z`。
+通过 Bash 获取：`date -u +%Y-%m-%dT%H:%M:%SZ`。切勿使用仅日期的近似值，如`T00:00:00Z`。
 
 ```json
 {

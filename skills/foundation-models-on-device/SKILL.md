@@ -1,4 +1,4 @@
-﻿---
+---
 name: foundation-models-on-device
 description: Apple FoundationModels framework for on-device LLM â€” text generation, guided generation with @Generable, tool calling, and snapshot streaming in iOS 26+.
 ---
@@ -209,16 +209,16 @@ var body: some View {
 | On-device execution | Privacy â€” no data leaves the device; works offline |
 | 4,096 token limit | On-device model constraint; chunk large data across sessions |
 | Snapshot streaming (not deltas) | Structured output friendly; each snapshot is a complete partial state |
-| `@Generable` macro | Compile-time safety for structured generation; auto-generates `PartiallyGenerated` type |
+| `@Generable`macro | Compile-time safety for structured generation; auto-generates`PartiallyGenerated` type |
 | Single request per session | `isResponding` prevents concurrent requests; create multiple sessions if needed |
-| `response.content` (not `.output`) | Correct API â€” always access results via `.content` property |
+| `response.content`(not`.output`) | Correct API â€” always access results via`.content` property |
 
 ## Best Practices
 
 - **Always check `model.availability`** before creating a session â€” handle all unavailability cases
 - **Use `instructions`** to guide model behavior â€” they take priority over prompts
 - **Check `isResponding`** before sending a new request â€” sessions handle one request at a time
-- **Access `response.content`** for results â€” not `.output`
+- **Access `response.content`** for results â€” not`.output`
 - **Break large inputs into chunks** â€” 4,096 token limit applies to instructions + prompt + output combined
 - **Use `@Generable`** for structured output â€” stronger guarantees than parsing raw strings
 - **Use `GenerationOptions(temperature:)`** to tune creativity (higher = more creative)
@@ -229,7 +229,7 @@ var body: some View {
 - Creating sessions without checking `model.availability` first
 - Sending inputs exceeding the 4,096 token context window
 - Attempting concurrent requests on a single session
-- Using `.output` instead of `.content` to access response data
+- Using `.output`instead of`.content` to access response data
 - Parsing raw string responses when `@Generable` structured output would work
 - Building complex multi-step logic in a single prompt â€” break into multiple focused prompts
 - Assuming the model is always available â€” device eligibility and settings vary

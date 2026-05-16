@@ -20,7 +20,7 @@ stages:
     enabled: true
     prompt: >
       Document backup strategy and implementation.
-      
+
       Identify:
       1. Backup types (full, incremental, differential)
       2. Backup frequency and scheduling
@@ -28,7 +28,7 @@ stages:
       4. Backup retention policies
       5. Backup storage locations (on-prem, cloud, multi-region)
       6. Encryption at rest and in transit
-      
+
       Output JSON with:
       - "types": backup types
       - "frequency": backup schedule
@@ -44,7 +44,7 @@ stages:
     enabled: true
     prompt: >
       Document database-specific backup procedures.
-      
+
       Cover:
       1. Database backup methods (snapshots, dumps, replication)
       2. Point-in-time recovery (PITR)
@@ -52,7 +52,7 @@ stages:
       4. Consistency checks
       5. Backup verification
       6. Cross-region replication
-      
+
       Output JSON with:
       - "methods": backup techniques
       - "pitr": point-in-time recovery
@@ -68,7 +68,7 @@ stages:
     enabled: true
     prompt: >
       Document disaster recovery planning.
-      
+
       Include:
       1. RTO (Recovery Time Objective) definition
       2. RPO (Recovery Point Objective) definition
@@ -76,7 +76,7 @@ stages:
       4. Failover procedures
       5. Failback procedures
       6. DR testing schedule
-      
+
       Output JSON with:
       - "rto": time objectives
       - "rpo": data loss tolerance
@@ -92,7 +92,7 @@ stages:
     enabled: true
     prompt: >
       Document business continuity planning.
-      
+
       Cover:
       1. Critical systems identification
       2. Service dependencies mapping
@@ -100,7 +100,7 @@ stages:
       4. Escalation procedures
       5. Vendor dependencies
       6. Regulatory compliance requirements
-      
+
       Output JSON with:
       - "critical_systems": priority services
       - "dependencies": service graph
@@ -116,7 +116,7 @@ stages:
     enabled: true
     prompt: >
       Document specific recovery procedures.
-      
+
       Include:
       1. Runbook documentation
       2. Step-by-step recovery instructions
@@ -124,7 +124,7 @@ stages:
       4. Validation and testing post-recovery
       5. Rollback procedures
       6. Post-incident review process
-      
+
       Output JSON with:
       - "runbooks": procedure docs
       - "instructions": recovery steps

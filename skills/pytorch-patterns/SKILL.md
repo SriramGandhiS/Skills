@@ -1,4 +1,4 @@
-﻿---
+---
 name: pytorch-patterns
 description: PyTorch deep learning patterns and best practices for building robust, efficient, and reproducible training pipelines, model architectures, and data loading.
 origin: ECC
@@ -23,12 +23,12 @@ Idiomatic PyTorch patterns and best practices for building robust, efficient, an
 Always write code that works on both CPU and GPU without hardcoding devices.
 
 ```python
-# Good: Device-agnostic
+## Good: Device-agnostic
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 model = MyModel().to(device)
 data = data.to(device)
 
-# Bad: Hardcoded device
+## Bad: Hardcoded device
 model = MyModel().cuda()  # Crashes if no GPU
 data = data.cuda()
 ```
@@ -38,7 +38,7 @@ data = data.cuda()
 Set all random seeds for reproducible results.
 
 ```python
-# Good: Full reproducibility setup
+## Good: Full reproducibility setup
 def set_seed(seed: int = 42) -> None:
     torch.manual_seed(seed)
     torch.cuda.manual_seed_all(seed)
@@ -47,7 +47,7 @@ def set_seed(seed: int = 42) -> None:
     torch.backends.cudnn.deterministic = True
     torch.backends.cudnn.benchmark = False
 
-# Bad: No seed control
+## Bad: No seed control
 model = MyModel()  # Different weights every run
 ```
 
@@ -56,7 +56,7 @@ model = MyModel()  # Different weights every run
 Always document and verify tensor shapes.
 
 ```python
-# Good: Shape-annotated forward pass
+## Good: Shape-annotated forward pass
 def forward(self, x: torch.Tensor) -> torch.Tensor:
     # x: (batch_size, channels, height, width)
     x = self.conv1(x)    # -> (batch_size, 32, H, W)
@@ -64,7 +64,7 @@ def forward(self, x: torch.Tensor) -> torch.Tensor:
     x = x.view(x.size(0), -1)  # -> (batch_size, 32*H//2*W//2)
     return self.fc(x)    # -> (batch_size, num_classes)
 
-# Bad: No shape tracking
+## Bad: No shape tracking
 def forward(self, x):
     x = self.conv1(x)
     x = self.pool(x)
@@ -77,7 +77,7 @@ def forward(self, x):
 ### Clean nn.Module Structure
 
 ```python
-# Good: Well-organized module
+## Good: Well-organized module
 class ImageClassifier(nn.Module):
     def __init__(self, num_classes: int, dropout: float = 0.5) -> None:
         super().__init__()
@@ -97,7 +97,7 @@ class ImageClassifier(nn.Module):
         x = x.view(x.size(0), -1)
         return self.classifier(x)
 
-# Bad: Everything in forward
+## Bad: Everything in forward
 class ImageClassifier(nn.Module):
     def __init__(self):
         super().__init__()
@@ -110,7 +110,7 @@ class ImageClassifier(nn.Module):
 ### Proper Weight Initialization
 
 ```python
-# Good: Explicit initialization
+## Good: Explicit initialization
 def _init_weights(self, module: nn.Module) -> None:
     if isinstance(module, nn.Linear):
         nn.init.kaiming_normal_(module.weight, mode="fan_out", nonlinearity="relu")
@@ -131,7 +131,7 @@ model.apply(model._init_weights)
 ### Standard Training Loop
 
 ```python
-# Good: Complete training loop with best practices
+## Good: Complete training loop with best practices
 def train_one_epoch(
     model: nn.Module,
     dataloader: DataLoader,
@@ -172,7 +172,7 @@ def train_one_epoch(
 ### Validation Loop
 
 ```python
-# Good: Proper evaluation
+## Good: Proper evaluation
 @torch.no_grad()  # More efficient than wrapping in torch.no_grad() block
 def evaluate(
     model: nn.Module,
@@ -200,7 +200,7 @@ def evaluate(
 ### Custom Dataset
 
 ```python
-# Good: Clean Dataset with type hints
+## Good: Clean Dataset with type hints
 class ImageDataset(Dataset):
     def __init__(
         self,
@@ -228,7 +228,7 @@ class ImageDataset(Dataset):
 ### Efficient DataLoader Configuration
 
 ```python
-# Good: Optimized DataLoader
+## Good: Optimized DataLoader
 dataloader = DataLoader(
     dataset,
     batch_size=32,
@@ -239,14 +239,14 @@ dataloader = DataLoader(
     drop_last=True,          # Consistent batch sizes for BatchNorm
 )
 
-# Bad: Slow defaults
+## Bad: Slow defaults
 dataloader = DataLoader(dataset, batch_size=32)  # num_workers=0, no pin_memory
 ```
 
 ### Custom Collate for Variable-Length Data
 
 ```python
-# Good: Pad sequences in collate_fn
+## Good: Pad sequences in collate_fn
 def collate_fn(batch: list[tuple[torch.Tensor, int]]) -> tuple[torch.Tensor, torch.Tensor]:
     sequences, labels = zip(*batch)
     # Pad to max length in batch
@@ -261,7 +261,7 @@ dataloader = DataLoader(dataset, batch_size=32, collate_fn=collate_fn)
 ### Save and Load Checkpoints
 
 ```python
-# Good: Complete checkpoint with all training state
+## Good: Complete checkpoint with all training state
 def save_checkpoint(
     model: nn.Module,
     optimizer: torch.optim.Optimizer,
@@ -287,7 +287,7 @@ def load_checkpoint(
         optimizer.load_state_dict(checkpoint["optimizer_state_dict"])
     return checkpoint
 
-# Bad: Only saving model weights (can't resume training)
+## Bad: Only saving model weights (can't resume training)
 torch.save(model.state_dict(), "model.pt")
 ```
 
@@ -296,7 +296,7 @@ torch.save(model.state_dict(), "model.pt")
 ### Mixed Precision Training
 
 ```python
-# Good: AMP with GradScaler
+## Good: AMP with GradScaler
 scaler = torch.amp.GradScaler("cuda")
 for data, target in dataloader:
     with torch.amp.autocast("cuda"):
@@ -311,7 +311,7 @@ for data, target in dataloader:
 ### Gradient Checkpointing for Large Models
 
 ```python
-# Good: Trade compute for memory
+## Good: Trade compute for memory
 from torch.utils.checkpoint import checkpoint
 
 class LargeModel(nn.Module):
@@ -325,18 +325,18 @@ class LargeModel(nn.Module):
 ### torch.compile for Speed
 
 ```python
-# Good: Compile the model for faster execution (PyTorch 2.0+)
+## Good: Compile the model for faster execution (PyTorch 2.0+)
 model = MyModel().to(device)
 model = torch.compile(model, mode="reduce-overhead")
 
-# Modes: "default" (safe), "reduce-overhead" (faster), "max-autotune" (fastest)
+## Modes: "default" (safe), "reduce-overhead" (faster), "max-autotune" (fastest)
 ```
 
 ## Quick Reference: PyTorch Idioms
 
 | Idiom | Description |
 |-------|-------------|
-| `model.train()` / `model.eval()` | Always set mode before train/eval |
+| `model.train()`/`model.eval()` | Always set mode before train/eval |
 | `torch.no_grad()` | Disable gradients for inference |
 | `optimizer.zero_grad(set_to_none=True)` | More efficient gradient clearing |
 | `.to(device)` | Device-agnostic tensor/model placement |
@@ -350,47 +350,47 @@ model = torch.compile(model, mode="reduce-overhead")
 ## Anti-Patterns to Avoid
 
 ```python
-# Bad: Forgetting model.eval() during validation
+## Bad: Forgetting model.eval() during validation
 model.train()
 with torch.no_grad():
     output = model(val_data)  # Dropout still active! BatchNorm uses batch stats!
 
-# Good: Always set eval mode
+## Good: Always set eval mode
 model.eval()
 with torch.no_grad():
     output = model(val_data)
 
-# Bad: In-place operations breaking autograd
+## Bad: In-place operations breaking autograd
 x = F.relu(x, inplace=True)  # Can break gradient computation
 x += residual                  # In-place add breaks autograd graph
 
-# Good: Out-of-place operations
+## Good: Out-of-place operations
 x = F.relu(x)
 x = x + residual
 
-# Bad: Moving data to GPU inside the training loop repeatedly
+## Bad: Moving data to GPU inside the training loop repeatedly
 for data, target in dataloader:
     model = model.cuda()  # Moves model EVERY iteration!
 
-# Good: Move model once before the loop
+## Good: Move model once before the loop
 model = model.to(device)
 for data, target in dataloader:
     data, target = data.to(device), target.to(device)
 
-# Bad: Using .item() before backward
+## Bad: Using .item() before backward
 loss = criterion(output, target).item()  # Detaches from graph!
 loss.backward()  # Error: can't backprop through .item()
 
-# Good: Call .item() only for logging
+## Good: Call .item() only for logging
 loss = criterion(output, target)
 loss.backward()
 print(f"Loss: {loss.item():.4f}")  # .item() after backward is fine
 
-# Bad: Not using torch.save properly
+## Bad: Not using torch.save properly
 torch.save(model, "model.pt")  # Saves entire model (fragile, not portable)
 
-# Good: Save state_dict
+## Good: Save state_dict
 torch.save(model.state_dict(), "model.pt")
 ```
 
-__Remember__: PyTorch code should be device-agnostic, reproducible, and memory-conscious. When in doubt, profile with `torch.profiler` and check GPU memory with `torch.cuda.memory_summary()`.
+__Remember__: PyTorch code should be device-agnostic, reproducible, and memory-conscious. When in doubt, profile with `torch.profiler`and check GPU memory with`torch.cuda.memory_summary()`.

@@ -141,7 +141,7 @@ app.use(Sentry.Handlers.errorHandler());     // 8. Sentry errors (LAST)
 
 ## Service Comparison
 
-### Email Service (Mature Pattern ✅)
+### Email Service (Mature Pattern PASS:)
 
 **Strengths:**
 - Comprehensive BaseController with Sentry integration
@@ -155,23 +155,23 @@ app.use(Sentry.Handlers.errorHandler());     // 8. Sentry errors (LAST)
 ```
 email/src/
 ├── controllers/
-│   ├── BaseController.ts          ✅ Excellent template
-│   ├── NotificationController.ts  ✅ Extends BaseController
-│   └── EmailController.ts         ✅ Clean patterns
+│   ├── BaseController.ts          PASS: Excellent template
+│   ├── NotificationController.ts  PASS: Extends BaseController
+│   └── EmailController.ts         PASS: Clean patterns
 ├── routes/
-│   ├── notificationRoutes.ts      ✅ Clean delegation
-│   └── emailRoutes.ts             ✅ No business logic
+│   ├── notificationRoutes.ts      PASS: Clean delegation
+│   └── emailRoutes.ts             PASS: No business logic
 ├── services/
-│   ├── NotificationService.ts     ✅ Dependency injection
-│   └── BatchingService.ts         ✅ Clear responsibility
+│   ├── NotificationService.ts     PASS: Dependency injection
+│   └── BatchingService.ts         PASS: Clear responsibility
 └── middleware/
-    ├── errorBoundary.ts           ✅ Comprehensive
+    ├── errorBoundary.ts           PASS: Comprehensive
     └── DevImpersonationSSOMiddleware.ts
 ```
 
 **Use as template** for new services!
 
-### Form Service (Transitioning ⚠️)
+### Form Service (Transitioning WARNING:)
 
 **Strengths:**
 - Excellent workflow architecture (event sourcing)
@@ -189,18 +189,18 @@ email/src/
 ```
 form/src/
 ├── routes/
-│   ├── responseRoutes.ts          ❌ Business logic in routes
-│   └── proxyRoutes.ts             ✅ Good validation pattern
+│   ├── responseRoutes.ts          FAIL: Business logic in routes
+│   └── proxyRoutes.ts             PASS: Good validation pattern
 ├── controllers/
-│   ├── formController.ts          ⚠️ Lowercase naming
-│   └── UserProfileController.ts   ✅ PascalCase naming
-├── workflow/                      ✅ Excellent architecture!
+│   ├── formController.ts          WARNING: Lowercase naming
+│   └── UserProfileController.ts   PASS: PascalCase naming
+├── workflow/                      PASS: Excellent architecture!
 │   ├── core/
-│   │   ├── WorkflowEngineV3.ts   ✅ Event sourcing
-│   │   └── DryRunWrapper.ts      ✅ Innovative
+│   │   ├── WorkflowEngineV3.ts   PASS: Event sourcing
+│   │   └── DryRunWrapper.ts      PASS: Innovative
 │   └── services/
 └── middleware/
-    └── auditMiddleware.ts         ✅ AsyncLocalStorage pattern
+    └── auditMiddleware.ts         PASS: AsyncLocalStorage pattern
 ```
 
 **Learn from:** workflow/, middleware/auditMiddleware.ts
@@ -362,37 +362,37 @@ src/
 ### What Goes Where
 
 **Routes Layer:**
-- ✅ Route definitions
-- ✅ Middleware registration
-- ✅ Controller delegation
-- ❌ Business logic
-- ❌ Database operations
-- ❌ Validation logic (should be in validator or controller)
+- PASS: Route definitions
+- PASS: Middleware registration
+- PASS: Controller delegation
+- FAIL: Business logic
+- FAIL: Database operations
+- FAIL: Validation logic (should be in validator or controller)
 
 **Controllers Layer:**
-- ✅ Request parsing (params, body, query)
-- ✅ Input validation (Zod)
-- ✅ Service calls
-- ✅ Response formatting
-- ✅ Error handling
-- ❌ Business logic
-- ❌ Database operations
+- PASS: Request parsing (params, body, query)
+- PASS: Input validation (Zod)
+- PASS: Service calls
+- PASS: Response formatting
+- PASS: Error handling
+- FAIL: Business logic
+- FAIL: Database operations
 
 **Services Layer:**
-- ✅ Business logic
-- ✅ Business rules enforcement
-- ✅ Orchestration (multiple repos)
-- ✅ Transaction management
-- ❌ HTTP concerns (Request/Response)
-- ❌ Direct Prisma calls (use repositories)
+- PASS: Business logic
+- PASS: Business rules enforcement
+- PASS: Orchestration (multiple repos)
+- PASS: Transaction management
+- FAIL: HTTP concerns (Request/Response)
+- FAIL: Direct Prisma calls (use repositories)
 
 **Repositories Layer:**
-- ✅ Prisma operations
-- ✅ Query construction
-- ✅ Database error handling
-- ✅ Caching
-- ❌ Business logic
-- ❌ HTTP concerns
+- PASS: Prisma operations
+- PASS: Query construction
+- PASS: Database error handling
+- PASS: Caching
+- FAIL: Business logic
+- FAIL: HTTP concerns
 
 ### Example: User Creation
 

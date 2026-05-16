@@ -182,7 +182,7 @@ Every presentation must include:
 HTML:
 ```html
 <div class="edit-hotzone"></div>
-<button class="edit-toggle" id="editToggle" title="Edit mode (E)">✏️</button>
+<button class="edit-toggle" id="editToggle" title="Edit mode (E)"></button>
 ```
 
 CSS (visibility controlled by JS classes only):

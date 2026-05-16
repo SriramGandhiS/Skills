@@ -79,9 +79,9 @@ Measure impact of changes:
 ## Performance Audit Results
 
 ### Current Metrics (Before Optimization)
-- **LCP (Largest Contentful Paint):** 4.2s ❌ (should be < 2.5s)
-- **FID (First Input Delay):** 180ms ❌ (should be < 100ms)
-- **CLS (Cumulative Layout Shift):** 0.25 ❌ (should be < 0.1)
+- **LCP (Largest Contentful Paint):** 4.2s FAIL: (should be < 2.5s)
+- **FID (First Input Delay):** 180ms FAIL: (should be < 100ms)
+- **CLS (Cumulative Layout Shift):** 0.25 FAIL: (should be < 0.1)
 - **Lighthouse Score:** 62/100
 
 ### Issues Identified
@@ -105,10 +105,10 @@ Measure impact of changes:
 <picture>
   <source srcset="/hero.avif" type="image/avif">
   <source srcset="/hero.webp" type="image/webp">
-  <img 
-    src="/hero.jpg" 
+  <img
+    src="/hero.jpg"
     alt="Hero"
-    width="1200" 
+    width="1200"
     height="600"
     loading="eager"
     fetchpriority="high"
@@ -177,14 +177,13 @@ npm install date-fns
 <img src="/product.jpg" alt="Product">
 
 <!-- After: With dimensions -->
-<img 
-  src="/product.jpg" 
+<img
+  src="/product.jpg"
   alt="Product"
-  width="400" 
+  width="400"
   height="300"
   style="aspect-ratio: 4/3;"
->
-\`\`\`
+> \`\`\`
 
 **For dynamic content:**
 \`\`\`css
@@ -204,10 +203,10 @@ npm install date-fns
 
 ### Results After Optimization
 
-- **LCP:** 1.8s ✅ (improved by 57%)
-- **FID:** 45ms ✅ (improved by 75%)
-- **CLS:** 0.05 ✅ (improved by 80%)
-- **Lighthouse Score:** 94/100 ✅
+- **LCP:** 1.8s PASS: (improved by 57%)
+- **FID:** 45ms PASS: (improved by 75%)
+- **CLS:** 0.05 PASS: (improved by 80%)
+- **Lighthouse Score:** 94/100 PASS:
 ```
 
 ### Example 2: Reducing JavaScript Bundle Size
@@ -329,10 +328,10 @@ module.exports = {
 
 ### Results
 
-- **Total Bundle:** 380KB ✅ (reduced by 55%)
-- **Main Bundle:** 180KB ✅
-- **Vendor Bundle:** 80KB ✅
-- **Load Time (3G):** 3.1s ✅ (improved by 62%)
+- **Total Bundle:** 380KB PASS: (reduced by 55%)
+- **Main Bundle:** 180KB PASS:
+- **Vendor Bundle:** 80KB PASS:
+- **Load Time (3G):** 3.1s PASS: (improved by 62%)
 ```
 
 ### Example 3: Image Optimization Strategy
@@ -361,17 +360,17 @@ const path = require('path');
 
 async function optimizeImage(inputPath, outputDir) {
   const filename = path.basename(inputPath, path.extname(inputPath));
-  
+
   // Generate WebP
   await sharp(inputPath)
     .webp({ quality: 80 })
     .toFile(path.join(outputDir, \`\${filename}.webp\`));
-  
+
   // Generate AVIF (best compression)
   await sharp(inputPath)
     .avif({ quality: 70 })
     .toFile(path.join(outputDir, \`\${filename}.avif\`));
-  
+
   // Generate optimized JPEG fallback
   await sharp(inputPath)
     .jpeg({ quality: 80, progressive: true })
@@ -391,7 +390,7 @@ images.forEach(img => {
 <!-- Responsive images with modern formats -->
 <picture>
   <!-- AVIF for browsers that support it (best compression) -->
-  <source 
+  <source
     srcset="
       /images/hero-400.avif 400w,
       /images/hero-800.avif 800w,
@@ -400,9 +399,9 @@ images.forEach(img => {
     type="image/avif"
     sizes="(max-width: 768px) 100vw, 50vw"
   >
-  
+
   <!-- WebP for browsers that support it -->
-  <source 
+  <source
     srcset="
       /images/hero-400.webp 400w,
       /images/hero-800.webp 800w,
@@ -411,9 +410,9 @@ images.forEach(img => {
     type="image/webp"
     sizes="(max-width: 768px) 100vw, 50vw"
   >
-  
+
   <!-- JPEG fallback -->
-  <img 
+  <img
     src="/images/hero-800.jpg"
     srcset="
       /images/hero-400.jpg 400w,
@@ -433,22 +432,19 @@ images.forEach(img => {
 
 \`\`\`html
 <!-- Native lazy loading -->
-<img 
-  src="/image.jpg" 
+<img
+  src="/image.jpg"
   alt="Description"
   loading="lazy"
   width="800"
   height="600"
->
-
-<!-- Eager loading for above-the-fold images -->
-<img 
-  src="/hero.jpg" 
+> <!-- Eager loading for above-the-fold images -->
+<img
+  src="/hero.jpg"
   alt="Hero"
   loading="eager"
   fetchpriority="high"
->
-\`\`\`
+> \`\`\`
 
 #### 4. Next.js Image Component
 
@@ -486,7 +482,7 @@ import Image from 'next/image';
 
 ## Best Practices
 
-### ✅ Do This
+### PASS: Do This
 
 - **Measure First** - Always establish baseline metrics before optimizing
 - **Use Lighthouse** - Run audits regularly to track progress
@@ -499,7 +495,7 @@ import Image from 'next/image';
 - **Use CDN** - Serve static assets from CDN for faster delivery
 - **Monitor Real Users** - Track Core Web Vitals from real users
 
-### ❌ Don't Do This
+### FAIL: Don't Do This
 
 - **Don't Optimize Blindly** - Measure first, then optimize
 - **Don't Ignore Mobile** - Test on real mobile devices and slow networks

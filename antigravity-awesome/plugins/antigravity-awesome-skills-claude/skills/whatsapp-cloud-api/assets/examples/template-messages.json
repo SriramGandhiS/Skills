@@ -14,7 +14,7 @@
         },
         {
           "type": "BODY",
-          "text": "Olá {{1}}, seja bem-vindo(a) à {{2}}! 🎉\n\nEstamos felizes em ter você conosco. Confira nossas ofertas especiais para novos clientes.",
+          "text": "Olá {{1}}, seja bem-vindo(a) à {{2}}! \n\nEstamos felizes em ter você conosco. Confira nossas ofertas especiais para novos clientes.",
           "example": {
             "body_text": [["Maria", "Loja Example"]]
           }
@@ -48,7 +48,7 @@
         {
           "type": "HEADER",
           "format": "TEXT",
-          "text": "Pedido Confirmado ✅"
+          "text": "Pedido Confirmado PASS:"
         },
         {
           "type": "BODY",
@@ -83,7 +83,7 @@
         {
           "type": "HEADER",
           "format": "TEXT",
-          "text": "Pedido Enviado 📦"
+          "text": "Pedido Enviado "
         },
         {
           "type": "BODY",
@@ -113,7 +113,7 @@
       "components": [
         {
           "type": "BODY",
-          "text": "Olá {{1}}, lembrando que você tem um agendamento:\n\n📅 Data: {{2}}\n⏰ Horário: {{3}}\n📍 Local: {{4}}\n\nPrecisa reagendar?",
+          "text": "Olá {{1}}, lembrando que você tem um agendamento:\n\n Data: {{2}}\n Horário: {{3}}\n Local: {{4}}\n\nPrecisa reagendar?",
           "example": {
             "body_text": [["Carlos", "15/03/2026", "14:00", "Av. Paulista, 1000 - São Paulo"]]
           }
@@ -145,7 +145,7 @@
       "components": [
         {
           "type": "BODY",
-          "text": "Olá {{1}}! Gostaríamos de saber sua opinião sobre o atendimento recente.\n\nDe 1 a 5, qual sua nota para nosso atendimento?\n\n⭐ 1-2: Precisa melhorar\n⭐ 3: Regular\n⭐ 4-5: Muito bom",
+          "text": "Olá {{1}}! Gostaríamos de saber sua opinião sobre o atendimento recente.\n\nDe 1 a 5, qual sua nota para nosso atendimento?\n\n 1-2: Precisa melhorar\n 3: Regular\n 4-5: Muito bom",
           "example": {
             "body_text": [["Ana"]]
           }
@@ -155,15 +155,15 @@
           "buttons": [
             {
               "type": "QUICK_REPLY",
-              "text": "1-2 ⭐"
+              "text": "1-2 "
             },
             {
               "type": "QUICK_REPLY",
-              "text": "3 ⭐⭐⭐"
+              "text": "3 "
             },
             {
               "type": "QUICK_REPLY",
-              "text": "4-5 ⭐⭐⭐⭐⭐"
+              "text": "4-5 "
             }
           ]
         }

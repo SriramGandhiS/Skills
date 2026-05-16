@@ -56,13 +56,13 @@ Result: X/Y passed (previously Y/Y)
 ### 1. 코드 기반 채점자
 코드를 사용한 결정론적 검사:
 ```bash
-# Check if file contains expected pattern
+## Check if file contains expected pattern
 grep -q "export function handleAuth" src/auth.ts && echo "PASS" || echo "FAIL"
 
-# Check if tests pass
+## Check if tests pass
 npm test -- --testPathPattern="auth" && echo "PASS" || echo "FAIL"
 
-# Check if build succeeds
+## Check if build succeeds
 npm run build && echo "PASS" || echo "FAIL"
 ```
 
@@ -129,13 +129,13 @@ Risk Level: LOW/MEDIUM/HIGH
 
 ### 3. 평가
 ```bash
-# Run capability evals
+## Run capability evals
 [Run each capability eval, record PASS/FAIL]
 
-# Run regression evals
+## Run regression evals
 npm test -- --testPathPattern="existing"
 
-# Generate report
+## Generate report
 ```
 
 ### 4. 보고서

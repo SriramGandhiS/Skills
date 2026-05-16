@@ -206,7 +206,7 @@ fi
 HIGH_LINES=$(echo "$REVIEW_AGENT_RETURN" | awk '/^## Current HIGH Concerns/{found=1; next} found && /^##/{exit} found{print}')
 
 if [ "${HIGH_COUNT}" -gt 0 ] && [ -z "${HIGH_LINES}" ]; then
-  echo "⚠ Review agent's CYCLE_SUMMARY reports ${HIGH_COUNT} HIGHs but did not provide ## Current HIGH Concerns section — continuing with incomplete escalation details."
+  echo "WARNING: Review agent's CYCLE_SUMMARY reports ${HIGH_COUNT} HIGHs but did not provide ## Current HIGH Concerns section — continuing with incomplete escalation details."
 fi
 ```
 
@@ -239,7 +239,7 @@ Display: `◆ Cycle {cycle}/{MAX_CYCLES} — {HIGH_COUNT} HIGH concerns found`
 
 **Stall detection:** If `HIGH_COUNT >= prev_high_count`:
 ```text
-⚠ Convergence stalled — HIGH concern count not decreasing
+WARNING: Convergence stalled — HIGH concern count not decreasing
   ({HIGH_COUNT} HIGH concerns, previous cycle had {prev_high_count})
 ```
 

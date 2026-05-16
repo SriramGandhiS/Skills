@@ -13,7 +13,7 @@ model: opus
 
 1. 診斷 Go 編譯錯誤
 2. 修復 `go vet` 警告
-3. 解決 `staticcheck` / `golangci-lint` 問題
+3. 解決 `staticcheck`/`golangci-lint` 問題
 4. 處理模組相依性問題
 5. 修復型別錯誤和介面不符
 
@@ -22,21 +22,21 @@ model: opus
 依序執行這些以了解問題：
 
 ```bash
-# 1. 基本建置檢查
+## 1. 基本建置檢查
 go build ./...
 
-# 2. Vet 檢查常見錯誤
+## 2. Vet 檢查常見錯誤
 go vet ./...
 
-# 3. 靜態分析（如果可用）
+## 3. 靜態分析（如果可用）
 staticcheck ./... 2>/dev/null || echo "staticcheck not installed"
 golangci-lint run 2>/dev/null || echo "golangci-lint not installed"
 
-# 4. 模組驗證
+## 4. 模組驗證
 go mod verify
 go mod tidy -v
 
-# 5. 列出相依性
+## 5. 列出相依性
 go list -m all
 ```
 
@@ -94,7 +94,7 @@ var ptr *int = &val
 
 **診斷：**
 ```bash
-# 找出缺少什麼方法
+## 找出缺少什麼方法
 go doc package.Interface
 ```
 
@@ -126,10 +126,10 @@ go list -f '{{.ImportPath}} -> {{.Imports}}' ./...
 - 重組套件相依性
 
 ```text
-# 之前（循環）
+## 之前（循環）
 package/a -> package/b -> package/a
 
-# 之後（已修復）
+## 之後（已修復）
 package/types  <- 共用型別
 package/a -> package/types
 package/b -> package/types
@@ -141,15 +141,15 @@ package/b -> package/types
 
 **修復：**
 ```bash
-# 新增相依性
+## 新增相依性
 go get package/path@version
 
-# 或更新 go.mod
+## 或更新 go.mod
 go mod tidy
 
-# 或對於本地套件，檢查 go.mod 模組路徑
-# Module: github.com/user/project
-# Import: github.com/user/project/internal/pkg
+## 或對於本地套件，檢查 go.mod 模組路徑
+## Module: github.com/user/project
+## Import: github.com/user/project/internal/pkg
 ```
 
 ### 6. 缺少回傳
@@ -168,7 +168,7 @@ func Process() (int, error) {
 
 ### 7. 未使用的變數/Import
 
-**錯誤：** `x declared but not used` 或 `imported and not used`
+**錯誤：** `x declared but not used`或`imported and not used`
 
 **修復：**
 ```go
@@ -242,33 +242,33 @@ var s string = "hello"
 ### Replace 指令問題
 
 ```bash
-# 檢查可能無效的本地 replaces
+## 檢查可能無效的本地 replaces
 grep "replace" go.mod
 
-# 移除過時的 replaces
+## 移除過時的 replaces
 go mod edit -dropreplace=package/path
 ```
 
 ### 版本衝突
 
 ```bash
-# 查看為什麼選擇某個版本
+## 查看為什麼選擇某個版本
 go mod why -m package
 
-# 取得特定版本
+## 取得特定版本
 go get package@v1.2.3
 
-# 更新所有相依性
+## 更新所有相依性
 go get -u ./...
 ```
 
 ### Checksum 不符
 
 ```bash
-# 清除模組快取
+## 清除模組快取
 go clean -modcache
 
-# 重新下載
+## 重新下載
 go mod download
 ```
 

@@ -77,11 +77,11 @@ User: "Deploy the function."
 
 ## Best Practices
 
-- ✅ **Direct Start:** Place the code or answer at the very first character of the response.
-- ✅ **Summarize-as-you-go:** Turn 10 pages of discussion into 5 bullet points for the next turn.
-- ✅ **Omit Signatures:** Never end with "Let me know if you need more help."
-- ❌ **No Bridge Phrases:** Avoid "Here is the code," "Sure," or "I can help with that."
-- ❌ **No Guessing:** If input is missing, ask immediately rather than wasting tokens on a generic guess.
+- PASS: **Direct Start:** Place the code or answer at the very first character of the response.
+- PASS: **Summarize-as-you-go:** Turn 10 pages of discussion into 5 bullet points for the next turn.
+- PASS: **Omit Signatures:** Never end with "Let me know if you need more help."
+- FAIL: **No Bridge Phrases:** Avoid "Here is the code," "Sure," or "I can help with that."
+- FAIL: **No Guessing:** If input is missing, ask immediately rather than wasting tokens on a generic guess.
 
 ## Limitations
 
@@ -96,10 +96,10 @@ User: "Deploy the function."
 ## Common Pitfalls
 
 - **Problem:** The response is so brief it lacks the context needed for implementation.
-  **Solution:** Use concise inline code comments instead of separate paragraphs of text.
+**Solution:** Use concise inline code comments instead of separate paragraphs of text.
 
 - **Problem:** The agent loses the overarching goal due to over-compression.
-  **Solution:** Always pin the "Primary Objective" to the top of every pruned prompt.
+**Solution:** Always pin the "Primary Objective" to the top of every pruned prompt.
 
 ## Related Skills
 

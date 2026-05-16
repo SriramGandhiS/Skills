@@ -54,15 +54,15 @@ lex draft "Czech house sale contract"
 
 ## Best Practices
 
-- ✅ **Trust but Verify**: Always include the links provided by `lex verify` in your output.
-- ✅ **Table Formatting**: Use tables when comparing results across multiple jurisdictions.
-- ❌ **No Guessing**: If a jurisdiction is outside the US/EU/CA scope, state that it is outside the LEX "Truth Engine" coverage.
-- ❌ **No Anecdotal Advice**: Stick strictly to the findings in the templates or verified government domains.
+- PASS: **Trust but Verify**: Always include the links provided by `lex verify` in your output.
+- PASS: **Table Formatting**: Use tables when comparing results across multiple jurisdictions.
+- FAIL: **No Guessing**: If a jurisdiction is outside the US/EU/CA scope, state that it is outside the LEX "Truth Engine" coverage.
+- FAIL: **No Anecdotal Advice**: Stick strictly to the findings in the templates or verified government domains.
 
 ## Common Pitfalls
 
 - **Problem:** Legal hallucination regarding specific EU notice periods.
-  **Solution:** Run `lex get templates/02_employment_workforce.md` to see the restrictive covenant comparison table.
+**Solution:** Run `lex get templates/02_employment_workforce.md` to see the restrictive covenant comparison table.
 
 ## Related Skills
 

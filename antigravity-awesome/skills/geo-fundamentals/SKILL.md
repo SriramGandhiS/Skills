@@ -137,7 +137,7 @@ How AI engines select content to cite:
 
 ## 9. Anti-Patterns
 
-| ❌ Don't | ✅ Do |
+| FAIL: Don't | PASS: Do |
 |----------|-------|
 | Publish without dates | Add timestamps |
 | Vague attributions | Name sources |

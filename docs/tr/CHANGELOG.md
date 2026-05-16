@@ -84,7 +84,7 @@
 - `/docs` — Dokümantasyon arama (#530)
 - `/aside` — Yan konuşma (#407)
 - `/prompt-optimize` — Prompt optimizasyonu (#418)
-- `/resume-session`, `/save-session` — Oturum yönetimi
+- `/resume-session`,`/save-session` — Oturum yönetimi
 - Kontrol listesi tabanlı holistik karar ile `learn-eval` iyileştirmeleri
 
 ### Yeni Kurallar
@@ -98,7 +98,7 @@
 
 ### Altyapı
 
-- Manifest çözümlemesi ile seçici kurulum mimarisi (`install-plan.js`, `install-apply.js`) (#509, #512)
+- Manifest çözümlemesi ile seçici kurulum mimarisi (`install-plan.js`,`install-apply.js`) (#509, #512)
 - Kurulu bileşenleri izlemek için sorgu CLI'si ile SQLite state store (#510)
 - Yapılandırılmış oturum kaydı için session adaptörleri (#511)
 - Kendini geliştiren beceriler için beceri evrimi temeli (#514)
@@ -153,7 +153,7 @@
 
 ### Çekirdek
 
-- Yeni komutlar eklendi: `/harness-audit`, `/loop-start`, `/loop-status`, `/quality-gate`, `/model-route`.
+- Yeni komutlar eklendi: `/harness-audit`,`/loop-start`,`/loop-status`,`/quality-gate`,`/model-route`.
 - Yeni beceriler eklendi:
   - `agent-harness-construction`
   - `agentic-engineering`
@@ -172,7 +172,7 @@
 - Oturum özet kalıcılığı, transcript payload'ın mevcut olduğu `Stop`'a taşındı.
 - Quality-gate ve cost-tracker hook'ları eklendi.
 - Kırılgan inline hook tek satırlıkları özel script dosyalarıyla değiştirildi.
-- `ECC_HOOK_PROFILE` ve `ECC_DISABLED_HOOKS` kontrolleri eklendi.
+- `ECC_HOOK_PROFILE`ve`ECC_DISABLED_HOOKS` kontrolleri eklendi.
 
 ### Platformlar Arası
 
@@ -181,7 +181,7 @@
 
 ### Notlar
 
-- `autonomous-loops`, bir sürüm için uyumluluk takma adı olarak tutuldu; `continuous-agent-loop` kanonik isimdir.
+- `autonomous-loops`, bir sürüm için uyumluluk takma adı olarak tutuldu;`continuous-agent-loop` kanonik isimdir.
 
 ### Katkıda Bulunanlar
 

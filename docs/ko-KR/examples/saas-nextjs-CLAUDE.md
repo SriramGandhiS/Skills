@@ -15,14 +15,14 @@
 
 - 모든 쿼리는 RLS가 활성화된 Supabase client 사용 — RLS를 절대 우회하지 않음
 - 마이그레이션은 `supabase/migrations/`에 저장 — 데이터베이스를 직접 수정하지 않음
-- `select('*')` 대신 명시적 컬럼 목록이 포함된 `select()` 사용
+- `select('*')`대신 명시적 컬럼 목록이 포함된`select()` 사용
 - 모든 사용자 대상 쿼리에는 무제한 결과를 방지하기 위해 `.limit()` 포함 필수
 
 ### 인증
 
-- Server Components에서는 `@supabase/ssr`의 `createServerClient()` 사용
-- Client Components에서는 `@supabase/ssr`의 `createBrowserClient()` 사용
-- 보호된 라우트는 `getUser()`로 확인 — 인증에 `getSession()`만 단독으로 신뢰하지 않음
+- Server Components에서는 `@supabase/ssr`의`createServerClient()` 사용
+- Client Components에서는 `@supabase/ssr`의`createBrowserClient()` 사용
+- 보호된 라우트는 `getUser()`로 확인 — 인증에`getSession()`만 단독으로 신뢰하지 않음
 - `middleware.ts`의 Middleware가 매 요청마다 인증 토큰 갱신
 
 ### 결제
@@ -36,7 +36,7 @@
 
 - 코드나 주석에 이모지 사용 금지
 - 불변 패턴만 사용 — spread 연산자 사용, 직접 변경 금지
-- Server Components: `'use client'` 디렉티브 없음, `useState`/`useEffect` 없음
+- Server Components: `'use client'`디렉티브 없음,`useState`/`useEffect` 없음
 - Client Components: 파일 상단에 `'use client'` 작성, 최소한으로 유지 — 로직은 hooks로 분리
 - 모든 입력 유효성 검사에 Zod 스키마 사용 선호 (API route, 폼, 환경 변수)
 
@@ -111,17 +111,17 @@ export async function createProject(formData: FormData) {
 ## 환경 변수
 
 ```bash
-# Supabase
+## Supabase
 NEXT_PUBLIC_SUPABASE_URL=
 NEXT_PUBLIC_SUPABASE_ANON_KEY=
 SUPABASE_SERVICE_ROLE_KEY=     # 서버 전용, 클라이언트에 절대 노출 금지
 
-# Stripe
+## Stripe
 STRIPE_SECRET_KEY=
 STRIPE_WEBHOOK_SECRET=
 NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=
 
-# 앱
+## 앱
 NEXT_PUBLIC_APP_URL=http://localhost:3000
 ```
 
@@ -143,24 +143,24 @@ NEXT_PUBLIC_APP_URL=http://localhost:3000
 ## ECC 워크플로우
 
 ```bash
-# 기능 계획 수립
+## 기능 계획 수립
 /plan "Add team invitations with email notifications"
 
-# TDD로 개발
+## TDD로 개발
 /tdd
 
-# 커밋 전
+## 커밋 전
 /code-review
 /security-scan
 
-# 릴리스 전
+## 릴리스 전
 /e2e
 /test-coverage
 ```
 
 ## Git 워크플로우
 
-- `feat:` 새 기능, `fix:` 버그 수정, `refactor:` 코드 변경
+- `feat:`새 기능,`fix:`버그 수정,`refactor:` 코드 변경
 - `main`에서 기능 브랜치 생성, PR 필수
 - CI 실행 항목: lint, 타입 체크, 단위 테스트, E2E 테스트
 - 배포: PR 시 Vercel 미리보기, `main` 병합 시 프로덕션 배포

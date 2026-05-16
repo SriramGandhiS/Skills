@@ -4,11 +4,11 @@ description: Designs a structured evaluation strategy for an AI phase. Identifie
 tools: Read, Write, Bash, Grep, Glob, AskUserQuestion
 color: "#F59E0B"
 # hooks:
-#   PostToolUse:
-#     - matcher: "Write|Edit"
-#       hooks:
-#         - type: command
-#           command: "echo 'AI-SPEC eval sections written' 2>/dev/null || true"
+# PostToolUse:
+# - matcher: "Write|Edit"
+# hooks:
+# - type: command
+# command: "echo 'AI-SPEC eval sections written' 2>/dev/null || true"
 ---
 
 <role>

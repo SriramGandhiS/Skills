@@ -1,4 +1,4 @@
-# 🤝 Contributing Guide - Make It Easy for Everyone!
+# Contributing Guide - Make It Easy for Everyone!
 
 **Thank you for wanting to make this repo better!** This guide shows you exactly how to contribute, even if you're new to open source.
 
@@ -74,7 +74,7 @@ You don't need to be an expert! Here are ways anyone can help:
 ### Super Easy Method (No Git Knowledge Needed!)
 
 1. **Find the file** you want to improve on GitHub
-2. **Click the pencil icon** (✏️) to edit
+2. **Click the pencil icon** () to edit
 3. **Make your changes** in the browser
 4. **Click "Propose changes"** at the bottom
 5. **Done!** We'll review and merge it
@@ -109,10 +109,10 @@ git push origin improve-docs
 ### What Makes a Good Skill?
 
 A skill should:
-- ✅ Solve a specific problem
-- ✅ Be reusable across projects
-- ✅ Have clear instructions
-- ✅ Include examples when possible
+- PASS: Solve a specific problem
+- PASS: Be reusable across projects
+- PASS: Have clear instructions
+- PASS: Include examples when possible
 
 ### Step-by-Step: Create Your First Skill
 
@@ -194,15 +194,15 @@ More examples...
 
 ## Best Practices
 
-- ✅ Do this
-- ✅ Also do this
-- ❌ Don't do this
-- ❌ Avoid this
+- PASS: Do this
+- PASS: Also do this
+- FAIL: Don't do this
+- FAIL: Avoid this
 
 ## Common Pitfalls
 
 - **Problem:** Description of common issue
-  **Solution:** How to fix it
+**Solution:** How to fix it
 
 ## Additional Resources
 
@@ -272,11 +272,11 @@ python3 tools/scripts/validate_skills.py
 ```
 
 This checks:
-- ✅ SKILL.md exists
-- ✅ Frontmatter is correct
-- ✅ Name matches folder name
-- ✅ Description exists
-- ✅ Reference data and docs bundles stay coherent
+- PASS: SKILL.md exists
+- PASS: Frontmatter is correct
+- PASS: Name matches folder name
+- PASS: Description exists
+- PASS: Reference data and docs bundles stay coherent
 
 Do **not** commit generated registry artifacts in a normal PR. These files are canonicalized on `main` after merge:
 
@@ -304,10 +304,10 @@ npm test
 
 Expected outcome:
 
-- ✅ no blocked high-risk examples unless justified,
-- ✅ explicit allowlist comments for any deliberate high-risk documentation command patterns
+- PASS: no blocked high-risk examples unless justified,
+- PASS: explicit allowlist comments for any deliberate high-risk documentation command patterns
   (`<!-- security-allowlist: ... -->`),
-- ✅ an explicit note in the PR description if examples are intentionally risky and the intended usage requires local admin/hosted environments.
+- PASS: an explicit note in the PR description if examples are intentionally risky and the intended usage requires local admin/hosted environments.
 
 For offensive or destructive-capability skills, also verify:
 
@@ -402,10 +402,10 @@ date_added: "2026-03-06"
 
 ## Best Practices
 
-- ✅ **Do:** [Good practice]
-- ✅ **Do:** [Another good practice]
-- ❌ **Don't:** [What to avoid]
-- ❌ **Don't:** [Another thing to avoid]
+- PASS: **Do:** [Good practice]
+- PASS: **Do:** [Another good practice]
+- FAIL: **Don't:** [What to avoid]
+- FAIL: **Don't:** [Another thing to avoid]
 
 ## Troubleshooting
 

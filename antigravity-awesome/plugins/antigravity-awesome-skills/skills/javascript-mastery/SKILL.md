@@ -6,7 +6,7 @@ source: community
 date_added: "2026-02-27"
 ---
 
-# 🧠 JavaScript Mastery
+# JavaScript Mastery
 
 > 33+ essential JavaScript concepts every developer should know, inspired by [33-js-concepts](https://github.com/leonardomso/33-js-concepts).
 
@@ -314,7 +314,7 @@ getData((data) => {
   processData(data, (processed) => {
     saveData(processed, (saved) => {
       notify(saved, () => {
-        // 😱 Pyramid of doom
+        //  Pyramid of doom
       });
     });
   });

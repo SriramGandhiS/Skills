@@ -91,10 +91,10 @@ getSandbox(env.Sandbox, 'MyApp', { normalizeId: true });  // DO ID: hash('myapp'
 ### Sandbox ID Strategy
 
 ```typescript
-// ❌ BAD: New sandbox every time (slow)
+// FAIL: BAD: New sandbox every time (slow)
 const sandbox = getSandbox(env.Sandbox, `user-${Date.now()}`);
 
-// ✅ GOOD: Reuse per user
+// PASS: GOOD: Reuse per user
 const sandbox = getSandbox(env.Sandbox, `user-${userId}`);
 ```
 
@@ -123,10 +123,10 @@ getSandbox(env.Sandbox, 'id', { keepAlive: true });
 ### Input Validation
 
 ```typescript
-// ❌ DANGEROUS: Command injection
+// FAIL: DANGEROUS: Command injection
 const result = await sandbox.exec(`python3 -c "${userCode}"`);
 
-// ✅ SAFE: Write to file, execute file
+// PASS: SAFE: Write to file, execute file
 await sandbox.writeFile('/workspace/user_code.py', userCode);
 const result = await sandbox.exec('python3 /workspace/user_code.py');
 ```
@@ -143,10 +143,10 @@ const result = await sandbox.exec('python3 script.py', {
 ### Secrets Management
 
 ```typescript
-// ❌ NEVER hardcode secrets
+// FAIL: NEVER hardcode secrets
 const token = 'ghp_abc123';
 
-// ✅ Use environment secrets
+// PASS: Use environment secrets
 const token = env.GITHUB_TOKEN;
 
 // Pass to sandbox via exec env

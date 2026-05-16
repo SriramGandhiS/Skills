@@ -355,12 +355,12 @@ class TestArgumentQuality:
     def test_all_arguments_have_help_text(self):
         """Every argument should have help text."""
         all_args = {
-            **UNIVERSAL_ARGUMENTS,
-            **WEB_ARGUMENTS,
-            **GITHUB_ARGUMENTS,
-            **LOCAL_ARGUMENTS,
-            **PDF_ARGUMENTS,
-            **ADVANCED_ARGUMENTS,
+**UNIVERSAL_ARGUMENTS,
+**WEB_ARGUMENTS,
+**GITHUB_ARGUMENTS,
+**LOCAL_ARGUMENTS,
+**PDF_ARGUMENTS,
+**ADVANCED_ARGUMENTS,
         }
 
         for arg_name, arg_def in all_args.items():
@@ -370,12 +370,12 @@ class TestArgumentQuality:
     def test_boolean_arguments_use_store_true(self):
         """Boolean flags should use store_true action."""
         all_args = {
-            **UNIVERSAL_ARGUMENTS,
-            **WEB_ARGUMENTS,
-            **GITHUB_ARGUMENTS,
-            **LOCAL_ARGUMENTS,
-            **PDF_ARGUMENTS,
-            **ADVANCED_ARGUMENTS,
+**UNIVERSAL_ARGUMENTS,
+**WEB_ARGUMENTS,
+**GITHUB_ARGUMENTS,
+**LOCAL_ARGUMENTS,
+**PDF_ARGUMENTS,
+**ADVANCED_ARGUMENTS,
         }
 
         boolean_args = [

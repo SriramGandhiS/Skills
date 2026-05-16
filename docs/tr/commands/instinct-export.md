@@ -28,7 +28,7 @@ command: /instinct-export
    - `project`: sadece mevcut proje
    - `global`: sadece global
    - `all`: proje + global birleştirilmiş (varsayılan)
-3. Filtreleri uygula (`--domain`, `--min-confidence`)
+3. Filtreleri uygula (`--domain`,`--min-confidence`)
 4. YAML formatında dosyaya yaz (veya çıktı yolu verilmediyse stdout'a)
 
 ## Çıktı Formatı
@@ -36,10 +36,10 @@ command: /instinct-export
 Bir YAML dosyası oluşturur:
 
 ```yaml
-# Instincts Export
-# Generated: 2025-01-22
-# Source: personal
-# Count: 12 instincts
+## Instincts Export
+## Generated: 2025-01-22
+## Source: personal
+## Count: 12 instincts
 
 ---
 id: prefer-functional-style
@@ -52,7 +52,7 @@ project_id: a1b2c3d4e5f6
 project_name: my-app
 ---
 
-# Prefer Functional Style
+## Prefer Functional Style
 
 ## Action
 Use functional patterns over classes.
@@ -63,4 +63,4 @@ Use functional patterns over classes.
 - `--domain <name>`: Sadece belirtilen domain'i dışa aktar
 - `--min-confidence <n>`: Minimum güven eşiği
 - `--output <file>`: Çıktı dosya yolu (atlandığında stdout'a yazdırır)
-- `--scope <project|global|all>`: Dışa aktarma kapsamı (varsayılan: `all`)
+- `--scope <project|global|all>`: Dışa aktarma kapsamı (varsayılan:`all`)

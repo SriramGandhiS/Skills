@@ -290,19 +290,19 @@ async def reflection_node(state: AgentState) -> AgentState:
 
 ## Best Practices
 
-- ✅ One agent = one responsibility — never combine planning + coding + testing in one node
-- ✅ Use `TypedDict` for all state schemas — enables type checking and graph validation
-- ✅ Bind only the tools each agent needs — reduces hallucinated tool calls
-- ✅ Always add a `step_count` guard to prevent infinite routing loops
-- ✅ Use `async`/`await` throughout — LangGraph supports async natively
-- ✅ Store all secrets in environment variables loaded via `os.getenv()`
-- ✅ Set TTLs on all Redis keys scoped to `session_id`
-- ✅ Log at every node entry and tool call for observability
-- ✅ Validate supervisor routing output against an allowlist of agent names
-- ❌ Don't hardcode API keys, model names, or Redis URLs
-- ❌ Don't share tool lists across agents that don't need them
-- ❌ Don't skip error handling — tool failures and empty LLM responses are common
-- ❌ Don't trust unvalidated LLM routing decisions — always check against an allowlist
+- PASS: One agent = one responsibility — never combine planning + coding + testing in one node
+- PASS: Use `TypedDict` for all state schemas — enables type checking and graph validation
+- PASS: Bind only the tools each agent needs — reduces hallucinated tool calls
+- PASS: Always add a `step_count` guard to prevent infinite routing loops
+- PASS: Use `async`/`await` throughout — LangGraph supports async natively
+- PASS: Store all secrets in environment variables loaded via `os.getenv()`
+- PASS: Set TTLs on all Redis keys scoped to `session_id`
+- PASS: Log at every node entry and tool call for observability
+- PASS: Validate supervisor routing output against an allowlist of agent names
+- FAIL: Don't hardcode API keys, model names, or Redis URLs
+- FAIL: Don't share tool lists across agents that don't need them
+- FAIL: Don't skip error handling — tool failures and empty LLM responses are common
+- FAIL: Don't trust unvalidated LLM routing decisions — always check against an allowlist
 
 ---
 
@@ -319,8 +319,8 @@ async def reflection_node(state: AgentState) -> AgentState:
 
 - Never expose API keys in generated code. All secrets must use environment variables:
   ```python
-  OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")   # ✅ correct
-  OPENAI_API_KEY = "sk-..."                        # ❌ never do this
+  OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")   # PASS: correct
+  OPENAI_API_KEY = "sk-..."                        # FAIL: never do this
   ```
 - Always validate and sanitize user inputs before injecting them into agent prompts — treat all user input as untrusted.
 - Add a permission layer before allowing agents to execute shell commands or write to filesystems.
@@ -333,23 +333,23 @@ async def reflection_node(state: AgentState) -> AgentState:
 
 ## Common Pitfalls
 
-- **Problem:** Agent loops indefinitely between supervisor and sub-agents  
-  **Solution:** Add `step_count: int` to state; return `"end"` in `route_next()` when `step_count > N`
+- **Problem:** Agent loops indefinitely between supervisor and sub-agents
+**Solution:** Add `step_count: int` to state; return `"end"` in `route_next()` when `step_count > N`
 
-- **Problem:** Supervisor routes to a non-existent agent name  
-  **Solution:** Validate the LLM's routing output against a hardcoded allowlist before setting `next_agent`
+- **Problem:** Supervisor routes to a non-existent agent name
+**Solution:** Validate the LLM's routing output against a hardcoded allowlist before setting `next_agent`
 
-- **Problem:** Memory leaks across user sessions  
-  **Solution:** Scope Redis keys to `session_id` and always set a TTL (`ttl=3600`)
+- **Problem:** Memory leaks across user sessions
+**Solution:** Scope Redis keys to `session_id` and always set a TTL (`ttl=3600`)
 
-- **Problem:** Tool results are ignored by the next agent  
-  **Solution:** Always write tool output into `state["context"]` and confirm the next node reads it
+- **Problem:** Tool results are ignored by the next agent
+**Solution:** Always write tool output into `state["context"]` and confirm the next node reads it
 
-- **Problem:** Agents share too many tools and hallucinate wrong tool calls  
-  **Solution:** Use `.bind_tools([only_relevant_tools])` per agent instead of a global tool list
+- **Problem:** Agents share too many tools and hallucinate wrong tool calls
+**Solution:** Use `.bind_tools([only_relevant_tools])` per agent instead of a global tool list
 
-- **Problem:** Graph fails silently on API rate limits  
-  **Solution:** Wrap LLM calls in retry logic with exponential backoff using `tenacity`
+- **Problem:** Graph fails silently on API rate limits
+**Solution:** Wrap LLM calls in retry logic with exponential backoff using `tenacity`
 
 ---
 

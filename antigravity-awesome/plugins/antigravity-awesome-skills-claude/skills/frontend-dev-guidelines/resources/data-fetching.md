@@ -278,13 +278,13 @@ export const myFeatureApi = {
 ### Correct Format
 
 ```typescript
-// ✅ CORRECT - Direct service path
+// PASS: CORRECT - Direct service path
 await apiClient.get('/blog/posts/123');
 await apiClient.post('/projects/create', data);
 await apiClient.put('/users/update/456', updates);
 await apiClient.get('/email/templates');
 
-// ❌ WRONG - Do NOT add /api/ prefix
+// FAIL: WRONG - Do NOT add /api/ prefix
 await apiClient.get('/api/blog/posts/123');  // WRONG!
 await apiClient.post('/api/projects/create', data); // WRONG!
 ```
@@ -493,8 +493,7 @@ import { ErrorBoundary } from 'react-error-boundary';
 <ErrorBoundary
     fallback={<ErrorDisplay />}
     onError={(error) => console.error(error)}
->
-    <SuspenseLoader>
+> <SuspenseLoader>
         <ComponentWithSuspenseQuery />
     </SuspenseLoader>
 </ErrorBoundary>

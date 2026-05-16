@@ -4,21 +4,19 @@
 # exits cleanly or fails fast for every combination. Spec calls for "every
 # parent+child combination" with the full matrix being 32 states; we sample a
 # representative subset plus the handful of critical corners.
-#
-# Fail-fast rule (from autonomy/run.sh:655):
-#   If LOKI_MANAGED_MEMORY=true AND LOKI_MANAGED_AGENTS!=true -> exit 2.
-#   Every other combination must reach exit 0 past the fail-fast block.
-#
-# We test:
-#   - The canonical 4 states for the parent + primary child (exhaustive).
-#   - A representative subset of the 32-state matrix with the additional
-#     v7.0.0 child knobs that are planned but not yet enforced at runtime:
-#       LOKI_MANAGED_HYDRATE, LOKI_MANAGED_DASHBOARD,
-#       LOKI_MANAGED_REDACT, LOKI_MANAGED_UNIFY.
-#     These knobs are not yet enforced by run.sh so they must NOT alter the
-#     fail-fast semantics that only the MEMORY child drives in v6.83.1. In
-#     v7.0.0, if new child flags require the parent, extend this test with a
-#     per-flag case and the same exit=2 expectation.
+# # Fail-fast rule (from autonomy/run.sh:655):
+# If LOKI_MANAGED_MEMORY=true AND LOKI_MANAGED_AGENTS!=true -> exit 2.
+# Every other combination must reach exit 0 past the fail-fast block.
+# # We test:
+# - The canonical 4 states for the parent + primary child (exhaustive).
+# - A representative subset of the 32-state matrix with the additional
+# v7.0.0 child knobs that are planned but not yet enforced at runtime:
+# LOKI_MANAGED_HYDRATE, LOKI_MANAGED_DASHBOARD,
+# LOKI_MANAGED_REDACT, LOKI_MANAGED_UNIFY.
+# These knobs are not yet enforced by run.sh so they must NOT alter the
+# fail-fast semantics that only the MEMORY child drives in v6.83.1. In
+# v7.0.0, if new child flags require the parent, extend this test with a
+# per-flag case and the same exit=2 expectation.
 
 set -u
 

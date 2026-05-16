@@ -14,7 +14,7 @@ Use this only when the PR should auto-close an issue:
 
 `Closes #N` or `Fixes #N`
 
-## Quality Bar Checklist ✅
+## Quality Bar Checklist PASS:
 
 **All applicable items must be checked before merging.**
 

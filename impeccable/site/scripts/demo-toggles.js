@@ -13,7 +13,7 @@ export function setupDemoToggles() {
     // Skip if already has handler
     if (toggle.dataset.initialized) return;
     toggle.dataset.initialized = 'true';
-    
+
     toggle.addEventListener('click', () => {
       const demoId = toggle.dataset.demo;
       const isActive = toggle.classList.toggle('active');
@@ -30,7 +30,7 @@ export function setupDemoToggles() {
       handleDemoToggle(demoId, isActive);
     });
   });
-  
+
   // Setup interactive buttons
   setupInteractiveButtons();
 }
@@ -43,7 +43,7 @@ export function setupCommandDemoToggles(allCommands, selectCommand) {
     // Skip if already has handler
     if (toggle.dataset.initialized) return;
     toggle.dataset.initialized = 'true';
-    
+
     toggle.addEventListener('click', () => {
       const demoId = toggle.dataset.demo;
       const isActive = toggle.classList.toggle('active');
@@ -58,7 +58,7 @@ export function setupCommandDemoToggles(allCommands, selectCommand) {
       handleCommandDemoToggle(demoId, isActive);
     });
   });
-  
+
   document.querySelectorAll('.command-detail-panel .relationship-tag').forEach(tag => {
     tag.addEventListener('click', () => {
       const commandId = tag.dataset.command;
@@ -75,7 +75,7 @@ function setupInteractiveButtons() {
   document.querySelectorAll('.int-fb-active[data-action="like"]').forEach(btn => {
     if (btn.dataset.initialized) return;
     btn.dataset.initialized = 'true';
-    
+
     btn.addEventListener('click', () => {
       btn.classList.toggle('liked');
       const label = btn.nextElementSibling;
@@ -92,26 +92,26 @@ function setupInteractiveButtons() {
 function handleDemoToggle(demoId, isAfter) {
   const viewport = document.getElementById(`${demoId}-viewport`);
   if (!viewport) return;
-  
+
   viewport.dataset.state = isAfter ? 'after' : 'before';
-  
+
   // Parse skill ID and tab ID from demoId (e.g., "ux-writing-errors")
   const parts = demoId.split('-');
   const tabId = parts.pop();
   const skillId = parts.join('-');
-  
+
   const skill = getSkillDemo(skillId);
   if (!skill) return;
-  
+
   const tab = skill.tabs.find(t => t.id === tabId);
   if (!tab) return;
-  
+
   // Check for custom toggle handler
   if (tab.onToggle) {
     tab.onToggle(viewport, isAfter);
     return;
   }
-  
+
   // Check for CSS class toggle
   if (tab.beforeClass && tab.afterClass) {
     const demo = viewport.firstElementChild;
@@ -120,11 +120,11 @@ function handleDemoToggle(demoId, isAfter) {
     }
     return;
   }
-  
+
   // HTML swap
   if (tab.after && tab.before) {
     viewport.innerHTML = isAfter ? tab.after : tab.before;
-    
+
     // Run after-render callback if exists
     if (isAfter && tab.onAfterRender) {
       tab.onAfterRender();
@@ -139,20 +139,20 @@ function handleCommandDemoToggle(demoId, isAfter) {
   // Extract command ID from demoId (e.g., "command-normalize" -> "normalize")
   const commandId = demoId.replace('command-', '');
   const demo = getCommandDemo(commandId);
-  
+
   if (!demo) return;
-  
+
   const viewport = document.getElementById(`${demoId}-viewport`);
   if (!viewport) return;
-  
+
   viewport.dataset.state = isAfter ? 'after' : 'before';
-  
+
   // Check for custom toggle handler
   if (demo.onToggle) {
     demo.onToggle(viewport, isAfter);
     return;
   }
-  
+
   // HTML swap
   if (demo.after && demo.before) {
     viewport.innerHTML = isAfter ? demo.after : demo.before;

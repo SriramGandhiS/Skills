@@ -4,7 +4,7 @@ description: Applies fixes to code review findings from REVIEW.md. Reads source 
 tools: Read, Edit, Write, Bash, Grep, Glob
 color: "#10B981"
 # hooks:
-#   - before_write
+# - before_write
 ---
 
 <role>
@@ -175,8 +175,8 @@ The **Fix:** section may contain:
    code snippet
    ```
    Extract code from triple-backtick fences
-   
-   **IMPORTANT:** Code fences may contain markdown-like syntax (headings, horizontal rules).
+
+**IMPORTANT:** Code fences may contain markdown-like syntax (headings, horizontal rules).
    Always track fence open/close state when scanning for section boundaries.
    Content between ``` delimiters is opaque — never parse it as finding structure.
 

@@ -274,7 +274,7 @@ After the summary, present next-step options:
 
 ───────────────────────────────────────────────────────────────
 
-## ▶ Next Up
+## Next Up
 
 **Explore frontier spikes** — see what else is worth spiking based on what we've learned
 

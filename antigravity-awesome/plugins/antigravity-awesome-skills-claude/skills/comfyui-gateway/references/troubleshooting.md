@@ -529,9 +529,9 @@ redis-cli ping
 
 # 2. Verify the URL format
 # Correct formats:
-#   redis://localhost:6379
-#   redis://:yourpassword@redis-host:6379/0
-#   rediss://user:password@host:6380/0  (TLS)
+# redis://localhost:6379
+# redis://:yourpassword@redis-host:6379/0
+# rediss://user:password@host:6380/0  (TLS)
 
 # 3. Test connectivity
 redis-cli -u "redis://localhost:6379" ping
@@ -648,12 +648,12 @@ aws s3 cp /tmp/test.txt s3://your-bucket/test.txt \
 
 # 4. Minimum IAM policy for the gateway:
 # {
-#   "Version": "2012-10-17",
-#   "Statement": [{
-#     "Effect": "Allow",
-#     "Action": ["s3:PutObject", "s3:GetObject", "s3:DeleteObject", "s3:ListBucket"],
-#     "Resource": ["arn:aws:s3:::your-bucket", "arn:aws:s3:::your-bucket/*"]
-#   }]
+# "Version": "2012-10-17",
+# "Statement": [{
+# "Effect": "Allow",
+# "Action": ["s3:PutObject", "s3:GetObject", "s3:DeleteObject", "s3:ListBucket"],
+# "Resource": ["arn:aws:s3:::your-bucket", "arn:aws:s3:::your-bucket/*"]
+# }]
 # }
 ```
 
@@ -704,9 +704,9 @@ simultaneously. SQLite WAL mode supports concurrent readers but only one writer.
 
 ```bash
 # 1. The gateway already sets optimal pragmas:
-#    journal_mode = WAL
-#    synchronous = NORMAL
-#    busy_timeout = 5000 (5 seconds)
+# journal_mode = WAL
+# synchronous = NORMAL
+# busy_timeout = 5000 (5 seconds)
 
 # 2. If running multiple gateway instances, switch to Postgres
 DATABASE_URL=postgresql://user:password@localhost:5432/comfyui_gateway

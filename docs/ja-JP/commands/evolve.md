@@ -150,7 +150,7 @@ evolved_from:
   - regenerate-types
 ---
 
-# New Tableコマンド
+## New Tableコマンド
 
 [クラスター化されたinstinctsに基づいて生成されたコンテンツ]
 
@@ -170,7 +170,7 @@ evolved_from:
   - avoid-classes
 ---
 
-# Functional Patternsスキル
+## Functional Patternsスキル
 
 [クラスター化されたinstinctsに基づいて生成されたコンテンツ]
 ```
@@ -187,7 +187,7 @@ evolved_from:
   - debug-reproduce
 ---
 
-# Debuggerエージェント
+## Debuggerエージェント
 
 [クラスター化されたinstinctsに基づいて生成されたコンテンツ]
 ```

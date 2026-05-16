@@ -571,25 +571,25 @@ func join(parts []string) string {
 ### 基本指令
 
 ```bash
-# 建置和執行
+## 建置和執行
 go build ./...
 go run ./cmd/myapp
 
-# 測試
+## 測試
 go test ./...
 go test -race ./...
 go test -cover ./...
 
-# 靜態分析
+## 靜態分析
 go vet ./...
 staticcheck ./...
 golangci-lint run
 
-# 模組管理
+## 模組管理
 go mod tidy
 go mod verify
 
-# 格式化
+## 格式化
 gofmt -w .
 goimports -w .
 ```

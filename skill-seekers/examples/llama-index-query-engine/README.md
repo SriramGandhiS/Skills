@@ -59,11 +59,11 @@ LLAMAINDEX QUERY ENGINE QUICKSTART
 ============================================================
 
 Step 1: Loading nodes...
-✅ Loaded 180 nodes
+PASS: Loaded 180 nodes
    Categories: {'overview': 1, 'models': 45, 'views': 38, ...}
 
 Step 2: Creating index...
-✅ Index created and persisted to: ./storage
+PASS: Index created and persisted to: ./storage
    Nodes indexed: 180
 
 Step 3: Running example queries...

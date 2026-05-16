@@ -1,15 +1,12 @@
 # GitHub Actions template for auto-updating Skill Seekers skills
-#
-# This workflow periodically re-scrapes documentation sources and updates
+# # This workflow periodically re-scrapes documentation sources and updates
 # the generated skills in your repository.
-#
-# Usage:
-#   1. Copy this file to .github/workflows/update-skills.yml
-#   2. Configure the SKILLS matrix below with your documentation sources
-#   3. Set ANTHROPIC_API_KEY secret (optional, for AI enhancement)
-#   4. Commit and push
-#
-# The workflow runs weekly by default (configurable via cron schedule).
+# # Usage:
+# 1. Copy this file to .github/workflows/update-skills.yml
+# 2. Configure the SKILLS matrix below with your documentation sources
+# 3. Set ANTHROPIC_API_KEY secret (optional, for AI enhancement)
+# 4. Commit and push
+# # The workflow runs weekly by default (configurable via cron schedule).
 
 name: Update AI Skills
 

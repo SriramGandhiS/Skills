@@ -1,14 +1,12 @@
 #!/usr/bin/env bash
 # Test: pytest quality gate timeout wrap (Triage #14, v7.5.15)
-#
-# Verifies _loki_run_pytest_with_timeout in autonomy/run.sh:
-#   1. With LOKI_PYTEST_TIMEOUT=2 and a 10s sleeping pytest fixture,
-#      the wrapper terminates within ~3 seconds AND returns exit 124.
-#   2. With LOKI_PYTEST_TIMEOUT=15, the same fixture completes normally (exit 0).
-#   3. With both `gtimeout` and `timeout` removed from PATH, the wrapper still
-#      runs (degraded), prints the warning, and runs unbounded.
-#
-# Total runtime budget: under 30s.
+# # Verifies _loki_run_pytest_with_timeout in autonomy/run.sh:
+# 1. With LOKI_PYTEST_TIMEOUT=2 and a 10s sleeping pytest fixture,
+# the wrapper terminates within ~3 seconds AND returns exit 124.
+# 2. With LOKI_PYTEST_TIMEOUT=15, the same fixture completes normally (exit 0).
+# 3. With both `gtimeout` and `timeout` removed from PATH, the wrapper still
+# runs (degraded), prints the warning, and runs unbounded.
+# # Total runtime budget: under 30s.
 
 set -uo pipefail
 

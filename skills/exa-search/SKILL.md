@@ -1,4 +1,4 @@
-﻿---
+---
 name: exa-search
 description: Neural search via Exa MCP for web, code, and company research. Use when the user needs web search, code examples, company intel, people lookup, or AI-powered deep research with Exa's neural search engine.
 origin: ECC
@@ -34,7 +34,7 @@ Exa MCP server must be configured. Add to `~/.claude.json`:
 ```
 
 Get an API key at [exa.ai](https://exa.ai).
-This repo's current Exa setup documents the tool surface exposed here: `web_search_exa` and `get_code_context_exa`.
+This repo's current Exa setup documents the tool surface exposed here: `web_search_exa`and`get_code_context_exa`.
 If your Exa server exposes additional tools, verify their exact names before depending on them in docs or prompts.
 
 ## Core Tools
@@ -52,9 +52,9 @@ web_search_exa(query: "latest AI developments 2026", numResults: 5)
 |-------|------|---------|-------|
 | `query` | string | required | Search query |
 | `numResults` | number | 8 | Number of results |
-| `type` | string | `auto` | Search mode |
-| `livecrawl` | string | `fallback` | Prefer live crawling when needed |
-| `category` | string | none | Optional focus such as `company` or `research paper` |
+| `type`| string |`auto` | Search mode |
+| `livecrawl`| string |`fallback` | Prefer live crawling when needed |
+| `category`| string | none | Optional focus such as`company`or`research paper` |
 
 ### get_code_context_exa
 Find code examples and documentation from GitHub, Stack Overflow, and docs sites.
@@ -97,7 +97,7 @@ get_code_context_exa(query: "WebAssembly component model examples", tokensNum: 4
 ## Tips
 
 - Use `web_search_exa` for current information, company lookups, and broad discovery
-- Use search operators like `site:`, quoted phrases, and `intitle:` to narrow results
+- Use search operators like `site:`, quoted phrases, and`intitle:` to narrow results
 - Lower `tokensNum` (1000-2000) for focused code snippets, higher (5000+) for comprehensive context
 - Use `get_code_context_exa` when you need API usage or code examples rather than general web pages
 

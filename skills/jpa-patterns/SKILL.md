@@ -1,4 +1,4 @@
-﻿---
+---
 name: jpa-patterns
 description: JPA/Hibernate patterns for entity design, relationships, query optimization, transactions, auditing, indexing, pagination, and pooling in Spring Boot.
 origin: ECC
@@ -113,10 +113,10 @@ For cursor-like pagination, include `id > :lastId` in JPQL with ordering.
 
 ## Indexing and Performance
 
-- Add indexes for common filters (`status`, `slug`, foreign keys)
+- Add indexes for common filters (`status`,`slug`, foreign keys)
 - Use composite indexes matching query patterns (`status, created_at`)
 - Avoid `select *`; project only needed columns
-- Batch writes with `saveAll` and `hibernate.jdbc.batch_size`
+- Batch writes with `saveAll`and`hibernate.jdbc.batch_size`
 
 ## Connection Pooling (HikariCP)
 
@@ -146,6 +146,6 @@ spring.jpa.properties.hibernate.jdbc.lob.non_contextual_creation=true
 ## Testing Data Access
 
 - Prefer `@DataJpaTest` with Testcontainers to mirror production
-- Assert SQL efficiency using logs: set `logging.level.org.hibernate.SQL=DEBUG` and `logging.level.org.hibernate.orm.jdbc.bind=TRACE` for parameter values
+- Assert SQL efficiency using logs: set `logging.level.org.hibernate.SQL=DEBUG`and`logging.level.org.hibernate.orm.jdbc.bind=TRACE` for parameter values
 
 **Remember**: Keep entities lean, queries intentional, and transactions short. Prevent N+1 with fetch strategies and projections, and index for your read/write paths.

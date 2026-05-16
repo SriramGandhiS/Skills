@@ -24,7 +24,7 @@ Electronic Data Interchange (EDI) is the standard for automated B2B document exc
 2. **Map**: Receive a complete field mapping table between EDI segments and Odoo fields.
 3. **Automate**: Get Python code to parse incoming EDI files and create Odoo records.
 
-## EDI ↔ Odoo Object Mapping
+## EDI  Odoo Object Mapping
 
 | EDI Transaction | Odoo Object |
 |---|---|
@@ -48,7 +48,7 @@ import os
 
 odoo_url = os.getenv("ODOO_URL")
 db = os.getenv("ODOO_DB")
-pwd = os.getenv("ODOO_API_KEY") 
+pwd = os.getenv("ODOO_API_KEY")
 uid = int(os.getenv("ODOO_UID", "2"))
 
 models = xmlrpc.client.ServerProxy(f"{odoo_url}/xmlrpc/2/object")
@@ -57,9 +57,9 @@ def process_850(edi_file_path):
     """Parse X12 850 Purchase Order and create Odoo Sale Order"""
     with x12file.X12File(edi_file_path) as f:
         for transaction in f.get_transaction_sets():
-            # Extract header info (BEG segment)                     
-            po_number = transaction['BEG'][3]    # Purchase Order Number                                                    
-            po_date   = transaction['BEG'][5]    # Purchase Order Date 
+            # Extract header info (BEG segment)
+            po_number = transaction['BEG'][3]    # Purchase Order Number
+            po_date   = transaction['BEG'][5]    # Purchase Order Date
 
             # IDEMPOTENCY CHECK: Verify PO doesn't already exist in Odoo
             existing = models.execute_kw(db, uid, pwd, 'sale.order', 'search', [
@@ -67,21 +67,21 @@ def process_850(edi_file_path):
             ])
             if existing:
                 print(f"Skipping: PO {po_number} already exists.")
-                continue 
+                continue
 
             # Extract partner (N1 segment — Buyer)
 
-                        # Extract partner (N1 segment — Buyer)                  
-            partner_name = transaction.get_segment('N1')[2] if transaction.get_segment('N1') else "Unknown"                                                                             
-            
-            # Find partner in Odoo                                  
-            partner = models.execute_kw(db, uid, pwd, 'res.partner', 'search',                                                  
-                                [[['name', 'ilike', partner_name]]])                
-            
+                        # Extract partner (N1 segment — Buyer)
+            partner_name = transaction.get_segment('N1')[2] if transaction.get_segment('N1') else "Unknown"
+
+            # Find partner in Odoo
+            partner = models.execute_kw(db, uid, pwd, 'res.partner', 'search',
+                                [[['name', 'ilike', partner_name]]])
+
             if not partner:
                 print(f"Error: Partner '{partner_name}' not found. Skipping transaction.")
                 continue
-                
+
             partner_id = partner[0]
 
             # Extract line items (PO1 segments)
@@ -127,11 +127,11 @@ IEA*1*{isa_control}~"""
 
 ## Best Practices
 
-- ✅ **Do:** Store every raw EDI transaction in an audit log table before processing.
-- ✅ **Do:** Always send a **997 Functional Acknowledgment** within 24 hours of receiving a transaction.
-- ✅ **Do:** Negotiate a test cycle with trading partners before going live — use test ISA qualifier `T`.
-- ❌ **Don't:** Process EDI files synchronously in web requests — queue them for async processing.
-- ❌ **Don't:** Hardcode trading partner qualifiers — store them in a configuration table per partner.
+- PASS: **Do:** Store every raw EDI transaction in an audit log table before processing.
+- PASS: **Do:** Always send a **997 Functional Acknowledgment** within 24 hours of receiving a transaction.
+- PASS: **Do:** Negotiate a test cycle with trading partners before going live — use test ISA qualifier `T`.
+- FAIL: **Don't:** Process EDI files synchronously in web requests — queue them for async processing.
+- FAIL: **Don't:** Hardcode trading partner qualifiers — store them in a configuration table per partner.
 
 ## Limitations
 - Use this skill only when the task clearly matches the scope described above.

@@ -12,9 +12,8 @@ LiveKit docs › Get Started › Voice AI quickstart
 
 This guide walks you through the setup of your very first voice assistant using LiveKit Agents. In less than 10 minutes, you'll have a voice assistant that you can speak to in your terminal, browser, telephone, or native app.
 
-> 💡 **LiveKit Agent Builder**
-> 
-> The LiveKit Agent Builder is a quick way to get started with voice agents in your browser, without writing any code. It's perfect for prototyping and exploring ideas, but doesn't have as many features as the full LiveKit Agents SDK. See the [Agent Builder](https://docs.livekit.io/agents/start/builder.md) guide for more details.
+> **LiveKit Agent Builder**
+> > The LiveKit Agent Builder is a quick way to get started with voice agents in your browser, without writing any code. It's perfect for prototyping and exploring ideas, but doesn't have as many features as the full LiveKit Agents SDK. See the [Agent Builder](https://docs.livekit.io/agents/start/builder.md) guide for more details.
 
 ### Coding agent support
 
@@ -76,9 +75,8 @@ curl -sSL https://get.livekit.io/cli | bash
 
 ```
 
-> 💡 **Tip**
-> 
-> You can also download the latest precompiled binaries [here](https://github.com/livekit/livekit-cli/releases/latest).
+> **Tip**
+> > You can also download the latest precompiled binaries [here](https://github.com/livekit/livekit-cli/releases/latest).
 
 ---
 
@@ -89,9 +87,8 @@ winget install LiveKit.LiveKitCLI
 
 ```
 
-> 💡 **Tip**
-> 
-> You can also download the latest precompiled binaries [here](https://github.com/livekit/livekit-cli/releases/latest).
+> **Tip**
+> > You can also download the latest precompiled binaries [here](https://github.com/livekit/livekit-cli/releases/latest).
 
 ---
 
@@ -141,9 +138,8 @@ lk agent init my-agent --template agent-starter-node
 
 The CLI clones the template into the `my-agent` directory, creates an `.env.local` file with your LiveKit credentials, and prints the next steps to run your agent.
 
-> 💡 **Save the chat link**
-> 
-> Save the link provided by the CLI after the line "To chat with your running agent, visit" for later use.
+> **Save the chat link**
+> > Save the link provided by the CLI after the line "To chat with your running agent, visit" for later use.
 
 Follow the instructions it prints, which guide you through the following steps:
 
@@ -308,7 +304,7 @@ Once you have the quickstart running, you can dig into the agent code. For the d
 
 **STT-LLM-TTS pipeline**:
 
-** Filename: `agent.py`**
+**Filename: `agent.py`**
 
 ```python
 from dotenv import load_dotenv
@@ -319,7 +315,6 @@ from livekit.plugins import noise_cancellation, silero
 from livekit.plugins.turn_detector.multilingual import MultilingualModel
 
 load_dotenv(".env.local")
-
 
 class Assistant(Agent):
     def __init__(self) -> None:
@@ -358,14 +353,12 @@ async def my_agent(ctx: agents.JobContext):
         instructions="Greet the user and offer your assistance."
     )
 
-
 if __name__ == "__main__":
     agents.cli.run_app(server)
 
-
 ```
 
-** Filename: `main.ts`**
+**Filename: `main.ts`**
 
 ```typescript
 import {
@@ -423,7 +416,7 @@ cli.runApp(new ServerOptions({ agent: fileURLToPath(import.meta.url), agentName:
 
 ```
 
-** Filename: `agent.ts`**
+**Filename: `agent.ts`**
 
 ```typescript
 import { voice } from '@livekit/agents';
@@ -442,7 +435,7 @@ export class Agent extends voice.Agent {
 
 **Realtime model**:
 
-** Filename: `agent.py`**
+**Filename: `agent.py`**
 
 ```python
 from dotenv import load_dotenv
@@ -484,14 +477,12 @@ async def my_agent(ctx: agents.JobContext):
         instructions="Greet the user and offer your assistance. You should start by speaking in English."
     )
 
-
 if __name__ == "__main__":
     agents.cli.run_app(server)
 
-
 ```
 
-** Filename: `main.ts`**
+**Filename: `main.ts`**
 
 ```typescript
 import {
@@ -539,7 +530,7 @@ cli.runApp(new ServerOptions({ agent: fileURLToPath(import.meta.url), agentName:
 
 ```
 
-** Filename: `agent.ts`**
+**Filename: `agent.ts`**
 
 ```typescript
 import { voice } from '@livekit/agents';

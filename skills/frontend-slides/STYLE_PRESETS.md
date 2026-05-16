@@ -1,4 +1,4 @@
-﻿# Style Presets Reference
+# Style Presets Reference
 
 Curated visual styles for `frontend-slides`.
 
@@ -165,12 +165,12 @@ img, .image-container {
 
 ## Viewport Checklist
 
-- every `.slide` has `height: 100vh`, `height: 100dvh`, and `overflow: hidden`
+- every `.slide`has`height: 100vh`,`height: 100dvh`, and`overflow: hidden`
 - all typography uses `clamp()`
 - all spacing uses `clamp()` or viewport units
 - images have `max-height` constraints
-- grids adapt with `auto-fit` + `minmax()`
-- short-height breakpoints exist at `700px`, `600px`, and `500px`
+- grids adapt with `auto-fit`+`minmax()`
+- short-height breakpoints exist at `700px`,`600px`, and`500px`
 - if anything feels cramped, split the slide
 
 ## Mood to Preset Mapping
@@ -316,10 +316,10 @@ margin-left: calc(-1 * min(10vw, 100px));
 ## Validation Sizes
 
 Test at minimum:
-- Desktop: `1920x1080`, `1440x900`, `1280x720`
-- Tablet: `1024x768`, `768x1024`
-- Mobile: `375x667`, `414x896`
-- Landscape phone: `667x375`, `896x414`
+- Desktop: `1920x1080`,`1440x900`,`1280x720`
+- Tablet: `1024x768`,`768x1024`
+- Mobile: `375x667`,`414x896`
+- Landscape phone: `667x375`,`896x414`
 
 ## Anti-Patterns
 

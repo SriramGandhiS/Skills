@@ -10,20 +10,20 @@ wrapper script, it only rewrites the settings file.
 
 The previous version of this helper registered the raw `observe.sh` path
 as the hook command, shared a single command string across `PreToolUse`
-and `PostToolUse`, and relied on `ConvertTo-Json` defaults that can emit
+and `PostToolUse`, and relied on`ConvertTo-Json` defaults that can emit
 CRLF line endings. Under Claude Code v2.1.116 the first argv token is
 duplicated, so the wrapper needs to be invoked with a specific shape and
 the two hook phases need distinct entries.
 
 ## What the fix does
 
-- First token is the PATH-resolved `bash` (no quoted `.exe` path), so the
+- First token is the PATH-resolved `bash`(no quoted`.exe` path), so the
   argv-dup bug no longer passes a binary as a script. Matches PR #1524 and
   PR #1540.
 - The wrapper path is normalized to forward slashes before it is embedded
   in the hook command, avoiding MSYS backslash handling surprises.
-- `PreToolUse` and `PostToolUse` receive distinct commands with explicit
-  `pre` / `post` positional arguments.
+- `PreToolUse`and`PostToolUse` receive distinct commands with explicit
+  `pre`/`post` positional arguments.
 - The settings file is written UTF-8 (no BOM) with CRLF normalized to LF
   so downstream JSON parsers never see mixed line endings.
 - Existing hooks (including legacy `observe.sh` entries and unrelated
@@ -43,7 +43,7 @@ bash "C:/Users/<you>/.claude/skills/continuous-learning/hooks/observe-wrapper.sh
 
 ```powershell
 pwsh -File docs/fixes/patch_settings_cl_v2_simple.ps1
-# Windows PowerShell 5.1 is also supported:
+## Windows PowerShell 5.1 is also supported:
 powershell -NoProfile -ExecutionPolicy Bypass -File docs/fixes/patch_settings_cl_v2_simple.ps1
 ```
 
@@ -53,9 +53,9 @@ The script backs up the existing settings file to
 ## PowerShell 5.1 compatibility
 
 `ConvertFrom-Json -AsHashtable` is PowerShell 7+ only. The script tries
-`-AsHashtable` first and falls back to a manual `PSCustomObject` →
+`-AsHashtable`first and falls back to a manual`PSCustomObject` →
 `Hashtable` conversion on Windows PowerShell 5.1. Both hook buckets
-(`PreToolUse`, `PostToolUse`) and their inner `hooks` arrays are
+(`PreToolUse`,`PostToolUse`) and their inner`hooks` arrays are
 materialized as `System.Collections.ArrayList` before serialization, so
 PS 5.1's `ConvertTo-Json` cannot collapse single-element arrays into bare
 objects.

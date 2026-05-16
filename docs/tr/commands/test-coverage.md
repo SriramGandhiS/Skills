@@ -6,12 +6,12 @@ Test coverage'ını analiz et, eksiklikleri tanımla ve 80%+ coverage'a ulaşmak
 
 | Gösterge | Coverage Komutu |
 |-----------|-----------------|
-| `jest.config.*` veya `package.json` jest | `npx jest --coverage --coverageReporters=json-summary` |
-| `vitest.config.*` | `npx vitest run --coverage` |
-| `pytest.ini` / `pyproject.toml` pytest | `pytest --cov=src --cov-report=json` |
-| `Cargo.toml` | `cargo llvm-cov --json` |
-| `pom.xml` JaCoCo ile | `mvn test jacoco:report` |
-| `go.mod` | `go test -coverprofile=coverage.out ./...` |
+| `jest.config.*`veya`package.json`jest |`npx jest --coverage --coverageReporters=json-summary` |
+| `vitest.config.*`|`npx vitest run --coverage` |
+| `pytest.ini`/`pyproject.toml`pytest |`pytest --cov=src --cov-report=json` |
+| `Cargo.toml`|`cargo llvm-cov --json` |
+| `pom.xml`JaCoCo ile |`mvn test jacoco:report` |
+| `go.mod`|`go test -coverprofile=coverage.out ./...` |
 
 ## Adım 2: Coverage Raporunu Analiz Et
 
@@ -34,7 +34,7 @@ Her yetersiz coverage'lı dosya için, bu önceliği takip ederek test'ler oluş
 
 ### Test Oluşturma Kuralları
 
-- Test'leri kaynak kodun yanına yerleştir: `foo.ts` → `foo.test.ts` (veya proje konvansiyonu)
+- Test'leri kaynak kodun yanına yerleştir: `foo.ts`→`foo.test.ts` (veya proje konvansiyonu)
 - Projeden mevcut test pattern'lerini kullan (import stili, assertion kütüphanesi, mocking yaklaşımı)
 - Harici bağımlılıkları mock'la (veritabanı, API'ler, dosya sistemi)
 - Her test bağımsız olmalı — test'ler arasında paylaşılan değişken state olmamalı

@@ -15,14 +15,14 @@
 
 - Todas as queries usam cliente Supabase com RLS habilitado — nunca bypass de RLS
 - Migrations em `supabase/migrations/` — nunca modificar banco diretamente
-- Use `select()` com lista explícita de colunas, não `select('*')`
+- Use `select()`com lista explícita de colunas, não`select('*')`
 - Todas as queries user-facing devem incluir `.limit()` para evitar resultados sem limite
 
 ### Autenticação
 
-- Use `createServerClient()` de `@supabase/ssr` em Server Components
-- Use `createBrowserClient()` de `@supabase/ssr` em Client Components
-- Rotas protegidas checam `getUser()` — nunca confiar só em `getSession()` para auth
+- Use `createServerClient()`de`@supabase/ssr` em Server Components
+- Use `createBrowserClient()`de`@supabase/ssr` em Client Components
+- Rotas protegidas checam `getUser()`— nunca confiar só em`getSession()` para auth
 - Middleware em `middleware.ts` renova tokens de auth em toda requisição
 
 ### Billing
@@ -36,7 +36,7 @@
 
 - Sem emojis em código ou comentários
 - Apenas padrões imutáveis — spread operator, nunca mutar
-- Server Components: sem diretiva `'use client'`, sem `useState`/`useEffect`
+- Server Components: sem diretiva `'use client'`, sem`useState`/`useEffect`
 - Client Components: `'use client'` no topo, mínimo possível — extraia lógica para hooks
 - Prefira schemas Zod para toda validação de entrada (API routes, formulários, env vars)
 
@@ -111,17 +111,17 @@ export async function createProject(formData: FormData) {
 ## Variáveis de Ambiente
 
 ```bash
-# Supabase
+## Supabase
 NEXT_PUBLIC_SUPABASE_URL=
 NEXT_PUBLIC_SUPABASE_ANON_KEY=
 SUPABASE_SERVICE_ROLE_KEY=     # Server-only, never expose to client
 
-# Stripe
+## Stripe
 STRIPE_SECRET_KEY=
 STRIPE_WEBHOOK_SECRET=
 NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=
 
-# App
+## App
 NEXT_PUBLIC_APP_URL=http://localhost:3000
 ```
 
@@ -143,24 +143,24 @@ NEXT_PUBLIC_APP_URL=http://localhost:3000
 ## Workflow ECC
 
 ```bash
-# Planning a feature
+## Planning a feature
 /plan "Add team invitations with email notifications"
 
-# Developing with TDD
+## Developing with TDD
 /tdd
 
-# Before committing
+## Before committing
 /code-review
 /security-scan
 
-# Before release
+## Before release
 /e2e
 /test-coverage
 ```
 
 ## Fluxo Git
 
-- `feat:` novas features, `fix:` correções de bug, `refactor:` mudanças de código
+- `feat:`novas features,`fix:`correções de bug,`refactor:` mudanças de código
 - Branches de feature a partir da `main`, PRs obrigatórios
 - CI roda: lint, type-check, unit tests, E2E tests
 - Deploy: preview da Vercel em PR, produção no merge para `main`

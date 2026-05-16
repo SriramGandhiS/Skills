@@ -32,7 +32,7 @@ domain: "code-style"
 source: "session-observation"
 ---
 
-# 偏好函式風格
+## 偏好函式風格
 
 ## 動作
 適當時使用函式模式而非類別。
@@ -94,11 +94,11 @@ source: "session-observation"
 
 **如果作為外掛安裝**（建議）：
 
-不需要在 `~/.claude/settings.json` 中額外加入 hook。Claude Code v2.1+ 會自動載入外掛的 `hooks/hooks.json`，其中已經註冊了 `observe.sh`。
+不需要在 `~/.claude/settings.json`中額外加入 hook。Claude Code v2.1+ 會自動載入外掛的`hooks/hooks.json`，其中已經註冊了`observe.sh`。
 
-如果你之前把 `observe.sh` 複製到 `~/.claude/settings.json`，請移除重複的 `PreToolUse` / `PostToolUse` 區塊。重複註冊會造成重複執行，並觸發 `${CLAUDE_PLUGIN_ROOT}` 解析錯誤；這個變數只會在外掛自己的 `hooks/hooks.json` 中展開。
+如果你之前把 `observe.sh`複製到`~/.claude/settings.json`，請移除重複的`PreToolUse`/`PostToolUse`區塊。重複註冊會造成重複執行，並觸發`${CLAUDE_PLUGIN_ROOT}`解析錯誤；這個變數只會在外掛自己的`hooks/hooks.json` 中展開。
 
-**如果手動安裝到 `~/.claude/skills`**，新增到你的 `~/.claude/settings.json`：
+**如果手動安裝到 `~/.claude/skills`**，新增到你的`~/.claude/settings.json`：
 
 ```json
 {
@@ -133,7 +133,7 @@ touch ~/.claude/homunculus/observations.jsonl
 觀察者可以在背景執行並分析觀察：
 
 ```bash
-# 啟動背景觀察者
+## 啟動背景觀察者
 ~/.claude/skills/continuous-learning-v2/agents/start-observer.sh
 ```
 

@@ -6,12 +6,12 @@
 # MSYS2 PID namespace is invisible to Node.js.
 #
 # Requirements:
-#   - Node.js in PATH
-#   - Run from the repository root, or set SUPERPOWERS_ROOT
-#   - On Windows: Git Bash (OSTYPE=msys*)
+# - Node.js in PATH
+# - Run from the repository root, or set SUPERPOWERS_ROOT
+# - On Windows: Git Bash (OSTYPE=msys*)
 #
 # Usage:
-#   bash tests/brainstorm-server/windows-lifecycle.test.sh
+# bash tests/brainstorm-server/windows-lifecycle.test.sh
 set -uo pipefail
 
 # ========== Configuration ==========

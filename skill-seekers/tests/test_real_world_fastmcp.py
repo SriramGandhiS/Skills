@@ -43,9 +43,9 @@ class TestRealWorldFastMCP:
         """Get GitHub token from environment (optional)."""
         token = os.getenv("GITHUB_TOKEN")
         if token:
-            print("\n✅ GitHub token found - using authenticated API")
+            print("\nPASS: GitHub token found - using authenticated API")
         else:
-            print("\n⚠️  No GitHub token - using public API (lower rate limits)")
+            print("\nWARNING:  No GitHub token - using public API (lower rate limits)")
             print("   Set GITHUB_TOKEN environment variable for higher rate limits")
         return token
 
@@ -53,7 +53,7 @@ class TestRealWorldFastMCP:
     def output_dir(self, tmp_path_factory):
         """Create output directory for test results."""
         output = tmp_path_factory.mktemp("fastmcp_real_test")
-        print(f"\n📁 Test output directory: {output}")
+        print(f"\n Test output directory: {output}")
         return output
 
     @pytest.fixture(scope="class")
@@ -67,7 +67,7 @@ class TestRealWorldFastMCP:
         from skill_seekers.cli.unified_codebase_analyzer import UnifiedCodebaseAnalyzer
 
         print(f"\n{'=' * 80}")
-        print("🚀 REAL-WORLD TEST: FastMCP GitHub Repository")
+        print(" REAL-WORLD TEST: FastMCP GitHub Repository")
         print(f"{'=' * 80}")
         print("Repository: https://github.com/jlowin/fastmcp")
         print(f"Test started: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
@@ -84,7 +84,7 @@ class TestRealWorldFastMCP:
                 "TEST_DEPTH", "basic"
             )  # Use 'basic' for quick test, 'c3x' for full
 
-            print(f"📊 Analysis depth: {depth_mode}")
+            print(f" Analysis depth: {depth_mode}")
             if depth_mode == "basic":
                 print("   (Set TEST_DEPTH=c3x environment variable for full C3.x analysis)")
             print()
@@ -97,7 +97,7 @@ class TestRealWorldFastMCP:
                 output_dir=output_dir,
             )
 
-            print("\n✅ Analysis complete!")
+            print("\nPASS: Analysis complete!")
             print(f"{'=' * 80}\n")
 
             return result
@@ -120,23 +120,23 @@ class TestRealWorldFastMCP:
         )
         # Depth can be 'basic' or 'c3x' depending on TEST_DEPTH env var
         assert result.analysis_depth in ["basic", "c3x"], f"Invalid depth '{result.analysis_depth}'"
-        print(f"\n📊 Analysis depth: {result.analysis_depth}")
+        print(f"\n Analysis depth: {result.analysis_depth}")
 
         # STREAM 1: Code Analysis
-        print("\n📊 STREAM 1: Code Analysis")
+        print("\n STREAM 1: Code Analysis")
         assert result.code_analysis is not None, "Code analysis missing"
         assert "files" in result.code_analysis, "Files list missing from code analysis"
         files = result.code_analysis["files"]
-        print(f"   ✅ Files analyzed: {len(files)}")
+        print(f"   PASS: Files analyzed: {len(files)}")
         assert len(files) > 0, "No files found in code analysis"
 
         # STREAM 2: GitHub Docs
-        print("\n📄 STREAM 2: GitHub Documentation")
+        print("\n STREAM 2: GitHub Documentation")
         assert result.github_docs is not None, "GitHub docs missing"
 
         readme = result.github_docs.get("readme")
         assert readme is not None, "README missing from GitHub docs"
-        print(f"   ✅ README length: {len(readme)} chars")
+        print(f"   PASS: README length: {len(readme)} chars")
         assert len(readme) > 100, "README too short (< 100 chars)"
         assert "fastmcp" in readme.lower() or "mcp" in readme.lower(), (
             "README doesn't mention FastMCP/MCP"
@@ -144,13 +144,13 @@ class TestRealWorldFastMCP:
 
         contributing = result.github_docs.get("contributing")
         if contributing:
-            print(f"   ✅ CONTRIBUTING.md length: {len(contributing)} chars")
+            print(f"   PASS: CONTRIBUTING.md length: {len(contributing)} chars")
 
         docs_files = result.github_docs.get("docs_files", [])
-        print(f"   ✅ Additional docs files: {len(docs_files)}")
+        print(f"   PASS: Additional docs files: {len(docs_files)}")
 
         # STREAM 3: GitHub Insights
-        print("\n🐛 STREAM 3: GitHub Insights")
+        print("\n STREAM 3: GitHub Insights")
         assert result.github_insights is not None, "GitHub insights missing"
 
         metadata = result.github_insights.get("metadata", {})
@@ -160,9 +160,9 @@ class TestRealWorldFastMCP:
         language = metadata.get("language", "Unknown")
         description = metadata.get("description", "")
 
-        print(f"   ✅ Stars: {stars}")
-        print(f"   ✅ Language: {language}")
-        print(f"   ✅ Description: {description}")
+        print(f"   PASS: Stars: {stars}")
+        print(f"   PASS: Language: {language}")
+        print(f"   PASS: Description: {description}")
 
         assert stars >= 0, "Stars count invalid"
         assert language, "Language not detected"
@@ -171,11 +171,11 @@ class TestRealWorldFastMCP:
         known_solutions = result.github_insights.get("known_solutions", [])
         top_labels = result.github_insights.get("top_labels", [])
 
-        print(f"   ✅ Common problems: {len(common_problems)}")
-        print(f"   ✅ Known solutions: {len(known_solutions)}")
-        print(f"   ✅ Top labels: {len(top_labels)}")
+        print(f"   PASS: Common problems: {len(common_problems)}")
+        print(f"   PASS: Known solutions: {len(known_solutions)}")
+        print(f"   PASS: Top labels: {len(top_labels)}")
 
-        print("\n✅ All 3 streams verified!\n")
+        print("\nPASS: All 3 streams verified!\n")
 
     def test_02_c3x_components_populated(self, fastmcp_analysis):
         """Test that C3.x components have ACTUAL data (not placeholders)."""
@@ -188,75 +188,75 @@ class TestRealWorldFastMCP:
 
         # Skip C3.x checks if running in basic mode
         if result.analysis_depth == "basic":
-            print("\n⚠️  Skipping C3.x component checks (running in basic mode)")
+            print("\nWARNING:  Skipping C3.x component checks (running in basic mode)")
             print("   Set TEST_DEPTH=c3x to run full C3.x analysis")
             pytest.skip("C3.x analysis not run in basic mode")
 
         # This is the CRITICAL test - verify actual C3.x integration
-        print("\n🔍 Checking C3.x Components:")
+        print("\n Checking C3.x Components:")
 
         # C3.1: Design Patterns
         c3_1 = code_analysis.get("c3_1_patterns", [])
         print("\n   C3.1 - Design Patterns:")
-        print(f"   ✅ Count: {len(c3_1)}")
+        print(f"   PASS: Count: {len(c3_1)}")
         if len(c3_1) > 0:
             print(
-                f"   ✅ Sample: {c3_1[0].get('name', 'N/A')} ({c3_1[0].get('count', 0)} instances)"
+                f"   PASS: Sample: {c3_1[0].get('name', 'N/A')} ({c3_1[0].get('count', 0)} instances)"
             )
             # Verify it's not empty/placeholder
             assert c3_1[0].get("name"), "Pattern has no name"
             assert c3_1[0].get("count", 0) > 0, "Pattern has zero count"
         else:
-            print("   ⚠️  No patterns detected (may be valid for small repos)")
+            print("   WARNING:  No patterns detected (may be valid for small repos)")
 
         # C3.2: Test Examples
         c3_2 = code_analysis.get("c3_2_examples", [])
         c3_2_count = code_analysis.get("c3_2_examples_count", 0)
         print("\n   C3.2 - Test Examples:")
-        print(f"   ✅ Count: {c3_2_count}")
+        print(f"   PASS: Count: {c3_2_count}")
         if len(c3_2) > 0:
             # C3.2 examples use 'test_name' and 'file_path' fields
             test_name = c3_2[0].get("test_name", c3_2[0].get("name", "N/A"))
             file_path = c3_2[0].get("file_path", c3_2[0].get("file", "N/A"))
-            print(f"   ✅ Sample: {test_name} from {file_path}")
+            print(f"   PASS: Sample: {test_name} from {file_path}")
             # Verify it's not empty/placeholder
             assert test_name and test_name != "N/A", "Example has no test_name"
             assert file_path and file_path != "N/A", "Example has no file_path"
         else:
-            print("   ⚠️  No test examples found")
+            print("   WARNING:  No test examples found")
 
         # C3.3: How-to Guides
         c3_3 = code_analysis.get("c3_3_guides", [])
         print("\n   C3.3 - How-to Guides:")
-        print(f"   ✅ Count: {len(c3_3)}")
+        print(f"   PASS: Count: {len(c3_3)}")
         if len(c3_3) > 0:
-            print(f"   ✅ Sample: {c3_3[0].get('title', 'N/A')}")
+            print(f"   PASS: Sample: {c3_3[0].get('title', 'N/A')}")
 
         # C3.4: Config Patterns
         c3_4 = code_analysis.get("c3_4_configs", [])
         print("\n   C3.4 - Config Patterns:")
-        print(f"   ✅ Count: {len(c3_4)}")
+        print(f"   PASS: Count: {len(c3_4)}")
         if len(c3_4) > 0:
-            print(f"   ✅ Sample: {c3_4[0].get('file', 'N/A')}")
+            print(f"   PASS: Sample: {c3_4[0].get('file', 'N/A')}")
 
         # C3.7: Architecture
         c3_7 = code_analysis.get("c3_7_architecture", [])
         print("\n   C3.7 - Architecture:")
-        print(f"   ✅ Count: {len(c3_7)}")
+        print(f"   PASS: Count: {len(c3_7)}")
         if len(c3_7) > 0:
-            print(f"   ✅ Sample: {c3_7[0].get('pattern', 'N/A')}")
+            print(f"   PASS: Sample: {c3_7[0].get('pattern', 'N/A')}")
 
         # CRITICAL: Verify at least SOME C3.x components have data
         # Not all repos will have all components, but should have at least one
         total_c3x_items = len(c3_1) + len(c3_2) + len(c3_3) + len(c3_4) + len(c3_7)
 
-        print(f"\n📊 Total C3.x items: {total_c3x_items}")
+        print(f"\n Total C3.x items: {total_c3x_items}")
 
         assert total_c3x_items > 0, (
-            "❌ CRITICAL: No C3.x data found! This suggests placeholders are being used instead of actual analysis."
+            "FAIL: CRITICAL: No C3.x data found! This suggests placeholders are being used instead of actual analysis."
         )
 
-        print("\n✅ C3.x components verified - ACTUAL data present (not placeholders)!\n")
+        print("\nPASS: C3.x components verified - ACTUAL data present (not placeholders)!\n")
 
     def test_03_router_generation(self, fastmcp_analysis, output_dir):
         """Test router generation with GitHub integration."""
@@ -314,7 +314,7 @@ class TestRealWorldFastMCP:
         )
 
         # Generate router
-        print("\n🧭 Generating router...")
+        print("\n Generating router...")
         generator = RouterGenerator(
             config_paths=[str(config1), str(config2)],
             router_name="fastmcp",
@@ -326,52 +326,52 @@ class TestRealWorldFastMCP:
         # Save router for inspection
         router_file = output_dir / "fastmcp_router_SKILL.md"
         router_file.write_text(skill_md)
-        print(f"   ✅ Router saved to: {router_file}")
+        print(f"   PASS: Router saved to: {router_file}")
 
         # Verify router content
-        print("\n📝 Router Content Analysis:")
+        print("\n Router Content Analysis:")
 
         # Check basic structure
         assert "fastmcp" in skill_md.lower(), "Router doesn't mention FastMCP"
-        print("   ✅ Contains 'fastmcp'")
+        print("   PASS: Contains 'fastmcp'")
 
         # Check GitHub metadata
         if "Repository:" in skill_md or "github.com" in skill_md:
-            print("   ✅ Contains repository URL")
+            print("   PASS: Contains repository URL")
 
-        if "⭐" in skill_md or "Stars:" in skill_md:
-            print("   ✅ Contains star count")
+        if "" in skill_md or "Stars:" in skill_md:
+            print("   PASS: Contains star count")
 
         if "Python" in skill_md or result.github_insights["metadata"].get("language") in skill_md:
-            print("   ✅ Contains language")
+            print("   PASS: Contains language")
 
         # Check README content
         if "Quick Start" in skill_md or "README" in skill_md:
-            print("   ✅ Contains README quick start")
+            print("   PASS: Contains README quick start")
 
         # Check common issues
         if "Common Issues" in skill_md or "Issue #" in skill_md:
             issue_count = skill_md.count("Issue #")
-            print(f"   ✅ Contains {issue_count} GitHub issues")
+            print(f"   PASS: Contains {issue_count} GitHub issues")
 
         # Check routing
         if "fastmcp-oauth" in skill_md:
-            print("   ✅ Contains sub-skill routing")
+            print("   PASS: Contains sub-skill routing")
 
         # Measure router size
         router_lines = len(skill_md.split("\n"))
-        print(f"\n📏 Router size: {router_lines} lines")
+        print(f"\n Router size: {router_lines} lines")
 
         # Architecture target: 60-250 lines
         # With GitHub integration: expect higher end of range
         if router_lines < 60:
-            print("   ⚠️  Router smaller than target (60-250 lines)")
+            print("   WARNING:  Router smaller than target (60-250 lines)")
         elif router_lines > 250:
-            print("   ⚠️  Router larger than target (60-250 lines)")
+            print("   WARNING:  Router larger than target (60-250 lines)")
         else:
-            print("   ✅ Router size within target range")
+            print("   PASS: Router size within target range")
 
-        print("\n✅ Router generation verified!\n")
+        print("\nPASS: Router generation verified!\n")
 
     def test_04_quality_metrics(self, fastmcp_analysis, output_dir):  # noqa: ARG002
         """Test that quality metrics meet architecture targets."""
@@ -382,7 +382,7 @@ class TestRealWorldFastMCP:
         result = fastmcp_analysis
 
         # Metric 1: GitHub Overhead
-        print("\n📊 Metric 1: GitHub Overhead")
+        print("\n Metric 1: GitHub Overhead")
         print("   Target: 20-60 lines")
 
         # Estimate GitHub overhead from insights
@@ -395,32 +395,32 @@ class TestRealWorldFastMCP:
         print(f"   Estimated: {total_overhead} lines")
 
         if 20 <= total_overhead <= 60:
-            print("   ✅ Within target range")
+            print("   PASS: Within target range")
         else:
-            print("   ⚠️  Outside target range (may be acceptable)")
+            print("   WARNING:  Outside target range (may be acceptable)")
 
         # Metric 2: Data Quality
-        print("\n📊 Metric 2: Data Quality")
+        print("\n Metric 2: Data Quality")
 
         code_files = len(result.code_analysis.get("files", []))
         print(f"   Code files: {code_files}")
         assert code_files > 0, "No code files found"
-        print("   ✅ Code files present")
+        print("   PASS: Code files present")
 
         readme_len = len(result.github_docs.get("readme", ""))
         print(f"   README length: {readme_len} chars")
         assert readme_len > 100, "README too short"
-        print("   ✅ README has content")
+        print("   PASS: README has content")
 
         stars = result.github_insights["metadata"].get("stars", 0)
         print(f"   Repository stars: {stars}")
-        print("   ✅ Metadata present")
+        print("   PASS: Metadata present")
 
         # Metric 3: C3.x Coverage
-        print("\n📊 Metric 3: C3.x Coverage")
+        print("\n Metric 3: C3.x Coverage")
 
         if result.analysis_depth == "basic":
-            print("   ⚠️  Running in basic mode - C3.x components not analyzed")
+            print("   WARNING:  Running in basic mode - C3.x components not analyzed")
             print("   Set TEST_DEPTH=c3x to enable C3.x analysis")
         else:
             c3x_components = {
@@ -432,15 +432,15 @@ class TestRealWorldFastMCP:
             }
 
             for name, count in c3x_components.items():
-                status = "✅" if count > 0 else "⚠️ "
+                status = "PASS:" if count > 0 else "WARNING: "
                 print(f"   {status} {name}: {count}")
 
             total_c3x = sum(c3x_components.values())
             print(f"   Total C3.x items: {total_c3x}")
             assert total_c3x > 0, "No C3.x data extracted"
-            print("   ✅ C3.x analysis successful")
+            print("   PASS: C3.x analysis successful")
 
-        print("\n✅ Quality metrics validated!\n")
+        print("\nPASS: Quality metrics validated!\n")
 
     def test_05_skill_quality_assessment(self, output_dir):
         """Manual quality assessment of generated router skill."""
@@ -455,38 +455,38 @@ class TestRealWorldFastMCP:
 
         content = router_file.read_text()
 
-        print("\n📝 Quality Checklist:")
+        print("\n Quality Checklist:")
 
         # 1. Has frontmatter
         has_frontmatter = content.startswith("---")
-        print(f"   {'✅' if has_frontmatter else '❌'} Has YAML frontmatter")
+        print(f"   {'PASS:' if has_frontmatter else 'FAIL:'} Has YAML frontmatter")
 
         # 2. Has main heading
         has_heading = "# " in content
-        print(f"   {'✅' if has_heading else '❌'} Has main heading")
+        print(f"   {'PASS:' if has_heading else 'FAIL:'} Has main heading")
 
         # 3. Has sections
         section_count = content.count("## ")
-        print(f"   {'✅' if section_count >= 3 else '❌'} Has {section_count} sections (need 3+)")
+        print(f"   {'PASS:' if section_count >= 3 else 'FAIL:'} Has {section_count} sections (need 3+)")
 
         # 4. Has code blocks
         code_block_count = content.count("```")
         has_code = code_block_count >= 2
-        print(f"   {'✅' if has_code else '⚠️ '} Has {code_block_count // 2} code blocks")
+        print(f"   {'PASS:' if has_code else 'WARNING: '} Has {code_block_count // 2} code blocks")
 
         # 5. No placeholders
         no_todos = "TODO" not in content and "[Add" not in content
-        print(f"   {'✅' if no_todos else '❌'} No TODO placeholders")
+        print(f"   {'PASS:' if no_todos else 'FAIL:'} No TODO placeholders")
 
         # 6. Has GitHub content
         has_github = any(
-            marker in content for marker in ["Repository:", "⭐", "Issue #", "github.com"]
+            marker in content for marker in ["Repository:", "", "Issue #", "github.com"]
         )
-        print(f"   {'✅' if has_github else '⚠️ '} Has GitHub integration")
+        print(f"   {'PASS:' if has_github else 'WARNING: '} Has GitHub integration")
 
         # 7. Has routing
         has_routing = "skill" in content.lower() and "use" in content.lower()
-        print(f"   {'✅' if has_routing else '⚠️ '} Has routing guidance")
+        print(f"   {'PASS:' if has_routing else 'WARNING: '} Has routing guidance")
 
         # Calculate quality score
         checks = [
@@ -500,20 +500,20 @@ class TestRealWorldFastMCP:
         ]
         score = sum(checks) / len(checks) * 100
 
-        print(f"\n📊 Quality Score: {score:.0f}%")
+        print(f"\n Quality Score: {score:.0f}%")
 
         if score >= 85:
-            print("   ✅ Excellent quality")
+            print("   PASS: Excellent quality")
         elif score >= 70:
-            print("   ✅ Good quality")
+            print("   PASS: Good quality")
         elif score >= 50:
-            print("   ⚠️  Acceptable quality")
+            print("   WARNING:  Acceptable quality")
         else:
-            print("   ❌ Poor quality")
+            print("   FAIL: Poor quality")
 
         assert score >= 50, f"Quality score too low: {score}%"
 
-        print("\n✅ Skill quality assessed!\n")
+        print("\nPASS: Skill quality assessed!\n")
 
     def test_06_final_report(self, fastmcp_analysis, output_dir):
         """Generate final test report."""
@@ -523,32 +523,32 @@ class TestRealWorldFastMCP:
 
         result = fastmcp_analysis
 
-        print("\n📊 Summary:")
+        print("\n Summary:")
         print("   Repository: https://github.com/jlowin/fastmcp")
         print(f"   Analysis: {result.analysis_depth}")
         print(f"   Source type: {result.source_type}")
         print(f"   Test completed: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
 
-        print("\n✅ Stream Verification:")
-        print(f"   ✅ Code Stream: {len(result.code_analysis.get('files', []))} files")
-        print(f"   ✅ Docs Stream: {len(result.github_docs.get('readme', ''))} char README")
-        print(f"   ✅ Insights Stream: {result.github_insights['metadata'].get('stars', 0)} stars")
+        print("\nPASS: Stream Verification:")
+        print(f"   PASS: Code Stream: {len(result.code_analysis.get('files', []))} files")
+        print(f"   PASS: Docs Stream: {len(result.github_docs.get('readme', ''))} char README")
+        print(f"   PASS: Insights Stream: {result.github_insights['metadata'].get('stars', 0)} stars")
 
-        print("\n✅ C3.x Components:")
-        print(f"   ✅ Patterns: {len(result.code_analysis.get('c3_1_patterns', []))}")
-        print(f"   ✅ Examples: {result.code_analysis.get('c3_2_examples_count', 0)}")
-        print(f"   ✅ Guides: {len(result.code_analysis.get('c3_3_guides', []))}")
-        print(f"   ✅ Configs: {len(result.code_analysis.get('c3_4_configs', []))}")
-        print(f"   ✅ Architecture: {len(result.code_analysis.get('c3_7_architecture', []))}")
+        print("\nPASS: C3.x Components:")
+        print(f"   PASS: Patterns: {len(result.code_analysis.get('c3_1_patterns', []))}")
+        print(f"   PASS: Examples: {result.code_analysis.get('c3_2_examples_count', 0)}")
+        print(f"   PASS: Guides: {len(result.code_analysis.get('c3_3_guides', []))}")
+        print(f"   PASS: Configs: {len(result.code_analysis.get('c3_4_configs', []))}")
+        print(f"   PASS: Architecture: {len(result.code_analysis.get('c3_7_architecture', []))}")
 
-        print("\n✅ Quality Metrics:")
-        print("   ✅ All 3 streams present and populated")
-        print("   ✅ C3.x actual data (not placeholders)")
-        print("   ✅ Router generated with GitHub integration")
-        print("   ✅ Quality metrics within targets")
+        print("\nPASS: Quality Metrics:")
+        print("   PASS: All 3 streams present and populated")
+        print("   PASS: C3.x actual data (not placeholders)")
+        print("   PASS: Router generated with GitHub integration")
+        print("   PASS: Quality metrics within targets")
 
-        print("\n🎉 SUCCESS: System working correctly with real repository!")
-        print(f"\n📁 Test artifacts saved to: {output_dir}")
+        print("\n SUCCESS: System working correctly with real repository!")
+        print(f"\n Test artifacts saved to: {output_dir}")
         print(f"   - Router: {output_dir}/fastmcp_router_SKILL.md")
 
         print(f"\n{'=' * 80}\n")

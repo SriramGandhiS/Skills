@@ -16,13 +16,13 @@ Use four categories in every update:
 ### npm downloads
 
 ```bash
-# Weekly downloads
-curl -s https://api.npmjs.org/downloads/point/last-week/ecc-universal
-curl -s https://api.npmjs.org/downloads/point/last-week/ecc-agentshield
+## Weekly downloads
+curl -s <https://api.npmjs.org/downloads/point/last-week/ecc-universal>
+curl -s <https://api.npmjs.org/downloads/point/last-week/ecc-agentshield>
 
-# Last 30 days
-curl -s https://api.npmjs.org/downloads/point/last-month/ecc-universal
-curl -s https://api.npmjs.org/downloads/point/last-month/ecc-agentshield
+## Last 30 days
+curl -s <https://api.npmjs.org/downloads/point/last-month/ecc-universal>
+curl -s <https://api.npmjs.org/downloads/point/last-month/ecc-agentshield>
 ```
 
 ### GitHub repository adoption

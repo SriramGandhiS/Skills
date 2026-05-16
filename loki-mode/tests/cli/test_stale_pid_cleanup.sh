@@ -1,13 +1,11 @@
 #!/usr/bin/env bash
 # Test: Stale PID cleanup on `loki start` (v7.5.12 Gap B)
-#
-# Scenario:
-#   1. User Ctrl+C's loki, then `loki stop`. Some hard-kill paths leave
-#      .loki/loki.pid orphaned.
-#   2. The next `loki start` must detect the stale PID, remove it, and
-#      proceed -- not silently abort or mistreat the dead pid as live.
-#
-# This test exercises ONLY the stale-PID detection branch in cmd_start.
+# # Scenario:
+# 1. User Ctrl+C's loki, then `loki stop`. Some hard-kill paths leave
+# .loki/loki.pid orphaned.
+# 2. The next `loki start` must detect the stale PID, remove it, and
+# proceed -- not silently abort or mistreat the dead pid as live.
+# # This test exercises ONLY the stale-PID detection branch in cmd_start.
 # We extract the relevant block via grep + sourcing, set up a fake stale
 # pid, and assert the file is removed.
 

@@ -18,10 +18,10 @@ Bu bir **Claude Code plugin**'idir - üretime hazır agent'lar, skill'ler, hook'
 ## Testleri Çalıştırma
 
 ```bash
-# Tüm testleri çalıştır
+## Tüm testleri çalıştır
 node tests/run-all.js
 
-# Tekil test dosyalarını çalıştır
+## Tekil test dosyalarını çalıştır
 node tests/lib/utils.test.js
 node tests/lib/package-manager.test.js
 node tests/hooks/hooks.test.js
@@ -66,4 +66,4 @@ CONTRIBUTING.md'deki formatları takip edin:
 - Commands: Description frontmatter ile Markdown
 - Hooks: Matcher ve hooks array ile JSON
 
-Dosya isimlendirme: tire ile küçük harfler (örn., `python-reviewer.md`, `tdd-workflow.md`)
+Dosya isimlendirme: tire ile küçük harfler (örn., `python-reviewer.md`,`tdd-workflow.md`)

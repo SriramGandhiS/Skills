@@ -77,64 +77,64 @@ Run these in order:
 | `method X in class Y cannot be applied to given types` | Wrong argument types or count | Fix arguments or check overloads |
 | `variable X might not have been initialized` | Uninitialized local variable | Initialise variable before use |
 | `non-static method X cannot be referenced from a static context` | Instance method called statically | Create instance or make method static |
-| `reached end of file while parsing` | Missing closing brace | Add missing `}` |
-| `package X does not exist` | Missing dependency or wrong import | Add dependency to `pom.xml`/`build.gradle` |
+| `reached end of file while parsing`| Missing closing brace | Add missing`}` |
+| `package X does not exist`| Missing dependency or wrong import | Add dependency to`pom.xml`/`build.gradle` |
 | `error: cannot access X, class file not found` | Missing transitive dependency | Add explicit dependency |
 | `Annotation processor threw uncaught exception` | Lombok/MapStruct misconfiguration | Check annotation processor setup |
 | `Could not resolve: group:artifact:version` | Missing repository or wrong version | Add repository or fix version in POM |
-| `The following artifacts could not be resolved` | Private repo or network issue | Check repository credentials or `settings.xml` |
-| `COMPILATION ERROR: Source option X is no longer supported` | Java version mismatch | Update `maven.compiler.source` / `targetCompatibility` |
+| `The following artifacts could not be resolved`| Private repo or network issue | Check repository credentials or`settings.xml` |
+| `COMPILATION ERROR: Source option X is no longer supported`| Java version mismatch | Update`maven.compiler.source`/`targetCompatibility` |
 
 ### [SPRING] Spring Boot Specific
 
 | Error | Cause | Fix |
 |-------|-------|-----|
-| `No qualifying bean of type X` | Missing `@Component`/`@Service` or component scan | Add annotation or fix scan base package |
-| `Circular dependency involving X` | Constructor injection cycle | Refactor to break cycle or use `@Lazy` on one leg |
-| `BeanCreationException: Error creating bean` | Missing config, bad property, or missing dependency | Check `application.yml`, dependency tree |
-| `HttpMessageNotReadableException` | Malformed JSON or missing Jackson dependency | Check `spring-boot-starter-web` includes Jackson |
-| `Could not autowire. No beans of type found` | Missing bean or wrong profile active | Check `@Profile`, `@ConditionalOn*`, component scan |
-| `Failed to configure a DataSource` | Missing DB driver or datasource properties | Add driver dependency or `spring.datasource.*` config |
-| `spring-boot-starter-* not found` | BOM version mismatch | Check `spring-boot-dependencies` BOM version in parent |
+| `No qualifying bean of type X`| Missing`@Component`/`@Service` or component scan | Add annotation or fix scan base package |
+| `Circular dependency involving X`| Constructor injection cycle | Refactor to break cycle or use`@Lazy` on one leg |
+| `BeanCreationException: Error creating bean`| Missing config, bad property, or missing dependency | Check`application.yml`, dependency tree |
+| `HttpMessageNotReadableException`| Malformed JSON or missing Jackson dependency | Check`spring-boot-starter-web` includes Jackson |
+| `Could not autowire. No beans of type found`| Missing bean or wrong profile active | Check`@Profile`,`@ConditionalOn*`, component scan |
+| `Failed to configure a DataSource`| Missing DB driver or datasource properties | Add driver dependency or`spring.datasource.*` config |
+| `spring-boot-starter-* not found`| BOM version mismatch | Check`spring-boot-dependencies` BOM version in parent |
 
 ### [QUARKUS] Quarkus Specific
 
 | Error | Cause | Fix |
 |-------|-------|-----|
-| `UnsatisfiedResolutionException: no bean found` | Missing `@ApplicationScoped`/`@Inject` or missing extension | Add CDI annotation or `quarkus-*` extension |
-| `AmbiguousResolutionException` | Multiple beans match injection point | Add `@Priority`, `@Alternative`, or qualifier |
+| `UnsatisfiedResolutionException: no bean found`| Missing`@ApplicationScoped`/`@Inject`or missing extension | Add CDI annotation or`quarkus-*` extension |
+| `AmbiguousResolutionException`| Multiple beans match injection point | Add`@Priority`,`@Alternative`, or qualifier |
 | `Build step X threw an exception: RuntimeException` | Quarkus build-time augmentation failure | Read full stack trace — usually a missing extension, bad config, or reflection issue |
-| `Error injecting X: it's a non-proxyable bean type` | `@Singleton` with interceptor or `final` class | Switch to `@ApplicationScoped` or remove `final` |
-| `ClassNotFoundException at native image build` | Missing `@RegisterForReflection` or reflection config | Add `@RegisterForReflection` or `reflect-config.json` entry |
-| `BlockingNotAllowedOnIOThread` | Blocking call on Vert.x event loop | Add `@Blocking` to endpoint or use reactive client |
-| `ConfigurationException: SRCFG*` | Missing or malformed config property | Check `application.properties` for required `quarkus.*` or `mp.*` keys |
-| `quarkus-extension-* not found` | Wrong BOM version or extension not in BOM | Check `quarkus-bom` version; use `quarkus ext add <name>` |
-| `DEV mode hot reload failure` | Incompatible change during dev mode | Run `./mvnw quarkus:dev` with clean: `./mvnw clean quarkus:dev` |
-| `Panache entity not enhanced` | Entity not detected at build time | Ensure entity is in scanned package; check for missing `quarkus-hibernate-orm-panache` or `quarkus-mongodb-panache` extension |
-| `RESTEASY* deployment failure` | Duplicate JAX-RS paths or missing provider | Check `@Path` uniqueness; ensure `quarkus-resteasy-reactive` vs `quarkus-resteasy` are not mixed |
+| `Error injecting X: it's a non-proxyable bean type`|`@Singleton`with interceptor or`final`class | Switch to`@ApplicationScoped`or remove`final` |
+| `ClassNotFoundException at native image build`| Missing`@RegisterForReflection`or reflection config | Add`@RegisterForReflection`or`reflect-config.json` entry |
+| `BlockingNotAllowedOnIOThread`| Blocking call on Vert.x event loop | Add`@Blocking` to endpoint or use reactive client |
+| `ConfigurationException: SRCFG*`| Missing or malformed config property | Check`application.properties`for required`quarkus.*`or`mp.*` keys |
+| `quarkus-extension-* not found`| Wrong BOM version or extension not in BOM | Check`quarkus-bom`version; use`quarkus ext add <name>` |
+| `DEV mode hot reload failure`| Incompatible change during dev mode | Run`./mvnw quarkus:dev`with clean:`./mvnw clean quarkus:dev` |
+| `Panache entity not enhanced`| Entity not detected at build time | Ensure entity is in scanned package; check for missing`quarkus-hibernate-orm-panache`or`quarkus-mongodb-panache` extension |
+| `RESTEASY* deployment failure`| Duplicate JAX-RS paths or missing provider | Check`@Path`uniqueness; ensure`quarkus-resteasy-reactive`vs`quarkus-resteasy` are not mixed |
 
 ## Maven Troubleshooting
 
 ```bash
-# Check dependency tree for conflicts
+## Check dependency tree for conflicts
 ./mvnw dependency:tree -Dverbose
 
-# Force update snapshots and re-download
+## Force update snapshots and re-download
 ./mvnw clean install -U
 
-# Analyse dependency conflicts
+## Analyse dependency conflicts
 ./mvnw dependency:analyze
 
-# Check effective POM (resolved inheritance)
+## Check effective POM (resolved inheritance)
 ./mvnw help:effective-pom
 
-# Debug annotation processors
+## Debug annotation processors
 ./mvnw compile -X 2>&1 | grep -i "processor\|lombok\|mapstruct"
 
-# Skip tests to isolate compile errors
+## Skip tests to isolate compile errors
 ./mvnw compile -DskipTests
 
-# Check Java version in use
+## Check Java version in use
 ./mvnw --version
 java -version
 ```
@@ -142,38 +142,38 @@ java -version
 ## Gradle Troubleshooting
 
 ```bash
-# Check dependency tree for conflicts
+## Check dependency tree for conflicts
 ./gradlew dependencies --configuration runtimeClasspath
 
-# Force refresh dependencies
+## Force refresh dependencies
 ./gradlew build --refresh-dependencies
 
-# Clear Gradle build cache
+## Clear Gradle build cache
 ./gradlew clean && rm -rf .gradle/build-cache/
 
-# Run with debug output
+## Run with debug output
 ./gradlew build --debug 2>&1 | tail -50
 
-# Check dependency insight
+## Check dependency insight
 ./gradlew dependencyInsight --dependency <name> --configuration runtimeClasspath
 
-# Check Java toolchain
+## Check Java toolchain
 ./gradlew -q javaToolchains
 ```
 
 ## [SPRING] Spring Boot Specific Commands
 
 ```bash
-# Verify application context loads
+## Verify application context loads
 ./mvnw spring-boot:run -Dspring-boot.run.arguments="--spring.profiles.active=test"
 
-# Check for missing beans or circular dependencies
+## Check for missing beans or circular dependencies
 ./mvnw test -Dtest=*ContextLoads* -q
 
-# Verify Lombok is configured as annotation processor (not just dependency)
+## Verify Lombok is configured as annotation processor (not just dependency)
 grep -A5 "annotationProcessorPaths\|annotationProcessor" pom.xml build.gradle
 
-# Check Spring Boot version alignment
+## Check Spring Boot version alignment
 ./mvnw dependency:tree | grep "org.springframework.boot"
 ```
 
@@ -182,59 +182,59 @@ grep -A5 "annotationProcessorPaths\|annotationProcessor" pom.xml build.gradle
 ### Maven
 
 ```bash
-# Verify Quarkus build augmentation
+## Verify Quarkus build augmentation
 ./mvnw quarkus:build -q
 
-# Run in dev mode to surface runtime errors
+## Run in dev mode to surface runtime errors
 ./mvnw quarkus:dev
 
-# List installed extensions
+## List installed extensions
 ./mvnw quarkus:list-extensions -q 2>&1 | grep "✓\|installed"
 
-# Add a missing extension
+## Add a missing extension
 ./mvnw quarkus:add-extension -Dextensions="<extension-name>"
 
-# Check Quarkus BOM version alignment
+## Check Quarkus BOM version alignment
 ./mvnw dependency:tree | grep "io.quarkus"
 
-# Verify native build prerequisites (GraalVM)
+## Verify native build prerequisites (GraalVM)
 ./mvnw package -Pnative -DskipTests 2>&1 | head -50
 
-# Debug build-time augmentation failures
+## Debug build-time augmentation failures
 ./mvnw compile -X 2>&1 | grep -i "augment\|build step\|extension"
 ```
 
 ### Gradle
 
 ```bash
-# Verify Quarkus build augmentation
+## Verify Quarkus build augmentation
 ./gradlew quarkusBuild
 
-# Run in dev mode to surface runtime errors
+## Run in dev mode to surface runtime errors
 ./gradlew quarkusDev
 
-# List installed extensions
+## List installed extensions
 ./gradlew listExtensions
 
-# Add a missing extension
+## Add a missing extension
 ./gradlew addExtension --extensions="<extension-name>"
 
-# Check Quarkus dependency alignment
+## Check Quarkus dependency alignment
 ./gradlew dependencies --configuration runtimeClasspath | grep "io.quarkus"
 
-# Verify native build prerequisites (GraalVM)
+## Verify native build prerequisites (GraalVM)
 ./gradlew build -Dquarkus.native.enabled=true -x test 2>&1 | head -50
 ```
 
 ### Common (both build tools)
 
 ```bash
-# Check for reflection issues (native image)
+## Check for reflection issues (native image)
 grep -rn "@RegisterForReflection" src/main/java --include="*.java"
 
-# Verify CDI bean discovery (run dev mode first, then check output)
-# Maven: ./mvnw quarkus:dev | Gradle: ./gradlew quarkusDev
-# Then grep logs for: bean|unsatisfied|ambiguous
+## Verify CDI bean discovery (run dev mode first, then check output)
+## Maven: ./mvnw quarkus:dev | Gradle: ./gradlew quarkusDev
+## Then grep logs for: bean|unsatisfied|ambiguous
 ```
 
 ## Key Principles
@@ -245,9 +245,9 @@ grep -rn "@RegisterForReflection" src/main/java --include="*.java"
 - **Always** run the build after each fix to verify
 - Fix root cause over suppressing symptoms
 - Prefer adding missing imports over changing logic
-- **[QUARKUS]**: Prefer `quarkus ext add` over manually editing `pom.xml` for extensions
+- **[QUARKUS]**: Prefer `quarkus ext add`over manually editing`pom.xml` for extensions
 - **[QUARKUS]**: Always check if `@RegisterForReflection` is needed before adding reflection config manually
-- Check `pom.xml`, `build.gradle`, or `build.gradle.kts` to confirm the build tool before running commands
+- Check `pom.xml`,`build.gradle`, or`build.gradle.kts` to confirm the build tool before running commands
 
 ## Stop Conditions
 

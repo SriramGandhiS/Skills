@@ -1,20 +1,16 @@
 #!/usr/bin/env bash
 # export-pdf.sh - Export an HTML presentation to PDF
-#
-# Usage:
-#   bash scripts/export-pdf.sh <path-to-html> [output.pdf]
-#
-# Examples:
-#   bash scripts/export-pdf.sh ./my-deck/index.html
-#   bash scripts/export-pdf.sh ./presentation.html ./presentation.pdf
-#
-# What this does:
-#   1. Starts a local server to serve the HTML (fonts and assets need HTTP)
-#   2. Uses Playwright to screenshot each slide at 1920x1080
-#   3. Combines all screenshots into a single PDF
-#   4. Cleans up the server and temp files
-#
-# The PDF preserves colors, fonts, and layout - but not animations.
+# # Usage:
+# bash scripts/export-pdf.sh <path-to-html> [output.pdf]
+# # Examples:
+# bash scripts/export-pdf.sh ./my-deck/index.html
+# bash scripts/export-pdf.sh ./presentation.html ./presentation.pdf
+# # What this does:
+# 1. Starts a local server to serve the HTML (fonts and assets need HTTP)
+# 2. Uses Playwright to screenshot each slide at 1920x1080
+# 3. Combines all screenshots into a single PDF
+# 4. Cleans up the server and temp files
+# # The PDF preserves colors, fonts, and layout - but not animations.
 # Perfect for email attachments, printing, or embedding in documents.
 set -euo pipefail
 

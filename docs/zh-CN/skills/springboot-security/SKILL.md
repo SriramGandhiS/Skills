@@ -50,7 +50,7 @@ public class JwtAuthFilter extends OncePerRequestFilter {
 ## 授权
 
 * 启用方法安全：`@EnableMethodSecurity`
-* 使用 `@PreAuthorize("hasRole('ADMIN')")` 或 `@PreAuthorize("@authz.canEdit(#id)")`
+* 使用 `@PreAuthorize("hasRole('ADMIN')")`或`@PreAuthorize("@authz.canEdit(#id)")`
 * 默认拒绝；仅公开必需的 scope
 
 ```java
@@ -153,21 +153,21 @@ http
 * 定期轮换令牌和数据库凭据
 
 ```yaml
-# BAD: Hardcoded in application.yml
+## BAD: Hardcoded in application.yml
 spring:
   datasource:
     password: mySecretPassword123
 
-# GOOD: Environment variable placeholder
+## GOOD: Environment variable placeholder
 spring:
   datasource:
     password: ${DB_PASSWORD}
 
-# GOOD: Spring Cloud Vault integration
+## GOOD: Spring Cloud Vault integration
 spring:
   cloud:
     vault:
-      uri: https://vault.example.com
+      uri: <https://vault.example.com>
       token: ${VAULT_TOKEN}
 ```
 

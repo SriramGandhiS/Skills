@@ -169,7 +169,7 @@ Complete example of a blocking guardrail skill with all features:
       ]
     },
 
-    "blockMessage": "⚠️ BLOCKED - Database Operation Detected\n\n📋 REQUIRED ACTION:\n1. Use Skill tool: 'database-verification'\n2. Verify ALL table and column names against schema\n3. Check database structure with DESCRIBE commands\n4. Then retry this edit\n\nReason: Prevent column name errors in Prisma queries\nFile: {file_path}\n\n💡 TIP: Add '// @skip-validation' comment to skip future checks",
+    "blockMessage": "WARNING: BLOCKED - Database Operation Detected\n\n REQUIRED ACTION:\n1. Use Skill tool: 'database-verification'\n2. Verify ALL table and column names against schema\n3. Check database structure with DESCRIBE commands\n4. Then retry this edit\n\nReason: Prevent column name errors in Prisma queries\nFile: {file_path}\n\n TIP: Add '// @skip-validation' comment to skip future checks",
 
     "skipConditions": {
       "sessionSkillUsed": true,
@@ -277,21 +277,21 @@ If valid, jq will pretty-print the JSON. If invalid, it will show the error.
 **Trailing comma:**
 ```json
 {
-  "keywords": ["one", "two",]  // ❌ Trailing comma
+  "keywords": ["one", "two",]  // FAIL: Trailing comma
 }
 ```
 
 **Missing quotes:**
 ```json
 {
-  type: "guardrail"  // ❌ Missing quotes on key
+  type: "guardrail"  // FAIL: Missing quotes on key
 }
 ```
 
 **Single quotes (invalid JSON):**
 ```json
 {
-  'type': 'guardrail'  // ❌ Must use double quotes
+  'type': 'guardrail'  // FAIL: Must use double quotes
 }
 ```
 

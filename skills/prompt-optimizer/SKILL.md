@@ -1,4 +1,4 @@
-﻿---
+---
 name: prompt-optimizer
 description: >-
   Analyze raw prompts, identify intent and gaps, match ECC components
@@ -66,15 +66,15 @@ Before analyzing the prompt, detect the current project context:
 2. Detect tech stack from project files:
    - `package.json` â†’ Node.js / TypeScript / React / Next.js
    - `go.mod` â†’ Go
-   - `pyproject.toml` / `requirements.txt` â†’ Python
+   - `pyproject.toml`/`requirements.txt` â†’ Python
    - `Cargo.toml` â†’ Rust
-   - `build.gradle` / `pom.xml` â†’ Java / Kotlin (then check for `quarkus` in build file â†’ Quarkus, or `spring-boot` â†’ Spring Boot)
+   - `build.gradle`/`pom.xml`â†’ Java / Kotlin (then check for`quarkus`in build file â†’ Quarkus, or`spring-boot` â†’ Spring Boot)
    - `Package.swift` â†’ Swift
    - `Gemfile` â†’ Ruby
    - `composer.json` â†’ PHP
-   - `*.csproj` / `*.sln` â†’ .NET
-   - `Makefile` / `CMakeLists.txt` â†’ C / C++
-   - `cpanfile` / `Makefile.PL` â†’ Perl
+   - `*.csproj`/`*.sln` â†’ .NET
+   - `Makefile`/`CMakeLists.txt` â†’ C / C++
+   - `cpanfile`/`Makefile.PL` â†’ Perl
 3. Note detected tech stack for use in Phase 3 and Phase 4
 
 If no project files are found (e.g., the prompt is abstract or for a new project),

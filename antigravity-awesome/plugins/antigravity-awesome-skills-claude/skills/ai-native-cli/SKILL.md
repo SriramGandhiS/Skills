@@ -293,13 +293,13 @@ Implement by layer -- each phase gets you the next certification level.
 ## Common Pitfalls
 
 - **Problem:** CLI outputs human-readable text by default, breaking agent parsing
-  **Solution:** Make JSON the default output format; add `--human` flag for human-friendly mode
+**Solution:** Make JSON the default output format; add `--human` flag for human-friendly mode
 
 - **Problem:** Errors reported in stdout with exit code 0
-  **Solution:** Always exit non-zero on failure and write structured error JSON to stderr
+**Solution:** Always exit non-zero on failure and write structured error JSON to stderr
 
 - **Problem:** CLI prompts for missing input interactively
-  **Solution:** Return structured error with suggestion field and exit immediately
+**Solution:** Return structured error with suggestion field and exit immediately
 
 ## Related Skills
 

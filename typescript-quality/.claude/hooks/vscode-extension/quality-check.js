@@ -264,9 +264,9 @@ class TypeScriptConfigCache {
     // For other patterns, use regex conversion
     let regexPattern = pattern
       .replace(/[.+^${}()|[\]\\]/g, '\\$&') // Escape regex special chars
-      .replace(/\*\*/g, '🌟') // Temporary placeholder for **
+      .replace(/\*\*/g, '') // Temporary placeholder for **
       .replace(/\*/g, '[^/]*') // * matches anything except /
-      .replace(/🌟/g, '.*') // ** matches anything including /
+      .replace(//g, '.*') // ** matches anything including /
       .replace(/\?/g, '.'); // ? matches single character
 
     const regex = new RegExp(`^${regexPattern}$`);
@@ -615,7 +615,7 @@ class QualityChecker {
             diagnostic.start
           );
           console.error(
-            `  ❌ ${diagnostic.file.fileName}:${line + 1}:${character + 1} - ${message}`
+            `  FAIL: ${diagnostic.file.fileName}:${line + 1}:${character + 1} - ${message}`
           );
         });
       }
@@ -629,7 +629,7 @@ class QualityChecker {
               console.error('\n[DEPENDENCY ERRORS] Files imported by your edited file:');
               hasDepErrors = true;
             }
-            console.error(`  ⚠️ ${fileName}:`);
+            console.error(`  WARNING: ${fileName}:`);
             diags.forEach((diagnostic) => {
               const message = ts.flattenDiagnosticMessageText(diagnostic.messageText, '\n');
               const { line, character } = diagnostic.file.getLineAndCharacterOfPosition(
@@ -839,7 +839,7 @@ class QualityChecker {
       try {
         await fs.access(`${baseName}.${ext}`);
         hasTests = true;
-        log.warning(`💡 Related test found: ${path.basename(baseName)}.${ext}`);
+        log.warning(` Related test found: ${path.basename(baseName)}.${ext}`);
         log.warning('   Consider running the tests to ensure nothing broke');
         break;
       } catch {
@@ -857,7 +857,7 @@ class QualityChecker {
         try {
           await fs.access(path.join(dir, '__tests__', `${baseFileName}.${ext}`));
           hasTests = true;
-          log.warning(`💡 Related test found: __tests__/${baseFileName}.${ext}`);
+          log.warning(` Related test found: __tests__/${baseFileName}.${ext}`);
           log.warning('   Consider running the tests to ensure nothing broke');
           break;
         } catch {
@@ -867,17 +867,17 @@ class QualityChecker {
     }
 
     if (!hasTests) {
-      log.warning(`💡 No test file found for ${path.basename(this.filePath)}`);
+      log.warning(` No test file found for ${path.basename(this.filePath)}`);
       log.warning('   Consider adding tests for better code quality');
     }
 
     // Special reminders for specific file types
     if (/\/state\/slices\//.test(this.filePath)) {
-      log.warning('💡 Redux state file! Consider testing state updates');
+      log.warning(' Redux state file! Consider testing state updates');
     } else if (/\/components\//.test(this.filePath)) {
-      log.warning('💡 Component file! Consider testing UI behavior');
+      log.warning(' Component file! Consider testing UI behavior');
     } else if (/\/services\//.test(this.filePath)) {
-      log.warning('💡 Service file! Consider testing business logic');
+      log.warning(' Service file! Consider testing business logic');
     }
   }
 }
@@ -899,7 +899,7 @@ async function parseJsonInput() {
     log.info(
       'For testing, provide JSON like: echo \'{"tool_name":"Edit","tool_input":{"file_path":"/path/to/file.ts"}}\' | node hook.js'
     );
-    console.error(`\n${colors.yellow}👉 Hook executed but no input to process.${colors.reset}`);
+    console.error(`\n${colors.yellow} Hook executed but no input to process.${colors.reset}`);
     process.exit(0);
   }
 
@@ -959,7 +959,7 @@ function printSummary(errors, autofixes) {
   if (autofixes.length > 0) {
     console.error(`\n${colors.blue}═══ Auto-fixes Applied ═══${colors.reset}`);
     autofixes.forEach((fix) => {
-      console.error(`${colors.green}✨${colors.reset} ${fix}`);
+      console.error(`${colors.green}${colors.reset} ${fix}`);
     });
     console.error(
       `${colors.green}Automatically fixed ${autofixes.length} issue(s) for you!${colors.reset}`
@@ -970,16 +970,16 @@ function printSummary(errors, autofixes) {
   if (errors.length > 0) {
     console.error(`\n${colors.blue}═══ Quality Check Summary ═══${colors.reset}`);
     errors.forEach((error) => {
-      console.error(`${colors.red}❌${colors.reset} ${error}`);
+      console.error(`${colors.red}FAIL:${colors.reset} ${error}`);
     });
 
     console.error(
       `\n${colors.red}Found ${errors.length} issue(s) that MUST be fixed!${colors.reset}`
     );
     console.error(`${colors.red}════════════════════════════════════════════${colors.reset}`);
-    console.error(`${colors.red}❌ ALL ISSUES ARE BLOCKING ❌${colors.reset}`);
+    console.error(`${colors.red}FAIL: ALL ISSUES ARE BLOCKING FAIL:${colors.reset}`);
     console.error(`${colors.red}════════════════════════════════════════════${colors.reset}`);
-    console.error(`${colors.red}Fix EVERYTHING above until all checks are ✅ GREEN${colors.reset}`);
+    console.error(`${colors.red}Fix EVERYTHING above until all checks are PASS: GREEN${colors.reset}`);
   }
 }
 
@@ -992,7 +992,7 @@ async function main() {
   const hookVersion = config._fileConfig.version || '1.0.0';
   const hookName = config._fileConfig.name || 'VS Code Extension Quality Check';
   console.error('');
-  console.error(`🔍 ${hookName} v${hookVersion}`);
+  console.error(` ${hookName} v${hookVersion}`);
   console.error('────────────────────────────────────────────');
 
   // Debug: show loaded configuration
@@ -1006,7 +1006,7 @@ async function main() {
     log.warning('No file path found in JSON input. Tool might not be file-related.');
     log.debug(`JSON input was: ${JSON.stringify(input)}`);
     console.error(
-      `\n${colors.yellow}👉 No file to check - tool may not be file-related.${colors.reset}`
+      `\n${colors.yellow} No file to check - tool may not be file-related.${colors.reset}`
     );
     process.exit(0);
   }
@@ -1014,23 +1014,23 @@ async function main() {
   // Check if file exists
   if (!(await fileExists(filePath))) {
     log.info(`File does not exist: ${filePath} (may have been deleted)`);
-    console.error(`\n${colors.yellow}👉 File skipped - doesn't exist.${colors.reset}`);
+    console.error(`\n${colors.yellow} File skipped - doesn't exist.${colors.reset}`);
     process.exit(0);
   }
 
   // For non-source files, exit successfully without checks (matching shell behavior)
   if (!isSourceFile(filePath)) {
     log.info(`Skipping non-source file: ${filePath}`);
-    console.error(`\n${colors.yellow}👉 File skipped - not a source file.${colors.reset}`);
+    console.error(`\n${colors.yellow} File skipped - not a source file.${colors.reset}`);
     console.error(
-      `\n${colors.green}✅ No checks needed for ${path.basename(filePath)}${colors.reset}`
+      `\n${colors.green}PASS: No checks needed for ${path.basename(filePath)}${colors.reset}`
     );
     process.exit(0);
   }
 
   // Update header with file name
   console.error('');
-  console.error(`🔍 Validating: ${path.basename(filePath)}`);
+  console.error(` Validating: ${path.basename(filePath)}`);
   console.error('────────────────────────────────────────────');
   log.info(`Checking: ${filePath}`);
 
@@ -1057,13 +1057,13 @@ async function main() {
   // Exit with appropriate code
   if (editedFileErrors.length > 0) {
     // Critical - blocks immediately
-    console.error(`\n${colors.red}🛑 FAILED - Fix issues in your edited file! 🛑${colors.reset}`);
-    console.error(`${colors.cyan}💡 CLAUDE.md CHECK:${colors.reset}`);
+    console.error(`\n${colors.red} FAILED - Fix issues in your edited file! ${colors.reset}`);
+    console.error(`${colors.cyan} CLAUDE.md CHECK:${colors.reset}`);
     console.error(
       `${colors.cyan}  → What CLAUDE.md pattern would have prevented this?${colors.reset}`
     );
     console.error(`${colors.cyan}  → Are you following JSDoc batching strategy?${colors.reset}`);
-    console.error(`${colors.yellow}📋 NEXT STEPS:${colors.reset}`);
+    console.error(`${colors.yellow} NEXT STEPS:${colors.reset}`);
     console.error(`${colors.yellow}  1. Fix the issues listed above${colors.reset}`);
     console.error(`${colors.yellow}  2. The hook will run again automatically${colors.reset}`);
     console.error(
@@ -1072,36 +1072,36 @@ async function main() {
     process.exit(2);
   } else if (dependencyWarnings.length > 0) {
     // Warning - shows but doesn't block
-    console.error(`\n${colors.yellow}⚠️ WARNING - Dependency issues found${colors.reset}`);
+    console.error(`\n${colors.yellow}WARNING: WARNING - Dependency issues found${colors.reset}`);
     console.error(
       `${colors.yellow}These won't block your progress but should be addressed${colors.reset}`
     );
     console.error(
-      `\n${colors.green}✅ Quality check passed for ${path.basename(filePath)}${colors.reset}`
+      `\n${colors.green}PASS: Quality check passed for ${path.basename(filePath)}${colors.reset}`
     );
 
     if (autofixes.length > 0 && config.autofixSilent) {
       console.error(
-        `\n${colors.yellow}👉 File quality verified. Auto-fixes applied. Continue with your task.${colors.reset}`
+        `\n${colors.yellow} File quality verified. Auto-fixes applied. Continue with your task.${colors.reset}`
       );
     } else {
       console.error(
-        `\n${colors.yellow}👉 File quality verified. Continue with your task.${colors.reset}`
+        `\n${colors.yellow} File quality verified. Continue with your task.${colors.reset}`
       );
     }
     process.exit(0); // Don't block on dependency issues
   } else {
     console.error(
-      `\n${colors.green}✅ Quality check passed for ${path.basename(filePath)}${colors.reset}`
+      `\n${colors.green}PASS: Quality check passed for ${path.basename(filePath)}${colors.reset}`
     );
 
     if (autofixes.length > 0 && config.autofixSilent) {
       console.error(
-        `\n${colors.yellow}👉 File quality verified. Auto-fixes applied. Continue with your task.${colors.reset}`
+        `\n${colors.yellow} File quality verified. Auto-fixes applied. Continue with your task.${colors.reset}`
       );
     } else {
       console.error(
-        `\n${colors.yellow}👉 File quality verified. Continue with your task.${colors.reset}`
+        `\n${colors.yellow} File quality verified. Continue with your task.${colors.reset}`
       );
     }
     process.exit(0);

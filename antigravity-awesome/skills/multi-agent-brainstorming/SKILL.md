@@ -41,7 +41,7 @@ The process is **gated** and **terminates by design**.
 
 Each agent operates under a **hard scope limit**.
 
-### 1️⃣ Primary Designer (Lead Agent)
+### 1⃣ Primary Designer (Lead Agent)
 
 **Role:**
 - Owns the design
@@ -60,7 +60,7 @@ Each agent operates under a **hard scope limit**.
 
 ---
 
-### 2️⃣ Skeptic / Challenger Agent
+### 2⃣ Skeptic / Challenger Agent
 
 **Role:**
 - Assume the design will fail
@@ -82,7 +82,7 @@ Prompting guidance:
 
 ---
 
-### 3️⃣ Constraint Guardian Agent
+### 3⃣ Constraint Guardian Agent
 
 **Role:**
 - Enforce non-functional and real-world constraints
@@ -106,7 +106,7 @@ Focus areas:
 
 ---
 
-### 4️⃣ User Advocate Agent
+### 4⃣ User Advocate Agent
 
 **Role:**
 - Represent the end user
@@ -129,7 +129,7 @@ Focus areas:
 
 ---
 
-### 5️⃣ Integrator / Arbiter Agent
+### 5⃣ Integrator / Arbiter Agent
 
 **Role:**
 - Resolve conflicts
@@ -216,8 +216,7 @@ You may exit multi-agent brainstorming **only when all are true**:
 - All objections are resolved or explicitly rejected
 - Decision Log is complete
 - Arbiter has declared the design acceptable
-- 
-If any criterion is unmet:
+- If any criterion is unmet:
 - Continue review
 - Do NOT proceed to implementation
 If this skill was invoked by a routing or orchestration layer, you MUST report the final disposition explicitly as one of: APPROVED, REVISE, or REJECT, with a brief rationale.

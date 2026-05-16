@@ -1,4 +1,4 @@
-﻿---
+---
 name: deep-research
 description: Multi-source deep research using firecrawl and exa MCPs. Searches the web, synthesizes findings, and delivers cited reports with source attribution. Use when the user wants thorough research on any topic with evidence and citations.
 origin: ECC
@@ -23,10 +23,10 @@ Produce thorough, cited research reports from multiple web sources using firecra
 ## MCP Requirements
 
 At least one of:
-- **firecrawl** â€” `firecrawl_search`, `firecrawl_scrape`, `firecrawl_crawl`
-- **exa** â€” `web_search_exa`, `web_search_advanced_exa`, `crawling_exa`
+- **firecrawl** â€” `firecrawl_search`,`firecrawl_scrape`,`firecrawl_crawl`
+- **exa** â€” `web_search_exa`,`web_search_advanced_exa`,`crawling_exa`
 
-Both together give the best coverage. Configure in `~/.claude.json` or `~/.codex/config.toml`.
+Both together give the best coverage. Configure in `~/.claude.json`or`~/.codex/config.toml`.
 
 ## Workflow
 
@@ -90,7 +90,7 @@ Read 3-5 key sources in full for depth. Do not rely only on search snippets.
 Structure the report:
 
 ```markdown
-# [Topic]: Research Report
+## [Topic]: Research Report
 *Generated: [date] | Sources: [N] | Confidence: [High/Medium/Low]*
 
 ## Executive Summary

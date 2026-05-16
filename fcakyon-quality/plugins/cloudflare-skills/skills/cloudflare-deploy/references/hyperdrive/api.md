@@ -41,7 +41,7 @@ export default {
 };
 ```
 
-**⚠️ Workers connection limit: 6 per Worker invocation** - use connection pooling wisely.
+**WARNING: Workers connection limit: 6 per Worker invocation** - use connection pooling wisely.
 
 ## PostgreSQL (postgres.js)
 
@@ -57,7 +57,7 @@ const sql = postgres(env.HYPERDRIVE.connectionString, {
 const users = await sql`SELECT * FROM users WHERE active = ${true} LIMIT 10`;
 ```
 
-**⚠️ `prepare: true` is enabled by default and required for Hyperdrive caching.** Setting to `false` disables prepared statements + cache.
+**WARNING: `prepare: true` is enabled by default and required for Hyperdrive caching.** Setting to `false` disables prepared statements + cache.
 
 ## MySQL (mysql2)
 
@@ -70,14 +70,14 @@ const conn = await createConnection({
   password: env.HYPERDRIVE.password,
   database: env.HYPERDRIVE.database,
   port: env.HYPERDRIVE.port,
-  disableEval: true,  // ⚠️ REQUIRED for Workers
+  disableEval: true,  // WARNING: REQUIRED for Workers
 });
 
 const [results] = await conn.query("SELECT * FROM users WHERE active = ? LIMIT ?", [true, 10]);
 ctx.waitUntil(conn.end());
 ```
 
-**⚠️ MySQL support is less mature than PostgreSQL** - expect fewer optimizations and potential edge cases.
+**WARNING: MySQL support is less mature than PostgreSQL** - expect fewer optimizations and potential edge cases.
 
 ## Query Caching
 

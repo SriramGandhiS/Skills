@@ -159,7 +159,7 @@ gsd-sdk query commit "docs(roadmap): add gap closure phases {N}-{M}" --files .pl
 
 ---
 
-## ▶ Next Up — [${PROJECT_CODE}] ${PROJECT_TITLE}
+## Next Up — [${PROJECT_CODE}] ${PROJECT_TITLE}
 
 **Plan first gap closure phase**
 

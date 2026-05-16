@@ -27,13 +27,13 @@ model: opus
 
 ### 分析指令
 ```bash
-# 分析 TypeScript 專案結構（使用 ts-morph 函式庫執行自訂腳本）
+## 分析 TypeScript 專案結構（使用 ts-morph 函式庫執行自訂腳本）
 npx tsx scripts/codemaps/generate.ts
 
-# 產生相依性圖表
+## 產生相依性圖表
 npx madge --image graph.svg src/
 
-# 擷取 JSDoc 註解
+## 擷取 JSDoc 註解
 npx jsdoc2md src/**/*.ts
 ```
 
@@ -71,7 +71,7 @@ docs/CODEMAPS/
 
 ### 4. 程式碼地圖格式
 ```markdown
-# [區域] 程式碼地圖
+## [區域] 程式碼地圖
 
 **最後更新：** YYYY-MM-DD
 **進入點：** 主要檔案列表
@@ -131,7 +131,7 @@ docs/CODEMAPS/
 
 ### 前端程式碼地圖（docs/CODEMAPS/frontend.md）
 ```markdown
-# 前端架構
+## 前端架構
 
 **最後更新：** YYYY-MM-DD
 **框架：** Next.js 15.1.4（App Router）
@@ -171,7 +171,7 @@ website/src/
 
 ### 後端程式碼地圖（docs/CODEMAPS/backend.md）
 ```markdown
-# 後端架構
+## 後端架構
 
 **最後更新：** YYYY-MM-DD
 **執行環境：** Next.js API Routes
@@ -202,24 +202,24 @@ API 路由 → Supabase 查詢 → Redis（快取）→ 回應
 更新 README.md 時：
 
 ```markdown
-# 專案名稱
+## 專案名稱
 
 簡短描述
 
 ## 設定
 
 \`\`\`bash
-# 安裝
+## 安裝
 npm install
 
-# 環境變數
+## 環境變數
 cp .env.example .env.local
-# 填入：OPENAI_API_KEY、REDIS_URL 等
+## 填入：OPENAI_API_KEY、REDIS_URL 等
 
-# 開發
+## 開發
 npm run dev
 
-# 建置
+## 建置
 npm run build
 \`\`\`
 

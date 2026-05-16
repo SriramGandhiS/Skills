@@ -1,34 +1,28 @@
 #!/usr/bin/env bash
 #===============================================================================
 # PRD Checklist Module (v5.44.0)
-#
-# Manages PRD requirement tracking and automated verification. Creates a
+# # Manages PRD requirement tracking and automated verification. Creates a
 # structured checklist from PRD analysis, verifies items on a configurable
 # interval, and provides status summaries for prompt injection and council.
-#
-# Functions:
-#   checklist_init(prd_path)    - Initialize checklist during DISCOVERY phase
-#   checklist_should_verify()   - Check if verification should run this iteration
-#   checklist_verify()          - Run verification checks via checklist-verify.py
-#   checklist_summary()         - One-line summary for prompt injection
-#   checklist_as_evidence()     - Formatted output for council evidence file
-#
-# Environment Variables:
-#   LOKI_CHECKLIST_INTERVAL     - Verify every N iterations (default: 5)
-#   LOKI_CHECKLIST_TIMEOUT      - Timeout per check in seconds (default: 30)
-#   LOKI_CHECKLIST_ENABLED      - Enable/disable checklist (default: true)
-#
-# Data:
-#   .loki/checklist/checklist.json          - Full checklist with verification
-#   .loki/checklist/verification-results.json - Summary of last verification
-#
-# Usage:
-#   source autonomy/prd-checklist.sh
-#   checklist_init "$prd_path"
-#   if checklist_should_verify; then checklist_verify; fi
-#   checklist_summary
-#
-#===============================================================================
+# # Functions:
+# checklist_init(prd_path)    - Initialize checklist during DISCOVERY phase
+# checklist_should_verify()   - Check if verification should run this iteration
+# checklist_verify()          - Run verification checks via checklist-verify.py
+# checklist_summary()         - One-line summary for prompt injection
+# checklist_as_evidence()     - Formatted output for council evidence file
+# # Environment Variables:
+# LOKI_CHECKLIST_INTERVAL     - Verify every N iterations (default: 5)
+# LOKI_CHECKLIST_TIMEOUT      - Timeout per check in seconds (default: 30)
+# LOKI_CHECKLIST_ENABLED      - Enable/disable checklist (default: true)
+# # Data:
+# .loki/checklist/checklist.json          - Full checklist with verification
+# .loki/checklist/verification-results.json - Summary of last verification
+# # Usage:
+# source autonomy/prd-checklist.sh
+# checklist_init "$prd_path"
+# if checklist_should_verify; then checklist_verify; fi
+# checklist_summary
+# #===============================================================================
 
 # Configuration
 CHECKLIST_ENABLED=${LOKI_CHECKLIST_ENABLED:-true}

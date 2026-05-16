@@ -117,7 +117,7 @@ Exit cleanly.
 
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- GSD ► AUTONOMOUS ▸ COMPLETE 🎉
+ GSD ► AUTONOMOUS ▸ COMPLETE
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
  All phases complete! Nothing left to do.
@@ -403,7 +403,7 @@ Go to handle_blocker: "Execute phase ${PHASE_NUM} did not produce verification r
 
 Display:
 ```
-Phase ${PHASE_NUM} ✅ ${PHASE_NAME} — Verification passed
+Phase ${PHASE_NUM} PASS: ${PHASE_NAME} — Verification passed
 ```
 
 Proceed to iterate step.
@@ -411,7 +411,6 @@ Proceed to iterate step.
 **If `human_needed`:**
 
 Read the human_verification section from VERIFICATION.md to get the count and items requiring manual testing.
-
 
 **Text mode (`workflow.text_mode: true` in config or `--text` flag):** Set `TEXT_MODE=true` if `--text` is present in `$ARGUMENTS` OR `text_mode` from init JSON is `true`. When TEXT_MODE is active, replace every `AskUserQuestion` call with a plain-text numbered list and ask the user to type their choice number. This is required for non-Claude runtimes (OpenAI Codex, Gemini CLI, etc.) where `AskUserQuestion` is not available.
 Display the items, then ask user via AskUserQuestion:
@@ -422,17 +421,17 @@ On **"Validate now"**: Present the specific items from VERIFICATION.md's human_v
 - **question:** "Validation result?"
 - **options:** "All good — continue" / "Found issues"
 
-On "All good — continue": Display `Phase ${PHASE_NUM} ✅ Human validation passed` and proceed to iterate step.
+On "All good — continue": Display `Phase ${PHASE_NUM} PASS: Human validation passed` and proceed to iterate step.
 
 On "Found issues": Go to handle_blocker with the user's reported issues as the description.
 
-On **"Continue without validation"**: Display `Phase ${PHASE_NUM} ⏭ Human validation deferred` and proceed to iterate step.
+On **"Continue without validation"**: Display `Phase ${PHASE_NUM} SKIPPED: Human validation deferred` and proceed to iterate step.
 
 **If `gaps_found`:**
 
 Read gap summary from VERIFICATION.md (score and missing items). Display:
 ```
-⚠ Phase ${PHASE_NUM}: ${PHASE_NAME} — Gaps Found
+WARNING: Phase ${PHASE_NUM}: ${PHASE_NAME} — Gaps Found
 Score: {N}/{M} must-haves verified
 ```
 
@@ -469,7 +468,7 @@ On "Stop autonomous mode": Go to handle_blocker.
 
 This limits gap closure to 1 automatic retry to prevent infinite loops.
 
-On **"Continue without fixing"**: Display `Phase ${PHASE_NUM} ⏭ Gaps deferred` and proceed to iterate step.
+On **"Continue without fixing"**: Display `Phase ${PHASE_NUM} SKIPPED: Gaps deferred` and proceed to iterate step.
 
 On **"Stop autonomous mode"**: Go to handle_blocker with "User stopped — gaps remain in phase ${PHASE_NUM}".
 
@@ -629,7 +628,7 @@ Go to handle_blocker: "Audit did not produce results — audit file missing or m
 
 Display:
 ```
-Audit ✅ passed — proceeding to complete milestone
+Audit PASS: passed — proceeding to complete milestone
 ```
 
 Proceed to 5b (no user pause — per CTRL-01).
@@ -638,14 +637,14 @@ Proceed to 5b (no user pause — per CTRL-01).
 
 Read the gaps summary from the audit file. Display:
 ```
-⚠ Audit: Gaps Found
+WARNING: Audit: Gaps Found
 ```
 
 Ask user via AskUserQuestion:
 - **question:** "Milestone audit found gaps. How to proceed?"
 - **options:** "Continue anyway — accept gaps" / "Stop — fix gaps manually"
 
-On **"Continue anyway"**: Display `Audit ⏭ Gaps accepted — proceeding to complete milestone` and proceed to 5b.
+On **"Continue anyway"**: Display `Audit SKIPPED: Gaps accepted — proceeding to complete milestone` and proceed to 5b.
 
 On **"Stop"**: Go to handle_blocker with "User stopped — audit gaps remain. Run /gsd-audit-milestone to review, then /gsd-complete-milestone when ready."
 
@@ -653,14 +652,14 @@ On **"Stop"**: Go to handle_blocker with "User stopped — audit gaps remain. Ru
 
 Read the tech debt summary from the audit file. Display:
 ```
-⚠ Audit: Tech Debt Identified
+WARNING: Audit: Tech Debt Identified
 ```
 
 Show the summary, then ask user via AskUserQuestion:
 - **question:** "Milestone audit found tech debt. How to proceed?"
 - **options:** "Continue with tech debt" / "Stop — address debt first"
 
-On **"Continue with tech debt"**: Display `Audit ⏭ Tech debt acknowledged — proceeding to complete milestone` and proceed to 5b.
+On **"Continue with tech debt"**: Display `Audit SKIPPED: Tech debt acknowledged — proceeding to complete milestone` and proceed to 5b.
 
 On **"Stop"**: Go to handle_blocker with "User stopped — tech debt to address. Run /gsd-audit-milestone to review details."
 
@@ -692,14 +691,14 @@ Display final completion banner:
 
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- GSD ► AUTONOMOUS ▸ COMPLETE 🎉
+ GSD ► AUTONOMOUS ▸ COMPLETE
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
  Milestone: {milestone_version} — {milestone_name}
- Status: Complete ✅
- Lifecycle: audit ✅ → complete ✅ → cleanup ✅
+ Status: Complete PASS:
+ Lifecycle: audit PASS: → complete PASS: → cleanup PASS:
 
- Ship it! 🚀
+ Ship it!
 ```
 
 </step>
@@ -719,7 +718,7 @@ When any phase operation fails or a blocker is detected, present 3 options via A
 
 **On "Fix and retry":** Loop back to the failed step within execute_phase. If the same step fails again after retry, re-present these options.
 
-**On "Skip this phase":** Log `Phase {N} ⏭ {Name} — Skipped by user` and proceed to iterate.
+**On "Skip this phase":** Log `Phase {N} SKIPPED: {Name} — Skipped by user` and proceed to iterate.
 
 **On "Stop autonomous mode":** Display progress summary:
 

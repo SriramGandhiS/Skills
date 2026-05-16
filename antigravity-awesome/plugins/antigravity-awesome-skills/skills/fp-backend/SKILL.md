@@ -496,9 +496,7 @@ import { pipe } from 'fp-ts/function'
 type TxClient = Omit<
   PrismaClient,
   '$connect' | '$disconnect' | '$on' | '$transaction' | '$use'
->
-
-type TxDeps = { tx: TxClient }
+> type TxDeps = { tx: TxClient }
 
 // Transaction wrapper
 export const withTransaction = <R extends { db: PrismaClient }, E, A>(

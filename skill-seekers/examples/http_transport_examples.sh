@@ -1,7 +1,6 @@
 #!/bin/bash
 # HTTP Transport Examples for Skill Seeker MCP Server
-#
-# This script shows various ways to start the server with HTTP transport.
+# # This script shows various ways to start the server with HTTP transport.
 # DO NOT run this script directly - copy the commands you need.
 
 # =============================================================================
@@ -28,7 +27,7 @@ python -m skill_seekers.mcp.server_fastmcp --transport http --port 8080
 # CUSTOM HOST
 # =============================================================================
 
-# Listen on all interfaces (⚠️ use with caution in production!)
+# Listen on all interfaces (WARNING: use with caution in production!)
 python -m skill_seekers.mcp.server_fastmcp --transport http --host 0.0.0.0
 
 # Listen on specific interface
@@ -74,30 +73,30 @@ kill $SERVER_PID
 
 # For stdio transport (default):
 # {
-#   "mcpServers": {
-#     "skill-seeker": {
-#       "command": "python",
-#       "args": ["-m", "skill_seekers.mcp.server_fastmcp"]
-#     }
-#   }
+# "mcpServers": {
+# "skill-seeker": {
+# "command": "python",
+# "args": ["-m", "skill_seekers.mcp.server_fastmcp"]
+# }
+# }
 # }
 
 # For HTTP transport on port 8000:
 # {
-#   "mcpServers": {
-#     "skill-seeker": {
-#       "url": "http://localhost:8000/sse"
-#     }
-#   }
+# "mcpServers": {
+# "skill-seeker": {
+# "url": "http://localhost:8000/sse"
+# }
+# }
 # }
 
 # For HTTP transport on custom port 8080:
 # {
-#   "mcpServers": {
-#     "skill-seeker": {
-#       "url": "http://localhost:8080/sse"
-#     }
-#   }
+# "mcpServers": {
+# "skill-seeker": {
+# "url": "http://localhost:8080/sse"
+# }
+# }
 # }
 
 # =============================================================================

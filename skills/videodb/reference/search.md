@@ -1,4 +1,4 @@
-﻿# Search & Indexing Guide
+# Search & Indexing Guide
 
 Search allows you to find specific moments inside videos using natural language queries, exact keywords, or visual scene descriptions.
 
@@ -15,7 +15,7 @@ Index the transcribed speech content of a video for semantic and keyword search:
 ```python
 video = coll.get_video(video_id)
 
-# force=True makes indexing idempotent â€” skips if already indexed
+## force=True makes indexing idempotent â€” skips if already indexed
 video.index_spoken_words(force=True)
 ```
 
@@ -25,10 +25,10 @@ This transcribes the audio track and builds a searchable index over the spoken c
 
 | Parameter | Type | Default | Description |
 |-----------|------|---------|-------------|
-| `language_code` | `str\|None` | `None` | Language code of the video |
-| `segmentation_type` | `SegmentationType` | `SegmentationType.sentence` | Segmentation type (`sentence` or `llm`) |
-| `force` | `bool` | `False` | Set to `True` to skip if already indexed (avoids "already exists" error) |
-| `callback_url` | `str\|None` | `None` | Webhook URL for async notification |
+| `language_code`|`str\|None`|`None` | Language code of the video |
+| `segmentation_type`|`SegmentationType`|`SegmentationType.sentence`| Segmentation type (`sentence`or`llm`) |
+| `force`|`bool`|`False`| Set to`True` to skip if already indexed (avoids "already exists" error) |
+| `callback_url`|`str\|None`|`None` | Webhook URL for async notification |
 
 ### Scene Index
 
@@ -103,14 +103,14 @@ Returns segments containing the exact keyword or phrase.
 
 Visual content queries matched against indexed scene descriptions. Requires a prior `index_scenes()` call.
 
-`index_scenes()` returns a `scene_index_id`. Pass it to `video.search()` to target a specific scene index (especially important when a video has multiple scene indexes):
+`index_scenes()`returns a`scene_index_id`. Pass it to`video.search()` to target a specific scene index (especially important when a video has multiple scene indexes):
 
 ```python
 from videodb import SearchType, IndexType
 from videodb.exceptions import InvalidRequestError
 
-# Search using semantic search against the scene index.
-# Use score_threshold to filter low-relevance noise (recommended: 0.3+).
+## Search using semantic search against the scene index.
+## Use score_threshold to filter low-relevance noise (recommended: 0.3+).
 try:
     results = video.search(
         query="person writing on a whiteboard",
@@ -129,8 +129,8 @@ except InvalidRequestError as e:
 
 **Important notes:**
 
-- Use `SearchType.semantic` with `index_type=IndexType.scene` â€” this is the most reliable combination and works on all plans.
-- `SearchType.scene` exists but may not be available on all plans (e.g. Free tier). Prefer `SearchType.semantic` with `IndexType.scene`.
+- Use `SearchType.semantic`with`index_type=IndexType.scene` â€” this is the most reliable combination and works on all plans.
+- `SearchType.scene`exists but may not be available on all plans (e.g. Free tier). Prefer`SearchType.semantic`with`IndexType.scene`.
 - The `scene_index_id` parameter is optional. If omitted, the search runs against all scene indexes on the video. Pass it to target a specific index.
 - You can create multiple scene indexes per video (with different prompts or extraction types) and search them independently using `scene_index_id`.
 
@@ -196,7 +196,7 @@ Search across all videos in a collection:
 ```python
 coll = conn.get_collection()
 
-# Search across all videos in the collection
+## Search across all videos in the collection
 results = coll.search(
     query="product demo",
     search_type=SearchType.semantic,
@@ -206,7 +206,7 @@ for shot in results.get_shots():
     print(f"Video: {shot.video_id} [{shot.start:.1f}s - {shot.end:.1f}s]")
 ```
 
-> **Note:** Collection-level search only supports `SearchType.semantic`. Using `SearchType.keyword` or `SearchType.scene` with `coll.search()` will raise `NotImplementedError`. For keyword or scene search, use `video.search()` on individual videos instead.
+> **Note:** Collection-level search only supports `SearchType.semantic`. Using`SearchType.keyword`or`SearchType.scene`with`coll.search()`will raise`NotImplementedError`. For keyword or scene search, use`video.search()` on individual videos instead.
 
 ## Search + Compile
 
@@ -225,6 +225,6 @@ print(stream_url)
 - **Combine index types**: Index both spoken words and scenes to enable all search types on the same video.
 - **Refine queries**: Semantic search works best with descriptive, natural language phrases rather than single keywords.
 - **Use keyword search for precision**: When you need exact term matches, keyword search avoids semantic drift.
-- **Handle "No results found"**: `video.search()` raises `InvalidRequestError` when no results match. Always wrap search calls in try/except and treat `"No results found"` as an empty result set.
+- **Handle "No results found"**: `video.search()`raises`InvalidRequestError`when no results match. Always wrap search calls in try/except and treat`"No results found"` as an empty result set.
 - **Filter scene search noise**: Semantic scene search can return low-relevance results for vague queries. Use `score_threshold=0.3` (or higher) to filter noise.
-- **Idempotent indexing**: Use `index_spoken_words(force=True)` to safely re-index. `index_scenes()` has no `force` parameter â€” wrap it in try/except and extract the existing `scene_index_id` from the error message with `re.search(r"id\s+([a-f0-9]+)", str(e))`.
+- **Idempotent indexing**: Use `index_spoken_words(force=True)`to safely re-index.`index_scenes()`has no`force`parameter â€” wrap it in try/except and extract the existing`scene_index_id`from the error message with`re.search(r"id\s+([a-f0-9]+)", str(e))`.

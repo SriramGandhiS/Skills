@@ -361,8 +361,7 @@ Reading Controls (swipe up then right):
   aria-modal="true"
   aria-labelledby="dialog-title"
   aria-describedby="dialog-desc"
->
-  <h2 id="dialog-title">Confirm Delete</h2>
+> <h2 id="dialog-title">Confirm Delete</h2>
   <p id="dialog-desc">This action cannot be undone.</p>
   <button>Cancel</button>
   <button>Delete</button>

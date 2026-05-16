@@ -101,14 +101,14 @@ Example - Changing "30 days" to "60 days" in a sentence:
 
 2. **Identify and group changes**: Review the document and identify ALL changes needed, organizing them into logical batches:
 
-   **Location methods** (for finding changes in XML):
+**Location methods** (for finding changes in XML):
    - Section/heading numbers (e.g., "Section 3.2", "Article IV")
    - Paragraph identifiers if numbered
    - Grep patterns with unique surrounding text
    - Document structure (e.g., "first paragraph", "signature block")
    - **DO NOT use markdown line numbers** - they don't map to XML structure
 
-   **Batch organization** (group 3-10 related changes per batch):
+**Batch organization** (group 3-10 related changes per batch):
    - By section: "Batch 1: Section 2 amendments", "Batch 2: Section 5 updates"
    - By type: "Batch 1: Date corrections", "Batch 2: Party name changes"
    - By complexity: Start with simple text replacements, then tackle complex structural changes
@@ -124,18 +124,18 @@ Example - Changing "30 days" to "60 days" in a sentence:
    - Allows incremental progress
    - Maintains efficiency (batch size of 3-10 changes works well)
 
-   **Suggested batch groupings:**
+**Suggested batch groupings:**
    - By document section (e.g., "Section 3 changes", "Definitions", "Termination clause")
    - By change type (e.g., "Date changes", "Party name updates", "Legal term replacements")
    - By proximity (e.g., "Changes on pages 1-3", "Changes in first half of document")
 
    For each batch of related changes:
 
-   **a. Map text to XML**: Grep for text in `word/document.xml` to verify how text is split across `<w:r>` elements.
+**a. Map text to XML**: Grep for text in `word/document.xml` to verify how text is split across `<w:r>` elements.
 
-   **b. Create and run script**: Use `get_node` to find nodes, implement changes, then `doc.save()`. See **"Document Library"** section in ooxml.md for patterns.
+**b. Create and run script**: Use `get_node` to find nodes, implement changes, then `doc.save()`. See **"Document Library"** section in ooxml.md for patterns.
 
-   **Note**: Always grep `word/document.xml` immediately before writing a script to get current line numbers and verify text content. Line numbers change after each script run.
+**Note**: Always grep `word/document.xml` immediately before writing a script to get current line numbers and verify text content. Line numbers change after each script run.
 
 5. **Pack the document**: After all batches are complete, convert the unpacked directory back to .docx:
    ```bash

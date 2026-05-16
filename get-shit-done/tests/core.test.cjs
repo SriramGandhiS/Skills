@@ -742,16 +742,16 @@ describe('getMilestoneInfo', () => {
   });
 
   // Bug #2409: getMilestoneInfo must prefer STATE.md milestone: field over regex matching
-  test('uses STATE.md milestone frontmatter when 🚧 is inside <summary> tag without bold (bug #2409)', () => {
-    // STATE.md says v2.9, ROADMAP has 🚧 v2.9 inside <summary> (not bolded) — no bold regex match
+  test('uses STATE.md milestone frontmatter when  is inside <summary> tag without bold (bug #2409)', () => {
+    // STATE.md says v2.9, ROADMAP has  v2.9 inside <summary> (not bolded) — no bold regex match
     const roadmap = [
       '# Milestones',
       '',
-      '- ✅ v2.2 Old Features — shipped 2026-04-03',
-      '- 🚧 v2.9 Full-Pass Verification',
+      '- PASS: v2.2 Old Features — shipped 2026-04-03',
+      '-  v2.9 Full-Pass Verification',
       '',
       '<details>',
-      '<summary>🚧 v2.9 Full-Pass Verification & Bug Fixing — IN PROGRESS</summary>',
+      '<summary> v2.9 Full-Pass Verification & Bug Fixing — IN PROGRESS</summary>',
       '',
       '## Roadmap v2.9: Full-Pass Verification & Bug Fixing',
       '',
@@ -800,11 +800,11 @@ describe('getMilestoneInfo', () => {
   });
 
   // Bug found in code review of PR #2458: stateVersion early-return doesn't check if shipped
-  test('falls through to new active milestone when STATE.md version is already shipped (✅ heading)', () => {
-    // STATE.md still says v1.0 (stale), but v1.0 is marked ✅ in ROADMAP.md.
+  test('falls through to new active milestone when STATE.md version is already shipped (PASS: heading)', () => {
+    // STATE.md still says v1.0 (stale), but v1.0 is marked PASS: in ROADMAP.md.
     // getMilestoneInfo must NOT return v1.0; it must fall through and detect v2.0.
     const roadmap = [
-      '## v1.0 ✅ Initial Release: Done',
+      '## v1.0 PASS: Initial Release: Done',
       '',
       '### Phase 1: Setup',
       '',
@@ -824,10 +824,10 @@ describe('getMilestoneInfo', () => {
     assert.strictEqual(info.name, 'Active Milestone');
   });
 
-  test('falls through when STATE.md version matches ✅ heading in alternate position formats', () => {
-    // ✅ can appear before the version: ## ✅ v1.0 Old Name
+  test('falls through when STATE.md version matches PASS: heading in alternate position formats', () => {
+    // PASS: can appear before the version: ## PASS: v1.0 Old Name
     const roadmap = [
-      '## ✅ v1.0 Old Name',
+      '## PASS: v1.0 Old Name',
       '',
       '## v2.0: New Stuff',
     ].join('\n');
@@ -839,7 +839,7 @@ describe('getMilestoneInfo', () => {
 
     const info = getMilestoneInfo(tmpDir);
     assert.strictEqual(info.version, 'v2.0',
-      'should return v2.0, not stale v1.0 with ✅ prefix in heading');
+      'should return v2.0, not stale v1.0 with PASS: prefix in heading');
     assert.strictEqual(info.name, 'New Stuff');
   });
 });

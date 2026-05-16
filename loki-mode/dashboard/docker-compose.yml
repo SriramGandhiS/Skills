@@ -1,17 +1,13 @@
 # Loki Mode Dashboard - Docker Compose
-#
-# Usage:
-#   cd dashboard
-#   docker compose up -d
-#
-# Enterprise mode:
-#   LOKI_ENTERPRISE_AUTH=true LOKI_ENTERPRISE_AUDIT=true docker compose up -d
-#
-# View logs:
-#   docker compose logs -f
-#
-# Stop:
-#   docker compose down
+# # Usage:
+# cd dashboard
+# docker compose up -d
+# # Enterprise mode:
+# LOKI_ENTERPRISE_AUTH=true LOKI_ENTERPRISE_AUDIT=true docker compose up -d
+# # View logs:
+# docker compose logs -f
+# # Stop:
+# docker compose down
 
 services:
   dashboard:

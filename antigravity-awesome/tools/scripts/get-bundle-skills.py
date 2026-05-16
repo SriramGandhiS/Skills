@@ -113,7 +113,7 @@ if __name__ == "__main__":
         queries = ["essentials"]
     else:
         queries = sys.argv[1:]
-    
+
     skills = get_bundle_skills(queries)
     if skills:
         sys.stdout.write(format_skills_for_batch(skills))

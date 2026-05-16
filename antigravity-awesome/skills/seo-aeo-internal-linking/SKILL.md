@@ -45,7 +45,7 @@ Flag any exact-match anchor used more than once for the same target page as a ca
 ## Examples
 
 ### Example: Link Opportunity Output
-🔴 High Priority — Link 1
+ High Priority — Link 1
 Type: Cluster → Pillar
 Source: "How to Build a Budget That Actually Works"
 Target: "The Complete Guide to Automated Budgeting"
@@ -59,20 +59,20 @@ Fix: Add link from comparison table in Article 2.
 
 ## Best Practices
 
-- ✅ **Do:** Every cluster article must have at least one Cluster → Pillar link
-- ✅ **Do:** Write a context sentence for every suggestion — anchor text needs natural placement
-- ✅ **Do:** Fix orphan pages before adding any new links
-- ❌ **Don't:** Use the same exact-match anchor for the same target page more than once
-- ❌ **Don't:** Use "click here", "read more", or "learn more" as anchor text — ever
-- ❌ **Don't:** Add more than 100 outgoing internal links on any single page
+- PASS: **Do:** Every cluster article must have at least one Cluster → Pillar link
+- PASS: **Do:** Write a context sentence for every suggestion — anchor text needs natural placement
+- PASS: **Do:** Fix orphan pages before adding any new links
+- FAIL: **Don't:** Use the same exact-match anchor for the same target page more than once
+- FAIL: **Don't:** Use "click here", "read more", or "learn more" as anchor text — ever
+- FAIL: **Don't:** Add more than 100 outgoing internal links on any single page
 
 ## Common Pitfalls
 
 - **Problem:** All cluster articles link to the pillar but not to each other
-  **Solution:** Add Cluster → Cluster links between semantically related articles to build depth.
+**Solution:** Add Cluster → Cluster links between semantically related articles to build depth.
 
 - **Problem:** Same anchor text used across multiple pages for the same target
-  **Solution:** Use partial match and branded anchors for subsequent links after the first exact-match use.
+**Solution:** Use partial match and branded anchors for subsequent links after the first exact-match use.
 
 ## Related Skills
 

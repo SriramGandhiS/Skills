@@ -22,22 +22,22 @@ PostgreSQL 모범 사례 빠른 참조. 자세한 가이드는 `database-reviewe
 
 | 쿼리 패턴 | 인덱스 유형 | 예시 |
 |--------------|------------|---------|
-| `WHERE col = value` | B-tree (기본값) | `CREATE INDEX idx ON t (col)` |
-| `WHERE col > value` | B-tree | `CREATE INDEX idx ON t (col)` |
-| `WHERE a = x AND b > y` | Composite | `CREATE INDEX idx ON t (a, b)` |
-| `WHERE jsonb @> '{}'` | GIN | `CREATE INDEX idx ON t USING gin (col)` |
-| `WHERE tsv @@ query` | GIN | `CREATE INDEX idx ON t USING gin (col)` |
+| `WHERE col = value`| B-tree (기본값) |`CREATE INDEX idx ON t (col)` |
+| `WHERE col > value`| B-tree |`CREATE INDEX idx ON t (col)` |
+| `WHERE a = x AND b > y`| Composite |`CREATE INDEX idx ON t (a, b)` |
+| `WHERE jsonb @> '{}'`| GIN |`CREATE INDEX idx ON t USING gin (col)` |
+| `WHERE tsv @@ query`| GIN |`CREATE INDEX idx ON t USING gin (col)` |
 | 시계열 범위 | BRIN | `CREATE INDEX idx ON t USING brin (col)` |
 
 ### 데이터 타입 빠른 참조
 
 | 사용 사례 | 올바른 타입 | 지양 |
 |----------|-------------|-------|
-| ID | `bigint` | `int`, random UUID |
-| 문자열 | `text` | `varchar(255)` |
-| 타임스탬프 | `timestamptz` | `timestamp` |
-| 금액 | `numeric(10,2)` | `float` |
-| 플래그 | `boolean` | `varchar`, `int` |
+| ID | `bigint`|`int`, random UUID |
+| 문자열 | `text`|`varchar(255)` |
+| 타임스탬프 | `timestamptz`|`timestamp` |
+| 금액 | `numeric(10,2)`|`float` |
+| 플래그 | `boolean`|`varchar`,`int` |
 
 ### 일반 패턴
 

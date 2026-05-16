@@ -135,7 +135,7 @@ evolved_from:
   - regenerate-types
 ---
 
-# New Table Command
+## New Table Command
 
 [Generated content based on clustered instincts]
 
@@ -155,7 +155,7 @@ evolved_from:
   - avoid-classes
 ---
 
-# Functional Patterns Skill
+## Functional Patterns Skill
 
 [Generated content based on clustered instincts]
 ```
@@ -172,7 +172,7 @@ evolved_from:
   - debug-reproduce
 ---
 
-# Debugger Agent
+## Debugger Agent
 
 [Generated content based on clustered instincts]
 ```

@@ -139,7 +139,7 @@ npm run deploy:web
 
 #### Discord公告：
 ```text
-🎉 Antigravity Awesome Skills v$VERSION 已发布！
+ Antigravity Awesome Skills v$VERSION 已发布！
 
 主要更新：
 • [关键更新1]
@@ -153,7 +153,7 @@ npm run deploy:web
 
 #### Twitter公告：
 ```text
-🚀 Antigravity Awesome Skills v$VERSION 发布了！
+ Antigravity Awesome Skills v$VERSION 发布了！
 
 [最激动人心的新功能]
 
@@ -293,11 +293,11 @@ MAJOR.MINOR.PATCH[-PRERELEASE][+BUILD]
 
 4. **社区通知**
    ```text
-   🚨 v$VERSION 紧急回滚
-   
+    v$VERSION 紧急回滚
+
    问题：[问题描述]
    解决：[回滚版本 v$ROLLBACK_VERSION]
-   
+
    建议：暂缓更新或使用 --version $ROLLBACK_VERSION
    ```
 
@@ -312,7 +312,7 @@ MAJOR.MINOR.PATCH[-PRERELEASE][+BUILD]
 set -e
 
 VERSION=$(node -p "require('./package.json').version")
-echo "🚀 发布版本 v$VERSION"
+echo " 发布版本 v$VERSION"
 
 # 运行检查
 npm run validate
@@ -334,7 +334,7 @@ git push origin v$VERSION
 # 发布到NPM
 npm publish
 
-echo "✅ 发布成功 v$VERSION"
+echo "PASS: 发布成功 v$VERSION"
 ```
 
 ### 持续集成配置
@@ -376,10 +376,10 @@ jobs:
 
 ### 奖励机制
 
-- 🏆 **月度贡献者** - Discord特别角色
-- 🎁 **发布贡献者** - 项目商品
-- 📝 **技术写作奖** - 优秀文档奖
-- 🌟 **新星奖** - 新贡献者鼓励
+- **月度贡献者** - Discord特别角色
+- **发布贡献者** - 项目商品
+- **技术写作奖** - 优秀文档奖
+- **新星奖** - 新贡献者鼓励
 
 ## 文档和培训
 
@@ -406,27 +406,27 @@ jobs:
 
 ---
 
-## 🎉 成功发布指标
+## 成功发布指标
 
 ### 发布成功标志
 
-- ✅ 所有自动化检查通过
-- ✅ 社区反馈积极
-- ✅ 下载量稳步增长
-- ✅ 错误率在可接受范围内
-- ✅ 文档完整准确
+- PASS: 所有自动化检查通过
+- PASS: 社区反馈积极
+- PASS: 下载量稳步增长
+- PASS: 错误率在可接受范围内
+- PASS: 文档完整准确
 
 ### 持续改进
 
 每次发布后进行：
-- 📊 性能分析
-- 📋 用户反馈收集
-- 🔄 流程优化
-- 📚 文档更新
-- 🎯 目标调整
+- 性能分析
+- 用户反馈收集
+- 流程优化
+- 文档更新
+- 目标调整
 
 ---
 
 这个发布流程确保Antigravity Awesome Skills的质量、稳定性和社区满意度。通过遵循这些指导方针，我们能够为用户提供可靠、高质量的技能生态。
 
-如果您有任何问题或建议，请随时联系维护团队。🚀
+如果您有任何问题或建议，请随时联系维护团队。

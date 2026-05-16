@@ -889,7 +889,7 @@ class VideoToSkillConverter(SkillConverter):
         if not os.path.isdir(refs_dir):
             return
 
-        logger.info("\n📝 Pass 1: AI-cleaning reference files (Code Timeline reconstruction)...")
+        logger.info("\n Pass 1: AI-cleaning reference files (Code Timeline reconstruction)...")
         api_key = getattr(args, "api_key", None)
 
         for ref_file in sorted(os.listdir(refs_dir)):

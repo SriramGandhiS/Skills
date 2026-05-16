@@ -13,19 +13,19 @@
 
 ### Convenções Rust
 
-- Use `thiserror` para erros de library, `anyhow` apenas em crates binários ou testes
-- Sem `.unwrap()` ou `.expect()` em código de produção — propague erros com `?`
-- Prefira `&str` a `String` em parâmetros de função; retorne `String` quando houver transferência de ownership
-- Use `clippy` com `#![deny(clippy::all, clippy::pedantic)]` — corrija todos os warnings
-- Derive `Debug` em todos os tipos públicos; derive `Clone`, `PartialEq` só quando necessário
-- Sem blocos `unsafe` sem justificativa com comentário `// SAFETY:`
+- Use `thiserror`para erros de library,`anyhow` apenas em crates binários ou testes
+- Sem `.unwrap()`ou`.expect()`em código de produção — propague erros com`?`
+- Prefira `&str`a`String`em parâmetros de função; retorne`String` quando houver transferência de ownership
+- Use `clippy`com`#![deny(clippy::all, clippy::pedantic)]` — corrija todos os warnings
+- Derive `Debug`em todos os tipos públicos; derive`Clone`,`PartialEq` só quando necessário
+- Sem blocos `unsafe`sem justificativa com comentário`// SAFETY:`
 
 ### Banco de Dados
 
-- Todas as queries usam macros SQLx `query!` ou `query_as!` — verificadas em compile time contra o schema
-- Migrations em `migrations/` com `sqlx migrate` — nunca alterar banco diretamente
+- Todas as queries usam macros SQLx `query!`ou`query_as!` — verificadas em compile time contra o schema
+- Migrations em `migrations/`com`sqlx migrate` — nunca alterar banco diretamente
 - Use `sqlx::Pool<Postgres>` como estado compartilhado — nunca criar conexão por requisição
-- Todas as queries usam placeholders parametrizados (`$1`, `$2`) — nunca string formatting
+- Todas as queries usam placeholders parametrizados (`$1`,`$2`) — nunca string formatting
 
 ```rust
 // BAD: String interpolation (SQL injection risk)
@@ -41,7 +41,7 @@ let user = sqlx::query_as!(User, "SELECT * FROM users WHERE id = $1", id)
 
 - Defina enum de erro de domínio por módulo com `thiserror`
 - Mapeie erros para respostas HTTP via `IntoResponse` — nunca exponha detalhes internos
-- Use `tracing` para logs estruturados — nunca `println!` ou `eprintln!`
+- Use `tracing`para logs estruturados — nunca`println!`ou`eprintln!`
 
 ```rust
 use thiserror::Error;
@@ -79,12 +79,12 @@ impl IntoResponse for AppError {
 - Testes unitários em módulos `#[cfg(test)]` dentro de cada arquivo fonte
 - Testes de integração no diretório `tests/` usando PostgreSQL real (Testcontainers ou Docker)
 - Use `#[sqlx::test]` para testes de banco com migration e rollback automáticos
-- Faça mock de serviços externos com `mockall` ou `wiremock`
+- Faça mock de serviços externos com `mockall`ou`wiremock`
 
 ### Estilo de Código
 
 - Tamanho máximo de linha: 100 caracteres (enforced by rustfmt)
-- Agrupe imports: `std`, crates externas, `crate`/`super` — separados por linha em branco
+- Agrupe imports: `std`, crates externas,`crate`/`super` — separados por linha em branco
 - Módulos: um arquivo por módulo, `mod.rs` só para re-exports
 - Tipos: PascalCase, funções/variáveis: snake_case, constantes: UPPER_SNAKE_CASE
 
@@ -221,65 +221,65 @@ async fn test_create_user_duplicate_email() {
 ## Variáveis de Ambiente
 
 ```bash
-# Server
+## Server
 HOST=0.0.0.0
 PORT=8080
 RUST_LOG=info,tower_http=debug
 
-# Database
+## Database
 DATABASE_URL=postgres://user:pass@localhost:5432/myapp
 
-# Auth
+## Auth
 JWT_SECRET=your-secret-key-min-32-chars
 JWT_EXPIRY_HOURS=24
 
-# Optional
+## Optional
 CORS_ALLOWED_ORIGINS=http://localhost:3000
 ```
 
 ## Estratégia de Teste
 
 ```bash
-# Run all tests
+## Run all tests
 cargo test
 
-# Run with output
+## Run with output
 cargo test -- --nocapture
 
-# Run specific test module
+## Run specific test module
 cargo test api_users
 
-# Check coverage (requires cargo-llvm-cov)
+## Check coverage (requires cargo-llvm-cov)
 cargo llvm-cov --html
 open target/llvm-cov/html/index.html
 
-# Lint
+## Lint
 cargo clippy -- -D warnings
 
-# Format check
+## Format check
 cargo fmt -- --check
 ```
 
 ## Workflow ECC
 
 ```bash
-# Planning
+## Planning
 /plan "Add order fulfillment with Stripe payment"
 
-# Development with TDD
+## Development with TDD
 /tdd                    # cargo test-based TDD workflow
 
-# Review
+## Review
 /code-review            # Rust-specific code review
 /security-scan          # Dependency audit + unsafe scan
 
-# Verification
+## Verification
 /verify                 # Build, clippy, test, security scan
 ```
 
 ## Fluxo Git
 
-- `feat:` novas features, `fix:` correções de bug, `refactor:` mudanças de código
+- `feat:`novas features,`fix:`correções de bug,`refactor:` mudanças de código
 - Branches de feature a partir da `main`, PRs obrigatórios
-- CI: `cargo fmt --check`, `cargo clippy`, `cargo test`, `cargo audit`
-- Deploy: Docker multi-stage build com base `scratch` ou `distroless`
+- CI: `cargo fmt --check`,`cargo clippy`,`cargo test`,`cargo audit`
+- Deploy: Docker multi-stage build com base `scratch`ou`distroless`

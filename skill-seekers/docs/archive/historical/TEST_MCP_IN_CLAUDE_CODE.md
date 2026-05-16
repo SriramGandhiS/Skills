@@ -4,7 +4,7 @@ This guide shows you how to test the Skill Seeker MCP server **through actual Cl
 
 ## Important: What We Tested vs What You Need to Test
 
-### What I Tested (Python Direct Calls) ✅
+### What I Tested (Python Direct Calls) PASS:
 I tested the MCP server **functions** by calling them directly with Python:
 ```python
 await server.list_configs_tool({})
@@ -13,7 +13,7 @@ await server.generate_config_tool({...})
 
 This verified the **code works**, but didn't test the **MCP protocol integration**.
 
-### What You Need to Test (Actual MCP Protocol) 🎯
+### What You Need to Test (Actual MCP Protocol)
 You need to test via **Claude Code** using the MCP protocol:
 ```
 In Claude Code:
@@ -94,7 +94,7 @@ Use mcp__skill-seeker__list_configs
 
 **Expected Output:**
 ```
-📋 Available Configs:
+ Available Configs:
 
   • django.json
   • fastapi.json
@@ -122,7 +122,7 @@ Use mcp__skill-seeker__generate_config with:
 
 **Expected Output:**
 ```
-✅ Config created: configs/astro-test.json
+PASS: Config created: configs/astro-test.json
 ```
 
 ### Test 3: validate_config
@@ -139,7 +139,7 @@ Use mcp__skill-seeker__validate_config for configs/astro-test.json
 
 **Expected Output:**
 ```
-✅ Config is valid!
+PASS: Config is valid!
   Name: astro-test
   Base URL: https://docs.astro.build
   Max pages: 15
@@ -159,7 +159,7 @@ Use mcp__skill-seeker__estimate_pages for configs/astro-test.json
 
 **Expected Output:**
 ```
-📊 ESTIMATION RESULTS
+ ESTIMATION RESULTS
 Estimated Total: ~25 pages
 Recommended max_pages: 75
 ```
@@ -178,7 +178,7 @@ Use mcp__skill-seeker__scrape_docs with configs/astro-test.json
 
 **Expected Output:**
 ```
-✅ Skill built: output/astro-test/
+PASS: Skill built: output/astro-test/
 Scraped X pages
 Created Y categories
 ```
@@ -197,7 +197,7 @@ Use mcp__skill-seeker__package_skill for output/astro-test/
 
 **Expected Output:**
 ```
-✅ Package created: output/astro-test.zip
+PASS: Package created: output/astro-test.zip
 Size: X KB
 ```
 
@@ -301,7 +301,7 @@ Use this checklist to verify MCP integration:
 
 ## Success Criteria
 
-✅ **MCP Integration is Working When:**
+PASS: **MCP Integration is Working When:**
 
 1. You can ask Claude Code to "list all available configs"
 2. Claude Code responds with the actual config list

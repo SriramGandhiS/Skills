@@ -40,9 +40,9 @@ LaraPlugins MCP 提供两个主要工具：
 **参数：**
 
 * `text_search` (字符串，可选)：搜索关键词（例如 "permission"、"admin"、"api"）
-* `health_score` (字符串，可选)：按健康等级筛选——`Healthy`、`Medium`、`Unhealthy` 或 `Unrated`
-* `laravel_compatibility` (字符串，可选)：按 Laravel 版本筛选——`"5"`、`"6"`、`"7"`、`"8"`、`"9"`、`"10"`、`"11"`、`"12"`、`"13"`
-* `php_compatibility` (字符串，可选)：按 PHP 版本筛选——`"7.4"`、`"8.0"`、`"8.1"`、`"8.2"`、`"8.3"`、`"8.4"`、`"8.5"`
+* `health_score`(字符串，可选)：按健康等级筛选——`Healthy`、`Medium`、`Unhealthy`或`Unrated`
+* `laravel_compatibility`(字符串，可选)：按 Laravel 版本筛选——`"5"`、`"6"`、`"7"`、`"8"`、`"9"`、`"10"`、`"11"`、`"12"`、`"13"`
+* `php_compatibility`(字符串，可选)：按 PHP 版本筛选——`"7.4"`、`"8.0"`、`"8.1"`、`"8.2"`、`"8.3"`、`"8.4"`、`"8.5"`
 * `vendor_filter` (字符串，可选)：按供应商名称筛选（例如 "spatie"、"laravel"）
 * `page` (数字，可选)：分页页码
 

@@ -15,7 +15,7 @@ npx --package ecc-universal ecc loop-status --json
 ```
 
 The CLI scans local Claude transcript JSONL files under
-`~/.claude/projects/**` and reports stale `ScheduleWakeup` calls or `Bash`
+`~/.claude/projects/**`and reports stale`ScheduleWakeup`calls or`Bash`
 tool calls that have no matching `tool_result`.
 
 ## Usage
@@ -40,9 +40,9 @@ tool calls that have no matching `tool_result`.
   directly.
 - `ecc loop-status --bash-timeout-seconds 1800` adjusts the stale Bash
   threshold.
-- `ecc loop-status --exit-code` exits `2` when stale loop or tool signals are
+- `ecc loop-status --exit-code`exits`2` when stale loop or tool signals are
   found, or `1` when transcripts cannot be scanned.
-- `--exit-code` with `--watch` requires `--watch-count` so watchdog scripts do
+- `--exit-code`with`--watch`requires`--watch-count` so watchdog scripts do
   not wait forever for a process exit.
 - `ecc loop-status --watch` refreshes status until interrupted.
 - `ecc loop-status --watch --watch-count 3 --exit-code` refreshes a bounded
@@ -55,7 +55,7 @@ tool calls that have no matching `tool_result`.
 
 ## Watch Mode
 
-When `--watch` is present, refresh status periodically. With `--json`, each
+When `--watch`is present, refresh status periodically. With`--json`, each
 refresh is emitted as one JSON object per line so another terminal or script can
 consume the stream.
 

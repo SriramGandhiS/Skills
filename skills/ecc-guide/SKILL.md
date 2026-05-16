@@ -1,4 +1,4 @@
-﻿---
+---
 name: ecc-guide
 description: Guide users through ECC's current agents, skills, commands, hooks, rules, install profiles, and project onboarding by reading the live repository surface before answering.
 origin: community
@@ -46,7 +46,7 @@ Use the smallest set of reads needed for the user's question.
 - `skills/*/SKILL.md`: reusable workflows and domain playbooks
 - `agents/*.md`: delegated subagent role prompts
 - `rules/`: language and harness rules
-- `hooks/README.md`, `hooks/hooks.json`, `scripts/hooks/`: hook behavior and safety gates
+- `hooks/README.md`,`hooks/hooks.json`,`scripts/hooks/`: hook behavior and safety gates
 - `manifests/install-*.json`: selective install modules, components, profiles, and target support
 - `docs/`: harness guides, architecture notes, translated docs, release docs
 
@@ -82,13 +82,13 @@ Give a short menu:
 - run a harness audit
 - find a specific workflow
 
-Point to `README.md` for install/reset and `/project-init` for project-specific onboarding.
+Point to `README.md`for install/reset and`/project-init` for project-specific onboarding.
 
 ### Feature Discovery
 
 For "what should I use for X?":
 
-1. Search `skills/`, `commands/`, and `agents/`.
+1. Search `skills/`,`commands/`, and`agents/`.
 2. Prefer skills as the primary workflow surface.
 3. Use commands only when they are a maintained compatibility shim or a user explicitly wants slash-command behavior.
 4. Mention agents when delegation is useful.
@@ -134,7 +134,7 @@ Use `/project-init` when the user wants ECC configured for a target repo. The ex
 Ask for the target harness and install path first, then inspect:
 
 - plugin install metadata
-- `.claude/`, `.cursor/`, `.codex/`, `.gemini/`, `.opencode/`, `.codebuddy/`, `.joycode/`, or `.qwen/`
+- `.claude/`,`.cursor/`,`.codex/`,`.gemini/`,`.opencode/`,`.codebuddy/`,`.joycode/`, or`.qwen/`
 - `hooks/hooks.json`
 - install-state files
 - relevant command/skill files

@@ -1,4 +1,4 @@
-﻿---
+---
 name: cisco-ios-patterns
 description: Cisco IOS and IOS-XE review patterns for show commands, config hierarchy, wildcard masks, ACL placement, interface hygiene, and safe change-window verification.
 origin: community
@@ -46,7 +46,7 @@ Router(config)# end
 Router# show running-config interface GigabitEthernet0/1
 ```
 
-`running-config` is active memory. `startup-config` is what survives reload.
+`running-config`is active memory.`startup-config` is what survives reload.
 Do not save a change just because a command was accepted; validate behavior
 first, then use `copy running-config startup-config` if the change is approved.
 
@@ -105,7 +105,7 @@ operational goal includes observing misses, and confirm logging volume is safe.
 
 Before applying an ACL to an interface, answer these questions:
 
-- Which traffic direction is being filtered, `in` or `out`?
+- Which traffic direction is being filtered, `in`or`out`?
 - Is management traffic sourced from a known jump host or management subnet?
 - Is there an explicit permit for required routing, DNS, NTP, monitoring, or
   application traffic?

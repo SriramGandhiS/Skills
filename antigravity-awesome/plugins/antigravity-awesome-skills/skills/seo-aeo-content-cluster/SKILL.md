@@ -55,7 +55,7 @@ Priority 2:
 5. Budgeting for Millennials: What Nobody Tells You | opinion
 Link Map:
 Pillar ← Article 1, 2, 3, 4, 5
-Article 1 ↔ Article 4
+Article 1  Article 4
 Article 2 → Article 3
 AEO Priority:
 ★ Article 3 — "What Is" format has highest AI extraction probability
@@ -63,19 +63,19 @@ AEO Priority:
 
 ## Best Practices
 
-- ✅ **Do:** Assign every cluster article a unique target keyword — no overlap
-- ✅ **Do:** Include at least one FAQ page and one comparison article in every cluster
-- ✅ **Do:** Flag the 2 highest AEO-opportunity articles for priority writing
-- ❌ **Don't:** Let any article become an orphan — every article links to at least one other
-- ❌ **Don't:** Target the same keyword on both the pillar and a cluster article
+- PASS: **Do:** Assign every cluster article a unique target keyword — no overlap
+- PASS: **Do:** Include at least one FAQ page and one comparison article in every cluster
+- PASS: **Do:** Flag the 2 highest AEO-opportunity articles for priority writing
+- FAIL: **Don't:** Let any article become an orphan — every article links to at least one other
+- FAIL: **Don't:** Target the same keyword on both the pillar and a cluster article
 
 ## Common Pitfalls
 
 - **Problem:** Cluster articles all target similar keywords and cannibalise each other
-  **Solution:** Run a uniqueness check — every article needs a distinct keyword with no semantic overlap.
+**Solution:** Run a uniqueness check — every article needs a distinct keyword with no semantic overlap.
 
 - **Problem:** No AEO content in the cluster
-  **Solution:** At least 2 articles must be structured as direct-answer pages (FAQ or "What Is" explainer).
+**Solution:** At least 2 articles must be structured as direct-answer pages (FAQ or "What Is" explainer).
 
 ## Related Skills
 

@@ -32,7 +32,7 @@ Common issues and solutions for Claudio installation and usage.
    ```bash
    # Add to ~/.bashrc or ~/.zshrc
    export PATH=$PATH:$(go env GOPATH)/bin
-   
+
    # Reload shell
    source ~/.bashrc
    ```
@@ -58,7 +58,7 @@ Common issues and solutions for Claudio installation and usage.
    # User settings (most common)
    ls -la ~/.config/claude-code/settings.json        # Linux
    ls -la ~/Library/Application\ Support/claude-code/settings.json  # macOS
-   
+
    # Project settings
    ls -la .claude-code/settings.json
    ```
@@ -67,7 +67,7 @@ Common issues and solutions for Claudio installation and usage.
    ```bash
    # If user scope fails, try project scope
    claudio install --scope project
-   
+
    # If project scope fails, try user scope
    claudio install --scope user
    ```
@@ -76,10 +76,10 @@ Common issues and solutions for Claudio installation and usage.
    ```bash
    # Create settings directory
    mkdir -p ~/.config/claude-code
-   
+
    # Create minimal settings file
    echo '{}' > ~/.config/claude-code/settings.json
-   
+
    # Try installation again
    claudio install
    ```
@@ -133,7 +133,7 @@ Common issues and solutions for Claudio installation and usage.
    ```bash
    # Test with higher volume
    echo '...' | claudio --volume 1.0
-   
+
    # Check configuration volume
    export CLAUDIO_VOLUME=0.8
    ```
@@ -143,7 +143,7 @@ Common issues and solutions for Claudio installation and usage.
    # Check default soundpack
    ls -la /usr/local/share/claudio/default/
    ls -la ~/.local/share/claudio/default/
-   
+
    # Test with explicit soundpack
    CLAUDIO_SOUNDPACK=default echo '...' | claudio
    ```
@@ -165,7 +165,7 @@ Common issues and solutions for Claudio installation and usage.
    ```bash
    # Verify sound files aren't corrupted
    file /usr/local/share/claudio/default/default.wav
-   
+
    # Play sound file directly
    aplay /usr/local/share/claudio/default/default.wav  # Linux
    afplay /usr/local/share/claudio/default/default.wav  # macOS
@@ -190,10 +190,10 @@ Common issues and solutions for Claudio installation and usage.
    # Linux: Check ALSA/PulseAudio
    aplay -l
    pulseaudio --check
-   
+
    # WSL: Install audio utilities if missing
    sudo apt update && sudo apt install pulseaudio-utils
-   
+
    # macOS: Check system preferences
    system_profiler SPAudioDataType
    ```
@@ -210,7 +210,7 @@ Common issues and solutions for Claudio installation and usage.
    # Linux
    sudo systemctl restart pulseaudio
    sudo systemctl restart alsa-state
-   
+
    # macOS
    sudo killall coreaudiod
    ```
@@ -227,7 +227,7 @@ Common issues and solutions for Claudio installation and usage.
    ```bash
    # Check what's installed
    claudio install --dry-run
-   
+
    # Print current configuration
    claudio install --print
    ```
@@ -236,7 +236,7 @@ Common issues and solutions for Claudio installation and usage.
    ```bash
    # Examine settings file directly
    cat ~/.config/claude-code/settings.json
-   
+
    # Look for hooks section:
    # "hooks": {
    #   "PreToolUse": "claudio",
@@ -273,7 +273,7 @@ Common issues and solutions for Claudio installation and usage.
    ```bash
    # List available sounds
    find /usr/local/share/claudio/default -name "*.wav" | sort
-   
+
    # Verify tool-specific sounds exist
    ls -la /usr/local/share/claudio/default/success/git-*
    ls -la /usr/local/share/claudio/default/success/npm-*
@@ -358,7 +358,7 @@ Common issues and solutions for Claudio installation and usage.
    ```bash
    # Verify directory structure
    find ~/.local/share/claudio/my-pack -type f
-   
+
    # Must contain at least:
    # default.wav
    # success/success.wav
@@ -391,7 +391,7 @@ Common issues and solutions for Claudio installation and usage.
    ```bash
    # Verify file format
    file ~/.local/share/claudio/my-pack/default.wav
-   
+
    # Should be: WAVE audio or MP3
    ```
 

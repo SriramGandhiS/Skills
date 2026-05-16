@@ -76,7 +76,7 @@ domain: "workflow"
 source: "session-observation"
 ---
 
-# Editの前にGrepを優先
+## Editの前にGrepを優先
 
 ## アクション
 Editを使用する前に、常にGrepを使用して正確な場所を見つけます。

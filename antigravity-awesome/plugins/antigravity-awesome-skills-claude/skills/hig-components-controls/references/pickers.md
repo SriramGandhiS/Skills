@@ -52,9 +52,9 @@ The exact values shown in a date picker, and their order, depend on the device l
 
 Here are several examples of date pickers showing different combinations of style and mode.
 
-  * Compact 
-  * Inline 
-  * Wheels 
+  * Compact
+  * Inline
+  * Wheels
 
 ![An illustration of a compact date picker, with a single inline row showing the currently selected date. The picker opens as a popover extending down from the row, and includes a full calendar month for choosing the date.](https://docs-assets.developer.apple.com/published/65d6693bf614da95dde6a82006037c86/pickers-date-picker-compact-expanded%402x.png)In a compact layout, a picker opens as a popover over your content.
 
@@ -114,7 +114,7 @@ For longer lists, the navigation link displays the picker as a button. When some
 
 ## [Change log](https://developer.apple.com/design/human-interface-guidelines/pickers#Change-log)
 
-Date| Changes  
----|---  
-June 5, 2023| Updated guidance for using pickers in watchOS.  
-  
+Date| Changes
+---|---
+June 5, 2023| Updated guidance for using pickers in watchOS.
+

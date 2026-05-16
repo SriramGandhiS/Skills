@@ -38,7 +38,7 @@ class TestPresetDefinitions:
         assert quick.depth == "surface"
         assert quick.enhance_level == 0
         assert quick.estimated_time == "1-2 minutes"
-        assert quick.icon == "⚡"
+        assert quick.icon == ""
         # Quick should disable slow features
         assert quick.features["api_reference"]  # Essential
         assert not quick.features["dependency_graph"]  # Slow
@@ -54,7 +54,7 @@ class TestPresetDefinitions:
         assert standard.depth == "deep"
         assert standard.enhance_level == 1
         assert standard.estimated_time == "5-10 minutes"
-        assert standard.icon == "🎯"
+        assert standard.icon == ""
         # Standard should enable core features
         assert standard.features["api_reference"]
         assert standard.features["dependency_graph"]
@@ -71,7 +71,7 @@ class TestPresetDefinitions:
         assert comprehensive.depth == "full"
         assert comprehensive.enhance_level == 3
         assert comprehensive.estimated_time == "20-60 minutes"
-        assert comprehensive.icon == "🚀"
+        assert comprehensive.icon == ""
         # Comprehensive should enable ALL features
         assert all(comprehensive.features.values())
 
@@ -108,9 +108,9 @@ class TestPresetManager:
         """Test PresetManager.format_preset_help()."""
         help_text = PresetManager.format_preset_help()
         assert "Available presets:" in help_text
-        assert "⚡ quick" in help_text
-        assert "🎯 standard" in help_text
-        assert "🚀 comprehensive" in help_text
+        assert " quick" in help_text
+        assert " standard" in help_text
+        assert " comprehensive" in help_text
         assert "1-2 minutes" in help_text
         assert "5-10 minutes" in help_text
         assert "20-60 minutes" in help_text

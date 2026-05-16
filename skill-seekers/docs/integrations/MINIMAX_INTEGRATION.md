@@ -125,7 +125,7 @@ import json
 with zipfile.ZipFile('react-minimax.zip', 'r') as zf:
     with zf.open('system_instructions.txt') as f:
         system_instructions = f.read().decode('utf-8')
-    
+
     # Load metadata
     with zf.open('minimax_metadata.json') as f:
         metadata = json.load(f)
@@ -170,7 +170,7 @@ for md_file in knowledge_dir.glob('*.md'):
     })
 
 # Include in context (truncate if too long)
-context = "\n\n".join([f"## {kf['name']}\n{kf['content'][:5000]}" 
+context = "\n\n".join([f"## {kf['name']}\n{kf['content'][:5000]}"
                      for kf in knowledge_files[:5]])
 
 response = client.chat.completions.create(

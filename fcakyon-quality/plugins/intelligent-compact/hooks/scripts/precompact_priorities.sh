@@ -1,17 +1,13 @@
 #!/usr/bin/env bash
-#
-# precompact_priorities.sh
-#
-# Claude Code fires PreCompact before each /compact (manual) and each
+# # precompact_priorities.sh
+# # Claude Code fires PreCompact before each /compact (manual) and each
 # auto compaction. This script's trimmed stdout becomes the
 # "Additional Instructions:" block appended after the default 9-section
 # compact prompt.
-#
-# Each rule below is a fidelity requirement layered onto one of the
+# # Each rule below is a fidelity requirement layered onto one of the
 # existing default sections (1-9) rather than a parallel taxonomy, so
 # the summarizer has one coherent shape to fill.
-#
-# The quoted heredoc delimiter ('PRIORITY_BLOCK') disables every form of
+# # The quoted heredoc delimiter ('PRIORITY_BLOCK') disables every form of
 # shell expansion, so apostrophes, em-dashes, and backticks in the block
 # pass through untouched with zero escaping.
 

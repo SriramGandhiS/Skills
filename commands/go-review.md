@@ -8,8 +8,8 @@ This command invokes the **go-reviewer** agent for comprehensive Go-specific cod
 
 ## What This Command Does
 
-1. **Identify Go Changes**: Find modified `.go` files via `git diff`
-2. **Run Static Analysis**: Execute `go vet`, `staticcheck`, and `golangci-lint`
+1. **Identify Go Changes**: Find modified `.go`files via`git diff`
+2. **Run Static Analysis**: Execute `go vet`,`staticcheck`, and`golangci-lint`
 3. **Security Scan**: Check for SQL injection, command injection, race conditions
 4. **Concurrency Review**: Analyze goroutine safety, channel usage, mutex patterns
 5. **Idiomatic Go Check**: Verify code follows Go conventions and best practices
@@ -52,17 +52,17 @@ Use `/go-review` when:
 ## Automated Checks Run
 
 ```bash
-# Static analysis
+## Static analysis
 go vet ./...
 
-# Advanced checks (if installed)
+## Advanced checks (if installed)
 staticcheck ./...
 golangci-lint run
 
-# Race detection
+## Race detection
 go build -race ./...
 
-# Security vulnerabilities
+## Security vulnerabilities
 govulncheck ./...
 ```
 
@@ -72,7 +72,7 @@ govulncheck ./...
 User: /go-review
 
 Agent:
-# Go Code Review Report
+## Go Code Review Report
 
 ## Files Reviewed
 - internal/handler/user.go (modified)
@@ -145,4 +145,4 @@ Recommendation: FAIL: Block merge until CRITICAL issue is fixed
 ## Related
 
 - Agent: `agents/go-reviewer.md`
-- Skills: `skills/golang-patterns/`, `skills/golang-testing/`
+- Skills: `skills/golang-patterns/`,`skills/golang-testing/`

@@ -1,4 +1,4 @@
-﻿---
+---
 name: e2e-testing
 description: Playwright E2E testing patterns, Page Object Model, configuration, CI/CD integration, artifact management, and flaky test strategies.
 origin: ECC
@@ -225,7 +225,7 @@ use: {
 ## CI/CD Integration
 
 ```yaml
-# .github/workflows/e2e.yml
+## .github/workflows/e2e.yml
 name: E2E Tests
 on: [push, pull_request]
 
@@ -253,7 +253,7 @@ jobs:
 ## Test Report Template
 
 ```markdown
-# E2E Test Report
+## E2E Test Report
 
 **Date:** YYYY-MM-DD HH:MM
 **Duration:** Xm Ys

@@ -61,24 +61,24 @@ allowed-tools:
 2. Load industry template from `../seo-plan/assets/` directory
 3. Interactive structure planning with user
 4. Apply quality gates:
-   - ⚠️ WARNING at 30+ location pages (require 60%+ unique content)
-   - 🛑 HARD STOP at 50+ location pages (require justification)
+   - WARNING: WARNING at 30+ location pages (require 60%+ unique content)
+   -  HARD STOP at 50+ location pages (require justification)
 5. Generate valid XML output
 6. Split at 50k URLs with sitemap index
 7. Generate STRUCTURE.md documentation
 
 ### Safe Programmatic Pages (OK at scale)
-✅ Integration pages (with real setup docs)
-✅ Template/tool pages (with downloadable content)
-✅ Glossary pages (200+ word definitions)
-✅ Product pages (unique specs, reviews)
-✅ User profile pages (user-generated content)
+PASS: Integration pages (with real setup docs)
+PASS: Template/tool pages (with downloadable content)
+PASS: Glossary pages (200+ word definitions)
+PASS: Product pages (unique specs, reviews)
+PASS: User profile pages (user-generated content)
 
 ### Penalty Risk (avoid at scale)
-❌ Location pages with only city name swapped
-❌ "Best [tool] for [industry]" without industry-specific value
-❌ "[Competitor] alternative" without real comparison data
-❌ AI-generated pages without human review and unique value
+FAIL: Location pages with only city name swapped
+FAIL: "Best [tool] for [industry]" without industry-specific value
+FAIL: "[Competitor] alternative" without real comparison data
+FAIL: AI-generated pages without human review and unique value
 
 ## Sitemap Format
 

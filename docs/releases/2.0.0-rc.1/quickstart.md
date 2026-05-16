@@ -5,7 +5,7 @@ This path is for a new contributor who wants to verify the release surface befor
 ## Clone
 
 ```bash
-git clone https://github.com/affaan-m/everything-claude-code.git
+git clone <https://github.com/affaan-m/everything-claude-code.git>
 cd everything-claude-code
 ```
 
@@ -58,7 +58,7 @@ Do not start by importing a private Hermes workflow wholesale. Start by distilli
 Use the same skill source across harnesses:
 
 - Claude Code consumes ECC through the Claude plugin and native hooks.
-- Codex consumes ECC through `AGENTS.md`, `.codex-plugin/plugin.json`, and MCP reference config.
+- Codex consumes ECC through `AGENTS.md`,`.codex-plugin/plugin.json`, and MCP reference config.
 - OpenCode consumes ECC through the OpenCode package/plugin surface.
 
 The portable unit is still `skills/*/SKILL.md`. Harness-specific files should load or adapt that source, not redefine the workflow.

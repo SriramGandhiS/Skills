@@ -1,4 +1,4 @@
-﻿---
+---
 name: returns-reverse-logistics
 description: >
   Codified expertise for returns authorization, receipt and inspection,
@@ -10,7 +10,7 @@ description: >
   detection, or warranty claims.
 license: Apache-2.0
 version: 1.0.0
-homepage: https://github.com/affaan-m/everything-claude-code
+homepage: <https://github.com/affaan-m/everything-claude-code>
 origin: ECC
 metadata:
   author: evos

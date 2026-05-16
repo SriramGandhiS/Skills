@@ -16,7 +16,7 @@ Use this skill when making Node.js architecture decisions, choosing frameworks, 
 
 ---
 
-## ⚠️ How to Use This Skill
+## WARNING: How to Use This Skill
 
 This skill teaches **decision-making principles**, not fixed code to copy.
 
@@ -303,7 +303,7 @@ node --test src/**/*.test.ts
 
 ## 9. Anti-Patterns to Avoid
 
-### ❌ DON'T:
+### FAIL: DON'T:
 - Use Express for new edge projects (use Hono)
 - Use sync methods in production code
 - Put business logic in controllers
@@ -312,7 +312,7 @@ node --test src/**/*.test.ts
 - Trust external data without validation
 - Block event loop with CPU work
 
-### ✅ DO:
+### PASS: DO:
 - Choose framework based on context
 - Ask user for preferences when unclear
 - Use layered architecture for growing projects

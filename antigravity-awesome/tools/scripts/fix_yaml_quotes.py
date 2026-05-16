@@ -6,7 +6,7 @@ from _project_paths import find_repo_root
 def fix_yaml_quotes(skills_dir):
     print(f"Normalizing YAML frontmatter in {skills_dir}...")
     fixed_count = 0
-    
+
     for root, dirs, files in os.walk(skills_dir):
         dirs[:] = [d for d in dirs if not d.startswith('.')]
         if 'SKILL.md' in files:
@@ -20,15 +20,15 @@ def fix_yaml_quotes(skills_dir):
             fm_match = re.search(r'^---\s*\n(.*?)\n---', content, re.DOTALL)
             if not fm_match:
                 continue
-                
+
             fm_text = fm_match.group(1)
             body = content[fm_match.end():]
-            
+
             try:
                 # safe_load and then dump will normalize quoting automatically
                 metadata = yaml.safe_load(fm_text) or {}
                 new_fm = yaml.dump(metadata, sort_keys=False, allow_unicode=True, width=1000).strip()
-                
+
                 # Check if it actually changed something significant (beyond just style)
                 # but normalization is good anyway. We'll just compare the fm_text.
                 if new_fm.strip() != fm_text.strip():
@@ -37,8 +37,8 @@ def fix_yaml_quotes(skills_dir):
                         f.write(new_content)
                     fixed_count += 1
             except yaml.YAMLError as e:
-                print(f"⚠️ {file_path}: YAML error - {e}")
-                
+                print(f"WARNING: {file_path}: YAML error - {e}")
+
     print(f"Total files normalized: {fixed_count}")
 
 if __name__ == '__main__':

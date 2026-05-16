@@ -175,13 +175,11 @@ from pathlib import Path
 
 FIXTURES_DIR = Path(__file__).parent / "fixtures" / "video"
 
-
 @pytest.fixture
 def sample_ytdlp_metadata():
     """Load sample yt-dlp metadata."""
     with open(FIXTURES_DIR / "sample_metadata.json") as f:
         return json.load(f)
-
 
 @pytest.fixture
 def sample_transcript():
@@ -189,20 +187,17 @@ def sample_transcript():
     with open(FIXTURES_DIR / "sample_transcript.json") as f:
         return json.load(f)
 
-
 @pytest.fixture
 def sample_whisper_output():
     """Load sample Whisper transcription output."""
     with open(FIXTURES_DIR / "sample_whisper_output.json") as f:
         return json.load(f)
 
-
 @pytest.fixture
 def sample_chapters():
     """Load sample chapter data."""
     with open(FIXTURES_DIR / "sample_chapters.json") as f:
         return json.load(f)
-
 
 @pytest.fixture
 def sample_video_config():
@@ -214,7 +209,6 @@ def sample_video_config():
         visual_extraction=False,
         max_videos=5,
     )
-
 
 @pytest.fixture
 def video_output_dir(tmp_path):
@@ -256,7 +250,6 @@ class TestVideoInfo:
         """VideoInfo handles video with no chapters."""
         ...
 
-
 class TestVideoSegment:
     def test_timestamp_display(self):
         """Timestamp display formats correctly (MM:SS - MM:SS)."""
@@ -274,7 +267,6 @@ class TestVideoSegment:
         """Segment works when visual extraction is disabled."""
         ...
 
-
 class TestChapter:
     def test_chapter_duration(self):
         """Chapter duration computed correctly."""
@@ -283,7 +275,6 @@ class TestChapter:
     def test_chapter_serialization(self):
         """Chapter serializes to/from dict."""
         ...
-
 
 class TestTranscriptSegment:
     def test_from_youtube_api(self):
@@ -297,7 +288,6 @@ class TestTranscriptSegment:
     def test_with_word_timestamps(self):
         """TranscriptSegment preserves word-level timestamps."""
         ...
-
 
 class TestVideoSourceConfig:
     def test_validate_single_source(self):
@@ -315,7 +305,6 @@ class TestVideoSourceConfig:
     def test_from_unified_config(self, sample_video_config):
         """Config created from unified config JSON entry."""
         ...
-
 
 class TestEnums:
     def test_all_video_source_types(self):
@@ -362,7 +351,6 @@ class TestYouTubeTranscript:
         """Manual captions get 1.0 confidence, auto-generated get 0.8."""
         ...
 
-
 class TestWhisperTranscription:
     @pytest.mark.slow
     @patch('skill_seekers.cli.video_transcript.WhisperModel')
@@ -384,7 +372,6 @@ class TestWhisperTranscription:
         """Audio extraction downloads audio stream only (not video)."""
         # Mock yt-dlp download
         ...
-
 
 class TestSubtitleParsing:
     def test_parse_srt(self, tmp_path):
@@ -408,7 +395,6 @@ class TestSubtitleParsing:
     def test_empty_subtitle_file(self, tmp_path):
         """Handle empty subtitle file gracefully."""
         ...
-
 
 class TestTranscriptFallbackChain:
     @patch('skill_seekers.cli.video_transcript.YouTubeTranscriptApi')
@@ -444,7 +430,6 @@ class TestFrameClassification:
         """Nearly blank frame classified as other."""
         ...
 
-
 class TestKeyframeTimestamps:
     def test_chapter_boundaries_included(self, sample_chapters):
         """Keyframe timestamps include chapter start times."""
@@ -462,7 +447,6 @@ class TestKeyframeTimestamps:
         """Regular interval timestamps fill gaps between scenes."""
         ...
 
-
 class TestOCRExtraction:
     @pytest.mark.slow
     @patch('skill_seekers.cli.video_visual.easyocr.Reader')
@@ -479,7 +463,6 @@ class TestOCRExtraction:
     def test_monospace_detection(self, mock_reader):
         """Monospace text regions correctly detected."""
         ...
-
 
 class TestCodeBlockDetection:
     def test_detect_python_code(self):
@@ -513,7 +496,6 @@ class TestChapterSegmentation:
         """Falls back to time window when no chapters."""
         ...
 
-
 class TestTimeWindowSegmentation:
     def test_fixed_windows(self):
         """Creates segments at fixed intervals."""
@@ -526,7 +508,6 @@ class TestTimeWindowSegmentation:
     def test_configurable_window_size(self):
         """Window size respects config.time_window_seconds."""
         ...
-
 
 class TestStreamAlignment:
     def test_align_transcript_to_segments(self, sample_transcript, sample_chapters):
@@ -544,7 +525,6 @@ class TestStreamAlignment:
     def test_empty_segment_handling(self):
         """Handle segments with no transcript (silence, music)."""
         ...
-
 
 class TestContentMerging:
     def test_transcript_only_content(self):
@@ -566,7 +546,6 @@ class TestContentMerging:
     def test_slide_text_supplementary(self):
         """Slide text adds to content when not in transcript."""
         ...
-
 
 class TestCategorization:
     def test_category_from_chapter_title(self):
@@ -637,7 +616,6 @@ class TestSourceDetectorVideo:
         assert info.type == "video"
         assert info.type != "web"
 
-
 class TestUnifiedConfigVideo:
     def test_video_source_in_config(self, tmp_path):
         """Video source parsed correctly from unified config."""
@@ -650,7 +628,6 @@ class TestUnifiedConfigVideo:
     def test_video_alongside_docs(self, tmp_path):
         """Video source alongside documentation source."""
         ...
-
 
 class TestFullPipeline:
     @patch('skill_seekers.cli.video_transcript.YouTubeTranscriptApi')

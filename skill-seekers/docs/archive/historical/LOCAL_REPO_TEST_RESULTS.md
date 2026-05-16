@@ -52,16 +52,16 @@ This test validates the local repository skill extraction feature (v2.1.1) with:
 
 | Test | Status | Score | Notes |
 |------|--------|-------|-------|
-| Code Extraction Completeness | ✅ PASSED | 10/10 | All 93 C# files discovered |
-| Language Detection Accuracy | ✅ PASSED | 10/10 | C#, ShaderLab, HLSL detected |
-| Skill Quality | ⚠️  PARTIAL | 6/10 | README extracted, no code analysis |
-| Performance | ✅ PASSED | 10/10 | Fast, unlimited analysis |
+| Code Extraction Completeness | PASS: PASSED | 10/10 | All 93 C# files discovered |
+| Language Detection Accuracy | PASS: PASSED | 10/10 | C#, ShaderLab, HLSL detected |
+| Skill Quality | WARNING:  PARTIAL | 6/10 | README extracted, no code analysis |
+| Performance | PASS: PASSED | 10/10 | Fast, unlimited analysis |
 
 **Overall Score:** 36/40 (90%)
 
 ---
 
-## Test 1: Code Extraction Completeness ✅
+## Test 1: Code Extraction Completeness PASS:
 
 ### Results
 
@@ -69,7 +69,7 @@ This test validates the local repository skill extraction feature (v2.1.1) with:
 - **C# Files Extracted:** 93 files (100% coverage)
 - **Project C# Files:** 58 files in Assets/_Project/
 - **File Limit:** NONE (unlimited local repo analysis)
-- **Unity Directories Excluded:** ❌ NO (see Findings)
+- **Unity Directories Excluded:** FAIL: NO (see Findings)
 
 ### Verification
 
@@ -85,22 +85,22 @@ cat output/.../github_data.json | python3 -c "..."
 
 ### Findings
 
-**✅ Strengths:**
+**PASS: Strengths:**
 - All 93 C# files were discovered and included in file tree
 - No file limit applied (unlimited local repository mode working correctly)
 - File tree includes full project structure (679 items)
 
-**⚠️  Issues:**
+**WARNING:  Issues:**
 - Unity library exclusions (`exclude_dirs_additional`) did NOT filter file tree
 - TextMesh Pro files included (367 files, including Examples & Extras)
 - `file_patterns: ["Assets/**/*.cs"]` matches ALL .cs files, including libraries
 
-**🔧 Root Cause:**
+**Root Cause:**
 - `exclude_dirs_additional` only works for LOCAL FILE SYSTEM traversal
 - File tree is built from GitHub API response (not filesystem walk)
 - Would need to add explicit exclusions to `file_patterns` to filter TextMesh Pro
 
-**💡 Recommendation:**
+**Recommendation:**
 ```json
 "file_patterns": [
   "Assets/_Project/**/*.cs",
@@ -111,7 +111,7 @@ This would exclude TextMesh Pro while keeping project code.
 
 ---
 
-## Test 2: Language Detection Accuracy ✅
+## Test 2: Language Detection Accuracy PASS:
 
 ### Results
 
@@ -139,20 +139,20 @@ find Assets -name "*.shader" -o -name "*.hlsl" -o -name "*.shadergraph" | wc -l
 | ShaderLab | ~15 | Unity shader definitions |
 | HLSL | ~4 | High-Level Shading Language |
 
-**✅ All languages correctly identified for Unity project**
+**PASS: All languages correctly identified for Unity project**
 
 ---
 
-## Test 3: Skill Quality ⚠️
+## Test 3: Skill Quality WARNING:
 
 ### Results
 
-- **README Extracted:** ✅ YES (9,666 chars)
-- **File Tree:** ✅ YES (679 items)
-- **Code Structure:** ❌ NO (code analyzer not available)
-- **Code Samples:** ❌ NO
-- **Function Signatures:** ❌ NO
-- **AI Enhancement:** ❌ NO (no reference files generated)
+- **README Extracted:** PASS: YES (9,666 chars)
+- **File Tree:** PASS: YES (679 items)
+- **Code Structure:** FAIL: NO (code analyzer not available)
+- **Code Samples:** FAIL: NO
+- **Function Signatures:** FAIL: NO
+- **AI Enhancement:** FAIL: NO (no reference files generated)
 
 ### Skill Contents
 
@@ -174,13 +174,13 @@ output/deck_deck_go_local_test/
 - **Missing:** Code examples, quick reference, enhanced content
 
 **README Quality:**
-- ✅ Full game overview with features
-- ✅ Complete game rules (sequences, sets, jokers, scoring)
-- ✅ Technical stack (Unity 6, C# 9.0, URP)
-- ✅ Architecture patterns (Command, Strategy, UDF)
-- ✅ Project structure diagram
-- ✅ Smart Sort algorithm explanation
-- ✅ Getting started guide
+- PASS: Full game overview with features
+- PASS: Complete game rules (sequences, sets, jokers, scoring)
+- PASS: Technical stack (Unity 6, C# 9.0, URP)
+- PASS: Architecture patterns (Command, Strategy, UDF)
+- PASS: Project structure diagram
+- PASS: Smart Sort algorithm explanation
+- PASS: Getting started guide
 
 ### Skill Usability Rating
 
@@ -217,14 +217,14 @@ WARNING:github_scraper:Code analyzer not available - skipping deep analysis
 
 **Result:**
 ```
-❌ No reference files found to analyze
+FAIL: No reference files found to analyze
 ```
 
 **Reason:** Enhancement tool expects multiple .md files in references/, but only README.md was generated.
 
 ---
 
-## Test 4: Performance ✅
+## Test 4: Performance PASS:
 
 ### Results
 
@@ -238,7 +238,7 @@ WARNING:github_scraper:Code analyzer not available - skipping deep analysis
 
 ### Performance Characteristics
 
-**✅ Strengths:**
+**PASS: Strengths:**
 - No GitHub API rate limits
 - No authentication required
 - No 50-file limit applied
@@ -267,11 +267,11 @@ WARNING:github_scraper:Code analyzer not available - skipping deep analysis
 
 | Aspect | Local Mode | API Mode | Winner |
 |--------|------------|----------|--------|
-| File Limit | Unlimited | 50 files | 🏆 Local |
-| Authentication | Not required | Required | 🏆 Local |
-| Rate Limits | None | 5000/hour | 🏆 Local |
-| Speed | Fast (filesystem) | Slower (network) | 🏆 Local |
-| Code Analysis | ❌ Not available | ✅ Available* | API |
+| File Limit | Unlimited | 50 files |  Local |
+| Authentication | Not required | Required |  Local |
+| Rate Limits | None | 5000/hour |  Local |
+| Speed | Fast (filesystem) | Slower (network) |  Local |
+| Code Analysis | FAIL: Not available | PASS: Available* | API |
 
 *API mode can fetch file contents for analysis
 
@@ -279,7 +279,7 @@ WARNING:github_scraper:Code analyzer not available - skipping deep analysis
 
 ## Critical Findings
 
-### 1. Code Analyzer Unavailable ⚠️
+### 1. Code Analyzer Unavailable WARNING:
 
 **Impact:** HIGH - Core feature missing
 
@@ -300,7 +300,7 @@ WARNING:github_scraper:Code analyzer not available - deep analysis disabled
 - Dependencies missing?
 - Feature incomplete in v2.1.1?
 
-### 2. Unity Library Exclusions Not Applied ⚠️
+### 2. Unity Library Exclusions Not Applied WARNING:
 
 **Impact:** MEDIUM - Unwanted files included
 
@@ -322,7 +322,7 @@ WARNING:github_scraper:Code analyzer not available - deep analysis disabled
 ]
 ```
 
-### 3. Enhancement Cannot Run ⚠️
+### 3. Enhancement Cannot Run WARNING:
 
 **Impact:** MEDIUM - No AI-enhanced skill generated
 
@@ -333,7 +333,7 @@ skill-seekers enhance output/deck_deck_go_local_test/
 
 **Error:**
 ```
-❌ No reference files found to analyze
+FAIL: No reference files found to analyze
 ```
 
 **Reason:** Enhancement tool expects multiple categorized reference files (e.g., api.md, getting_started.md, etc.), but unified scraper only generated github/README.md.
@@ -389,7 +389,7 @@ skill-seekers enhance output/deck_deck_go_local_test/
 
 ## Conclusion
 
-### What Worked ✅
+### What Worked PASS:
 
 1. **Local Repository Mode**
    - Successfully cloned repository
@@ -411,7 +411,7 @@ skill-seekers enhance output/deck_deck_go_local_test/
    - No missing files
    - Complete file tree structure
 
-### What Didn't Work ❌
+### What Didn't Work FAIL:
 
 1. **Deep Code Analysis**
    - Code analyzer not available
@@ -438,10 +438,10 @@ The local repository extraction feature **successfully demonstrates unlimited fi
 However, the **missing code analyzer prevents deep code structure extraction**, which was a primary test objective. The skill quality suffers without code examples, function signatures, and AI enhancement.
 
 **For Production Use:**
-- ✅ Use for documentation-heavy projects (README, guides)
-- ✅ Use for file tree discovery and language detection
-- ⚠️  Limited value for code-heavy analysis (no code structure)
-- ❌ Cannot replace API mode for deep code analysis (yet)
+- PASS: Use for documentation-heavy projects (README, guides)
+- PASS: Use for file tree discovery and language detection
+- WARNING:  Limited value for code-heavy analysis (no code structure)
+- FAIL: Cannot replace API mode for deep code analysis (yet)
 
 **Next Steps:**
 1. Fix CodeAnalyzer availability
@@ -472,4 +472,4 @@ However, the **missing code analyzer prevents deep code structure extraction**, 
 
 **Test Completed:** December 21, 2025
 **Tester:** Claude Code (Sonnet 4.5)
-**Status:** ✅ PASSED (with limitations documented)
+**Status:** PASS: PASSED (with limitations documented)

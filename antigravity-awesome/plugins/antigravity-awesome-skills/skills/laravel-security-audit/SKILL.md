@@ -10,8 +10,8 @@ date_added: "2026-02-27"
 
 ## Skill Metadata
 
-Name: laravel-security-audit  
-Focus: Security Review & Vulnerability Detection  
+Name: laravel-security-audit
+Focus: Security Review & Vulnerability Detection
 Scope: Laravel 10/11+ Applications
 
 ---
@@ -82,7 +82,7 @@ Always consider:
 
 ## Core Audit Areas
 
-### 1️⃣ Input Validation
+### 1⃣ Input Validation
 
 - Is all user input validated?
 - Is FormRequest used?
@@ -93,7 +93,7 @@ Always consider:
 
 ---
 
-### 2️⃣ Authorization
+### 2⃣ Authorization
 
 - Are Policies or Gates used?
 - Is authorization checked in controllers?
@@ -104,7 +104,7 @@ Always consider:
 
 ---
 
-### 3️⃣ Authentication
+### 3⃣ Authentication
 
 - Is password hashing secure?
 - Is sensitive data exposed in API responses?
@@ -114,7 +114,7 @@ Always consider:
 
 ---
 
-### 4️⃣ Database Security
+### 4⃣ Database Security
 
 - Is mass assignment protected?
 - Are $fillable / $guarded properly configured?
@@ -124,7 +124,7 @@ Always consider:
 
 ---
 
-### 5️⃣ File Upload Handling
+### 5⃣ File Upload Handling
 
 - MIME type validation?
 - File extension validation?
@@ -135,7 +135,7 @@ Always consider:
 
 ---
 
-### 6️⃣ API Security
+### 6⃣ API Security
 
 - Rate limiting enabled?
 - Throttling per user?
@@ -145,7 +145,7 @@ Always consider:
 
 ---
 
-### 7️⃣ XSS & Output Escaping
+### 7⃣ XSS & Output Escaping
 
 - Blade uses {{ }} instead of {!! !!}?
 - API responses sanitized?
@@ -153,7 +153,7 @@ Always consider:
 
 ---
 
-### 8️⃣ Configuration & Deployment
+### 8⃣ Configuration & Deployment
 
 - APP_DEBUG disabled in production?
 - .env accessible via web?
@@ -204,7 +204,7 @@ When auditing code:
 
 ## Example Audit Output Format
 
-Issue: Missing Authorization Check  
+Issue: Missing Authorization Check
 Risk: High
 
 Problem:

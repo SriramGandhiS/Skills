@@ -82,14 +82,14 @@ def extract_skill_name(skill_md_path: Path) -> str | None:
 
 def inspect_repo():
     """Inspect the Microsoft skills repository structure."""
-    print("🔍 Inspecting Microsoft Skills Repository Structure")
+    print(" Inspecting Microsoft Skills Repository Structure")
     print("=" * 60)
 
     repo_path: Path | None = None
     try:
         repo_path = create_clone_target(prefix="ms-skills-")
 
-        print("\n1️⃣ Cloning repository...")
+        print("\n1⃣ Cloning repository...")
         try:
             subprocess.run(
                 ["git", "clone", "--depth", "1", MS_REPO, str(repo_path)],
@@ -98,17 +98,17 @@ def inspect_repo():
                 text=True,
             )
         except subprocess.CalledProcessError as exc:
-            print("\n❌ git clone failed.", file=sys.stderr)
+            print("\nFAIL: git clone failed.", file=sys.stderr)
             if exc.stderr:
                 print(exc.stderr.strip(), file=sys.stderr)
             raise
 
         # Find all SKILL.md files
         all_skill_mds = list(repo_path.rglob("SKILL.md"))
-        print(f"\n2️⃣ Total SKILL.md files found: {len(all_skill_mds)}")
+        print(f"\n2⃣ Total SKILL.md files found: {len(all_skill_mds)}")
 
         # Show flat name mapping
-        print(f"\n3️⃣ Flat Name Mapping (frontmatter 'name' → directory name):")
+        print(f"\n3⃣ Flat Name Mapping (frontmatter 'name' → directory name):")
         print("-" * 60)
 
         names_seen: dict[str, list[str]] = {}
@@ -133,16 +133,16 @@ def inspect_repo():
         collisions = {n: paths for n, paths in names_seen.items()
                       if len(paths) > 1}
         if collisions:
-            print(f"\n4️⃣ ⚠️  Name Collisions Detected ({len(collisions)}):")
+            print(f"\n4⃣ WARNING:  Name Collisions Detected ({len(collisions)}):")
             for name, paths in collisions.items():
                 print(f"  '{name}':")
                 for p in paths:
                     print(f"    - {p}")
         else:
             print(
-                f"\n4️⃣ ✅ No name collisions — all {len(names_seen)} names are unique!")
+                f"\n4⃣ PASS: No name collisions — all {len(names_seen)} names are unique!")
 
-        print("\n✨ Inspection complete!")
+        print("\n Inspection complete!")
     finally:
         if repo_path is not None:
             shutil.rmtree(repo_path, ignore_errors=True)
@@ -155,6 +155,6 @@ if __name__ == "__main__":
     except subprocess.CalledProcessError as exc:
         sys.exit(exc.returncode or 1)
     except Exception as e:
-        print(f"\n❌ Error: {e}", file=sys.stderr)
+        print(f"\nFAIL: Error: {e}", file=sys.stderr)
         traceback.print_exc(file=sys.stderr)
         sys.exit(1)

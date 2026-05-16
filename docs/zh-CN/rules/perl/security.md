@@ -14,7 +14,7 @@ paths:
 ## 污染模式
 
 * 在所有 CGI/面向 Web 的脚本中使用 `-T` 标志
-* 在执行任何外部命令前，清理 `%ENV` (`$ENV{PATH}`、`$ENV{CDPATH}` 等)
+* 在执行任何外部命令前，清理 `%ENV`(`$ENV{PATH}`、`$ENV{CDPATH}` 等)
 
 ## 输入验证
 

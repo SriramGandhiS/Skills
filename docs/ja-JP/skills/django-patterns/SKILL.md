@@ -52,7 +52,7 @@ myproject/
 ### 分割設定パターン
 
 ```python
-# config/settings/base.py
+## config/settings/base.py
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
@@ -102,7 +102,7 @@ DATABASES = {
     }
 }
 
-# config/settings/development.py
+## config/settings/development.py
 from .base import *
 
 DEBUG = True
@@ -116,7 +116,7 @@ MIDDLEWARE += ['debug_toolbar.middleware.DebugToolbarMiddleware']
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
-# config/settings/production.py
+## config/settings/production.py
 from .base import *
 
 DEBUG = False
@@ -128,7 +128,7 @@ SECURE_HSTS_SECONDS = 31536000
 SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 SECURE_HSTS_PRELOAD = True
 
-# ロギング
+## ロギング
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
@@ -260,7 +260,7 @@ class Product(models.Model):
 
     objects = ProductQuerySet.as_manager()  # カスタムQuerySetを使用
 
-# 使用例
+## 使用例
 Product.objects.active().with_category().in_stock()
 ```
 
@@ -288,7 +288,7 @@ class ProductManager(models.Manager):
         """複数の製品の在庫を一括更新。"""
         return self.filter(id__in=product_ids).update(stock=quantity)
 
-# モデル内
+## モデル内
 class Product(models.Model):
     # ... フィールド ...
     custom = ProductManager()
@@ -473,7 +473,7 @@ def add_to_cart(request):
 ## サービスレイヤーパターン
 
 ```python
-# apps/orders/services.py
+## apps/orders/services.py
 from typing import Optional
 from django.db import transaction
 from .models import Order, OrderItem
@@ -592,7 +592,7 @@ def get_popular_categories():
 ### シグナルパターン
 
 ```python
-# apps/users/signals.py
+## apps/users/signals.py
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.contrib.auth import get_user_model
@@ -611,7 +611,7 @@ def save_user_profile(sender, instance, **kwargs):
     """ユーザーが保存されたときにプロファイルを保存。"""
     instance.profile.save()
 
-# apps/users/apps.py
+## apps/users/apps.py
 from django.apps import AppConfig
 
 class UsersConfig(AppConfig):
@@ -628,7 +628,7 @@ class UsersConfig(AppConfig):
 ### カスタムミドルウェア
 
 ```python
-# middleware/active_user_middleware.py
+## middleware/active_user_middleware.py
 import time
 from django.utils.deprecation import MiddlewareMixin
 
@@ -662,17 +662,17 @@ class RequestLoggingMiddleware(MiddlewareMixin):
 ### N+1クエリの防止
 
 ```python
-# Bad - N+1クエリ
+## Bad - N+1クエリ
 products = Product.objects.all()
 for product in products:
     print(product.category.name)  # 各製品に対して個別のクエリ
 
-# Good - select_relatedで単一クエリ
+## Good - select_relatedで単一クエリ
 products = Product.objects.select_related('category').all()
 for product in products:
     print(product.category.name)
 
-# Good - 多対多のためのprefetch
+## Good - 多対多のためのprefetch
 products = Product.objects.prefetch_related('tags').all()
 for product in products:
     for tag in product.tags.all():
@@ -699,19 +699,19 @@ class Product(models.Model):
 ### 一括操作
 
 ```python
-# 一括作成
+## 一括作成
 Product.objects.bulk_create([
     Product(name=f'Product {i}', price=10.00)
     for i in range(1000)
 ])
 
-# 一括更新
+## 一括更新
 products = Product.objects.all()[:100]
 for product in products:
     product.is_active = True
 Product.objects.bulk_update(products, ['is_active'])
 
-# 一括削除
+## 一括削除
 Product.objects.filter(stock=0).delete()
 ```
 

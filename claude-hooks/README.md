@@ -79,11 +79,11 @@ async function preToolUse(payload: PreToolUsePayload): Promise<HookResponse> {
   if (payload.tool_name === 'Write' && payload.tool_input) {
     const { file_path, content } = payload.tool_input as WriteToolInput
     console.log(`Claude is writing to: ${file_path}`)
-    
+
     // Add your custom logic here
     // Maybe notify a webhook, update a dashboard, etc.
   }
-  
+
   return { action: 'continue' }
 }
 

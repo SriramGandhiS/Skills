@@ -1,4 +1,4 @@
-﻿---
+---
 name: kotlin-coroutines-flows
 description: Kotlin Coroutines and Flow patterns for Android and KMP â€” structured concurrency, Flow operators, StateFlow, error handling, and testing.
 origin: ECC
@@ -43,7 +43,7 @@ LaunchedEffect(key) { fetchData() }
 
 ### Parallel Decomposition
 
-Use `coroutineScope` + `async` for parallel work:
+Use `coroutineScope`+`async` for parallel work:
 
 ```kotlin
 suspend fun loadDashboard(): Dashboard = coroutineScope {
@@ -179,7 +179,7 @@ withContext(Dispatchers.IO) { database.query() }
 withContext(Dispatchers.Main) { updateUi() }
 ```
 
-In KMP, use `Dispatchers.Default` and `Dispatchers.Main` (available on all platforms). `Dispatchers.IO` is JVM/Android only â€” use `Dispatchers.Default` on other platforms or provide via DI.
+In KMP, use `Dispatchers.Default`and`Dispatchers.Main`(available on all platforms).`Dispatchers.IO`is JVM/Android only â€” use`Dispatchers.Default` on other platforms or provide via DI.
 
 ## Cancellation
 
@@ -272,11 +272,11 @@ class FakeItemRepository : ItemRepository {
 ## Anti-Patterns to Avoid
 
 - Using `GlobalScope` â€” leaks coroutines, no structured cancellation
-- Collecting Flows in `init {}` without a scope â€” use `viewModelScope.launch`
-- Using `MutableStateFlow` with mutable collections â€” always use immutable copies: `_state.update { it.copy(list = it.list + newItem) }`
+- Collecting Flows in `init {}`without a scope â€” use`viewModelScope.launch`
+- Using `MutableStateFlow`with mutable collections â€” always use immutable copies:`_state.update { it.copy(list = it.list + newItem) }`
 - Catching `CancellationException` â€” let it propagate for proper cancellation
 - Using `flowOn(Dispatchers.Main)` to collect â€” collection dispatcher is the caller's dispatcher
-- Creating `Flow` in `@Composable` without `remember` â€” recreates the flow every recomposition
+- Creating `Flow`in`@Composable`without`remember` â€” recreates the flow every recomposition
 
 ## References
 

@@ -108,9 +108,9 @@ adding state management...
 
 ====================================================================================
 
-✅ All examples completed!
+PASS: All examples completed!
 
-💡 Tips:
+ Tips:
   • Adjust 'alpha' to balance keyword vs semantic search
   • Use filters to narrow results by metadata
   • Combine multiple filters with 'And'/'Or' operators

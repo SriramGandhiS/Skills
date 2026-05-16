@@ -60,7 +60,7 @@ db.createCollection("temperatures", {
 |----------|--------------------|----|
 | Data accessed independently | Yes | Different query patterns |
 | Unbounded relationships | Yes | Prevents document growth |
-| Many-to-many | Yes | Students ↔ Courses |
+| Many-to-many | Yes | Students  Courses |
 | 1:1 always together | No (embed) | User and profile |
 
 **When NOT to use this pattern:**

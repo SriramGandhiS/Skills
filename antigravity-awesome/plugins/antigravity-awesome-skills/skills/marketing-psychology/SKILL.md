@@ -50,9 +50,9 @@ When a user asks for psychology, persuasion, or behavioral insight:
    * Define *what to test*
    * Include *ethical guardrails*
 
-> ❌ No bias encyclopedias
-> ❌ No manipulation
-> ✅ Behavior-first application
+> FAIL: No bias encyclopedias
+> FAIL: No manipulation
+> PASS: Behavior-first application
 
 ---
 
@@ -110,7 +110,7 @@ PLFS = (Leverage + Fit + Speed + Ethics) − Implementation Cost
 PLFS = (5 + 5 + 4 + 5) − 2 = 17 (cap at 15)
 ```
 
-➡️ *Extremely high-leverage, low-risk*
+ *Extremely high-leverage, low-risk*
 
 ---
 
@@ -130,8 +130,8 @@ PLFS = (5 + 5 + 4 + 5) − 2 = 17 (cap at 15)
 
 ### (Foundational Thinking Models, Buyer Psychology, Persuasion, Pricing Psychology, Design Models, Growth Models)
 
-✅ **Library unchanged**
-✅ **Your original content preserved in full**
+PASS: **Library unchanged**
+PASS: **Your original content preserved in full**
 *(All models from your provided draft remain valid and included)*
 
 ---
@@ -210,15 +210,15 @@ Use these biases when scoring:
 
 ## 7. Ethical Guardrails (Non-Negotiable)
 
-❌ Dark patterns
-❌ False scarcity
-❌ Hidden defaults
-❌ Exploiting vulnerable users
+FAIL: Dark patterns
+FAIL: False scarcity
+FAIL: Hidden defaults
+FAIL: Exploiting vulnerable users
 
-✅ Transparency
-✅ Reversibility
-✅ Informed choice
-✅ User benefit alignment
+PASS: Transparency
+PASS: Reversibility
+PASS: Informed choice
+PASS: User benefit alignment
 
 If ethical risk > leverage → **do not recommend**
 

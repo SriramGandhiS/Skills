@@ -15,7 +15,7 @@ paths:
 在 `~/.claude/settings.json` 中配置：
 
 * **Prettier**：编辑后自动格式化 JS/TS 文件
-* **TypeScript 检查**：编辑 `.ts`/`.tsx` 文件后运行 `tsc`
+* **TypeScript 检查**：编辑 `.ts`/`.tsx`文件后运行`tsc`
 * **console.log 警告**：警告编辑过的文件中存在 `console.log`
 
 ## Stop 钩子

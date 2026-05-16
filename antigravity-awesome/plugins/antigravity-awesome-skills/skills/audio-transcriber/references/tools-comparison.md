@@ -6,29 +6,29 @@ Comprehensive comparison of audio transcription engines supported by the audio-t
 
 | Tool | Type | Speed | Quality | Cost | Privacy | Offline | Languages |
 |------|------|-------|---------|------|---------|---------|-----------|
-| **Faster-Whisper** | Open-source | ⚡⚡⚡⚡⚡ | ⭐⭐⭐⭐⭐ | Free | 100% | ✅ | 99 |
-| **Whisper** | Open-source | ⚡⚡⚡ | ⭐⭐⭐⭐⭐ | Free | 100% | ✅ | 99 |
-| Google Speech-to-Text | Commercial API | ⚡⚡⚡⚡ | ⭐⭐⭐⭐⭐ | $0.006/15s | Partial | ❌ | 125+ |
-| Azure Speech | Commercial API | ⚡⚡⚡⚡ | ⭐⭐⭐⭐ | $1/hour | Partial | ❌ | 100+ |
-| AssemblyAI | Commercial API | ⚡⚡⚡⚡ | ⭐⭐⭐⭐⭐ | $0.00025/s | Partial | ❌ | 99 |
+| **Faster-Whisper** | Open-source |  |  | Free | 100% | PASS: | 99 |
+| **Whisper** | Open-source |  |  | Free | 100% | PASS: | 99 |
+| Google Speech-to-Text | Commercial API |  |  | $0.006/15s | Partial | FAIL: | 125+ |
+| Azure Speech | Commercial API |  |  | $1/hour | Partial | FAIL: | 100+ |
+| AssemblyAI | Commercial API |  |  | $0.00025/s | Partial | FAIL: | 99 |
 
 ---
 
 ## Faster-Whisper (Recommended)
 
 ### Pros
-✅ **4-5x faster** than original Whisper  
-✅ **Same quality** as original Whisper  
-✅ **Lower memory usage** (50-60% less RAM)  
-✅ **Free and open-source**  
-✅ **100% offline** (privacy guaranteed)  
-✅ **Easy installation** (`pip install faster-whisper`)  
-✅ **Drop-in replacement** for Whisper
+PASS: **4-5x faster** than original Whisper
+PASS: **Same quality** as original Whisper
+PASS: **Lower memory usage** (50-60% less RAM)
+PASS: **Free and open-source**
+PASS: **100% offline** (privacy guaranteed)
+PASS: **Easy installation** (`pip install faster-whisper`)
+PASS: **Drop-in replacement** for Whisper
 
 ### Cons
-❌ Requires Python 3.8+  
-❌ Initial model download (~100MB-1.5GB)  
-❌ GPU optional but speeds up significantly
+FAIL: Requires Python 3.8+
+FAIL: Initial model download (~100MB-1.5GB)
+FAIL: GPU optional but speeds up significantly
 
 ### Installation
 
@@ -69,18 +69,18 @@ for segment in segments:
 ## Whisper (Original)
 
 ### Pros
-✅ **Official OpenAI model**  
-✅ **Excellent quality**  
-✅ **Free and open-source**  
-✅ **100% offline**  
-✅ **Well-documented**  
-✅ **Large community**
+PASS: **Official OpenAI model**
+PASS: **Excellent quality**
+PASS: **Free and open-source**
+PASS: **100% offline**
+PASS: **Well-documented**
+PASS: **Large community**
 
 ### Cons
-❌ **Slower** than Faster-Whisper (4-5x)  
-❌ **Higher memory usage**  
-❌ Requires PyTorch (large dependency)  
-❌ GPU highly recommended for larger models
+FAIL: **Slower** than Faster-Whisper (4-5x)
+FAIL: **Higher memory usage**
+FAIL: Requires PyTorch (large dependency)
+FAIL: GPU highly recommended for larger models
 
 ### Installation
 
@@ -120,19 +120,19 @@ print(result["text"])
 ## Google Cloud Speech-to-Text
 
 ### Pros
-✅ **Very accurate** (industry-leading)  
-✅ **Fast processing** (cloud infrastructure)  
-✅ **125+ languages**  
-✅ **Word-level timestamps**  
-✅ **Punctuation & capitalization**  
-✅ **Speaker diarization** (premium)
+PASS: **Very accurate** (industry-leading)
+PASS: **Fast processing** (cloud infrastructure)
+PASS: **125+ languages**
+PASS: **Word-level timestamps**
+PASS: **Punctuation & capitalization**
+PASS: **Speaker diarization** (premium)
 
 ### Cons
-❌ **Requires internet** (cloud-only)  
-❌ **Costs money** (after free tier)  
-❌ **Privacy concerns** (audio uploaded to Google)  
-❌ Requires GCP account setup  
-❌ Complex authentication
+FAIL: **Requires internet** (cloud-only)
+FAIL: **Costs money** (after free tier)
+FAIL: **Privacy concerns** (audio uploaded to Google)
+FAIL: Requires GCP account setup
+FAIL: Complex authentication
 
 ### Pricing
 
@@ -184,18 +184,18 @@ for result in response.results:
 ## Azure Speech Services
 
 ### Pros
-✅ **High accuracy**  
-✅ **100+ languages**  
-✅ **Real-time transcription**  
-✅ **Custom models** (train on your data)  
-✅ **Good Microsoft ecosystem integration**
+PASS: **High accuracy**
+PASS: **100+ languages**
+PASS: **Real-time transcription**
+PASS: **Custom models** (train on your data)
+PASS: **Good Microsoft ecosystem integration**
 
 ### Cons
-❌ **Requires internet**  
-❌ **Costs money** (after free tier)  
-❌ **Privacy concerns** (cloud processing)  
-❌ Requires Azure account  
-❌ Complex setup
+FAIL: **Requires internet**
+FAIL: **Costs money** (after free tier)
+FAIL: **Privacy concerns** (cloud processing)
+FAIL: Requires Azure account
+FAIL: Complex setup
 
 ### Pricing
 
@@ -244,18 +244,18 @@ print(result.text)
 ## AssemblyAI
 
 ### Pros
-✅ **Modern, developer-friendly API**  
-✅ **Excellent accuracy**  
-✅ **Advanced features** (sentiment, topic detection, PII redaction)  
-✅ **Speaker diarization** (included)  
-✅ **Fast processing**  
-✅ **Good documentation**
+PASS: **Modern, developer-friendly API**
+PASS: **Excellent accuracy**
+PASS: **Advanced features** (sentiment, topic detection, PII redaction)
+PASS: **Speaker diarization** (included)
+PASS: **Fast processing**
+PASS: **Good documentation**
 
 ### Cons
-❌ **Requires internet**  
-❌ **Costs money** (no free tier, only trial credits)  
-❌ **Privacy concerns** (cloud processing)  
-❌ Requires API key
+FAIL: **Requires internet**
+FAIL: **Costs money** (no free tier, only trial credits)
+FAIL: **Privacy concerns** (cloud processing)
+FAIL: Requires API key
 
 ### Pricing
 
@@ -299,29 +299,29 @@ for utterance in transcript.utterances:
 ## Recommendation Matrix
 
 ### Use Faster-Whisper if:
-- ✅ Privacy is critical (local processing)
-- ✅ Want zero cost (free forever)
-- ✅ Need offline capability
-- ✅ Processing many files (speed matters)
-- ✅ Limited budget
+- PASS: Privacy is critical (local processing)
+- PASS: Want zero cost (free forever)
+- PASS: Need offline capability
+- PASS: Processing many files (speed matters)
+- PASS: Limited budget
 
 ### Use Google Speech-to-Text if:
-- ✅ Need absolute best accuracy
-- ✅ Have budget for cloud services
-- ✅ Want advanced features (punctuation, diarization)
-- ✅ Already using GCP ecosystem
+- PASS: Need absolute best accuracy
+- PASS: Have budget for cloud services
+- PASS: Want advanced features (punctuation, diarization)
+- PASS: Already using GCP ecosystem
 
 ### Use Azure Speech if:
-- ✅ In Microsoft ecosystem
-- ✅ Need custom model training
-- ✅ Want real-time transcription
-- ✅ Have Azure credits
+- PASS: In Microsoft ecosystem
+- PASS: Need custom model training
+- PASS: Want real-time transcription
+- PASS: Have Azure credits
 
 ### Use AssemblyAI if:
-- ✅ Need advanced features (sentiment, topics)
-- ✅ Want easiest API experience
-- ✅ Need automatic PII redaction
-- ✅ Value developer experience
+- PASS: Need advanced features (sentiment, topics)
+- PASS: Want easiest API experience
+- PASS: Need automatic PII redaction
+- PASS: Value developer experience
 
 ---
 

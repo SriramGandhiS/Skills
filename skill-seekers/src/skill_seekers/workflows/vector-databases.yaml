@@ -20,7 +20,7 @@ stages:
     enabled: true
     prompt: >
       Analyze the vector database platform.
-      
+
       Identify:
       1. Vector database (Pinecone, Weaviate, Qdrant, Chroma, etc.)
       2. Deployment mode (cloud, self-hosted, embedded)
@@ -28,7 +28,7 @@ stages:
       4. Distance metric (cosine, euclidean, dot product)
       5. Indexing algorithm (HNSW, IVF, etc.)
       6. Scaling approach
-      
+
       Output JSON with:
       - "database": vector DB technology
       - "deployment": hosting approach
@@ -44,7 +44,7 @@ stages:
     enabled: true
     prompt: >
       Document embedding generation and management.
-      
+
       Cover:
       1. Embedding model (OpenAI, HuggingFace, custom)
       2. Text chunking strategies
@@ -52,7 +52,7 @@ stages:
       4. Batch vs real-time generation
       5. Embedding versioning
       6. Multi-modal embeddings (if applicable)
-      
+
       Output JSON with:
       - "model": embedding model
       - "chunking": text splitting
@@ -68,7 +68,7 @@ stages:
     enabled: true
     prompt: >
       Document vector database operations.
-      
+
       Include:
       1. Upsert patterns and batching
       2. Query/search patterns
@@ -76,7 +76,7 @@ stages:
       4. Hybrid search (vector + keyword)
       5. Re-ranking strategies
       6. Pagination in vector search
-      
+
       Output JSON with:
       - "upsert": insert/update patterns
       - "search": similarity search
@@ -92,7 +92,7 @@ stages:
     enabled: true
     prompt: >
       Document RAG (Retrieval Augmented Generation) patterns.
-      
+
       Cover:
       1. Document ingestion pipeline
       2. Context window management
@@ -100,7 +100,7 @@ stages:
       4. Source attribution
       5. Query rewriting/expansion
       6. RAG evaluation metrics
-      
+
       Output JSON with:
       - "ingestion": document pipeline
       - "context_mgmt": window management
@@ -116,7 +116,7 @@ stages:
     enabled: true
     prompt: >
       Document vector database monitoring.
-      
+
       Include:
       1. Query latency tracking
       2. Index performance metrics
@@ -124,7 +124,7 @@ stages:
       4. Recall/precision metrics
       5. Embedding drift detection
       6. Cost monitoring
-      
+
       Output JSON with:
       - "latency": query performance
       - "index_perf": indexing metrics

@@ -1,12 +1,12 @@
 /**
  * Skill Filtering Utility - Fixes Issue #215 (Gemini Token Truncation)
- * 
+ *
  * This module provides utilities to filter and manage skills by category,
  * reducing context overhead when all skills exceed token limits.
- * 
+ *
  * Issue: When all 1,200+ skills are loaded, they collectively exceed Gemini's
  * token limit for chat message conversion, causing truncation errors.
- * 
+ *
  * Solution: Filter skills by category to reduce context size
  */
 
@@ -60,7 +60,7 @@ function filterSkillsByCategory(skills, categories = ['core']) {
   if (!Array.isArray(categories) || categories.length === 0) {
     categories = ['core'];
   }
-  
+
   return skills.filter(skill => {
     const skillCategory = skill.category || skill.tags?.[0];
     return categories.includes(skillCategory);
@@ -85,7 +85,7 @@ function getSkillsByBundle(skills, bundleName = 'minimal') {
     console.warn(`Unknown bundle: ${bundleName}. Using 'minimal' bundle.`);
     return filterSkillsByCategory(skills, SKILL_BUNDLES['minimal'].categories);
   }
-  
+
   return filterSkillsByCategory(skills, bundle.categories);
 }
 

@@ -1,4 +1,4 @@
-﻿---
+---
 name: agentic-os
 description: Build persistent multi-agent operating systems on Claude Code. Covers kernel architecture, specialist agents, slash commands, file-based memory, scheduled automation, and state management without external databases.
 origin: ECC
@@ -35,7 +35,7 @@ project-root/
 |---|---|---|
 | Kernel (`CLAUDE.md`) | Identity, routing, model policies, agent registry | Git-tracked |
 | Agents (`agents/`) | Specialist identities with scoped tools and memory | Git-tracked |
-| Commands (`.claude/commands/`) | User-facing slash commands (`/daily-sync`, `/outreach`) | Git-tracked |
+| Commands (`.claude/commands/`) | User-facing slash commands (`/daily-sync`,`/outreach`) | Git-tracked |
 | Scripts (`scripts/`) | Python/JS daemons triggered by cron or webhooks | Git-tracked |
 | State (`data/`) | Append-only logs, project state, decision records | Git-ignored or tracked |
 
@@ -46,7 +46,7 @@ project-root/
 ### Kernel Structure
 
 ```markdown
-# CLAUDE.md - Agentic OS Kernel
+## CLAUDE.md - Agentic OS Kernel
 
 ## Identity
 You are the COO of [project-name]. You route tasks to specialist agents.
@@ -86,7 +86,7 @@ Each agent is a standalone markdown file in `agents/`. Claude loads the relevant
 ### Agent Definition Format
 
 ```markdown
-# @dev - Software Engineer
+## @dev - Software Engineer
 
 ## Identity
 You are a senior software engineer. You write clean, tested, production-grade code.
@@ -132,7 +132,7 @@ Slash commands are markdown files in `.claude/commands/`. They define reusable w
 ### Command Structure
 
 ```markdown
-# /daily-sync
+## /daily-sync
 
 Run the morning briefing:
 
@@ -157,7 +157,7 @@ Run the morning briefing:
 
 ### Activating Commands
 
-Place command files in `.claude/commands/<command-name>.md`. Claude Code auto-discovers them. Users invoke them with `/<command-name>`.
+Place command files in `.claude/commands/<command-name>.md`. Claude Code auto-discovers them. Users invoke them with`/<command-name>`.
 
 ## Persistent Memory
 
@@ -178,7 +178,7 @@ data/
 ### Daily Log Format
 
 ```markdown
-# 2026-04-22 - Daily Log
+## 2026-04-22 - Daily Log
 
 ## Sessions
 - 09:00 - Session 1: Refactored auth module (@dev)
@@ -246,7 +246,7 @@ Agentic OS tasks run on a schedule using external cron, not Claude Code's built-
 ### Linux: systemd Timer
 
 ```ini
-# ~/.config/systemd/user/agentic-daily-sync.service
+## ~/.config/systemd/user/agentic-daily-sync.service
 [Unit]
 Description=Agentic OS Daily Sync
 
@@ -256,7 +256,7 @@ ExecStart=/usr/local/bin/claude --cwd /path/to/project --command /daily-sync
 ```
 
 ```ini
-# ~/.config/systemd/user/agentic-daily-sync.timer
+## ~/.config/systemd/user/agentic-daily-sync.timer
 [Unit]
 Description=Run daily sync every morning
 
@@ -271,7 +271,7 @@ WantedBy=timers.target
 ### Cross-Platform: pm2
 
 ```bash
-# ecosystem.config.js
+## ecosystem.config.js
 module.exports = {
   apps: [{
     name: 'agentic-daily-sync',
@@ -332,7 +332,7 @@ This keeps historical data readable without migration scripts.
 ### Monolithic Single Agent
 
 ```markdown
-# BAD - One agent does everything
+## BAD - One agent does everything
 You are a full-stack developer, writer, researcher, and DevOps engineer.
 ```
 
@@ -341,7 +341,7 @@ Split into specialist agents. The kernel handles routing.
 ### Stateless Sessions
 
 ```markdown
-# BAD - No memory between sessions
+## BAD - No memory between sessions
 Starting fresh every time Claude Code opens.
 ```
 
@@ -350,16 +350,16 @@ Always read `data/` at session start and write back at session end.
 ### Hardcoded Credentials
 
 ```markdown
-# BAD - API keys in agent files or CLAUDE.md
+## BAD - API keys in agent files or CLAUDE.md
 Your OpenAI API key is sk-xxxxxxxx
 ```
 
-Use environment variables or a `.env` file loaded by scripts. Agents reference `process.env.API_KEY`.
+Use environment variables or a `.env`file loaded by scripts. Agents reference`process.env.API_KEY`.
 
 ### External Database for Simple State
 
 ```markdown
-# BAD - PostgreSQL for a solo user's agentic OS
+## BAD - PostgreSQL for a solo user's agentic OS
 ```
 
 Use JSON/markdown files until you have multiple concurrent users or GBs of data.
@@ -367,7 +367,7 @@ Use JSON/markdown files until you have multiple concurrent users or GBs of data.
 ### Over-Engineered Routing
 
 ```markdown
-# BAD - Routing logic in code instead of markdown tables
+## BAD - Routing logic in code instead of markdown tables
 if (intent.includes('deploy')) { agent = opsAgent; }
 ```
 
@@ -378,7 +378,7 @@ Keep routing declarative in `CLAUDE.md` markdown tables. It is inspectable, edit
 - [ ] `CLAUDE.md` is under 200 lines and fits in context window
 - [ ] Each agent file is under 100 lines and focused on one domain
 - [ ] `data/` is git-ignored for sensitive logs, git-tracked for decisions and specs
-- [ ] Commands use imperative names: `/daily-sync`, not `/run-daily-sync`
+- [ ] Commands use imperative names: `/daily-sync`, not`/run-daily-sync`
 - [ ] Logs are append-only; never edit past daily logs
 - [ ] Every agent has a `Memory Scope` section defining what files it reads
 - [ ] Reflections are written at the end of every session

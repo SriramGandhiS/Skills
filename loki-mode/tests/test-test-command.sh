@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
 # Test: Loki Test Command (v6.24.0)
 # Tests the 'loki test' AI-powered test generation command.
-#
-# Note: Not using -e to allow collecting all test results
+# # Note: Not using -e to allow collecting all test results
 
 set -uo pipefail
 

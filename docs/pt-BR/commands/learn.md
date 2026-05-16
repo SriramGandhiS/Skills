@@ -36,7 +36,7 @@ Procure por:
 Crie um arquivo de skill em `~/.claude/skills/learned/[pattern-name].md`:
 
 ```markdown
-# [Descriptive Pattern Name]
+## [Descriptive Pattern Name]
 
 **Extracted:** [Date]
 **Context:** [Brief description of when this applies]

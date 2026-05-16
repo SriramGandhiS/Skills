@@ -64,7 +64,7 @@ gsd-sdk query commit "docs: add backlog item ${NEXT} — ${ARGUMENTS}" --files .
 ## Step 6: Report
 
 ```
-## 📋 Backlog Item Added
+## Backlog Item Added
 
 Phase {NEXT}: {description}
 Directory: .planning/phases/{NEXT}-{slug}/

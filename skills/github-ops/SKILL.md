@@ -1,4 +1,4 @@
-﻿---
+---
 name: github-ops
 description: GitHub repository operations, automation, and management. Issue triage, PR management, CI/CD operations, release management, and security monitoring using the gh CLI. Use when the user wants to manage GitHub issues, PRs, CI status, releases, contributors, stale items, or any GitHub operational task beyond simple git commands.
 origin: ECC
@@ -42,13 +42,13 @@ Classify each issue by type and priority:
 7. For duplicates: comment with link to original, add `duplicate` label
 
 ```bash
-# Search for potential duplicates
+## Search for potential duplicates
 gh issue list --search "keyword" --state all --limit 20
 
-# Add labels
+## Add labels
 gh issue edit <number> --add-label "bug,high-priority"
 
-# Comment on issue
+## Comment on issue
 gh issue comment <number> --body "Thanks for reporting. Could you share reproduction steps?"
 ```
 
@@ -69,10 +69,10 @@ gh issue comment <number> --body "Thanks for reporting. Could you share reproduc
 - Auto-close stale issues after 30 days with no response (add `closed-stale` label)
 
 ```bash
-# Find stale issues (no activity in 14+ days)
+## Find stale issues (no activity in 14+ days)
 gh issue list --label "stale" --state open
 
-# Find PRs with no recent activity
+## Find PRs with no recent activity
 gh pr list --json number,title,updatedAt --jq '.[] | select(.updatedAt < "2026-03-01")'
 ```
 
@@ -87,13 +87,13 @@ When CI fails:
 5. For flaky tests: note the pattern for future investigation
 
 ```bash
-# List recent failed runs
+## List recent failed runs
 gh run list --status failure --limit 10
 
-# View failed run logs
+## View failed run logs
 gh run view <run-id> --log-failed
 
-# Re-run a failed workflow
+## Re-run a failed workflow
 gh run rerun <run-id> --failed
 ```
 
@@ -107,26 +107,26 @@ When preparing a release:
 4. Create release: `gh release create`
 
 ```bash
-# List merged PRs since last release
+## List merged PRs since last release
 gh pr list --state merged --base main --search "merged:>2026-03-01"
 
-# Create a release
+## Create a release
 gh release create v1.2.0 --title "v1.2.0" --generate-notes
 
-# Create a pre-release
+## Create a pre-release
 gh release create v1.3.0-rc1 --prerelease --title "v1.3.0 Release Candidate 1"
 ```
 
 ## Security Monitoring
 
 ```bash
-# Check Dependabot alerts
+## Check Dependabot alerts
 gh api repos/{owner}/{repo}/dependabot/alerts --jq '.[].security_advisory.summary'
 
-# Check secret scanning alerts
+## Check secret scanning alerts
 gh api repos/{owner}/{repo}/secret-scanning/alerts --jq '.[].state'
 
-# Review and auto-merge safe dependency bumps
+## Review and auto-merge safe dependency bumps
 gh pr list --label "dependencies" --json number,title
 ```
 

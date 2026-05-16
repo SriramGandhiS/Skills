@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 # Continuous Learning v2 - Observer background loop
-#
-# Fix for #521: Added re-entrancy guard, cooldown throttle, and
+# # Fix for #521: Added re-entrancy guard, cooldown throttle, and
 # tail-based sampling to prevent memory explosion from runaway
 # parallel Claude analysis processes.
 

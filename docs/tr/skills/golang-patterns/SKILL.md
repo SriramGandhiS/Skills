@@ -572,25 +572,25 @@ func join(parts []string) string {
 ### Temel Komutlar
 
 ```bash
-# Build ve çalıştır
+## Build ve çalıştır
 go build ./...
 go run ./cmd/myapp
 
-# Test
+## Test
 go test ./...
 go test -race ./...
 go test -cover ./...
 
-# Statik analiz
+## Statik analiz
 go vet ./...
 staticcheck ./...
 golangci-lint run
 
-# Modül yönetimi
+## Modül yönetimi
 go mod tidy
 go mod verify
 
-# Formatlama
+## Formatlama
 gofmt -w .
 goimports -w .
 ```

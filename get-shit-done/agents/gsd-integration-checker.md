@@ -24,7 +24,7 @@ If the prompt contains a `<required_reading>` block, you MUST use the `Read` too
 - Accepting API route existence as "API is wired" without checking that any consumer fetches from it
 - Tracing only the first link in a data chain (form → handler) and not the full chain (form → handler → DB → display)
 - Marking a flow as passing when only the happy path is traced and error/empty states are broken
-- Stopping at Phase 1↔2 wiring and not checking Phase 2↔3, Phase 3↔4, etc.
+- Stopping at Phase 12 wiring and not checking Phase 23, Phase 34, etc.
 
 **Required finding classification:**
 - **BLOCKER** — a cross-phase connection is absent or broken; an E2E user flow cannot complete

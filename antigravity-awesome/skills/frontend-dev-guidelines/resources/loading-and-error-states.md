@@ -4,12 +4,12 @@
 
 ---
 
-## ⚠️ CRITICAL RULE: Never Use Early Returns
+## WARNING: CRITICAL RULE: Never Use Early Returns
 
 ### The Problem
 
 ```typescript
-// ❌ NEVER DO THIS - Early return with loading spinner
+// FAIL: NEVER DO THIS - Early return with loading spinner
 const Component = () => {
     const { data, isLoading } = useQuery();
 
@@ -401,18 +401,18 @@ export const EntityEditor: React.FC<{ id: number }> = ({ id }) => {
 
 ## Loading State Anti-Patterns
 
-### ❌ What NOT to Do
+### FAIL: What NOT to Do
 
 ```typescript
-// ❌ NEVER - Early return
+// FAIL: NEVER - Early return
 if (isLoading) {
     return <CircularProgress />;
 }
 
-// ❌ NEVER - Conditional rendering
+// FAIL: NEVER - Conditional rendering
 {isLoading ? <Spinner /> : <Content />}
 
-// ❌ NEVER - Layout changes
+// FAIL: NEVER - Layout changes
 if (isLoading) {
     return (
         <Box sx={{ height: 100 }}>
@@ -427,20 +427,20 @@ return (
 );
 ```
 
-### ✅ What TO Do
+### PASS: What TO Do
 
 ```typescript
-// ✅ BEST - useSuspenseQuery + SuspenseLoader
+// PASS: BEST - useSuspenseQuery + SuspenseLoader
 <SuspenseLoader>
     <ComponentWithSuspenseQuery />
 </SuspenseLoader>
 
-// ✅ ACCEPTABLE - LoadingOverlay
+// PASS: ACCEPTABLE - LoadingOverlay
 <LoadingOverlay loading={isLoading}>
     <Content />
 </LoadingOverlay>
 
-// ✅ OK - Inline skeleton with same layout
+// PASS: OK - Inline skeleton with same layout
 <Box sx={{ height: 500 }}>
     {isLoading ? <Skeleton variant='rectangular' height='100%' /> : <Content />}
 </Box>
@@ -485,16 +485,16 @@ export const MyComponent: React.FC = () => {
 ## Summary
 
 **Loading States:**
-- ✅ **PREFERRED**: SuspenseLoader + useSuspenseQuery (modern pattern)
-- ✅ **ACCEPTABLE**: LoadingOverlay (legacy pattern)
-- ✅ **OK**: Skeleton with same layout
-- ❌ **NEVER**: Early returns or conditional layout
+- PASS: **PREFERRED**: SuspenseLoader + useSuspenseQuery (modern pattern)
+- PASS: **ACCEPTABLE**: LoadingOverlay (legacy pattern)
+- PASS: **OK**: Skeleton with same layout
+- FAIL: **NEVER**: Early returns or conditional layout
 
 **Error Handling:**
-- ✅ **ALWAYS**: useMuiSnackbar for user feedback
-- ❌ **NEVER**: react-toastify
-- ✅ Use onError callbacks in queries/mutations
-- ✅ Error boundaries for component-level errors
+- PASS: **ALWAYS**: useMuiSnackbar for user feedback
+- FAIL: **NEVER**: react-toastify
+- PASS: Use onError callbacks in queries/mutations
+- PASS: Error boundaries for component-level errors
 
 **See Also:**
 - [component-patterns.md](component-patterns.md) - Suspense integration

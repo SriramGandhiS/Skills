@@ -1,41 +1,35 @@
 #!/usr/bin/env bash
 #===============================================================================
 # Completion Council - Multi-Agent Completion Verification
-#
-# A council of independent reviewers that vote on whether a project is truly
+# # A council of independent reviewers that vote on whether a project is truly
 # complete. Prevents infinite loops, agent hallucination, and premature stops.
-#
-# Architecture (based on 2025 research):
-#   1. Convergence Detection  - git diff tracking between iterations
-#   2. Circuit Breaker        - no-progress detection, stagnation guard
-#   3. Council Voting         - 3 independent reviewers, 2/3 majority = DONE
-#   4. PRD Verification       - parse PRD requirements, verify each against codebase
-#   5. Anti-Sycophancy        - devil's advocate on unanimous approval (CONSENSAGENT)
-#
-# Research basis:
-#   - frankbria/ralph-claude-code: Circuit breaker, test saturation, done signals
-#   - Anthropic ralph-wiggum: Completion promise + max-iterations
-#   - CONSENSAGENT (ACL 2025): Anti-sycophancy in multi-agent consensus
-#   - Multi-agent debate: Voting beats unanimous (+13.2%), KS adaptive stopping
-#   - NVIDIA ToolOrchestra: Efficiency metrics for agent tool use
-#
-# Environment Variables:
-#   LOKI_COUNCIL_ENABLED          - Enable completion council (default: true)
-#   LOKI_COUNCIL_SIZE             - Number of council members (default: 3)
-#   LOKI_COUNCIL_THRESHOLD        - Votes needed for completion (default: 2)
-#   LOKI_COUNCIL_CHECK_INTERVAL   - Check every N iterations (default: 5)
-#   LOKI_COUNCIL_MIN_ITERATIONS   - Minimum iterations before council runs (default: 3)
-#   LOKI_COUNCIL_CONVERGENCE_WINDOW - Iterations to track for convergence (default: 3)
-#   LOKI_COUNCIL_STAGNATION_LIMIT - Max iterations with no git changes (default: 5)
-#   LOKI_COUNCIL_DONE_SIGNAL_LIMIT - Max total done signals before force stop (default: 10)
-#
-# Usage:
-#   source autonomy/completion-council.sh
-#   council_init "$prd_path"           # Initialize council state
-#   council_track_iteration "$log_file" # Track after each iteration
-#   council_should_stop                 # Returns 0 if council says DONE
-#
-#===============================================================================
+# # Architecture (based on 2025 research):
+# 1. Convergence Detection  - git diff tracking between iterations
+# 2. Circuit Breaker        - no-progress detection, stagnation guard
+# 3. Council Voting         - 3 independent reviewers, 2/3 majority = DONE
+# 4. PRD Verification       - parse PRD requirements, verify each against codebase
+# 5. Anti-Sycophancy        - devil's advocate on unanimous approval (CONSENSAGENT)
+# # Research basis:
+# - frankbria/ralph-claude-code: Circuit breaker, test saturation, done signals
+# - Anthropic ralph-wiggum: Completion promise + max-iterations
+# - CONSENSAGENT (ACL 2025): Anti-sycophancy in multi-agent consensus
+# - Multi-agent debate: Voting beats unanimous (+13.2%), KS adaptive stopping
+# - NVIDIA ToolOrchestra: Efficiency metrics for agent tool use
+# # Environment Variables:
+# LOKI_COUNCIL_ENABLED          - Enable completion council (default: true)
+# LOKI_COUNCIL_SIZE             - Number of council members (default: 3)
+# LOKI_COUNCIL_THRESHOLD        - Votes needed for completion (default: 2)
+# LOKI_COUNCIL_CHECK_INTERVAL   - Check every N iterations (default: 5)
+# LOKI_COUNCIL_MIN_ITERATIONS   - Minimum iterations before council runs (default: 3)
+# LOKI_COUNCIL_CONVERGENCE_WINDOW - Iterations to track for convergence (default: 3)
+# LOKI_COUNCIL_STAGNATION_LIMIT - Max iterations with no git changes (default: 5)
+# LOKI_COUNCIL_DONE_SIGNAL_LIMIT - Max total done signals before force stop (default: 10)
+# # Usage:
+# source autonomy/completion-council.sh
+# council_init "$prd_path"           # Initialize council state
+# council_track_iteration "$log_file" # Track after each iteration
+# council_should_stop                 # Returns 0 if council says DONE
+# #===============================================================================
 
 # Council configuration
 COUNCIL_ENABLED=${LOKI_COUNCIL_ENABLED:-true}
@@ -58,8 +52,8 @@ COUNCIL_DONE_SIGNAL_LIMIT=${LOKI_COUNCIL_DONE_SIGNAL_LIMIT:-10}
 
 # Error budget: severity-aware completion (v5.49.0)
 # SEVERITY_THRESHOLD: minimum severity that blocks completion (critical, high, medium, low)
-#   "critical" = only critical issues block (most permissive)
-#   "low" = all issues block (strictest, default for backwards compat)
+# "critical" = only critical issues block (most permissive)
+# "low" = all issues block (strictest, default for backwards compat)
 # ERROR_BUDGET: fraction of non-blocking issues allowed (0.0 = none, 0.1 = 10% tolerance)
 COUNCIL_SEVERITY_THRESHOLD=${LOKI_COUNCIL_SEVERITY_THRESHOLD:-low}
 COUNCIL_ERROR_BUDGET=${LOKI_COUNCIL_ERROR_BUDGET:-0.0}
@@ -74,8 +68,7 @@ COUNCIL_LAST_DIFF_HASH=""
 
 #===============================================================================
 # v6.83.0 Phase 1: Managed Agents memory augmentation (opt-in).
-#
-# When LOKI_MANAGED_AGENTS=true AND LOKI_MANAGED_MEMORY=true, this function
+# # When LOKI_MANAGED_AGENTS=true AND LOKI_MANAGED_MEMORY=true, this function
 # pulls up to 3 related prior verdicts from the Claude Managed Agents store
 # and writes them to a file the council prompt-assembly step appends as
 # "RELATED PRIOR VERDICTS". 5s hard timeout so a slow/unreachable API can
@@ -494,15 +487,13 @@ with open(state_file, 'w') as f:
 
 #===============================================================================
 # Council Transcript Writer - persists per-iteration council round as JSON
-#
-# Arguments:
-#   $1 - iteration number
-#   $2 - outcome: APPROVED | REJECTED | BLOCKED_BY_GATE
-#   $3 - contrarian_triggered: true | false
-#   $4 - contrarian_flipped: true | false
-#   $5 - effective_threshold: votes needed for approval (0 = unknown/sentinel)
-#
-# Output: .loki/council/transcripts/iter-<N>-<TIMESTAMP>.json
+# # Arguments:
+# $1 - iteration number
+# $2 - outcome: APPROVED | REJECTED | BLOCKED_BY_GATE
+# $3 - contrarian_triggered: true | false
+# $4 - contrarian_flipped: true | false
+# $5 - effective_threshold: votes needed for approval (0 = unknown/sentinel)
+# # Output: .loki/council/transcripts/iter-<N>-<TIMESTAMP>.json
 #===============================================================================
 
 council_write_transcript() {
@@ -1176,15 +1167,12 @@ council_heuristic_review() {
 
 #===============================================================================
 # Council Evaluate Member - Evaluate a single member's assessment
-#
-# Checks test results, git convergence, and error logs to produce a vote.
+# # Checks test results, git convergence, and error logs to produce a vote.
 # This is the core evaluation logic used by council_aggregate_votes().
-#
-# Arguments:
-#   $1 - member role (requirements_verifier, test_auditor, devils_advocate)
-#   $2 - evaluation criteria description
-#
-# Returns: prints "COMPLETE <reason>" or "CONTINUE <reason>"
+# # Arguments:
+# $1 - member role (requirements_verifier, test_auditor, devils_advocate)
+# $2 - evaluation criteria description
+# # Returns: prints "COMPLETE <reason>" or "CONTINUE <reason>"
 #===============================================================================
 
 council_evaluate_member() {
@@ -1287,13 +1275,10 @@ council_evaluate_member() {
 
 #===============================================================================
 # Council Aggregate Votes - Collect votes from all members
-#
-# Runs council_evaluate_member() for each council member, tallies votes,
+# # Runs council_evaluate_member() for each council member, tallies votes,
 # and writes results to COUNCIL_STATE_DIR/votes/round-N.json.
-#
-# 2/3 majority needed for COMPLETE verdict.
-#
-# Returns: prints "COMPLETE" or "CONTINUE"
+# # 2/3 majority needed for COMPLETE verdict.
+# # Returns: prints "COMPLETE" or "CONTINUE"
 #===============================================================================
 
 council_aggregate_votes() {
@@ -1384,15 +1369,12 @@ with open(os.environ['_ROUND_FILE'], 'w') as f:
 
 #===============================================================================
 # Council Devils Advocate (Enhanced) - Skeptical re-evaluation on unanimous COMPLETE
-#
-# When council_aggregate_votes() returns unanimous COMPLETE, one member
+# # When council_aggregate_votes() returns unanimous COMPLETE, one member
 # re-evaluates with a skeptical perspective. If any issue is found, the
 # verdict flips to CONTINUE.
-#
-# Arguments:
-#   $1 - round number
-#
-# Returns: prints "OVERRIDE_CONTINUE" if flipped, or "CONFIRMED_COMPLETE" if upheld
+# # Arguments:
+# $1 - round number
+# # Returns: prints "OVERRIDE_CONTINUE" if flipped, or "CONFIRMED_COMPLETE" if upheld
 #===============================================================================
 
 council_devils_advocate_review() {
@@ -1490,13 +1472,11 @@ with open(os.environ['_DA_FILE'], 'w') as f:
 
 #===============================================================================
 # Council Evaluate - Unified entry point for council voting pipeline
-#
-# Orchestrates the full evaluation:
-#   1. Run council_aggregate_votes() to collect all member votes
-#   2. If unanimous COMPLETE, run council_devils_advocate_review()
-#   3. Return final verdict
-#
-# Returns 0 if COMPLETE (should stop), 1 if CONTINUE
+# # Orchestrates the full evaluation:
+# 1. Run council_aggregate_votes() to collect all member votes
+# 2. If unanimous COMPLETE, run council_devils_advocate_review()
+# 3. Return final verdict
+# # Returns 0 if COMPLETE (should stop), 1 if CONTINUE
 #===============================================================================
 
 council_evaluate() {
@@ -1560,21 +1540,18 @@ council_evaluate() {
 
 #===============================================================================
 # v7.0.0 Phase 4: Managed completion council (flag-gated).
-#
-# When LOKI_EXPERIMENTAL_MANAGED_COUNCIL=true AND the parent flags are on,
+# # When LOKI_EXPERIMENTAL_MANAGED_COUNCIL=true AND the parent flags are on,
 # this function replaces the local Bash voting with a single managed-agents
 # multiagent session. Each voter's AgentVerdict is projected onto the legacy
 # verdict file layout at $COUNCIL_STATE_DIR/verdicts/<role>.txt so that the
 # existing aggregation (severity-budget + unanimous DA override) code stays
 # completely UNCHANGED and simply consumes whatever produced those files.
-#
-# On ManagedUnavailable (SDK missing / API flake / session shape drift /
+# # On ManagedUnavailable (SDK missing / API flake / session shape drift /
 # overall budget timeout / flags racing), emits a fallback event and returns
 # non-zero so the caller falls through to the existing Bash voting path.
-#
-# Returns:
-#   0 -- managed council ran successfully, verdicts materialized for aggregation
-#   1 -- managed council disabled or unavailable, caller must fall back
+# # Returns:
+# 0 -- managed council ran successfully, verdicts materialized for aggregation
+# 1 -- managed council disabled or unavailable, caller must fall back
 #===============================================================================
 council_managed_should_stop() {
     # Flag gate: all three required. Silent no-op otherwise.
@@ -1688,9 +1665,9 @@ except Exception as e:
 
 # Project AgentVerdicts -> legacy verdict files consumed by
 # council_aggregate_votes. The existing aggregator reads lines of the form:
-#   VOTE: APPROVE|REJECT|CANNOT_VALIDATE
-#   REASON: <free text>
-#   ISSUES: <SEV>: <desc>
+# VOTE: APPROVE|REJECT|CANNOT_VALIDATE
+# REASON: <free text>
+# ISSUES: <SEV>: <desc>
 # We map voting verdicts STOP -> APPROVE, CONTINUE -> REJECT, ABSTAIN ->
 # CANNOT_VALIDATE. Severity is copied through when the agent emitted one.
 def _vote_to_legacy(verdict_str: str) -> str:

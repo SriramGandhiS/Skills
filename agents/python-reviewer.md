@@ -43,10 +43,10 @@ When invoked:
 
 ### HIGH — Pythonic Patterns
 - Use list comprehensions over C-style loops
-- Use `isinstance()` not `type() ==`
+- Use `isinstance()`not`type() ==`
 - Use `Enum` not magic numbers
 - Use `"".join()` not string concatenation in loops
-- **Mutable default arguments**: `def f(x=[])` — use `def f(x=None)`
+- **Mutable default arguments**: `def f(x=[])`— use`def f(x=None)`
 
 ### HIGH — Code Quality
 - Functions > 50 lines, > 5 parameters (use dataclass)
@@ -62,10 +62,10 @@ When invoked:
 ### MEDIUM — Best Practices
 - PEP 8: import order, naming, spacing
 - Missing docstrings on public functions
-- `print()` instead of `logging`
+- `print()`instead of`logging`
 - `from module import *` — namespace pollution
-- `value == None` — use `value is None`
-- Shadowing builtins (`list`, `dict`, `str`)
+- `value == None`— use`value is None`
+- Shadowing builtins (`list`,`dict`,`str`)
 
 ## Diagnostic Commands
 
@@ -94,7 +94,7 @@ Fix: What to change
 
 ## Framework Checks
 
-- **Django**: `select_related`/`prefetch_related` for N+1, `atomic()` for multi-step, migrations
+- **Django**: `select_related`/`prefetch_related`for N+1,`atomic()` for multi-step, migrations
 - **FastAPI**: CORS config, Pydantic validation, response models, no blocking in async
 - **Flask**: Proper error handlers, CSRF protection
 

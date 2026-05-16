@@ -156,7 +156,7 @@ class MCPLearningCollector:
 
         Args:
             emit_func: The emit function to call
-            **kwargs: Arguments to pass to the emit function
+**kwargs: Arguments to pass to the emit function
         """
         if not self.enabled:
             return

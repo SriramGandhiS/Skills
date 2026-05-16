@@ -208,19 +208,19 @@ Initial: {skills, installation, repository}
 ### Translation Rules
 
 **Translate:**
-- ✅ Explanatory text, headers, lists, prose
-- ✅ User-facing comments in code examples
-- ✅ Image alt text
+- PASS: Explanatory text, headers, lists, prose
+- PASS: User-facing comments in code examples
+- PASS: Image alt text
 
 **Don't translate:**
-- ❌ Code blocks and inline code
-- ❌ Commands and file paths
-- ❌ URLs and links
-- ❌ Proper nouns (Claude, GitHub, npm)
+- FAIL: Code blocks and inline code
+- FAIL: Commands and file paths
+- FAIL: URLs and links
+- FAIL: Proper nouns (Claude, GitHub, npm)
 
 **Context-dependent:**
-- 🔧 UI elements (keep quotes if original has them)
-- 🔧 Technical comments in code
+- UI elements (keep quotes if original has them)
+- Technical comments in code
 
 ### Batch Processing
 
@@ -234,29 +234,29 @@ Initial: {skills, installation, repository}
 ### Standard Validation Checklist (Per File)
 
 **1. Link Verification**
-- ✅ All internal links point to existing files
-- ✅ External links are valid (HTTP 200)
-- ✅ Anchor links (`#heading`) work correctly
-- ⚠️ Flag links to non-translated files
+- PASS: All internal links point to existing files
+- PASS: External links are valid (HTTP 200)
+- PASS: Anchor links (`#heading`) work correctly
+- WARNING: Flag links to non-translated files
 
 **2. Markdown Structure**
-- ✅ Valid markdown syntax
-- ✅ Proper heading hierarchy (H1 → H2 → H3)
-- ✅ Code blocks properly fenced
-- ✅ Tables formatted correctly
-- ✅ No broken list formatting
+- PASS: Valid markdown syntax
+- PASS: Proper heading hierarchy (H1 → H2 → H3)
+- PASS: Code blocks properly fenced
+- PASS: Tables formatted correctly
+- PASS: No broken list formatting
 
 **3. Content Quality**
-- ✅ No placeholder text (`[TODO]`, `[TRANSLATE ME]`)
-- ✅ Consistent terminology (matches glossary)
-- ✅ Proper Chinese punctuation (full-width for Chinese text)
-- ✅ No mixed English/Chinese sentences unless necessary
+- PASS: No placeholder text (`[TODO]`, `[TRANSLATE ME]`)
+- PASS: Consistent terminology (matches glossary)
+- PASS: Proper Chinese punctuation (full-width for Chinese text)
+- PASS: No mixed English/Chinese sentences unless necessary
 
 **4. Formatting Consistency**
-- ✅ Code blocks use correct language tags
-- ✅ Spacing around Chinese/English boundaries
-- ✅ Bullet/numbered list formatting matches source
-- ✅ Quote blocks properly formatted
+- PASS: Code blocks use correct language tags
+- PASS: Spacing around Chinese/English boundaries
+- PASS: Bullet/numbered list formatting matches source
+- PASS: Quote blocks properly formatted
 
 ### Validation Tools
 
@@ -347,11 +347,11 @@ Initial: {skills, installation, repository}
 
 ## Success Criteria
 
-- ✅ All 50+ missing files translated
-- ✅ Zero broken internal links
-- ✅ Terminology consistency ≥95%
-- ✅ Markdown linting passes
-- ✅ Ready for Chinese user review
+- PASS: All 50+ missing files translated
+- PASS: Zero broken internal links
+- PASS: Terminology consistency ≥95%
+- PASS: Markdown linting passes
+- PASS: Ready for Chinese user review
 
 ## Future Considerations
 

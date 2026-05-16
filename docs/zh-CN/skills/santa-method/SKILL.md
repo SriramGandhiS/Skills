@@ -70,7 +70,7 @@ origin: "Ronald Skelton - Founder, RapportScore.ai"
 执行主要任务。无需改变正常的生成工作流程。圣诞老人方法是一个生成后验证层，而非生成策略。
 
 ```python
-# The generator runs as normal
+## The generator runs as normal
 output = generate(task_spec)
 ```
 
@@ -116,11 +116,11 @@ Be rigorous. Your job is to find problems, not to approve.
 ```
 
 ```python
-# Spawn reviewers in parallel (Claude Code subagents)
+## Spawn reviewers in parallel (Claude Code subagents)
 review_b = Agent(prompt=REVIEWER_PROMPT.format(...), description="Santa Reviewer B")
 review_c = Agent(prompt=REVIEWER_PROMPT.format(...), description="Santa Reviewer C")
 
-# Both run concurrently — neither sees the other
+## Both run concurrently — neither sees the other
 ```
 
 ### 评估标准设计
@@ -199,7 +199,7 @@ for iteration in range(MAX_ITERATIONS):
     review_b = Agent(prompt=REVIEWER_PROMPT.format(output=output, ...))
     review_c = Agent(prompt=REVIEWER_PROMPT.format(output=output, ...))
 
-# Exhausted iterations — escalate
+## Exhausted iterations — escalate
 log_santa_result(output, MAX_ITERATIONS, "escalated")
 escalate_to_human(output, issues)
 ```
@@ -213,12 +213,12 @@ escalate_to_human(output, issues)
 子智能体提供真正的上下文隔离。每个审查者是一个独立的进程，没有共享状态。
 
 ```bash
-# In a Claude Code session, use the Agent tool to spawn reviewers
-# Both agents run in parallel for speed
+## In a Claude Code session, use the Agent tool to spawn reviewers
+## Both agents run in parallel for speed
 ```
 
 ```python
-# Pseudocode for Agent tool invocation
+## Pseudocode for Agent tool invocation
 reviewer_b = Agent(
     description="Santa Review B",
     prompt=f"Review this output for quality...\n\nRUBRIC:\n{rubric}\n\nOUTPUT:\n{output}"

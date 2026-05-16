@@ -86,11 +86,11 @@ try {
 ## 環境変数
 
 ```bash
-# 必須
+## 必須
 DATABASE_URL=
 API_KEY=
 
-# オプション
+## オプション
 DEBUG=false
 ```
 
@@ -103,7 +103,7 @@ DEBUG=false
 
 ## Gitワークフロー
 
-- Conventional Commits: `feat:`, `fix:`, `refactor:`, `docs:`, `test:`
+- Conventional Commits: `feat:`,`fix:`,`refactor:`,`docs:`,`test:`
 - mainに直接コミットしない
 - PRにはレビューが必要
 - マージ前にすべてのテストが合格する必要がある

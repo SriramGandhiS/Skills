@@ -1,10 +1,7 @@
 #!/usr/bin/env bash
-#
-# Test Memory CLI Commands
+# # Test Memory CLI Commands
 # Tests: loki memory index, timeline, consolidate, retrieve, pattern, skill, and error cases
-#
-
-set -uo pipefail
+# set -uo pipefail
 # Note: Not using -e to allow collecting all test results
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"

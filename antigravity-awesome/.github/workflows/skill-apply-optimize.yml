@@ -40,7 +40,7 @@ jobs:
                 repo: context.repo.repo,
                 issue_number: prNumber,
                 body:
-                  '⚠️ `/apply-optimize` can only be queued by repository maintainers ' +
+                  'WARNING: `/apply-optimize` can only be queued by repository maintainers ' +
                   '(OWNER, MEMBER, or COLLABORATOR).',
               });
               return;
@@ -52,7 +52,7 @@ jobs:
                 repo: context.repo.repo,
                 issue_number: prNumber,
                 body:
-                  '⚠️ `/apply-optimize` only auto-applies for pull requests whose head branch ' +
+                  'WARNING: `/apply-optimize` only auto-applies for pull requests whose head branch ' +
                   'lives in this repository. Fork PRs must apply the suggested changes manually.',
               });
               return;
@@ -80,7 +80,7 @@ jobs:
               repo: context.repo.repo,
               issue_number: prNumber,
               body:
-                '👀 Queued the trusted `/apply-optimize` workflow for this PR. ' +
+                ' Queued the trusted `/apply-optimize` workflow for this PR. ' +
                 'It will fetch the repository branch from a separate workflow and apply the ' +
                 'latest Tessl optimization suggestion if one is available.',
             });

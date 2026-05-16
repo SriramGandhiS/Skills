@@ -240,7 +240,7 @@ class EmbeddingCache:
                     )
                 )
             except Exception as e:
-                print(f"⚠️  Warning: Failed to write cache: {e}")
+                print(f"WARNING:  Warning: Failed to write cache: {e}")
 
 
 class EmbeddingPipeline:
@@ -288,7 +288,7 @@ class EmbeddingPipeline:
         generated_count = 0
 
         if show_progress:
-            print(f"🔄 Generating embeddings...")
+            print(f" Generating embeddings...")
             print(f"   Texts: {len(texts)}")
             print(f"   Provider: {self.config.provider}")
             print(f"   Model: {self.config.model}")
@@ -339,7 +339,7 @@ class EmbeddingPipeline:
         total_time = time.time() - start_time
 
         if show_progress:
-            print(f"\n✅ Embeddings generated!")
+            print(f"\nPASS: Embeddings generated!")
             print(f"   Total: {len(embeddings)}")
             print(f"   Cached: {cached_count}")
             print(f"   Generated: {generated_count}")
@@ -377,7 +377,7 @@ class EmbeddingPipeline:
         for i, embedding in enumerate(embeddings):
             if len(embedding) != expected_dim:
                 print(
-                    f"❌ Dimension mismatch at index {i}: "
+                    f"FAIL: Dimension mismatch at index {i}: "
                     f"expected {expected_dim}, got {len(embedding)}"
                 )
                 return False
@@ -414,7 +414,7 @@ def example_usage():
 
     result = pipeline.generate_batch(texts)
 
-    print(f"\n📊 Results:")
+    print(f"\n Results:")
     print(f"   Embeddings: {len(result.embeddings)}")
     print(f"   Dimension: {len(result.embeddings[0])}")
     print(f"   Cached: {result.cached_count}")
@@ -426,7 +426,7 @@ def example_usage():
 
     # Cost stats
     stats = pipeline.get_cost_stats()
-    print(f"\n💰 Cost Stats:")
+    print(f"\n Cost Stats:")
     for key, value in stats.items():
         print(f"   {key}: {value}")
 

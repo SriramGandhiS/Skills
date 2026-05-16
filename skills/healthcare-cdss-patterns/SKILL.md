@@ -1,4 +1,4 @@
-﻿---
+---
 name: healthcare-cdss-patterns
 description: Clinical Decision Support System (CDSS) development patterns. Drug interaction checking, dose validation, clinical scoring (NEWS2, qSOFA), alert severity classification, and integration into EMR workflows.
 origin: Health1 Super Speciality Hospitals â€” contributed by Dr. Keyur Patel
@@ -24,9 +24,9 @@ The CDSS engine is a **pure function library with zero side effects**. Input cli
 
 Three primary modules:
 
-1. **`checkInteractions(newDrug, currentMeds, allergies)`** â€” Checks a new drug against current medications and known allergies. Returns severity-sorted `InteractionAlert[]`. Uses `DrugInteractionPair` data model.
-2. **`validateDose(drug, dose, route, weight, age, renalFunction)`** â€” Validates a prescribed dose against weight-based, age-adjusted, and renal-adjusted rules. Returns `DoseValidationResult`.
-3. **`calculateNEWS2(vitals)`** â€” National Early Warning Score 2 from `NEWS2Input`. Returns `NEWS2Result` with total score, risk level, and escalation guidance.
+1. **`checkInteractions(newDrug, currentMeds, allergies)`** â€” Checks a new drug against current medications and known allergies. Returns severity-sorted`InteractionAlert[]`. Uses`DrugInteractionPair` data model.
+2. **`validateDose(drug, dose, route, weight, age, renalFunction)`** â€” Validates a prescribed dose against weight-based, age-adjusted, and renal-adjusted rules. Returns`DoseValidationResult`.
+3. **`calculateNEWS2(vitals)`** â€” National Early Warning Score 2 from`NEWS2Input`. Returns`NEWS2Result` with total score, risk level, and escalation guidance.
 
 ```
 EMR UI

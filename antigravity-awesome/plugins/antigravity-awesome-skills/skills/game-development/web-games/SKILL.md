@@ -48,10 +48,10 @@ What type of game?
 
 | Browser | Support |
 |---------|---------|
-| Chrome | ✅ Since v113 |
-| Edge | ✅ Since v113 |
-| Firefox | ✅ Since v131 |
-| Safari | ✅ Since 18.0 |
+| Chrome | PASS: Since v113 |
+| Edge | PASS: Since v113 |
+| Firefox | PASS: Since v131 |
+| Safari | PASS: Since 18.0 |
 | **Total** | **~73%** global |
 
 ### Decision
@@ -139,7 +139,7 @@ What type of game?
 
 ## 7. Anti-Patterns
 
-| ❌ Don't | ✅ Do |
+| FAIL: Don't | PASS: Do |
 |----------|-------|
 | Load all assets upfront | Progressive loading |
 | Ignore tab visibility | Pause when hidden |

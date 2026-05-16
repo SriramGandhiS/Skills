@@ -523,19 +523,19 @@ func FuzzCompare(f *testing.F) {
 ### 執行覆蓋率
 
 ```bash
-# 基本覆蓋率
+## 基本覆蓋率
 go test -cover ./...
 
-# 產生覆蓋率 profile
+## 產生覆蓋率 profile
 go test -coverprofile=coverage.out ./...
 
-# 在瀏覽器查看覆蓋率
+## 在瀏覽器查看覆蓋率
 go tool cover -html=coverage.out
 
-# 按函式查看覆蓋率
+## 按函式查看覆蓋率
 go tool cover -func=coverage.out
 
-# 含競態偵測的覆蓋率
+## 含競態偵測的覆蓋率
 go test -race -coverprofile=coverage.out ./...
 ```
 
@@ -634,37 +634,37 @@ func TestAPIHandler(t *testing.T) {
 ## 測試指令
 
 ```bash
-# 執行所有測試
+## 執行所有測試
 go test ./...
 
-# 執行詳細輸出的測試
+## 執行詳細輸出的測試
 go test -v ./...
 
-# 執行特定測試
+## 執行特定測試
 go test -run TestAdd ./...
 
-# 執行匹配模式的測試
+## 執行匹配模式的測試
 go test -run "TestUser/Create" ./...
 
-# 執行帶競態偵測器的測試
+## 執行帶競態偵測器的測試
 go test -race ./...
 
-# 執行帶覆蓋率的測試
+## 執行帶覆蓋率的測試
 go test -cover -coverprofile=coverage.out ./...
 
-# 只執行短測試
+## 只執行短測試
 go test -short ./...
 
-# 執行帶逾時的測試
+## 執行帶逾時的測試
 go test -timeout 30s ./...
 
-# 執行基準測試
+## 執行基準測試
 go test -bench=. -benchmem ./...
 
-# 執行模糊測試
+## 執行模糊測試
 go test -fuzz=FuzzParse -fuzztime=30s ./...
 
-# 計算測試執行次數（用於偵測不穩定測試）
+## 計算測試執行次數（用於偵測不穩定測試）
 go test -count=10 ./...
 ```
 
@@ -689,7 +689,7 @@ go test -count=10 ./...
 ## CI/CD 整合
 
 ```yaml
-# GitHub Actions 範例
+## GitHub Actions 範例
 test:
   runs-on: ubuntu-latest
   steps:

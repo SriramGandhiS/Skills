@@ -16,7 +16,7 @@ date_added: "2026-02-27"
 
 ### CRITICAL: Parentheses Required
 
-| ❌ Wrong | ✅ Correct |
+| FAIL: Wrong | PASS: Correct |
 |----------|-----------|
 | `if (Test-Path "a" -or Test-Path "b")` | `if ((Test-Path "a") -or (Test-Path "b"))` |
 | `if (Get-Item $x -and $y -eq 5)` | `if ((Get-Item $x) -and ($y -eq 5))` |
@@ -29,13 +29,13 @@ date_added: "2026-02-27"
 
 ### CRITICAL: No Unicode in Scripts
 
-| Purpose | ❌ Don't Use | ✅ Use |
+| Purpose | FAIL: Don't Use | PASS: Use |
 |---------|-------------|--------|
-| Success | ✅ ✓ | [OK] [+] |
-| Error | ❌ ✗ 🔴 | [!] [X] |
-| Warning | ⚠️ 🟡 | [*] [WARN] |
-| Info | ℹ️ 🔵 | [i] [INFO] |
-| Progress | ⏳ | [...] |
+| Success | PASS: ✓ | [OK] [+] |
+| Error | FAIL: ✗  | [!] [X] |
+| Warning | WARNING:  | [*] [WARN] |
+| Info |   | [i] [INFO] |
+| Progress |  | [...] |
 
 **Rule:** Use ASCII characters only in PowerShell scripts.
 
@@ -45,7 +45,7 @@ date_added: "2026-02-27"
 
 ### Always Check Before Access
 
-| ❌ Wrong | ✅ Correct |
+| FAIL: Wrong | PASS: Correct |
 |----------|-----------|
 | `$array.Count -gt 0` | `$array -and $array.Count -gt 0` |
 | `$text.Length` | `if ($text) { $text.Length }` |
@@ -56,7 +56,7 @@ date_added: "2026-02-27"
 
 ### Complex Expressions
 
-| ❌ Wrong | ✅ Correct |
+| FAIL: Wrong | PASS: Correct |
 |----------|-----------|
 | `"Value: $($obj.prop.sub)"` | Store in variable first |
 
@@ -116,7 +116,7 @@ Write-Output "Value: $value"
 
 ### CRITICAL: Depth Parameter
 
-| ❌ Wrong | ✅ Correct |
+| FAIL: Wrong | PASS: Correct |
 |----------|-----------|
 | `ConvertTo-Json` | `ConvertTo-Json -Depth 10` |
 

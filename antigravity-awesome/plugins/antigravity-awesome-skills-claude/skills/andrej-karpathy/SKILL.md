@@ -596,10 +596,10 @@ de inteiros (tokens) que o modelo pode processar.
 import tiktoken
 enc = tiktoken.get_encoding("cl100k_base")
 
-text = "Hello world! 🌍"
+text = "Hello world! "
 tokens = enc.encode(text)
 
-## " 🌍" → 9468, 248, 233  (Emoji Vira 3 Tokens!)
+## " " → 9468, 248, 233  (Emoji Vira 3 Tokens!)
 
 ```
 

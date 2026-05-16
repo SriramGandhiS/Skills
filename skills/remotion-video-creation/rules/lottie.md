@@ -1,4 +1,4 @@
-﻿---
+---
 name: lottie
 description: Embedding Lottie animations in Remotion.
 metadata:
@@ -24,9 +24,9 @@ pnpm exec remotion add @remotion/lottie # If project uses pnpm
 To import a Lottie animation:
 
 - Fetch the Lottie asset
-- Wrap the loading process in `delayRender()` and `continueRender()`
+- Wrap the loading process in `delayRender()`and`continueRender()`
 - Save the animation data in a state
-- Render the Lottie animation using the `Lottie` component from the `@remotion/lottie` package
+- Render the Lottie animation using the `Lottie`component from the`@remotion/lottie` package
 
 ```tsx
 import {Lottie, LottieAnimationData} from '@remotion/lottie';

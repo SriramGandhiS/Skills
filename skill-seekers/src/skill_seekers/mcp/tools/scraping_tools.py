@@ -58,7 +58,7 @@ def _run_converter(converter, progress_msg: str) -> list:
         return [
             TextContent(
                 type="text",
-                text=f"{progress_msg}{captured}\n\n❌ Converter raised an exception:\n{exc}",
+                text=f"{progress_msg}{captured}\n\nFAIL: Converter raised an exception:\n{exc}",
             )
         ]
     finally:
@@ -73,7 +73,7 @@ def _run_converter(converter, progress_msg: str) -> list:
         return [
             TextContent(
                 type="text",
-                text=f"{output}\n\n❌ Converter returned non-zero exit code ({result})",
+                text=f"{output}\n\nFAIL: Converter returned non-zero exit code ({result})",
             )
         ]
 
@@ -114,7 +114,7 @@ def run_subprocess_with_streaming(cmd: list[str], timeout: int = None) -> tuple:
             # Check timeout
             if timeout and (time.time() - start_time) > timeout:
                 process.kill()
-                stderr_lines.append(f"\n⚠️ Process killed after {timeout}s timeout")
+                stderr_lines.append(f"\nWARNING: Process killed after {timeout}s timeout")
                 break
 
             # Check if process finished
@@ -195,8 +195,8 @@ async def estimate_pages_tool(args: dict) -> list[TextContent]:
         str(max_discovery),
     ]
 
-    progress_msg = "🔄 Estimating page count...\n"
-    progress_msg += f"⏱️ Maximum time: {timeout // 60} minutes\n\n"
+    progress_msg = " Estimating page count...\n"
+    progress_msg += f" Maximum time: {timeout // 60} minutes\n\n"
 
     stdout, stderr, returncode = run_subprocess_with_streaming(cmd, timeout=timeout)
 
@@ -205,7 +205,7 @@ async def estimate_pages_tool(args: dict) -> list[TextContent]:
     if returncode == 0:
         return [TextContent(type="text", text=output)]
     else:
-        return [TextContent(type="text", text=f"{output}\n\n❌ Error:\n{stderr}")]
+        return [TextContent(type="text", text=f"{output}\n\nFAIL: Error:\n{stderr}")]
 
 
 async def scrape_docs_tool(args: dict) -> list[TextContent]:
@@ -263,13 +263,13 @@ async def scrape_docs_tool(args: dict) -> list[TextContent]:
 
     # Build progress message
     if is_unified:
-        progress_msg = "🔄 Starting unified multi-source scraping...\n"
-        progress_msg += "📦 Config format: Unified (multiple sources)\n"
+        progress_msg = " Starting unified multi-source scraping...\n"
+        progress_msg += " Config format: Unified (multiple sources)\n"
     else:
-        progress_msg = "🔄 Starting scraping process...\n"
-        progress_msg += "📦 Config format: Legacy (single source)\n"
+        progress_msg = " Starting scraping process...\n"
+        progress_msg += " Config format: Legacy (single source)\n"
 
-    progress_msg += "📝 Progress will be shown below:\n\n"
+    progress_msg += " Progress will be shown below:\n\n"
 
     # Run converter in-process
     try:
@@ -333,7 +333,7 @@ async def scrape_pdf_tool(args: dict) -> list[TextContent]:
     description = args.get("description")
     from_json = args.get("from_json")
 
-    progress_msg = "📄 Scraping PDF documentation...\n\n"
+    progress_msg = " Scraping PDF documentation...\n\n"
 
     # Mode 1: Config file
     if config_path:
@@ -359,7 +359,7 @@ async def scrape_pdf_tool(args: dict) -> list[TextContent]:
         return [
             TextContent(
                 type="text",
-                text=f"{progress_msg}✅ Skill built from extracted JSON: {from_json}",
+                text=f"{progress_msg}PASS: Skill built from extracted JSON: {from_json}",
             )
         ]
 
@@ -367,7 +367,7 @@ async def scrape_pdf_tool(args: dict) -> list[TextContent]:
         return [
             TextContent(
                 type="text",
-                text="❌ Error: Must specify --config, --pdf + --name, or --from-json",
+                text="FAIL: Error: Must specify --config, --pdf + --name, or --from-json",
             )
         ]
 
@@ -439,7 +439,7 @@ async def scrape_video_tool(args: dict) -> list[TextContent]:
     elif url:
         video_config["url"] = url
         if not name:
-            return [TextContent(type="text", text="❌ Error: --name is required with --url")]
+            return [TextContent(type="text", text="FAIL: Error: --name is required with --url")]
         video_config["name"] = name
     elif video_file:
         video_config["video_file"] = video_file
@@ -451,7 +451,7 @@ async def scrape_video_tool(args: dict) -> list[TextContent]:
         return [
             TextContent(
                 type="text",
-                text="❌ Error: Must specify --url, --video-file, --playlist, or --from-json",
+                text="FAIL: Error: Must specify --url, --video-file, --playlist, or --from-json",
             )
         ]
 
@@ -474,7 +474,7 @@ async def scrape_video_tool(args: dict) -> list[TextContent]:
     if end_time:
         video_config["end_time"] = end_time
 
-    progress_msg = "🎬 Scraping video content...\n\n"
+    progress_msg = " Scraping video content...\n\n"
 
     from skill_seekers.cli.skill_converter import get_converter
 
@@ -539,9 +539,9 @@ async def scrape_github_tool(args: dict) -> list[TextContent]:
         if scrape_only:
             github_config["scrape_only"] = True
     else:
-        return [TextContent(type="text", text="❌ Error: Must specify --repo or --config")]
+        return [TextContent(type="text", text="FAIL: Error: Must specify --repo or --config")]
 
-    progress_msg = "🐙 Scraping GitHub repository...\n\n"
+    progress_msg = " Scraping GitHub repository...\n\n"
 
     from skill_seekers.cli.skill_converter import get_converter
 
@@ -596,7 +596,7 @@ async def scrape_codebase_tool(args: dict) -> list[TextContent]:
     """
     directory = args.get("directory")
     if not directory:
-        return [TextContent(type="text", text="❌ Error: directory parameter is required")]
+        return [TextContent(type="text", text="FAIL: Error: directory parameter is required")]
 
     output_dir = args.get("output", "output/codebase/")
     depth = args.get("depth", "deep")
@@ -637,11 +637,11 @@ async def scrape_codebase_tool(args: dict) -> list[TextContent]:
         codebase_config["file_patterns"] = file_patterns
 
     level_names = {0: "off", 1: "SKILL.md only", 2: "standard", 3: "full"}
-    progress_msg = "🔍 Analyzing local codebase...\n"
-    progress_msg += f"📁 Directory: {directory}\n"
-    progress_msg += f"📊 Depth: {depth}\n"
+    progress_msg = " Analyzing local codebase...\n"
+    progress_msg += f" Directory: {directory}\n"
+    progress_msg += f" Depth: {depth}\n"
     if enhance_level > 0:
-        progress_msg += f"🤖 AI Enhancement: Level {enhance_level} ({level_names.get(enhance_level, 'unknown')})\n"
+        progress_msg += f" AI Enhancement: Level {enhance_level} ({level_names.get(enhance_level, 'unknown')})\n"
     progress_msg += "\n"
 
     from skill_seekers.cli.skill_converter import get_converter
@@ -682,7 +682,7 @@ async def detect_patterns_tool(args: dict) -> list[TextContent]:
     if not file_path and not directory:
         return [
             TextContent(
-                type="text", text="❌ Error: Must specify either 'file' or 'directory' parameter"
+                type="text", text="FAIL: Error: Must specify either 'file' or 'directory' parameter"
             )
         ]
 
@@ -706,13 +706,13 @@ async def detect_patterns_tool(args: dict) -> list[TextContent]:
 
     timeout = 300  # 5 minutes for pattern detection
 
-    progress_msg = "🔍 Detecting design patterns...\n"
+    progress_msg = " Detecting design patterns...\n"
     if file_path:
-        progress_msg += f"📄 File: {file_path}\n"
+        progress_msg += f" File: {file_path}\n"
     if directory:
-        progress_msg += f"📁 Directory: {directory}\n"
-    progress_msg += f"🎯 Detection depth: {depth}\n"
-    progress_msg += f"⏱️ Maximum time: {timeout // 60} minutes\n\n"
+        progress_msg += f" Directory: {directory}\n"
+    progress_msg += f" Detection depth: {depth}\n"
+    progress_msg += f" Maximum time: {timeout // 60} minutes\n\n"
 
     stdout, stderr, returncode = run_subprocess_with_streaming(cmd, timeout=timeout)
 
@@ -721,7 +721,7 @@ async def detect_patterns_tool(args: dict) -> list[TextContent]:
     if returncode == 0:
         return [TextContent(type="text", text=output_text)]
     else:
-        return [TextContent(type="text", text=f"{output_text}\n\n❌ Error:\n{stderr}")]
+        return [TextContent(type="text", text=f"{output_text}\n\nFAIL: Error:\n{stderr}")]
 
 
 async def extract_test_examples_tool(args: dict) -> list[TextContent]:
@@ -761,7 +761,7 @@ async def extract_test_examples_tool(args: dict) -> list[TextContent]:
     if not file_path and not directory:
         return [
             TextContent(
-                type="text", text="❌ Error: Must specify either 'file' or 'directory' parameter"
+                type="text", text="FAIL: Error: Must specify either 'file' or 'directory' parameter"
             )
         ]
 
@@ -791,16 +791,16 @@ async def extract_test_examples_tool(args: dict) -> list[TextContent]:
 
     timeout = 180  # 3 minutes for test example extraction
 
-    progress_msg = "🧪 Extracting usage examples from test files...\n"
+    progress_msg = " Extracting usage examples from test files...\n"
     if file_path:
-        progress_msg += f"📄 File: {file_path}\n"
+        progress_msg += f" File: {file_path}\n"
     if directory:
-        progress_msg += f"📁 Directory: {directory}\n"
+        progress_msg += f" Directory: {directory}\n"
     if language:
-        progress_msg += f"🔤 Language: {language}\n"
-    progress_msg += f"🎯 Min confidence: {min_confidence}\n"
-    progress_msg += f"📊 Max per file: {max_per_file}\n"
-    progress_msg += f"⏱️ Maximum time: {timeout // 60} minutes\n\n"
+        progress_msg += f" Language: {language}\n"
+    progress_msg += f" Min confidence: {min_confidence}\n"
+    progress_msg += f" Max per file: {max_per_file}\n"
+    progress_msg += f" Maximum time: {timeout // 60} minutes\n\n"
 
     stdout, stderr, returncode = run_subprocess_with_streaming(cmd, timeout=timeout)
 
@@ -809,7 +809,7 @@ async def extract_test_examples_tool(args: dict) -> list[TextContent]:
     if returncode == 0:
         return [TextContent(type="text", text=output_text)]
     else:
-        return [TextContent(type="text", text=f"{output_text}\n\n❌ Error:\n{stderr}")]
+        return [TextContent(type="text", text=f"{output_text}\n\nFAIL: Error:\n{stderr}")]
 
 
 async def build_how_to_guides_tool(args: dict) -> list[TextContent]:
@@ -850,7 +850,7 @@ async def build_how_to_guides_tool(args: dict) -> list[TextContent]:
         return [
             TextContent(
                 type="text",
-                text="❌ Error: input parameter is required (path to test_examples.json)",
+                text="FAIL: Error: input parameter is required (path to test_examples.json)",
             )
         ]
 
@@ -874,13 +874,13 @@ async def build_how_to_guides_tool(args: dict) -> list[TextContent]:
 
     timeout = 180  # 3 minutes for guide building
 
-    progress_msg = "📚 Building how-to guides from workflow examples...\n"
-    progress_msg += f"📄 Input: {input_file}\n"
-    progress_msg += f"📁 Output: {output}\n"
-    progress_msg += f"🔀 Grouping: {group_by}\n"
+    progress_msg = " Building how-to guides from workflow examples...\n"
+    progress_msg += f" Input: {input_file}\n"
+    progress_msg += f" Output: {output}\n"
+    progress_msg += f" Grouping: {group_by}\n"
     if no_ai:
-        progress_msg += "🚫 AI enhancement disabled\n"
-    progress_msg += f"⏱️ Maximum time: {timeout // 60} minutes\n\n"
+        progress_msg += " AI enhancement disabled\n"
+    progress_msg += f" Maximum time: {timeout // 60} minutes\n\n"
 
     stdout, stderr, returncode = run_subprocess_with_streaming(cmd, timeout=timeout)
 
@@ -889,7 +889,7 @@ async def build_how_to_guides_tool(args: dict) -> list[TextContent]:
     if returncode == 0:
         return [TextContent(type="text", text=output_text)]
     else:
-        return [TextContent(type="text", text=f"{output_text}\n\n❌ Error:\n{stderr}")]
+        return [TextContent(type="text", text=f"{output_text}\n\nFAIL: Error:\n{stderr}")]
 
 
 async def extract_config_patterns_tool(args: dict) -> list[TextContent]:
@@ -932,7 +932,7 @@ async def extract_config_patterns_tool(args: dict) -> list[TextContent]:
     """
     directory = args.get("directory")
     if not directory:
-        return [TextContent(type="text", text="❌ Error: directory parameter is required")]
+        return [TextContent(type="text", text="FAIL: Error: directory parameter is required")]
 
     output = args.get("output", "output/codebase/config_patterns")
     max_files = args.get("max_files", 100)
@@ -966,12 +966,12 @@ async def extract_config_patterns_tool(args: dict) -> list[TextContent]:
     if enhance or enhance_local or ai_mode != "none":
         timeout = 360  # 6 minutes with AI enhancement
 
-    progress_msg = "⚙️ Extracting configuration patterns...\n"
-    progress_msg += f"📁 Directory: {directory}\n"
-    progress_msg += f"📄 Max files: {max_files}\n"
+    progress_msg = " Extracting configuration patterns...\n"
+    progress_msg += f" Directory: {directory}\n"
+    progress_msg += f" Max files: {max_files}\n"
     if enhance or enhance_local or (ai_mode and ai_mode != "none"):
-        progress_msg += f"🤖 AI enhancement: {ai_mode if ai_mode != 'none' else ('api' if enhance else 'local')}\n"
-    progress_msg += f"⏱️ Maximum time: {timeout // 60} minutes\n\n"
+        progress_msg += f" AI enhancement: {ai_mode if ai_mode != 'none' else ('api' if enhance else 'local')}\n"
+    progress_msg += f" Maximum time: {timeout // 60} minutes\n\n"
 
     stdout, stderr, returncode = run_subprocess_with_streaming(cmd, timeout=timeout)
 
@@ -980,7 +980,7 @@ async def extract_config_patterns_tool(args: dict) -> list[TextContent]:
     if returncode == 0:
         return [TextContent(type="text", text=output_text)]
     else:
-        return [TextContent(type="text", text=f"{output_text}\n\n❌ Error:\n{stderr}")]
+        return [TextContent(type="text", text=f"{output_text}\n\nFAIL: Error:\n{stderr}")]
 
 
 # Valid source types for the generic scraper
@@ -1003,16 +1003,16 @@ _URL_BASED_TYPES = {"confluence", "notion", "rss"}
 
 # Friendly emoji labels per source type
 _SOURCE_EMOJIS = {
-    "jupyter": "📓",
-    "html": "🌐",
-    "openapi": "📡",
-    "asciidoc": "📄",
-    "pptx": "📊",
-    "confluence": "🏢",
-    "notion": "📝",
-    "rss": "📰",
-    "manpage": "📖",
-    "chat": "💬",
+    "jupyter": "",
+    "html": "",
+    "openapi": "",
+    "asciidoc": "",
+    "pptx": "",
+    "confluence": "",
+    "notion": "",
+    "rss": "",
+    "manpage": "",
+    "chat": "",
 }
 
 
@@ -1047,7 +1047,7 @@ async def scrape_generic_tool(args: dict) -> list[TextContent]:
             TextContent(
                 type="text",
                 text=(
-                    f"❌ Error: Unknown source_type '{source_type}'. "
+                    f"FAIL: Error: Unknown source_type '{source_type}'. "
                     f"Must be one of: {', '.join(GENERIC_SOURCE_TYPES)}"
                 ),
             )
@@ -1058,7 +1058,7 @@ async def scrape_generic_tool(args: dict) -> list[TextContent]:
         return [
             TextContent(
                 type="text",
-                text="❌ Error: Must specify either 'path' (file/directory) or 'url'",
+                text="FAIL: Error: Must specify either 'path' (file/directory) or 'url'",
             )
         ]
 
@@ -1066,7 +1066,7 @@ async def scrape_generic_tool(args: dict) -> list[TextContent]:
         return [
             TextContent(
                 type="text",
-                text="❌ Error: 'name' parameter is required",
+                text="FAIL: Error: 'name' parameter is required",
             )
         ]
 
@@ -1100,13 +1100,13 @@ async def scrape_generic_tool(args: dict) -> list[TextContent]:
     elif url:
         config[_URL_CONFIG_KEY.get(source_type, "url")] = url
 
-    emoji = _SOURCE_EMOJIS.get(source_type, "🔧")
+    emoji = _SOURCE_EMOJIS.get(source_type, "")
     progress_msg = f"{emoji} Scraping {source_type} source...\n"
     if path:
-        progress_msg += f"📁 Path: {path}\n"
+        progress_msg += f" Path: {path}\n"
     if url:
-        progress_msg += f"🔗 URL: {url}\n"
-    progress_msg += f"📛 Name: {name}\n\n"
+        progress_msg += f" URL: {url}\n"
+    progress_msg += f" Name: {name}\n\n"
 
     from skill_seekers.cli.skill_converter import get_converter
 

@@ -8,8 +8,8 @@ This command invokes the **kotlin-reviewer** agent for comprehensive Kotlin-spec
 
 ## What This Command Does
 
-1. **Identify Kotlin Changes**: Find modified `.kt` and `.kts` files via `git diff`
-2. **Run Build & Static Analysis**: Execute `./gradlew build`, `detekt`, `ktlintCheck`
+1. **Identify Kotlin Changes**: Find modified `.kt`and`.kts`files via`git diff`
+2. **Run Build & Static Analysis**: Execute `./gradlew build`,`detekt`,`ktlintCheck`
 3. **Security Scan**: Check for SQL injection, command injection, hardcoded secrets
 4. **Null Safety Review**: Analyze `!!` usage, platform type handling, unsafe casts
 5. **Coroutine Review**: Check structured concurrency, dispatcher usage, cancellation
@@ -52,16 +52,16 @@ Use `/kotlin-review` when:
 ## Automated Checks Run
 
 ```bash
-# Build check
+## Build check
 ./gradlew build
 
-# Static analysis
+## Static analysis
 ./gradlew detekt
 
-# Formatting check
+## Formatting check
 ./gradlew ktlintCheck
 
-# Tests
+## Tests
 ./gradlew test
 ```
 
@@ -71,7 +71,7 @@ Use `/kotlin-review` when:
 User: /kotlin-review
 
 Agent:
-# Kotlin Code Review Report
+## Kotlin Code Review Report
 
 ## Files Reviewed
 - src/main/kotlin/com/example/service/UserService.kt (modified)
@@ -137,4 +137,4 @@ Recommendation: FAIL: Block merge until CRITICAL issue is fixed
 ## Related
 
 - Agent: `agents/kotlin-reviewer.md`
-- Skills: `skills/kotlin-patterns/`, `skills/kotlin-testing/`
+- Skills: `skills/kotlin-patterns/`,`skills/kotlin-testing/`

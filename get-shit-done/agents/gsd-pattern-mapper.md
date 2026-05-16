@@ -4,11 +4,11 @@ description: Analyzes codebase for existing patterns and produces PATTERNS.md ma
 tools: Read, Bash, Glob, Grep, Write
 color: magenta
 # hooks:
-#   PostToolUse:
-#     - matcher: "Write|Edit"
-#       hooks:
-#         - type: command
-#           command: "npx eslint --fix $FILE 2>/dev/null || true"
+# PostToolUse:
+# - matcher: "Write|Edit"
+# hooks:
+# - type: command
+# command: "npx eslint --fix $FILE 2>/dev/null || true"
 ---
 
 <role>

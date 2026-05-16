@@ -1,6 +1,6 @@
 # Saving Training Results to Hugging Face Hub
 
-**⚠️ CRITICAL:** Training environments are ephemeral. ALL results are lost when a job completes unless pushed to the Hub.
+**WARNING: CRITICAL:** Training environments are ephemeral. ALL results are lost when a job completes unless pushed to the Hub.
 
 ## Why Hub Push is Required
 
@@ -55,11 +55,11 @@ dataset = load_dataset("trl-lib/Capybara", split="train")
 config = SFTConfig(
     output_dir="my-model",
     num_train_epochs=3,
-    
-    # ✅ CRITICAL: Hub push configuration
+
+    # PASS: CRITICAL: Hub push configuration
     push_to_hub=True,
     hub_model_id="myusername/my-trained-model",
-    
+
     # Optional: Push strategy
     push_to_hub_model_id="myusername/my-trained-model",
     push_to_hub_organization=None,
@@ -74,10 +74,10 @@ trainer = SFTTrainer(
 
 trainer.train()
 
-# ✅ Push final model
+# PASS: Push final model
 trainer.push_to_hub()
 
-print("✅ Model saved to: https://huggingface.co/myusername/my-trained-model")
+print("PASS: Model saved to: https://huggingface.co/myusername/my-trained-model")
 ```
 
 **Submit with authentication:**
@@ -87,7 +87,7 @@ hf_jobs("uv", {
     "script": "train.py",
     "flavor": "a10g-large",
     "timeout": "2h",
-    "secrets": {"HF_TOKEN": "$HF_TOKEN"}  # ✅ Required!
+    "secrets": {"HF_TOKEN": "$HF_TOKEN"}  # PASS: Required!
 })
 ```
 
@@ -111,7 +111,7 @@ SFTConfig(
     output_dir="my-model",
     push_to_hub=True,
     hub_model_id="username/my-model",
-    
+
     # Checkpoint configuration
     save_strategy="steps",
     save_steps=100,              # Save every 100 steps
@@ -282,7 +282,7 @@ hf_jobs("logs", {"job_id": "your-job-id"})
 ```
 Pushing model to username/model-name...
 Upload file pytorch_model.bin: 100%
-✅ Model pushed successfully
+PASS: Model pushed successfully
 ```
 
 ## Example: Full Production Setup
@@ -303,26 +303,26 @@ assert "HF_TOKEN" in os.environ, "HF_TOKEN not found in environment!"
 
 # Load dataset
 dataset = load_dataset("trl-lib/Capybara", split="train")
-print(f"✅ Dataset loaded: {len(dataset)} examples")
+print(f"PASS: Dataset loaded: {len(dataset)} examples")
 
 # Configure with comprehensive Hub settings
 config = SFTConfig(
     output_dir="qwen-capybara-sft",
-    
+
     # Hub configuration
     push_to_hub=True,
     hub_model_id="myusername/qwen-capybara-sft",
     hub_strategy="checkpoint",  # Push checkpoints
-    
+
     # Checkpoint configuration
     save_strategy="steps",
     save_steps=100,
     save_total_limit=3,
-    
+
     # Training settings
     num_train_epochs=3,
     per_device_train_batch_size=4,
-    
+
     # Logging
     logging_steps=10,
     logging_first_step=True,
@@ -336,13 +336,13 @@ trainer = SFTTrainer(
     peft_config=LoraConfig(r=16, lora_alpha=32),
 )
 
-print("🚀 Starting training...")
+print(" Starting training...")
 trainer.train()
 
-print("💾 Pushing final model to Hub...")
+print(" Pushing final model to Hub...")
 trainer.push_to_hub()
 
-print("✅ Training complete!")
+print("PASS: Training complete!")
 print(f"Model available at: https://huggingface.co/myusername/qwen-capybara-sft")
 ```
 

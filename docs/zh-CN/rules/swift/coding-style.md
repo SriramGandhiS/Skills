@@ -15,8 +15,8 @@ paths:
 
 ## 不变性
 
-* 优先使用 `let` 而非 `var` — 将所有内容定义为 `let`，仅在编译器要求时才改为 `var`
-* 默认使用具有值语义的 `struct`；仅在需要标识或引用语义时才使用 `class`
+* 优先使用 `let`而非`var`— 将所有内容定义为`let`，仅在编译器要求时才改为`var`
+* 默认使用具有值语义的 `struct`；仅在需要标识或引用语义时才使用`class`
 
 ## 命名
 
@@ -45,4 +45,4 @@ func load(id: String) throws(LoadError) -> Item {
 
 * `Sendable` 值类型用于跨越隔离边界的数据
 * Actors 用于共享可变状态
-* 结构化并发 (`async let`, `TaskGroup`) 而非非结构化的 `Task {}`
+* 结构化并发 (`async let`,`TaskGroup`) 而非非结构化的`Task {}`

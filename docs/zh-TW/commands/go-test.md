@@ -79,19 +79,19 @@ func setupTestDB(t *testing.T) *sql.DB {
 ## 覆蓋率指令
 
 ```bash
-# 基本覆蓋率
+## 基本覆蓋率
 go test -cover ./...
 
-# 覆蓋率 profile
+## 覆蓋率 profile
 go test -coverprofile=coverage.out ./...
 
-# 在瀏覽器檢視
+## 在瀏覽器檢視
 go tool cover -html=coverage.out
 
-# 依函式顯示覆蓋率
+## 依函式顯示覆蓋率
 go tool cover -func=coverage.out
 
-# 帶競態偵測
+## 帶競態偵測
 go test -race -cover ./...
 ```
 

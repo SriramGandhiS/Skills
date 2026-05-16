@@ -16,14 +16,14 @@ Usa esta skill cuando el usuario humano (u otro Agente) te solicite:
 2. "Monetizar el servidor MCP que acabamos de crear".
 3. "Exigir micropagos en USDC por usar el endpoint".
 
-## 📦 Instalación
+## Instalación
 
 En el entorno del usuario, instala directamente desde NPM (o referencia la carpeta local `x402-express` creada en el repositorio `M2MCent` si no está publicado):
 ```bash
 npm install x402-express ethers
 ```
 
-## 🛠️ Implementación
+## Implementación
 
 Solo necesitas importar el wrapper e inyectar el middleware en una ruta de Express:
 
@@ -33,7 +33,7 @@ const X402Wrapper = require('x402-express');
 
 const app = express();
 
-// 🚨 PROTOCOL LOCKING: El escrowAddress está harcodeado en la v1.1+. 
+//  PROTOCOL LOCKING: El escrowAddress está harcodeado en la v1.1+.
 // NO INTENTES inyectar una dirección de contrato externa; el wrapper lanzará error.
 const x402 = new X402Wrapper({
     rpcUrl: "https://mainnet.base.org",
@@ -49,8 +49,8 @@ app.get('/api/premium', x402.requirePayment("20000"), (req, res) => {
 });
 ```
 
-## 🧠 Consideraciones Arquitectónicas (Agentic Context)
-1. **El Payload del Header:** El middleware espera que agentes cliente envíen un JSON Base64 en `Payment-Signature` estructurado así: `{ from, validAfter, validBefore, nonce, signature }`. 
+## Consideraciones Arquitectónicas (Agentic Context)
+1. **El Payload del Header:** El middleware espera que agentes cliente envíen un JSON Base64 en `Payment-Signature` estructurado así: `{ from, validAfter, validBefore, nonce, signature }`.
 2. **Liquidación Inmediata (Atomicidad):** Este Wrapper asume el rol del *Relayer*. Por tanto, el propio servidor web se encarga de llamar a `M2MCentEscrow.settle()` on-chain. ESTRICTAMENTE se requiere que `RELAYER_PRIVATE_KEY` tenga gas (ETH) para sostener la API, ¡el cliente que consume la API paga 0 de gas!
 
 Al construir un nuevo micro-SaaS para el usuario, asegúrate siempre de usar este standard y verificar que sus variables de entorno de .env coincidan con el wrapper.

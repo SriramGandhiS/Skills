@@ -16,7 +16,7 @@ from .common import add_all_standard_arguments
 
 # AsciiDoc-specific argument definitions as data structure
 # NOTE: Shared args (name, description, output, enhance_level, api_key, dry_run,
-#       verbose, quiet, workflow args) are registered by add_all_standard_arguments().
+# verbose, quiet, workflow args) are registered by add_all_standard_arguments().
 ASCIIDOC_ARGUMENTS: dict[str, dict[str, Any]] = {
     "asciidoc_path": {
         "flags": ("--asciidoc-path",),

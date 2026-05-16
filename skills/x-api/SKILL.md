@@ -1,4 +1,4 @@
-﻿---
+---
 name: x-api
 description: X/Twitter API integration for posting tweets, threads, reading timelines, search, and analytics. Covers OAuth auth patterns, rate limits, and platform-native content posting. Use when the user wants to interact with X programmatically.
 origin: ECC
@@ -28,7 +28,7 @@ Programmatic interaction with X (Twitter) for posting, reading, searching, and a
 Best for: read-heavy operations, search, public data.
 
 ```bash
-# Environment setup
+## Environment setup
 export X_BEARER_TOKEN="your-bearer-token"
 ```
 
@@ -39,7 +39,7 @@ import requests
 bearer = os.environ["X_BEARER_TOKEN"]
 headers = {"Authorization": f"Bearer {bearer}"}
 
-# Search recent tweets
+## Search recent tweets
 resp = requests.get(
     "https://api.x.com/2/tweets/search/recent",
     headers=headers,
@@ -53,14 +53,14 @@ tweets = resp.json()
 Required for: posting tweets, managing account, DMs, and any write flow.
 
 ```bash
-# Environment setup â€” source before use
+## Environment setup â€” source before use
 export X_CONSUMER_KEY="your-consumer-key"
 export X_CONSUMER_SECRET="your-consumer-secret"
 export X_ACCESS_TOKEN="your-access-token"
 export X_ACCESS_TOKEN_SECRET="your-access-token-secret"
 ```
 
-Legacy aliases such as `X_API_KEY`, `X_API_SECRET`, and `X_ACCESS_SECRET` may exist in older setups. Prefer the `X_CONSUMER_*` and `X_ACCESS_TOKEN_SECRET` names when documenting or wiring new flows.
+Legacy aliases such as `X_API_KEY`,`X_API_SECRET`, and`X_ACCESS_SECRET`may exist in older setups. Prefer the`X_CONSUMER_*`and`X_ACCESS_TOKEN_SECRET` names when documenting or wiring new flows.
 
 ```python
 import os
@@ -159,16 +159,16 @@ resp = requests.get(
 ### Upload Media and Post
 
 ```python
-# Media upload uses v1.1 endpoint
+## Media upload uses v1.1 endpoint
 
-# Step 1: Upload media
+## Step 1: Upload media
 media_resp = oauth.post(
     "https://upload.twitter.com/1.1/media/upload.json",
     files={"media": open("image.png", "rb")}
 )
 media_id = media_resp.json()["media_id_string"]
 
-# Step 2: Post with media
+## Step 2: Post with media
 resp = oauth.post(
     "https://api.x.com/2/tweets",
     json={"text": "Check this out", "media": {"media_ids": [media_id]}}
@@ -179,7 +179,7 @@ resp = oauth.post(
 
 X API rate limits vary by endpoint, auth method, and account tier, and they change over time. Always:
 - Check the current X developer docs before hardcoding assumptions
-- Read `x-rate-limit-remaining` and `x-rate-limit-reset` headers at runtime
+- Read `x-rate-limit-remaining`and`x-rate-limit-reset` headers at runtime
 - Back off automatically instead of relying on static tables in code
 
 ```python
@@ -210,14 +210,14 @@ else:
 ## Security
 
 - **Never hardcode tokens.** Use environment variables or `.env` files.
-- **Never commit `.env` files.** Add to `.gitignore`.
+- **Never commit `.env`files.** Add to`.gitignore`.
 - **Rotate tokens** if exposed. Regenerate at developer.x.com.
 - **Use read-only tokens** when write access is not needed.
 - **Store OAuth secrets securely** â€” not in source code or logs.
 
 ## Integration with Content Engine
 
-Use `brand-voice` plus `content-engine` to generate platform-native content, then post via X API:
+Use `brand-voice`plus`content-engine` to generate platform-native content, then post via X API:
 1. Pull recent original posts when voice matching matters
 2. Build or reuse a `VOICE PROFILE`
 3. Generate content with `content-engine` in X-native format

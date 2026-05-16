@@ -55,13 +55,13 @@ For each error:
 | Error | Fix |
 |-------|-----|
 | `implicitly has 'any' type` | Add type annotation |
-| `Object is possibly 'undefined'` | Optional chaining `?.` or null check |
-| `Property does not exist` | Add to interface or use optional `?` |
+| `Object is possibly 'undefined'`| Optional chaining`?.` or null check |
+| `Property does not exist`| Add to interface or use optional`?` |
 | `Cannot find module` | Check tsconfig paths, install package, or fix import path |
 | `Type 'X' not assignable to 'Y'` | Parse/convert type or fix the type |
-| `Generic constraint` | Add `extends { ... }` |
+| `Generic constraint`| Add`extends { ... }` |
 | `Hook called conditionally` | Move hooks to top level |
-| `'await' outside async` | Add `async` keyword |
+| `'await' outside async`| Add`async` keyword |
 
 ## DO and DON'T
 
@@ -92,13 +92,13 @@ For each error:
 ## Quick Recovery
 
 ```bash
-# Nuclear option: clear all caches
+## Nuclear option: clear all caches
 rm -rf .next node_modules/.cache && npm run build
 
-# Reinstall dependencies
+## Reinstall dependencies
 rm -rf node_modules package-lock.json && npm install
 
-# Fix ESLint auto-fixable
+## Fix ESLint auto-fixable
 npx eslint . --fix
 ```
 

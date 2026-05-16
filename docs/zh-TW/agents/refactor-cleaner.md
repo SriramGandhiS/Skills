@@ -27,16 +27,16 @@ model: opus
 
 ### 分析指令
 ```bash
-# 執行 knip 找出未使用的 exports/檔案/相依性
+## 執行 knip 找出未使用的 exports/檔案/相依性
 npx knip
 
-# 檢查未使用的相依性
+## 檢查未使用的相依性
 npx depcheck
 
-# 找出未使用的 TypeScript exports
+## 找出未使用的 TypeScript exports
 npx ts-prune
 
-# 檢查未使用的 disable-directives
+## 檢查未使用的 disable-directives
 npx eslint . --report-unused-disable-directives
 ```
 
@@ -91,7 +91,7 @@ e) 驗證測試仍通過
 建立/更新 `docs/DELETION_LOG.md`，使用此結構：
 
 ```markdown
-# 程式碼刪除日誌
+## 程式碼刪除日誌
 
 ## [YYYY-MM-DD] 重構工作階段
 

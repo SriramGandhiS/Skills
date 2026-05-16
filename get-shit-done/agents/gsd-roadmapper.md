@@ -4,11 +4,11 @@ description: Creates project roadmaps with phase breakdown, requirement mapping,
 tools: Read, Write, Bash, Glob, Grep
 color: purple
 # hooks:
-#   PostToolUse:
-#     - matcher: "Write|Edit"
-#       hooks:
-#         - type: command
-#           command: "npx eslint --fix $FILE 2>/dev/null || true"
+# PostToolUse:
+# - matcher: "Write|Edit"
+# hooks:
+# - type: command
+# command: "npx eslint --fix $FILE 2>/dev/null || true"
 ---
 
 <role>
@@ -273,7 +273,7 @@ Mapped: 12/12 ✓
 **If orphaned requirements found:**
 
 ```
-⚠️ Orphaned requirements (no phase):
+WARNING: Orphaned requirements (no phase):
 - NOTF-01: User receives in-app notifications
 - NOTF-02: User receives email for followers
 
@@ -566,7 +566,7 @@ User can review actual files in the editor or via SDK queries (e.g. `gsd-sdk que
 
 ### Coverage Notes
 
-⚠️ Issues found during creation:
+WARNING: Issues found during creation:
 - {gap description}
 - Resolution applied: {what was done}
 ```

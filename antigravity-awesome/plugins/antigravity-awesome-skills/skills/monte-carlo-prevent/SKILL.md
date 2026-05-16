@@ -30,8 +30,7 @@ Reference files live next to this skill file. **Use the Read tool** (not MCP res
 - Mentions a table name, dataset, or dbt model name in passing → run Workflow 1
 
 - Describes a planned change to a model (new column, join update, filter change, refactor) → **STOP — run Workflow 4 before writing any code**
--
-- Adds a new column, metric, or output expression to an existing
+- - Adds a new column, metric, or output expression to an existing
   model → run Workflow 4 first, then ALWAYS offer Workflow 2
   regardless of risk tier — do not skip the monitor offer
 - Asks about data quality, freshness, row counts, or anomalies → run Workflow 1
@@ -112,9 +111,9 @@ file, you MUST check:**
 2. **If YES** → proceed with the edit
 3. **If NO** → stop immediately, run Workflow 4, present the full
    report with synthesis connected to this specific change.
-   **If risk is High or Medium:** ask "Do you want me to proceed
+**If risk is High or Medium:** ask "Do you want me to proceed
    with the edit?" and wait for explicit confirmation.
-   **If risk is Low:** use judgment — proceed if straightforward
+**If risk is Low:** use judgment — proceed if straightforward
    and no concerns found, otherwise ask before editing.
 
 **Important: "Workflow 4 already ran this session" is NOT sufficient
@@ -126,11 +125,11 @@ being changed in the current prompt — not just general table health.
 
 Example:
 
-- ✅ "Given 34 downstream models depend on is_paying_workspace,
+- PASS: "Given 34 downstream models depend on is_paying_workspace,
   adding 'MC Internal' to the exclusion list will exclude these
   workspaces from all downstream health scores and exports.
   Confirm?"
-- ❌ "Workflow 4 already ran. Making the edit now."
+- FAIL: "Workflow 4 already ran. Making the edit now."
 
 The only exception: if the user explicitly acknowledges the risk
 and confirms they want to skip (e.g. "I know the risks, just make

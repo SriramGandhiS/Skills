@@ -1,6 +1,6 @@
 # Sessionsコマンド
 
-Claude Codeセッション履歴を管理 - `~/.claude/session-data/` に保存されたセッションのリスト表示、読み込み、エイリアス設定、編集を行います。旧 `~/.claude/sessions/` のファイルも後方互換のために読み取ります。
+Claude Codeセッション履歴を管理 - `~/.claude/session-data/`に保存されたセッションのリスト表示、読み込み、エイリアス設定、編集を行います。旧`~/.claude/sessions/` のファイルも後方互換のために読み取ります。
 
 ## 使用方法
 
@@ -270,7 +270,7 @@ $ARGUMENTS:
 - `load <id|alias>` - セッション内容を読み込む
 - `alias <id> <name>` - セッションのエイリアスを作成
 - `alias --remove <name>` - エイリアスを削除
-- `unalias <name>` - `--remove`と同じ
+- `unalias <name>`-`--remove`と同じ
 - `info <id|alias>` - セッション統計を表示
 - `aliases` - すべてのエイリアスをリスト表示
 - `help` - このヘルプを表示
@@ -278,28 +278,28 @@ $ARGUMENTS:
 ## 例
 
 ```bash
-# すべてのセッションをリスト表示
+## すべてのセッションをリスト表示
 /sessions list
 
-# 今日のセッションにエイリアスを作成
+## 今日のセッションにエイリアスを作成
 /sessions alias 2026-02-01 today
 
-# エイリアスでセッションを読み込む
+## エイリアスでセッションを読み込む
 /sessions load today
 
-# セッション情報を表示
+## セッション情報を表示
 /sessions info today
 
-# エイリアスを削除
+## エイリアスを削除
 /sessions alias --remove today
 
-# すべてのエイリアスをリスト表示
+## すべてのエイリアスをリスト表示
 /sessions aliases
 ```
 
 ## 備考
 
-- セッションは `~/.claude/session-data/` にMarkdownファイルとして保存され、旧 `~/.claude/sessions/` のファイルも引き続き読み取られます
+- セッションは `~/.claude/session-data/`にMarkdownファイルとして保存され、旧`~/.claude/sessions/` のファイルも引き続き読み取られます
 - エイリアスは `~/.claude/session-aliases.json` に保存されます
 - セッションIDは短縮できます（通常、最初の4〜8文字で一意になります）
 - 頻繁に参照するセッションにはエイリアスを使用してください

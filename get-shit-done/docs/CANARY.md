@@ -33,12 +33,12 @@ The CC installer's defensive purge rewrites stale config blocks left by older GS
 
 ## When to install canary
 
-✅ **Do** install canary when you want to:
+PASS: **Do** install canary when you want to:
 - Exercise in-flight planning/execution/verification features early and report findings
 - Validate a fix you've contributed to `dev` is reachable end-to-end
 - Help shake out canary-bake items (rough edges that won't ship to `next` until resolved)
 
-❌ **Do NOT** install canary on:
+FAIL: **Do NOT** install canary on:
 - Production projects you depend on for delivery
 - A machine where rolling back means recreating GSD state (use a profile or a workspace instead)
 - A demo or onboarding setup — pin to `@latest` so audiences see the stable surface

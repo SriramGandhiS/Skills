@@ -1264,7 +1264,7 @@ class DevServerManager:
                 text=True,
                 cwd=actual_dir,
                 env=build_env,
-                **({"start_new_session": True} if sys.platform != "win32"
+**({"start_new_session": True} if sys.platform != "win32"
                    else {"creationflags": subprocess.CREATE_NEW_PROCESS_GROUP}),
             )
         except Exception as e:
@@ -2676,7 +2676,7 @@ async def start_session(req: StartRequest) -> JSONResponse:
                 text=True,
                 cwd=project_dir,
                 env=build_env,
-                **({"start_new_session": True} if sys.platform != "win32"
+**({"start_new_session": True} if sys.platform != "win32"
                    else {"creationflags": subprocess.CREATE_NEW_PROCESS_GROUP}),
             )
         except FileNotFoundError:

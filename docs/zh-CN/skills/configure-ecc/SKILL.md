@@ -30,7 +30,7 @@ origin: ECC
 
 ```bash
 rm -rf /tmp/everything-claude-code
-git clone https://github.com/affaan-m/everything-claude-code.git /tmp/everything-claude-code
+git clone <https://github.com/affaan-m/everything-claude-code.git> /tmp/everything-claude-code
 ```
 
 将 `ECC_ROOT=/tmp/everything-claude-code` 设置为所有后续复制操作的源。
@@ -69,7 +69,7 @@ mkdir -p $TARGET/skills $TARGET/rules
 
 ### 2a: 选择范围（核心 vs 细分领域）
 
-默认为 **核心（推荐给新用户）** — 对于研究优先的工作流，复制 `.agents/skills/*` 加上 `skills/search-first/`。此捆绑包涵盖工程、评估、验证、安全、战略压缩、前端设计以及 Anthropic 跨职能技能（文章写作、内容引擎、市场研究、前端幻灯片）。
+默认为 **核心（推荐给新用户）** — 对于研究优先的工作流，复制 `.agents/skills/*`加上`skills/search-first/`。此捆绑包涵盖工程、评估、验证、安全、战略压缩、前端设计以及 Anthropic 跨职能技能（文章写作、内容引擎、市场研究、前端幻灯片）。
 
 使用 `AskUserQuestion`（单选）：
 
@@ -86,7 +86,7 @@ mkdir -p $TARGET/skills $TARGET/rules
 
 ### 2b: 选择技能类别
 
-下方有7个可选的类别组。后续的详细确认列表涵盖了8个类别中的45项技能，外加1个独立模板。使用 `AskUserQuestion` 与 `multiSelect: true`：
+下方有7个可选的类别组。后续的详细确认列表涵盖了8个类别中的45项技能，外加1个独立模板。使用 `AskUserQuestion`与`multiSelect: true`：
 
 ```
 问题：“您希望安装哪些技能类别？”
@@ -173,7 +173,7 @@ mkdir -p $TARGET/skills $TARGET/rules
 | `deep-research` | 使用 firecrawl 和 exa MCP 进行多源深度研究，并生成带引用的报告 |
 | `exa-search` | 通过 Exa MCP 进行网络、代码、公司和人员的神经搜索 |
 
-`claude-api` 是 Anthropic 官方技能；需要时请从 [`anthropics/skills`](https://github.com/anthropics/skills) 安装官方版本，而不是通过 ECC 重复打包。
+`claude-api`是 Anthropic 官方技能；需要时请从 [`anthropics/skills`](https://github.com/anthropics/skills) 安装官方版本，而不是通过 ECC 重复打包。
 
 **类别：社交与内容分发（2项技能）**
 
@@ -206,10 +206,10 @@ mkdir -p $TARGET/skills $TARGET/rules
 对于每个选定的技能，请从正确的源目录复制整个技能目录：
 
 ```bash
-# 核心技能位于 .agents/skills/
+## 核心技能位于 .agents/skills/
 cp -R "$ECC_ROOT/.agents/skills/<skill-name>" "$TARGET/skills/"
 
-# 细分技能位于 skills/
+## 细分技能位于 skills/
 cp -R "$ECC_ROOT/skills/<skill-name>" "$TARGET/skills/"
 ```
 
@@ -219,13 +219,13 @@ cp -R "$ECC_ROOT/skills/<skill-name>" "$TARGET/skills/"
 cp -R "${src%/}" "$TARGET/skills/$(basename "${src%/}")"
 ```
 
-注意：`continuous-learning` 和 `continuous-learning-v2` 有额外的文件（config.json、钩子、脚本）——确保复制整个目录，而不仅仅是 SKILL.md。
+注意：`continuous-learning`和`continuous-learning-v2` 有额外的文件（config.json、钩子、脚本）——确保复制整个目录，而不仅仅是 SKILL.md。
 
 ***
 
 ## 步骤 3：选择并安装规则
 
-使用 `AskUserQuestion` 和 `multiSelect: true`：
+使用 `AskUserQuestion`和`multiSelect: true`：
 
 ```
 问题："您希望安装哪些规则集？"
@@ -239,10 +239,10 @@ cp -R "${src%/}" "$TARGET/skills/$(basename "${src%/}")"
 执行安装：
 
 ```bash
-# Common rules
+## Common rules
 cp -r $ECC_ROOT/rules/common $TARGET/rules/common
 
-# Language-specific rules (preserve per-language directories)
+## Language-specific rules (preserve per-language directories)
 cp -r $ECC_ROOT/rules/typescript $TARGET/rules/typescript   # if selected
 cp -r $ECC_ROOT/rules/python $TARGET/rules/python            # if selected
 cp -r $ECC_ROOT/rules/golang $TARGET/rules/golang            # if selected
@@ -280,24 +280,24 @@ grep -rn "skills/" $TARGET/skills/
 **对于项目级别安装**，标记任何对 `~/.claude/` 路径的引用：
 
 * 如果技能引用 `~/.claude/settings.json` — 这通常没问题（设置始终是用户级别的）
-* 如果技能引用 `~/.claude/skills/` 或 `~/.claude/rules/` — 如果仅安装在项目级别，这可能损坏
+* 如果技能引用 `~/.claude/skills/`或`~/.claude/rules/` — 如果仅安装在项目级别，这可能损坏
 * 如果技能通过名称引用另一项技能 — 检查被引用的技能是否也已安装
 
 ### 4c：检查技能间的交叉引用
 
 有些技能会引用其他技能。验证这些依赖关系：
 
-* `django-tdd` 可能会引用 `django-patterns`
-* `laravel-tdd` 可能会引用 `laravel-patterns`
-* `quarkus-tdd` 可能会引用 `quarkus-patterns`
-* `springboot-tdd` 可能会引用 `springboot-patterns`
-* `continuous-learning-v2` 引用 `~/.claude/homunculus/` 目录
-* `python-testing` 可能会引用 `python-patterns`
-* `golang-testing` 可能会引用 `golang-patterns`
-* `crosspost` 引用 `content-engine` 和 `x-api`
-* `deep-research` 引用 `exa-search`（补充的 MCP 工具）
-* `fal-ai-media` 引用 `videodb`（补充的媒体技能）
-* `x-api` 引用 `content-engine` 和 `crosspost`
+* `django-tdd`可能会引用`django-patterns`
+* `laravel-tdd`可能会引用`laravel-patterns`
+* `quarkus-tdd`可能会引用`quarkus-patterns`
+* `springboot-tdd`可能会引用`springboot-patterns`
+* `continuous-learning-v2`引用`~/.claude/homunculus/` 目录
+* `python-testing`可能会引用`python-patterns`
+* `golang-testing`可能会引用`golang-patterns`
+* `crosspost`引用`content-engine`和`x-api`
+* `deep-research`引用`exa-search`（补充的 MCP 工具）
+* `fal-ai-media`引用`videodb`（补充的媒体技能）
+* `x-api`引用`content-engine`和`crosspost`
 * 特定语言的规则引用 `common/` 的对应内容
 
 ### 4d：报告问题
@@ -391,7 +391,7 @@ rm -rf /tmp/everything-claude-code
 
 ### "规则不工作"
 
-* 规则是平面文件，不在子目录中：`$TARGET/rules/coding-style.md`（正确）对比 `$TARGET/rules/common/coding-style.md`（对于平面安装不正确）
+* 规则是平面文件，不在子目录中：`$TARGET/rules/coding-style.md`（正确）对比`$TARGET/rules/common/coding-style.md`（对于平面安装不正确）
 * 安装规则后重启 Claude Code
 
 ### "项目级别安装后出现路径引用错误"

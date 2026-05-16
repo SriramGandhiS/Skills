@@ -1,15 +1,10 @@
 #!/usr/bin/env bash
-#
-# update-changelog.sh - Auto-generate changelog from conventional commits
-#
-# Usage:
-#   ./scripts/update-changelog.sh [version]
-#
-# If version is not provided, reads from VERSION file.
+# # update-changelog.sh - Auto-generate changelog from conventional commits
+# # Usage:
+# ./scripts/update-changelog.sh [version]
+# # If version is not provided, reads from VERSION file.
 # Parses commits since the last tag and updates CHANGELOG.md
-#
-
-set -eo pipefail
+# set -eo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 ROOT_DIR="$(dirname "$SCRIPT_DIR")"

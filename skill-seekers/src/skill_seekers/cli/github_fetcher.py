@@ -163,21 +163,21 @@ class GitHubThreeStreamFetcher:
         if output_dir is None:
             output_dir = Path(tempfile.mkdtemp(prefix="github_fetch_"))
 
-        print(f"📦 Cloning {self.repo_url}...")
+        print(f" Cloning {self.repo_url}...")
         local_path = self.clone_repo(output_dir)
 
-        print("🔍 Fetching GitHub metadata...")
+        print(" Fetching GitHub metadata...")
         metadata = self.fetch_github_metadata()
 
-        print("🐛 Fetching issues...")
+        print(" Fetching issues...")
         issues = self.fetch_issues(max_issues=100)
 
-        print("📂 Classifying files...")
+        print(" Classifying files...")
         code_files, doc_files = self.classify_files(local_path)
         print(f"  - Code: {len(code_files)} files")
         print(f"  - Docs: {len(doc_files)} files")
 
-        print(f"📊 Analyzing {len(issues)} issues...")
+        print(f" Analyzing {len(issues)} issues...")
         issue_insights = self.analyze_issues(issues)
 
         # Build three streams
@@ -260,7 +260,7 @@ class GitHubThreeStreamFetcher:
         except RateLimitError:
             raise
         except Exception as e:
-            print(f"⚠️  Failed to fetch metadata: {e}")
+            print(f"WARNING:  Failed to fetch metadata: {e}")
             return {
                 "stars": 0,
                 "forks": 0,
@@ -341,7 +341,7 @@ class GitHubThreeStreamFetcher:
         except RateLimitError:
             raise
         except Exception as e:
-            print(f"⚠️  Failed to fetch {state} issues: {e}")
+            print(f"WARNING:  Failed to fetch {state} issues: {e}")
             return []
 
     def classify_files(self, repo_path: Path) -> tuple[list[Path], list[Path]]:

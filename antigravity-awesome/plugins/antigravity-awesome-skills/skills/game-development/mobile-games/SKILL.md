@@ -98,7 +98,7 @@ date_added: "2026-02-27"
 
 ## 6. Anti-Patterns
 
-| ❌ Don't | ✅ Do |
+| FAIL: Don't | PASS: Do |
 |----------|-------|
 | Desktop controls on mobile | Design for touch |
 | Ignore battery drain | Monitor thermals |

@@ -34,7 +34,7 @@ Create systematic improvement plan:
 - Use CDN for faster delivery
 
 ```html
-<img 
+<img
   src="hero.webp"
   srcset="hero-400.webp 400w, hero-800.webp 800w, hero-1200.webp 1200w"
   sizes="(max-width: 400px) 400px, (max-width: 800px) 800px, 1200px"
@@ -88,13 +88,13 @@ const HeavyChart = lazy(() => import('./HeavyChart'));
 
 **Avoid Layout Thrashing**:
 ```javascript
-// ❌ Bad: Alternating reads and writes (causes reflows)
+// FAIL: Bad: Alternating reads and writes (causes reflows)
 elements.forEach(el => {
   const height = el.offsetHeight; // Read (forces layout)
   el.style.height = height * 2; // Write
 });
 
-// ✅ Good: Batch reads, then batch writes
+// PASS: Good: Batch reads, then batch writes
 const heights = elements.map(el => el.offsetHeight); // All reads
 elements.forEach((el, i) => {
   el.style.height = heights[i] * 2; // All writes
@@ -118,13 +118,13 @@ elements.forEach((el, i) => {
 
 **GPU Acceleration**:
 ```css
-/* ✅ GPU-accelerated (fast) */
+/* PASS: GPU-accelerated (fast) */
 .animated {
   transform: translateX(100px);
   opacity: 0.5;
 }
 
-/* ❌ CPU-bound (slow) */
+/* FAIL: CPU-bound (slow) */
 .animated {
   left: 100px;
   width: 300px;

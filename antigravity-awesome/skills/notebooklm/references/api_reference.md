@@ -7,10 +7,10 @@ Complete API documentation for all NotebookLM skill modules.
 **All commands must use the `run.py` wrapper to ensure proper environment:**
 
 ```bash
-# ✅ CORRECT:
+# PASS: CORRECT:
 python scripts/run.py [script_name].py [arguments]
 
-# ❌ WRONG:
+# FAIL: WRONG:
 python scripts/[script_name].py [arguments]  # Will fail without venv!
 ```
 

@@ -115,7 +115,6 @@ result = (0, 4)  # what are these?
 # Yes
 from dataclasses import dataclass
 
-
 @dataclass
 class TestResults:
     failed: int
@@ -176,11 +175,9 @@ Source: Effective Python Item 4
 # No -- hard to read
 value = first if first is not None else (second if second is not None else default)
 
-
 # Yes
 def first_valid(*values, default=None):
     return next((v for v in values if v is not None), default)
-
 
 value = first_valid(first, second, default=default)
 ```
@@ -195,7 +192,6 @@ def divide(a, b):
     if b == 0:
         return None
     return a / b
-
 
 # Yes
 def divide(a, b):
@@ -216,7 +212,6 @@ def read_lines(path):
         for line in f:
             results.append(line.strip())
     return results
-
 
 # Yes -- yields one at a time
 def read_lines(path):
@@ -241,7 +236,6 @@ class User:
     def set_name(self, name):
         self._name = name
 
-
 # Yes -- use @property only when you need computed access
 class User:
     def __init__(self, name):
@@ -256,7 +250,6 @@ Source: Python docs functools module, Effective Python Item 38
 # No
 _cache = {}
 
-
 def fib(n):
     if n in _cache:
         return _cache[n]
@@ -264,10 +257,8 @@ def fib(n):
     _cache[n] = result
     return result
 
-
 # Yes (Python 3.9+: use @cache for unbounded, @lru_cache for bounded)
 from functools import cache
-
 
 @cache
 def fib(n):
@@ -284,7 +275,6 @@ class Validator:
     def validate(self, value):
         return value > 0
 
-
 # Yes
 def validate(value):
     return value > 0
@@ -299,7 +289,6 @@ Source: Effective Python Item 36, Google Style Guide 2.12
 def append_to(element, target=[]):
     target.append(element)
     return target
-
 
 # Yes
 def append_to(element, target=None):

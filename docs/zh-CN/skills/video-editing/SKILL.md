@@ -76,7 +76,7 @@ ffmpeg -i raw.mp4 -ss 00:12:30 -to 00:15:45 -c copy segment_01.mp4
 
 ```bash
 #!/bin/bash
-# cuts.txt: start,end,label
+## cuts.txt: start,end,label
 while IFS=, read -r start end label; do
   ffmpeg -i raw.mp4 -ss "$start" -to "$end" -c copy "segments/${label}.mp4"
 done < cuts.txt
@@ -85,7 +85,7 @@ done < cuts.txt
 ### 连接片段
 
 ```bash
-# Create file list
+## Create file list
 for f in segments/*.mp4; do echo "file '$f'"; done > concat.txt
 ffmpeg -f concat -safe 0 -i concat.txt -c copy assembled.mp4
 ```
@@ -249,10 +249,10 @@ sfx = coll.generate_sound_effect(prompt="subtle whoosh transition")
 ### 使用FFmpeg重新构图
 
 ```bash
-# 16:9 to 9:16 (center crop)
+## 16:9 to 9:16 (center crop)
 ffmpeg -i input.mp4 -vf "crop=ih*9/16:ih,scale=1080:1920" vertical.mp4
 
-# 16:9 to 1:1 (center crop)
+## 16:9 to 1:1 (center crop)
 ffmpeg -i input.mp4 -vf "crop=ih:ih,scale=1080:1080" square.mp4
 ```
 
@@ -261,7 +261,7 @@ ffmpeg -i input.mp4 -vf "crop=ih:ih,scale=1080:1080" square.mp4
 ```python
 from videodb import ReframeMode
 
-# Smart reframe (AI-guided subject tracking)
+## Smart reframe (AI-guided subject tracking)
 reframed = video.reframe(start=0, end=60, target="vertical", mode=ReframeMode.smart)
 ```
 
@@ -270,14 +270,14 @@ reframed = video.reframe(start=0, end=60, target="vertical", mode=ReframeMode.sm
 ### FFmpeg场景检测
 
 ```bash
-# Detect scene changes (threshold 0.3 = moderate sensitivity)
+## Detect scene changes (threshold 0.3 = moderate sensitivity)
 ffmpeg -i input.mp4 -vf "select='gt(scene,0.3)',showinfo" -vsync vfr -f null - 2>&1 | grep showinfo
 ```
 
 ### 用于自动剪辑的静音检测
 
 ```bash
-# Find silent segments (useful for cutting dead air)
+## Find silent segments (useful for cutting dead air)
 ffmpeg -i input.mp4 -af silencedetect=noise=-30dB:d=2 -f null - 2>&1 | grep silence
 ```
 

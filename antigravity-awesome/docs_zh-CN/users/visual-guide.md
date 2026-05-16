@@ -25,43 +25,43 @@
 
 ---
 
-## 📦 仓库结构（可视化）
+## 仓库结构（可视化）
 
 ```
 antigravity-awesome-skills/
 │
-├── 📄 README.md                         ← 概述和快速入门
-├── 📄 CONTRIBUTING.md                  ← 贡献者工作流程
-├── 📄 CATALOG.md                       ← 完整生成的目录
+├──  README.md                         ← 概述和快速入门
+├──  CONTRIBUTING.md                  ← 贡献者工作流程
+├──  CATALOG.md                       ← 完整生成的目录
 │
-├── 📁 skills/                          ← 1,204+ 技能在这里
+├──  skills/                          ← 1,204+ 技能在这里
 │   │
-│   ├── 📁 brainstorming/
-│   │   └── 📄 SKILL.md                 ← 技能定义
+│   ├──  brainstorming/
+│   │   └──  SKILL.md                 ← 技能定义
 │   │
-│   ├── 📁 stripe-integration/
-│   │   ├── 📄 SKILL.md
-│   │   └── 📁 examples/                ← 可选的额外内容
+│   ├──  stripe-integration/
+│   │   ├──  SKILL.md
+│   │   └──  examples/                ← 可选的额外内容
 │   │
-│   ├── 📁 game-development/
-│   │   └── 📁 2d-games/
-│   │       └── 📄 SKILL.md             ← 也支持嵌套技能
+│   ├──  game-development/
+│   │   └──  2d-games/
+│   │       └──  SKILL.md             ← 也支持嵌套技能
 │   │
 │   └── ... (1,200+ 总计)
 │
-├── 📁 apps/
-│   └── 📁 web-app/                     ← 交互式浏览器
+├──  apps/
+│   └──  web-app/                     ← 交互式浏览器
 │
-├── 📁 tools/
-│   ├── 📁 scripts/                     ← 验证器和生成器
-│   ├── 📁 lib/                         ← 共享辅助工具
-│   └── 📁 bin/                         ← 安装程序入口点
+├──  tools/
+│   ├──  scripts/                     ← 验证器和生成器
+│   ├──  lib/                         ← 共享辅助工具
+│   └──  bin/                         ← 安装程序入口点
 │
-└── 📁 docs/
-    ├── 📁 users/                       ← 入门指南、包、工作流程
-    ├── 📁 contributors/                ← 模板、解剖、质量标准
-    ├── 📁 maintainers/                 ← 发布和维护文档
-    └── 📁 sources/                     ← 归属和许可证
+└──  docs/
+    ├──  users/                       ← 入门指南、包、工作流程
+    ├──  contributors/                ← 模板、解剖、质量标准
+    ├──  maintainers/                 ← 发布和维护文档
+    └──  sources/                     ← 归属和许可证
 ```
 
 ---
@@ -96,7 +96,7 @@ antigravity-awesome-skills/
 
 ---
 
-## 🎯 技能类别（可视化地图）
+## 技能类别（可视化地图）
 
 ```
                     ┌─────────────────────────┐
@@ -197,11 +197,11 @@ antigravity-awesome-skills/
 ┌─────────────────────────────────────────┐
 │ 文件资源管理器                            │
 ├─────────────────────────────────────────┤
-│ 📁 .agent/                              │
-│   └── 📁 skills/                        │
-│       ├── 📁 brainstorming/             │
-│       ├── 📁 stripe-integration/        │
-│       ├── 📁 react-best-practices/      │
+│  .agent/                              │
+│   └──  skills/                        │
+│       ├──  brainstorming/             │
+│       ├──  stripe-integration/        │
+│       ├──  react-best-practices/      │
 │       └── ... (1,200+ 总计)             │
 └─────────────────────────────────────────┘
 ```
@@ -351,7 +351,7 @@ README.md → 滚动到"完整技能注册表" → 找到类别 → 选择技能
 
 ---
 
-## 🎯 贡献影响（可视化）
+## 贡献影响（可视化）
 
 ```
 您的贡献
@@ -422,38 +422,38 @@ README.md → 滚动到"完整技能注册表" → 找到类别 → 选择技能
 └────────┬────────┘
          │
          ↓
-    贡献者！🎉
+    贡献者！
 ```
 
 ---
 
-## 💡 快速提示（可视化速查表）
+## 快速提示（可视化速查表）
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
 │                    快速参考                                 │
 ├─────────────────────────────────────────────────────────────┤
 │                                                             │
-│  📥 安装                                                    │
+│   安装                                                    │
 │  git clone [repo] .agent/skills                             │
 │                                                             │
-│  🎯 使用                                                    │
+│   使用                                                    │
 │  @skill-name [您的请求]                                     │
 │                                                             │
-│  🔍 查找                                                    │
+│   查找                                                    │
 │  ls skills/ | grep "keyword"                                │
 │                                                             │
-│  ✅ 验证                                                    │
+│  PASS: 验证                                                    │
 │  npm run validate                                           │
 │                                                             │
-│  📝 创建                                                    │
+│   创建                                                    │
 │  1. mkdir skills/my-skill                                   │
 │  2. 使用 frontmatter 创建 SKILL.md                          │
 │  3. 添加内容                                                │
 │  4. 测试和验证                                              │
 │  5. 提交 PR                                                 │
 │                                                             │
-│  🆘 帮助                                                    │
+│   帮助                                                    │
 │  • docs/users/getting-started.md                            │
 │  • CONTRIBUTING.md                                          │
 │  • docs/contributors/skill-anatomy.md                       │
@@ -481,7 +481,7 @@ README.md → 滚动到"完整技能注册表" → 找到类别 → 选择技能
 
 第 2 周：技能被合并
   │
-  └─→ "我的技能正在帮助其他人！🎉"
+  └─→ "我的技能正在帮助其他人！"
 
 第 1 个月：定期贡献者
   │
@@ -492,12 +492,12 @@ README.md → 滚动到"完整技能注册表" → 找到类别 → 选择技能
 
 ## 下一步
 
-1. ✅ **理解**可视化结构
-2. ✅ **安装**您的 AI 工具中的技能
-3. ✅ **尝试**不同类别的 2-3 个技能
-4. ✅ **阅读** CONTRIBUTING.md
-5. ✅ **创建**您的第一个技能
-6. ✅ **分享**给社区
+1. PASS: **理解**可视化结构
+2. PASS: **安装**您的 AI 工具中的技能
+3. PASS: **尝试**不同类别的 2-3 个技能
+4. PASS: **阅读** CONTRIBUTING.md
+5. PASS: **创建**您的第一个技能
+6. PASS: **分享**给社区
 
 ---
 
@@ -506,4 +506,4 @@ README.md → 滚动到"完整技能注册表" → 找到类别 → 选择技能
 - [skill-anatomy.md](../contributors/skill-anatomy.md) - 详细分解
 - [CONTRIBUTING.md](../../CONTRIBUTING.md) - 如何贡献
 
-**准备好贡献了吗？**您可以做到！💪
+**准备好贡献了吗？**您可以做到！

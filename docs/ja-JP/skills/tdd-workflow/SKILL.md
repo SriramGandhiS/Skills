@@ -83,7 +83,7 @@ describe('Semantic Search', () => {
 ### ステップ3：テストを実行（失敗するはず）
 ```bash
 npm test
-# テストは失敗するはず - まだ実装していない
+## テストは失敗するはず - まだ実装していない
 ```
 
 ### ステップ4：コードを実装
@@ -99,7 +99,7 @@ export async function searchMarkets(query: string) {
 ### ステップ5：テストを再実行
 ```bash
 npm test
-# テストは今度は成功するはず
+## テストは今度は成功するはず
 ```
 
 ### ステップ6：リファクタリング
@@ -112,7 +112,7 @@ npm test
 ### ステップ7：カバレッジを確認
 ```bash
 npm run test:coverage
-# 80%以上のカバレッジを達成したことを確認
+## 80%以上のカバレッジを達成したことを確認
 ```
 
 ## テストパターン
@@ -364,18 +364,18 @@ test('updates user', () => {
 ### 開発中のウォッチモード
 ```bash
 npm test -- --watch
-# ファイル変更時に自動的にテストが実行される
+## ファイル変更時に自動的にテストが実行される
 ```
 
 ### プリコミットフック
 ```bash
-# すべてのコミット前に実行
+## すべてのコミット前に実行
 npm test && npm run lint
 ```
 
 ### CI/CD統合
 ```yaml
-# GitHub Actions
+## GitHub Actions
 - name: Run Tests
   run: npm test -- --coverage
 - name: Upload Coverage

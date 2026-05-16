@@ -41,12 +41,12 @@ class SkillConverter:
             self.extract()
             result = self.build_skill()
             if result is False:
-                logger.error(f"❌ {self.SOURCE_TYPE} build_skill() reported failure")
+                logger.error(f"FAIL: {self.SOURCE_TYPE} build_skill() reported failure")
                 return 1
-            logger.info(f"✅ Skill built: {self.skill_dir}/")
+            logger.info(f"PASS: Skill built: {self.skill_dir}/")
             return 0
         except Exception as e:
-            logger.exception(f"❌ {self.SOURCE_TYPE} extraction failed: {e}")
+            logger.exception(f"FAIL: {self.SOURCE_TYPE} extraction failed: {e}")
             return 1
 
     def extract(self):

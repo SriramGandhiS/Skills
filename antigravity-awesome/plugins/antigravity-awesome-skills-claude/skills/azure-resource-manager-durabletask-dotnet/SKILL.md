@@ -10,7 +10,7 @@ date_added: '2026-02-27'
 
 Management plane SDK for provisioning and managing Azure Durable Task Scheduler resources via Azure Resource Manager.
 
-> **⚠️ Management vs Data Plane**
+> **WARNING: Management vs Data Plane**
 > - **This SDK (Azure.ResourceManager.DurableTask)**: Create schedulers, task hubs, configure retention policies
 > - **Data Plane SDK (Microsoft.DurableTask.Client.AzureManaged)**: Start orchestrations, query instances, send events
 
@@ -266,7 +266,7 @@ The SDK provides extension methods on `SubscriptionResource` and `ResourceGroupR
 subscription.GetDurableTaskSchedulers();           // List all in subscription
 subscription.GetDurableTaskSchedulersAsync();      // Async enumerable
 
-// On ResourceGroupResource  
+// On ResourceGroupResource
 resourceGroup.GetDurableTaskSchedulers();          // Get collection
 resourceGroup.GetDurableTaskSchedulerAsync(name);  // Get by name
 

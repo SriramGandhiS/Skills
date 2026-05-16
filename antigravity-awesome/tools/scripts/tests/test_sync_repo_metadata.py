@@ -38,7 +38,7 @@ class SyncRepoMetadataTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as temp_dir:
             root = Path(temp_dir)
             (root / "README.md").write_text(
-                """# 🌌 Antigravity Awesome Skills: 1,304+ Agentic Skills for Claude Code, Gemini CLI, Cursor, Copilot & More
+                """#  Antigravity Awesome Skills: 1,304+ Agentic Skills for Claude Code, Gemini CLI, Cursor, Copilot & More
 
 > **Installable GitHub library of 1,273+ agentic skills for Claude Code, Cursor, Codex CLI, Gemini CLI, Antigravity, and other AI coding assistants.**
 
@@ -71,7 +71,7 @@ If you want a faster answer than "browse all 1,273+ skills", start with a tool-s
                 encoding="utf-8",
             )
             (root / "docs" / "users" / "usage.md").write_text(
-                "✅ **Downloaded 1,254+ skill files**\n- You installed a toolbox with 1,254+ tools\nDon't try to use all 1,254+ skills at once.\nNo. Even though you have 1,254+ skills installed locally\n",
+                "PASS: **Downloaded 1,254+ skill files**\n- You installed a toolbox with 1,254+ tools\nDon't try to use all 1,254+ skills at once.\nNo. Even though you have 1,254+ skills installed locally\n",
                 encoding="utf-8",
             )
             (root / "docs" / "users" / "visual-guide.md").write_text(
@@ -79,7 +79,7 @@ If you want a faster answer than "browse all 1,273+ skills", start with a tool-s
                 encoding="utf-8",
             )
             (root / "docs" / "users" / "bundles.md").write_text(
-                '### 🚀 The "Essentials" Pack\n### 🌐 The "Web Wizard" Pack\n_Last updated: March 2026 | Total Skills: 1,254+ | Total Bundles: 99_\n',
+                '###  The "Essentials" Pack\n###  The "Web Wizard" Pack\n_Last updated: March 2026 | Total Skills: 1,254+ | Total Bundles: 99_\n',
                 encoding="utf-8",
             )
             (root / "docs" / "users" / "kiro-integration.md").write_text(

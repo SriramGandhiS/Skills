@@ -2,7 +2,7 @@
 
 **新手入门？本指南将在 5 分钟内帮助您增强 AI 代理的能力。**
 
-> **💡 安装后不知道该做什么？** 查看 [**完整使用指南**](usage.md) 获取详细说明和示例！
+> ** 安装后不知道该做什么？** 查看 [**完整使用指南**](usage.md) 获取详细说明和示例！
 
 ---
 
@@ -93,20 +93,20 @@ git clone https://github.com/sickn33/antigravity-awesome-skills.git .agent/skill
 
 ---
 
-## 🔌 支持的工具
+## 支持的工具
 
 | 工具            | 状态          | 路径                                                                  |
 | :-------------- | :-------------- | :-------------------------------------------------------------------- |
-| **Claude Code** | ✅ 完全支持 | `.claude/skills/` 或通过 `/plugin marketplace add sickn33/antigravity-awesome-skills` 安装 |
-| **Gemini CLI**  | ✅ 完全支持 | `.gemini/skills/`                                                     |
-| **Codex CLI**   | ✅ 完全支持 | `.codex/skills/`                                                      |
-| **Kiro CLI**    | ✅ 完全支持 | 全局：`~/.kiro/skills/` · 工作区：`.kiro/skills/`                |
-| **Kiro IDE**    | ✅ 完全支持 | 全局：`~/.kiro/skills/` · 工作区：`.kiro/skills/`                |
-| **Antigravity** | ✅ 原生支持       | 全局：`~/.gemini/antigravity/skills/` · 工作区：`.agent/skills/` |
-| **Cursor**      | ✅ 原生支持       | `.cursor/skills/`                                                     |
-| **OpenCode**    | ✅ 完全支持 | `.agents/skills/`                                                     |
-| **AdaL CLI**    | ✅ 完全支持 | `.adal/skills/`                                                       |
-| **Copilot**     | ⚠️ 仅文本    | 手动复制粘贴                                                     |
+| **Claude Code** | PASS: 完全支持 | `.claude/skills/` 或通过 `/plugin marketplace add sickn33/antigravity-awesome-skills` 安装 |
+| **Gemini CLI**  | PASS: 完全支持 | `.gemini/skills/`                                                     |
+| **Codex CLI**   | PASS: 完全支持 | `.codex/skills/`                                                      |
+| **Kiro CLI**    | PASS: 完全支持 | 全局：`~/.kiro/skills/` · 工作区：`.kiro/skills/`                |
+| **Kiro IDE**    | PASS: 完全支持 | 全局：`~/.kiro/skills/` · 工作区：`.kiro/skills/`                |
+| **Antigravity** | PASS: 原生支持       | 全局：`~/.gemini/antigravity/skills/` · 工作区：`.agent/skills/` |
+| **Cursor**      | PASS: 原生支持       | `.cursor/skills/`                                                     |
+| **OpenCode**    | PASS: 完全支持 | `.agents/skills/`                                                     |
+| **AdaL CLI**    | PASS: 完全支持 | `.adal/skills/`                                                       |
+| **Copilot**     | WARNING: 仅文本    | 手动复制粘贴                                                     |
 
 ---
 
@@ -114,9 +114,9 @@ git clone https://github.com/sickn33/antigravity-awesome-skills.git .agent/skill
 
 我们对技能进行分类，以便您了解正在运行的内容：
 
-- 🟣 **官方**：由 Anthropic/Google/供应商维护（高信任度）。
-- 🔵 **安全**：非破坏性的社区技能（只读/规划）。
-- 🔴 **风险**：修改系统或执行安全测试的技能（仅授权使用）。
+- **官方**：由 Anthropic/Google/供应商维护（高信任度）。
+- **安全**：非破坏性的社区技能（只读/规划）。
+- **风险**：修改系统或执行安全测试的技能（仅授权使用）。
 
 添加新技能时，高风险指导会在发布前通过仓库范围的 `security:docs` 扫描进行额外审查。
 

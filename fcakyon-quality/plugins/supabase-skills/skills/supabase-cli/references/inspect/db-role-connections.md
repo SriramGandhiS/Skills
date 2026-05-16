@@ -9,7 +9,6 @@ The maximum number of active connections depends [on your instance size](https:/
 
 ```
 
-
             ROLE NAME         │ ACTIVE CONNCTION
   ────────────────────────────┼───────────────────
     authenticator             │                5

@@ -39,7 +39,7 @@ origin: ECC
 | 验证输出是否正确 | `santa-method` |
 | 将功能拆解为实施步骤 | `planner` |
 | 设计系统架构 | `architect` |
-| 审查代码中的错误或安全漏洞 | `code-reviewer` 或 `santa-method` |
+| 审查代码中的错误或安全漏洞 | `code-reviewer`或`santa-method` |
 | 直接的事实性问题 | 直接回答 |
 | 明确的执行任务 | 直接执行 |
 

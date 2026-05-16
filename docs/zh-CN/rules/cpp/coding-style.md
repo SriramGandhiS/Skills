@@ -25,15 +25,15 @@ paths:
 * **处处使用 RAII** — 避免手动 `new`/`delete`
 * 使用 `std::unique_ptr` 表示独占所有权
 * 仅在确实需要共享所有权时使用 `std::shared_ptr`
-* 使用 `std::make_unique` / `std::make_shared` 替代原始 `new`
+* 使用 `std::make_unique`/`std::make_shared`替代原始`new`
 
 ## 命名约定
 
 * 类型/类：`PascalCase`
-* 函数/方法：`snake_case` 或 `camelCase`（遵循项目约定）
-* 常量：`kPascalCase` 或 `UPPER_SNAKE_CASE`
+* 函数/方法：`snake_case`或`camelCase`（遵循项目约定）
+* 常量：`kPascalCase`或`UPPER_SNAKE_CASE`
 * 命名空间：`lowercase`
-* 成员变量：`snake_case_`（尾随下划线）或 `m_` 前缀
+* 成员变量：`snake_case_`（尾随下划线）或`m_` 前缀
 
 ## 格式化
 

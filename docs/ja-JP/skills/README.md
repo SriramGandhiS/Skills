@@ -62,7 +62,7 @@ skills/
 
 Claude Code はコンテキストに基づいてスキルを自動的に読み込みます。例：
 
-- Python ファイルを編集している場合 → `python-patterns` と `python-testing` が読み込まれる
+- Python ファイルを編集している場合 → `python-patterns`と`python-testing` が読み込まれる
 - Django プロジェクトの場合 → `django-*` スキルが読み込まれる
 - テスト駆動開発をしている場合 → `tdd-workflow` が読み込まれる
 
@@ -80,7 +80,7 @@ name: your-skill-name
 description: Brief description shown in skill list
 ---
 
-# Your Skill Title
+## Your Skill Title
 
 Brief overview.
 

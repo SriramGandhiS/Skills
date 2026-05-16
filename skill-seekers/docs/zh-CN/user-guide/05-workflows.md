@@ -1,6 +1,6 @@
 # Workflows Guide
 
-> **Skill Seekers v3.1.0**  
+> **Skill Seekers v3.1.0**
 > **Enhancement workflow presets for specialized analysis**
 
 ---
@@ -10,7 +10,7 @@
 Workflows are **multi-stage AI enhancement pipelines** that apply specialized analysis to your skills:
 
 ```
-Basic Skill ──▶ Workflow: Security-Focus ──▶ Security-Enhanced Skill
+Basic Skill ── Workflow: Security-Focus ── Security-Enhanced Skill
                     Stage 1: Overview
                     Stage 2: Vulnerability Analysis
                     Stage 3: Best Practices
@@ -79,13 +79,13 @@ description: Security analysis workflow
 stages:
   - name: security-overview
     prompt: Analyze security features and mechanisms...
-    
+
   - name: vulnerability-analysis
     prompt: Identify common vulnerabilities...
-    
+
   - name: best-practices
     prompt: Document security best practices...
-    
+
   - name: compliance
     prompt: Map to security standards...
 ```
@@ -135,13 +135,13 @@ stages:
 stages:
   - name: security-overview
     prompt: Identify and document security features...
-    
+
   - name: vulnerability-analysis
     prompt: Analyze potential vulnerabilities...
-    
+
   - name: security-best-practices
     prompt: Document security best practices...
-    
+
   - name: compliance-mapping
     prompt: Map to OWASP, CWE, and other standards...
 ```
@@ -168,22 +168,22 @@ skill-seekers create oauth2-server --enhance-workflow security-focus
 stages:
   - name: system-overview
     prompt: Document high-level architecture...
-    
+
   - name: component-analysis
     prompt: Analyze key components...
-    
+
   - name: data-flow
     prompt: Document data flow patterns...
-    
+
   - name: integration-points
     prompt: Identify external integrations...
-    
+
   - name: scalability
     prompt: Document scalability considerations...
-    
+
   - name: deployment
     prompt: Document deployment patterns...
-    
+
   - name: maintenance
     prompt: Document operational concerns...
 ```
@@ -211,10 +211,10 @@ skill-seekers create kubernetes/kubernetes \
 stages:
   - name: endpoint-catalog
     prompt: Catalog all API endpoints...
-    
+
   - name: request-response
     prompt: Document request/response formats...
-    
+
   - name: error-handling
     prompt: Document error codes and handling...
 ```
@@ -277,7 +277,7 @@ stages:
       - Benchmark results
       - Optimization opportunities
       - Scalability limits
-    
+
   - name: optimization-guide
     type: custom
     uses_history: true
@@ -285,7 +285,7 @@ stages:
       Based on the previous analysis, create an optimization guide.
       Target latency: {target_latency}
       Target throughput: {target_throughput}
-      
+
       Previous results: {previous_results}
 ```
 
@@ -391,15 +391,15 @@ Stages:
   1. security-overview
      - Will analyze security features
      - Target: skill_md
-     
+
   2. vulnerability-analysis
      - Will identify vulnerabilities
      - Target: skill_md
-     
+
   3. best-practices
      - Will document best practices
      - Target: skill_md
-     
+
   4. compliance
      - Will map to standards
      - Target: skill_md

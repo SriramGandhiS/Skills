@@ -27,18 +27,18 @@ Repository executes: "Here's the data you requested"
 ```
 
 **Services are responsible for:**
-- ✅ Business rules enforcement
-- ✅ Orchestrating multiple repositories
-- ✅ Transaction management
-- ✅ Complex calculations
-- ✅ External service integration
-- ✅ Business validations
+- PASS: Business rules enforcement
+- PASS: Orchestrating multiple repositories
+- PASS: Transaction management
+- PASS: Complex calculations
+- PASS: External service integration
+- PASS: Business validations
 
 **Services should NOT:**
-- ❌ Know about HTTP (Request/Response)
-- ❌ Direct Prisma access (use repositories)
-- ❌ Handle route-specific logic
-- ❌ Format HTTP responses
+- FAIL: Know about HTTP (Request/Response)
+- FAIL: Direct Prisma access (use repositories)
+- FAIL: Handle route-specific logic
+- FAIL: Format HTTP responses
 
 ---
 
@@ -359,16 +359,16 @@ Repository: "Here's the Prisma query that does that"
 ```
 
 **Repositories are responsible for:**
-- ✅ All Prisma operations
-- ✅ Query construction
-- ✅ Query optimization (select, include)
-- ✅ Database error handling
-- ✅ Caching database results
+- PASS: All Prisma operations
+- PASS: Query construction
+- PASS: Query optimization (select, include)
+- PASS: Database error handling
+- PASS: Caching database results
 
 **Repositories should NOT:**
-- ❌ Contain business logic
-- ❌ Know about HTTP
-- ❌ Make decisions (that's service layer)
+- FAIL: Contain business logic
+- FAIL: Know about HTTP
+- FAIL: Make decisions (that's service layer)
 
 ### Repository Template
 
@@ -556,7 +556,7 @@ export class UserService {
 Each service should have ONE clear purpose:
 
 ```typescript
-// ✅ GOOD - Single responsibility
+// PASS: GOOD - Single responsibility
 class UserService {
     async createUser() {}
     async updateUser() {}
@@ -568,7 +568,7 @@ class EmailService {
     async sendBulkEmails() {}
 }
 
-// ❌ BAD - Too many responsibilities
+// FAIL: BAD - Too many responsibilities
 class UserService {
     async createUser() {}
     async sendWelcomeEmail() {}  // Should be EmailService
@@ -582,13 +582,13 @@ class UserService {
 Method names should describe WHAT they do:
 
 ```typescript
-// ✅ GOOD - Clear intent
+// PASS: GOOD - Clear intent
 async createNotification()
 async getUserPreferences()
 async shouldBatchEmail()
 async routeNotification()
 
-// ❌ BAD - Vague or misleading
+// FAIL: BAD - Vague or misleading
 async process()
 async handle()
 async doIt()
@@ -600,12 +600,12 @@ async execute()
 Always use explicit return types:
 
 ```typescript
-// ✅ GOOD - Explicit types
+// PASS: GOOD - Explicit types
 async createUser(data: CreateUserDTO): Promise<User> {}
 async findUsers(): Promise<User[]> {}
 async deleteUser(id: string): Promise<void> {}
 
-// ❌ BAD - Implicit any
+// FAIL: BAD - Implicit any
 async createUser(data) {}  // No types!
 ```
 
@@ -614,7 +614,7 @@ async createUser(data) {}  // No types!
 Services should throw meaningful errors:
 
 ```typescript
-// ✅ GOOD - Meaningful errors
+// PASS: GOOD - Meaningful errors
 if (!user) {
     throw new NotFoundError(`User not found: ${userId}`);
 }
@@ -623,7 +623,7 @@ if (emailExists) {
     throw new ConflictError('Email already exists');
 }
 
-// ❌ BAD - Generic errors
+// FAIL: BAD - Generic errors
 if (!user) {
     throw new Error('Error');  // What error?
 }
@@ -634,7 +634,7 @@ if (!user) {
 Don't create services that do everything:
 
 ```typescript
-// ❌ BAD - God service
+// FAIL: BAD - God service
 class WorkflowService {
     async startWorkflow() {}
     async completeStep() {}
@@ -645,7 +645,7 @@ class WorkflowService {
     // ... 50 more methods
 }
 
-// ✅ GOOD - Focused services
+// PASS: GOOD - Focused services
 class WorkflowService {
     constructor(
         private notificationService: NotificationService,

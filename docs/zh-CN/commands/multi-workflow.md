@@ -35,7 +35,7 @@
 **调用语法**（并行：`run_in_background: true`，串行：`false`）：
 
 ```
-# 新会话调用
+## 新会话调用
 Bash({
   command: "~/.claude/bin/codeagent-wrapper {{LITE_MODE_FLAG}}--backend <codex|gemini> {{GEMINI_MODEL_FLAG}}- \"$PWD\" <<'EOF'
 ROLE_FILE: <角色提示文件路径>
@@ -50,7 +50,7 @@ EOF",
   description: "简要描述"
 })
 
-# 恢复会话调用
+## 恢复会话调用
 Bash({
   command: "~/.claude/bin/codeagent-wrapper {{LITE_MODE_FLAG}}--backend <codex|gemini> {{GEMINI_MODEL_FLAG}}resume <SESSION_ID> - \"$PWD\" <<'EOF'
 ROLE_FILE: <角色提示文件路径>
@@ -68,19 +68,19 @@ EOF",
 
 **模型参数说明**：
 
-* `{{GEMINI_MODEL_FLAG}}`: 当使用 `--backend gemini` 时，替换为 `--gemini-model gemini-3-pro-preview`（注意末尾空格）；对于 codex 使用空字符串
+* `{{GEMINI_MODEL_FLAG}}`: 当使用`--backend gemini`时，替换为`--gemini-model gemini-3-pro-preview`（注意末尾空格）；对于 codex 使用空字符串
 
 **角色提示词**：
 
 | 阶段 | Codex | Gemini |
 |-------|-------|--------|
-| 分析 | `~/.claude/.ccg/prompts/codex/analyzer.md` | `~/.claude/.ccg/prompts/gemini/analyzer.md` |
-| 规划 | `~/.claude/.ccg/prompts/codex/architect.md` | `~/.claude/.ccg/prompts/gemini/architect.md` |
-| 审查 | `~/.claude/.ccg/prompts/codex/reviewer.md` | `~/.claude/.ccg/prompts/gemini/reviewer.md` |
+| 分析 | `~/.claude/.ccg/prompts/codex/analyzer.md`|`~/.claude/.ccg/prompts/gemini/analyzer.md` |
+| 规划 | `~/.claude/.ccg/prompts/codex/architect.md`|`~/.claude/.ccg/prompts/gemini/architect.md` |
+| 审查 | `~/.claude/.ccg/prompts/codex/reviewer.md`|`~/.claude/.ccg/prompts/gemini/reviewer.md` |
 
-**会话复用**：每次调用返回 `SESSION_ID: xxx`，在后续阶段使用 `resume xxx` 子命令（注意：`resume`，而非 `--resume`）。
+**会话复用**：每次调用返回 `SESSION_ID: xxx`，在后续阶段使用`resume xxx`子命令（注意：`resume`，而非`--resume`）。
 
-**并行调用**：使用 `run_in_background: true` 启动，使用 `TaskOutput` 等待结果。**必须等待所有模型返回后才能进入下一阶段**。
+**并行调用**：使用 `run_in_background: true`启动，使用`TaskOutput` 等待结果。**必须等待所有模型返回后才能进入下一阶段**。
 
 **等待后台任务**（使用最大超时 600000ms = 10 分钟）：
 
@@ -98,7 +98,7 @@ TaskOutput({ task_id: "<task_id>", block: true, timeout: 600000 })
 
 ## 沟通指南
 
-1. 回复以模式标签 `[Mode: X]` 开头，初始为 `[Mode: Research]`。
+1. 回复以模式标签 `[Mode: X]`开头，初始为`[Mode: Research]`。
 2. 遵循严格顺序：`Research → Ideation → Plan → Execute → Optimize → Review`。
 3. 每个阶段完成后请求用户确认。
 4. 当评分 < 7 或用户不批准时强制停止。
@@ -122,8 +122,8 @@ node scripts/orchestrate-worktrees.js .claude/plan/workflow-e2e-test.json --exec
 
 `[Mode: Research]` - 理解需求并收集上下文：
 
-1. **提示增强**（如果 ace-tool MCP 可用）：调用 `mcp__ace-tool__enhance_prompt`，**用增强后的结果替换原始的 $ARGUMENTS，用于所有后续的 Codex/Gemini 调用**。如果不可用，直接使用 `$ARGUMENTS`。
-2. **上下文检索**（如果 ace-tool MCP 可用）：调用 `mcp__ace-tool__search_context`。如果不可用，使用内置工具：`Glob` 用于文件发现，`Grep` 用于符号搜索，`Read` 用于上下文收集，`Task`（探索代理）用于更深入的探索。
+1. **提示增强**（如果 ace-tool MCP 可用）：调用 `mcp__ace-tool__enhance_prompt`，**用增强后的结果替换原始的 $ARGUMENTS，用于所有后续的 Codex/Gemini 调用**。如果不可用，直接使用`$ARGUMENTS`。
+2. **上下文检索**（如果 ace-tool MCP 可用）：调用 `mcp__ace-tool__search_context`。如果不可用，使用内置工具：`Glob`用于文件发现，`Grep`用于符号搜索，`Read`用于上下文收集，`Task`（探索代理）用于更深入的探索。
 3. **需求完整性评分**（0-10）：
    * 目标清晰度（0-3）、预期结果（0-3）、范围边界（0-2）、约束条件（0-2）
    * ≥7：继续 | <7：停止，询问澄清性问题
@@ -137,9 +137,9 @@ node scripts/orchestrate-worktrees.js .claude/plan/workflow-e2e-test.json --exec
 * Codex：使用分析器提示词，输出技术可行性、解决方案、风险
 * Gemini：使用分析器提示词，输出 UI 可行性、解决方案、UX 评估
 
-使用 `TaskOutput` 等待结果。**保存 SESSION\_ID** (`CODEX_SESSION` 和 `GEMINI_SESSION`)。
+使用 `TaskOutput`等待结果。**保存 SESSION\_ID** (`CODEX_SESSION`和`GEMINI_SESSION`)。
 
-**遵循上方 `Multi-Model Call Specification` 中的 `IMPORTANT` 说明**
+**遵循上方 `Multi-Model Call Specification`中的`IMPORTANT` 说明**
 
 综合两项分析，输出解决方案比较（至少 2 个选项），等待用户选择。
 
@@ -154,7 +154,7 @@ node scripts/orchestrate-worktrees.js .claude/plan/workflow-e2e-test.json --exec
 
 使用 `TaskOutput` 等待结果。
 
-**遵循上方 `Multi-Model Call Specification` 中的 `IMPORTANT` 说明**
+**遵循上方 `Multi-Model Call Specification`中的`IMPORTANT` 说明**
 
 **Claude 综合**：采纳 Codex 后端计划 + Gemini 前端计划，在用户批准后保存到 `.claude/plan/task-name.md`。
 
@@ -177,7 +177,7 @@ node scripts/orchestrate-worktrees.js .claude/plan/workflow-e2e-test.json --exec
 
 使用 `TaskOutput` 等待结果。整合审查反馈，在用户确认后执行优化。
 
-**遵循上方 `Multi-Model Call Specification` 中的 `IMPORTANT` 说明**
+**遵循上方 `Multi-Model Call Specification`中的`IMPORTANT` 说明**
 
 ### 阶段 6：质量审查
 

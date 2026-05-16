@@ -295,7 +295,7 @@ var order = new OrderBuilder()
 |---|---|
 | 测试实现细节 | 测试行为和结果 |
 | 共享的可变测试状态 | 每个测试使用新实例（xUnit 通过构造函数实现） |
-| 在异步测试中使用 `Thread.Sleep` | 使用带超时的 `Task.Delay` 或轮询辅助方法 |
+| 在异步测试中使用 `Thread.Sleep`| 使用带超时的`Task.Delay` 或轮询辅助方法 |
 | 对 `ToString()` 输出进行断言 | 对类型化属性进行断言 |
 | 每个测试一个巨型断言 | 每个测试一个逻辑断言 |
 | 测试名称描述实现 | 按行为命名：`Method_ExpectedResult_WhenCondition` |
@@ -304,18 +304,18 @@ var order = new OrderBuilder()
 ## 运行测试
 
 ```bash
-# Run all tests
+## Run all tests
 dotnet test
 
-# Run with coverage
+## Run with coverage
 dotnet test --collect:"XPlat Code Coverage"
 
-# Run specific project
+## Run specific project
 dotnet test tests/MyApp.UnitTests/
 
-# Filter by test name
+## Filter by test name
 dotnet test --filter "FullyQualifiedName~OrderService"
 
-# Watch mode during development
+## Watch mode during development
 dotnet watch test --project tests/MyApp.UnitTests/
 ```

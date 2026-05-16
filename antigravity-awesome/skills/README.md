@@ -2,7 +2,7 @@
 
 **Welcome to the skills folder!** This is where all 179+ specialized AI skills live.
 
-## 🤔 What Are Skills?
+## What Are Skills?
 
 Skills are specialized instruction sets that teach AI assistants how to handle specific tasks. Think of them as expert knowledge modules that your AI can load on-demand.
 
@@ -10,7 +10,7 @@ Skills are specialized instruction sets that teach AI assistants how to handle s
 
 ---
 
-## 📂 Folder Structure
+## Folder Structure
 
 Each skill lives in its own folder with this structure:
 
@@ -119,7 +119,7 @@ See the [main README](../README.md) for the complete list of all 179+ skills org
 
 ---
 
-## 💡 Popular Skills to Try
+## Popular Skills to Try
 
 **For beginners:**
 - `@brainstorming` - Design before coding
@@ -177,7 +177,7 @@ description: "What this skill does"
 
 ---
 
-## 🌟 Contributing
+## Contributing
 
 Found a skill that needs improvement? Want to add a new skill?
 

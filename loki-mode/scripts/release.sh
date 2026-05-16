@@ -1,17 +1,12 @@
 #!/usr/bin/env bash
-#
-# release.sh - Automated release script for Loki Mode
-#
-# Usage:
-#   ./scripts/release.sh patch|minor|major [--dry-run]
-#
-# This script:
-#   1. Bumps version in VERSION, package.json, vscode-extension/package.json
-#   2. Updates CHANGELOG.md from conventional commits
-#   3. Commits and pushes (triggers GitHub Actions release workflow)
-#
-
-set -euo pipefail
+# # release.sh - Automated release script for Loki Mode
+# # Usage:
+# ./scripts/release.sh patch|minor|major [--dry-run]
+# # This script:
+# 1. Bumps version in VERSION, package.json, vscode-extension/package.json
+# 2. Updates CHANGELOG.md from conventional commits
+# 3. Commits and pushes (triggers GitHub Actions release workflow)
+# set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 ROOT_DIR="$(dirname "$SCRIPT_DIR")"

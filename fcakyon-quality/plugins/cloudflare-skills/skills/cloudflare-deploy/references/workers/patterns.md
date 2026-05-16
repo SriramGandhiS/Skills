@@ -74,11 +74,11 @@ async function handleCreateUser(request: Request) {
 ## Performance
 
 ```typescript
-// ❌ Sequential
+// FAIL: Sequential
 const user = await fetch('/api/user/1');
 const posts = await fetch('/api/posts?user=1');
 
-// ✅ Parallel
+// PASS: Parallel
 const [user, posts] = await Promise.all([fetch('/api/user/1'), fetch('/api/posts?user=1')]);
 ```
 
@@ -179,7 +179,7 @@ import { WorkflowEntrypoint, WorkflowStep, WorkflowEvent } from 'cloudflare:work
 
 export class MyWorkflow extends WorkflowEntrypoint {
   async run(event: WorkflowEvent<{ userId: string }>, step: WorkflowStep) {
-    const user = await step.do('fetch-user', async () => 
+    const user = await step.do('fetch-user', async () =>
       fetch(`/api/users/${event.payload.userId}`).then(r => r.json())
     );
     await step.sleep('wait', '1 hour');

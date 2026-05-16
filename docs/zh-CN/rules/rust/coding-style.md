@@ -18,7 +18,7 @@ paths:
 
 Rust 变量默认是不可变的 — 请遵循此原则：
 
-* 默认使用 `let`；仅在需要修改时才使用 `let mut`
+* 默认使用 `let`；仅在需要修改时才使用`let mut`
 * 优先返回新值，而非原地修改
 * 当函数可能分配内存也可能不分配时，使用 `Cow<'_, T>`
 
@@ -53,8 +53,8 @@ fn normalize_bad(input: &mut String) {
 
 * 默认借用（`&T`）；仅在需要存储或消耗时再获取所有权
 * 切勿在不理解根本原因的情况下，为了满足借用检查器而克隆数据
-* 在函数参数中，优先接受 `&str` 而非 `String`，优先接受 `&[T]` 而非 `Vec<T>`
-* 对于需要拥有 `String` 的构造函数，使用 `impl Into<String>`
+* 在函数参数中，优先接受 `&str`而非`String`，优先接受`&[T]`而非`Vec<T>`
+* 对于需要拥有 `String`的构造函数，使用`impl Into<String>`
 
 ```rust
 // GOOD — borrows when ownership isn't needed
@@ -75,11 +75,11 @@ fn word_count_bad(text: String) -> usize {
 
 ## 错误处理
 
-* 使用 `Result<T, E>` 和 `?` 进行传播 — 切勿在生产代码中使用 `unwrap()`
+* 使用 `Result<T, E>`和`?`进行传播 — 切勿在生产代码中使用`unwrap()`
 * **库**：使用 `thiserror` 定义类型化错误
 * **应用程序**：使用 `anyhow` 以获取灵活的错误上下文
 * 使用 `.with_context(|| format!("failed to ..."))?` 添加上下文
-* 将 `unwrap()` / `expect()` 保留用于测试和真正无法到达的状态
+* 将 `unwrap()`/`expect()` 保留用于测试和真正无法到达的状态
 
 ```rust
 // GOOD — library error with thiserror

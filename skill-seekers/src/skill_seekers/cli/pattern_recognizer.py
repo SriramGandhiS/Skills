@@ -227,7 +227,7 @@ class PatternRecognizer:
 
                 self.ai_enhancer = PatternEnhancer()
             except Exception as e:
-                logger.warning(f"⚠️  Failed to initialize AI enhancer: {e}")
+                logger.warning(f"WARNING:  Failed to initialize AI enhancer: {e}")
                 self.enhance_with_ai = False
 
     def _register_detectors(self):

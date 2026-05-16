@@ -95,7 +95,7 @@ const { object } = await generateObject({
 });
 
 // `object` is automatically fully typed according to the Zod schema!
-console.log(object.totalAmount); 
+console.log(object.totalAmount);
 ```
 
 ## Frontend UI Hooks
@@ -127,7 +127,7 @@ export default function Chat() {
           </div>
         ))}
       </div>
-      
+
       <form onSubmit={handleSubmit} className="flex gap-2">
         <input
           value={input}
@@ -179,7 +179,7 @@ export async function POST(req: Request) {
       }),
     },
     // Allows the LLM to call tools automatically in a loop until it has the answer
-    maxSteps: 5, 
+    maxSteps: 5,
   });
 
   return result.toDataStreamResponse();
@@ -195,9 +195,9 @@ When using `maxSteps`, the `useChat` hook will display intermediate tool calls i
 {m.role === 'assistant' && m.toolInvocations?.map((toolInvocation) => (
   <div key={toolInvocation.toolCallId} className="text-sm text-gray-500">
     {toolInvocation.state === 'result' ? (
-      <p>✅ Fetched weather for {toolInvocation.args.location}</p>
+      <p>PASS: Fetched weather for {toolInvocation.args.location}</p>
     ) : (
-      <p>⏳ Fetching weather for {toolInvocation.args.location}...</p>
+      <p> Fetching weather for {toolInvocation.args.location}...</p>
     )}
   </div>
 ))}
@@ -205,13 +205,13 @@ When using `maxSteps`, the `useChat` hook will display intermediate tool calls i
 
 ## Best Practices
 
-- ✅ **Do:** Use `openai('gpt-4o')` or `anthropic('claude-3-5-sonnet-20240620')` format (from specific provider packages like `@ai-sdk/openai`) instead of the older edge runtime wrappers.
-- ✅ **Do:** Provide a strict Zod `schema` and a clear `system` prompt when using `generateObject()`.
-- ✅ **Do:** Set `maxDuration = 30` (or higher if on Pro) in Next.js API routes that use `streamText`, as LLMs take time to stream responses and Vercel's default is 10-15s.
-- ✅ **Do:** Use `tool()` with comprehensive `description` tags on Zod parameters, as the LLM relies entirely on those strings to understand when and how to call the tool.
-- ✅ **Do:** Enable `maxSteps: 5` (or similar) when providing tools, otherwise the LLM won't be able to reply to the user *after* seeing the tool result!
-- ❌ **Don't:** Forget to return `result.toDataStreamResponse()` in Next.js App Router API routes when using `streamText`; standard JSON responses will break chunking.
-- ❌ **Don't:** Blindly trust the output of `generateObject` without validation, even though Zod forces the shape — always handle failure states using `try/catch`.
+- PASS: **Do:** Use `openai('gpt-4o')` or `anthropic('claude-3-5-sonnet-20240620')` format (from specific provider packages like `@ai-sdk/openai`) instead of the older edge runtime wrappers.
+- PASS: **Do:** Provide a strict Zod `schema` and a clear `system` prompt when using `generateObject()`.
+- PASS: **Do:** Set `maxDuration = 30` (or higher if on Pro) in Next.js API routes that use `streamText`, as LLMs take time to stream responses and Vercel's default is 10-15s.
+- PASS: **Do:** Use `tool()` with comprehensive `description` tags on Zod parameters, as the LLM relies entirely on those strings to understand when and how to call the tool.
+- PASS: **Do:** Enable `maxSteps: 5` (or similar) when providing tools, otherwise the LLM won't be able to reply to the user *after* seeing the tool result!
+- FAIL: **Don't:** Forget to return `result.toDataStreamResponse()` in Next.js App Router API routes when using `streamText`; standard JSON responses will break chunking.
+- FAIL: **Don't:** Blindly trust the output of `generateObject` without validation, even though Zod forces the shape — always handle failure states using `try/catch`.
 
 ## Troubleshooting
 

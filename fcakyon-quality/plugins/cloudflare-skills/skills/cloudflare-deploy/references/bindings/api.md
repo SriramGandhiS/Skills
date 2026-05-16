@@ -16,10 +16,10 @@ interface Env {
   DB: D1Database;
   MY_SERVICE: Fetcher;
   AI: Ai;
-  
+
   // From vars
   API_URL: string;
-  
+
   // From secrets (set via wrangler secret put)
   API_KEY: string;
 }
@@ -178,10 +178,10 @@ npx wrangler types
 
 1. **Never use `any` for env:**
 ```typescript
-// ❌ BAD
+// FAIL: BAD
 async fetch(request: Request, env: any) { }
 
-// ✅ GOOD
+// PASS: GOOD
 async fetch(request: Request, env: Env) { }
 ```
 

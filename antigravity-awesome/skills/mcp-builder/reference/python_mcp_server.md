@@ -237,7 +237,7 @@ async def _make_api_request(endpoint: str, method: str = "GET", **kwargs) -> dic
             method,
             f"{API_BASE_URL}/{endpoint}",
             timeout=30.0,
-            **kwargs
+**kwargs
         )
         response.raise_for_status()
         return response.json()
@@ -386,7 +386,7 @@ async def _make_api_request(endpoint: str, method: str = "GET", **kwargs) -> dic
             method,
             f"{API_BASE_URL}/{endpoint}",
             timeout=30.0,
-            **kwargs
+**kwargs
         )
         response.raise_for_status()
         return response.json()

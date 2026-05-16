@@ -1,16 +1,15 @@
 # /// script
 # requires-python = ">=3.10"
 # dependencies = [
-#     "datasets",
-#     "flashinfer-python",
-#     "huggingface-hub[hf_transfer]",
-#     "hf-xet>= 1.1.7",
-#     "torch",
-#     "transformers",
-#     "vllm>=0.8.5",
+# "datasets",
+# "flashinfer-python",
+# "huggingface-hub[hf_transfer]",
+# "hf-xet>= 1.1.7",
+# "torch",
+# "transformers",
+# "vllm>=0.8.5",
 # ]
-#
-# ///
+# # ///
 """
 Generate responses for prompts in a dataset using vLLM for efficient GPU inference.
 
@@ -405,7 +404,7 @@ def main(
     card = DatasetCard(card_content)
     card.push_to_hub(output_dataset_hub_id, token=HF_TOKEN)
 
-    logger.info("✅ Generation complete!")
+    logger.info("PASS: Generation complete!")
     logger.info(
         f"Dataset available at: https://huggingface.co/datasets/{output_dataset_hub_id}"
     )
@@ -420,18 +419,18 @@ if __name__ == "__main__":
 Examples:
   # Basic usage with default Qwen model
   uv run generate-responses.py input-dataset output-dataset
-  
+
   # With custom model and parameters
   uv run generate-responses.py input-dataset output-dataset \\
     --model-id meta-llama/Llama-3.1-8B-Instruct \\
     --temperature 0.9 \\
     --max-tokens 2048
-  
+
   # Force specific GPU configuration
   uv run generate-responses.py input-dataset output-dataset \\
     --tensor-parallel-size 2 \\
     --gpu-memory-utilization 0.95
-  
+
   # Using environment variable for token
   HF_TOKEN=hf_xxx uv run generate-responses.py input-dataset output-dataset
             """,

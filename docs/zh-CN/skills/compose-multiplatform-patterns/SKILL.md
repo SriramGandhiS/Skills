@@ -212,7 +212,7 @@ actual fun PlatformStatusBar(darkIcons: Boolean) {
 
 ### 用于可跳过重组的稳定类型
 
-当所有属性都稳定时，将类标记为 `@Stable` 或 `@Immutable`：
+当所有属性都稳定时，将类标记为 `@Stable`或`@Immutable`：
 
 ```kotlin
 @Immutable
@@ -287,9 +287,9 @@ fun AppTheme(
 
 ## 应避免的反模式
 
-* 在 ViewModel 中使用 `mutableStateOf`，而 `MutableStateFlow` 配合 `collectAsStateWithLifecycle` 对生命周期更安全
+* 在 ViewModel 中使用 `mutableStateOf`，而`MutableStateFlow`配合`collectAsStateWithLifecycle` 对生命周期更安全
 * 将 `NavController` 深入传递到可组合项中 —— 应传递 lambda 回调
-* 在 `@Composable` 函数中进行繁重计算 —— 应移至 ViewModel 或 `remember {}`
+* 在 `@Composable`函数中进行繁重计算 —— 应移至 ViewModel 或`remember {}`
 * 使用 `LaunchedEffect(Unit)` 作为 ViewModel 初始化的替代 —— 在某些设置中，它会在配置更改时重新运行
 * 在可组合项参数中创建新的对象实例 —— 会导致不必要的重组
 

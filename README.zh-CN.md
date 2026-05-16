@@ -86,7 +86,7 @@
 - **运营与外向型工作流扩展** —— `brand-voice`、`social-graph-ranker`、`customer-billing-ops`、`google-workspace-ops` 等运营型 skill 已纳入同一系统。
 - **媒体与发布工具补齐** —— `manim-video`、`remotion-video-creation` 以及社媒发布能力让技术讲解和发布流程直接在同一仓库内完成。
 - **框架与产品表面继续扩展** —— `nestjs-patterns`、更完整的 Codex/OpenCode 安装表面，以及跨 harness 打包改进，让仓库不再局限于 Claude Code。
-- **ECC 2.0 alpha 已进入仓库** —— `ecc2/` 下的 Rust 控制层现已可在本地构建，并提供 `dashboard`、`start`、`sessions`、`status`、`stop`、`resume` 与 `daemon` 命令。
+- **ECC 2.0 alpha 已进入仓库** —— `ecc2/`下的 Rust 控制层现已可在本地构建，并提供`dashboard`、`start`、`sessions`、`status`、`stop`、`resume`与`daemon` 命令。
 - **生态加固持续推进** —— AgentShield、ECC Tools 成本控制、计费门户工作与网站刷新仍围绕核心插件持续交付。
 
 ## 快速开始
@@ -98,10 +98,10 @@
 > 注意：插件安装方式较为便捷，但如果你的 Claude Code 版本无法正常解析自托管市场条目，建议使用下方的开源安装脚本，稳定性更高。
 
 ```bash
-# 添加市场
-/plugin marketplace add https://github.com/affaan-m/everything-claude-code
+## 添加市场
+/plugin marketplace add <https://github.com/affaan-m/everything-claude-code>
 
-# 安装插件
+## 安装插件
 /plugin install ecc@ecc
 ```
 
@@ -111,52 +111,52 @@
 
 > WARNING: **重要提示：** Claude Code 插件无法自动分发 `rules`。
 >
-> 如果你已经通过 `/plugin install` 安装了 ECC，**不要再运行 `./install.sh --profile full`、`.\install.ps1 --profile full` 或 `npx ecc-install --profile full`**。插件已经会自动加载 ECC 的技能、命令和 hooks；此时再执行完整安装，会把同一批内容再次复制到用户目录，导致技能重复以及运行时行为重复。
+> 如果你已经通过 `/plugin install`安装了 ECC，**不要再运行`./install.sh --profile full`、`.\install.ps1 --profile full`或`npx ecc-install --profile full`**。插件已经会自动加载 ECC 的技能、命令和 hooks；此时再执行完整安装，会把同一批内容再次复制到用户目录，导致技能重复以及运行时行为重复。
 >
 > 对于插件安装路径，请只手动复制你需要的 `rules/` 目录。只有在你完全不走插件安装、而是选择“纯手动安装 ECC”时，才应该使用完整安装器。
 
 ```bash
-# 首先克隆仓库
-git clone https://github.com/affaan-m/everything-claude-code.git
+## 首先克隆仓库
+git clone <https://github.com/affaan-m/everything-claude-code.git>
 cd everything-claude-code
 
-# 安装依赖（选择你常用的包管理器）
+## 安装依赖（选择你常用的包管理器）
 npm install        # 或：pnpm install | yarn install | bun install
 
-# 插件安装路径：只复制规则
+## 插件安装路径：只复制规则
 mkdir -p ~/.claude/rules
 cp -R rules/common ~/.claude/rules/
 cp -R rules/typescript ~/.claude/rules/
 
-# 纯手动安装 ECC（不要和 /plugin install 叠加）
-# ./install.sh --profile full
+## 纯手动安装 ECC（不要和 /plugin install 叠加）
+## ./install.sh --profile full
 ```
 
 ```powershell
-# Windows 系统（PowerShell）
+## Windows 系统（PowerShell）
 
-# 插件安装路径：只复制规则
+## 插件安装路径：只复制规则
 New-Item -ItemType Directory -Force -Path "$HOME/.claude/rules" | Out-Null
 Copy-Item -Recurse rules/common "$HOME/.claude/rules/"
 Copy-Item -Recurse rules/typescript "$HOME/.claude/rules/"
 
-# 纯手动安装 ECC（不要和 /plugin install 叠加）
-# .\install.ps1 --profile full
-# npx ecc-install --profile full
+## 纯手动安装 ECC（不要和 /plugin install 叠加）
+## .\install.ps1 --profile full
+## npx ecc-install --profile full
 ```
 
-如需手动安装说明，请查看 `rules/` 文件夹中的 README 文档。手动复制规则文件时，请直接复制**整个语言目录**（例如 `rules/common` 或 `rules/golang`），而非目录内的单个文件，以保证相对路径引用正常、文件名不会冲突。
+如需手动安装说明，请查看 `rules/`文件夹中的 README 文档。手动复制规则文件时，请直接复制**整个语言目录**（例如`rules/common`或`rules/golang`），而非目录内的单个文件，以保证相对路径引用正常、文件名不会冲突。
 
 ### 第三步：开始使用
 
 ```bash
-# 尝试一个命令（插件安装使用命名空间形式）
+## 尝试一个命令（插件安装使用命名空间形式）
 /ecc:plan "添加用户认证"
 
-# 手动安装（选项2）使用简短形式：
-# /plan "添加用户认证"
+## 手动安装（选项2）使用简短形式：
+## /plan "添加用户认证"
 
-# 查看可用命令
+## 查看可用命令
 /plugin list ecc@ecc
 ```
 
@@ -166,7 +166,7 @@ Copy-Item -Recurse rules/typescript "$HOME/.claude/rules/"
 
 > WARNING: 上面的基础插件 / rules 安装**不包含** `multi-*` 命令所需的运行时。
 >
-> 如果要使用 `/multi-plan`、`/multi-execute`、`/multi-backend`、`/multi-frontend` 和 `/multi-workflow`，还需要额外安装 `ccg-workflow` 运行时。
+> 如果要使用 `/multi-plan`、`/multi-execute`、`/multi-backend`、`/multi-frontend`和`/multi-workflow`，还需要额外安装`ccg-workflow` 运行时。
 >
 > 可通过 `npx ccg-workflow` 完成初始化安装。
 >
@@ -174,7 +174,7 @@ Copy-Item -Recurse rules/typescript "$HOME/.claude/rules/"
 > - `~/.claude/bin/codeagent-wrapper`
 > - `~/.claude/.ccg/prompts/*`
 >
-> 未安装 `ccg-workflow` 时，这些 `multi-*` 命令将无法正常运行。
+> 未安装 `ccg-workflow`时，这些`multi-*` 命令将无法正常运行。
 
 ---
 
@@ -196,16 +196,16 @@ Copy-Item -Recurse rules/typescript "$HOME/.claude/rules/"
 要设置你首选的包管理器：
 
 ```bash
-# 通过环境变量
+## 通过环境变量
 export CLAUDE_PACKAGE_MANAGER=pnpm
 
-# 通过全局配置
+## 通过全局配置
 node scripts/setup-package-manager.js --global pnpm
 
-# 通过项目配置
+## 通过项目配置
 node scripts/setup-package-manager.js --project bun
 
-# 检测当前设置
+## 检测当前设置
 node scripts/setup-package-manager.js --detect
 ```
 
@@ -216,10 +216,10 @@ node scripts/setup-package-manager.js --detect
 使用运行时标记调整严格度或临时禁用特定钩子：
 
 ```bash
-# 钩子严格度配置文件（默认值：standard）
+## 钩子严格度配置文件（默认值：standard）
 export ECC_HOOK_PROFILE=standard
 
-# 以英文逗号分隔的钩子 ID 列表，用于禁用指定钩子
+## 以英文逗号分隔的钩子 ID 列表，用于禁用指定钩子
 export ECC_DISABLED_HOOKS="pre:bash:tmux-reminder,post:edit:typecheck"
 ```
 
@@ -457,10 +457,10 @@ everything-claude-code/
 [安装 GitHub 应用](https://github.com/apps/skill-creator) | [ecc.tools](https://ecc.tools)
 
 ```bash
-# 在任何问题上评论：
+## 在任何问题上评论：
 /skill-creator analyze
 
-# 或在推送到默认分支时自动触发
+## 或在推送到默认分支时自动触发
 ```
 
 两个选项都创建：
@@ -475,16 +475,16 @@ everything-claude-code/
 扫描你的 Claude Code 配置，检测漏洞、错误配置与注入风险。
 
 ```bash
-# 快速扫描（无需安装）
+## 快速扫描（无需安装）
 npx ecc-agentshield scan
 
-# 自动修复安全问题
+## 自动修复安全问题
 npx ecc-agentshield scan --fix
 
-# 调用 3 个 Opus 4.6 智能体进行深度分析
+## 调用 3 个 Opus 4.6 智能体进行深度分析
 npx ecc-agentshield scan --opus --stream
 
-# 从零生成安全配置
+## 从零生成安全配置
 npx ecc-agentshield init
 ```
 
@@ -528,9 +528,9 @@ claude --version
 ```
 
 ### 重要提示：钩子自动加载机制
-> 警告：**贡献者请注意**：请勿在 `.claude-plugin/plugin.json` 中添加 `"hooks"` 字段。回归测试已强制禁止该操作。
+> 警告：**贡献者请注意**：请勿在 `.claude-plugin/plugin.json`中添加`"hooks"` 字段。回归测试已强制禁止该操作。
 
-Claude Code v2.1+ 会**按照约定自动加载**已安装插件中的 `hooks/hooks.json`。若在 `plugin.json` 中显式声明该文件，会触发重复检测错误：
+Claude Code v2.1+ 会**按照约定自动加载**已安装插件中的 `hooks/hooks.json`。若在`plugin.json` 中显式声明该文件，会触发重复检测错误：
 ```
 检测到重复的钩子文件：./hooks/hooks.json 指向已加载的文件
 ```
@@ -546,10 +546,10 @@ Claude Code v2.1+ 会**按照约定自动加载**已安装插件中的 `hooks/ho
 使用此仓库的最简单方法 - 作为 Claude Code 插件安装：
 
 ```bash
-# 将此仓库添加为市场
-/plugin marketplace add https://github.com/affaan-m/everything-claude-code
+## 将此仓库添加为市场
+/plugin marketplace add <https://github.com/affaan-m/everything-claude-code>
 
-# 安装插件
+## 安装插件
 /plugin install ecc@ecc
 ```
 
@@ -577,7 +577,7 @@ Claude Code v2.1+ 会**按照约定自动加载**已安装插件中的 `hooks/ho
 >
 > ```bash
 > # 首先克隆仓库
-> git clone https://github.com/affaan-m/everything-claude-code.git
+> git clone <https://github.com/affaan-m/everything-claude-code.git>
 >
 > # 方案 A：用户级规则（对所有项目生效）
 > mkdir -p ~/.claude/rules
@@ -600,13 +600,13 @@ Claude Code v2.1+ 会**按照约定自动加载**已安装插件中的 `hooks/ho
 如果你希望手动控制安装内容，可按以下步骤操作：
 
 ```bash
-# 克隆仓库
-git clone https://github.com/affaan-m/everything-claude-code.git
+## 克隆仓库
+git clone <https://github.com/affaan-m/everything-claude-code.git>
 
-# 将智能体文件复制到 Claude 配置目录
+## 将智能体文件复制到 Claude 配置目录
 cp everything-claude-code/agents/*.md ~/.claude/agents/
 
-# 复制规则目录（通用规则 + 特定语言规则）
+## 复制规则目录（通用规则 + 特定语言规则）
 mkdir -p ~/.claude/rules
 cp -r everything-claude-code/rules/common ~/.claude/rules/
 cp -r everything-claude-code/rules/typescript ~/.claude/rules/   # 选择你使用的技术栈
@@ -614,31 +614,31 @@ cp -r everything-claude-code/rules/python ~/.claude/rules/
 cp -r everything-claude-code/rules/golang ~/.claude/rules/
 cp -r everything-claude-code/rules/php ~/.claude/rules/
 
-# 优先复制技能模块（核心工作流）
-# 新用户推荐：仅复制核心/通用技能
+## 优先复制技能模块（核心工作流）
+## 新用户推荐：仅复制核心/通用技能
 cp -r everything-claude-code/.agents/skills/* ~/.claude/skills/
 cp -r everything-claude-code/skills/search-first ~/.claude/skills/
 
-# 可选：仅在需要时添加细分领域/框架专属技能
-# for s in django-patterns django-tdd laravel-patterns springboot-patterns quarkus-patterns; do
-# cp -r everything-claude-code/skills/$s ~/.claude/skills/
-# done
+## 可选：仅在需要时添加细分领域/框架专属技能
+## for s in django-patterns django-tdd laravel-patterns springboot-patterns quarkus-patterns; do
+## cp -r everything-claude-code/skills/$s ~/.claude/skills/
+## done
 
-# 可选：迁移期间保留维护中的斜杠命令兼容
+## 可选：迁移期间保留维护中的斜杠命令兼容
 mkdir -p ~/.claude/commands
 cp everything-claude-code/commands/*.md ~/.claude/commands/
 
-# 已退役短命令位于 legacy-command-shims/commands/。
-# 仅在仍需要 /tdd 等旧名称时，单独复制对应文件。
+## 已退役短命令位于 legacy-command-shims/commands/。
+## 仅在仍需要 /tdd 等旧名称时，单独复制对应文件。
 ```
 
 #### 将钩子配置添加到 settings.json
-仅适用于手动安装：如果你没有通过 Claude 插件方式安装 ECC，可以将 `hooks/hooks.json` 中的钩子配置复制到你的 `~/.claude/settings.json` 文件中。
+仅适用于手动安装：如果你没有通过 Claude 插件方式安装 ECC，可以将 `hooks/hooks.json`中的钩子配置复制到你的`~/.claude/settings.json` 文件中。
 
-如果你是通过 `/plugin install` 安装 ECC，请不要再把这些钩子复制到 `settings.json`。Claude Code v2.1+ 会自动加载插件中的 `hooks/hooks.json`，重复注册会导致重复执行以及 `${CLAUDE_PLUGIN_ROOT}` 无法解析。
+如果你是通过 `/plugin install`安装 ECC，请不要再把这些钩子复制到`settings.json`。Claude Code v2.1+ 会自动加载插件中的`hooks/hooks.json`，重复注册会导致重复执行以及`${CLAUDE_PLUGIN_ROOT}` 无法解析。
 
 #### 配置 MCP 服务
-从 `mcp-configs/mcp-servers.json` 中复制需要的 MCP 服务定义，粘贴到官方 Claude Code 配置文件 `~/.claude/settings.json` 中；
+从 `mcp-configs/mcp-servers.json`中复制需要的 MCP 服务定义，粘贴到官方 Claude Code 配置文件`~/.claude/settings.json` 中；
 若需要仓库本地的 MCP 访问权限，可粘贴到项目级配置文件 `.mcp.json` 中。
 
 如果你已自行运行 ECC 捆绑的 MCP 服务，设置以下环境变量：
@@ -673,7 +673,7 @@ model: opus
 技能是由命令或代理调用的工作流定义：
 
 ```markdown
-# TDD 工作流
+## TDD 工作流
 
 1. 首先定义接口
 2. 编写失败的测试（RED）
@@ -716,10 +716,10 @@ model: opus
 插件包含一个全面的测试套件：
 
 ```bash
-# 运行所有测试
+## 运行所有测试
 node tests/run-all.js
 
-# 运行单个测试文件
+## 运行单个测试文件
 node tests/lib/utils.test.js
 node tests/lib/package-manager.test.js
 node tests/hooks/hooks.test.js

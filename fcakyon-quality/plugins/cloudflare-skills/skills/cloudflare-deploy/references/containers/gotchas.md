@@ -1,6 +1,6 @@
 ## Critical Gotchas
 
-### ⚠️ WebSocket: fetch() vs containerFetch()
+### WARNING: WebSocket: fetch() vs containerFetch()
 
 **Problem:** WebSocket connections fail silently
 
@@ -9,14 +9,14 @@
 **Fix:** Always use `fetch()` for WebSocket
 
 ```typescript
-// ❌ WRONG
+// FAIL: WRONG
 return container.containerFetch(request);
 
-// ✅ CORRECT
+// PASS: CORRECT
 return container.fetch(request);
 ```
 
-### ⚠️ startAndWaitForPorts() vs start()
+### WARNING: startAndWaitForPorts() vs start()
 
 **Problem:** "connection refused" after `start()`
 
@@ -25,16 +25,16 @@ return container.fetch(request);
 **Fix:** Use `startAndWaitForPorts()` before requests
 
 ```typescript
-// ❌ WRONG
+// FAIL: WRONG
 await container.start();
 return container.fetch(request);
 
-// ✅ CORRECT
+// PASS: CORRECT
 await container.startAndWaitForPorts();
 return container.fetch(request);
 ```
 
-### ⚠️ Activity Timeout on Long Operations
+### WARNING: Activity Timeout on Long Operations
 
 **Problem:** Container stops during long work
 
@@ -54,7 +54,7 @@ try {
 }
 ```
 
-### ⚠️ blockConcurrencyWhile for Startup
+### WARNING: blockConcurrencyWhile for Startup
 
 **Problem:** Race conditions during initialization
 
@@ -69,7 +69,7 @@ await this.ctx.blockConcurrencyWhile(async () => {
 });
 ```
 
-### ⚠️ Lifecycle Hooks Block Requests
+### WARNING: Lifecycle Hooks Block Requests
 
 **Problem:** Container unresponsive during `onStart()`
 
@@ -77,7 +77,7 @@ await this.ctx.blockConcurrencyWhile(async () => {
 
 **Fix:** Keep hooks fast, avoid long operations
 
-### ⚠️ Don't Override alarm() When Using schedule()
+### WARNING: Don't Override alarm() When Using schedule()
 
 **Problem:** Scheduled tasks don't execute
 
@@ -167,7 +167,7 @@ await this.ctx.blockConcurrencyWhile(async () => {
 
 ## Beta Caveats
 
-⚠️ Containers in **beta**:
+WARNING: Containers in **beta**:
 
 - **API may change** without notice
 - **No SLA** guarantees

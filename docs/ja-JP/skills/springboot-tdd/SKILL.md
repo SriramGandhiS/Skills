@@ -151,7 +151,7 @@ class MarketBuilder {
 
 ## CIコマンド
 
-- Maven: `mvn -T 4 test` または `mvn verify`
+- Maven: `mvn -T 4 test`または`mvn verify`
 - Gradle: `./gradlew test jacocoTestReport`
 
 **覚えておいてください**: テストは高速で、分離され、決定論的に保ちます。実装の詳細ではなく、動作をテストします。

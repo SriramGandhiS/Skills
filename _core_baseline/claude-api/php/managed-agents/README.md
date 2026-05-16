@@ -38,7 +38,7 @@ echo "Environment ID: {$environment->id}\n"; // env_...
 
 ## Create an Agent (required first step)
 
-> ⚠️ **There is no inline agent config.** `model`/`system`/`tools` live on the agent object, not the session. Always start with `$client->beta->agents->create()` — the session takes either `agent: $agent->id` or the typed `BetaManagedAgentsAgentParams::with(type: 'agent', id: $agent->id, version: $agent->version)`.
+> WARNING: **There is no inline agent config.** `model`/`system`/`tools` live on the agent object, not the session. Always start with `$client->beta->agents->create()` — the session takes either `agent: $agent->id` or the typed `BetaManagedAgentsAgentParams::with(type: 'agent', id: $agent->id, version: $agent->version)`.
 
 ### Minimal
 
@@ -104,13 +104,13 @@ $client->beta->sessions->events->send(
 );
 ```
 
-> 💡 **Stream-first:** Open the stream *before* (or concurrently with) sending the message. The stream only delivers events that occur after it opens — stream-after-send means early events arrive buffered in one batch. See [Steering Patterns](../../shared/managed-agents-events.md#steering-patterns).
+> **Stream-first:** Open the stream *before* (or concurrently with) sending the message. The stream only delivers events that occur after it opens — stream-after-send means early events arrive buffered in one batch. See [Steering Patterns](../../shared/managed-agents-events.md#steering-patterns).
 
 ---
 
 ## Stream Events (SSE)
 
-> ℹ️ **Streaming transporter:** PHP's default buffered PSR-18 client never returns for the open-ended session event stream. Use a streaming Guzzle transporter for `streamStream()` calls — other calls keep the default client.
+> **Streaming transporter:** PHP's default buffered PSR-18 client never returns for the open-ended session event stream. Use a streaming Guzzle transporter for `streamStream()` calls — other calls keep the default client.
 
 ```php
 $streamingClient = new GuzzleHttp\Client(['stream' => true]);
@@ -187,7 +187,7 @@ $stream->close();
 
 ## Provide Custom Tool Result
 
-> ℹ️ The PHP managed-agents bindings for `user.custom_tool_result` are not yet documented in this skill or in the apps source examples. Refer to `shared/managed-agents-events.md` for the wire format and the `anthropic-ai/sdk` PHP repository for the corresponding params.
+> The PHP managed-agents bindings for `user.custom_tool_result` are not yet documented in this skill or in the apps source examples. Refer to `shared/managed-agents-events.md` for the wire format and the `anthropic-ai/sdk` PHP repository for the corresponding params.
 
 ---
 
@@ -203,7 +203,7 @@ foreach ($client->beta->sessions->events->list($session->id)->pagingEachItem() a
 
 ## Upload a File
 
-> ℹ️ **PHP file upload:** The PHP SDK's beta managed-agents file upload binding is not shown in the apps source examples; the canonical PHP example uses raw cURL against `POST /v1/files`. If your codebase prefers the SDK, WebFetch the `anthropic-ai/sdk` PHP repository for the latest binding before writing code.
+> **PHP file upload:** The PHP SDK's beta managed-agents file upload binding is not shown in the apps source examples; the canonical PHP example uses raw cURL against `POST /v1/files`. If your codebase prefers the SDK, WebFetch the `anthropic-ai/sdk` PHP repository for the latest binding before writing code.
 
 ```php
 use Anthropic\Beta\Sessions\BetaManagedAgentsFileResourceParams;
@@ -263,7 +263,7 @@ $client->beta->sessions->resources->delete($resource->id, sessionID: $session->i
 
 ## List and Download Session Files
 
-> ℹ️ Listing and downloading files an agent wrote during a session is not yet documented for PHP in this skill or in the apps source examples. See `shared/managed-agents-events.md` and the `anthropic-ai/sdk` PHP repository for the file list/download bindings.
+> Listing and downloading files an agent wrote during a session is not yet documented for PHP in this skill or in the apps source examples. See `shared/managed-agents-events.md` and the `anthropic-ai/sdk` PHP repository for the file list/download bindings.
 
 ---
 

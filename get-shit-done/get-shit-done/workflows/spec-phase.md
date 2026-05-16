@@ -210,7 +210,7 @@ Use the SPEC.md template from @~/.claude/get-shit-done/templates/spec.md.
 
 **Acceptance criteria must be pass/fail checkboxes** — no "should feel good" or "looks reasonable."
 
-**If any dimensions are below minimum**, mark them in the Ambiguity Report with: `⚠ Below minimum — planner must treat as assumption`.
+**If any dimensions are below minimum**, mark them in the Ambiguity Report with: `WARNING: Below minimum — planner must treat as assumption`.
 
 Write to: `{phase_dir}/{padded_phase}-SPEC.md`
 

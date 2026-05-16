@@ -45,7 +45,7 @@ Identify render hotspots, isolate expensive updates, and apply targeted optimiza
 Move a timer or animation counter into a child so the parent list never re-renders on each tick.
 
 ```tsx
-// ❌ Before – entire parent (and list) re-renders every second
+// FAIL: Before – entire parent (and list) re-renders every second
 function Dashboard({ items }: { items: Item[] }) {
   const [tick, setTick] = useState(0);
   useEffect(() => {
@@ -60,7 +60,7 @@ function Dashboard({ items }: { items: Item[] }) {
   );
 }
 
-// ✅ After – only <Clock> re-renders; list is untouched
+// PASS: After – only <Clock> re-renders; list is untouched
 function Clock() {
   const [tick, setTick] = useState(0);
   useEffect(() => {
@@ -83,13 +83,13 @@ function Dashboard({ items }: { items: Item[] }) {
 ### Stabilize callbacks with `useCallback` + `memo`
 
 ```tsx
-// ❌ Before – new handler reference on every render busts Row memo
+// FAIL: Before – new handler reference on every render busts Row memo
 function List({ items }: { items: Item[] }) {
   const handleClick = (id: string) => console.log(id); // new ref each render
   return items.map(item => <Row key={item.id} item={item} onClick={handleClick} />);
 }
 
-// ✅ After – stable handler; Row only re-renders when its own item changes
+// PASS: After – stable handler; Row only re-renders when its own item changes
 const Row = memo(({ item, onClick }: RowProps) => (
   <li onClick={() => onClick(item.id)}>{item.name}</li>
 ));
@@ -103,13 +103,13 @@ function List({ items }: { items: Item[] }) {
 ### Prefer derived data outside render
 
 ```tsx
-// ❌ Before – recomputes on every render
+// FAIL: Before – recomputes on every render
 function Summary({ orders }: { orders: Order[] }) {
   const total = orders.reduce((sum, o) => sum + o.amount, 0); // runs every render
   return <p>Total: {total}</p>;
 }
 
-// ✅ After – recomputes only when orders changes
+// PASS: After – recomputes only when orders changes
 function Summary({ orders }: { orders: Order[] }) {
   const total = useMemo(() => orders.reduce((sum, o) => sum + o.amount, 0), [orders]);
   return <p>Total: {total}</p>;

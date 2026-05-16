@@ -33,7 +33,7 @@ agents/
     └── discovery-coach.md
 ```
 
-**扁平化布局** — 领域从共享的文件名前缀推断。当 2 个或更多文件共享同一前缀时，该前缀被视为一个领域。具有唯一前缀的文件归入 "General" 类别。注意：算法在第一个 `-` 处分割，因此多单词领域（例如 `product-management`）应使用子目录布局：
+**扁平化布局** — 领域从共享的文件名前缀推断。当 2 个或更多文件共享同一前缀时，该前缀被视为一个领域。具有唯一前缀的文件归入 "General" 类别。注意：算法在第一个 `-`处分割，因此多单词领域（例如`product-management`）应使用子目录布局：
 
 ```
 agents/
@@ -49,8 +49,8 @@ agents/
 
 智能体目录按顺序探测，结果会被合并：
 
-1. `./agents/**/*.md` + `./agents/*.md` — 项目本地智能体（两种深度）
-2. `~/.claude/agents/**/*.md` + `~/.claude/agents/*.md` — 全局智能体（两种深度）
+1. `./agents/**/*.md`+`./agents/*.md` — 项目本地智能体（两种深度）
+2. `~/.claude/agents/**/*.md`+`~/.claude/agents/*.md` — 全局智能体（两种深度）
 
 所有位置的结果会合并，并按智能体名称去重。同名情况下，项目本地智能体优先于全局智能体。如果用户指定了自定义路径，则使用该路径代替。
 
@@ -61,8 +61,8 @@ agents/
 使用上述探测顺序在智能体目录中进行全局搜索。排除 README 文件。对于找到的每个文件：
 
 * **子目录布局：** 从父文件夹名称提取领域
-* **扁平化布局：** 收集所有文件名前缀（第一个 `-` 之前的文本）。一个前缀只有在出现在 2 个或更多文件名中时才符合领域资格（例如，`engineering-security-engineer.md` 和 `engineering-software-architect.md` 都以 `engineering` 开头 → Engineering 领域）。具有唯一前缀的文件（例如 `code-reviewer.md`, `tdd-guide.md`）归入 "General" 类别
-* 从第一个 `# Heading` 提取智能体名称。如果未找到标题，则从文件名派生名称（去除 `.md`，用空格替换连字符，并转换为标题大小写）
+* **扁平化布局：** 收集所有文件名前缀（第一个 `-`之前的文本）。一个前缀只有在出现在 2 个或更多文件名中时才符合领域资格（例如，`engineering-security-engineer.md`和`engineering-software-architect.md`都以`engineering`开头 → Engineering 领域）。具有唯一前缀的文件（例如`code-reviewer.md`,`tdd-guide.md`）归入 "General" 类别
+* 从第一个 `# Heading`提取智能体名称。如果未找到标题，则从文件名派生名称（去除`.md`，用空格替换连字符，并转换为标题大小写）
 * 从标题后的第一段提取一行摘要
 
 如果在探测完所有位置后未找到任何智能体文件，则通知用户："未找到智能体文件。已检查：\[探测的路径列表]。期望：这些目录中的 markdown 文件。" 然后停止。

@@ -83,7 +83,7 @@ jobs:
 
     - name: Create image summary
       run: |
-        echo "## 🐳 Docker Image: $IMAGE_NAME" >> $GITHUB_STEP_SUMMARY
+        echo "##  Docker Image: $IMAGE_NAME" >> $GITHUB_STEP_SUMMARY
         echo "" >> $GITHUB_STEP_SUMMARY
         echo "**Description:** $IMAGE_DESCRIPTION" >> $GITHUB_STEP_SUMMARY
         echo "" >> $GITHUB_STEP_SUMMARY
@@ -108,7 +108,7 @@ jobs:
 
     - name: Test CLI image
       run: |
-        echo "🧪 Testing CLI image..."
+        echo " Testing CLI image..."
         docker run --rm skill-seekers:test skill-seekers --version
         docker run --rm skill-seekers:test skill-seekers --help
 
@@ -118,7 +118,7 @@ jobs:
 
     - name: Test MCP image
       run: |
-        echo "🧪 Testing MCP server image..."
+        echo " Testing MCP server image..."
         # Start MCP server in background
         docker run -d --name mcp-test -p 8765:8765 skill-seekers-mcp:test
 
@@ -134,6 +134,6 @@ jobs:
 
     - name: Test Docker Compose
       run: |
-        echo "🧪 Testing Docker Compose..."
+        echo " Testing Docker Compose..."
         docker compose config
-        echo "✅ Docker Compose configuration valid"
+        echo "PASS: Docker Compose configuration valid"

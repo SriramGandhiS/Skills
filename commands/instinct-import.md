@@ -26,7 +26,7 @@ Import instincts from local file paths or HTTP(S) URLs.
 
 ```
 /instinct-import team-instincts.yaml
-/instinct-import https://github.com/org/repo/instincts.yaml
+/instinct-import <https://github.com/org/repo/instincts.yaml>
 /instinct-import team-instincts.yaml --dry-run
 /instinct-import team-instincts.yaml --scope global --force
 ```
@@ -96,7 +96,7 @@ project_name: "my-project"
 - `--dry-run`: Preview without importing
 - `--force`: Skip confirmation prompt
 - `--min-confidence <n>`: Only import instincts above threshold
-- `--scope <project|global>`: Select target scope (default: `project`)
+- `--scope <project|global>`: Select target scope (default:`project`)
 
 ## Output
 

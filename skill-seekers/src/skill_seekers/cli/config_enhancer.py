@@ -78,7 +78,7 @@ class ConfigEnhancer:
         Returns:
             Enhanced result with AI insights
         """
-        logger.info(f"🔄 Enhancing {len(result.get('config_files', []))} config files...")
+        logger.info(f" Enhancing {len(result.get('config_files', []))} config files...")
 
         if self.mode == "api":
             return self._enhance_via_api(result)
@@ -92,7 +92,7 @@ class ConfigEnhancer:
     def _enhance_via_api(self, result: dict) -> dict:
         """Enhance configs using AI API"""
         if not self._agent.is_available():
-            logger.error("❌ API mode requested but no API client available")
+            logger.error("FAIL: API mode requested but no API client available")
             return result
 
         try:
@@ -100,20 +100,20 @@ class ConfigEnhancer:
             prompt = self._create_enhancement_prompt(result)
 
             # Call AI agent for config analysis
-            logger.info("📡 Calling AI agent for config analysis...")
+            logger.info(" Calling AI agent for config analysis...")
             response_text = self._agent.call(prompt, max_tokens=8000)
 
             if not response_text:
-                logger.error("❌ AI agent returned no response")
+                logger.error("FAIL: AI agent returned no response")
                 return result
 
             # Parse response
             enhanced_result = self._parse_api_response(response_text, result)
-            logger.info("✅ API enhancement complete")
+            logger.info("PASS: API enhancement complete")
             return enhanced_result
 
         except Exception as e:
-            logger.error(f"❌ API enhancement failed: {e}")
+            logger.error(f"FAIL: API enhancement failed: {e}")
             return result
 
     def _create_enhancement_prompt(self, result: dict) -> str:
@@ -159,7 +159,7 @@ OUTPUT FORMAT (strict JSON):
       "file_path": "path/to/config.json",
       "explanation": "This file configures the database connection...",
       "best_practice": "Consider using environment variables for host/port",
-      "security_concern": "⚠️ DATABASE_PASSWORD is hardcoded - move to .env",
+      "security_concern": "WARNING: DATABASE_PASSWORD is hardcoded - move to .env",
       "migration_suggestion": "Consolidate with config.yml (overlapping settings)",
       "context": "Standard PostgreSQL configuration pattern"
     }}
@@ -184,7 +184,7 @@ Focus on actionable insights that help developers understand and improve their c
 
             json_match = re.search(r"\{.*\}", response_text, re.DOTALL)
             if not json_match:
-                logger.warning("⚠️  No JSON found in API response")
+                logger.warning("WARNING:  No JSON found in API response")
                 return original_result
 
             enhancements = json.loads(json_match.group())
@@ -204,7 +204,7 @@ Focus on actionable insights that help developers understand and improve their c
             return original_result
 
         except json.JSONDecodeError as e:
-            logger.error(f"❌ Failed to parse API response as JSON: {e}")
+            logger.error(f"FAIL: Failed to parse API response as JSON: {e}")
             return original_result
 
     # =========================================================================
@@ -214,8 +214,8 @@ Focus on actionable insights that help developers understand and improve their c
     def _enhance_via_local(self, result: dict) -> dict:
         """Enhance configs using LOCAL CLI agent"""
         try:
-            logger.info("🖥️  Launching LOCAL agent for config analysis...")
-            logger.info("⏱️  This will take 30-60 seconds...")
+            logger.info("  Launching LOCAL agent for config analysis...")
+            logger.info("  This will take 30-60 seconds...")
 
             # Build the prompt — AgentClient handles output file management
             prompt_content = self._create_local_prompt(result)
@@ -232,16 +232,16 @@ Focus on actionable insights that help developers understand and improve their c
                         data = json.loads(json_match.group())
                         if "file_enhancements" in data or "overall_insights" in data:
                             result["ai_enhancements"] = data
-                            logger.info("✅ LOCAL enhancement complete")
+                            logger.info("PASS: LOCAL enhancement complete")
                             return result
                 except json.JSONDecodeError as e:
-                    logger.error(f"❌ Failed to parse LOCAL response as JSON: {e}")
+                    logger.error(f"FAIL: Failed to parse LOCAL response as JSON: {e}")
 
-            logger.warning("⚠️  LOCAL enhancement produced no results")
+            logger.warning("WARNING:  LOCAL enhancement produced no results")
             return result
 
         except Exception as e:
-            logger.error(f"❌ LOCAL enhancement failed: {e}")
+            logger.error(f"FAIL: LOCAL enhancement failed: {e}")
             return result
 
     def _create_local_prompt(self, result: dict) -> str:
@@ -345,7 +345,7 @@ def main():
         with open(args.result_file) as f:
             result = json.load(f)
     except Exception as e:
-        logger.error(f"❌ Failed to load result file: {e}")
+        logger.error(f"FAIL: Failed to load result file: {e}")
         return 1
 
     # Enhance
@@ -357,9 +357,9 @@ def main():
     try:
         with open(output_file, "w") as f:
             json.dump(enhanced_result, f, indent=2)
-        logger.info(f"✅ Enhanced results saved to: {output_file}")
+        logger.info(f"PASS: Enhanced results saved to: {output_file}")
     except Exception as e:
-        logger.error(f"❌ Failed to save results: {e}")
+        logger.error(f"FAIL: Failed to save results: {e}")
         return 1
 
     return 0

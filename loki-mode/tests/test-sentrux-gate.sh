@@ -1,15 +1,13 @@
 #!/usr/bin/env bash
 #===============================================================================
 # Unit tests for autonomy/lib/sentrux-gate.sh (v7.5.14).
-#
-# These tests exercise the parser/JSON-reader contract WITHOUT requiring the
+# # These tests exercise the parser/JSON-reader contract WITHOUT requiring the
 # sentrux binary to be installed. We synthesize a fake `sentrux` on PATH that
 # emits canned outputs matching the real v0.5.7 surface, plus deliberate edge
 # cases (empty stdout, malformed JSON, missing baseline file). The goal is to
 # verify the helper degrades gracefully on every failure mode the integration
 # might hit in the wild.
-#
-# A separate integration test (tests/integration/test_sentrux_real.sh) covers
+# # A separate integration test (tests/integration/test_sentrux_real.sh) covers
 # the real binary against a real fixture.
 #===============================================================================
 

@@ -197,25 +197,25 @@ def install_to_agent(
     # Validate skill directory
     is_valid, error_msg = validate_skill_directory(skill_dir)
     if not is_valid:
-        return False, f"❌ {error_msg}"
+        return False, f"FAIL: {error_msg}"
 
     # Validate agent name
     is_valid, error_msg = validate_agent_name(agent_name)
     if not is_valid:
-        return False, f"❌ {error_msg}"
+        return False, f"FAIL: {error_msg}"
 
     # Get agent installation path
     try:
         agent_base_path = get_agent_path(agent_name.lower())
     except ValueError as e:
-        return False, f"❌ {str(e)}"
+        return False, f"FAIL: {str(e)}"
 
     # Target path: {agent_base_path}/{skill_name}/
     target_path = agent_base_path / skill_name
 
     # Check if already exists
     if target_path.exists() and not force:
-        error_msg = "❌ Skill already installed\n\n"
+        error_msg = "FAIL: Skill already installed\n\n"
         error_msg += f"Location: {target_path}\n\n"
         error_msg += "Options:\n"
         error_msg += f"  1. Overwrite: skill-seekers install-agent {skill_dir} --agent {agent_name} --force\n"
@@ -225,7 +225,7 @@ def install_to_agent(
 
     # Dry run mode - just preview
     if dry_run:
-        msg = "🔍 DRY RUN - No changes will be made\n\n"
+        msg = " DRY RUN - No changes will be made\n\n"
         msg += f"Would install skill: {skill_name}\n"
         msg += f"   Source: {skill_dir}\n"
         msg += f"   Target: {target_path}\n\n"
@@ -263,7 +263,7 @@ def install_to_agent(
     except PermissionError:
         return (
             False,
-            f"❌ Permission denied: {agent_base_path}\n\nTry: sudo mkdir -p {agent_base_path} && sudo chown -R $USER {agent_base_path}",
+            f"FAIL: Permission denied: {agent_base_path}\n\nTry: sudo mkdir -p {agent_base_path} && sudo chown -R $USER {agent_base_path}",
         )
 
     # Copy skill directory
@@ -291,7 +291,7 @@ def install_to_agent(
         shutil.copytree(skill_dir, target_path, ignore=ignore_files)
 
         # Success message
-        msg = "✅ Installation complete!\n\n"
+        msg = "PASS: Installation complete!\n\n"
         msg += f"Skill '{skill_name}' installed to {agent_name}\n"
         msg += f"Location: {target_path}\n\n"
 
@@ -312,10 +312,10 @@ def install_to_agent(
     except PermissionError as e:
         return (
             False,
-            f"❌ Permission denied: {e}\n\nTry: sudo mkdir -p {agent_base_path} && sudo chown -R $USER {agent_base_path}",
+            f"FAIL: Permission denied: {e}\n\nTry: sudo mkdir -p {agent_base_path} && sudo chown -R $USER {agent_base_path}",
         )
     except Exception as e:
-        return False, f"❌ Installation failed: {e}"
+        return False, f"FAIL: Installation failed: {e}"
 
 
 def install_to_all_agents(
@@ -397,10 +397,10 @@ Supported agents:
 
     # Handle 'all' agent
     if args.agent.lower() == "all":
-        print(f"\n📋 Installing skill to all agents: {skill_name}\n")
+        print(f"\n Installing skill to all agents: {skill_name}\n")
 
         if args.dry_run:
-            print("🔍 DRY RUN MODE - No changes will be made\n")
+            print(" DRY RUN MODE - No changes will be made\n")
 
         results = install_to_all_agents(skill_dir, force=args.force, dry_run=args.dry_run)
 
@@ -412,34 +412,34 @@ Supported agents:
         for agent_name, (success, message) in results.items():
             if success:
                 if args.dry_run:
-                    print(f"⏳ Would install to {agent_name}...")
+                    print(f" Would install to {agent_name}...")
                 else:
                     agent_path = get_agent_path(agent_name)
-                    print(f"⏳ Installing to {agent_name}...   ✅ {agent_path / skill_name}")
+                    print(f" Installing to {agent_name}...   PASS: {agent_path / skill_name}")
                 installed_count += 1
             else:
                 # Check if it's a permission error or skip
                 if "Permission denied" in message:
-                    print(f"⏳ Installing to {agent_name}...   ❌ Permission denied")
+                    print(f" Installing to {agent_name}...   FAIL: Permission denied")
                     failed_count += 1
                 elif "does not exist" in message or "SKILL.md not found" in message:
                     # Validation error - only show once
                     print(message)
                     return 1
                 else:
-                    print(f"⏳ Installing to {agent_name}...   ⚠️  Skipped (not installed)")
+                    print(f" Installing to {agent_name}...   WARNING:  Skipped (not installed)")
                     skipped_count += 1
 
         # Summary
-        print("\n📊 Summary:")
+        print("\n Summary:")
         if args.dry_run:
             print(f"   Would install: {installed_count} agents")
         else:
-            print(f"   ✅ Installed: {installed_count} agents")
+            print(f"   PASS: Installed: {installed_count} agents")
         if failed_count > 0:
-            print(f"   ❌ Failed:    {failed_count} agent(s) (permission denied)")
+            print(f"   FAIL: Failed:    {failed_count} agent(s) (permission denied)")
         if skipped_count > 0:
-            print(f"   ⚠️  Skipped:  {skipped_count} agent(s) (not installed)")
+            print(f"   WARNING:  Skipped:  {skipped_count} agent(s) (not installed)")
 
         if not args.dry_run:
             print("\nRestart your agents to load the skill.")
@@ -453,11 +453,11 @@ Supported agents:
     # Single agent installation
     agent_name = args.agent
 
-    print(f"\n📋 Installing skill: {skill_name}")
+    print(f"\n Installing skill: {skill_name}")
     print(f"   Agent:  {agent_name}")
 
     if args.dry_run:
-        print("\n🔍 DRY RUN MODE - No changes will be made\n")
+        print("\n DRY RUN MODE - No changes will be made\n")
 
     success, message = install_to_agent(
         skill_dir, agent_name, force=args.force, dry_run=args.dry_run

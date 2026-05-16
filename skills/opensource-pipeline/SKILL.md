@@ -1,4 +1,4 @@
-﻿---
+---
 name: opensource-pipeline
 description: "Open-source pipeline: fork, sanitize, and package private projects for safe public release. Chains 3 agents (forker, sanitizer, packager). Triggers: '/opensource', 'open source this', 'make this public', 'prepare for open source'."
 origin: ECC
@@ -13,7 +13,7 @@ Safely open-source any project through a 3-stage pipeline: **Fork** (strip secre
 - User says "open source this project" or "make this public"
 - User wants to prepare a private repo for public release
 - User needs to strip secrets before pushing to GitHub
-- User invokes `/opensource fork`, `/opensource verify`, or `/opensource package`
+- User invokes `/opensource fork`,`/opensource verify`, or`/opensource package`
 
 ## Commands
 
@@ -33,7 +33,7 @@ Safely open-source any project through a 3-stage pipeline: **Fork** (strip secre
 
 #### Step 1: Gather Parameters
 
-Resolve the project path. If PROJECT contains `/`, treat as a path (absolute or relative). Otherwise check: current working directory, `$HOME/PROJECT`, then ask the user.
+Resolve the project path. If PROJECT contains `/`, treat as a path (absolute or relative). Otherwise check: current working directory,`$HOME/PROJECT`, then ask the user.
 
 ```
 SOURCE_PATH="<resolved absolute path>"
@@ -181,7 +181,7 @@ gh repo create "{github_org}/{github_repo}" --public --source=. --push --descrip
 
 ### /opensource verify PROJECT
 
-Run sanitizer independently. Resolve path: if PROJECT contains `/`, treat as a path. Otherwise check `$HOME/opensource-staging/PROJECT`, then `$HOME/PROJECT`, then current directory.
+Run sanitizer independently. Resolve path: if PROJECT contains `/`, treat as a path. Otherwise check`$HOME/opensource-staging/PROJECT`, then`$HOME/PROJECT`, then current directory.
 
 ```
 Agent(
@@ -241,7 +241,7 @@ $HOME/opensource-staging/
 - **Never** push to GitHub without user approval
 - **Never** skip the sanitizer â€” it is the safety gate
 - **Never** proceed after a sanitizer FAIL without fixing all critical findings
-- **Never** leave `.env`, `*.pem`, or `credentials.json` in the staging directory
+- **Never** leave `.env`,`*.pem`, or`credentials.json` in the staging directory
 
 ## Best Practices
 

@@ -386,7 +386,6 @@
 - REQ-MILE-08: 새 마일스톤은 new-project와 동일한 흐름을 따라야 합니다(질문 → 연구 → 요구사항 → 로드맵).
 - REQ-MILE-09: 새 마일스톤은 기존 워크플로우 구성을 초기화해서는 안 됩니다.
 
-
 ---
 
 ## 계획 기능
@@ -930,7 +929,7 @@ fix(03-01): correct auth token expiry
 
 **상태표시줄 표시.**
 ```
-[⬆ /gsd-update │] model │ [current task │] directory [█████░░░░░ 50%]
+[ /gsd-update │] model │ [current task │] directory [█████░░░░░ 50%]
 ```
 
 색상 코드: <50% 초록, <65% 노랑, <80% 주황, ≥80% 해골 이모지와 함께 빨강

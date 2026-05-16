@@ -4,11 +4,11 @@ description: Researches a chosen AI framework's official docs to produce impleme
 tools: Read, Write, Bash, Grep, Glob, WebFetch, WebSearch, mcp__context7__*
 color: "#34D399"
 # hooks:
-#   PostToolUse:
-#     - matcher: "Write|Edit"
-#       hooks:
-#         - type: command
-#           command: "echo 'AI-SPEC written' 2>/dev/null || true"
+# PostToolUse:
+# - matcher: "Write|Edit"
+# hooks:
+# - type: command
+# command: "echo 'AI-SPEC written' 2>/dev/null || true"
 ---
 
 <role>

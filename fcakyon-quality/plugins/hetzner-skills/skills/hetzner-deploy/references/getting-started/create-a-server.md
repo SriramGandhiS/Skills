@@ -1,6 +1,6 @@
 # Creating a server
 
-This tutorial covers the process of creating a server using the Hetzner Cloud CLI. It includes creating an SSH Key, 
+This tutorial covers the process of creating a server using the Hetzner Cloud CLI. It includes creating an SSH Key,
 uploading it, creating a Server and then connecting to it via SSH.
 
 ## Prerequisites

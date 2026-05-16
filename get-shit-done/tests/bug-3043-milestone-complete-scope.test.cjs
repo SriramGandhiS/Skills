@@ -11,7 +11,7 @@ describe('bug #3043: milestone complete respects explicit version scope', () => 
       fs.writeFileSync(path.join(tmpDir, '.planning', 'STATE.md'), '---\nmilestone: v3.5\n---\n');
       fs.writeFileSync(
         path.join(tmpDir, '.planning', 'ROADMAP.md'),
-        '# Roadmap\n\n## 🚧 v3.5 Paused\n### Phase 103: old\n### Phase 104: old2\n\n## 🚧 v3.6 Current\n### Phase 108: new\n',
+        '# Roadmap\n\n##  v3.5 Paused\n### Phase 103: old\n### Phase 104: old2\n\n##  v3.6 Current\n### Phase 108: new\n',
       );
       fs.writeFileSync(path.join(tmpDir, '.planning', 'REQUIREMENTS.md'), '# Requirements\n');
 
@@ -42,7 +42,7 @@ describe('bug #3043: milestone complete respects explicit version scope', () => 
       fs.writeFileSync(path.join(tmpDir, '.planning', 'STATE.md'), '---\nmilestone: v1.0\n---\n');
       fs.writeFileSync(
         path.join(tmpDir, '.planning', 'ROADMAP.md'),
-        '# Roadmap\n\n## 🚧 v1.0\n### Phase 1: foundation\n',
+        '# Roadmap\n\n##  v1.0\n### Phase 1: foundation\n',
       );
       fs.writeFileSync(path.join(tmpDir, '.planning', 'REQUIREMENTS.md'), '# Requirements\n');
       fs.mkdirSync(path.join(tmpDir, '.planning', 'phases', '01-foundation'), { recursive: true });

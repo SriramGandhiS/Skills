@@ -135,8 +135,8 @@ log.error("failed_fetch_market slug={}", slug, ex);
 
 ## Null 处理
 
-* 仅在不可避免时接受 `@Nullable`；否则使用 `@NonNull`
-* 在输入上使用 Bean 验证（`@NotNull`, `@NotBlank`）
+* 仅在不可避免时接受 `@Nullable`；否则使用`@NonNull`
+* 在输入上使用 Bean 验证（`@NotNull`,`@NotBlank`）
 
 ## 测试期望
 

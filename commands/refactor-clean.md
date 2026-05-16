@@ -21,7 +21,7 @@ Run analysis tools based on project type:
 
 If no tool is available, use Grep to find exports with zero imports:
 ```
-# Find exports, then check if they're imported anywhere
+## Find exports, then check if they're imported anywhere
 ```
 
 ## Step 2: Categorize Findings
@@ -47,7 +47,7 @@ For each SAFE item:
 ## Step 4: Handle CAUTION Items
 
 Before deleting CAUTION items:
-- Search for dynamic imports: `import()`, `require()`, `__import__`
+- Search for dynamic imports: `import()`,`require()`,`__import__`
 - Search for string references: route names, component names in configs
 - Check if exported from a public package API
 - Verify no external consumers (check dependents if published)

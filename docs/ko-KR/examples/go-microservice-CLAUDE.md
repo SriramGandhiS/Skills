@@ -14,8 +14,8 @@
 ### Go 규칙
 
 - Effective Go와 Go Code Review Comments 가이드를 따를 것
-- 오류 래핑에 `errors.New` / `fmt.Errorf`와 `%w` 사용 — 오류를 문자열 매칭하지 않기
-- `init()` 함수 사용 금지 — `main()`이나 생성자에서 명시적으로 초기화
+- 오류 래핑에 `errors.New`/`fmt.Errorf`와`%w` 사용 — 오류를 문자열 매칭하지 않기
+- `init()`함수 사용 금지 —`main()`이나 생성자에서 명시적으로 초기화
 - 전역 가변 상태 금지 — 생성자를 통해 의존성 전달
 - Context는 반드시 첫 번째 매개변수이며 모든 레이어를 통해 전파
 
@@ -24,7 +24,7 @@
 - 모든 쿼리는 `queries/`에 순수 SQL로 작성 — sqlc가 타입 안전한 Go 코드를 생성
 - 마이그레이션은 `migrations/`에 golang-migrate 사용 — 데이터베이스를 직접 변경하지 않기
 - 다중 단계 작업에는 `pgx.Tx`를 통한 트랜잭션 사용
-- 모든 쿼리에 parameterized placeholder (`$1`, `$2`) 사용 — 문자열 포매팅 사용 금지
+- 모든 쿼리에 parameterized placeholder (`$1`,`$2`) 사용 — 문자열 포매팅 사용 금지
 
 ### 오류 처리
 
@@ -59,7 +59,7 @@ func toGRPCError(err error) error {
 - 외부로 공개되는 타입과 함수에는 반드시 doc 주석 작성
 - 함수는 50줄 이하로 유지 — 헬퍼 함수로 분리
 - 여러 케이스가 있는 모든 로직에 table-driven 테스트 사용
-- signal 채널에는 `bool`이 아닌 `struct{}` 사용
+- signal 채널에는 `bool`이 아닌`struct{}` 사용
 
 ## 파일 구조
 
@@ -199,18 +199,18 @@ func TestUserService_Create(t *testing.T) {
 ## 환경 변수
 
 ```bash
-# 데이터베이스
+## 데이터베이스
 DATABASE_URL=postgres://user:pass@localhost:5432/myservice?sslmode=disable
 
-# gRPC
+## gRPC
 GRPC_PORT=50051
 REST_PORT=8080
 
-# 인증
+## 인증
 JWT_SECRET=           # 프로덕션에서는 vault에서 로드
 TOKEN_EXPIRY=24h
 
-# 관측 가능성
+## 관측 가능성
 LOG_LEVEL=info        # debug, info, warn, error
 OTEL_ENDPOINT=        # OpenTelemetry 콜렉터
 ```
@@ -226,42 +226,42 @@ OTEL_ENDPOINT=        # OpenTelemetry 콜렉터
 ### 테스트 명령어
 
 ```bash
-# 단위 테스트 (빠름, 외부 의존성 없음)
+## 단위 테스트 (빠름, 외부 의존성 없음)
 go test ./internal/... -short -count=1
 
-# 통합 테스트 (testcontainers를 위해 Docker 필요)
+## 통합 테스트 (testcontainers를 위해 Docker 필요)
 go test ./internal/repository/... -count=1 -timeout 120s
 
-# 전체 테스트와 커버리지
+## 전체 테스트와 커버리지
 go test ./... -coverprofile=coverage.out -count=1
 go tool cover -func=coverage.out  # 요약
 go tool cover -html=coverage.out  # 브라우저
 
-# Race detector
+## Race detector
 go test ./... -race -count=1
 ```
 
 ## ECC 워크플로우
 
 ```bash
-# 계획 수립
+## 계획 수립
 /plan "Add rate limiting to user endpoints"
 
-# 개발
+## 개발
 /go-test                  # Go 전용 패턴으로 TDD
 
-# 리뷰
+## 리뷰
 /go-review                # Go 관용구, 오류 처리, 동시성
 /security-scan            # 시크릿 및 취약점 점검
 
-# 머지 전 확인
+## 머지 전 확인
 go vet ./...
 staticcheck ./...
 ```
 
 ## Git 워크플로우
 
-- `feat:` 새 기능, `fix:` 버그 수정, `refactor:` 코드 변경
+- `feat:`새 기능,`fix:`버그 수정,`refactor:` 코드 변경
 - `main`에서 feature 브랜치 생성, PR 필수
-- CI: `go vet`, `staticcheck`, `go test -race`, `golangci-lint`
+- CI: `go vet`,`staticcheck`,`go test -race`,`golangci-lint`
 - 배포: CI에서 Docker 이미지 빌드, Kubernetes에 배포

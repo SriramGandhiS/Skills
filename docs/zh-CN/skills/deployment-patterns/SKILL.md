@@ -49,7 +49,7 @@ origin: ECC
 Blue  (v1) ← 流量
 Green (v2)   空闲，运行新版本
 
-# 验证后：
+## 验证后：
 Blue  (v1)   空闲（转为备用状态）
 Green (v2) ← 流量
 ```
@@ -66,11 +66,11 @@ Green (v2) ← 流量
 v1：95% 的流量
 v2：5% 的流量（金丝雀）
 
-# 如果指标表现良好：
+## 如果指标表现良好：
 v1：50% 的流量
 v2：50% 的流量
 
-# 最终：
+## 最终：
 v2：100% 的流量
 ```
 
@@ -83,13 +83,13 @@ v2：100% 的流量
 ### 多阶段 Dockerfile (Node.js)
 
 ```dockerfile
-# Stage 1: Install dependencies
+## Stage 1: Install dependencies
 FROM node:22-alpine AS deps
 WORKDIR /app
 COPY package.json package-lock.json ./
 RUN npm ci --production=false
 
-# Stage 2: Build
+## Stage 2: Build
 FROM node:22-alpine AS builder
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
@@ -97,7 +97,7 @@ COPY . .
 RUN npm run build
 RUN npm prune --production
 
-# Stage 3: Production image
+## Stage 3: Production image
 FROM node:22-alpine AS runner
 WORKDIR /app
 
@@ -112,7 +112,7 @@ ENV NODE_ENV=production
 EXPOSE 3000
 
 HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
-  CMD wget --no-verbose --tries=1 --spider http://localhost:3000/health || exit 1
+  CMD wget --no-verbose --tries=1 --spider <http://localhost:3000/health> || exit 1
 
 CMD ["node", "dist/server.js"]
 ```
@@ -135,7 +135,7 @@ USER appuser
 COPY --from=builder /server /server
 
 EXPOSE 8080
-HEALTHCHECK --interval=30s --timeout=3s CMD wget -qO- http://localhost:8080/health || exit 1
+HEALTHCHECK --interval=30s --timeout=3s CMD wget -qO- <http://localhost:8080/health> || exit 1
 CMD ["/server"]
 ```
 
@@ -168,7 +168,7 @@ CMD ["gunicorn", "config.wsgi:application", "--bind", "0.0.0.0:8000", "--workers
 ### Docker 最佳实践
 
 ```
-# 良好实践
+## 良好实践
 - 使用特定版本标签（node:22-alpine，而非 node:latest）
 - 采用多阶段构建以最小化镜像体积
 - 以非 root 用户身份运行
@@ -177,7 +177,7 @@ CMD ["gunicorn", "config.wsgi:application", "--bind", "0.0.0.0:8000", "--workers
 - 添加 HEALTHCHECK 指令
 - 在 docker-compose 或 k8s 中设置资源限制
 
-# 不良实践
+## 不良实践
 - 以 root 身份运行
 - 使用 :latest 标签
 - 在单个 COPY 层中复制整个仓库
@@ -333,14 +333,14 @@ startupProbe:
 ### 十二要素应用模式
 
 ```bash
-# All config via environment variables — never in code
+## All config via environment variables — never in code
 DATABASE_URL=postgres://user:pass@host:5432/db
 REDIS_URL=redis://host:6379/0
 API_KEY=${API_KEY}           # injected by secrets manager
 LOG_LEVEL=info
 PORT=3000
 
-# Environment-specific behavior
+## Environment-specific behavior
 NODE_ENV=production          # or staging, development
 APP_ENV=production           # explicit app environment
 ```
@@ -368,16 +368,16 @@ export const env = envSchema.parse(process.env);
 ### 即时回滚
 
 ```bash
-# Docker/Kubernetes: point to previous image
+## Docker/Kubernetes: point to previous image
 kubectl rollout undo deployment/app
 
-# Vercel: promote previous deployment
+## Vercel: promote previous deployment
 vercel rollback
 
-# Railway: redeploy previous commit
+## Railway: redeploy previous commit
 railway up --commit <previous-sha>
 
-# Database: rollback migration (if reversible)
+## Database: rollback migration (if reversible)
 npx prisma migrate resolve --rolled-back <migration-name>
 ```
 

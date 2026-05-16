@@ -8,7 +8,7 @@ This command invokes the **cpp-build-resolver** agent to incrementally fix C++ b
 
 ## What This Command Does
 
-1. **Run Diagnostics**: Execute `cmake --build`, `clang-tidy`, `cppcheck`
+1. **Run Diagnostics**: Execute `cmake --build`,`clang-tidy`,`cppcheck`
 2. **Parse Errors**: Group by file and sort by severity
 3. **Fix Incrementally**: One error at a time
 4. **Verify Each Fix**: Re-run build after each change
@@ -26,13 +26,13 @@ Use `/cpp-build` when:
 ## Diagnostic Commands Run
 
 ```bash
-# CMake configure
+## CMake configure
 cmake -B build -S .
 
-# Build
+## Build
 cmake --build build 2>&1 | head -100
 
-# Static analysis (if available)
+## Static analysis (if available)
 clang-tidy src/*.cpp -- -std=c++17
 cppcheck --enable=all src/
 ```
@@ -43,7 +43,7 @@ cppcheck --enable=all src/
 User: /cpp-build
 
 Agent:
-# C++ Build Resolution
+## C++ Build Resolution
 
 ## Initial Diagnostics
 
@@ -69,7 +69,7 @@ Cause: Missing include
 
 ```bash
 $ cmake --build build
-# 2 errors remaining
+## 2 errors remaining
 ```
 
 ## Fix 2: No Matching Function
@@ -86,7 +86,7 @@ process(std::stoi(params.get("count")));
 
 ```bash
 $ cmake --build build
-# 1 error remaining
+## 1 error remaining
 ```
 
 ## Fix 3: Missing Return
@@ -107,7 +107,7 @@ std::optional<User> getUser(const std::string& id) {
 
 ```bash
 $ cmake --build build
-# Build successful!
+## Build successful!
 ```
 
 ## Final Verification
@@ -136,11 +136,11 @@ Build Status: PASS: SUCCESS
 
 | Error | Typical Fix |
 |-------|-------------|
-| `undeclared identifier` | Add `#include` or fix typo |
+| `undeclared identifier`| Add`#include` or fix typo |
 | `no matching function` | Fix argument types or add overload |
 | `undefined reference` | Link library or add implementation |
-| `multiple definition` | Use `inline` or move to .cpp |
-| `incomplete type` | Replace forward decl with `#include` |
+| `multiple definition`| Use`inline` or move to .cpp |
+| `incomplete type`| Replace forward decl with`#include` |
 | `no member named X` | Fix member name or include |
 | `cannot convert X to Y` | Add appropriate cast |
 | `CMake Error` | Fix CMakeLists.txt configuration |

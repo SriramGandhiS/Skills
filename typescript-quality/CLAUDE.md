@@ -83,7 +83,7 @@ Write facts, not fluff. Every word must justify its existence.
 
 Banned Elements
 
-- No emojis (❌ 🚀 ✅ 📖 etc.)
+- No emojis (FAIL:  PASS:  etc.)
 - No marketing language or praise
 - No "thank you" pleasantries
 - No explanatory preambles ("Here is...", "This is...")

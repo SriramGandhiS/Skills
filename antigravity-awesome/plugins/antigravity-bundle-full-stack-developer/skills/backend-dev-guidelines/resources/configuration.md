@@ -18,20 +18,20 @@ Complete guide to managing configuration in backend microservices.
 ### Why UnifiedConfig?
 
 **Problems with process.env:**
-- ❌ No type safety
-- ❌ No validation
-- ❌ Hard to test
-- ❌ Scattered throughout code
-- ❌ No default values
-- ❌ Runtime errors for typos
+- FAIL: No type safety
+- FAIL: No validation
+- FAIL: Hard to test
+- FAIL: Scattered throughout code
+- FAIL: No default values
+- FAIL: Runtime errors for typos
 
 **Benefits of unifiedConfig:**
-- ✅ Type-safe configuration
-- ✅ Single source of truth
-- ✅ Validated at startup
-- ✅ Easy to test with mocks
-- ✅ Clear structure
-- ✅ Fallback to environment variables
+- PASS: Type-safe configuration
+- PASS: Single source of truth
+- PASS: Validated at startup
+- PASS: Easy to test with mocks
+- PASS: Clear structure
+- PASS: Fallback to environment variables
 
 ---
 
@@ -40,11 +40,11 @@ Complete guide to managing configuration in backend microservices.
 ### The Rule
 
 ```typescript
-// ❌ NEVER DO THIS
+// FAIL: NEVER DO THIS
 const timeout = parseInt(process.env.TIMEOUT_MS || '5000');
 const dbHost = process.env.DB_HOST || 'localhost';
 
-// ✅ ALWAYS DO THIS
+// PASS: ALWAYS DO THIS
 import { config } from './config/unifiedConfig';
 const timeout = config.timeouts.default;
 const dbHost = config.database.host;

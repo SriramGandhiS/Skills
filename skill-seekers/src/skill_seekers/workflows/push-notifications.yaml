@@ -13,14 +13,14 @@ stages:
     enabled: true
     prompt: >
       Document push notification architecture.
-      
+
       Identify:
       1. Push service (FCM, APNs, OneSignal, etc.)
       2. Token management
       3. Payload structure
       4. Backend integration
       5. Notification categories/types
-      
+
       Output JSON with:
       - "push_service": service provider
       - "token_mgmt": token handling
@@ -34,14 +34,14 @@ stages:
     enabled: true
     prompt: >
       Document notification permission handling.
-      
+
       Cover:
       1. Permission request timing
       2. Pre-permission prompts
       3. Handling denials gracefully
       4. Re-requesting permissions
       5. Platform differences (iOS vs Android)
-      
+
       Output JSON with:
       - "request_timing": when to ask
       - "pre_prompts": pre-permission UI
@@ -55,14 +55,14 @@ stages:
     enabled: true
     prompt: >
       Document notification handling in app.
-      
+
       Include:
       1. Foreground notification display
       2. Background/killed state handling
       3. Notification actions/buttons
       4. Deep linking from notifications
       5. Notification grouping
-      
+
       Output JSON with:
       - "foreground_handling": in-app handling
       - "background_handling": background processing
@@ -76,14 +76,14 @@ stages:
     enabled: true
     prompt: >
       Document rich notification features.
-      
+
       Cover:
       1. Images/media in notifications
       2. Notification extensions (iOS)
       3. Interactive notifications
       4. Progress notifications
       5. Custom UI in notifications
-      
+
       Output JSON with:
       - "media": image/video support
       - "interactive": user interaction

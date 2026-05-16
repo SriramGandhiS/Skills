@@ -39,7 +39,7 @@ O agente planner vai:
 User: /plan I need to add real-time notifications when markets resolve
 
 Agent (planner):
-# Implementation Plan: Real-Time Market Resolution Notifications
+## Implementation Plan: Real-Time Market Resolution Notifications
 
 ## Requirements Restatement
 - Send notifications to users when markets they're watching resolve

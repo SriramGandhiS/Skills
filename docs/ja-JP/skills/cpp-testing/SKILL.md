@@ -148,7 +148,7 @@ TEST(ServiceTest, SendsNotifications) {
 ### CMake/CTest クイックスタート
 
 ```cmake
-# CMakeLists.txt（抜粋）
+## CMakeLists.txt（抜粋）
 cmake_minimum_required(VERSION 3.20)
 project(example LANGUAGES CXX)
 
@@ -156,11 +156,11 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 include(FetchContent)
-# プロジェクトロックされたバージョンを優先します。タグを使用する場合は、プロジェクトポリシーに従って固定されたバージョンを使用します。
+## プロジェクトロックされたバージョンを優先します。タグを使用する場合は、プロジェクトポリシーに従って固定されたバージョンを使用します。
 set(GTEST_VERSION v1.17.0) # プロジェクトポリシーに合わせて調整します。
 FetchContent_Declare(
   googletest
-  URL Google Test framework (official repository) https://github.com/google/googletest/archive/refs/tags/${GTEST_VERSION}.zip
+  URL Google Test framework (official repository) <https://github.com/google/googletest/archive/refs/tags/${GTEST_VERSION}.zip>
 )
 FetchContent_MakeAvailable(googletest)
 
@@ -274,7 +274,7 @@ endif()
 
 - テストを決定論的かつ分離されたものに保つ
 - グローバル変数よりも依存性注入を優先する
-- 前提条件には `ASSERT_*` を使用し、複数のチェックには `EXPECT_*` を使用する
+- 前提条件には `ASSERT_*`を使用し、複数のチェックには`EXPECT_*` を使用する
 - CTest ラベルまたはディレクトリでユニットテストと統合テストを分離する
 - メモリとレース検出のために CI でサニタイザーを実行する
 

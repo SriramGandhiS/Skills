@@ -538,7 +538,7 @@ Source: `providers/claude.sh:101`, `providers/codex.sh:106`, `providers/gemini.s
   fast          sonnet (upgraded)  low              low                 single model*   single model**
 
   * Cline: returns LOKI_CLINE_MODEL (default: "default"), single externally-configured model
-  ** Aider: returns LOKI_AIDER_MODEL (default: "claude-3.7-sonnet"), single externally-configured model
+**Aider: returns LOKI_AIDER_MODEL (default: "claude-3.7-sonnet"), single externally-configured model
 
   Note: Claude default tier mapping upgrades development->opus and fast->sonnet.
   With LOKI_ALLOW_HAIKU=true: planning=opus, development=sonnet, fast=haiku (original mapping).

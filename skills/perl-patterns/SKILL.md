@@ -1,4 +1,4 @@
-﻿---
+---
 name: perl-patterns
 description: Modern Perl 5.36+ idioms, best practices, and conventions for building robust, maintainable Perl applications.
 origin: ECC
@@ -27,14 +27,14 @@ Apply these patterns as a bias toward modern Perl 5.36+ defaults: signatures, ex
 A single `use v5.36` replaces the old boilerplate and enables strict, warnings, and subroutine signatures.
 
 ```perl
-# Good: Modern preamble
+## Good: Modern preamble
 use v5.36;
 
 sub greet($name) {
     say "Hello, $name!";
 }
 
-# Bad: Legacy boilerplate
+## Bad: Legacy boilerplate
 use strict;
 use warnings;
 use feature 'say', 'signatures';
@@ -53,7 +53,7 @@ Use signatures for clarity and automatic arity checking.
 ```perl
 use v5.36;
 
-# Good: Signatures with defaults
+## Good: Signatures with defaults
 sub connect_db($host, $port = 5432, $timeout = 30) {
     # $host is required, others have defaults
     return DBI->connect("dbi:Pg:host=$host;port=$port", undef, undef, {
@@ -62,12 +62,12 @@ sub connect_db($host, $port = 5432, $timeout = 30) {
     });
 }
 
-# Good: Slurpy parameter for variable args
+## Good: Slurpy parameter for variable args
 sub log_message($level, @details) {
     say "[$level] " . join(' ', @details);
 }
 
-# Bad: Manual argument unpacking
+## Bad: Manual argument unpacking
 sub connect_db {
     my ($host, $port, $timeout) = @_;
     $port    //= 5432;
@@ -104,12 +104,12 @@ my $data = {
     ],
 };
 
-# Good: Postfix dereferencing
+## Good: Postfix dereferencing
 my @users = $data->{users}->@*;
 my @roles = $data->{users}[0]{roles}->@*;
 my %first = $data->{users}[0]->%*;
 
-# Bad: Circumfix dereferencing (harder to read in chains)
+## Bad: Circumfix dereferencing (harder to read in chains)
 my @users = @{ $data->{users} };
 my @roles = @{ $data->{users}[0]{roles} };
 ```
@@ -178,7 +178,7 @@ sub divide($x, $y) {
 Prefer Moo for lightweight, modern OO. Use Moose only when its metaprotocol is needed.
 
 ```perl
-# Good: Moo class
+## Good: Moo class
 package User;
 use Moo;
 use Types::Standard qw(Str Int ArrayRef);
@@ -199,14 +199,14 @@ sub greet($self) {
 
 1;
 
-# Usage
+## Usage
 my $user = User->new(
     name  => 'Alice',
     email => 'alice@example.com',
     roles => ['admin', 'user'],
 );
 
-# Bad: Blessed hashref (no validation, no accessors)
+## Bad: Blessed hashref (no validation, no accessors)
 package User;
 sub new {
     my ($class, %args) = @_;
@@ -259,7 +259,7 @@ say $p->magnitude;  # 5
 ```perl
 use v5.36;
 
-# Good: Named captures with /x for readability
+## Good: Named captures with /x for readability
 my $log_re = qr{
     ^ (?<timestamp> \d{4}-\d{2}-\d{2} \s \d{2}:\d{2}:\d{2} )
     \s+ \[ (?<level> \w+ ) \]
@@ -271,7 +271,7 @@ if ($line =~ $log_re) {
     say "Message: $+{message}";
 }
 
-# Bad: Positional captures (hard to maintain)
+## Bad: Positional captures (hard to maintain)
 if ($line =~ /^(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2})\s+\[(\w+)\]\s+(.+)$/) {
     say "Time: $1, Level: $2";
 }
@@ -282,7 +282,7 @@ if ($line =~ /^(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2})\s+\[(\w+)\]\s+(.+)$/) {
 ```perl
 use v5.36;
 
-# Good: Compile once, use many
+## Good: Compile once, use many
 my $email_re = qr/^[A-Za-z0-9._%+-]+\@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
 
 sub validate_emails(@emails) {
@@ -297,7 +297,7 @@ sub validate_emails(@emails) {
 ```perl
 use v5.36;
 
-# Hash and array references
+## Hash and array references
 my $config = {
     database => {
         host => 'localhost',
@@ -306,18 +306,18 @@ my $config = {
     },
 };
 
-# Safe deep access (returns undef if any level missing)
+## Safe deep access (returns undef if any level missing)
 my $port = $config->{database}{port};           # 5432
 my $missing = $config->{cache}{host};           # undef, no error
 
-# Hash slices
+## Hash slices
 my %subset;
 @subset{qw(host port)} = @{$config->{database}}{qw(host port)};
 
-# Array slices
+## Array slices
 my @first_two = $config->{database}{options}->@[0, 1];
 
-# Multi-variable for loop (experimental in 5.36, stable in 5.40)
+## Multi-variable for loop (experimental in 5.36, stable in 5.40)
 use feature 'for_list';
 no warnings 'experimental::for_list';
 for my ($key, $val) (%$config) {
@@ -332,7 +332,7 @@ for my ($key, $val) (%$config) {
 ```perl
 use v5.36;
 
-# Good: Three-arg open with autodie (core module, eliminates 'or die')
+## Good: Three-arg open with autodie (core module, eliminates 'or die')
 use autodie;
 
 sub read_file($path) {
@@ -343,7 +343,7 @@ sub read_file($path) {
     return $content;
 }
 
-# Bad: Two-arg open (shell injection risk, see perl-security)
+## Bad: Two-arg open (shell injection risk, see perl-security)
 open FH, $path;            # NEVER do this
 open FH, "< $path";        # Still bad â€” user data in mode string
 ```
@@ -358,7 +358,7 @@ my $file = path('config', 'app.json');
 my $content = $file->slurp_utf8;
 $file->spew_utf8($new_content);
 
-# Iterate directory
+## Iterate directory
 for my $child (path('src')->children(qr/\.pl$/)) {
     say $child->basename;
 }
@@ -441,7 +441,7 @@ carton exec -- perl bin/myapp  # Run with local deps
 ```
 
 ```perl
-# cpanfile
+## cpanfile
 requires 'Moo', '>= 2.005';
 requires 'Path::Tiny';
 requires 'JSON::MaybeXS';
@@ -457,44 +457,44 @@ on test => sub {
 
 | Legacy Pattern | Modern Replacement |
 |---|---|
-| `use strict; use warnings;` | `use v5.36;` |
-| `my ($x, $y) = @_;` | `sub foo($x, $y) { ... }` |
-| `@{ $ref }` | `$ref->@*` |
-| `%{ $ref }` | `$ref->%*` |
-| `open FH, "< $file"` | `open my $fh, '<:encoding(UTF-8)', $file` |
-| `blessed hashref` | `Moo` class with types |
-| `$1, $2, $3` | `$+{name}` (named captures) |
-| `eval { }; if ($@)` | `Try::Tiny` or native `try/catch` (5.40+) |
-| `BEGIN { require Exporter; }` | `use Exporter 'import';` |
+| `use strict; use warnings;`|`use v5.36;` |
+| `my ($x, $y) = @_;`|`sub foo($x, $y) { ... }` |
+| `@{ $ref }`|`$ref->@*` |
+| `%{ $ref }`|`$ref->%*` |
+| `open FH, "< $file"`|`open my $fh, '<:encoding(UTF-8)', $file` |
+| `blessed hashref`|`Moo` class with types |
+| `$1, $2, $3`|`$+{name}` (named captures) |
+| `eval { }; if ($@)`|`Try::Tiny`or native`try/catch` (5.40+) |
+| `BEGIN { require Exporter; }`|`use Exporter 'import';` |
 | Manual file ops | `Path::Tiny` |
-| `blessed($o) && $o->isa('X')` | `$o isa 'X'` (5.32+) |
-| `builtin::true / false` | `use builtin 'true', 'false';` (5.36+, experimental) |
+| `blessed($o) && $o->isa('X')`|`$o isa 'X'` (5.32+) |
+| `builtin::true / false`|`use builtin 'true', 'false';` (5.36+, experimental) |
 
 ## Anti-Patterns
 
 ```perl
-# 1. Two-arg open (security risk)
+## 1. Two-arg open (security risk)
 open FH, $filename;                     # NEVER
 
-# 2. Indirect object syntax (ambiguous parsing)
+## 2. Indirect object syntax (ambiguous parsing)
 my $obj = new Foo(bar => 1);            # Bad
 my $obj = Foo->new(bar => 1);           # Good
 
-# 3. Excessive reliance on $_
+## 3. Excessive reliance on $_
 map { process($_) } grep { validate($_) } @items;  # Hard to follow
 my @valid = grep { validate($_) } @items;           # Better: break it up
 my @results = map { process($_) } @valid;
 
-# 4. Disabling strict refs
+## 4. Disabling strict refs
 no strict 'refs';                        # Almost always wrong
 ${"My::Package::$var"} = $value;         # Use a hash instead
 
-# 5. Global variables as configuration
+## 5. Global variables as configuration
 our $TIMEOUT = 30;                       # Bad: mutable global
 use constant TIMEOUT => 30;              # Better: constant
-# Best: Moo attribute with default
+## Best: Moo attribute with default
 
-# 6. String eval for module loading
+## 6. String eval for module loading
 eval "require $module";                  # Bad: code injection risk
 eval "use $module";                      # Bad
 use Module::Runtime 'require_module';    # Good: safe module loading

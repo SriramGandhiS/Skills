@@ -6,12 +6,12 @@
 
 | 指标 | 覆盖率命令 |
 |-----------|-----------------|
-| `jest.config.*` 或 `package.json` jest | `npx jest --coverage --coverageReporters=json-summary` |
-| `vitest.config.*` | `npx vitest run --coverage` |
-| `pytest.ini` / `pyproject.toml` pytest | `pytest --cov=src --cov-report=json` |
-| `Cargo.toml` | `cargo llvm-cov --json` |
-| `pom.xml` 与 JaCoCo | `mvn test jacoco:report` |
-| `go.mod` | `go test -coverprofile=coverage.out ./...` |
+| `jest.config.*`或`package.json`jest |`npx jest --coverage --coverageReporters=json-summary` |
+| `vitest.config.*`|`npx vitest run --coverage` |
+| `pytest.ini`/`pyproject.toml`pytest |`pytest --cov=src --cov-report=json` |
+| `Cargo.toml`|`cargo llvm-cov --json` |
+| `pom.xml`与 JaCoCo |`mvn test jacoco:report` |
+| `go.mod`|`go test -coverprofile=coverage.out ./...` |
 
 ## 步骤 2：分析覆盖率报告
 
@@ -34,7 +34,7 @@
 
 ### 测试生成规则
 
-* 将测试放在源代码旁边：`foo.ts` → `foo.test.ts`（或遵循项目惯例）
+* 将测试放在源代码旁边：`foo.ts`→`foo.test.ts`（或遵循项目惯例）
 * 使用项目中现有的测试模式（导入风格、断言库、模拟方法）
 * 模拟外部依赖项（数据库、API、文件系统）
 * 每个测试都应该是独立的 — 测试之间没有共享的可变状态

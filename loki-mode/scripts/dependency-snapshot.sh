@@ -1,17 +1,12 @@
 #!/usr/bin/env bash
-#
-# dependency-snapshot.sh
-#
-# Produce a one-shot reproducibility record of the resolved dependency tree
+# # dependency-snapshot.sh
+# # Produce a one-shot reproducibility record of the resolved dependency tree
 # for the current repository. Writes:
-#
-#   .loki/tracking/dependency-snapshot-<YYYY-MM-DD>.json
-#
-# Format: JSON object with two top-level keys:
-#   "npm" : output of `npm ls --json --all` from the repo root
-#   "bun" : output of `bun pm ls --json` (if bun is on PATH; otherwise null)
-#
-# Uses set -euo pipefail. Tolerates `npm ls` peer-dep warnings (npm exits
+# # .loki/tracking/dependency-snapshot-<YYYY-MM-DD>.json
+# # Format: JSON object with two top-level keys:
+# "npm" : output of `npm ls --json --all` from the repo root
+# "bun" : output of `bun pm ls --json` (if bun is on PATH; otherwise null)
+# # Uses set -euo pipefail. Tolerates `npm ls` peer-dep warnings (npm exits
 # non-zero when peers are missing even though the JSON is valid).
 
 set -euo pipefail

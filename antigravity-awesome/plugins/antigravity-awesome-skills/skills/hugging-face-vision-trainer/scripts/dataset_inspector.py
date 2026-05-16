@@ -717,7 +717,7 @@ def main():
             print(f"    • Min Objects: {ann_info['min_objects']}")
             print(f"    • Max Objects: {ann_info['max_objects']}")
     elif od_info["separate_bbox_columns"] and od_info["separate_category_columns"]:
-        print(f"  ⚠ Separate bbox and category columns found:")
+        print(f"  WARNING: Separate bbox and category columns found:")
         print(f"    BBox columns: {', '.join(od_info['separate_bbox_columns'])}")
         print(f"    Category columns: {', '.join(od_info['separate_category_columns'])}")
         print(f"  Action: These need to be combined (see mapping code below)")
@@ -753,7 +753,7 @@ def main():
                 if bv.get("format_hint"):
                     print(f"    • Format: {bv['format_hint']}")
                 if bv.get("warning"):
-                    print(f"    ⚠ {bv['warning']}")
+                    print(f"    WARNING: {bv['warning']}")
             else:
                 print(f"    ✗ Invalid bbox: {bv.get('error', 'unknown error')}")
     else:

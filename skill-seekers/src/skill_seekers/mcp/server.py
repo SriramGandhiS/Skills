@@ -222,10 +222,10 @@ if __name__ == "__main__":
         # Run the new server
         server_fastmcp.main()
     except ImportError as e:
-        print(f"❌ Error: Could not import server_fastmcp: {e}", file=sys.stderr)
+        print(f"FAIL: Error: Could not import server_fastmcp: {e}", file=sys.stderr)
         print("Ensure the package is installed correctly:", file=sys.stderr)
         print("  pip install -e .", file=sys.stderr)
         sys.exit(1)
     except Exception as e:
-        print(f"❌ Error running server: {e}", file=sys.stderr)
+        print(f"FAIL: Error running server: {e}", file=sys.stderr)
         sys.exit(1)

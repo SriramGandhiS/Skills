@@ -39,7 +39,7 @@ REPEAT  → 다음 테스트 케이스
 User: /go-test 이메일 주소를 검증하는 함수가 필요합니다
 
 Agent:
-# TDD 세션: 이메일 검증기
+## TDD 세션: 이메일 검증기
 
 ## 1단계: 인터페이스 정의
 
@@ -215,19 +215,19 @@ func setupTestDB(t *testing.T) *sql.DB {
 ## 커버리지 커맨드
 
 ```bash
-# 기본 커버리지
+## 기본 커버리지
 go test -cover ./...
 
-# 커버리지 프로파일
+## 커버리지 프로파일
 go test -coverprofile=coverage.out ./...
 
-# 브라우저에서 확인
+## 브라우저에서 확인
 go tool cover -html=coverage.out
 
-# 함수별 커버리지
+## 함수별 커버리지
 go tool cover -func=coverage.out
 
-# 레이스 감지와 함께
+## 레이스 감지와 함께
 go test -race -cover ./...
 ```
 

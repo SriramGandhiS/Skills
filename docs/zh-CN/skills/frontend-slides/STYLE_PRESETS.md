@@ -166,12 +166,12 @@ img, .image-container {
 
 ## 视口检查清单
 
-* 每个 `.slide` 都有 `height: 100vh`、`height: 100dvh` 和 `overflow: hidden`
+* 每个 `.slide`都有`height: 100vh`、`height: 100dvh`和`overflow: hidden`
 * 所有排版都使用 `clamp()`
 * 所有间距都使用 `clamp()` 或视口单位
 * 图片有 `max-height` 约束
-* 网格使用 `auto-fit` + `minmax()` 进行适配
-* 短高度断点存在于 `700px`、`600px` 和 `500px`
+* 网格使用 `auto-fit`+`minmax()` 进行适配
+* 短高度断点存在于 `700px`、`600px`和`500px`
 * 如果感觉任何内容拥挤，请拆分幻灯片
 
 ## 情绪到预设的映射
