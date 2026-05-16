@@ -121,7 +121,7 @@ class _AstraflowBaseProvider(LLMProvider):
         return self._models.copy()
 
     def validate_config(self) -> bool:
-        return bool(self.api_key)
+        return bool(self.api_key and self.api_key != "sk-not-set")
 
     def get_default_model(self) -> str:
         return self.default_model
