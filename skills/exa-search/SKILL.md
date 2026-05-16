@@ -34,7 +34,7 @@ Exa MCP server must be configured. Add to `~/.claude.json`:
 ```
 
 Get an API key at [exa.ai](https://exa.ai).
-This repo's current Exa setup documents the tool surface exposed here: `web_search_exa`and`get_code_context_exa`.
+This repo's current Exa setup documents the tool surface exposed here: `web_search_exa`and ` get_code_context_exa`.
 If your Exa server exposes additional tools, verify their exact names before depending on them in docs or prompts.
 
 ## Core Tools
@@ -54,7 +54,7 @@ web_search_exa(query: "latest AI developments 2026", numResults: 5)
 | `numResults` | number | 8 | Number of results |
 | `type`| string |`auto` | Search mode |
 | `livecrawl`| string |`fallback` | Prefer live crawling when needed |
-| `category`| string | none | Optional focus such as`company`or`research paper` |
+| `category`| string | none | Optional focus such as`company` or `research paper` |
 
 ### get_code_context_exa
 Find code examples and documentation from GitHub, Stack Overflow, and docs sites.

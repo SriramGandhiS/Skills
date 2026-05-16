@@ -58,7 +58,7 @@ go mod tidy -v
 | `cannot use X as type Y` | Type mismatch, pointer/value | Type conversion or dereference |
 | `X does not implement Y` | Missing method | Implement method with correct receiver |
 | `import cycle not allowed` | Circular dependency | Extract shared types to new package |
-| `cannot find package`| Missing dependency |`go get pkg@version`or`go mod tidy` |
+| `cannot find package`| Missing dependency |`go get pkg@version` or `go mod tidy` |
 | `missing return` | Incomplete control flow | Add return statement |
 | `declared but not used` | Unused var/import | Remove or use blank identifier |
 | `multiple-value in single-value context`| Unhandled return |`result, err := func()` |

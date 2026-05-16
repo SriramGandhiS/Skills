@@ -105,7 +105,7 @@ python3 -c "import re; print(re.search(r'your_pattern', 'test text'))"
 
 - **Location**: `.claude/` directory in project root
 - **Naming**: `.claude/hookify.{descriptive-name}.local.md`
-- **Gitignore**: Add `.claude/*.local.md`to`.gitignore`
+- **Gitignore**: Add `.claude/*.local.md`to `.gitignore`
 
 ## Commands
 

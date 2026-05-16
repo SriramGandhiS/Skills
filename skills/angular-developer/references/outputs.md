@@ -81,6 +81,6 @@ export class LegacyExample {
 ## Best Practices
 
 - **Prefer `output()`**: Use the function-based`output()`instead of`@Output()`and`EventEmitter`.
-- **Naming**: Use `camelCase`for output names. Avoid prefixing with`on`(e.g., use`valueChanged`instead of`onValueChanged`).
+- **Naming**: Use `camelCase`for output names. Avoid prefixing with` on`(e.g., use `valueChanged`instead of`onValueChanged`).
 - **No DOM Bubbling**: Angular custom events do not bubble up the DOM tree like native events.
-- **Avoid Collisions**: Do not choose names that collide with native DOM events (like `click`or`submit`).
+- **Avoid Collisions**: Do not choose names that collide with native DOM events (like `click`or ` submit`).

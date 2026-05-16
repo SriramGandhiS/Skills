@@ -152,7 +152,7 @@ class MarketBuilder {
 
 ## CI Komutları
 
-- Maven: `mvn -T 4 test`veya`mvn verify`
+- Maven: `mvn -T 4 test`veya ` mvn verify`
 - Gradle: `./gradlew test jacocoTestReport`
 
 **Unutmayın**: Testleri hızlı, izole ve deterministik tutun. Uygulama detaylarını değil, davranışı test edin.

@@ -61,7 +61,7 @@ origin: ECC
 
 | 变量 | 描述 |
 |----------|-------------|
-| `JIRA_URL`| 您的 Jira 实例 URL（例如，`https://yourorg.atlassian.net`） |
+| `JIRA_URL`| 您的 Jira 实例 URL（例如，`<https://yourorg.atlassian.net`）> |
 | `JIRA_EMAIL` | 您的 Atlassian 账户邮箱 |
 | `JIRA_API_TOKEN` | 来自 id.atlassian.com 的 API 令牌 |
 

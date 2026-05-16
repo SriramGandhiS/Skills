@@ -194,7 +194,7 @@ Do NOT do this: `<input min="1" [formField]>`or`<input [value]="val" [formField]
 
 ## Reactive Forms
 
-**Do NOT import** `FormControl`,`FormGroup`,`FormArray`, or`FormBuilder`from`@angular/forms`. Signal Forms replace these concepts entirely.
+**Do NOT import** `FormControl`,`FormGroup`,`FormArray`, or`FormBuilder`from `@angular/forms`. Signal Forms replace these concepts entirely.
 Signal forms does NOT have a builder.
 
 ## Accessing State
@@ -372,7 +372,7 @@ track $index) {
 
 Do NOT use `[disabled]`on an input.`[formField]` will do this.
 Do NOT use `[readonly]`on an input.`[formField]` will do this.
-If you need to disable or readonly a field, use `disabled()`or`readonly()` rules in the schema.
+If you need to disable or readonly a field, use `disabled()`or` readonly()` rules in the schema.
 
 ### Async Validation
 
@@ -519,9 +519,9 @@ form(
 | **Array length**       | `form.items().length`|`form.items.length` (structural)                            |
 | **Multi-select array** | `<select [formField]="form.tags">` (string[]) | Use checkboxes for array fields                             |
 | **readonly attribute** | `<input readonly [formField]>`| Use`readonly()` rule in schema                             |
-| **min/max attributes** | `<input min="1" max="10">`| Use`min()`and`max()` rules in schema                     |
+| **min/max attributes** | `<input min="1" max="10">`| Use`min()` and`max()` rules in schema                     |
 | **value binding**      | `<input [value]="val">`| Do NOT use`[value]`with`[formField]`                     |
-| **when option**        | `pattern(p.x, /.../, {when: ...})`|`when`only works with`required()`                         |
+| **when option**        | `pattern(p.x, /.../, {when: ...})`|`when` only works with `required()`                         |
 | **Submit callback**    | `submit(form, () => { ... })`|`submit(form, async () => { ... })`                         |
 | **Async params**       | `params: s.field`|`params: ({ value }) => value()`                            |
 | **Async onError**      | Omitting `onError`|`onError`is REQUIRED in`validateAsync`                    |
@@ -529,7 +529,7 @@ form(
 | **applyEach args**     | `applyEach(s.items, (item, index) => ...)`|`applyEach(s.items, (item) => ...)`                         |
 | **Nested @for**        | `$parent.$index`| Use`let outerIndex = $index`                               |
 | **FormState import**   | `import { FormState }`|`FormState`does not exist, use`FieldState`                |
-| **Null in model**      | `signal({ name: null })`|`signal({ name: '' })`or`signal({ age: 0 })`              |
+| **Null in model**      | `signal({ name: null })`|`signal({ name: '' })` or`signal({ age: 0 })`              |
 | **Validate syntax**    | `validate(s.field, { value } => ...)`|`validate(s.field, ({ value }) => ...)`                     |
 | **Checkbox Array**     | `[formField]="form.tags"`(string[])          | Checkboxes ONLY bind to`boolean`                           |
 

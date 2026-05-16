@@ -54,7 +54,7 @@ job_id = conn.transcode(
 |-----------|------|---------|-------------|
 | `source`|`str` | required | URL of the video to transcode (preferably a downloadable URL) |
 | `callback_url`|`str` | required | URL to receive the callback when transcoding completes |
-| `mode`|`TranscodeMode`|`TranscodeMode.economy`| Transcoding speed:`economy`or`lightning` |
+| `mode`|`TranscodeMode`|`TranscodeMode.economy`| Transcoding speed:`economy` or `lightning` |
 | `video_config`|`VideoConfig`|`VideoConfig()` | Video encoding settings |
 | `audio_config`|`AudioConfig`|`AudioConfig()` | Audio encoding settings |
 
@@ -121,7 +121,7 @@ coll = conn.get_collection()
 | `coll.generate_music(prompt, duration=5)`|`Audio` | Generate music with AI |
 | `coll.generate_sound_effect(prompt, duration=2)`|`Audio` | Generate sound effect |
 | `coll.generate_voice(text, voice_name="Default")`|`Audio` | Generate speech from text |
-| `coll.generate_text(prompt, model_name="basic", response_type="text")`|`dict`| LLM text generation â€” access result via`["output"]` |
+| `coll.generate_text(prompt, model_name="basic", response_type="text")`|`dict`| LLM text generation â€” access result via `["output"]` |
 | `coll.dub_video(video_id, language_code)`|`Video` | Dub video into another language |
 | `coll.record_meeting(meeting_url, bot_name, ...)`|`Meeting` | Record a live meeting |
 | `coll.create_capture_session(...)`|`CaptureSession` | Create a capture session (see [capture-reference.md](capture-reference.md)) |
@@ -170,7 +170,7 @@ video = coll.get_video(video_id)
 
 | Method | Returns | Description |
 |--------|---------|-------------|
-| `video.generate_stream(timeline=None)`|`str`| Generate stream URL (optional timeline of`[(start, end)]` tuples) |
+| `video.generate_stream(timeline=None)`|`str`| Generate stream URL (optional timeline of `[(start, end)]` tuples) |
 | `video.play()`|`str` | Open stream in browser, returns player URL |
 | `video.index_spoken_words(language_code=None, force=False)`|`None`| Index speech for search. Use`force=True` to skip if already indexed. |
 | `video.index_scenes(extraction_type, prompt, extraction_config, metadata, model_name, name, scenes, callback_url)`|`str` | Index visual scenes (returns scene_index_id) |
@@ -195,7 +195,7 @@ video = coll.get_video(video_id)
 
 Convert a video to a different aspect ratio with optional smart object tracking. Processing is server-side.
 
-> **Warning:** Reframe is a slow server-side operation. It can take several minutes for long videos and may time out. Always use `start`/`end`to limit the segment, or pass`callback_url` for async processing.
+> **Warning:** Reframe is a slow server-side operation. It can take several minutes for long videos and may time out. Always use `start`/`end` to limit the segment, or pass `callback_url` for async processing.
 
 ```python
 from videodb import ReframeMode
@@ -381,9 +381,9 @@ results = video.search(
 
 > **Note:** `filter`is an explicit named parameter in`video.search()`.`scene_index_id`is passed through`**kwargs` to the API.
 >
-> **Important:** `video.search()`raises`InvalidRequestError`with message`"No results found"`when there are no matches. Always wrap search calls in try/except. For scene search, use`score_threshold=0.3` or higher to filter low-relevance noise.
+> **Important:** `video.search()`raises`InvalidRequestError `with message`"No results found"`when there are no matches. Always wrap search calls in try/except. For scene search, use`score_threshold=0.3` or higher to filter low-relevance noise.
 
-For scene search, use `search_type=SearchType.semantic`with`index_type=IndexType.scene`. Pass`scene_index_id` when targeting a specific scene index. See [search.md](search.md) for details.
+For scene search, use `search_type=SearchType.semantic`with ` index_type=IndexType.scene`. Pass`scene_index_id` when targeting a specific scene index. See [search.md](search.md) for details.
 
 ## SearchResult Object
 

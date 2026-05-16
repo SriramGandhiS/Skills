@@ -51,7 +51,7 @@ const { data: comments } = await useFetch(`/api/articles/${route.params.slug}/co
 
 ## Route Rules
 
-Prefer `routeRules`in`nuxt.config.ts` for rendering and caching strategy:
+Prefer `routeRules`in ` nuxt.config.ts` for rendering and caching strategy:
 
 ```ts
 export default defineNuxtConfig({
@@ -69,7 +69,7 @@ export default defineNuxtConfig({
 - `swr`: serve cached content and revalidate in the background
 - `isr`: incremental static regeneration on supported platforms
 - `ssr: false`: client-rendered route
-- `cache`or`redirect`: Nitro-level response behavior
+- `cache`or ` redirect`: Nitro-level response behavior
 
 Pick route rules per route group, not globally. Marketing pages, catalogs, dashboards, and APIs usually need different strategies.
 
@@ -94,7 +94,7 @@ Pick route rules per route group, not globally. Marketing pages, catalogs, dashb
 ## Review Checklist
 
 - First SSR render and hydrated client render produce the same markup
-- Page data uses `useFetch`or`useAsyncData`, not top-level`$fetch`
+- Page data uses `useFetch`or ` useAsyncData`, not top-level`$fetch`
 - Non-critical data is lazy and has explicit loading UI
 - Route rules match the page's SEO and freshness requirements
 - Heavy interactive islands are lazy-loaded or lazily hydrated

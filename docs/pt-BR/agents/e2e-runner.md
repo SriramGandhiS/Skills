@@ -64,7 +64,7 @@ npx playwright show-report                 # Ver relatório HTML
 
 ### 3. Executar
 - Executar localmente 3-5 vezes para verificar instabilidade
-- Colocar testes instáveis em quarentena com `test.fixme()`ou`test.skip()`
+- Colocar testes instáveis em quarentena com `test.fixme()`ou` test.skip()`
 - Fazer upload de artefatos para CI
 
 ## Princípios Chave

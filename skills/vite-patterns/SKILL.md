@@ -10,7 +10,7 @@ Build tool and dev server patterns for Vite 8+ projects. Covers configuration, e
 
 ## When to Use
 
-- Configuring `vite.config.ts`or`vite.config.js`
+- Configuring `vite.config.ts`or ` vite.config.js`
 - Setting up environment variables or `.env` files
 - Configuring dev server proxy for API backends
 - Optimizing build output (chunks, minification, assets)
@@ -88,8 +88,8 @@ Most plugin needs are covered by a handful of well-maintained packages. Reach fo
 | `@vitejs/plugin-react-swc` | React HMR + Fast Refresh via SWC | Default for React apps (faster than Babel variant) |
 | `@vitejs/plugin-react` | React HMR + Fast Refresh via Babel | Only if you need Babel plugins (emotion, MobX decorators) |
 | `@vitejs/plugin-vue` | Vue 3 SFC support | Vue apps |
-| `vite-plugin-checker`| Runs`tsc`+ ESLint in worker thread with HMR overlay | **Any TypeScript app** â€” Vite does NOT type-check during`vite build` |
-| `vite-tsconfig-paths`| Honors`tsconfig.json` `paths`aliases | Any time you already have aliases in`tsconfig.json` |
+| `vite-plugin-checker`| Runs`tsc`+ ESLint in worker thread with HMR overlay | **Any TypeScript app** â€” Vite does NOT type-check during `vite build` |
+| `vite-tsconfig-paths`| Honors`tsconfig.json` `paths` aliases | Any time you already have aliases in `tsconfig.json` |
 | `vite-plugin-dts`| Emits`.d.ts` files in library mode | Publishing TypeScript libraries |
 | `vite-plugin-svgr` | Imports SVGs as React components | React apps using SVGs as components |
 | `rollup-plugin-visualizer`| Bundle treemap/sunburst report | Periodic bundle size audits (use`enforce: 'post'`) |
@@ -118,7 +118,7 @@ function myPlugin(): Plugin {
 
 **Key hooks:** `transform`(modify source),`resolveId`+`load`(virtual modules),`transformIndexHtml`(inject into HTML),`configureServer`(add dev middleware),`hotUpdate`(custom HMR â€” replaces deprecated`handleHotUpdate` in v7+).
 
-**Virtual modules** use the `\0`prefix convention â€”`resolveId`returns`'\0virtual:my-id'`so other plugins skip it. User code imports`'virtual:my-id'`.
+**Virtual modules** use the `\0`prefix convention â€”`resolveId`returns `'\0virtual:my-id'`so other plugins skip it. User code imports`'virtual:my-id'`.
 
 For full plugin API, see [vite.dev/guide/api-plugin](https://vite.dev/guide/api-plugin). Use `vite-plugin-inspect` during development to debug the transform pipeline.
 
@@ -299,7 +299,7 @@ server: {
 
 #### Profiling Slow Dev Servers
 
-When `vite dev`feels slow, start with`vite --profile`, interact with the app, then press`p+enter`to save a`.cpuprofile`. Load it in [Speedscope](https://www.speedscope.app) to find which plugins are eating time â€” usually`buildStart`,`config`, or`configResolved` hooks in community plugins.
+When `vite dev`feels slow, start with`vite --profile`, interact with the app, then press`p+enter`to save a`.cpuprofile`. Load it in [Speedscope](https://www.speedscope.app) to find which plugins are eating time â€” usually`buildStart`,`config`, or `configResolved` hooks in community plugins.
 
 ### Library Mode
 

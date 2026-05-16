@@ -81,7 +81,7 @@ generate(
 | Param | Type | Options | Notes |
 |-------|------|---------|-------|
 | `prompt` | string | required | Describe what you want |
-| `image_size` | string | `square`, `portrait_4_3`, `landscape_16_9`, `portrait_16_9`, `landscape_4_3` | Aspect ratio |
+| `image_size`| string |`square`,`portrait_4_3`,`landscape_16_9`,`portrait_16_9`,`landscape_4_3` | Aspect ratio |
 | `num_images` | number | 1-4 | How many to generate |
 | `seed` | number | any integer | Reproducibility |
 | `guidance_scale` | number | 1-20 | How closely to follow the prompt (higher = more literal) |
@@ -90,10 +90,10 @@ generate(
 Use Nano Banana 2 with an input image for inpainting, outpainting, or style transfer:
 
 ```
-# First upload the source image
+## First upload the source image
 upload(file_path: "/path/to/image.png")
 
-# Then generate with image input
+## Then generate with image input
 generate(
   model_name: "fal-ai/nano-banana-2",
   input: {
@@ -169,8 +169,8 @@ generate(
 | Param | Type | Options | Notes |
 |-------|------|---------|-------|
 | `prompt` | string | required | Describe the video |
-| `duration` | string | `"5s"`, `"10s"` | Video length |
-| `aspect_ratio` | string | `"16:9"`, `"9:16"`, `"1:1"` | Frame ratio |
+| `duration`| string |`"5s"`,`"10s"` | Video length |
+| `aspect_ratio`| string |`"16:9"`,`"9:16"`,`"1:1"` | Frame ratio |
 | `seed` | number | any integer | Reproducibility |
 | `image_url` | string | URL | Source image for image-to-video |
 
@@ -231,13 +231,13 @@ with open("output.mp3", "wb") as f:
 If VideoDB is configured, use its generative audio:
 
 ```python
-# Voice generation
+## Voice generation
 audio = coll.generate_voice(text="Your narration here", voice="alloy")
 
-# Music generation
+## Music generation
 music = coll.generate_music(prompt="upbeat electronic background music", duration=30)
 
-# Sound effects
+## Sound effects
 sfx = coll.generate_sound_effect(prompt="thunder crack followed by rain")
 ```
 

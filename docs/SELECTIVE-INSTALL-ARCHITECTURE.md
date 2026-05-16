@@ -96,7 +96,7 @@ the installer architecture feel settled.
 
 ### Current Strengths
 
-- install intent is now explicit through `--profile`and`--modules`
+- install intent is now explicit through `--profile`and `--modules`
 - request parsing and request normalization are now split from the CLI shell
 - target root resolution is already adapterized
 - lifecycle commands now use durable install-state instead of guessing
@@ -431,7 +431,7 @@ steps should be:
 1. split `install-executor.js` into request normalization, operation planning,
    and execution modules
 2. move target-specific strategy decisions into adapter-owned planning methods
-3. make `repair`and`uninstall` operate on typed operation handlers rather than
+3. make `repair`and ` uninstall` operate on typed operation handlers rather than
    only plain `copy-file` records
 4. teach manifests about install strategy and ownership so the planner no
    longer depends on path heuristics

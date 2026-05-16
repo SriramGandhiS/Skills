@@ -165,7 +165,7 @@ img, .image-container {
 
 ## Viewport Checklist
 
-- every `.slide`has`height: 100vh`,`height: 100dvh`, and`overflow: hidden`
+- every `.slide`has ` height: 100vh`,`height: 100dvh`, and`overflow: hidden`
 - all typography uses `clamp()`
 - all spacing uses `clamp()` or viewport units
 - images have `max-height` constraints

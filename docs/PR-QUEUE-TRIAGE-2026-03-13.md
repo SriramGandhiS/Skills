@@ -52,7 +52,7 @@ Remaining findings:
 
 1. Medium: skipped automated sessions still create homunculus project state
    before the new guards exit.
-   `observe.sh`resolves`cwd` and sources project detection before reaching the
+   `observe.sh`resolves ` cwd` and sources project detection before reaching the
    automated-session guard block, so `detect-project.sh` still creates
    `projects/<id>/...`directories and updates`projects.json` for sessions that
    later exit early.

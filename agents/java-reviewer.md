@@ -33,8 +33,8 @@ cat pom.xml 2>/dev/null || cat build.gradle 2>/dev/null || cat build.gradle.kts 
 Then proceed:
 1. Run `git diff -- '*.java'` to see recent Java file changes
 2. Run the appropriate build check:
-   - **[SPRING]**: `./mvnw verify -q`or`./gradlew check`
-   - **[QUARKUS]**: `./mvnw verify -q`or`./gradlew check`
+   - **[SPRING]**: `./mvnw verify -q`or `./gradlew check`
+   - **[QUARKUS]**: `./mvnw verify -q`or `./gradlew check`
 3. Focus on modified `.java` files
 4. Begin review immediately
 
@@ -45,12 +45,12 @@ You DO NOT refactor or rewrite code — you report findings only.
 ## Review Priorities
 
 ### CRITICAL -- Security
-- **SQL injection**: String concatenation in queries — use bind parameters (`:param`or`?`)
+- **SQL injection**: String concatenation in queries — use bind parameters (`:param`or `?`)
   - **[SPRING]**: Watch for `@Query`,`JdbcTemplate`,`NamedParameterJdbcTemplate`
   - **[QUARKUS]**: Watch for `@Query`, Panache custom queries,`EntityManager.createNativeQuery()`
-- **Command injection**: User-controlled input passed to `ProcessBuilder`or`Runtime.exec()` — validate and sanitise before invocation
+- **Command injection**: User-controlled input passed to `ProcessBuilder`or `Runtime.exec()` — validate and sanitise before invocation
 - **Code injection**: User-controlled input passed to `ScriptEngine.eval(...)` — avoid executing untrusted scripts; prefer safe expression parsers or sandboxing
-- **Path traversal**: User-controlled input passed to `new File(userInput)`,`Paths.get(userInput)`, or`FileInputStream(userInput)`without`getCanonicalPath()` validation
+- **Path traversal**: User-controlled input passed to `new File(userInput)`,`Paths.get(userInput)`, or`FileInputStream(userInput)`without` getCanonicalPath()` validation
 - **Hardcoded secrets**: API keys, passwords, tokens in source
   - **[SPRING]**: Must come from environment, `application.yml`, or secrets manager (Vault, AWS Secrets Manager)
   - **[QUARKUS]**: Must come from `application.properties`, environment variables, or a secrets manager (e.g.`quarkus-vault`)
@@ -58,8 +58,8 @@ You DO NOT refactor or rewrite code — you report findings only.
   - **[SPRING]**: `log.info(...)` via SLF4J
   - **[QUARKUS]**: `Log.info(...)`or`@Logged` interceptors
 - **Missing input validation**: Request bodies accepted without Bean Validation
-  - **[SPRING]**: Raw `@RequestBody`without`@Valid`
-  - **[QUARKUS]**: Raw `@RestForm`/`@BeanParam`/ request body without`@Valid`or`@ConvertGroup`
+  - **[SPRING]**: Raw `@RequestBody`without `@Valid`
+  - **[QUARKUS]**: Raw `@RestForm`/`@BeanParam`/ request body without`@Valid`or `@ConvertGroup`
 - **CSRF disabled without justification**: Stateless JWT APIs may disable/omit it but must document why
   - **[QUARKUS]**: Form-based endpoints must use `quarkus-csrf-reactive`
 
@@ -79,7 +79,7 @@ If any CRITICAL security issue is found, stop and escalate to `security-reviewer
 - **Dependency injection style**:
   - **[SPRING]**: `@Autowired` on fields is a code smell — constructor injection is required
   - **[QUARKUS]**: Bare field references expecting CDI — must use `@Inject` or constructor injection
-- **[QUARKUS] `@Singleton`vs`@ApplicationScoped`**:`@Singleton`beans are not proxied and break lazy initialization and interception — prefer`@ApplicationScoped` unless explicitly needed
+- **[QUARKUS] `@Singleton`vs `@ApplicationScoped`**:`@Singleton`beans are not proxied and break lazy initialization and interception — prefer`@ApplicationScoped` unless explicitly needed
 - **Business logic in controllers/resources**: Must delegate to the service layer immediately
 - **`@Transactional` on wrong layer**: Must be on service layer, not controller/resource or repository
   - **[SPRING]**: Missing `@Transactional(readOnly = true)` on read-only service methods
@@ -88,21 +88,21 @@ If any CRITICAL security issue is found, stop and escalate to `security-reviewer
 - **[QUARKUS] Blocking call on reactive thread**: Calling blocking I/O (JDBC, file I/O, `Thread.sleep()`) from a`@NonBlocking`endpoint or`Uni`/`Multi`pipeline — use`@Blocking`,`Uni.createFrom().item(() -> ...)`with`.runSubscriptionOn(executor)`, or the reactive client
 
 ### HIGH -- JPA / Relational Database
-- **N+1 query problem**: `FetchType.EAGER`on collections — use`JOIN FETCH`or`@EntityGraph`/`@NamedEntityGraph`
+- **N+1 query problem**: `FetchType.EAGER`on collections — use`JOIN FETCH`or`@EntityGraph `/`@NamedEntityGraph`
 - **Unbounded list endpoints**:
-  - **[SPRING]**: Returning `List<T>`without`Pageable`and`Page<T>`
+  - **[SPRING]**: Returning `List<T>`without`Pageable `and`Page<T>`
   - **[QUARKUS]**: Returning `List<T>`without`PanacheQuery.page(Page.of(...))`
 - **Missing `@Modifying`**: Any`@Query`that mutates data requires`@Modifying`+`@Transactional`
-- **Dangerous cascade**: `CascadeType.ALL`with`orphanRemoval = true` — confirm intent is deliberate
-- **[QUARKUS] Active record misuse**: Mixing `PanacheEntity`and`PanacheRepository` in the same bounded context — pick one and stay consistent
+- **Dangerous cascade**: `CascadeType.ALL`with` orphanRemoval = true` — confirm intent is deliberate
+- **[QUARKUS] Active record misuse**: Mixing `PanacheEntity`and `PanacheRepository` in the same bounded context — pick one and stay consistent
 
 ### HIGH -- Panache MongoDB [QUARKUS only]
 - **Missing codec or serialisation config**: Custom types in documents without a registered `Codec` or proper BSON annotation — causes silent serialisation failures
 - **Unbounded `listAll()`/`findAll()`**: Using`PanacheMongoEntity.listAll()`or`PanacheMongoRepository.listAll()`without pagination — use`.find(query).page(Page.of(index, size))`
 - **No index on query fields**: Querying by fields not covered by a MongoDB index — define indexes via `@MongoEntity(collection = "...")`+ migration scripts or`createIndex()` at startup
-- **ObjectId vs custom ID confusion**: Using `String`id fields without explicit`@BsonId`or`@MongoEntity`configuration — leads to`_id`mapping issues; prefer`ObjectId` or document the custom ID strategy
+- **ObjectId vs custom ID confusion**: Using `String`id fields without explicit`@BsonId`or `@MongoEntity`configuration — leads to`_id`mapping issues; prefer`ObjectId` or document the custom ID strategy
 - **Blocking MongoDB client on reactive thread**: Using the classic `MongoClient`(blocking) in a reactive pipeline — use`ReactiveMongoClient`and return`Uni<T>`/`Multi<T>`
-- **Active record misuse**: Mixing `PanacheMongoEntity`and`PanacheMongoRepository` in the same bounded context — pick one and stay consistent
+- **Active record misuse**: Mixing `PanacheMongoEntity`and `PanacheMongoRepository` in the same bounded context — pick one and stay consistent
 - **Missing `@Transactional`awareness**: MongoDB multi-document transactions require an explicit`ClientSession` — Panache MongoDB does not auto-manage transactions like Hibernate ORM; document the consistency guarantees
 
 ### MEDIUM -- NoSQL General
@@ -117,14 +117,14 @@ If any CRITICAL security issue is found, stop and escalate to `security-reviewer
   - **[SPRING]**: `@Service`/`@Component`
   - **[QUARKUS]**: `@ApplicationScoped`/`@Singleton`
 - **Unbounded async execution**:
-  - **[SPRING]**: `CompletableFuture`or`@Async`without a custom`Executor` — default creates unbounded threads
-  - **[QUARKUS]**: `ExecutorService.submit()`or`@ActivateRequestContext`with`@Async`without a managed`ManagedExecutor`
+  - **[SPRING]**: `CompletableFuture`or `@Async`without a custom`Executor` — default creates unbounded threads
+  - **[QUARKUS]**: `ExecutorService.submit()`or`@ActivateRequestContext `with`@Async`without a managed`ManagedExecutor`
 - **Blocking `@Scheduled`**: Long-running scheduled methods that block the scheduler thread
   - **[QUARKUS]**: Use `concurrentExecution = SKIP` or offload to a worker thread
 - **[QUARKUS] Reactive stream misuse**: Building `Uni`/`Multi` pipelines that subscribe more than once or share mutable state between subscribers
 
 ### MEDIUM -- Java Idioms and Performance
-- **String concatenation in loops**: Use `StringBuilder`or`String.join`
+- **String concatenation in loops**: Use `StringBuilder`or `String.join`
 - **Raw type usage**: Unparameterised generics (`List`instead of`List<T>`)
 - **Missed pattern matching**: `instanceof` check followed by explicit cast — use pattern matching (Java 16+)
 - **Null returns from service layer**: Prefer `Optional<T>` over returning null

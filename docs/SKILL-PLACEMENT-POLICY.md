@@ -83,7 +83,7 @@ Scope: Curated paths only. All `paths` in modules must exist in the repo.
 
 ### Scripts That Use Generated Roots
 
-`scripts/skills-health.js`,`scripts/lib/skill-evolution/health.js`, session hooks: they probe`~/.claude/skills/learned`and`~/.claude/skills/imported`. Missing directories are treated as empty; no errors.
+`scripts/skills-health.js`,`scripts/lib/skill-evolution/health.js`, session hooks: they probe`~/.claude/skills/learned`and `~/.claude/skills/imported`. Missing directories are treated as empty; no errors.
 
 ## Publishable vs Local-Only
 

@@ -10,7 +10,7 @@ npm publication, plugin tag, marketplace submission, or announcement post.
 | Upstream main | `6c8e909d630d233370160c10dad113b82002102c` |
 | Git remote | `https://github.com/affaan-m/everything-claude-code.git` |
 | Evidence scope | Current `main` after PR #1944, PR #1945, issue #1946 triage, PR #1947 supply-chain protection, AgentShield PR #87, ITO-57 sync, and operator dashboard refresh |
-| Local status caveat | `git status --short --branch`showed`## main...origin/main`plus unrelated untracked`docs/drafts/` |
+| Local status caveat | `git status --short --branch`showed `## main...origin/main`plus unrelated untracked`docs/drafts/` |
 
 The actual release operator should repeat all publish-facing checks from the
 final release commit with a strictly clean checkout before publishing.
@@ -28,7 +28,7 @@ final release commit with a strictly clean checkout before publishing.
 
 | Item | Result |
 | --- | --- |
-| PR #1944 | Merged statusline ANSI palette update as `50ac061f9e72d7daa137f1bd08760cf74e9b577d`; targeted`node tests/hooks/ecc-statusline.test.js`and`node scripts/ci/validate-hooks.js` passed before merge |
+| PR #1944 | Merged statusline ANSI palette update as `50ac061f9e72d7daa137f1bd08760cf74e9b577d`; targeted`node tests/hooks/ecc-statusline.test.js` and `node scripts/ci/validate-hooks.js` passed before merge |
 | PR #1945 | Merged `recsys-pipeline-architect`community skill as`9e973b29fb1a2a0aeb9e6980017b67c3ddb05201`; maintainer patches synced catalog counts and removed emoji blocked by Unicode safety |
 | Issue #1946 | Closed as triaged with a corrected maintainer comment; Linear `ITO-60` now tracks GateGuard proactive fact-forcing preflight UX |
 | PR #1947 | Merged scheduled supply-chain watch/advisory-source evidence as `4093d1bb7a14db1b4d4ea5bd00f2073baf94bfb0`; trunk now has the TanStack/Mini Shai-Hulud/node-ipc IOC scan plus advisory-source report surfaces wired into scheduled watch evidence |

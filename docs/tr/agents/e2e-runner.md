@@ -64,7 +64,7 @@ npx playwright show-report                 # HTML raporu görüntüle
 
 ### 3. Çalıştır
 - Kararsızlığı kontrol etmek için yerel olarak 3-5 kez çalıştırın
-- Kararsız testleri `test.fixme()`veya`test.skip()` ile karantinaya alın
+- Kararsız testleri `test.fixme()`veya` test.skip()` ile karantinaya alın
 - Artifact'ları CI'a yükleyin
 
 ## Anahtar Prensipler

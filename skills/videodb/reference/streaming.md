@@ -98,7 +98,7 @@ stream_url = timeline.generate_stream()
 print(f"Composed stream: {stream_url}")
 ```
 
-**Important:** `add_inline()`only accepts`VideoAsset`. Use`add_overlay()`for`AudioAsset`,`ImageAsset`, and`TextAsset`.
+**Important:** `add_inline()`only accepts`VideoAsset`. Use`add_overlay()` for`AudioAsset `,`ImageAsset`, and`TextAsset`.
 
 For detailed timeline editing, see [editor.md](editor.md).
 
@@ -400,7 +400,7 @@ print(f"Event recap: {stream_url}")
 - **On-demand compilation**: Streams are compiled server-side when requested. The first play may have a brief compilation delay; subsequent plays of the same composition are cached.
 - **Caching**: Calling `video.generate_stream()` a second time without arguments returns the cached stream URL rather than recompiling.
 - **Segment streams**: `video.generate_stream(timeline=[(start, end)])`is the fastest way to stream a specific clip without building a full`Timeline` object.
-- **Inline vs overlay**: `add_inline()`only accepts`VideoAsset`and places assets sequentially on the main track.`add_overlay()`accepts`AudioAsset`,`ImageAsset`, and`TextAsset` and layers them on top at a given start time.
-- **TextStyle defaults**: `TextStyle`defaults to`font='Sans'`,`fontcolor='black'`. Use`boxcolor`(not`bgcolor`) for background color on text.
-- **Combine with generation**: Use `coll.generate_music(prompt, duration)`and`coll.generate_image(prompt, aspect_ratio)` to create assets for timeline compositions.
+- **Inline vs overlay**: `add_inline()`only accepts`VideoAsset`and places assets sequentially on the main track.`add_overlay()`accepts`AudioAsset `,`ImageAsset`, and`TextAsset` and layers them on top at a given start time.
+- **TextStyle defaults**: `TextStyle`defaults to`font='Sans'`,`fontcolor='black'`. Use`boxcolor `(not`bgcolor`) for background color on text.
+- **Combine with generation**: Use `coll.generate_music(prompt, duration)`and` coll.generate_image(prompt, aspect_ratio)` to create assets for timeline compositions.
 - **Playback**: `.play()` opens the stream URL in the default system browser. For programmatic use, work with the URL string directly.

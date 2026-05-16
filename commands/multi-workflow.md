@@ -80,7 +80,7 @@ EOF",
 | Planning | `~/.claude/.ccg/prompts/codex/architect.md`|`~/.claude/.ccg/prompts/gemini/architect.md` |
 | Review | `~/.claude/.ccg/prompts/codex/reviewer.md`|`~/.claude/.ccg/prompts/gemini/reviewer.md` |
 
-**Session Reuse**: Each call returns `SESSION_ID: xxx`, use`resume xxx`subcommand for subsequent phases (note:`resume`, not`--resume`).
+**Session Reuse**: Each call returns `SESSION_ID: xxx`, use`resume xxx`subcommand for subsequent phases (note:`resume`, not `--resume`).
 
 **Parallel Calls**: Use `run_in_background: true`to start, wait for results with`TaskOutput`. **Must wait for all models to return before proceeding to next phase**.
 

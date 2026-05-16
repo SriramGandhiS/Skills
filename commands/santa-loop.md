@@ -100,7 +100,7 @@ gemini -p "$(cat "$PROMPT_FILE")" -m gemini-2.5-pro
 rm -f "$PROMPT_FILE"
 ```
 
-**Claude Agent fallback** (only if neither `codex`nor`gemini` is installed)
+**Claude Agent fallback** (only if neither `codex`nor ` gemini` is installed)
 Launch a second Claude Agent (subagent_type: `code-reviewer`, model:`opus`). Log a warning that both reviewers share the same model family — true model diversity was not achieved but context isolation is still enforced.
 
 In all cases, the reviewer must return the same structured JSON verdict as Reviewer A.

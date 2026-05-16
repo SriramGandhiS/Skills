@@ -39,7 +39,7 @@ Typical triggers:
 
 Examples:
 
-- keep a reusable graph primitive as `social-graph-ranker`, but make broader workflow layers`lead-intelligence`or`connections-optimizer`
+- keep a reusable graph primitive as `social-graph-ranker`, but make broader workflow layers`lead-intelligence` or `connections-optimizer`
 - prefer ECC-native names like `product-capability` over vague imported planning labels if the scope changed materially
 
 ## Dependency Policy

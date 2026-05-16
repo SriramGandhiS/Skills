@@ -17,23 +17,23 @@ Use when: adopting Bun, migrating from Node, writing or debugging Bun scripts/te
 ## How It Works
 
 - **Runtime**: Drop-in Node-compatible runtime (built on JavaScriptCore, implemented in Zig).
-- **Package manager**: `bun install` is significantly faster than npm/yarn. Lockfile is `bun.lock` (text) by default in current Bun; older versions used `bun.lockb` (binary).
+- **Package manager**: `bun install`is significantly faster than npm/yarn. Lockfile is`bun.lock`(text) by default in current Bun; older versions used`bun.lockb` (binary).
 - **Bundler**: Built-in bundler and transpiler for apps and libraries.
 - **Test runner**: Built-in `bun test` with Jest-like API.
 
-**Migration from Node**: Replace `node script.js` with `bun run script.js` or `bun script.js`. Run `bun install` in place of `npm install`; most packages work. Use `bun run` for npm scripts; `bun x` for npx-style one-off runs. Node built-ins are supported; prefer Bun APIs where they exist for better performance.
+**Migration from Node**: Replace `node script.js`with ` bun run script.js`or`bun script.js`. Run`bun install`in place of`npm install`; most packages work. Use`bun run`for npm scripts;`bun x` for npx-style one-off runs. Node built-ins are supported; prefer Bun APIs where they exist for better performance.
 
-**Vercel**: Set runtime to Bun in project settings. Build: `bun run build` or `bun build ./src/index.ts --outdir=dist`. Install: `bun install --frozen-lockfile` for reproducible deploys.
+**Vercel**: Set runtime to Bun in project settings. Build: `bun run build`or ` bun build ./src/index.ts --outdir=dist`. Install:`bun install --frozen-lockfile` for reproducible deploys.
 
 ## Examples
 
 ### Run and install
 
 ```bash
-# Install dependencies (creates/updates bun.lock or bun.lockb)
+## Install dependencies (creates/updates bun.lock or bun.lockb)
 bun install
 
-# Run a script or file
+## Run a script or file
 bun run dev
 bun run src/index.ts
 bun src/index.ts
@@ -78,6 +78,6 @@ Bun.serve({
 
 ## Best Practices
 
-- Commit the lockfile (`bun.lock` or `bun.lockb`) for reproducible installs.
-- Prefer `bun run` for scripts. For TypeScript, Bun runs `.ts` natively.
+- Commit the lockfile (`bun.lock`or ` bun.lockb`) for reproducible installs.
+- Prefer `bun run`for scripts. For TypeScript, Bun runs`.ts` natively.
 - Keep dependencies up to date; Bun and the ecosystem evolve quickly.

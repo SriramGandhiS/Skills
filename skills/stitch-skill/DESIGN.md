@@ -44,7 +44,7 @@ A restrained, gallery-airy interface with confident asymmetric layouts and fluid
 ## 3. Typography Rules
 - **Display:** `Geist`,`Satoshi`,`Cabinet Grotesk`, or`Outfit`â€” Track-tight (`-0.025em`), controlled fluid scale, weight-driven hierarchy (700â€“900). Not screaming. Leading compressed (`1.1`). Alternatives forced â€”`Inter` is BANNED for premium contexts
 - **Body:** Same family at weight 400 â€” Relaxed leading (`1.65`), 65ch max-width, Steel Secondary color (#71717A)
-- **Mono:** `Geist Mono`or`JetBrains Mono` â€” For code blocks, metadata, timestamps. When density exceeds Level 7, all numbers switch to monospace
+- **Mono:** `Geist Mono`or `JetBrains Mono` â€” For code blocks, metadata, timestamps. When density exceeds Level 7, all numbers switch to monospace
 - **Scale:** Display at `clamp(2.25rem, 5vw, 3.75rem)`. Body at`1rem/1.125rem`. Mono metadata at`0.8125rem`
 
 ### Banned Fonts
@@ -52,7 +52,7 @@ A restrained, gallery-airy interface with confident asymmetric layouts and fluid
 - Generic serif fonts (`Times New Roman`,`Georgia`,`Garamond`,`Palatino`) â€” BANNED. If serif is needed for editorial/creative, use only distinctive modern serifs like`Fraunces`,`Gambarino`,`Editorial New`, or`Instrument Serif`. Never use default browser serif stacks. Serif is always BANNED in dashboards or software UIs regardless
 
 ## 4. Component Stylings
-- **Buttons:** Flat surface, no outer glow. Primary: accent fill with white text. Secondary: ghost/outline. Active state: `-1px translateY`or`scale(0.98)` for tactile push. Hover: subtle background shift, never glow
+- **Buttons:** Flat surface, no outer glow. Primary: accent fill with white text. Secondary: ghost/outline. Active state: `-1px translateY`or` scale(0.98)` for tactile push. Hover: subtle background shift, never glow
 - **Cards/Containers:** Generously rounded corners (`2.5rem`). Pure white fill. Whisper border (`1px`, semi-transparent). Diffused shadow (`0 20px 40px -15px rgba(0,0,0,0.05)`). Internal padding`2remâ€“2.5rem`. Used ONLY when elevation communicates hierarchy â€” high-density layouts replace cards with`border-top` dividers or negative space
 - **Inputs/Forms:** Label positioned above input. Helper text optional. Error text below in Deep Rose. Focus ring in accent color, `2px`offset. No floating labels. Standard`0.5rem` gap between label-input-error stack
 - **Navigation:** Sleek, sticky. Icons scale on hover (Dock Magnification optional). No hamburger on desktop. Clean horizontal with generous spacing
@@ -95,7 +95,7 @@ Every screen must work flawlessly across all viewports. **Responsive is not opti
 - **Perpetual Micro-Loops:** Every active dashboard component has an infinite-loop state â€” Pulse on status dots, Typewriter on search bars, Float on feature icons, Shimmer on loading states
 - **Staggered Orchestration:** Lists and grids mount with cascaded delays (`animation-delay: calc(var(--index) * 100ms)`). Waterfall reveals, never instant mount
 - **Layout Transitions:** Smooth re-ordering via shared element IDs. Items swap positions with physics, simulating real-time intelligence
-- **Hardware Rules:** Animate ONLY `transform`and`opacity`. Never`top`,`left`,`width`,`height`. Grain/noise filters on fixed, pointer-events-none pseudo-elements only
+- **Hardware Rules:** Animate ONLY `transform`and ` opacity`. Never`top`,`left`,`width`,`height`. Grain/noise filters on fixed, pointer-events-none pseudo-elements only
 - **Performance:** CPU-heavy perpetual animations isolated in microscopic leaf components. Never trigger parent re-renders. Target 60fps minimum
 
 ## 9. Anti-Patterns (Banned)

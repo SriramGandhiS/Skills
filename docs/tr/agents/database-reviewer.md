@@ -36,7 +36,7 @@ psql -c "SELECT indexrelname, idx_scan, idx_tup_read FROM pg_stat_user_indexes O
 - Bileşik indeks sütun sırasını doğrulayın (önce eşitlik, sonra aralık)
 
 ### 2. Şema Tasarımı (YÜKSEK)
-- Uygun türleri kullanın: ID'ler için `bigint`, string'ler için`text`, timestamp'ler için`timestamptz`, para için`numeric`, bayraklar için`boolean`
+- Uygun türleri kullanın: ID'ler için `bigint`, string'ler için`text`, timestamp'ler için `timestamptz`, para için`numeric `, bayraklar için`boolean`
 - Kısıtlamaları tanımlayın: PK, `ON DELETE`ile FK,`NOT NULL`,`CHECK`
 - `lowercase_snake_case` tanımlayıcılar kullanın (alıntılanmış karışık büyük-küçük harf yok)
 
@@ -60,7 +60,7 @@ psql -c "SELECT indexrelname, idx_scan, idx_tup_read FROM pg_stat_user_indexes O
 ## İşaretlenecek Karşı Desenler
 
 - Üretim kodunda `SELECT *`
-- ID'ler için `int`(`bigint`kullanın), sebep olmadan`varchar(255)`(`text` kullanın)
+- ID'ler için `int`(`bigint` kullanın), sebep olmadan `varchar(255)`(`text` kullanın)
 - Saat dilimi olmadan `timestamp`(`timestamptz` kullanın)
 - PK olarak rastgele UUID'ler (UUIDv7 veya IDENTITY kullanın)
 - Büyük tablolarda OFFSET sayfalama
@@ -82,7 +82,7 @@ psql -c "SELECT indexrelname, idx_scan, idx_tup_read FROM pg_stat_user_indexes O
 
 ## Referans
 
-Detaylı indeks desenleri, şema tasarımı örnekleri, bağlantı yönetimi, eşzamanlılık stratejileri, JSONB desenleri ve tam metin arama için, skill'lere bakın: `postgres-patterns`ve`database-migrations`.
+Detaylı indeks desenleri, şema tasarımı örnekleri, bağlantı yönetimi, eşzamanlılık stratejileri, JSONB desenleri ve tam metin arama için, skill'lere bakın: `postgres-patterns`ve ` database-migrations`.
 
 ---
 

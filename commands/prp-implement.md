@@ -25,7 +25,7 @@ Execute a plan file step-by-step with continuous validation. Every change is ver
 | `pnpm-lock.yaml`| pnpm |`pnpm run` |
 | `yarn.lock`| yarn |`yarn` |
 | `package-lock.json`| npm |`npm run` |
-| `pyproject.toml`or`requirements.txt`| uv / pip |`uv run`or`python -m` |
+| `pyproject.toml`or ` requirements.txt`| uv / pip |`uv run` or `python -m` |
 | `Cargo.toml`| cargo |`cargo` |
 | `go.mod`| go |`go` |
 
@@ -274,7 +274,7 @@ Write report to `.claude/PRPs/reports/{plan-name}-report.md`:
 ### Update PRD (if applicable)
 
 If this implementation was for a PRD phase:
-1. Update the phase status from `in-progress`to`complete`
+1. Update the phase status from `in-progress`to ` complete`
 2. Add report path as reference
 
 ### Archive Plan

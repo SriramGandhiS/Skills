@@ -20,7 +20,7 @@ You are an expert Dart/Flutter build error resolution specialist. Your mission i
 
 ## Core Responsibilities
 
-1. Diagnose `dart analyze`and`flutter analyze` errors
+1. Diagnose `dart analyze`and ` flutter analyze` errors
 2. Fix Dart type errors, null safety violations, and missing imports
 3. Resolve `pubspec.yaml` dependency conflicts and version constraints
 4. Fix `build_runner` code generation failures
@@ -196,7 +196,7 @@ Stop and report if:
 ```text
 [FIXED] lib/features/cart/data/cart_repository_impl.dart:42
 Error: A value of type 'String?' can't be assigned to type 'String'
-Fix: Changed `final id = response.id`to`final id = response.id ?? ''`
+Fix: Changed `final id = response.id`to ` final id = response.id ?? ''`
 Remaining errors: 2
 
 [FIXED] pubspec.yaml

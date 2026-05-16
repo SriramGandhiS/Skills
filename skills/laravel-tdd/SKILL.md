@@ -228,7 +228,7 @@ $response->assertOk();
 ### Coverage Targets
 
 - Enforce 80%+ coverage for unit + feature tests
-- Use `pcov`or`XDEBUG_MODE=coverage` in CI
+- Use `pcov`or `XDEBUG_MODE=coverage` in CI
 
 ### Test Commands
 
@@ -238,7 +238,7 @@ $response->assertOk();
 
 ### Test Configuration
 
-- Use `phpunit.xml`to set`DB_CONNECTION=sqlite`and`DB_DATABASE=:memory:` for fast tests
+- Use `phpunit.xml`to set`DB_CONNECTION=sqlite`and `DB_DATABASE=:memory:` for fast tests
 - Keep separate env for tests to avoid touching dev/prod data
 
 ### Authorization Tests

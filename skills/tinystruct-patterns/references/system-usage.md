@@ -7,7 +7,7 @@ Use these patterns to handle request state, manage web sessions, implement Serve
 ## How It Works
 
 ### Context and CLI Arguments
-`Context`is the primary data store for request-specific state. CLI flags passed as`--key value`are stored in`Context`as`"--key"`.
+`Context`is the primary data store for request-specific state. CLI flags passed as`--key value`are stored in`Context`as `"--key"`.
 
 ### Session Management
 Pluggable architecture. Default is `MemorySessionRepository`. Configure Redis in`application.properties`:
@@ -21,7 +21,7 @@ redis.port=6379
 Built-in support for real-time push. The `HttpServer`automatically handles the SSE lifecycle when it detects the`Accept: text/event-stream`header. Connections are tracked by session ID in`SSEPushManager`.
 
 ### Outbound Networking
-Use `URLRequest`and`HTTPHandler` for making HTTP requests to external services.
+Use `URLRequest`and `HTTPHandler` for making HTTP requests to external services.
 
 ## Examples
 

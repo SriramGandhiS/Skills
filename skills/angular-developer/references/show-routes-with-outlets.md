@@ -49,7 +49,7 @@ Define the `outlet` in the route config:
 
 - `activate`: New component instantiated.
 - `deactivate`: Component destroyed.
-- `attach`/`detach`: Used with`RouteReuseStrategy`.
+- `attach`/`detach`: Used with `RouteReuseStrategy`.
 
 ```html
 <router-outlet (activate)="onActivate($event)" />

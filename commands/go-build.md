@@ -153,7 +153,7 @@ Build Status: PASS: SUCCESS
 | `X does not implement Y` | Add missing method |
 | `import cycle` | Restructure packages |
 | `declared but not used` | Remove or use variable |
-| `cannot find package`|`go get`or`go mod tidy` |
+| `cannot find package`|`go get` or `go mod tidy` |
 
 ## Fix Strategy
 

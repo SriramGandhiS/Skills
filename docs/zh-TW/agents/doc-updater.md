@@ -208,7 +208,7 @@ API 路由 → Supabase 查詢 → Redis（快取）→ 回應
 
 ## 設定
 
-\`\`\`bash
+\`\`\` bash
 ## 安裝
 npm install
 

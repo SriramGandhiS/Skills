@@ -98,7 +98,7 @@ origin: ECC
 
 ## 코드 예제
 
-\`\`\`typescript
+\`\`\` typescript
 // 실용적이고 테스트된 예제 포함
 function example() {
   // 잘 주석 처리된 코드

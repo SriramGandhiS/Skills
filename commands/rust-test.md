@@ -284,7 +284,7 @@ cargo test --no-fail-fast
 **DO:**
 - Write test FIRST, before any implementation
 - Run tests after each change
-- Use `assert_eq!`over`assert!` for better error messages
+- Use `assert_eq!`over` assert!` for better error messages
 - Use `?`in tests that return`Result` for cleaner output
 - Test behavior, not implementation
 - Include edge cases (empty, boundary, error paths)

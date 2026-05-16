@@ -23,8 +23,8 @@
 
 - Todas as queries usam Django ORM — SQL bruto só com `.raw()` e queries parametrizadas
 - Migrations versionadas no git — nunca use `--fake` em produção
-- Use `select_related()`e`prefetch_related()` para prevenir queries N+1
-- Todos os models devem ter auto-fields `created_at`e`updated_at`
+- Use `select_related()`e` prefetch_related()` para prevenir queries N+1
+- Todos os models devem ter auto-fields `created_at`e ` updated_at`
 - Índices em qualquer campo usado em `filter()`,`order_by()`ou cláusulas`WHERE`
 
 ```python

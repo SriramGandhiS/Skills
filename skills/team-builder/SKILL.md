@@ -67,7 +67,7 @@ Run `claude agents` to get the full agent list. Parse each line:
 
 For user agents loaded from markdown files:
 - **Subdirectory layout:** extract the domain from the parent folder name
-- **Flat layout:** collect all filename prefixes (text before the first `-`). A prefix qualifies as a domain only if it appears in 2 or more filenames (e.g.,`engineering-security-engineer.md`and`engineering-software-architect.md`both start with`engineering`â†’ Engineering domain). Files with unique prefixes (e.g.,`code-reviewer.md`,`tdd-guide.md`) are grouped under "General"
+- **Flat layout:** collect all filename prefixes (text before the first `-`). A prefix qualifies as a domain only if it appears in 2 or more filenames (e.g.,`engineering-security-engineer.md` and `engineering-software-architect.md`both start with`engineering`â†’ Engineering domain). Files with unique prefixes (e.g.,`code-reviewer.md`,`tdd-guide.md`) are grouped under "General"
 - Extract the agent name from the first `# Heading`. If no heading is found, derive the name from the filename (strip`.md`, replace hyphens with spaces, title-case)
 - Extract a one-line summary from the first paragraph after the heading
 

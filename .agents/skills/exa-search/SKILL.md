@@ -122,10 +122,10 @@ crawling_exa(url: "https://example.com/article", tokensNum: 5000)
 Start an AI research agent that runs asynchronously.
 
 ```
-# Start research
+## Start research
 deep_researcher_start(query: "comprehensive analysis of AI code editors in 2026")
 
-# Check status (returns results when complete)
+## Check status (returns results when complete)
 deep_researcher_check(researchId: "<id from start>")
 ```
 
@@ -149,17 +149,17 @@ web_search_advanced_exa(query: "Vercel funding valuation 2026", numResults: 3)
 
 ### Technical Deep Dive
 ```
-# Start async research
+## Start async research
 deep_researcher_start(query: "WebAssembly component model status and adoption")
-# ... do other work ...
+## ... do other work ...
 deep_researcher_check(researchId: "<id>")
 ```
 
 ## Tips
 
-- Use `web_search_exa` for broad queries, `web_search_advanced_exa` for filtered results
+- Use `web_search_exa`for broad queries,`web_search_advanced_exa` for filtered results
 - Lower `tokensNum` (1000-2000) for focused code snippets, higher (5000+) for comprehensive context
-- Combine `company_research_exa` with `web_search_advanced_exa` for thorough company analysis
+- Combine `company_research_exa`with ` web_search_advanced_exa` for thorough company analysis
 - Use `crawling_exa` to get full content from specific URLs found in search results
 - `deep_researcher_start` is best for comprehensive topics that benefit from AI synthesis
 

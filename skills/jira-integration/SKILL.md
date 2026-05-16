@@ -25,7 +25,7 @@ Install the `mcp-atlassian` MCP server. This exposes Jira tools directly to your
 
 **Requirements:**
 - Python 3.10+
-- `uvx`(from`uv`), installed via your package manager or the official`uv` installation documentation
+- `uvx`(from`uv`), installed via your package manager or the official `uv` installation documentation
 
 **Add to your MCP config** (e.g., `~/.claude.json`â†’`mcpServers`):
 
@@ -280,7 +280,7 @@ Coverage: XX%
 | `401 Unauthorized` | Invalid or expired API token | Regenerate at id.atlassian.com |
 | `403 Forbidden` | Token lacks project permissions | Check token scopes and project access |
 | `404 Not Found`| Wrong ticket key or base URL | Verify`JIRA_URL` and ticket key |
-| `spawn uvx ENOENT`| IDE cannot find`uvx`on PATH | Use full path (e.g.,`~/.local/bin/uvx`) or set PATH in`~/.zprofile` |
+| `spawn uvx ENOENT`| IDE cannot find`uvx ` on PATH | Use full path (e.g.,`~/.local/bin/uvx`) or set PATH in`~/.zprofile` |
 | Connection timeout | Network/VPN issue | Check VPN connection and firewall rules |
 
 ## Best Practices

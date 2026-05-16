@@ -11,7 +11,7 @@ Run a deterministic repository harness audit and return a prioritized scorecard.
 `/harness-audit [scope] [--format text|json] [--root path]`
 
 - `scope`(optional):`repo`(default),`hooks`,`skills`,`commands`,`agents`
-- `--format`: output style (`text`default,`json` for automation)
+- `--format`: output style (`text` default,`json` for automation)
 - `--root`: audit a specific path instead of the current working directory
 
 ## Deterministic Engine
@@ -54,7 +54,7 @@ Return:
 - Use script output directly; do not rescore manually.
 - If `--format json` is requested, return the script JSON unchanged.
 - If text is requested, summarize failing checks and top actions.
-- Include exact file paths from `checks[]`and`top_actions[]`.
+- Include exact file paths from `checks[]`and` top_actions[]`.
 
 ## Example Result
 

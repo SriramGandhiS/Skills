@@ -179,7 +179,7 @@ withContext(Dispatchers.IO) { database.query() }
 withContext(Dispatchers.Main) { updateUi() }
 ```
 
-In KMP, use `Dispatchers.Default`and`Dispatchers.Main`(available on all platforms).`Dispatchers.IO`is JVM/Android only â€” use`Dispatchers.Default` on other platforms or provide via DI.
+In KMP, use `Dispatchers.Default`and `Dispatchers.Main`(available on all platforms).`Dispatchers.IO`is JVM/Android only â€” use`Dispatchers.Default` on other platforms or provide via DI.
 
 ## Cancellation
 
@@ -276,7 +276,7 @@ class FakeItemRepository : ItemRepository {
 - Using `MutableStateFlow`with mutable collections â€” always use immutable copies:`_state.update { it.copy(list = it.list + newItem) }`
 - Catching `CancellationException` â€” let it propagate for proper cancellation
 - Using `flowOn(Dispatchers.Main)` to collect â€” collection dispatcher is the caller's dispatcher
-- Creating `Flow`in`@Composable`without`remember` â€” recreates the flow every recomposition
+- Creating `Flow`in `@Composable`without`remember` â€” recreates the flow every recomposition
 
 ## References
 

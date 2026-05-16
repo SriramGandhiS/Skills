@@ -21,7 +21,7 @@ Conventions and best practices for designing consistent, developer-friendly REST
 ### URL Structure
 
 ```
-# Resources are nouns, plural, lowercase, kebab-case
+## Resources are nouns, plural, lowercase, kebab-case
 GET    /api/v1/users
 GET    /api/v1/users/:id
 POST   /api/v1/users
@@ -29,11 +29,11 @@ PUT    /api/v1/users/:id
 PATCH  /api/v1/users/:id
 DELETE /api/v1/users/:id
 
-# Sub-resources for relationships
+## Sub-resources for relationships
 GET    /api/v1/users/:id/orders
 POST   /api/v1/users/:id/orders
 
-# Actions that don't map to CRUD (use verbs sparingly)
+## Actions that don't map to CRUD (use verbs sparingly)
 POST   /api/v1/orders/:id/cancel
 POST   /api/v1/auth/login
 POST   /api/v1/auth/refresh
@@ -42,12 +42,12 @@ POST   /api/v1/auth/refresh
 ### Naming Rules
 
 ```
-# GOOD
+## GOOD
 /api/v1/team-members          # kebab-case for multi-word resources
 /api/v1/orders?status=active  # query params for filtering
 /api/v1/users/123/orders      # nested resources for ownership
 
-# BAD
+## BAD
 /api/v1/getUsers              # verb in URL
 /api/v1/user                  # singular (use plural)
 /api/v1/team_members          # snake_case in URLs
@@ -71,12 +71,12 @@ POST   /api/v1/auth/refresh
 ### Status Code Reference
 
 ```
-# Success
+## Success
 200 OK                    — GET, PUT, PATCH (with response body)
 201 Created               — POST (include Location header)
 204 No Content            — DELETE, PUT (no response body)
 
-# Client Errors
+## Client Errors
 400 Bad Request           — Validation failure, malformed JSON
 401 Unauthorized          — Missing or invalid authentication
 403 Forbidden             — Authenticated but not authorized
@@ -85,7 +85,7 @@ POST   /api/v1/auth/refresh
 422 Unprocessable Entity  — Semantically invalid (valid JSON, bad data)
 429 Too Many Requests     — Rate limit exceeded
 
-# Server Errors
+## Server Errors
 500 Internal Server Error — Unexpected failure (never expose details)
 502 Bad Gateway           — Upstream service failed
 503 Service Unavailable   — Temporary overload, include Retry-After
@@ -94,18 +94,18 @@ POST   /api/v1/auth/refresh
 ### Common Mistakes
 
 ```
-# BAD: 200 for everything
+## BAD: 200 for everything
 { "status": 200, "success": false, "error": "Not found" }
 
-# GOOD: Use HTTP status codes semantically
+## GOOD: Use HTTP status codes semantically
 HTTP/1.1 404 Not Found
 { "error": { "code": "not_found", "message": "User not found" } }
 
-# BAD: 500 for validation errors
-# GOOD: 400 or 422 with field-level details
+## BAD: 500 for validation errors
+## GOOD: 400 or 422 with field-level details
 
-# BAD: 200 for created resources
-# GOOD: 201 with Location header
+## BAD: 200 for created resources
+## GOOD: 201 with Location header
 HTTP/1.1 201 Created
 Location: /api/v1/users/abc-123
 ```
@@ -201,7 +201,7 @@ interface ApiError {
 ```
 GET /api/v1/users?page=2&per_page=20
 
-# Implementation
+## Implementation
 SELECT * FROM users
 ORDER BY created_at DESC
 LIMIT 20 OFFSET 20;
@@ -215,7 +215,7 @@ LIMIT 20 OFFSET 20;
 ```
 GET /api/v1/users?cursor=eyJpZCI6MTIzfQ&limit=20
 
-# Implementation
+## Implementation
 SELECT * FROM users
 WHERE id > :cursor_id
 ORDER BY id ASC
@@ -249,44 +249,44 @@ LIMIT 21;  -- fetch one extra to determine has_next
 ### Filtering
 
 ```
-# Simple equality
+## Simple equality
 GET /api/v1/orders?status=active&customer_id=abc-123
 
-# Comparison operators (use bracket notation)
+## Comparison operators (use bracket notation)
 GET /api/v1/products?price[gte]=10&price[lte]=100
 GET /api/v1/orders?created_at[after]=2025-01-01
 
-# Multiple values (comma-separated)
+## Multiple values (comma-separated)
 GET /api/v1/products?category=electronics,clothing
 
-# Nested fields (dot notation)
+## Nested fields (dot notation)
 GET /api/v1/orders?customer.country=US
 ```
 
 ### Sorting
 
 ```
-# Single field (prefix - for descending)
+## Single field (prefix - for descending)
 GET /api/v1/products?sort=-created_at
 
-# Multiple fields (comma-separated)
+## Multiple fields (comma-separated)
 GET /api/v1/products?sort=-featured,price,-created_at
 ```
 
 ### Full-Text Search
 
 ```
-# Search query parameter
+## Search query parameter
 GET /api/v1/products?q=wireless+headphones
 
-# Field-specific search
+## Field-specific search
 GET /api/v1/users?email=alice
 ```
 
 ### Sparse Fieldsets
 
 ```
-# Return only specified fields (reduces payload)
+## Return only specified fields (reduces payload)
 GET /api/v1/users?fields=id,name,email
 GET /api/v1/orders?fields=id,total,status&include=customer.name
 ```
@@ -296,11 +296,11 @@ GET /api/v1/orders?fields=id,total,status&include=customer.name
 ### Token-Based Auth
 
 ```
-# Bearer token in Authorization header
+## Bearer token in Authorization header
 GET /api/v1/users
 Authorization: Bearer eyJhbGciOiJIUzI1NiIs...
 
-# API key (for server-to-server)
+## API key (for server-to-server)
 GET /api/v1/data
 X-API-Key: sk_live_abc123
 ```
@@ -333,7 +333,7 @@ X-RateLimit-Limit: 100
 X-RateLimit-Remaining: 95
 X-RateLimit-Reset: 1640000000
 
-# When exceeded
+## When exceeded
 HTTP/1.1 429 Too Many Requests
 Retry-After: 60
 {

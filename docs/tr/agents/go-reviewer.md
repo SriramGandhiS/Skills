@@ -9,7 +9,7 @@ model: sonnet
 
 Çağrıldığınızda:
 1. Son Go dosya değişikliklerini görmek için `git diff -- '*.go'` çalıştırın
-2. Varsa `go vet ./...`ve`staticcheck ./...` çalıştırın
+2. Varsa `go vet ./...`ve` staticcheck ./...` çalıştırın
 3. Değiştirilmiş `.go` dosyalarına odaklanın
 4. İncelemeye hemen başlayın
 
@@ -26,9 +26,9 @@ model: sonnet
 
 ### KRİTİK -- Hata İşleme
 - **Göz ardı edilen hatalar**: Hataları atmak için `_` kullanımı
-- **Eksik hata sarmalama**: `fmt.Errorf("context: %w", err)`olmadan`return err`
+- **Eksik hata sarmalama**: `fmt.Errorf("context: %w", err)`olmadan` return err`
 - **Kurtarılabilir hatalar için panic**: Bunun yerine hata dönüşleri kullanın
-- **Eksik errors.Is/As**: `err == target`yerine`errors.Is(err, target)` kullanın
+- **Eksik errors.Is/As**: `err == target`yerine ` errors.Is(err, target)` kullanın
 
 ### YÜKSEK -- Eşzamanlılık
 - **Goroutine sızıntıları**: İptal mekanizması yok (`context.Context` kullanın)

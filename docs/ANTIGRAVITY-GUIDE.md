@@ -24,7 +24,7 @@ ECC remaps its component structure to match Antigravity's expected layout:
 | `commands/`|`.agent/workflows/` | Slash commands become Antigravity workflows |
 | `agents/`|`.agent/skills/` | Agent definitions become Antigravity skills |
 
-> **Note on `.agents/`vs`.agent/`vs`agents/`**: The installer only handles three source paths explicitly:`rules`→`.agent/rules/`,`commands`→`.agent/workflows/`, and`agents`(no dot prefix) →`.agent/skills/`. The dot-prefixed`.agents/`directory in the ECC repo is a **static layout** for Codex/Antigravity skill definitions and`openai.yaml`configs — it is not directly mapped by the installer. Any`.agents/`path falls through to the default scaffold operation. If you want`.agents/skills/`content available in the Antigravity runtime, you must manually copy it to`.agent/skills/`.
+> **Note on `.agents/`vs`.agent/`vs`agents/`**: The installer only handles three source paths explicitly:`rules`→`.agent/rules/`,`commands`→`.agent/workflows/`, and`agents `(no dot prefix) →`.agent/skills/`. The dot-prefixed`.agents/`directory in the ECC repo is a **static layout** for Codex/Antigravity skill definitions and`openai.yaml`configs — it is not directly mapped by the installer. Any`.agents/`path falls through to the default scaffold operation. If you want`.agents/skills/`content available in the Antigravity runtime, you must manually copy it to`.agent/skills/`.
 
 ### Key Differences from Claude Code
 

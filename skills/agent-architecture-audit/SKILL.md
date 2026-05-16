@@ -28,7 +28,7 @@ A diagnostic workflow for agent systems that hide failures behind wrapper layers
 **Do not use for:**
 - General code debugging â€” use `agent-introspection-debugging`
 - Code review â€” use language-specific reviewer agents
-- Security scanning â€” use `security-review`or`security-review/scan`
+- Security scanning â€” use `security-review`or ` security-review/scan`
 - Agent performance benchmarking â€” use `agent-eval`
 - Writing new features â€” use the appropriate workflow skill
 

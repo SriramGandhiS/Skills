@@ -128,7 +128,7 @@ multiplexers all create different security surfaces.
 Target capability:
 
 - A small adapter registry for `claude-code`,`opencode`,`codex`,`gemini`,
-  `zed`,`dmux`,`orca`,`superset`, and`generic-terminal`.
+  `zed`,`dmux`,`orca`,`superset`, and `generic-terminal`.
 - Each adapter declares config paths, permission concepts, plugin surfaces,
   MCP/tooling conventions, history/session surfaces, and CI evidence.
 - Report output groups findings by harness and confidence, so template/docs

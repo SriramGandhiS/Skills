@@ -101,7 +101,7 @@ description: スキルリストに表示される短い説明
 
 ## Code Examples
 
-\`\`\`typescript
+\`\`\` typescript
 // 実践的なテスト済みの例を含める
 function example() {
   // よくコメントされたコード

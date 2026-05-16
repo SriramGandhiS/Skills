@@ -65,7 +65,7 @@ If you require deeper documentation not found in the references above, read the 
 
 When managing state and data reactivity, use Angular Signals and consult the following references:
 
-- **Signals Overview**: Core signal concepts (`signal`,`computed`), reactive contexts, and`untracked`. Read [signals-overview.md](references/signals-overview.md)
+- **Signals Overview**: Core signal concepts (`signal`,`computed`), reactive contexts, and `untracked`. Read [signals-overview.md](references/signals-overview.md)
 - **Dependent State (`linkedSignal`)**: Creating writable state linked to source signals. Read [linked-signal.md](references/linked-signal.md)
 - **Async Reactivity (`resource`)**: Fetching asynchronous data directly into signal state. Read [resource.md](references/resource.md)
 - **Side Effects (`effect`)**: Logging, third-party DOM manipulation (`afterRenderEffect`), and when NOT to use effects. Read [effects.md](references/effects.md)
@@ -89,7 +89,7 @@ When implementing dependency injection in Angular, follow these guidelines:
 - **Creating and Using Services**: Creating services, the `providedIn: 'root'` option, and injecting into components or other services. Read [creating-services.md](references/creating-services.md)
 - **Defining Dependency Providers**: Automatic vs manual provision, `InjectionToken`,`useClass`,`useValue`,`useFactory`, and scopes. Read [defining-providers.md](references/defining-providers.md)
 - **Injection Context**: Where `inject()`is allowed,`runInInjectionContext`, and`assertInInjectionContext`. Read [injection-context.md](references/injection-context.md)
-- **Hierarchical Injectors**: The `EnvironmentInjector`vs`ElementInjector`, resolution rules, modifiers (`optional`,`skipSelf`), and`providers`vs`viewProviders`. Read [hierarchical-injectors.md](references/hierarchical-injectors.md)
+- **Hierarchical Injectors**: The `EnvironmentInjector`vs `ElementInjector`, resolution rules, modifiers (`optional`,`skipSelf`), and`providers` vs `viewProviders`. Read [hierarchical-injectors.md](references/hierarchical-injectors.md)
 
 ## Angular Aria
 
@@ -139,10 +139,10 @@ When working with Angular tooling, consult the following references:
 
 ## Anti-Patterns
 
-- Using `null`or`undefined`as initial signal form field values â€” use`''`,`0`, or`[]` instead
+- Using `null`or ` undefined`as initial signal form field values â€” use`''`,`0`, or`[]` instead
 - Accessing form field state flags without calling the field first: `form.field.valid()`â€” use`form.field().valid()`
 - Starting new forms with older form APIs when the target Angular version supports Signal Forms
-- Setting `min`,`max`,`value`,`disabled`, or`readonly`HTML attributes on`[formField]` inputs â€” define these as schema rules instead
+- Setting `min`,`max`,`value`,`disabled`, or `readonly`HTML attributes on`[formField]` inputs â€” define these as schema rules instead
 - Calling `inject()`outside an injection context â€” use`runInInjectionContext` when needed
 - Using `effect()`for derived state that should use`computed()`
 - Referencing `$parent.$index`in nested`@for`loops â€” Angular does not support`$parent`; use`let outerIdx = $index` instead

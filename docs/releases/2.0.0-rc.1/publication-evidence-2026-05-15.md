@@ -20,11 +20,11 @@ final release commit with a clean checkout before publishing.
 
 | Surface | Command | Result |
 | --- | --- | --- |
-| Trunk PRs/issues | `gh pr list`and`gh issue list`for`affaan-m/everything-claude-code` | 0 open PRs, 0 open issues |
-| AgentShield PRs/issues | `gh pr list`and`gh issue list`for`affaan-m/agentshield` | 0 open PRs, 0 open issues |
-| JARVIS PRs/issues | `gh pr list`and`gh issue list`for`affaan-m/JARVIS` | 0 open PRs, 0 open issues |
-| ECC Tools PRs/issues | `env -u GITHUB_TOKEN gh pr list`and`env -u GITHUB_TOKEN gh issue list`for`ECC-Tools/ECC-Tools` | 0 open PRs, 0 open issues |
-| ECC website PRs/issues | `env -u GITHUB_TOKEN gh pr list`and`env -u GITHUB_TOKEN gh issue list`for`ECC-Tools/ECC-website` | 0 open PRs, 0 open issues |
+| Trunk PRs/issues | `gh pr list`and ` gh issue list`for`affaan-m/everything-claude-code` | 0 open PRs, 0 open issues |
+| AgentShield PRs/issues | `gh pr list`and ` gh issue list`for`affaan-m/agentshield` | 0 open PRs, 0 open issues |
+| JARVIS PRs/issues | `gh pr list`and ` gh issue list`for`affaan-m/JARVIS` | 0 open PRs, 0 open issues |
+| ECC Tools PRs/issues | `env -u GITHUB_TOKEN gh pr list`and ` env -u GITHUB_TOKEN gh issue list`for`ECC-Tools/ECC-Tools` | 0 open PRs, 0 open issues |
+| ECC website PRs/issues | `env -u GITHUB_TOKEN gh pr list`and ` env -u GITHUB_TOKEN gh issue list`for`ECC-Tools/ECC-website` | 0 open PRs, 0 open issues |
 | Trunk discussions | GraphQL discussion count and maintainer-touch sweep | 58 total discussions; 0 without maintainer touch after May 15 maintainer comments |
 | Other repo discussions | GraphQL discussion count for AgentShield, JARVIS, ECC Tools, and ECC website | Discussions disabled or 0 total |
 | Platform audit | `node scripts/platform-audit.js --json --allow-untracked docs/drafts/` | Ready; open PRs 0/20, open issues 0/20, discussions needing maintainer touch 0, conflicting open PRs 0, blocking dirty files 0 |
@@ -66,7 +66,7 @@ Project documents added in Linear:
 | --- | --- |
 | PR #1921 | Merged supply-chain IOC expansion for Mini Shai-Hulud/TanStack follow-up |
 | Node IPC follow-up / PR #1924 | Added May 14 `node-ipc` malicious-version, hash, DNS, and runtime IOC coverage |
-| PR #1926 | Added `platform:audit`and`security-ioc-scan` command surfaces plus release workflow IOC gates |
+| PR #1926 | Added `platform:audit`and ` security-ioc-scan` command surfaces plus release workflow IOC gates |
 | PR #1932 | Added `scripts/platform-audit.js` JSON/Markdown/file-output modes so queue, discussion, roadmap, and release evidence can be captured as a durable artifact instead of terminal-only output |
 | PR #1933 | Expanded home-scan IOC coverage to Claude `settings.local.json`,`.claude/hooks/hooks.json`, and user-level VS Code / Code Insiders`tasks.json` across macOS, Linux, and Windows |
 | PR #1934 | Switched ordinary CI dependency caches to restore-only `actions/cache/restore` usage so test jobs do not save mutable dependency state back into shared caches |
@@ -105,7 +105,7 @@ network/payload IOCs, built action/CLI bundles, 1758/1758 local tests, and
 green GitHub Actions verification before merge.
 AgentShield PR #84 closes the later full-campaign package-table gap by adding
 the extra affected npm package scopes and unscoped packages reported in the
-current Wiz table, rebuilding `dist/action.js`and`dist/index.js`, and passing
+current Wiz table, rebuilding `dist/action.js`and ` dist/index.js`, and passing
 1758/1758 local tests plus the full AgentShield GitHub Actions matrix before
 merge.
 AgentShield PR #85 and trunk PRs #1934, #1940, and #1941 extend the response
@@ -131,7 +131,7 @@ survive package uninstall.
 
 - release notes, quickstart, launch checklist, publication readiness, naming
   matrix, and May 15 evidence;
-- `docs/HERMES-SETUP.md`and`skills/hermes-imports/SKILL.md` as the public
+- `docs/HERMES-SETUP.md`and ` skills/hermes-imports/SKILL.md` as the public
   Hermes-specialized surface;
 - cross-harness, harness-adapter, observability, and progress-sync docs;
 - X, LinkedIn, article, Telegram, and demo collateral that must receive final
@@ -158,8 +158,8 @@ as coming soon:
 | Surface | Evidence |
 | --- | --- |
 | CLI shape | `codex plugin marketplace add --help`supports GitHub shorthand, Git URLs, SSH URLs, local marketplace roots,`--ref`, and Git-only`--sparse` |
-| Repo marketplace | `.agents/plugins/marketplace.json`exposes`ecc@2.0.0-rc.1`with`source.path: "./"` from the marketplace root |
-| Local add smoke | `HOME="$(mktemp -d)" codex plugin marketplace add <local-checkout>`added marketplace`ecc`and recorded the installed marketplace root as`<local-checkout>` without touching the real Codex config |
+| Repo marketplace | `.agents/plugins/marketplace.json`exposes ` ecc@2.0.0-rc.1`with`source.path: "./"` from the marketplace root |
+| Local add smoke | `HOME="$(mktemp -d)" codex plugin marketplace add <local-checkout>`added marketplace` ecc `and recorded the installed marketplace root as`<local-checkout>` without touching the real Codex config |
 | README alignment | `.codex-plugin/README.md`now uses`codex plugin marketplace add`, not the stale`codex plugin install` command |
 | Public-directory status | The supported Codex distribution path for rc.1 is repo-marketplace/manual install; official Plugin Directory submission remains blocked on OpenAI self-serve publishing availability |
 

@@ -90,7 +90,7 @@ Key patterns and guidelines.
 
 ## Code Examples
 
-\`\`\`language
+\`\`\` language
 // Practical, tested examples
 \`\`\`
 

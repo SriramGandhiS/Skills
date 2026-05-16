@@ -54,7 +54,7 @@ Angular uses built-in blocks for conditional rendering and loops.
 
 ### Conditional Rendering (`@if`)
 
-Use `@if`to conditionally show content. You can include`@else if`and`@else` blocks.
+Use `@if`to conditionally show content. You can include`@else if`and `@else` blocks.
 
 ```html
 @if (user.isAdmin) {

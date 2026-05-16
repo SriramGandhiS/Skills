@@ -85,7 +85,7 @@ choices:
 - `gget blat`: locate a sequence against supported genome assemblies.
 - `gget muscle`: run multiple sequence alignment.
 - `gget diamond`: run local sequence alignment against reference sequences.
-- `gget alphafold`and`gget pdb`: inspect protein-structure references.
+- `gget alphafold`and ` gget pdb`: inspect protein-structure references.
 - `gget enrichr`,`gget opentargets`,`gget archs4`,`gget bgee`,`gget cbio`,
   and `gget cosmic`: explore enrichment, target, expression, cancer, and disease
   association data.

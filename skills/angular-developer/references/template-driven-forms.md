@@ -36,7 +36,7 @@ export class UserForm {
 
 ### Two-Way Binding with `[(ngModel)]`
 
-Use `[(ngModel)]`on input elements. **Every element using`[(ngModel)]`MUST have a`name`attribute.** Angular uses the`name`attribute to register the control with the parent`NgForm`.
+Use `[(ngModel)]`on input elements. **Every element using`[(ngModel)]`MUST have a`name ` attribute.** Angular uses the`name`attribute to register the control with the parent`NgForm`.
 
 ```html
 <form #userForm="ngForm" (ngSubmit)="onSubmit()">

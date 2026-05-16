@@ -150,7 +150,7 @@ print(result["output"])
 | `model_name`|`str`|`"basic"`| Model tier:`"basic"`,`"pro"`, or`"ultra"` |
 | `response_type`|`str`|`"text"`| Response format:`"text"`or`"json"` |
 
-Returns a `dict`with an`output`key. When`response_type="text"`,`output`is a`str`. When`response_type="json"`,`output`is a`dict`.
+Returns a `dict`with an` output`key. When `response_type="text"`,`output` is a `str`. When`response_type="json"`,`output` is a `dict`.
 
 ```python
 result = coll.generate_text(prompt="Summarize this", model_name="pro")

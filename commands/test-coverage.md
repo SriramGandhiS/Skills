@@ -10,7 +10,7 @@ Analyze test coverage, identify gaps, and generate missing tests to reach 80%+ c
 
 | Indicator | Coverage Command |
 |-----------|-----------------|
-| `jest.config.*`or`package.json`jest |`npx jest --coverage --coverageReporters=json-summary` |
+| `jest.config.*`or` package.json `jest |`npx jest --coverage --coverageReporters=json-summary` |
 | `vitest.config.*`|`npx vitest run --coverage` |
 | `pytest.ini`/`pyproject.toml`pytest |`pytest --cov=src --cov-report=json` |
 | `Cargo.toml`|`cargo llvm-cov --json` |

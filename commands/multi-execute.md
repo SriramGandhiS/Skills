@@ -160,7 +160,7 @@ mcp__ace-tool__search_context({
 1. **Glob**: Find target files from plan's "Key Files" table (e.g., `Glob("src/components/**/*.tsx")`)
 2. **Grep**: Search for key symbols, function names, type definitions across the codebase
 3. **Read**: Read the discovered files to gather complete context
-4. **Task (Explore agent)**: For broader exploration, use `Task`with`subagent_type: "Explore"`
+4. **Task (Explore agent)**: For broader exploration, use `Task`with ` subagent_type: "Explore"`
 
 **After Retrieval**:
 - Organize retrieved code snippets

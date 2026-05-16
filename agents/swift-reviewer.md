@@ -42,14 +42,14 @@ When invoked:
 - **Silenced errors**: Empty `catch {}`blocks or`try?` discarding meaningful errors
 - **Missing error context**: Rethrowing without wrapping in a domain-specific error
 - **`fatalError()`for recoverable conditions**: Use`throw` for errors that callers can handle
-- **`assert`for required invariants**:`assert`is stripped in release builds (debug-only) - use`precondition`when the check must hold in release, or`throw` for public API boundaries
-- **`precondition`/`fatalError`in library code**:`precondition`crashes in both debug and release;`fatalError`crashes unconditionally in all builds - use`throw` for recoverable errors at public API boundaries
+- **`assert`for required invariants**:` assert`is stripped in release builds (debug-only) - use `precondition`when the check must hold in release, or`throw` for public API boundaries
+- **`precondition`/`fatalError`in library code**:`precondition` crashes in both debug and release;`fatalError`crashes unconditionally in all builds - use`throw` for recoverable errors at public API boundaries
 
 ### HIGH - Concurrency
 
 - **Data races**: Mutable shared state without actor isolation or synchronization
 - **`@Sendable`violations**: Non-`Sendable` types crossing isolation boundaries
-- **Blocking the main actor**: Synchronous I/O or `Thread.sleep`on`@MainActor`- use`Task.sleep` and async I/O
+- **Blocking the main actor**: Synchronous I/O or `Thread.sleep`on `@MainActor`- use`Task.sleep` and async I/O
 - **Unstructured `Task {}`without cancellation**: Fire-and-forget tasks leaking - use structured concurrency (`async let`,`TaskGroup`)
 - **Actor reentrancy issues**: Assumptions about state consistency across `await` suspension points
 - **Missing `@MainActor`**: UI updates performed off the main actor
@@ -59,7 +59,7 @@ When invoked:
 - **Strong reference cycles**: Closures capturing `self`strongly in long-lived contexts - use`[weak self]`or`[unowned self]`
 - **Delegates as strong references**: Delegate properties without `weak` - causes retain cycles
 - **Closure capture lists missing**: Escaping closures without explicit capture semantics
-- **Large value type copies**: Oversized structs copied on every assignment - consider `class`or`Cow`-like patterns
+- **Large value type copies**: Oversized structs copied on every assignment - consider `class`or `Cow`-like patterns
 
 ### HIGH - Code Quality
 
@@ -86,10 +86,10 @@ When invoked:
 
 ### MEDIUM - Best Practices
 
-- **`var`when`let` suffices**: Prefer immutable bindings
-- **`class`when`struct` suffices**: Prefer value types for data models
+- **`var`when ` let` suffices**: Prefer immutable bindings
+- **`class`when ` struct` suffices**: Prefer value types for data models
 - **`print()`in production code**: Use`os.Logger` or structured logging
-- **Missing access control**: Types and members defaulting to `internal`when`private`or`fileprivate` is appropriate
+- **Missing access control**: Types and members defaulting to `internal`when ` private`or`fileprivate` is appropriate
 - **SwiftLint warnings unaddressed**: Suppressed with `// swiftlint:disable` without justification
 - **Public API without documentation**: `public`items missing`///` doc comments
 - **Magic numbers/strings**: Use named constants or enums

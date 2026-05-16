@@ -127,7 +127,7 @@ Test Status: PASS ✓
 | `Golden file not found`| Run`flutter test --update-goldens` to generate |
 | `Golden mismatch`| Inspect diff; run`--update-goldens` if change was intentional |
 | `MissingPluginException` | Mock platform channel in test setup |
-| `LateInitializationError`| Initialize`late`fields in`setUp()` |
+| `LateInitializationError`| Initialize`late` fields in `setUp()` |
 | `pumpAndSettle timed out`| Replace with explicit`pump(Duration)` calls |
 
 ## Related Commands

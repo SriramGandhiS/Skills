@@ -77,7 +77,7 @@ fun getUserEmail(userId: String): String {
 
 ### 2. Varsayılan Olarak Immutability
 
-`var`yerine`val` tercih edin, mutable koleksiyonlar yerine immutable olanları.
+`var`yerine ` val` tercih edin, mutable koleksiyonlar yerine immutable olanları.
 
 ```kotlin
 // İyi: Immutable veri
@@ -474,7 +474,7 @@ fun withdraw(account: Account, amount: Money): Account {
 
 | İdiyom | Açıklama |
 |-------|-------------|
-| `val`over`var` | Immutable değişkenleri tercih et |
+| `val`over ` var` | Immutable değişkenleri tercih et |
 | `data class` | equals/hashCode/copy ile value objeler için |
 | `sealed class/interface` | Kısıtlı tip hiyerarşileri için |
 | `value class` | Sıfır maliyetli tip güvenli sarmalayıcılar için |

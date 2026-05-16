@@ -286,8 +286,8 @@ src/test/java/... (mirrors main)
 - Magic numbers â†’ named constants
 - Static mutable state â†’ prefer dependency injection
 - Silent catch blocks â†’ log and act or rethrow
-- **[QUARKUS]**: `@Singleton`where`@ApplicationScoped` is intended â€” breaks proxying and interception
-- **[QUARKUS]**: Mixing `quarkus-resteasy-reactive`and`quarkus-resteasy` (classic) â€” pick one stack
+- **[QUARKUS]**: `@Singleton`where `@ApplicationScoped` is intended â€” breaks proxying and interception
+- **[QUARKUS]**: Mixing `quarkus-resteasy-reactive`and ` quarkus-resteasy` (classic) â€” pick one stack
 - **[QUARKUS]**: Panache active-record + repository pattern in the same bounded context â€” pick one
 
 ## Logging
@@ -312,7 +312,7 @@ Logger log; // CDI-injected, scoped to declaring class
 
 - Accept `@Nullable`only when unavoidable; otherwise use`@NonNull`
 - Use Bean Validation (`@NotNull`,`@NotBlank`) on inputs
-- **[QUARKUS]**: Apply `@Valid`on`@BeanParam`,`@RestForm`, and request body parameters
+- **[QUARKUS]**: Apply `@Valid`on `@BeanParam`,`@RestForm`, and request body parameters
 
 ## Configuration
 

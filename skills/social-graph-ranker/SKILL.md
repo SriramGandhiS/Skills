@@ -14,7 +14,7 @@ Use this when the user needs to:
 - map warm paths to a target list
 - measure bridge value across first- and second-order connections
 - decide which targets deserve warm intros versus direct cold outreach
-- understand the graph math independently from `lead-intelligence`or`connections-optimizer`
+- understand the graph math independently from `lead-intelligence`or ` connections-optimizer`
 
 ## When To Use This Standalone
 
@@ -45,7 +45,7 @@ Given:
 
 - `T` = weighted target set
 - `M` = your current mutuals / direct connections
-- `d(m, t)`= shortest hop distance from mutual`m`to target`t`
+- `d(m, t)`= shortest hop distance from mutual`m ` to target`t`
 - `w(t)` = target weight from signal scoring
 
 Base bridge score:

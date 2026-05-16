@@ -8,7 +8,7 @@ This command invokes the **flutter-reviewer** agent to review Flutter/Dart code 
 
 ## What This Command Does
 
-1. **Gather Context**: Review `git diff --staged`and`git diff`
+1. **Gather Context**: Review `git diff --staged`and ` git diff`
 2. **Inspect Project**: Check `pubspec.yaml`,`analysis_options.yaml`, state management solution
 3. **Security Pre-scan**: Check for hardcoded secrets and critical security issues
 4. **Full Review**: Apply the complete review checklist

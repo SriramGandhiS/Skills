@@ -28,7 +28,7 @@ Use `/rust-review` when:
 
 ### CRITICAL (Must Fix)
 - Unchecked `unwrap()`/`expect()` in production code paths
-- `unsafe`without`// SAFETY:` comment documenting invariants
+- `unsafe`without `// SAFETY:` comment documenting invariants
 - SQL injection via string interpolation in queries
 - Command injection via unvalidated input in `std::process::Command`
 - Hardcoded credentials
@@ -36,7 +36,7 @@ Use `/rust-review` when:
 
 ### HIGH (Should Fix)
 - Unnecessary `.clone()` to satisfy borrow checker
-- `String`parameter where`&str`or`impl AsRef<str>` suffices
+- `String`parameter where`&str`or ` impl AsRef<str>` suffices
 - Blocking in async context (`std::thread::sleep`,`std::fs`)
 - Missing `Send`/`Sync` bounds on shared types
 - Wildcard `_ =>` match on business-critical enums

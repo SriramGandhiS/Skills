@@ -129,7 +129,7 @@ grep -A5 "annotationProcessorPaths\|annotationProcessor" pom.xml build.gradle
 - **Her zaman** her düzeltmeden sonra build'i çalıştırarak doğrulayın
 - Semptomları bastırmak yerine kök nedeni düzeltin
 - Logic değiştirmek yerine eksik import'ları eklemeyi tercih edin
-- Komutları çalıştırmadan önce build tool'unu onaylamak için `pom.xml`,`build.gradle`veya`build.gradle.kts`'yi kontrol edin
+- Komutları çalıştırmadan önce build tool'unu onaylamak için `pom.xml`,`build.gradle` veya `build.gradle.kts`'yi kontrol edin
 
 ## Durdurma Koşulları
 

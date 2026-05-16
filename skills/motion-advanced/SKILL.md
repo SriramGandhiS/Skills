@@ -65,8 +65,8 @@ This skill produces:
 | Long press | `useLongPress` hook |
 | Value smoothed over time | `useSpring` |
 | Value derived from another | `useTransform` |
-| Multi-step sequence | `useAnimate`with`async/await` |
-| One-shot imperative animation | `animate()`from`motion` |
+| Multi-step sequence | `useAnimate`with ` async/await` |
+| One-shot imperative animation | `animate()`from` motion` |
 | Text entering word by word | Stagger on `inline-block` spans |
 | SVG drawing on | `pathLength` 0 â†’ 1 |
 | SVG morph | `d` attribute tween (equal commands) |
@@ -572,7 +572,7 @@ This skill does **not** cover:
 
 - Token and spring definitions â†’ see `motion-foundations`
 - Standard UI patterns (button, modal, stagger, page transitions) â†’ see `motion-patterns`
-- CSS-only animations or Tailwind `animate-*`without`motion/react`
+- CSS-only animations or Tailwind `animate-*`without` motion/react`
 - Canvas or WebGL-based animation (Three.js, Pixi, etc.)
 - Full drag-and-drop systems with external state managers (dnd-kit, react-beautiful-dnd)
 - Game-loop or frame-by-frame animation
@@ -583,8 +583,8 @@ This skill does **not** cover:
 | ---------------------------------------------- | ------- | ------------------------------------------------ |
 | `drag` tested only on desktop | Rule 1 | Test on touch emulator and real device |
 | `animate={{ repeat: Infinity }}`with no pause | Rule 2 | Add`visibilitychange` listener |
-| `onDragEnd`checking only offset, not velocity | Rule 3 | Check both`info.offset`and`info.velocity` |
-| `animate(scope, ...)`before`useEffect`| Rule 4 | Call`animate()` only after mount |
+| `onDragEnd`checking only offset, not velocity | Rule 3 | Check both`info.offset`and ` info.velocity` |
+| `animate(scope, ...)`before` useEffect `| Rule 4 | Call`animate()` only after mount |
 | `const x = new MotionValue(0)`in render | Rule 5 | Use`const x = useMotionValue(0)` |
 | `transition={{ duration: 1.2 }}`inline | Rule 6 | Use`motionTokens.duration.crawl` |
 | `useEffect`without cleanup | Rule 7 | Return`removeEventListener`/`controls.stop` |

@@ -17,7 +17,7 @@ Güvenli, performanslı ve bakım yapılabilir uygulamalar oluşturmak için idi
 
 ## Nasıl Çalışır
 
-Bu skill altı ana alanda idiomatic Rust kurallarını zorlar: derleme zamanında veri yarışlarını önlemek için ownership ve borrowing, kütüphaneler için `thiserror`ve uygulamalar için`anyhow`ile`Result`/`?`hata yayılımı, yasadışı durumları temsil edilemez yapmak için enum'lar ve kapsamlı desen eşleştirme, sıfır maliyetli soyutlama için trait'ler ve generic'ler,`Arc<Mutex<T>>`, channel'lar ve async/await ile güvenli eşzamanlılık ve domain'e göre düzenlenmiş minimal`pub` yüzeyleri.
+Bu skill altı ana alanda idiomatic Rust kurallarını zorlar: derleme zamanında veri yarışlarını önlemek için ownership ve borrowing, kütüphaneler için `thiserror`ve uygulamalar için` anyhow`ile `Result`/`?`hata yayılımı, yasadışı durumları temsil edilemez yapmak için enum'lar ve kapsamlı desen eşleştirme, sıfır maliyetli soyutlama için trait'ler ve generic'ler,`Arc<Mutex<T>>`, channel'lar ve async/await ile güvenli eşzamanlılık ve domain'e göre düzenlenmiş minimal`pub` yüzeyleri.
 
 ## Temel İlkeler
 
@@ -59,7 +59,7 @@ fn normalize(input: &str) -> Cow<'_, str> {
 
 ## Hata İşleme
 
-### `Result`ve`?`Kullanın — Production'da Asla`unwrap()` Kullanmayın
+### `Result`ve `?`Kullanın — Production'da Asla`unwrap()` Kullanmayın
 
 ```rust
 // İyi: Hataları context ile yayın

@@ -15,15 +15,15 @@
 
 - Use `thiserror`para erros de library,`anyhow` apenas em crates binários ou testes
 - Sem `.unwrap()`ou`.expect()`em código de produção — propague erros com`?`
-- Prefira `&str`a`String`em parâmetros de função; retorne`String` quando houver transferência de ownership
-- Use `clippy`com`#![deny(clippy::all, clippy::pedantic)]` — corrija todos os warnings
+- Prefira `&str`a `String`em parâmetros de função; retorne`String` quando houver transferência de ownership
+- Use `clippy`com `#![deny(clippy::all, clippy::pedantic)]` — corrija todos os warnings
 - Derive `Debug`em todos os tipos públicos; derive`Clone`,`PartialEq` só quando necessário
 - Sem blocos `unsafe`sem justificativa com comentário`// SAFETY:`
 
 ### Banco de Dados
 
-- Todas as queries usam macros SQLx `query!`ou`query_as!` — verificadas em compile time contra o schema
-- Migrations em `migrations/`com`sqlx migrate` — nunca alterar banco diretamente
+- Todas as queries usam macros SQLx `query!`ou` query_as!` — verificadas em compile time contra o schema
+- Migrations em `migrations/`com` sqlx migrate` — nunca alterar banco diretamente
 - Use `sqlx::Pool<Postgres>` como estado compartilhado — nunca criar conexão por requisição
 - Todas as queries usam placeholders parametrizados (`$1`,`$2`) — nunca string formatting
 
@@ -41,7 +41,7 @@ let user = sqlx::query_as!(User, "SELECT * FROM users WHERE id = $1", id)
 
 - Defina enum de erro de domínio por módulo com `thiserror`
 - Mapeie erros para respostas HTTP via `IntoResponse` — nunca exponha detalhes internos
-- Use `tracing`para logs estruturados — nunca`println!`ou`eprintln!`
+- Use `tracing`para logs estruturados — nunca`println!`ou` eprintln!`
 
 ```rust
 use thiserror::Error;
@@ -79,7 +79,7 @@ impl IntoResponse for AppError {
 - Testes unitários em módulos `#[cfg(test)]` dentro de cada arquivo fonte
 - Testes de integração no diretório `tests/` usando PostgreSQL real (Testcontainers ou Docker)
 - Use `#[sqlx::test]` para testes de banco com migration e rollback automáticos
-- Faça mock de serviços externos com `mockall`ou`wiremock`
+- Faça mock de serviços externos com `mockall`ou ` wiremock`
 
 ### Estilo de Código
 
@@ -282,4 +282,4 @@ cargo fmt -- --check
 - `feat:`novas features,`fix:`correções de bug,`refactor:` mudanças de código
 - Branches de feature a partir da `main`, PRs obrigatórios
 - CI: `cargo fmt --check`,`cargo clippy`,`cargo test`,`cargo audit`
-- Deploy: Docker multi-stage build com base `scratch`ou`distroless`
+- Deploy: Docker multi-stage build com base `scratch`ou ` distroless`

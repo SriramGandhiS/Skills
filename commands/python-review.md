@@ -180,7 +180,7 @@ Run: `black app/routes/user.py app/services/auth.py`
 
 ### Django Projects
 The reviewer checks for:
-- N+1 query issues (use `select_related`and`prefetch_related`)
+- N+1 query issues (use `select_related`and ` prefetch_related`)
 - Missing migrations for model changes
 - Raw SQL usage when ORM could work
 - Missing `transaction.atomic()` for multi-step operations
@@ -294,4 +294,4 @@ The reviewer notes when code uses features from newer Python versions:
 | Match statements | 3.10+ |
 | Type unions (&#96;x &#124; None&#96;) | 3.10+ |
 
-Ensure your project's `pyproject.toml`or`setup.py` specifies the correct minimum Python version.
+Ensure your project's `pyproject.toml`or ` setup.py` specifies the correct minimum Python version.

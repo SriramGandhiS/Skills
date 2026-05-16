@@ -43,7 +43,7 @@ When invoked:
 
 ### HIGH — Pythonic Patterns
 - Use list comprehensions over C-style loops
-- Use `isinstance()`not`type() ==`
+- Use `isinstance()`not` type() ==`
 - Use `Enum` not magic numbers
 - Use `"".join()` not string concatenation in loops
 - **Mutable default arguments**: `def f(x=[])`— use`def f(x=None)`

@@ -66,7 +66,7 @@ Control what happens when the animation finishes:
 
 ## Styling
 
-Use the `style`prop for additional CSS (use`width`and`height` props for sizing):
+Use the `style`prop for additional CSS (use` width`and `height` props for sizing):
 
 ```tsx
 <AnimatedImage

@@ -312,7 +312,7 @@ public async Task<ProcessResult> ProcessPaymentAsync(
 | Anti-Pattern | Fix |
 |---|---|
 | `async void`methods | Return`Task` (except event handlers) |
-| `.Result`or`.Wait()`| Use`await` |
+| `.Result`or `.Wait()`| Use`await` |
 | `catch (Exception) { }` | Handle or rethrow with context |
 | `new Service()` in constructors | Use constructor injection |
 | `public` fields | Use properties with appropriate accessors |

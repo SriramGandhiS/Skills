@@ -245,8 +245,8 @@ if (aliases.length === 0) {
 
 ## Operatör Notları
 
-- Session dosyaları header'da `Project`,`Branch`ve`Worktree`'yi sürdürür, böylece`/sessions info` parallel tmux/worktree çalıştırmalarını ayırt edebilir.
-- Command-center tarzı izleme için, `/sessions info`,`git diff --stat`ve`scripts/hooks/cost-tracker.js` tarafından yayılan cost metriklerini birleştirin.
+- Session dosyaları header'da `Project`,`Branch`ve `Worktree`'yi sürdürür, böylece`/sessions info` parallel tmux/worktree çalıştırmalarını ayırt edebilir.
+- Command-center tarzı izleme için, `/sessions info`,`git diff --stat` ve `scripts/hooks/cost-tracker.js` tarafından yayılan cost metriklerini birleştirin.
 
 ## Argümanlar
 

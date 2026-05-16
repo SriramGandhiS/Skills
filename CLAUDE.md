@@ -77,7 +77,7 @@ The search engine uses BM25 ranking combined with regex matching. Domain auto-de
 When modifying files:
 
 1. **Data & Scripts** - Edit in `src/ui-ux-pro-max/`:
-   - `data/*.csv`and`data/stacks/*.csv`
+   - `data/*.csv`and ` data/stacks/*.csv`
    - `scripts/*.py`
    - Changes automatically available via symlinks in `.claude/`,`.factory/`,`.shared/`
 
@@ -103,7 +103,7 @@ Python 3.x (no external dependencies required)
 
 Never push directly to `main`. Always:
 
-1. Create a new branch: `git checkout -b feat/...`or`fix/...`
+1. Create a new branch: `git checkout -b feat/...`or` fix/...`
 2. Commit changes
 3. Push branch: `git push -u origin <branch>`
 4. Create PR: `gh pr create`

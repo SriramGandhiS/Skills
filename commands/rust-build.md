@@ -17,7 +17,7 @@ This command invokes the **rust-build-resolver** agent to incrementally fix Rust
 ## When to Use
 
 Use `/rust-build` when:
-- `cargo build`or`cargo check` fails with errors
+- `cargo build`or ` cargo check` fails with errors
 - `cargo clippy` reports warnings
 - Borrow checker or lifetime errors block compilation
 - Cargo dependency resolution fails

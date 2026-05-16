@@ -59,7 +59,7 @@ python -c "import torch; x = torch.randn(2,3).cuda(); print('CUDA tensor test: O
 | `CUDA out of memory`| Batch too large or memory leak | Reduce batch size, add`torch.cuda.empty_cache()`, use gradient checkpointing |
 | `RuntimeError: element 0 of tensors does not require grad`| Detached tensor in loss computation | Remove`.detach()`or`.item()` before gradient computation |
 | `ValueError: Expected input batch_size X to match target batch_size Y` | Mismatched batch dimensions | Fix DataLoader collation or model output reshape |
-| `RuntimeError: one of the variables needed for gradient computation has been modified by an inplace operation`| In-place op breaks autograd | Replace`x += 1`with`x = x + 1`, avoid in-place relu |
+| `RuntimeError: one of the variables needed for gradient computation has been modified by an inplace operation`| In-place op breaks autograd | Replace`x += 1` with`x = x + 1`, avoid in-place relu |
 | `RuntimeError: stack expects each tensor to be equal size`| Inconsistent tensor sizes in DataLoader | Add padding/truncation in Dataset`__getitem__`or custom`collate_fn` |
 | `RuntimeError: cuDNN error: CUDNN_STATUS_INTERNAL_ERROR`| cuDNN incompatibility or corrupted state | Set`torch.backends.cudnn.enabled = False` to test, update drivers |
 | `IndexError: index out of range in self` | Embedding index >= num_embeddings | Fix vocabulary size or clamp indices |

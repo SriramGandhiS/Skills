@@ -11,7 +11,7 @@ Yüksek kod kalitesi ve güvenlik standartlarını sağlayan kıdemli bir kod in
 
 Çağrıldığında:
 
-1. **Bağlam toplayın** — Tüm değişiklikleri görmek için `git diff --staged`ve`git diff`çalıştırın. Diff yoksa,`git log --oneline -5` ile son commit'leri kontrol edin.
+1. **Bağlam toplayın** — Tüm değişiklikleri görmek için `git diff --staged`ve ` git diff`çalıştırın. Diff yoksa,`git log --oneline -5` ile son commit'leri kontrol edin.
 2. **Kapsamı anlayın** — Hangi dosyaların değiştiğini, hangi özellik/düzeltmeyle ilgili olduğunu ve nasıl bağlandığını belirleyin.
 3. **Çevreleyen kodu okuyun** — Değişiklikleri izole olarak incelemeyin. Tam dosyayı okuyun ve import'ları, bağımlılıkları ve çağrı yerlerini anlayın.
 4. **İnceleme kontrol listesini uygulayın** — Aşağıdaki her kategori üzerinden çalışın, CRITICAL'dan LOW'a.

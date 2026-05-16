@@ -21,7 +21,7 @@ An AI skill that provides design intelligence for building professional UI/UX ac
 You now have access to 60 agents, 242 skills, and 75 legacy command shims.
 
 > [!TIP]
-> **GitHub Copilot Users**: Enable `.vscode/settings.json`with`"chat.promptFiles": true`to use our custom agents in`.github/prompts/`. Try slash commands like`/plan`,`/tdd`, or`/code-review`.
+> **GitHub Copilot Users**: Enable `.vscode/settings.json` with `"chat.promptFiles": true` to use our custom agents in `.github/prompts/`. Try slash commands like `/plan`, `/tdd`, or `/code-review`.
 > **Elite Performance**: For low-latency local execution, see the [Hermes Setup Guide](docs/HERMES-SETUP.md).
 > **Release Candidate**: Review the [v2.0.0-rc.1 Release Notes](docs/releases/2.0.0-rc.1/release-notes.md) for the latest surface updates.
 

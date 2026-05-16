@@ -85,14 +85,14 @@ Bu repository yalnızca ham kodu içerir. Rehberler her şeyi açıklıyor.
 - **Operatör ve dışa dönük iş akışları büyüdü** — `brand-voice`,`social-graph-ranker`,`customer-billing-ops`,`google-workspace-ops` ve ilgili operatör skill'leri aynı sistem içinde tamamlandı.
 - **Medya ve lansman araçları** — `manim-video`,`remotion-video-creation` ve sosyal yayın yüzeyleri teknik anlatım ve duyuru akışlarını aynı repo içine taşıdı.
 - **Framework ve ürün yüzeyi genişledi** — `nestjs-patterns`, daha zengin Codex/OpenCode kurulum yüzeyleri ve çapraz harness paketleme iyileştirmeleri repo'yu Claude Code dışına da taşıdı.
-- **ECC 2.0 alpha repoda** — `ecc2/`altındaki Rust kontrol katmanı artık yerelde derleniyor ve`dashboard`,`start`,`sessions`,`status`,`stop`,`resume`ve`daemon` komutlarını sunuyor.
+- **ECC 2.0 alpha repoda** — `ecc2/`altındaki Rust kontrol katmanı artık yerelde derleniyor ve` dashboard `,`start`,`sessions`,`status`,`stop`,`resume`ve`daemon` komutlarını sunuyor.
 - **Ekosistem sağlamlaştırma** — AgentShield, ECC Tools maliyet kontrolleri, billing portal işleri ve web yüzeyi çekirdek plugin etrafında birlikte gelişmeye devam ediyor.
 
 ### v1.9.0 — Seçici Kurulum & Dil Genişlemesi (Mar 2026)
 
-- **Seçici kurulum mimarisi** — `install-plan.js`ve`install-apply.js` ile manifest-tabanlı kurulum pipeline'ı, hedefli component kurulumu için. State store neyin kurulu olduğunu takip eder ve artımlı güncellemelere olanak sağlar.
+- **Seçici kurulum mimarisi** — `install-plan.js`ve ` install-apply.js` ile manifest-tabanlı kurulum pipeline'ı, hedefli component kurulumu için. State store neyin kurulu olduğunu takip eder ve artımlı güncellemelere olanak sağlar.
 - **6 yeni agent** — `typescript-reviewer`,`pytorch-build-resolver`,`java-build-resolver`,`java-reviewer`,`kotlin-reviewer`,`kotlin-build-resolver` dil desteğini 10 dile çıkarıyor.
-- **Yeni skill'ler** — Deep learning iş akışları için `pytorch-patterns`, API referans araştırması için`documentation-lookup`, modern JS toolchain'leri için`bun-runtime`ve`nextjs-turbopack`, artı 8 operasyonel domain skill ve`mcp-server-patterns`.
+- **Yeni skill'ler** — Deep learning iş akışları için `pytorch-patterns`, API referans araştırması için`documentation-lookup`, modern JS toolchain'leri için`bun-runtime` ve `nextjs-turbopack`, artı 8 operasyonel domain skill ve`mcp-server-patterns`.
 - **Session & state altyapısı** — Query CLI ile SQLite state store, yapılandırılmış kayıt için session adapter'ları, kendini geliştiren skill'ler için skill evolution foundation.
 - **Orkestrasyon iyileştirmesi** — Harness audit skorlaması deterministik hale getirildi, orkestrasyon durumu ve launcher uyumluluğu sağlamlaştırıldı, 5 katmanlı koruma ile observer loop önleme.
 - **Observer güvenilirliği** — Throttling ve tail sampling ile memory patlaması düzeltmesi, sandbox erişim düzeltmesi, lazy-start mantığı ve re-entrancy koruması.
@@ -104,7 +104,7 @@ Bu repository yalnızca ham kodu içerir. Rehberler her şeyi açıklıyor.
 
 - **Harness-first release** — ECC artık açıkça bir agent harness performans sistemi olarak çerçevelendi, sadece bir config paketi değil.
 - **Hook güvenilirlik iyileştirmesi** — SessionStart root fallback, Stop-phase session özetleri ve kırılgan inline one-liner'lar yerine script-tabanlı hook'lar.
-- **Hook runtime kontrolleri** — `ECC_HOOK_PROFILE=minimal|standard|strict`ve`ECC_DISABLED_HOOKS=...` hook dosyalarını düzenlemeden runtime gating için.
+- **Hook runtime kontrolleri** — `ECC_HOOK_PROFILE=minimal|standard|strict`ve `ECC_DISABLED_HOOKS=...` hook dosyalarını düzenlemeden runtime gating için.
 - **Yeni harness command'ları** — `/harness-audit`,`/loop-start`,`/loop-status`,`/quality-gate`,`/model-route`.
 - **NanoClaw v2** — Model routing, skill hot-load, session branch/search/export/compact/metrics.
 - **Çapraz harness paritesi** — Claude Code, Cursor, OpenCode ve Codex app/CLI arasında davranış sıkılaştırıldı.

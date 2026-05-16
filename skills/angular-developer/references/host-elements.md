@@ -32,7 +32,7 @@ export class CustomSlider {
 
 ## Legacy Decorators
 
-`@HostBinding`and`@HostListener` are supported for backwards compatibility but should be avoided in new code.
+`@HostBinding`and `@HostListener` are supported for backwards compatibility but should be avoided in new code.
 
 ```ts
 export class CustomSlider {

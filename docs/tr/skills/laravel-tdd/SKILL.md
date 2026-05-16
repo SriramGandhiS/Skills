@@ -228,7 +228,7 @@ $response->assertOk();
 ### Kapsam Hedefleri
 
 - Unit + feature testleri için 80%+ kapsam zorlayın
-- CI'da `pcov`veya`XDEBUG_MODE=coverage` kullanın
+- CI'da `pcov`veya `XDEBUG_MODE=coverage` kullanın
 
 ### Test Komutları
 
@@ -238,7 +238,7 @@ $response->assertOk();
 
 ### Test Yapılandırması
 
-- Hızlı testler için `phpunit.xml`'de`DB_CONNECTION=sqlite`ve`DB_DATABASE=:memory:` ayarlayın
+- Hızlı testler için `phpunit.xml`'de`DB_CONNECTION=sqlite`ve `DB_DATABASE=:memory:` ayarlayın
 - Dev/prod verilerine dokunmaktan kaçınmak için testler için ayrı env tutun
 
 ### Yetkilendirme Testleri

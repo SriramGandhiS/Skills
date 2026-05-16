@@ -18,7 +18,7 @@ Idiomatic Kotlin patterns and best practices for building robust, efficient, and
 
 ## How It Works
 
-This skill enforces idiomatic Kotlin conventions across seven key areas: null safety using the type system and safe-call operators, immutability via `val`and`copy()`on data classes, sealed classes and interfaces for exhaustive type hierarchies, structured concurrency with coroutines and`Flow`, extension functions for adding behaviour without inheritance, type-safe DSL builders using`@DslMarker` and lambda receivers, and Gradle Kotlin DSL for build configuration.
+This skill enforces idiomatic Kotlin conventions across seven key areas: null safety using the type system and safe-call operators, immutability via `val`and ` copy()`on data classes, sealed classes and interfaces for exhaustive type hierarchies, structured concurrency with coroutines and`Flow`, extension functions for adding behaviour without inheritance, type-safe DSL builders using`@DslMarker` and lambda receivers, and Gradle Kotlin DSL for build configuration.
 
 ## Examples
 
@@ -77,7 +77,7 @@ fun getUserEmail(userId: String): String {
 
 ### 2. Immutability by Default
 
-Prefer `val`over`var`, immutable collections over mutable ones.
+Prefer `val`over ` var`, immutable collections over mutable ones.
 
 ```kotlin
 // Good: Immutable data
@@ -650,7 +650,7 @@ val (active, inactive) = users.partition { it.isActive }
 
 | Idiom | Description |
 |-------|-------------|
-| `val`over`var` | Prefer immutable variables |
+| `val`over ` var` | Prefer immutable variables |
 | `data class` | For value objects with equals/hashCode/copy |
 | `sealed class/interface` | For restricted type hierarchies |
 | `value class` | For type-safe wrappers with zero overhead |

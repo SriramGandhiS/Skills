@@ -119,4 +119,4 @@ class TiltEffect {
 | Animations not triggering | Verify Intersection Observer is running; check `.visible` class is being added |
 | Scroll snap not working | Ensure `scroll-snap-type: y mandatory`on html; each slide needs`scroll-snap-align: start` |
 | Mobile issues | Disable heavy effects at 768px breakpoint; test touch events; reduce particle count |
-| Performance issues | Use `will-change`sparingly; prefer`transform`/`opacity` animations; throttle scroll handlers |
+| Performance issues | Use `will-change`sparingly; prefer` transform`/`opacity` animations; throttle scroll handlers |

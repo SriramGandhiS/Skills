@@ -37,9 +37,9 @@ May 16 pass, see
 | Git tag | `v2.0.0-rc.1`| GitHub releases |`gh release view v2.0.0-rc.1 --repo affaan-m/everything-claude-code`|`release not found` | Release owner | Blocked until release approval |
 | npm package | `ecc-universal`|`package.json`|`node -p "require('./package.json').name"`|`publication-evidence-2026-05-12.md` | Package owner | Evidence recorded |
 | npm version | `2.0.0-rc.1`|`VERSION`,`package.json`, lockfiles |`node -p "require('./package.json').version"`|`publication-evidence-2026-05-12.md` | Package owner | Evidence recorded |
-| npm dist-tag | `next`for rc,`latest`only for GA | npm registry |`npm view ecc-universal dist-tags --json`| Current registry only has`latest: 1.10.0`;`next` is pending publish | Package owner | Blocked until publish approval |
+| npm dist-tag | `next`for rc,` latest`only for GA | npm registry |`npm view ecc-universal dist-tags --json`| Current registry only has`latest: 1.10.0`;`next` is pending publish | Package owner | Blocked until publish approval |
 | Claude plugin slug | `ecc`/`ecc@ecc`install path |`.claude-plugin/plugin.json`,`.claude-plugin/marketplace.json`|`node tests/hooks/hooks.test.js`|`publication-evidence-2026-05-12.md` | Plugin owner | Evidence recorded |
-| Claude plugin manifest | `2.0.0-rc.1`, no unsupported`agents`or explicit`hooks`fields |`.claude-plugin/plugin.json`,`.claude-plugin/PLUGIN_SCHEMA_NOTES.md`|`claude plugin validate .claude-plugin/plugin.json`|`publication-evidence-2026-05-12.md` | Plugin owner | Evidence recorded |
+| Claude plugin manifest | `2.0.0-rc.1`, no unsupported`agents ` or explicit`hooks`fields |`.claude-plugin/plugin.json`,`.claude-plugin/PLUGIN_SCHEMA_NOTES.md`|`claude plugin validate .claude-plugin/plugin.json`|`publication-evidence-2026-05-12.md` | Plugin owner | Evidence recorded |
 | Codex plugin manifest | `2.0.0-rc.1`with shared skill source |`.codex-plugin/plugin.json`|`node tests/docs/ecc2-release-surface.test.js`|`publication-evidence-2026-05-12.md` | Plugin owner | Evidence recorded |
 | Codex repo marketplace | `ecc@2.0.0-rc.1`exposed through`.agents/plugins/marketplace.json`|`.agents/plugins/marketplace.json`,`.codex-plugin/README.md`|`HOME="$(mktemp -d)" codex plugin marketplace add <local-checkout>`|`publication-evidence-2026-05-15.md` | Plugin owner | Repo-marketplace path verified; official Plugin Directory publishing coming soon |
 | OpenCode package | `ecc-universal`plugin module |`.opencode/package.json`,`.opencode/index.ts`|`npm run build:opencode`|`publication-evidence-2026-05-12.md` | Package owner | Evidence recorded |
@@ -51,7 +51,7 @@ May 16 pass, see
 | Gate | Required evidence | Fresh check | Blocker field | Owner | Status |
 | --- | --- | --- | --- | --- | --- |
 | GitHub release | Tag exists, release notes use final URLs, assets attached if needed | `gh release view v2.0.0-rc.1 --json tagName,url,isPrerelease`|`Blocker: release not found on 2026-05-12` | Release owner | Pending approval |
-| npm package | `npm pack --dry-run`has expected files, version matches, rc goes to`next`|`npm pack --dry-run`and`npm publish --tag next --dry-run`where supported |`Blocker: actual publish requires approval; dry run passed with next tag` | Package owner | Dry-run passed |
+| npm package | `npm pack --dry-run`has expected files, version matches, rc goes to` next`|`npm pack --dry-run`and`npm publish --tag next --dry-run`where supported |`Blocker: actual publish requires approval; dry run passed with next tag` | Package owner | Dry-run passed |
 | Claude plugin | Manifest validates, marketplace JSON points to public repo, install docs match slug | `claude plugin validate .claude-plugin/plugin.json`;`claude plugin tag .claude-plugin --dry-run`; isolated temp-home install smoke |`Blocker: real tag creation/push requires approval` | Plugin owner | Clean-checkout dry-run and install smoke recorded |
 | Codex plugin | Manifest version matches package and docs, repo marketplace points at the plugin root, and OpenAI's current official Plugin Directory status is recorded | `node tests/docs/ecc2-release-surface.test.js`;`node tests/plugin-manifest.test.js`;`codex plugin marketplace add --help`; temp-home`codex plugin marketplace add <local-checkout>`|`Blocker: official Plugin Directory publishing and self-serve management are documented as coming soon` | Plugin owner | Repo-marketplace distribution verified; official directory pending |
 | OpenCode package | Build output is regenerated from source and package metadata is current | `npm run build:opencode`|`Blocker: none for local build; public distribution still follows npm/plugin release` | Package owner | Evidence recorded |
@@ -65,7 +65,7 @@ Record the exact commit SHA and command output before any publication action:
 
 | Evidence | Command | Required result | Recorded output |
 | --- | --- | --- | --- |
-| Clean release branch | `git status --short --branch`| On intended release commit; no unrelated files | Pending final strict clean-checkout release pass;`publication-evidence-2026-05-16.md`records current`main`with unrelated untracked`docs/drafts/` |
+| Clean release branch | `git status --short --branch`| On intended release commit; no unrelated files | Pending final strict clean-checkout release pass;`publication-evidence-2026-05-16.md`records current`main` with unrelated untracked `docs/drafts/` |
 | Harness audit | `npm run harness:audit -- --format json`| 70/70 passing |`publication-evidence-2026-05-16.md`: 70/70 |
 | Adapter scorecard | `npm run harness:adapters -- --check`| PASS |`publication-evidence-2026-05-16.md`: PASS, 11 adapters |
 | Observability readiness | `npm run observability:ready`| 21/21 passing |`publication-evidence-2026-05-16.md`: 21/21, ready yes |

@@ -33,7 +33,7 @@ php artisan --version
 
 - Verify `.env` is present and required keys exist
 - Confirm `APP_DEBUG=false` for production environments
-- Confirm `APP_ENV`matches the target deployment (`production`,`staging`)
+- Confirm `APP_ENV`matches the target deployment (` production`,`staging`)
 
 If using Laravel Sail locally:
 
@@ -111,7 +111,7 @@ php artisan view:cache
 
 - Ensure cache warmups succeed in production configuration
 - Verify queue workers and scheduler are configured
-- Confirm `storage/`and`bootstrap/cache/` are writable in the target environment
+- Confirm `storage/`and` bootstrap/cache/` are writable in the target environment
 
 ## Phase 7: Queue and Scheduler Checks
 

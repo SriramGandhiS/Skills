@@ -341,7 +341,7 @@ dlg = page.wait_window("Confirm Delete")
 page.wait_until(lambda: page.get_text(page.by_id("lblStatus")) == "Ready")
 ```
 
-**Never use `time.sleep()`as primary synchronization** â€” use`wait()`or`wait_until()`.
+**Never use `time.sleep()`as primary synchronization** â€” use`wait()`or` wait_until()`.
 
 ## Artifact Management
 
@@ -441,7 +441,7 @@ Common causes and fixes:
 
 | Cause | Fix |
 |-------|-----|
-| Control not ready | Replace `time.sleep`with`wait_visible` |
+| Control not ready | Replace `time.sleep`with ` wait_visible` |
 | Window not focused | Add `win.set_focus()` before interactions |
 | Animation in progress | `wait_until(lambda: not loading_indicator.exists())` |
 | Dialog timing | `wait_window(title, timeout=15)` |
@@ -455,7 +455,7 @@ Three tiers of isolation â€” use the lightest tier that satisfies your need
 
 ### Tier 1 â€” Filesystem Isolation (default, always use)
 
-Each test gets its own `APPDATA`/`LOCALAPPDATA`/`TEMP`via`subprocess.Popen`and`Application.connect()`. pytest's`tmp_path` fixture handles cleanup automatically.
+Each test gets its own `APPDATA`/`LOCALAPPDATA`/`TEMP`via` subprocess.Popen `and`Application.connect()`. pytest's`tmp_path` fixture handles cleanup automatically.
 
 ```python
 ## conftest.py â€” replace the basic `app` fixture with this
@@ -628,7 +628,7 @@ Launch: `WindowsSandbox.exe e2e-sandbox.wsb`
 
 ### Prevent hanging tests
 
-Add `pytest-timeout`to cap any single test. In`pytest.ini`set`timeout = 60`and`timeout_method = thread`. Note:`thread`method cannot kill Qt app subprocesses on Windows â€” add`atexit.register(lambda: [p.kill() for p in psutil.Process().children(recursive=True)])`in`conftest.py` to reap orphans.
+Add `pytest-timeout`to cap any single test. In`pytest.ini`set ` timeout = 60`and`timeout_method = thread`. Note:`thread` method cannot kill Qt app subprocesses on Windows â€” add `atexit.register(lambda: [p.kill() for p in psutil.Process().children(recursive=True)])`in`conftest.py` to reap orphans.
 
 ## CI/CD Integration
 
@@ -786,7 +786,7 @@ Screenshot matching is brutally sensitive to Windows display scaling (100% / 125
 
 1. **Capture templates at the same scale as the target machine.** Don't try to rescue a mismatch with `PIL.Image.resize`â€”`cv2.matchTemplate` is very fragile against resampling artefacts.
 2. **Pin the CI display scaling.** On `windows-latest`add a step like`Set-DisplayResolution 1920 1080 -Force` and disable per-monitor DPI scaling, so screenshot dimensions are reproducible.
-3. **Record the scale alongside each artefact.** On capture, write `GetDpiForWindow(hwnd) / 96`to`artifacts/<test>/metadata.json` â€” postmortems become obvious instead of guess-work.
+3. **Record the scale alongside each artefact.** On capture, write `GetDpiForWindow(hwnd) / 96`to` artifacts/<test>/metadata.json` â€” postmortems become obvious instead of guess-work.
 
 > Process-level DPI awareness (`SetProcessDpiAwarenessContext`) **can conflict with Qt's own DPI handling** when the app under test is Qt-based. Prefer "same-scale templates + CI pin" over flipping process-wide DPI mode in fixtures.
 

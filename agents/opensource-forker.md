@@ -194,7 +194,7 @@ On completion, report:
 
 ### Example: Fork a FastAPI service
 Input: `Fork project: /home/user/my-api, Target: /home/user/opensource-staging/my-api, License: MIT`
-Action: Copies files, strips `DATABASE_URL`from`docker-compose.yml`, replaces`internal.company.com`with`your-domain.com`, creates`.env.example` with 8 variables, fresh git init
+Action: Copies files, strips `DATABASE_URL`from` docker-compose.yml `, replaces`internal.company.com` with `your-domain.com`, creates`.env.example` with 8 variables, fresh git init
 Output: `FORK_REPORT.md` listing all changes, staging directory ready for sanitizer
 
 ## Rules

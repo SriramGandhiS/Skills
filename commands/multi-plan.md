@@ -107,7 +107,7 @@ mcp__ace-tool__search_context({
 1. **Glob**: Find relevant files by pattern (e.g., `Glob("**/*.ts")`,`Glob("src/**/*.py")`)
 2. **Grep**: Search for key symbols, function names, class definitions (e.g., `Grep("className|functionName")`)
 3. **Read**: Read the discovered files to gather complete context
-4. **Task (Explore agent)**: For deeper exploration, use `Task`with`subagent_type: "Explore"` to search across the codebase
+4. **Task (Explore agent)**: For deeper exploration, use `Task`with ` subagent_type: "Explore"` to search across the codebase
 
 #### 1.3 Completeness Check
 

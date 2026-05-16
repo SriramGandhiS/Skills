@@ -43,7 +43,7 @@ Multiple audio tracks can be layered by adding multiple `<Audio>` components.
 
 ## Trimming
 
-Use `trimBefore`and`trimAfter` to remove portions of the audio. Values are in frames.
+Use `trimBefore`and ` trimAfter` to remove portions of the audio. Values are in frames.
 
 ```tsx
 const { fps } = useVideoConfig();

@@ -55,7 +55,7 @@ Temporary install smoke:
 | Claude plugin manifest | `claude plugin validate .claude-plugin/plugin.json` | Passed |
 | Claude plugin tag preflight | `claude plugin tag .claude-plugin --dry-run`| Blocked by unrelated untracked`docs/drafts/` |
 | Claude plugin tag forced dry-run | `claude plugin tag .claude-plugin --dry-run --force`| Would create`ecc--v2.0.0-rc.1`at HEAD; do not use`--force` for real release unless maintainer decides |
-| Codex marketplace CLI | `codex plugin marketplace --help`and subcommand help | Supports`add`,`upgrade`, and`remove`;`add` supports repo and local marketplace roots |
+| Codex marketplace CLI | `codex plugin marketplace --help`and subcommand help | Supports` add`,`upgrade`, and`remove`;`add` supports repo and local marketplace roots |
 | OpenCode package | `npm run build:opencode` | Passed |
 | Claude hook/plugin route | `node tests/hooks/hooks.test.js`| Passed`236/236` |
 | Codex release surface | `node tests/docs/ecc2-release-surface.test.js`| Passed`18/18` |

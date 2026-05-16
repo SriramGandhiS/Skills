@@ -54,7 +54,7 @@ export const RemotionRoot = () => {
 };
 ```
 
-Use `type`declarations for props rather than`interface`to ensure`defaultProps` type safety.
+Use `type`declarations for props rather than` interface`to ensure `defaultProps` type safety.
 
 ## Folders
 
@@ -84,7 +84,7 @@ export const RemotionRoot = () => {
 
 ## Stills
 
-Use `<Still>`for single-frame images. It does not require`durationInFrames`or`fps`.
+Use `<Still>`for single-frame images. It does not require`durationInFrames`or` fps`.
 
 ```tsx
 import { Still } from "remotion";

@@ -120,7 +120,7 @@ Route::scopeBindings()->group(function () {
 
 ### İç İçe Route'lar ve Binding İsimleri
 
-- Çift iç içe geçmeyi önlemek için prefix'leri ve path'leri tutarlı tutun (örn. `conversation`vs`conversations`).
+- Çift iç içe geçmeyi önlemek için prefix'leri ve path'leri tutarlı tutun (örn. `conversation`vs ` conversations`).
 - Bound model'e uyan tek bir parametre ismi kullanın (örn. `Conversation`için`{conversation}`).
 - İç içe geçirirken üst-alt ilişkilerini zorlamak için scoped binding'leri tercih edin.
 

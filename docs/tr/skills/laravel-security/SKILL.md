@@ -28,7 +28,7 @@ Laravel uygulamalarını yaygın güvenlik açıklarına karşı korumak için k
 
 - Production'da `APP_DEBUG=false`
 - `APP_KEY` ayarlanmalı ve tehlikeye girdiğinde döndürülmelidir
-- `SESSION_SECURE_COOKIE=true`ve`SESSION_SAME_SITE=lax`ayarlayın (veya hassas uygulamalar için`strict`)
+- `SESSION_SECURE_COOKIE=true`ve `SESSION_SAME_SITE=lax`ayarlayın (veya hassas uygulamalar için`strict`)
 - Doğru HTTPS algılama için güvenilir proxy'leri yapılandırın
 
 ## Session ve Cookie Sertleştirme
@@ -96,7 +96,7 @@ Route::put('/projects/{project}', [ProjectController::class, 'update'])
 
 ## Mass Assignment Koruması
 
-- `$fillable`veya`$guarded`kullanın ve`Model::unguard()` kullanmaktan kaçının
+- `$fillable`veya `$guarded`kullanın ve`Model::unguard()` kullanmaktan kaçının
 - DTO'ları veya açık attribute mapping'i tercih edin
 
 ## SQL Injection Önleme

@@ -46,7 +46,7 @@ When invoked:
 ### HIGH — Ownership and Lifetimes
 
 - **Unnecessary cloning**: `.clone()` to satisfy borrow checker without understanding the root cause
-- **String instead of &str**: Taking `String`when`&str`or`impl AsRef<str>` suffices
+- **String instead of &str**: Taking `String`when `&str`or`impl AsRef<str>` suffices
 - **Vec instead of slice**: Taking `Vec<T>`when`&[T]` suffices
 - **Missing `Cow`**: Allocating when`Cow<'_, str>` would avoid it
 - **Lifetime over-annotation**: Explicit lifetimes where elision rules apply
@@ -55,7 +55,7 @@ When invoked:
 
 - **Blocking in async**: `std::thread::sleep`,`std::fs` in async context — use tokio equivalents
 - **Unbounded channels**: `mpsc::channel()`/`tokio::sync::mpsc::unbounded_channel()`need justification — prefer bounded channels (`tokio::sync::mpsc::channel(n)`in async,`sync_channel(n)` in sync)
-- **`Mutex`poisoning ignored**: Not handling`PoisonError`from`.lock()`
+- **`Mutex`poisoning ignored**: Not handling`PoisonError`from `.lock()`
 - **Missing `Send`/`Sync` bounds**: Types shared across threads without proper bounds
 - **Deadlock patterns**: Nested lock acquisition without consistent ordering
 

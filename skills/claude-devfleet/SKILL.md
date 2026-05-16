@@ -57,8 +57,8 @@ Report back to user
 
 1. **Plan**: Call `plan_project(prompt="...")`â†’ returns`project_id`+ list of missions with`depends_on`chains and`auto_dispatch=true`.
 2. **Show plan**: Present mission titles, types, and dependency chain to the user.
-3. **Dispatch**: Call `dispatch_mission(mission_id=<first_mission_id>)`on the root mission (empty`depends_on`). Remaining missions auto-dispatch as their dependencies complete (because`plan_project`sets`auto_dispatch=true` on them).
-4. **Monitor**: Call `get_mission_status(mission_id=...)`or`get_dashboard()` to check progress.
+3. **Dispatch**: Call `dispatch_mission(mission_id=<first_mission_id>)`on the root mission (empty`depends_on`). Remaining missions auto-dispatch as their dependencies complete (because`plan_project` sets`auto_dispatch=true` on them).
+4. **Monitor**: Call `get_mission_status(mission_id=...)`or` get_dashboard()` to check progress.
 5. **Report**: Call `get_report(mission_id=...)` when missions complete. Share highlights with the user.
 
 ### Concurrency
@@ -73,7 +73,7 @@ DevFleet runs up to 3 concurrent agents by default (configurable via `DEVFLEET_M
 2. Dispatch the first mission (the one with empty `depends_on`).
 3. Remaining missions auto-dispatch as dependencies resolve (they have `auto_dispatch=true`).
 4. Report back with project ID and mission count so the user knows what was launched.
-5. Poll with `get_mission_status`or`get_dashboard()`periodically until all missions reach a terminal state (`completed`,`failed`, or`cancelled`).
+5. Poll with `get_mission_status`or ` get_dashboard()`periodically until all missions reach a terminal state (`completed`,`failed`, or `cancelled`).
 6. `get_report(mission_id=...)` for each terminal mission â€” summarize successes and call out failures with errors and next steps.
 
 ### Manual: step-by-step control

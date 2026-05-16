@@ -100,7 +100,7 @@ Explique padrões e diretrizes chave.
 
 ## Exemplos de Código
 
-\`\`\`typescript
+\`\`\` typescript
 // Inclua exemplos práticos e testados
 function exemplo() {
   // Código bem comentado
@@ -320,7 +320,7 @@ O que o usuário recebe.
 
 Skills e agentes podem usar ferramentas **MCP (Model Context Protocol)** para obter dados atualizados em vez de depender apenas de dados de treinamento. Isso é especialmente útil para documentação.
 
-- **Context7** é um servidor MCP que expõe `resolve-library-id`e`query-docs`. Use quando o usuário perguntar sobre bibliotecas, frameworks ou APIs para que as respostas reflitam a documentação atual.
+- **Context7** é um servidor MCP que expõe `resolve-library-id`e ` query-docs`. Use quando o usuário perguntar sobre bibliotecas, frameworks ou APIs para que as respostas reflitam a documentação atual.
 - Ao contribuir com **skills** que dependem de docs em tempo real, descreva como usar as ferramentas MCP relevantes.
 - Ao contribuir com **agentes** que respondem perguntas sobre docs/API, inclua os nomes das ferramentas MCP do Context7 nas ferramentas do agente.
 

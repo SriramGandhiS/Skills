@@ -235,7 +235,7 @@ README.mdを更新する際:
 
 ## セットアップ
 
-\`\`\`bash
+\`\`\` bash
 ## インストール
 npm install
 

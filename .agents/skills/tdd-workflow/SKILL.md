@@ -83,7 +83,7 @@ describe('Semantic Search', () => {
 ### Step 3: Run Tests (They Should Fail)
 ```bash
 npm test
-# Tests should fail - we haven't implemented yet
+## Tests should fail - we haven't implemented yet
 ```
 
 ### Step 4: Implement Code
@@ -99,7 +99,7 @@ export async function searchMarkets(query: string) {
 ### Step 5: Run Tests Again
 ```bash
 npm test
-# Tests should now pass
+## Tests should now pass
 ```
 
 ### Step 6: Refactor
@@ -112,7 +112,7 @@ Improve code quality while keeping tests green:
 ### Step 7: Verify Coverage
 ```bash
 npm run test:coverage
-# Verify 80%+ coverage achieved
+## Verify 80%+ coverage achieved
 ```
 
 ## Testing Patterns
@@ -364,18 +364,18 @@ test('updates user', () => {
 ### Watch Mode During Development
 ```bash
 npm test -- --watch
-# Tests run automatically on file changes
+## Tests run automatically on file changes
 ```
 
 ### Pre-Commit Hook
 ```bash
-# Runs before every commit
+## Runs before every commit
 npm test && npm run lint
 ```
 
 ### CI/CD Integration
 ```yaml
-# GitHub Actions
+## GitHub Actions
 - name: Run Tests
   run: npm test -- --coverage
 - name: Upload Coverage

@@ -6,7 +6,7 @@ Use the `@Action` annotation in your applications to define routes for both CLI 
 
 ## How It Works
 
-The `ActionRegistry`parses`@Action` annotations to build a routing table. For parameterized methods, the framework automatically maps Java parameter types to corresponding regex segments.
+The `ActionRegistry`parses `@Action` annotations to build a routing table. For parameterized methods, the framework automatically maps Java parameter types to corresponding regex segments.
 
 ### Regex Generation Rules
 - `getUser(int id)`â†’ pattern:`^/?user/(-?\d+)$`
@@ -26,7 +26,7 @@ Supported parameter types: `String`,`int/Integer`,`long/Long`,`float/Float`,`dou
 | `HTTP_DELETE` | HTTP DELETE only |
 | `HTTP_PATCH` | HTTP PATCH only |
 
-> **Note:** You can map HTTP method names to `Mode`using`Action.Mode.fromName(String methodName)`. Unknown or null values return`Mode.DEFAULT`.
+> **Note:** You can map HTTP method names to `Mode`using `Action.Mode.fromName(String methodName)`. Unknown or null values return`Mode.DEFAULT`.
 
 ## Examples
 
@@ -50,7 +50,7 @@ public String getUser(int id) { ... }
 ```
 
 ### Dependency Injection
-`ActionRegistry`automatically injects`Request`and/or`Response`from`Context` if they are parameters:
+`ActionRegistry`automatically injects`Request`and/or`Response`from `Context` if they are parameters:
 
 ```java
 @Action(value = "upload", mode = Mode.HTTP_POST)

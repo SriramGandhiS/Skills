@@ -1,4 +1,4 @@
-# Side Effects with `effect`and`afterRenderEffect`
+# Side Effects with `effect`and ` afterRenderEffect`
 
 In Angular, an **effect** is an operation that runs whenever one or more signal values it tracks change.
 
@@ -9,11 +9,11 @@ Effects are intended for syncing signal state to imperative, non-signal APIs.
 **Valid Use Cases:**
 
 - Logging analytics.
-- Syncing state to `localStorage`or`sessionStorage`.
+- Syncing state to `localStorage`or ` sessionStorage`.
 - Performing custom rendering to a `<canvas>` or 3rd-party charting library.
 
 **CRITICAL RULE: DO NOT use effects to propagate state.**
-If you find yourself using `.set()`or`.update()`on a signal _inside_ an effect to keep two signals in sync, you are making a mistake. This causes`ExpressionChangedAfterItHasBeenChecked`errors and infinite loops. **Always use`computed()`or`linkedSignal()` for state derivation.**
+If you find yourself using `.set()`or`.update()`on a signal _inside_ an effect to keep two signals in sync, you are making a mistake. This causes`ExpressionChangedAfterItHasBeenChecked`errors and infinite loops. **Always use`computed()`or` linkedSignal()` for state derivation.**
 
 ## Basic Usage
 

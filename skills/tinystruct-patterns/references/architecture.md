@@ -56,7 +56,7 @@ org.tinystruct/
 
 ### Template Behavior and Dispatch Flow
 
-By default, the framework assumes a view template is required. If `templateRequired`is`true`,`toString()`looks for a`.view`file in`src/main/resources/themes/<ClassName>.view`. Use`setVariable("name", value)`to pass data to templates, which use`{%name%}` for interpolation.
+By default, the framework assumes a view template is required. If `templateRequired`is ` true`,`toString()`looks for a`.view`file in`src/main/resources/themes/<ClassName>.view`. Use`setVariable("name", value)`to pass data to templates, which use`{%name%}` for interpolation.
 
 ## Examples
 

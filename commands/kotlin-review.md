@@ -8,7 +8,7 @@ This command invokes the **kotlin-reviewer** agent for comprehensive Kotlin-spec
 
 ## What This Command Does
 
-1. **Identify Kotlin Changes**: Find modified `.kt`and`.kts`files via`git diff`
+1. **Identify Kotlin Changes**: Find modified `.kt`and `.kts`files via`git diff`
 2. **Run Build & Static Analysis**: Execute `./gradlew build`,`detekt`,`ktlintCheck`
 3. **Security Scan**: Check for SQL injection, command injection, hardcoded secrets
 4. **Null Safety Review**: Analyze `!!` usage, platform type handling, unsafe casts

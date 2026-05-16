@@ -14,7 +14,7 @@ function walk(dir, callback) {
   });
 };
 
-const targets = ['skills', 'agents', 'commands', 'docs', 'README.md', 'README.zh-CN.md', 'AGENTS.md', 'CLAUDE.md'];
+const targets = ['skills', 'agents', 'commands', 'docs', '.agents', '.factory', '.shared', 'README.md', 'README.zh-CN.md', 'AGENTS.md', 'CLAUDE.md'];
 const allFiles = [];
 
 targets.forEach(t => {
@@ -33,7 +33,6 @@ allFiles.forEach(file => {
   let hasH1 = false;
 
   const newLines = lines.map(line => {
-    // MD009: Trim trailing spaces
     let l = line.trimEnd();
 
     // MD030: Ensure exactly one space after list markers
@@ -49,15 +48,12 @@ allFiles.forEach(file => {
       }
     }
 
-    // MD038: No spaces at start/end of code spans
-    l = l.replace(/`\s+([^`]+?)\s+`/g, '`$1`');
+    // MD038: No spaces at start/end of code spans (Safer)
     l = l.replace(/`\s+([^`]+?)`/g, '`$1`');
     l = l.replace(/`([^`]+?)\s+`/g, '`$1`');
 
     // MD034: Wrap bare URLs in <>
-    // Simple regex for URLs
     l = l.replace(/(^|\s)(https?:\/\/[^\s<"']+)/g, (match, p1, p2) => {
-      // Check if already wrapped or in a link
       if (p2.endsWith(')') || p2.endsWith(']') || p2.endsWith('>')) return match;
       return p1 + '<' + p2 + '>';
     });
@@ -66,11 +62,7 @@ allFiles.forEach(file => {
   });
 
   let newContent = newLines.join('\n');
-
-  // MD012: Multiple consecutive blank lines
   newContent = newContent.replace(/\n\n+/g, '\n\n');
-
-  // MD047: File should end with a single newline
   newContent = newContent.trimEnd() + '\n';
 
   if (newContent !== content) {

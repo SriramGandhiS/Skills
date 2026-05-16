@@ -22,7 +22,7 @@ the two hook phases need distinct entries.
   PR #1540.
 - The wrapper path is normalized to forward slashes before it is embedded
   in the hook command, avoiding MSYS backslash handling surprises.
-- `PreToolUse`and`PostToolUse` receive distinct commands with explicit
+- `PreToolUse`and `PostToolUse` receive distinct commands with explicit
   `pre`/`post` positional arguments.
 - The settings file is written UTF-8 (no BOM) with CRLF normalized to LF
   so downstream JSON parsers never see mixed line endings.

@@ -47,7 +47,7 @@ model: sonnet
 
 ## 快速开始
 
-\`\`\`bash
+\`\`\` bash
 ./setup.sh              # 首次设置
 {dev command}           # 启动开发服务器
 {test command}          # 运行测试
@@ -55,7 +55,7 @@ model: sonnet
 
 ## 命令
 
-\`\`\`bash
+\`\`\` bash
 ## 开发
 {install command}        # 安装依赖
 {dev server command}     # 启动开发服务器
@@ -164,7 +164,7 @@ echo "  4. Using Claude Code? CLAUDE.md has all the context."
 
 ## 快速开始
 
-\`\`\`bash
+\`\`\` bash
 git clone <https://github.com/{org}/{repo}.git>
 cd {仓库名称}
 ./setup.sh
@@ -179,7 +179,7 @@ cd {仓库名称}
 
 ## 配置
 
-\`\`\`bash
+\`\`\` bash
 cp .env.example .env
 \`\`\`
 
@@ -187,7 +187,7 @@ cp .env.example .env
 
 ## 开发
 
-\`\`\`bash
+\`\`\` bash
 {开发命令}     # 启动开发服务器
 {测试命令}    # 运行测试
 \`\`\`
@@ -196,7 +196,7 @@ cp .env.example .env
 
 本项目包含一个 \`CLAUDE.md\` 文件，可为 Claude Code 提供完整上下文。
 
-\`\`\`bash
+\`\`\` bash
 claude    # 启动 Claude Code — 自动读取 CLAUDE.md
 \`\`\`
 

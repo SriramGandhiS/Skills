@@ -100,7 +100,7 @@ Temel pattern'leri ve yönergeleri açıklayın.
 
 ## Kod Örnekleri
 
-\`\`\`typescript
+\`\`\` typescript
 // Pratik, test edilmiş örnekler ekleyin
 function example() {
   // İyi yorumlanmış kod
@@ -354,7 +354,7 @@ Kullanıcının aldığı.
 
 Skill'ler ve agent'lar, sadece eğitim verilerine güvenmek yerine güncel verileri çekmek için **MCP (Model Context Protocol)** tool'larını kullanabilir. Bu özellikle dokümantasyon için faydalıdır.
 
-- **Context7**, `resolve-library-id`ve`query-docs`'u açığa çıkaran bir MCP server'ıdır. Kullanıcı kütüphaneler, framework'ler veya API'ler hakkında sorduğunda, cevapların güncel dokümantasyonu ve kod örneklerini yansıtması için kullanın.
+- **Context7**, `resolve-library-id`ve ` query-docs`'u açığa çıkaran bir MCP server'ıdır. Kullanıcı kütüphaneler, framework'ler veya API'ler hakkında sorduğunda, cevapların güncel dokümantasyonu ve kod örneklerini yansıtması için kullanın.
 - Canlı dokümantasyona bağlı **skill'lere** katkıda bulunurken (örn. kurulum, API kullanımı), ilgili MCP tool'larının nasıl kullanılacağını açıklayın (örn. kütüphane ID'sini çözümle, ardından dokümantasyonu sorgula) ve pattern olarak `documentation-lookup` skill'ine veya Context7'ye işaret edin.
 - Dokümantasyon/API sorularını yanıtlayan **agent'lara** katkıda bulunurken, agent'ın tool'larına Context7 MCP tool isimlerini ekleyin (örn. `mcp__context7__resolve-library-id`,`mcp__context7__query-docs`) ve çözümle → sorgula workflow'unu belgeleyin.
 - **mcp-configs/mcp-servers.json** bir Context7 girişi içerir; kullanıcılar `documentation-lookup`skill'ini (`skills/documentation-lookup/`içinde) ve`/docs` command'ını kullanmak için bunu harness'lerinde (örn. Claude Code, Cursor) etkinleştirir.

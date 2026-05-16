@@ -60,7 +60,7 @@ import {Series} from 'remotion';
 </Series>;
 ```
 
-Same as with `<Sequence>`, the items will be wrapped in an absolute fill element by default when using`<Series.Sequence>`, unless the`layout`prop is set to`none`.
+Same as with `<Sequence>`, the items will be wrapped in an absolute fill element by default when using`<Series.Sequence>`, unless the`layout ` prop is set to`none`.
 
 ### Series with overlaps
 

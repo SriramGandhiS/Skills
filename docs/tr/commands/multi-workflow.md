@@ -76,7 +76,7 @@ EOF",
 | Planning | `~/.claude/.ccg/prompts/codex/architect.md`|`~/.claude/.ccg/prompts/gemini/architect.md` |
 | Review | `~/.claude/.ccg/prompts/codex/reviewer.md`|`~/.claude/.ccg/prompts/gemini/reviewer.md` |
 
-**Session Reuse**: Her çağrı `SESSION_ID: xxx`döndürür, sonraki fazlar için`resume xxx`subcommand kullan (not:`resume`,`--resume` değil).
+**Session Reuse**: Her çağrı `SESSION_ID: xxx`döndürür, sonraki fazlar için`resume xxx`subcommand kullan (not:` resume`,`--resume` değil).
 
 **Parallel Çağrılar**: Başlatmak için `run_in_background: true`kullan, sonuçları`TaskOutput` ile bekle. **Bir sonraki faza geçmeden önce tüm modellerin dönmesini MUTLAKA bekle**.
 

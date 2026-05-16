@@ -349,7 +349,7 @@ system_audio = channels.system_audio.default
 | `ch.id`|`str` | Unique channel ID |
 | `ch.type`|`str`| Channel type (`"mic"`,`"display"`,`"system_audio"`) |
 | `ch.name`|`str` | Human-readable channel name |
-| `ch.store`|`bool`| Whether to persist the recording (set to`True` to save) |
+| `ch.store`|`bool`| Whether to persist the recording (set to `True` to save) |
 
 Without `store = True`, streams are processed in real-time but not saved.
 

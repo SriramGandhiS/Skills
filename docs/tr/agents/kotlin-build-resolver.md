@@ -45,9 +45,9 @@ Bunları sırayla çalıştırın:
 | `Unresolved reference: X` | Eksik import, yazım hatası, eksik dependency | Import veya dependency ekle |
 | `Type mismatch: Required X, Found Y` | Yanlış tip, eksik dönüşüm | Dönüşüm ekle veya tipi düzelt |
 | `None of the following candidates is applicable` | Yanlış overload, yanlış argüman tipleri | Argüman tiplerini düzelt veya açık cast ekle |
-| `Smart cast impossible`| Mutable property veya eşzamanlı erişim | Yerel`val`kopyası kullanın veya`let` kullanın |
-| `'when' expression must be exhaustive`| Sealed class`when`'de eksik branch | Eksik branch'leri veya`else` ekle |
-| `Suspend function can only be called from coroutine`| Eksik`suspend`veya coroutine scope |`suspend` modifier ekle veya coroutine başlat |
+| `Smart cast impossible`| Mutable property veya eşzamanlı erişim | Yerel`val` kopyası kullanın veya `let` kullanın |
+| `'when' expression must be exhaustive`| Sealed class`when`'de eksik branch | Eksik branch'leri veya `else` ekle |
+| `Suspend function can only be called from coroutine`| Eksik`suspend` veya coroutine scope |`suspend` modifier ekle veya coroutine başlat |
 | `Cannot access 'X': it is internal in 'Y'` | Görünürlük sorunu | Görünürlüğü değiştir veya public API kullan |
 | `Conflicting declarations` | Yinelenen tanımlar | Yinelemeyi kaldır veya yeniden adlandır |
 | `Could not resolve: group:artifact:version` | Eksik repository veya yanlış versiyon | Repository ekle veya versiyonu düzelt |

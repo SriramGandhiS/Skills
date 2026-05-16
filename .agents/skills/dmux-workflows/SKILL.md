@@ -26,16 +26,16 @@ dmux is a tmux-based orchestration tool that manages AI agent panes:
 ## Quick Start
 
 ```bash
-# Start dmux session
+## Start dmux session
 dmux
 
-# Create agent panes (press 'n' in dmux, then type prompt)
-# Pane 1: "Implement the auth middleware in src/auth/"
-# Pane 2: "Write tests for the user service"
-# Pane 3: "Update API documentation"
+## Create agent panes (press 'n' in dmux, then type prompt)
+## Pane 1: "Implement the auth middleware in src/auth/"
+## Pane 2: "Write tests for the user service"
+## Pane 3: "Update API documentation"
 
-# Each pane runs its own agent session
-# Press 'm' to merge results back
+## Each pane runs its own agent session
+## Press 'm' to merge results back
 ```
 
 ## Workflow Patterns
@@ -52,7 +52,7 @@ Pane 1 (Research): "Research best practices for rate limiting in Node.js.
 Pane 2 (Implement): "Implement rate limiting middleware for our Express API.
   Start with a basic token bucket, we'll refine after research completes."
 
-# After Pane 1 completes, merge findings into Pane 2's context
+## After Pane 1 completes, merge findings into Pane 2's context
 ```
 
 ### Pattern 2: Multi-File Feature
@@ -64,7 +64,7 @@ Pane 1: "Create the database schema and migrations for the billing feature"
 Pane 2: "Build the billing API endpoints in src/api/billing/"
 Pane 3: "Create the billing dashboard UI components"
 
-# Merge all, then do integration in main pane
+## Merge all, then do integration in main pane
 ```
 
 ### Pattern 3: Test + Fix Loop
@@ -97,7 +97,7 @@ Pane 1: "Review src/api/ for security vulnerabilities"
 Pane 2: "Review src/api/ for performance issues"
 Pane 3: "Review src/api/ for test coverage gaps"
 
-# Merge all reviews into a single report
+## Merge all reviews into a single report
 ```
 
 ## Best Practices
@@ -113,15 +113,15 @@ Pane 3: "Review src/api/ for test coverage gaps"
 For tasks that touch overlapping files:
 
 ```bash
-# Create worktrees for isolation
+## Create worktrees for isolation
 git worktree add ../feature-auth feat/auth
 git worktree add ../feature-billing feat/billing
 
-# Run agents in separate worktrees
-# Pane 1: cd ../feature-auth && claude
-# Pane 2: cd ../feature-billing && claude
+## Run agents in separate worktrees
+## Pane 1: cd ../feature-auth && claude
+## Pane 2: cd ../feature-billing && claude
 
-# Merge branches when done
+## Merge branches when done
 git merge feat/auth
 git merge feat/billing
 ```
@@ -140,4 +140,4 @@ git merge feat/billing
 - **Pane not responding:** Check if the agent session is waiting for input. Use `m` to read output.
 - **Merge conflicts:** Use git worktrees to isolate file changes per pane.
 - **High token usage:** Reduce number of parallel panes. Each pane is a full agent session.
-- **tmux not found:** Install with `brew install tmux` (macOS) or `apt install tmux` (Linux).
+- **tmux not found:** Install with `brew install tmux`(macOS) or`apt install tmux` (Linux).

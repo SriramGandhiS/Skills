@@ -51,7 +51,7 @@ The local realtime path is file-backed by default:
 
 - `node scripts/work-items.js sync-github --repo <owner/repo>` imports current
   GitHub PR and issue state into the SQLite work-items store.
-- `node scripts/status.js --json`and`node scripts/work-items.js list --json`
+- `node scripts/status.js --json`and ` node scripts/work-items.js list --json`
   expose local state for a HUD, handoff, or later Linear sync.
 - Linear remains the external status surface; the repo does not require hosted
   telemetry to be release-ready.

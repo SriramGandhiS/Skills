@@ -129,7 +129,7 @@ final class QuestionListViewModel {
 
 ## Anti-Patterns to Avoid
 
-- Using `DispatchQueue`or`NSLock` instead of actors for new Swift concurrency code
+- Using `DispatchQueue`or `NSLock` instead of actors for new Swift concurrency code
 - Exposing the internal cache dictionary to external callers
 - Making the file URL configurable without validation
 - Forgetting that all actor method calls are `await` â€” callers must handle async context

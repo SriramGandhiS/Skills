@@ -28,7 +28,7 @@ Typography is the primary structural and decorative infrastructure. Imagery is s
 - **Optimal Web Fonts:** Neue Haas Grotesk (Black), Inter (Extra Bold/Black), Archivo Black, Roboto Flex (Heavy), Monument Extended.
 - **Implementation Parameters:**
 - **Scale:** Deployed at massive scales using fluid typography (e.g., `clamp(4rem, 10vw, 15rem)`).
-- **Tracking (Letter-spacing):** Extremely tight, often negative (`-0.03em`to`-0.06em`), forcing glyphs to form solid architectural blocks.
+- **Tracking (Letter-spacing):** Extremely tight, often negative (`-0.03em`to `-0.06em`), forcing glyphs to form solid architectural blocks.
 - **Leading (Line-height):** Highly compressed (`0.85`to`0.95`).
 - **Casing:** Exclusively uppercase for structural impact.
 
@@ -36,8 +36,8 @@ Typography is the primary structural and decorative infrastructure. Imagery is s
 - **Classification:** Monospace / Technical Sans.
 - **Optimal Web Fonts:** JetBrains Mono, IBM Plex Mono, Space Mono, VT323, Courier Prime.
 - **Implementation Parameters:**
-- **Scale:** Fixed and small (`10px`to`14px`/`0.7rem`to`0.875rem`).
-- **Tracking:** Generous (`0.05em`to`0.1em`) to simulate mechanical typewriter spacing or terminal matrices.
+- **Scale:** Fixed and small (`10px`to `14px`/`0.7rem`to `0.875rem`).
+- **Tracking:** Generous (`0.05em`to `0.1em`) to simulate mechanical typewriter spacing or terminal matrices.
 - **Leading:** Standard to tight (`1.2`to`1.4`).
 - **Casing:** Exclusively uppercase. Used for all metadata, navigation, unit IDs, and coordinates.
 
@@ -66,7 +66,7 @@ The color architecture is uncompromising. Gradients, soft drop shadows, and mode
 The layout must appear mathematically engineered. It rejects conventional web padding in favor of visible compartmentalization.
 
 - **The Blueprint Grid:** Strict adherence to CSS Grid architectures. Elements do not float; they are anchored precisely to grid tracks and intersections.
-- **Visible Compartmentalization:** Extensive utilization of solid borders (`1px`or`2px solid`) to delineate distinct zones of information. Horizontal rules (`<hr>`) frequently span the entire container width to segregate operational units.
+- **Visible Compartmentalization:** Extensive utilization of solid borders (`1px`or `2px solid`) to delineate distinct zones of information. Horizontal rules (`<hr>`) frequently span the entire container width to segregate operational units.
 - **Bimodal Density:** Layouts oscillate between extreme data density (tightly packed monospace metadata clustered together) and vast expanses of calculated negative space framing macro-typography.
 - **Geometry:** Absolute rejection of `border-radius`. All corners must be exactly 90 degrees to enforce mechanical rigidity.
 

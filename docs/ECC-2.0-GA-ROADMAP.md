@@ -554,13 +554,13 @@ The project status update should always include:
 
 The GA roadmap is informed by these reference surfaces:
 
-- `stablyai/orca`and`superset-sh/superset` for worktree-native parallel agent
+- `stablyai/orca`and ` superset-sh/superset` for worktree-native parallel agent
   UX, review loops, and workspace presets.
-- `standardagents/dmux`and`aidenybai/ghast` for terminal/worktree
+- `standardagents/dmux`and ` aidenybai/ghast` for terminal/worktree
   multiplexing, session grouping, and lifecycle hooks.
 - `jarrodwatts/claude-hud` for always-visible status, tool, agent, todo, and
   context telemetry.
-- `stanford-iris-lab/meta-harness`and`greyhaven-ai/autocontext` for
+- `stanford-iris-lab/meta-harness`and ` greyhaven-ai/autocontext` for
   evaluation-driven harness improvement, traces, playbooks, and promotion
   loops.
 - `NousResearch/hermes-agent` for operator shell, gateway, memory, skills, and

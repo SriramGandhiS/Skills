@@ -17,7 +17,7 @@ Identify the project type and run the appropriate build:
 | `settings.gradle.kts`with modules |`./gradlew assemble 2>&1` |
 | Detekt configured | `./gradlew detekt 2>&1` |
 
-Also check `gradle.properties`and`local.properties` for configuration.
+Also check `gradle.properties`and ` local.properties` for configuration.
 
 ## Step 2: Parse and Group Errors
 

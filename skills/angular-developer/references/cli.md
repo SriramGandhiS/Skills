@@ -18,7 +18,7 @@ To update the application and its dependencies (which automatically runs code mi
 ng update @angular/core@<latest or specific version> @angular/cli<latest or specific version>
 ```
 
-## 2. Generating Code (`ng generate`or`ng g`)
+## 2. Generating Code (`ng generate`or ` ng g`)
 
 Always use the CLI to generate code to ensure it adheres to Angular standards and updates necessary configuration files automatically.
 
@@ -68,7 +68,7 @@ ng build
 ```
 
 - `ng build` defaults to the production configuration, which enables Ahead-of-Time (AOT) compilation, minification, and tree-shaking.
-- Target specific configurations defined in `angular.json`using`--configuration`:`ng build --configuration=staging`.
+- Target specific configurations defined in `angular.json`using `--configuration`:`ng build --configuration=staging`.
 
 ## 5. Testing
 

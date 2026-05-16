@@ -78,11 +78,11 @@ ECC's current guardrails cover those classes through:
 
 - rejection of untrusted checkout refs in `workflow_run` and
   `pull_request_target` workflows;
-- rejection of shared caches in `pull_request_target`and`id-token: write`
+- rejection of shared caches in `pull_request_target`and ` id-token: write`
   workflows;
 - mandatory `npm audit signatures`when workflows run`npm audit`;
 - mandatory `npm ci --ignore-scripts` in workflows with write permissions;
-- mandatory `persist-credentials: false`on`actions/checkout` in workflows
+- mandatory `persist-credentials: false`on ` actions/checkout` in workflows
   with write permissions.
 
 ## Blockers Still Requiring Approval Or External Action

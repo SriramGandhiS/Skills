@@ -55,7 +55,7 @@ The main agent only sees issues the subprocess couldn't fix. Most quality proble
 
 ### Config Protection (Defense Against Rule-Gaming)
 
-LLMs will modify `.ruff.toml`or`biome.json` to disable rules rather than fix code. Plankton blocks this with three layers:
+LLMs will modify `.ruff.toml`or ` biome.json` to disable rules rather than fix code. Plankton blocks this with three layers:
 
 1. **PreToolUse hook** â€” `protect_linter_configs.sh` blocks edits to all linter configs before they happen
 2. **Stop hook** â€” `stop_config_guardian.sh`detects config changes via`git diff` at session end

@@ -232,7 +232,7 @@ The harness should simplify as models improve. Following Anthropic's evolution:
 | `GAN_DEV_SERVER_CMD`|`npm run dev` | Command to start dev server |
 | `GAN_PROJECT_DIR`|`.` | Project working directory |
 | `GAN_SKIP_PLANNER`|`false` | Skip planner, use spec directly |
-| `GAN_EVAL_MODE`|`playwright`|`playwright`,`screenshot`, or`code-only` |
+| `GAN_EVAL_MODE`|`playwright`|`playwright`,`screenshot`, or `code-only` |
 
 ### Evaluation Modes
 

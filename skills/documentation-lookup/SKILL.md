@@ -6,7 +6,7 @@ origin: ECC
 
 # Documentation Lookup (Context7)
 
-When the user asks about libraries, frameworks, or APIs, fetch current documentation via the Context7 MCP (tools `resolve-library-id`and`query-docs`) instead of relying on training data.
+When the user asks about libraries, frameworks, or APIs, fetch current documentation via the Context7 MCP (tools `resolve-library-id`and ` query-docs`) instead of relying on training data.
 
 ## Core Concepts
 
@@ -34,7 +34,7 @@ Call the **resolve-library-id** MCP tool with:
 - **libraryName**: The library or product name taken from the user's question (e.g. `Next.js`,`Prisma`,`Supabase`).
 - **query**: The user's full question. This improves relevance ranking of results.
 
-You must obtain a Context7-compatible library ID (format `/org/project`or`/org/project/version`) before querying docs. Do not call query-docs without a valid library ID from this step.
+You must obtain a Context7-compatible library ID (format `/org/project`or `/org/project/version`) before querying docs. Do not call query-docs without a valid library ID from this step.
 
 ### Step 2: Select the Best Match
 
@@ -74,7 +74,7 @@ Limit: do not call query-docs (or resolve-library-id) more than 3 times per ques
 1. Call **resolve-library-id** with `libraryName: "Prisma"`,`query: "How do I query with relations?"`.
 2. Select the official Prisma library ID (e.g. `/prisma/prisma`).
 3. Call **query-docs** with that `libraryId` and the query.
-4. Return the Prisma Client pattern (e.g. `include`or`select`) with a short code snippet from the docs.
+4. Return the Prisma Client pattern (e.g. `include`or ` select`) with a short code snippet from the docs.
 
 ### Example: Supabase auth methods
 

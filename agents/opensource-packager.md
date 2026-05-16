@@ -55,7 +55,7 @@ This is the most important file. Keep it under 100 lines — concise is critical
 
 ## Quick Start
 
-\`\`\`bash
+\`\`\` bash
 ./setup.sh              # First-time setup
 {dev command}           # Start development server
 {test command}          # Run tests
@@ -63,7 +63,7 @@ This is the most important file. Keep it under 100 lines — concise is critical
 
 ## Commands
 
-\`\`\`bash
+\`\`\` bash
 ## Development
 {install command}        # Install dependencies
 {dev server command}     # Start dev server
@@ -170,7 +170,7 @@ After writing, make it executable: `chmod +x setup.sh`
 
 ## Quick Start
 
-\`\`\`bash
+\`\`\` bash
 git clone <https://github.com/{org}/{repo}.git>
 cd {repo}
 ./setup.sh
@@ -185,7 +185,7 @@ See [CLAUDE.md](CLAUDE.md) for detailed commands and architecture.
 
 ## Configuration
 
-\`\`\`bash
+\`\`\` bash
 cp .env.example .env
 \`\`\`
 
@@ -193,7 +193,7 @@ Key settings: {list 3-5 most important env vars}
 
 ## Development
 
-\`\`\`bash
+\`\`\` bash
 {dev command}     # Start dev server
 {test command}    # Run tests
 \`\`\`
@@ -202,7 +202,7 @@ Key settings: {list 3-5 most important env vars}
 
 This project includes a \`CLAUDE.md\` that gives Claude Code full context.
 
-\`\`\`bash
+\`\`\` bash
 claude    # Start Claude Code — reads CLAUDE.md automatically
 \`\`\`
 
@@ -230,7 +230,7 @@ Include: development setup, branch/PR workflow, code style notes from project an
 
 ### Step 7: Add GitHub Issue Templates (if .github/ exists or GitHub repo specified)
 
-Create `.github/ISSUE_TEMPLATE/bug_report.md`and`.github/ISSUE_TEMPLATE/feature_request.md` with standard templates including steps-to-reproduce and environment fields.
+Create `.github/ISSUE_TEMPLATE/bug_report.md`and `.github/ISSUE_TEMPLATE/feature_request.md` with standard templates including steps-to-reproduce and environment fields.
 
 ## Output Format
 
@@ -244,7 +244,7 @@ On completion, report:
 
 ### Example: Package a FastAPI service
 Input: `Package: /home/user/opensource-staging/my-api, License: MIT, Description: "Async task queue API"`
-Action: Detects Python + FastAPI + PostgreSQL from `requirements.txt`and`docker-compose.yml`, generates`CLAUDE.md`(62 lines),`setup.sh`with pip + alembic migrate steps, enhances existing`README.md`, adds`MIT LICENSE`
+Action: Detects Python + FastAPI + PostgreSQL from `requirements.txt`and ` docker-compose.yml`, generates`CLAUDE.md`(62 lines),`setup.sh`with pip + alembic migrate steps, enhances existing`README.md`, adds`MIT LICENSE`
 Output: 5 files generated, setup.sh executable, "Using with Claude Code" section added
 
 ## Rules

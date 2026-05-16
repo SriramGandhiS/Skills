@@ -81,7 +81,7 @@ hvigorw assembleHap -p product=default
 ArkTS is a strict subset of TypeScript. The following are NOT supported and will cause compilation failures:
 
 **Type System:**
-- No `any`or`unknown` types - use explicit types
+- No `any`or ` unknown` types - use explicit types
 - No index access types - use type names
 - No conditional type aliases or `infer` keyword
 - No intersection types - use inheritance
@@ -138,7 +138,7 @@ ArkTS is a strict subset of TypeScript. The following are NOT supported and will
 
 **Object Literals:**
 - Supported only when compiler can infer the corresponding class/interface
-- Not supported for: `any`/`Object`/`object`types, classes with methods, classes with parameterized constructors, classes with`readonly` fields
+- Not supported for: `any`/`Object`/`object` types, classes with methods, classes with parameterized constructors, classes with `readonly` fields
 
 ## HarmonyOS API Usage Guidelines
 

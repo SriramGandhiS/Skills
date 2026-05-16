@@ -40,7 +40,7 @@ user = computed(() => this.data().user);
 
 ### 2. Via Component Inputs (Modern)
 
-Enable `withComponentInputBinding()`in`provideRouter`to pass resolved data directly to`@Input`or`input()`.
+Enable `withComponentInputBinding()`in` provideRouter `to pass resolved data directly to`@Input`or ` input()`.
 
 ```ts
 // app.config.ts

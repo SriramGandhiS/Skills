@@ -459,7 +459,7 @@ cargo test -- --ignored           # Yok sayılan testleri çalıştır
 - Unit testler için `#[cfg(test)]` modülleri kullanın
 - Implementasyon değil, davranışı test edin
 - Senaryoyu açıklayan açıklayıcı test isimleri kullanın
-- Daha iyi hata mesajları için `assert!`yerine`assert_eq!` tercih edin
+- Daha iyi hata mesajları için `assert!`yerine` assert_eq!` tercih edin
 - Daha temiz hata çıktısı için `Result`döndüren testlerde`?` kullanın
 - Testleri bağımsız tutun — paylaşılan mutable state yok
 

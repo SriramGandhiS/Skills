@@ -42,7 +42,7 @@ This document captures architect-level improvements for the Everything Claude Co
 
 **Recommendation:**
 
-- **Glob-based discovery:** Discover test files by pattern (e.g. `**/*.test.js`under`tests/`) and run them, with an optional allowlist/denylist for special cases. This makes new tests automatically part of the suite.
+- **Glob-based discovery:** Discover test files by pattern (e.g. `**/*.test.js`under ` tests/`) and run them, with an optional allowlist/denylist for special cases. This makes new tests automatically part of the suite.
 - Keep a single entry point (`tests/run-all.js`) that runs discovered tests and aggregates results.
 
 **Impact:** High — prevents regression where new tests exist but are never executed.
@@ -55,7 +55,7 @@ This document captures architect-level improvements for the Everything Claude Co
 
 **Recommendation:**
 
-- Introduce a coverage tool for Node scripts (e.g. `c8`or`nyc`) and run it in CI. Start with a baseline (e.g. 60%) and raise over time; or at least report coverage in CI without failing so the team can see trends.
+- Introduce a coverage tool for Node scripts (e.g. `c8`or` nyc`) and run it in CI. Start with a baseline (e.g. 60%) and raise over time; or at least report coverage in CI without failing so the team can see trends.
 - Focus on `scripts/` (lib + hooks + ci) as the primary target; exclude one-off scripts if needed.
 
 **Impact:** Medium — aligns the project with its own AGENTS.md guidance (80%+ coverage) and surfaces untested paths.
@@ -70,7 +70,7 @@ This document captures architect-level improvements for the Everything Claude Co
 
 **Recommendation:**
 
-- Use a JSON Schema validator (e.g. `ajv`) in`validate-hooks.js`to validate`hooks/hooks.json`against`schemas/hooks.schema.json`. Keep the validator as the single source of truth for structure; retain only hook-specific checks (e.g. inline JS syntax) in the script.
+- Use a JSON Schema validator (e.g. `ajv`) in`validate-hooks.js`to validate`hooks/hooks.json` against `schemas/hooks.schema.json`. Keep the validator as the single source of truth for structure; retain only hook-specific checks (e.g. inline JS syntax) in the script.
 - Ensures schema and validator stay in sync and allows IDE/editor validation via `$schema` in hooks.json.
 
 **Impact:** Medium — reduces drift and improves contributor experience when editing hooks.
@@ -85,7 +85,7 @@ This document captures architect-level improvements for the Everything Claude Co
 
 **Recommendation:**
 
-- Document in CONTRIBUTING.md that adding a skill may require updating `.agents/skills`and`.cursor/skills` (and how to do it).
+- Document in CONTRIBUTING.md that adding a skill may require updating `.agents/skills`and `.cursor/skills` (and how to do it).
 - Optionally: a CI check or script that compares `skills/` to the subsets and fails or warns if a skill is in one set but not the other when it should be (e.g. by convention or by a small manifest).
 
 **Impact:** Low–Medium — reduces cross-harness drift.
@@ -110,7 +110,7 @@ This document captures architect-level improvements for the Everything Claude Co
 
 ### 5.1 Hook Runtime Consistency
 
-**Issue:** Hooks should keep a consistent Node-mode dispatch surface. Continuous-learning observation now dispatches through `run-with-flags.js`and`observe-runner.js`, which delegates to the existing`observe.sh` implementation without exposing a shell-mode hook entry.
+**Issue:** Hooks should keep a consistent Node-mode dispatch surface. Continuous-learning observation now dispatches through `run-with-flags.js`and ` observe-runner.js`, which delegates to the existing`observe.sh` implementation without exposing a shell-mode hook entry.
 
 **Recommendation:**
 
@@ -140,7 +140,7 @@ This document captures architect-level improvements for the Everything Claude Co
 ## 7. Quick Wins (Immediate)
 
 1. **Update AGENTS.md:** Set agent count to 16; add chief-of-staff, loop-operator, harness-optimizer to the agent table; align skill/command counts with repo.
-2. **Test discovery:** Change `run-all.js`to discover`**/*.test.js`under`tests/` (with optional allowlist) so new tests are always run.
-3. **Wire hooks schema:** In `validate-hooks.js`, validate`hooks/hooks.json`against`schemas/hooks.schema.json` using ajv (or similar) and keep only hook-specific checks in the script.
+2. **Test discovery:** Change `run-all.js`to discover`**/*.test.js`under ` tests/` (with optional allowlist) so new tests are always run.
+3. **Wire hooks schema:** In `validate-hooks.js`, validate`hooks/hooks.json` against `schemas/hooks.schema.json` using ajv (or similar) and keep only hook-specific checks in the script.
 
 These three can be done in one or two sessions and materially improve consistency and reliability.

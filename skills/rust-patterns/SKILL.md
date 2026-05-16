@@ -17,7 +17,7 @@ Idiomatic Rust patterns and best practices for building safe, performant, and ma
 
 ## How It Works
 
-This skill enforces idiomatic Rust conventions across six key areas: ownership and borrowing to prevent data races at compile time, `Result`/`?`error propagation with`thiserror`for libraries and`anyhow`for applications, enums and exhaustive pattern matching to make illegal states unrepresentable, traits and generics for zero-cost abstraction, safe concurrency via`Arc<Mutex<T>>`, channels, and async/await, and minimal`pub` surfaces organized by domain.
+This skill enforces idiomatic Rust conventions across six key areas: ownership and borrowing to prevent data races at compile time, `Result`/`?`error propagation with` thiserror `for libraries and`anyhow`for applications, enums and exhaustive pattern matching to make illegal states unrepresentable, traits and generics for zero-cost abstraction, safe concurrency via`Arc<Mutex<T>>`, channels, and async/await, and minimal`pub` surfaces organized by domain.
 
 ## Core Principles
 
@@ -59,7 +59,7 @@ fn normalize(input: &str) -> Cow<'_, str> {
 
 ## Error Handling
 
-### Use `Result`and`?`â€” Never`unwrap()` in Production
+### Use `Result`and `?`â€” Never`unwrap()` in Production
 
 ```rust
 // Good: Propagate errors with context
@@ -461,7 +461,7 @@ cargo bench              # Run benchmarks
 |-------|-------------|
 | Borrow, don't clone | Pass `&T` instead of cloning unless ownership is needed |
 | Make illegal states unrepresentable | Use enums to model valid states only |
-| `?`over`unwrap()` | Propagate errors, never panic in library/production code |
+| `?`over` unwrap()` | Propagate errors, never panic in library/production code |
 | Parse, don't validate | Convert unstructured data to typed structs at the boundary |
 | Newtype for type safety | Wrap primitives in newtypes to prevent argument swaps |
 | Prefer iterators over loops | Declarative chains are clearer and often faster |

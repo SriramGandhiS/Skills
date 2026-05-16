@@ -9,7 +9,7 @@ This command invokes the **cpp-reviewer** agent for comprehensive C++-specific c
 ## What This Command Does
 
 1. **Identify C++ Changes**: Find modified `.cpp`,`.hpp`,`.cc`,`.h`files via`git diff`
-2. **Run Static Analysis**: Execute `clang-tidy`and`cppcheck`
+2. **Run Static Analysis**: Execute `clang-tidy`and ` cppcheck`
 3. **Memory Safety Scan**: Check for raw new/delete, buffer overflows, use-after-free
 4. **Concurrency Review**: Analyze thread safety, mutex usage, data races
 5. **Modern C++ Check**: Verify code follows C++17/20 conventions and best practices

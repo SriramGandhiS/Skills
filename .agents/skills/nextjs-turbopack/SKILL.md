@@ -10,7 +10,7 @@ Next.js 16+ uses Turbopack by default for local development: an incremental bund
 ## When to Use
 
 - **Turbopack (default dev)**: Use for day-to-day development. Faster cold start and HMR, especially in large apps.
-- **Webpack (legacy dev)**: Use only if you hit a Turbopack bug or rely on a webpack-only plugin in dev. Disable with `--webpack` (or `--no-turbopack` depending on your Next.js version; check the docs for your release).
+- **Webpack (legacy dev)**: Use only if you hit a Turbopack bug or rely on a webpack-only plugin in dev. Disable with `--webpack`(or`--no-turbopack` depending on your Next.js version; check the docs for your release).
 - **Production**: Production build behavior (`next build`) may use Turbopack or webpack depending on Next.js version; check the official Next.js docs for your version.
 
 Use when: developing or debugging Next.js 16+ apps, diagnosing slow dev startup or HMR, or optimizing production bundles.

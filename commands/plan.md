@@ -46,7 +46,7 @@ The assistant will:
 | Free-form text | Conversational mode | Produce an inline plan |
 | Empty input | Clarification mode | Ask what should be planned |
 
-In PRD artifact mode, create `.claude/plans/`if needed. If the PRD contains a`Delivery Milestones`table, update only the selected row from`pending`to`in-progress`and set its`Plan`cell to the generated plan path. If the PRD uses the legacy`.claude/PRPs/prds/`format with`Implementation Phases`, read it without migrating paths.
+In PRD artifact mode, create `.claude/plans/`if needed. If the PRD contains a`Delivery Milestones`table, update only the selected row from` pending `to`in-progress`and set its`Plan`cell to the generated plan path. If the PRD uses the legacy`.claude/PRPs/prds/`format with`Implementation Phases`, read it without migrating paths.
 
 ## Pattern Grounding
 
@@ -184,7 +184,7 @@ After planning:
 - Use the `tdd-workflow` skill to implement with test-driven development
 - Use `/build-fix` if build errors occur
 - Use `/code-review` to review completed implementation
-- Use `/pr`or`/prp-pr` to open a pull request
+- Use `/pr`or `/prp-pr` to open a pull request
 
 > **Need requirements first?** Use `/plan-prd`for a lean PRD at`.claude/prds/{name}.prd.md`.
 >

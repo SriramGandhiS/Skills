@@ -459,7 +459,7 @@ cargo test -- --ignored           # Run ignored tests
 - Use `#[cfg(test)]` modules for unit tests
 - Test behavior, not implementation
 - Use descriptive test names that explain the scenario
-- Prefer `assert_eq!`over`assert!` for better error messages
+- Prefer `assert_eq!`over` assert!` for better error messages
 - Use `?`in tests that return`Result` for cleaner error output
 - Keep tests independent â€” no shared mutable state
 

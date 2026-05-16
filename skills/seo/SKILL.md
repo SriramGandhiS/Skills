@@ -56,7 +56,7 @@ Use this skill when:
 
 - homepage: organization or business schema where appropriate
 - editorial pages: `Article`/`BlogPosting`
-- product pages: `Product`and`Offer`
+- product pages: `Product`and `Offer`
 - interior pages: `BreadcrumbList`
 - Q&A sections: `FAQPage` only when the content truly matches
 

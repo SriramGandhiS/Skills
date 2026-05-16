@@ -57,7 +57,7 @@ console.log(JSON.stringify(fields, null, 2));
 ### What to look for
 
 - **Form fields**: Are they `<select>`,`<input>`, custom dropdowns, or comboboxes?
-- **Select options**: Dump option values AND text. Placeholders often have `value="0"`or`value=""`which looks non-empty. Use`Array.from(el.options).map(o => ({ value: o.value, text: o.text }))`. Skip options where text includes "Select" or value is`"0"`.
+- **Select options**: Dump option values AND text. Placeholders often have `value="0"`or` value=""`which looks non-empty. Use`Array.from(el.options).map(o => ({ value: o.value, text: o.text }))`. Skip options where text includes "Select" or value is`"0"`.
 - **Rich text**: Does the comment box support `@mentions`,`#tags`, markdown, or emoji? Check placeholder text.
 - **Required fields**: Which fields block form submission? Check `required`,`*` in labels, and try submitting empty to see validation errors.
 - **Dynamic content**: Do fields appear after other fields are filled?
@@ -333,7 +333,7 @@ async function showSubtitle(page, text) {
 }
 ```
 
-Call `injectSubtitleBar(page)`alongside`injectCursor(page)` after every navigation.
+Call `injectSubtitleBar(page)`alongside` injectCursor(page)` after every navigation.
 
 Usage pattern:
 

@@ -87,7 +87,7 @@ Every adapter MUST return a JSON-serializable object with this top-level shape:
 | Field | Type | Notes |
 | --- | --- | --- |
 | `schemaVersion`| string | MUST be exactly`ecc.session.v1` for this contract |
-| `adapterId`| string | Stable adapter identifier such as`dmux-tmux`or`claude-history` |
+| `adapterId`| string | Stable adapter identifier such as`dmux-tmux` or `claude-history` |
 | `session` | object | Canonical session metadata |
 | `workers` | array | Canonical worker records; may be empty |
 | `aggregates` | object | Derived worker counts |
@@ -97,7 +97,7 @@ Every adapter MUST return a JSON-serializable object with this top-level shape:
 | Field | Type | Notes |
 | --- | --- | --- |
 | `id` | string | Stable identifier within the adapter domain |
-| `kind`| string | High-level session family such as`orchestrated`or`history` |
+| `kind`| string | High-level session family such as`orchestrated` or `history` |
 | `state` | string | Canonical session state |
 | `sourceTarget` | object | Provenance for the target that opened the session |
 
@@ -125,7 +125,7 @@ Every adapter MUST return a JSON-serializable object with this top-level shape:
 
 | Field | Type | Notes |
 | --- | --- | --- |
-| `kind`| string | Runtime family such as`tmux-pane`or`claude-session` |
+| `kind`| string | Runtime family such as`tmux-pane` or `claude-session` |
 | `active` | boolean | Whether the runtime is active now |
 | `dead` | boolean | Whether the runtime is known dead/finished |
 
@@ -172,7 +172,7 @@ updating this contract.
 
 ## State Semantics
 
-The contract intentionally keeps `session.state`and`workers[].state` flexible
+The contract intentionally keeps `session.state`and ` workers[].state` flexible
 enough for multiple harnesses, but current adapters use these values:
 
 - `dmux-tmux`

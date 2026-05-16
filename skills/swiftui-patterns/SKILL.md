@@ -78,7 +78,7 @@ struct ItemListView: View {
 
 ### Environment Injection
 
-Replace `@EnvironmentObject`with`@Environment`:
+Replace `@EnvironmentObject`with `@Environment`:
 
 ```swift
 // Inject
@@ -138,7 +138,7 @@ extension View {
 
 ### Type-Safe NavigationStack
 
-Use `NavigationStack`with`NavigationPath` for programmatic, type-safe routing:
+Use `NavigationStack`with `NavigationPath` for programmatic, type-safe routing:
 
 ```swift
 @Observable
@@ -183,7 +183,7 @@ struct RootView: View {
 
 ### Use Lazy Containers for Large Collections
 
-`LazyVStack`and`LazyHStack` create views only when visible:
+`LazyVStack`and `LazyHStack` create views only when visible:
 
 ```swift
 ScrollView {
@@ -248,9 +248,9 @@ Use `#Preview` macro with inline mock data for fast iteration:
 ## Anti-Patterns to Avoid
 
 - Using `ObservableObject`/`@Published`/`@StateObject`/`@EnvironmentObject`in new code â€” migrate to`@Observable`
-- Putting async work directly in `body`or`init`â€” use`.task {}` or explicit load methods
+- Putting async work directly in `body`or ` init`â€” use`.task {}` or explicit load methods
 - Creating view models as `@State` inside child views that don't own the data â€” pass from parent instead
-- Using `AnyView`type erasure â€” prefer`@ViewBuilder`or`Group` for conditional views
+- Using `AnyView`type erasure â€” prefer`@ViewBuilder`or `Group` for conditional views
 - Ignoring `Sendable` requirements when passing data to/from actors
 
 ## References

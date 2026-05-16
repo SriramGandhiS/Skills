@@ -18,10 +18,10 @@ Produce thorough, cited research reports from multiple web sources using firecra
 ## MCP Requirements
 
 At least one of:
-- **firecrawl** — `firecrawl_search`, `firecrawl_scrape`, `firecrawl_crawl`
-- **exa** — `web_search_exa`, `web_search_advanced_exa`, `crawling_exa`
+- **firecrawl** — `firecrawl_search`,`firecrawl_scrape`,`firecrawl_crawl`
+- **exa** — `web_search_exa`,`web_search_advanced_exa`,`crawling_exa`
 
-Both together give the best coverage. Configure in `~/.claude.json` or `~/.codex/config.toml`.
+Both together give the best coverage. Configure in `~/.claude.json`or `~/.codex/config.toml`.
 
 ## Workflow
 
@@ -85,7 +85,7 @@ Read 3-5 key sources in full for depth. Do not rely only on search snippets.
 Structure the report:
 
 ```markdown
-# [Topic]: Research Report
+## [Topic]: Research Report
 *Generated: [date] | Sources: [N] | Confidence: [High/Medium/Low]*
 
 ## Executive Summary

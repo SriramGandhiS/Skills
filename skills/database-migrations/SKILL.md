@@ -240,7 +240,7 @@ export async function up(db: Kysely<any>): Promise<void> {
     .addColumn('email', 'varchar(255)', (col) => col.notNull().unique())
     .addColumn('avatar_url', 'text')
     .addColumn('created_at', 'timestamp', (col) =>
-      col.defaultTo(sql`now()`).notNull()
+      col.defaultTo(sql `now()`).notNull()
     )
     .execute()
 

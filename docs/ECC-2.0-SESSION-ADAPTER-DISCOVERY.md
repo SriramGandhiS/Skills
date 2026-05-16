@@ -291,7 +291,7 @@ implementation rather than remaining the only product contract.
 
 1. Add a third adapter, likely `codex-worktree`, so the abstraction moves
    beyond tmux plus Claude-history.
-2. Decide whether canonical snapshots need separate `state`and`health`
+2. Decide whether canonical snapshots need separate `state`and ` health`
    fields before UI work starts.
 3. Decide whether event streaming belongs in v1 or stays out until after the
    snapshot layer proves itself.
@@ -301,7 +301,7 @@ implementation rather than remaining the only product contract.
 ## Open Questions
 
 1. Should worker identity be keyed by worker slug, branch, or stable UUID?
-2. Do we need separate `state`and`health` fields at the canonical layer?
+2. Do we need separate `state`and ` health` fields at the canonical layer?
 3. Should event streaming be part of v1, or should ECC 2.0 ship snapshot-only
    first?
 4. How much path information should be redacted before snapshots leave the local

@@ -66,7 +66,7 @@ mkdir -p $TARGET/skills $TARGET/rules
 
 ### 2a: Choose Scope (Core vs Niche)
 
-Default to **Core (recommended for new users)** â€” copy `.agents/skills/*`plus`skills/search-first/` for research-first workflows. This bundle covers engineering, evals, verification, security, strategic compaction, frontend design, and Anthropic cross-functional skills (article-writing, content-engine, market-research, frontend-slides).
+Default to **Core (recommended for new users)** â€” copy `.agents/skills/*`plus` skills/search-first/` for research-first workflows. This bundle covers engineering, evals, verification, security, strategic compaction, frontend design, and Anthropic cross-functional skills (article-writing, content-engine, market-research, frontend-slides).
 
 Use `AskUserQuestion` (single select):
 ```
@@ -82,7 +82,7 @@ If the user chooses niche or core + niche, continue to category selection below 
 
 ### 2b: Choose Skill Categories
 
-There are 7 selectable category groups below. The detailed confirmation lists that follow cover 45 skills across 8 categories, plus 1 standalone template. Use `AskUserQuestion`with`multiSelect: true`:
+There are 7 selectable category groups below. The detailed confirmation lists that follow cover 45 skills across 8 categories, plus 1 standalone template. Use `AskUserQuestion`with ` multiSelect: true`:
 
 ```
 Question: "Which skill categories do you want to install?"
@@ -215,13 +215,13 @@ When iterating over globbed source directories, never pass a trailing-slash sour
 cp -R "${src%/}" "$TARGET/skills/$(basename "${src%/}")"
 ```
 
-Note: `continuous-learning`and`continuous-learning-v2` have extra files (config.json, hooks, scripts) â€” ensure the entire directory is copied, not just SKILL.md.
+Note: `continuous-learning`and ` continuous-learning-v2` have extra files (config.json, hooks, scripts) â€” ensure the entire directory is copied, not just SKILL.md.
 
 ---
 
 ## Step 3: Select & Install Rules
 
-Use `AskUserQuestion`with`multiSelect: true`:
+Use `AskUserQuestion`with ` multiSelect: true`:
 
 ```
 Question: "Which rule sets do you want to install?"
@@ -284,10 +284,10 @@ Some skills reference others. Verify these dependencies:
 - `continuous-learning-v2`references`~/.claude/homunculus/` directory
 - `python-testing`may reference`python-patterns`
 - `golang-testing`may reference`golang-patterns`
-- `crosspost`references`content-engine`and`x-api`
-- `deep-research`references`exa-search` (complementary MCP tools)
-- `fal-ai-media`references`videodb` (complementary media skill)
-- `x-api`references`content-engine`and`crosspost`
+- `crosspost`references ` content-engine`and`x-api`
+- `deep-research`references ` exa-search` (complementary MCP tools)
+- `fal-ai-media`references ` videodb` (complementary media skill)
+- `x-api`references ` content-engine`and`crosspost`
 - Language-specific rules reference `common/` counterparts
 
 ### 4d: Report Issues

@@ -40,7 +40,7 @@ router and switch configuration and return prioritized findings with evidence.
 ### Critical
 
 - Plaintext or default credentials.
-- `snmp-server community public`or`private`, especially with write access.
+- `snmp-server community public`or ` private`, especially with write access.
 - Telnet-only management or internet-facing VTY access with no source restriction.
 - Proposed destructive commands such as `reload`,`erase`,`format`, broad
   `no interface`, or removing an entire routing process without rollback context.

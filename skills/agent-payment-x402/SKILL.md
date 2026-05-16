@@ -104,7 +104,7 @@ Do not copy examples from older docs without checking the current OKX repository
 
 When building an orchestrator that calls the agentpay MCP server, enforce budgets before dispatching paid tool calls.
 
-> **Prerequisites**: Install the package before adding the MCP config â€” `npx`without`-y`will prompt for confirmation in non-interactive environments, causing the server to hang:`npm install -g agentwallet-sdk@6.0.0`
+> **Prerequisites**: Install the package before adding the MCP config â€” `npx`without `-y`will prompt for confirmation in non-interactive environments, causing the server to hang:`npm install -g agentwallet-sdk@6.0.0`
 
 ```typescript
 import { Client } from "@modelcontextprotocol/sdk/client/index.js";

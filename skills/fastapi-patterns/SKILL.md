@@ -23,7 +23,7 @@ Treat the FastAPI app as a thin HTTP layer over explicit dependencies and servic
 - `main.py` owns app construction, middleware, exception handlers, and router registration.
 - `schemas/` owns Pydantic request and response models.
 - `dependencies.py` owns database, auth, pagination, and request-scoped dependencies.
-- `services/`or`crud/` owns business and persistence operations.
+- `services/`or` crud/` owns business and persistence operations.
 - `tests/` overrides dependencies instead of opening production resources.
 
 Prefer small routers and explicit `response_model` declarations. Keep raw ORM objects, secrets, and framework globals out of response schemas.
@@ -95,7 +95,7 @@ def create_app() -> FastAPI:
 app = create_app()
 ```
 
-Do not use `allow_origins=["*"]`with`allow_credentials=True`; browsers reject that combination and Starlette disallows it for credentialed requests.
+Do not use `allow_origins=["*"]`with` allow_credentials=True`; browsers reject that combination and Starlette disallows it for credentialed requests.
 
 ## Pydantic Schemas
 

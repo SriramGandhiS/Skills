@@ -437,7 +437,7 @@ Write the generated plan to:
 ### Update PRD (if input was a PRD)
 
 If this plan was generated from a PRD phase:
-1. Update the phase status from `pending`to`in-progress`
+1. Update the phase status from `pending`to ` in-progress`
 2. Add the plan file path as a reference in the phase
 
 ### Report to User

@@ -49,7 +49,7 @@ go mod tidy -v
 | `cannot use X as type Y` | Tür uyuşmazlığı, işaretçi/değer | Tür dönüşümü veya başvuru kaldırma |
 | `X does not implement Y` | Eksik metod | Doğru alıcı ile metodu uygula |
 | `import cycle not allowed` | Döngüsel bağımlılık | Paylaşılan türleri yeni pakete çıkar |
-| `cannot find package`| Eksik bağımlılık |`go get pkg@version`veya`go mod tidy` |
+| `cannot find package`| Eksik bağımlılık |`go get pkg@version` veya `go mod tidy` |
 | `missing return` | Eksik kontrol akışı | Return ifadesi ekle |
 | `declared but not used` | Kullanılmamış var/import | Kaldır veya boş tanımlayıcı kullan |
 | `multiple-value in single-value context`| İşlenmemiş dönüş |`result, err := func()` |

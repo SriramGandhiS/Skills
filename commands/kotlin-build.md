@@ -142,7 +142,7 @@ Build Status: PASS: SUCCESS
 | `Type mismatch` | Fix type conversion or assignment |
 | `'when' must be exhaustive` | Add missing sealed class branches |
 | `Suspend function can only be called from coroutine`| Add`suspend` modifier |
-| `Smart cast impossible`| Use local`val`or`let` |
+| `Smart cast impossible`| Use local`val` or `let` |
 | `None of the following candidates is applicable` | Fix argument types |
 | `Could not resolve dependency` | Fix version or add repository |
 

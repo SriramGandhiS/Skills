@@ -33,7 +33,7 @@ For the operator-facing support matrix and scorecard workflow, see
 
 A good ECC skill should:
 
-- use YAML frontmatter with `name`,`description`, and`origin`
+- use YAML frontmatter with `name`,`description`, and `origin`
 - describe when to use the skill
 - state required tools or connectors without embedding secrets
 - keep examples repo-relative or generic

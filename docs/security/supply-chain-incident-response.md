@@ -22,7 +22,7 @@ credentials:
   same campaign expanding into packages associated with Mistral AI, UiPath,
   OpenSearch, Guardrails AI, Squawk, and other npm/PyPI packages.
 - Socket's 2026-05-14 `node-ipc` report describes a separate active npm
-  compromise affecting `node-ipc`versions`9.1.6`,`9.2.3`, and`12.0.1`,
+  compromise affecting `node-ipc`versions `9.1.6`,`9.2.3`, and`12.0.1`,
   with historical malicious `node-ipc` versions also blocked by ECC because
   they carried destructive or unauthorized file-writing behavior.
 - The live IOC set includes persistence through Claude Code
@@ -42,7 +42,7 @@ credentials:
 - The `node-ipc`sweep watches for`node-ipc.cjs` payload hash
   `96097e06...d9034144`, tarball hashes for the malicious`9.1.6`,`9.2.3`,
   and `12.0.1`artifacts,`sh.azurestaticprovider.net`,`bt.node.js`,
-  `37.16.75.69`, DNS exfil labels`xh`/`xd`/`xf` where present in
+  `37.16.75.69`, DNS exfil labels`xh `/`xd`/`xf` where present in
   artifacts, `__ntw`,`__ntRun`,`/nt-` temp archives, and archive entries such
   as `uname.txt`,`envs.txt`, and`fixtures/_paths.txt`.
 - The attack chain combined `pull_request_target`, GitHub Actions cache
@@ -89,7 +89,7 @@ manual dispatch. The workflow is read-only, disables checkout credential
 persistence, installs with `npm ci --ignore-scripts`, verifies npm registry
 signatures, runs the IOC scanner fixtures, runs
 `scripts/ci/supply-chain-advisory-sources.js --refresh --json`, emits
-`supply-chain-ioc-report.json`and`supply-chain-advisory-sources.json`, and
+`supply-chain-ioc-report.json`and ` supply-chain-advisory-sources.json`, and
 re-validates GitHub Actions hardening rules.
 
 Treat a failed scheduled watch as a release blocker until an operator confirms

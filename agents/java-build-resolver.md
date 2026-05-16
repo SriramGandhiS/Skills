@@ -104,14 +104,14 @@ Run these in order:
 | `UnsatisfiedResolutionException: no bean found`| Missing`@ApplicationScoped`/`@Inject`or missing extension | Add CDI annotation or`quarkus-*` extension |
 | `AmbiguousResolutionException`| Multiple beans match injection point | Add`@Priority`,`@Alternative`, or qualifier |
 | `Build step X threw an exception: RuntimeException` | Quarkus build-time augmentation failure | Read full stack trace — usually a missing extension, bad config, or reflection issue |
-| `Error injecting X: it's a non-proxyable bean type`|`@Singleton`with interceptor or`final`class | Switch to`@ApplicationScoped`or remove`final` |
-| `ClassNotFoundException at native image build`| Missing`@RegisterForReflection`or reflection config | Add`@RegisterForReflection`or`reflect-config.json` entry |
+| `Error injecting X: it's a non-proxyable bean type`|`@Singleton`with interceptor or` final`class | Switch to `@ApplicationScoped`or remove`final` |
+| `ClassNotFoundException at native image build`| Missing`@RegisterForReflection`or reflection config | Add`@RegisterForReflection`or ` reflect-config.json` entry |
 | `BlockingNotAllowedOnIOThread`| Blocking call on Vert.x event loop | Add`@Blocking` to endpoint or use reactive client |
-| `ConfigurationException: SRCFG*`| Missing or malformed config property | Check`application.properties`for required`quarkus.*`or`mp.*` keys |
+| `ConfigurationException: SRCFG*`| Missing or malformed config property | Check`application.properties`for required`quarkus.*` or`mp.*` keys |
 | `quarkus-extension-* not found`| Wrong BOM version or extension not in BOM | Check`quarkus-bom`version; use`quarkus ext add <name>` |
 | `DEV mode hot reload failure`| Incompatible change during dev mode | Run`./mvnw quarkus:dev`with clean:`./mvnw clean quarkus:dev` |
-| `Panache entity not enhanced`| Entity not detected at build time | Ensure entity is in scanned package; check for missing`quarkus-hibernate-orm-panache`or`quarkus-mongodb-panache` extension |
-| `RESTEASY* deployment failure`| Duplicate JAX-RS paths or missing provider | Check`@Path`uniqueness; ensure`quarkus-resteasy-reactive`vs`quarkus-resteasy` are not mixed |
+| `Panache entity not enhanced`| Entity not detected at build time | Ensure entity is in scanned package; check for missing`quarkus-hibernate-orm-panache` or `quarkus-mongodb-panache` extension |
+| `RESTEASY* deployment failure`| Duplicate JAX-RS paths or missing provider | Check`@Path`uniqueness; ensure`quarkus-resteasy-reactive`vs ` quarkus-resteasy` are not mixed |
 
 ## Maven Troubleshooting
 

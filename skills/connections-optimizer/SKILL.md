@@ -32,7 +32,7 @@ Collect or infer:
 - target roles, industries, geos, or ecosystems
 - platform selection: X, LinkedIn, or both
 - do-not-touch list
-- mode: `light-pass`,`default`, or`aggressive`
+- mode: `light-pass`,`default`, or `aggressive`
 
 If the user does not specify a mode, use `default`.
 

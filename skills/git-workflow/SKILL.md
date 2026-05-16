@@ -77,8 +77,8 @@ main (production releases)
 - `main` contains production-ready code only
 - `develop` is the integration branch
 - Feature branches from `develop`, merge back to`develop`
-- Release branches from `develop`, merge to`main`and`develop`
-- Hotfix branches from `main`, merge to both`main`and`develop`
+- Release branches from `develop`, merge to`main` and `develop`
+- Hotfix branches from `main`, merge to both`main` and `develop`
 
 ### When to Use Which
 
@@ -706,7 +706,7 @@ git add node_modules/
 | Rebase branch | `git rebase main` |
 | View history | `git log --oneline --graph` |
 | View changes | `git diff` |
-| Stage changes | `git add .`or`git add -p` |
+| Stage changes | `git add .`or` git add -p` |
 | Commit | `git commit -m "message"` |
 | Push | `git push origin branch-name` |
 | Pull | `git pull origin branch-name` |

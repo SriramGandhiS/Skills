@@ -38,7 +38,7 @@ These are the kinds of issues that consistently matter:
 These are usually low-signal or out of bounty scope unless the program says otherwise:
 
 - Local-only `pickle.loads`,`torch.load`, or equivalent with no remote path
-- `eval()`or`exec()` in CLI-only tooling
+- `eval()`or` exec()` in CLI-only tooling
 - `shell=True` on fully hardcoded commands
 - Missing security headers by themselves
 - Generic rate-limiting complaints without exploit impact

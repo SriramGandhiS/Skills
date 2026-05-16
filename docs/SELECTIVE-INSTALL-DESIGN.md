@@ -202,7 +202,7 @@ Recommended user-facing profiles:
 - `full`
   everything classified and currently supported
 
-Profiles should be composable with additional `--with`and`--without` flags.
+Profiles should be composable with additional `--with`and `--without` flags.
 
 Example:
 
@@ -323,7 +323,7 @@ Optional future support:
 ### Field Semantics
 
 - `target`
-  selected harness target such as `claude`,`cursor`, or`antigravity`
+  selected harness target such as `claude`,`cursor`, or `antigravity`
 - `profile`
   baseline profile to start from
 - `include`

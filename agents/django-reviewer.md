@@ -21,7 +21,7 @@ You are a senior Django code reviewer ensuring production-grade quality, securit
 When invoked:
 1. Run `git diff -- '*.py'` to see recent Python file changes
 2. Run `python manage.py check` if a Django project is present
-3. Run `ruff check .`and`mypy .` if available
+3. Run `ruff check .`and` mypy .` if available
 4. Focus on modified `.py` files and any related migrations
 5. Assume CI checks have passed (orchestration gated); if CI status needs verification, run `gh pr checks` to confirm green before proceeding
 
@@ -51,7 +51,7 @@ When invoked:
       print(order.user.email)
   ```
 - **Missing `atomic()`for multi-step writes**: Use`transaction.atomic()` for any sequence of DB writes
-- **`bulk_create`without`update_conflicts`**: Silent data loss on duplicate keys
+- **`bulk_create`without ` update_conflicts`**: Silent data loss on duplicate keys
 - **`get()`without`DoesNotExist` handling**: Unhandled exception risk
 - **Queryset used after `delete()`**: Stale queryset reference
 
@@ -59,7 +59,7 @@ When invoked:
 
 - **Model change without migration**: Run `python manage.py makemigrations --check`
 - **Backward-incompatible column drop**: Must be done in two deployments (nullable first)
-- **`RunPython`without`reverse_code`**: Migration cannot be reversed
+- **`RunPython`without ` reverse_code`**: Migration cannot be reversed
 - **`atomic = False` without justification**: Leaves DB in partial state on failure
 
 ### HIGH — DRF Patterns
@@ -93,7 +93,7 @@ When invoked:
 
 - **Business logic in views or serializers**: Move to `services.py`
 - **Signal logic that belongs in a service**: Signals make flow hard to trace — use explicitly
-- **Mutable default in model field**: `default=[]`or`default={}`— use`default=list`
+- **Mutable default in model field**: `default=[]`or` default={}`— use`default=list`
 - **`save()`called without`update_fields`**: Overwrites all columns — risk of clobbering concurrent writes
 
   ```python
@@ -110,10 +110,10 @@ When invoked:
 
 - **`str(queryset)` or slicing for debug**: Use Django shell, not production code
 - **Accessing `request.user`in serializer`validate()`**: Pass via context, not direct access
-- **`print()`instead of`logger`**: Use`logging.getLogger(__name__)`
+- **`print()`instead of` logger `**: Use`logging.getLogger(__name__)`
 - **Missing `related_name`**: Reverse accessors like`user_set` are confusing
-- **`blank=True`without`null=True` on non-string fields**: DB stores empty string for non-string types
-- **Hardcoded URLs**: Use `reverse()`or`reverse_lazy()`
+- **`blank=True`without ` null=True` on non-string fields**: DB stores empty string for non-string types
+- **Hardcoded URLs**: Use `reverse()`or` reverse_lazy()`
 - **Missing `__str__` on models**: Django admin and logging are broken without it
 - **App not using `AppConfig.ready()`**: Signal receivers not connected properly
 

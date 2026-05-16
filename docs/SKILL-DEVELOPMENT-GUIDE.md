@@ -86,7 +86,7 @@ Main patterns and guidelines.
 
 ## Code Examples
 
-\`\`\`typescript
+\`\`\` typescript
 // Practical, tested examples
 \`\`\`
 
@@ -167,7 +167,7 @@ Another pattern with code.
 
 ## Code Examples
 
-\`\`\`typescript
+\`\`\` typescript
 // Practical example
 \`\`\`
 
@@ -220,7 +220,7 @@ description: Python idioms, best practices, and patterns for clean, idiomatic co
 
 ### Context Managers
 
-\`\`\`python
+\`\`\` python
 ## Always use context managers for resources
 with open('file.txt') as f:
     content = f.read()
@@ -330,7 +330,7 @@ Good:
 ```markdown
 ## Error Handling
 
-\`\`\`typescript
+\`\`\` typescript
 async function fetchData(url: string) {
   try {
     const response = await fetch(url)
@@ -363,7 +363,7 @@ Show what NOT to do:
 
 ### FAIL: Direct State Mutation
 
-\`\`\`typescript
+\`\`\` typescript
 // NEVER do this
 user.name = 'New Name'
 items.push(newItem)
@@ -371,7 +371,7 @@ items.push(newItem)
 
 ### PASS: Immutable Updates
 
-\`\`\`typescript
+\`\`\` typescript
 // ALWAYS do this
 const updatedUser = { ...user, name: 'New Name' }
 const updatedItems = [...items, newItem]
@@ -511,7 +511,7 @@ description: Step-by-step workflow for [task].
 
 [Description]
 
-\`\`\`bash
+\`\`\` bash
 [Commands]
 \`\`\`
 
@@ -550,13 +550,13 @@ description: Quick reference for [API/Library].
 
 ### Operation 1
 
-\`\`\`typescript
+\`\`\` typescript
 // Basic usage
 \`\`\`
 
 ### Operation 2
 
-\`\`\`typescript
+\`\`\` typescript
 // Advanced usage
 \`\`\`
 
@@ -728,7 +728,7 @@ origin: ECC
 
 ### Borrowing Rules
 
-\`\`\`rust
+\`\`\` rust
 // PASS: CORRECT: Borrow when you don't need ownership
 fn process_data(data: &str) -> usize {
     data.len()
@@ -744,7 +744,7 @@ fn consume_data(data: Vec<u8>) -> String {
 
 ### Result Pattern
 
-\`\`\`rust
+\`\`\` rust
 use thiserror::Error;
 
 #[derive(Error, Debug)]
@@ -803,7 +803,7 @@ app/
 
 ## Dependency Injection
 
-\`\`\`python
+\`\`\` python
 from fastapi import Depends
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -862,7 +862,7 @@ origin: ECC
 
 ### Step 2: Ensure Tests Exist
 
-\`\`\`bash
+\`\`\` bash
 ## Run tests to verify current behavior
 npm test
 
@@ -878,7 +878,7 @@ npm run test:coverage
 
 ### Step 4: Verify Behavior Unchanged
 
-\`\`\`bash
+\`\`\` bash
 ## Run full test suite
 npm test
 

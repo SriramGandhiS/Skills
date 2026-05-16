@@ -153,7 +153,7 @@ Build Durumu: PASS: BAŞARILI
 | `X does not implement Y` | Eksik metod ekle |
 | `import cycle` | Paketleri yeniden yapılandır |
 | `declared but not used` | Değişkeni kaldır veya kullan |
-| `cannot find package`|`go get`veya`go mod tidy` |
+| `cannot find package`|`go get` veya `go mod tidy` |
 
 ## Düzeltme Stratejisi
 

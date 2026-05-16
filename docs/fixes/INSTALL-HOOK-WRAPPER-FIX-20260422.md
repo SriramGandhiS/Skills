@@ -3,7 +3,7 @@
 ## Summary
 
 `docs/fixes/install_hook_wrapper.ps1` is the PowerShell helper that copies
-`observe-wrapper.sh`into`~/.claude/skills/continuous-learning/hooks/` and
+`observe-wrapper.sh`into `~/.claude/skills/continuous-learning/hooks/` and
 rewrites `~/.claude/settings.local.json` so the observer hook points at it.
 
 The previous version produced a hook command of the form:
@@ -24,7 +24,7 @@ in sync with the fixed `settings.local.json` layout.
   argv-dup bug no longer passes a binary as a script.
 - The wrapper path is normalized to forward slashes before it is embedded in
   the hook command, avoiding MSYS backslash handling surprises.
-- `PreToolUse`and`PostToolUse` receive distinct commands with explicit
+- `PreToolUse`and `PostToolUse` receive distinct commands with explicit
   `pre`/`post` positional arguments, matching the shape the wrapper expects.
 - The settings file is written with LF line endings so downstream JSON parsers
   never see mixed CRLF/LF output from `ConvertTo-Json`.

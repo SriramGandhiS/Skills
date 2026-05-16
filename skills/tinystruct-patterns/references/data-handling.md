@@ -2,7 +2,7 @@
 
 ## When to Use
 
-Prefer `org.tinystruct.data.component.Builder`and`Builders`for lightweight, zero-dependency JSON. Use`Builder`for JSON objects (`{}`),`Builders`for JSON arrays (`[]`). **Always use`Builders`instead of`List<Builder>`** to avoid generic type erasure issues.
+Prefer `org.tinystruct.data.component.Builder`and `Builders`for lightweight, zero-dependency JSON. Use`Builder`for JSON objects (`{}`),`Builders`for JSON arrays (`[]`). **Always use`Builders`instead of`List<Builder>`** to avoid generic type erasure issues.
 
 ## How It Works
 

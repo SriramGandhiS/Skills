@@ -28,14 +28,14 @@ Comprehensive, library-agnostic checklist for reviewing Flutter/Dart application
 - [ ] **Implicit dynamic**: Missing type annotations leading to `dynamic`â€” enable`strict-casts`,`strict-inference`,`strict-raw-types`
 - [ ] **Null safety misuse**: Excessive `!`(bang operator) instead of proper null checks or Dart 3 pattern matching (`if (value case var v?)`)
 - [ ] **Type promotion failures**: Using `this.field` where local variable promotion would work
-- [ ] **Catching too broadly**: `catch (e)`without`on` clause; always specify exception types
+- [ ] **Catching too broadly**: `catch (e)`without` on` clause; always specify exception types
 - [ ] **Catching `Error`**:`Error` subtypes indicate bugs and should not be caught
-- [ ] **Unused `async`**: Functions marked`async`that never`await` â€” unnecessary overhead
+- [ ] **Unused `async`**: Functions marked`async` that never `await` â€” unnecessary overhead
 - [ ] **`late`overuse**:`late` used where nullable or constructor initialization would be safer; defers errors to runtime
 - [ ] **String concatenation in loops**: Use `StringBuffer`instead of`+` for iterative string building
 - [ ] **Mutable state in `const`contexts**: Fields in`const` constructor classes should not be mutable
-- [ ] **Ignoring `Future`return values**: Use`await`or explicitly call`unawaited()` to signal intent
-- [ ] **`var`where`final`works**: Prefer`final`for locals and`const` for compile-time constants
+- [ ] **Ignoring `Future`return values**: Use` await`or explicitly call `unawaited()` to signal intent
+- [ ] **`var`where ` final`works**: Prefer`final`for locals and`const` for compile-time constants
 - [ ] **Relative imports**: Use `package:` imports for consistency
 - [ ] **Mutable collections exposed**: Public APIs should return unmodifiable views, not raw `List`/`Map`
 - [ ] **Missing Dart 3 pattern matching**: Prefer switch expressions and `if-case`over verbose`is` checks and manual casting
@@ -72,7 +72,7 @@ Comprehensive, library-agnostic checklist for reviewing Flutter/Dart application
 
 ### Build method complexity:
 - [ ] No network calls, file I/O, or heavy computation in `build()`
-- [ ] No `Future.then()`or`async`work in`build()`
+- [ ] No `Future.then()`or` async `work in`build()`
 - [ ] No subscription creation (`.listen()`) in`build()`
 - [ ] `setState()` localized to smallest possible subtree
 
@@ -94,7 +94,7 @@ These principles apply to all Flutter state management solutions (BLoC, Riverpod
 
 ### Immutability & value equality (for immutable-state solutions: BLoC, Riverpod, Redux):
 - [ ] State objects are immutable â€” new instances created via `copyWith()` or constructors, never mutated in-place
-- [ ] State classes implement `==`and`hashCode` properly (all fields included in comparison)
+- [ ] State classes implement `==`and` hashCode` properly (all fields included in comparison)
 - [ ] Mechanism is consistent across the project â€” manual override, `Equatable`,`freezed`, Dart records, or other
 - [ ] Collections inside state objects are not exposed as raw mutable `List`/`Map`
 
@@ -148,7 +148,7 @@ class UserError extends UserState {
 - [ ] Timers are cancelled in disposal lifecycle
 - [ ] Framework-managed lifecycle is preferred over manual subscription (declarative builders over `.listen()`)
 - [ ] `mounted`check before`setState` in async callbacks
-- [ ] `BuildContext`not used after`await`without checking`context.mounted` (Flutter 3.7+) â€” stale context causes crashes
+- [ ] `BuildContext`not used after` await`without checking `context.mounted` (Flutter 3.7+) â€” stale context causes crashes
 - [ ] No navigation, dialogs, or scaffold messages after async gaps without verifying the widget is still mounted
 - [ ] `BuildContext` never stored in singletons, state managers, or static fields
 
@@ -175,7 +175,7 @@ class UserError extends UserState {
 ### Image optimization:
 - [ ] Network images use caching (any caching solution appropriate for the project)
 - [ ] Appropriate image resolution for target device (no loading 4K images for thumbnails)
-- [ ] `Image.asset`with`cacheWidth`/`cacheHeight` to decode at display size
+- [ ] `Image.asset`with ` cacheWidth`/`cacheHeight` to decode at display size
 - [ ] Placeholder and error widgets provided for network images
 
 ### Lazy loading:
@@ -184,7 +184,7 @@ class UserError extends UserState {
 - [ ] Deferred loading (`deferred as`) used for heavy libraries in web builds
 
 ### Other:
-- [ ] `Opacity`widget avoided in animations â€” use`AnimatedOpacity`or`FadeTransition`
+- [ ] `Opacity`widget avoided in animations â€” use`AnimatedOpacity`or `FadeTransition`
 - [ ] Clipping avoided in animations â€” pre-clip images
 - [ ] `operator ==`not overridden on widgets â€” use`const` constructors instead
 - [ ] Intrinsic dimension widgets (`IntrinsicHeight`,`IntrinsicWidth`) used sparingly (extra layout pass)
@@ -212,7 +212,7 @@ class UserError extends UserState {
 - [ ] No shared mutable state between test cases
 
 ### Widget test quality:
-- [ ] `pumpWidget`and`pump` used correctly for async operations
+- [ ] `pumpWidget`and ` pump` used correctly for async operations
 - [ ] `find.byType`,`find.text`,`find.byKey` used appropriately
 - [ ] No flaky tests depending on timing â€” use `pumpAndSettle`or explicit`pump(Duration)`
 - [ ] Tests run in CI and failures block merges
@@ -250,10 +250,10 @@ class UserError extends UserState {
 - [ ] Platform-adaptive widgets used where appropriate
 - [ ] Back navigation handled correctly (Android back button, iOS swipe-to-go-back)
 - [ ] Status bar and safe area handled via `SafeArea` widget
-- [ ] Platform-specific permissions declared in `AndroidManifest.xml`and`Info.plist`
+- [ ] Platform-specific permissions declared in `AndroidManifest.xml`and `Info.plist`
 
 ### Responsive design:
-- [ ] `LayoutBuilder`or`MediaQuery` used for responsive layouts
+- [ ] `LayoutBuilder`or `MediaQuery` used for responsive layouts
 - [ ] Breakpoints defined consistently (phone, tablet, desktop)
 - [ ] Text doesn't overflow on small screens â€” use `Flexible`,`Expanded`,`FittedBox`
 - [ ] Landscape orientation tested or explicitly locked

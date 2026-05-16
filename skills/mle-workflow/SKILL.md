@@ -27,9 +27,9 @@ Use only the lanes that fit the system in front of you. This skill is useful for
 
 ## Related Skills
 
-- `python-patterns`and`python-testing` for Python implementation and pytest coverage
+- `python-patterns`and ` python-testing` for Python implementation and pytest coverage
 - `pytorch-patterns` for deep learning models, data loaders, device handling, and training loops
-- `eval-harness`and`ai-regression-testing` for promotion gates and agent-assisted regression checks
+- `eval-harness`and ` ai-regression-testing` for promotion gates and agent-assisted regression checks
 - `database-migrations`,`postgres-patterns`, and`clickhouse-io` for data storage and analytics surfaces
 - `deployment-patterns`,`docker-patterns`, and`security-review` for serving, secrets, containers, and production hardening
 
@@ -37,7 +37,7 @@ Use only the lanes that fit the system in front of you. This skill is useful for
 
 Do not treat MLE as separate from software engineering. Most ECC SWE workflows apply directly to ML systems, often with stricter failure modes:
 
-The recommended `minimal --with capability:machine-learning`install keeps the core agent surface available alongside this skill. For skill-only or agent-limited harnesses, pair`skill:mle-workflow`with`agent:mle-reviewer` where the target supports agents.
+The recommended `minimal --with capability:machine-learning`install keeps the core agent surface available alongside this skill. For skill-only or agent-limited harnesses, pair`skill:mle-workflow`with ` agent:mle-reviewer` where the target supports agents.
 
 | SWE surface | MLE use |
 |-------------|---------|

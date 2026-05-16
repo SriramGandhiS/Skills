@@ -120,7 +120,7 @@ Route::scopeBindings()->group(function () {
 
 ### Nested Routes and Binding Names
 
-- Keep prefixes and paths consistent to avoid double nesting (e.g., `conversation`vs`conversations`).
+- Keep prefixes and paths consistent to avoid double nesting (e.g., `conversation`vs ` conversations`).
 - Use a single parameter name that matches the bound model (e.g., `{conversation}`for`Conversation`).
 - Prefer scoped bindings when nesting to enforce parent-child relationships.
 

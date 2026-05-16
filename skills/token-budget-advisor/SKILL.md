@@ -54,7 +54,7 @@ Classify the prompt, then apply the multiplier range to get the full response wi
 | Complex      | 15Ã— â€“ 40Ã—        | Multi-part analysis, comparisons, architecture      |
 | Creative     | 10Ã— â€“ 30Ã—        | Stories, essays, narrative writing                  |
 
-Response window = `input_tokens Ã— mult_min`to`input_tokens Ã— mult_max` (but donâ€™t exceed your modelâ€™s configured output-token limit).
+Response window = `input_tokens Ã— mult_min`to ` input_tokens Ã— mult_max` (but donâ€™t exceed your modelâ€™s configured output-token limit).
 
 ### Step 3 â€” Present depth options
 

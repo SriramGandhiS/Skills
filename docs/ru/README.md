@@ -1423,7 +1423,7 @@ npm install ecc-universal
 
 Для полной настройки ECC OpenCode:
 - запустите OpenCode внутри этого репозитория, или
-- скопируйте bundled `.opencode/`config assets в ваш проект и подключите entries`instructions`,`agent`и`command`в`opencode.json`
+- скопируйте bundled `.opencode/`config assets в ваш проект и подключите entries` instructions `,`agent`и`command`в`opencode.json`
 
 ### Документация
 
