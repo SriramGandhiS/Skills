@@ -36,7 +36,7 @@ so `npm pack` fails if Python bytecode appears in the package surface.
 | --- | --- |
 | `node tests/scripts/npm-publish-surface.test.js`| Passed`2/2`; includes Python bytecode exclusion assertion |
 | `npm pack --dry-run --json`|`ecc-universal-2.0.0-rc.1.tgz`;`entryCount: 965`;`size: 1565968`;`unpackedSize: 4934637`;`hasBytecode: false` |
-| `npm publish --tag next --dry-run --json`| Dry-run target is npm registry with`tag next`;`entryCount: 965`;`hasBytecode: false` |
+| `npm publish --tag next --dry-run --json`| Dry-run target is npm registry with `tag next`;`entryCount: 965`;`hasBytecode: false` |
 
 Temporary install smoke:
 
@@ -54,8 +54,8 @@ Temporary install smoke:
 | --- | --- | --- |
 | Claude plugin manifest | `claude plugin validate .claude-plugin/plugin.json` | Passed |
 | Claude plugin tag preflight | `claude plugin tag .claude-plugin --dry-run`| Blocked by unrelated untracked`docs/drafts/` |
-| Claude plugin tag forced dry-run | `claude plugin tag .claude-plugin --dry-run --force`| Would create`ecc--v2.0.0-rc.1`at HEAD; do not use`--force` for real release unless maintainer decides |
-| Codex marketplace CLI | `codex plugin marketplace --help`and subcommand help | Supports` add`,`upgrade`, and`remove`;`add` supports repo and local marketplace roots |
+| Claude plugin tag forced dry-run | `claude plugin tag .claude-plugin --dry-run --force`| Would create`ecc--v2.0.0-rc.1` at HEAD; do not use`--force` for real release unless maintainer decides |
+| Codex marketplace CLI | `codex plugin marketplace --help` and subcommand help | Supports`add`,`upgrade`, and `remove`;`add` supports repo and local marketplace roots |
 | OpenCode package | `npm run build:opencode` | Passed |
 | Claude hook/plugin route | `node tests/hooks/hooks.test.js`| Passed`236/236` |
 | Codex release surface | `node tests/docs/ecc2-release-surface.test.js`| Passed`18/18` |
@@ -76,12 +76,12 @@ plugin config.
 | `git -C /tmp/ecc-clean-plugin-evidence status --short --branch`|`## HEAD (no branch)` with no dirty or untracked files |
 | `claude plugin validate .claude-plugin/plugin.json` | Passed |
 | `claude plugin validate .claude-plugin/marketplace.json` | Passed |
-| `claude plugin tag .claude-plugin --dry-run`| Passed without`--force`; would create`ecc--v2.0.0-rc.1`at HEAD and push`refs/tags/ecc--v2.0.0-rc.1` |
-| `claude plugin marketplace add /tmp/ecc-clean-plugin-evidence --scope local`with temp`HOME`| Added marketplace`ecc` in local settings |
-| `claude plugin list --available --json`with temp`HOME`| Listed`ecc@ecc`, version`2.0.0-rc.1`, source`./` |
-| `claude plugin install ecc@ecc --scope local`with temp`HOME`| Installed`ecc@ecc` in local scope |
-| `claude plugin list --json`with temp`HOME`| Listed`ecc@ecc`, version`2.0.0-rc.1`, enabled, local scope, install path under`/tmp/ecc-clean-plugin-home/.claude/plugins/cache/ecc/ecc/2.0.0-rc.1` |
-| `claude plugin uninstall ecc@ecc --scope local`with temp`HOME`| Uninstalled successfully; final plugin list was`[]` |
+| `claude plugin tag .claude-plugin --dry-run`| Passed without`--force`; would create`ecc--v2.0.0-rc.1` at HEAD and push`refs/tags/ecc--v2.0.0-rc.1` |
+| `claude plugin marketplace add /tmp/ecc-clean-plugin-evidence --scope local` with temp`HOME`| Added marketplace`ecc` in local settings |
+| `claude plugin list --available --json` with temp`HOME`| Listed`ecc@ecc`, version`2.0.0-rc.1`, source`./` |
+| `claude plugin install ecc@ecc --scope local` with temp`HOME`| Installed`ecc@ecc` in local scope |
+| `claude plugin list --json` with temp`HOME`| Listed`ecc@ecc`, version`2.0.0-rc.1`, enabled, local scope, install path under`/tmp/ecc-clean-plugin-home/.claude/plugins/cache/ecc/ecc/2.0.0-rc.1` |
+| `claude plugin uninstall ecc@ecc --scope local` with temp`HOME`| Uninstalled successfully; final plugin list was`[]` |
 
 ## Announcement Placeholder Check
 
@@ -92,7 +92,7 @@ instances were found.
 ## Remaining Blockers
 
 - Create or verify GitHub prerelease `v2.0.0-rc.1`.
-- Publish `ecc-universal@2.0.0-rc.1`with npm dist-tag`next`.
+- Publish `ecc-universal@2.0.0-rc.1` with npm dist-tag`next`.
 - Create and push the Claude plugin tag only after explicit approval. The clean
   checkout dry run and temp install smoke now pass.
 - Confirm the live Claude/Codex/OpenCode marketplace submission path or record

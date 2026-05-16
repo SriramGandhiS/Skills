@@ -35,17 +35,17 @@ This skill produces:
 ## Principles
 
 - Every pattern imports from `motion-foundations`. No raw numbers.
-- Every conditional render is wrapped in `AnimatePresence`with a`key`.
+- Every conditional render is wrapped in `AnimatePresence` with a`key`.
 - Exit animations are always defined alongside enter animations â€” never as an afterthought.
 - `layout` is used only for small, isolated shifts. Large subtrees get explicit transforms.
 
 ## Rules
 
-1. **Always wrap conditional renders in `AnimatePresence`with a`key`** on the direct child. Without a key, exit animations never fire.
-2. **Always define `exit`when defining` initial`+`animate`.** An animation without an exit is incomplete.
+1. **Always wrap conditional renders in `AnimatePresence` with a`key`** on the direct child. Without a key, exit animations never fire.
+2. **Always define `exit`when defining`initial`+`animate`.** An animation without an exit is incomplete.
 3. **Use `mode="wait"` on page transitions.** Enter must not start until exit completes.
-4. **Never use `layout`on subtrees with more than ~5 children or deeply nested DOM.** Use explicit` x`/`y` transforms instead.
-5. **Stagger interval must stay between `0.05s`and `0.10s`.** Below feels mechanical; above feels sluggish.
+4. **Never use `layout` on subtrees with more than ~5 children or deeply nested DOM.** Use explicit`x`/`y` transforms instead.
+5. **Stagger interval must stay between `0.05s` and `0.10s`.** Below feels mechanical; above feels sluggish.
 6. **Modals must always include:** focus trap, Escape-key close, scroll lock, `role="dialog"`,`aria-modal="true"`.
 7. **Scroll reveals use `viewport={{ once: true }}`.** Repeating on scroll-out is distracting, not informative.
 8. **All token values are imported from `motion-foundations`.** No inline numbers.
@@ -64,7 +64,7 @@ This skill produces:
 | Element enters when scrolled into view   | `whileInView`          |
 | Value tied to scroll position            | `useScroll`+`useTransform` |
 
-### When to use `mode="wait"`vs` mode="sync"`
+### When to use `mode="wait"`vs`mode="sync"`
 
 | Mode | Use when |
 | ------- | --------------------------------------- |
@@ -419,13 +419,13 @@ This skill does **not** cover:
 
 | Anti-pattern | Rule violated | Fix |
 | -------------------------------------------- | ------- | ------------------------------------------ |
-| `AnimatePresence`child missing` key`| Rule 1 | Add stable `key` to the direct child |
-| `initial`+`animate` without `exit` | Rule 2 | Always define all three together |
-| Page transition without `mode="wait"`| Rule 3 | Add`mode="wait"` to`AnimatePresence` |
-| `layout`on a 50-item list | Rule 4 | Use`mode="popLayout"` or explicit transforms |
-| `staggerChildren: 0.2`on a 10-item list | Rule 5 | Cap at`0.08â€“0.10` |
+| `AnimatePresence`child missing`key`| Rule 1 | Add stable`key` to the direct child |
+| `initial`+`animate`without`exit` | Rule 2 | Always define all three together |
+| Page transition without `mode="wait"`| Rule 3 | Add`mode="wait"` to `AnimatePresence` |
+| `layout` on a 50-item list | Rule 4 | Use`mode="popLayout"` or explicit transforms |
+| `staggerChildren: 0.2` on a 10-item list | Rule 5 | Cap at `0.08â€“0.10` |
 | Modal without focus trap | Rule 6 | Add `focus-trap-react` or Radix Dialog |
-| `whileInView`without ` viewport={{ once: true }}` | Rule 7 | Repeating entrances distract, not inform |
+| `whileInView`without`viewport={{ once: true }}` | Rule 7 | Repeating entrances distract, not inform |
 | `transition={{ duration: 0.3 }}`inline | Rule 8 | Use`motionTokens.duration.normal` |
 
 ## Related Skills

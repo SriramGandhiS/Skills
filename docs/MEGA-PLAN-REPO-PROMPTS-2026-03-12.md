@@ -15,8 +15,8 @@ Windows CI lane is already merged via `#417`.
   - convert recurring discussion pressure into tracked issues
   - define selective-install architecture
   - write the ECC 2.0 discovery doc
-- `agentshield`,`ECC-website`, and`skill-creator-app` all have dirty
-  `main`worktrees and should not be edited directly on`main`.
+- `agentshield`,`ECC-website`, and `skill-creator-app` all have dirty
+  `main`worktrees and should not be edited directly on `main`.
 - `applications/` is not a standalone git repo. It lives inside the parent
   workspace repo at `<ECC_ROOT>`.
 

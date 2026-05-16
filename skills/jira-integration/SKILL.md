@@ -25,7 +25,7 @@ Install the `mcp-atlassian` MCP server. This exposes Jira tools directly to your
 
 **Requirements:**
 - Python 3.10+
-- `uvx`(from`uv`), installed via your package manager or the official `uv` installation documentation
+- `uvx`(from `uv`), installed via your package manager or the official`uv` installation documentation
 
 **Add to your MCP config** (e.g., `~/.claude.json`â†’`mcpServers`):
 
@@ -44,7 +44,7 @@ Install the `mcp-atlassian` MCP server. This exposes Jira tools directly to your
 }
 ```
 
-> **Security:** Never hardcode secrets. Prefer setting `JIRA_URL`,`JIRA_EMAIL`, and`JIRA_API_TOKEN`in your system environment (or a secrets manager). Only use the MCP`env` block for local, uncommitted config files.
+> **Security:** Never hardcode secrets. Prefer setting `JIRA_URL`,`JIRA_EMAIL`, and `JIRA_API_TOKEN` in your system environment (or a secrets manager). Only use the MCP`env` block for local, uncommitted config files.
 
 **To get a Jira API token:**
 1. Go to <https://id.atlassian.com/manage-profile/security/api-tokens>
@@ -268,7 +268,7 @@ Coverage: XX%
 
 - **Never hardcode** Jira API tokens in source code or skill files
 - **Always use** environment variables or a secrets manager
-- **Add `.env`** to`.gitignore` in every project
+- **Add `.env`** to `.gitignore` in every project
 - **Rotate tokens** immediately if exposed in git history
 - **Use least-privilege** API tokens scoped to required projects
 - **Validate** that credentials are set before making API calls â€” fail fast with a clear message
@@ -280,7 +280,7 @@ Coverage: XX%
 | `401 Unauthorized` | Invalid or expired API token | Regenerate at id.atlassian.com |
 | `403 Forbidden` | Token lacks project permissions | Check token scopes and project access |
 | `404 Not Found`| Wrong ticket key or base URL | Verify`JIRA_URL` and ticket key |
-| `spawn uvx ENOENT`| IDE cannot find`uvx ` on PATH | Use full path (e.g.,`~/.local/bin/uvx`) or set PATH in`~/.zprofile` |
+| `spawn uvx ENOENT`| IDE cannot find`uvx` on PATH | Use full path (e.g.,`~/.local/bin/uvx`) or set PATH in `~/.zprofile` |
 | Connection timeout | Network/VPN issue | Check VPN connection and firewall rules |
 
 ## Best Practices

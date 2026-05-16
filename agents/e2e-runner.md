@@ -73,7 +73,7 @@ npx playwright show-report                 # View HTML report
 
 ### 3. Execute
 - Run locally 3-5 times to check for flakiness
-- Quarantine flaky tests with `test.fixme()`or` test.skip()`
+- Quarantine flaky tests with `test.fixme()` or `test.skip()`
 - Upload artifacts to CI
 
 ## Key Principles

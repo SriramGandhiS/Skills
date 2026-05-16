@@ -222,7 +222,7 @@ Arka plan gözlemcisini kontrol etmek için `config.json` dosyasını düzenleyi
 | `observer.run_interval_minutes`|`5` | Gözlemcinin gözlemleri ne sıklıkla analiz ettiği |
 | `observer.min_observations_to_analyze`|`20` | Analiz çalışmadan önce minimum gözlem |
 
-Diğer davranışlar (gözlem yakalama, instinct eşikleri, proje kapsamı, yükseltme kriterleri) `instinct-cli.py`ve ` observe.sh` içindeki kod varsayılanları aracılığıyla yapılandırılır.
+Diğer davranışlar (gözlem yakalama, instinct eşikleri, proje kapsamı, yükseltme kriterleri) `instinct-cli.py`ve`observe.sh` içindeki kod varsayılanları aracılığıyla yapılandırılır.
 
 ## Dosya Yapısı
 

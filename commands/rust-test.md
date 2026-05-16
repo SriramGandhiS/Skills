@@ -284,8 +284,8 @@ cargo test --no-fail-fast
 **DO:**
 - Write test FIRST, before any implementation
 - Run tests after each change
-- Use `assert_eq!`over` assert!` for better error messages
-- Use `?`in tests that return`Result` for cleaner output
+- Use `assert_eq!`over`assert!` for better error messages
+- Use `?` in tests that return`Result` for cleaner output
 - Test behavior, not implementation
 - Include edge cases (empty, boundary, error paths)
 
@@ -293,7 +293,7 @@ cargo test --no-fail-fast
 - Write implementation before tests
 - Skip the RED phase
 - Use `#[should_panic]`when`Result::is_err()` works
-- Use `sleep()`in tests — use channels or`tokio::time::pause()`
+- Use `sleep()` in tests — use channels or `tokio::time::pause()`
 - Mock everything — prefer integration tests when feasible
 
 ## Related Commands

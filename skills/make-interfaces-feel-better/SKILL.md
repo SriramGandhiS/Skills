@@ -147,5 +147,5 @@ Omit principles that you checked but did not change.
 - Enter and exit animations are split, subtle, and interruptible where
   appropriate.
 - Buttons have tactile active states without exaggerated motion.
-- `transition: all`and ` will-change: all` are absent.
+- `transition: all` and `will-change: all` are absent.
 - Small controls still have usable hit areas.

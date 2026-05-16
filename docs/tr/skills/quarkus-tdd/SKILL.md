@@ -854,7 +854,7 @@ mvn jacoco:check
 - Açık yorumlarla AAA desenini izleyin (`// ARRANGE`,`// ACT`,`// ASSERT`)
 - Başarı senaryoları için `assertDoesNotThrow` kullanın
 - Mesaj doğrulamalı exception senaryoları için `assertThrows` kullanın
-- AssertJ `contains()`veya` isEqualTo()` kullanarak exception mesajlarının beklenen değerlerle eşleştiğini doğrulayın
+- AssertJ `contains()`veya`isEqualTo()` kullanarak exception mesajlarının beklenen değerlerle eşleştiğini doğrulayın
 
 ### Test Kapsamı
 - Tüm public metodlar için mutlu yolları test edin
@@ -878,7 +878,7 @@ mvn jacoco:check
 - Test'e özel yapılandırma için `@TestProfile` kullanın
 
 ### Event-Driven Test
-- `AdviceWith`ve `MockEndpoint` ile Camel route'larını test edin
+- `AdviceWith`ve`MockEndpoint` ile Camel route'larını test edin
 - `@CamelQuarkusTest` annotasyonu kullanın (bağımsız Camel testleri kullanıyorsanız)
 - Mesaj içeriğini, başlıklarını ve yönlendirme mantığını doğrulayın
 - Hata işleme route'larını ayrı ayrı test edin
@@ -907,7 +907,7 @@ mvn jacoco:check
 - Native derleme uyumluluğunu periyodik olarak test edin
 - Farklı senaryolar için Quarkus test profillerini kullanın
 - Yerel test için Quarkus dev servislerinden yararlanın
-- `@MockBean`yerine `@InjectMock` kullanın (Quarkus'a özgü)
+- `@MockBean`yerine`@InjectMock` kullanın (Quarkus'a özgü)
 
 ### Doğrulama En İyi Uygulamaları
 - Mock'lanmış bağımlılıklardaki etkileşimleri her zaman doğrulayın

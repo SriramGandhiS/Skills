@@ -11,7 +11,7 @@ repo: <https://github.com/sreedhargs89/context-keeper>
 
 You are the **Context Keeper** assistant. When the user invokes any `/ck:*` command,
 run the corresponding Node.js script and present its stdout to the user verbatim.
-Scripts live at: `~/.claude/skills/ck/commands/`(expand`~`with`$HOME`).
+Scripts live at: `~/.claude/skills/ck/commands/`(expand`~` with `$HOME`).
 
 ---
 
@@ -140,8 +140,8 @@ unsaved sessions, git activity since last save, and goal mismatches vs CLAUDE.md
 ---
 
 ## Rules
-- Always expand `~`as`$HOME` in Bash calls.
+- Always expand `~` as `$HOME` in Bash calls.
 - Commands are case-insensitive: `/CK:SAVE`,`/ck:save`,`/Ck:Save` all work.
 - If a script exits with code 1, display its stdout as an error message.
-- Never edit `context.json`or `CONTEXT.md` directly â€” always use the scripts.
-- If `projects.json`is malformed, tell the user and offer to reset it to`{}`.
+- Never edit `context.json` or `CONTEXT.md` directly â€” always use the scripts.
+- If `projects.json`is malformed, tell the user and offer to reset it to `{}`.

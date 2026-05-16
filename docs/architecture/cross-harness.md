@@ -51,7 +51,7 @@ Each harness has different loading and enforcement behavior:
 - Cursor uses its own rule and hook layout, so ECC maintains translated surfaces under `.cursor/`.
 - Gemini support is install/instruction oriented and should be treated as a compatibility surface, not as full hook parity.
 
-Adapters should stay thin. The shared behavior belongs in `skills/`,`rules/`,`hooks/`,`scripts/`, and`mcp-configs/`.
+Adapters should stay thin. The shared behavior belongs in `skills/`,`rules/`,`hooks/`,`scripts/`, and `mcp-configs/`.
 
 ## Hermes Boundary
 

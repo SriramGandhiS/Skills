@@ -45,9 +45,9 @@ The Hero must breathe. It must NOT be a narrow, 6-line text wall.
 
 ## 5. ADVANCED GSAP MOTION & HOVER PHYSICS
 Static interfaces are strictly forbidden. You must write real GSAP (`@gsap/react`,`ScrollTrigger`).
-- **Hover Physics:** Every clickable card and image must react. Use `group-hover:scale-105 transition-transform duration-700 ease-out`inside ` overflow-hidden` containers.
+- **Hover Physics:** Every clickable card and image must react. Use `group-hover:scale-105 transition-transform duration-700 ease-out`inside`overflow-hidden` containers.
 - **Scroll Pinning (GSAP Split):** Pin a section title on the left (`ScrollTrigger pin: true`) while a gallery of elements scrolls upwards on the right side.
-- **Image Scale & Fade Scroll:** Images must start small (`scale: 0.8`). As they scroll into view, they grow to`scale: 1.0`. As they scroll out of view, they smoothly darken and fade out (`opacity: 0.2`).
+- **Image Scale & Fade Scroll:** Images must start small (`scale: 0.8`). As they scroll into view, they grow to `scale: 1.0`. As they scroll out of view, they smoothly darken and fade out (`opacity: 0.2`).
 - **Scrubbing Text Reveals:** Opacity of central paragraph words starts at 0.1 and scrubs to 1.0 sequentially as the user scrolls.
 - **Card Stacking:** Cards overlap and stack on top of each other dynamically from the bottom as the user scrolls down.
 
@@ -60,7 +60,7 @@ Select components from this arsenal based on your randomization:
 
 ## 7. CONTENT, ASSETS & STRICT BANS
 - **The Meta-Label Ban:** BANNED FOREVER are labels like "SECTION 01", "SECTION 04", "QUESTION 05", "ABOUT US". Remove them entirely. They look cheap and unprofessional.
-- **Image Context & Style:** Use `https://picsum.photos/seed/{keyword}/1920/1080`and match the keyword to the vibe. Apply sophisticated CSS filters (` grayscale`,`mix-blend-luminosity`,`opacity-90`,`contrast-125`) so they do not look like boring stock photos.
+- **Image Context & Style:** Use `https://picsum.photos/seed/{keyword}/1920/1080` and match the keyword to the vibe. Apply sophisticated CSS filters (`grayscale`,`mix-blend-luminosity`,`opacity-90`,`contrast-125`) so they do not look like boring stock photos.
 - **Creative Backgrounds:** Inject subtle, professional ambient design. Use deep radial blurs, grainy mesh gradients, or shifting dark overlays. Avoid flat, boring colors.
 - **Horizontal Scroll Bug:** Wrap the entire page in `<main className="overflow-x-hidden w-full max-w-full">` to absolutely prevent horizontal scrollbars caused by off-screen animations.
 

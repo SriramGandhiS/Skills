@@ -150,7 +150,7 @@ src/
 
 ## Testing Patterns
 
-- Test files: `__tests__/`directories or`.test.ts` suffix
+- Test files: `__tests__/`directories or `.test.ts` suffix
 - Coverage target: 80%+
 - Framework: Vitest
 ```

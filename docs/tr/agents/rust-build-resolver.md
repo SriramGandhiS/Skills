@@ -47,7 +47,7 @@ if command -v cargo-audit >/dev/null; then cargo audit; else echo "cargo-audit n
 | `cannot borrow as mutable`| Immutable borrow aktif | Önce immutable borrow'u bitirmek için yeniden yapılandırın veya`Cell`/`RefCell` kullanın |
 | `does not live long enough` | Değer hala ödünç alınmışken drop edildi | Lifetime scope'unu genişletin, owned tip kullanın veya lifetime annotation ekleyin |
 | `cannot move out of`| Referans arkasından taşıma |`.clone()`,`.to_owned()` kullanın veya ownership almak için yeniden yapılandırın |
-| `mismatched types`| Yanlış tip veya eksik dönüşüm |`.into()`,`as` veya açık tip dönüşümü ekleyin |
+| `mismatched types`| Yanlış tip veya eksik dönüşüm |`.into()`,` as` veya açık tip dönüşümü ekleyin |
 | `trait X is not implemented for Y`| Eksik impl veya derive |`#[derive(Trait)]` ekleyin veya trait'i manuel olarak implemente edin |
 | `unresolved import`| Eksik dependency veya yanlış path | Cargo.toml'a ekleyin veya`use` path'ini düzeltin |
 | `unused variable`/`unused import`| Ölü kod | Kaldırın veya`_` ile önekleyin |

@@ -78,7 +78,7 @@ function getErrorMessage(error: unknown): string {
 
 ### React Props
 
-- Component prop'larını adlandırılmış `interface`veya ` type` ile tanımla
+- Component prop'larını adlandırılmış `interface`veya`type` ile tanımla
 - Callback prop'larını açıkça tiplendir
 - Belirli bir nedeni olmadıkça `React.FC` kullanma
 
@@ -100,7 +100,7 @@ function UserCard({ user, onSelect }: UserCardProps) {
 
 ### JavaScript Dosyaları
 
-- `.js`ve `.jsx` dosyalarında, tipler netliği artırdığında ve TypeScript migration pratik olmadığında JSDoc kullan
+- `.js`ve`.jsx` dosyalarında, tipler netliği artırdığında ve TypeScript migration pratik olmadığında JSDoc kullan
 - JSDoc'u runtime davranışıyla hizalı tut
 
 ```javascript

@@ -77,7 +77,7 @@ fun getUserEmail(userId: String): String {
 
 ### 2. Varsayılan Olarak Immutability
 
-`var`yerine ` val` tercih edin, mutable koleksiyonlar yerine immutable olanları.
+`var`yerine`val` tercih edin, mutable koleksiyonlar yerine immutable olanları.
 
 ```kotlin
 // İyi: Immutable veri
@@ -474,14 +474,14 @@ fun withdraw(account: Account, amount: Money): Account {
 
 | İdiyom | Açıklama |
 |-------|-------------|
-| `val`over ` var` | Immutable değişkenleri tercih et |
+| `val`over`var` | Immutable değişkenleri tercih et |
 | `data class` | equals/hashCode/copy ile value objeler için |
 | `sealed class/interface` | Kısıtlı tip hiyerarşileri için |
 | `value class` | Sıfır maliyetli tip güvenli sarmalayıcılar için |
 | Expression `when` | Exhaustive pattern matching |
 | Safe call `?.` | Null-safe member erişimi |
 | Elvis `?:` | Nullable'lar için varsayılan değer |
-| `let`/`apply`/`also`/`run`/`with` | Temiz kod için scope fonksiyonlar |
+| `let`/`apply`/`also`/`run`/` with` | Temiz kod için scope fonksiyonlar |
 | Extension fonksiyonlar | Inheritance olmadan davranış ekle |
 | `copy()` | Data class'larda immutable güncellemeler |
 | `require`/`check` | Ön koşul assertion'ları |

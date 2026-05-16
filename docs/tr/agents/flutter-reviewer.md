@@ -19,7 +19,7 @@ Idiomatic, performanslı ve sürdürülebilir kod sağlayan kıdemli bir Flutter
 
 ### Adım 1: Bağlam Toplayın
 
-Değişiklikleri görmek için `git diff --staged`ve ` git diff`çalıştırın. Eğer diff yoksa,`git log --oneline -5` kontrol edin. Değişen Dart dosyalarını belirleyin.
+Değişiklikleri görmek için `git diff --staged`ve`git diff`çalıştırın. Eğer diff yoksa,`git log --oneline -5` kontrol edin. Değişen Dart dosyalarını belirleyin.
 
 ### Adım 2: Proje Yapısını Anlayın
 
@@ -97,10 +97,10 @@ Projenin seçilen mimarisine uyarlayın (Clean Architecture, MVVM, feature-first
 
 - **Büyük `build()`** — ~80 satırı aşıyor; subtree'leri ayrı widget sınıflarına ayırın
 - **`_build*()` helper metodları** — Widget döndüren private metodlar framework optimizasyonlarını önler; sınıflara ayırın
-- **Eksik `const`constructor'lar** — Tüm final alanlara sahip widget'lar gereksiz rebuild'leri önlemek için`const` bildirmelidir
+- **Eksik `const`constructor'lar** — Tüm final alanlara sahip widget'lar gereksiz rebuild'leri önlemek için `const` bildirmelidir
 - **Parametrelerde object allocation** — `const`olmadan inline`TextStyle(...)` rebuild'lere neden olur
 - **`StatefulWidget`aşırı kullanımı** — Mutable yerel state gerekmediğinde`StatelessWidget` tercih edin
-- **List itemlerinde eksik `key`** — Stabil`ValueKey`olmadan `ListView.builder` itemları state bug'larına neden olur
+- **List itemlerinde eksik `key`** — Stabil`ValueKey`olmadan`ListView.builder` itemları state bug'larına neden olur
 - **Hardcoded renkler/text stilleri** — `Theme.of(context).colorScheme`/`textTheme` kullanın; hardcoded stiller dark mode'u bozar
 - **Hardcoded spacing** — Sihirli sayılar yerine design token'ları veya named constant'ları tercih edin
 
@@ -111,24 +111,24 @@ Projenin seçilen mimarisine uyarlayın (Clean Architecture, MVVM, feature-first
 - **`MediaQuery.of(context)`aşırı kullanımı** — Belirli accessor'ları kullanın (`MediaQuery.sizeOf(context)`)
 - **Büyük veri için concrete list constructor'ları** — Lazy construction için `ListView.builder`/`GridView.builder` kullanın
 - **Eksik image optimizasyonu** — Caching yok, `cacheWidth`/`cacheHeight` yok, full-res thumbnail'ler
-- **Animasyonlarda `Opacity`** —`AnimatedOpacity`veya `FadeTransition` kullanın
+- **Animasyonlarda `Opacity`** —`AnimatedOpacity`veya`FadeTransition` kullanın
 - **Eksik `const`yayılımı** —`const` widget'lar rebuild yayılımını durdurur; mümkün olduğu her yerde kullanın
 - **`IntrinsicHeight`/`IntrinsicWidth` aşırı kullanımı** — Ekstra layout geçişlerine neden olur; scrollable listelerde kaçının
 - **Eksik `RepaintBoundary`** — Bağımsız yeniden boyanan karmaşık subtree'ler sarmallanmalıdır
 
 ### Dart Idiomatic'leri (MEDIUM)
 
-- **Eksik tip annotation'ları / implicit `dynamic`** — Bunları yakalamak için`strict-casts`,`strict-inference`,`strict-raw-types` etkinleştirin
-- **`!`bang aşırı kullanımı** —`?.`,`??`,`case var v?` veya`requireNotNull`'u tercih edin
-- **Geniş exception yakalama** — `on`clause olmadan`catch (e)`; exception tiplerini belirtin
+- **Eksik tip annotation'ları / implicit `dynamic`** — Bunları yakalamak için `strict-casts`,`strict-inference`,`strict-raw-types` etkinleştirin
+- **`!`bang aşırı kullanımı** —`?.`,`??`,`case var v?`veya`requireNotNull`'u tercih edin
+- **Geniş exception yakalama** — `on `clause olmadan`catch (e)`; exception tiplerini belirtin
 - **`Error`alt tiplerini yakalama** —`Error` bug'ları gösterir, kurtarılabilir koşulları değil
-- **`final`'in çalıştığı yerde`var`** — Yerel değişkenler için `final`, compile-time constant'lar için`const` tercih edin
+- **`final`'in çalıştığı yerde`var`** — Yerel değişkenler için `final`, compile-time constant'lar için `const` tercih edin
 - **Relative import'lar** — Tutarlılık için `package:` import'larını kullanın
 - **Eksik Dart 3 pattern'leri** — Verbose `is`kontrollerine göre switch expression'ları ve`if-case`'i tercih edin
 - **Production'da `print()`** —`dart:developer` `log()` veya projenin logging paketini kullanın
 - **`late` aşırı kullanımı** — Nullable tipleri veya constructor initialization'ı tercih edin
-- **`Future`return değerlerini göz ardı etme** —` await`kullanın veya `unawaited()` ile işaretleyin
-- **Kullanılmayan `async`** — Asla`await` etmeyen `async` işaretli fonksiyonlar gereksiz overhead ekler
+- **`Future`return değerlerini göz ardı etme** —`await`kullanın veya`unawaited()` ile işaretleyin
+- **Kullanılmayan `async`** — Asla`await`etmeyen`async` işaretli fonksiyonlar gereksiz overhead ekler
 - **Açığa çıkan mutable collection'lar** — Public API'ler unmodifiable view'lar döndürmelidir
 - **Döngülerde string birleştirme** — Iterative building için `StringBuffer` kullanın
 - **`const`sınıflarda mutable alanlar** —`const` constructor sınıflarındaki alanlar final olmalıdır
@@ -171,7 +171,7 @@ Projenin seçilen mimarisine uyarlayın (Clean Architecture, MVVM, feature-first
 
 - **Eksik `SafeArea`** — Notch'lar/status bar'lar tarafından gizlenen içerik
 - **Bozuk back navigation** — Android back butonu veya iOS swipe-to-go-back beklendiği gibi çalışmıyor
-- **Eksik platform izinleri** — `AndroidManifest.xml`veya `Info.plist`'te bildirilmemiş gerekli izinler
+- **Eksik platform izinleri** — `AndroidManifest.xml`veya`Info.plist`'te bildirilmemiş gerekli izinler
 - **Responsive layout yok** — Tablet'lerde/masaüstlerinde/landscape'te bozulan sabit layout'lar
 - **Text overflow** — `Flexible`/`Expanded`/`FittedBox` olmadan sınırsız text
 - **Karışık navigation pattern'leri** — `Navigator.push` declarative router ile karışık; birini seçin

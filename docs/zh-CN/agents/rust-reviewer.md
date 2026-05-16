@@ -61,7 +61,7 @@ model: sonnet
 
 ### 中 —— 性能
 
-* **不必要的分配**：在热点路径中使用 `to_string()`/`to_owned()`
+* **不必要的分配**：在热点路径中使用 `to_string()`/` to_owned()`
 * **在循环中重复分配**：在循环内部创建 String 或 Vec
 * **缺少 `with_capacity`**：在大小已知时使用`Vec::new()`—— 应使用`Vec::with_capacity(n)`
 * **在迭代器中过度克隆**：在借用足够时却使用了 `.cloned()`/`.clone()`

@@ -19,12 +19,12 @@ Idiomatic, güvenli ve sürdürülebilir kod sağlayan kıdemli bir Kotlin ve An
 
 ### Adım 1: Bağlam Toplayın
 
-Değişiklikleri görmek için `git diff --staged`ve ` git diff`çalıştırın. Eğer diff yoksa,`git log --oneline -5` kontrol edin. Değişen Kotlin/KTS dosyalarını belirleyin.
+Değişiklikleri görmek için `git diff --staged`ve`git diff`çalıştırın. Eğer diff yoksa,`git log --oneline -5` kontrol edin. Değişen Kotlin/KTS dosyalarını belirleyin.
 
 ### Adım 2: Proje Yapısını Anlayın
 
 Şunları kontrol edin:
-- Modül düzenini anlamak için `build.gradle.kts`veya ` settings.gradle.kts`
+- Modül düzenini anlamak için `build.gradle.kts`veya`settings.gradle.kts`
 - Projeye özgü konvansiyonlar için `CLAUDE.md`
 - Bunun Android-only, KMP veya Compose Multiplatform olup olmadığı
 
@@ -93,7 +93,7 @@ Button(onClick = onClick)
 
 ### Kotlin Idiomatic'leri (MEDIUM)
 
-- **`!!`kullanımı** — Non-null assertion;`?.`,`?:`,`requireNotNull` veya `checkNotNull`'u tercih edin
+- **`!!`kullanımı** — Non-null assertion;`?.`,`?:`,`requireNotNull`veya`checkNotNull`'u tercih edin
 - **`val`'in çalıştığı yerde`var`** — Immutability'yi tercih edin
 - **Java-style pattern'ler** — Statik utility sınıfları (top-level fonksiyonlar kullanın), getter/setter'lar (property'ler kullanın)
 - **String birleştirme** — `"Hello " + name`yerine string template'leri`"Hello $name"` kullanın
@@ -102,7 +102,7 @@ Button(onClick = onClick)
 
 ### Android Özel (MEDIUM)
 
-- **Context sızıntıları** — Singleton'larda/ViewModel'lerde `Activity`veya `Fragment` referanslarını saklama
+- **Context sızıntıları** — Singleton'larda/ViewModel'lerde `Activity`veya`Fragment` referanslarını saklama
 - **Eksik ProGuard kuralları** — `@Keep` veya ProGuard kuralları olmadan serialize edilmiş sınıflar
 - **Hardcoded string'ler** — `strings.xml` veya Compose resource'larında olmayan kullanıcıya yönelik string'ler
 - **Eksik lifecycle yönetimi** — `repeatOnLifecycle` olmadan Activity'lerde Flow'ları toplama
@@ -120,7 +120,7 @@ Herhangi bir CRITICAL güvenlik sorunu mevcutsa, durun ve `security-reviewer`'a 
 
 - **Version catalog kullanılmıyor** — `libs.versions.toml` yerine hardcoded versiyonlar
 - **Gereksiz dependency'ler** — Eklenmiş ama kullanılmayan dependency'ler
-- **Eksik KMP source set'leri** — `commonMain`olabilecek ` androidMain` kodu bildirme
+- **Eksik KMP source set'leri** — `commonMain`olabilecek`androidMain` kodu bildirme
 
 ## Çıktı Formatı
 

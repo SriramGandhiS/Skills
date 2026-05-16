@@ -8,13 +8,13 @@ Projenin build aracını tanımla ve build'i çalıştır:
 
 | İndikatör | Build Komutu |
 |-----------|---------------|
-| `build`script'i olan`package.json`|`npm run build` veya `pnpm build` |
+| `build`script'i olan`package.json`|`npm run build`veya`pnpm build` |
 | `tsconfig.json`(sadece TypeScript) |`npx tsc --noEmit` |
 | `Cargo.toml`|`cargo build 2>&1` |
 | `pom.xml`|`mvn compile` |
 | `build.gradle`|`./gradlew compileJava` |
 | `go.mod`|`go build ./...` |
-| `pyproject.toml`|`python -m py_compile` veya `mypy .` |
+| `pyproject.toml`|`python -m py_compile`veya`mypy .` |
 
 ## Adım 2: Hataları Parse Et ve Grupla
 

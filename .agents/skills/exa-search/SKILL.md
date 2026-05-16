@@ -157,9 +157,9 @@ deep_researcher_check(researchId: "<id>")
 
 ## Tips
 
-- Use `web_search_exa`for broad queries,`web_search_advanced_exa` for filtered results
+- Use `web_search_exa` for broad queries,`web_search_advanced_exa` for filtered results
 - Lower `tokensNum` (1000-2000) for focused code snippets, higher (5000+) for comprehensive context
-- Combine `company_research_exa`with ` web_search_advanced_exa` for thorough company analysis
+- Combine `company_research_exa` with `web_search_advanced_exa` for thorough company analysis
 - Use `crawling_exa` to get full content from specific URLs found in search results
 - `deep_researcher_start` is best for comprehensive topics that benefit from AI synthesis
 

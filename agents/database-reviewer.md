@@ -45,7 +45,7 @@ psql -c "SELECT indexrelname, idx_scan, idx_tup_read FROM pg_stat_user_indexes O
 - Verify composite index column order (equality first, then range)
 
 ### 2. Schema Design (HIGH)
-- Use proper types: `bigint`for IDs,` text`for strings,`timestamptz`for timestamps,` numeric`for money,`boolean` for flags
+- Use proper types: `bigint` for IDs,`text` for strings,`timestamptz` for timestamps,`numeric` for money,`boolean` for flags
 - Define constraints: PK, FK with `ON DELETE`,`NOT NULL`,`CHECK`
 - Use `lowercase_snake_case` identifiers (no quoted mixed-case)
 
@@ -62,14 +62,14 @@ psql -c "SELECT indexrelname, idx_scan, idx_tup_read FROM pg_stat_user_indexes O
 - **Covering indexes** — `INCLUDE (col)` to avoid table lookups
 - **SKIP LOCKED for queues** — 10x throughput for worker patterns
 - **Cursor pagination** — `WHERE id > $last`instead of`OFFSET`
-- **Batch inserts** — Multi-row `INSERT`or`COPY`, never individual inserts in loops
+- **Batch inserts** — Multi-row `INSERT` or `COPY`, never individual inserts in loops
 - **Short transactions** — Never hold locks during external API calls
 - **Consistent lock ordering** — `ORDER BY id FOR UPDATE` to prevent deadlocks
 
 ## Anti-Patterns to Flag
 
 - `SELECT *` in production code
-- `int`for IDs (use` bigint`),`varchar(255)`without reason (use`text`)
+- `int` for IDs (use`bigint`),`varchar(255)`without reason (use`text`)
 - `timestamp`without timezone (use`timestamptz`)
 - Random UUIDs as PKs (use UUIDv7 or IDENTITY)
 - OFFSET pagination on large tables
@@ -91,7 +91,7 @@ psql -c "SELECT indexrelname, idx_scan, idx_tup_read FROM pg_stat_user_indexes O
 
 ## Reference
 
-For detailed index patterns, schema design examples, connection management, concurrency strategies, JSONB patterns, and full-text search, see skills: `postgres-patterns`and ` database-migrations`.
+For detailed index patterns, schema design examples, connection management, concurrency strategies, JSONB patterns, and full-text search, see skills: `postgres-patterns` and `database-migrations`.
 
 ---
 

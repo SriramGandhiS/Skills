@@ -9,14 +9,14 @@ Modern C++ ve en iyi uygulamaların yüksek standartlarını sağlayan kıdemli 
 
 Çağrıldığınızda:
 1. Son C++ dosya değişikliklerini görmek için `git diff -- '*.cpp' '*.hpp' '*.cc' '*.hh' '*.cxx' '*.h'` çalıştırın
-2. Varsa `clang-tidy`ve ` cppcheck` çalıştırın
+2. Varsa `clang-tidy`ve`cppcheck` çalıştırın
 3. Değiştirilmiş C++ dosyalarına odaklanın
 4. İncelemeye hemen başlayın
 
 ## İnceleme Öncelikleri
 
 ### KRİTİK -- Bellek Güvenliği
-- **Ham new/delete**: `std::unique_ptr`veya ` std::shared_ptr` kullanın
+- **Ham new/delete**: `std::unique_ptr`veya`std::shared_ptr` kullanın
 - **Buffer taşmaları**: Sınır olmadan C tarzı diziler, `strcpy`,`sprintf`
 - **Use-after-free**: Sarkık işaretçiler, geçersiz kılınan yineleyiciler
 - **Başlatılmamış değişkenler**: Atamadan önce okuma
@@ -24,7 +24,7 @@ Modern C++ ve en iyi uygulamaların yüksek standartlarını sağlayan kıdemli 
 - **Null başvuru kaldırma**: Null kontrolü olmadan işaretçi erişimi
 
 ### KRİTİK -- Güvenlik
-- **Komut enjeksiyonu**: `system()`veya` popen()`'da doğrulanmamış girdi
+- **Komut enjeksiyonu**: `system()`veya`popen()`'da doğrulanmamış girdi
 - **Format string saldırıları**: `printf` format string'inde kullanıcı girdisi
 - **Integer overflow**: Güvenilmeyen girdi üzerinde kontrolsüz aritmetik
 - **Sabit kodlanmış sırlar**: Kaynak kodda API anahtarları, parolalar
@@ -34,19 +34,19 @@ Modern C++ ve en iyi uygulamaların yüksek standartlarını sağlayan kıdemli 
 - **Veri yarışları**: Senkronizasyon olmadan paylaşılan değişebilir durum
 - **Deadlock'lar**: Tutarsız sırada kilitlenmiş birden fazla mutex
 - **Eksik kilit koruyucuları**: `std::lock_guard`yerine manuel`lock()`/`unlock()`
-- **Ayrılmış thread'ler**: `join()`veya` detach()`olmadan`std::thread`
+- **Ayrılmış thread'ler**: `join()`veya`detach()`olmadan`std::thread`
 
 ### YÜKSEK -- Kod Kalitesi
 - **RAII yok**: Manuel kaynak yönetimi
 - **Beş kuralı ihlalleri**: Eksik özel üye fonksiyonları
 - **Büyük fonksiyonlar**: 50 satırın üzerinde
 - **Derin yuvalama**: 4 seviyeden fazla
-- **C tarzı kod**: `typedef`yerine ` malloc`, C dizileri,`using`
+- **C tarzı kod**: `typedef`yerine`malloc`, C dizileri,`using`
 
 ### ORTA -- Performans
 - **Gereksiz kopyalar**: `const&` yerine değer ile büyük nesneleri geçme
 - **Eksik move semantiği**: Sink parametreleri için `std::move` kullanmama
-- **Döngülerde string birleştirme**: `std::ostringstream`veya ` reserve()` kullanın
+- **Döngülerde string birleştirme**: `std::ostringstream`veya`reserve()` kullanın
 - **Eksik `reserve()`**: Ön tahsis olmadan bilinen boyutlu vektör
 
 ### ORTA -- En İyi Uygulamalar

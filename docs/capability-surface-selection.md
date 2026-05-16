@@ -126,7 +126,7 @@ When bringing in ideas from external repos:
 - A reusable remote search surface used across multiple harnesses:
   - `MCP`
 - A one-shot repo analyzer that reads local files and writes a report:
-  - local `CLI`or script, optionally wrapped by a`skill`
+  - local `CLI` or script, optionally wrapped by a`skill`
 - A single billing-portal session creation step inside a broader customer-ops workflow:
   - direct `API` call inside the workflow
 

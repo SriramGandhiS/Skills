@@ -206,7 +206,7 @@ sub safe_path($base_dir, $user_path) {
 }
 ```
 
-Use `File::Temp`for temporary files (`tempfile(UNLINK => 1)`) and`flock(LOCK_EX)` to prevent race conditions.
+Use `File::Temp` for temporary files (`tempfile(UNLINK => 1)`) and `flock(LOCK_EX)` to prevent race conditions.
 
 ## Safe Process Execution
 
@@ -394,7 +394,7 @@ $app->hook(after_dispatch => sub ($c) {
 
 ## Output Encoding
 
-Always encode output for its context: `HTML::Entities::encode_entities()`for HTML,`URI::Escape::uri_escape_utf8()`for URLs,`JSON::MaybeXS::encode_json()` for JSON.
+Always encode output for its context: `HTML::Entities::encode_entities()` for HTML,`URI::Escape::uri_escape_utf8()` for URLs,`JSON::MaybeXS::encode_json()` for JSON.
 
 ## CPAN Module Security
 

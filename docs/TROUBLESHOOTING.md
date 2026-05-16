@@ -33,7 +33,7 @@ exit 2
 **What helps:**
 
 - On some current Claude Code builds, lower values may reduce the compaction threshold instead of extending it.
-- If you want more working room, remove `CLAUDE_AUTOCOMPACT_PCT_OVERRIDE`and prefer manual`/compact` at logical task boundaries.
+- If you want more working room, remove `CLAUDE_AUTOCOMPACT_PCT_OVERRIDE` and prefer manual`/compact` at logical task boundaries.
 - Use ECC's `strategic-compact` guidance instead of forcing a lower auto-compact threshold.
 
 ### MCP connectors look connected but fail after compaction

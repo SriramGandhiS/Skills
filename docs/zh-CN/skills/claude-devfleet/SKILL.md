@@ -42,7 +42,7 @@ get_report(M2) → 更改的文件、完成的工作、错误、后续步骤
 |------|---------|
 | `plan_project(prompt)` | AI 将描述分解为包含链式任务的项目 |
 | `create_project(name, path?, description?)`| 手动创建项目，返回`project_id` |
-| `create_mission(project_id, title, prompt, depends_on?, auto_dispatch?)`| 添加任务。`depends_on`是任务 ID 字符串列表（例如`["abc-123"]`）。设置`auto_dispatch=true` 可在依赖满足时自动启动。 |
+| `create_mission(project_id, title, prompt, depends_on?, auto_dispatch?)`| 添加任务。`depends_on `是任务 ID 字符串列表（例如`["abc-123"]`）。设置`auto_dispatch=true` 可在依赖满足时自动启动。 |
 | `dispatch_mission(mission_id, model?, max_turns?)` | 启动智能体执行任务 |
 | `cancel_mission(mission_id)` | 停止正在运行的智能体 |
 | `wait_for_mission(mission_id, timeout_seconds?)` | 阻塞直到任务完成（见下方说明） |
@@ -56,9 +56,9 @@ get_report(M2) → 更改的文件、完成的工作、错误、后续步骤
 
 ### 工作流：规划 → 调度 → 监控 → 报告
 
-1. **规划**：调用 `plan_project(prompt="...")`→ 返回`project_id`以及带有`depends_on`链和`auto_dispatch=true` 的任务列表。
+1. **规划**：调用 `plan_project(prompt="...")`→ 返回`project_id`以及带有`depends_on `链和`auto_dispatch=true` 的任务列表。
 2. **展示计划**：向用户呈现任务标题、类型和依赖链。
-3. **调度**：对根任务（`depends_on`为空）调用`dispatch_mission(mission_id=<first_mission_id>)`。剩余任务在其依赖项完成时自动调度（因为`plan_project`为它们设置了`auto_dispatch=true`）。
+3. **调度**：对根任务（`depends_on `为空）调用`dispatch_mission(mission_id=<first_mission_id>)`。剩余任务在其依赖项完成时自动调度（因为`plan_project`为它们设置了`auto_dispatch=true`）。
 4. **监控**：调用 `get_mission_status(mission_id=...)`或`get_dashboard()` 检查进度。
 5. **报告**：任务完成后调用 `get_report(mission_id=...)`。与用户分享亮点。
 

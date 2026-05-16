@@ -60,7 +60,7 @@ conditions:
 * file：`file_path`、`new_text`、`old_text`、`content`
 * prompt：`user_prompt`
 
-**运算符：** `regex_match`、`contains`、`equals`、`not_contains`、`starts_with`、`ends_with`
+**运算符：** `regex_match`、`contains`、`equals`、`not_contains`、`starts_with `、`ends_with`
 
 所有条件必须同时满足才能触发规则。
 

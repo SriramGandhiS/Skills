@@ -140,7 +140,7 @@ Build Status: PASS: SUCCESS
 | `no matching function` | Fix argument types or add overload |
 | `undefined reference` | Link library or add implementation |
 | `multiple definition`| Use`inline` or move to .cpp |
-| `incomplete type`| Replace forward decl with`#include` |
+| `incomplete type`| Replace forward decl with `#include` |
 | `no member named X` | Fix member name or include |
 | `cannot convert X to Y` | Add appropriate cast |
 | `CMake Error` | Fix CMakeLists.txt configuration |

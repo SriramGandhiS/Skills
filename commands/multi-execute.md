@@ -82,7 +82,7 @@ EOF",
 ```
 
 **Model Parameter Notes**:
-- `{{GEMINI_MODEL_FLAG}}`: When using`--backend gemini`, replace with`--gemini-model gemini-3-pro-preview` (note trailing space); use empty string for codex
+- `{{GEMINI_MODEL_FLAG}}`: When using`--backend gemini`, replace with `--gemini-model gemini-3-pro-preview` (note trailing space); use empty string for codex
 
 **Role Prompts**:
 
@@ -160,7 +160,7 @@ mcp__ace-tool__search_context({
 1. **Glob**: Find target files from plan's "Key Files" table (e.g., `Glob("src/components/**/*.tsx")`)
 2. **Grep**: Search for key symbols, function names, type definitions across the codebase
 3. **Read**: Read the discovered files to gather complete context
-4. **Task (Explore agent)**: For broader exploration, use `Task`with ` subagent_type: "Explore"`
+4. **Task (Explore agent)**: For broader exploration, use `Task` with `subagent_type: "Explore"`
 
 **After Retrieval**:
 - Organize retrieved code snippets
@@ -200,9 +200,9 @@ mcp__ace-tool__search_context({
    - Gemini: Handle frontend part
    - Codex: Handle backend part
 2. Wait for both models' complete results with `TaskOutput`
-3. Each uses corresponding `SESSION_ID`from plan for`resume` (create new session if missing)
+3. Each uses corresponding `SESSION_ID` from plan for `resume` (create new session if missing)
 
-**Follow the `IMPORTANT`instructions in`Multi-Model Call Specification` above**
+**Follow the `IMPORTANT`instructions in `Multi-Model Call Specification` above**
 
 ---
 

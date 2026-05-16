@@ -54,9 +54,9 @@ Run these in order:
 | `Unresolved reference: X` | Missing import, typo, missing dependency | Add import or dependency |
 | `Type mismatch: Required X, Found Y` | Wrong type, missing conversion | Add conversion or fix type |
 | `None of the following candidates is applicable` | Wrong overload, wrong argument types | Fix argument types or add explicit cast |
-| `Smart cast impossible`| Mutable property or concurrent access | Use local`val` copy or `let` |
+| `Smart cast impossible`| Mutable property or concurrent access | Use local`val`copy or `let` |
 | `'when' expression must be exhaustive`| Missing branch in sealed class`when`| Add missing branches or `else` |
-| `Suspend function can only be called from coroutine`| Missing`suspend` or coroutine scope | Add `suspend` modifier or launch coroutine |
+| `Suspend function can only be called from coroutine`| Missing`suspend` or coroutine scope | Add`suspend` modifier or launch coroutine |
 | `Cannot access 'X': it is internal in 'Y'` | Visibility issue | Change visibility or use public API |
 | `Conflicting declarations` | Duplicate definitions | Remove duplicate or rename |
 | `Could not resolve: group:artifact:version` | Missing repository or wrong version | Add repository or fix version |

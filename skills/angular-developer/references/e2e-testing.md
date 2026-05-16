@@ -4,7 +4,7 @@ Use E2E tests to cover critical user journeys in a real browser. Prefer the fram
 
 ## Running E2E Tests
 
-Check `package.json`and ` angular.json` for the project-specific command. Common patterns include:
+Check `package.json` and `angular.json` for the project-specific command. Common patterns include:
 
 ```shell
 npm run e2e
@@ -16,7 +16,7 @@ When the app must be built or served first, use the existing project scripts ins
 
 ## Test Structure
 
-- Keep E2E specs close to the configured test framework, such as `cypress/e2e/`or` e2e/`.
+- Keep E2E specs close to the configured test framework, such as `cypress/e2e/` or `e2e/`.
 - Put reusable login/setup helpers in the framework support directory.
 - Keep fixtures explicit and small enough that each test can explain the user state it depends on.
 

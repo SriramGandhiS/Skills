@@ -464,7 +464,7 @@ on test => sub {
 | `open FH, "< $file"`|`open my $fh, '<:encoding(UTF-8)', $file` |
 | `blessed hashref`|`Moo` class with types |
 | `$1, $2, $3`|`$+{name}` (named captures) |
-| `eval { }; if ($@)`|`Try::Tiny`or native`try/catch` (5.40+) |
+| `eval { }; if ($@)`|`Try::Tiny` or native`try/catch` (5.40+) |
 | `BEGIN { require Exporter; }`|`use Exporter 'import';` |
 | Manual file ops | `Path::Tiny` |
 | `blessed($o) && $o->isa('X')`|`$o isa 'X'` (5.32+) |

@@ -105,7 +105,7 @@ operational goal includes observing misses, and confirm logging volume is safe.
 
 Before applying an ACL to an interface, answer these questions:
 
-- Which traffic direction is being filtered, `in`or ` out`?
+- Which traffic direction is being filtered, `in ` or `out`?
 - Is management traffic sourced from a known jump host or management subnet?
 - Is there an explicit permit for required routing, DNS, NTP, monitoring, or
   application traffic?

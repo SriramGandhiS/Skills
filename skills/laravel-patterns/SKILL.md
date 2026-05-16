@@ -120,8 +120,8 @@ Route::scopeBindings()->group(function () {
 
 ### Nested Routes and Binding Names
 
-- Keep prefixes and paths consistent to avoid double nesting (e.g., `conversation`vs ` conversations`).
-- Use a single parameter name that matches the bound model (e.g., `{conversation}`for`Conversation`).
+- Keep prefixes and paths consistent to avoid double nesting (e.g., `conversation`vs`conversations`).
+- Use a single parameter name that matches the bound model (e.g., `{conversation}` for `Conversation`).
 - Prefer scoped bindings when nesting to enforce parent-child relationships.
 
 ```php
@@ -145,7 +145,7 @@ Route::middleware('auth:sanctum')->prefix('conversations')->group(function () {
 });
 ```
 
-If you want a parameter to resolve to a different model class, define explicit binding. For custom binding logic, use `Route::bind()`or implement`resolveRouteBinding()` on the model.
+If you want a parameter to resolve to a different model class, define explicit binding. For custom binding logic, use `Route::bind()` or implement`resolveRouteBinding()` on the model.
 
 ```php
 use App\Models\AiConversation;
@@ -411,5 +411,5 @@ return response()->json([
 
 ### Configuration and Environments
 
-- Keep secrets in `.env`and config in`config/*.php`
+- Keep secrets in `.env` and config in `config/*.php`
 - Use per-environment config overrides and `config:cache` in production

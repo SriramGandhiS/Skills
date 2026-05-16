@@ -230,7 +230,7 @@ Include: development setup, branch/PR workflow, code style notes from project an
 
 ### Step 7: Add GitHub Issue Templates (if .github/ exists or GitHub repo specified)
 
-Create `.github/ISSUE_TEMPLATE/bug_report.md`and `.github/ISSUE_TEMPLATE/feature_request.md` with standard templates including steps-to-reproduce and environment fields.
+Create `.github/ISSUE_TEMPLATE/bug_report.md` and `.github/ISSUE_TEMPLATE/feature_request.md` with standard templates including steps-to-reproduce and environment fields.
 
 ## Output Format
 
@@ -244,7 +244,7 @@ On completion, report:
 
 ### Example: Package a FastAPI service
 Input: `Package: /home/user/opensource-staging/my-api, License: MIT, Description: "Async task queue API"`
-Action: Detects Python + FastAPI + PostgreSQL from `requirements.txt`and ` docker-compose.yml`, generates`CLAUDE.md`(62 lines),`setup.sh`with pip + alembic migrate steps, enhances existing`README.md`, adds`MIT LICENSE`
+Action: Detects Python + FastAPI + PostgreSQL from `requirements.txt` and `docker-compose.yml`, generates`CLAUDE.md`(62 lines),`setup.sh` with pip + alembic migrate steps, enhances existing`README.md`, adds`MIT LICENSE`
 Output: 5 files generated, setup.sh executable, "Using with Claude Code" section added
 
 ## Rules

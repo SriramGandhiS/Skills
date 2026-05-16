@@ -210,7 +210,7 @@ function renderUserContent(html: string) {
 #### Content Security Policy
 
 Start strict and loosen only with a documented removal plan. Do not default to
-`'unsafe-inline'`or`'unsafe-eval'`; they neutralize much of CSP's protection
+`'unsafe-inline'` or `'unsafe-eval'`; they neutralize much of CSP's protection
 and should be treated as temporary compatibility debt.
 
 ```typescript

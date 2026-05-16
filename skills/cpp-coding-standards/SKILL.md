@@ -14,7 +14,7 @@ Comprehensive coding standards for modern C++ (C++17/20/23) derived from the [C+
 - Reviewing or refactoring existing C++ code
 - Making architectural decisions in C++ projects
 - Enforcing consistent style across a C++ codebase
-- Choosing between language features (e.g., `enum`vs ` enum class`, raw pointer vs smart pointer)
+- Choosing between language features (e.g., `enum`vs`enum class`, raw pointer vs smart pointer)
 
 ### When NOT to Use
 
@@ -228,10 +228,10 @@ private:
 | **R.3** | A raw pointer (`T*`) is non-owning |
 | **R.5** | Prefer scoped objects; don't heap-allocate unnecessarily |
 | **R.10** | Avoid `malloc()`/`free()` |
-| **R.11** | Avoid calling `new`and ` delete` explicitly |
-| **R.20** | Use `unique_ptr`or ` shared_ptr` to represent ownership |
-| **R.21** | Prefer `unique_ptr`over ` shared_ptr` unless sharing ownership |
-| **R.22** | Use `make_shared()`to make`shared_ptr`s |
+| **R.11** | Avoid calling `new` and `delete` explicitly |
+| **R.20** | Use `unique_ptr` or `shared_ptr` to represent ownership |
+| **R.21** | Prefer `unique_ptr`over`shared_ptr` unless sharing ownership |
+| **R.22** | Use `make_shared()` to make`shared_ptr`s |
 
 ### Smart Pointer Usage
 
@@ -285,7 +285,7 @@ private:
 - Naked `new`/`delete` (R.11)
 - `malloc()`/`free()` in C++ code (R.10)
 - Multiple resource allocations in a single expression (R.13 -- exception safety hazard)
-- `shared_ptr`where ` unique_ptr` suffices (R.21)
+- `shared_ptr`where`unique_ptr` suffices (R.21)
 
 ## Expressions & Statements (ES.*)
 
@@ -296,11 +296,11 @@ private:
 | **ES.5** | Keep scopes small |
 | **ES.20** | Always initialize an object |
 | **ES.23** | Prefer `{}` initializer syntax |
-| **ES.25** | Declare objects `const`or ` constexpr` unless modification is intended |
+| **ES.25** | Declare objects `const` or `constexpr` unless modification is intended |
 | **ES.28** | Use lambdas for complex initialization of `const` variables |
 | **ES.45** | Avoid magic constants; use symbolic constants |
 | **ES.46** | Avoid narrowing/lossy arithmetic conversions |
-| **ES.47** | Use `nullptr`rather than`0`or`NULL` |
+| **ES.47** | Use `nullptr`rather than`0` or `NULL` |
 | **ES.48** | Avoid casts |
 | **ES.50** | Don't cast away `const` |
 
@@ -325,7 +325,7 @@ const auto config = [&] {
 ### Anti-Patterns
 
 - Uninitialized variables (ES.20)
-- Using `0`or`NULL`as pointer (ES.47 -- use`nullptr`)
+- Using `0` or `NULL` as pointer (ES.47 -- use`nullptr`)
 - C-style casts (ES.48 -- use `static_cast`,`const_cast`, etc.)
 - Casting away `const` (ES.50)
 - Magic numbers without named constants (ES.45)
@@ -442,7 +442,7 @@ constexpr int MAX_SENSORS = 256;
 | **CP.21** | Use `std::scoped_lock` to acquire multiple mutexes |
 | **CP.22** | Never call unknown code while holding a lock |
 | **CP.42** | Don't wait without a condition |
-| **CP.44** | Remember to name your `lock_guard`s and`unique_lock`s |
+| **CP.44** | Remember to name your `lock_guard`s and `unique_lock`s |
 | **CP.100** | Don't use lock-free programming unless you absolutely have to |
 
 ### Safe Locking
@@ -503,7 +503,7 @@ void transfer(Account& from, Account& to, double amount) {
 | **T.10** | Specify concepts for all template arguments |
 | **T.11** | Use standard concepts whenever possible |
 | **T.13** | Prefer shorthand notation for simple concepts |
-| **T.43** | Prefer `using`over ` typedef` |
+| **T.43** | Prefer `using`over`typedef` |
 | **T.120** | Use template metaprogramming only when you really need to |
 | **T.144** | Don't specialize function templates (overload instead) |
 
@@ -551,7 +551,7 @@ void save(const T& obj, const std::string& path);
 |------|---------|
 | **SL.1** | Use libraries wherever possible |
 | **SL.2** | Prefer the standard library to other libraries |
-| **SL.con.1** | Prefer `std::array`or ` std::vector` over C arrays |
+| **SL.con.1** | Prefer `std::array` or `std::vector` over C arrays |
 | **SL.con.2** | Prefer `std::vector` by default |
 | **SL.str.1** | Use `std::string` to own character sequences |
 | **SL.str.2** | Use `std::string_view` to refer to character sequences |
@@ -598,7 +598,7 @@ enum { RED, GREEN, BLUE };           // Enum.3 + Enum.5 + Enum.6 violation
 
 | Rule | Summary |
 |------|---------|
-| **SF.1** | Use `.cpp`for code files and`.h` for interface files |
+| **SF.1** | Use `.cpp` for code files and `.h` for interface files |
 | **SF.7** | Don't write `using namespace` at global scope in a header |
 | **SF.8** | Use `#include`guards for all`.h` files |
 | **SF.11** | Header files should be self-contained |

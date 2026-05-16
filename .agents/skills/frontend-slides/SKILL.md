@@ -12,7 +12,7 @@ Inspired by the visual exploration approach showcased in work by [zarazhangrui](
 ## When to Activate
 
 - Creating a talk deck, pitch deck, workshop deck, or internal presentation
-- Converting `.ppt`or `.pptx` slides into an HTML presentation
+- Converting `.ppt` or `.pptx` slides into an HTML presentation
 - Improving an existing HTML presentation's layout, motion, or typography
 - Exploring presentation styles with a user who does not know their design preference yet
 
@@ -32,7 +32,7 @@ Before generating, read `STYLE_PRESETS.md` for the viewport-safe CSS base, densi
 
 Choose one path:
 - **New presentation**: user has a topic, notes, or full draft
-- **PPT conversion**: user has `.ppt`or `.pptx`
+- **PPT conversion**: user has `.ppt` or `.pptx`
 - **Enhancement**: user already has HTML slides and wants improvements
 
 ### 2. Discover Content
@@ -113,7 +113,7 @@ Use the correct opener for the current OS:
 ## PPT / PPTX Conversion
 
 For PowerPoint conversion:
-1. Prefer `python3`with` python-pptx` to extract text, images, and notes.
+1. Prefer `python3` with `python-pptx` to extract text, images, and notes.
 2. If `python-pptx` is unavailable, ask whether to install it or fall back to a manual/export-based workflow.
 3. Preserve slide order, speaker notes, and extracted assets.
 4. After extraction, run the same style-selection workflow as a new presentation.

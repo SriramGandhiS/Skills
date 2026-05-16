@@ -74,7 +74,7 @@ async function bootstrap() {
 bootstrap();
 ```
 
-- Always enable `whitelist`and ` forbidNonWhitelisted` on public APIs.
+- Always enable `whitelist` and `forbidNonWhitelisted` on public APIs.
 - Prefer one global validation pipe instead of repeating validation config per route.
 
 ## Modules, Controllers, and Providers

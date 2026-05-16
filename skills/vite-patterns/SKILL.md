@@ -10,7 +10,7 @@ Build tool and dev server patterns for Vite 8+ projects. Covers configuration, e
 
 ## When to Use
 
-- Configuring `vite.config.ts`or ` vite.config.js`
+- Configuring `vite.config.ts` or `vite.config.js`
 - Setting up environment variables or `.env` files
 - Configuring dev server proxy for API backends
 - Optimizing build output (chunks, minification, assets)
@@ -74,8 +74,8 @@ export default defineConfig(({ command, mode }) => {
 | `base`|`'/'` | Public base path for deployed assets |
 | `envPrefix`|`'VITE_'` | Prefix for client-exposed env vars |
 | `build.outDir`|`'dist'` | Output directory |
-| `build.minify`|`'oxc'`| Minifier (`'oxc'`,`'terser'`, or`false`) |
-| `build.sourcemap`|`false`|`true`,`'inline'`, or`'hidden'` |
+| `build.minify`|`'oxc'`| Minifier (`'oxc'`,`'terser'`, or `false`) |
+| `build.sourcemap`|`false`|`true`,`'inline'`, or `'hidden'` |
 
 ### Plugins
 
@@ -88,14 +88,14 @@ Most plugin needs are covered by a handful of well-maintained packages. Reach fo
 | `@vitejs/plugin-react-swc` | React HMR + Fast Refresh via SWC | Default for React apps (faster than Babel variant) |
 | `@vitejs/plugin-react` | React HMR + Fast Refresh via Babel | Only if you need Babel plugins (emotion, MobX decorators) |
 | `@vitejs/plugin-vue` | Vue 3 SFC support | Vue apps |
-| `vite-plugin-checker`| Runs`tsc`+ ESLint in worker thread with HMR overlay | **Any TypeScript app** â€” Vite does NOT type-check during `vite build` |
-| `vite-tsconfig-paths`| Honors`tsconfig.json` `paths` aliases | Any time you already have aliases in `tsconfig.json` |
+| `vite-plugin-checker`| Runs`tsc`+ ESLint in worker thread with HMR overlay | **Any TypeScript app** â€” Vite does NOT type-check during`vite build` |
+| `vite-tsconfig-paths`| Honors`tsconfig.json` `paths`aliases | Any time you already have aliases in `tsconfig.json` |
 | `vite-plugin-dts`| Emits`.d.ts` files in library mode | Publishing TypeScript libraries |
 | `vite-plugin-svgr` | Imports SVGs as React components | React apps using SVGs as components |
 | `rollup-plugin-visualizer`| Bundle treemap/sunburst report | Periodic bundle size audits (use`enforce: 'post'`) |
 | `vite-plugin-pwa` | Zero-config PWA + Workbox | Offline-capable apps |
 
-**Critical callout:** `vite build`transpiles but does NOT type-check. Type errors silently ship to production unless you add`vite-plugin-checker`or run`tsc --noEmit` in CI.
+**Critical callout:** `vite build`transpiles but does NOT type-check. Type errors silently ship to production unless you add`vite-plugin-checker` or run`tsc --noEmit` in CI.
 
 #### Authoring Custom Plugins
 
@@ -118,13 +118,13 @@ function myPlugin(): Plugin {
 
 **Key hooks:** `transform`(modify source),`resolveId`+`load`(virtual modules),`transformIndexHtml`(inject into HTML),`configureServer`(add dev middleware),`hotUpdate`(custom HMR â€” replaces deprecated`handleHotUpdate` in v7+).
 
-**Virtual modules** use the `\0`prefix convention â€”`resolveId`returns `'\0virtual:my-id'`so other plugins skip it. User code imports`'virtual:my-id'`.
+**Virtual modules** use the `\0`prefix convention â€”`resolveId`returns`'\0virtual:my-id'`so other plugins skip it. User code imports`'virtual:my-id'`.
 
 For full plugin API, see [vite.dev/guide/api-plugin](https://vite.dev/guide/api-plugin). Use `vite-plugin-inspect` during development to debug the transform pipeline.
 
 ### HMR API
 
-Framework plugins (`@vitejs/plugin-react`,`@vitejs/plugin-vue`, etc.) handle HMR automatically. Reach for`import.meta.hot` directly only when building custom state stores, dev tools, or framework-agnostic utilities that need to persist state across updates.
+Framework plugins (`@vitejs/plugin-react`,`@vitejs/plugin-vue`, etc.) handle HMR automatically. Reach for `import.meta.hot` directly only when building custom state stores, dev tools, or framework-agnostic utilities that need to persist state across updates.
 
 ```typescript
 // src/store.ts â€” manual HMR for a vanilla module
@@ -144,7 +144,7 @@ All `import.meta.hot` code is tree-shaken out of production builds â€” no g
 
 ### Environment Variables
 
-Vite loads `.env`,`.env.local`,`.env.[mode]`, and`.env.[mode].local`in that order (later overrides earlier);`*.local` files are gitignored and meant for local secrets.
+Vite loads `.env`,`.env.local`,`.env.[mode]`, and `.env.[mode].local` in that order (later overrides earlier);`*.local` files are gitignored and meant for local secrets.
 
 #### Client-Side Access
 
@@ -299,13 +299,13 @@ server: {
 
 #### Profiling Slow Dev Servers
 
-When `vite dev`feels slow, start with`vite --profile`, interact with the app, then press`p+enter`to save a`.cpuprofile`. Load it in [Speedscope](https://www.speedscope.app) to find which plugins are eating time â€” usually`buildStart`,`config`, or `configResolved` hooks in community plugins.
+When `vite dev`feels slow, start with `vite --profile`, interact with the app, then press`p+enter` to save a`.cpuprofile`. Load it in [Speedscope](https://www.speedscope.app) to find which plugins are eating time â€” usually`buildStart`,`config`, or `configResolved` hooks in community plugins.
 
 ### Library Mode
 
 When publishing an npm package, use `build.lib`. Two footguns matter more than config detail:
 
-1. **Types are not emitted** â€” add `vite-plugin-dts`or run`tsc --emitDeclarationOnly` separately.
+1. **Types are not emitted** â€” add `vite-plugin-dts` or run`tsc --emitDeclarationOnly` separately.
 2. **Peer dependencies MUST be externalized** â€” unlisted peers get bundled into your library, causing duplicate-runtime errors in consumers.
 
 ```typescript
@@ -420,7 +420,7 @@ import.meta.hot.data.count = 0                 // CORRECT
 **Process anti-patterns:**
 
 - **`vite preview`is NOT a production server** â€” it is a smoke test for the built bundle. Deploy`dist/` to a real static host (NGINX, Cloudflare Pages, Vercel static) or use a multi-stage Dockerfile.
-- **Expecting `vite build`to type-check** â€” it only transpiles. Type errors silently ship to production. Add`vite-plugin-checker`or run`tsc --noEmit` in CI.
+- **Expecting `vite build` to type-check** â€” it only transpiles. Type errors silently ship to production. Add`vite-plugin-checker` or run`tsc --noEmit` in CI.
 - **Shipping `@vitejs/plugin-legacy` by default** â€” it bloats bundles ~40%, breaks source-map bundle analyzers, and is unnecessary for the 95%+ of users on modern browsers. Gate it on real analytics, not assumption.
 - **Hand-rolling 30+ `resolve.alias`entries that duplicate`tsconfig.json`paths** â€” use`vite-tsconfig-paths` instead. Observed in Excalidraw and PostHog; avoid in new projects.
 - **Leaving stale `node_modules/.vite` after dep changes** â€” pre-bundle cache causes phantom errors. Clear it when switching branches or after patching deps.

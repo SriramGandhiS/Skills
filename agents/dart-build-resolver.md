@@ -20,7 +20,7 @@ You are an expert Dart/Flutter build error resolution specialist. Your mission i
 
 ## Core Responsibilities
 
-1. Diagnose `dart analyze`and ` flutter analyze` errors
+1. Diagnose `dart analyze` and `flutter analyze` errors
 2. Fix Dart type errors, null safety violations, and missing imports
 3. Resolve `pubspec.yaml` dependency conflicts and version constraints
 4. Fix `build_runner` code generation failures
@@ -72,7 +72,7 @@ flutter build web 2>&1           # Web
 | `The class 'X' doesn't implement 'Y'`| Missing`implements` or missing method | Add method or fix class signature |
 | `Because X depends on Y >=A and Z depends on Y <B, version solving failed`| Pub version conflict | Adjust version constraints or add`dependency_overrides` |
 | `Could not find a file named "pubspec.yaml"` | Wrong working directory | Run from project root |
-| `build_runner: No actions were run`| No changes to build_runner inputs | Force rebuild with`--delete-conflicting-outputs` |
+| `build_runner: No actions were run`| No changes to build_runner inputs | Force rebuild with `--delete-conflicting-outputs` |
 | `Part of directive found, but 'X' expected`| Stale generated file | Delete`.g.dart` file and re-run build_runner |
 
 ## Pub Dependency Troubleshooting
@@ -196,7 +196,7 @@ Stop and report if:
 ```text
 [FIXED] lib/features/cart/data/cart_repository_impl.dart:42
 Error: A value of type 'String?' can't be assigned to type 'String'
-Fix: Changed `final id = response.id`to ` final id = response.id ?? ''`
+Fix: Changed `final id = response.id` to `final id = response.id ?? ''`
 Remaining errors: 2
 
 [FIXED] pubspec.yaml

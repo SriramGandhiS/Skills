@@ -33,12 +33,12 @@ print(image.generate_url())  # returns a signed download URL
 | Parameter | Type | Default | Description |
 |-----------|------|---------|-------------|
 | `prompt`|`str` | required | Text description of the image to generate |
-| `aspect_ratio`|`str`|`"1:1"`| Aspect ratio:`"1:1"`,`"9:16"`,`"16:9"`,`"4:3"`, or`"3:4"` |
+| `aspect_ratio`|`str`|`"1:1"`| Aspect ratio:`"1:1"`,`"9:16"`,`"16:9"`,`"4:3"`, or `"3:4"` |
 | `callback_url`|`str\|None`|`None` | URL to receive async callback |
 
-Returns an `Image`object with`.id`,`.name`, and`.collection_id`. The`.url`property may be`None`for generated images â€” always use`image.generate_url()` to get a reliable signed download URL.
+Returns an `Image`object with `.id`,`.name`, and `.collection_id`. The`.url`property may be`None` for generated images â€” always use`image.generate_url()` to get a reliable signed download URL.
 
-> **Note:** Unlike `Video`objects (which use`.generate_stream()`),`Image`objects use`.generate_url()`to retrieve the image URL. The`.url` property is only populated for some image types (e.g. thumbnails).
+> **Note:** Unlike `Video`objects (which use`.generate_stream()`),`Image`objects use`.generate_url()` to retrieve the image URL. The`.url` property is only populated for some image types (e.g. thumbnails).
 
 ## Video Generation
 
@@ -123,7 +123,7 @@ voice = coll.generate_voice(
 | `config`|`dict`|`{}` | Additional configuration |
 | `callback_url`|`str\|None`|`None` | URL to receive async callback |
 
-All three audio methods return an `Audio`object with`.id`,`.name`,`.length`, and`.collection_id`.
+All three audio methods return an `Audio`object with `.id`,`.name`,`.length`, and `.collection_id`.
 
 ## Text Generation (LLM Integration)
 
@@ -147,10 +147,10 @@ print(result["output"])
 | Parameter | Type | Default | Description |
 |-----------|------|---------|-------------|
 | `prompt`|`str` | required | Prompt with context for the LLM |
-| `model_name`|`str`|`"basic"`| Model tier:`"basic"`,`"pro"`, or`"ultra"` |
-| `response_type`|`str`|`"text"`| Response format:`"text"`or`"json"` |
+| `model_name`|`str`|`"basic"`| Model tier:`"basic"`,`"pro"`, or `"ultra"` |
+| `response_type`|`str`|`"text"`| Response format:`"text"` or `"json"` |
 
-Returns a `dict`with an` output`key. When `response_type="text"`,`output` is a `str`. When`response_type="json"`,`output` is a `dict`.
+Returns a `dict` with an`output`key. When`response_type="text"`,`output`is a`str`. When`response_type="json"`,`output`is a`dict`.
 
 ```python
 result = coll.generate_text(prompt="Summarize this", model_name="pro")
@@ -323,9 +323,9 @@ print(result["output"]["topics"])
 ## Tips
 
 - **Generated media is persistent**: All generated content is stored in your collection and can be reused.
-- **Three audio methods**: Use `generate_music()`for background music,`generate_sound_effect()`for SFX, and`generate_voice()`for text-to-speech. There is no unified`generate_audio()` method.
-- **Text generation is collection-level**: `coll.generate_text()`does not have access to video content automatically. Fetch the transcript with`video.get_transcript_text()` and pass it in the prompt.
+- **Three audio methods**: Use `generate_music()` for background music,`generate_sound_effect()` for SFX, and `generate_voice()` for text-to-speech. There is no unified`generate_audio()` method.
+- **Text generation is collection-level**: `coll.generate_text()`does not have access to video content automatically. Fetch the transcript with `video.get_transcript_text()` and pass it in the prompt.
 - **Model tiers**: `"basic"`is fastest,`"pro"`is balanced,`"ultra"`is highest quality. Use`"pro"` for most analysis tasks.
 - **Combine generation types**: Generate images for overlays, music for backgrounds, and voice for narration, then compose using timelines (see [editor.md](editor.md)).
 - **Prompt quality matters**: Descriptive, specific prompts produce better results across all generation types.
-- **Aspect ratios for images**: Choose from `"1:1"`,`"9:16"`,`"16:9"`,`"4:3"`, or`"3:4"`.
+- **Aspect ratios for images**: Choose from `"1:1"`,`"9:16"`,`"16:9"`,`"4:3"`, or `"3:4"`.

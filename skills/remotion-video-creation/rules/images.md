@@ -9,7 +9,7 @@ metadata:
 
 ## The `<Img>` component
 
-Always use the `<Img>`component from`remotion` to display images:
+Always use the `<Img>`component from `remotion` to display images:
 
 ```tsx
 import { Img, staticFile } from "remotion";
@@ -21,7 +21,7 @@ export const MyComposition = () => {
 
 ## Important restrictions
 
-**You MUST use the `<Img>`component from`remotion`.** Do not use:
+**You MUST use the `<Img>`component from `remotion`.** Do not use:
 
 - Native HTML `<img>` elements
 - Next.js `<Image>` component
@@ -59,7 +59,7 @@ Remote URLs can be used directly without `staticFile()`:
 
 Ensure remote images have CORS enabled.
 
-For animated GIFs, use the `<Gif>`component from`@remotion/gif` instead.
+For animated GIFs, use the `<Gif>`component from `@remotion/gif` instead.
 
 ## Sizing and positioning
 

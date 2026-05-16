@@ -18,7 +18,7 @@ Sync documentation with the codebase, generating from source-of-truth files.
 
 ## Step 2: Generate Script Reference
 
-1. Read `package.json`(or`Makefile`,`Cargo.toml`,`pyproject.toml`)
+1. Read `package.json`(or `Makefile`,`Cargo.toml`,`pyproject.toml`)
 2. Extract all scripts/commands with their descriptions
 3. Generate a reference table:
 
@@ -32,7 +32,7 @@ Sync documentation with the codebase, generating from source-of-truth files.
 
 ## Step 3: Generate Environment Documentation
 
-1. Read `.env.example`(or`.env.template`,`.env.sample`)
+1. Read `.env.example`(or `.env.template`,`.env.sample`)
 2. Extract all variables with their purposes
 3. Categorize as required vs optional
 4. Document expected format and valid values

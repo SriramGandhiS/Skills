@@ -23,7 +23,7 @@ This is a **progressive enhancement**. In browsers that don't support the API, t
 
 Transitions are customized in **global CSS files** (not component-scoped CSS).
 
-Use the `::view-transition-old()`and`::view-transition-new()` pseudo-elements.
+Use the `::view-transition-old()` and `::view-transition-new()` pseudo-elements.
 
 ```css
 /* Example: Cross-fade + Slide */

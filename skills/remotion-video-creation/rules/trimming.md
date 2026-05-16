@@ -5,7 +5,7 @@ metadata:
   tags: sequence, trim, clip, cut, offset
 ---
 
-Use `<Sequence>`with a negative`from` value to trim the start of an animation.
+Use `<Sequence>` with a negative` from` value to trim the start of an animation.
 
 ## Trim the Beginning
 

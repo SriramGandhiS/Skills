@@ -237,7 +237,7 @@ public <T> T withRetry(Supplier<T> supplier, int maxRetries) {
 Only use forwarded headers when:
 1. Your app is behind a trusted reverse proxy (nginx, AWS ALB, etc.)
 2. You have registered `ForwardedHeaderFilter` as a bean
-3. You have configured `server.forward-headers-strategy=NATIVE`or`FRAMEWORK` in application properties
+3. You have configured `server.forward-headers-strategy=NATIVE` or `FRAMEWORK` in application properties
 4. Your proxy is configured to overwrite (not append to) the `X-Forwarded-For` header
 
 When `ForwardedHeaderFilter`is properly configured,`request.getRemoteAddr()` will automatically
@@ -309,6 +309,6 @@ Use Springâ€™s `@Scheduled` or integrate with queues (e.g., Kafka, SQS, Rab
 - Enable `spring.mvc.problemdetails.enabled=true` for RFC 7807 errors (Spring Boot 3+)
 - Configure HikariCP pool sizes for workload, set timeouts
 - Use `@Transactional(readOnly = true)` for queries
-- Enforce null-safety via `@NonNull`and `Optional` where appropriate
+- Enforce null-safety via `@NonNull` and `Optional` where appropriate
 
 **Remember**: Keep controllers thin, services focused, repositories simple, and errors handled centrally. Optimize for maintainability and testability.

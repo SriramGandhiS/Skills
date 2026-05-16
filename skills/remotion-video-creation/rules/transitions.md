@@ -100,7 +100,7 @@ const springDuration = springTiming({config: {damping: 200}}).getDurationInFrame
 // Returns calculated duration based on spring physics
 ```
 
-For `springTiming`without an explicit`durationInFrames`, the duration depends on`fps` because it calculates when the spring animation settles.
+For `springTiming`without an explicit`durationInFrames`, the duration depends on `fps` because it calculates when the spring animation settles.
 
 ### Calculating total composition duration
 

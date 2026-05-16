@@ -73,7 +73,7 @@ EOF",
 | Planning | `~/.claude/.ccg/prompts/codex/architect.md` |
 | Review | `~/.claude/.ccg/prompts/codex/reviewer.md` |
 
-**Session Reuse**: Each call returns `SESSION_ID: xxx`, use`resume xxx`for subsequent phases. Save`CODEX_SESSION`in Phase 2, use`resume` in Phases 3 and 5.
+**Session Reuse**: Each call returns `SESSION_ID: xxx`, use`resume xxx` for subsequent phases. Save`CODEX_SESSION` in Phase 2, use`resume` in Phases 3 and 5.
 
 ---
 
@@ -95,7 +95,7 @@ EOF",
 
 `[Mode: Research]` - Understand requirements and gather context
 
-1. **Code Retrieval** (if ace-tool MCP available): Call `mcp__ace-tool__search_context`to retrieve existing APIs, data models, service architecture. If unavailable, use built-in tools:`Glob`for file discovery,`Grep`for symbol/API search,`Read`for context gathering,`Task` (Explore agent) for deeper exploration.
+1. **Code Retrieval** (if ace-tool MCP available): Call `mcp__ace-tool__search_context` to retrieve existing APIs, data models, service architecture. If unavailable, use built-in tools:`Glob` for file discovery,`Grep` for symbol/API search,`Read` for context gathering,`Task` (Explore agent) for deeper exploration.
 2. Requirement completeness score (0-10): >=7 continue, <7 stop and supplement
 
 ### Phase 2: Ideation

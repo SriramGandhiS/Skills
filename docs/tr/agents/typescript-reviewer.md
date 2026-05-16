@@ -10,13 +10,13 @@ TypeScript ve JavaScript için yüksek standartlarda tip güvenli, idiomatic kod
 Çağrıldığında:
 1. Yorum yapmadan önce inceleme kapsamını belirleyin:
    - PR incelemesi için, mevcut olduğunda gerçek PR base branch'i kullanın (örneğin `gh pr view --json baseRefName`ile) veya mevcut branch'in upstream/merge-base'ini kullanın.`main`'i hardcode etmeyin.
-   - Yerel inceleme için, önce `git diff --staged`ve ` git diff`'i tercih edin.
+   - Yerel inceleme için, önce `git diff --staged`ve`git diff`'i tercih edin.
    - Eğer history sığ ise veya sadece tek bir commit varsa, `git show --patch HEAD -- '*.ts' '*.tsx' '*.js' '*.jsx'` komutuna geri dönün böylece kod düzeyinde değişiklikleri yine de inceleyebilirsiniz.
 2. PR incelemeden önce, metadata mevcut olduğunda merge hazırlığını kontrol edin (örneğin `gh pr view --json mergeStateStatus,statusCheckRollup` ile):
    - Eğer gerekli kontroller başarısız ise veya beklemede ise, durdurun ve incelemenin yeşil CI beklemesi gerektiğini bildirin.
    - Eğer PR merge çakışması veya birleştirilemeyen bir durum gösteriyorsa, durdurun ve önce çakışmaların çözülmesi gerektiğini bildirin.
    - Eğer merge hazırlığı mevcut bağlamdan doğrulanamıyorsa, devam etmeden önce bunu açıkça söyleyin.
-3. Mevcut bir TypeScript kontrol komutu varsa önce projenin kanonik TypeScript kontrol komutunu çalıştırın (örneğin `npm/pnpm/yarn/bun run typecheck`). Eğer script yoksa, repo-root`tsconfig.json`'u varsayılan olarak kullanmak yerine değişen kodu kapsayan`tsconfig` dosyasını veya dosyalarını seçin; project-reference kurulumlarında, build modunu körü körüne çağırmak yerine repo'nun non-emitting solution check komutunu tercih edin. Aksi takdirde `tsc --noEmit -p <relevant-config>` kullanın. Sadece JavaScript projeleri için incelemeyi başarısız etmek yerine bu adımı atlayın.
+3. Mevcut bir TypeScript kontrol komutu varsa önce projenin kanonik TypeScript kontrol komutunu çalıştırın (örneğin `npm/pnpm/yarn/bun run typecheck`). Eğer script yoksa, repo-root`tsconfig.json`'u varsayılan olarak kullanmak yerine değişen kodu kapsayan`tsconfig`dosyasını veya dosyalarını seçin; project-reference kurulumlarında, build modunu körü körüne çağırmak yerine repo'nun non-emitting solution check komutunu tercih edin. Aksi takdirde`tsc --noEmit -p <relevant-config>` kullanın. Sadece JavaScript projeleri için incelemeyi başarısız etmek yerine bu adımı atlayın.
 4. Varsa `eslint . --ext .ts,.tsx,.js,.jsx` çalıştırın — eğer linting veya TypeScript kontrolü başarısız olursa, durdurun ve bildirin.
 5. Eğer diff komutları ilgili TypeScript/JavaScript değişikliği üretmiyorsa, durdurun ve inceleme kapsamının güvenilir bir şekilde oluşturulamadığını bildirin.
 6. Değiştirilmiş dosyalara odaklanın ve yorum yapmadan önce çevre bağlamı okuyun.
@@ -28,7 +28,7 @@ Kodu refactor YAPMAZSINIZ veya yeniden YAZMAZSINIZ — sadece bulguları bildiri
 
 ### CRITICAL -- Güvenlik
 - **`eval`/`new Function` ile injection**: Kullanıcı kontrollü girdi dinamik yürütmeye geçilmesi — güvenilmeyen string'leri asla çalıştırmayın
-- **XSS**: Sanitize edilmemiş kullanıcı girdisi `innerHTML`,`dangerouslySetInnerHTML` veya`document.write`'a atanması
+- **XSS**: Sanitize edilmemiş kullanıcı girdisi `innerHTML`,`dangerouslySetInnerHTML`veya`document.write`'a atanması
 - **SQL/NoSQL injection**: Sorgularda string birleştirme — parametrelendirilmiş sorgular veya ORM kullanın
 - **Path traversal**: `fs.readFile`,`path.join`'de`path.resolve` + prefix validasyonu olmadan kullanıcı kontrollü girdi
 - **Hardcoded secret'lar**: Kaynak kodda API key'leri, token'lar, şifreler — environment variable'ları kullanın
@@ -42,10 +42,10 @@ Kodu refactor YAPMAZSINIZ veya yeniden YAZMAZSINIZ — sadece bulguları bildiri
 - **Gevşetilmiş compiler ayarları**: Eğer `tsconfig.json` dokunuldu ve strictness'i zayıflatıyorsa, bunu açıkça belirtin
 
 ### HIGH -- Async Doğruluğu
-- **İşlenmemiş promise rejection'ları**: `async`fonksiyonlar ` await`veya`.catch()` olmadan çağrılıyor
+- **İşlenmemiş promise rejection'ları**: `async`fonksiyonlar`await`veya`.catch()` olmadan çağrılıyor
 - **Bağımsız işler için sıralı await'ler**: İşlemler güvenle paralel çalışabiliyorken döngü içinde `await`—`Promise.all`'u düşünün
 - **Floating promise'ler**: Event handler'larda veya constructor'larda hata yönetimi olmadan fire-and-forget
-- **`forEach`ile ` async`**:`array.forEach(async fn)`await etmez —`for...of` veya `Promise.all` kullanın
+- **`forEach`ile`async`**:`array.forEach(async fn)`await etmez —` for...of`veya`Promise.all` kullanın
 
 ### HIGH -- Hata Yönetimi
 - **Yutulmuş hatalar**: Boş `catch`blokları veya hiçbir aksiyon olmadan`catch (e) {}`
@@ -55,7 +55,7 @@ Kodu refactor YAPMAZSINIZ veya yeniden YAZMAZSINIZ — sadece bulguları bildiri
 
 ### HIGH -- Idiomatic Kalıplar
 - **Mutable paylaşılan state**: Modül düzeyinde mutable değişkenler — immutable veri ve pure fonksiyonları tercih edin
-- **`var`kullanımı**: Varsayılan olarak` const`kullanın, yeniden atama gerektiğinde `let` kullanın
+- **`var`kullanımı**: Varsayılan olarak`const`kullanın, yeniden atama gerektiğinde`let` kullanın
 - **Eksik return tiplerinden implicit `any`**: Public fonksiyonlar açık return tipine sahip olmalı
 - **Callback-style async**: Callback'leri `async/await` ile karıştırma — promise'lerde standardize edin
 - **`===`yerine`==`**: Her yerde strict equality kullanın
@@ -105,7 +105,7 @@ jest --ci                           # Testler (Jest)
 
 ## Referans
 
-Bu repo henüz özel bir `typescript-patterns`skill'i sunmuyor. Detaylı TypeScript ve JavaScript kalıpları için, incelenen koda göre`coding-standards`artı`frontend-patterns`veya ` backend-patterns` kullanın.
+Bu repo henüz özel bir `typescript-patterns`skill'i sunmuyor. Detaylı TypeScript ve JavaScript kalıpları için, incelenen koda göre`coding-standards`artı`frontend-patterns`veya`backend-patterns` kullanın.
 
 ---
 

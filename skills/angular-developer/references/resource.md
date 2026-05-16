@@ -44,7 +44,7 @@ export class UserProfile {
 
 ## Aborting Requests
 
-If the `params`signal changes while a previous loader is still running, the`Resource`will attempt to abort the outstanding request using the provided`abortSignal`. **Always pass`abortSignal`to your`fetch` calls.**
+If the `params`signal changes while a previous loader is still running, the`Resource`will attempt to abort the outstanding request using the provided`abortSignal`. **Always pass`abortSignal` to your`fetch` calls.**
 
 ## Reloading Data
 
@@ -58,10 +58,10 @@ this.userResource.reload();
 
 The `Resource` object provides several signals to read its current state:
 
-- `value()`: The resolved data, or`undefined`.
+- `value()`: The resolved data, or `undefined`.
 - `hasValue()`: Type-guard boolean.`true` if a value exists.
 - `isLoading()`: Boolean indicating if the loader is currently running.
-- `error()`: The error thrown by the loader, or`undefined`.
+- `error()`: The error thrown by the loader, or `undefined`.
 - `status()`: A string constant representing the exact state (`'idle'`,`'loading'`,`'resolved'`,`'error'`,`'reloading'`,`'local'`).
 
 ## Local Mutation

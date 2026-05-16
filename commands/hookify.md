@@ -47,4 +47,4 @@ Message shown when rule triggers.
 
 ### Step 4: Confirm
 
-Report created rules and how to manage them with `/hookify-list`and `/hookify-configure`.
+Report created rules and how to manage them with `/hookify-list` and `/hookify-configure`.

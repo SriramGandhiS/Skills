@@ -37,7 +37,7 @@ screenshots/
 `-- cut-images/
 ```
 
-Supported cut-image directory names include `assets`,`icons`,`sprites`,`cut`,`images`, and`cut-images`.
+Supported cut-image directory names include `assets`,`icons`,`sprites`,`cut`,`images`, and `cut-images`.
 
 ## Conversion Model
 
@@ -74,7 +74,7 @@ ui-to-vue --input ./screenshots --ui vant --output ./src
 | Option | Description | Default |
 | --- | --- | --- |
 | `--input`| Design image directory |`./screenshots` |
-| `--ui`| UI library:`vant`,`element-plus`, or`antd-vue`|`vant` |
+| `--ui`| UI library:`vant`,`element-plus`, or `antd-vue`|`vant` |
 | `--output`| Output directory |`./src` |
 | `--config`| Config file path |`./.ui-to-vue.config.json` |
 
@@ -123,7 +123,7 @@ If a local config file is required, keep it out of version control:
 
 | Issue | Check |
 | --- | --- |
-| `401`or authentication error | Confirm`DASHSCOPE_API_KEY` is set in the shell running the command. |
+| `401` or authentication error | Confirm`DASHSCOPE_API_KEY` is set in the shell running the command. |
 | `command not found: ui-to-vue`| Use the`npx ui-to-vue-converter@1.0.2` form or install the package globally. |
 | Cut images are ignored | Confirm the asset directory name is supported and nested under the matching page or module. |
 | Components ignore the requested UI library | Re-run with an explicit `--ui` value and inspect the generated imports. |

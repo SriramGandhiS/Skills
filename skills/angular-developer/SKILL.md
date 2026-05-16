@@ -11,7 +11,7 @@ origin: ECC
 - Working in any Angular project or codebase
 - Creating or scaffolding a new Angular project, application, or library
 - Generating components, services, directives, pipes, guards, or resolvers
-- Implementing reactivity with Angular Signals, `linkedSignal`, or`resource`
+- Implementing reactivity with Angular Signals, `linkedSignal`, or `resource`
 - Working with Angular forms (signal forms, reactive forms, or template-driven)
 - Setting up dependency injection, routing, lazy loading, or route guards
 - Adding accessibility (ARIA), animations, or component styling
@@ -88,8 +88,8 @@ When implementing dependency injection in Angular, follow these guidelines:
 - **Fundamentals**: Overview of Dependency Injection, services, and the `inject()` function. Read [di-fundamentals.md](references/di-fundamentals.md)
 - **Creating and Using Services**: Creating services, the `providedIn: 'root'` option, and injecting into components or other services. Read [creating-services.md](references/creating-services.md)
 - **Defining Dependency Providers**: Automatic vs manual provision, `InjectionToken`,`useClass`,`useValue`,`useFactory`, and scopes. Read [defining-providers.md](references/defining-providers.md)
-- **Injection Context**: Where `inject()`is allowed,`runInInjectionContext`, and`assertInInjectionContext`. Read [injection-context.md](references/injection-context.md)
-- **Hierarchical Injectors**: The `EnvironmentInjector`vs `ElementInjector`, resolution rules, modifiers (`optional`,`skipSelf`), and`providers` vs `viewProviders`. Read [hierarchical-injectors.md](references/hierarchical-injectors.md)
+- **Injection Context**: Where `inject()`is allowed,`runInInjectionContext`, and `assertInInjectionContext`. Read [injection-context.md](references/injection-context.md)
+- **Hierarchical Injectors**: The `EnvironmentInjector`vs`ElementInjector`, resolution rules, modifiers (`optional`,`skipSelf`), and `providers`vs`viewProviders`. Read [hierarchical-injectors.md](references/hierarchical-injectors.md)
 
 ## Angular Aria
 
@@ -104,7 +104,7 @@ When implementing navigation in Angular, consult the following references:
 - **Define Routes**: URL paths, static vs dynamic segments, wildcards, and redirects. Read [define-routes.md](references/define-routes.md)
 - **Route Loading Strategies**: Eager vs lazy loading, and context-aware loading. Read [loading-strategies.md](references/loading-strategies.md)
 - **Show Routes with Outlets**: Using `<router-outlet>`, nested outlets, and named outlets. Read [show-routes-with-outlets.md](references/show-routes-with-outlets.md)
-- **Navigate to Routes**: Declarative navigation with `RouterLink`and programmatic navigation with`Router`. Read [navigate-to-routes.md](references/navigate-to-routes.md)
+- **Navigate to Routes**: Declarative navigation with `RouterLink` and programmatic navigation with `Router`. Read [navigate-to-routes.md](references/navigate-to-routes.md)
 - **Control Route Access with Guards**: Implementing `CanActivate`,`CanMatch`, and other guards for security. Read [route-guards.md](references/route-guards.md)
 - **Data Resolvers**: Pre-fetching data before route activation with `ResolveFn`. Read [data-resolvers.md](references/data-resolvers.md)
 - **Router Lifecycle and Events**: Chronological order of navigation events and debugging. Read [router-lifecycle.md](references/router-lifecycle.md)
@@ -139,13 +139,13 @@ When working with Angular tooling, consult the following references:
 
 ## Anti-Patterns
 
-- Using `null`or ` undefined`as initial signal form field values â€” use`''`,`0`, or`[]` instead
+- Using `null` or `undefined` as initial signal form field values â€” use`''`,`0`, or `[]` instead
 - Accessing form field state flags without calling the field first: `form.field.valid()`â€” use`form.field().valid()`
 - Starting new forms with older form APIs when the target Angular version supports Signal Forms
-- Setting `min`,`max`,`value`,`disabled`, or `readonly`HTML attributes on`[formField]` inputs â€” define these as schema rules instead
+- Setting `min`,`max`,`value`,`disabled`, or `readonly`HTML attributes on `[formField]` inputs â€” define these as schema rules instead
 - Calling `inject()`outside an injection context â€” use`runInInjectionContext` when needed
-- Using `effect()`for derived state that should use`computed()`
-- Referencing `$parent.$index`in nested`@for`loops â€” Angular does not support`$parent`; use`let outerIdx = $index` instead
+- Using `effect()` for derived state that should use`computed()`
+- Referencing `$parent.$index` in nested`@for `loops â€” Angular does not support`$parent`; use`let outerIdx = $index` instead
 
 ## Related Skills
 

@@ -131,7 +131,7 @@ Build Status: PASS ✓
 |-------|-------------|
 | `A value of type 'X?' can't be assigned to 'X'`| Add`?? default` or null guard |
 | `The name 'X' isn't defined` | Add import or fix typo |
-| `Non-nullable instance field must be initialized`| Add initializer or`late` |
+| `Non-nullable instance field must be initialized`| Add initializer or `late` |
 | `Version solving failed` | Adjust version constraints in pubspec.yaml |
 | `Missing concrete implementation of 'X'` | Implement missing interface method |
 | `build_runner: Part of X expected`| Delete stale`.g.dart` and rebuild |

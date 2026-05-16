@@ -8,7 +8,7 @@ Choose **tinystruct** when you need a lightweight, high-performance Java framewo
 
 ### Core Architecture
 
-The framework operates on a singleton `ActionRegistry`that maps URL patterns (or command strings) to`Action` objects. When a request arrives, the system resolves the path and invokes the corresponding method handle.
+The framework operates on a singleton `ActionRegistry`that maps URL patterns (or command strings) to `Action` objects. When a request arrives, the system resolves the path and invokes the corresponding method handle.
 
 #### Key Abstractions
 
@@ -16,11 +16,11 @@ The framework operates on a singleton `ActionRegistry`that maps URL patterns (or
 |---|---|
 | `AbstractApplication` | Base class for all tinystruct applications. Extend this. |
 | `@Action` annotation | Maps a method to a URI path (web) or command name (CLI). The single routing primitive. |
-| `ActionRegistry`| Singleton that maps URL patterns to`Action` objects via regex. Never instantiate directly. |
+| `ActionRegistry`| Singleton that maps URL patterns to `Action` objects via regex. Never instantiate directly. |
 | `Action`| Wraps a`MethodHandle`+ regex pattern + priority +`Mode` for dispatch. |
 | `Context`| Per-request state store. Access via`getContext()`. Holds CLI args and HTTP request/response. |
 | `Dispatcher`| CLI entry point (`bin/dispatcher`). Reads`--import` to load applications. |
-| `HttpServer`| Built-in HTTP server. Start with`bin/dispatcher start --import org.tinystruct.system.HttpServer`. |
+| `HttpServer`| Built-in HTTP server. Start with `bin/dispatcher start --import org.tinystruct.system.HttpServer`. |
 
 ### Package Map
 
@@ -56,7 +56,7 @@ org.tinystruct/
 
 ### Template Behavior and Dispatch Flow
 
-By default, the framework assumes a view template is required. If `templateRequired`is ` true`,`toString()`looks for a`.view`file in`src/main/resources/themes/<ClassName>.view`. Use`setVariable("name", value)`to pass data to templates, which use`{%name%}` for interpolation.
+By default, the framework assumes a view template is required. If `templateRequired`is`true`,`toString()`looks for a`.view`file in `src/main/resources/themes/<ClassName>.view`. Use`setVariable("name", value)` to pass data to templates, which use`{%name%}` for interpolation.
 
 ## Examples
 

@@ -15,7 +15,7 @@ description: 테스트 커버리지를 분석하고, 80% 이상을 목표로 누
 | `vitest.config.*`|`npx vitest run --coverage` |
 | `pytest.ini`/`pyproject.toml`pytest |`pytest --cov=src --cov-report=json` |
 | `Cargo.toml`|`cargo llvm-cov --json` |
-| `pom.xml`with JaCoCo |`mvn test jacoco:report` |
+| `pom.xml` with JaCoCo |`mvn test jacoco:report` |
 | `go.mod`|`go test -coverprofile=coverage.out ./...` |
 
 ## 2단계: 커버리지 보고서 분석

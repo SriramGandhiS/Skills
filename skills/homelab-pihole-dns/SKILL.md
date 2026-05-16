@@ -69,7 +69,7 @@ Replace `<pinned-release-tag>` with a current Pi-hole release tag before deployi
 Avoid `latest` for long-lived DNS infrastructure so upgrades are deliberate and
 reviewable.
 
-Set `PIHOLE_WEBPASSWORD`in a`.env`file next to`docker-compose.yml`, chmod it to
+Set `PIHOLE_WEBPASSWORD` in a`.env`file next to `docker-compose.yml`, chmod it to
 `600`, and keep it out of git â€” do not put the password directly in the compose file.
 
 Access web admin at: `http://<pi-ip>/admin`

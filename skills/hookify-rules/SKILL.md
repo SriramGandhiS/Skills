@@ -59,7 +59,7 @@ You're adding an API key to a .env file. Ensure this file is in .gitignore!
 - file: `file_path`,`new_text`,`old_text`,`content`
 - prompt: `user_prompt`
 
-**Operators:** `regex_match`,`contains`,`equals`,`not_contains`,`starts_with`,`ends_with`
+**Operators:** `regex_match`,`contains`,`equals`,`not_contains`,`starts_with `,`ends_with`
 
 All conditions must match for rule to trigger.
 
@@ -86,7 +86,7 @@ Match user prompt content for workflow enforcement.
 ## Pattern Writing Tips
 
 ### Regex Basics
-- Escape special chars: `.`to`\.`,`(`to`\(`
+- Escape special chars: `.` to `\.`,`(` to `\(`
 - `\s`whitespace,`\d`digit,`\w` word char
 - `+`one or more,`*`zero or more,`?` optional
 - `|` OR operator
@@ -105,7 +105,7 @@ python3 -c "import re; print(re.search(r'your_pattern', 'test text'))"
 
 - **Location**: `.claude/` directory in project root
 - **Naming**: `.claude/hookify.{descriptive-name}.local.md`
-- **Gitignore**: Add `.claude/*.local.md`to `.gitignore`
+- **Gitignore**: Add `.claude/*.local.md` to `.gitignore`
 
 ## Commands
 

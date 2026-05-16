@@ -41,7 +41,7 @@ EOF",
 ```
 
 **Model Parameter Notes**:
-- `{{GEMINI_MODEL_FLAG}}`: When using`--backend gemini`, replace with`--gemini-model gemini-3-pro-preview` (note trailing space); use empty string for codex
+- `{{GEMINI_MODEL_FLAG}}`: When using`--backend gemini`, replace with `--gemini-model gemini-3-pro-preview` (note trailing space); use empty string for codex
 
 **Role Prompts**:
 
@@ -107,7 +107,7 @@ mcp__ace-tool__search_context({
 1. **Glob**: Find relevant files by pattern (e.g., `Glob("**/*.ts")`,`Glob("src/**/*.py")`)
 2. **Grep**: Search for key symbols, function names, class definitions (e.g., `Grep("className|functionName")`)
 3. **Read**: Read the discovered files to gather complete context
-4. **Task (Explore agent)**: For deeper exploration, use `Task`with ` subagent_type: "Explore"` to search across the codebase
+4. **Task (Explore agent)**: For deeper exploration, use `Task` with `subagent_type: "Explore"` to search across the codebase
 
 #### 1.3 Completeness Check
 
@@ -140,7 +140,7 @@ Distribute **original requirement** (without preset opinions) to both models:
    - Focus: UI/UX impact, user experience, visual design
    - OUTPUT: Multi-perspective solutions + pros/cons analysis
 
-Wait for both models' complete results with `TaskOutput`. **Save SESSION_ID** (`CODEX_SESSION`and`GEMINI_SESSION`).
+Wait for both models' complete results with `TaskOutput`. **Save SESSION_ID** (`CODEX_SESSION` and `GEMINI_SESSION`).
 
 #### 2.2 Cross-Validation
 
@@ -269,4 +269,4 @@ After user approves, **manually** execute:
 2. **No Y/N prompts** – Only present plan, let user decide next steps
 3. **Trust Rules** – Backend follows Codex, Frontend follows Gemini
 4. External models have **zero filesystem write access**
-5. **SESSION_ID Handoff** – Plan must include `CODEX_SESSION`/`GEMINI_SESSION`at end (for`/ccg:execute resume <SESSION_ID>` use)
+5. **SESSION_ID Handoff** – Plan must include `CODEX_SESSION`/`GEMINI_SESSION` at end (for `/ccg:execute resume <SESSION_ID>` use)

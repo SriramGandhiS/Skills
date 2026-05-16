@@ -568,7 +568,7 @@ These patterns compose well:
 
 2. **Continuous Claude + De-Sloppify** â€” Add `--review-prompt` with a de-sloppify directive to each iteration.
 
-3. **Any loop + Verification** â€” Use ECC's `/verify`command or`verification-loop` skill as a gate before commits.
+3. **Any loop + Verification** â€” Use ECC's `/verify`command or `verification-loop` skill as a gate before commits.
 
 4. **Ralphinho's tiered approach in simpler loops** â€” Even in a sequential pipeline, you can route simple tasks to Haiku and complex tasks to Opus:
    ```bash

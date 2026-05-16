@@ -13,7 +13,7 @@ argument-hint: [pr-number | pr-url | blank for local review]
 
 ## Mode Selection
 
-If `$ARGUMENTS`contains a PR number, PR URL, or`--pr`:
+If `$ARGUMENTS`contains a PR number, PR URL, or `--pr`:
 → Jump to **PR Review Mode** below.
 
 Otherwise:
@@ -184,7 +184,7 @@ Form recommendation based on findings:
 Special cases:
 - Draft PR → Always use **COMMENT** (not approve/block)
 - Only docs/config changes → Lighter review, focus on correctness
-- Explicit `--approve`or `--request-changes` flag → Override decision (but still report all findings)
+- Explicit `--approve` or `--request-changes` flag → Override decision (but still report all findings)
 
 ### Phase 6 — REPORT
 

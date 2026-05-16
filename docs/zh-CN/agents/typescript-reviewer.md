@@ -49,7 +49,7 @@ model: sonnet
 * **未处理的 Promise 拒绝**：调用 `async`函数而没有`await`或`.catch()`
 * **独立工作的顺序等待**：当操作可以安全并行运行时，在循环内使用 `await`—— 考虑使用`Promise.all`
 * **浮动的 Promise**：在事件处理程序或构造函数中，触发后即忘记，没有错误处理
-* **带有 `forEach`的`async`**：`array.forEach(async fn)`不等待 —— 使用`for...of`或`Promise.all`
+* **带有 `forEach`的`async`**：`array.forEach(async fn)`不等待 —— 使用` for...of`或`Promise.all`
 
 ### 高 -- 错误处理
 

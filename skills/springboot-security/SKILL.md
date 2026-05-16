@@ -50,7 +50,7 @@ public class JwtAuthFilter extends OncePerRequestFilter {
 ## Authorization
 
 - Enable method security: `@EnableMethodSecurity`
-- Use `@PreAuthorize("hasRole('ADMIN')")`or`@PreAuthorize("@authz.canEdit(#id)")`
+- Use `@PreAuthorize("hasRole('ADMIN')")` or `@PreAuthorize("@authz.canEdit(#id)")`
 - Deny by default; expose only required scopes
 
 ```java

@@ -46,14 +46,14 @@ input delay is worse than no animation.
 
 These are non-negotiable. They apply to every component in the system.
 
-1. **Use `motion/react`only.** Never import from`framer-motion`. Never mix the two in the same tree.
-2. **`initial`must match server output.** If the server renders`opacity: 1`, the`initial ` prop must also be`opacity: 1`. No exceptions.
-3. **Reduced motion overrides everything.** When `useReducedMotion()`returns` true `or`prefersReduced` is `true`, all transforms are disabled. Opacity-only fades at â‰¤ 0.2s are the only permitted fallback.
-4. **Never animate layout properties.** `width`,`height`,`top`,`left`,`margin`,`padding` are banned from `animate`. Use`transform ` and`opacity` only.
+1. **Use `motion/react`only.** Never import from `framer-motion`. Never mix the two in the same tree.
+2. **`initial`must match server output.** If the server renders`opacity: 1`, the`initial`prop must also be`opacity: 1`. No exceptions.
+3. **Reduced motion overrides everything.** When `useReducedMotion()`returns`true` or `prefersReduced`is`true`, all transforms are disabled. Opacity-only fades at â‰¤ 0.2s are the only permitted fallback.
+4. **Never animate layout properties.** `width`,`height`,`top`,`left`,`margin`,`padding`are banned from `animate`. Use`transform` and `opacity` only.
 5. **All token values come from `motionTokens`.** Hardcoded durations and easings in component files are forbidden.
-6. **All spring configs come from the `springs`map.** Inline` stiffness`/`damping` values are forbidden.
-7. **`"use client"`is required** on every file that imports from`motion/react`.
-8. **Never read `window`or ` navigator`at module level.** Always guard with`typeof window !== "undefined"`.
+6. **All spring configs come from the `springs`map.** Inline`stiffness`/`damping` values are forbidden.
+7. **`"use client"`is required** on every file that imports from `motion/react`.
+8. **Never read `window` or `navigator` at module level.** Always guard with `typeof window !== "undefined"`.
 
 ## Decision Guidance
 
@@ -79,10 +79,10 @@ These are non-negotiable. They apply to every component in the system.
 
 ### When to disable animation entirely
 
-Disable (make `shouldAnimate()`return` false`) when:
+Disable (make `shouldAnimate()`return`false`) when:
 
-- `prefersReduced`is ` true`
-- `isLowEnd`is ` true` and the animation is non-essential
+- `prefersReduced`is`true`
+- `isLowEnd`is`true` and the animation is non-essential
 - The element is off-screen and will never enter the viewport
 - The animation is purely decorative with no UX purpose
 
@@ -291,7 +291,7 @@ This skill does **not** cover:
 | `transition={{ duration: 0.4 }}`inline | Rule 5 | Use`motionTokens.duration.normal` |
 | `{ stiffness: 300, damping: 30 }`inline | Rule 6 | Use`springs.snappy` |
 | Missing `"use client"` directive | Rule 7 | Add to top of file |
-| `navigator.hardwareConcurrency`at module level | Rule 8 | Wrap in`typeof navigator !== "undefined"` |
+| `navigator.hardwareConcurrency` at module level | Rule 8 | Wrap in `typeof navigator !== "undefined"` |
 
 ## Related Skills
 

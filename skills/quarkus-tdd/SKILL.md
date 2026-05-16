@@ -749,7 +749,7 @@ mvn jacoco:check
 - Follow AAA pattern with explicit comments (`// ARRANGE`,`// ACT`,`// ASSERT`)
 - Use `assertDoesNotThrow` for success scenarios
 - Use `assertThrows` for exception scenarios with message validation
-- Verify exception messages match expected values using AssertJ `contains()`or` isEqualTo()`
+- Verify exception messages match expected values using AssertJ `contains()` or `isEqualTo()`
 
 ### Test Coverage
 - Test happy paths for all public methods
@@ -773,7 +773,7 @@ mvn jacoco:check
 - Use `@TestProfile` for test-specific configuration
 
 ### Event-Driven Testing
-- Test Camel routes with `AdviceWith`and `MockEndpoint`
+- Test Camel routes with `AdviceWith` and `MockEndpoint`
 - Use `@CamelQuarkusTest` annotation (if using standalone Camel tests)
 - Verify message content, headers, and routing logic
 - Test error handling routes separately

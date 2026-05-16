@@ -19,20 +19,20 @@ Architecture and implementation patterns for building modules with the **tinystr
 - Creating new `Application`modules by extending`AbstractApplication`.
 - Defining routes and command-line actions using `@Action`.
 - Handling per-request state via `Context`.
-- Performing JSON serialization using the native `Builder`and `Builders` components.
+- Performing JSON serialization using the native `Builder` and `Builders` components.
 - Working with database persistence via `AbstractData` POJOs.
 - Generating POJOs from database tables using the `generate` command.
 - Implementing Server-Sent Events (SSE) for real-time push.
 - Handling file uploads via multipart data.
-- Making outbound HTTP requests with `URLRequest`and `HTTPHandler`.
+- Making outbound HTTP requests with `URLRequest` and `HTTPHandler`.
 - Configuring database connections or system settings in `application.properties`.
 - Debugging routing conflicts (Actions) or CLI argument parsing.
 
 ## How It Works
 
-The tinystruct framework treats any method annotated with `@Action`as a routable endpoint for both terminal and web environments. Applications are created by extending`AbstractApplication`, which provides core lifecycle hooks like`init()`and access to the request`Context`.
+The tinystruct framework treats any method annotated with `@Action` as a routable endpoint for both terminal and web environments. Applications are created by extending`AbstractApplication`, which provides core lifecycle hooks like`init()` and access to the request`Context`.
 
-Routing is handled by the `ActionRegistry`, which automatically maps path segments to method arguments and injects dependencies. For data-only services, the native`Builder`and `Builders`components should be used for JSON serialization to maintain a zero-dependency footprint. The database layer uses`AbstractData` POJOs paired with XML mapping files for CRUD operations without external ORM libraries.
+Routing is handled by the `ActionRegistry`, which automatically maps path segments to method arguments and injects dependencies. For data-only services, the native`Builder` and `Builders`components should be used for JSON serialization to maintain a zero-dependency footprint. The database layer uses`AbstractData` POJOs paired with XML mapping files for CRUD operations without external ORM libraries.
 
 ## Examples
 
@@ -157,21 +157,21 @@ String port = this.getConfiguration("server.port");
 
 | Symptom | Correct Pattern |
 |---|---|
-| Importing `com.google.gson`or ` com.fasterxml.jackson`| Use`org.tinystruct.data.component.Builder`/`Builders`. |
-| Using `List<Builder>`for JSON arrays | Use`Builders` to avoid generic type erasure issues. |
-| `ApplicationRuntimeException: template not found`| Call`setTemplateRequired(false)` in`init()` for API-only apps. |
-| Annotating `private`methods with`@Action`| Actions must be`public` to be registered by the framework. |
-| Hardcoding `main(String[] args)`in apps | Use`bin/dispatcher` as the entry point for all modules. |
+| Importing `com.google.gson` or `com.fasterxml.jackson`| Use`org.tinystruct.data.component.Builder`/`Builders`. |
+| Using `List<Builder>` for JSON arrays | Use`Builders` to avoid generic type erasure issues. |
+| `ApplicationRuntimeException: template not found`| Call`setTemplateRequired(false)` in `init()` for API-only apps. |
+| Annotating `private`methods with `@Action`| Actions must be`public` to be registered by the framework. |
+| Hardcoding `main(String[] args)` in apps | Use`bin/dispatcher` as the entry point for all modules. |
 | Manual `ActionRegistry`registration | Prefer the`@Action` annotation for automatic discovery. |
-| Action not found at runtime | Ensure class is imported via `--import`or listed in`application.properties`. |
+| Action not found at runtime | Ensure class is imported via `--import` or listed in `application.properties`. |
 | CLI arg not visible | Pass with `--key value`; access via`getContext().getAttribute("--key")`. |
 | Two methods same path, wrong one fires | Set explicit `mode`(e.g.,`HTTP_GET`vs`HTTP_POST`) to disambiguate. |
 
 ## Best Practices
 
 1. **Granular Applications**: Break logic into smaller, focused applications rather than one monolithic class.
-2. **Setup in `init()`**: Leverage`init()`for setup (config, DB) rather than the constructor. Do NOT call`setAction()`â€” use`@Action` annotation.
-3. **Mode Awareness**: Use the `Mode`parameter in`@Action`to restrict sensitive operations to`CLI` only or specific HTTP methods.
+2. **Setup in `init()`**: Leverage`init()` for setup (config, DB) rather than the constructor. Do NOT call`setAction()`â€” use`@Action` annotation.
+3. **Mode Awareness**: Use the `Mode`parameter in `@Action` to restrict sensitive operations to `CLI` only or specific HTTP methods.
 4. **Context over Params**: For optional CLI flags, use `getContext().getAttribute("--flag")` rather than adding parameters to the method signature.
 5. **Asynchronous Events**: For heavy tasks triggered by events, use `CompletableFuture.runAsync()` inside the event handler.
 

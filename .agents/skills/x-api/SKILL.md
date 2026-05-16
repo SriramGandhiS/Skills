@@ -55,7 +55,7 @@ export X_ACCESS_TOKEN="your-access-token"
 export X_ACCESS_TOKEN_SECRET="your-access-token-secret"
 ```
 
-Legacy aliases such as `X_API_KEY`,`X_API_SECRET`, and`X_ACCESS_SECRET`may exist in older setups. Prefer the`X_CONSUMER_*`and`X_ACCESS_TOKEN_SECRET` names when documenting or wiring new flows.
+Legacy aliases such as `X_API_KEY`,`X_API_SECRET`, and `X_ACCESS_SECRET`may exist in older setups. Prefer the`X_CONSUMER_*` and `X_ACCESS_TOKEN_SECRET` names when documenting or wiring new flows.
 
 ```python
 import os
@@ -174,7 +174,7 @@ resp = oauth.post(
 
 X API rate limits vary by endpoint, auth method, and account tier, and they change over time. Always:
 - Check the current X developer docs before hardcoding assumptions
-- Read `x-rate-limit-remaining`and ` x-rate-limit-reset` headers at runtime
+- Read `x-rate-limit-remaining` and `x-rate-limit-reset` headers at runtime
 - Back off automatically instead of relying on static tables in code
 
 ```python
@@ -205,14 +205,14 @@ else:
 ## Security
 
 - **Never hardcode tokens.** Use environment variables or `.env` files.
-- **Never commit `.env`files.** Add to`.gitignore`.
+- **Never commit `.env`files.** Add to `.gitignore`.
 - **Rotate tokens** if exposed. Regenerate at developer.x.com.
 - **Use read-only tokens** when write access is not needed.
 - **Store OAuth secrets securely** — not in source code or logs.
 
 ## Integration with Content Engine
 
-Use `brand-voice`plus ` content-engine` to generate platform-native content, then post via X API:
+Use `brand-voice`plus`content-engine` to generate platform-native content, then post via X API:
 1. Pull recent original posts when voice matching matters
 2. Build or reuse a `VOICE PROFILE`
 3. Generate content with `content-engine` in X-native format

@@ -660,7 +660,7 @@ val (active, inactive) = users.partition { it.isActive }
 | 表达式 `when` | 穷举模式匹配 |
 | 安全调用 `?.` | 空安全的成员访问 |
 | Elvis `?:` | 为可空类型提供默认值 |
-| `let`/`apply`/`also`/`run`/`with` | 用于编写简洁代码的作用域函数 |
+| `let`/`apply`/`also`/`run`/` with` | 用于编写简洁代码的作用域函数 |
 | 扩展函数 | 在不使用继承的情况下添加行为 |
 | `copy()` | 数据类上的不可变更新 |
 | `require`/`check` | 前置条件断言 |

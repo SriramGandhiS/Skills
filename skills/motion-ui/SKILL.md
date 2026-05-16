@@ -218,7 +218,7 @@ export function FadeIn() {
 | Large layout shifts or full-page reflows | Avoid `layout`; use CSS transitions or page-level routing instead |
 | Complex, imperative sequences | `useAnimate` |
 
-> **Why avoid `layout`on large containers?** Framer's layout animation uses` transform`to reconcile positions, but on elements that span the full viewport or trigger deep reflow, the measurement cost causes visible jank and CLS. Prefer CSS Grid/Flexbox transitions or coordinate with `layoutId` on specific child elements only.
+> **Why avoid `layout` on large containers?** Framer's layout animation uses`transform` to reconcile positions, but on elements that span the full viewport or trigger deep reflow, the measurement cost causes visible jank and CLS. Prefer CSS Grid/Flexbox transitions or coordinate with `layoutId` on specific child elements only.
 
 #### Layout & Transitions
 
@@ -383,9 +383,9 @@ export function Example() {
 
 Check:
 
-- Wrong import (mixing `motion/react`and ` framer-motion`)
+- Wrong import (mixing `motion/react` and `framer-motion`)
 - Missing `"use client"` directive in Next.js App Router
-- Missing `key`prop on`AnimatePresence` children
+- Missing `key`prop on `AnimatePresence` children
 - Hydration mismatch (initial state differs between SSR and client)
 - `layout` prop misuse on large containers causing reflow jank
 - State-driven animation not triggering (check dependency arrays)
@@ -412,7 +412,7 @@ Check:
 - Over-staggering lists (keep `staggerChildren` â‰¤ 0.1s; beyond that it feels slow)
 - Ignoring reduced motion preferences
 - Using `layout` on large or full-viewport containers
-- Omitting `mode`on `AnimatePresence`(default`"sync"` causes visual overlap)
+- Omitting `mode` on `AnimatePresence`(default`"sync"` causes visual overlap)
 - Using motion purely for decoration
 
 ---

@@ -76,7 +76,7 @@ EOF",
 | Planning | `~/.claude/.ccg/prompts/codex/architect.md`|`~/.claude/.ccg/prompts/gemini/architect.md` |
 | Review | `~/.claude/.ccg/prompts/codex/reviewer.md`|`~/.claude/.ccg/prompts/gemini/reviewer.md` |
 
-**Session Reuse**: Her çağrı `SESSION_ID: xxx`döndürür, sonraki fazlar için`resume xxx`subcommand kullan (not:` resume`,`--resume` değil).
+**Session Reuse**: Her çağrı `SESSION_ID: xxx`döndürür, sonraki fazlar için `resume xxx`subcommand kullan (not:`resume`,`--resume` değil).
 
 **Parallel Çağrılar**: Başlatmak için `run_in_background: true`kullan, sonuçları`TaskOutput` ile bekle. **Bir sonraki faza geçmeden önce tüm modellerin dönmesini MUTLAKA bekle**.
 
@@ -120,7 +120,7 @@ node scripts/orchestrate-worktrees.js .claude/plan/workflow-e2e-test.json --exec
 `[Mode: Research]` - Requirement'ları anla ve context topla:
 
 1. **Prompt Enhancement** (ace-tool MCP mevcutsa): `mcp__ace-tool__enhance_prompt`çağır, **orijinal $ARGUMENTS'ı tüm sonraki Codex/Gemini çağrıları için enhanced sonuçla değiştir**. Mevcut değilse,`$ARGUMENTS`'ı olduğu gibi kullan.
-2. **Context Retrieval** (ace-tool MCP mevcutsa): `mcp__ace-tool__search_context`çağır. Mevcut değilse, built-in tool'ları kullan: dosya keşfi için`Glob`, sembol araması için`Grep`, context toplama için`Read`, daha derin keşif için`Task` (Explore agent).
+2. **Context Retrieval** (ace-tool MCP mevcutsa): `mcp__ace-tool__search_context`çağır. Mevcut değilse, built-in tool'ları kullan: dosya keşfi için `Glob`, sembol araması için `Grep`, context toplama için `Read`, daha derin keşif için `Task` (Explore agent).
 3. **Requirement Tamamlılık Skoru** (0-10):
    - Hedef netliği (0-3), Beklenen sonuç (0-3), Kapsam sınırları (0-2), Kısıtlamalar (0-2)
    - ≥7: Devam et | <7: Dur, açıklayıcı sorular sor

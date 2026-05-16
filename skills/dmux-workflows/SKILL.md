@@ -161,7 +161,7 @@ Example `plan.json`:
 The helper:
 - Creates one branch-backed git worktree per worker
 - Optionally overlays selected `seedPaths` from the main checkout into each worker worktree
-- Writes per-worker `task.md`,`handoff.md`, and`status.md`files under`.orchestration/<session>/`
+- Writes per-worker `task.md`,`handoff.md`, and `status.md`files under`.orchestration/<session>/`
 - Starts a tmux session with one pane per worker
 - Launches each worker command in its own pane
 - Leaves the main pane free for the orchestrator
@@ -188,4 +188,4 @@ Use `seedPaths`when workers need access to dirty or untracked local files that a
 - **Pane not responding:** Switch to the pane directly or inspect it with `tmux capture-pane -pt <session>:0.<pane-index>`.
 - **Merge conflicts:** Use git worktrees to isolate file changes per pane.
 - **High token usage:** Reduce number of parallel panes. Each pane is a full agent session.
-- **tmux not found:** Install with `brew install tmux`(macOS) or`apt install tmux` (Linux).
+- **tmux not found:** Install with `brew install tmux`(macOS) or `apt install tmux` (Linux).

@@ -256,7 +256,7 @@ print(f"Session ID: {session.id}")
 
 | Method | Returns | Description |
 |--------|---------|-------------|
-| `session.get_rtstream(type)`|`list[RTStream]`| Get RTStreams by type:`"mic"`,`"screen"`, or`"system_audio"` |
+| `session.get_rtstream(type)`|`list[RTStream]`| Get RTStreams by type:`"mic"`,`"screen"`, or `"system_audio"` |
 
 ### Generate a Client Token
 
@@ -339,7 +339,7 @@ system_audio = channels.system_audio.default
 
 | Member | Type | Description |
 |--------|------|-------------|
-| `group.default`|`Channel`| Default channel in the group (or`None`) |
+| `group.default`|`Channel`| Default channel in the group (or `None`) |
 | `group.all()`|`list[Channel]` | All channels in the group |
 
 ### Channel Properties

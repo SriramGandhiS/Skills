@@ -155,7 +155,7 @@ Build Status: SUCCESS
 | `cannot borrow as mutable` | 重构以先结束不可变借用；仅在合理情况下克隆 |
 | `does not live long enough` | 使用拥有所有权的类型或添加生命周期注解 |
 | `cannot move out of` | 重构以获取所有权；仅作为最后手段进行克隆 |
-| `mismatched types`| 添加`.into()`、`as` 或显式转换 |
+| `mismatched types`| 添加`.into()`、` as` 或显式转换 |
 | `trait X not implemented`| 添加`#[derive(Trait)]` 或手动实现 |
 | `unresolved import`| 添加到 Cargo.toml 或修复`use` 路径 |
 | `cannot find value` | 添加导入或修复路径 |

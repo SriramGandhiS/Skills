@@ -47,7 +47,7 @@ if command -v cargo-audit >/dev/null; then cargo audit; else echo "cargo-audit n
 | `cannot borrow as mutable`| 不可变借用仍有效 | 重构以先结束不可变借用，或使用`Cell`/`RefCell` |
 | `does not live long enough` | 值在被借用时被丢弃 | 延长生命周期作用域，使用拥有所有权的类型，或添加生命周期注解 |
 | `cannot move out of`| 从引用后面移动值 | 使用`.clone()`、`.to_owned()`，或重构以获取所有权 |
-| `mismatched types`| 类型错误或缺少转换 | 添加`.into()`、`as` 或显式类型转换 |
+| `mismatched types`| 类型错误或缺少转换 | 添加`.into()`、` as` 或显式类型转换 |
 | `trait X is not implemented for Y`| 缺少 impl 或 derive | 添加`#[derive(Trait)]` 或手动实现 trait |
 | `unresolved import`| 缺少依赖或路径错误 | 添加到 Cargo.toml 或修复`use` 路径 |
 | `unused variable`/`unused import`| 死代码 | 移除或添加`_` 前缀 |

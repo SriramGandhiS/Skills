@@ -69,7 +69,7 @@ EOF",
 | Planning | `~/.claude/.ccg/prompts/gemini/architect.md` |
 | Review | `~/.claude/.ccg/prompts/gemini/reviewer.md` |
 
-**Session Reuse**: Her çağrı `SESSION_ID: xxx`döndürür, sonraki fazlar için`resume xxx`kullan. Phase 2'de`GEMINI_SESSION`kaydet, Phase 3 ve 5'te`resume` kullan.
+**Session Reuse**: Her çağrı `SESSION_ID: xxx`döndürür, sonraki fazlar için `resume xxx`kullan. Phase 2'de`GEMINI_SESSION`kaydet, Phase 3 ve 5'te`resume` kullan.
 
 ---
 
@@ -91,7 +91,7 @@ EOF",
 
 `[Mode: Research]` - Requirement'ları anla ve context topla
 
-1. **Code Retrieval** (ace-tool MCP mevcutsa): Mevcut component'leri, stilleri, tasarım sistemini almak için `mcp__ace-tool__search_context`çağır. Mevcut değilse, built-in tool'ları kullan: dosya keşfi için`Glob`, component/stil araması için`Grep`, context toplama için`Read`, daha derin keşif için`Task` (Explore agent).
+1. **Code Retrieval** (ace-tool MCP mevcutsa): Mevcut component'leri, stilleri, tasarım sistemini almak için `mcp__ace-tool__search_context`çağır. Mevcut değilse, built-in tool'ları kullan: dosya keşfi için `Glob`, component/stil araması için `Grep`, context toplama için `Read`, daha derin keşif için `Task` (Explore agent).
 2. Requirement tamamlılık skoru (0-10): >=7 devam et, <7 dur ve tamamla
 
 ### Phase 2: Ideation

@@ -14,10 +14,10 @@ Identify the project type and run the appropriate build:
 |-----------|---------------|
 | `build.gradle.kts`+`composeApp/`(KMP) |`./gradlew composeApp:compileKotlinMetadata 2>&1` |
 | `build.gradle.kts`+`app/`(Android) |`./gradlew app:compileDebugKotlin 2>&1` |
-| `settings.gradle.kts`with modules |`./gradlew assemble 2>&1` |
+| `settings.gradle.kts` with modules |`./gradlew assemble 2>&1` |
 | Detekt configured | `./gradlew detekt 2>&1` |
 
-Also check `gradle.properties`and ` local.properties` for configuration.
+Also check `gradle.properties` and `local.properties` for configuration.
 
 ## Step 2: Parse and Group Errors
 
@@ -62,7 +62,7 @@ Report:
 
 | Error | Fix |
 |-------|-----|
-| Unresolved reference in `commonMain`| Check if the dependency is in`commonMain.dependencies {}` |
+| Unresolved reference in `commonMain`| Check if the dependency is in `commonMain.dependencies {}` |
 | Expect declaration without actual | Add `actual` implementation in each platform source set |
 | Compose compiler version mismatch | Align Kotlin and Compose compiler versions in `libs.versions.toml` |
 | Duplicate class | Check for conflicting dependencies with `./gradlew dependencies` |

@@ -52,7 +52,7 @@ Remaining findings:
 
 1. Medium: skipped automated sessions still create homunculus project state
    before the new guards exit.
-   `observe.sh`resolves ` cwd` and sources project detection before reaching the
+   `observe.sh`resolves`cwd` and sources project detection before reaching the
    automated-session guard block, so `detect-project.sh` still creates
    `projects/<id>/...`directories and updates`projects.json` for sessions that
    later exit early.
@@ -121,7 +121,7 @@ Current recommendation:
 
 - `Mergeable after one final owner pass.`
 - If you want a conservative path, do one quick human review of the remaining
-  `.env.example`, PR-template, and`.tool-versions` nitpicks before merge.
+  `.env.example`, PR-template, and `.tool-versions` nitpicks before merge.
 
 ### `#298` — Large Multi-Domain Content Expansion
 

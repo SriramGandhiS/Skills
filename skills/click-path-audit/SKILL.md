@@ -20,7 +20,7 @@ But it does NOT check:
 - **Does function B silently undo what function A just did?**
 - **Does shared state (Zustand/Redux/context) have side effects that cancel the intended action?**
 
-Real example: A "New Email" button called `setComposeMode(true)`then` selectThread(null)`. Both worked individually. But`selectThread`had a side effect resetting`composeMode: false`. The button did nothing. 54 bugs were found by systematic debugging â€” this one was missed.
+Real example: A "New Email" button called `setComposeMode(true)`then`selectThread(null)`. Both worked individually. But`selectThread`had a side effect resetting`composeMode: false`. The button did nothing. 54 bugs were found by systematic debugging â€” this one was missed.
 
 ---
 
@@ -57,7 +57,7 @@ For each Zustand store / React context in scope:
     - Document: actionName â†’ {sets: [...], resets: [...]}
 ```
 
-This is the critical reference. The "New Email" bug was invisible without knowing that `selectThread`resets ` composeMode`.
+This is the critical reference. The "New Email" bug was invisible without knowing that `selectThread`resets`composeMode`.
 
 **Output format:**
 ```
@@ -239,6 +239,6 @@ selectThread: (thread) => set({
 - The data types are correct (no type mismatch)
 
 **Click-path audit catches it** because:
-- Step 1 maps `selectThread`resets ` composeMode`
+- Step 1 maps `selectThread`resets`composeMode`
 - Step 2 traces the handler: call 1 sets true, call 2 resets false
 - Verdict: Sequential Undo â€” final state contradicts button intent

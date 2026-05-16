@@ -26,7 +26,7 @@ Before writing any script, explore the target pages to understand what is actual
 
 ### Why
 
-You cannot script what you have not seen. Fields may be `<input>`not`<textarea>`, dropdowns may be custom components not`<select>`, and comment boxes may support`@mentions`or`#tags`. Assumptions break recordings silently.
+You cannot script what you have not seen. Fields may be `<input>`not`<textarea>`, dropdowns may be custom components not`<select>`, and comment boxes may support`@mentions` or `#tags`. Assumptions break recordings silently.
 
 ### How
 
@@ -57,11 +57,11 @@ console.log(JSON.stringify(fields, null, 2));
 ### What to look for
 
 - **Form fields**: Are they `<select>`,`<input>`, custom dropdowns, or comboboxes?
-- **Select options**: Dump option values AND text. Placeholders often have `value="0"`or` value=""`which looks non-empty. Use`Array.from(el.options).map(o => ({ value: o.value, text: o.text }))`. Skip options where text includes "Select" or value is`"0"`.
+- **Select options**: Dump option values AND text. Placeholders often have `value="0"` or `value=""`which looks non-empty. Use`Array.from(el.options).map(o => ({ value: o.value, text: o.text }))`. Skip options where text includes "Select" or value is`"0"`.
 - **Rich text**: Does the comment box support `@mentions`,`#tags`, markdown, or emoji? Check placeholder text.
 - **Required fields**: Which fields block form submission? Check `required`,`*` in labels, and try submitting empty to see validation errors.
 - **Dynamic content**: Do fields appear after other fields are filled?
-- **Button labels**: Exact text such as `"Submit"`,`"Submit Request"`, or`"Send"`.
+- **Button labels**: Exact text such as `"Submit"`,`"Submit Request"`, or `"Send"`.
 - **Table column headers**: For table-driven modals, map each `input[type="number"]` to its column header instead of assuming all numeric inputs mean the same thing.
 
 ### Output
@@ -333,7 +333,7 @@ async function showSubtitle(page, text) {
 }
 ```
 
-Call `injectSubtitleBar(page)`alongside` injectCursor(page)` after every navigation.
+Call `injectSubtitleBar(page)`alongside`injectCursor(page)` after every navigation.
 
 Usage pattern:
 
@@ -461,5 +461,5 @@ node demo-script.cjs
 8. Selector failures are swallowed - never use silent catch blocks.
 9. Field types were assumed - discover them first.
 10. Features were assumed - inspect the actual UI before scripting.
-11. Placeholder select values look real - watch for `"0"`and`"Select..."`.
+11. Placeholder select values look real - watch for `"0"` and `"Select..."`.
 12. Popups create separate videos - capture popup pages explicitly and merge later if needed.

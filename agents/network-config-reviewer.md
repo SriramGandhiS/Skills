@@ -40,7 +40,7 @@ router and switch configuration and return prioritized findings with evidence.
 ### Critical
 
 - Plaintext or default credentials.
-- `snmp-server community public`or ` private`, especially with write access.
+- `snmp-server community public` or `private`, especially with write access.
 - Telnet-only management or internet-facing VTY access with no source restriction.
 - Proposed destructive commands such as `reload`,`erase`,`format`, broad
   `no interface`, or removing an entire routing process without rollback context.
@@ -101,6 +101,6 @@ present.
 - Do not recommend removing ACLs, disabling firewall rules, or opening VTY access
   as a diagnostic shortcut.
 - Prefer read-only confirmation commands such as `show running-config`,
-  `show ip access-lists`,`show ip route`,`show logging`, and`show interfaces`.
+  `show ip access-lists`,`show ip route`,`show logging`, and `show interfaces`.
 - If a command changes device state, label it as a proposed fix and require a
   maintenance window, rollback plan, and verification step.

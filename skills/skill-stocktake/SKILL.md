@@ -35,7 +35,7 @@ If the project has no `.claude/skills/` directory, only global skills and comman
 | Mode | Trigger | Duration |
 |------|---------|---------|
 | Quick Scan | `results.json` exists (default) | 5â€“10 min |
-| Full Stocktake | `results.json`absent, or`/skill-stocktake full` | 20â€“30 min |
+| Full Stocktake | `results.json`absent, or `/skill-stocktake full` | 20â€“30 min |
 
 **Results cache:** `~/.claude/skills/skill-stocktake/results.json`
 

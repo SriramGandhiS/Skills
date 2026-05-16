@@ -34,7 +34,7 @@ Pythonic kodun ve en iyi uygulamaların yüksek standartlarını sağlayan kıde
 
 ### YÜKSEK — Pythonic Desenler
 - C tarzı döngüler yerine liste comprehension kullanın
-- `type() ==`yerine` isinstance()` kullanın
+- `type() ==`yerine`isinstance()` kullanın
 - Sihirli sayılar yerine `Enum` kullanın
 - Döngülerde string birleştirme yerine `"".join()` kullanın
 - **Değişebilir varsayılan argümanlar**: `def f(x=[])`—`def f(x=None)` kullanın
@@ -53,7 +53,7 @@ Pythonic kodun ve en iyi uygulamaların yüksek standartlarını sağlayan kıde
 ### ORTA — En İyi Uygulamalar
 - PEP 8: import sırası, adlandırma, boşluklar
 - Public fonksiyonlarda eksik docstring'ler
-- `logging`yerine ` print()`
+- `logging`yerine`print()`
 - `from module import *` — namespace kirliliği
 - `value == None`—`value is None` kullanın
 - Built-in'leri gölgeleme (`list`,`dict`,`str`)
@@ -85,7 +85,7 @@ Düzeltme: Ne değiştirilmeli
 
 ## Framework Kontrolleri
 
-- **Django**: N+1 için `select_related`/`prefetch_related`, çok adımlı için`atomic()`, migrationlar
+- **Django**: N+1 için `select_related`/`prefetch_related`, çok adımlı için `atomic()`, migrationlar
 - **FastAPI**: CORS yapılandırması, Pydantic doğrulama, yanıt modelleri, async'te blocking yok
 - **Flask**: Uygun hata işleyicileri, CSRF koruması
 

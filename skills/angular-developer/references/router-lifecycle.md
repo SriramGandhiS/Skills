@@ -14,7 +14,7 @@ Angular Router emits events through the `Router.events` observable, allowing you
 
 ## Subscribing to Events
 
-Inject the `Router`and filter the`events` observable.
+Inject the `Router` and filter the`events` observable.
 
 ```ts
 import {Router, NavigationStart, NavigationEnd} from '@angular/router';
@@ -40,6 +40,6 @@ provideRouter(routes, withDebugTracing());
 
 ## Common Use Cases
 
-- **Loading Indicators**: Show a spinner when `NavigationStart`fires and hide it on`NavigationEnd`/`Cancel`/`Error`.
+- **Loading Indicators**: Show a spinner when `NavigationStart`fires and hide it on `NavigationEnd`/`Cancel`/`Error`.
 - **Analytics**: Track page views by listening for `NavigationEnd`.
 - **Scroll Management**: Respond to `Scroll` events for custom scroll behavior.

@@ -57,7 +57,7 @@ origin: auto-extracted
 
    Execute **all** of the following before evaluating the draft:
 
-   - [ ] Grep `~/.claude/skills/`and relevant project`.claude/skills/` files by keyword to check for content overlap
+   - [ ] Grep `~/.claude/skills/` and relevant project`.claude/skills/` files by keyword to check for content overlap
    - [ ] Check MEMORY.md (both project and global) for overlap
    - [ ] Consider whether appending to an existing skill would suffice
    - [ ] Confirm this is a reusable pattern, not a one-off fix

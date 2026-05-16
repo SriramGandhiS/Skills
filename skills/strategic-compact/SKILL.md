@@ -94,7 +94,7 @@ Understanding what persists helps you compact with confidence:
 3. **Don't compact mid-implementation** â€” Preserve context for related changes
 4. **Read the suggestion** â€” The hook tells you *when*, you decide *if*
 5. **Write before compacting** â€” Save important context to files or memory before compacting
-6. **Use `/compact`with a summary** â€” Add a custom message:`/compact Focus on implementing auth middleware next`
+6. **Use `/compact` with a summary** â€” Add a custom message:`/compact Focus on implementing auth middleware next`
 
 ## Token Optimization Patterns
 
@@ -116,7 +116,7 @@ Monitor what's consuming your context window:
 
 ### Duplicate Instruction Detection
 Common sources of duplicate context:
-- Same rules in both `~/.claude/rules/`and project`.claude/rules/`
+- Same rules in both `~/.claude/rules/` and project`.claude/rules/`
 - Skills that repeat CLAUDE.md instructions
 - Multiple skills covering overlapping domains
 

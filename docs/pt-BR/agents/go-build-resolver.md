@@ -49,7 +49,7 @@ go mod tidy -v
 | `cannot use X as type Y` | Incompatibilidade de tipo, pointer/valor | Conversão de tipo ou dereference |
 | `X does not implement Y` | Método ausente | Implementar método com receiver correto |
 | `import cycle not allowed` | Dependência circular | Extrair tipos compartilhados para novo pacote |
-| `cannot find package`| Dependência ausente |`go get pkg@version` ou `go mod tidy` |
+| `cannot find package`| Dependência ausente |`go get pkg@version`ou`go mod tidy` |
 | `missing return` | Fluxo de controle incompleto | Adicionar declaração return |
 | `declared but not used` | Var/import não utilizado | Remover ou usar identificador blank |
 | `multiple-value in single-value context`| Retorno não tratado |`result, err := func()` |

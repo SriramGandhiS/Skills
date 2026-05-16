@@ -21,7 +21,7 @@ An AI skill that provides design intelligence for building professional UI/UX ac
 You now have access to 60 agents, 242 skills, and 75 legacy command shims.
 
 > [!TIP]
-> **GitHub Copilot Users**: Enable `.vscode/settings.json` with `"chat.promptFiles": true` to use our custom agents in `.github/prompts/`. Try slash commands like `/plan`, `/tdd`, or `/code-review`.
+> **GitHub Copilot Users**: Enable `.vscode/settings.json` with `"chat.promptFiles": true` to use our custom agents in `.github/prompts/`. Try slash commands like`/plan`,`/tdd`, or `/code-review`.
 > **Elite Performance**: For low-latency local execution, see the [Hermes Setup Guide](docs/HERMES-SETUP.md).
 > **Release Candidate**: Review the [v2.0.0-rc.1 Release Notes](docs/releases/2.0.0-rc.1/release-notes.md) for the latest surface updates.
 
@@ -425,7 +425,7 @@ Just mention your preferred stack in the prompt, or let it default to HTML + Tai
 
 For direct access to the design system generator:
 
-> Note: If you installed via Continue, replace `.claude/skills/`with`.continue/skills/`in the commands below. For Droid (Factory), use`.factory/skills/`.
+> Note: If you installed via Continue, replace `.claude/skills/` with `.continue/skills/` in the commands below. For Droid (Factory), use`.factory/skills/`.
 
 ```bash
 ## Generate design system with ASCII output

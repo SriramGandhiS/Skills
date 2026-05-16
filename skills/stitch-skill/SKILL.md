@@ -47,9 +47,9 @@ For each color provide: **Descriptive Name** + **Hex Code** + **Functional Role*
 ### 3. Establish Typography Rules
 - **Display/Headlines:** Track-tight, controlled scale. Not screaming. Hierarchy through weight and color, not just massive size
 - **Body:** Relaxed leading, max 65 characters per line
-- **Font Selection:** `Inter`is BANNED for premium/creative contexts. Force unique character:`Geist`,`Outfit`,`Cabinet Grotesk`, or`Satoshi`
-- **Serif Ban:** Generic serif fonts (`Times New Roman`,`Georgia`,`Garamond`,`Palatino`) are BANNED. If serif is needed for editorial/creative contexts, use only distinctive modern serifs:`Fraunces`,`Gambarino`,`Editorial New`, or`Instrument Serif`. Serif is always BANNED in dashboards or software UIs
-- **Dashboard Constraint:** Use Sans-Serif pairings exclusively (`Geist`+`Geist Mono`or `Satoshi`+`JetBrains Mono`)
+- **Font Selection:** `Inter`is BANNED for premium/creative contexts. Force unique character:`Geist`,`Outfit`,`Cabinet Grotesk`, or `Satoshi`
+- **Serif Ban:** Generic serif fonts (`Times New Roman`,`Georgia`,`Garamond`,`Palatino`) are BANNED. If serif is needed for editorial/creative contexts, use only distinctive modern serifs:`Fraunces`,`Gambarino`,`Editorial New`, or `Instrument Serif`. Serif is always BANNED in dashboards or software UIs
+- **Dashboard Constraint:** Use Sans-Serif pairings exclusively (`Geist`+`Geist Mono` or `Satoshi`+`JetBrains Mono`)
 - **High-Density Override:** When density exceeds 7, all numbers must use Monospace
 
 ### 4. Define the Hero Section
@@ -91,7 +91,7 @@ Every design must work across all viewports:
 - **Spring Physics default:** `stiffness: 100, damping: 20` â€” premium, weighty feel. No linear easing
 - **Perpetual Micro-Interactions:** Every active component should have an infinite loop state (Pulse, Typewriter, Float, Shimmer)
 - **Staggered Orchestration:** Never mount lists instantly â€” use cascade delays for waterfall reveals
-- **Performance:** Animate exclusively via `transform`and ` opacity`. Never animate`top`,`left`,`width`,`height`. Grain/noise filters on fixed pseudo-elements only
+- **Performance:** Animate exclusively via `transform` and `opacity`. Never animate`top`,`left`,`width`,`height`. Grain/noise filters on fixed pseudo-elements only
 
 ### 9. List Anti-Patterns (AI Tells)
 Encode these as explicit "NEVER DO" rules in the DESIGN.md:

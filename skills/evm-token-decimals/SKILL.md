@@ -19,7 +19,7 @@ Silent decimal mismatches are one of the easiest ways to ship balances or USD va
 
 ## How It Works
 
-Never assume stablecoins use the same decimals everywhere. Query `decimals()`at runtime, cache by`(chain_id, token_address)`, and use decimal-safe math for value calculations.
+Never assume stablecoins use the same decimals everywhere. Query `decimals()` at runtime, cache by `(chain_id, token_address)`, and use decimal-safe math for value calculations.
 
 ## Examples
 

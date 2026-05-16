@@ -676,7 +676,7 @@ class TestCheckoutFlow:
 - **Mock external services**: Don't depend on external APIs
 - **Use fixtures**: Eliminate duplication
 - **Test permissions**: Ensure authorization works
-- **Keep tests fast**: Use `--reuse-db`and `--nomigrations`
+- **Keep tests fast**: Use `--reuse-db` and `--nomigrations`
 
 ### DON'T
 

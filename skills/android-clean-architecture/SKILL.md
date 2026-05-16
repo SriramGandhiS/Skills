@@ -44,7 +44,7 @@ domain â†’ core (or no dependencies)
 core â†’ (nothing)
 ```
 
-**Critical**: `domain`must NEVER depend on` data`,`presentation`, or any framework. It contains pure Kotlin only.
+**Critical**: `domain`must NEVER depend on `data`,`presentation`, or any framework. It contains pure Kotlin only.
 
 ## Domain Layer
 
@@ -329,7 +329,7 @@ plugins { id("kmp-library") }
 - Importing Android framework classes in `domain` â€” keep it pure Kotlin
 - Exposing database entities or DTOs to the UI layer â€” always map to domain models
 - Putting business logic in ViewModels â€” extract to UseCases
-- Using `GlobalScope`or unstructured coroutines â€” use`viewModelScope` or structured concurrency
+- Using `GlobalScope` or unstructured coroutines â€” use`viewModelScope` or structured concurrency
 - Fat repository implementations â€” split into focused DataSources
 - Circular module dependencies â€” if A depends on B, B must not depend on A
 

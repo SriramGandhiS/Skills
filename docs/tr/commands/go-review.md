@@ -9,7 +9,7 @@ Bu komut, Go'ya özel kapsamlı kod incelemesi için **go-reviewer** agent'ını
 ## Bu Komut Ne Yapar
 
 1. **Go Değişikliklerini Tanımla**: `git diff`ile değiştirilmiş`.go` dosyalarını bul
-2. **Static Analiz Çalıştır**: `go vet`,`staticcheck` ve `golangci-lint` yürüt
+2. **Static Analiz Çalıştır**: `go vet`,`staticcheck`ve`golangci-lint` yürüt
 3. **Güvenlik Taraması**: SQL injection, command injection, race condition'ları kontrol et
 4. **Eşzamanlılık İncelemesi**: Goroutine güvenliğini, channel kullanımını, mutex desenlerini analiz et
 5. **İdiomatic Go Kontrolü**: Kodun Go kurallarına ve en iyi uygulamalara uyduğunu doğrula

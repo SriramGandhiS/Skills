@@ -14,7 +14,7 @@
 ### Convenções Go
 
 - Siga Effective Go e o guia Go Code Review Comments
-- Use `errors.New`/`fmt.Errorf` com `%w` para wrapping — nunca string matching em erros
+- Use `errors.New`/`fmt.Errorf`com`%w` para wrapping — nunca string matching em erros
 - Sem funções `init()`— inicialização explícita em`main()` ou construtores
 - Sem estado global mutável — passe dependências via construtores
 - Context deve ser o primeiro parâmetro e propagado por todas as camadas

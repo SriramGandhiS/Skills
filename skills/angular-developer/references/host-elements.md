@@ -32,7 +32,7 @@ export class CustomSlider {
 
 ## Legacy Decorators
 
-`@HostBinding`and `@HostListener` are supported for backwards compatibility but should be avoided in new code.
+`@HostBinding` and `@HostListener` are supported for backwards compatibility but should be avoided in new code.
 
 ```ts
 export class CustomSlider {
@@ -58,7 +58,7 @@ If both the component (host binding) and the consumer (template binding) bind to
 
 ## Injecting Host Attributes
 
-Use `HostAttributeToken`with the`inject` function to read static attributes from the host element at construction time.
+Use `HostAttributeToken` with the`inject` function to read static attributes from the host element at construction time.
 
 ```ts
 import {Component, HostAttributeToken, inject} from '@angular/core';

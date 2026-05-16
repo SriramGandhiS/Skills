@@ -127,7 +127,7 @@ model: sonnet
 
 * **缺少类型注解 / 隐式 `dynamic`** —— 启用`strict-casts`,`strict-inference`,`strict-raw-types` 来捕获这些问题
 * **`!`感叹号过度使用** —— 优先使用`?.`,`??`,`case var v?`, 或`requireNotNull`
-* **捕获宽泛的异常** —— 没有 `on`子句的`catch (e)`；指定异常类型
+* **捕获宽泛的异常** —— 没有 `on `子句的`catch (e)`；指定异常类型
 * **捕获 `Error`子类型** ——`Error` 表示错误，而不是可恢复的条件
 * **使用 `var`而`final`可用** —— 对于局部变量，优先使用`final`；对于编译时常量，优先使用`const`
 * **相对导入** —— 使用 `package:` 导入以确保一致性

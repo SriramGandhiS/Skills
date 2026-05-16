@@ -281,7 +281,7 @@ document.addEventListener("keydown", (e) => {
 **CRITICAL: `exportFile()` must strip edit state before capturing outerHTML.**
 
 When the user presses Ctrl+S in edit mode, `document.documentElement.outerHTML` captures the live DOM â€”
-including `body.edit-active`,`contenteditable="true"`on every text element, and`.active`/`.show` classes on
+including `body.edit-active`,`contenteditable="true"` on every text element, and `.active`/`.show` classes on
 the toggle button and banner. Anyone opening the saved file sees dashed outlines, a checkmark button, and an
 edit banner, as if permanently stuck in edit mode.
 

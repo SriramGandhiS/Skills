@@ -26,7 +26,7 @@ Three primary modules:
 
 1. **`checkInteractions(newDrug, currentMeds, allergies)`** â€” Checks a new drug against current medications and known allergies. Returns severity-sorted`InteractionAlert[]`. Uses`DrugInteractionPair` data model.
 2. **`validateDose(drug, dose, route, weight, age, renalFunction)`** â€” Validates a prescribed dose against weight-based, age-adjusted, and renal-adjusted rules. Returns`DoseValidationResult`.
-3. **`calculateNEWS2(vitals)`** â€” National Early Warning Score 2 from`NEWS2Input`. Returns`NEWS2Result` with total score, risk level, and escalation guidance.
+3. **`calculateNEWS2(vitals)`** â€” National Early Warning Score 2 from `NEWS2Input`. Returns`NEWS2Result` with total score, risk level, and escalation guidance.
 
 ```
 EMR UI

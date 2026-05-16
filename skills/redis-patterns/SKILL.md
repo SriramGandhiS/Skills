@@ -332,7 +332,7 @@ Set via `redis.conf`:`maxmemory-policy allkeys-lru`
 | Anti-Pattern | Problem | Fix |
 |---|---|---|
 | Keys with no TTL | Memory grows unbounded | Always set TTL |
-| `KEYS *`in production | Blocks the server (O(N)) | Use`SCAN` cursor |
+| `KEYS *` in production | Blocks the server (O(N)) | Use`SCAN` cursor |
 | Storing large blobs (>100KB) | Slow serialization, memory pressure | Store reference + fetch from object store |
 | Single Redis for everything | No isolation between cache & queue | Use separate DBs or instances |
 | Ignoring connection pool limits | Connection exhaustion under load | Size pool to workload |
@@ -376,7 +376,7 @@ Use cache-aside with `setex` and a 5-minute TTL on the response. Key on the requ
 Use fixed-window with `pipeline(transaction=True)` for low-traffic endpoints; use sliding-window Lua for accurate per-user throttling.
 
 **Coordinate a background job across workers:**
-Use `acquire_lock`with a TTL that exceeds the expected job duration. Always release in a`finally` block.
+Use `acquire_lock` with a TTL that exceeds the expected job duration. Always release in a`finally` block.
 
 **Fan-out notifications to multiple subscribers:**
 Use Pub/Sub for fire-and-forget. Switch to Streams if you need guaranteed delivery or replay for late consumers.

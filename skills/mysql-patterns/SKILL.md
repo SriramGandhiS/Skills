@@ -61,10 +61,10 @@ Default choices:
 | Use Case | Prefer | Avoid |
 | --- | --- | --- |
 | Surrogate primary keys | `BIGINT UNSIGNED AUTO_INCREMENT`|`INT` for tables that can grow beyond 2B rows |
-| UUID lookup keys | `BINARY(16)`with conversion helpers |`VARCHAR(36)` primary keys on hot tables |
-| Money and exact quantities | `DECIMAL(p, s)`|`FLOAT`or`DOUBLE` |
+| UUID lookup keys | `BINARY(16)` with conversion helpers |`VARCHAR(36)` primary keys on hot tables |
+| Money and exact quantities | `DECIMAL(p, s)`|`FLOAT` or `DOUBLE` |
 | User-facing text | `utf8mb4`tables and indexes | MySQL`utf8`/`utf8mb3` defaults |
-| Application timestamps | `DATETIME`with UTC managed by the app | Assuming`DATETIME` stores time zone metadata |
+| Application timestamps | `DATETIME` with UTC managed by the app | Assuming`DATETIME` stores time zone metadata |
 | Soft deletes | `deleted_at DATETIME NULL` plus scoped indexes | Filtering soft-deleted rows without an index |
 | Extensible status values | lookup table or constrained `VARCHAR`|`ENUM` when values change often |
 
@@ -342,7 +342,7 @@ DROP USER IF EXISTS ''@'%';
 
 Security review points:
 
-- Do not grant `ALL PRIVILEGES`or`*.*` to application users.
+- Do not grant `ALL PRIVILEGES` or `*.*` to application users.
 - Require TLS for application users when traffic crosses hosts or networks.
 - Store credentials in the platform secret manager, not in examples, scripts, or
   repository files.

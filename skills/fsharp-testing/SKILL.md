@@ -250,7 +250,7 @@ tests/
 |---|---|
 | Testing implementation details | Test behavior and outcomes |
 | Mutable shared test state | Fresh state per test |
-| `Thread.Sleep`in async tests | Use`Task.Delay` with timeout, or polling helpers |
+| `Thread.Sleep` in async tests | Use`Task.Delay` with timeout, or polling helpers |
 | Asserting on `sprintf` output | Assert on typed values and pattern matches |
 | Ignoring `CancellationToken` | Always pass and verify cancellation |
 | Skipping property-based tests | Use FsCheck for any function with clear invariants |

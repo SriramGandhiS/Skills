@@ -310,7 +310,7 @@ subtest 'file processing' => sub {
 
 ### Shared Test Helpers
 
-Place reusable helpers in `t/lib/TestHelper.pm`and load with`use lib 't/lib'`. Export factory functions like`create_test_db()`,`create_temp_dir()`, and`fixture_path()` via`Exporter`.
+Place reusable helpers in `t/lib/TestHelper.pm` and load with `use lib 't/lib'`. Export factory functions like`create_test_db()`,`create_temp_dir()`, and `fixture_path()`via`Exporter`.
 
 ## Mocking
 
@@ -347,7 +347,7 @@ subtest 'mock external API' => sub {
 ## *MyApp::API::fetch_user = sub { ... };  # NEVER â€” leaks across tests
 ```
 
-For lightweight mock objects, use `Test::MockObject`to create injectable test doubles with`->mock()`and verify calls with`->called_ok()`.
+For lightweight mock objects, use `Test::MockObject` to create injectable test doubles with `->mock()` and verify calls with `->called_ok()`.
 
 ## Coverage with Devel::Cover
 
@@ -404,7 +404,7 @@ done_testing;
 - **Use Test2::V0**: Modern assertions, better diagnostics
 - **Use subtests**: Group related assertions, isolate state
 - **Mock external dependencies**: Network, database, file system
-- **Use `prove -l`**: Always include lib/ in`@INC`
+- **Use `prove -l`**: Always include lib/ in `@INC`
 - **Name tests clearly**: `'user login with invalid password fails'`
 - **Test edge cases**: Empty strings, undef, zero, boundary values
 - **Aim for 80%+ coverage**: Focus on business logic paths

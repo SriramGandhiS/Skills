@@ -24,11 +24,11 @@ Every element on a timeline is an **asset**. VideoDB provides five asset types:
 
 | Asset | Import | Primary Use |
 |-------|--------|-------------|
-| `VideoAsset`|`from videodb.asset import VideoAsset` | Video clips (trim, sequencing) |
-| `AudioAsset`|`from videodb.asset import AudioAsset` | Music, SFX, narration |
-| `ImageAsset`|`from videodb.asset import ImageAsset` | Logos, thumbnails, overlays |
-| `TextAsset`|`from videodb.asset import TextAsset, TextStyle` | Titles, captions, lower-thirds |
-| `CaptionAsset`|`from videodb.editor import CaptionAsset` | Auto-rendered subtitles (Editor API) |
+| `VideoAsset`|` from videodb.asset import VideoAsset` | Video clips (trim, sequencing) |
+| `AudioAsset`|` from videodb.asset import AudioAsset` | Music, SFX, narration |
+| `ImageAsset`|` from videodb.asset import ImageAsset` | Logos, thumbnails, overlays |
+| `TextAsset`|` from videodb.asset import TextAsset, TextStyle` | Titles, captions, lower-thirds |
+| `CaptionAsset`|` from videodb.editor import CaptionAsset` | Auto-rendered subtitles (Editor API) |
 
 ## Building a Timeline
 
@@ -51,7 +51,7 @@ stream_url = timeline.generate_stream()
 
 ### Trim / Sub-clip
 
-Use `start`and ` end`on a`VideoAsset` to extract a portion:
+Use `start` and `end` on a`VideoAsset` to extract a portion:
 
 ```python
 ## Take only seconds 10â€“30 from the source video
@@ -67,7 +67,7 @@ timeline.add_inline(clip)
 | `start`|`float`|`0` | Trim start (seconds) |
 | `end`|`float\|None`|`None`| Trim end (`None` = full) |
 
-> **Warning:** The SDK does not validate negative timestamps. Passing `start=-5`is silently accepted but produces broken or unexpected output. Always ensure`start >= 0`,`start < end`, and`end <= video.length`before creating a`VideoAsset`.
+> **Warning:** The SDK does not validate negative timestamps. Passing `start=-5`is silently accepted but produces broken or unexpected output. Always ensure`start >= 0`,`start < end`, and `end <= video.length`before creating a`VideoAsset`.
 
 ## Text Overlays
 
@@ -191,7 +191,7 @@ There are two ways to add captions to video.
 
 ### Method 1: Subtitle Workflow (simplest)
 
-Use `video.add_subtitle()`to burn subtitles directly onto a video stream. This uses the`videodb.timeline.Timeline` internally:
+Use `video.add_subtitle()` to burn subtitles directly onto a video stream. This uses the`videodb.timeline.Timeline` internally:
 
 ```python
 from videodb import SubtitleStyle
@@ -213,7 +213,7 @@ stream_url = video.add_subtitle(style=SubtitleStyle(
 
 ### Method 2: Editor API (advanced)
 
-The Editor API (`videodb.editor`) provides a track-based composition system with`CaptionAsset`,`Clip`,`Track`, and its own`Timeline`. This is a separate API from the`videodb.timeline.Timeline` used above.
+The Editor API (`videodb.editor`) provides a track-based composition system with `CaptionAsset`,`Clip`,`Track`, and its own`Timeline`. This is a separate API from the`videodb.timeline.Timeline` used above.
 
 ```python
 from videodb.editor import (
@@ -397,12 +397,12 @@ VideoDB has two separate timeline systems. They are **not interchangeable**:
 
 | | `videodb.timeline.Timeline`|`videodb.editor.Timeline` (Editor API) |
 |---|---|---|
-| **Import** | `from videodb.timeline import Timeline`|`from videodb.editor import Timeline as EditorTimeline` |
+| **Import** | `from videodb.timeline import Timeline`|` from videodb.editor import Timeline as EditorTimeline` |
 | **Assets** | `VideoAsset`,`AudioAsset`,`ImageAsset`,`TextAsset`|`CaptionAsset`,`Clip`,`Track` |
-| **Methods** | `add_inline()`,`add_overlay()`|`add_track()` with`Track `/`Clip` |
+| **Methods** | `add_inline()`,`add_overlay()`|`add_track()` with `Track`/`Clip` |
 | **Best for** | Video composition, overlays, multi-clip editing | Caption/subtitle styling with animations |
 
-Do not mix assets from one API into the other. `CaptionAsset`only works with the Editor API.`VideoAsset`/`AudioAsset`/`ImageAsset`/`TextAsset`only work with`videodb.timeline.Timeline`.
+Do not mix assets from one API into the other. `CaptionAsset`only works with the Editor API.`VideoAsset`/`AudioAsset`/`ImageAsset`/`TextAsset`only work with `videodb.timeline.Timeline`.
 
 ## Limitations & Constraints
 
@@ -420,14 +420,14 @@ The timeline editor is designed for **non-destructive linear composition**. The 
 | **No animated text** | `TextAsset`is static for its full duration. No fade-in/out, movement, or animation. For animated captions, use`CaptionAsset` with the Editor API. |
 | **No mixed text styling** | A single `TextAsset`has one`TextStyle`. Cannot mix bold, italic, or colors within a single text block. |
 | **No blank or solid-color clips** | Cannot create a solid color frame, black screen, or standalone title card. Text and image overlays require a `VideoAsset` beneath them on the inline track. |
-| **No audio volume control** | `AudioAsset`has no` volume`parameter. Audio is either full volume or muted via `disable_other_tracks`. Cannot mix at a reduced level. |
+| **No audio volume control** | `AudioAsset`has no`volume`parameter. Audio is either full volume or muted via`disable_other_tracks`. Cannot mix at a reduced level. |
 | **No keyframe animation** | Cannot change overlay properties over time (e.g., move an image from position A to B). |
 
 ### Constraints
 
 | Constraint | Detail |
 |---|---|
-| **Audio fade max 5 seconds** | `fade_in_duration`and ` fade_out_duration` are capped at 5 seconds each. |
+| **Audio fade max 5 seconds** | `fade_in_duration` and `fade_out_duration` are capped at 5 seconds each. |
 | **Overlay positioning is absolute** | Overlays use absolute timestamps from the timeline start. Rearranging inline clips does not move their overlays. |
 | **Inline track is video only** | `add_inline()`only accepts`VideoAsset`. Audio, image, and text must use`add_overlay()`. |
 | **No overlay-to-clip binding** | Overlays are placed at a fixed timeline timestamp. There is no way to attach an overlay to a specific inline clip so it moves with it. |
@@ -436,8 +436,8 @@ The timeline editor is designed for **non-destructive linear composition**. The 
 
 - **Non-destructive**: Timelines never modify source media. You can create multiple timelines from the same assets.
 - **Overlay stacking**: Multiple overlays can start at the same timestamp. Audio overlays mix together; image/text overlays layer in add-order.
-- **Inline is VideoAsset only**: `add_inline()`only accepts`VideoAsset`. Use`add_overlay()` for`AudioAsset `,`ImageAsset`, and`TextAsset`.
-- **Trim precision**: `start`/`end` on `VideoAsset`and`AudioAsset` are in seconds.
-- **Muting video audio**: Set `disable_other_tracks=True`on `AudioAsset` to mute the original video audio when overlaying music or narration.
-- **Fade limits**: `fade_in_duration`and ` fade_out_duration`on`AudioAsset` have a maximum of 5 seconds.
-- **Generated media**: Use `coll.generate_music()`,`coll.generate_sound_effect()`,`coll.generate_voice()`, and`coll.generate_image()` to create media that can be used as timeline assets immediately.
+- **Inline is VideoAsset only**: `add_inline()`only accepts`VideoAsset`. Use`add_overlay()` for `AudioAsset`,`ImageAsset`, and `TextAsset`.
+- **Trim precision**: `start`/`end` on `VideoAsset` and `AudioAsset` are in seconds.
+- **Muting video audio**: Set `disable_other_tracks=True` on `AudioAsset` to mute the original video audio when overlaying music or narration.
+- **Fade limits**: `fade_in_duration` and `fade_out_duration` on `AudioAsset` have a maximum of 5 seconds.
+- **Generated media**: Use `coll.generate_music()`,`coll.generate_sound_effect()`,`coll.generate_voice()`, and `coll.generate_image()` to create media that can be used as timeline assets immediately.

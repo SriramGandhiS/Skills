@@ -26,7 +26,7 @@ Check for these problems and fix them:
 - **Numbers in proportional font.** Use a monospace font or enable tabular figures (`font-variant-numeric: tabular-nums`) for data-heavy interfaces.
 - **Missing letter-spacing adjustments.** Use negative tracking for large headers, positive tracking for small caps or labels.
 - **All-caps subheaders everywhere.** Try lowercase italics, sentence case, or small-caps instead.
-- **Orphaned words.** Single words sitting alone on the last line. Fix with `text-wrap: balance`or ` text-wrap: pretty`.
+- **Orphaned words.** Single words sitting alone on the last line. Fix with `text-wrap: balance` or `text-wrap: pretty`.
 
 ### Color and Surfaces
 
@@ -46,7 +46,7 @@ Check for these problems and fix them:
 
 - **Everything centered and symmetrical.** Break symmetry with offset margins, mixed aspect ratios, or left-aligned headers over centered content.
 - **Three equal card columns as feature row.** This is the most generic AI layout. Replace with a 2-column zig-zag, asymmetric grid, horizontal scroll, or masonry layout.
-- **Using `height: 100vh`for full-screen sections.** Replace with`min-height: 100dvh` to prevent layout jumping on mobile browsers (iOS Safari viewport bug).
+- **Using `height: 100vh` for full-screen sections.** Replace with `min-height: 100dvh` to prevent layout jumping on mobile browsers (iOS Safari viewport bug).
 - **Complex flexbox percentage math.** Replace with CSS Grid for reliable multi-column structures.
 - **No max-width container.** Add a container constraint (around 1200-1440px) with auto margins so content doesn't stretch edge-to-edge on wide screens.
 - **Cards of equal height forced by flexbox.** Allow variable heights or use masonry when content varies in length.
@@ -63,7 +63,7 @@ Check for these problems and fix them:
 ### Interactivity and States
 
 - **No hover states on buttons.** Add background shift, slight scale, or translate on hover.
-- **No active/pressed feedback.** Add a subtle `scale(0.98)`or` translateY(1px)` on press to simulate a physical click.
+- **No active/pressed feedback.** Add a subtle `scale(0.98)` or `translateY(1px)` on press to simulate a physical click.
 - **Instant transitions with zero duration.** Add smooth transitions (200-300ms) to all interactive elements.
 - **Missing focus ring.** Ensure visible focus indicators for keyboard navigation. This is an accessibility requirement, not optional.
 - **No loading states.** Replace generic circular spinners with skeleton loaders that match the layout shape.
@@ -72,7 +72,7 @@ Check for these problems and fix them:
 - **Dead links.** Buttons that link to `#`. Either link to real destinations or visually disable them.
 - **No indication of current page in navigation.** Style the active nav link differently so users know where they are.
 - **Scroll jumping.** Anchor clicks jump instantly. Add `scroll-behavior: smooth`.
-- **Animations using `top`,`left`,`width`,`height`.** Switch to `transform`and`opacity` for GPU-accelerated, smooth animation.
+- **Animations using `top`,`left`,`width`,`height`.** Switch to `transform` and `opacity` for GPU-accelerated, smooth animation.
 
 ### Content
 
@@ -114,7 +114,7 @@ Check for these problems and fix them:
 - **Div soup.** Use semantic HTML: `<nav>`,`<main>`,`<article>`,`<aside>`,`<section>`.
 - **Inline styles mixed with CSS classes.** Move all styling to the project's styling system.
 - **Hardcoded pixel widths.** Use relative units (`%`,`rem`,`em`,`max-width`) for flexible layouts.
-- **Missing alt text on images.** Describe image content for screen readers. Never leave `alt=""`or` alt="image"` on meaningful images.
+- **Missing alt text on images.** Describe image content for screen readers. Never leave `alt=""` or `alt="image"` on meaningful images.
 - **Arbitrary z-index values like `9999`.** Establish a clean z-index scale in the theme/variables.
 - **Commented-out dead code.** Remove all debug artifacts before shipping.
 - **Import hallucinations.** Check that every import actually exists in `package.json` or the project dependencies.

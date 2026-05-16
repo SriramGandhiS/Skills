@@ -9,7 +9,7 @@ Use the built-in ORM-like data layer for database operations. It provides a ligh
 ### Architecture
 
 Each table is represented by:
-1. **Java POJO**: Extends `AbstractData`, provides getters/setters and`setData(Row)`.
+1. **Java POJO**: Extends `AbstractData`, provides getters/setters and `setData(Row)`.
 2. **Mapping XML**: `ClassName.map.xml` in resources, binding Java fields to DB columns.
 
 #### Key Base Class: `AbstractData`
@@ -94,6 +94,6 @@ Table filtered = user.find(
 ## Important Rules
 
 1. **File Placement**: The mapping XML **must** mirror the POJO's package path under `src/main/resources/`.
-2. **Naming**: Table names are singularized for class names (`users`â†’`User`). Underscored columns become camelCase fields (`created_at`â†’`createdAt`).
+2. **Naming**: Table names are singularized for class names (`users`â†’`User`). Underscored columns become camelCase fields (`created_at `â†’`createdAt`).
 3. **Setters**: Use `setFieldAsXxx`methods (e.g.,`setFieldAsString`) in setters to sync state with the internal field map.
-4. **Id Field**: The primary key field in Java is always named `Id`(inherited from`AbstractData`).
+4. **Id Field**: The primary key field in Java is always named `Id`(inherited from `AbstractData`).

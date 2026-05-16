@@ -26,7 +26,7 @@ top-level sections stable:
 | `sessionControls` | Supported operator actions for the current target | ECC CLI, dmux, git/GitHub |
 | `sync` | Linear, GitHub, and handoff publication state | status updates, work items, handoff writer |
 
-Fields can be `null`, empty arrays, or`"unknown"` when a harness cannot expose
+Fields can be `null`, empty arrays, or `"unknown"` when a harness cannot expose
 the signal. Producers should not invent incompatible names. Consumers should
 render missing sections as unavailable, not as green.
 

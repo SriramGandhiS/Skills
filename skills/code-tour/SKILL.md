@@ -6,7 +6,7 @@ origin: ECC
 
 # Code Tour
 
-Create **CodeTour** `.tour`files for codebase walkthroughs that open directly to real files and line ranges. Tours live in`.tours/` and are meant for the CodeTour format, not ad hoc Markdown notes.
+Create **CodeTour** `.tour`files for codebase walkthroughs that open directly to real files and line ranges. Tours live in `.tours/` and are meant for the CodeTour format, not ad hoc Markdown notes.
 
 A good tour is a narrative for a specific reader:
 - what they are looking at

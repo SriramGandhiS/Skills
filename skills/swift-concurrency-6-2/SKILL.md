@@ -195,7 +195,7 @@ To use `@concurrent`:
 - **Enable MainActor inference mode** for app targets that are mostly single-threaded
 - **Profile before offloading** â€” use Instruments to find actual bottlenecks
 - **Protect globals with MainActor** â€” global/static mutable state needs actor isolation
-- **Use isolated conformances** instead of `nonisolated`workarounds or`@Sendable` wrappers
+- **Use isolated conformances** instead of `nonisolated`workarounds or `@Sendable` wrappers
 - **Migrate incrementally** â€” enable features one at a time in build settings
 
 ## Anti-Patterns to Avoid

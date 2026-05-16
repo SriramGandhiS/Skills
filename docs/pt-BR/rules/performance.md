@@ -36,7 +36,7 @@ O pensamento estendido está habilitado por padrão, reservando até 31.999 toke
 
 Controle o pensamento estendido via:
 - **Toggle**: Option+T (macOS) / Alt+T (Windows/Linux)
-- **Config**: Defina `alwaysThinkingEnabled`em `~/.claude/settings.json`
+- **Config**: Defina `alwaysThinkingEnabled`em`~/.claude/settings.json`
 - **Limite de orçamento**: `export MAX_THINKING_TOKENS=10000`
 - **Modo verbose**: Ctrl+O para ver a saída de pensamento
 

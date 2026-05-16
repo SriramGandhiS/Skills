@@ -21,7 +21,7 @@ Agent-powered lead intelligence pipeline that finds, scores, and reaches high-va
 
 ### Required
 - **Exa MCP** â€” Deep web search for people, companies, and signals (`web_search_exa`)
-- **X API** â€” Follower/following graph, mutual analysis, recent activity (`X_BEARER_TOKEN`, plus write-context credentials such as`X_CONSUMER_KEY`,`X_CONSUMER_SECRET`,`X_ACCESS_TOKEN`,`X_ACCESS_TOKEN_SECRET`)
+- **X API** â€” Follower/following graph, mutual analysis, recent activity (`X_BEARER_TOKEN`, plus write-context credentials such as `X_CONSUMER_KEY`,`X_CONSUMER_SECRET`,`X_ACCESS_TOKEN`,`X_ACCESS_TOKEN_SECRET`)
 
 ### Optional (enhance results)
 - **LinkedIn** â€” Direct API if available, otherwise browser control for search, profile inspection, and drafting

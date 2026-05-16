@@ -10,7 +10,7 @@ wrapper script, it only rewrites the settings file.
 
 The previous version of this helper registered the raw `observe.sh` path
 as the hook command, shared a single command string across `PreToolUse`
-and `PostToolUse`, and relied on`ConvertTo-Json` defaults that can emit
+and `PostToolUse`, and relied on `ConvertTo-Json` defaults that can emit
 CRLF line endings. Under Claude Code v2.1.116 the first argv token is
 duplicated, so the wrapper needs to be invoked with a specific shape and
 the two hook phases need distinct entries.
@@ -22,7 +22,7 @@ the two hook phases need distinct entries.
   PR #1540.
 - The wrapper path is normalized to forward slashes before it is embedded
   in the hook command, avoiding MSYS backslash handling surprises.
-- `PreToolUse`and `PostToolUse` receive distinct commands with explicit
+- `PreToolUse` and `PostToolUse` receive distinct commands with explicit
   `pre`/`post` positional arguments.
 - The settings file is written UTF-8 (no BOM) with CRLF normalized to LF
   so downstream JSON parsers never see mixed line endings.

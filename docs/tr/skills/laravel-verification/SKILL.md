@@ -111,7 +111,7 @@ php artisan view:cache
 
 - Cache warmup'larının production yapılandırmasında başarılı olduğundan emin olun
 - Kuyruk worker'larının ve zamanlayıcının yapılandırıldığını doğrulayın
-- Hedef ortamda `storage/`ve` bootstrap/cache/`'in yazılabilir olduğunu onaylayın
+- Hedef ortamda `storage/`ve`bootstrap/cache/`'in yazılabilir olduğunu onaylayın
 
 ## Faz 7: Kuyruk ve Zamanlayıcı Kontrolleri
 

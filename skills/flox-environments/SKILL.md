@@ -24,7 +24,7 @@ If the user just needs a single language runtime with no system dependencies, st
 
 ## Core Concepts
 
-Flox environments are defined in `.flox/env/manifest.toml`and activated with`flox activate`. The manifest declares packages, environment variables, setup hooks, and shell configuration â€” everything needed to reproduce the environment anywhere.
+Flox environments are defined in `.flox/env/manifest.toml` and activated with `flox activate`. The manifest declares packages, environment variables, setup hooks, and shell configuration â€” everything needed to reproduce the environment anywhere.
 
 **Key paths:**
 - `.flox/env/manifest.toml` â€” Environment definition (commit this)
@@ -245,7 +245,7 @@ gdb.systems = ["x86_64-linux", "aarch64-linux"]
 
 ### Hooks â€” Non-Interactive Setup
 
-Hooks run on every activation. Keep them fast and idempotent. Rule of thumb: **if it should happen automatically, put it in `[hook]`; if the user should be able to type it, put it in`[profile]`.**
+Hooks run on every activation. Keep them fast and idempotent. Rule of thumb: **if it should happen automatically, put it in `[hook]`; if the user should be able to type it, put it in `[profile]`.**
 
 ```toml
 [hook]
@@ -480,7 +480,7 @@ flox search <package> --all       # Broader package search (case-sensitive)
 **Common issues:**
 - **Package not found:** Search is case-sensitive â€” try `flox search --all`
 - **File conflicts between packages:** Add `priority` to the package that should win
-- **Hook failures:** Use `return`not ` exit`; guard with`${FLOX_ENV_CACHE:-}`
+- **Hook failures:** Use `return`not`exit`; guard with `${FLOX_ENV_CACHE:-}`
 - **Stale dependencies:** Delete the `$FLOX_ENV_CACHE/.deps_installed` flag file
 
 ## Related Skills

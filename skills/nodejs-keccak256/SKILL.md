@@ -99,4 +99,4 @@ grep -rn "keccak256" --include="*.ts" --include="*.js" . | grep -v node_modules
 
 ## Rule
 
-For Ethereum contexts, never use `crypto.createHash('sha3-256')`. Use Keccak-aware helpers from`ethers `,`viem`,`web3`, or another explicit Keccak implementation.
+For Ethereum contexts, never use `crypto.createHash('sha3-256')`. Use Keccak-aware helpers from `ethers`,`viem`,`web3`, or another explicit Keccak implementation.

@@ -70,7 +70,7 @@ EOF",
 ```
 
 **Model Parameter Notes**:
-- `{{GEMINI_MODEL_FLAG}}`: When using`--backend gemini`, replace with`--gemini-model gemini-3-pro-preview` (note trailing space); use empty string for codex
+- `{{GEMINI_MODEL_FLAG}}`: When using`--backend gemini`, replace with `--gemini-model gemini-3-pro-preview` (note trailing space); use empty string for codex
 
 **Role Prompts**:
 
@@ -80,9 +80,9 @@ EOF",
 | Planning | `~/.claude/.ccg/prompts/codex/architect.md`|`~/.claude/.ccg/prompts/gemini/architect.md` |
 | Review | `~/.claude/.ccg/prompts/codex/reviewer.md`|`~/.claude/.ccg/prompts/gemini/reviewer.md` |
 
-**Session Reuse**: Each call returns `SESSION_ID: xxx`, use`resume xxx`subcommand for subsequent phases (note:`resume`, not `--resume`).
+**Session Reuse**: Each call returns `SESSION_ID: xxx`, use`resume xxx`subcommand for subsequent phases (note:`resume`, not`--resume`).
 
-**Parallel Calls**: Use `run_in_background: true`to start, wait for results with`TaskOutput`. **Must wait for all models to return before proceeding to next phase**.
+**Parallel Calls**: Use `run_in_background: true` to start, wait for results with `TaskOutput`. **Must wait for all models to return before proceeding to next phase**.
 
 **Wait for Background Tasks** (use max timeout 600000ms = 10 minutes):
 
@@ -124,7 +124,7 @@ node scripts/orchestrate-worktrees.js .claude/plan/workflow-e2e-test.json --exec
 `[Mode: Research]` - Understand requirements and gather context:
 
 1. **Prompt Enhancement** (if ace-tool MCP available): Call `mcp__ace-tool__enhance_prompt`, **replace original $ARGUMENTS with enhanced result for all subsequent Codex/Gemini calls**. If unavailable, use`$ARGUMENTS` as-is.
-2. **Context Retrieval** (if ace-tool MCP available): Call `mcp__ace-tool__search_context`. If unavailable, use built-in tools:`Glob`for file discovery,`Grep`for symbol search,`Read`for context gathering,`Task` (Explore agent) for deeper exploration.
+2. **Context Retrieval** (if ace-tool MCP available): Call `mcp__ace-tool__search_context`. If unavailable, use built-in tools:`Glob` for file discovery,`Grep` for symbol search,`Read` for context gathering,`Task` (Explore agent) for deeper exploration.
 3. **Requirement Completeness Score** (0-10):
    - Goal clarity (0-3), Expected outcome (0-3), Scope boundaries (0-2), Constraints (0-2)
    - ≥7: Continue | <7: Stop, ask clarifying questions
@@ -137,9 +137,9 @@ node scripts/orchestrate-worktrees.js .claude/plan/workflow-e2e-test.json --exec
 - Codex: Use analyzer prompt, output technical feasibility, solutions, risks
 - Gemini: Use analyzer prompt, output UI feasibility, solutions, UX evaluation
 
-Wait for results with `TaskOutput`. **Save SESSION_ID** (`CODEX_SESSION`and`GEMINI_SESSION`).
+Wait for results with `TaskOutput`. **Save SESSION_ID** (`CODEX_SESSION` and `GEMINI_SESSION`).
 
-**Follow the `IMPORTANT`instructions in`Multi-Model Call Specification` above**
+**Follow the `IMPORTANT`instructions in `Multi-Model Call Specification` above**
 
 Synthesize both analyses, output solution comparison (at least 2 options), wait for user selection.
 
@@ -153,7 +153,7 @@ Synthesize both analyses, output solution comparison (at least 2 options), wait 
 
 Wait for results with `TaskOutput`.
 
-**Follow the `IMPORTANT`instructions in`Multi-Model Call Specification` above**
+**Follow the `IMPORTANT`instructions in `Multi-Model Call Specification` above**
 
 **Claude Synthesis**: Adopt Codex backend plan + Gemini frontend plan, save to `.claude/plan/task-name.md` after user approval.
 
@@ -175,7 +175,7 @@ Wait for results with `TaskOutput`.
 
 Wait for results with `TaskOutput`. Integrate review feedback, execute optimization after user confirmation.
 
-**Follow the `IMPORTANT`instructions in`Multi-Model Call Specification` above**
+**Follow the `IMPORTANT`instructions in `Multi-Model Call Specification` above**
 
 ### Phase 6: Quality Review
 

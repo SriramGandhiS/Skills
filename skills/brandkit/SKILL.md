@@ -76,7 +76,7 @@ Unless the user specifies otherwise:
 
 - Generate one brand-kit overview image
 - Default layout: `3 Ã— 3`
-- Default aspect ratio: `4:3`or`16:10`
+- Default aspect ratio: `4:3` or `16:10`
 - Use a clean presentation grid
 - Use consistent gutters
 - Use minimal text

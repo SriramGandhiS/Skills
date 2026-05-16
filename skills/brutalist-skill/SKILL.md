@@ -28,17 +28,17 @@ Typography is the primary structural and decorative infrastructure. Imagery is s
 - **Optimal Web Fonts:** Neue Haas Grotesk (Black), Inter (Extra Bold/Black), Archivo Black, Roboto Flex (Heavy), Monument Extended.
 - **Implementation Parameters:**
 - **Scale:** Deployed at massive scales using fluid typography (e.g., `clamp(4rem, 10vw, 15rem)`).
-- **Tracking (Letter-spacing):** Extremely tight, often negative (`-0.03em`to `-0.06em`), forcing glyphs to form solid architectural blocks.
-- **Leading (Line-height):** Highly compressed (`0.85`to`0.95`).
+- **Tracking (Letter-spacing):** Extremely tight, often negative (`-0.03em` to `-0.06em`), forcing glyphs to form solid architectural blocks.
+- **Leading (Line-height):** Highly compressed (`0.85` to `0.95`).
 - **Casing:** Exclusively uppercase for structural impact.
 
 ### 3.2 Micro-Typography (Data & Telemetry)
 - **Classification:** Monospace / Technical Sans.
 - **Optimal Web Fonts:** JetBrains Mono, IBM Plex Mono, Space Mono, VT323, Courier Prime.
 - **Implementation Parameters:**
-- **Scale:** Fixed and small (`10px`to `14px`/`0.7rem`to `0.875rem`).
-- **Tracking:** Generous (`0.05em`to `0.1em`) to simulate mechanical typewriter spacing or terminal matrices.
-- **Leading:** Standard to tight (`1.2`to`1.4`).
+- **Scale:** Fixed and small (`10px` to `14px`/`0.7rem` to `0.875rem`).
+- **Tracking:** Generous (`0.05em` to `0.1em`) to simulate mechanical typewriter spacing or terminal matrices.
+- **Leading:** Standard to tight (`1.2` to `1.4`).
 - **Casing:** Exclusively uppercase. Used for all metadata, navigation, unit IDs, and coordinates.
 
 ### 3.3 Textural Contrast (Artistic Disruption)
@@ -52,21 +52,21 @@ The color architecture is uncompromising. Gradients, soft drop shadows, and mode
 **CRITICAL: Choose ONE substrate palette per project and use it consistently. Never mix light and dark substrates within the same interface.**
 
 ### If Swiss Industrial Print (Light):
-- **Background:** `#F4F4F0`or`#EAE8E3` (Matte, unbleached documentation paper).
-- **Foreground:** `#050505`to`#111111` (Carbon Ink).
-- **Accent:** `#E61919`or`#FF2A2A` (Aviation/Hazard Red). This is the ONLY accent color. Used for strike-throughs, thick structural dividing lines, or vital data highlights.
+- **Background:** `#F4F4F0` or `#EAE8E3` (Matte, unbleached documentation paper).
+- **Foreground:** `#050505` to `#111111` (Carbon Ink).
+- **Accent:** `#E61919` or `#FF2A2A` (Aviation/Hazard Red). This is the ONLY accent color. Used for strike-throughs, thick structural dividing lines, or vital data highlights.
 
 ### If Tactical Telemetry (Dark):
-- **Background:** `#0A0A0A`or`#121212`(Deactivated CRT. Avoid pure`#000000`).
+- **Background:** `#0A0A0A` or `#121212`(Deactivated CRT. Avoid pure`#000000`).
 - **Foreground:** `#EAEAEA` (White phosphor). This is the primary text color.
-- **Accent:** `#E61919`or`#FF2A2A` (Aviation/Hazard Red). Same red, same rules.
+- **Accent:** `#E61919` or `#FF2A2A` (Aviation/Hazard Red). Same red, same rules.
 - **Terminal Green (`#4AF626`):** Optional. Use ONLY for a single specific UI element (e.g., one status indicator or one data readout) â€” never as a general text color. If it doesn't serve a clear purpose, omit it entirely.
 
 ## 5. Layout and Spatial Engineering
 The layout must appear mathematically engineered. It rejects conventional web padding in favor of visible compartmentalization.
 
 - **The Blueprint Grid:** Strict adherence to CSS Grid architectures. Elements do not float; they are anchored precisely to grid tracks and intersections.
-- **Visible Compartmentalization:** Extensive utilization of solid borders (`1px`or `2px solid`) to delineate distinct zones of information. Horizontal rules (`<hr>`) frequently span the entire container width to segregate operational units.
+- **Visible Compartmentalization:** Extensive utilization of solid borders (`1px` or `2px solid`) to delineate distinct zones of information. Horizontal rules (`<hr>`) frequently span the entire container width to segregate operational units.
 - **Bimodal Density:** Layouts oscillate between extreme data density (tightly packed monospace metadata clustered together) and vast expanses of calculated negative space framing macro-typography.
 - **Geometry:** Absolute rejection of `border-radius`. All corners must be exactly 90 degrees to enforce mechanical rigidity.
 
@@ -83,7 +83,7 @@ Standard web UI conventions are replaced with utilitarian, industrial graphic el
 To prevent the design from appearing purely digital, simulated analog degradation is engineered into the frontend via CSS and SVG filters.
 
 - **Halftone and 1-Bit Dithering:** Transforming continuous-tone images or large serif typography into dot-matrix patterns. Achieved via pre-processing or CSS `mix-blend-mode: multiply` overlays combined with SVG radial dot patterns.
-- **CRT Scanlines:** For terminal interfaces, applying a `repeating-linear-gradient`to the background to simulate horizontal electron beam sweeps (e.g.,`repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.1) 2px, rgba(0,0,0,0.1) 4px)`).
+- **CRT Scanlines:** For terminal interfaces, applying a `repeating-linear-gradient` to the background to simulate horizontal electron beam sweeps (e.g.,`repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.1) 2px, rgba(0,0,0,0.1) 4px)`).
 - **Mechanical Noise:** A global, low-opacity SVG static/noise filter applied to the DOM root to introduce a unified physical grain across both dark and light modes.
 
 ## 8. Web Engineering Directives

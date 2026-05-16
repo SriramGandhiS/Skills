@@ -19,7 +19,7 @@ yarn remotion add @remotion/media # If project uses yarn
 pnpm exec remotion add @remotion/media # If project uses pnpm
 ```
 
-Use `<Video>`from`@remotion/media` to embed videos into your composition.
+Use `<Video>` from `@remotion/media` to embed videos into your composition.
 
 ```tsx
 import { Video } from "@remotion/media";
@@ -38,7 +38,7 @@ Remote URLs are also supported:
 
 ## Trimming
 
-Use `trimBefore`and ` trimAfter` to remove portions of the video. Values are in seconds.
+Use `trimBefore` and `trimAfter` to remove portions of the video. Values are in seconds.
 
 ```tsx
 const { fps } = useVideoConfig();
@@ -141,7 +141,7 @@ Use `loop` to loop the video indefinitely:
 
 Use `loopVolumeCurveBehavior` to control how the frame count behaves when looping:
 
-- `"repeat"`: Frame count resets to 0 each loop (for`volume` callback)
+- `"repeat"`: Frame count resets to 0 each loop (for `volume` callback)
 - `"extend"`: Frame count continues incrementing
 
 ```tsx

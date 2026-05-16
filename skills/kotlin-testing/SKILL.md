@@ -790,7 +790,7 @@ class ApiRoutesTest : FunSpec({
 **DON'T:**
 - Mix testing frameworks (pick Kotest and stick with it)
 - Mock data classes (use real instances)
-- Use `Thread.sleep()`in coroutine tests (use`advanceTimeBy`)
+- Use `Thread.sleep()` in coroutine tests (use`advanceTimeBy`)
 - Skip the RED phase in TDD
 - Test private functions directly
 - Ignore flaky tests

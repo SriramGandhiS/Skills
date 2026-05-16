@@ -45,7 +45,7 @@ python -c "import torch; x = torch.randn(2,3).cuda(); print('CUDA tensor test: O
 
 | 错误 | 原因 | 修复方法 |
 |-------|-------|-----|
-| `RuntimeError: mat1 and mat2 shapes cannot be multiplied`| 线性层输入尺寸不匹配 | 修正`in_features` 以匹配前一层输出 |
+| `RuntimeError: mat1 and mat2 shapes cannot be multiplied`| 线性层输入尺寸不匹配 | 修正` in_features` 以匹配前一层输出 |
 | `RuntimeError: Expected all tensors to be on the same device`| CPU/GPU 张量混合 | 为所有张量和模型添加`.to(device)` |
 | `CUDA out of memory`| 批次过大或内存泄漏 | 减小批次大小，添加`torch.cuda.empty_cache()`，使用梯度检查点 |
 | `RuntimeError: element 0 of tensors does not require grad`| 损失计算中使用分离的张量 | 在反向传播前移除`.detach()`或`.item()` |

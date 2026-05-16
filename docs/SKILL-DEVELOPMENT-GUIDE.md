@@ -438,8 +438,8 @@ Need to fetch data?
 
 1. **Length**: 200-500 lines typical, 800 lines maximum
 2. **Code blocks**: Include language identifier
-3. **Headers**: Use `##`and`###` hierarchy
-4. **Lists**: Use `-`for unordered,`1.` for ordered
+3. **Headers**: Use `##` and `###` hierarchy
+4. **Lists**: Use `-` for unordered,`1.` for ordered
 5. **Tables**: For comparisons and references
 
 ---

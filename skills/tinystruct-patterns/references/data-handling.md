@@ -2,16 +2,16 @@
 
 ## When to Use
 
-Prefer `org.tinystruct.data.component.Builder`and `Builders`for lightweight, zero-dependency JSON. Use`Builder`for JSON objects (`{}`),`Builders`for JSON arrays (`[]`). **Always use`Builders`instead of`List<Builder>`** to avoid generic type erasure issues.
+Prefer `org.tinystruct.data.component.Builder` and `Builders` for lightweight, zero-dependency JSON. Use`Builder` for JSON objects (`{}`),`Builders` for JSON arrays (`[]`). **Always use`Builders`instead of`List<Builder>`** to avoid generic type erasure issues.
 
 ## How It Works
 
-`Builder`provides a key-value interface for creating and reading JSON objects.`Builders`provides an indexed list for JSON arrays. Both integrate directly with`AbstractApplication` result handling.
+`Builder`provides a key-value interface for creating and reading JSON objects.`Builders`provides an indexed list for JSON arrays. Both integrate directly with `AbstractApplication` result handling.
 
 ### Why Builder/Builders?
 - **Zero External Dependencies** â€” lean and fast
 - **Native Integration** â€” works with framework result handling
-- **Type Safety** â€” `Builders`serializes properly to`[]`;`List<Builder>` can cause casting issues
+- **Type Safety** â€” `Builders`serializes properly to `[]`;`List<Builder>` can cause casting issues
 
 ## Examples
 

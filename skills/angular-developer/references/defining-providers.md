@@ -4,11 +4,11 @@ Angular offers automatic and manual ways to provide dependencies to its Dependen
 
 ## Automatic Provision
 
-The most common way to provide a service is using `providedIn: 'root'`on an`@Injectable()`.
+The most common way to provide a service is using `providedIn: 'root'` on an`@Injectable()`.
 
 ### InjectionToken
 
-Use `InjectionToken`for non-class dependencies (configuration objects, functions, primitives). An`InjectionToken` can also be automatically provided.
+Use `InjectionToken` for non-class dependencies (configuration objects, functions, primitives). An`InjectionToken` can also be automatically provided.
 
 ```ts
 import {InjectionToken} from '@angular/core';

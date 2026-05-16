@@ -80,7 +80,7 @@ Recommended Next Steps:
 This command requires Jira credentials. Choose one:
 
 **Option A — MCP Server (recommended):**
-Add `jira`to your`mcpServers`config (see`mcp-configs/mcp-servers.json` for the template).
+Add `jira` to your`mcpServers`config (see`mcp-configs/mcp-servers.json` for the template).
 
 **Option B — Environment variables:**
 ```bash

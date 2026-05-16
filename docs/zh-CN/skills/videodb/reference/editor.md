@@ -24,11 +24,11 @@ timeline = Timeline(conn)
 
 | 素材 | 导入 | 主要用途 |
 |-------|--------|-------------|
-| `VideoAsset`|`from videodb.asset import VideoAsset` | 视频片段（修剪、排序） |
-| `AudioAsset`|`from videodb.asset import AudioAsset` | 音乐、音效、旁白 |
-| `ImageAsset`|`from videodb.asset import ImageAsset` | 徽标、缩略图、叠加层 |
-| `TextAsset`|`from videodb.asset import TextAsset, TextStyle` | 标题、字幕、下三分之一字幕 |
-| `CaptionAsset`|`from videodb.editor import CaptionAsset` | 自动渲染的字幕（编辑器 API） |
+| `VideoAsset`|` from videodb.asset import VideoAsset` | 视频片段（修剪、排序） |
+| `AudioAsset`|` from videodb.asset import AudioAsset` | 音乐、音效、旁白 |
+| `ImageAsset`|` from videodb.asset import ImageAsset` | 徽标、缩略图、叠加层 |
+| `TextAsset`|` from videodb.asset import TextAsset, TextStyle` | 标题、字幕、下三分之一字幕 |
+| `CaptionAsset`|` from videodb.editor import CaptionAsset` | 自动渲染的字幕（编辑器 API） |
 
 ## 构建时间线
 
@@ -397,7 +397,7 @@ VideoDB 有两个独立的时间线系统。它们**不可互换**：
 
 | | `videodb.timeline.Timeline`|`videodb.editor.Timeline`（编辑器 API） |
 |---|---|---|
-| **导入** | `from videodb.timeline import Timeline`|`from videodb.editor import Timeline as EditorTimeline` |
+| **导入** | `from videodb.timeline import Timeline`|` from videodb.editor import Timeline as EditorTimeline` |
 | **素材** | `VideoAsset`、`AudioAsset`、`ImageAsset`、`TextAsset`|`CaptionAsset`、`Clip`、`Track` |
 | **方法** | `add_inline()`、`add_overlay()`|`add_track()`配合`Track`/`Clip` |
 | **最适合** | 视频合成、叠加、多片段编辑 | 带动画的字幕/字幕样式设计 |

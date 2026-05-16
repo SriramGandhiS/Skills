@@ -211,7 +211,7 @@ Use the same boundary rules across ecosystems; only syntax and wiring style chan
   - Adapters: `adapters/inbound/*`,`adapters/outbound/*`.
   - Composition: explicit factory/container module (no hidden globals).
 - **Java**
-  - Packages: `domain`,`application.port.in`,`application.port.out`,`application.usecase`,`adapter.in`,`adapter.out`.
+  - Packages: `domain`,`application.port.in `,`application.port.out`,`application.usecase`,`adapter.in `,`adapter.out`.
   - Ports: interfaces in `application.port.*`.
   - Use cases: plain classes (Spring `@Service` is optional, not required).
   - Composition: Spring config or manual wiring class; keep wiring out of domain/use-case classes.

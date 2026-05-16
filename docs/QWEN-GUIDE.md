@@ -16,7 +16,7 @@ Preview a larger install before copying files:
 ./install.sh --target qwen --profile full --dry-run
 ```
 
-The Qwen adapter writes into `~/.qwen/`and records managed file ownership in`~/.qwen/ecc-install-state.json`.
+The Qwen adapter writes into `~/.qwen/` and records managed file ownership in `~/.qwen/ecc-install-state.json`.
 
 ## Installed Layout
 
@@ -33,7 +33,7 @@ The managed install can populate:
   ecc-install-state.json
 ```
 
-The installer preserves the source layout for rules, so language rule sets stay under paths such as `~/.qwen/rules/common/`and`~/.qwen/rules/typescript/`.
+The installer preserves the source layout for rules, so language rule sets stay under paths such as `~/.qwen/rules/common/` and `~/.qwen/rules/typescript/`.
 
 ## Updating
 

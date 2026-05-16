@@ -168,7 +168,7 @@ Write feedback to `gan-harness/feedback/feedback-NNN.md`:
 
 1. **Every issue must have a "how to fix"** — Don't just say "design is generic." Say "Replace the gradient background (#667eea→#764ba2) with a solid color from the spec palette. Add a subtle texture or pattern for depth."
 
-2. **Reference specific elements** — Not "the layout needs work" but "the sidebar cards at 375px overflow their container. Set `max-width: 100%`and add`overflow: hidden`."
+2. **Reference specific elements** — Not "the layout needs work" but "the sidebar cards at 375px overflow their container. Set `max-width: 100%` and add`overflow: hidden`."
 
 3. **Quantify when possible** — "The CLS score is 0.15 (should be <0.1)" or "3 out of 7 features have no error state handling."
 

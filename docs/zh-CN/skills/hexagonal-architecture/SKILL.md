@@ -211,7 +211,7 @@ export const buildCreateOrderUseCase = (deps: { db: SqlClient; stripe: StripeCli
   * 适配器：`adapters/inbound/*`、`adapters/outbound/*`。
   * 组合：显式工厂/容器模块（无隐藏全局变量）。
 * **Java**
-  * 包：`domain`、`application.port.in`、`application.port.out`、`application.usecase`、`adapter.in`、`adapter.out`。
+  * 包：`domain`、`application.port.in `、`application.port.out`、`application.usecase`、`adapter.in `、`adapter.out`。
   * 端口：`application.port.*` 中的接口。
   * 用例：普通类（Spring `@Service` 是可选的，非必需）。
   * 组合：Spring配置或手动连接类；将连接逻辑保持在领域/用例类之外。

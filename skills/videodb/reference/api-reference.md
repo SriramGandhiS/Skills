@@ -84,7 +84,7 @@ config = VideoConfig(
 | `quality`|`int`|`23` | Encoding quality (lower = higher quality) |
 | `framerate`|`int\|None`|`None` | Target framerate |
 | `aspect_ratio`|`str\|None`|`None`| Target aspect ratio (e.g.`"16:9"`,`"9:16"`) |
-| `resize_mode`|`str`|`ResizeMode.crop`| Resize strategy:`crop`,`fit`, or`pad` |
+| `resize_mode`|`str`|`ResizeMode.crop`| Resize strategy:`crop`,`fit`, or `pad` |
 
 #### AudioConfig
 
@@ -121,7 +121,7 @@ coll = conn.get_collection()
 | `coll.generate_music(prompt, duration=5)`|`Audio` | Generate music with AI |
 | `coll.generate_sound_effect(prompt, duration=2)`|`Audio` | Generate sound effect |
 | `coll.generate_voice(text, voice_name="Default")`|`Audio` | Generate speech from text |
-| `coll.generate_text(prompt, model_name="basic", response_type="text")`|`dict`| LLM text generation â€” access result via `["output"]` |
+| `coll.generate_text(prompt, model_name="basic", response_type="text")`|`dict`| LLM text generation â€” access result via`["output"]` |
 | `coll.dub_video(video_id, language_code)`|`Video` | Dub video into another language |
 | `coll.record_meeting(meeting_url, bot_name, ...)`|`Meeting` | Record a live meeting |
 | `coll.create_capture_session(...)`|`CaptureSession` | Create a capture session (see [capture-reference.md](capture-reference.md)) |
@@ -170,7 +170,7 @@ video = coll.get_video(video_id)
 
 | Method | Returns | Description |
 |--------|---------|-------------|
-| `video.generate_stream(timeline=None)`|`str`| Generate stream URL (optional timeline of `[(start, end)]` tuples) |
+| `video.generate_stream(timeline=None)`|`str`| Generate stream URL (optional timeline of`[(start, end)]` tuples) |
 | `video.play()`|`str` | Open stream in browser, returns player URL |
 | `video.index_spoken_words(language_code=None, force=False)`|`None`| Index speech for search. Use`force=True` to skip if already indexed. |
 | `video.index_scenes(extraction_type, prompt, extraction_config, metadata, model_name, name, scenes, callback_url)`|`str` | Index visual scenes (returns scene_index_id) |
@@ -195,7 +195,7 @@ video = coll.get_video(video_id)
 
 Convert a video to a different aspect ratio with optional smart object tracking. Processing is server-side.
 
-> **Warning:** Reframe is a slow server-side operation. It can take several minutes for long videos and may time out. Always use `start`/`end` to limit the segment, or pass `callback_url` for async processing.
+> **Warning:** Reframe is a slow server-side operation. It can take several minutes for long videos and may time out. Always use `start`/`end` to limit the segment, or pass`callback_url` for async processing.
 
 ```python
 from videodb import ReframeMode
@@ -216,8 +216,8 @@ reframed = video.reframe(start=0, end=60, target={"width": 1080, "height": 1080}
 |-----------|------|---------|-------------|
 | `start`|`float\|None`|`None` | Start time in seconds (None = beginning) |
 | `end`|`float\|None`|`None` | End time in seconds (None = end of video) |
-| `target`|`str\|dict`|`"vertical"`| Preset string (`"vertical"`,`"square"`,`"landscape"`) or`{"width": int, "height": int}` |
-| `mode`|`str`|`ReframeMode.smart`|`"simple"`(centre crop) or`"smart"` (object tracking) |
+| `target`|`str\|dict`|`"vertical"`| Preset string (`"vertical"`,`"square"`,`"landscape"`) or `{"width": int, "height": int}` |
+| `mode`|`str`|`ReframeMode.smart`|`"simple"`(centre crop) or `"smart"` (object tracking) |
 | `callback_url`|`str\|None`|`None` | Webhook URL for async notification |
 
 Returns a `Video`object when no`callback_url`is provided,`None` otherwise.
@@ -260,7 +260,7 @@ image = coll.get_image(image_id)
 | `image.id`|`str` | Unique image ID |
 | `image.collection_id`|`str` | Parent collection ID |
 | `image.name`|`str` | Image name |
-| `image.url`|`str\|None`| Image URL (may be`None`for generated images â€” use`generate_url()` instead) |
+| `image.url`|`str\|None`| Image URL (may be`None` for generated images â€” use`generate_url()` instead) |
 
 ### Image Methods
 
@@ -282,7 +282,7 @@ timeline = Timeline(conn)
 | Method | Returns | Description |
 |--------|---------|-------------|
 | `timeline.add_inline(asset)`|`None`| Add`VideoAsset` sequentially on main track |
-| `timeline.add_overlay(start, asset)`|`None`| Overlay`AudioAsset`,`ImageAsset`, or`TextAsset` at timestamp |
+| `timeline.add_overlay(start, asset)`|`None`| Overlay`AudioAsset`,`ImageAsset`, or `TextAsset` at timestamp |
 | `timeline.generate_stream()`|`str` | Compile and get stream URL |
 
 ### Asset Types
@@ -379,11 +379,11 @@ results = video.search(
 )
 ```
 
-> **Note:** `filter`is an explicit named parameter in`video.search()`.`scene_index_id`is passed through`**kwargs` to the API.
+> **Note:** `filter`is an explicit named parameter in `video.search()`.`scene_index_id`is passed through`**kwargs` to the API.
 >
-> **Important:** `video.search()`raises`InvalidRequestError `with message`"No results found"`when there are no matches. Always wrap search calls in try/except. For scene search, use`score_threshold=0.3` or higher to filter low-relevance noise.
+> **Important:** `video.search()`raises`InvalidRequestError` with message`"No results found"`when there are no matches. Always wrap search calls in try/except. For scene search, use`score_threshold=0.3` or higher to filter low-relevance noise.
 
-For scene search, use `search_type=SearchType.semantic`with ` index_type=IndexType.scene`. Pass`scene_index_id` when targeting a specific scene index. See [search.md](search.md) for details.
+For scene search, use `search_type=SearchType.semantic` with `index_type=IndexType.scene`. Pass`scene_index_id` when targeting a specific scene index. See [search.md](search.md) for details.
 
 ## SearchResult Object
 

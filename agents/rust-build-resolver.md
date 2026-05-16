@@ -56,10 +56,10 @@ if command -v cargo-audit >/dev/null; then cargo audit; else echo "cargo-audit n
 | `cannot borrow as mutable`| Immutable borrow active | Restructure to end immutable borrow first, or use`Cell`/`RefCell` |
 | `does not live long enough` | Value dropped while still borrowed | Extend lifetime scope, use owned type, or add lifetime annotation |
 | `cannot move out of`| Moving from behind a reference | Use`.clone()`,`.to_owned()`, or restructure to take ownership |
-| `mismatched types`| Wrong type or missing conversion | Add`.into()`,`as`, or explicit type conversion |
+| `mismatched types`| Wrong type or missing conversion | Add`.into()`,` as`, or explicit type conversion |
 | `trait X is not implemented for Y`| Missing impl or derive | Add`#[derive(Trait)]` or implement trait manually |
 | `unresolved import`| Missing dependency or wrong path | Add to Cargo.toml or fix`use` path |
-| `unused variable`/`unused import`| Dead code | Remove or prefix with`_` |
+| `unused variable`/`unused import`| Dead code | Remove or prefix with `_` |
 | `expected X, found Y` | Type mismatch in return/argument | Fix return type or add conversion |
 | `cannot find macro`| Missing`#[macro_use]` or feature | Add dependency feature or import macro |
 | `multiple applicable items`| Ambiguous trait method | Use fully qualified syntax:`<Type as Trait>::method()` |
@@ -130,7 +130,7 @@ grep "rust-version" Cargo.toml
 - **Surgical fixes only** — don't refactor, just fix the error
 - **Never** add `#[allow(unused)]` without explicit approval
 - **Never** use `unsafe` to work around borrow checker errors
-- **Never** add `.unwrap()`to silence type errors — propagate with`?`
+- **Never** add `.unwrap()` to silence type errors — propagate with `?`
 - **Always** run `cargo check` after every fix attempt
 - Fix root cause over suppressing symptoms
 - Prefer the simplest fix that preserves the original intent

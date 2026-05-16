@@ -31,7 +31,7 @@ This skill produces:
 - Text animation components: word reveal, character typewriter, number counter
 - SVG animation: path draw-on, icon morph, stroke progress ring
 - Custom hooks: `useScrollReveal`,`useHoverScale`,`useNavigationDirection`,`useInViewOnce`
-- Imperative sequences via `useAnimate`with interrupt-safe`async/await`
+- Imperative sequences via `useAnimate` with interrupt-safe`async/await`
 - Loader components: spinner, shimmer, pulse dot, progress bar, button loading state
 
 ## Principles
@@ -49,7 +49,7 @@ This skill produces:
 4. **`useAnimate`scope ref must be attached to a mounted DOM element.** Calling`animate()` before mount throws silently.
 5. **Motion values must not be recreated on render.** `useMotionValue(0)`inside a component body is correct;`new MotionValue(0)` in a render is not.
 6. **All token values are imported from `motion-foundations`.** No inline numbers.
-7. **Custom hooks must handle cleanup.** Every `window.addEventListener`needs a matching`removeEventListener`in the`useEffect` return.
+7. **Custom hooks must handle cleanup.** Every `window.addEventListener`needs a matching`removeEventListener` in the`useEffect` return.
 8. **SVG morphing requires equal path command counts.** Paths with different command structures snap instead of interpolating.
 
 ## Decision Guidance
@@ -65,8 +65,8 @@ This skill produces:
 | Long press | `useLongPress` hook |
 | Value smoothed over time | `useSpring` |
 | Value derived from another | `useTransform` |
-| Multi-step sequence | `useAnimate`with ` async/await` |
-| One-shot imperative animation | `animate()`from` motion` |
+| Multi-step sequence | `useAnimate` with `async/await` |
+| One-shot imperative animation | `animate()` from `motion` |
 | Text entering word by word | Stagger on `inline-block` spans |
 | SVG drawing on | `pathLength` 0 â†’ 1 |
 | SVG morph | `d` attribute tween (equal commands) |
@@ -497,7 +497,7 @@ export function PulseDot() {
 
 Drag-to-dismiss sheet with shimmer content, loading state, and reduced motion
 support â€” combining `useMotionValue`,`useTransform`,`useSafeMotion`,
-`AnimatePresence`, and tokens from`motion-foundations`:
+`AnimatePresence`, and tokens from `motion-foundations`:
 
 ```tsx
 "use client"
@@ -572,7 +572,7 @@ This skill does **not** cover:
 
 - Token and spring definitions â†’ see `motion-foundations`
 - Standard UI patterns (button, modal, stagger, page transitions) â†’ see `motion-patterns`
-- CSS-only animations or Tailwind `animate-*`without` motion/react`
+- CSS-only animations or Tailwind `animate-*`without`motion/react`
 - Canvas or WebGL-based animation (Three.js, Pixi, etc.)
 - Full drag-and-drop systems with external state managers (dnd-kit, react-beautiful-dnd)
 - Game-loop or frame-by-frame animation
@@ -582,10 +582,10 @@ This skill does **not** cover:
 | Anti-pattern | Rule violated | Fix |
 | ---------------------------------------------- | ------- | ------------------------------------------------ |
 | `drag` tested only on desktop | Rule 1 | Test on touch emulator and real device |
-| `animate={{ repeat: Infinity }}`with no pause | Rule 2 | Add`visibilitychange` listener |
-| `onDragEnd`checking only offset, not velocity | Rule 3 | Check both`info.offset`and ` info.velocity` |
-| `animate(scope, ...)`before` useEffect `| Rule 4 | Call`animate()` only after mount |
-| `const x = new MotionValue(0)`in render | Rule 5 | Use`const x = useMotionValue(0)` |
+| `animate={{ repeat: Infinity }}` with no pause | Rule 2 | Add`visibilitychange` listener |
+| `onDragEnd`checking only offset, not velocity | Rule 3 | Check both`info.offset` and `info.velocity` |
+| `animate(scope, ...)`before`useEffect`| Rule 4 | Call`animate()` only after mount |
+| `const x = new MotionValue(0)` in render | Rule 5 | Use`const x = useMotionValue(0)` |
 | `transition={{ duration: 1.2 }}`inline | Rule 6 | Use`motionTokens.duration.crawl` |
 | `useEffect`without cleanup | Rule 7 | Return`removeEventListener`/`controls.stop` |
 | SVG morph between paths with different commands | Rule 8 | Normalize path commands before animating |

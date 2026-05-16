@@ -165,12 +165,12 @@ img, .image-container {
 
 ## Viewport Checklist
 
-- every `.slide`has ` height: 100vh`,`height: 100dvh`, and`overflow: hidden`
+- every `.slide`has`height: 100vh`,`height: 100dvh`, and `overflow: hidden`
 - all typography uses `clamp()`
 - all spacing uses `clamp()` or viewport units
 - images have `max-height` constraints
 - grids adapt with `auto-fit`+`minmax()`
-- short-height breakpoints exist at `700px`,`600px`, and`500px`
+- short-height breakpoints exist at `700px`,`600px`, and `500px`
 - if anything feels cramped, split the slide
 
 ## Mood to Preset Mapping

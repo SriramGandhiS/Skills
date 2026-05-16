@@ -140,4 +140,4 @@ git merge feat/billing
 - **Pane not responding:** Check if the agent session is waiting for input. Use `m` to read output.
 - **Merge conflicts:** Use git worktrees to isolate file changes per pane.
 - **High token usage:** Reduce number of parallel panes. Each pane is a full agent session.
-- **tmux not found:** Install with `brew install tmux`(macOS) or`apt install tmux` (Linux).
+- **tmux not found:** Install with `brew install tmux`(macOS) or `apt install tmux` (Linux).

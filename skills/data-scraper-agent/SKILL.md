@@ -725,7 +725,7 @@ Before marking the agent complete:
 - [ ] Gemini client has model fallback chain (4 models)
 - [ ] Batch size â‰¤ 5 items per API call
 - [ ] `maxOutputTokens` â‰¥ 2048
-- [ ] `.env`is in`.gitignore`
+- [ ] `.env`is in `.gitignore`
 - [ ] `.env.example` provided for onboarding
 - [ ] `setup.py` creates DB schema on first run
 - [ ] `enrich_existing.py` backfills AI scores on old rows

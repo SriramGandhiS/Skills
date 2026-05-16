@@ -106,7 +106,7 @@ pip install videodb python-dotenv
 The user must set `VIDEO_DB_API_KEY` using **either** method:
 
 - **Export in terminal** (before starting Claude): `export VIDEO_DB_API_KEY=your-key`
-- **Project `.env`file**: Save`VIDEO_DB_API_KEY=your-key`in the project's`.env` file
+- **Project `.env`file**: Save`VIDEO_DB_API_KEY=your-key` in the project's`.env` file
 
 Get a free API key at [console.videodb.io](https://console.videodb.io) (50 free uploads, no credit card).
 
@@ -281,11 +281,11 @@ except InvalidRequestError as e:
 | Scenario | Error message | Solution |
 |----------|--------------|----------|
 | Indexing an already-indexed video | `Spoken word index for video already exists`| Use`video.index_spoken_words(force=True)` to skip if already indexed |
-| Scene index already exists | `Scene index with id XXXX already exists`| Extract the existing`scene_index_id`from the error with`re.search(r"id\s+([a-f0-9]+)", str(e))` |
+| Scene index already exists | `Scene index with id XXXX already exists`| Extract the existing`scene_index_id` from the error with `re.search(r"id\s+([a-f0-9]+)", str(e))` |
 | Search finds no matches | `InvalidRequestError: No results found`| Catch the exception and treat as empty results (`shots = []`) |
-| Reframe times out | Blocks indefinitely on long videos | Use `start`/`end` to limit segment, or pass `callback_url` for async |
+| Reframe times out | Blocks indefinitely on long videos | Use `start`/`end` to limit segment, or pass`callback_url` for async |
 | Negative timestamps on Timeline | Silently produces broken stream | Always validate `start >= 0`before creating`VideoAsset` |
-| `generate_video()`/`create_collection()`fails |`Operation not allowed`or ` maximum limit` | Plan-gated features â€” inform the user about plan limits |
+| `generate_video()`/`create_collection()`fails |`Operation not allowed` or `maximum limit` | Plan-gated features â€” inform the user about plan limits |
 
 ## Examples
 
@@ -360,12 +360,12 @@ Reference documentation is in the `reference/` directory adjacent to this SKILL.
 
 | Problem | VideoDB solution |
 |---------|-----------------|
-| Platform rejects video aspect ratio or resolution | `video.reframe()`or` conn.transcode()`with`VideoConfig` |
-| Need to resize video for Twitter/Instagram/TikTok | `video.reframe(target="vertical")`or` target="square"` |
-| Need to change resolution (e.g. 1080p â†’ 720p) | `conn.transcode()`with`VideoConfig(resolution=720)` |
-| Need to overlay audio/music on video | `AudioAsset`on a`Timeline` |
-| Need to add subtitles | `video.add_subtitle()`or`CaptionAsset` |
-| Need to combine/trim clips | `VideoAsset`on a`Timeline` |
+| Platform rejects video aspect ratio or resolution | `video.reframe()` or `conn.transcode()` with `VideoConfig` |
+| Need to resize video for Twitter/Instagram/TikTok | `video.reframe(target="vertical")` or `target="square"` |
+| Need to change resolution (e.g. 1080p â†’ 720p) | `conn.transcode()` with `VideoConfig(resolution=720)` |
+| Need to overlay audio/music on video | `AudioAsset` on a`Timeline` |
+| Need to add subtitles | `video.add_subtitle()` or `CaptionAsset` |
+| Need to combine/trim clips | `VideoAsset` on a`Timeline` |
 | Need to generate voiceover, music, or SFX | `coll.generate_voice()`,`generate_music()`,`generate_sound_effect()` |
 
 ## Provenance

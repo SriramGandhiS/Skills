@@ -325,7 +325,7 @@ Why fifth:
 
 The AgentShield enterprise iteration is not complete until these are true:
 
-- Local `npm run typecheck`,`npm run lint`,`npm test`, and`npm run build`
+- Local `npm run typecheck`,`npm run lint`,`npm test`, and `npm run build`
   pass from the AgentShield repository root.
 - Built CLI smoke tests cover the new flags or report modes.
 - GitHub Action self-test covers the new CI-visible output.

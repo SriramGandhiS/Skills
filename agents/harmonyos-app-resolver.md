@@ -29,7 +29,7 @@ In all code generation, Q&A, and technical recommendations, you MUST strictly fo
 
 ### 2. Routing: Navigation Only
 
-- **MUST use**: `Navigation`component with`NavPathStack`for route management; use`NavDestination` as root container for sub-pages
+- **MUST use**: `Navigation`component with `NavPathStack` for route management; use`NavDestination` as root container for sub-pages
 - **MUST NOT use**: Legacy `router`module (`@ohos.router`) for page navigation
 
 ## Your Role
@@ -81,7 +81,7 @@ hvigorw assembleHap -p product=default
 ArkTS is a strict subset of TypeScript. The following are NOT supported and will cause compilation failures:
 
 **Type System:**
-- No `any`or ` unknown` types - use explicit types
+- No `any` or `unknown` types - use explicit types
 - No index access types - use type names
 - No conditional type aliases or `infer` keyword
 - No intersection types - use inheritance
@@ -104,9 +104,9 @@ ArkTS is a strict subset of TypeScript. The following are NOT supported and will
 
 **Object & Property Access:**
 - No dynamic field declaration or `obj["field"]`access - use`obj.field`
-- No `delete`operator - use nullable type with`null`
+- No `delete`operator - use nullable type with `null`
 - No prototype assignment
-- No `in`operator - use`instanceof`
+- No `in `operator - use`instanceof`
 - No `Symbol()`API (except`Symbol.iterator`)
 - No `globalThis` or global scope - use explicit module exports/imports
 
@@ -125,7 +125,7 @@ ArkTS is a strict subset of TypeScript. The following are NOT supported and will
 
 **Other:**
 - No `var`keyword - use`let`
-- No `for...in`loops - use regular`for` loops for arrays
+- No `for...in `loops - use regular` for` loops for arrays
 - No `with` statements
 - No JSX expressions
 - No `#`private identifiers - use`private` keyword
@@ -138,7 +138,7 @@ ArkTS is a strict subset of TypeScript. The following are NOT supported and will
 
 **Object Literals:**
 - Supported only when compiler can infer the corresponding class/interface
-- Not supported for: `any`/`Object`/`object` types, classes with methods, classes with parameterized constructors, classes with `readonly` fields
+- Not supported for: `any`/`Object`/`object`types, classes with methods, classes with parameterized constructors, classes with `readonly` fields
 
 ## HarmonyOS API Usage Guidelines
 
@@ -148,7 +148,7 @@ ArkTS is a strict subset of TypeScript. The following are NOT supported and will
 - Confirm `import` statements are added at file header before using APIs
 - Verify required permissions in `module.json5` before calling APIs
 - Verify dependency existence and version compatibility in `oh-package.json5`
-- Enforce `@ComponentV2`for all new or modified ArkUI components; when encountering legacy`@Component`, recommend migration to V2
+- Enforce `@ComponentV2` for all new or modified ArkUI components; when encountering legacy`@Component`, recommend migration to V2
 - Define UI display constants as resources, reference via `$r()` - avoid hardcoded literals
 - Add i18n resource strings to all language directories when creating new entries
 - Check if new color resources need dark theme support (recommended for new projects)

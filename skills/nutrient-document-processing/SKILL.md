@@ -18,7 +18,7 @@ Get a free API key at **[nutrient.io](https://dashboard.nutrient.io/sign_up/?pro
 export NUTRIENT_API_KEY="pdf_live_..."
 ```
 
-All requests go to `https://api.nutrient.io/build`as multipart POST with an`instructions` JSON field.
+All requests go to `https://api.nutrient.io/build` as multipart POST with an`instructions` JSON field.
 
 ## Operations
 
@@ -78,7 +78,7 @@ curl -X POST <https://api.nutrient.io/build> \
   -o searchable.pdf
 ```
 
-Languages: Supports 100+ languages via ISO 639-2 codes (e.g., `eng`,`deu`,`fra`,`spa`,`jpn`,`kor`,`chi_sim`,`chi_tra`,`ara`,`hin`,`rus`). Full language names like `english`or`german` also work. See the [complete OCR language table](https://www.nutrient.io/guides/document-engine/ocr/language-support/) for all supported codes.
+Languages: Supports 100+ languages via ISO 639-2 codes (e.g., `eng`,`deu`,`fra`,`spa`,`jpn`,`kor`,`chi_sim`,`chi_tra`,`ara`,`hin`,`rus`). Full language names like`english` or `german` also work. See the [complete OCR language table](https://www.nutrient.io/guides/document-engine/ocr/language-support/) for all supported codes.
 
 ### Redact Sensitive Information
 

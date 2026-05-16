@@ -966,5 +966,39 @@ test('persistence only falls back when the state-store module is missing', () =>
   }, /state-store bootstrap failed/);
 });
 
+test('claude history adapter handles edge cases and errors for full coverage', () => {
+  const { parseClaudeTarget, isSessionFileTarget, createClaudeHistoryAdapter } = require('../../scripts/lib/session-adapters/claude-history');
+  
+  // parseClaudeTarget non-string
+  assert.strictEqual(parseClaudeTarget(null), null);
+  
+  // isSessionFileTarget non-string or empty
+  assert.strictEqual(isSessionFileTarget(null, '/tmp'), false);
+  assert.strictEqual(isSessionFileTarget('', '/tmp'), false);
+
+  const adapter = createClaudeHistoryAdapter({ loadStateStoreImpl: () => null });
+
+  // canOpen with specific adapterId
+  assert.strictEqual(adapter.canOpen('target', { adapterId: 'other' }), false);
+  assert.strictEqual(adapter.canOpen('target', { adapterId: 'claude-history' }), true);
+
+  // resolveSessionRecord - unsupported session file
+  const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'ecc-history-coverage-'));
+  try {
+    const badFile = path.join(tempDir, 'bad-session.tmp');
+    fs.writeFileSync(badFile, 'bad');
+    assert.throws(() => adapter.open(badFile, { cwd: tempDir }).getSnapshot(), /Unsupported session file|Unsupported Claude session target/);
+  } finally {
+    fs.rmSync(tempDir, { recursive: true, force: true });
+  }
+
+  // resolveSessionRecord - explicit target not found
+  assert.throws(() => adapter.open('claude:nonexistent-session').getSnapshot(), /Claude session not found/);
+
+  // resolveSessionRecord - unsupported target
+  assert.throws(() => adapter.open('not-a-valid-target').getSnapshot(), /Unsupported Claude session target/);
+});
+
+
 console.log(`\n=== Results: ${passed} passed, ${failed} failed ===`);
 if (failed > 0) process.exit(1);

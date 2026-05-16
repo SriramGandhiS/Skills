@@ -164,7 +164,7 @@ Promotion is handled by the `instinct-cli.py promote`command or the`/evolve` ana
 4. **Respect Privacy**: Never include actual code snippets, only patterns
 5. **Merge Similar**: If a new instinct is similar to existing, update rather than duplicate
 6. **Default to Project Scope**: Unless the pattern is clearly universal, make it project-scoped
-7. **Include Project Context**: Always set `project_id`and ` project_name` for project-scoped instincts
+7. **Include Project Context**: Always set `project_id` and `project_name` for project-scoped instincts
 
 ## Example Analysis Session
 

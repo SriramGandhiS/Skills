@@ -18,7 +18,7 @@ Comprehensive, library-agnostic checklist for reviewing Flutter/Dart application
 - [ ] `pubspec.yaml` is clean â€” no unused dependencies, versions pinned appropriately
 - [ ] `analysis_options.yaml` includes a strict lint set with strict analyzer settings enabled
 - [ ] No `print()`statements in production code â€” use`dart:developer` `log()` or a logging package
-- [ ] Generated files (`.g.dart`,`.freezed.dart`,`.gr.dart`) are up-to-date or in`.gitignore`
+- [ ] Generated files (`.g.dart`,`.freezed.dart`,`.gr.dart`) are up-to-date or in `.gitignore`
 - [ ] Platform-specific code isolated behind abstractions
 
 ---
@@ -30,17 +30,17 @@ Comprehensive, library-agnostic checklist for reviewing Flutter/Dart application
 - [ ] **Type promotion failures**: Using `this.field` where local variable promotion would work
 - [ ] **Catching too broadly**: `catch (e)`without` on` clause; always specify exception types
 - [ ] **Catching `Error`**:`Error` subtypes indicate bugs and should not be caught
-- [ ] **Unused `async`**: Functions marked`async` that never `await` â€” unnecessary overhead
+- [ ] **Unused `async`**: Functions marked`async`that never`await` â€” unnecessary overhead
 - [ ] **`late`overuse**:`late` used where nullable or constructor initialization would be safer; defers errors to runtime
 - [ ] **String concatenation in loops**: Use `StringBuffer`instead of`+` for iterative string building
-- [ ] **Mutable state in `const`contexts**: Fields in`const` constructor classes should not be mutable
-- [ ] **Ignoring `Future`return values**: Use` await`or explicitly call `unawaited()` to signal intent
-- [ ] **`var`where ` final`works**: Prefer`final`for locals and`const` for compile-time constants
+- [ ] **Mutable state in `const`contexts**: Fields in `const` constructor classes should not be mutable
+- [ ] **Ignoring `Future`return values**: Use`await` or explicitly call`unawaited()` to signal intent
+- [ ] **`var`where`final`works**: Prefer`final` for locals and `const` for compile-time constants
 - [ ] **Relative imports**: Use `package:` imports for consistency
 - [ ] **Mutable collections exposed**: Public APIs should return unmodifiable views, not raw `List`/`Map`
 - [ ] **Missing Dart 3 pattern matching**: Prefer switch expressions and `if-case`over verbose`is` checks and manual casting
 - [ ] **Throwaway classes for multiple returns**: Use Dart 3 records `(String, int)` instead of single-use DTOs
-- [ ] **`print()`in production code**: Use`dart:developer` `log()`or the project's logging package;`print()` has no log levels and cannot be filtered
+- [ ] **`print()` in production code**: Use`dart:developer` `log()` or the project's logging package;`print()` has no log levels and cannot be filtered
 
 ---
 
@@ -61,7 +61,7 @@ Comprehensive, library-agnostic checklist for reviewing Flutter/Dart application
 ### Key usage:
 - [ ] `ValueKey` used in lists/grids to preserve state across reorders
 - [ ] `GlobalKey` used sparingly â€” only when accessing state across the tree is truly needed
-- [ ] `UniqueKey`avoided in`build()` â€” it forces rebuild every frame
+- [ ] `UniqueKey`avoided in `build()` â€” it forces rebuild every frame
 - [ ] `ObjectKey` used when identity is based on a data object rather than a single value
 
 ### Theming & design system:
@@ -72,8 +72,8 @@ Comprehensive, library-agnostic checklist for reviewing Flutter/Dart application
 
 ### Build method complexity:
 - [ ] No network calls, file I/O, or heavy computation in `build()`
-- [ ] No `Future.then()`or` async `work in`build()`
-- [ ] No subscription creation (`.listen()`) in`build()`
+- [ ] No `Future.then()` or `async`work in `build()`
+- [ ] No subscription creation (`.listen()`) in `build()`
 - [ ] `setState()` localized to smallest possible subtree
 
 ---
@@ -94,12 +94,12 @@ These principles apply to all Flutter state management solutions (BLoC, Riverpod
 
 ### Immutability & value equality (for immutable-state solutions: BLoC, Riverpod, Redux):
 - [ ] State objects are immutable â€” new instances created via `copyWith()` or constructors, never mutated in-place
-- [ ] State classes implement `==`and` hashCode` properly (all fields included in comparison)
+- [ ] State classes implement `==` and `hashCode` properly (all fields included in comparison)
 - [ ] Mechanism is consistent across the project â€” manual override, `Equatable`,`freezed`, Dart records, or other
 - [ ] Collections inside state objects are not exposed as raw mutable `List`/`Map`
 
 ### Reactivity discipline (for reactive-mutation solutions: MobX, GetX, Signals):
-- [ ] State is only mutated through the solution's reactive API (`@action`in MobX,`.value`on signals,`.obs` in GetX) â€” direct field mutation bypasses change tracking
+- [ ] State is only mutated through the solution's reactive API (`@action` in MobX,`.value` on signals,`.obs` in GetX) â€” direct field mutation bypasses change tracking
 - [ ] Derived values use the solution's computed mechanism rather than being stored redundantly
 - [ ] Reactions and disposers are properly cleaned up (`ReactionDisposer` in MobX, effect cleanup in Signals)
 
@@ -143,12 +143,12 @@ class UserError extends UserState {
 - [ ] Computed/derived state is calculated reactively, not stored redundantly
 
 ### Subscriptions & disposal:
-- [ ] All manual subscriptions (`.listen()`) are cancelled in`dispose()`/`close()`
+- [ ] All manual subscriptions (`.listen()`) are cancelled in `dispose()`/`close()`
 - [ ] Stream controllers are closed when no longer needed
 - [ ] Timers are cancelled in disposal lifecycle
 - [ ] Framework-managed lifecycle is preferred over manual subscription (declarative builders over `.listen()`)
 - [ ] `mounted`check before`setState` in async callbacks
-- [ ] `BuildContext`not used after` await`without checking `context.mounted` (Flutter 3.7+) â€” stale context causes crashes
+- [ ] `BuildContext`not used after`await`without checking`context.mounted` (Flutter 3.7+) â€” stale context causes crashes
 - [ ] No navigation, dialogs, or scaffold messages after async gaps without verifying the widget is still mounted
 - [ ] `BuildContext` never stored in singletons, state managers, or static fields
 
@@ -175,7 +175,7 @@ class UserError extends UserState {
 ### Image optimization:
 - [ ] Network images use caching (any caching solution appropriate for the project)
 - [ ] Appropriate image resolution for target device (no loading 4K images for thumbnails)
-- [ ] `Image.asset`with ` cacheWidth`/`cacheHeight` to decode at display size
+- [ ] `Image.asset` with `cacheWidth`/`cacheHeight` to decode at display size
 - [ ] Placeholder and error widgets provided for network images
 
 ### Lazy loading:
@@ -184,7 +184,7 @@ class UserError extends UserState {
 - [ ] Deferred loading (`deferred as`) used for heavy libraries in web builds
 
 ### Other:
-- [ ] `Opacity`widget avoided in animations â€” use`AnimatedOpacity`or `FadeTransition`
+- [ ] `Opacity`widget avoided in animations â€” use`AnimatedOpacity` or `FadeTransition`
 - [ ] Clipping avoided in animations â€” pre-clip images
 - [ ] `operator ==`not overridden on widgets â€” use`const` constructors instead
 - [ ] Intrinsic dimension widgets (`IntrinsicHeight`,`IntrinsicWidth`) used sparingly (extra layout pass)
@@ -212,9 +212,9 @@ class UserError extends UserState {
 - [ ] No shared mutable state between test cases
 
 ### Widget test quality:
-- [ ] `pumpWidget`and ` pump` used correctly for async operations
+- [ ] `pumpWidget` and `pump` used correctly for async operations
 - [ ] `find.byType`,`find.text`,`find.byKey` used appropriately
-- [ ] No flaky tests depending on timing â€” use `pumpAndSettle`or explicit`pump(Duration)`
+- [ ] No flaky tests depending on timing â€” use `pumpAndSettle` or explicit`pump(Duration)`
 - [ ] Tests run in CI and failures block merges
 
 ---
@@ -250,10 +250,10 @@ class UserError extends UserState {
 - [ ] Platform-adaptive widgets used where appropriate
 - [ ] Back navigation handled correctly (Android back button, iOS swipe-to-go-back)
 - [ ] Status bar and safe area handled via `SafeArea` widget
-- [ ] Platform-specific permissions declared in `AndroidManifest.xml`and `Info.plist`
+- [ ] Platform-specific permissions declared in `AndroidManifest.xml` and `Info.plist`
 
 ### Responsive design:
-- [ ] `LayoutBuilder`or `MediaQuery` used for responsive layouts
+- [ ] `LayoutBuilder` or `MediaQuery` used for responsive layouts
 - [ ] Breakpoints defined consistently (phone, tablet, desktop)
 - [ ] Text doesn't overflow on small screens â€” use `Flexible`,`Expanded`,`FittedBox`
 - [ ] Landscape orientation tested or explicitly locked
@@ -316,7 +316,7 @@ class UserError extends UserState {
 
 ### General principles (apply to any routing solution):
 - [ ] One routing approach used consistently â€” no mixing imperative `Navigator.push` with a declarative router
-- [ ] Route arguments are typed â€” no `Map<String, dynamic>`or`Object?` casting
+- [ ] Route arguments are typed â€” no `Map<String, dynamic>` or `Object?` casting
 - [ ] Route paths defined as constants, enums, or generated â€” no magic strings scattered in code
 - [ ] Auth guards/redirects centralized â€” not duplicated across individual screens
 - [ ] Deep links configured for both Android and iOS

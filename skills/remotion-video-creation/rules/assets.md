@@ -13,7 +13,7 @@ Place assets in the `public/` folder at your project root.
 
 ## Using staticFile()
 
-You MUST use `staticFile()`to reference files from the`public/` folder:
+You MUST use `staticFile()` to reference files from the`public/` folder:
 
 ```tsx
 import {Img, staticFile} from 'remotion';

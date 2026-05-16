@@ -63,7 +63,7 @@ go mod tidy -v
 | `declared but not used` | Unused var/import | Remove or use blank identifier |
 | `multiple-value in single-value context`| Unhandled return |`result, err := func()` |
 | `cannot assign to struct field in map` | Map value mutation | Use pointer map or copy-modify-reassign |
-| `invalid type assertion`| Assert on non-interface | Only assert from`interface{}` |
+| `invalid type assertion`| Assert on non-interface | Only assert from `interface{}` |
 
 ## Module Troubleshooting
 

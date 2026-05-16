@@ -6,7 +6,7 @@ Test coverage'ını analiz et, eksiklikleri tanımla ve 80%+ coverage'a ulaşmak
 
 | Gösterge | Coverage Komutu |
 |-----------|-----------------|
-| `jest.config.*`veya` package.json `jest |`npx jest --coverage --coverageReporters=json-summary` |
+| `jest.config.*`veya`package.json`jest |`npx jest --coverage --coverageReporters=json-summary` |
 | `vitest.config.*`|`npx vitest run --coverage` |
 | `pytest.ini`/`pyproject.toml`pytest |`pytest --cov=src --cov-report=json` |
 | `Cargo.toml`|`cargo llvm-cov --json` |

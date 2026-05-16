@@ -8,7 +8,7 @@ This command invokes the **flutter-reviewer** agent to review Flutter/Dart code 
 
 ## What This Command Does
 
-1. **Gather Context**: Review `git diff --staged`and ` git diff`
+1. **Gather Context**: Review `git diff --staged` and `git diff`
 2. **Inspect Project**: Check `pubspec.yaml`,`analysis_options.yaml`, state management solution
 3. **Security Pre-scan**: Check for hardcoded secrets and critical security issues
 4. **Full Review**: Apply the complete review checklist
@@ -73,7 +73,7 @@ Architecture: feature-first
 
 [HIGH] BuildContext used after async gap without mounted check
 File: lib/features/auth/presentation/login_page.dart:67
-Issue: `context.go('/home')`called after`await auth.login(...)`with no`mounted` check.
+Issue: `context.go('/home')`called after`await auth.login(...)` with no`mounted` check.
 Fix: Add `if (!context.mounted) return;` before any navigation after awaits (Flutter 3.7+).
 
 [HIGH] AsyncValue error state not handled

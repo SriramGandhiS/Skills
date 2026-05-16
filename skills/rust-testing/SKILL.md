@@ -19,7 +19,7 @@ Comprehensive Rust testing patterns for writing reliable, maintainable tests fol
 ## How It Works
 
 1. **Identify target code** â€” Find the function, trait, or module to test
-2. **Write a test** â€” Use `#[test]`in a`#[cfg(test)]` module, rstest for parameterized tests, or proptest for property-based tests
+2. **Write a test** â€” Use `#[test]` in a`#[cfg(test)]` module, rstest for parameterized tests, or proptest for property-based tests
 3. **Mock dependencies** â€” Use mockall to isolate the unit under test
 4. **Run tests (RED)** â€” Verify the test fails with the expected error
 5. **Implement (GREEN)** â€” Write minimal code to pass
@@ -459,15 +459,15 @@ cargo test -- --ignored           # Run ignored tests
 - Use `#[cfg(test)]` modules for unit tests
 - Test behavior, not implementation
 - Use descriptive test names that explain the scenario
-- Prefer `assert_eq!`over` assert!` for better error messages
-- Use `?`in tests that return`Result` for cleaner error output
+- Prefer `assert_eq!`over`assert!` for better error messages
+- Use `?` in tests that return`Result` for cleaner error output
 - Keep tests independent â€” no shared mutable state
 
 **DON'T:**
 - Use `#[should_panic]`when you can test`Result::is_err()` instead
 - Mock everything â€” prefer integration tests when feasible
 - Ignore flaky tests â€” fix or quarantine them
-- Use `sleep()`in tests â€” use channels, barriers, or`tokio::time::pause()`
+- Use `sleep()` in tests â€” use channels, barriers, or `tokio::time::pause()`
 - Skip error path testing
 
 ## CI Integration

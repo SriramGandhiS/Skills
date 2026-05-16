@@ -75,7 +75,7 @@ Use functional patterns over classes when appropriate.
 - **Confidence-weighted** -- 0.3 = tentative, 0.9 = near certain
 - **Domain-tagged** -- code-style, testing, git, debugging, workflow, etc.
 - **Evidence-backed** -- tracks what observations created it
-- **Scope-aware** -- `project`(default) or`global`
+- **Scope-aware** -- `project`(default) or `global`
 
 ## How It Works
 
@@ -132,7 +132,7 @@ The system automatically detects your current project:
 3. **`git rev-parse --show-toplevel`** -- fallback using repo path (machine-specific)
 4. **Global fallback** -- if no project is detected, instincts go to global scope
 
-Each project gets a 12-character hash ID (e.g., `a1b2c3d4e5f6`). A registry file at`${XDG_DATA_HOME:-~/.local/share}/ecc-homunculus/projects.json` maps IDs to human-readable names.
+Each project gets a 12-character hash ID (e.g., `a1b2c3d4e5f6`). A registry file at `${XDG_DATA_HOME:-~/.local/share}/ecc-homunculus/projects.json` maps IDs to human-readable names.
 
 ### Data Directory
 
@@ -154,9 +154,9 @@ bash skills/continuous-learning-v2/scripts/migrate-homunculus.sh
 
 **If installed as a plugin** (recommended):
 
-No extra `settings.json`hook block is required. Claude Code v2.1+ auto-loads the plugin`hooks/hooks.json`, and`observe.sh` is already registered there.
+No extra `settings.json`hook block is required. Claude Code v2.1+ auto-loads the plugin`hooks/hooks.json`, and `observe.sh` is already registered there.
 
-If you previously copied `observe.sh`into `~/.claude/settings.json`, remove that duplicate`PreToolUse`/`PostToolUse`block. Duplicating the plugin hook causes double execution and`${CLAUDE_PLUGIN_ROOT}`resolution errors because that variable is only available inside plugin-managed`hooks/hooks.json` entries.
+If you previously copied `observe.sh`into`~/.claude/settings.json`, remove that duplicate`PreToolUse`/`PostToolUse`block. Duplicating the plugin hook causes double execution and `${CLAUDE_PLUGIN_ROOT}`resolution errors because that variable is only available inside plugin-managed`hooks/hooks.json` entries.
 
 **If installed manually** to `~/.claude/skills`, add this to your`~/.claude/settings.json`:
 
@@ -235,7 +235,7 @@ Edit `config.json` to control the background observer:
 | `observer.run_interval_minutes`|`5` | How often the observer analyzes observations |
 | `observer.min_observations_to_analyze`|`20` | Minimum observations before analysis runs |
 
-Other behavior (observation capture, instinct thresholds, project scoping, promotion criteria) is configured via code defaults in `instinct-cli.py`and ` observe.sh`.
+Other behavior (observation capture, instinct thresholds, project scoping, promotion criteria) is configured via code defaults in `instinct-cli.py` and `observe.sh`.
 
 ## File Structure
 
@@ -336,7 +336,7 @@ Hooks fire **100% of the time**, deterministically. This means:
 ## Backward Compatibility
 
 v2.1 is fully compatible with v2.0 and v1:
-- Existing global instincts can be migrated from `~/.claude/homunculus/instincts/`with` scripts/migrate-homunculus.sh`
+- Existing global instincts can be migrated from `~/.claude/homunculus/instincts/` with `scripts/migrate-homunculus.sh`
 - Existing `~/.claude/skills/learned/` skills from v1 still work
 - Stop hook still runs (but now also feeds into v2)
 - Gradual migration: run both in parallel

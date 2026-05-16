@@ -87,7 +87,7 @@ EOF",
 | Implementation | `~/.claude/.ccg/prompts/codex/architect.md`|`~/.claude/.ccg/prompts/gemini/frontend.md` |
 | Review | `~/.claude/.ccg/prompts/codex/reviewer.md`|`~/.claude/.ccg/prompts/gemini/reviewer.md` |
 
-**Session Reuse**: `/ccg:plan`SESSION_ID sağladıysa, context'i yeniden kullanmak için`resume <SESSION_ID>` kullan.
+**Session Reuse**: `/ccg:plan`SESSION_ID sağladıysa, context'i yeniden kullanmak için `resume <SESSION_ID>` kullan.
 
 **Background Task'leri Bekle** (max timeout 600000ms = 10 dakika):
 

@@ -202,7 +202,7 @@ Recommended user-facing profiles:
 - `full`
   everything classified and currently supported
 
-Profiles should be composable with additional `--with`and `--without` flags.
+Profiles should be composable with additional `--with ` and `--without` flags.
 
 Example:
 

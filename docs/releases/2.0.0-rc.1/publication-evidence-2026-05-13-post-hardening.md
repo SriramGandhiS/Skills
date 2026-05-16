@@ -78,17 +78,17 @@ ECC's current guardrails cover those classes through:
 
 - rejection of untrusted checkout refs in `workflow_run` and
   `pull_request_target` workflows;
-- rejection of shared caches in `pull_request_target`and ` id-token: write`
+- rejection of shared caches in `pull_request_target` and `id-token: write`
   workflows;
 - mandatory `npm audit signatures`when workflows run`npm audit`;
 - mandatory `npm ci --ignore-scripts` in workflows with write permissions;
-- mandatory `persist-credentials: false`on ` actions/checkout` in workflows
+- mandatory `persist-credentials: false` on `actions/checkout` in workflows
   with write permissions.
 
 ## Blockers Still Requiring Approval Or External Action
 
 - Create or verify GitHub prerelease `v2.0.0-rc.1`.
-- Publish `ecc-universal@2.0.0-rc.1`with npm dist-tag`next`.
+- Publish `ecc-universal@2.0.0-rc.1` with npm dist-tag`next`.
 - Create and push the Claude plugin tag only after explicit approval.
 - Confirm the live Claude/Codex/OpenCode marketplace submission path or record
   the manual submission owner and status.

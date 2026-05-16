@@ -27,6 +27,8 @@ targets.forEach(t => {
   }
 });
 
+const CRUSHED_WORDS = ['or', 'and', 'with', 'in', 'to', 'for', 'at', 'by', 'on', 'from', 'as'];
+
 allFiles.forEach(file => {
   let content = fs.readFileSync(file, 'utf8');
   let lines = content.split('\n');
@@ -48,9 +50,23 @@ allFiles.forEach(file => {
       }
     }
 
-    // MD038: No spaces at start/end of code spans (Safer)
+    // MD038: No spaces at start/end of code spans (Aggressive but safe inside)
+    l = l.replace(/`\s+([^`]+?)\s+`/g, '`$1`');
     l = l.replace(/`\s+([^`]+?)`/g, '`$1`');
     l = l.replace(/`([^`]+?)\s+`/g, '`$1`');
+
+    // UN-CRUSH common words
+    CRUSHED_WORDS.forEach(word => {
+        const reSuffix = new RegExp('`([^`]+?)`' + word + '(\\s|$|[^a-z])', 'gi');
+        l = l.replace(reSuffix, '`$1` ' + word + '$2');
+        const rePrefix = new RegExp('(\\s|^|[^a-z])' + word + '`([^`]+?)`', 'gi');
+        l = l.replace(rePrefix, '$1' + word + ' `$2`');
+    });
+    
+    // Fix crushed punctuation
+    l = l.replace(/`([^`]+?)`\)/g, '`$1`)'); // This one might be tricky, usually ) is fine without space
+    // Actually, ) and , and . are fine without space.
+    // BUT `foo`or is definitely wrong.
 
     // MD034: Wrap bare URLs in <>
     l = l.replace(/(^|\s)(https?:\/\/[^\s<"']+)/g, (match, p1, p2) => {

@@ -24,7 +24,7 @@
 - 모든 쿼리는 Django ORM 사용 — raw SQL은 `.raw()`와 parameterized 쿼리로만 사용
 - 마이그레이션은 git에 커밋 — 프로덕션에서 `--fake` 사용 금지
 - N+1 쿼리 방지를 위해 `select_related()`와`prefetch_related()` 사용
-- 모든 모델에 `created_at`과`updated_at` 자동 필드 필수
+- 모든 모델에 `created_at `과`updated_at` 자동 필드 필수
 - `filter()`,`order_by()`, 또는`WHERE` 절에 사용되는 모든 필드에 인덱스 추가
 
 ```python

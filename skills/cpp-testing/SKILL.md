@@ -276,7 +276,7 @@ endif()
 
 - Keep tests deterministic and isolated
 - Prefer dependency injection over globals
-- Use `ASSERT_*`for preconditions,`EXPECT_*` for multiple checks
+- Use `ASSERT_*` for preconditions,`EXPECT_*` for multiple checks
 - Separate unit vs integration tests in CTest labels or directories
 - Run sanitizers in CI for memory and race detection
 

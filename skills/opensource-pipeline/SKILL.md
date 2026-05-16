@@ -13,7 +13,7 @@ Safely open-source any project through a 3-stage pipeline: **Fork** (strip secre
 - User says "open source this project" or "make this public"
 - User wants to prepare a private repo for public release
 - User needs to strip secrets before pushing to GitHub
-- User invokes `/opensource fork`,`/opensource verify`, or`/opensource package`
+- User invokes `/opensource fork`,`/opensource verify`, or `/opensource package`
 
 ## Commands
 
@@ -241,7 +241,7 @@ $HOME/opensource-staging/
 - **Never** push to GitHub without user approval
 - **Never** skip the sanitizer â€” it is the safety gate
 - **Never** proceed after a sanitizer FAIL without fixing all critical findings
-- **Never** leave `.env`,`*.pem`, or`credentials.json` in the staging directory
+- **Never** leave `.env`,`*.pem`, or `credentials.json` in the staging directory
 
 ## Best Practices
 

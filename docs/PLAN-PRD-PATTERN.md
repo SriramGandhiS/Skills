@@ -2,7 +2,7 @@
 
 A lightweight, SDLC-aligned planning workflow where each phase of the lifecycle produces a committable markdown **staging file** that the next command consumes.
 
-> Short version: `/plan-prd`writes a PRD,`/plan`writes a plan, the`tdd-workflow`skill implements it, and`/pr` ships it. Each arrow is a file on disk, not a conversation in memory.
+> Short version: `/plan-prd`writes a PRD,`/plan`writes a plan, the`tdd-workflow`skill implements it, and `/pr` ships it. Each arrow is a file on disk, not a conversation in memory.
 
 ## Feature: Markdown Staging Files
 
@@ -56,7 +56,7 @@ Each box is a **gate**. You can:
 - Skip gates for small work — feed `/plan`free-form text and ignore`/plan-prd`.
 - Run a gate standalone — `/plan "refactor X"` produces a conversational plan with no artifact.
 
-## Why `/plan-prd`Is Additional to`/plan`
+## Why `/plan-prd`Is Additional to `/plan`
 
 They answer different questions. Mixing them causes scope creep.
 
@@ -84,7 +84,7 @@ Use `/plan` directly when:
 
 - Requirements are already clear (a bug report, a scoped refactor, a known migration).
 - The work is small enough that a conversational plan + confirmation gate is sufficient.
-- You already have a PRD — pass it to `/plan`and skip`/plan-prd`.
+- You already have a PRD — pass it to `/plan` and skip`/plan-prd`.
 
 ## Usage
 
@@ -142,13 +142,13 @@ Use the tdd-workflow skill
 - `/plan` — planning (consumes PRDs or free-form text).
 - `tdd-workflow` skill — test-first implementation.
 - `/pr` — open a PR that references PRDs and plans.
-- `/code-review`— reviews local diffs or PRs; auto-detects`.claude/prds/`and`.claude/plans/` as context.
+- `/code-review`— reviews local diffs or PRs; auto-detects`.claude/prds/` and `.claude/plans/` as context.
 
 ## Compatibility
 
 This pattern adds ECC-native staging-file commands alongside the existing `prp-*`command set. The legacy PRP commands remain available for deeper PRP workflows and for users who already have`.claude/PRPs/` artifacts.
 
-- `/plan-prd`is the lean requirements entry point for`.claude/prds/`.
+- `/plan-prd`is the lean requirements entry point for `.claude/prds/`.
 - `/plan`can consume`.prd.md`files and produce`.claude/plans/` artifacts without requiring the legacy PRP directory layout.
-- `/pr`is the ECC-native PR creation command and can reference`.claude/prds/`and`.claude/plans/`.
-- `/prp-prd`,`/prp-plan`,`/prp-implement`,`/prp-commit`, and`/prp-pr` remain valid legacy/deep workflow commands.
+- `/pr`is the ECC-native PR creation command and can reference`.claude/prds/` and `.claude/plans/`.
+- `/prp-prd`,`/prp-plan`,`/prp-implement`,`/prp-commit`, and `/prp-pr` remain valid legacy/deep workflow commands.

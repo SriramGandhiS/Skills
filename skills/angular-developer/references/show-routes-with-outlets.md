@@ -24,7 +24,7 @@ Child routes require their own `<router-outlet />` within the parent component's
 
 ## Named Outlets (Secondary Routes)
 
-Pages can have multiple outlets. Assign a `name`to an outlet to target it specifically. The default name is`'primary'`.
+Pages can have multiple outlets. Assign a `name` to an outlet to target it specifically. The default name is`'primary'`.
 
 ```html
 <router-outlet />

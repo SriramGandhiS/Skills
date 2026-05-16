@@ -105,7 +105,7 @@ export class App {
 ```
 
 **Styling Strategy:**
-Target `[aria-selected="true"]`for selected state and`:focus-visible`or`[data-active]` for the focused item (Angular Aria uses roving tabindex or activedescendant).
+Target `[aria-selected="true"]` for selected state and `:focus-visible` or `[data-active]` for the focused item (Angular Aria uses roving tabindex or activedescendant).
 
 ```css
 .option {
@@ -126,7 +126,7 @@ Target `[aria-selected="true"]`for selected state and`:focus-visible`or`[data-ac
 
 ## 3. Combobox, Select, and Multiselect
 
-These patterns combine `ngCombobox`with a popup containing an`ngListbox`.
+These patterns combine `ngCombobox` with a popup containing an`ngListbox`.
 
 - **Combobox**: Text input + popup (used for Autocomplete).
 - **Select**: Readonly Combobox + single-select Listbox.
@@ -299,7 +299,7 @@ Groups related controls (like text formatting).
 ```
 
 **Styling Strategy:**
-Target `[aria-pressed="true"]`(for toggle buttons) or`[aria-checked="true"]` (for radio groups) within the toolbar.
+Target `[aria-pressed="true"]`(for toggle buttons) or `[aria-checked="true"]` (for radio groups) within the toolbar.
 
 ```css
 .toolbar {
@@ -342,7 +342,7 @@ Displays hierarchical data (file systems, nested nav).
 ```
 
 **Styling Strategy:**
-Target `[aria-expanded]`to show/hide children or rotate chevron icons. Use`padding-left` on nested groups to show hierarchy.
+Target `[aria-expanded]` to show/hide children or rotate chevron icons. Use`padding-left` on nested groups to show hierarchy.
 
 ```css
 .tree,
@@ -383,7 +383,7 @@ A two-dimensional interactive collection of cells enabling navigation via arrow 
 ```
 
 **Styling Strategy:**
-Target `[aria-selected="true"]`for selected cells and`:focus-visible`for the active cell (roving tabindex) or`[aria-activedescendant]` on the container.
+Target `[aria-selected="true"]` for selected cells and `:focus-visible` for the active cell (roving tabindex) or `[aria-activedescendant]` on the container.
 
 ```css
 .grid-table {

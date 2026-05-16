@@ -93,7 +93,7 @@ Understanding what persists helps you compact with confidence:
 3. **Don't compact mid-implementation** — Preserve context for related changes
 4. **Read the suggestion** — The hook tells you *when*, you decide *if*
 5. **Write before compacting** — Save important context to files or memory before compacting
-6. **Use `/compact`with a summary** — Add a custom message:`/compact Focus on implementing auth middleware next`
+6. **Use `/compact` with a summary** — Add a custom message:`/compact Focus on implementing auth middleware next`
 
 ## Related
 

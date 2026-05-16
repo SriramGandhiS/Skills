@@ -24,7 +24,7 @@
 * 所有查询使用 Django ORM — 原始 SQL 仅与 `.raw()` 和参数化查询一起使用
 * 迁移文件提交到 git — 生产中绝不使用 `--fake`
 * 使用 `select_related()`和`prefetch_related()` 防止 N+1 查询
-* 所有模型必须具有 `created_at`和`updated_at` 自动字段
+* 所有模型必须具有 `created_at `和`updated_at` 自动字段
 * 在 `filter()`、`order_by()`或`WHERE` 子句中使用的任何字段上建立索引
 
 ```python

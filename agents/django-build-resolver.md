@@ -75,10 +75,10 @@ python manage.py collectstatic --dry-run --noinput 2>&1
 
 | Error | Cause | Fix |
 |-------|-------|-----|
-| `ModuleNotFoundError: No module named 'X'`| Missing package |`pip install X`or add to`requirements.txt` |
+| `ModuleNotFoundError: No module named 'X'`| Missing package |`pip install X` or add to `requirements.txt` |
 | `ImportError: cannot import name 'X' from 'Y'` | Version mismatch | Pin compatible version in requirements |
 | `ERROR: pip's dependency resolver...`| Conflicting deps | Upgrade pip:`pip install --upgrade pip`, then`pip install -r requirements.txt` |
-| `Poetry: No solution found`| Conflicting constraints | Relax version pin in`pyproject.toml` |
+| `Poetry: No solution found`| Conflicting constraints | Relax version pin in `pyproject.toml` |
 | `pkg_resources.DistributionNotFound` | Installed outside venv | Reinstall inside venv |
 
 ```bash
@@ -101,7 +101,7 @@ pip install -r requirements.txt
 |-------|-------|-----|
 | `django.db.migrations.exceptions.MigrationSchemaMissing`| DB tables not created |`python manage.py migrate` |
 | `InconsistentMigrationHistory` | Applied out of order | Squash or fake migrations |
-| `Migration X dependencies reference nonexistent parent Y`| Missing migration file | Recreate with`makemigrations` |
+| `Migration X dependencies reference nonexistent parent Y`| Missing migration file | Recreate with `makemigrations` |
 | `Table already exists`| Migration applied outside Django |`migrate --fake-initial` |
 | `Multiple leaf nodes in the migration graph`| Conflicting migration branches | Merge:`python manage.py makemigrations --merge` |
 | `django.db.utils.OperationalError: no such column`| Unapplied migration |`python manage.py migrate` |
@@ -128,10 +128,10 @@ python manage.py migrate --plan
 |-------|-------|-----|
 | `django.core.exceptions.ImproperlyConfigured`| Missing setting or wrong value | Check`settings.py` for the named setting |
 | `DJANGO_SETTINGS_MODULE not set`| Env var missing |`export DJANGO_SETTINGS_MODULE=config.settings.development` |
-| `SECRET_KEY must not be empty`| Missing env var | Set`DJANGO_SECRET_KEY`in`.env` |
-| `Invalid HTTP_HOST header`|`ALLOWED_HOSTS`misconfigured | Add hostname to`ALLOWED_HOSTS` |
+| `SECRET_KEY must not be empty`| Missing env var | Set`DJANGO_SECRET_KEY` in `.env` |
+| `Invalid HTTP_HOST header`|`ALLOWED_HOSTS`misconfigured | Add hostname to `ALLOWED_HOSTS` |
 | `Apps aren't loaded yet`| Importing models before`django.setup()`| Call`django.setup()` or move imports inside functions |
-| `RuntimeError: Model class ... doesn't declare an explicit app_label`| App not in`INSTALLED_APPS`| Add the app to`INSTALLED_APPS` |
+| `RuntimeError: Model class ... doesn't declare an explicit app_label`| App not in `INSTALLED_APPS`| Add the app to `INSTALLED_APPS` |
 
 ```bash
 ## Verify settings module resolves
@@ -194,7 +194,7 @@ python -c "from django.conf import settings; print(settings.DATABASES)"
 
 | Error | Cause | Fix |
 |-------|-------|-----|
-| `staticfiles.E001: The STATICFILES_DIRS...`| Dir in both`STATICFILES_DIRS`and`STATIC_ROOT`| Remove from`STATICFILES_DIRS` |
+| `staticfiles.E001: The STATICFILES_DIRS...`| Dir in both`STATICFILES_DIRS` and `STATIC_ROOT`| Remove from `STATICFILES_DIRS` |
 | `FileNotFoundError` during collectstatic | Missing static file referenced in template | Remove or create the referenced file |
 | `AttributeError: 'str' object has no attribute 'path'`|`STORAGES`not configured for Django 4.2+ | Update`STORAGES` dict in settings |
 

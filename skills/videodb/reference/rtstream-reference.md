@@ -230,7 +230,7 @@ scene_index = rtstream.index_visuals(
 
 | Key | Type | Description |
 |-----|------|-------------|
-| `type`|`str`| Only `"time"` is supported for visuals |
+| `type`|`str`| Only`"time"` is supported for visuals |
 | `value`|`int` | Window size in seconds |
 | `frame_count`|`int` | Number of frames to extract per window |
 
@@ -313,7 +313,7 @@ Transcript results arrive on the `transcript` WebSocket channel.
 
 ## RTStreamSceneIndex
 
-When you call `index_audio()`or` index_visuals()`, the method returns an`RTStreamSceneIndex` object. This object represents the running index and provides methods for managing scenes and alerts.
+When you call `index_audio()` or `index_visuals()`, the method returns an`RTStreamSceneIndex` object. This object represents the running index and provides methods for managing scenes and alerts.
 
 ```python
 ## index_visuals returns an RTStreamSceneIndex
@@ -335,7 +335,7 @@ audio_index = rtstream.index_audio(
 |----------|------|-------------|
 | `rtstream_index_id`|`str` | Unique ID of the index |
 | `rtstream_id`|`str` | ID of the parent RTStream |
-| `extraction_type`|`str`| Type of extraction (`time`or`transcript`) |
+| `extraction_type`|`str`| Type of extraction (`time` or `transcript`) |
 | `extraction_config`|`dict` | Extraction configuration |
 | `prompt`|`str` | The prompt used for analysis |
 | `name`|`str` | Name of the index |
