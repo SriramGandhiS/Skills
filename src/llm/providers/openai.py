@@ -21,7 +21,8 @@ class OpenAIProvider(LLMProvider):
     provider_type = ProviderType.OPENAI
 
     def __init__(self, api_key: str | None = None, base_url: str | None = None) -> None:
-        self.client = OpenAI(api_key=api_key or os.environ.get("OPENAI_API_KEY"), base_url=base_url)
+        self.api_key = api_key or os.environ.get("OPENAI_API_KEY") or "sk-not-set"
+        self.client = OpenAI(api_key=self.api_key, base_url=base_url)
         self._models = [
             ModelInfo(
                 name="gpt-4o",
@@ -108,7 +109,7 @@ class OpenAIProvider(LLMProvider):
         return self._models.copy()
 
     def validate_config(self) -> bool:
-        return bool(self.client.api_key)
+        return bool(self.api_key and self.api_key != "sk-not-set")
 
     def get_default_model(self) -> str:
         return "gpt-4o-mini"

@@ -20,7 +20,8 @@ class ClaudeProvider(LLMProvider):
     provider_type = ProviderType.CLAUDE
 
     def __init__(self, api_key: str | None = None, base_url: str | None = None) -> None:
-        self.client = Anthropic(api_key=api_key or os.environ.get("ANTHROPIC_API_KEY"), base_url=base_url)
+        self.api_key = api_key or os.environ.get("ANTHROPIC_API_KEY") or "ant-not-set"
+        self.client = Anthropic(api_key=self.api_key, base_url=base_url)
         self._models = [
             ModelInfo(
                 name="claude-opus-4-5",
@@ -111,7 +112,7 @@ class ClaudeProvider(LLMProvider):
         return self._models.copy()
 
     def validate_config(self) -> bool:
-        return bool(self.client.api_key)
+        return bool(self.api_key and self.api_key != "ant-not-set")
 
     def get_default_model(self) -> str:
         return "claude-sonnet-4-7"

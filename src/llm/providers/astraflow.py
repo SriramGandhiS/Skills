@@ -50,7 +50,7 @@ class _AstraflowBaseProvider(LLMProvider):
         base_url: str | None = None,
         default_model: str | None = None,
     ) -> None:
-        self.api_key = api_key or os.environ.get(self.api_key_env) or ""
+        self.api_key = api_key or os.environ.get(self.api_key_env) or "sk-not-set"
         self.base_url = base_url or os.environ.get(self.base_url_env, self.default_base_url)
         env_model = os.environ.get(self.model_env)
         fallback_model = os.environ.get(self.fallback_model_env) if self.fallback_model_env else None
