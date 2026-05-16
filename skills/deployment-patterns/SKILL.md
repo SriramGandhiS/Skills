@@ -1,4 +1,4 @@
----
+﻿---
 name: deployment-patterns
 description: Deployment workflows, CI/CD pipeline patterns, Docker containerization, health checks, rollback strategies, and production readiness checklists for web applications.
 origin: ECC
@@ -21,24 +21,24 @@ Production deployment workflows and CI/CD best practices.
 
 ### Rolling Deployment (Default)
 
-Replace instances gradually — old and new versions run simultaneously during rollout.
+Replace instances gradually â€” old and new versions run simultaneously during rollout.
 
 ```
-Instance 1: v1 → v2  (update first)
+Instance 1: v1 â†’ v2  (update first)
 Instance 2: v1        (still running v1)
 Instance 3: v1        (still running v1)
 
 Instance 1: v2
-Instance 2: v1 → v2  (update second)
+Instance 2: v1 â†’ v2  (update second)
 Instance 3: v1
 
 Instance 1: v2
 Instance 2: v2
-Instance 3: v1 → v2  (update last)
+Instance 3: v1 â†’ v2  (update last)
 ```
 
 **Pros:** Zero downtime, gradual rollout
-**Cons:** Two versions run simultaneously — requires backward-compatible changes
+**Cons:** Two versions run simultaneously â€” requires backward-compatible changes
 **Use when:** Standard deployments, backward-compatible changes
 
 ### Blue-Green Deployment
@@ -46,12 +46,12 @@ Instance 3: v1 → v2  (update last)
 Run two identical environments. Switch traffic atomically.
 
 ```
-Blue  (v1) ← traffic
+Blue  (v1) â† traffic
 Green (v2)   idle, running new version
 
 # After verification:
 Blue  (v1)   idle (becomes standby)
-Green (v2) ← traffic
+Green (v2) â† traffic
 ```
 
 **Pros:** Instant rollback (switch back to blue), clean cutover
@@ -255,10 +255,10 @@ jobs:
 
 ```
 PR opened:
-  lint → typecheck → unit tests → integration tests → preview deploy
+  lint â†’ typecheck â†’ unit tests â†’ integration tests â†’ preview deploy
 
 Merged to main:
-  lint → typecheck → unit tests → integration tests → build image → deploy staging → smoke tests → deploy production
+  lint â†’ typecheck â†’ unit tests â†’ integration tests â†’ build image â†’ deploy staging â†’ smoke tests â†’ deploy production
 ```
 
 ## Health Checks
@@ -333,7 +333,7 @@ startupProbe:
 ### Twelve-Factor App Pattern
 
 ```bash
-# All config via environment variables — never in code
+# All config via environment variables â€” never in code
 DATABASE_URL=postgres://user:pass@host:5432/db
 REDIS_URL=redis://host:6379/0
 API_KEY=${API_KEY}           # injected by secrets manager
@@ -359,7 +359,7 @@ const envSchema = z.object({
   LOG_LEVEL: z.enum(["debug", "info", "warn", "error"]).default("info"),
 });
 
-// Validate at startup — fail fast if config is wrong
+// Validate at startup â€” fail fast if config is wrong
 export const env = envSchema.parse(process.env);
 ```
 
@@ -425,3 +425,4 @@ Before any production deployment:
 - [ ] Database migration tested against production-sized data
 - [ ] Runbook for common failure scenarios
 - [ ] On-call rotation and escalation path defined
+

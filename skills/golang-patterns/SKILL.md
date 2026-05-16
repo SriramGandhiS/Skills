@@ -1,4 +1,4 @@
----
+﻿---
 name: golang-patterns
 description: Idiomatic Go patterns, best practices, and conventions for building robust, efficient, and maintainable Go applications.
 origin: ECC
@@ -367,22 +367,22 @@ func WriteAndFlush(w io.Writer, data []byte) error {
 
 ```text
 myproject/
-├── cmd/
-│   └── myapp/
-│       └── main.go           # Entry point
-├── internal/
-│   ├── handler/              # HTTP handlers
-│   ├── service/              # Business logic
-│   ├── repository/           # Data access
-│   └── config/               # Configuration
-├── pkg/
-│   └── client/               # Public API client
-├── api/
-│   └── v1/                   # API definitions (proto, OpenAPI)
-├── testdata/                 # Test fixtures
-├── go.mod
-├── go.sum
-└── Makefile
+â”œâ”€â”€ cmd/
+â”‚   â””â”€â”€ myapp/
+â”‚       â””â”€â”€ main.go           # Entry point
+â”œâ”€â”€ internal/
+â”‚   â”œâ”€â”€ handler/              # HTTP handlers
+â”‚   â”œâ”€â”€ service/              # Business logic
+â”‚   â”œâ”€â”€ repository/           # Data access
+â”‚   â””â”€â”€ config/               # Configuration
+â”œâ”€â”€ pkg/
+â”‚   â””â”€â”€ client/               # Public API client
+â”œâ”€â”€ api/
+â”‚   â””â”€â”€ v1/                   # API definitions (proto, OpenAPI)
+â”œâ”€â”€ testdata/                 # Test fixtures
+â”œâ”€â”€ go.mod
+â”œâ”€â”€ go.sum
+â””â”€â”€ Makefile
 ```
 
 ### Package Naming
@@ -672,3 +672,4 @@ func (c *Counter) Increment() { c.n++ }        // Pointer receiver
 ```
 
 **Remember**: Go code should be boring in the best way - predictable, consistent, and easy to understand. When in doubt, keep it simple.
+

@@ -1,4 +1,4 @@
----
+﻿---
 name: dotnet-patterns
 description: Idiomatic C# and .NET patterns, conventions, dependency injection, async/await, and best practices for building robust, maintainable .NET applications.
 origin: ECC
@@ -319,3 +319,4 @@ public async Task<ProcessResult> ProcessPaymentAsync(
 | `dynamic` in business logic | Use generics or explicit types |
 | Mutable `static` state | Use DI scoping or `ConcurrentDictionary` |
 | `string.Format` in loops | Use `StringBuilder` or interpolated string handlers |
+

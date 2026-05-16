@@ -17,6 +17,19 @@
 
 An AI skill that provides design intelligence for building professional UI/UX across multiple platforms and frameworks.
 
+### 📊 Quick Start Catalog
+| Category | Count | Status |
+| :--- | :--- | :--- |
+| **Product Categories** | 161 | 🟢 Verified |
+| **UI Styles** | 67 | 🟢 Verified |
+| **Color Palettes** | 161 | 🟢 Verified |
+| **Font Pairings** | 57 | 🟢 Verified |
+| **Reasoning Rules** | 161 | 🟢 Verified |
+
+> [!TIP]
+> **GitHub Copilot Users**: Add the skill definition to your `chat.promptFiles` settings for automatic design intelligence.
+> **Elite Performance**: For low-latency local execution, see the [Hermes Setup Guide](docs/hermes-setup.md).
+
 <p align="center">
   <a href="https://uupm.cc">
     <img src="screenshots/website.png" alt="UI UX Pro Max" width="800">

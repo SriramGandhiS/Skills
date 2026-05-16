@@ -1,4 +1,4 @@
-# Define Routes
+﻿# Define Routes
 
 Routes are objects that define which component should render for a specific URL path.
 
@@ -65,3 +65,4 @@ Define sub-views using the `children` property. Parent components must include a
   ],
 }
 ```
+

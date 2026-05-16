@@ -1,4 +1,4 @@
-# Angular Aria
+﻿# Angular Aria
 
 Angular Aria (`@angular/aria`) is a collection of headless, accessible directives that implement common WAI-ARIA patterns. These directives handle keyboard interactions, ARIA attributes, focus management, and screen reader support.
 
@@ -46,7 +46,7 @@ export class App {
   <div class="accordion-item">
     <button ngAccordionTrigger panelId="panel-1" class="accordion-header">
       Section 1
-      <span class="icon">▼</span>
+      <span class="icon">â–¼</span>
     </button>
     <div ngAccordionPanel panelId="panel-1" class="accordion-panel">
       <ng-template ngAccordionContent>
@@ -231,7 +231,7 @@ Use flexbox for the menubar. Hide/show submenus based on the trigger's state.
 
 Layered content sections where only one panel is visible.
 
-**Usage:** The Tabs component is used to organize related content into distinct, navigable sections, allowing users to switch between categories or views without leaving the page. It is ideal for settings panels, multi-topic documentation, or dashboards, but should be avoided for sequential workflows (steppers) or when navigation involves more than 7–8 sections.
+**Usage:** The Tabs component is used to organize related content into distinct, navigable sections, allowing users to switch between categories or views without leaving the page. It is ideal for settings panels, multi-topic documentation, or dashboards, but should be avoided for sequential workflows (steppers) or when navigation involves more than 7â€“8 sections.
 
 **Imports:** `import {Tab, Tabs, TabList, TabPanel, TabContent} from '@angular/aria/tabs';`
 
@@ -408,3 +408,4 @@ Target `[aria-selected="true"]` for selected cells and `:focus-visible` for the 
 1. **Never use native HTML elements like `<select>`** when asked to implement these specific Aria patterns. Use the `ng*` directives.
 2. **Handle CSS manually**: Remember that `Angular Aria` does NOT provide styles. You must write the CSS, targeting the native ARIA attributes (`aria-expanded`, `aria-selected`, etc.) that the directives automatically toggle.
 3. **Lazy Loading**: Always use the provided structural directives (`ngAccordionContent`, `ngTabContent`) inside `ng-template` for heavy content panels to ensure they are lazily rendered.
+

@@ -1,4 +1,4 @@
----
+﻿---
 name: springboot-verification
 description: "Verification loop for Spring Boot projects: build, static analysis, tests with coverage, security scans, and diff review before release or PR."
 origin: ECC
@@ -13,7 +13,7 @@ Run before PRs, after major changes, and pre-deploy.
 - Before opening a pull request for a Spring Boot service
 - After major refactoring or dependency upgrades
 - Pre-deployment verification for staging or production
-- Running full build → lint → test → security scan pipeline
+- Running full build â†’ lint â†’ test â†’ security scan pipeline
 - Validating test coverage meets thresholds
 
 ## Phase 1: Build
@@ -225,7 +225,8 @@ Issues to Fix:
 
 ## Continuous Mode
 
-- Re-run phases on significant changes or every 30–60 minutes in long sessions
+- Re-run phases on significant changes or every 30â€“60 minutes in long sessions
 - Keep a short loop: `mvn -T 4 test` + spotbugs for quick feedback
 
-**Remember**: Fast feedback beats late surprises. Keep the gate strict—treat warnings as defects in production systems.
+**Remember**: Fast feedback beats late surprises. Keep the gate strictâ€”treat warnings as defects in production systems.
+

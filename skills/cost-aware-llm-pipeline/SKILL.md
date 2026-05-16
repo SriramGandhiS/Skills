@@ -1,6 +1,6 @@
----
+﻿---
 name: cost-aware-llm-pipeline
-description: Cost optimization patterns for LLM API usage — model routing by task complexity, budget tracking, retry logic, and prompt caching.
+description: Cost optimization patterns for LLM API usage â€” model routing by task complexity, budget tracking, retry logic, and prompt caching.
 origin: ECC
 ---
 
@@ -43,7 +43,7 @@ def select_model(
 
 ### 2. Immutable Cost Tracking
 
-Track cumulative spend with frozen dataclasses. Each API call returns a new tracker — never mutates state.
+Track cumulative spend with frozen dataclasses. Each API call returns a new tracker â€” never mutates state.
 
 ```python
 from dataclasses import dataclass
@@ -99,7 +99,7 @@ def call_with_retry(func, *, max_retries: int = _MAX_RETRIES):
             if attempt == max_retries - 1:
                 raise
             time.sleep(2 ** attempt)  # Exponential backoff
-    # AuthenticationError, BadRequestError etc. → raise immediately
+    # AuthenticationError, BadRequestError etc. â†’ raise immediately
 ```
 
 ### 4. Prompt Caching
@@ -162,10 +162,10 @@ def process(text: str, config: Config, tracker: CostTracker) -> tuple[Result, Co
 ## Best Practices
 
 - **Start with the cheapest model** and only route to expensive models when complexity thresholds are met
-- **Set explicit budget limits** before processing batches — fail early rather than overspend
+- **Set explicit budget limits** before processing batches â€” fail early rather than overspend
 - **Log model selection decisions** so you can tune thresholds based on real data
-- **Use prompt caching** for system prompts over 1024 tokens — saves both cost and latency
-- **Never retry on authentication or validation errors** — only transient failures (network, rate limit, server error)
+- **Use prompt caching** for system prompts over 1024 tokens â€” saves both cost and latency
+- **Never retry on authentication or validation errors** â€” only transient failures (network, rate limit, server error)
 
 ## Anti-Patterns to Avoid
 
@@ -181,3 +181,4 @@ def process(text: str, config: Config, tracker: CostTracker) -> tuple[Result, Co
 - Batch processing pipelines where cost adds up quickly
 - Multi-model architectures that need intelligent routing
 - Production systems that need budget guardrails
+

@@ -1,4 +1,4 @@
-# Defining Dependency Providers
+﻿# Defining Dependency Providers
 
 Angular offers automatic and manual ways to provide dependencies to its Dependency Injection (DI) system.
 
@@ -70,3 +70,4 @@ export function provideAnalytics(config: AnalyticsConfig): Provider[] {
   return [{provide: ANALYTICS_CONFIG, useValue: config}, AnalyticsService];
 }
 ```
+

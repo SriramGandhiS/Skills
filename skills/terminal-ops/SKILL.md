@@ -1,4 +1,4 @@
----
+﻿---
 name: terminal-ops
 description: Evidence-first repo execution workflow for ECC. Use when the user wants a command run, a repo checked, a CI failure debugged, or a narrow fix pushed with exact proof of what was executed and verified.
 origin: ECC
@@ -107,3 +107,4 @@ STATUS
 - the response names the proving command or test
 - git-related work names the repo path and branch
 - any push claim includes the target branch and exact result
+

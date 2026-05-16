@@ -1,4 +1,4 @@
----
+﻿---
 name: motion-ui
 description: "Production-ready UI motion system for React/Next.js. Use when implementing animations, transitions, or motion patterns."
 origin: ECC
@@ -8,33 +8,33 @@ origin: ECC
 
 Production-ready UI motion system for React / Next.js.
 
-Focused on **performance, accessibility, and usability** — not decoration.
+Focused on **performance, accessibility, and usability** â€” not decoration.
 
 ## When to Use
 
 Use this motion system when motion:
 
-* Guides attention (e.g., onboarding, key actions)
-* Communicates state (loading, success, error, transitions)
-* Preserves spatial continuity (layout changes, navigation)
+- Guides attention (e.g., onboarding, key actions)
+- Communicates state (loading, success, error, transitions)
+- Preserves spatial continuity (layout changes, navigation)
 
 ### Appropriate Scenarios
 
-* Interactive components (buttons, modals, menus)
-* State transitions (loading → loaded, open → closed)
-* Navigation and layout continuity (shared elements, crossfade)
+- Interactive components (buttons, modals, menus)
+- State transitions (loading â†’ loaded, open â†’ closed)
+- Navigation and layout continuity (shared elements, crossfade)
 
 ### Considerations
 
-* **Accessibility**: Always support reduced motion
-* **Device adaptation**: Adjust for low-end devices
-* **Performance trade-offs**: Prefer responsiveness over visual smoothness
+- **Accessibility**: Always support reduced motion
+- **Device adaptation**: Adjust for low-end devices
+- **Performance trade-offs**: Prefer responsiveness over visual smoothness
 
 ### Avoid Using Motion When
 
-* It is purely decorative
-* It reduces usability or clarity
-* It impacts performance negatively
+- It is purely decorative
+- It reduces usability or clarity
+- It impacts performance negatively
 
 ---
 
@@ -44,11 +44,11 @@ Use this motion system when motion:
 
 Motion must:
 
-* Guide attention
-* Communicate state
-* Preserve spatial continuity
+- Guide attention
+- Communicate state
+- Preserve spatial continuity
 
-If it does none → remove it.
+If it does none â†’ remove it.
 
 ---
 
@@ -62,10 +62,10 @@ npm install motion
 
 ### Version
 
-* `motion/react` - default for current Motion for React projects (package: `motion`)
-* `framer-motion` - legacy import path for projects that still depend on Framer Motion
+- `motion/react` - default for current Motion for React projects (package: `motion`)
+- `framer-motion` - legacy import path for projects that still depend on Framer Motion
 
-**Do not mix.** Mixing causes conflicting internal schedulers and broken `AnimatePresence` contexts — components from one package will not coordinate exit animations with components from the other.
+**Do not mix.** Mixing causes conflicting internal schedulers and broken `AnimatePresence` contexts â€” components from one package will not coordinate exit animations with components from the other.
 
 To check which version your project uses:
 
@@ -132,13 +132,13 @@ import { motionTokens } from "@/lib/motionTokens"
 
 **Safe**
 
-* transform
-* opacity
+- transform
+- opacity
 
 **Avoid**
 
-* width / height
-* top / left
+- width / height
+- top / left
 
 Rule: responsiveness > smoothness
 
@@ -151,7 +151,7 @@ The heuristic combines CPU core count **and** available memory for a more reliab
 ```ts
 const isLowEnd =
   typeof navigator !== "undefined" && (
-    // Low memory (Chrome/Android only; undefined elsewhere → treat as capable)
+    // Low memory (Chrome/Android only; undefined elsewhere â†’ treat as capable)
     (navigator.deviceMemory !== undefined && navigator.deviceMemory <= 2) ||
     // Few cores AND no memory API (covers Safari/Firefox on weak hardware)
     (navigator.deviceMemory === undefined && navigator.hardwareConcurrency <= 4)
@@ -222,12 +222,12 @@ export function FadeIn() {
 
 #### Layout & Transitions
 
-* Shared element transitions → `layoutId` (must be unique per mounted instance)
-* Enter / exit transitions → `AnimatePresence` (see `mode` guidance below)
+- Shared element transitions â†’ `layoutId` (must be unique per mounted instance)
+- Enter / exit transitions â†’ `AnimatePresence` (see `mode` guidance below)
 
 #### AnimatePresence `mode`
 
-Always specify `mode` explicitly — the default (`"sync"`) runs enter and exit simultaneously, which causes visual overlap in most UI patterns.
+Always specify `mode` explicitly â€” the default (`"sync"`) runs enter and exit simultaneously, which causes visual overlap in most UI patterns.
 
 | `mode` | When to use |
 |---|---|
@@ -236,12 +236,12 @@ Always specify `mode` explicitly — the default (`"sync"`) runs enter and exit 
 | `"popLayout"` | Exiting element is popped out of flow immediately; remaining items animate to fill. Use for **lists, tabs, dismissible cards**. |
 
 ```tsx
-// Modal — always use "wait"
+// Modal â€” always use "wait"
 <AnimatePresence mode="wait">
   {open && <Modal key="modal" />}
 </AnimatePresence>
 
-// Dismissible list item — use "popLayout"
+// Dismissible list item â€” use "popLayout"
 <AnimatePresence mode="popLayout">
   {items.map(item => <Card key={item.id} />)}
 </AnimatePresence>
@@ -251,24 +251,24 @@ Always specify `mode` explicitly — the default (`"sync"`) runs enter and exit 
 
 ### Advanced Patterns (Concepts)
 
-* Parallax (scroll-linked transforms)
-* Scroll storytelling (sticky sections)
-* 3D tilt (pointer-based transforms)
-* Crossfade (shared `layoutId`)
-* Progressive reveal (clip-path)
-* Skeleton loading (looped opacity)
-* Micro-interactions (hover/tap feedback)
-* Spring system (physics-based motion)
+- Parallax (scroll-linked transforms)
+- Scroll storytelling (sticky sections)
+- 3D tilt (pointer-based transforms)
+- Crossfade (shared `layoutId`)
+- Progressive reveal (clip-path)
+- Skeleton loading (looped opacity)
+- Micro-interactions (hover/tap feedback)
+- Spring system (physics-based motion)
 
 ---
 
 ### Modal Essentials
 
-* Focus trap
-* Escape close
-* Scroll lock
-* ARIA roles
-* Use `AnimatePresence mode="wait"` so exit animation completes before the next modal enters
+- Focus trap
+- Escape close
+- Scroll lock
+- ARIA roles
+- Use `AnimatePresence mode="wait"` so exit animation completes before the next modal enters
 
 #### Full Example
 
@@ -373,9 +373,9 @@ export function Example() {
 
 ### SSR Safety
 
-* Match initial states between server and client renders
-* Avoid implicit animation origins (always set `initial` explicitly)
-* Wrap motion components in `"use client"` in Next.js App Router
+- Match initial states between server and client renders
+- Avoid implicit animation origins (always set `initial` explicitly)
+- Wrap motion components in `"use client"` in Next.js App Router
 
 ---
 
@@ -383,37 +383,37 @@ export function Example() {
 
 Check:
 
-* Wrong import (mixing `motion/react` and `framer-motion`)
-* Missing `"use client"` directive in Next.js App Router
-* Missing `key` prop on `AnimatePresence` children
-* Hydration mismatch (initial state differs between SSR and client)
-* `layout` prop misuse on large containers causing reflow jank
-* State-driven animation not triggering (check dependency arrays)
+- Wrong import (mixing `motion/react` and `framer-motion`)
+- Missing `"use client"` directive in Next.js App Router
+- Missing `key` prop on `AnimatePresence` children
+- Hydration mismatch (initial state differs between SSR and client)
+- `layout` prop misuse on large containers causing reflow jank
+- State-driven animation not triggering (check dependency arrays)
 
 ---
 
 ### QA
 
-* No CLS
-* Keyboard works
-* Focus trapped in modals
-* ARIA roles correct (`role="dialog"`, `aria-modal="true"`)
-* Reduced motion respected (`useReducedMotion` + CSS media query)
-* No hydration warnings in Next.js
-* Animations stop cleanly on unmount (no memory leaks)
-* `AnimatePresence mode` set explicitly on all usage sites
+- No CLS
+- Keyboard works
+- Focus trapped in modals
+- ARIA roles correct (`role="dialog"`, `aria-modal="true"`)
+- Reduced motion respected (`useReducedMotion` + CSS media query)
+- No hydration warnings in Next.js
+- Animations stop cleanly on unmount (no memory leaks)
+- `AnimatePresence mode` set explicitly on all usage sites
 
 ---
 
 ### Anti-Patterns
 
-* Animating layout properties (`width`, `height`, `top`, `left`)
-* Infinite animations without purpose (always ask: what state does this communicate?)
-* Over-staggering lists (keep `staggerChildren` ≤ 0.1s; beyond that it feels slow)
-* Ignoring reduced motion preferences
-* Using `layout` on large or full-viewport containers
-* Omitting `mode` on `AnimatePresence` (default `"sync"` causes visual overlap)
-* Using motion purely for decoration
+- Animating layout properties (`width`, `height`, `top`, `left`)
+- Infinite animations without purpose (always ask: what state does this communicate?)
+- Over-staggering lists (keep `staggerChildren` â‰¤ 0.1s; beyond that it feels slow)
+- Ignoring reduced motion preferences
+- Using `layout` on large or full-viewport containers
+- Omitting `mode` on `AnimatePresence` (default `"sync"` causes visual overlap)
+- Using motion purely for decoration
 
 ---
 
@@ -425,7 +425,7 @@ Motion is interaction design.
 
 ### Final Rule
 
-> If motion does not improve UX → remove it.
+> If motion does not improve UX â†’ remove it.
 
 ---
 
@@ -479,7 +479,7 @@ import { motion } from "motion/react"
 const container = {
   hidden: {},
   visible: {
-    transition: { staggerChildren: 0.08 } // keep ≤ 0.1s to avoid sluggishness
+    transition: { staggerChildren: 0.08 } // keep â‰¤ 0.1s to avoid sluggishness
   }
 }
 
@@ -550,7 +550,7 @@ export function Skeleton() {
       className="bg-gray-200 h-6 w-full rounded"
       animate={{ opacity: [0.5, 1, 0.5] }}
       transition={{
-        duration: 1.5,       // comfortable pulse — was missing, caused fast flash
+        duration: 1.5,       // comfortable pulse â€” was missing, caused fast flash
         repeat: Infinity,
         ease: "easeInOut"
       }}
@@ -573,3 +573,4 @@ export function Shared() {
   return <motion.div layoutId="shared" />
 }
 ```
+

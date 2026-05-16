@@ -1,4 +1,4 @@
----
+﻿---
 name: santa-method
 description: "Multi-agent adversarial verification with convergence loop. Two independent review agents must both pass before output ships."
 origin: "Ronald Skelton - Founder, RapportScore.ai"
@@ -25,41 +25,41 @@ Do NOT use for internal drafts, exploratory research, or tasks with deterministi
 ## Architecture
 
 ```
-┌─────────────┐
-│  GENERATOR   │  Phase 1: Make a List
-│  (Agent A)   │  Produce the deliverable
-└──────┬───────┘
-       │ output
-       ▼
-┌──────────────────────────────┐
-│     DUAL INDEPENDENT REVIEW   │  Phase 2: Check It Twice
-│                                │
-│  ┌───────────┐ ┌───────────┐  │  Two agents, same rubric,
-│  │ Reviewer B │ │ Reviewer C │  │  no shared context
-│  └─────┬─────┘ └─────┬─────┘  │
-│        │              │        │
-└────────┼──────────────┼────────┘
-         │              │
-         ▼              ▼
-┌──────────────────────────────┐
-│        VERDICT GATE           │  Phase 3: Naughty or Nice
-│                                │
-│  B passes AND C passes → NICE  │  Both must pass.
-│  Otherwise → NAUGHTY           │  No exceptions.
-└──────┬──────────────┬─────────┘
-       │              │
+â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
+â”‚  GENERATOR   â”‚  Phase 1: Make a List
+â”‚  (Agent A)   â”‚  Produce the deliverable
+â””â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”˜
+       â”‚ output
+       â–¼
+â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
+â”‚     DUAL INDEPENDENT REVIEW   â”‚  Phase 2: Check It Twice
+â”‚                                â”‚
+â”‚  â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â” â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”  â”‚  Two agents, same rubric,
+â”‚  â”‚ Reviewer B â”‚ â”‚ Reviewer C â”‚  â”‚  no shared context
+â”‚  â””â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”˜ â””â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”˜  â”‚
+â”‚        â”‚              â”‚        â”‚
+â””â”€â”€â”€â”€â”€â”€â”€â”€â”¼â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¼â”€â”€â”€â”€â”€â”€â”€â”€â”˜
+         â”‚              â”‚
+         â–¼              â–¼
+â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
+â”‚        VERDICT GATE           â”‚  Phase 3: Naughty or Nice
+â”‚                                â”‚
+â”‚  B passes AND C passes â†’ NICE  â”‚  Both must pass.
+â”‚  Otherwise â†’ NAUGHTY           â”‚  No exceptions.
+â””â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
+       â”‚              â”‚
     NICE           NAUGHTY
-       │              │
-       ▼              ▼
-   [ SHIP ]    ┌─────────────┐
-               │  FIX CYCLE   │  Phase 4: Fix Until Nice
-               │              │
-               │ iteration++  │  Collect all flags.
-               │ if i > MAX:  │  Fix all issues.
-               │   escalate   │  Re-run both reviewers.
-               │ else:        │  Loop until convergence.
-               │   goto Ph.2  │
-               └──────────────┘
+       â”‚              â”‚
+       â–¼              â–¼
+   [ SHIP ]    â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
+               â”‚  FIX CYCLE   â”‚  Phase 4: Fix Until Nice
+               â”‚              â”‚
+               â”‚ iteration++  â”‚  Collect all flags.
+               â”‚ if i > MAX:  â”‚  Fix all issues.
+               â”‚   escalate   â”‚  Re-run both reviewers.
+               â”‚ else:        â”‚  Loop until convergence.
+               â”‚   goto Ph.2  â”‚
+               â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
 ```
 
 ## Phase Details
@@ -77,10 +77,10 @@ output = generate(task_spec)
 
 Spawn two review agents in parallel. Critical invariants:
 
-1. **Context isolation** — neither reviewer sees the other's assessment
-2. **Identical rubric** — both receive the same evaluation criteria
-3. **Same inputs** — both receive the original spec AND the generated output
-4. **Structured output** — each returns a typed verdict, not prose
+1. **Context isolation** â€” neither reviewer sees the other's assessment
+2. **Identical rubric** â€” both receive the same evaluation criteria
+3. **Same inputs** â€” both receive the original spec AND the generated output
+4. **Structured output** â€” each returns a typed verdict, not prose
 
 ```python
 REVIEWER_PROMPT = """
@@ -119,7 +119,7 @@ Be rigorous. Your job is to find problems, not to approve.
 review_b = Agent(prompt=REVIEWER_PROMPT.format(...), description="Santa Reviewer B")
 review_c = Agent(prompt=REVIEWER_PROMPT.format(...), description="Santa Reviewer C")
 
-# Both run concurrently — neither sees the other
+# Both run concurrently â€” neither sees the other
 ```
 
 ### Rubric Design
@@ -195,7 +195,7 @@ for iteration in range(MAX_ITERATIONS):
     review_b = Agent(prompt=REVIEWER_PROMPT.format(output=output, ...))
     review_c = Agent(prompt=REVIEWER_PROMPT.format(output=output, ...))
 
-# Exhausted iterations — escalate
+# Exhausted iterations â€” escalate
 log_santa_result(output, MAX_ITERATIONS, "escalated")
 escalate_to_human(output, issues)
 ```
@@ -236,7 +236,7 @@ When subagents aren't available, simulate isolation with explicit context resets
 5. New context: "You are Reviewer 2. Evaluate ONLY against this rubric. Find problems."
 6. Compare both reviews, fix, repeat
 
-The subagent pattern is strictly superior — inline simulation risks context bleed between reviewers.
+The subagent pattern is strictly superior â€” inline simulation risks context bleed between reviewers.
 
 ### Pattern C: Batch Sampling
 
@@ -261,7 +261,7 @@ def santa_batch(items, rubric, sample_rate=0.15):
             items = batch_fix(items, pattern)  # Fix all items matching pattern
             return santa_batch(items, rubric)   # Re-sample
 
-    return items  # Clean sample → ship batch
+    return items  # Clean sample â†’ ship batch
 ```
 
 ## Failure Modes and Mitigations
@@ -281,7 +281,7 @@ def santa_batch(items, rubric, sample_rate=0.15):
 |-------|-------------|
 | Verification Loop | Use for deterministic checks (build, lint, test). Santa for semantic checks (accuracy, hallucinations). Run verification-loop first, Santa second. |
 | Eval Harness | Santa Method results feed eval metrics. Track pass@k across Santa runs to measure generator quality over time. |
-| Continuous Learning v2 | Santa findings become instincts. Repeated failures on the same criterion → learned behavior to avoid the pattern. |
+| Continuous Learning v2 | Santa findings become instincts. Repeated failures on the same criterion â†’ learned behavior to avoid the pattern. |
 | Strategic Compact | Run Santa BEFORE compacting. Don't lose review context mid-verification. |
 
 ## Metrics
@@ -299,8 +299,9 @@ Track these to measure Santa Method effectiveness:
 Santa Method costs approximately 2-3x the token cost of generation alone per verification cycle. For most high-stakes output, this is a bargain:
 
 ```
-Cost of Santa = (generation tokens) + 2×(review tokens per round) × (avg rounds)
+Cost of Santa = (generation tokens) + 2Ã—(review tokens per round) Ã— (avg rounds)
 Cost of NOT Santa = (reputation damage) + (correction effort) + (trust erosion)
 ```
 
 For batch operations, the sampling pattern reduces cost to ~15-20% of full verification while catching >90% of systematic issues.
+

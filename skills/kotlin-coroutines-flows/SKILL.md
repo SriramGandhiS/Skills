@@ -1,6 +1,6 @@
----
+﻿---
 name: kotlin-coroutines-flows
-description: Kotlin Coroutines and Flow patterns for Android and KMP — structured concurrency, Flow operators, StateFlow, error handling, and testing.
+description: Kotlin Coroutines and Flow patterns for Android and KMP â€” structured concurrency, Flow operators, StateFlow, error handling, and testing.
 origin: ECC
 ---
 
@@ -22,22 +22,22 @@ Patterns for structured concurrency, Flow-based reactive streams, and coroutine 
 
 ```
 Application
-  └── viewModelScope (ViewModel)
-        └── coroutineScope { } (structured child)
-              ├── async { } (concurrent task)
-              └── async { } (concurrent task)
+  â””â”€â”€ viewModelScope (ViewModel)
+        â””â”€â”€ coroutineScope { } (structured child)
+              â”œâ”€â”€ async { } (concurrent task)
+              â””â”€â”€ async { } (concurrent task)
 ```
 
-Always use structured concurrency — never `GlobalScope`:
+Always use structured concurrency â€” never `GlobalScope`:
 
 ```kotlin
 // BAD
 GlobalScope.launch { fetchData() }
 
-// GOOD — scoped to ViewModel lifecycle
+// GOOD â€” scoped to ViewModel lifecycle
 viewModelScope.launch { fetchData() }
 
-// GOOD — scoped to composable lifecycle
+// GOOD â€” scoped to composable lifecycle
 LaunchedEffect(key) { fetchData() }
 ```
 
@@ -72,7 +72,7 @@ suspend fun syncAll() = supervisorScope {
 
 ## Flow Patterns
 
-### Cold Flow — One-Shot to Stream Conversion
+### Cold Flow â€” One-Shot to Stream Conversion
 
 ```kotlin
 fun observeItems(): Flow<List<Item>> = flow {
@@ -98,7 +98,7 @@ class DashboardViewModel(
 }
 ```
 
-`WhileSubscribed(5_000)` keeps the upstream active for 5 seconds after the last subscriber leaves — survives configuration changes without restarting.
+`WhileSubscribed(5_000)` keeps the upstream active for 5 seconds after the last subscriber leaves â€” survives configuration changes without restarting.
 
 ### Combining Multiple Flows
 
@@ -175,11 +175,11 @@ withContext(Dispatchers.Default) { parseJson(largePayload) }
 // IO-bound work
 withContext(Dispatchers.IO) { database.query() }
 
-// Main thread (UI) — default in viewModelScope
+// Main thread (UI) â€” default in viewModelScope
 withContext(Dispatchers.Main) { updateUi() }
 ```
 
-In KMP, use `Dispatchers.Default` and `Dispatchers.Main` (available on all platforms). `Dispatchers.IO` is JVM/Android only — use `Dispatchers.Default` on other platforms or provide via DI.
+In KMP, use `Dispatchers.Default` and `Dispatchers.Main` (available on all platforms). `Dispatchers.IO` is JVM/Android only â€” use `Dispatchers.Default` on other platforms or provide via DI.
 
 ## Cancellation
 
@@ -271,14 +271,15 @@ class FakeItemRepository : ItemRepository {
 
 ## Anti-Patterns to Avoid
 
-- Using `GlobalScope` — leaks coroutines, no structured cancellation
-- Collecting Flows in `init {}` without a scope — use `viewModelScope.launch`
-- Using `MutableStateFlow` with mutable collections — always use immutable copies: `_state.update { it.copy(list = it.list + newItem) }`
-- Catching `CancellationException` — let it propagate for proper cancellation
-- Using `flowOn(Dispatchers.Main)` to collect — collection dispatcher is the caller's dispatcher
-- Creating `Flow` in `@Composable` without `remember` — recreates the flow every recomposition
+- Using `GlobalScope` â€” leaks coroutines, no structured cancellation
+- Collecting Flows in `init {}` without a scope â€” use `viewModelScope.launch`
+- Using `MutableStateFlow` with mutable collections â€” always use immutable copies: `_state.update { it.copy(list = it.list + newItem) }`
+- Catching `CancellationException` â€” let it propagate for proper cancellation
+- Using `flowOn(Dispatchers.Main)` to collect â€” collection dispatcher is the caller's dispatcher
+- Creating `Flow` in `@Composable` without `remember` â€” recreates the flow every recomposition
 
 ## References
 
 See skill: `compose-multiplatform-patterns` for UI consumption of Flows.
 See skill: `android-clean-architecture` for where coroutines fit in layers.
+

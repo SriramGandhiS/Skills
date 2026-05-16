@@ -1,4 +1,4 @@
-<!-- markdownlint-disable MD007 -->
+﻿<!-- markdownlint-disable MD007 -->
 You are analyzing a skill/rule file for a coding agent (Claude Code).
 Your task: extract the **observable behavioral sequence** that an agent should follow when this skill is active.
 
@@ -17,8 +17,8 @@ steps:
     required: true|false
     detector:
       description: <natural language description of what tool call to look for>
-      after_step: <step_id this must come after, optional — omit if not needed>
-      before_step: <step_id this must come before, optional — omit if not needed>
+      after_step: <step_id this must come after, optional â€” omit if not needed>
+      before_step: <step_id this must come before, optional â€” omit if not needed>
 
 scoring:
   threshold_promote_to_hook: 0.6
@@ -40,3 +40,4 @@ Skill file to analyze:
 ---
 {skill_content}
 ---
+

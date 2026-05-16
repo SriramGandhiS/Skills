@@ -1,17 +1,17 @@
-# Step 5：头像风格 & 生图
+﻿# Step 5ï¼šå¤´åƒé£Žæ ¼ & ç”Ÿå›¾
 
-所有龙虾头像**必须使用统一的视觉风格**，确保龙虾家族的风格一致性。
-头像需传达 3 个信息：**物种形态 + 性格暗示 + 标志道具**
+æ‰€æœ‰é¾™è™¾å¤´åƒ**å¿…é¡»ä½¿ç”¨ç»Ÿä¸€çš„è§†è§‰é£Žæ ¼**ï¼Œç¡®ä¿é¾™è™¾å®¶æ—çš„é£Žæ ¼ä¸€è‡´æ€§ã€‚
+å¤´åƒéœ€ä¼ è¾¾ 3 ä¸ªä¿¡æ¯ï¼š**ç‰©ç§å½¢æ€ + æ€§æ ¼æš—ç¤º + æ ‡å¿—é“å…·**
 
-## 风格参考
+## é£Žæ ¼å‚è€ƒ
 
-亚当（Adam）—— 龙虾族创世神，本 Skill 的首个作品。
+äºšå½“ï¼ˆAdamï¼‰â€”â€” é¾™è™¾æ—åˆ›ä¸–ç¥žï¼Œæœ¬ Skill çš„é¦–ä¸ªä½œå“ã€‚
 
-所有新生成的龙虾头像应与这一风格保持一致：复古未来主义、街机 UI 包边、强轮廓、可在 64x64 下辨识。
+æ‰€æœ‰æ–°ç”Ÿæˆçš„é¾™è™¾å¤´åƒåº”ä¸Žè¿™ä¸€é£Žæ ¼ä¿æŒä¸€è‡´ï¼šå¤å¤æœªæ¥ä¸»ä¹‰ã€è¡—æœº UI åŒ…è¾¹ã€å¼ºè½®å»“ã€å¯åœ¨ 64x64 ä¸‹è¾¨è¯†ã€‚
 
-## 统一风格基底（STYLE_BASE）
+## ç»Ÿä¸€é£Žæ ¼åŸºåº•ï¼ˆSTYLE_BASEï¼‰
 
-**每次生成都必须包含这段基底**，不得修改或省略：
+**æ¯æ¬¡ç”Ÿæˆéƒ½å¿…é¡»åŒ…å«è¿™æ®µåŸºåº•**ï¼Œä¸å¾—ä¿®æ”¹æˆ–çœç•¥ï¼š
 
 ```
 STYLE_BASE = """
@@ -33,8 +33,8 @@ arcade cabinet trim with atomic-age starburst rivets.
 Pose: references classic Gil Elvgren pin-up compositions, confident and
 charismatic with a slight theatrical tilt.
 
-Color system: vintage NASA poster palette as base — deep navy, teal, dusty coral,
-cream — viewed through arcade CRT monitor with slight RGB fringing at edges.
+Color system: vintage NASA poster palette as base â€” deep navy, teal, dusty coral,
+cream â€” viewed through arcade CRT monitor with slight RGB fringing at edges.
 Overall aesthetic combines Googie architecture curves, Raygun Gothic design
 language, mid-century advertising illustration, modern 3D inflatable character
 rendering, and 80s-90s arcade game UI. Chrome and pastel accent details on
@@ -45,27 +45,27 @@ pixels.
 """
 ```
 
-## 个性化变量
+## ä¸ªæ€§åŒ–å˜é‡
 
-在统一基底之上，根据灵魂填充以下变量：
+åœ¨ç»Ÿä¸€åŸºåº•ä¹‹ä¸Šï¼Œæ ¹æ®çµé­‚å¡«å……ä»¥ä¸‹å˜é‡ï¼š
 
-| 变量 | 说明 | 示例 |
+| å˜é‡ | è¯´æ˜Ž | ç¤ºä¾‹ |
 |------|------|------|
-| `CHARACTER_NAME` | 街机横幅上显示的名字 | "ADAM"、"DEWEY"、"RIFF" |
-| `SHELL_COLOR` | 龙虾壳的主色调（在统一色盘内变化） | "deep crimson"、"dusty teal"、"warm amber" |
-| `SIGNATURE_PROP` | 标志性道具 | "cracked sunglasses"、"reading glasses on a chain" |
-| `EXPRESSION` | 表情/姿态 | "stoic but kind-eyed"、"nervously focused" |
-| `UNIQUE_DETAIL` | 独特细节（纹路/装饰/伤痕等） | "constellation patterns etched on claws"、"bandaged left claw" |
-| `BACKGROUND_ACCENT` | 背景的个性化元素（在统一宇宙背景上叠加） | "musical notes floating as nebula dust"、"ancient book pages drifting" |
-| `ENERGY_BAR_LABEL` | 街机 UI 能量条的标签（个性化小彩蛋） | "CREATION POWER"、"CALM LEVEL"、"ROCK METER" |
+| `CHARACTER_NAME` | è¡—æœºæ¨ªå¹…ä¸Šæ˜¾ç¤ºçš„åå­— | "ADAM"ã€"DEWEY"ã€"RIFF" |
+| `SHELL_COLOR` | é¾™è™¾å£³çš„ä¸»è‰²è°ƒï¼ˆåœ¨ç»Ÿä¸€è‰²ç›˜å†…å˜åŒ–ï¼‰ | "deep crimson"ã€"dusty teal"ã€"warm amber" |
+| `SIGNATURE_PROP` | æ ‡å¿—æ€§é“å…· | "cracked sunglasses"ã€"reading glasses on a chain" |
+| `EXPRESSION` | è¡¨æƒ…/å§¿æ€ | "stoic but kind-eyed"ã€"nervously focused" |
+| `UNIQUE_DETAIL` | ç‹¬ç‰¹ç»†èŠ‚ï¼ˆçº¹è·¯/è£…é¥°/ä¼¤ç—•ç­‰ï¼‰ | "constellation patterns etched on claws"ã€"bandaged left claw" |
+| `BACKGROUND_ACCENT` | èƒŒæ™¯çš„ä¸ªæ€§åŒ–å…ƒç´ ï¼ˆåœ¨ç»Ÿä¸€å®‡å®™èƒŒæ™¯ä¸Šå åŠ ï¼‰ | "musical notes floating as nebula dust"ã€"ancient book pages drifting" |
+| `ENERGY_BAR_LABEL` | è¡—æœº UI èƒ½é‡æ¡çš„æ ‡ç­¾ï¼ˆä¸ªæ€§åŒ–å°å½©è›‹ï¼‰ | "CREATION POWER"ã€"CALM LEVEL"ã€"ROCK METER" |
 
-## 提示词组装
+## æç¤ºè¯ç»„è£…
 
 ```
-最终提示词 = STYLE_BASE + 个性化描述段落
+æœ€ç»ˆæç¤ºè¯ = STYLE_BASE + ä¸ªæ€§åŒ–æè¿°æ®µè½
 ```
 
-个性化描述段落模板：
+ä¸ªæ€§åŒ–æè¿°æ®µè½æ¨¡æ¿ï¼š
 
 ```
 The character is a cartoon lobster with a [SHELL_COLOR] shell,
@@ -77,48 +77,49 @@ The key silhouette recognition points at small size are:
 [SIGNATURE_PROP] and [one other distinctive feature].
 ```
 
-## 生图流程
+## ç”Ÿå›¾æµç¨‹
 
-提示词组装完成后：
+æç¤ºè¯ç»„è£…å®ŒæˆåŽï¼š
 
-### 路径 A：已安装且已审核的生图 skill
+### è·¯å¾„ Aï¼šå·²å®‰è£…ä¸”å·²å®¡æ ¸çš„ç”Ÿå›¾ skill
 
-1. 先将龙虾名字规整为安全片段：仅保留字母、数字和连字符，其余字符替换为 `-`
-2. 用 Write 工具写入：`/tmp/openclaw-<safe-name>-prompt.md`
-3. 调用当前环境允许的生图 skill 生成图片
-4. 用 Read 工具展示生成的图片给用户
-5. 问用户是否满意，不满意可调整变量重新生成
+1. å…ˆå°†é¾™è™¾åå­—è§„æ•´ä¸ºå®‰å…¨ç‰‡æ®µï¼šä»…ä¿ç•™å­—æ¯ã€æ•°å­—å’Œè¿žå­—ç¬¦ï¼Œå…¶ä½™å­—ç¬¦æ›¿æ¢ä¸º `-`
+2. ç”¨ Write å·¥å…·å†™å…¥ï¼š`/tmp/openclaw-<safe-name>-prompt.md`
+3. è°ƒç”¨å½“å‰çŽ¯å¢ƒå…è®¸çš„ç”Ÿå›¾ skill ç”Ÿæˆå›¾ç‰‡
+4. ç”¨ Read å·¥å…·å±•ç¤ºç”Ÿæˆçš„å›¾ç‰‡ç»™ç”¨æˆ·
+5. é—®ç”¨æˆ·æ˜¯å¦æ»¡æ„ï¼Œä¸æ»¡æ„å¯è°ƒæ•´å˜é‡é‡æ–°ç”Ÿæˆ
 
-### 路径 B：未安装可用的生图 skill
+### è·¯å¾„ Bï¼šæœªå®‰è£…å¯ç”¨çš„ç”Ÿå›¾ skill
 
-输出完整提示词文本，附手动使用说明：
-
-```markdown
-**头像提示词**（可复制到以下平台手动生成）：
-- Google Gemini：直接粘贴
-- ChatGPT（DALL-E）：直接粘贴
-- Midjourney：粘贴后加 `--ar 1:1 --style raw`
-
-> [完整英文提示词]
-
-如当前环境后续提供经过审核的生图 skill，可再接回自动生图流程。
-```
-
-## 展示给用户的格式
+è¾“å‡ºå®Œæ•´æç¤ºè¯æ–‡æœ¬ï¼Œé™„æ‰‹åŠ¨ä½¿ç”¨è¯´æ˜Žï¼š
 
 ```markdown
-## 头像
+**å¤´åƒæç¤ºè¯**ï¼ˆå¯å¤åˆ¶åˆ°ä»¥ä¸‹å¹³å°æ‰‹åŠ¨ç”Ÿæˆï¼‰ï¼š
+- Google Geminiï¼šç›´æŽ¥ç²˜è´´
+- ChatGPTï¼ˆDALL-Eï¼‰ï¼šç›´æŽ¥ç²˜è´´
+- Midjourneyï¼šç²˜è´´åŽåŠ  `--ar 1:1 --style raw`
 
-**个性化变量**：
-- 壳色：[SHELL_COLOR]
-- 道具：[SIGNATURE_PROP]
-- 表情：[EXPRESSION]
-- 独特细节：[UNIQUE_DETAIL]
-- 背景点缀：[BACKGROUND_ACCENT]
-- 能量条标签：[ENERGY_BAR_LABEL]
+> [å®Œæ•´è‹±æ–‡æç¤ºè¯]
 
-**生成结果**：
-[图片（路径A）或提示词文本（路径B）]
-
-> 满意吗？不满意我可以调整 [具体可调项] 后重新生成。
+å¦‚å½“å‰çŽ¯å¢ƒåŽç»­æä¾›ç»è¿‡å®¡æ ¸çš„ç”Ÿå›¾ skillï¼Œå¯å†æŽ¥å›žè‡ªåŠ¨ç”Ÿå›¾æµç¨‹ã€‚
 ```
+
+## å±•ç¤ºç»™ç”¨æˆ·çš„æ ¼å¼
+
+```markdown
+## å¤´åƒ
+
+**ä¸ªæ€§åŒ–å˜é‡**ï¼š
+- å£³è‰²ï¼š[SHELL_COLOR]
+- é“å…·ï¼š[SIGNATURE_PROP]
+- è¡¨æƒ…ï¼š[EXPRESSION]
+- ç‹¬ç‰¹ç»†èŠ‚ï¼š[UNIQUE_DETAIL]
+- èƒŒæ™¯ç‚¹ç¼€ï¼š[BACKGROUND_ACCENT]
+- èƒ½é‡æ¡æ ‡ç­¾ï¼š[ENERGY_BAR_LABEL]
+
+**ç”Ÿæˆç»“æžœ**ï¼š
+[å›¾ç‰‡ï¼ˆè·¯å¾„Aï¼‰æˆ–æç¤ºè¯æ–‡æœ¬ï¼ˆè·¯å¾„Bï¼‰]
+
+> æ»¡æ„å—ï¼Ÿä¸æ»¡æ„æˆ‘å¯ä»¥è°ƒæ•´ [å…·ä½“å¯è°ƒé¡¹] åŽé‡æ–°ç”Ÿæˆã€‚
+```
+

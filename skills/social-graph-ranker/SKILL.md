@@ -1,4 +1,4 @@
----
+﻿---
 name: social-graph-ranker
 description: Weighted social-graph ranking for warm intro discovery, bridge scoring, and network gap analysis across X and LinkedIn. Use when the user wants the reusable graph-ranking engine itself, not the broader outreach or network-maintenance workflow layered on top of it.
 origin: ECC
@@ -51,36 +51,36 @@ Given:
 Base bridge score:
 
 ```text
-B(m) = Σ_{t ∈ T} w(t) · λ^(d(m,t) - 1)
+B(m) = Î£_{t âˆˆ T} w(t) Â· Î»^(d(m,t) - 1)
 ```
 
 Where:
 
-- `λ` is the decay factor, usually `0.5`
+- `Î»` is the decay factor, usually `0.5`
 - a direct path contributes full value
 - each extra hop halves the contribution
 
 Second-order expansion:
 
 ```text
-B_ext(m) = B(m) + α · Σ_{m' ∈ N(m) \\ M} Σ_{t ∈ T} w(t) · λ^(d(m',t))
+B_ext(m) = B(m) + Î± Â· Î£_{m' âˆˆ N(m) \\ M} Î£_{t âˆˆ T} w(t) Â· Î»^(d(m',t))
 ```
 
 Where:
 
 - `N(m) \\ M` is the set of people the mutual knows that you do not
-- `α` discounts second-order reach, usually `0.3`
+- `Î±` discounts second-order reach, usually `0.3`
 
 Response-adjusted final ranking:
 
 ```text
-R(m) = B_ext(m) · (1 + β · engagement(m))
+R(m) = B_ext(m) Â· (1 + Î² Â· engagement(m))
 ```
 
 Where:
 
 - `engagement(m)` is normalized responsiveness or relationship strength
-- `β` is the engagement bonus, usually `0.2`
+- `Î²` is the engagement bonus, usually `0.2`
 
 Interpretation:
 
@@ -152,3 +152,4 @@ No Warm Path
 - `connections-optimizer` uses the same bridge logic when deciding who to keep, prune, or add
 - `brand-voice` should run before drafting any intro request or direct outreach
 - `x-api` provides X graph access and optional execution paths
+

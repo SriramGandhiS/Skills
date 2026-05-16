@@ -1,17 +1,17 @@
----
+﻿---
 name: benchmark
 description: Use this skill to measure performance baselines, detect regressions before/after PRs, and compare stack alternatives.
 origin: ECC
 ---
 
-# Benchmark — Performance Baseline & Regression Detection
+# Benchmark â€” Performance Baseline & Regression Detection
 
 ## When to Use
 
 - Before and after a PR to measure performance impact
 - Setting up performance baselines for a project
 - When users report "it feels slow"
-- Before a launch — ensure you meet performance targets
+- Before a launch â€” ensure you meet performance targets
 - Comparing your stack against alternatives
 
 ## How It Works
@@ -23,11 +23,11 @@ Measures real browser metrics via browser MCP:
 ```
 1. Navigate to each target URL
 2. Measure Core Web Vitals:
-   - LCP (Largest Contentful Paint) — target < 2.5s
-   - CLS (Cumulative Layout Shift) — target < 0.1
-   - INP (Interaction to Next Paint) — target < 200ms
-   - FCP (First Contentful Paint) — target < 1.8s
-   - TTFB (Time to First Byte) — target < 800ms
+   - LCP (Largest Contentful Paint) â€” target < 2.5s
+   - CLS (Cumulative Layout Shift) â€” target < 0.1
+   - INP (Interaction to Next Paint) â€” target < 200ms
+   - FCP (First Contentful Paint) â€” target < 1.8s
+   - TTFB (Time to First Byte) â€” target < 800ms
 3. Measure resource sizes:
    - Total page weight (target < 1MB)
    - JS bundle size (target < 200KB gzipped)
@@ -78,7 +78,7 @@ Output:
 | Metric | Before | After | Delta | Verdict |
 |--------|--------|-------|-------|---------|
 | LCP | 1.2s | 1.4s | +200ms | WARNING: WARN |
-| Bundle | 180KB | 175KB | -5KB | ✓ BETTER |
+| Bundle | 180KB | 175KB | -5KB | âœ“ BETTER |
 | Build | 12s | 14s | +2s | WARNING: WARN |
 ```
 
@@ -91,3 +91,4 @@ Stores baselines in `.ecc/benchmarks/` as JSON. Git-tracked so the team shares b
 - CI: run `/benchmark compare` on every PR
 - Pair with `/canary-watch` for post-deploy monitoring
 - Pair with `/browser-qa` for full pre-ship checklist
+

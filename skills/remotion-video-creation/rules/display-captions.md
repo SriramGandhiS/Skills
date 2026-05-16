@@ -1,4 +1,4 @@
----
+﻿---
 name: display-captions
 description: Displaying captions in Remotion with TikTok-style pages and word highlighting
 metadata:
@@ -124,3 +124,4 @@ const CaptionPage: React.FC<{page: TikTokPage}> = ({page}) => {
   );
 };
 ```
+

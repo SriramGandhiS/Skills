@@ -1,4 +1,4 @@
----
+﻿---
 name: quarkus-verification
 description: "Verification loop for Quarkus projects: build, static analysis, tests with coverage, security scans, native compilation, and diff review before release or PR."
 origin: ECC
@@ -13,7 +13,7 @@ Run before PRs, after major changes, and pre-deploy.
 - Before opening a pull request for a Quarkus service
 - After major refactoring or dependency upgrades
 - Pre-deployment verification for staging or production
-- Running full build → lint → test → security scan → native compilation pipeline
+- Running full build â†’ lint â†’ test â†’ security scan â†’ native compilation pipeline
 - Validating test coverage meets thresholds (80%+)
 - Testing native image compatibility
 
@@ -84,7 +84,7 @@ class UserServiceTest {
   void createUser_validInput_returnsUser() {
     var dto = new CreateUserDto("Alice", "alice@example.com");
 
-    // Panache persist() is void — use doNothing + verify
+    // Panache persist() is void â€” use doNothing + verify
     doNothing().when(userRepository).persist(any(User.class));
 
     User result = userService.create(dto);
@@ -371,7 +371,7 @@ curl http://localhost:8080/q/openapi -o openapi.json
 
 ### Testing
 - [ ] All tests pass
-- [ ] Code coverage ≥ 80%
+- [ ] Code coverage â‰¥ 80%
 - [ ] Integration tests with real database
 - [ ] Security tests pass
 - [ ] Performance within acceptable limits
@@ -437,28 +437,28 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      
+
       - name: Set up JDK 21
         uses: actions/setup-java@v3
         with:
           java-version: '21'
           distribution: 'temurin'
-      
+
       - name: Cache Maven packages
         uses: actions/cache@v3
         with:
           path: ~/.m2
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
-      
+
       - name: Build
         run: mvn clean verify -DskipTests
-      
+
       - name: Test with Coverage
         run: mvn test jacoco:report jacoco:check
-      
+
       - name: Security Scan
         run: mvn org.owasp:dependency-check-maven:check
-      
+
       - name: Upload Coverage
         uses: codecov/codecov-action@v3
         with:
@@ -477,3 +477,4 @@ jobs:
 - Document breaking changes
 - Review security scan results
 - Validate configuration for each environment
+

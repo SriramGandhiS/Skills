@@ -1,6 +1,6 @@
----
+﻿---
 name: homelab-vlan-segmentation
-description: Segmenting home networks into VLANs for IoT, guest, trusted, and server traffic using UniFi, pfSense/OPNsense, and MikroTik — including switch trunk config, firewall rules, and wireless SSID mapping.
+description: Segmenting home networks into VLANs for IoT, guest, trusted, and server traffic using UniFi, pfSense/OPNsense, and MikroTik â€” including switch trunk config, firewall rules, and wireless SSID mapping.
 origin: community
 ---
 
@@ -9,7 +9,7 @@ origin: community
 How to split a home network into isolated VLANs so IoT devices, guests, and your main
 PCs cannot talk to each other. The most impactful security upgrade for a home network.
 
-All firewall rules shown here add isolation between segments — they do not remove
+All firewall rules shown here add isolation between segments â€” they do not remove
 existing protections. Apply changes in a maintenance window and verify connectivity
 between segments after each step before moving on.
 
@@ -25,19 +25,19 @@ between segments after each step before moving on.
 ## How It Works
 
 ```
-Without VLANs — flat network:
+Without VLANs â€” flat network:
   All devices on 192.168.1.0/24
-  Smart TV (potential malware) → can reach your NAS, PCs, everything
+  Smart TV (potential malware) â†’ can reach your NAS, PCs, everything
 
 With VLANs:
-  VLAN 10 — Trusted    192.168.10.0/24  (PCs, phones, laptops)
-  VLAN 20 — IoT        192.168.20.0/24  (smart TV, bulbs, cameras)
-  VLAN 30 — Servers    192.168.30.0/24  (NAS, Pi, VMs)
-  VLAN 40 — Guest      192.168.40.0/24  (visitor Wi-Fi)
-  VLAN 99 — Management 192.168.99.0/24  (switch/AP web UIs)
+  VLAN 10 â€” Trusted    192.168.10.0/24  (PCs, phones, laptops)
+  VLAN 20 â€” IoT        192.168.20.0/24  (smart TV, bulbs, cameras)
+  VLAN 30 â€” Servers    192.168.30.0/24  (NAS, Pi, VMs)
+  VLAN 40 â€” Guest      192.168.40.0/24  (visitor Wi-Fi)
+  VLAN 99 â€” Management 192.168.99.0/24  (switch/AP web UIs)
 
-  Smart TV → blocked from reaching 192.168.10.0/24 and 192.168.30.0/24
-  Guests → internet only, cannot see any home devices
+  Smart TV â†’ blocked from reaching 192.168.10.0/24 and 192.168.30.0/24
+  Guests â†’ internet only, cannot see any home devices
 ```
 
 ## VLAN Design Template
@@ -58,30 +58,30 @@ VLAN  Name        Subnet              Gateway         Purpose
 ```
 Scenario: 3-bedroom house, UniFi Dream Machine + UniFi 8-port switch + 2 APs
 
-VLAN 10 — Trusted    192.168.10.0/24   MacBook, iPhones, iPad
-VLAN 20 — IoT        192.168.20.0/24   Nest thermostat, Philips Hue, Ring doorbell, smart TVs
-VLAN 30 — Servers    192.168.30.0/24   Synology NAS (192.168.30.10), Pi-hole (192.168.30.2)
-VLAN 40 — Guest      192.168.40.0/24   Visitor Wi-Fi — internet only
+VLAN 10 â€” Trusted    192.168.10.0/24   MacBook, iPhones, iPad
+VLAN 20 â€” IoT        192.168.20.0/24   Nest thermostat, Philips Hue, Ring doorbell, smart TVs
+VLAN 30 â€” Servers    192.168.30.0/24   Synology NAS (192.168.30.10), Pi-hole (192.168.30.2)
+VLAN 40 â€” Guest      192.168.40.0/24   Visitor Wi-Fi â€” internet only
 
-SSID → VLAN mapping:
-  "Home"      → VLAN 10 (WPA2, strong password, trusted devices only)
-  "IoT"       → VLAN 20 (WPA2, separate password, printed on router for setup)
-  "Guest"     → VLAN 40 (WPA2, simple password you can share freely)
+SSID â†’ VLAN mapping:
+  "Home"      â†’ VLAN 10 (WPA2, strong password, trusted devices only)
+  "IoT"       â†’ VLAN 20 (WPA2, separate password, printed on router for setup)
+  "Guest"     â†’ VLAN 40 (WPA2, simple password you can share freely)
 
 Switch port behavior:
-  Port 1  → trunk to router (tagged VLANs 10,20,30,40,99)
-  Port 2  → trunk to APs (tagged VLANs 10,20,40; AP handles per-SSID tagging)
-  Port 3  → access VLAN 30 (NAS — untagged, no VLAN awareness needed)
-  Port 4  → access VLAN 30 (Pi-hole — untagged)
-  Port 5–8 → access VLAN 10 (wired workstations)
+  Port 1  â†’ trunk to router (tagged VLANs 10,20,30,40,99)
+  Port 2  â†’ trunk to APs (tagged VLANs 10,20,40; AP handles per-SSID tagging)
+  Port 3  â†’ access VLAN 30 (NAS â€” untagged, no VLAN awareness needed)
+  Port 4  â†’ access VLAN 30 (Pi-hole â€” untagged)
+  Port 5â€“8 â†’ access VLAN 10 (wired workstations)
 
 Firewall rules applied (all rules add isolation, none remove existing protections):
-  IoT → Trusted: BLOCK
-  IoT → Servers: BLOCK except 192.168.30.2:53 (Pi-hole DNS allowed)
-  IoT → Internet: ALLOW
-  Guest → Local networks: BLOCK
-  Guest → Internet: ALLOW
-  Trusted → everywhere: ALLOW
+  IoT â†’ Trusted: BLOCK
+  IoT â†’ Servers: BLOCK except 192.168.30.2:53 (Pi-hole DNS allowed)
+  IoT â†’ Internet: ALLOW
+  Guest â†’ Local networks: BLOCK
+  Guest â†’ Internet: ALLOW
+  Trusted â†’ everywhere: ALLOW
 ```
 
 ## UniFi Configuration
@@ -89,7 +89,7 @@ Firewall rules applied (all rules add isolation, none remove existing protection
 ### Create Networks in UniFi Controller
 
 ```
-Settings → Networks → Create New Network
+Settings â†’ Networks â†’ Create New Network
 
 For each VLAN:
   Name: IoT
@@ -98,29 +98,29 @@ For each VLAN:
   Network: 192.168.20.0/24
   Gateway IP: 192.168.20.1
   DHCP: Enable
-  DHCP Range: 192.168.20.100 – 192.168.20.254
+  DHCP Range: 192.168.20.100 â€“ 192.168.20.254
 ```
 
 ### Map SSIDs to VLANs (UniFi)
 
 ```
-Settings → WiFi → Create New WiFi
+Settings â†’ WiFi â†’ Create New WiFi
 
   Name: IoT-Network
   Password: <separate password>
-  Network: IoT  ← select your VLAN here
+  Network: IoT  â† select your VLAN here
   # All devices connecting to this SSID land in VLAN 20
 
   Name: Guest
   Password: <guest password>
   Network: Guest
-  Guest Policy: Enable  ← isolates guests from each other too
+  Guest Policy: Enable  â† isolates guests from each other too
 ```
 
 ### UniFi Firewall Rules (Traffic Rules)
 
 ```
-Settings → Traffic & Security → Traffic Rules
+Settings â†’ Traffic & Security â†’ Traffic Rules
 
 # Block IoT from reaching Trusted VLAN
   Action: Block
@@ -144,26 +144,26 @@ Settings → Traffic & Security → Traffic Rules
 ### Create VLANs
 
 ```
-Interfaces → Assignments → VLANs → Add
+Interfaces â†’ Assignments â†’ VLANs â†’ Add
 
   Parent Interface: em1  (your LAN NIC)
   VLAN Tag: 20
   Description: IoT
 
 # Repeat for each VLAN, then assign each VLAN to an interface:
-Interfaces → Assignments → Add
-  Select the VLAN you created → click Add
+Interfaces â†’ Assignments â†’ Add
+  Select the VLAN you created â†’ click Add
   Enable the interface, set IP to gateway address (192.168.20.1/24)
 ```
 
 ### DHCP for Each VLAN
 
 ```
-Services → DHCP Server → Select your VLAN interface
+Services â†’ DHCP Server â†’ Select your VLAN interface
 
   Enable DHCP
   Range: 192.168.20.100 to 192.168.20.254
-  DNS Servers: 192.168.30.2  ← Pi-hole IP if you have one
+  DNS Servers: 192.168.30.2  â† Pi-hole IP if you have one
 ```
 
 ### Firewall Rules (pfSense/OPNsense)
@@ -172,19 +172,19 @@ Services → DHCP Server → Select your VLAN interface
 # Rules are processed top-to-bottom, first match wins.
 
 # On the IoT interface (VLAN 20):
-  Rule 1: Allow IoT → Pi-hole DNS  ← MUST come before the RFC1918 block rule
+  Rule 1: Allow IoT â†’ Pi-hole DNS  â† MUST come before the RFC1918 block rule
     Protocol: UDP/TCP
     Source: IoT net
     Destination: 192.168.30.2 port 53
     Action: Allow
 
-  Rule 2: Block IoT → RFC1918 (all private IP ranges)
+  Rule 2: Block IoT â†’ RFC1918 (all private IP ranges)
     Protocol: any
     Source: IoT net
     Destination: RFC1918  (192.168.0.0/16, 10.0.0.0/8, 172.16.0.0/12)
     Action: Block
 
-  Rule 3: Allow IoT → internet
+  Rule 3: Allow IoT â†’ internet
     Protocol: any
     Source: IoT net
     Destination: any
@@ -200,7 +200,7 @@ Services → DHCP Server → Select your VLAN interface
   Insert before Rule 2 (the RFC1918 block):
     Protocol: TCP
     Source: IoT net
-    Destination: 192.168.30.x port 8123  ← Home Assistant
+    Destination: 192.168.30.x port 8123  â† Home Assistant
     Action: Allow
 ```
 
@@ -252,7 +252,7 @@ add interface=vlan20 address-pool=pool-iot name=dhcp-iot
 add address=192.168.10.0/24 gateway=192.168.10.1
 add address=192.168.20.0/24 gateway=192.168.20.1
 
-# Step 7: Firewall — block IoT from reaching trusted VLAN
+# Step 7: Firewall â€” block IoT from reaching trusted VLAN
 /ip firewall filter
 add chain=forward src-address=192.168.20.0/24 dst-address=192.168.10.0/24 \
     action=drop comment="Block IoT to Trusted"
@@ -261,15 +261,15 @@ add chain=forward src-address=192.168.20.0/24 dst-address=192.168.10.0/24 \
 ## Switch Trunk vs Access Ports
 
 ```
-# Trunk port: carries multiple VLANs (tagged) — connects switch-to-switch, switch-to-router, switch-to-AP
-# Access port: carries one VLAN (untagged) — connects to end devices (PC, camera, NAS)
+# Trunk port: carries multiple VLANs (tagged) â€” connects switch-to-switch, switch-to-router, switch-to-AP
+# Access port: carries one VLAN (untagged) â€” connects to end devices (PC, camera, NAS)
 
 # A managed switch port connected to your router should be a trunk:
   Allowed VLANs: 10, 20, 30, 40, 99
 
 # A port connecting to a PC should be an access port:
   VLAN: 10 (trusted)
-  No tagging — the PC does not know or care about VLANs
+  No tagging â€” the PC does not know or care about VLANs
 
 # A port connecting to an AP must be a trunk:
   The AP tags traffic from each SSID with the right VLAN ID
@@ -280,7 +280,7 @@ add chain=forward src-address=192.168.20.0/24 dst-address=192.168.10.0/24 \
 
 ```
 # BAD: Creating VLANs without adding firewall rules
-# VLANs without firewall rules do not provide security — inter-VLAN routing is open by default
+# VLANs without firewall rules do not provide security â€” inter-VLAN routing is open by default
 # GOOD: Add explicit block rules immediately after creating VLANs
 
 # BAD: Putting the Pi-hole in the IoT VLAN
@@ -297,10 +297,10 @@ add chain=forward src-address=192.168.20.0/24 dst-address=192.168.10.0/24 \
 
 ## Best Practices
 
-- Start with 4 VLANs: Trusted, IoT, Servers, Guest — add more as needed
+- Start with 4 VLANs: Trusted, IoT, Servers, Guest â€” add more as needed
 - Put Pi-hole in the Servers VLAN (192.168.30.x)
-- Add a firewall rule allowing DNS (port 53) from all VLANs to the Pi-hole IP — before any RFC1918 block rule
-- Test isolation after every rule change: from the IoT VLAN, try to ping a trusted device — it should fail
+- Add a firewall rule allowing DNS (port 53) from all VLANs to the Pi-hole IP â€” before any RFC1918 block rule
+- Test isolation after every rule change: from the IoT VLAN, try to ping a trusted device â€” it should fail
 - Use a management VLAN for switch and AP web UIs and restrict access to the Trusted VLAN only
 - Document your VLAN design in a table (VLAN ID, name, subnet, purpose)
 
@@ -309,3 +309,4 @@ add chain=forward src-address=192.168.20.0/24 dst-address=192.168.10.0/24 \
 - homelab-network-setup
 - homelab-pihole-dns
 - homelab-wireguard-vpn
+

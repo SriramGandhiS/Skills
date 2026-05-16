@@ -1,4 +1,4 @@
----
+﻿---
 name: laravel-patterns
 description: Laravel architecture patterns, routing/controllers, Eloquent ORM, service layers, queues, events, caching, and API resources for production apps.
 origin: ECC
@@ -34,33 +34,33 @@ Use a conventional Laravel layout with clear layer boundaries (HTTP, services/ac
 
 ```
 app/
-├── Actions/            # Single-purpose use cases
-├── Console/
-├── Events/
-├── Exceptions/
-├── Http/
-│   ├── Controllers/
-│   ├── Middleware/
-│   ├── Requests/       # Form request validation
-│   └── Resources/      # API resources
-├── Jobs/
-├── Models/
-├── Policies/
-├── Providers/
-├── Services/           # Coordinating domain services
-└── Support/
+â”œâ”€â”€ Actions/            # Single-purpose use cases
+â”œâ”€â”€ Console/
+â”œâ”€â”€ Events/
+â”œâ”€â”€ Exceptions/
+â”œâ”€â”€ Http/
+â”‚   â”œâ”€â”€ Controllers/
+â”‚   â”œâ”€â”€ Middleware/
+â”‚   â”œâ”€â”€ Requests/       # Form request validation
+â”‚   â””â”€â”€ Resources/      # API resources
+â”œâ”€â”€ Jobs/
+â”œâ”€â”€ Models/
+â”œâ”€â”€ Policies/
+â”œâ”€â”€ Providers/
+â”œâ”€â”€ Services/           # Coordinating domain services
+â””â”€â”€ Support/
 config/
 database/
-├── factories/
-├── migrations/
-└── seeders/
+â”œâ”€â”€ factories/
+â”œâ”€â”€ migrations/
+â””â”€â”€ seeders/
 resources/
-├── views/
-└── lang/
+â”œâ”€â”€ views/
+â””â”€â”€ lang/
 routes/
-├── api.php
-├── web.php
-└── console.php
+â”œâ”€â”€ api.php
+â”œâ”€â”€ web.php
+â””â”€â”€ console.php
 ```
 
 ### Controllers -> Services -> Actions
@@ -413,3 +413,4 @@ return response()->json([
 
 - Keep secrets in `.env` and config in `config/*.php`
 - Use per-environment config overrides and `config:cache` in production
+

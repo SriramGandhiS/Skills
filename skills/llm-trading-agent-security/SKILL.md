@@ -1,4 +1,4 @@
----
+﻿---
 name: llm-trading-agent-security
 description: Security patterns for autonomous trading agents with wallet or transaction authority. Covers prompt injection, spend limits, pre-send simulation, circuit breakers, MEV protection, and key handling.
 origin: ECC direct-port adaptation
@@ -144,3 +144,4 @@ deadline = int(time.time()) + 60
 - Private mempool or protected routing is used when appropriate
 - Slippage and deadlines are set per strategy
 - All agent decisions are audit-logged, not just successful sends
+

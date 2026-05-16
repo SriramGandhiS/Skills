@@ -1,4 +1,4 @@
-# Route Transition Animations
+﻿# Route Transition Animations
 
 Angular Router supports the browser's **View Transitions API** for smooth visual transitions between routes.
 
@@ -54,3 +54,4 @@ withViewTransitions({
 
 - **Global Styles**: Always define transition animations in `styles.css` to avoid view encapsulation issues.
 - **View Transition Names**: Assign unique `view-transition-name` to elements that should transition smoothly across routes (e.g., a header image).
+

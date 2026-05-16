@@ -1,10 +1,10 @@
----
+﻿---
 name: product-lens
 description: Use this skill to validate the "why" before building, run product diagnostics, and pressure-test product direction before the request becomes an implementation contract.
 origin: ECC
 ---
 
-# Product Lens — Think Before You Build
+# Product Lens â€” Think Before You Build
 
 This lane owns product diagnosis, not implementation-ready specification writing.
 
@@ -12,10 +12,10 @@ If the user needs a durable PRD-to-SRS or capability-contract artifact, hand off
 
 ## When to Use
 
-- Before starting any feature — validate the "why"
-- Weekly product review — are we building the right thing?
+- Before starting any feature â€” validate the "why"
+- Weekly product review â€” are we building the right thing?
 - When stuck choosing between features
-- Before a launch — sanity check the user journey
+- Before a launch â€” sanity check the user journey
 - When converting a vague idea into a product brief before engineering planning starts
 
 ## How It Works
@@ -73,7 +73,7 @@ When you have 10 ideas and need to pick 2:
 
 ```
 1. List all candidate features
-2. Score each on: impact (1-5) × confidence (1-5) ÷ effort (1-5)
+2. Score each on: impact (1-5) Ã— confidence (1-5) Ã· effort (1-5)
 3. Rank by ICE score
 4. Apply constraints: runway, team size, dependencies
 5. Output: prioritized roadmap with rationale
@@ -90,3 +90,4 @@ Pair with:
 - `/design-system audit` for visual polish assessment
 - `/canary-watch` for post-launch monitoring
 - `product-capability` when the product brief needs to become an implementation-ready capability plan
+

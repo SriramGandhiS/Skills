@@ -1,4 +1,4 @@
----
+﻿---
 name: outreach-drafter
 description: Generates personalized outreach messages for qualified leads. Creates warm intro requests, cold emails, X DMs, and follow-up sequences using enriched profile data.
 tools:
@@ -21,8 +21,8 @@ Given enriched prospect profiles and warm path data, draft outreach messages tha
 
 Template structure:
 - Greeting (first name, casual)
-- The ask (1 sentence — can you intro me to [target])
-- Why it's relevant (1 sentence — what you're building and why target cares)
+- The ask (1 sentence â€” can you intro me to [target])
+- Why it's relevant (1 sentence â€” what you're building and why target cares)
 - Offer to send forwardable blurb
 - Sign off
 
@@ -96,3 +96,4 @@ Personalization notes:
 - Never generate messages that could be mistaken for spam.
 - Never include false claims about the user's product or traction.
 - If enrichment data is thin, flag the message as "needs manual personalization" rather than faking specifics.
+

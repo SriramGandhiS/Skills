@@ -1,6 +1,6 @@
----
+﻿---
 name: data-scraper-agent
-description: Build a fully automated AI-powered data collection agent for any public source — job boards, prices, news, GitHub, sports, anything. Scrapes on a schedule, enriches data with a free LLM (Gemini Flash), stores results in Notion/Sheets/Supabase, and learns from user feedback. Runs 100% free on GitHub Actions. Use when the user wants to monitor, collect, or track any public data automatically.
+description: Build a fully automated AI-powered data collection agent for any public source â€” job boards, prices, news, GitHub, sports, anything. Scrapes on a schedule, enriches data with a free LLM (Gemini Flash), stores results in Notion/Sheets/Supabase, and learns from user feedback. Runs 100% free on GitHub Actions. Use when the user wants to monitor, collect, or track any public data automatically.
 origin: community
 ---
 
@@ -9,7 +9,7 @@ origin: community
 Build a production-ready, AI-powered data collection agent for any public data source.
 Runs on a schedule, enriches results with a free LLM, stores to a database, and improves over time.
 
-**Stack: Python · Gemini Flash (free) · GitHub Actions (free) · Notion / Sheets / Supabase**
+**Stack: Python Â· Gemini Flash (free) Â· GitHub Actions (free) Â· Notion / Sheets / Supabase**
 
 ## When to Activate
 
@@ -26,8 +26,8 @@ Runs on a schedule, enriches results with a free LLM, stores to a database, and 
 Every data scraper agent has three layers:
 
 ```
-COLLECT → ENRICH → STORE
-  │           │        │
+COLLECT â†’ ENRICH â†’ STORE
+  â”‚           â”‚        â”‚
 Scraper    AI (LLM)  Database
 runs on    scores/   Notion /
 schedule   summarises Sheets /
@@ -40,7 +40,7 @@ schedule   summarises Sheets /
 |---|---|---|
 | **Scraping** | `requests` + `BeautifulSoup` | No cost, covers 80% of public sites |
 | **JS-rendered sites** | `playwright` (free) | When HTML scraping fails |
-| **AI enrichment** | Gemini Flash via REST API | 500 req/day, 1M tokens/day — free |
+| **AI enrichment** | Gemini Flash via REST API | 500 req/day, 1M tokens/day â€” free |
 | **Storage** | Notion API | Free tier, great UI for review |
 | **Schedule** | GitHub Actions cron | Free for public repos |
 | **Learning** | JSON feedback file in repo | Zero infra, persists in git |
@@ -50,9 +50,9 @@ schedule   summarises Sheets /
 Build agents to auto-fallback across Gemini models on quota exhaustion:
 
 ```
-gemini-2.0-flash-lite (30 RPM) →
-gemini-2.0-flash (15 RPM) →
-gemini-2.5-flash (10 RPM) →
+gemini-2.0-flash-lite (30 RPM) â†’
+gemini-2.0-flash (15 RPM) â†’
+gemini-2.5-flash (10 RPM) â†’
 gemini-flash-lite-latest (fallback)
 ```
 
@@ -63,11 +63,11 @@ Never call the LLM once per item. Always batch:
 ```python
 # BAD: 33 API calls for 33 items
 for item in items:
-    result = call_ai(item)  # 33 calls → hits rate limit
+    result = call_ai(item)  # 33 calls â†’ hits rate limit
 
 # GOOD: 7 API calls for 33 items (batch size 5)
 for batch in chunks(items, size=5):
-    results = call_ai(batch)  # 7 calls → stays within free tier
+    results = call_ai(batch)  # 7 calls â†’ stays within free tier
 ```
 
 ---
@@ -85,12 +85,12 @@ Ask the user:
 5. **Frequency:** "How often should it run? Every hour, daily, weekly?"
 
 Common examples to prompt:
-- Job boards → score relevance to resume
-- Product prices → alert on drops
-- GitHub repos → summarise new releases
-- News feeds → classify by topic + sentiment
-- Sports results → extract stats to tracker
-- Events calendar → filter by interest
+- Job boards â†’ score relevance to resume
+- Product prices â†’ alert on drops
+- GitHub repos â†’ summarise new releases
+- News feeds â†’ classify by topic + sentiment
+- Sports results â†’ extract stats to tracker
+- Events calendar â†’ filter by interest
 
 ---
 
@@ -100,34 +100,34 @@ Generate this directory structure for the user:
 
 ```
 my-agent/
-├── config.yaml              # User customises this (keywords, filters, preferences)
-├── profile/
-│   └── context.md           # User context the AI uses (resume, interests, criteria)
-├── scraper/
-│   ├── __init__.py
-│   ├── main.py              # Orchestrator: scrape → enrich → store
-│   ├── filters.py           # Rule-based pre-filter (fast, before AI)
-│   └── sources/
-│       ├── __init__.py
-│       └── source_name.py   # One file per data source
-├── ai/
-│   ├── __init__.py
-│   ├── client.py            # Gemini REST client with model fallback
-│   ├── pipeline.py          # Batch AI analysis
-│   ├── jd_fetcher.py        # Fetch full content from URLs (optional)
-│   └── memory.py            # Learn from user feedback
-├── storage/
-│   ├── __init__.py
-│   └── notion_sync.py       # Or sheets_sync.py / supabase_sync.py
-├── data/
-│   └── feedback.json        # User decision history (auto-updated)
-├── .env.example
-├── setup.py                 # One-time DB/schema creation
-├── enrich_existing.py       # Backfill AI scores on old rows
-├── requirements.txt
-└── .github/
-    └── workflows/
-        └── scraper.yml      # GitHub Actions schedule
+â”œâ”€â”€ config.yaml              # User customises this (keywords, filters, preferences)
+â”œâ”€â”€ profile/
+â”‚   â””â”€â”€ context.md           # User context the AI uses (resume, interests, criteria)
+â”œâ”€â”€ scraper/
+â”‚   â”œâ”€â”€ __init__.py
+â”‚   â”œâ”€â”€ main.py              # Orchestrator: scrape â†’ enrich â†’ store
+â”‚   â”œâ”€â”€ filters.py           # Rule-based pre-filter (fast, before AI)
+â”‚   â””â”€â”€ sources/
+â”‚       â”œâ”€â”€ __init__.py
+â”‚       â””â”€â”€ source_name.py   # One file per data source
+â”œâ”€â”€ ai/
+â”‚   â”œâ”€â”€ __init__.py
+â”‚   â”œâ”€â”€ client.py            # Gemini REST client with model fallback
+â”‚   â”œâ”€â”€ pipeline.py          # Batch AI analysis
+â”‚   â”œâ”€â”€ jd_fetcher.py        # Fetch full content from URLs (optional)
+â”‚   â””â”€â”€ memory.py            # Learn from user feedback
+â”œâ”€â”€ storage/
+â”‚   â”œâ”€â”€ __init__.py
+â”‚   â””â”€â”€ notion_sync.py       # Or sheets_sync.py / supabase_sync.py
+â”œâ”€â”€ data/
+â”‚   â””â”€â”€ feedback.json        # User decision history (auto-updated)
+â”œâ”€â”€ .env.example
+â”œâ”€â”€ setup.py                 # One-time DB/schema creation
+â”œâ”€â”€ enrich_existing.py       # Backfill AI scores on old rows
+â”œâ”€â”€ requirements.txt
+â””â”€â”€ .github/
+    â””â”€â”€ workflows/
+        â””â”€â”€ scraper.yml      # GitHub Actions schedule
 ```
 
 ---
@@ -139,7 +139,7 @@ Template for any data source:
 ```python
 # scraper/sources/my_source.py
 """
-[Source Name] — scrapes [what] from [where].
+[Source Name] â€” scrapes [what] from [where].
 Method: [REST API / HTML scraping / RSS feed]
 """
 import requests
@@ -150,7 +150,6 @@ from scraper.filters import is_relevant
 HEADERS = {
     "User-Agent": "Mozilla/5.0 (compatible; research-bot/1.0)",
 }
-
 
 def fetch() -> list[dict]:
     """
@@ -168,7 +167,6 @@ def fetch() -> list[dict]:
             results.append(_normalise(item))
 
     return results
-
 
 def _normalise(raw: dict) -> dict:
     """Convert raw API/HTML data to the standard schema."""
@@ -217,7 +215,6 @@ MODEL_FALLBACK = [
     "gemini-flash-lite-latest",
 ]
 
-
 def generate(prompt: str, model: str = "", rate_limit: float = 7.0) -> dict:
     """Call Gemini with auto-fallback on 429. Returns parsed JSON or {}."""
     global _last_call
@@ -256,7 +253,6 @@ def generate(prompt: str, model: str = "", rate_limit: float = 7.0) -> dict:
 
     return {}
 
-
 def _parse(resp) -> dict:
     try:
         text = (
@@ -294,7 +290,7 @@ def analyse_batch(items: list[dict], context: str = "", preference_prompt: str =
     batch_size = config.get("ai", {}).get("batch_size", 5)
 
     batches = [items[i:i + batch_size] for i in range(0, len(items), batch_size)]
-    print(f"  [AI] {len(items)} items → {len(batches)} API calls")
+    print(f"  [AI] {len(items)} items â†’ {len(batches)} API calls")
 
     enriched = []
     for i, batch in enumerate(batches):
@@ -314,7 +310,6 @@ def analyse_batch(items: list[dict], context: str = "", preference_prompt: str =
                 enriched.append(item)
 
     return enriched
-
 
 def _build_prompt(batch, context, preference_prompt, config):
     priorities = config.get("priorities", [])
@@ -353,7 +348,6 @@ from pathlib import Path
 
 FEEDBACK_PATH = Path(__file__).parent.parent / "data" / "feedback.json"
 
-
 def load_feedback() -> dict:
     if FEEDBACK_PATH.exists():
         try:
@@ -362,11 +356,9 @@ def load_feedback() -> dict:
             pass
     return {"positive": [], "negative": []}
 
-
 def save_feedback(fb: dict):
     FEEDBACK_PATH.parent.mkdir(parents=True, exist_ok=True)
     FEEDBACK_PATH.write_text(json.dumps(fb, indent=2))
-
 
 def build_preference_prompt(feedback: dict, max_examples: int = 15) -> str:
     """Convert feedback history into a prompt bias section."""
@@ -405,7 +397,7 @@ def get_client():
     return _client
 
 def get_existing_urls(db_id: str) -> set[str]:
-    """Fetch all URLs already stored — used for deduplication."""
+    """Fetch all URLs already stored â€” used for deduplication."""
     client, seen, cursor = get_client(), set(), None
     while True:
         resp = client.databases.query(database_id=db_id, page_size=100, **{"start_cursor": cursor} if cursor else {})
@@ -524,10 +516,10 @@ def main():
         context = context_path.read_text() if context_path.exists() else ""
         deduped = analyse_batch(deduped, context=context, preference_prompt=preference)
     else:
-        print("[AI] Skipped — GEMINI_API_KEY not set")
+        print("[AI] Skipped â€” GEMINI_API_KEY not set")
 
     added, skipped = sync(db_id, deduped)
-    print(f"Done — {added} new, {skipped} existing")
+    print(f"Done â€” {added} new, {skipped} existing")
 
 if __name__ == "__main__":
     main()
@@ -543,7 +535,7 @@ name: Data Scraper Agent
 
 on:
   schedule:
-    - cron: "0 */3 * * *"  # every 3 hours — adjust to your needs
+    - cron: "0 */3 * * *"  # every 3 hours â€” adjust to your needs
   workflow_dispatch:        # allow manual trigger
 
 permissions:
@@ -589,14 +581,14 @@ jobs:
 ### Step 10: config.yaml Template
 
 ```yaml
-# Customise this file — no code changes needed
+# Customise this file â€” no code changes needed
 
 # What to collect (pre-filter before AI)
 filters:
   required_keywords: []      # item must contain at least one
   blocked_keywords: []       # item must not contain any
 
-# Your priorities — AI uses these for scoring
+# Your priorities â€” AI uses these for scoring
 priorities:
   - "example priority 1"
   - "example priority 2"
@@ -727,12 +719,12 @@ notion-client==2.2.1   # if using Notion
 
 Before marking the agent complete:
 
-- [ ] `config.yaml` controls all user-facing settings — no hardcoded values
+- [ ] `config.yaml` controls all user-facing settings â€” no hardcoded values
 - [ ] `profile/context.md` holds user-specific context for AI matching
 - [ ] Deduplication by URL before every storage push
 - [ ] Gemini client has model fallback chain (4 models)
-- [ ] Batch size ≤ 5 items per API call
-- [ ] `maxOutputTokens` ≥ 2048
+- [ ] Batch size â‰¤ 5 items per API call
+- [ ] `maxOutputTokens` â‰¥ 2048
 - [ ] `.env` is in `.gitignore`
 - [ ] `.env.example` provided for onboarding
 - [ ] `setup.py` creates DB schema on first run
@@ -747,12 +739,12 @@ Before marking the agent complete:
 ```
 "Build me an agent that monitors Hacker News for AI startup funding news"
 "Scrape product prices from 3 e-commerce sites and alert when they drop"
-"Track new GitHub repos tagged with 'llm' or 'agents' — summarise each one"
+"Track new GitHub repos tagged with 'llm' or 'agents' â€” summarise each one"
 "Collect Chief of Staff job listings from LinkedIn and Cutshort into Notion"
-"Monitor a subreddit for posts mentioning my company — classify sentiment"
+"Monitor a subreddit for posts mentioning my company â€” classify sentiment"
 "Scrape new academic papers from arXiv on a topic I care about daily"
 "Track sports fixture results and keep a running table in Google Sheets"
-"Build a real estate listing watcher — alert on new properties under ₹1 Cr"
+"Build a real estate listing watcher â€” alert on new properties under â‚¹1 Cr"
 ```
 
 ---
@@ -761,4 +753,5 @@ Before marking the agent complete:
 
 A complete working agent built with this exact architecture would scrape 4+ sources,
 batch Gemini calls, learn from Applied/Rejected decisions stored in Notion, and run
-100% free on GitHub Actions. Follow Steps 1–9 above to build your own.
+100% free on GitHub Actions. Follow Steps 1â€“9 above to build your own.
+

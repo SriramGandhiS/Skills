@@ -1,4 +1,4 @@
----
+﻿---
 name: mle-workflow
 description: Production machine-learning engineering workflow for data contracts, reproducible training, model evaluation, deployment, monitoring, and rollback. Use when building, reviewing, or hardening ML systems beyond one-off notebooks.
 origin: ECC
@@ -233,7 +233,6 @@ import hashlib
 from dataclasses import dataclass
 from pathlib import Path
 
-
 @dataclass(frozen=True)
 class TrainingConfig:
     dataset_uri: str
@@ -241,7 +240,6 @@ class TrainingConfig:
     seed: int
     learning_rate: float
     batch_size: int
-
 
 def artifact_name(config: TrainingConfig, code_sha: str) -> str:
     config_key = f"{config.dataset_uri}:{config.seed}:{config.learning_rate}:{config.batch_size}"
@@ -267,7 +265,6 @@ PROMOTION_GATES = {
     "calibration_error": ("max", 0.04),
     "p95_latency_ms": ("max", 80),
 }
-
 
 def assert_promotion_ready(metrics: dict[str, float]) -> None:
     missing = sorted(name for name in PROMOTION_GATES if name not in metrics)
@@ -344,3 +341,4 @@ Every deployment should have a rollback plan that names the previous artifact, c
 ## Output Expectations
 
 When using this skill, return concrete artifacts: data contract, promotion gates, pipeline steps, test plan, deployment plan, or review findings. Call out unknowns that block production readiness instead of filling them with assumptions.
+

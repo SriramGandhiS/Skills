@@ -1,4 +1,4 @@
-# Component Host Elements
+﻿# Component Host Elements
 
 The **host element** is the DOM element that matches a component's selector. The component's template renders inside this element.
 
@@ -78,3 +78,4 @@ Usage:
 ```html
 <app-btn type="primary">Click Me</app-btn>
 ```
+

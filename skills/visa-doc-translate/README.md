@@ -1,4 +1,4 @@
-# Visa Document Translator
+﻿# Visa Document Translator
 
 Automatically translate visa application documents from images to professional English PDFs.
 
@@ -12,12 +12,12 @@ Automatically translate visa application documents from images to professional E
 
 ## Supported Documents
 
-- Bank deposit certificates (存款证明)
-- Employment certificates (在职证明)
-- Retirement certificates (退休证明)
-- Income certificates (收入证明)
-- Property certificates (房产证明)
-- Business licenses (营业执照)
+- Bank deposit certificates (å­˜æ¬¾è¯æ˜Ž)
+- Employment certificates (åœ¨èŒè¯æ˜Ž)
+- Retirement certificates (é€€ä¼‘è¯æ˜Ž)
+- Income certificates (æ”¶å…¥è¯æ˜Ž)
+- Property certificates (æˆ¿äº§è¯æ˜Ž)
+- Business licenses (è¥ä¸šæ‰§ç…§)
 - ID cards and passports
 
 ## Usage
@@ -84,3 +84,4 @@ pip install pytesseract
 ## License
 
 MIT
+

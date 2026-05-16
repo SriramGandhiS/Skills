@@ -1,4 +1,4 @@
-# Angular CLI Guide for Agents
+﻿# Angular CLI Guide for Agents
 
 The Angular CLI (`ng`) is the primary tool for managing an Angular workspace. Always prefer CLI commands over manual file creation or generic `npm` commands when modifying project structure or adding Angular-specific dependencies.
 
@@ -84,3 +84,4 @@ To deploy an application, you must first add a deployment builder, then run the 
 ng add @angular/fire
 ng deploy
 ```
+

@@ -1,4 +1,4 @@
----
+﻿---
 name: skill-scout
 description: Search existing local, marketplace, GitHub, and web skill sources before creating a new skill. Use when the user wants to create, build, fork, or find a skill for a workflow.
 origin: community
@@ -138,3 +138,4 @@ release-note variant, or create a fresh skill.
 - `search-first` - General search-before-building workflow.
 - `skill-stocktake` - Audit installed skills for health, duplicates, and gaps.
 - `agent-sort` - Categorize and organize existing agents and skills.
+

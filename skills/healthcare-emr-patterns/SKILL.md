@@ -1,7 +1,7 @@
----
+﻿---
 name: healthcare-emr-patterns
 description: EMR/EHR development patterns for healthcare applications. Clinical safety, encounter workflows, prescription generation, clinical decision support integration, and accessibility-first UI for medical data entry.
-origin: Health1 Super Speciality Hospitals — contributed by Dr. Keyur Patel
+origin: Health1 Super Speciality Hospitals â€” contributed by Dr. Keyur Patel
 version: "1.0.0"
 ---
 
@@ -32,22 +32,22 @@ Every design decision must be evaluated against: "Could this harm a patient?"
 
 ### Single-Page Encounter Flow
 
-Clinical encounters should flow vertically on a single page — no tab switching:
+Clinical encounters should flow vertically on a single page â€” no tab switching:
 
 ```
-Patient Header (sticky — always visible)
-├── Demographics, allergies, active medications
-│
+Patient Header (sticky â€” always visible)
+â”œâ”€â”€ Demographics, allergies, active medications
+â”‚
 Encounter Flow (vertical scroll)
-├── 1. Chief Complaint (structured templates + free text)
-├── 2. History of Present Illness
-├── 3. Physical Examination (system-wise)
-├── 4. Vitals (auto-trigger clinical scoring)
-├── 5. Diagnosis (ICD-10/SNOMED search)
-├── 6. Medications (drug DB + interaction check)
-├── 7. Investigations (lab/radiology orders)
-├── 8. Plan & Follow-up
-└── 9. Sign / Lock / Print
+â”œâ”€â”€ 1. Chief Complaint (structured templates + free text)
+â”œâ”€â”€ 2. History of Present Illness
+â”œâ”€â”€ 3. Physical Examination (system-wise)
+â”œâ”€â”€ 4. Vitals (auto-trigger clinical scoring)
+â”œâ”€â”€ 5. Diagnosis (ICD-10/SNOMED search)
+â”œâ”€â”€ 6. Medications (drug DB + interaction check)
+â”œâ”€â”€ 7. Investigations (lab/radiology orders)
+â”œâ”€â”€ 8. Plan & Follow-up
+â””â”€â”€ 9. Sign / Lock / Print
 ```
 
 ### Smart Template System
@@ -63,20 +63,20 @@ interface ClinicalTemplate {
 }
 ```
 
-Red flags in any template must trigger a visible, non-dismissable alert — NOT a toast notification.
+Red flags in any template must trigger a visible, non-dismissable alert â€” NOT a toast notification.
 
 ### Medication Safety Pattern
 
 ```
 User selects drug
-  → Check current medications for interactions
-  → Check encounter medications for interactions
-  → Check patient allergies
-  → Validate dose against weight/age/renal function
-  → If CRITICAL interaction: BLOCK prescribing entirely
-  → Clinician must document override reason to proceed past a block
-  → If MAJOR interaction: display warning, require acknowledgment
-  → Log all alerts and override reasons in audit trail
+  â†’ Check current medications for interactions
+  â†’ Check encounter medications for interactions
+  â†’ Check patient allergies
+  â†’ Validate dose against weight/age/renal function
+  â†’ If CRITICAL interaction: BLOCK prescribing entirely
+  â†’ Clinician must document override reason to proceed past a block
+  â†’ If MAJOR interaction: display warning, require acknowledgment
+  â†’ Log all alerts and override reasons in audit trail
 ```
 
 Critical interactions **block prescribing by default**. The clinician must explicitly override with a documented reason stored in the audit trail. The system never silently allows a critical interaction.
@@ -84,7 +84,7 @@ Critical interactions **block prescribing by default**. The clinician must expli
 ### Locked Encounter Pattern
 
 Once a clinical encounter is signed:
-- No edits allowed — only an addendum (a separate linked record)
+- No edits allowed â€” only an addendum (a separate linked record)
 - Both original and addendum appear in the patient timeline
 - Audit trail captures who signed, when, and any addendum records
 
@@ -99,12 +99,12 @@ Once a clinical encounter is signed:
 ### Accessibility for Healthcare
 
 Healthcare UIs have stricter requirements than typical web apps:
-- 4.5:1 minimum contrast (WCAG AA) — clinicians work in varied lighting
-- Large touch targets (44x44px minimum) — for gloved/rushed interaction
-- Keyboard navigation — for power users entering data rapidly
-- No color-only indicators — always pair color with text/icon (colorblind clinicians)
+- 4.5:1 minimum contrast (WCAG AA) â€” clinicians work in varied lighting
+- Large touch targets (44x44px minimum) â€” for gloved/rushed interaction
+- Keyboard navigation â€” for power users entering data rapidly
+- No color-only indicators â€” always pair color with text/icon (colorblind clinicians)
 - Screen reader labels on all form fields
-- No auto-dismissing toasts for clinical alerts — clinician must actively acknowledge
+- No auto-dismissing toasts for clinical alerts â€” clinician must actively acknowledge
 
 ### Anti-Patterns
 
@@ -122,38 +122,39 @@ Healthcare UIs have stricter requirements than typical web apps:
 
 ```
 Doctor opens encounter for Patient #4521
-  → Sticky header shows: "Rajesh M, 58M, Allergies: Penicillin, Active Meds: Metformin 500mg"
-  → Chief Complaint: selects "Chest Pain" template
-    → Clicks chips: "substernal", "radiating to left arm", "crushing"
-    → Red flag "crushing substernal chest pain" triggers non-dismissable alert
-  → Examination: CVS system — "S1 S2 normal, no murmur"
-  → Vitals: HR 110, BP 90/60, SpO2 94%
-    → NEWS2 auto-calculates: score 8, risk HIGH, escalation alert shown
-  → Diagnosis: searches "ACS" → selects ICD-10 I21.9
-  → Medications: selects Aspirin 300mg
-    → CDSS checks against Metformin: no interaction
-  → Signs encounter → locked, addendum-only from this point
+  â†’ Sticky header shows: "Rajesh M, 58M, Allergies: Penicillin, Active Meds: Metformin 500mg"
+  â†’ Chief Complaint: selects "Chest Pain" template
+    â†’ Clicks chips: "substernal", "radiating to left arm", "crushing"
+    â†’ Red flag "crushing substernal chest pain" triggers non-dismissable alert
+  â†’ Examination: CVS system â€” "S1 S2 normal, no murmur"
+  â†’ Vitals: HR 110, BP 90/60, SpO2 94%
+    â†’ NEWS2 auto-calculates: score 8, risk HIGH, escalation alert shown
+  â†’ Diagnosis: searches "ACS" â†’ selects ICD-10 I21.9
+  â†’ Medications: selects Aspirin 300mg
+    â†’ CDSS checks against Metformin: no interaction
+  â†’ Signs encounter â†’ locked, addendum-only from this point
 ```
 
 ### Example 2: Medication Safety Workflow
 
 ```
 Doctor prescribes Warfarin for Patient #4521
-  → CDSS detects: Warfarin + Aspirin = CRITICAL interaction
-  → UI: red non-dismissable modal blocks prescribing
-  → Doctor clicks "Override with reason"
-  → Types: "Benefits outweigh risks — monitored INR protocol"
-  → Override reason + alert stored in audit trail
-  → Prescription proceeds with documented override
+  â†’ CDSS detects: Warfarin + Aspirin = CRITICAL interaction
+  â†’ UI: red non-dismissable modal blocks prescribing
+  â†’ Doctor clicks "Override with reason"
+  â†’ Types: "Benefits outweigh risks â€” monitored INR protocol"
+  â†’ Override reason + alert stored in audit trail
+  â†’ Prescription proceeds with documented override
 ```
 
 ### Example 3: Locked Encounter + Addendum
 
 ```
 Encounter #E-2024-0891 signed by Dr. Shah at 14:30
-  → All fields locked — no edit buttons visible
-  → "Add Addendum" button available
-  → Dr. Shah clicks addendum, adds: "Lab results received — Troponin elevated"
-  → New record E-2024-0891-A1 linked to original
-  → Timeline shows both: original encounter + addendum with timestamps
+  â†’ All fields locked â€” no edit buttons visible
+  â†’ "Add Addendum" button available
+  â†’ Dr. Shah clicks addendum, adds: "Lab results received â€” Troponin elevated"
+  â†’ New record E-2024-0891-A1 linked to original
+  â†’ Timeline shows both: original encounter + addendum with timestamps
 ```
+

@@ -1,4 +1,4 @@
----
+﻿---
 name: continuous-learning
 description: "[DEPRECATED - use continuous-learning-v2] Legacy v1 stop-hook skill extractor. v2 is a strict superset with instinct-based, project-scoped, hook-reliable learning. Do not invoke v1; route continuous learning, session learning, and pattern extraction requests to continuous-learning-v2."
 origin: ECC
@@ -114,11 +114,11 @@ Homunculus v2 takes a more sophisticated approach:
 | Analysis | Main context | Background agent (Haiku) |
 | Granularity | Full skills | Atomic "instincts" |
 | Confidence | None | 0.3-0.9 weighted |
-| Evolution | Direct to skill | Instincts → cluster → skill/command/agent |
+| Evolution | Direct to skill | Instincts â†’ cluster â†’ skill/command/agent |
 | Sharing | None | Export/import instincts |
 
 **Key insight from homunculus:**
-> "v1 relied on skills to observe. Skills are probabilistic—they fire ~50-80% of the time. v2 uses hooks for observation (100% reliable) and instincts as the atomic unit of learned behavior."
+> "v1 relied on skills to observe. Skills are probabilisticâ€”they fire ~50-80% of the time. v2 uses hooks for observation (100% reliable) and instincts as the atomic unit of learned behavior."
 
 ### Potential v2 Enhancements
 
@@ -129,3 +129,4 @@ Homunculus v2 takes a more sophisticated approach:
 5. **Evolution path** - Cluster related instincts into skills/commands
 
 See: `docs/continuous-learning-v2-spec.md` for full spec.
+

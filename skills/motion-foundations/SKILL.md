@@ -1,6 +1,6 @@
----
+﻿---
 name: motion-foundations
-description: Motion tokens, spring presets, performance rules, device adaptation, accessibility enforcement, and SSR safety for React / Next.js using motion/react. Foundation layer — all other motion skills depend on this.
+description: Motion tokens, spring presets, performance rules, device adaptation, accessibility enforcement, and SSR safety for React / Next.js using motion/react. Foundation layer â€” all other motion skills depend on this.
 version: 1.0
 tags: [motion, animation, performance, accessibility]
 category: frontend
@@ -48,7 +48,7 @@ These are non-negotiable. They apply to every component in the system.
 
 1. **Use `motion/react` only.** Never import from `framer-motion`. Never mix the two in the same tree.
 2. **`initial` must match server output.** If the server renders `opacity: 1`, the `initial` prop must also be `opacity: 1`. No exceptions.
-3. **Reduced motion overrides everything.** When `useReducedMotion()` returns `true` or `prefersReduced` is `true`, all transforms are disabled. Opacity-only fades at ≤ 0.2s are the only permitted fallback.
+3. **Reduced motion overrides everything.** When `useReducedMotion()` returns `true` or `prefersReduced` is `true`, all transforms are disabled. Opacity-only fades at â‰¤ 0.2s are the only permitted fallback.
 4. **Never animate layout properties.** `width`, `height`, `top`, `left`, `margin`, `padding` are banned from `animate`. Use `transform` and `opacity` only.
 5. **All token values come from `motionTokens`.** Hardcoded durations and easings in component files are forbidden.
 6. **All spring configs come from the `springs` map.** Inline `stiffness`/`damping` values are forbidden.
@@ -71,11 +71,11 @@ These are non-negotiable. They apply to every component in the system.
 
 | Preset | Use when |
 | --------- | ------------------------------------------ |
-| `snappy` | Default UI — buttons, chips, nav items |
+| `snappy` | Default UI â€” buttons, chips, nav items |
 | `gentle` | Cards, modals, panels landing softly |
-| `bouncy` | Playful moments — empty states, onboarding |
+| `bouncy` | Playful moments â€” empty states, onboarding |
 | `instant` | Tooltips, popovers, dropdowns |
-| `release` | Drag release — natural physics feel |
+| `release` | Drag release â€” natural physics feel |
 
 ### When to disable animation entirely
 
@@ -166,9 +166,9 @@ export const motionConfig = {
 
 **Priority order (highest to lowest):**
 
-1. `prefers-reduced-motion: reduce` — disables all transforms, limits opacity transitions to ≤ 0.2s
-2. Low-end device detection — reduces duration, removes non-essential animations
-3. Design preference — everything else
+1. `prefers-reduced-motion: reduce` â€” disables all transforms, limits opacity transitions to â‰¤ 0.2s
+2. Low-end device detection â€” reduces duration, removes non-essential animations
+3. Design preference â€” everything else
 
 Motion must degrade gracefully. It must never disappear abruptly in a way
 that causes layout shift or confuses orientation.
@@ -206,10 +206,10 @@ export function useSafeMotion(fullY: number = 16) {
 **Rule: `initial` must always match what the server renders.**
 
 ```tsx
-// WRONG — server renders opacity:1 but initial says 0 → hydration mismatch
+// WRONG â€” server renders opacity:1 but initial says 0 â†’ hydration mismatch
 <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} />
 
-// CORRECT — use AnimatePresence or defer to client mount
+// CORRECT â€” use AnimatePresence or defer to client mount
 "use client"
 const [mounted, setMounted] = useState(false)
 useEffect(() => setMounted(true), [])
@@ -240,14 +240,14 @@ interface FadeInCardProps {
 }
 
 export function FadeInCard({ children, delay = 0 }: FadeInCardProps) {
-  // SSR guard — initial must match server output (opacity: 1)
+  // SSR guard â€” initial must match server output (opacity: 1)
   const [mounted, setMounted] = useState(false)
   useEffect(() => setMounted(true), [])
 
-  // Accessibility — disables transform when reduced motion is preferred
+  // Accessibility â€” disables transform when reduced motion is preferred
   const safeMotion = useSafeMotion(motionTokens.distance.md)
 
-  // Device gate — skip animation on low-end hardware
+  // Device gate â€” skip animation on low-end hardware
   if (!motionConfig.shouldAnimate() || !mounted) {
     return <div>{children}</div>
   }
@@ -274,11 +274,11 @@ export function FadeInCard({ children, delay = 0 }: FadeInCardProps) {
 
 This skill does **not** cover:
 
-- UI component patterns (button, modal, stagger) → see `motion-patterns`
-- Drag, gestures, SVG, text animations, custom hooks → see `motion-advanced`
+- UI component patterns (button, modal, stagger) â†’ see `motion-patterns`
+- Drag, gestures, SVG, text animations, custom hooks â†’ see `motion-advanced`
 - CSS-only animations or Tailwind `animate-*` classes without `motion/react`
 - Third-party animation libraries (GSAP, anime.js, etc.)
-- Motion design decisions (when to animate, what to emphasize) — that is a design concern, not a code constraint
+- Motion design decisions (when to animate, what to emphasize) â€” that is a design concern, not a code constraint
 
 ## Anti-Patterns
 
@@ -295,5 +295,6 @@ This skill does **not** cover:
 
 ## Related Skills
 
-- **`motion-patterns`** — consumes tokens and springs defined here to build button, modal, stagger, page transition, and scroll patterns. Does not redefine any values.
-- **`motion-advanced`** — consumes tokens and springs defined here for drag, SVG, text, and gesture patterns. Adds `useAnimate` sequences and custom hooks on top of this foundation.
+- **`motion-patterns`** â€” consumes tokens and springs defined here to build button, modal, stagger, page transition, and scroll patterns. Does not redefine any values.
+- **`motion-advanced`** â€” consumes tokens and springs defined here for drag, SVG, text, and gesture patterns. Adds `useAnimate` sequences and custom hooks on top of this foundation.
+

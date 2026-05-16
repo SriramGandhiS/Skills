@@ -1,4 +1,4 @@
----
+﻿---
 name: e2e-testing
 description: Playwright E2E testing patterns, Page Object Model, configuration, CI/CD integration, artifact management, and flaky test strategies.
 origin: ECC
@@ -12,21 +12,21 @@ Comprehensive Playwright patterns for building stable, fast, and maintainable E2
 
 ```
 tests/
-├── e2e/
-│   ├── auth/
-│   │   ├── login.spec.ts
-│   │   ├── logout.spec.ts
-│   │   └── register.spec.ts
-│   ├── features/
-│   │   ├── browse.spec.ts
-│   │   ├── search.spec.ts
-│   │   └── create.spec.ts
-│   └── api/
-│       └── endpoints.spec.ts
-├── fixtures/
-│   ├── auth.ts
-│   └── data.ts
-└── playwright.config.ts
+â”œâ”€â”€ e2e/
+â”‚   â”œâ”€â”€ auth/
+â”‚   â”‚   â”œâ”€â”€ login.spec.ts
+â”‚   â”‚   â”œâ”€â”€ logout.spec.ts
+â”‚   â”‚   â””â”€â”€ register.spec.ts
+â”‚   â”œâ”€â”€ features/
+â”‚   â”‚   â”œâ”€â”€ browse.spec.ts
+â”‚   â”‚   â”œâ”€â”€ search.spec.ts
+â”‚   â”‚   â””â”€â”€ create.spec.ts
+â”‚   â””â”€â”€ api/
+â”‚       â””â”€â”€ endpoints.spec.ts
+â”œâ”€â”€ fixtures/
+â”‚   â”œâ”€â”€ auth.ts
+â”‚   â””â”€â”€ data.ts
+â””â”€â”€ playwright.config.ts
 ```
 
 ## Page Object Model (POM)
@@ -303,7 +303,7 @@ test('wallet connection', async ({ page, context }) => {
 
 ```typescript
 test('trade execution', async ({ page }) => {
-  // Skip on production — real money
+  // Skip on production â€” real money
   test.skip(process.env.NODE_ENV === 'production', 'Skip on production')
 
   await page.goto('/markets/test-market')
@@ -324,3 +324,4 @@ test('trade execution', async ({ page }) => {
   await expect(page.locator('[data-testid="trade-success"]')).toBeVisible()
 })
 ```
+

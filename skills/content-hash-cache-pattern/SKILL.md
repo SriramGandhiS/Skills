@@ -1,6 +1,6 @@
----
+﻿---
 name: content-hash-cache-pattern
-description: Cache expensive file processing results using SHA-256 content hashes — path-independent, auto-invalidating, with service layer separation.
+description: Cache expensive file processing results using SHA-256 content hashes â€” path-independent, auto-invalidating, with service layer separation.
 origin: ECC
 ---
 
@@ -57,7 +57,7 @@ class CacheEntry:
 
 ### 3. File-Based Cache Storage
 
-Each cache entry is stored as `{hash}.json` — O(1) lookup by hash, no index file required.
+Each cache entry is stored as `{hash}.json` â€” O(1) lookup by hash, no index file required.
 
 ```python
 import json
@@ -125,11 +125,11 @@ def extract_with_cache(
 
 ## Best Practices
 
-- **Hash content, not paths** — paths change, content identity doesn't
-- **Chunk large files** when hashing — avoid loading entire files into memory
-- **Keep processing functions pure** — they should know nothing about caching
+- **Hash content, not paths** â€” paths change, content identity doesn't
+- **Chunk large files** when hashing â€” avoid loading entire files into memory
+- **Keep processing functions pure** â€” they should know nothing about caching
 - **Log cache hit/miss** with truncated hashes for debugging
-- **Handle corruption gracefully** — treat invalid cache entries as misses, never crash
+- **Handle corruption gracefully** â€” treat invalid cache entries as misses, never crash
 
 ## Anti-Patterns to Avoid
 
@@ -159,3 +159,4 @@ data = dataclasses.asdict(entry)  # Use manual serialization instead
 - Data that must always be fresh (real-time feeds)
 - Cache entries that would be extremely large (consider streaming instead)
 - Results that depend on parameters beyond file content (e.g., different extraction configs)
+

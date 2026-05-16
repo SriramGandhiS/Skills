@@ -1,4 +1,4 @@
-# Dependency Injection (DI) Fundamentals
+﻿# Dependency Injection (DI) Fundamentals
 
 Dependency Injection (DI) is a design pattern used to organize and share code across an application by allowing you to "inject" features into different parts. This improves code maintainability, scalability, and testability.
 
@@ -118,3 +118,4 @@ export const authGuard = () => {
   return auth.isAuthenticated();
 };
 ```
+

@@ -1,4 +1,4 @@
----
+﻿---
 name: agentic-os
 description: Build persistent multi-agent operating systems on Claude Code. Covers kernel architecture, specialist agents, slash commands, file-based memory, scheduled automation, and state management without external databases.
 origin: ECC
@@ -22,11 +22,11 @@ The Agentic OS has four layers. Each layer is a directory in your project root.
 
 ```
 project-root/
-├── CLAUDE.md          # Kernel: identity, routing rules, agent registry
-├── agents/            # Specialist agent definitions (markdown prompts)
-├── .claude/commands/  # Slash commands: user-facing CLI
-├── scripts/           # Daemon scripts: scheduled or event-driven tasks
-└── data/              # State: JSON/markdown filesystem, no external DB
+â”œâ”€â”€ CLAUDE.md          # Kernel: identity, routing rules, agent registry
+â”œâ”€â”€ agents/            # Specialist agent definitions (markdown prompts)
+â”œâ”€â”€ .claude/commands/  # Slash commands: user-facing CLI
+â”œâ”€â”€ scripts/           # Daemon scripts: scheduled or event-driven tasks
+â””â”€â”€ data/              # State: JSON/markdown filesystem, no external DB
 ```
 
 ### Layer Responsibilities
@@ -167,12 +167,12 @@ Memory is file-based. No vector DB, no Redis, no PostgreSQL. JSON and markdown f
 
 ```
 data/
-├── daily-logs/         # Append-only daily activity logs
-├── projects/           # Per-project context files
-├── decisions/          # Architectural and business decisions (ADR format)
-├── inbox/              # New tasks or ideas awaiting triage
-├── contacts/           # People, companies, relationship notes
-└── templates/          # Reusable prompts and formats
+â”œâ”€â”€ daily-logs/         # Append-only daily activity logs
+â”œâ”€â”€ projects/           # Per-project context files
+â”œâ”€â”€ decisions/          # Architectural and business decisions (ADR format)
+â”œâ”€â”€ inbox/              # New tasks or ideas awaiting triage
+â”œâ”€â”€ contacts/           # People, companies, relationship notes
+â””â”€â”€ templates/          # Reusable prompts and formats
 ```
 
 ### Daily Log Format
@@ -385,3 +385,4 @@ Keep routing declarative in `CLAUDE.md` markdown tables. It is inspectable, edit
 - [ ] Scheduled tasks use external cron (LaunchAgent, systemd, pm2), not Claude Code's session cron
 - [ ] Cost tracking: log API spend per session in `data/logs/<date>-costs.json`
 - [ ] One project = one Agentic OS. Do not share a single `CLAUDE.md` across unrelated projects.
+

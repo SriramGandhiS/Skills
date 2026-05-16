@@ -1,4 +1,4 @@
-# End-to-End (E2E) Testing
+﻿# End-to-End (E2E) Testing
 
 Use E2E tests to cover critical user journeys in a real browser. Prefer the framework already configured in the Angular workspace, such as Cypress or Playwright.
 
@@ -54,3 +54,4 @@ test('redirects to dashboard on valid credentials', async ({page}) => {
 - Avoid selectors that depend on CSS classes, DOM depth, or incidental text.
 - Wait for specific UI states, routes, or network responses instead of arbitrary sleeps.
 - Keep smoke tests short and reserve full workflow coverage for the highest-value paths.
+

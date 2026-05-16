@@ -1,4 +1,4 @@
-# Generative Media Guide
+﻿# Generative Media Guide
 
 VideoDB provides AI-powered generation of images, videos, music, sound effects, voice, and text content. All generation methods are on the **Collection** object.
 
@@ -36,7 +36,7 @@ print(image.generate_url())  # returns a signed download URL
 | `aspect_ratio` | `str` | `"1:1"` | Aspect ratio: `"1:1"`, `"9:16"`, `"16:9"`, `"4:3"`, or `"3:4"` |
 | `callback_url` | `str\|None` | `None` | URL to receive async callback |
 
-Returns an `Image` object with `.id`, `.name`, and `.collection_id`. The `.url` property may be `None` for generated images — always use `image.generate_url()` to get a reliable signed download URL.
+Returns an `Image` object with `.id`, `.name`, and `.collection_id`. The `.url` property may be `None` for generated images â€” always use `image.generate_url()` to get a reliable signed download URL.
 
 > **Note:** Unlike `Video` objects (which use `.generate_stream()`), `Image` objects use `.generate_url()` to retrieve the image URL. The `.url` property is only populated for some image types (e.g. thumbnails).
 
@@ -329,3 +329,4 @@ print(result["output"]["topics"])
 - **Combine generation types**: Generate images for overlays, music for backgrounds, and voice for narration, then compose using timelines (see [editor.md](editor.md)).
 - **Prompt quality matters**: Descriptive, specific prompts produce better results across all generation types.
 - **Aspect ratios for images**: Choose from `"1:1"`, `"9:16"`, `"16:9"`, `"4:3"`, or `"3:4"`.
+

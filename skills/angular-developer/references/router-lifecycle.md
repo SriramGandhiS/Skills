@@ -1,4 +1,4 @@
-# Router Lifecycle and Events
+﻿# Router Lifecycle and Events
 
 Angular Router emits events through the `Router.events` observable, allowing you to track the navigation lifecycle from start to finish.
 
@@ -43,3 +43,4 @@ provideRouter(routes, withDebugTracing());
 - **Loading Indicators**: Show a spinner when `NavigationStart` fires and hide it on `NavigationEnd`/`Cancel`/`Error`.
 - **Analytics**: Track page views by listening for `NavigationEnd`.
 - **Scroll Management**: Respond to `Scroll` events for custom scroll behavior.
+

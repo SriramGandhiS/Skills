@@ -1,4 +1,4 @@
-# Testing Fundamentals
+﻿# Testing Fundamentals
 
 This guide covers the fundamental principles and practices for writing Angular unit and component tests. Use the runner already configured in the project.
 
@@ -63,3 +63,4 @@ describe('MyComponent', () => {
   - `fixture.componentInstance`: Access the component's class instance.
   - `fixture.nativeElement`: Access the component's root DOM element.
   - `fixture.debugElement`: An Angular-specific wrapper around the `nativeElement` that provides safer, platform-agnostic ways to query the DOM (e.g., `debugElement.query(By.css('p'))`).
+

@@ -1,4 +1,4 @@
----
+﻿---
 name: email-ops
 description: Evidence-first mailbox triage, drafting, send verification, and sent-mail-safe follow-up workflow for ECC. Use when the user wants to organize email, draft or send through the real mail surface, or prove what landed in Sent.
 origin: ECC
@@ -119,3 +119,4 @@ NEXT STEP
 - the response names the account and thread or recipient
 - any send claim includes Sent proof or an explicit client-side confirmation
 - the final state is one of drafted / sent / blocked / awaiting verification
+

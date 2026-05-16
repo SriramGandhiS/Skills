@@ -1,6 +1,6 @@
----
+﻿---
 name: plankton-code-quality
-description: "Write-time code quality enforcement using Plankton — auto-formatting, linting, and Claude-powered fixes on every file edit via hooks."
+description: "Write-time code quality enforcement using Plankton â€” auto-formatting, linting, and Claude-powered fixes on every file edit via hooks."
 origin: community
 ---
 
@@ -23,23 +23,23 @@ Every time Claude Code edits or writes a file, Plankton's `multi_linter.sh` Post
 
 ```
 Phase 1: Auto-Format (Silent)
-├─ Runs formatters (ruff format, biome, shfmt, taplo, markdownlint)
-├─ Fixes 40-50% of issues silently
-└─ No output to main agent
+â”œâ”€ Runs formatters (ruff format, biome, shfmt, taplo, markdownlint)
+â”œâ”€ Fixes 40-50% of issues silently
+â””â”€ No output to main agent
 
 Phase 2: Collect Violations (JSON)
-├─ Runs linters and collects unfixable violations
-├─ Returns structured JSON: {line, column, code, message, linter}
-└─ Still no output to main agent
+â”œâ”€ Runs linters and collects unfixable violations
+â”œâ”€ Returns structured JSON: {line, column, code, message, linter}
+â””â”€ Still no output to main agent
 
 Phase 3: Delegate + Verify
-├─ Spawns claude -p subprocess with violations JSON
-├─ Routes to model tier based on violation complexity:
-│   ├─ Haiku: formatting, imports, style (E/W/F codes) — 120s timeout
-│   ├─ Sonnet: complexity, refactoring (C901, PLR codes) — 300s timeout
-│   └─ Opus: type system, deep reasoning (unresolved-attribute) — 600s timeout
-├─ Re-runs Phase 1+2 to verify fixes
-└─ Exit 0 if clean, Exit 2 if violations remain (reported to main agent)
+â”œâ”€ Spawns claude -p subprocess with violations JSON
+â”œâ”€ Routes to model tier based on violation complexity:
+â”‚   â”œâ”€ Haiku: formatting, imports, style (E/W/F codes) â€” 120s timeout
+â”‚   â”œâ”€ Sonnet: complexity, refactoring (C901, PLR codes) â€” 300s timeout
+â”‚   â””â”€ Opus: type system, deep reasoning (unresolved-attribute) â€” 600s timeout
+â”œâ”€ Re-runs Phase 1+2 to verify fixes
+â””â”€ Exit 0 if clean, Exit 2 if violations remain (reported to main agent)
 ```
 
 ### What the Main Agent Sees
@@ -57,15 +57,15 @@ The main agent only sees issues the subprocess couldn't fix. Most quality proble
 
 LLMs will modify `.ruff.toml` or `biome.json` to disable rules rather than fix code. Plankton blocks this with three layers:
 
-1. **PreToolUse hook** — `protect_linter_configs.sh` blocks edits to all linter configs before they happen
-2. **Stop hook** — `stop_config_guardian.sh` detects config changes via `git diff` at session end
-3. **Protected files list** — `.ruff.toml`, `biome.json`, `.shellcheckrc`, `.yamllint`, `.hadolint.yaml`, and more
+1. **PreToolUse hook** â€” `protect_linter_configs.sh` blocks edits to all linter configs before they happen
+2. **Stop hook** â€” `stop_config_guardian.sh` detects config changes via `git diff` at session end
+3. **Protected files list** â€” `.ruff.toml`, `biome.json`, `.shellcheckrc`, `.yamllint`, `.hadolint.yaml`, and more
 
 ### Package Manager Enforcement
 
 A PreToolUse hook on Bash blocks legacy package managers:
-- `pip`, `pip3`, `poetry`, `pipenv` → Blocked (use `uv`)
-- `npm`, `yarn`, `pnpm` → Blocked (use `bun`)
+- `pip`, `pip3`, `poetry`, `pipenv` â†’ Blocked (use `uv`)
+- `npm`, `yarn`, `pnpm` â†’ Blocked (use `bun`)
 - Allowed exceptions: `npm audit`, `npm view`, `npm publish`
 
 ## Setup
@@ -81,7 +81,7 @@ brew install jaq ruff uv
 # Install Python linters
 uv sync --all-extras
 
-# Start Claude Code — hooks activate automatically
+# Start Claude Code â€” hooks activate automatically
 claude
 ```
 
@@ -102,12 +102,12 @@ To use Plankton hooks in your own project:
 |----------|----------|----------|
 | Python | `ruff`, `uv` | `ty` (types), `vulture` (dead code), `bandit` (security) |
 | TypeScript/JS | `biome` | `oxlint`, `semgrep`, `knip` (dead exports) |
-| Shell | `shellcheck`, `shfmt` | — |
-| YAML | `yamllint` | — |
-| Markdown | `markdownlint-cli2` | — |
-| Dockerfile | `hadolint` (>= 2.12.0) | — |
-| TOML | `taplo` | — |
-| JSON | `jaq` | — |
+| Shell | `shellcheck`, `shfmt` | â€” |
+| YAML | `yamllint` | â€” |
+| Markdown | `markdownlint-cli2` | â€” |
+| Dockerfile | `hadolint` (>= 2.12.0) | â€” |
+| TOML | `taplo` | â€” |
+| JSON | `jaq` | â€” |
 
 ## Pairing with ECC
 
@@ -117,10 +117,10 @@ To use Plankton hooks in your own project:
 |---------|-----|----------|
 | Code quality enforcement | PostToolUse hooks (Prettier, tsc) | PostToolUse hooks (20+ linters + subprocess fixes) |
 | Security scanning | AgentShield, security-reviewer agent | Bandit (Python), Semgrep (TypeScript) |
-| Config protection | — | PreToolUse blocks + Stop hook detection |
+| Config protection | â€” | PreToolUse blocks + Stop hook detection |
 | Package manager | Detection + setup | Enforcement (blocks legacy PMs) |
-| CI integration | — | Pre-commit hooks for git |
-| Model routing | Manual (`/model opus`) | Automatic (violation complexity → tier) |
+| CI integration | â€” | Pre-commit hooks for git |
+| Model routing | Manual (`/model opus`) | Automatic (violation complexity â†’ tier) |
 
 ### Recommended Combination
 
@@ -174,8 +174,8 @@ Plankton's `.claude/hooks/config.json` controls all behavior:
 
 **Key settings:**
 - Disable languages you don't use to speed up hooks
-- `volume_threshold` — violations > this count auto-escalate to a higher model tier
-- `subprocess_delegation: false` — skip Phase 3 entirely (just report violations)
+- `volume_threshold` â€” violations > this count auto-escalate to a higher model tier
+- `subprocess_delegation: false` â€” skip Phase 3 entirely (just report violations)
 
 ## Environment Overrides
 
@@ -189,8 +189,8 @@ Plankton's `.claude/hooks/config.json` controls all behavior:
 ## References
 
 - Plankton (credit: @alxfazio)
-- Plankton REFERENCE.md — Full architecture documentation (credit: @alxfazio)
-- Plankton SETUP.md — Detailed installation guide (credit: @alxfazio)
+- Plankton REFERENCE.md â€” Full architecture documentation (credit: @alxfazio)
+- Plankton SETUP.md â€” Detailed installation guide (credit: @alxfazio)
 
 ## ECC v1.8 Additions
 
@@ -234,3 +234,4 @@ Track:
 - average remediation time
 - repeat violations by category
 - merge blocks due to gate failures
+

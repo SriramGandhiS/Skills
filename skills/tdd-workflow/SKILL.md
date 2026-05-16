@@ -1,4 +1,4 @@
----
+﻿---
 name: tdd-workflow
 description: Use this skill when writing new features, fixing bugs, or refactoring code. Enforces test-driven development with 80%+ coverage including unit, integration, and E2E tests.
 origin: ECC
@@ -286,23 +286,23 @@ test('user can create a new market', async ({ page }) => {
 
 ```
 src/
-├── components/
-│   ├── Button/
-│   │   ├── Button.tsx
-│   │   ├── Button.test.tsx          # Unit tests
-│   │   └── Button.stories.tsx       # Storybook
-│   └── MarketCard/
-│       ├── MarketCard.tsx
-│       └── MarketCard.test.tsx
-├── app/
-│   └── api/
-│       └── markets/
-│           ├── route.ts
-│           └── route.test.ts         # Integration tests
-└── e2e/
-    ├── markets.spec.ts               # E2E tests
-    ├── trading.spec.ts
-    └── auth.spec.ts
+â”œâ”€â”€ components/
+â”‚   â”œâ”€â”€ Button/
+â”‚   â”‚   â”œâ”€â”€ Button.tsx
+â”‚   â”‚   â”œâ”€â”€ Button.test.tsx          # Unit tests
+â”‚   â”‚   â””â”€â”€ Button.stories.tsx       # Storybook
+â”‚   â””â”€â”€ MarketCard/
+â”‚       â”œâ”€â”€ MarketCard.tsx
+â”‚       â””â”€â”€ MarketCard.test.tsx
+â”œâ”€â”€ app/
+â”‚   â””â”€â”€ api/
+â”‚       â””â”€â”€ markets/
+â”‚           â”œâ”€â”€ route.ts
+â”‚           â””â”€â”€ route.test.ts         # Integration tests
+â””â”€â”€ e2e/
+    â”œâ”€â”€ markets.spec.ts               # E2E tests
+    â”œâ”€â”€ trading.spec.ts
+    â””â”€â”€ auth.spec.ts
 ```
 
 ## Mocking External Services
@@ -461,3 +461,4 @@ npm test && npm run lint
 ---
 
 **Remember**: Tests are not optional. They are the safety net that enables confident refactoring, rapid development, and production reliability.
+

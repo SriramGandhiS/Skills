@@ -1,4 +1,4 @@
-# Capture Reference
+﻿# Capture Reference
 
 Code-level details for VideoDB capture sessions. For workflow guide, see [capture.md](capture.md).
 
@@ -24,11 +24,11 @@ Use [scripts/ws_listener.py](../scripts/ws_listener.py) to connect and dump even
 
 | Event | Status | Key Data |
 |-------|--------|----------|
-| `capture_session.created` | `created` | — |
-| `capture_session.starting` | `starting` | — |
+| `capture_session.created` | `created` | â€” |
+| `capture_session.starting` | `starting` | â€” |
 | `capture_session.active` | `active` | `rtstreams[]` |
-| `capture_session.stopping` | `stopping` | — |
-| `capture_session.stopped` | `stopped` | — |
+| `capture_session.stopping` | `stopping` | â€” |
+| `capture_session.stopped` | `stopped` | â€” |
 | `capture_session.exported` | `exported` | `exported_video_id`, `stream_url`, `player_url` |
 | `capture_session.failed` | `failed` | `error` |
 
@@ -367,41 +367,42 @@ For RTStream methods (indexing, transcription, alerts, batch config), see [rtstr
 
 ```
   create_capture_session()
-          │
+          â”‚
           v
-  ┌───────────────┐
-  │    created     │
-  └───────┬───────┘
-          │  client.start_capture_session()
+  â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
+  â”‚    created     â”‚
+  â””â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”˜
+          â”‚  client.start_capture_session()
           v
-  ┌───────────────┐     WebSocket: capture_session.starting
-  │   starting     │ ──> Capture channels connect
-  └───────┬───────┘
-          │
+  â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”     WebSocket: capture_session.starting
+  â”‚   starting     â”‚ â”€â”€> Capture channels connect
+  â””â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”˜
+          â”‚
           v
-  ┌───────────────┐     WebSocket: capture_session.active
-  │    active      │ ──> Start AI pipelines
-  └───────┬──────────────┐
-          │              │
-          │              v
-          │      ┌───────────────┐     WebSocket: capture_session.failed
-          │      │    failed      │ ──> Inspect error payload and retry setup
-          │      └───────────────┘
-          │      unrecoverable capture error
-          │
-          │  client.stop_capture()
+  â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”     WebSocket: capture_session.active
+  â”‚    active      â”‚ â”€â”€> Start AI pipelines
+  â””â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
+          â”‚              â”‚
+          â”‚              v
+          â”‚      â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”     WebSocket: capture_session.failed
+          â”‚      â”‚    failed      â”‚ â”€â”€> Inspect error payload and retry setup
+          â”‚      â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
+          â”‚      unrecoverable capture error
+          â”‚
+          â”‚  client.stop_capture()
           v
-  ┌───────────────┐     WebSocket: capture_session.stopping
-  │   stopping     │ ──> Finalize streams
-  └───────┬───────┘
-          │
+  â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”     WebSocket: capture_session.stopping
+  â”‚   stopping     â”‚ â”€â”€> Finalize streams
+  â””â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”˜
+          â”‚
           v
-  ┌───────────────┐     WebSocket: capture_session.stopped
-  │   stopped      │ ──> All streams finalized
-  └───────┬───────┘
-          │  (if store=True)
+  â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”     WebSocket: capture_session.stopped
+  â”‚   stopped      â”‚ â”€â”€> All streams finalized
+  â””â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”˜
+          â”‚  (if store=True)
           v
-  ┌───────────────┐     WebSocket: capture_session.exported
-  │   exported     │ ──> Access video_id, stream_url, player_url
-  └───────────────┘
+  â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”     WebSocket: capture_session.exported
+  â”‚   exported     â”‚ â”€â”€> Access video_id, stream_url, player_url
+  â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
 ```
+

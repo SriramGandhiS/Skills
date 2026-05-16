@@ -1,6 +1,6 @@
----
+﻿---
 name: motion-patterns
-description: Production-ready animation patterns for React / Next.js — button, modal, toast, stagger, page transitions, exit animations, scroll, and layout — built on motion-foundations tokens and springs.
+description: Production-ready animation patterns for React / Next.js â€” button, modal, toast, stagger, page transitions, exit animations, scroll, and layout â€” built on motion-foundations tokens and springs.
 version: 1.0
 tags: [motion, animation, ui-patterns]
 category: frontend
@@ -11,7 +11,7 @@ author: jeff
 
 Copy-paste patterns for the most common UI animation needs.
 Every pattern here is built on `motion-foundations` tokens and springs.
-Do not define new duration or easing values here — import them.
+Do not define new duration or easing values here â€” import them.
 
 ## When to Activate
 
@@ -36,7 +36,7 @@ This skill produces:
 
 - Every pattern imports from `motion-foundations`. No raw numbers.
 - Every conditional render is wrapped in `AnimatePresence` with a `key`.
-- Exit animations are always defined alongside enter animations — never as an afterthought.
+- Exit animations are always defined alongside enter animations â€” never as an afterthought.
 - `layout` is used only for small, isolated shifts. Large subtrees get explicit transforms.
 
 ## Rules
@@ -86,8 +86,8 @@ Miss any one of these and the exit animation silently fails.
 
 ### layout vs layoutId
 
-- `layout` — animates the element's own size/position change in place
-- `layoutId` — links two separate elements, crossfading between them across renders
+- `layout` â€” animates the element's own size/position change in place
+- `layoutId` â€” links two separate elements, crossfading between them across renders
 
 Use `layout="position"` on text inside an expanding container to prevent text reflow from animating.
 
@@ -118,7 +118,7 @@ const container = {
   hidden: {},
   visible: {
     transition: {
-      staggerChildren: 0.08,   // within the 0.05–0.10 rule
+      staggerChildren: 0.08,   // within the 0.05â€“0.10 rule
       delayChildren: 0.1,
     },
   },
@@ -158,7 +158,7 @@ export function Modal({ onClose }: { onClose: () => void }) {
         onClick={onClose}
       />
 
-      {/* Panel — accessibility requirements: focus trap, Escape close,
+      {/* Panel â€” accessibility requirements: focus trap, Escape close,
           scroll lock, role="dialog", aria-modal="true" */}
       <motion.div
         role="dialog"
@@ -258,7 +258,7 @@ import { motionTokens, springs } from "@/lib/motion-tokens"
 <motion.div
   initial={{ opacity: 0, y: motionTokens.distance.lg }}
   whileInView={{ opacity: 1, y: 0 }}
-  viewport={{ once: true, margin: "-80px" }}   // once: true — rule 7
+  viewport={{ once: true, margin: "-80px" }}   // once: true â€” rule 7
   transition={{ duration: motionTokens.duration.slow, ease: motionTokens.easing.smooth }}
 />
 ```
@@ -322,7 +322,7 @@ export function ExpandingCard({ title, body }: { title: string; body: string }) 
 // Source context
 <motion.img layoutId="hero-image" src={src} className="w-16 h-16 rounded" />
 
-// Destination context (same layoutId — motion handles the transition)
+// Destination context (same layoutId â€” motion handles the transition)
 <motion.img layoutId="hero-image" src={src} className="w-full rounded-xl" />
 ```
 
@@ -345,7 +345,7 @@ export function ExpandingCard({ title, body }: { title: string; body: string }) 
 ## End-to-End Example
 
 A staggered list that enters on mount, handles conditional presence, and
-respects reduced motion — combining tokens, springs, AnimatePresence, and
+respects reduced motion â€” combining tokens, springs, AnimatePresence, and
 the accessibility hook from `motion-foundations`:
 
 ```tsx
@@ -409,11 +409,11 @@ export function AnimatedList({ items, onRemove }: {
 
 This skill does **not** cover:
 
-- Token and spring definitions → see `motion-foundations`
-- Drag interactions, swipe gestures, reorderable lists → see `motion-advanced`
-- Text animations (word/character reveal, counters) → see `motion-advanced`
-- SVG path drawing or morphing → see `motion-advanced`
-- Custom animation hooks → see `motion-advanced`
+- Token and spring definitions â†’ see `motion-foundations`
+- Drag interactions, swipe gestures, reorderable lists â†’ see `motion-advanced`
+- Text animations (word/character reveal, counters) â†’ see `motion-advanced`
+- SVG path drawing or morphing â†’ see `motion-advanced`
+- Custom animation hooks â†’ see `motion-advanced`
 - CSS-only transitions not using `motion/react`
 
 ## Anti-Patterns
@@ -424,12 +424,13 @@ This skill does **not** cover:
 | `initial` + `animate` without `exit` | Rule 2 | Always define all three together |
 | Page transition without `mode="wait"` | Rule 3 | Add `mode="wait"` to `AnimatePresence` |
 | `layout` on a 50-item list | Rule 4 | Use `mode="popLayout"` or explicit transforms |
-| `staggerChildren: 0.2` on a 10-item list | Rule 5 | Cap at `0.08–0.10` |
+| `staggerChildren: 0.2` on a 10-item list | Rule 5 | Cap at `0.08â€“0.10` |
 | Modal without focus trap | Rule 6 | Add `focus-trap-react` or Radix Dialog |
 | `whileInView` without `viewport={{ once: true }}` | Rule 7 | Repeating entrances distract, not inform |
 | `transition={{ duration: 0.3 }}` inline | Rule 8 | Use `motionTokens.duration.normal` |
 
 ## Related Skills
 
-- **`motion-foundations`** — defines all tokens, springs, the `useSafeMotion` hook, and SSR guards that every pattern here imports. Must be set up first.
-- **`motion-advanced`** — extends these patterns with drag, gestures, SVG, text, custom hooks, and imperative sequencing. Does not redefine any patterns from this skill.
+- **`motion-foundations`** â€” defines all tokens, springs, the `useSafeMotion` hook, and SSR guards that every pattern here imports. Must be set up first.
+- **`motion-advanced`** â€” extends these patterns with drag, gestures, SVG, text, custom hooks, and imperative sequencing. Does not redefine any patterns from this skill.
+

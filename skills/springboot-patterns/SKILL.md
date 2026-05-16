@@ -1,4 +1,4 @@
----
+﻿---
 name: springboot-patterns
 description: Spring Boot architecture patterns, REST API design, layered services, data access, caching, async processing, and logging. Use for Java Spring Boot backend work.
 origin: ECC
@@ -11,7 +11,7 @@ Spring Boot architecture and API patterns for scalable, production-grade service
 ## When to Activate
 
 - Building REST APIs with Spring MVC or WebFlux
-- Structuring controller → service → repository layers
+- Structuring controller â†’ service â†’ repository layers
 - Configuring Spring Data JPA, caching, or async processing
 - Adding validation, exception handling, or pagination
 - Setting up profiles for dev/staging/production environments
@@ -242,7 +242,7 @@ Only use forwarded headers when:
 
 When `ForwardedHeaderFilter` is properly configured, `request.getRemoteAddr()` will automatically
 return the correct client IP from the forwarded headers. Without this configuration, use
-`request.getRemoteAddr()` directly—it returns the immediate connection IP, which is the only
+`request.getRemoteAddr()` directlyâ€”it returns the immediate connection IP, which is the only
 trustworthy value.
 
 ```java
@@ -251,25 +251,25 @@ public class RateLimitFilter extends OncePerRequestFilter {
   private final Map<String, Bucket> buckets = new ConcurrentHashMap<>();
 
   /*
-   * SECURITY: This filter uses request.getRemoteAddr() to identify clients for rate limiting.
+- SECURITY: This filter uses request.getRemoteAddr() to identify clients for rate limiting.
    *
-   * If your application is behind a reverse proxy (nginx, AWS ALB, etc.), you MUST configure
-   * Spring to handle forwarded headers properly for accurate client IP detection:
+- If your application is behind a reverse proxy (nginx, AWS ALB, etc.), you MUST configure
+- Spring to handle forwarded headers properly for accurate client IP detection:
    *
-   * 1. Set server.forward-headers-strategy=NATIVE (for cloud platforms) or FRAMEWORK in
-   *    application.properties/yaml
-   * 2. If using FRAMEWORK strategy, register ForwardedHeaderFilter:
+- 1. Set server.forward-headers-strategy=NATIVE (for cloud platforms) or FRAMEWORK in
+-    application.properties/yaml
+- 2. If using FRAMEWORK strategy, register ForwardedHeaderFilter:
    *
-   *    @Bean
-   *    ForwardedHeaderFilter forwardedHeaderFilter() {
-   *        return new ForwardedHeaderFilter();
-   *    }
+-    @Bean
+-    ForwardedHeaderFilter forwardedHeaderFilter() {
+-        return new ForwardedHeaderFilter();
+-    }
    *
-   * 3. Ensure your proxy overwrites (not appends) the X-Forwarded-For header to prevent spoofing
-   * 4. Configure server.tomcat.remoteip.trusted-proxies or equivalent for your container
+- 3. Ensure your proxy overwrites (not appends) the X-Forwarded-For header to prevent spoofing
+- 4. Configure server.tomcat.remoteip.trusted-proxies or equivalent for your container
    *
-   * Without this configuration, request.getRemoteAddr() returns the proxy IP, not the client IP.
-   * Do NOT read X-Forwarded-For directly—it is trivially spoofable without trusted proxy handling.
+- Without this configuration, request.getRemoteAddr() returns the proxy IP, not the client IP.
+- Do NOT read X-Forwarded-For directlyâ€”it is trivially spoofable without trusted proxy handling.
    */
   @Override
   protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response,
@@ -295,7 +295,7 @@ public class RateLimitFilter extends OncePerRequestFilter {
 
 ## Background Jobs
 
-Use Spring’s `@Scheduled` or integrate with queues (e.g., Kafka, SQS, RabbitMQ). Keep handlers idempotent and observable.
+Use Springâ€™s `@Scheduled` or integrate with queues (e.g., Kafka, SQS, RabbitMQ). Keep handlers idempotent and observable.
 
 ## Observability
 
@@ -312,3 +312,4 @@ Use Spring’s `@Scheduled` or integrate with queues (e.g., Kafka, SQS, RabbitMQ
 - Enforce null-safety via `@NonNull` and `Optional` where appropriate
 
 **Remember**: Keep controllers thin, services focused, repositories simple, and errors handled centrally. Optimize for maintainability and testability.
+

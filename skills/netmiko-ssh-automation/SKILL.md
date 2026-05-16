@@ -1,4 +1,4 @@
----
+﻿---
 name: netmiko-ssh-automation
 description: Safe Python Netmiko patterns for read-only collection, bounded batch SSH, TextFSM parsing, guarded config changes, timeouts, and network automation error handling.
 origin: community
@@ -171,3 +171,4 @@ snippet and capture before/after evidence in the change record.
 - Skill: `cisco-ios-patterns`
 - Skill: `network-config-validation`
 - Skill: `network-interface-health`
+

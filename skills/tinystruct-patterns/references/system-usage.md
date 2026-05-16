@@ -1,4 +1,4 @@
-# tinystruct System and Usage Reference
+﻿# tinystruct System and Usage Reference
 
 ## When to Use
 
@@ -95,3 +95,4 @@ EventDispatcher.getInstance().registerHandler(MyEvent.class, event -> {
     CompletableFuture.runAsync(() -> doHeavyWork(event.getPayload()));
 });
 ```
+

@@ -1,4 +1,4 @@
----
+﻿---
 name: get-video-duration
 description: Getting the duration of a video file in seconds with Mediabunny
 metadata:
@@ -56,3 +56,4 @@ import { staticFile } from "remotion";
 
 const duration = await getVideoDuration(staticFile("video.mp4"));
 ```
+

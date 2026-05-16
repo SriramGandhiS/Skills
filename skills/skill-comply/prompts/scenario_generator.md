@@ -1,4 +1,4 @@
-<!-- markdownlint-disable MD007 -->
+﻿<!-- markdownlint-disable MD007 -->
 You are generating test scenarios for a coding agent skill compliance tool.
 Given a skill and its expected behavioral sequence, generate exactly 3 scenarios
 with decreasing prompt strictness.
@@ -47,7 +47,7 @@ Rules:
 - All 3 scenarios should test the SAME task (so results are comparable)
 - The task must be simple enough to complete in <30 tool calls
 - setup_commands should create a minimal sandbox (dirs, pyproject.toml, etc.)
-- Prompts should be realistic — something a developer would actually ask
+- Prompts should be realistic â€” something a developer would actually ask
 
 Skill content:
 
@@ -60,3 +60,4 @@ Expected behavioral sequence:
 ---
 {spec_yaml}
 ---
+

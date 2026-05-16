@@ -1,4 +1,4 @@
----
+﻿---
 name: perl-patterns
 description: Modern Perl 5.36+ idioms, best practices, and conventions for building robust, maintainable Perl applications.
 origin: ECC
@@ -78,7 +78,7 @@ sub connect_db {
 
 ### 3. Context Sensitivity
 
-Understand scalar vs list context — a core Perl concept.
+Understand scalar vs list context â€” a core Perl concept.
 
 ```perl
 use v5.36;
@@ -116,7 +116,7 @@ my @roles = @{ $data->{users}[0]{roles} };
 
 ### 5. The `isa` Operator (5.32+)
 
-Infix type-check — replaces `blessed($o) && $o->isa('X')`.
+Infix type-check â€” replaces `blessed($o) && $o->isa('X')`.
 
 ```perl
 use v5.36;
@@ -345,7 +345,7 @@ sub read_file($path) {
 
 # Bad: Two-arg open (shell injection risk, see perl-security)
 open FH, $path;            # NEVER do this
-open FH, "< $path";        # Still bad — user data in mode string
+open FH, "< $path";        # Still bad â€” user data in mode string
 ```
 
 ### Path::Tiny for File Operations
@@ -370,21 +370,21 @@ for my $child (path('src')->children(qr/\.pl$/)) {
 
 ```text
 MyApp/
-├── lib/
-│   └── MyApp/
-│       ├── App.pm           # Main module
-│       ├── Config.pm        # Configuration
-│       ├── DB.pm            # Database layer
-│       └── Util.pm          # Utilities
-├── bin/
-│   └── myapp                # Entry-point script
-├── t/
-│   ├── 00-load.t            # Compilation tests
-│   ├── unit/                # Unit tests
-│   └── integration/         # Integration tests
-├── cpanfile                 # Dependencies
-├── Makefile.PL              # Build system
-└── .perlcriticrc            # Linting config
+â”œâ”€â”€ lib/
+â”‚   â””â”€â”€ MyApp/
+â”‚       â”œâ”€â”€ App.pm           # Main module
+â”‚       â”œâ”€â”€ Config.pm        # Configuration
+â”‚       â”œâ”€â”€ DB.pm            # Database layer
+â”‚       â””â”€â”€ Util.pm          # Utilities
+â”œâ”€â”€ bin/
+â”‚   â””â”€â”€ myapp                # Entry-point script
+â”œâ”€â”€ t/
+â”‚   â”œâ”€â”€ 00-load.t            # Compilation tests
+â”‚   â”œâ”€â”€ unit/                # Unit tests
+â”‚   â””â”€â”€ integration/         # Integration tests
+â”œâ”€â”€ cpanfile                 # Dependencies
+â”œâ”€â”€ Makefile.PL              # Build system
+â””â”€â”€ .perlcriticrc            # Linting config
 ```
 
 ### Exporter Patterns
@@ -502,3 +502,4 @@ require_module($module);
 ```
 
 **Remember**: Modern Perl is clean, readable, and safe. Let `use v5.36` handle the boilerplate, use Moo for objects, and prefer CPAN's battle-tested modules over hand-rolled solutions.
+

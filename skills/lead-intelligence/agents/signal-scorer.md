@@ -1,4 +1,4 @@
----
+﻿---
 name: signal-scorer
 description: Searches and ranks prospects by relevance signals across X, Exa, and LinkedIn. Assigns weighted scores based on role, industry, activity, influence, and location.
 tools:
@@ -58,3 +58,4 @@ PROSPECT #1 (Score: 94)
 - Do not fabricate profile data. Only report what you can verify from search results.
 - If a person appears in multiple sources, merge into one entry.
 - Flag low-confidence scores where data is sparse.
+

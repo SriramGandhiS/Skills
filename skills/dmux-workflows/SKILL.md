@@ -1,4 +1,4 @@
----
+﻿---
 name: dmux-workflows
 description: Multi-agent orchestration using dmux (tmux pane manager for AI agents). Patterns for parallel agent workflows across Claude Code, Codex, OpenCode, and other harnesses. Use when running multiple agent sessions in parallel or coordinating multi-agent development workflows.
 origin: ECC
@@ -107,7 +107,7 @@ Pane 3: "Review src/api/ for test coverage gaps"
 2. **Clear boundaries.** Each pane should work on distinct files or concerns.
 3. **Merge strategically.** Review pane output before merging to avoid conflicts.
 4. **Use git worktrees.** For file-conflict-prone work, use separate worktrees per pane.
-5. **Resource awareness.** Each pane uses API tokens — keep total panes under 5-6.
+5. **Resource awareness.** Each pane uses API tokens â€” keep total panes under 5-6.
 
 ## Git Worktree Integration
 
@@ -189,3 +189,4 @@ Use `seedPaths` when workers need access to dirty or untracked local files that 
 - **Merge conflicts:** Use git worktrees to isolate file changes per pane.
 - **High token usage:** Reduce number of parallel panes. Each pane is a full agent session.
 - **tmux not found:** Install with `brew install tmux` (macOS) or `apt install tmux` (Linux).
+

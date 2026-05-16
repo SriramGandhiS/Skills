@@ -1,4 +1,4 @@
-# Injection Context
+﻿# Injection Context
 
 The `inject()` function can only be used when code is executing within an **injection context**.
 
@@ -61,3 +61,4 @@ export function injectNativeElement<T extends Element>(): T {
   return inject(ElementRef).nativeElement;
 }
 ```
+

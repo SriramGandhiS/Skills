@@ -1,4 +1,4 @@
----
+﻿---
 name: git-workflow
 description: Git workflow patterns including branching strategies, commit conventions, merge vs rebase, conflict resolution, and collaborative development best practices for teams of all sizes.
 origin: ECC
@@ -25,10 +25,10 @@ Best for continuous deployment and small-to-medium teams.
 
 ```
 main (protected, always deployable)
-  │
-  ├── feature/user-auth      → PR → merge to main
-  ├── feature/payment-flow   → PR → merge to main
-  └── fix/login-bug          → PR → merge to main
+  â”‚
+  â”œâ”€â”€ feature/user-auth      â†’ PR â†’ merge to main
+  â”œâ”€â”€ feature/payment-flow   â†’ PR â†’ merge to main
+  â””â”€â”€ fix/login-bug          â†’ PR â†’ merge to main
 ```
 
 **Rules:**
@@ -44,10 +44,10 @@ Best for teams with strong CI/CD and feature flags.
 
 ```
 main (trunk)
-  │
-  ├── short-lived feature (1-2 days max)
-  ├── short-lived feature
-  └── short-lived feature
+  â”‚
+  â”œâ”€â”€ short-lived feature (1-2 days max)
+  â”œâ”€â”€ short-lived feature
+  â””â”€â”€ short-lived feature
 ```
 
 **Rules:**
@@ -62,15 +62,15 @@ Best for scheduled releases and enterprise projects.
 
 ```
 main (production releases)
-  │
-  └── develop (integration branch)
-        │
-        ├── feature/user-auth
-        ├── feature/payment
-        │
-        ├── release/1.0.0    → merge to main and develop
-        │
-        └── hotfix/critical  → merge to main and develop
+  â”‚
+  â””â”€â”€ develop (integration branch)
+        â”‚
+        â”œâ”€â”€ feature/user-auth
+        â”œâ”€â”€ feature/payment
+        â”‚
+        â”œâ”€â”€ release/1.0.0    â†’ merge to main and develop
+        â”‚
+        â””â”€â”€ hotfix/critical  â†’ merge to main and develop
 ```
 
 **Rules:**
@@ -416,9 +416,9 @@ MINOR: New features, backward compatible
 PATCH: Bug fixes, backward compatible
 
 Examples:
-1.0.0 → 1.0.1 (patch: bug fix)
-1.0.1 → 1.1.0 (minor: new feature)
-1.1.0 → 2.0.0 (major: breaking change)
+1.0.0 â†’ 1.0.1 (patch: bug fix)
+1.0.1 â†’ 1.1.0 (minor: new feature)
+1.1.0 â†’ 2.0.0 (major: breaking change)
 ```
 
 ### Creating Releases
@@ -713,3 +713,4 @@ git add node_modules/
 | Stash | `git stash push -m "message"` |
 | Undo last commit | `git reset --soft HEAD~1` |
 | Revert commit | `git revert HEAD` |
+

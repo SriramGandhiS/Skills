@@ -1,4 +1,4 @@
-# Show Routes with Outlets
+﻿# Show Routes with Outlets
 
 The `RouterOutlet` directive is a placeholder where Angular renders the component for the current URL.
 
@@ -66,3 +66,4 @@ You can pass contextual data to the routed component using the `routerOutletData
 // In Routed Component
 outletData = inject(ROUTER_OUTLET_DATA) as Signal<{ theme: string }>;
 ```
+

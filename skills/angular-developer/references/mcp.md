@@ -1,4 +1,4 @@
-# Angular CLI MCP Server
+﻿# Angular CLI MCP Server
 
 The Angular CLI includes a Model Context Protocol (MCP) server that enables AI assistants (like Cursor, Gemini CLI, JetBrains AI, etc.) to interact directly with the Angular CLI. It provides tools for code generation, modernizing code, fetching examples, and running builds/tests.
 
@@ -106,3 +106,4 @@ Example for read-only mode with experimental tools enabled:
 ```json
 "args": ["-y", "@angular/cli", "mcp", "--read-only", "-E", "build", "-E", "modernize"]
 ```
+

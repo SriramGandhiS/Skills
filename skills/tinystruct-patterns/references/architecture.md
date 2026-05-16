@@ -1,4 +1,4 @@
-# tinystruct Architecture and Configuration
+﻿# tinystruct Architecture and Configuration
 
 ## When to Use
 
@@ -26,32 +26,32 @@ The framework operates on a singleton `ActionRegistry` that maps URL patterns (o
 
 ```
 org.tinystruct/
-├── AbstractApplication.java      ← extend this
-├── Application.java              ← interface
-├── ApplicationException.java     ← checked exception
-├── ApplicationRuntimeException.java ← unchecked exception
-├── application/
-│   ├── Action.java               ← runtime action wrapper
-│   ├── ActionRegistry.java       ← singleton route registry
-│   └── Context.java              ← request context
-├── system/
-│   ├── annotation/Action.java    ← @Action annotation + Mode enum
-│   ├── Dispatcher.java           ← CLI dispatcher
-│   ├── HttpServer.java           ← built-in HTTP server
-│   ├── EventDispatcher.java      ← event bus
-│   └── Settings.java             ← reads application.properties
-├── data/
-│   ├── component/Builder.java    ← JSON object (use instead of Gson/Jackson)
-│   ├── component/Builders.java   ← JSON array
-│   ├── component/AbstractData.java ← base POJO for DB persistence
-│   ├── component/Condition.java  ← fluent SQL query builder
-│   ├── component/FieldType.java  ← SQL-to-Java type mappings
-│   ├── Mapping.java              ← reads .map.xml metadata
-│   ├── DatabaseOperator.java     ← low-level JDBC wrapper
-│   └── FileEntity.java           ← file upload representation
-├── http/                         ← Request, Response, Constants
-│   └── SSEPushManager.java       ← Server-Sent Events management
-└── net/                          ← URLRequest, HTTPHandler (outbound HTTP)
+â”œâ”€â”€ AbstractApplication.java      â† extend this
+â”œâ”€â”€ Application.java              â† interface
+â”œâ”€â”€ ApplicationException.java     â† checked exception
+â”œâ”€â”€ ApplicationRuntimeException.java â† unchecked exception
+â”œâ”€â”€ application/
+â”‚   â”œâ”€â”€ Action.java               â† runtime action wrapper
+â”‚   â”œâ”€â”€ ActionRegistry.java       â† singleton route registry
+â”‚   â””â”€â”€ Context.java              â† request context
+â”œâ”€â”€ system/
+â”‚   â”œâ”€â”€ annotation/Action.java    â† @Action annotation + Mode enum
+â”‚   â”œâ”€â”€ Dispatcher.java           â† CLI dispatcher
+â”‚   â”œâ”€â”€ HttpServer.java           â† built-in HTTP server
+â”‚   â”œâ”€â”€ EventDispatcher.java      â† event bus
+â”‚   â””â”€â”€ Settings.java             â† reads application.properties
+â”œâ”€â”€ data/
+â”‚   â”œâ”€â”€ component/Builder.java    â† JSON object (use instead of Gson/Jackson)
+â”‚   â”œâ”€â”€ component/Builders.java   â† JSON array
+â”‚   â”œâ”€â”€ component/AbstractData.java â† base POJO for DB persistence
+â”‚   â”œâ”€â”€ component/Condition.java  â† fluent SQL query builder
+â”‚   â”œâ”€â”€ component/FieldType.java  â† SQL-to-Java type mappings
+â”‚   â”œâ”€â”€ Mapping.java              â† reads .map.xml metadata
+â”‚   â”œâ”€â”€ DatabaseOperator.java     â† low-level JDBC wrapper
+â”‚   â””â”€â”€ FileEntity.java           â† file upload representation
+â”œâ”€â”€ http/                         â† Request, Response, Constants
+â”‚   â””â”€â”€ SSEPushManager.java       â† Server-Sent Events management
+â””â”€â”€ net/                          â† URLRequest, HTTPHandler (outbound HTTP)
 ```
 
 ### Template Behavior and Dispatch Flow
@@ -65,7 +65,7 @@ By default, the framework assumes a view template is required. If `templateRequi
 @Override
 public void init() {
     this.setTemplateRequired(false); // Skip .view template lookup for data-only apps
-    // Do NOT call setAction() here — use @Action annotation instead
+    // Do NOT call setAction() here â€” use @Action annotation instead
 }
 ```
 
@@ -88,3 +88,4 @@ Located at `src/main/resources/application.properties`:
 ```java
 String port = this.getConfiguration("server.port");
 ```
+

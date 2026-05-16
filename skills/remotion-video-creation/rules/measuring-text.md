@@ -1,4 +1,4 @@
----
+﻿---
 name: measuring-text
 description: Measuring text dimensions, fitting text to containers, and checking overflow
 metadata:
@@ -141,3 +141,4 @@ return <div style={fontStyle}>Hello</div>;
 ```tsx
 <div style={{ outline: "2px solid red" }}>Text</div>
 ```
+

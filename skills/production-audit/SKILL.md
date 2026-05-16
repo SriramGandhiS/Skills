@@ -1,4 +1,4 @@
----
+﻿---
 name: production-audit
 description: Local-evidence production readiness audit for shipped apps, pre-launch reviews, post-merge checks, and "what breaks in prod?" questions without sending repo data to an external audit service.
 origin: community
@@ -204,3 +204,4 @@ Next action: Want me to patch webhook idempotency first?
 - Skill: `e2e-testing`
 - Skill: `tdd-workflow`
 - Skill: `verification-loop`
+

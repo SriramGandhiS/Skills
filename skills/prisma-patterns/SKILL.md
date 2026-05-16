@@ -1,6 +1,6 @@
----
+﻿---
 name: prisma-patterns
-description: Prisma ORM patterns for TypeScript backends — schema design, query optimization, transactions, pagination, and critical traps like updateMany returning count not records, $transaction timeouts, migrate dev resetting the DB, @updatedAt skipped on bulk writes, and serverless connection exhaustion.
+description: Prisma ORM patterns for TypeScript backends â€” schema design, query optimization, transactions, pagination, and critical traps like updateMany returning count not records, $transaction timeouts, migrate dev resetting the DB, @updatedAt skipped on bulk writes, and serverless connection exhaustion.
 origin: ECC
 ---
 
@@ -15,7 +15,7 @@ Check the Prisma version before applying version-specific patterns:
 npx prisma --version
 ```
 
-Prisma 5 introduced `relationJoins`, which can load relations via JOIN rather than separate queries depending on query strategy and configuration. The `omit` field modifier and `prisma.$extends` Client Extensions API were also added. Note: `relationJoins` can cause row explosion on large 1:N relations or deep nested `include` — benchmark both approaches when relations may return many rows per parent.
+Prisma 5 introduced `relationJoins`, which can load relations via JOIN rather than separate queries depending on query strategy and configuration. The `omit` field modifier and `prisma.$extends` Client Extensions API were also added. Note: `relationJoins` can cause row explosion on large 1:N relations or deep nested `include` â€” benchmark both approaches when relations may return many rows per parent.
 
 ## When to Activate
 
@@ -32,7 +32,7 @@ Prisma 5 introduced `relationJoins`, which can load relations via JOIN rather th
 
 | Strategy | Use When | Avoid When |
 |---|---|---|
-| `@default(cuid())` | Default choice — URL-safe, sortable, no collisions | Sequential IDs needed for external systems |
+| `@default(cuid())` | Default choice â€” URL-safe, sortable, no collisions | Sequential IDs needed for external systems |
 | `@default(uuid())` | Interoperability with non-Prisma systems required | High-write tables (random UUIDs fragment B-tree indexes) |
 | `@default(autoincrement())` | Internal join tables, audit logs | Public-facing IDs (exposes record count) |
 
@@ -41,7 +41,7 @@ Prisma 5 introduced `relationJoins`, which can load relations via JOIN rather th
 ```prisma
 model User {
   id        String    @id @default(cuid())
-  email     String    @unique  // @unique already creates an index — no @@index needed
+  email     String    @unique  // @unique already creates an index â€” no @@index needed
   name      String
   role      Role      @default(USER)
   posts     Post[]
@@ -55,7 +55,7 @@ model User {
 ```
 
 - Add `@@index` on every foreign key and column used in `WHERE` or `ORDER BY`.
-- Declare `deletedAt DateTime?` upfront when soft delete is a foreseeable requirement — adding it later requires a migration on a live table.
+- Declare `deletedAt DateTime?` upfront when soft delete is a foreseeable requirement â€” adding it later requires a migration on a live table.
 - `updatedAt @updatedAt` is set automatically by Prisma on `update` and `upsert` only (see Anti-Patterns for bulk update trap).
 
 ### `include` vs `select`
@@ -68,20 +68,20 @@ model User {
 | Prisma 5 note | Uses JOIN by default (`relationJoins`) | Same |
 
 ```ts
-// include — all columns + relation
+// include â€” all columns + relation
 const user = await prisma.user.findUnique({
   where: { id },
   include: { posts: { select: { id: true, title: true } } },
 });
 
-// select — explicit allowlist
+// select â€” explicit allowlist
 const user = await prisma.user.findUnique({
   where: { id },
   select: { id: true, email: true, name: true },
 });
 ```
 
-Never return raw Prisma entities from API responses — map to response DTOs to control exposed fields:
+Never return raw Prisma entities from API responses â€” map to response DTOs to control exposed fields:
 
 ```ts
 // BAD: leaks passwordHash, deletedAt, internal fields
@@ -101,13 +101,13 @@ return { id: user.id, name: user.name, email: user.email };
 | External calls (email, HTTP) involved | Outside transaction entirely |
 
 ```ts
-// Array form — batched in one round trip
+// Array form â€” batched in one round trip
 const [user, post] = await prisma.$transaction([
   prisma.user.update({ where: { id }, data: { name } }),
   prisma.post.create({ data: { title, authorId: id } }),
 ]);
 
-// Interactive form — use tx client only, never the outer prisma client
+// Interactive form â€” use tx client only, never the outer prisma client
 const post = await prisma.$transaction(async (tx) => {
   const user = await tx.user.findUniqueOrThrow({ where: { id } });
   if (user.role !== 'ADMIN') throw new Error('Forbidden');
@@ -141,7 +141,7 @@ The `globalThis` pattern prevents duplicate instances during hot reload (Next.js
 Loading relations inside a loop issues one query per row.
 
 ```ts
-// BAD: N+1 — one extra query per user
+// BAD: N+1 â€” one extra query per user
 const users = await prisma.user.findMany();
 for (const user of users) {
   const posts = await prisma.post.findMany({ where: { authorId: user.id } });
@@ -151,7 +151,7 @@ for (const user of users) {
 const users = await prisma.user.findMany({ include: { posts: true } });
 ```
 
-With Prisma 5+ `relationJoins`, the `include` form uses a single JOIN. On large 1:N sets this may increase result set size — benchmark both approaches if the relation can return many rows per parent.
+With Prisma 5+ `relationJoins`, the `include` form uses a single JOIN. On large 1:N sets this may increase result set size â€” benchmark both approaches if the relation can return many rows per parent.
 
 ## Code Examples
 
@@ -176,12 +176,12 @@ async function getPosts(cursor?: string, limit = 20) {
 }
 ```
 
-Fetch `limit + 1` and pop — canonical way to detect `hasNextPage` without an extra count query. Always include a unique field (e.g. `id`) as a secondary `orderBy` to prevent unstable pagination when multiple rows share the same timestamp. Use offset pagination only when users need to jump to arbitrary pages (admin tables).
+Fetch `limit + 1` and pop â€” canonical way to detect `hasNextPage` without an extra count query. Always include a unique field (e.g. `id`) as a secondary `orderBy` to prevent unstable pagination when multiple rows share the same timestamp. Use offset pagination only when users need to jump to arbitrary pages (admin tables).
 
 ### Soft Delete
 
 ```ts
-// Always filter explicitly — do not rely on middleware (hides behavior, hard to debug)
+// Always filter explicitly â€” do not rely on middleware (hides behavior, hard to debug)
 const activeUsers = await prisma.user.findMany({ where: { deletedAt: null } });
 
 await prisma.user.update({ where: { id }, data: { deletedAt: new Date() } });
@@ -205,16 +205,16 @@ try {
 }
 ```
 
-Common codes: `P2002` unique violation · `P2025` not found · `P2003` foreign key violation.
+Common codes: `P2002` unique violation Â· `P2025` not found Â· `P2003` foreign key violation.
 
 Catch at the service boundary and translate to domain errors. Never expose raw Prisma messages to API consumers.
 
-### Connection Pool — Serverless
+### Connection Pool â€” Serverless
 
-Embed connection params directly in `DATABASE_URL` — string concatenation breaks if the URL already has query parameters (e.g. `?schema=public`):
+Embed connection params directly in `DATABASE_URL` â€” string concatenation breaks if the URL already has query parameters (e.g. `?schema=public`):
 
 ```bash
-# .env — preferred: embed params in the URL
+# .env â€” preferred: embed params in the URL
 DATABASE_URL="postgresql://user:pass@host/db?connection_limit=1&pool_timeout=20"
 
 # With an external pooler (PgBouncer, Supabase pooler)
@@ -232,7 +232,7 @@ const prisma = new PrismaClient();
 ### `updateMany` returns a count, not records
 
 ```ts
-// BAD: result is { count: 2 } — users[0] is undefined
+// BAD: result is { count: 2 } â€” users[0] is undefined
 const users = await prisma.user.updateMany({ where: { role: 'GUEST' }, data: { role: 'USER' } });
 
 // GOOD: capture IDs first, then update, then fetch only the affected rows
@@ -245,12 +245,12 @@ await prisma.user.updateMany({ where: { id: { in: ids } }, data: { role: 'USER' 
 const updated = await prisma.user.findMany({ where: { id: { in: ids } } });
 ```
 
-Same applies to `deleteMany` — returns `{ count: n }`, never the deleted rows.
+Same applies to `deleteMany` â€” returns `{ count: n }`, never the deleted rows.
 
 ### `$transaction` interactive form times out after 5 seconds
 
 ```ts
-// BAD: external call inside transaction exceeds 5s default → "Transaction already closed"
+// BAD: external call inside transaction exceeds 5s default â†’ "Transaction already closed"
 await prisma.$transaction(async (tx) => {
   const user = await tx.user.findUniqueOrThrow({ where: { id } });
   await sendWelcomeEmail(user.email); // external call
@@ -328,13 +328,13 @@ await prisma.post.updateMany({
 
 `findUniqueOrThrow` throws `P2025` only when the row does not exist in the DB. Soft-deleted rows still exist and are returned without error.
 
-`findUniqueOrThrow` requires a unique constraint field in `where` — adding `deletedAt: null` alongside `id` breaks the type because `{ id, deletedAt }` is not a compound unique constraint. Use `findFirstOrThrow` instead.
+`findUniqueOrThrow` requires a unique constraint field in `where` â€” adding `deletedAt: null` alongside `id` breaks the type because `{ id, deletedAt }` is not a compound unique constraint. Use `findFirstOrThrow` instead.
 
 ```ts
 // BAD: returns soft-deleted user
 const user = await prisma.user.findUniqueOrThrow({ where: { id } });
 
-// BAD: Prisma type error — { id, deletedAt } is not a unique constraint
+// BAD: Prisma type error â€” { id, deletedAt } is not a unique constraint
 const user = await prisma.user.findUniqueOrThrow({ where: { id, deletedAt: null } });
 
 // GOOD: findFirstOrThrow supports arbitrary where conditions
@@ -365,7 +365,8 @@ await prisma.post.deleteMany({ where: { authorId: userId } });
 
 ## Related Skills
 
-- `nestjs-patterns` — NestJS service layer that integrates Prisma
-- `postgres-patterns` — PostgreSQL-level indexing and connection tuning
-- `database-migrations` — multi-step migration planning for production
-- `backend-patterns` — general API and service layer design
+- `nestjs-patterns` â€” NestJS service layer that integrates Prisma
+- `postgres-patterns` â€” PostgreSQL-level indexing and connection tuning
+- `database-migrations` â€” multi-step migration planning for production
+- `backend-patterns` â€” general API and service layer design
+

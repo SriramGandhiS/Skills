@@ -1,4 +1,4 @@
----
+﻿---
 name: continuous-learning-v2
 description: Instinct-based learning system that observes sessions via hooks, creates atomic instincts with confidence scoring, and evolves them into skills/commands/agents. v2.1 adds project-scoped instincts to prevent cross-project contamination.
 origin: ECC
@@ -10,7 +10,7 @@ version: 2.1.0
 
 An advanced learning system that turns your Claude Code sessions into reusable knowledge through atomic "instincts" - small learned behaviors with confidence scoring.
 
-**v2.1** adds **project-scoped instincts** — React patterns stay in your React project, Python conventions stay in your Python project, and universal patterns (like "always validate input") are shared globally.
+**v2.1** adds **project-scoped instincts** â€” React patterns stay in your React project, Python conventions stay in your Python project, and universal patterns (like "always validate input") are shared globally.
 
 ## When to Activate
 
@@ -29,7 +29,7 @@ An advanced learning system that turns your Claude Code sessions into reusable k
 | Storage | Global (`~/.claude/homunculus/`) | Project-scoped (`${XDG_DATA_HOME:-~/.local/share}/ecc-homunculus/projects/<hash>/`) |
 | Scope | All instincts apply everywhere | Project-scoped + global |
 | Detection | None | git remote URL / repo path |
-| Promotion | N/A | Project → global when seen in 2+ projects |
+| Promotion | N/A | Project â†’ global when seen in 2+ projects |
 | Commands | 4 (status/evolve/export/import) | 6 (+promote/projects) |
 | Cross-project | Contamination risk | Isolated by default |
 
@@ -345,7 +345,7 @@ v2.1 is fully compatible with v2.0 and v1:
 
 - Observations stay **local** on your machine
 - Project-scoped instincts are isolated per project
-- Only **instincts** (patterns) can be exported — not raw observations
+- Only **instincts** (patterns) can be exported â€” not raw observations
 - No actual code or conversation content is shared
 - You control what gets exported and promoted
 
@@ -358,3 +358,4 @@ v2.1 is fully compatible with v2.0 and v1:
 ---
 
 *Instinct-based learning: teaching Claude your patterns, one project at a time.*
+

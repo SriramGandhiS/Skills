@@ -1,4 +1,4 @@
-# Signal Forms
+﻿# Signal Forms
 
 Signal Forms are recommended for new forms when the target Angular version supports them. They provide a reactive, type-safe, and model-driven way to manage form state using Angular Signals.
 
@@ -793,3 +793,4 @@ this.model.update((m) => ({...m, address: {...m.address, street: 'Main St'}}));
   <option value="us">US</option>
 </select>
 ```
+

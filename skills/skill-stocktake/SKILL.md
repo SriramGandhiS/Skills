@@ -1,4 +1,4 @@
----
+﻿---
 name: skill-stocktake
 description: "Use when auditing Claude skills and commands for quality. Supports Quick Scan (changed skills only) and Full Stocktake modes with sequential subagent batch evaluation."
 origin: ECC
@@ -34,14 +34,14 @@ If the project has no `.claude/skills/` directory, only global skills and comman
 
 | Mode | Trigger | Duration |
 |------|---------|---------|
-| Quick Scan | `results.json` exists (default) | 5–10 min |
-| Full Stocktake | `results.json` absent, or `/skill-stocktake full` | 20–30 min |
+| Quick Scan | `results.json` exists (default) | 5â€“10 min |
+| Full Stocktake | `results.json` absent, or `/skill-stocktake full` | 20â€“30 min |
 
 **Results cache:** `~/.claude/skills/skill-stocktake/results.json`
 
 ## Quick Scan Flow
 
-Re-evaluate only skills that have changed since the last run (5–10 min).
+Re-evaluate only skills that have changed since the last run (5â€“10 min).
 
 1. Read `~/.claude/skills/skill-stocktake/results.json`
 2. Run: `bash ~/.claude/skills/skill-stocktake/scripts/quick-diff.sh \
@@ -56,7 +56,7 @@ Re-evaluate only skills that have changed since the last run (5–10 min).
 
 ## Full Stocktake Flow
 
-### Phase 1 — Inventory
+### Phase 1 â€” Inventory
 
 Run: `bash ~/.claude/skills/skill-stocktake/scripts/scan.sh`
 
@@ -66,14 +66,14 @@ Present the scan summary and inventory table from the script output:
 
 ```
 Scanning:
-  ✓ ~/.claude/skills/         (17 files)
-  ✗ {cwd}/.claude/skills/    (not found — global skills only)
+  âœ“ ~/.claude/skills/         (17 files)
+  âœ— {cwd}/.claude/skills/    (not found â€” global skills only)
 ```
 
 | Skill | 7d use | 30d use | Description |
 |-------|--------|---------|-------------|
 
-### Phase 2 — Quality Evaluation
+### Phase 2 â€” Quality Evaluation
 
 Launch an Agent tool subagent (**general-purpose agent**) with the full inventory and checklist:
 
@@ -122,14 +122,14 @@ Verdict criteria:
 | Retire | Low quality, stale, or cost-asymmetric |
 | Merge into [X] | Substantial overlap with another skill; name the merge target |
 
-Evaluation is **holistic AI judgment** — not a numeric rubric. Guiding dimensions:
+Evaluation is **holistic AI judgment** â€” not a numeric rubric. Guiding dimensions:
 - **Actionability**: code examples, commands, or steps that let you act immediately
 - **Scope fit**: name, trigger, and content are aligned; not too broad or narrow
 - **Uniqueness**: value not replaceable by MEMORY.md / CLAUDE.md / another skill
 - **Currency**: technical references work in the current environment
 
-**Reason quality requirements** — the `reason` field must be self-contained and decision-enabling:
-- Do NOT write "unchanged" alone — always restate the core evidence
+**Reason quality requirements** â€” the `reason` field must be self-contained and decision-enabling:
+- Do NOT write "unchanged" alone â€” always restate the core evidence
 - For **Retire**: state (1) what specific defect was found, (2) what covers the same need instead
   - Bad: `"Superseded"`
   - Good: `"disable-model-invocation: true already set; superseded by continuous-learning-v2 which covers all the same patterns plus confidence scoring. No unique content remains."`
@@ -138,24 +138,24 @@ Evaluation is **holistic AI judgment** — not a numeric rubric. Guiding dimensi
   - Good: `"42-line thin content; Step 4 of chatlog-to-article already covers the same workflow. Integrate the 'article angle' tip as a note in that skill."`
 - For **Improve**: describe the specific change needed (what section, what action, target size if relevant)
   - Bad: `"Too long"`
-  - Good: `"276 lines; Section 'Framework Comparison' (L80–140) duplicates ai-era-architecture-principles; delete it to reach ~150 lines."`
+  - Good: `"276 lines; Section 'Framework Comparison' (L80â€“140) duplicates ai-era-architecture-principles; delete it to reach ~150 lines."`
 - For **Keep** (mtime-only change in Quick Scan): restate the original verdict rationale, do not write "unchanged"
   - Bad: `"Unchanged"`
   - Good: `"mtime updated but content unchanged. Unique Python reference explicitly imported by rules/python/; no overlap found."`
 
-### Phase 3 — Summary Table
+### Phase 3 â€” Summary Table
 
 | Skill | 7d use | Verdict | Reason |
 |-------|--------|---------|--------|
 
-### Phase 4 — Consolidation
+### Phase 4 â€” Consolidation
 
 1. **Retire / Merge**: present detailed justification per file before confirming with user:
    - What specific problem was found (overlap, staleness, broken references, etc.)
    - What alternative covers the same functionality (for Retire: which existing skill/rule; for Merge: the target file and what content to integrate)
    - Impact of removal (any dependent skills, MEMORY.md references, or workflows affected)
 2. **Improve**: present specific improvement suggestions with rationale:
-   - What to change and why (e.g., "trim 430→200 lines because sections X/Y duplicate python-patterns")
+   - What to change and why (e.g., "trim 430â†’200 lines because sections X/Y duplicate python-patterns")
    - User decides whether to act
 3. **Update**: present updated content with sources checked
 4. Check MEMORY.md line count; propose compression if >100 lines
@@ -192,3 +192,4 @@ Obtain via Bash: `date -u +%Y-%m-%dT%H:%M:%SZ`. Never use a date-only approximat
 - Evaluation is blind: the same checklist applies to all skills regardless of origin (ECC, self-authored, auto-extracted)
 - Archive / delete operations always require explicit user confirmation
 - No verdict branching by skill origin
+

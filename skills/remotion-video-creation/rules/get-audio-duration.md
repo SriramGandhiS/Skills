@@ -1,4 +1,4 @@
----
+﻿---
 name: get-audio-duration
 description: Getting the duration of an audio file in seconds with Mediabunny
 metadata:
@@ -56,3 +56,4 @@ import { staticFile } from "remotion";
 
 const duration = await getAudioDuration(staticFile("audio.mp3"));
 ```
+

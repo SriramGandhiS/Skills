@@ -1,4 +1,4 @@
----
+﻿---
 name: content-engine
 description: Create platform-native content systems for X, LinkedIn, TikTok, YouTube, newsletters, and repurposed multi-platform campaigns. Use when the user wants social posts, threads, scripts, content calendars, or one source asset adapted cleanly across platforms.
 origin: ECC
@@ -129,3 +129,4 @@ Before delivering:
 - `brand-voice` for source-derived voice profiles
 - `crosspost` for platform-specific distribution
 - `x-api` for sourcing recent posts and publishing approved X output
+

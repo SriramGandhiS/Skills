@@ -1,4 +1,4 @@
----
+﻿---
 name: autonomous-agent-harness
 description: Transform Claude Code into a fully autonomous agent system with persistent memory, scheduled operations, computer use, and task queuing. Replaces standalone agent frameworks (Hermes, AutoGPT) by leveraging Claude Code's native crons, dispatch, MCP tools, and memory. Use when the user wants continuous autonomous operation, scheduled tasks, or a self-directing agent loop.
 origin: ECC
@@ -26,29 +26,29 @@ Prefer dry-run plans and local queue files before enabling recurring or event-dr
 ## Architecture
 
 ```
-┌──────────────────────────────────────────────────────────────┐
-│                    Claude Code Runtime                        │
-│                                                              │
-│  ┌──────────┐  ┌──────────┐  ┌──────────┐  ┌─────────────┐ │
-│  │  Crons   │  │ Dispatch │  │ Memory   │  │ Computer    │ │
-│  │ Schedule │  │ Remote   │  │ Store    │  │ Use         │ │
-│  │ Tasks    │  │ Agents   │  │          │  │             │ │
-│  └────┬─────┘  └────┬─────┘  └────┬─────┘  └──────┬──────┘ │
-│       │              │             │                │        │
-│       ▼              ▼             ▼                ▼        │
-│  ┌──────────────────────────────────────────────────────┐    │
-│  │              ECC Skill + Agent Layer                  │    │
-│  │                                                      │    │
-│  │  skills/     agents/     commands/     hooks/        │    │
-│  └──────────────────────────────────────────────────────┘    │
-│       │              │             │                │        │
-│       ▼              ▼             ▼                ▼        │
-│  ┌──────────────────────────────────────────────────────┐    │
-│  │              MCP Server Layer                        │    │
-│  │                                                      │    │
-│  │  memory    github    exa    supabase    browser-use  │    │
-│  └──────────────────────────────────────────────────────┘    │
-└──────────────────────────────────────────────────────────────┘
+â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
+â”‚                    Claude Code Runtime                        â”‚
+â”‚                                                              â”‚
+â”‚  â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”  â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”  â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”  â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â” â”‚
+â”‚  â”‚  Crons   â”‚  â”‚ Dispatch â”‚  â”‚ Memory   â”‚  â”‚ Computer    â”‚ â”‚
+â”‚  â”‚ Schedule â”‚  â”‚ Remote   â”‚  â”‚ Store    â”‚  â”‚ Use         â”‚ â”‚
+â”‚  â”‚ Tasks    â”‚  â”‚ Agents   â”‚  â”‚          â”‚  â”‚             â”‚ â”‚
+â”‚  â””â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”˜  â””â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”˜  â””â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”˜  â””â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”˜ â”‚
+â”‚       â”‚              â”‚             â”‚                â”‚        â”‚
+â”‚       â–¼              â–¼             â–¼                â–¼        â”‚
+â”‚  â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”    â”‚
+â”‚  â”‚              ECC Skill + Agent Layer                  â”‚    â”‚
+â”‚  â”‚                                                      â”‚    â”‚
+â”‚  â”‚  skills/     agents/     commands/     hooks/        â”‚    â”‚
+â”‚  â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜    â”‚
+â”‚       â”‚              â”‚             â”‚                â”‚        â”‚
+â”‚       â–¼              â–¼             â–¼                â–¼        â”‚
+â”‚  â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”    â”‚
+â”‚  â”‚              MCP Server Layer                        â”‚    â”‚
+â”‚  â”‚                                                      â”‚    â”‚
+â”‚  â”‚  memory    github    exa    supabase    browser-use  â”‚    â”‚
+â”‚  â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜    â”‚
+â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
 ```
 
 ## Core Components
@@ -124,7 +124,7 @@ curl -X POST "https://api.anthropic.com/dispatch" \
   -d '{"prompt": "Build failed on main. Diagnose and fix.", "project": "/repo"}'
 
 # Trigger from webhook
-# GitHub webhook → dispatch → Claude agent → fix → PR
+# GitHub webhook â†’ dispatch â†’ Claude agent â†’ fix â†’ PR
 
 # Trigger from another agent
 claude -p "Analyze the output of the security scan and create issues for findings"
@@ -266,8 +266,9 @@ Trigger: 30 min before each calendar event
 
 ## Constraints
 
-- Cron tasks run in isolated sessions — they don't share context with interactive sessions unless through memory.
+- Cron tasks run in isolated sessions â€” they don't share context with interactive sessions unless through memory.
 - Computer use requires explicit permission grants. Don't assume access.
 - Remote dispatch may have rate limits. Design crons with appropriate intervals.
 - Memory files should be kept concise. Archive old data rather than letting files grow unbounded.
 - Always verify that scheduled tasks completed successfully. Add error handling to cron prompts.
+

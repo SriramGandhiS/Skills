@@ -1,4 +1,4 @@
----
+﻿---
 name: rust-testing
 description: Rust testing patterns including unit tests, integration tests, async testing, property-based testing, mocking, and coverage. Follows TDD methodology.
 origin: ECC
@@ -18,23 +18,23 @@ Comprehensive Rust testing patterns for writing reliable, maintainable tests fol
 
 ## How It Works
 
-1. **Identify target code** — Find the function, trait, or module to test
-2. **Write a test** — Use `#[test]` in a `#[cfg(test)]` module, rstest for parameterized tests, or proptest for property-based tests
-3. **Mock dependencies** — Use mockall to isolate the unit under test
-4. **Run tests (RED)** — Verify the test fails with the expected error
-5. **Implement (GREEN)** — Write minimal code to pass
-6. **Refactor** — Improve while keeping tests green
-7. **Check coverage** — Use cargo-llvm-cov, target 80%+
+1. **Identify target code** â€” Find the function, trait, or module to test
+2. **Write a test** â€” Use `#[test]` in a `#[cfg(test)]` module, rstest for parameterized tests, or proptest for property-based tests
+3. **Mock dependencies** â€” Use mockall to isolate the unit under test
+4. **Run tests (RED)** â€” Verify the test fails with the expected error
+5. **Implement (GREEN)** â€” Write minimal code to pass
+6. **Refactor** â€” Improve while keeping tests green
+7. **Check coverage** â€” Use cargo-llvm-cov, target 80%+
 
 ## TDD Workflow for Rust
 
 ### The RED-GREEN-REFACTOR Cycle
 
 ```
-RED     → Write a failing test first
-GREEN   → Write minimal code to pass the test
-REFACTOR → Improve code while keeping tests green
-REPEAT  → Continue with next requirement
+RED     â†’ Write a failing test first
+GREEN   â†’ Write minimal code to pass the test
+REFACTOR â†’ Improve code while keeping tests green
+REPEAT  â†’ Continue with next requirement
 ```
 
 ### Step-by-Step TDD in Rust
@@ -49,13 +49,13 @@ mod tests {
     #[test]
     fn test_add() { assert_eq!(add(2, 3), 5); }
 }
-// cargo test → panics at 'not yet implemented'
+// cargo test â†’ panics at 'not yet implemented'
 ```
 
 ```rust
 // GREEN: Replace todo!() with minimal implementation
 pub fn add(a: i32, b: i32) -> i32 { a + b }
-// cargo test → PASS, then REFACTOR while keeping tests green
+// cargo test â†’ PASS, then REFACTOR while keeping tests green
 ```
 
 ## Unit Tests
@@ -159,13 +159,13 @@ fn panics_with_specific_message() {
 
 ```text
 my_crate/
-├── src/
-│   └── lib.rs
-├── tests/              # Integration tests
-│   ├── api_test.rs     # Each file is a separate test binary
-│   ├── db_test.rs
-│   └── common/         # Shared test utilities
-│       └── mod.rs
+â”œâ”€â”€ src/
+â”‚   â””â”€â”€ lib.rs
+â”œâ”€â”€ tests/              # Integration tests
+â”‚   â”œâ”€â”€ api_test.rs     # Each file is a separate test binary
+â”‚   â”œâ”€â”€ db_test.rs
+â”‚   â””â”€â”€ common/         # Shared test utilities
+â”‚       â””â”€â”€ mod.rs
 ```
 
 ### Writing Integration Tests
@@ -461,13 +461,13 @@ cargo test -- --ignored           # Run ignored tests
 - Use descriptive test names that explain the scenario
 - Prefer `assert_eq!` over `assert!` for better error messages
 - Use `?` in tests that return `Result` for cleaner error output
-- Keep tests independent — no shared mutable state
+- Keep tests independent â€” no shared mutable state
 
 **DON'T:**
 - Use `#[should_panic]` when you can test `Result::is_err()` instead
-- Mock everything — prefer integration tests when feasible
-- Ignore flaky tests — fix or quarantine them
-- Use `sleep()` in tests — use channels, barriers, or `tokio::time::pause()`
+- Mock everything â€” prefer integration tests when feasible
+- Ignore flaky tests â€” fix or quarantine them
+- Use `sleep()` in tests â€” use channels, barriers, or `tokio::time::pause()`
 - Skip error path testing
 
 ## CI Integration
@@ -498,3 +498,4 @@ test:
 ```
 
 **Remember**: Tests are documentation. They show how your code is meant to be used. Write them clearly and keep them up to date.
+

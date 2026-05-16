@@ -1,4 +1,4 @@
----
+﻿---
 name: rust-patterns
 description: Idiomatic Rust patterns, ownership, error handling, traits, concurrency, and best practices for building safe, performant applications.
 origin: ECC
@@ -38,7 +38,7 @@ fn store(data: Vec<u8>) -> Record {
 
 // Bad: Cloning unnecessarily to avoid borrow checker
 fn process_bad(data: &Vec<u8>) -> usize {
-    let cloned = data.clone(); // Wasteful — just borrow
+    let cloned = data.clone(); // Wasteful â€” just borrow
     cloned.len()
 }
 ```
@@ -59,7 +59,7 @@ fn normalize(input: &str) -> Cow<'_, str> {
 
 ## Error Handling
 
-### Use `Result` and `?` — Never `unwrap()` in Production
+### Use `Result` and `?` â€” Never `unwrap()` in Production
 
 ```rust
 // Good: Propagate errors with context
@@ -154,7 +154,7 @@ fn handle(state: &ConnectionState) {
 }
 ```
 
-### Exhaustive Matching — No Catch-All for Business Logic
+### Exhaustive Matching â€” No Catch-All for Business Logic
 
 ```rust
 // Good: Handle every variant explicitly
@@ -283,7 +283,7 @@ let names: Vec<_> = items.iter().map(|i| &i.name).collect();
 let lookup: HashMap<_, _> = items.iter().map(|i| (i.id, i)).collect();
 let combined: String = parts.iter().copied().collect();
 
-// Collect Results — short-circuits on first error
+// Collect Results â€” short-circuits on first error
 let parsed: Result<Vec<i32>, _> = strings.iter().map(|s| s.parse()).collect();
 ```
 
@@ -394,26 +394,26 @@ unsafe { slice.get_unchecked(index) }
 
 ```text
 my_app/
-├── src/
-│   ├── main.rs
-│   ├── lib.rs
-│   ├── auth/          # Domain module
-│   │   ├── mod.rs
-│   │   ├── token.rs
-│   │   └── middleware.rs
-│   ├── orders/        # Domain module
-│   │   ├── mod.rs
-│   │   ├── model.rs
-│   │   └── service.rs
-│   └── db/            # Infrastructure
-│       ├── mod.rs
-│       └── pool.rs
-├── tests/             # Integration tests
-├── benches/           # Benchmarks
-└── Cargo.toml
+â”œâ”€â”€ src/
+â”‚   â”œâ”€â”€ main.rs
+â”‚   â”œâ”€â”€ lib.rs
+â”‚   â”œâ”€â”€ auth/          # Domain module
+â”‚   â”‚   â”œâ”€â”€ mod.rs
+â”‚   â”‚   â”œâ”€â”€ token.rs
+â”‚   â”‚   â””â”€â”€ middleware.rs
+â”‚   â”œâ”€â”€ orders/        # Domain module
+â”‚   â”‚   â”œâ”€â”€ mod.rs
+â”‚   â”‚   â”œâ”€â”€ model.rs
+â”‚   â”‚   â””â”€â”€ service.rs
+â”‚   â””â”€â”€ db/            # Infrastructure
+â”‚       â”œâ”€â”€ mod.rs
+â”‚       â””â”€â”€ pool.rs
+â”œâ”€â”€ tests/             # Integration tests
+â”œâ”€â”€ benches/           # Benchmarks
+â””â”€â”€ Cargo.toml
 ```
 
-### Visibility — Expose Minimally
+### Visibility â€” Expose Minimally
 
 ```rust
 // Good: pub(crate) for internal sharing
@@ -496,4 +496,5 @@ async fn bad_async() {
 }
 ```
 
-**Remember**: If it compiles, it's probably correct — but only if you avoid `unwrap()`, minimize `unsafe`, and let the type system work for you.
+**Remember**: If it compiles, it's probably correct â€” but only if you avoid `unwrap()`, minimize `unsafe`, and let the type system work for you.
+

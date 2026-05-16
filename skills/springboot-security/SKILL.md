@@ -1,4 +1,4 @@
----
+﻿---
 name: springboot-security
 description: Spring Security best practices for authn/authz, validation, CSRF, secrets, headers, rate limiting, and dependency security in Java Spring Boot services.
 origin: ECC
@@ -119,7 +119,7 @@ List<User> findByEmailAndActiveTrue(String email);
 
 ## Password Encoding
 
-- Always hash passwords with BCrypt or Argon2 — never store plaintext
+- Always hash passwords with BCrypt or Argon2 â€” never store plaintext
 - Use `PasswordEncoder` bean, not manual hashing
 
 ```java
@@ -186,7 +186,7 @@ http
 ## CORS Configuration
 
 - Configure CORS at the security filter level, not per-controller
-- Restrict allowed origins — never use `*` in production
+- Restrict allowed origins â€” never use `*` in production
 
 ```java
 @Bean
@@ -270,3 +270,4 @@ public class RateLimitFilter extends OncePerRequestFilter {
 - [ ] Logs free of sensitive data
 
 **Remember**: Deny by default, validate inputs, least privilege, and secure-by-configuration first.
+

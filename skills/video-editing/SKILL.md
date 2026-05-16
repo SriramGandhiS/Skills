@@ -1,4 +1,4 @@
----
+﻿---
 name: video-editing
 description: AI-assisted video editing workflows for cutting, structuring, and augmenting real footage. Covers the full pipeline from raw capture through FFmpeg, Remotion, ElevenLabs, fal.ai, and final polish in Descript or CapCut. Use when the user wants to edit video, cut footage, create vlogs, or build video content.
 origin: ECC
@@ -25,11 +25,11 @@ AI video editing is useful when you stop asking it to create the whole video and
 
 ```
 Screen Studio / raw footage
-  → Claude / Codex
-  → FFmpeg
-  → Remotion
-  → ElevenLabs / fal.ai
-  → Descript or CapCut
+  â†’ Claude / Codex
+  â†’ FFmpeg
+  â†’ Remotion
+  â†’ ElevenLabs / fal.ai
+  â†’ Descript or CapCut
 ```
 
 Each layer has a specific job. Do not skip layers. Do not try to make one tool do everything.
@@ -305,6 +305,7 @@ identify the 5 most engaging 30-second clips for social media."
 
 ## Related Skills
 
-- `fal-ai-media` — AI image, video, and audio generation
-- `videodb` — Server-side video processing, indexing, and streaming
-- `content-engine` — Platform-native content distribution
+- `fal-ai-media` â€” AI image, video, and audio generation
+- `videodb` â€” Server-side video processing, indexing, and streaming
+- `content-engine` â€” Platform-native content distribution
+

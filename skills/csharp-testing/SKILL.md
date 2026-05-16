@@ -1,4 +1,4 @@
----
+﻿---
 name: csharp-testing
 description: C# and .NET testing patterns with xUnit, FluentAssertions, mocking, integration tests, and test organization best practices.
 origin: ECC
@@ -140,7 +140,7 @@ public async Task PlaceOrderAsync_PersistsOrder()
     // Act
     await _sut.PlaceOrderAsync(request, CancellationToken.None);
 
-    // Assert — verify the repository was called
+    // Assert â€” verify the repository was called
     await _repository.Received(1).AddAsync(
         Arg.Is<Order>(o => o.CustomerId == request.CustomerId),
         Arg.Any<CancellationToken>());
@@ -319,3 +319,4 @@ dotnet test --filter "FullyQualifiedName~OrderService"
 # Watch mode during development
 dotnet watch test --project tests/MyApp.UnitTests/
 ```
+

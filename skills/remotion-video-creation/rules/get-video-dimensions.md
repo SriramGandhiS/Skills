@@ -1,4 +1,4 @@
----
+﻿---
 name: get-video-dimensions
 description: Getting the width and height of a video file with Mediabunny
 metadata:
@@ -66,3 +66,4 @@ import { staticFile } from "remotion";
 
 const dimensions = await getVideoDimensions(staticFile("video.mp4"));
 ```
+

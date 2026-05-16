@@ -1,4 +1,4 @@
----
+﻿---
 name: x-api
 description: X/Twitter API integration for posting tweets, threads, reading timelines, search, and analytics. Covers OAuth auth patterns, rate limits, and platform-native content posting. Use when the user wants to interact with X programmatically.
 origin: ECC
@@ -53,7 +53,7 @@ tweets = resp.json()
 Required for: posting tweets, managing account, DMs, and any write flow.
 
 ```bash
-# Environment setup — source before use
+# Environment setup â€” source before use
 export X_CONSUMER_KEY="your-consumer-key"
 export X_CONSUMER_SECRET="your-consumer-secret"
 export X_ACCESS_TOKEN="your-access-token"
@@ -213,7 +213,7 @@ else:
 - **Never commit `.env` files.** Add to `.gitignore`.
 - **Rotate tokens** if exposed. Regenerate at developer.x.com.
 - **Use read-only tokens** when write access is not needed.
-- **Store OAuth secrets securely** — not in source code or logs.
+- **Store OAuth secrets securely** â€” not in source code or logs.
 
 ## Integration with Content Engine
 
@@ -228,7 +228,8 @@ Use `brand-voice` plus `content-engine` to generate platform-native content, the
 
 ## Related Skills
 
-- `brand-voice` — Build a reusable voice profile from real X and site/source material
-- `content-engine` — Generate platform-native content for X
-- `crosspost` — Distribute content across X, LinkedIn, and other platforms
-- `connections-optimizer` — Reorganize the X graph before drafting network-driven outreach
+- `brand-voice` â€” Build a reusable voice profile from real X and site/source material
+- `content-engine` â€” Generate platform-native content for X
+- `crosspost` â€” Distribute content across X, LinkedIn, and other platforms
+- `connections-optimizer` â€” Reorganize the X graph before drafting network-driven outreach
+

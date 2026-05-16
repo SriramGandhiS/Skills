@@ -1,4 +1,4 @@
----
+﻿---
 name: visa-doc-translate
 description: Translate visa application documents (images) to English and create a bilingual PDF with original and translation
 ---
@@ -47,12 +47,12 @@ When the user provides an image file path, AUTOMATICALLY execute the following s
 
 ## Supported Documents
 
-- Bank deposit certificates (存款证明)
-- Income certificates (收入证明)
-- Employment certificates (在职证明)
-- Retirement certificates (退休证明)
-- Property certificates (房产证明)
-- Business licenses (营业执照)
+- Bank deposit certificates (å­˜æ¬¾è¯æ˜Ž)
+- Income certificates (æ”¶å…¥è¯æ˜Ž)
+- Employment certificates (åœ¨èŒè¯æ˜Ž)
+- Retirement certificates (é€€ä¼‘è¯æ˜Ž)
+- Property certificates (æˆ¿äº§è¯æ˜Ž)
+- Business licenses (è¥ä¸šæ‰§ç…§)
 - ID cards and passports
 - Other official documents
 
@@ -115,3 +115,4 @@ The skill will:
    - Page 2: Professional English translation
 
 Perfect for visa applications to Australia, USA, Canada, UK, and other countries requiring translated documents.
+

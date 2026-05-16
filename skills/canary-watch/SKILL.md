@@ -1,10 +1,10 @@
----
+﻿---
 name: canary-watch
-description: Use this skill to monitor and verify a deployed URL after releases — checks HTTP endpoints, SSE streams, static assets, console errors, and performance regressions after deploys, merges, or dependency upgrades. Smoke / canary / post-deploy verification.
+description: Use this skill to monitor and verify a deployed URL after releases â€” checks HTTP endpoints, SSE streams, static assets, console errors, and performance regressions after deploys, merges, or dependency upgrades. Smoke / canary / post-deploy verification.
 origin: ECC
 ---
 
-# Canary Watch — Post-Deploy Monitoring
+# Canary Watch â€” Post-Deploy Monitoring
 
 ## When to Use
 
@@ -21,14 +21,14 @@ Monitors a deployed URL for regressions. Runs in a loop until stopped or until t
 ### What It Watches
 
 ```
-1. HTTP Status — is the page returning 200?
-2. Console Errors — new errors that weren't there before?
-3. Network Failures — failed API calls, 5xx responses?
-4. Performance — LCP/CLS/INP regression vs baseline?
-5. Content — did key elements disappear? (h1, nav, footer, CTA)
-6. API Health — are critical endpoints responding within SLA?
-7. Static Assets — are JS, CSS, image, and font requests returning 2xx/3xx with expected content types?
-8. SSE Streams — do event-stream endpoints connect and receive an initial event or heartbeat?
+1. HTTP Status â€” is the page returning 200?
+2. Console Errors â€” new errors that weren't there before?
+3. Network Failures â€” failed API calls, 5xx responses?
+4. Performance â€” LCP/CLS/INP regression vs baseline?
+5. Content â€” did key elements disappear? (h1, nav, footer, CTA)
+6. API Health â€” are critical endpoints responding within SLA?
+7. Static Assets â€” are JS, CSS, image, and font requests returning 2xx/3xx with expected content types?
+8. SSE Streams â€” do event-stream endpoints connect and receive an initial event or heartbeat?
 ```
 
 ### Watch Modes
@@ -82,19 +82,19 @@ When a critical threshold is crossed:
 ## Output
 
 ```markdown
-## Canary Report — myapp.com — 2026-03-23 03:15 PST
+## Canary Report â€” myapp.com â€” 2026-03-23 03:15 PST
 
-### Status: HEALTHY ✓
+### Status: HEALTHY âœ“
 
 | Check | Result | Baseline | Delta |
 |-------|--------|----------|-------|
-| HTTP | 200 ✓ | 200 | — |
-| Console errors | 0 ✓ | 0 | — |
-| LCP | 1.8s ✓ | 1.6s | +200ms |
-| CLS | 0.01 ✓ | 0.01 | — |
-| API /health | 145ms ✓ | 120ms | +25ms |
-| Static assets | 42/42 ✓ | 42/42 | — |
-| SSE /events | connected ✓ | connected | +80ms heartbeat |
+| HTTP | 200 âœ“ | 200 | â€” |
+| Console errors | 0 âœ“ | 0 | â€” |
+| LCP | 1.8s âœ“ | 1.6s | +200ms |
+| CLS | 0.01 âœ“ | 0.01 | â€” |
+| API /health | 145ms âœ“ | 120ms | +25ms |
+| Static assets | 42/42 âœ“ | 42/42 | â€” |
+| SSE /events | connected âœ“ | connected | +80ms heartbeat |
 
 ### No regressions detected. Deploy is clean.
 ```
@@ -105,3 +105,4 @@ Pair with:
 - `/browser-qa` for pre-deploy verification
 - Hooks: add as a PostToolUse hook on `git push` to auto-check after deploys
 - CI: run in GitHub Actions after deploy step
+

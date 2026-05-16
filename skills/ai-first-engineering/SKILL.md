@@ -1,4 +1,4 @@
----
+﻿---
 name: ai-first-engineering
 description: Engineering operating model for teams where AI agents generate a large share of implementation output.
 origin: ECC
@@ -49,3 +49,4 @@ Raise testing bar for generated code:
 - required regression coverage for touched domains
 - explicit edge-case assertions
 - integration checks for interface boundaries
+

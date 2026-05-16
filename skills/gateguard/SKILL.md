@@ -1,10 +1,10 @@
----
+﻿---
 name: gateguard
 description: Fact-forcing gate that blocks Edit/Write/Bash (including MultiEdit) and demands concrete investigation (importers, data schemas, user instruction) before allowing the action. Measurably improves output quality by +2.25 points vs ungated agents.
 origin: community
 ---
 
-# GateGuard — Fact-Forcing Pre-Action Gate
+# GateGuard â€” Fact-Forcing Pre-Action Gate
 
 A PreToolUse hook that forces Claude to investigate before editing. Instead of self-evaluation ("are you sure?"), it demands concrete facts. The act of investigation creates awareness that self-evaluation never did.
 
@@ -24,9 +24,9 @@ But asking "list every file that imports this module" forces the LLM to run Grep
 **Three-stage gate:**
 
 ```
-1. DENY  — block the first Edit/Write/Bash attempt
-2. FORCE — tell the model exactly which facts to gather
-3. ALLOW — permit retry after facts are presented
+1. DENY  â€” block the first Edit/Write/Bash attempt
+2. FORCE â€” tell the model exactly which facts to gather
+3. ALLOW â€” permit retry after facts are presented
 ```
 
 No competitor does all three. Most stop at deny.
@@ -47,7 +47,7 @@ Both agents produce code that runs and passes tests. The difference is design de
 
 ### Edit / MultiEdit Gate (first edit per file)
 
-MultiEdit is handled identically — each file in the batch is gated individually.
+MultiEdit is handled identically â€” each file in the batch is gated individually.
 
 ```
 Before editing {file_path}, present these facts:
@@ -115,11 +115,12 @@ This adds `.gateguard.yml` for per-project configuration (custom messages, ignor
 
 ## Best Practices
 
-- Let the gate fire naturally. Don't try to pre-answer the gate questions — the investigation itself is what improves quality.
+- Let the gate fire naturally. Don't try to pre-answer the gate questions â€” the investigation itself is what improves quality.
 - Customize gate messages for your domain. If your project has specific conventions, add them to the gate prompts.
 - Use `.gateguard.yml` to ignore paths like `.venv/`, `node_modules/`, `.git/`.
 
 ## Related Skills
 
-- `safety-guard` — Runtime safety checks (complementary, not overlapping)
-- `code-reviewer` — Post-edit review (GateGuard is pre-edit investigation)
+- `safety-guard` â€” Runtime safety checks (complementary, not overlapping)
+- `code-reviewer` â€” Post-edit review (GateGuard is pre-edit investigation)
+

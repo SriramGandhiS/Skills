@@ -1,4 +1,4 @@
----
+﻿---
 name: seo
 description: Audit, plan, and implement SEO improvements across technical SEO, on-page optimization, structured data, Core Web Vitals, and content strategy. Use when the user wants better search visibility, SEO remediation, schema markup, sitemap/robots work, or keyword mapping.
 origin: ECC
@@ -144,7 +144,7 @@ Fix: Generate a unique title per product using the product name and primary cate
 | thin near-duplicate pages | consolidate or differentiate them |
 | schema for content that is not actually present | match schema to reality |
 | content advice without checking the actual page | read the real page first |
-| generic “improve SEO” outputs | tie every recommendation to a page or asset |
+| generic â€œimprove SEOâ€ outputs | tie every recommendation to a page or asset |
 
 ## Related Skills
 
@@ -152,3 +152,4 @@ Fix: Generate a unique title per product using the product name and primary cate
 - `frontend-patterns`
 - `brand-voice`
 - `market-research`
+

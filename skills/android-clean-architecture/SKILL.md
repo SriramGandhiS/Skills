@@ -1,6 +1,6 @@
----
+﻿---
 name: android-clean-architecture
-description: Clean Architecture patterns for Android and Kotlin Multiplatform projects — module structure, dependency rules, UseCases, Repositories, and data layer patterns.
+description: Clean Architecture patterns for Android and Kotlin Multiplatform projects â€” module structure, dependency rules, UseCases, Repositories, and data layer patterns.
 origin: ECC
 ---
 
@@ -22,26 +22,26 @@ Clean Architecture patterns for Android and KMP projects. Covers module boundari
 
 ```
 project/
-├── app/                  # Android entry point, DI wiring, Application class
-├── core/                 # Shared utilities, base classes, error types
-├── domain/               # UseCases, domain models, repository interfaces (pure Kotlin)
-├── data/                 # Repository implementations, DataSources, DB, network
-├── presentation/         # Screens, ViewModels, UI models, navigation
-├── design-system/        # Reusable Compose components, theme, typography
-└── feature/              # Feature modules (optional, for larger projects)
-    ├── auth/
-    ├── settings/
-    └── profile/
+â”œâ”€â”€ app/                  # Android entry point, DI wiring, Application class
+â”œâ”€â”€ core/                 # Shared utilities, base classes, error types
+â”œâ”€â”€ domain/               # UseCases, domain models, repository interfaces (pure Kotlin)
+â”œâ”€â”€ data/                 # Repository implementations, DataSources, DB, network
+â”œâ”€â”€ presentation/         # Screens, ViewModels, UI models, navigation
+â”œâ”€â”€ design-system/        # Reusable Compose components, theme, typography
+â””â”€â”€ feature/              # Feature modules (optional, for larger projects)
+    â”œâ”€â”€ auth/
+    â”œâ”€â”€ settings/
+    â””â”€â”€ profile/
 ```
 
 ### Dependency Rules
 
 ```
-app → presentation, domain, data, core
-presentation → domain, design-system, core
-data → domain, core
-domain → core (or no dependencies)
-core → (nothing)
+app â†’ presentation, domain, data, core
+presentation â†’ domain, design-system, core
+data â†’ domain, core
+domain â†’ core (or no dependencies)
+core â†’ (nothing)
 ```
 
 **Critical**: `domain` must NEVER depend on `data`, `presentation`, or any framework. It contains pure Kotlin only.
@@ -73,7 +73,7 @@ class ObserveUserProgressUseCase(
 
 ### Domain Models
 
-Domain models are plain Kotlin data classes — no framework annotations:
+Domain models are plain Kotlin data classes â€” no framework annotations:
 
 ```kotlin
 data class Item(
@@ -288,7 +288,7 @@ sealed interface AppError {
     data object Unauthorized : AppError
 }
 
-// In ViewModel — map to UI state
+// In ViewModel â€” map to UI state
 viewModelScope.launch {
     when (val result = getItems(category)) {
         is Try.Success -> _state.update { it.copy(items = result.value, isLoading = false) }
@@ -326,14 +326,15 @@ plugins { id("kmp-library") }
 
 ## Anti-Patterns to Avoid
 
-- Importing Android framework classes in `domain` — keep it pure Kotlin
-- Exposing database entities or DTOs to the UI layer — always map to domain models
-- Putting business logic in ViewModels — extract to UseCases
-- Using `GlobalScope` or unstructured coroutines — use `viewModelScope` or structured concurrency
-- Fat repository implementations — split into focused DataSources
-- Circular module dependencies — if A depends on B, B must not depend on A
+- Importing Android framework classes in `domain` â€” keep it pure Kotlin
+- Exposing database entities or DTOs to the UI layer â€” always map to domain models
+- Putting business logic in ViewModels â€” extract to UseCases
+- Using `GlobalScope` or unstructured coroutines â€” use `viewModelScope` or structured concurrency
+- Fat repository implementations â€” split into focused DataSources
+- Circular module dependencies â€” if A depends on B, B must not depend on A
 
 ## References
 
 See skill: `compose-multiplatform-patterns` for UI patterns.
 See skill: `kotlin-coroutines-flows` for async patterns.
+

@@ -1,4 +1,4 @@
----
+﻿---
 name: images
 description: Embedding images in Remotion using the <Img> component
 metadata:
@@ -35,12 +35,12 @@ Place images in the `public/` folder and use `staticFile()` to reference them:
 
 ```
 my-video/
-├─ public/
-│  ├─ logo.png
-│  ├─ avatar.jpg
-│  └─ icon.svg
-├─ src/
-├─ package.json
+â”œâ”€ public/
+â”‚  â”œâ”€ logo.png
+â”‚  â”œâ”€ avatar.jpg
+â”‚  â””â”€ icon.svg
+â”œâ”€ src/
+â”œâ”€ package.json
 ```
 
 ```tsx
@@ -128,3 +128,4 @@ const calculateMetadata: CalculateMetadataFunction = async () => {
   };
 };
 ```
+

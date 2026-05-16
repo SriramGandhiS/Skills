@@ -1,4 +1,4 @@
----
+﻿---
 name: jira-integration
 description: Use this skill when retrieving Jira tickets, analyzing requirements, updating ticket status, adding comments, or transitioning issues. Provides Jira API patterns via MCP or direct REST calls.
 origin: ECC
@@ -13,7 +13,7 @@ Retrieve, analyze, and update Jira tickets directly from your AI coding workflow
 - Fetching a Jira ticket to understand requirements
 - Extracting testable acceptance criteria from a ticket
 - Adding progress comments to a Jira issue
-- Transitioning a ticket status (To Do → In Progress → Done)
+- Transitioning a ticket status (To Do â†’ In Progress â†’ Done)
 - Linking merge requests or branches to a Jira issue
 - Searching for issues by JQL query
 
@@ -27,7 +27,7 @@ Install the `mcp-atlassian` MCP server. This exposes Jira tools directly to your
 - Python 3.10+
 - `uvx` (from `uv`), installed via your package manager or the official `uv` installation documentation
 
-**Add to your MCP config** (e.g., `~/.claude.json` → `mcpServers`):
+**Add to your MCP config** (e.g., `~/.claude.json` â†’ `mcpServers`):
 
 ```json
 {
@@ -39,7 +39,7 @@ Install the `mcp-atlassian` MCP server. This exposes Jira tools directly to your
       "JIRA_EMAIL": "your.email@example.com",
       "JIRA_API_TOKEN": "your-api-token"
     },
-    "description": "Jira issue tracking — search, create, update, comment, transition"
+    "description": "Jira issue tracking â€” search, create, update, comment, transition"
   }
 }
 ```
@@ -49,7 +49,7 @@ Install the `mcp-atlassian` MCP server. This exposes Jira tools directly to your
 **To get a Jira API token:**
 1. Go to <https://id.atlassian.com/manage-profile/security/api-tokens>
 2. Click **Create API token**
-3. Copy the token — store it in your environment, never in source code
+3. Copy the token â€” store it in your environment, never in source code
 
 ### Option B: Direct REST API
 
@@ -81,7 +81,7 @@ When the `mcp-atlassian` MCP server is configured, these tools are available:
 | `jira_create_issue_link` | Link issues (Blocks, Relates to) | Dependency tracking |
 | `jira_get_issue_development_info` | See linked PRs, branches, commits | Dev context |
 
-> **Tip:** Always call `jira_get_transitions` before transitioning — transition IDs vary per project workflow.
+> **Tip:** Always call `jira_get_transitions` before transitioning â€” transition IDs vary per project workflow.
 
 ## Direct REST API Reference
 
@@ -159,18 +159,18 @@ curl -s -G -u "$JIRA_EMAIL:$JIRA_API_TOKEN" \
 When retrieving a ticket for development or test automation, extract:
 
 ### 1. Testable Requirements
-- **Functional requirements** — What the feature does
-- **Acceptance criteria** — Conditions that must be met
-- **Testable behaviors** — Specific actions and expected outcomes
-- **User roles** — Who uses this feature and their permissions
-- **Data requirements** — What data is needed
-- **Integration points** — APIs, services, or systems involved
+- **Functional requirements** â€” What the feature does
+- **Acceptance criteria** â€” Conditions that must be met
+- **Testable behaviors** â€” Specific actions and expected outcomes
+- **User roles** â€” Who uses this feature and their permissions
+- **Data requirements** â€” What data is needed
+- **Integration points** â€” APIs, services, or systems involved
 
 ### 2. Test Types Needed
-- **Unit tests** — Individual functions and utilities
-- **Integration tests** — API endpoints and service interactions
-- **E2E tests** — User-facing UI flows
-- **API tests** — Endpoint contracts and error handling
+- **Unit tests** â€” Individual functions and utilities
+- **Integration tests** â€” API endpoints and service interactions
+- **E2E tests** â€” User-facing UI flows
+- **API tests** â€” Endpoint contracts and error handling
 
 ### 3. Edge Cases & Error Scenarios
 - Invalid inputs (empty, too long, special characters)
@@ -238,11 +238,11 @@ Branch: feat/PROJ-1234-feature-name
 Automated tests implemented:
 
 Unit Tests:
-- [test file 1] — [what it covers]
-- [test file 2] — [what it covers]
+- [test file 1] â€” [what it covers]
+- [test file 2] â€” [what it covers]
 
 Integration Tests:
-- [test file] — [endpoints/flows covered]
+- [test file] â€” [endpoints/flows covered]
 
 All tests passing locally. Coverage: XX%
 ```
@@ -271,7 +271,7 @@ Coverage: XX%
 - **Add `.env`** to `.gitignore` in every project
 - **Rotate tokens** immediately if exposed in git history
 - **Use least-privilege** API tokens scoped to required projects
-- **Validate** that credentials are set before making API calls — fail fast with a clear message
+- **Validate** that credentials are set before making API calls â€” fail fast with a clear message
 
 ## Troubleshooting
 
@@ -287,7 +287,8 @@ Coverage: XX%
 
 - Update Jira as you go, not all at once at the end
 - Keep comments concise but informative
-- Link rather than copy — point to PRs, test reports, and dashboards
+- Link rather than copy â€” point to PRs, test reports, and dashboards
 - Use @mentions if you need input from others
 - Check linked issues to understand full feature scope before starting
 - If acceptance criteria are vague, ask for clarification before writing code
+

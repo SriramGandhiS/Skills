@@ -1,4 +1,4 @@
-# Using Tailwind CSS with Angular
+﻿# Using Tailwind CSS with Angular
 
 Tailwind CSS is a utility-first CSS framework that integrates seamlessly with Angular.
 
@@ -67,3 +67,4 @@ You can now use Tailwind classes directly in your component templates:
 - **Do not use `@tailwind base; @tailwind components; @tailwind utilities;`**. Use `@import 'tailwindcss';`.
 - **Do not create `tailwind.config.js`**. Configuration is managed directly in CSS via theme variables or using PostCSS configurations.
 - Stick strictly to v4 syntax and workflows.
+

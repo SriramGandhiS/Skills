@@ -1,4 +1,4 @@
----
+﻿---
 name: can-decode
 description: Check if a video can be decoded by the browser using Mediabunny
 metadata:
@@ -73,3 +73,4 @@ export const canDecodeBlob = async (blob: Blob) => {
   // Same validation logic as above
 };
 ```
+

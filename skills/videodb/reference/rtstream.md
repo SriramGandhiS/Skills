@@ -1,4 +1,4 @@
-# RTStream Guide
+﻿# RTStream Guide
 
 ## Overview
 
@@ -63,3 +63,4 @@ For capture session workflow, see [capture.md](capture.md).
 | Script | Description |
 |--------|-------------|
 | `scripts/ws_listener.py` | WebSocket event listener for real-time AI results |
+

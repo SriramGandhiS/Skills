@@ -1,4 +1,4 @@
----
+﻿---
 name: brandkit
 description: Premium brand-kit image generation skill for creating high-end brand-guidelines boards, logo systems, identity decks, and visual-world presentations. Trained for minimalist, cinematic, editorial, dark-tech, luxury, cultural, security, gaming, developer-tool, and consumer-app brand systems. Optimized for intentional logo concepting, refined composition, sparse typography, strong symbolic meaning, premium mockups, art-directed imagery, and flexible grid layouts.
 ---
@@ -19,8 +19,8 @@ The output must feel:
 - brand-system driven
 - presentation-ready
 
-Do not generate generic logos.  
-Do not generate random mockups.  
+Do not generate generic logos.
+Do not generate random mockups.
 Do not generate messy AI moodboards.
 
 Create a complete brand world in one image.
@@ -49,7 +49,7 @@ The desired visual quality is inspired by premium brand-guidelines decks with:
 - logo repeated across multiple touchpoints
 - one strong brand idea per board
 
-The references are not a fixed style.  
+The references are not a fixed style.
 They define the quality bar, restraint, and presentation logic.
 
 ---
@@ -75,7 +75,7 @@ Every generated board must answer:
 Unless the user specifies otherwise:
 
 - Generate one brand-kit overview image
-- Default layout: `3 × 3`
+- Default layout: `3 Ã— 3`
 - Default aspect ratio: `4:3` or `16:10`
 - Use a clean presentation grid
 - Use consistent gutters
@@ -83,11 +83,11 @@ Unless the user specifies otherwise:
 - Make every panel feel connected
 
 Allowed layouts:
-- `3 × 3` full identity system
-- `2 × 3` cinematic brand deck overview
-- `2 × 2` compact concept board
-- `1 × 3` horizontal brand strip
-- `4 × 2` wide contact-sheet layout
+- `3 Ã— 3` full identity system
+- `2 Ã— 3` cinematic brand deck overview
+- `2 Ã— 2` compact concept board
+- `1 Ã— 3` horizontal brand strip
+- `4 Ã— 2` wide contact-sheet layout
 - custom layout when requested
 
 If the user gives references, match their quality and rhythm, not their exact content.
@@ -172,7 +172,7 @@ Examples:
 - `S` + sound wave / speech flow
 - `A` + ascent / architecture / momentum
 
-Do not make a boring letter icon.  
+Do not make a boring letter icon.
 Use negative space, cuts, folds, or geometry.
 
 ---
@@ -182,12 +182,12 @@ Use negative space, cuts, folds, or geometry.
 Turn the product's main action into a symbol.
 
 Examples:
-- build → frame, scaffold, block, cursor
-- protect → shield, boundary, watch mark
-- convert → switch, arrow, transformation shape
-- speak → waveform, mic, pulse
-- hunt threats → eye, raptor, radar, trace
-- automate → loop, handoff, path
+- build â†’ frame, scaffold, block, cursor
+- protect â†’ shield, boundary, watch mark
+- convert â†’ switch, arrow, transformation shape
+- speak â†’ waveform, mic, pulse
+- hunt threats â†’ eye, raptor, radar, trace
+- automate â†’ loop, handoff, path
 
 Make it abstract and premium, not literal.
 
@@ -269,25 +269,25 @@ The board should have rhythm:
 
 ---
 
-# DEFAULT 3 × 3 PANEL SYSTEM
+# DEFAULT 3 Ã— 3 PANEL SYSTEM
 
 Use this if no layout is specified:
 
 ## 1. Logo Cover
-Large logo and wordmark.  
-Minimal title.  
+Large logo and wordmark.
+Minimal title.
 Strong negative space.
 
 ## 2. Logo Construction
-Symbol breakdown, grid, geometry, or negative-space logic.  
+Symbol breakdown, grid, geometry, or negative-space logic.
 Show why the mark exists.
 
 ## 3. Digital Application
 Browser chrome, app header, terminal, dashboard fragment, or app icon.
 
 ## 4. Brand Essence
-One short tagline.  
-Large readable typography.  
+One short tagline.
+Large readable typography.
 Sparse composition.
 
 ## 5. Color System
@@ -307,7 +307,7 @@ UI chips, input bar, command line, icon row, badge system, component strip, patt
 
 ---
 
-# 2 × 3 REFERENCE-STYLE LAYOUT
+# 2 Ã— 3 REFERENCE-STYLE LAYOUT
 
 For boards like the uploaded references, use:
 
@@ -563,7 +563,7 @@ Good text:
 - one tagline
 - one URL
 - one command
-- 2–5 section labels
+- 2â€“5 section labels
 - short UI chips
 
 Bad text:
@@ -619,7 +619,7 @@ Use:
 Avoid:
 - generic stock people
 - random office photos
-- cliché robot imagery
+- clichÃ© robot imagery
 - overbusy scenes
 - unrelated imagery
 
@@ -747,7 +747,7 @@ Brand strategy:
 - logo idea: [how the mark combines symbol + name + category meaning]
 
 Layout:
-[3×3 / 2×3 / custom] grid on a dark or light presentation canvas with strong gutters, clean alignment, and refined negative space.
+[3Ã—3 / 2Ã—3 / custom] grid on a dark or light presentation canvas with strong gutters, clean alignment, and refined negative space.
 
 Panels:
 - logo cover
@@ -796,3 +796,4 @@ The final result should be:
 - art-directed
 - implementation-friendly
 - stronger than normal AI-generated brand visuals
+

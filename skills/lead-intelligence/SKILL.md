@@ -1,4 +1,4 @@
----
+﻿---
 name: lead-intelligence
 description: AI-native lead intelligence and outreach pipeline. Replaces Apollo, Clay, and ZoomInfo with agent-powered signal scoring, mutual ranking, warm path discovery, source-derived voice modeling, and channel-specific outreach across email, LinkedIn, and X. Use when the user wants to find, qualify, and reach high-value contacts.
 origin: ECC
@@ -20,23 +20,23 @@ Agent-powered lead intelligence pipeline that finds, scores, and reaches high-va
 ## Tool Requirements
 
 ### Required
-- **Exa MCP** — Deep web search for people, companies, and signals (`web_search_exa`)
-- **X API** — Follower/following graph, mutual analysis, recent activity (`X_BEARER_TOKEN`, plus write-context credentials such as `X_CONSUMER_KEY`, `X_CONSUMER_SECRET`, `X_ACCESS_TOKEN`, `X_ACCESS_TOKEN_SECRET`)
+- **Exa MCP** â€” Deep web search for people, companies, and signals (`web_search_exa`)
+- **X API** â€” Follower/following graph, mutual analysis, recent activity (`X_BEARER_TOKEN`, plus write-context credentials such as `X_CONSUMER_KEY`, `X_CONSUMER_SECRET`, `X_ACCESS_TOKEN`, `X_ACCESS_TOKEN_SECRET`)
 
 ### Optional (enhance results)
-- **LinkedIn** — Direct API if available, otherwise browser control for search, profile inspection, and drafting
-- **Apollo/Clay API** — For enrichment cross-reference if user has access
-- **GitHub MCP** — For developer-centric lead qualification
-- **Apple Mail / Mail.app** — Draft cold or warm email without sending automatically
-- **Browser control** — For LinkedIn and X when API coverage is missing or constrained
+- **LinkedIn** â€” Direct API if available, otherwise browser control for search, profile inspection, and drafting
+- **Apollo/Clay API** â€” For enrichment cross-reference if user has access
+- **GitHub MCP** â€” For developer-centric lead qualification
+- **Apple Mail / Mail.app** â€” Draft cold or warm email without sending automatically
+- **Browser control** â€” For LinkedIn and X when API coverage is missing or constrained
 
 ## Pipeline Overview
 
 ```
-┌─────────────┐     ┌──────────────┐     ┌─────────────────┐     ┌──────────────┐     ┌─────────────────┐
-│ 1. Signal   │────>│ 2. Mutual    │────>│ 3. Warm Path    │────>│ 4. Enrich    │────>│ 5. Outreach     │
-│    Scoring  │     │    Ranking   │     │    Discovery    │     │              │     │    Draft        │
-└─────────────┘     └──────────────┘     └─────────────────┘     └──────────────┘     └─────────────────┘
+â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”     â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”     â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”     â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”     â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
+â”‚ 1. Signal   â”‚â”€â”€â”€â”€>â”‚ 2. Mutual    â”‚â”€â”€â”€â”€>â”‚ 3. Warm Path    â”‚â”€â”€â”€â”€>â”‚ 4. Enrich    â”‚â”€â”€â”€â”€>â”‚ 5. Outreach     â”‚
+â”‚    Scoring  â”‚     â”‚    Ranking   â”‚     â”‚    Discovery    â”‚     â”‚              â”‚     â”‚    Draft        â”‚
+â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜     â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜     â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜     â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜     â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
 ```
 
 ## Voice Before Outreach
@@ -98,11 +98,11 @@ For each scored target, analyze the user's social graph to find the warmest path
 
 | Factor | Weight |
 |--------|--------|
-| Number of connections to targets | 40% — highest weight, most connections = highest rank |
-| Mutual's current role/company | 20% — decision maker vs individual contributor |
-| Mutual's location | 15% — same city = easier intro |
-| Industry alignment | 15% — same vertical = natural intro |
-| Mutual's X handle / LinkedIn | 10% — identifiability for outreach |
+| Number of connections to targets | 40% â€” highest weight, most connections = highest rank |
+| Mutual's current role/company | 20% â€” decision maker vs individual contributor |
+| Mutual's location | 15% â€” same city = easier intro |
+| Industry alignment | 15% â€” same vertical = natural intro |
+| Mutual's X handle / LinkedIn | 10% â€” identifiability for outreach |
 
 Canonical rule:
 
@@ -114,8 +114,8 @@ the bridge ranking as a standalone report, or explicit decay-model tuning.
 Inside this skill, use the same weighted bridge model:
 
 ```text
-B(m) = Σ_{t ∈ T} w(t) · λ^(d(m,t) - 1)
-R(m) = B_ext(m) · (1 + β · engagement(m))
+B(m) = Î£_{t âˆˆ T} w(t) Â· Î»^(d(m,t) - 1)
+R(m) = B_ext(m) Â· (1 + Î² Â· engagement(m))
 ```
 
 Interpretation:
@@ -148,17 +148,17 @@ MUTUAL RANKING REPORT
 For each target, find the shortest introduction chain:
 
 ```
-You ──[follows]──> Mutual A ──[invested in]──> Target Company
-You ──[follows]──> Mutual B ──[co-founded with]──> Target Person
-You ──[met at]──> Event ──[also attended]──> Target Person
+You â”€â”€[follows]â”€â”€> Mutual A â”€â”€[invested in]â”€â”€> Target Company
+You â”€â”€[follows]â”€â”€> Mutual B â”€â”€[co-founded with]â”€â”€> Target Person
+You â”€â”€[met at]â”€â”€> Event â”€â”€[also attended]â”€â”€> Target Person
 ```
 
 ### Path Types (ordered by warmth)
-1. **Direct mutual** — You both follow/know the same person
-2. **Portfolio connection** — Mutual invested in or advises target's company
-3. **Co-worker/alumni** — Mutual worked at same company or attended same school
-4. **Event overlap** — Both attended same conference/program
-5. **Content engagement** — Target engaged with mutual's content or vice versa
+1. **Direct mutual** â€” You both follow/know the same person
+2. **Portfolio connection** â€” Mutual invested in or advises target's company
+3. **Co-worker/alumni** â€” Mutual worked at same company or attended same school
+4. **Event overlap** â€” Both attended same conference/program
+5. **Content engagement** â€” Target engaged with mutual's content or vice versa
 
 ## Stage 4: Enrichment
 
@@ -166,7 +166,7 @@ For each qualified lead, pull:
 
 - Full name, current title, company
 - Company size, funding stage, recent news
-- Recent X posts (last 30 days) — topics, tone, interests
+- Recent X posts (last 30 days) â€” topics, tone, interests
 - Mutual interests with user (shared follows, similar content)
 - Recent company events (product launch, funding round, hiring)
 
@@ -296,10 +296,10 @@ export APOLLO_API_KEY="..."  # For Apollo enrichment
 
 This skill includes specialized agents in the `agents/` subdirectory:
 
-- **signal-scorer** — Searches and ranks prospects by relevance signals
-- **mutual-mapper** — Maps social graph connections and finds warm paths
-- **enrichment-agent** — Pulls detailed profile and company data
-- **outreach-drafter** — Generates personalized messages
+- **signal-scorer** â€” Searches and ranks prospects by relevance signals
+- **mutual-mapper** â€” Maps social graph connections and finds warm paths
+- **enrichment-agent** â€” Pulls detailed profile and company data
+- **outreach-drafter** â€” Generates personalized messages
 
 ## Example Usage
 
@@ -319,3 +319,4 @@ Output: Ranked list with warm paths, voice profile summary, and channel-specific
 
 - `brand-voice` for canonical voice capture
 - `connections-optimizer` for review-first network pruning and expansion before outreach
+

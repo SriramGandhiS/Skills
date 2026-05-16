@@ -1,4 +1,4 @@
----
+﻿---
 name: python-testing
 description: Python testing strategies using pytest, TDD methodology, fixtures, mocking, parametrization, and coverage requirements.
 origin: ECC
@@ -595,20 +595,20 @@ def test_with_tmpdir(tmpdir):
 
 ```
 tests/
-├── conftest.py                 # Shared fixtures
-├── __init__.py
-├── unit/                       # Unit tests
-│   ├── __init__.py
-│   ├── test_models.py
-│   ├── test_utils.py
-│   └── test_services.py
-├── integration/                # Integration tests
-│   ├── __init__.py
-│   ├── test_api.py
-│   └── test_database.py
-└── e2e/                        # End-to-end tests
-    ├── __init__.py
-    └── test_user_flow.py
+â”œâ”€â”€ conftest.py                 # Shared fixtures
+â”œâ”€â”€ __init__.py
+â”œâ”€â”€ unit/                       # Unit tests
+â”‚   â”œâ”€â”€ __init__.py
+â”‚   â”œâ”€â”€ test_models.py
+â”‚   â”œâ”€â”€ test_utils.py
+â”‚   â””â”€â”€ test_services.py
+â”œâ”€â”€ integration/                # Integration tests
+â”‚   â”œâ”€â”€ __init__.py
+â”‚   â”œâ”€â”€ test_api.py
+â”‚   â””â”€â”€ test_database.py
+â””â”€â”€ e2e/                        # End-to-end tests
+    â”œâ”€â”€ __init__.py
+    â””â”€â”€ test_user_flow.py
 ```
 
 ### Test Classes
@@ -814,3 +814,4 @@ pytest --pdb
 | `assert` | Simple and readable assertions |
 
 **Remember**: Tests are code too. Keep them clean, readable, and maintainable. Good tests catch bugs; great tests prevent them.
+

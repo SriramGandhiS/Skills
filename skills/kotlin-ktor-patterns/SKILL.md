@@ -1,4 +1,4 @@
----
+﻿---
 name: kotlin-ktor-patterns
 description: Ktor server patterns including routing DSL, plugins, authentication, Koin DI, kotlinx.serialization, WebSockets, and testApplication testing.
 origin: ECC
@@ -23,35 +23,35 @@ Comprehensive Ktor patterns for building robust, maintainable HTTP servers with 
 
 ```text
 src/main/kotlin/
-├── com/example/
-│   ├── Application.kt           # Entry point, module configuration
-│   ├── plugins/
-│   │   ├── Routing.kt           # Route definitions
-│   │   ├── Serialization.kt     # Content negotiation setup
-│   │   ├── Authentication.kt    # Auth configuration
-│   │   ├── StatusPages.kt       # Error handling
-│   │   └── CORS.kt              # CORS configuration
-│   ├── routes/
-│   │   ├── UserRoutes.kt        # /users endpoints
-│   │   ├── AuthRoutes.kt        # /auth endpoints
-│   │   └── HealthRoutes.kt      # /health endpoints
-│   ├── models/
-│   │   ├── User.kt              # Domain models
-│   │   └── ApiResponse.kt       # Response envelopes
-│   ├── services/
-│   │   ├── UserService.kt       # Business logic
-│   │   └── AuthService.kt       # Auth logic
-│   ├── repositories/
-│   │   ├── UserRepository.kt    # Data access interface
-│   │   └── ExposedUserRepository.kt
-│   └── di/
-│       └── AppModule.kt         # Koin modules
+â”œâ”€â”€ com/example/
+â”‚   â”œâ”€â”€ Application.kt           # Entry point, module configuration
+â”‚   â”œâ”€â”€ plugins/
+â”‚   â”‚   â”œâ”€â”€ Routing.kt           # Route definitions
+â”‚   â”‚   â”œâ”€â”€ Serialization.kt     # Content negotiation setup
+â”‚   â”‚   â”œâ”€â”€ Authentication.kt    # Auth configuration
+â”‚   â”‚   â”œâ”€â”€ StatusPages.kt       # Error handling
+â”‚   â”‚   â””â”€â”€ CORS.kt              # CORS configuration
+â”‚   â”œâ”€â”€ routes/
+â”‚   â”‚   â”œâ”€â”€ UserRoutes.kt        # /users endpoints
+â”‚   â”‚   â”œâ”€â”€ AuthRoutes.kt        # /auth endpoints
+â”‚   â”‚   â””â”€â”€ HealthRoutes.kt      # /health endpoints
+â”‚   â”œâ”€â”€ models/
+â”‚   â”‚   â”œâ”€â”€ User.kt              # Domain models
+â”‚   â”‚   â””â”€â”€ ApiResponse.kt       # Response envelopes
+â”‚   â”œâ”€â”€ services/
+â”‚   â”‚   â”œâ”€â”€ UserService.kt       # Business logic
+â”‚   â”‚   â””â”€â”€ AuthService.kt       # Auth logic
+â”‚   â”œâ”€â”€ repositories/
+â”‚   â”‚   â”œâ”€â”€ UserRepository.kt    # Data access interface
+â”‚   â”‚   â””â”€â”€ ExposedUserRepository.kt
+â”‚   â””â”€â”€ di/
+â”‚       â””â”€â”€ AppModule.kt         # Koin modules
 src/test/kotlin/
-├── com/example/
-│   ├── routes/
-│   │   └── UserRoutesTest.kt
-│   └── services/
-│       └── UserServiceTest.kt
+â”œâ”€â”€ com/example/
+â”‚   â”œâ”€â”€ routes/
+â”‚   â”‚   â””â”€â”€ UserRoutesTest.kt
+â”‚   â””â”€â”€ services/
+â”‚       â””â”€â”€ UserServiceTest.kt
 ```
 
 ### Application Entry Point
@@ -475,7 +475,7 @@ fun Application.configureWebSockets() {
     install(WebSockets) {
         pingPeriod = 15.seconds
         timeout = 15.seconds
-        maxFrameSize = 64 * 1024 // 64 KiB — increase only if your protocol requires larger frames
+        maxFrameSize = 64 * 1024 // 64 KiB â€” increase only if your protocol requires larger frames
         masking = false // Server-to-client frames are unmasked per RFC 6455; client-to-server are always masked by Ktor
     }
 }
@@ -687,3 +687,4 @@ fun Application.configureDI() {
 | `testApplication { }` | Integration testing |
 
 **Remember**: Ktor is designed around Kotlin coroutines and DSLs. Keep routes thin, push logic to services, and use Koin for dependency injection. Test with `testApplication` for full integration coverage.
+

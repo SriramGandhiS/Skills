@@ -1,4 +1,4 @@
-# tinystruct Data Handling (JSON)
+﻿# tinystruct Data Handling (JSON)
 
 ## When to Use
 
@@ -9,9 +9,9 @@ Prefer `org.tinystruct.data.component.Builder` and `Builders` for lightweight, z
 `Builder` provides a key-value interface for creating and reading JSON objects. `Builders` provides an indexed list for JSON arrays. Both integrate directly with `AbstractApplication` result handling.
 
 ### Why Builder/Builders?
-- **Zero External Dependencies** — lean and fast
-- **Native Integration** — works with framework result handling
-- **Type Safety** — `Builders` serializes properly to `[]`; `List<Builder>` can cause casting issues
+- **Zero External Dependencies** â€” lean and fast
+- **Native Integration** â€” works with framework result handling
+- **Type Safety** â€” `Builders` serializes properly to `[]`; `List<Builder>` can cause casting issues
 
 ## Examples
 
@@ -58,3 +58,4 @@ for (int i = 0; i < parsedArray.size(); i++) {
     System.out.println(item.get("name"));
 }
 ```
+

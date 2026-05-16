@@ -1,4 +1,4 @@
-# Template-Driven Forms
+﻿# Template-Driven Forms
 
 Template-driven forms use two-way data binding (`[(ngModel)]`) to update the data model in the component as changes are made in the template and vice versa. They are ideal for simple forms and use directives in the HTML template to manage form state and validation.
 
@@ -112,3 +112,4 @@ To programmatically reset the form to its pristine state (clearing values and va
 ```html
 <button type="button" (click)="userForm.reset()">Reset</button>
 ```
+

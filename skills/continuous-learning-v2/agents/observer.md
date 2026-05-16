@@ -1,4 +1,4 @@
----
+﻿---
 name: observer
 description: Background agent that analyzes session observations to detect patterns and create instincts. Uses Haiku for cost-efficiency. v2.1 adds project-scoped instincts.
 model: haiku
@@ -37,7 +37,7 @@ When a user's follow-up message corrects Claude's previous action:
 - "Actually, I meant..."
 - Immediate undo/redo patterns
 
-→ Create instinct: "When doing X, prefer Y"
+â†’ Create instinct: "When doing X, prefer Y"
 
 ### 2. Error Resolutions
 When an error is followed by a fix:
@@ -45,7 +45,7 @@ When an error is followed by a fix:
 - Next few tool calls fix it
 - Same error type resolved similarly multiple times
 
-→ Create instinct: "When encountering error X, try Y"
+â†’ Create instinct: "When encountering error X, try Y"
 
 ### 3. Repeated Workflows
 When the same sequence of tools is used multiple times:
@@ -53,7 +53,7 @@ When the same sequence of tools is used multiple times:
 - File patterns that change together
 - Time-clustered operations
 
-→ Create workflow instinct: "When doing X, follow steps Y, Z, W"
+â†’ Create workflow instinct: "When doing X, follow steps Y, Z, W"
 
 ### 4. Tool Preferences
 When certain tools are consistently preferred:
@@ -61,7 +61,7 @@ When certain tools are consistently preferred:
 - Prefers Read over Bash cat
 - Uses specific Bash commands for certain tasks
 
-→ Create instinct: "When needing X, use tool Y"
+â†’ Create instinct: "When needing X, use tool Y"
 
 ## Output
 
@@ -132,7 +132,7 @@ When creating instincts, determine scope based on these heuristics:
 | Tool workflow preferences | **global** | "Grep before Edit", "Read before Write" |
 | Git practices | **global** | "Conventional commits", "Small focused commits" |
 
-**When in doubt, default to `scope: project`** — it's safer to be project-specific and promote later than to contaminate the global space.
+**When in doubt, default to `scope: project`** â€” it's safer to be project-specific and promote later than to contaminate the global space.
 
 ## Confidence Calculation
 
@@ -147,7 +147,7 @@ Confidence adjusts over time:
 - -0.1 for each contradicting observation
 - -0.02 per week without observation (decay)
 
-## Instinct Promotion (Project → Global)
+## Instinct Promotion (Project â†’ Global)
 
 An instinct should be promoted from project-scoped to global when:
 1. The **same pattern** (by id or similar trigger) exists in **2+ different projects**
@@ -178,9 +178,9 @@ Given observations:
 ```
 
 Analysis:
-- Detected workflow: Grep → Read → Edit
+- Detected workflow: Grep â†’ Read â†’ Edit
 - Frequency: Seen 5 times this session
-- **Scope decision**: This is a general workflow pattern (not project-specific) → **global**
+- **Scope decision**: This is a general workflow pattern (not project-specific) â†’ **global**
 - Create instinct:
   - trigger: "when modifying code"
   - action: "Search with Grep, confirm with Read, then Edit"
@@ -196,3 +196,4 @@ When instincts are imported from Skill Creator (repo analysis), they have:
 - `scope: "project"` (since they come from a specific repo)
 
 These should be treated as team/project conventions with higher initial confidence (0.7+).
+

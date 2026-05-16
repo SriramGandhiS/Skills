@@ -1,4 +1,4 @@
----
+﻿---
 name: ecc-guide
 description: Guide users through ECC's current agents, skills, commands, hooks, rules, install profiles, and project onboarding by reading the live repository surface before answering.
 origin: community
@@ -187,3 +187,4 @@ Needs approval before apply: <yes/no>
 - `/skill-health`: skill quality review
 - `/skill-create`: generate a new skill from local git history
 - `/security-scan`: inspect Claude/OpenCode configuration security
+

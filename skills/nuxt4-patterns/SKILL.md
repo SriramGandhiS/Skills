@@ -1,4 +1,4 @@
----
+﻿---
 name: nuxt4-patterns
 description: Nuxt 4 app patterns for hydration safety, performance, route rules, lazy loading, and SSR-safe data fetching with useFetch and useAsyncData.
 origin: ECC
@@ -98,3 +98,4 @@ Pick route rules per route group, not globally. Marketing pages, catalogs, dashb
 - Non-critical data is lazy and has explicit loading UI
 - Route rules match the page's SEO and freshness requirements
 - Heavy interactive islands are lazy-loaded or lazily hydrated
+

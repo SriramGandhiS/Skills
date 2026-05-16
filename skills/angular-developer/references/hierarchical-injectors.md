@@ -1,4 +1,4 @@
-# Hierarchical Injectors
+﻿# Hierarchical Injectors
 
 Angular's dependency injection system is hierarchical, meaning services can be scoped to different levels of the application.
 
@@ -41,3 +41,4 @@ When providing a service at the component level:
 
 - **`providers`**: The service is available to the component, its view (template), and any **projected content** (`<ng-content>`).
 - **`viewProviders`**: The service is available to the component and its view, but **NOT** to projected content. Use this to isolate services from content passed in by consumers.
+

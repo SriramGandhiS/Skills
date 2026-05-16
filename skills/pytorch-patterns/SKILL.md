@@ -1,4 +1,4 @@
----
+﻿---
 name: pytorch-patterns
 description: PyTorch deep learning patterns and best practices for building robust, efficient, and reproducible training pipelines, model architectures, and data loading.
 origin: ECC
@@ -180,7 +180,7 @@ def evaluate(
     criterion: nn.Module,
     device: torch.device,
 ) -> tuple[float, float]:
-    model.eval()  # Always set eval mode — disables dropout, uses running BN stats
+    model.eval()  # Always set eval mode â€” disables dropout, uses running BN stats
     total_loss = 0.0
     correct = 0
     total = 0
@@ -341,7 +341,7 @@ model = torch.compile(model, mode="reduce-overhead")
 | `optimizer.zero_grad(set_to_none=True)` | More efficient gradient clearing |
 | `.to(device)` | Device-agnostic tensor/model placement |
 | `torch.amp.autocast` | Mixed precision for 2x speed |
-| `pin_memory=True` | Faster CPU→GPU data transfer |
+| `pin_memory=True` | Faster CPUâ†’GPU data transfer |
 | `torch.compile` | JIT compilation for speed (2.0+) |
 | `weights_only=True` | Secure model loading |
 | `torch.manual_seed` | Reproducible experiments |
@@ -394,3 +394,4 @@ torch.save(model.state_dict(), "model.pt")
 ```
 
 __Remember__: PyTorch code should be device-agnostic, reproducible, and memory-conscious. When in doubt, profile with `torch.profiler` and check GPU memory with `torch.cuda.memory_summary()`.
+

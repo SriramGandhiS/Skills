@@ -1,4 +1,4 @@
----
+﻿---
 name: make-interfaces-feel-better
 description: Apply concrete design-engineering details that make interfaces feel polished. Use when reviewing or improving UI spacing, typography, borders, shadows, motion, hit areas, icons, text wrapping, and interaction states.
 origin: community
@@ -149,3 +149,4 @@ Omit principles that you checked but did not change.
 - Buttons have tactile active states without exaggerated motion.
 - `transition: all` and `will-change: all` are absent.
 - Small controls still have usable hit areas.
+

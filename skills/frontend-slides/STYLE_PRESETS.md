@@ -1,4 +1,4 @@
-# Style Presets Reference
+﻿# Style Presets Reference
 
 Curated visual styles for `frontend-slides`.
 
@@ -328,3 +328,4 @@ Do not use:
 - Inter / Roboto / Arial as the visual voice unless the user explicitly wants utilitarian neutrality
 - bullet walls, tiny type, or code blocks that require scrolling
 - decorative illustrations when abstract geometry would do the job better
+

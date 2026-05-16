@@ -1,4 +1,4 @@
----
+﻿---
 name: django-patterns
 description: Django architecture patterns, REST API design with DRF, ORM best practices, caching, signals, middleware, and production-grade Django apps.
 origin: ECC
@@ -22,32 +22,32 @@ Production-grade Django architecture patterns for scalable, maintainable applica
 
 ```
 myproject/
-├── config/
-│   ├── __init__.py
-│   ├── settings/
-│   │   ├── __init__.py
-│   │   ├── base.py          # Base settings
-│   │   ├── development.py   # Dev settings
-│   │   ├── production.py    # Production settings
-│   │   └── test.py          # Test settings
-│   ├── urls.py
-│   ├── wsgi.py
-│   └── asgi.py
-├── manage.py
-└── apps/
-    ├── __init__.py
-    ├── users/
-    │   ├── __init__.py
-    │   ├── models.py
-    │   ├── views.py
-    │   ├── serializers.py
-    │   ├── urls.py
-    │   ├── permissions.py
-    │   ├── filters.py
-    │   ├── services.py
-    │   └── tests/
-    └── products/
-        └── ...
+â”œâ”€â”€ config/
+â”‚   â”œâ”€â”€ __init__.py
+â”‚   â”œâ”€â”€ settings/
+â”‚   â”‚   â”œâ”€â”€ __init__.py
+â”‚   â”‚   â”œâ”€â”€ base.py          # Base settings
+â”‚   â”‚   â”œâ”€â”€ development.py   # Dev settings
+â”‚   â”‚   â”œâ”€â”€ production.py    # Production settings
+â”‚   â”‚   â””â”€â”€ test.py          # Test settings
+â”‚   â”œâ”€â”€ urls.py
+â”‚   â”œâ”€â”€ wsgi.py
+â”‚   â””â”€â”€ asgi.py
+â”œâ”€â”€ manage.py
+â””â”€â”€ apps/
+    â”œâ”€â”€ __init__.py
+    â”œâ”€â”€ users/
+    â”‚   â”œâ”€â”€ __init__.py
+    â”‚   â”œâ”€â”€ models.py
+    â”‚   â”œâ”€â”€ views.py
+    â”‚   â”œâ”€â”€ serializers.py
+    â”‚   â”œâ”€â”€ urls.py
+    â”‚   â”œâ”€â”€ permissions.py
+    â”‚   â”œâ”€â”€ filters.py
+    â”‚   â”œâ”€â”€ services.py
+    â”‚   â””â”€â”€ tests/
+    â””â”€â”€ products/
+        â””â”€â”€ ...
 ```
 
 ### Split Settings Pattern
@@ -732,3 +732,4 @@ Product.objects.filter(stock=0).delete()
 | Middleware | Request/response processing |
 
 Remember: Django provides many shortcuts, but for production applications, structure and organization matter more than concise code. Build for maintainability.
+

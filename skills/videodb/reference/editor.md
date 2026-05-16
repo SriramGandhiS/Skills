@@ -1,6 +1,6 @@
-# Timeline Editing Guide
+﻿# Timeline Editing Guide
 
-VideoDB provides a non-destructive timeline editor for composing videos from multiple assets, adding text and image overlays, mixing audio tracks, and trimming clips — all server-side without re-encoding or local tools. Use this for trimming, combining clips, overlaying audio/music on video, adding subtitles, and layering text or images.
+VideoDB provides a non-destructive timeline editor for composing videos from multiple assets, adding text and image overlays, mixing audio tracks, and trimming clips â€” all server-side without re-encoding or local tools. Use this for trimming, combining clips, overlaying audio/music on video, adding subtitles, and layering text or images.
 
 ## Prerequisites
 
@@ -54,7 +54,7 @@ stream_url = timeline.generate_stream()
 Use `start` and `end` on a `VideoAsset` to extract a portion:
 
 ```python
-# Take only seconds 10–30 from the source video
+# Take only seconds 10â€“30 from the source video
 clip = VideoAsset(asset_id=video.id, start=10, end=30)
 timeline.add_inline(clip)
 ```
@@ -99,7 +99,7 @@ timeline.add_overlay(0, title)
 | `fontsize` | `int` | `24` | Font size in pixels |
 | `fontcolor` | `str` | `"black"` | CSS colour name or hex |
 | `fontcolor_expr` | `str` | `""` | Dynamic font colour expression |
-| `alpha` | `float` | `1.0` | Text opacity (0.0–1.0) |
+| `alpha` | `float` | `1.0` | Text opacity (0.0â€“1.0) |
 | `font` | `str` | `"Sans"` | Font family |
 | `box` | `bool` | `True` | Enable background box |
 | `boxcolor` | `str` | `"white"` | Background box colour |
@@ -339,7 +339,7 @@ timeline = Timeline(conn)
 # Main video track
 timeline.add_inline(VideoAsset(asset_id=main_video.id))
 
-# Background music — disable_other_tracks=False to mix with video audio
+# Background music â€” disable_other_tracks=False to mix with video audio
 timeline.add_overlay(
     0,
     AudioAsset(asset_id=music.id, disable_other_tracks=False, fade_in_duration=3),
@@ -441,3 +441,4 @@ The timeline editor is designed for **non-destructive linear composition**. The 
 - **Muting video audio**: Set `disable_other_tracks=True` on `AudioAsset` to mute the original video audio when overlaying music or narration.
 - **Fade limits**: `fade_in_duration` and `fade_out_duration` on `AudioAsset` have a maximum of 5 seconds.
 - **Generated media**: Use `coll.generate_music()`, `coll.generate_sound_effect()`, `coll.generate_voice()`, and `coll.generate_image()` to create media that can be used as timeline assets immediately.
+

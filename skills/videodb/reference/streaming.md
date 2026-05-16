@@ -1,4 +1,4 @@
-# Streaming & Playback
+﻿# Streaming & Playback
 
 VideoDB generates streams on-demand, returning HLS-compatible URLs that play instantly in any standard video player. No render times or export waits - edits, searches, and compositions stream immediately.
 
@@ -404,3 +404,4 @@ print(f"Event recap: {stream_url}")
 - **TextStyle defaults**: `TextStyle` defaults to `font='Sans'`, `fontcolor='black'`. Use `boxcolor` (not `bgcolor`) for background color on text.
 - **Combine with generation**: Use `coll.generate_music(prompt, duration)` and `coll.generate_image(prompt, aspect_ratio)` to create assets for timeline compositions.
 - **Playback**: `.play()` opens the stream URL in the default system browser. For programmatic use, work with the URL string directly.
+

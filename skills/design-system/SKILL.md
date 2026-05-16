@@ -1,16 +1,16 @@
----
+﻿---
 name: design-system
 description: Use this skill to generate or audit design systems, check visual consistency, and review PRs that touch styling.
 origin: ECC
 ---
 
-# Design System — Generate & Audit Visual Systems
+# Design System â€” Generate & Audit Visual Systems
 
 ## When to Use
 
 - Starting a new project that needs a design system
 - Auditing an existing codebase for visual consistency
-- Before a redesign — understand what you have
+- Before a redesign â€” understand what you have
 - When the UI looks "off" but you can't pinpoint why
 - Reviewing PRs that touch styling
 
@@ -36,16 +36,16 @@ Output: `DESIGN.md` + `design-tokens.json` + `design-preview.html`
 Scores your UI across 10 dimensions (0-10 each):
 
 ```
-1. Color consistency — are you using your palette or random hex values?
-2. Typography hierarchy — clear h1 > h2 > h3 > body > caption?
-3. Spacing rhythm — consistent scale (4px/8px/16px) or arbitrary?
-4. Component consistency — do similar elements look similar?
-5. Responsive behavior — fluid or broken at breakpoints?
-6. Dark mode — complete or half-done?
-7. Animation — purposeful or gratuitous?
-8. Accessibility — contrast ratios, focus states, touch targets
-9. Information density — cluttered or clean?
-10. Polish — hover states, transitions, loading states, empty states
+1. Color consistency â€” are you using your palette or random hex values?
+2. Typography hierarchy â€” clear h1 > h2 > h3 > body > caption?
+3. Spacing rhythm â€” consistent scale (4px/8px/16px) or arbitrary?
+4. Component consistency â€” do similar elements look similar?
+5. Responsive behavior â€” fluid or broken at breakpoints?
+6. Dark mode â€” complete or half-done?
+7. Animation â€” purposeful or gratuitous?
+8. Accessibility â€” contrast ratios, focus states, touch targets
+9. Information density â€” cluttered or clean?
+10. Polish â€” hover states, transitions, loading states, empty states
 ```
 
 Each dimension gets a score, specific examples, and a fix with exact file:line.
@@ -80,3 +80,4 @@ Identifies generic AI-generated design patterns:
 ```
 /design-system slop-check
 ```
+

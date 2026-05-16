@@ -1,4 +1,4 @@
----
+﻿---
 name: golang-testing
 description: Go testing patterns including table-driven tests, subtests, benchmarks, fuzzing, and test coverage. Follows TDD methodology with idiomatic Go practices.
 origin: ECC
@@ -21,10 +21,10 @@ Comprehensive Go testing patterns for writing reliable, maintainable tests follo
 ### The RED-GREEN-REFACTOR Cycle
 
 ```
-RED     → Write a failing test first
-GREEN   → Write minimal code to pass the test
-REFACTOR → Improve code while keeping tests green
-REPEAT  → Continue with next requirement
+RED     â†’ Write a failing test first
+GREEN   â†’ Write minimal code to pass the test
+REFACTOR â†’ Improve code while keeping tests green
+REPEAT  â†’ Continue with next requirement
 ```
 
 ### Step-by-Step TDD in Go
@@ -718,3 +718,4 @@ test:
 ```
 
 **Remember**: Tests are documentation. They show how your code is meant to be used. Write them clearly and keep them up to date.
+

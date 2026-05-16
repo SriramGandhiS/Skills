@@ -1,4 +1,4 @@
-# Route Guards
+﻿# Route Guards
 
 Route guards control whether a user can navigate to or leave a route.
 
@@ -50,3 +50,4 @@ Add them to the route configuration as an array. They execute in order.
 ## Security Note
 
 **Client-side guards are NOT a substitute for server-side security.** Always verify permissions on the server.
+

@@ -1,4 +1,4 @@
----
+﻿---
 name: laravel-tdd
 description: Test-driven development for Laravel with PHPUnit and Pest, factories, database testing, fakes, and coverage targets.
 origin: ECC
@@ -281,3 +281,4 @@ final class DashboardInertiaTest extends TestCase
 ```
 
 Prefer `assertInertia` over raw JSON assertions to keep tests aligned with Inertia responses.
+

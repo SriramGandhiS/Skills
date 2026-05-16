@@ -1,4 +1,4 @@
-# Data Resolvers
+﻿# Data Resolvers
 
 Data resolvers fetch data before a route activates, ensuring components have the necessary data upon rendering.
 
@@ -67,3 +67,4 @@ return userService
 
 - **Keep it lightweight**: Fetch only critical data.
 - **Provide feedback**: Listen to router events to show a global loading bar during navigation, as the UI stays on the old page until the resolver finishes.
+

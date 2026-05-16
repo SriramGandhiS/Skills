@@ -1,4 +1,4 @@
----
+﻿---
 name: pubmed-database
 description: Direct PubMed and NCBI E-utilities search workflows for biomedical literature, MeSH queries, PMID lookup, citation retrieval, and API-backed literature monitoring.
 origin: community
@@ -109,7 +109,6 @@ import requests
 
 BASE = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils"
 
-
 def esearch(query: str, retmax: int = 20) -> list[str]:
     params = {
         "db": "pubmed",
@@ -127,7 +126,6 @@ def esearch(query: str, retmax: int = 20) -> list[str]:
     response.raise_for_status()
     time.sleep(0.35)
     return response.json()["esearchresult"]["idlist"]
-
 
 pmids = esearch("hypertension[mh] AND randomized controlled trial[pt] AND 2024:2026[dp]")
 print(pmids)
@@ -173,3 +171,4 @@ Example:
 - [NCBI E-utilities documentation](https://www.ncbi.nlm.nih.gov/books/NBK25501/)
 - [NCBI API key guidance](https://support.nlm.nih.gov/kbArticle/?pn=KA-05317)
 - NCBI support: <eutilities@ncbi.nlm.nih.gov>
+

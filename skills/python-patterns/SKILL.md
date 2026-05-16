@@ -1,4 +1,4 @@
----
+﻿---
 name: python-patterns
 description: Pythonic idioms, PEP 8 standards, type hints, and best practices for building robust, efficient, and maintainable Python applications.
 origin: ECC
@@ -26,7 +26,6 @@ Python prioritizes readability. Code should be obvious and easy to understand.
 def get_active_users(users: list[User]) -> list[User]:
     """Return only active users from the provided list."""
     return [user for user in users if user.is_active]
-
 
 # Bad: Clever but confusing
 def get_active_users(u):
@@ -504,27 +503,27 @@ async def fetch_all(urls: list[str]) -> dict[str, str]:
 
 ```
 myproject/
-├── src/
-│   └── mypackage/
-│       ├── __init__.py
-│       ├── main.py
-│       ├── api/
-│       │   ├── __init__.py
-│       │   └── routes.py
-│       ├── models/
-│       │   ├── __init__.py
-│       │   └── user.py
-│       └── utils/
-│           ├── __init__.py
-│           └── helpers.py
-├── tests/
-│   ├── __init__.py
-│   ├── conftest.py
-│   ├── test_api.py
-│   └── test_models.py
-├── pyproject.toml
-├── README.md
-└── .gitignore
+â”œâ”€â”€ src/
+â”‚   â””â”€â”€ mypackage/
+â”‚       â”œâ”€â”€ __init__.py
+â”‚       â”œâ”€â”€ main.py
+â”‚       â”œâ”€â”€ api/
+â”‚       â”‚   â”œâ”€â”€ __init__.py
+â”‚       â”‚   â””â”€â”€ routes.py
+â”‚       â”œâ”€â”€ models/
+â”‚       â”‚   â”œâ”€â”€ __init__.py
+â”‚       â”‚   â””â”€â”€ user.py
+â”‚       â””â”€â”€ utils/
+â”‚           â”œâ”€â”€ __init__.py
+â”‚           â””â”€â”€ helpers.py
+â”œâ”€â”€ tests/
+â”‚   â”œâ”€â”€ __init__.py
+â”‚   â”œâ”€â”€ conftest.py
+â”‚   â”œâ”€â”€ test_api.py
+â”‚   â””â”€â”€ test_models.py
+â”œâ”€â”€ pyproject.toml
+â”œâ”€â”€ README.md
+â””â”€â”€ .gitignore
 ```
 
 ### Import Conventions
@@ -598,7 +597,7 @@ def read_lines(path: str) -> Iterator[str]:
 ### Avoid String Concatenation in Loops
 
 ```python
-# Bad: O(n²) due to string immutability
+# Bad: O(nÂ²) due to string immutability
 result = ""
 for item in items:
     result += str(item)
@@ -748,3 +747,4 @@ except SpecificError as e:
 ```
 
 __Remember__: Python code should be readable, explicit, and follow the principle of least surprise. When in doubt, prioritize clarity over cleverness.
+

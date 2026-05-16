@@ -1,4 +1,4 @@
----
+﻿---
 name: nestjs-patterns
 description: NestJS architecture patterns for modules, controllers, providers, DTO validation, guards, interceptors, config, and production-grade TypeScript backends.
 origin: ECC
@@ -20,31 +20,31 @@ Production-grade NestJS patterns for modular TypeScript backends.
 
 ```text
 src/
-├── app.module.ts
-├── main.ts
-├── common/
-│   ├── filters/
-│   ├── guards/
-│   ├── interceptors/
-│   └── pipes/
-├── config/
-│   ├── configuration.ts
-│   └── validation.ts
-├── modules/
-│   ├── auth/
-│   │   ├── auth.controller.ts
-│   │   ├── auth.module.ts
-│   │   ├── auth.service.ts
-│   │   ├── dto/
-│   │   ├── guards/
-│   │   └── strategies/
-│   └── users/
-│       ├── dto/
-│       ├── entities/
-│       ├── users.controller.ts
-│       ├── users.module.ts
-│       └── users.service.ts
-└── prisma/ or database/
+â”œâ”€â”€ app.module.ts
+â”œâ”€â”€ main.ts
+â”œâ”€â”€ common/
+â”‚   â”œâ”€â”€ filters/
+â”‚   â”œâ”€â”€ guards/
+â”‚   â”œâ”€â”€ interceptors/
+â”‚   â””â”€â”€ pipes/
+â”œâ”€â”€ config/
+â”‚   â”œâ”€â”€ configuration.ts
+â”‚   â””â”€â”€ validation.ts
+â”œâ”€â”€ modules/
+â”‚   â”œâ”€â”€ auth/
+â”‚   â”‚   â”œâ”€â”€ auth.controller.ts
+â”‚   â”‚   â”œâ”€â”€ auth.module.ts
+â”‚   â”‚   â”œâ”€â”€ auth.service.ts
+â”‚   â”‚   â”œâ”€â”€ dto/
+â”‚   â”‚   â”œâ”€â”€ guards/
+â”‚   â”‚   â””â”€â”€ strategies/
+â”‚   â””â”€â”€ users/
+â”‚       â”œâ”€â”€ dto/
+â”‚       â”œâ”€â”€ entities/
+â”‚       â”œâ”€â”€ users.controller.ts
+â”‚       â”œâ”€â”€ users.module.ts
+â”‚       â””â”€â”€ users.service.ts
+â””â”€â”€ prisma/ or database/
 ```
 
 - Keep domain code inside feature modules.
@@ -228,3 +228,4 @@ describe('UsersController', () => {
 - Prefer async provider initialization for DB/cache clients with explicit health checks.
 - Keep background jobs and event consumers in their own modules, not inside HTTP controllers.
 - Make rate limiting, auth, and audit logging explicit for public endpoints.
+

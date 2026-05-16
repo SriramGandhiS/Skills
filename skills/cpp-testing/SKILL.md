@@ -1,4 +1,4 @@
----
+﻿---
 name: cpp-testing
 description: Use only when writing/updating/fixing C++ tests, configuring GoogleTest/CTest, diagnosing failing or flaky tests, or adding coverage/sanitizers.
 origin: ECC
@@ -26,7 +26,7 @@ Agent-focused testing workflow for modern C++ (C++17/20) using GoogleTest/Google
 
 ## Core Concepts
 
-- **TDD loop**: red → green → refactor (tests first, minimal fix, then cleanups).
+- **TDD loop**: red â†’ green â†’ refactor (tests first, minimal fix, then cleanups).
 - **Isolation**: prefer dependency injection and fakes over global state.
 - **Test layout**: `tests/unit`, `tests/integration`, `tests/testdata`.
 - **Mocks vs fakes**: mock for interactions, fake for stateful behavior.
@@ -35,7 +35,7 @@ Agent-focused testing workflow for modern C++ (C++17/20) using GoogleTest/Google
 
 ## TDD Workflow
 
-Follow the RED → GREEN → REFACTOR loop:
+Follow the RED â†’ GREEN â†’ REFACTOR loop:
 
 1. **RED**: write a failing test that captures the new behavior
 2. **GREEN**: implement the smallest change to pass
@@ -289,13 +289,13 @@ endif()
 
 ### Common Pitfalls
 
-- **Using fixed temp paths** → Generate unique temp directories per test and clean them.
-- **Relying on wall clock time** → Inject a clock or use fake time sources.
-- **Flaky concurrency tests** → Use condition variables/latches and bounded waits.
-- **Hidden global state** → Reset global state in fixtures or remove globals.
-- **Over-mocking** → Prefer fakes for stateful behavior and only mock interactions.
-- **Missing sanitizer runs** → Add ASan/UBSan/TSan builds in CI.
-- **Coverage on debug-only builds** → Ensure coverage targets use consistent flags.
+- **Using fixed temp paths** â†’ Generate unique temp directories per test and clean them.
+- **Relying on wall clock time** â†’ Inject a clock or use fake time sources.
+- **Flaky concurrency tests** â†’ Use condition variables/latches and bounded waits.
+- **Hidden global state** â†’ Reset global state in fixtures or remove globals.
+- **Over-mocking** â†’ Prefer fakes for stateful behavior and only mock interactions.
+- **Missing sanitizer runs** â†’ Add ASan/UBSan/TSan builds in CI.
+- **Coverage on debug-only builds** â†’ Ensure coverage targets use consistent flags.
 
 ## Optional Appendix: Fuzzing / Property Testing
 
@@ -322,3 +322,4 @@ extern "C" int LLVMFuzzerTestOneInput(const uint8_t *data, size_t size) {
 
 - **Catch2**: header-only, expressive matchers
 - **doctest**: lightweight, minimal compile overhead
+

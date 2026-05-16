@@ -1,4 +1,4 @@
----
+﻿---
 name: kotlin-testing
 description: Kotlin testing patterns with Kotest, MockK, coroutine testing, property-based testing, and Kover coverage. Follows TDD methodology with idiomatic Kotlin practices.
 origin: ECC
@@ -18,13 +18,13 @@ Comprehensive Kotlin testing patterns for writing reliable, maintainable tests f
 
 ## How It Works
 
-1. **Identify target code** — Find the function, class, or module to test
-2. **Write a Kotest spec** — Choose a spec style (StringSpec, FunSpec, BehaviorSpec) matching the test scope
-3. **Mock dependencies** — Use MockK to isolate the unit under test
-4. **Run tests (RED)** — Verify the test fails with the expected error
-5. **Implement code (GREEN)** — Write minimal code to pass the test
-6. **Refactor** — Improve the implementation while keeping tests green
-7. **Check coverage** — Run `./gradlew koverHtmlReport` and verify 80%+ coverage
+1. **Identify target code** â€” Find the function, class, or module to test
+2. **Write a Kotest spec** â€” Choose a spec style (StringSpec, FunSpec, BehaviorSpec) matching the test scope
+3. **Mock dependencies** â€” Use MockK to isolate the unit under test
+4. **Run tests (RED)** â€” Verify the test fails with the expected error
+5. **Implement code (GREEN)** â€” Write minimal code to pass the test
+6. **Refactor** â€” Improve the implementation while keeping tests green
+7. **Check coverage** â€” Run `./gradlew koverHtmlReport` and verify 80%+ coverage
 
 ## Examples
 
@@ -32,11 +32,11 @@ The following sections contain detailed, runnable examples for each testing patt
 
 ### Quick Reference
 
-- **Kotest specs** — StringSpec, FunSpec, BehaviorSpec, DescribeSpec examples in [Kotest Spec Styles](#kotest-spec-styles)
-- **Mocking** — MockK setup, coroutine mocking, argument capture in [MockK](#mockk)
-- **TDD walkthrough** — Full RED/GREEN/REFACTOR cycle with EmailValidator in [TDD Workflow for Kotlin](#tdd-workflow-for-kotlin)
-- **Coverage** — Kover configuration and commands in [Kover Coverage](#kover-coverage)
-- **Ktor testing** — testApplication setup in [Ktor testApplication Testing](#ktor-testapplication-testing)
+- **Kotest specs** â€” StringSpec, FunSpec, BehaviorSpec, DescribeSpec examples in [Kotest Spec Styles](#kotest-spec-styles)
+- **Mocking** â€” MockK setup, coroutine mocking, argument capture in [MockK](#mockk)
+- **TDD walkthrough** â€” Full RED/GREEN/REFACTOR cycle with EmailValidator in [TDD Workflow for Kotlin](#tdd-workflow-for-kotlin)
+- **Coverage** â€” Kover configuration and commands in [Kover Coverage](#kover-coverage)
+- **Ktor testing** â€” testApplication setup in [Ktor testApplication Testing](#ktor-testapplication-testing)
 
 ### TDD Workflow for Kotlin
 
@@ -822,3 +822,4 @@ test:
 ```
 
 **Remember**: Tests are documentation. They show how your Kotlin code is meant to be used. Use Kotest's expressive matchers to make tests readable and MockK for clean mocking of dependencies.
+

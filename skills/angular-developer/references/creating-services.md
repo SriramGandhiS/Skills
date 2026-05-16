@@ -1,4 +1,4 @@
-# Creating and Using Services
+﻿# Creating and Using Services
 
 Services in Angular are reusable pieces of code that handle data fetching, business logic, or state management that multiple components or other services need to access.
 
@@ -95,3 +95,4 @@ While `providedIn: 'root'` covers most scenarios, you may sometimes need:
 - **Component-specific instances**: If a component needs its own isolated instance of a service, provide it directly in the component's `@Component({ providers: [MyService] })` array.
 - **Factory providers**: For dynamic creation.
 - **Value providers**: For injecting configuration objects.
+

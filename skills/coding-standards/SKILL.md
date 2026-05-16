@@ -1,4 +1,4 @@
----
+﻿---
 name: coding-standards
 description: Baseline cross-project coding conventions for naming, readability, immutability, and code-quality review. Use detailed frontend or backend skills for framework-specific patterns.
 origin: ECC
@@ -336,21 +336,21 @@ export async function POST(request: Request) {
 
 ```
 src/
-├── app/                    # Next.js App Router
-│   ├── api/               # API routes
-│   ├── markets/           # Market pages
-│   └── (auth)/           # Auth pages (route groups)
-├── components/            # React components
-│   ├── ui/               # Generic UI components
-│   ├── forms/            # Form components
-│   └── layouts/          # Layout components
-├── hooks/                # Custom React hooks
-├── lib/                  # Utilities and configs
-│   ├── api/             # API clients
-│   ├── utils/           # Helper functions
-│   └── constants/       # Constants
-├── types/                # TypeScript types
-└── styles/              # Global styles
+â”œâ”€â”€ app/                    # Next.js App Router
+â”‚   â”œâ”€â”€ api/               # API routes
+â”‚   â”œâ”€â”€ markets/           # Market pages
+â”‚   â””â”€â”€ (auth)/           # Auth pages (route groups)
+â”œâ”€â”€ components/            # React components
+â”‚   â”œâ”€â”€ ui/               # Generic UI components
+â”‚   â”œâ”€â”€ forms/            # Form components
+â”‚   â””â”€â”€ layouts/          # Layout components
+â”œâ”€â”€ hooks/                # Custom React hooks
+â”œâ”€â”€ lib/                  # Utilities and configs
+â”‚   â”œâ”€â”€ api/             # API clients
+â”‚   â”œâ”€â”€ utils/           # Helper functions
+â”‚   â””â”€â”€ constants/       # Constants
+â”œâ”€â”€ types/                # TypeScript types
+â””â”€â”€ styles/              # Global styles
 ```
 
 ### File Naming
@@ -386,18 +386,18 @@ name = user.name
 
 ```typescript
 /**
- * Searches markets using semantic similarity.
+- Searches markets using semantic similarity.
  *
- * @param query - Natural language search query
- * @param limit - Maximum number of results (default: 10)
- * @returns Array of markets sorted by similarity score
- * @throws {Error} If OpenAI API fails or Redis unavailable
+- @param query - Natural language search query
+- @param limit - Maximum number of results (default: 10)
+- @returns Array of markets sorted by similarity score
+- @throws {Error} If OpenAI API fails or Redis unavailable
  *
- * @example
- * ```typescript
- * const results = await searchMarkets('election', 5)
- * console.log(results[0].name) // "Trump vs Biden"
- * ```
+- @example
+- ```typescript
+- const results = await searchMarkets('election', 5)
+- console.log(results[0].name) // "Trump vs Biden"
+- ```
  */
 export async function searchMarkets(
   query: string,
@@ -547,3 +547,4 @@ setTimeout(callback, DEBOUNCE_DELAY_MS)
 ```
 
 **Remember**: Code quality is not negotiable. Clear, maintainable code enables rapid development and confident refactoring.
+

@@ -1,4 +1,4 @@
----
+﻿---
 name: hookify-rules
 description: This skill should be used when the user asks to create a hookify rule, write a hook rule, configure hookify, add a hookify rule, or needs guidance on hookify rule syntax and patterns.
 ---
@@ -92,8 +92,8 @@ Match user prompt content for workflow enforcement.
 - `|` OR operator
 
 ### Common Pitfalls
-- **Too broad**: `log` matches "login", "dialog" — use `console\.log\(`
-- **Too specific**: `rm -rf /tmp` — use `rm\s+-rf`
+- **Too broad**: `log` matches "login", "dialog" â€” use `console\.log\(`
+- **Too specific**: `rm -rf /tmp` â€” use `rm\s+-rf`
 - **YAML escaping**: Use unquoted patterns; quoted strings need `\\s`
 
 ### Testing
@@ -126,3 +126,4 @@ pattern: dangerous_command
 ---
 Warning message here
 ```
+

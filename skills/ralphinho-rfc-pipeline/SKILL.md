@@ -1,4 +1,4 @@
----
+﻿---
 name: ralphinho-rfc-pipeline
 description: RFC-driven multi-agent DAG execution pattern with quality gates, merge queues, and work unit orchestration.
 origin: ECC
@@ -65,3 +65,4 @@ If a unit stalls:
 - unit scorecards
 - dependency graph snapshot
 - integration risk summary
+

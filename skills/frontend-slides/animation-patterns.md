@@ -1,4 +1,4 @@
-# Animation Patterns Reference
+﻿# Animation Patterns Reference
 
 Use this reference when generating presentations. Match animations to the intended feeling.
 
@@ -65,7 +65,7 @@ Use this reference when generating presentations. Match animations to the intend
 ## Background Effects
 
 ```css
-/* Gradient Mesh — layered radial gradients for depth */
+/* Gradient Mesh â€” layered radial gradients for depth */
 .gradient-bg {
     background:
         radial-gradient(ellipse at 20% 80%, rgba(120, 0, 255, 0.3) 0%, transparent 50%),
@@ -73,12 +73,12 @@ Use this reference when generating presentations. Match animations to the intend
         var(--bg-primary);
 }
 
-/* Noise Texture — inline SVG for grain */
+/* Noise Texture â€” inline SVG for grain */
 .noise-bg {
     background-image: url("data:image/svg+xml,..."); /* Inline SVG noise */
 }
 
-/* Grid Pattern — subtle structural lines */
+/* Grid Pattern â€” subtle structural lines */
 .grid-bg {
     background-image:
         linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
@@ -90,7 +90,7 @@ Use this reference when generating presentations. Match animations to the intend
 ## Interactive Effects
 
 ```javascript
-/* 3D Tilt on Hover — adds depth to cards/panels */
+/* 3D Tilt on Hover â€” adds depth to cards/panels */
 class TiltEffect {
     constructor(element) {
         this.element = element;
@@ -120,3 +120,4 @@ class TiltEffect {
 | Scroll snap not working | Ensure `scroll-snap-type: y mandatory` on html; each slide needs `scroll-snap-align: start` |
 | Mobile issues | Disable heavy effects at 768px breakpoint; test touch events; reduce particle count |
 | Performance issues | Use `will-change` sparingly; prefer `transform`/`opacity` animations; throttle scroll handlers |
+

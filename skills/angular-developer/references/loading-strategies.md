@@ -1,4 +1,4 @@
-# Route Loading Strategies
+﻿# Route Loading Strategies
 
 Angular supports two main strategies for loading routes and components to balance initial load time and navigation responsiveness.
 
@@ -59,3 +59,4 @@ Loader functions run within the **injection context** of the current route. This
 
 - Use **Eager Loading** for the primary landing pages.
 - Use **Lazy Loading** for all other feature areas to keep the initial bundle small.
+

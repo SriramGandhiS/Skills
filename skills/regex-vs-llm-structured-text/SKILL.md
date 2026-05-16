@@ -1,6 +1,6 @@
----
+﻿---
 name: regex-vs-llm-structured-text
-description: Decision framework for choosing between regex and LLM when parsing structured text — start with regex, add LLM only for low-confidence edge cases.
+description: Decision framework for choosing between regex and LLM when parsing structured text â€” start with regex, add LLM only for low-confidence edge cases.
 origin: ECC
 ---
 
@@ -19,29 +19,29 @@ A practical decision framework for parsing structured text (quizzes, forms, invo
 
 ```
 Is the text format consistent and repeating?
-├── Yes (>90% follows a pattern) → Start with Regex
-│   ├── Regex handles 95%+ → Done, no LLM needed
-│   └── Regex handles <95% → Add LLM for edge cases only
-└── No (free-form, highly variable) → Use LLM directly
+â”œâ”€â”€ Yes (>90% follows a pattern) â†’ Start with Regex
+â”‚   â”œâ”€â”€ Regex handles 95%+ â†’ Done, no LLM needed
+â”‚   â””â”€â”€ Regex handles <95% â†’ Add LLM for edge cases only
+â””â”€â”€ No (free-form, highly variable) â†’ Use LLM directly
 ```
 
 ## Architecture Pattern
 
 ```
 Source Text
-    │
-    ▼
-[Regex Parser] ─── Extracts structure (95-98% accuracy)
-    │
-    ▼
-[Text Cleaner] ─── Removes noise (markers, page numbers, artifacts)
-    │
-    ▼
-[Confidence Scorer] ─── Flags low-confidence extractions
-    │
-    ├── High confidence (≥0.95) → Direct output
-    │
-    └── Low confidence (<0.95) → [LLM Validator] → Output
+    â”‚
+    â–¼
+[Regex Parser] â”€â”€â”€ Extracts structure (95-98% accuracy)
+    â”‚
+    â–¼
+[Text Cleaner] â”€â”€â”€ Removes noise (markers, page numbers, artifacts)
+    â”‚
+    â–¼
+[Confidence Scorer] â”€â”€â”€ Flags low-confidence extractions
+    â”‚
+    â”œâ”€â”€ High confidence (â‰¥0.95) â†’ Direct output
+    â”‚
+    â””â”€â”€ Low confidence (<0.95) â†’ [LLM Validator] â†’ Output
 ```
 
 ## Implementation
@@ -196,11 +196,11 @@ From a production quiz parsing pipeline (410 items):
 
 ## Best Practices
 
-- **Start with regex** — even imperfect regex gives you a baseline to improve
+- **Start with regex** â€” even imperfect regex gives you a baseline to improve
 - **Use confidence scoring** to programmatically identify what needs LLM help
 - **Use the cheapest LLM** for validation (Haiku-class models are sufficient)
-- **Never mutate** parsed items — return new instances from cleaning/validation steps
-- **TDD works well** for parsers — write tests for known patterns first, then edge cases
+- **Never mutate** parsed items â€” return new instances from cleaning/validation steps
+- **TDD works well** for parsers â€” write tests for known patterns first, then edge cases
 - **Log metrics** (regex success rate, LLM call count) to track pipeline health
 
 ## Anti-Patterns to Avoid
@@ -218,3 +218,4 @@ From a production quiz parsing pipeline (410 items):
 - Invoice/receipt processing
 - Document structure parsing (headers, sections, tables)
 - Any structured text with repeating patterns where cost matters
+

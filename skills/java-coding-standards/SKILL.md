@@ -1,4 +1,4 @@
----
+﻿---
 name: java-coding-standards
 description: "Java coding standards for Spring Boot and Quarkus services: naming, immutability, Optional usage, streams, exceptions, generics, CDI, reactive patterns, and project layout. Automatically applies framework-specific conventions."
 origin: ECC
@@ -23,9 +23,9 @@ Standards for readable, maintainable Java (17+) code in Spring Boot and Quarkus 
 
 Before applying standards, determine the framework from the build file:
 
-- Build file contains `quarkus` → apply **[QUARKUS]** conventions
-- Build file contains `spring-boot` → apply **[SPRING]** conventions
-- Neither detected → apply shared conventions only
+- Build file contains `quarkus` â†’ apply **[QUARKUS]** conventions
+- Build file contains `spring-boot` â†’ apply **[SPRING]** conventions
+- Neither detected â†’ apply shared conventions only
 
 ## Core Principles
 
@@ -142,7 +142,7 @@ public class MarketService {
   }
 }
 
-// PASS: [QUARKUS] Package-private field injection (acceptable in Quarkus — avoids proxy issues)
+// PASS: [QUARKUS] Package-private field injection (acceptable in Quarkus â€” avoids proxy issues)
 @ApplicationScoped
 public class MarketService {
   @Inject
@@ -154,7 +154,7 @@ public class MarketService {
 private MarketRepository marketRepository; // use constructor injection
 
 // FAIL: [QUARKUS] @Singleton when interception or lazy init is needed
-@Singleton // non-proxyable — use @ApplicationScoped instead
+@Singleton // non-proxyable â€” use @ApplicationScoped instead
 public class MarketService {}
 ```
 
@@ -179,14 +179,14 @@ public Uni<OrderConfirmation> placeOrder(OrderRequest req) {
 
 // FAIL: Blocking call inside a Uni/Multi pipeline
 public Uni<Market> find(String slug) {
-  Market m = Market.find("slug", slug).firstResult(); // BLOCKING — breaks event loop
+  Market m = Market.find("slug", slug).firstResult(); // BLOCKING â€” breaks event loop
   return Uni.createFrom().item(m);
 }
 
 // FAIL: Subscribing more than once to a shared Uni
 Uni<Market> shared = fetchMarket(slug);
 shared.subscribe().with(m -> log(m));
-shared.subscribe().with(m -> cache(m)); // double subscribe — use Uni.memoize()
+shared.subscribe().with(m -> cache(m)); // double subscribe â€” use Uni.memoize()
 ```
 
 ## Exceptions
@@ -281,14 +281,14 @@ src/test/java/... (mirrors main)
 
 ## Code Smells to Avoid
 
-- Long parameter lists → use DTO/builders
-- Deep nesting → early returns
-- Magic numbers → named constants
-- Static mutable state → prefer dependency injection
-- Silent catch blocks → log and act or rethrow
-- **[QUARKUS]**: `@Singleton` where `@ApplicationScoped` is intended — breaks proxying and interception
-- **[QUARKUS]**: Mixing `quarkus-resteasy-reactive` and `quarkus-resteasy` (classic) — pick one stack
-- **[QUARKUS]**: Panache active-record + repository pattern in the same bounded context — pick one
+- Long parameter lists â†’ use DTO/builders
+- Deep nesting â†’ early returns
+- Magic numbers â†’ named constants
+- Static mutable state â†’ prefer dependency injection
+- Silent catch blocks â†’ log and act or rethrow
+- **[QUARKUS]**: `@Singleton` where `@ApplicationScoped` is intended â€” breaks proxying and interception
+- **[QUARKUS]**: Mixing `quarkus-resteasy-reactive` and `quarkus-resteasy` (classic) â€” pick one stack
+- **[QUARKUS]**: Panache active-record + repository pattern in the same bounded context â€” pick one
 
 ## Logging
 
@@ -349,7 +349,7 @@ int maxPageSize;
 - Plain JUnit 5 + Mockito for unit tests (no `@QuarkusTest`)
 - `@QuarkusTest` reserved for CDI integration tests
 - `@InjectMock` for replacing CDI beans in integration tests
-- Dev Services for database/Kafka/Redis — avoid manual Testcontainers setup when Dev Services suffice
+- Dev Services for database/Kafka/Redis â€” avoid manual Testcontainers setup when Dev Services suffice
 - `@QuarkusTestResource` for custom external service lifecycle
 
 ```java
@@ -381,3 +381,4 @@ class MarketServiceTest {
 ```
 
 **Remember**: Keep code intentional, typed, and observable. Optimize for maintainability over micro-optimizations unless proven necessary.
+

@@ -1,4 +1,4 @@
----
+﻿---
 name: agent-eval
 description: Head-to-head comparison of coding agents (Claude Code, Aider, Codex, etc.) on custom tasks with pass rate, cost, time, and consistency metrics
 origin: ECC
@@ -7,7 +7,7 @@ tools: Read, Write, Edit, Bash, Grep, Glob
 
 # Agent Eval Skill
 
-A lightweight CLI tool for comparing coding agents head-to-head on reproducible tasks. Every "which coding agent is best?" comparison runs on vibes — this tool systematizes it.
+A lightweight CLI tool for comparing coding agents head-to-head on reproducible tasks. Every "which coding agent is best?" comparison runs on vibes â€” this tool systematizes it.
 
 ## When to Activate
 
@@ -46,7 +46,7 @@ commit: "abc1234"  # pin to specific commit for reproducibility
 
 ### Git Worktree Isolation
 
-Each agent run gets its own git worktree — no Docker required. This provides reproducibility isolation so agents cannot interfere with each other or corrupt the base repo.
+Each agent run gets its own git worktree â€” no Docker required. This provides reproducibility isolation so agents cannot interfere with each other or corrupt the base repo.
 
 ### Metrics Collected
 
@@ -92,12 +92,12 @@ agent-eval report --format table
 
 ```
 Task: add-retry-logic (3 runs each)
-┌──────────────┬───────────┬────────┬────────┬─────────────┐
-│ Agent        │ Pass Rate │ Cost   │ Time   │ Consistency │
-├──────────────┼───────────┼────────┼────────┼─────────────┤
-│ claude-code  │ 3/3       │ $0.12  │ 45s    │ 100%        │
-│ aider        │ 2/3       │ $0.08  │ 38s    │  67%        │
-└──────────────┴───────────┴────────┴────────┴─────────────┘
+â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
+â”‚ Agent        â”‚ Pass Rate â”‚ Cost   â”‚ Time   â”‚ Consistency â”‚
+â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¼â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¼â”€â”€â”€â”€â”€â”€â”€â”€â”¼â”€â”€â”€â”€â”€â”€â”€â”€â”¼â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤
+â”‚ claude-code  â”‚ 3/3       â”‚ $0.12  â”‚ 45s    â”‚ 100%        â”‚
+â”‚ aider        â”‚ 2/3       â”‚ $0.08  â”‚ 38s    â”‚  67%        â”‚
+â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”´â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”´â”€â”€â”€â”€â”€â”€â”€â”€â”´â”€â”€â”€â”€â”€â”€â”€â”€â”´â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
 ```
 
 ## Judge Types
@@ -134,12 +134,13 @@ judge:
 ## Best Practices
 
 - **Start with 3-5 tasks** that represent your real workload, not toy examples
-- **Run at least 3 trials** per agent to capture variance — agents are non-deterministic
+- **Run at least 3 trials** per agent to capture variance â€” agents are non-deterministic
 - **Pin the commit** in your task YAML so results are reproducible across days/weeks
-- **Include at least one deterministic judge** (tests, build) per task — LLM judges add noise
-- **Track cost alongside pass rate** — a 95% agent at 10x the cost may not be the right choice
-- **Version your task definitions** — they are test fixtures, treat them as code
+- **Include at least one deterministic judge** (tests, build) per task â€” LLM judges add noise
+- **Track cost alongside pass rate** â€” a 95% agent at 10x the cost may not be the right choice
+- **Version your task definitions** â€” they are test fixtures, treat them as code
 
 ## Links
 
 - Repository: [github.com/joaquinhuigomez/agent-eval](https://github.com/joaquinhuigomez/agent-eval)
+

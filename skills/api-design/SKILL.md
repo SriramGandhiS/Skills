@@ -1,4 +1,4 @@
----
+﻿---
 name: api-design
 description: REST API design patterns including resource naming, status codes, pagination, filtering, error responses, versioning, and rate limiting for production APIs.
 origin: ECC
@@ -73,23 +73,23 @@ POST   /api/v1/auth/refresh
 
 ```
 # Success
-200 OK                    — GET, PUT, PATCH (with response body)
-201 Created               — POST (include Location header)
-204 No Content            — DELETE, PUT (no response body)
+200 OK                    â€” GET, PUT, PATCH (with response body)
+201 Created               â€” POST (include Location header)
+204 No Content            â€” DELETE, PUT (no response body)
 
 # Client Errors
-400 Bad Request           — Validation failure, malformed JSON
-401 Unauthorized          — Missing or invalid authentication
-403 Forbidden             — Authenticated but not authorized
-404 Not Found             — Resource doesn't exist
-409 Conflict              — Duplicate entry, state conflict
-422 Unprocessable Entity  — Semantically invalid (valid JSON, bad data)
-429 Too Many Requests     — Rate limit exceeded
+400 Bad Request           â€” Validation failure, malformed JSON
+401 Unauthorized          â€” Missing or invalid authentication
+403 Forbidden             â€” Authenticated but not authorized
+404 Not Found             â€” Resource doesn't exist
+409 Conflict              â€” Duplicate entry, state conflict
+422 Unprocessable Entity  â€” Semantically invalid (valid JSON, bad data)
+429 Too Many Requests     â€” Rate limit exceeded
 
 # Server Errors
-500 Internal Server Error — Unexpected failure (never expose details)
-502 Bad Gateway           — Upstream service failed
-503 Service Unavailable   — Temporary overload, include Retry-After
+500 Internal Server Error â€” Unexpected failure (never expose details)
+502 Bad Gateway           â€” Upstream service failed
+503 Service Unavailable   â€” Temporary overload, include Retry-After
 ```
 
 ### Common Mistakes
@@ -379,7 +379,7 @@ Accept: application/vnd.myapp.v2+json
 ### Versioning Strategy
 
 ```
-1. Start with /api/v1/ — don't version until you need to
+1. Start with /api/v1/ â€” don't version until you need to
 2. Maintain at most 2 active versions (current + previous)
 3. Deprecation timeline:
    - Announce deprecation (6 months notice for public APIs)
@@ -521,3 +521,4 @@ Before shipping a new endpoint:
 - [ ] Response does not leak internal details (stack traces, SQL errors)
 - [ ] Consistent naming with existing endpoints (camelCase vs snake_case)
 - [ ] Documented (OpenAPI/Swagger spec updated)
+

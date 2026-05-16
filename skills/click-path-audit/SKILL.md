@@ -1,10 +1,10 @@
----
+﻿---
 name: click-path-audit
 description: "Trace every user-facing button/touchpoint through its full state change sequence to find bugs where functions individually work but cancel each other out, produce wrong final state, or leave the UI in an inconsistent state. Use when: systematic debugging found no bugs but users report broken buttons, or after any major refactor touching shared state stores."
 origin: community
 ---
 
-# /click-path-audit — Behavioural Flow Audit
+# /click-path-audit â€” Behavioural Flow Audit
 
 Find bugs that static code reading misses: state interaction side effects, race conditions between sequential calls, and handlers that silently undo each other.
 
@@ -20,7 +20,7 @@ But it does NOT check:
 - **Does function B silently undo what function A just did?**
 - **Does shared state (Zustand/Redux/context) have side effects that cancel the intended action?**
 
-Real example: A "New Email" button called `setComposeMode(true)` then `selectThread(null)`. Both worked individually. But `selectThread` had a side effect resetting `composeMode: false`. The button did nothing. 54 bugs were found by systematic debugging — this one was missed.
+Real example: A "New Email" button called `setComposeMode(true)` then `selectThread(null)`. Both worked individually. But `selectThread` had a side effect resetting `composeMode: false`. The button did nothing. 54 bugs were found by systematic debugging â€” this one was missed.
 
 ---
 
@@ -54,7 +54,7 @@ For each Zustand store / React context in scope:
   For each action/setter:
     - What fields does it set?
     - Does it RESET other fields as a side effect?
-    - Document: actionName → {sets: [...], resets: [...]}
+    - Document: actionName â†’ {sets: [...], resets: [...]}
 ```
 
 This is the critical reference. The "New Email" bug was invisible without knowing that `selectThread` resets `composeMode`.
@@ -62,14 +62,14 @@ This is the critical reference. The "New Email" bug was invisible without knowin
 **Output format:**
 ```
 STORE: emailStore
-  setComposeMode(bool) → sets: {composeMode}
-  selectThread(thread|null) → sets: {selectedThread, selectedThreadId, messages, drafts, selectedDraft, summary} RESETS: {composeMode: false, composeData: null, redraftOpen: false}
-  setDraftGenerating(bool) → sets: {draftGenerating}
+  setComposeMode(bool) â†’ sets: {composeMode}
+  selectThread(thread|null) â†’ sets: {selectedThread, selectedThreadId, messages, drafts, selectedDraft, summary} RESETS: {composeMode: false, composeData: null, redraftOpen: false}
+  setDraftGenerating(bool) â†’ sets: {draftGenerating}
   ...
 
 DANGEROUS RESETS (actions that clear state they don't own):
-  selectThread → resets composeMode (owned by setComposeMode)
-  reset → resets everything
+  selectThread â†’ resets composeMode (owned by setComposeMode)
+  reset â†’ resets everything
 ```
 
 ### Step 2: Audit Each Touchpoint
@@ -78,13 +78,13 @@ For each button/toggle/form submit in the target area:
 
 ```
 TOUCHPOINT: [Button label] in [Component:line]
-  HANDLER: onClick → {
-    call 1: functionA() → sets {X: true}
-    call 2: functionB() → sets {Y: null} RESETS {X: false}  ← CONFLICT
+  HANDLER: onClick â†’ {
+    call 1: functionA() â†’ sets {X: true}
+    call 2: functionB() â†’ sets {Y: null} RESETS {X: false}  â† CONFLICT
   }
   EXPECTED: User sees [description of what button label promises]
   ACTUAL: X is false because functionB reset it
-  VERDICT: BUG — [description]
+  VERDICT: BUG â€” [description]
 ```
 
 **Check each of these bug patterns:**
@@ -112,7 +112,7 @@ handler() {
 const [count, setCount] = useState(0)
 const handler = useCallback(() => {
   setCount(count + 1)  // captures stale count
-  setCount(count + 1)  // same stale count — increments by 1, not 2
+  setCount(count + 1)  // same stale count â€” increments by 1, not 2
 }, [count])
 ```
 
@@ -149,8 +149,8 @@ CLICK-PATH-NNN: [severity: CRITICAL/HIGH/MEDIUM/LOW]
   Pattern: [Sequential Undo / Async Race / Stale Closure / Missing Transition / Dead Path / useEffect Interference]
   Handler: [function name or inline]
   Trace:
-    1. [call] → sets {field: value}
-    2. [call] → RESETS {field: value}  ← CONFLICT
+    1. [call] â†’ sets {field: value}
+    2. [call] â†’ RESETS {field: value}  â† CONFLICT
   Expected: [what user expects]
   Actual: [what actually happens]
   Fix: [specific fix]
@@ -164,12 +164,12 @@ This audit is expensive. Scope it appropriately:
 
 - **Full app audit:** Use when launching or after major refactor. Launch parallel agents per page.
 - **Single page audit:** Use after building a new page or after a user reports a broken button.
-- **Store-focused audit:** Use after modifying a Zustand store — audit all consumers of the changed actions.
+- **Store-focused audit:** Use after modifying a Zustand store â€” audit all consumers of the changed actions.
 
 ### Recommended agent split for full app:
 
 ```
-Agent 1: Map ALL state stores (Step 1) — this is shared context for all other agents
+Agent 1: Map ALL state stores (Step 1) â€” this is shared context for all other agents
 Agent 2: Dashboard (Tasks, Notes, Journal, Ideas)
 Agent 3: Chat (DanteChatColumn, JustChatPage)
 Agent 4: Emails (ThreadList, DraftArea, EmailsPage)
@@ -189,13 +189,13 @@ Agent 1 MUST complete first. Its output is input for all other agents.
 - After modifying any Zustand store action (check all callers)
 - After any refactor that touches shared state
 - Before release, on critical user flows
-- When a button "does nothing" — this is THE tool for that
+- When a button "does nothing" â€” this is THE tool for that
 
 ## When NOT to Use
 
-- For API-level bugs (wrong response shape, missing endpoint) — use systematic-debugging
-- For styling/layout issues — visual inspection
-- For performance issues — profiling tools
+- For API-level bugs (wrong response shape, missing endpoint) â€” use systematic-debugging
+- For styling/layout issues â€” visual inspection
+- For performance issues â€” profiling tools
 
 ---
 
@@ -203,7 +203,7 @@ Agent 1 MUST complete first. Its output is input for all other agents.
 
 - Run AFTER `/superpowers:systematic-debugging` (which finds the other 54 bug types)
 - Run BEFORE `/superpowers:verification-before-completion` (which verifies fixes work)
-- Feeds into `/superpowers:test-driven-development` — every bug found here should get a test
+- Feeds into `/superpowers:test-driven-development` â€” every bug found here should get a test
 
 ---
 
@@ -212,8 +212,8 @@ Agent 1 MUST complete first. Its output is input for all other agents.
 **ThreadList.tsx "New Email" button:**
 ```
 onClick={() => {
-  useEmailStore.getState().setComposeMode(true)   // ✓ sets composeMode = true
-  useEmailStore.getState().selectThread(null)      // ✗ RESETS composeMode = false
+  useEmailStore.getState().setComposeMode(true)   // âœ“ sets composeMode = true
+  useEmailStore.getState().selectThread(null)      // âœ— RESETS composeMode = false
 }}
 ```
 
@@ -226,7 +226,7 @@ selectThread: (thread) => set({
   drafts: [],
   selectedDraft: null,
   summary: null,
-  composeMode: false,     // ← THIS silent reset killed the button
+  composeMode: false,     // â† THIS silent reset killed the button
   composeData: null,
   redraftOpen: false,
 })
@@ -241,4 +241,5 @@ selectThread: (thread) => set({
 **Click-path audit catches it** because:
 - Step 1 maps `selectThread` resets `composeMode`
 - Step 2 traces the handler: call 1 sets true, call 2 resets false
-- Verdict: Sequential Undo — final state contradicts button intent
+- Verdict: Sequential Undo â€” final state contradicts button intent
+

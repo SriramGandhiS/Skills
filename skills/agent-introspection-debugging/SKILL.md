@@ -1,4 +1,4 @@
----
+﻿---
 name: agent-introspection-debugging
 description: Structured self-debugging workflow for AI agent failures using capture, diagnosis, contained recovery, and introspection reports.
 origin: ECC
@@ -68,7 +68,7 @@ Match the failure to a known pattern before changing anything.
 | `ECONNREFUSED` / timeout | service unavailable or wrong port | verify service health, URL, and port assumptions |
 | `429` / quota exhaustion | retry storm or missing backoff | count repeated calls and inspect retry spacing |
 | file missing after write / stale diff | race, wrong cwd, or branch drift | re-check path, cwd, git status, and actual file existence |
-| tests still failing after “fix” | wrong hypothesis | isolate the exact failing test and re-derive the bug |
+| tests still failing after â€œfixâ€ | wrong hypothesis | isolate the exact failing test and re-derive the bug |
 
 Diagnosis questions:
 - is this a logic failure, state failure, environment failure, or policy failure?
@@ -88,7 +88,7 @@ Safe recovery actions:
 - switch from speculative reasoning to direct observation
 - escalate to a human when the failure is high-risk or externally blocked
 
-Do not claim unsupported auto-healing actions like “reset agent state” or “update harness config” unless you are actually doing them through real tools in the current environment.
+Do not claim unsupported auto-healing actions like â€œreset agent stateâ€ or â€œupdate harness configâ€ unless you are actually doing them through real tools in the current environment.
 
 Contained recovery checklist:
 
@@ -144,10 +144,11 @@ Good pattern:
 
 ## Output Standard
 
-When this skill is active, do not end with “I fixed it” alone.
+When this skill is active, do not end with â€œI fixed itâ€ alone.
 
 Always provide:
 - the failure pattern
 - the root-cause hypothesis
 - the recovery action
 - the evidence that the situation is now better or still blocked
+

@@ -1,4 +1,4 @@
----
+﻿---
 name: context-budget
 description: Audits Claude Code context window consumption across agents, skills, MCP servers, and rules. Identifies bloat, redundant components, and produces prioritized token-savings recommendations.
 origin: ECC
@@ -23,14 +23,14 @@ Analyze token overhead across every loaded component in a Claude Code session an
 Scan all component directories and estimate token consumption:
 
 **Agents** (`agents/*.md`)
-- Count lines and tokens per file (words × 1.3)
+- Count lines and tokens per file (words Ã— 1.3)
 - Extract `description` frontmatter length
 - Flag: files >200 lines (heavy), description >30 words (bloated frontmatter)
 
 **Skills** (`skills/*/SKILL.md`)
 - Count tokens per SKILL.md
 - Flag: files >400 lines
-- Check for duplicate copies in `.agents/skills/` — skip identical copies to avoid double-counting
+- Check for duplicate copies in `.agents/skills/` â€” skip identical copies to avoid double-counting
 
 **Rules** (`rules/**/*.md`)
 - Count tokens per file
@@ -60,11 +60,11 @@ Sort every component into a bucket:
 
 Identify the following problem patterns:
 
-- **Bloated agent descriptions** — description >30 words in frontmatter loads into every Task tool invocation
-- **Heavy agents** — files >200 lines inflate Task tool context on every spawn
-- **Redundant components** — skills that duplicate agent logic, rules that duplicate CLAUDE.md
-- **MCP over-subscription** — >10 servers, or servers wrapping CLI tools available for free
-- **CLAUDE.md bloat** — verbose explanations, outdated sections, instructions that should be rules
+- **Bloated agent descriptions** â€” description >30 words in frontmatter loads into every Task tool invocation
+- **Heavy agents** â€” files >200 lines inflate Task tool context on every spawn
+- **Redundant components** â€” skills that duplicate agent logic, rules that duplicate CLAUDE.md
+- **MCP over-subscription** â€” >10 servers, or servers wrapping CLI tools available for free
+- **CLAUDE.md bloat** â€” verbose explanations, outdated sections, instructions that should be rules
 
 ### Phase 4: Report
 
@@ -72,30 +72,30 @@ Produce the context budget report:
 
 ```
 Context Budget Report
-═══════════════════════════════════════
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 
 Total estimated overhead: ~XX,XXX tokens
 Context model: Claude Sonnet (200K window)
 Effective available context: ~XXX,XXX tokens (XX%)
 
 Component Breakdown:
-┌─────────────────┬────────┬───────────┐
-│ Component       │ Count  │ Tokens    │
-├─────────────────┼────────┼───────────┤
-│ Agents          │ N      │ ~X,XXX    │
-│ Skills          │ N      │ ~X,XXX    │
-│ Rules           │ N      │ ~X,XXX    │
-│ MCP tools       │ N      │ ~XX,XXX   │
-│ CLAUDE.md       │ N      │ ~X,XXX    │
-└─────────────────┴────────┴───────────┘
+â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
+â”‚ Component       â”‚ Count  â”‚ Tokens    â”‚
+â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¼â”€â”€â”€â”€â”€â”€â”€â”€â”¼â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤
+â”‚ Agents          â”‚ N      â”‚ ~X,XXX    â”‚
+â”‚ Skills          â”‚ N      â”‚ ~X,XXX    â”‚
+â”‚ Rules           â”‚ N      â”‚ ~X,XXX    â”‚
+â”‚ MCP tools       â”‚ N      â”‚ ~XX,XXX   â”‚
+â”‚ CLAUDE.md       â”‚ N      â”‚ ~X,XXX    â”‚
+â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”´â”€â”€â”€â”€â”€â”€â”€â”€â”´â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
 
 WARNING: Issues Found (N):
 [ranked by token savings]
 
 Top 3 Optimizations:
-1. [action] → save ~X,XXX tokens
-2. [action] → save ~X,XXX tokens
-3. [action] → save ~X,XXX tokens
+1. [action] â†’ save ~X,XXX tokens
+2. [action] â†’ save ~X,XXX tokens
+3. [action] â†’ save ~X,XXX tokens
 
 Potential savings: ~XX,XXX tokens (XX% of current overhead)
 ```
@@ -107,9 +107,9 @@ In verbose mode, additionally output per-file token counts, line-by-line breakdo
 **Basic audit**
 ```
 User: /context-budget
-Skill: Scans setup → 16 agents (12,400 tokens), 28 skills (6,200), 87 MCP tools (43,500), 2 CLAUDE.md (1,200)
+Skill: Scans setup â†’ 16 agents (12,400 tokens), 28 skills (6,200), 87 MCP tools (43,500), 2 CLAUDE.md (1,200)
        Flags: 3 heavy agents, 14 MCP servers (3 CLI-replaceable)
-       Top saving: remove 3 MCP servers → -27,500 tokens (47% overhead reduction)
+       Top saving: remove 3 MCP servers â†’ -27,500 tokens (47% overhead reduction)
 ```
 
 **Verbose mode**
@@ -122,14 +122,15 @@ Skill: Full report + per-file breakdown showing planner.md (213 lines, 1,840 tok
 **Pre-expansion check**
 ```
 User: I want to add 5 more MCP servers, do I have room?
-Skill: Current overhead 33% → adding 5 servers (~50 tools) would add ~25,000 tokens → pushes to 45% overhead
+Skill: Current overhead 33% â†’ adding 5 servers (~50 tools) would add ~25,000 tokens â†’ pushes to 45% overhead
        Recommendation: remove 2 CLI-replaceable servers first to stay under 40%
 ```
 
 ## Best Practices
 
-- **Token estimation**: use `words × 1.3` for prose, `chars / 4` for code-heavy files
+- **Token estimation**: use `words Ã— 1.3` for prose, `chars / 4` for code-heavy files
 - **MCP is the biggest lever**: each tool schema costs ~500 tokens; a 30-tool server costs more than all your skills combined
 - **Agent descriptions are loaded always**: even if the agent is never invoked, its description field is present in every Task tool context
 - **Verbose mode for debugging**: use when you need to pinpoint the exact files driving overhead, not for regular audits
 - **Audit after changes**: run after adding any agent, skill, or MCP server to catch creep early
+

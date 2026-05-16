@@ -1,4 +1,4 @@
----
+﻿---
 name: literature-review
 description: Systematic literature-review workflow for academic, biomedical, technical, and scientific topics, including search planning, source screening, synthesis, citation checks, and evidence logging.
 origin: community
@@ -190,3 +190,4 @@ Databases: <list>
 - Do not claim systematic-review rigor without a reproducible protocol.
 - Do not use a single database for a broad claim unless the scope is explicitly
   limited to that database.
+

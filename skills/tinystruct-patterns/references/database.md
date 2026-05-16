@@ -1,4 +1,4 @@
-# tinystruct Database Persistence
+﻿# tinystruct Database Persistence
 
 ## When to Use
 
@@ -94,6 +94,7 @@ Table filtered = user.find(
 ## Important Rules
 
 1. **File Placement**: The mapping XML **must** mirror the POJO's package path under `src/main/resources/`.
-2. **Naming**: Table names are singularized for class names (`users` → `User`). Underscored columns become camelCase fields (`created_at` → `createdAt`).
+2. **Naming**: Table names are singularized for class names (`users` â†’ `User`). Underscored columns become camelCase fields (`created_at` â†’ `createdAt`).
 3. **Setters**: Use `setFieldAsXxx` methods (e.g., `setFieldAsString`) in setters to sync state with the internal field map.
 4. **Id Field**: The primary key field in Java is always named `Id` (inherited from `AbstractData`).
+

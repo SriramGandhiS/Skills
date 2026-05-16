@@ -1,4 +1,4 @@
----
+﻿---
 name: videodb
 description: See, Understand, Act on video and audio. See- ingest from local files, URLs, RTSP/live feeds, or live record desktop; return realtime context and playable stream links. Understand- extract frames, build visual/semantic/temporal indexes, and search moments with timestamps and auto-clips. Act- transcode and normalize (codec, fps, resolution, aspect ratio), perform timeline edits (subtitles, text/image overlays, branding, audio overlays, dubbing, translation), generate media assets (image, audio, video), and create real time alerts for events from live streams or desktop capture.
 origin: ECC
@@ -71,7 +71,7 @@ If the key is missing, `videodb.connect()` raises `AuthenticationError` automati
 
 Do NOT write a script file when a short inline command works.
 
-When writing inline Python (`python -c "..."`), always use properly formatted code — use semicolons to separate statements and keep it readable. For anything longer than ~3 statements, use a heredoc instead:
+When writing inline Python (`python -c "..."`), always use properly formatted code â€” use semicolons to separate statements and keep it readable. For anything longer than ~3 statements, use a heredoc instead:
 
 ```bash
 python << 'EOF'
@@ -163,7 +163,7 @@ import re
 from videodb import SearchType, IndexType, SceneExtractionType
 from videodb.exceptions import InvalidRequestError
 
-# index_scenes() has no force parameter — it raises an error if a scene
+# index_scenes() has no force parameter â€” it raises an error if a scene
 # index already exists. Extract the existing index ID from the error.
 try:
     scene_index_id = video.index_scenes(
@@ -285,7 +285,7 @@ except InvalidRequestError as e:
 | Search finds no matches | `InvalidRequestError: No results found` | Catch the exception and treat as empty results (`shots = []`) |
 | Reframe times out | Blocks indefinitely on long videos | Use `start`/`end` to limit segment, or pass `callback_url` for async |
 | Negative timestamps on Timeline | Silently produces broken stream | Always validate `start >= 0` before creating `VideoAsset` |
-| `generate_video()` / `create_collection()` fails | `Operation not allowed` or `maximum limit` | Plan-gated features — inform the user about plan limits |
+| `generate_video()` / `create_collection()` fails | `Operation not allowed` or `maximum limit` | Plan-gated features â€” inform the user about plan limits |
 
 ## Examples
 
@@ -354,7 +354,7 @@ Reference documentation is in the `reference/` directory adjacent to this SKILL.
 - [reference/capture-reference.md](reference/capture-reference.md) - Capture SDK and WebSocket events
 - [reference/use-cases.md](reference/use-cases.md) - Common video processing patterns and examples
 
-**Do not use ffmpeg, moviepy, or local encoding tools** when VideoDB supports the operation. The following are all handled server-side by VideoDB — trimming, combining clips, overlaying audio or music, adding subtitles, text/image overlays, transcoding, resolution changes, aspect-ratio conversion, resizing for platform requirements, transcription, and media generation. Only fall back to local tools for operations listed under Limitations in reference/editor.md (transitions, speed changes, crop/zoom, colour grading, volume mixing).
+**Do not use ffmpeg, moviepy, or local encoding tools** when VideoDB supports the operation. The following are all handled server-side by VideoDB â€” trimming, combining clips, overlaying audio or music, adding subtitles, text/image overlays, transcoding, resolution changes, aspect-ratio conversion, resizing for platform requirements, transcription, and media generation. Only fall back to local tools for operations listed under Limitations in reference/editor.md (transitions, speed changes, crop/zoom, colour grading, volume mixing).
 
 ### When to use what
 
@@ -362,7 +362,7 @@ Reference documentation is in the `reference/` directory adjacent to this SKILL.
 |---------|-----------------|
 | Platform rejects video aspect ratio or resolution | `video.reframe()` or `conn.transcode()` with `VideoConfig` |
 | Need to resize video for Twitter/Instagram/TikTok | `video.reframe(target="vertical")` or `target="square"` |
-| Need to change resolution (e.g. 1080p → 720p) | `conn.transcode()` with `VideoConfig(resolution=720)` |
+| Need to change resolution (e.g. 1080p â†’ 720p) | `conn.transcode()` with `VideoConfig(resolution=720)` |
 | Need to overlay audio/music on video | `AudioAsset` on a `Timeline` |
 | Need to add subtitles | `video.add_subtitle()` or `CaptionAsset` |
 | Need to combine/trim clips | `VideoAsset` on a `Timeline` |
@@ -372,3 +372,4 @@ Reference documentation is in the `reference/` directory adjacent to this SKILL.
 
 Reference material for this skill is vendored locally under `skills/videodb/reference/`.
 Use the local copies above instead of following external repository links at runtime.
+
