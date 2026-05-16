@@ -89,4 +89,3 @@ You can use `<style>` elements directly in a component's template. View encapsul
 ## External Styles
 
 Using `<link>` or `@import` in CSS is treated as external styles. **External styles are not affected by emulated view encapsulation.**
-

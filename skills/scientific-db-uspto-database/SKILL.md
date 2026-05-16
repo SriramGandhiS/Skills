@@ -175,4 +175,3 @@ For final writeups, separate:
 - [PatentSearch API reference](https://search.patentsview.org/docs/docs/Search%20API/SearchAPIReference/)
 - [PatentSearch API updates](https://search.patentsview.org/docs/)
 - [TSDR API bulk download FAQ](https://developer.uspto.gov/faq/tsdr-api-bulk-download)
-

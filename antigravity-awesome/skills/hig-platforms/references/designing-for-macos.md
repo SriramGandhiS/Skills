@@ -28,9 +28,6 @@ As you begin designing your app or game for macOS, start by understanding the fu
 
   * [Dock menus](https://developer.apple.com/design/human-interface-guidelines/dock-menus)
 
-
-
-
 ## [Best practices](https://developer.apple.com/design/human-interface-guidelines/designing-for-macos#Best-practices)
 
 Great Mac experiences integrate the platform and device capabilities that people value most. To help your design feel at home in macOS, prioritize the following ways to incorporate these features and capabilities.
@@ -46,9 +43,6 @@ Great Mac experiences integrate the platform and device capabilities that people
   * Handle keyboard shortcuts to help people accelerate actions and use keyboard-only work styles.
 
   * Support personalization, letting people customize toolbars, configure windows to display the views they use most, and choose the colors and fonts they want to see in the interface.
-
-
-
 
 ## [Resources](https://developer.apple.com/design/human-interface-guidelines/designing-for-macos#Resources)
 

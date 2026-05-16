@@ -58,4 +58,3 @@ PROSPECT #1 (Score: 94)
 - Do not fabricate profile data. Only report what you can verify from search results.
 - If a person appears in multiple sources, merge into one entry.
 - Flag low-confidence scores where data is sparse.
-

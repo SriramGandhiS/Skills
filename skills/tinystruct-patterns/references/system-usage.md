@@ -95,4 +95,3 @@ EventDispatcher.getInstance().registerHandler(MyEvent.class, event -> {
     CompletableFuture.runAsync(() -> doHeavyWork(event.getPayload()));
 });
 ```
-

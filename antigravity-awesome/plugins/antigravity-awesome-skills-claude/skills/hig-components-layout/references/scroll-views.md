@@ -30,9 +30,6 @@ The scroll view itself has no appearance, but it can display a translucent _scro
 
   * People select something and scroll to a new location before acting on the selection. In this case, scroll until the selection is in view before performing the operation.
 
-
-
-
 In all cases, automatically scroll the content only as much as necessary to help people retain context. For example, if part of a selection is visible, you don’t need to scroll the entire selection into view.
 
 **If you support zoom, set appropriate maximum and minimum scale values.** For example, zooming in on text until a single character fills the screen doesn’t make sense in most situations.
@@ -46,9 +43,6 @@ There are two styles of scroll edge effect: soft and hard.
   * Use a [`soft`](https://developer.apple.com/documentation/SwiftUI/ScrollEdgeEffectStyle/soft) edge effect in most cases, especially in iOS and iPadOS, to provide a subtle transition that works well for toolbars and interactive elements like buttons.
 
   * Use a [`hard`](https://developer.apple.com/documentation/SwiftUI/ScrollEdgeEffectStyle/hard) edge effect primarily in macOS for a stronger, more opaque boundary that’s ideal for interactive text, backless controls, or pinned table headers that need extra clarity.
-
-
-
 
 **Only use a scroll edge effect when a scroll view is adjacent to floating interface elements.** Scroll edge effects aren’t decorative. They don’t block or darken like overlays; they exist to clarify where controls and content meet.
 

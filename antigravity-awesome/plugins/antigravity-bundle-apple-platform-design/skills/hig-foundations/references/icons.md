@@ -218,9 +218,6 @@ To create a custom document icon, you can supply any combination of background f
 
   * 16x16 px @1x, 32x32 px @2x
 
-
-
-
 **If a familiar object can convey a document’s type or its connection with your app, consider creating a center image that depicts it.** Design a simple, unambiguous image that’s clear and recognizable at every size. The center image measures half the size of the overall document icon canvas. For example, to create a center image for a 32x32 px document icon, use an image canvas that measures 16x16 px. You can provide center images in the following sizes:
 
   * 256x256 px @1x, 512x512 px @2x
@@ -230,9 +227,6 @@ To create a custom document icon, you can supply any combination of background f
   * 32x32 px @1x, 64x64 px @2x
 
   * 16x16 px @1x, 32x32 px @2x
-
-
-
 
 **Define a margin that measures about 10% of the image canvas and keep most of the image within it.** Although parts of the image can extend into this margin for optical alignment, it’s best when the image occupies about 80% of the image canvas. For example, most of the center image in a 256x256 px canvas would fit in an area that measures 205x205 px.
 

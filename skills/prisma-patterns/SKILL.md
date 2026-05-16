@@ -369,4 +369,3 @@ await prisma.post.deleteMany({ where: { authorId: userId } });
 - `postgres-patterns` â€” PostgreSQL-level indexing and connection tuning
 - `database-migrations` â€” multi-step migration planning for production
 - `backend-patterns` â€” general API and service layer design
-

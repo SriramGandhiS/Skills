@@ -151,4 +151,3 @@ Always provide:
 - the root-cause hypothesis
 - the recovery action
 - the evidence that the situation is now better or still blocked
-

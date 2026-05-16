@@ -40,4 +40,3 @@ Skill file to analyze:
 ---
 {skill_content}
 ---
-

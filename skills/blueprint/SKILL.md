@@ -103,4 +103,3 @@ If you are vendoring only this skill outside the full ECC install, copy the revi
 ## Source
 
 Inspired by antbotlab/blueprint â€” upstream project and reference design.
-

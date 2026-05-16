@@ -180,4 +180,3 @@ Result: 1 package + 1 schema file, no custom validation logic
 - **Silent skipping**: Reporting "nothing found" when a search channel was unavailable
 - **Over-customizing**: Wrapping a library so heavily it loses its benefits
 - **Dependency bloat**: Installing a massive package for one small feature
-

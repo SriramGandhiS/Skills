@@ -102,8 +102,6 @@ Critically evaluate the existing profile like a global recruiter, high-level inv
 - **Top 5 Strategic Skills**: Prioritize skills that align with the "Mission" and "Red Thread."
 - **Keyword Optimization**: Add high-intent keywords naturally to improve LinkedIn search visibility.
 
-
-
 ### Phase 4: Engagement & Content Strategy
 
 #### 1. Content Pillars

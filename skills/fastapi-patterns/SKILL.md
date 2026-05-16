@@ -309,4 +309,3 @@ Use these examples as patterns, not as project-wide templates:
 - Skill: `python-patterns`
 - Skill: `python-testing`
 - Skill: `api-design`
-

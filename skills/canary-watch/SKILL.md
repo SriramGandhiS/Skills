@@ -105,4 +105,3 @@ Pair with:
 - `/browser-qa` for pre-deploy verification
 - Hooks: add as a PostToolUse hook on `git push` to auto-check after deploys
 - CI: run in GitHub Actions after deploy step
-

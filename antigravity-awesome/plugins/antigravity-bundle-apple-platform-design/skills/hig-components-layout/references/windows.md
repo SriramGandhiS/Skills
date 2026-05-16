@@ -16,9 +16,6 @@ Conceptually, apps use two types of windows to display content:
 
   * An _auxiliary_ window presents a specific task or area in an app. Dedicated to one experience, an auxiliary window doesn’t allow navigation to other app areas, and it typically includes a button people use to close it after completing the task.
 
-
-
-
 For guidance laying out content within a window on any platform, see [Layout](https://developer.apple.com/design/human-interface-guidelines/layout); for guidance laying out content in Apple Vision Pro space, see [Spatial layout](https://developer.apple.com/design/human-interface-guidelines/spatial-layout). For developer guidance, see [Windows](https://developer.apple.com/documentation/SwiftUI/Windows).
 
 ## [Best practices](https://developer.apple.com/design/human-interface-guidelines/windows#Best-practices)
@@ -45,13 +42,8 @@ Windows present in one of two ways depending on a person’s choice in Multitask
 
   * **Windowed.** People can freely resize app windows. Multiple windows can be onscreen at once, and people can reposition them and bring them to the front. The system remembers window size and placement even when an app is closed.
 
-
-
-
   * Full screen 
   * Windowed 
-
-
 
 ![A screenshot of the Notes app in full screen on iPad, with an open document titled Nature Walks. The app interface fills the entire screen, with no visible border to the window.](https://docs-assets.developer.apple.com/published/5daa697ab73d7e08de1e4fa78a56bfcb/windows-ipad-notes-fullscreen%402x.png)
 
@@ -86,9 +78,6 @@ A macOS window can have one of three states:
   * **Key.** Also called the _active window_ , the key window accepts people’s input. There can be only one key window onscreen at a time. Although the front app’s main window is usually the key window, another window — such as a panel floating above the main window — might be key instead. People typically click a window to make it key; when people click an app’s Dock icon to bring all of that app’s windows forward, only the most recently accessed window becomes key.
 
   * **Inactive.** A window that’s not in the foreground is an inactive window.
-
-
-
 
 The system gives main, key, and inactive windows different appearances to help people visually identify them. For example, the key window uses color in the title bar options for closing, minimizing, and zooming; inactive windows and main windows that aren’t key use gray in these options. Also, inactive windows don’t use [vibrancy](https://developer.apple.com/design/human-interface-guidelines/materials) (an effect that can pull color into a window from the content underneath it), which makes them appear subdued and seem visually farther away than the main and key windows.
 

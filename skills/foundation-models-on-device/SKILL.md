@@ -241,4 +241,3 @@ var body: some View {
 - AI-assisted features that must work offline
 - Streaming UI that progressively shows generated content
 - Domain-specific AI actions via tool calling (search, compute, lookup)
-

@@ -96,14 +96,12 @@ def benchmark_hnsw_parameters(
 
     return results
 
-
 def calculate_recall(predictions: np.ndarray, ground_truth: np.ndarray, k: int) -> float:
     """Calculate recall@k."""
     correct = 0
     for pred, truth in zip(predictions, ground_truth):
         correct += len(set(pred[:k]) & set(truth[:k]))
     return correct / (len(predictions) * k)
-
 
 def recommend_hnsw_params(
     num_vectors: int,
@@ -229,7 +227,6 @@ class VectorQuantizer:
 
         return packed
 
-
 def estimate_memory_usage(
     num_vectors: int,
     dimensions: int,
@@ -349,7 +346,6 @@ def create_optimized_collection(
         optimizers_config=optimizer_configs[optimize_for]
     )
 
-
 def tune_search_parameters(
     client: QdrantClient,
     collection_name: str,
@@ -406,7 +402,6 @@ class SearchMetrics:
     recall: float
     qps: float
 
-
 class VectorSearchMonitor:
     """Monitor vector search performance."""
 
@@ -459,7 +454,6 @@ class VectorSearchMonitor:
             total += k
 
         return correct / total
-
 
 def profile_index_build(
     build_fn,

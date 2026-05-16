@@ -561,4 +561,3 @@ testWidgets('CartBadge shows item count', (tester) async {
 - [Freezed](https://pub.dev/packages/freezed)
 - Skill: `flutter-dart-code-review` â€” comprehensive review checklist
 - Rules: `rules/dart/` â€” coding style, patterns, security, testing, hooks
-

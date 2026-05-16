@@ -158,4 +158,3 @@ export class OpenClose {
   isOpen = signal(true);
 }
 ```
-

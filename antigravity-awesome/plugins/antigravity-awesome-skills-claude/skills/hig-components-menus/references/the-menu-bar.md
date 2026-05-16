@@ -38,9 +38,6 @@ When present in the menu bar, the following menus appear in the order listed bel
 
   * Help
 
-
-
-
 In addition, the macOS menu bar includes the Apple menu on the leading side and menu bar extras on the trailing side. See [macOS Platform considerations](https://developer.apple.com/design/human-interface-guidelines/the-menu-bar#macOS) for guidance.
 
 ## [Best practices](https://developer.apple.com/design/human-interface-guidelines/the-menu-bar#Best-practices)

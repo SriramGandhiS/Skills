@@ -59,4 +59,3 @@ Loader functions run within the **injection context** of the current route. This
 
 - Use **Eager Loading** for the primary landing pages.
 - Use **Lazy Loading** for all other feature areas to keep the initial bundle small.
-

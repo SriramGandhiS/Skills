@@ -1,5 +1,5 @@
 # [UI UX Pro Max](https://uupm.cc)
- 
+
 <p align="center">
   <a href="https://github.com/nextlevelbuilder/ui-ux-pro-max-skill/releases"><img src="https://img.shields.io/github/v/release/nextlevelbuilder/ui-ux-pro-max-skill?style=for-the-badge&color=blue" alt="GitHub Release"></a>
   <img src="https://img.shields.io/badge/reasoning_rules-161-green?style=for-the-badge" alt="161 Reasoning Rules">
@@ -18,17 +18,12 @@
 An AI skill that provides design intelligence for building professional UI/UX across multiple platforms and frameworks.
 
 ### 📊 Quick Start Catalog
-| Category | Count | Status |
-| :--- | :--- | :--- |
-| **Product Categories** | 161 | 🟢 Verified |
-| **UI Styles** | 67 | 🟢 Verified |
-| **Color Palettes** | 161 | 🟢 Verified |
-| **Font Pairings** | 57 | 🟢 Verified |
-| **Reasoning Rules** | 161 | 🟢 Verified |
+You now have access to 60 agents, 242 skills, and 75 legacy command shims.
 
 > [!TIP]
-> **GitHub Copilot Users**: Add the skill definition to your `chat.promptFiles` settings for automatic design intelligence.
-> **Elite Performance**: For low-latency local execution, see the [Hermes Setup Guide](docs/hermes-setup.md).
+> **GitHub Copilot Users**: Enable `.vscode/settings.json` with `"chat.promptFiles": true` to use our custom agents in `.github/prompts/`. Try slash commands like `/plan`, `/tdd`, or `/code-review`.
+> **Elite Performance**: For low-latency local execution, see the [Hermes Setup Guide](docs/HERMES-SETUP.md).
+> **Release Candidate**: Review the [v2.0.0-rc.1 Release Notes](docs/releases/2.0.0-rc.1/release-notes.md) for the latest surface updates.
 
 <p align="center">
   <a href="https://uupm.cc">
@@ -45,6 +40,26 @@ An AI skill that provides design intelligence for building professional UI/UX ac
   <i>Other projects</i><br>
   <a href="https://nextlevelbuilder.io">NextLevelBuilder.io</a> | <a href="https://goclaw.sh">GoClaw.sh</a> | <a href="https://claudekit.cc">ClaudeKit.cc</a> | <a href="https://tose.sh">TOSE.sh</a>
 </p>
+
+### Project Tree
+| -- agents/ # 60 specialized subagents for delegation
+
+## What's New in v2.0
+v2.0.0-rc.1: actual OSS surface: 60 agents, 242 skills, and 75 legacy command shims.
+
+### Comparison Table
+| Feature | This Repo | Other |
+| --- | --- | --- |
+| **Agents** | 60 agents | N/A |
+| **Commands** | 75 commands | N/A |
+| **Skills** | 242 skills | N/A |
+
+### Parity Table
+| Feature | Count | Source | Format | Other |
+| --- | ---: | --- | --- | --- |
+| **Agents** | 60 | Shared (AGENTS.md) | Shared (AGENTS.md) | 12 |
+| **Commands** | 75 | Shared | Instruction-based | 12 |
+| **Skills** | 242 | Shared | 10 (native format) | 37 |
 
 ## What's New in v2.0
 

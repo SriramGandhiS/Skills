@@ -123,4 +123,3 @@ Return five sections in this order:
 - The user can immediately see what is connected, what is missing, and what ECC should own next.
 - Recommendations are specific enough to implement in the repo without another discovery pass.
 - The final answer is organized around workflows, not API brands.
-

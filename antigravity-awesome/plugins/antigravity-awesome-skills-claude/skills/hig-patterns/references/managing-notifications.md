@@ -18,9 +18,6 @@ People appreciate receiving a notification for something they care about, but th
 
   * Delivery scheduling lets people choose whether to receive notification alerts immediately or in a summary that’s delivered at times they choose.
 
-
-
-
 People identify the contacts and apps that can break through a Focus to deliver notification alerts. In a Work Focus, for example, people might want to receive alerts from work colleagues, family members, and work-related apps as soon as notifications arrive. People might also want to receive all Time Sensitive notification alerts during a Focus. A _Time Sensitive_ notification contains essential information people appreciate getting right away.
 
 Important
@@ -40,9 +37,6 @@ The system defines four interruption levels for noncommunication notifications:
   * _Time Sensitive_. Information that directly impacts the person and requires their immediate attention, like an account security issue or a package delivery.
 
   * _Critical_. Urgent information about health and safety that directly impacts the person and demands their immediate attention. Critical notifications are extremely rare and typically come from governmental and public agencies or apps that help people manage their health or home.
-
-
-
 
 Notification alerts in each system-defined interruption level can behave in the following ways:
 

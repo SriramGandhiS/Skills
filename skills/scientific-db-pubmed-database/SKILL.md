@@ -171,4 +171,3 @@ Example:
 - [NCBI E-utilities documentation](https://www.ncbi.nlm.nih.gov/books/NBK25501/)
 - [NCBI API key guidance](https://support.nlm.nih.gov/kbArticle/?pn=KA-05317)
 - NCBI support: <eutilities@ncbi.nlm.nih.gov>
-

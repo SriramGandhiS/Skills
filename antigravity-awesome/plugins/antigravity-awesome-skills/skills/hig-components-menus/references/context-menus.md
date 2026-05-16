@@ -16,9 +16,6 @@ Although a context menu provides convenient access to frequently used items, it�
 
   * Using a secondary click on a Magic Trackpad in macOS or iPadOS
 
-
-
-
 ## [Best practices](https://developer.apple.com/design/human-interface-guidelines/context-menus#Best-practices)
 
 **Prioritize relevancy when choosing items to include in a context menu.** A context menu isn’t for providing advanced or rarely used items; instead, it helps people quickly access the commands they’re most likely to need in their current context. For example, the context menu for a Mail message in the Inbox includes commands for replying and moving the message, but not commands for editing message content, managing mailboxes, or filtering messages.

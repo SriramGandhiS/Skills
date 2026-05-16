@@ -166,4 +166,3 @@ Both agents agree on: [...]
 Tension: Security recommends CSP that blocks inline styles, SEO needs inline schema markup. Resolution: [...]
 Next steps: [...]
 ```
-

@@ -25,7 +25,6 @@ tools: [claude, cursor, codex, antigravity]
 - Preserve working behavior, routing, data flows, accessibility semantics, and tests while making visual changes.
 - Validate redesigned screens in the actual app across supported browsers and viewport sizes before considering the work complete.
 
-
 ## How This Works
 
 When applied to an existing project, follow this sequence:

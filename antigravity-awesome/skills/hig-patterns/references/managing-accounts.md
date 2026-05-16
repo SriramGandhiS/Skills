@@ -52,9 +52,6 @@ If people used [Sign in with Apple](https://developer.apple.com/design/human-int
 
   * After they delete their account, people need to cancel their subscription or request a refund.
 
-
-
-
 In addition to helping people understand these scenarios, provide information that describes how to cancel subscriptions and manage purchases. For guidance, see [Helping people manage their subscriptions](https://developer.apple.com/design/human-interface-guidelines/in-app-purchase#Helping-people-manage-their-subscriptions) and [Providing help with in-app purchases](https://developer.apple.com/design/human-interface-guidelines/in-app-purchase#Providing-help-with-in-app-purchases).
 
 Note

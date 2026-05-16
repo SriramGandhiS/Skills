@@ -167,4 +167,3 @@ Prefer small, reversible changes:
 - Skill: `homelab-network-setup`
 - Skill: `network-config-validation`
 - Skill: `network-interface-health`
-

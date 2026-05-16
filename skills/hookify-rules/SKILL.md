@@ -126,4 +126,3 @@ pattern: dangerous_command
 ---
 Warning message here
 ```
-

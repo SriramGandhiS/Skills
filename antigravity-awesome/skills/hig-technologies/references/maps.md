@@ -20,9 +20,6 @@ A map uses a familiar interface that supports much of the same functionality as 
 
   * The _muted_ style, by contrast, presents a desaturated version of the map. This style is great if you have a lot of information-rich content that you want to stand out against the map.
 
-
-
-
 ![A screenshot of a map on iPhone showing Coit Tower with the default emphasis style.](https://docs-assets.developer.apple.com/published/603ad0c458f464ad072a94aa10ee89bb/maps-default-appearance%402x.png)
 
 Default style
@@ -51,9 +48,6 @@ For developer guidance, see [`MKStandardMapConfiguration.EmphasisStyle`](https:/
 
   * If your custom interface can move relative to the map, use the lowest position of the custom element to determine the placement of the logo and link. For example, if your app lets people pull up a custom card from the bottom of the screen, place the Apple logo and legal link 10 points above the lowest resting position of the card.
 
-
-
-
 Note
 
 The Apple logo and legal link aren’t shown on maps that are smaller than 200x100 pixels.
@@ -69,9 +63,6 @@ The Apple logo and legal link aren’t shown on maps that are smaller than 200x1
   * _Above roads_ , the default level, places the overlay above roads but below buildings, trees, and other features. This is great for situations where you want people to have an idea of what’s below the overlay, while still clearly understanding that it’s a defined space.
 
   * _Above labels_ places the overlay above both roads and labels, hiding everything beneath it. This is useful for content that you want to be fully abstracted from the features of the map, or when you want to hide areas of the map that aren’t relevant.
-
-
-
 
 For developer guidance, see [Displaying overlays on a map](https://developer.apple.com/documentation/MapKit/displaying-overlays-on-a-map) and [`MKOverlayLevel`](https://developer.apple.com/documentation/MapKit/MKOverlayLevel).
 
@@ -101,17 +92,12 @@ The system defines several place card styles, which specify the size, appearance
 
   * The _sheet_ style displays a place card in a [sheet](https://developer.apple.com/design/human-interface-guidelines/sheets).
 
-
-
-
 For developer guidance, see [`MapItemDetailSelectionAccessoryStyle`](https://developer.apple.com/documentation/MapKit/MapItemDetailSelectionAccessoryStyle), [`MKSelectionAccessory.MapItemDetailPresentationStyle`](https://developer.apple.com/documentation/MapKit/MKSelectionAccessory/MapItemDetailPresentationStyle), and [`PlaceSelectionAccessoryStyle`](https://developer.apple.com/documentation/MapKitJS/PlaceSelectionAccessoryStyle).
 
   * Full callout 
   * Compact callout 
   * Caption 
   * Sheet 
-
-
 
 ![A screenshot of the full callout style place card in a map on iPad. The top of the place card contains a header image and the place name, category, and rating. The place card also includes a tile with operating hours; a tile with the website, phone number, and address; and a tile with an 'Open in Apple Maps' link.](https://docs-assets.developer.apple.com/published/7b978f0c16b84311c4d3f9f35d9c0fb4/maps-place-card-ipad-full%402x.png)
 
@@ -150,8 +136,6 @@ Apps connected with specific venues like shopping malls and stadiums can design 
   * Example 1 
   * Example 2 
   * Example 3 
-
-
 
 ![A screenshot of a map on iPhone, displaying the San Jose International airport and the surrounding area. A card in the bottom half of the screen displays information and options, including the airport name and buttons for sharing, closing the card, navigating to the airport, calling the airport, visiting the airport's website, and more.](https://docs-assets.developer.apple.com/published/669a55f1fc7dd419351d60b4decfbbf5/indoor-maps-example1%402x.png)
 

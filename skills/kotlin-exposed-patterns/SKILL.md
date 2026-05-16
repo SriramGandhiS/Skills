@@ -717,4 +717,3 @@ dependencies {
 | `count()` / `sum()` / `avg()` | Aggregation functions |
 
 **Remember**: Use the DSL style for simple queries and the DAO style when you need entity lifecycle management. Always use `newSuspendedTransaction` for coroutine support, and wrap database operations behind a repository interface for testability.
-

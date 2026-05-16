@@ -277,4 +277,3 @@ VStack { /* content */ }
 - Interactive controls that need visual depth and touch feedback
 - Widgets that should integrate with the system's Liquid Glass appearance
 - Morphing transitions between related UI states
-

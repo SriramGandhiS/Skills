@@ -1,4 +1,4 @@
-﻿# 📔 Unified Diary System (Agentic Context-Preserving Logger) v4.1
+# 📔 Unified Diary System (Agentic Context-Preserving Logger) v4.1
 
 ![Version](https://img.shields.io/badge/version-v4.1-blue)
 ![AI Agent](https://img.shields.io/badge/AI-Agent_Driven-orange)

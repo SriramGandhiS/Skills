@@ -70,7 +70,6 @@ Verify security implementation:
 - Validate input handling
 - Test rate limiting
 
-
 ## Examples
 
 ### Example 1: Implementing JWT Authentication
@@ -324,7 +323,6 @@ app.post('/api/auth/refresh', async (req, res) => {
 - ✅ Implement token blacklisting for logout
 ```
 
-
 ### Example 2: Input Validation and SQL Injection Prevention
 
 ```markdown
@@ -523,7 +521,6 @@ app.post('/api/comments', authenticateToken, async (req, res) => {
 - [ ] Validate file uploads (type, size, content)
 - [ ] Use allowlists, not blocklists
 ```
-
 
 ### Example 3: Rate Limiting and DDoS Protection
 

@@ -297,4 +297,3 @@ This skill does **not** cover:
 
 - **`motion-patterns`** â€” consumes tokens and springs defined here to build button, modal, stagger, page transition, and scroll patterns. Does not redefine any values.
 - **`motion-advanced`** â€” consumes tokens and springs defined here for drag, SVG, text, and gesture patterns. Adds `useAnimate` sequences and custom hooks on top of this foundation.
-

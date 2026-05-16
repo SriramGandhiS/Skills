@@ -471,7 +471,6 @@ These scripts demonstrate proper Hub saving, Trackio integration, checkpoint man
 
 **User overrides:** If user requests specific trackio configuration (custom space, run naming, grouping, or additional config), apply their preferences instead of defaults.
 
-
 This is useful for managing multiple jobs with the same configuration or keeping training scripts portable.
 
 See `references/trackio_guide.md` for complete documentation including grouping runs for experiments.

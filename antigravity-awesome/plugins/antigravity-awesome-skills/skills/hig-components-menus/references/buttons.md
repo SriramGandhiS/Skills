@@ -16,9 +16,6 @@ Versatile and highly customizable, buttons give people simple, familiar ways to 
 
   * **Role.** A system-defined role that identifies a button’s semantic meaning and can affect its appearance.
 
-
-
-
 There are also many button-like components that have distinct appearances and behaviors for specific use cases, like [toggles](https://developer.apple.com/design/human-interface-guidelines/toggles), [pop-up buttons](https://developer.apple.com/design/human-interface-guidelines/pop-up-buttons), and [segmented controls](https://developer.apple.com/design/human-interface-guidelines/segmented-controls).
 
 ## [Best practices](https://developer.apple.com/design/human-interface-guidelines/buttons#Best-practices)
@@ -62,9 +59,6 @@ A system button can have one of the following roles:
   * **Cancel.** The button cancels the current action.
 
   * **Destructive.** The button performs an action that can result in data destruction.
-
-
-
 
 A button’s role can have additional effects on its appearance. For example, a primary button uses an app’s accent color, whereas a destructive button uses the system red color.
 
@@ -196,9 +190,6 @@ Rounded rectangle| | ![A checkmark denoting availability.](https://docs-assets.d
   * When a button appears on top of a glass [window](https://developer.apple.com/design/human-interface-guidelines/windows#visionOS), use the [`thin`](https://developer.apple.com/documentation/SwiftUI/Material/thin) material as the button’s background.
 
   * When a button appears floating in space, use the [glass material](https://developer.apple.com/design/human-interface-guidelines/materials#visionOS) for its background.
-
-
-
 
 **Avoid creating a custom button that uses a white background fill and black text or icons.** The system reserves this visual style to convey the toggled state.
 

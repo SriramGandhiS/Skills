@@ -591,4 +591,3 @@ LOGGING = {
 | Updates | Keep Django and dependencies updated |
 
 Remember: Security is a process, not a product. Regularly review and update your security practices.
-

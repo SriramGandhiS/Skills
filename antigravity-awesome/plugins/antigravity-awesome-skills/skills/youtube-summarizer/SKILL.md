@@ -305,7 +305,6 @@ echo "[████████████████████] 100% - Step
 **URL:** [https://youtube.com/watch?v=VIDEO_ID]  
 **Data de Publicação:** [Date if available]
 
-
 ## 📝 Detailed Summary
 
 ### [Topic 1]
@@ -320,18 +319,15 @@ echo "[████████████████████] 100% - Step
 
 [Continued detailed analysis...]
 
-
 ## 📚 Concepts and Terminology
 
 - **[Term 1]:** [Definition and context]
 - **[Term 2]:** [Definition and context]
 
-
 ## 📌 Conclusion
 
 [Final synthesis and takeaways]
 ```
-
 
 ### **Example 2: Missing Dependency**
 
@@ -361,7 +357,6 @@ Successfully installed youtube-transcript-api-0.6.1
 ✅ Installation complete! Proceeding with video summary...
 ```
 
-
 ### **Example 4: Invalid URL**
 
 **User Input:**
@@ -381,7 +376,6 @@ Expected format examples:
 Please provide a valid YouTube video URL.
 ```
 
-
 ## 📊 Executive Summary
 
 This video provides a comprehensive introduction to the fundamental concepts of Artificial Intelligence (AI), designed for beginners and professionals who want to understand the technical foundations and practical applications of modern AI. The instructor covers everything from basic definitions to machine learning algorithms, using practical examples and visualizations to facilitate understanding.
@@ -399,10 +393,8 @@ What would you like to save?
 [████████████████████] 100% - ✓ Processing complete!
 ```
 
-
 Welcome to this comprehensive tutorial on machine learning fundamentals. In today's video, we'll explore the core concepts that power modern AI systems...
 ```
-
 
 **Version:** 1.2.0
 **Last Updated:** 2026-02-02

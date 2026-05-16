@@ -68,9 +68,6 @@ A page control can include a translucent, rounded-rectangle background appearanc
 
   * Minimal — Never displays the background. Use this style when you just want to show the position of the current page in the list and you don’t need to provide visual feedback during scrubbing.
 
-
-
-
 For developer guidance, see [`backgroundStyle`](https://developer.apple.com/documentation/UIKit/UIPageControl/backgroundStyle-swift.property).
 
 **Avoid supporting the scrubber when you use the minimal background style.** The minimal style doesn’t provide visual feedback during scrubbing. If you want to let people scrub a list of pages in your app, use the automatic or prominent background styles.

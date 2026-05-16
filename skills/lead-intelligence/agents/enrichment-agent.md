@@ -83,4 +83,3 @@ Personalization Hooks:
 - Only report verified data. Do not hallucinate company details.
 - If data is unavailable, note it as "not found" rather than guessing.
 - Prioritize recency â€” stale data older than 6 months should be flagged.
-

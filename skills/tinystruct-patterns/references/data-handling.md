@@ -58,4 +58,3 @@ for (int i = 0; i < parsedArray.size(); i++) {
     System.out.println(item.get("name"));
 }
 ```
-

@@ -1171,7 +1171,6 @@ services:
     depends_on:
       - mock-api
 
-
 # Kubernetes deployment
 ---
 apiVersion: apps/v1

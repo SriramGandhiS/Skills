@@ -223,7 +223,6 @@ List the most important changes the user needs to handle:
 
 ---
 
-
 ### When to Use This Skill
 
 Analyze Rails apps and provide upgrade assessments
@@ -386,7 +385,6 @@ After verifying the app works:
 4. Delete the `new_framework_defaults_X_Y.rb` file
 
 ---
-
 
 ### When to Use This Skill
 

@@ -50,9 +50,6 @@ Great visionOS apps and games are approachable and familiar, while offering extr
 
   * Avoid encouraging people to move too much while they’re in a fully [immersive experience](https://developer.apple.com/design/human-interface-guidelines/immersive-experiences).
 
-
-
-
 **Help people share activities with others.** When you use [SharePlay](https://developer.apple.com/design/human-interface-guidelines/shareplay#visionOS) to support shared activities, people can view the _spatial Personas_ of other participants, making it feel like everyone is together in the same space.
 
 ## [Resources](https://developer.apple.com/design/human-interface-guidelines/designing-for-visionos#Resources)

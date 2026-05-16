@@ -70,7 +70,6 @@ def reciprocal_rank_fusion(
     # Sort by fused score
     return sorted(scores.items(), key=lambda x: x[1], reverse=True)
 
-
 def linear_combination(
     vector_results: List[Tuple[str, float]],
     keyword_results: List[Tuple[str, float]],
@@ -408,7 +407,6 @@ class SearchResult:
     score: float
     source: str  # "vector", "keyword", "hybrid"
     metadata: Dict = None
-
 
 class HybridRAGPipeline:
     """Complete hybrid search pipeline for RAG."""

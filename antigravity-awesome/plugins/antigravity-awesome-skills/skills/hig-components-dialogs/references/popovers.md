@@ -49,8 +49,6 @@ You can make a popover detachable in macOS, which becomes a separate panel when 
   * Attached popover 
   * Detached popover 
 
-
-
 ![An illustration of an event in Calendar with the attached version of the event's popover next to and pointing to it.](https://docs-assets.developer.apple.com/published/ef05d3cb071e4c11209cce39b596ca99/attached-popover%402x.png)
 
 ![An illustration of an event in Calendar with the detached version of the event's popover next to it.](https://docs-assets.developer.apple.com/published/d0b16d14a582a887f385896669394ee4/detached-popover%402x.png)

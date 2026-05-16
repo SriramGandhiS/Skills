@@ -1286,7 +1286,6 @@ async def send_reaction(to: str, message_id: str, emoji: str) -> str:
         response.raise_for_status()
         return response.json()["messages"][0]["id"]
 
-
 async def remove_reaction(to: str, message_id: str) -> str:
     return await send_reaction(to, message_id, "")
 ```
@@ -1412,7 +1411,6 @@ async def send_reply_message(
         response = await client.post(url, json=payload, headers=headers)
         response.raise_for_status()
         return response.json()["messages"][0]["id"]
-
 
 async def send_with_context(
     base_payload: dict,
@@ -1609,13 +1607,11 @@ async function sendWhatsAppRequest<T>(payload: T): Promise<Record<string, unknow
 ```python
 import httpx
 
-
 class WhatsAppAPIError(Exception):
     def __init__(self, code: int, message: str, fbtrace_id: str):
         self.code = code
         self.fbtrace_id = fbtrace_id
         super().__init__(f"WhatsApp API Error [{code}]: {message}")
-
 
 async def send_whatsapp_request(payload: dict) -> dict:
     url = f"https://graph.facebook.com/v21.0/{os.environ['PHONE_NUMBER_ID']}/messages"

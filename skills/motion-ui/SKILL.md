@@ -573,4 +573,3 @@ export function Shared() {
   return <motion.div layoutId="shared" />
 }
 ```
-

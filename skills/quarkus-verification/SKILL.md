@@ -477,4 +477,3 @@ jobs:
 - Document breaking changes
 - Review security scan results
 - Validate configuration for each environment
-

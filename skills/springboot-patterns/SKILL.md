@@ -312,4 +312,3 @@ Use Springâ€™s `@Scheduled` or integrate with queues (e.g., Kafka, SQS, Rab
 - Enforce null-safety via `@NonNull` and `Optional` where appropriate
 
 **Remember**: Keep controllers thin, services focused, repositories simple, and errors handled centrally. Optimize for maintainability and testability.
-

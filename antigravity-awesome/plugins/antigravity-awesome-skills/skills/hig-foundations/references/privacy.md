@@ -42,9 +42,6 @@ Here are several examples of the things you must request permission to access:
 
   * The device’s advertising identifier, which supports app tracking
 
-
-
-
 The system provides a standard alert that lets people view each request you make. You supply copy that describes why your app needs access, and the system displays your description in the alert. People can also view the description — and update their choice — in Settings > Privacy.
 
 **Request permission only when your app clearly needs access to the data or resource.** It’s natural for people to be suspicious of a request for personal information or access to a device capability, especially if there’s no obvious need for it. Ideally, wait to request permission until people actually use an app feature that requires access. For example, you can use the [location button](https://developer.apple.com/design/human-interface-guidelines/privacy#Location-button) to give people a way to share their location after they indicate interest in a feature that needs that information.
@@ -64,8 +61,6 @@ Here are several examples of the standard system alert:
   * Example 1 
   * Example 2 
   * Example 3 
-
-
 
 ![A screenshot of a permission alert for a social media app displaying a purpose string that reads Allow Social Media to access your location? Turning on location  will allow us to show you nearby post locations. Below the string is a small map image containing the Precise On notice and below the map are three buttons in a stack. From the top, the buttons are titled Allow Once, Allow While Using App, and Don’t Allow.](https://docs-assets.developer.apple.com/published/cc8f1498cf0906c5cbba7b0a71fff511/privacy-social-media-post-location-alert%402x.png)
 
@@ -105,8 +100,6 @@ There are several prohibited custom-screen designs that will cause rejection. So
   * Imitation request 
   * Alert image 
   * Alert annotation 
-
-
 
 ![A screenshot of an app’s pre-tracking message that reads Allow tracking and get a $100 credit toward your next purchase. Below the text is an image of a dollar sign inside a circle. Below the image is a button titled Get $100 credit.](https://docs-assets.developer.apple.com/published/6000f4e89c244b12c8438aec034f7d1b/privacy-custom-messaging-prohibited-incentive%402x.png)
 
@@ -151,9 +144,6 @@ If your app has no authorization status, tapping the location button has the sam
   * Select a background color and a color for the title and glyph.
 
   * Adjust the button’s corner radius.
-
-
-
 
 To help people recognize and trust location buttons, you can’t customize the button’s other visual attributes. The system also ensures a location button remains legible by warning you about problems like low-contrast color combinations or too much translucency. In addition to fixing such problems, you’re responsible for making sure the text fits in the button — for example, button text needs to fit without truncation at all accessibility text sizes and when translated into other languages.
 

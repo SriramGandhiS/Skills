@@ -56,4 +56,3 @@ Reports are self-contained and include:
 ### Advanced (optional)
 
 For users familiar with hooks, reports also include hook promotion recommendations for steps with low compliance. This is informational â€” the main value is the compliance visibility itself.
-

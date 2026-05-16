@@ -809,4 +809,3 @@ mvn jacoco:check
 - Use `verify(mock, never())` to ensure methods are NOT called in error scenarios
 - Use `argThat()` for complex argument matching
 - Verify the order of calls when it matters: `InOrder` from Mockito
-

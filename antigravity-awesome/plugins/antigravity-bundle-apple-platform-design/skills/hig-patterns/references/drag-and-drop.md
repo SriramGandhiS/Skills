@@ -22,9 +22,6 @@ People use different interactions to perform drag and drop depending on platform
 
   * On a Mac, people can interact with a pointing device, use full keyboard access mode, or use VoiceOver to perform drag and drop.
 
-
-
-
 ## [Best practices](https://developer.apple.com/design/human-interface-guidelines/drag-and-drop#Best-practices)
 
 **As much as possible, support drag and drop throughout your app.** Most people are familiar with drag and drop and they often try it everywhere. When you use system-provided components — such as text fields and text views — you get built-in support for drag and drop.

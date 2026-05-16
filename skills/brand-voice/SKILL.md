@@ -95,4 +95,3 @@ Use this skill before or inside:
 - cold or warm outbound across X, LinkedIn, and email
 
 If another skill already has a partial voice capture section, this skill is the canonical source of truth.
-

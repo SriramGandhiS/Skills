@@ -24,9 +24,6 @@ Using in-app purchase, there are four types of content you can offer:
 
   * _Non-renewing subscriptions_ to a service or content that lasts for a limited time, like access to an in-game battle pass. People purchase a non-renewing subscription each time they want to extend their access to the service or content.
 
-
-
-
 ![A screenshot of The Coast game’s in-app purchase store on iPad, featuring a row of five boosts that include lighthouse repairs and a power surge, above a row of five in-game maps with names like World Canals, The Great Lakes, and Famous Bays.](https://docs-assets.developer.apple.com/published/842775b676356f64f170bf778ddcac4f/iap-intro%402x.png)
 
 For marketing and business guidance, see [In-app purchase](https://developer.apple.com/in-app-purchase/) and [Auto-renewable subscriptions](https://developer.apple.com/app-store/subscriptions/). For information about what you can and can’t sell in your app, including in-app purchase usage requirements and restrictions, see [App Review Guidelines](https://developer.apple.com/app-store/review/guidelines/).
@@ -97,8 +94,6 @@ Sometimes, people need help with a purchase or want to request a refund. To help
   * Metered paywall 
   * Free trial 
 
-
-
 ![A screenshot of a page titled Upgrade to Pro on a freemium app running on iPhone. The top half of the screen describes pro features and includes a close button in the top right. The bottom half of the screen shows two subscription options: the Annual Plan, which costs $29.99 per year, comes with a 1-week free trial period, and is a savings of 50% over the monthly plan; and a Monthly Plan that costs $4.99 per month. A checkmark appears next to the Annual Plan subscription. The bottom of the screen includes a Try It Free button.](https://docs-assets.developer.apple.com/published/592286b7e427356873de8605db5836f3/freemium-app%402x.png)
 
 ![A screenshot of a metered paywall app running on iPhone that offers free viewing of a limited number of articles per month. The screen includes a message indicating that the reader has reached the free article limit for the month, above a button with the title See Your Options. The bottom of the screen includes an option to sign in as an existing subscriber.](https://docs-assets.developer.apple.com/published/cd8631333afb08ae643a553aa484392d/paywall-meter%402x.png)
@@ -127,9 +122,6 @@ A simple and informative sign-up experience makes it easy for people to act on t
 
   * A way for existing subscribers to sign in or restore purchases
 
-
-
-
 For example, the Forest Explorer sign-up screen displays billing totals for monthly, biannual, and annual subscriptions in the most prominent positions. In subordinate positions, it shows breakdowns of the biannual and annual prices, so that people can compare the values and make an informed choice. The sign-up screen also contains a button that existing subscribers can use to restore their purchases.
 
 ![A screenshot of the Forest Explorer app running on iPhone. The screenshot displays a forested area as the first of three images in the top half of the screen. Below the image are three buttons with subscription options: Intrepid Pro, which costs $14.99 per month; Intrepid Pro with Ads, which costs $9.99 per month; and Redeem Code.](https://docs-assets.developer.apple.com/published/7a5f5cdc4159bb6dcc1cd7cb56a98267/iphone-upgrade%402x.png)
@@ -149,9 +141,6 @@ There are two types of offer codes you can support:
   * A _one-time use code_ is a unique code you generate in App Store Connect. People can redeem a one-time use code through a [redemption URL](https://developer.apple.com/help/app-store-connect/manage-subscriptions/set-up-offer-codes/#distribute-offer-codes) (a shareable link), within your app (when you support redemption), or by entering it in the App Store, where they’re prompted to install your app if they haven’t already. Consider using one-time use codes when your distribution is small or when you need to restrict access to a code.
 
   * A _custom code_ is a code you create, such as NEWYEAR or SPRINGSALE. People can redeem a custom code through a redemption URL or within your app (when you support redemption). Consider using a custom code when you want to support a large campaign that requires a mass distribution of codes.
-
-
-
 
 For developer guidance on implementing offer codes, see [Offer codes](https://developer.apple.com/documentation/storekit/implementing-offer-codes-in-your-app) and [Set up offer codes](https://developer.apple.com/help/app-store-connect/manage-subscriptions/set-up-offer-codes). For guidance on other types of offers, see [Providing subscription offers](https://developer.apple.com/app-store/subscriptions/#providing-subscription-offers).
 
@@ -224,9 +213,6 @@ A description that clarifies how the subscription works on Apple Watch in contra
   * Display each option in a separate button. Using one button per payment option lets people start the signup process with one tap. In this design, it’s important to lock up each button with its description so that people can see how these elements are related, especially while scrolling.
 
   * Display a list of options, followed by a button people tap to start the signup process. Using a list to display one option per row gives you a compact design that minimizes scrolling while making subscription choices easy to scan and understand. In this design, the button’s title can update to reflect the chosen option.
-
-
-
 
 ![A screenshot of an app running on Apple Watch. The screen includes two subscription buttons: $4.99 per month and $29.99 per year. A Close button appears in the top-left corner of the screen.](https://docs-assets.developer.apple.com/published/d1beed8e9dddac07a14bd09ed184a984/lock-up-option-information%402x.png)
 

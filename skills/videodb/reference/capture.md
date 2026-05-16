@@ -99,4 +99,3 @@ kill $(cat /tmp/videodb_ws_pid)
 - Graceful shutdown on SIGINT/SIGTERM
 - PID file for easy process management
 - Connection status logging
-

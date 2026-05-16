@@ -71,7 +71,6 @@ def process_850(edi_file_path):
 
             # Extract partner (N1 segment — Buyer)
 
-
                         # Extract partner (N1 segment — Buyer)                  
             partner_name = transaction.get_segment('N1')[2] if transaction.get_segment('N1') else "Unknown"                                                                             
             

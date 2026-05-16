@@ -50,9 +50,6 @@ The document launcher consists of three main parts:
 
   * A sheet that contains a file browser and optional app-specific controls
 
-
-
-
 You can customize all three parts of the document launcher. Although the system automatically displays your app name in the title card, you specify the text and functions of the card’s primary and secondary buttons. You can also create a custom background image, one or more accessory images to surround the title card, and provide some custom controls that can appear in the file browser’s toolbar.
 
 ![A screenshot of a writing app's document launcher on iPad in landscape orientation. The document launcher displays a custom background and two accessory images. At the bottom, the file browser sheet provides 3 tabs: Recents, Shared, and Browse.](https://docs-assets.developer.apple.com/published/5c3d3fe966c8f4d89b462856bec0ed24/file-management-document-launcher%402x.png)
@@ -100,9 +97,6 @@ For example, you can use a Finder Sync extension to:
   * Provide custom contextual menu items that perform file and folder management tasks, like favoriting and adding password-protection
 
   * Provide custom toolbar buttons that perform global actions, like initiating a sync operation
-
-
-
 
 **Help people avoid losing work if they turn off autosaving.** People can turn off autosaving by selecting the “Ask to keep changes when closing documents” toggle in Desktop & Dock settings. In this scenario, show that a document has unsaved changes and present a save dialog when people choose to close the document, quit your app, log out, or restart.
 

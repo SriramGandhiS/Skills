@@ -313,7 +313,6 @@ indexer_client.create_or_update_indexer(indexer)
 | references/semantic-ranking.md | Semantic configuration, captions, answers, hybrid patterns |
 | scripts/setup_vector_index.py | CLI script to create vector-enabled search index |
 
-
 ---
 
 ## Additional Azure AI Search Patterns

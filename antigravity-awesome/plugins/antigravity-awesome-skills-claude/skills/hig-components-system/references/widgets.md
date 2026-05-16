@@ -18,9 +18,6 @@ Widgets help people organize and personalize their devices by displaying timely,
 
   * At a fixed position in the Smart Stack of Apple Watch
 
-
-
-
 ## [Anatomy](https://developer.apple.com/design/human-interface-guidelines/widgets#Anatomy)
 
 Widgets come in different sizes, ranging from small accessory widgets on iPhone, iPad, and Apple Watch to system family widgets that include an extra large size on iPad, Mac, and Apple Vision Pro. Additionally, widgets adapt their appearance to the context in which they appear and respond to a person’s device customization. Consider the following aspects when you design widgets:
@@ -30,9 +27,6 @@ Widgets come in different sizes, ranging from small accessory widgets on iPhone,
   * The context — devices and system experiences — in which the widget may appear
 
   * The rendering modes and color treatment that the widget receives based on the size and context
-
-
-
 
 The WidgetKit framework provides default appearances and treatments for each widget size to fit the system experience or device where it appears. However, it’s important to consider creating a custom widget design that can provide the best experience for your content in each specific context.
 
@@ -45,8 +39,6 @@ System family widgets offer a broad range of sizes and may include one or more i
   * Large 
   * Extra large 
   * Extra large portrait 
-
-
 
 ![An image of the small Calendar widget, showing only the current date and one event.](https://docs-assets.developer.apple.com/published/0089454df2b0b32f6ca892f3131bdb01/widgets-calendar-small%402x.png)
 
@@ -77,8 +69,6 @@ Accessory widgets display a very limited amount of information because of their 
   * Accessory inline 
   * Accessory rectangular 
 
-
-
 ![An image of the circular accessory Calendar widget, showing only the time for the next event.](https://docs-assets.developer.apple.com/published/8f496e2dce59da3b8607cb07e4c4215c/widgets-accessory-calendar-circular%402x.png)
 
 ![An image of the corner accessory Calendar widget. It displays the time and title of an upcoming meeting.](https://docs-assets.developer.apple.com/published/ee66466be7aa2d47efc551196156b8fa/widgets-accessory-corner-widget-watch%402x.png)
@@ -104,9 +94,6 @@ For example, a small system widget appears differently depending on the device a
 
   * On the Home Screen of iPhone and iPad, people choose from different appearances for widgets: light, dark, clear, and tinted. In light and dark appearances, widgets have a full-color design. In a clear appearance, the system desaturates the widget and adds translucency, highlights, and the Liquid Glass material. In a tinted appearance, the system desaturates the widget and its content, then applies a person’s selected tint color.
 
-
-
-
 ![An image of the small Stocks widget on the Home Screen in the full-color appearance.](https://docs-assets.developer.apple.com/published/c001f107005e17afb9e12d48d162dcb2/widgets-stocks-default%402x.png)Full-color
 
 ![An image of the small Stocks widget on the Home Screen in the clear appearance.](https://docs-assets.developer.apple.com/published/ad7a87eea7f2be4863cf6a2e8d8a7639/widgets-stocks-clear%402x.png)Clear
@@ -115,22 +102,13 @@ For example, a small system widget appears differently depending on the device a
 
   * On Apple Vision Pro, the widget appears as a 3D object, surrounded by a frame. It takes on a full-color appearance with a glass- or paper-like coating layer that responds to lighting conditions. Additionally, people can choose a tinted appearance that applies a color from a set of system-provided color palettes.
 
-
-
-
 ![An image of the small Stocks widget on Apple Vision Pro.](https://docs-assets.developer.apple.com/published/4b4e42b658c77b47c0f40d4d433d7b3b/widgets-stocks-visionos-frame%402x.png)
 
   * On the Lock Screen of iPad, the widget takes on a monochromatic appearance without a tint color.
 
-
-
-
 ![An image of the small Stocks widget on the Lock Screen, showing the price of Apple stock.](https://docs-assets.developer.apple.com/published/58aef111a6a92a03981f5998720bca48/widgets-stocks-ipad-lock-screen%402x.png)
 
   * On the Lock Screen of iPhone in StandBy, the widget appears scaled up in size with the background removed. When the ambient light falls below a threshold, the system renders the widget with a monochromatic red tint.
-
-
-
 
 ![An image of the Stocks widget on the Lock Screen in StandBy, showing the price of Apple stock.](https://docs-assets.developer.apple.com/published/cc1129210235e90f1ee9045eaf85dfb9/widgets-stocks-standby%402x.png)StandBy
 
@@ -142,14 +120,9 @@ Similarly, a rectangular accessory widget appears as follows:
 
   * On Apple Watch, the widget can appear as a watch complication in both full-color and tinted appearances, and it can also appear in the Smart Stack.
 
-
-
-
   * iPhone Lock Screen 
   * Watch complication 
   * Smart Stack on Apple Watch 
-
-
 
 ![A rectangular accessory Calendar widget on the Lock Screen of iPhone, displaying a team meeting at 4 P.M. in a conference room.](https://docs-assets.developer.apple.com/published/1bf7a8ed9890752d8aac424f5406e978/widgets-calendar-rectangular-ios%402x.png)
 
@@ -164,9 +137,6 @@ Each appearance described above includes a [rendering mode](https://developer.ap
   * The system uses the [accented](https://developer.apple.com/documentation/WidgetKit/WidgetRenderingMode/accented) rendering mode for system family widgets across all platforms and for accessory widgets on Apple Watch. In the accented rendering mode, the system removes the background and replaces it with a tinted color effect for a tinted appearance and a Liquid Glass background for a clear appearance. Additionally, it divides the widget’s views into an accent group and a primary group, and then applies a solid color to each group.
 
   * The system uses the [vibrant](https://developer.apple.com/documentation/WidgetKit/WidgetRenderingMode/vibrant) rendering mode for widgets on the Lock Screen of iPhone and iPad, and on iPhone in StandBy in low-light conditions. It desaturates text, images, and gauges, and creates a vibrant effect by coloring your content appropriately for the Lock Screen background or a macOS desktop. Note that people can customize the Lock Screen with a tint color, and the system applies a red tint for widgets that appear on iPhone in StandBy in low-light conditions.
-
-
-
 
 The following table lists the occurrences for each rendering mode per platform:
 
@@ -331,8 +301,6 @@ On iPhone in StandBy, the system displays two small system family widgets side-b
   * Correct usage 
   * Incorrect usage 
 
-
-
 ![An image of iPhone in StandBy. It shows a Clock widget on the left that displays the time as 9:41 a.m. and a Weather widget set to Cupertino with the temperature at 70 degrees Fahrenheit on the right.](https://docs-assets.developer.apple.com/published/50672d631597de47734d331e2acfc4d7/widgets-standby-removed-background-correct%402x.png)
 
 ![A checkmark in a circle to indicate correct usage.](https://docs-assets.developer.apple.com/published/88662da92338267bb64cd2275c84e484/checkmark%402x.png)
@@ -385,9 +353,6 @@ The way a widget appears on a surface plays a big role in how a person perceives
 
   * **[Recessed](https://developer.apple.com/documentation/WidgetKit/WidgetMountingStyle/recessed) style**. On vertical surfaces — for example, on a wall — the widget can appear recessed, with content set back into the surface, creating a depth effect that gives the illusion of a cutout in the surface. Horizontal surfaces don’t use the recessed mounting style.
 
-
-
-
 By default, widgets use the elevated mounting style, because it works for horizontal and vertical surfaces.
 
 **Choose the mounting style that fits your content and the experience you want to create.** By default, visionOS widgets use the elevated mounting style, which is ideal for content that you want to stand out and feel present, like reminders, media, or glanceable data. Recessed widgets are ideal for immersive or ambient content, like weather or editorial content, and people can only place them on a vertical surface. If a style doesn’t suit your widget, you can opt out of it for each widget. If you choose to only support the recessed mounting style, people can’t place the widget on a horizontal surface. For example, a weather app might only support the recessed mounting style to give the illusion of looking out of a window for its large and extra-large system family widgets, and only support the elevated style for its small system family widget.
@@ -405,9 +370,6 @@ In addition to size and mounting style, the system applies one of two treatment 
   * The [`paper`](https://developer.apple.com/documentation/WidgetKit/WidgetTexture/paper) style creates a more grounded, print-like style that feels solid and makes the widget feel like part of its surroundings. When lighting conditions change, widgets in the paper style become darker or lighter in response.
 
   * The [`glass`](https://developer.apple.com/documentation/WidgetKit/WidgetTexture/glass) style creates a lighter, layered look that adds depth and visual separation between foreground and background elements to emphasize clarity and contrast. The foreground elements always stay bright and legible, and don’t dim or brighten, even as ambient light changes.
-
-
-
 
 **Choose the paper style for a print-like look that feels more like a real object in the room.** The entire widget responds to the ambient lighting and blends naturally into its surroundings. For example, the Music poster widget uses the paper style to display albums and playlists like framed artwork on a wall.
 

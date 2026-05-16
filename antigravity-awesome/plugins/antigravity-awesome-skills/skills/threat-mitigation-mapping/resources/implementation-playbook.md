@@ -73,7 +73,6 @@ class ControlType(Enum):
     DETECTIVE = "detective"
     CORRECTIVE = "corrective"
 
-
 class ControlLayer(Enum):
     NETWORK = "network"
     APPLICATION = "application"
@@ -82,13 +81,11 @@ class ControlLayer(Enum):
     PROCESS = "process"
     PHYSICAL = "physical"
 
-
 class ImplementationStatus(Enum):
     NOT_IMPLEMENTED = "not_implemented"
     PARTIAL = "partial"
     IMPLEMENTED = "implemented"
     VERIFIED = "verified"
-
 
 class Effectiveness(Enum):
     NONE = 0
@@ -96,7 +93,6 @@ class Effectiveness(Enum):
     MEDIUM = 2
     HIGH = 3
     VERY_HIGH = 4
-
 
 @dataclass
 class SecurityControl:
@@ -124,7 +120,6 @@ class SecurityControl:
         }
         return self.effectiveness.value * status_multiplier[self.status]
 
-
 @dataclass
 class Threat:
     id: str
@@ -134,7 +129,6 @@ class Threat:
     impact: str  # Critical, High, Medium, Low
     likelihood: str
     risk_score: float
-
 
 @dataclass
 class MitigationMapping:
@@ -162,7 +156,6 @@ class MitigationMapping:
         """Check if multiple control types are present."""
         types = set(c.control_type for c in self.controls if c.status != ImplementationStatus.NOT_IMPLEMENTED)
         return len(types) >= 2
-
 
 @dataclass
 class MitigationPlan:
@@ -631,7 +624,6 @@ class ControlTest:
     test_function: Callable[[], bool]
     expected_result: bool
     description: str
-
 
 class ControlTester:
     """Test control effectiveness."""

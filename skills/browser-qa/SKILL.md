@@ -85,4 +85,3 @@ Works with any browser MCP:
 - Direct Puppeteer scripts
 
 Pair with `/canary-watch` for post-deploy monitoring.
-

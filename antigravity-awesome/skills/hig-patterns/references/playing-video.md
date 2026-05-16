@@ -16,9 +16,6 @@ The system-provided video players support different aspect-ratio playback modes 
 
   * In fit-to-screen — or _aspect_ — mode, the entire video is visible onscreen, and letterboxing or pillarboxing occurs as needed. This mode is the default for standard video (4:3, 16:9, and anything up to 2:1) and ultrawide video (anything above 2.40:1). For developer guidance, see [`resizeAspect`](https://developer.apple.com/documentation/AVFoundation/AVLayerVideoGravity/resizeAspect).
 
-
-
-
 In visionOS and tvOS, the built-in video player also provides _transport controls,_ which let people perform playback tasks, like turning on subtitles or changing the audio language, and actions, like adding a show to a library or favoriting a clip. Below the transport controls, the video player displays _content tabs_ , like Info, Episodes, or Chapters, that can provide supporting information and help streamline navigation. In visionOS, the transport controls appear as an [ornament](https://developer.apple.com/design/human-interface-guidelines/ornaments).
 
 ## [Best practices](https://developer.apple.com/design/human-interface-guidelines/playing-video#Best-practices)
@@ -31,8 +28,6 @@ Here are some examples that show how padding can affect video display on iPhone 
 
   * Result of padding a 4:3 video 
   * Result of padding a 21:9 video 
-
-
 
 ![An illustration of iPhone in landscape orientation. A blue rectangle shows the AVKit safe area within the screen. Overlaying the safe area and extending beyond it on all sides is a purple rectangle that represents the 4:3 video area, which doesn't include any embedded padding.](https://docs-assets.developer.apple.com/published/d0ed256c73ed2b5b8cba4baf20d437e1/video-fill-4-3-right%402x.png)
 
@@ -113,9 +108,6 @@ After exiting playback, people remain in your app rather than returning to the T
   * Using a small window for playback, letting people resize it if they want
 
   * Making sure people can see their surroundings during playback
-
-
-
 
 **In a fully immersive experience, avoid letting virtual content obscure playback or transport controls.** In a fully immersive context, the system automatically places the video player at a predictable location that provides an optimal viewing experience. Use this location to help make sure that no virtual content occludes the default playback or transport controls in the ornament near the bottom of the player.
 

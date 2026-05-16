@@ -222,4 +222,3 @@ main().catch((err) => {
 - **OKX Payments SDKs**: [`okx/payments`](https://github.com/okx/payments) â€” TypeScript, Go, Rust, and Java seller integrations for X Layer x402
 - **OKX Agent Payments Protocol skill**: [`okx/onchainos-skills`](https://github.com/okx/onchainos-skills/tree/main/skills/okx-agent-payments-protocol)
 - **OKX Payments overview**: [web3.okx.com/onchainos/dev-docs/payments/overview](https://web3.okx.com/onchainos/dev-docs/payments/overview)
-

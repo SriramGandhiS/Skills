@@ -107,4 +107,3 @@ STATUS
 - the response names the proving command or test
 - git-related work names the repo path and branch
 - any push claim includes the target branch and exact result
-

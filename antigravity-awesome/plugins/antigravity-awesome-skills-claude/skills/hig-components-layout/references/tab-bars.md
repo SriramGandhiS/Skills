@@ -65,8 +65,6 @@ The system displays a tab bar near the top of the screen. You can choose to have
   * Tab bar 
   * Sidebar 
 
-
-
 ![A screenshot showing the Music app on iPad with the tab bar near the top of the screen.](https://docs-assets.developer.apple.com/published/66af6b050f67a05a82c5df2acb99913a/ipad-tab-bar-music-app%402x.png)
 
 ![A screenshot showing the Music app on iPad with the tab bar converted to a sidebar on the leading edge of the screen.](https://docs-assets.developer.apple.com/published/cb52cc194e4067efff244c3b991a02a4/ipad-sidebar-music-app%402x.png)
@@ -91,9 +89,6 @@ A tab bar is highly customizable. For example, you can:
 
   * Add button icons, like settings and search
 
-
-
-
 By default, a tab bar is translucent, and only the selected tab is opaque. When people use the remote to focus on the tab bar, the selected tab includes a drop shadow that emphasizes its selected state. The height of a tab bar is 68 points, and its top edge is 46 points from the top of the screen; you can’t change either of these values.
 
 If there are more items than can fit in the tab bar, the system truncates the rightmost item by applying a fade effect that begins at the right side of the tab bar. If there are enough items to cause scrolling, the system also applies a truncating fade effect that starts from the left side.
@@ -107,9 +102,6 @@ If there are more items than can fit in the tab bar, the system truncates the ri
   * Cloud DVR or other recorded content
 
   * Other content
-
-
-
 
 For additional guidance, see [Live-viewing apps](https://developer.apple.com/design/human-interface-guidelines/live-viewing-apps).
 

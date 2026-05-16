@@ -94,4 +94,3 @@ Before delivering:
 - assumptions are visible, not buried
 - the story is clear without hype language
 - the final asset is defensible in a partner meeting
-

@@ -16,17 +16,11 @@ Using ID Verifier has advantages for both customers and organizations.
 
   * Apple provides the key components of the certificate issuance, management, and validation process, simplifying app development and enabling a consistent and trusted ID verification experience.
 
-
-
-
 Depending on the needs of your app, you can use ID Verifier to make the following types of requests:
 
   * **Display Only request.** Use a Display Only request to display data — such as a person’s name or age alongside their photo portrait — within system-provided UI on the requester’s iPhone, so the requester can visually confirm the person’s identity. When you make a Display Only request, the customer’s data remains within the system-provided UI and isn’t transmitted to your app. For developer guidance, see [`MobileDriversLicenseDisplayRequest`](https://developer.apple.com/documentation/ProximityReader/MobileDriversLicenseDisplayRequest).
 
   * **Data Transfer request.** Use a Data Transfer request only when you have a legal verification requirement and you need to store or process information like a person’s address or date of birth. You must request an additional entitlement to make a Data Transfer request. To learn more, see [Get started with ID Verifier](https://developer.apple.com/wallet/id-verifier/); for developer guidance, see [`MobileDriversLicenseDataRequest`](https://developer.apple.com/documentation/ProximityReader/MobileDriversLicenseDataRequest) and [`MobileDriversLicenseRawDataRequest`](https://developer.apple.com/documentation/ProximityReader/MobileDriversLicenseRawDataRequest).
-
-
-
 
 ## [Best practices](https://developer.apple.com/design/human-interface-guidelines/id-verifier#Best-practices)
 

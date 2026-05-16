@@ -63,4 +63,3 @@ describe('MyComponent', () => {
   - `fixture.componentInstance`: Access the component's class instance.
   - `fixture.nativeElement`: Access the component's root DOM element.
   - `fixture.debugElement`: An Angular-specific wrapper around the `nativeElement` that provides safer, platform-agnostic ways to query the DOM (e.g., `debugElement.query(By.css('p'))`).
-

@@ -54,9 +54,6 @@ Here are some of the most common device and system variations you need to handle
 
   * Locale-based internationalization features like left-to-right/right-to-left layout direction, date/time/number formatting, font variation, and text length
 
-
-
-
 **Design a layout that adapts gracefully to context changes while remaining recognizably consistent.** People expect your experience to work well and remain familiar when they rotate their device, resize a window, add another display, or switch to a different device. You can help ensure an adaptable interface by respecting system-defined safe areas, margins, and guides (where available) and specifying layout modifiers to fine-tune the placement of views in your interface.
 
 **Be prepared for text-size changes.** People appreciate apps and games that respond when they choose a different text size. When you support [Dynamic Type](https://developer.apple.com/design/human-interface-guidelines/typography#Supporting-Dynamic-Type) — a feature that lets people choose the size of visible text in iOS, iPadOS, tvOS, visionOS, and watchOS — your app or game can respond appropriately when people adjust text size. To support Dynamic Type in your Unity-based game, use Apple’s accessibility plug-in (for developer guidance, see [Apple – Accessibility](https://github.com/apple/unityplugins/blob/main/plug-ins/Apple.Accessibility/Apple.Accessibility_Unity/Assets/Apple.Accessibility/Documentation~/Apple.Accessibility.md)). For guidance on displaying text in your app, see [Typography](https://developer.apple.com/design/human-interface-guidelines/typography).
@@ -129,8 +126,6 @@ If you use the UIKit collection view flow element, the number of columns in a gr
   * Seven-column 
   * Eight-column 
   * Nine-column 
-
-
 
 ![An illustration of Apple TV, displaying a two-column grid of media items. Additional media items are partially visible on the right side and bottom edge of the screen.](https://docs-assets.developer.apple.com/published/29cbd7ef913d834c991bd303816e410d/visual-design-grid-2-column%402x.png)
 

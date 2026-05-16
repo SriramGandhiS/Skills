@@ -18,9 +18,6 @@ A chart can range from a simple graphic that provides glanceable information to 
 
   * Evaluating different items — or the same item at different times — by comparing data across multiple categories
 
-
-
-
 Not every collection of data needs to be displayed in a chart. If you simply need to provide data — and you don’t need to convey information about it or help people analyze it — consider offering the data in other ways, such as in a list or table that people can scroll, search, and sort.
 
 ## [Best practices](https://developer.apple.com/design/human-interface-guidelines/charting-data#Best-practices)

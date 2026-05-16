@@ -24,9 +24,6 @@ A great multitasking experience helps people accomplish tasks in multiple apps b
 
   * Temporarily lower the volume or pause the audio for shorter interruptions, such as GPS directional notifications, and resume the original volume or playback when the interruption ends.
 
-
-
-
 For guidance, see [Playing audio](https://developer.apple.com/design/human-interface-guidelines/playing-audio).
 
 **Finish user-initiated tasks in the background.** When someone starts a task like downloading assets or processing a video file, they expect it to finish even if they switch away from your app. If your app is in the middle of performing a task that doesn’t need additional input, complete it in the background before suspending.

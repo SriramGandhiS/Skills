@@ -20,9 +20,6 @@ Depending on the platform, a notification can use various styles, such as:
 
   * An item in Notification Center
 
-
-
-
 In addition, a notification related to direct communication — like a phone call or message — can provide an interface that’s distinct from noncommunication notifications, featuring prominent contact images (or _avatars_) and group names instead of the app icon.
 
 ## [Best practices](https://developer.apple.com/design/human-interface-guidelines/notifications#Best-practices)

@@ -713,4 +713,3 @@ git add node_modules/
 | Stash | `git stash push -m "message"` |
 | Undo last commit | `git reset --soft HEAD~1` |
 | Revert commit | `git revert HEAD` |
-

@@ -123,4 +123,3 @@ This adds `.gateguard.yml` for per-project configuration (custom messages, ignor
 
 - `safety-guard` â€” Runtime safety checks (complementary, not overlapping)
 - `code-reviewer` â€” Post-edit review (GateGuard is pre-edit investigation)
-

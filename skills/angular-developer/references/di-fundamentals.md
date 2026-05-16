@@ -118,4 +118,3 @@ export const authGuard = () => {
   return auth.isAuthenticated();
 };
 ```
-

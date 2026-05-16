@@ -53,4 +53,3 @@ Guidelines:
 - Use short bullets, not essay paragraphs.
 - Every banned move should be observable in the source set or explicitly requested by the user.
 - If the source set conflicts, call out the split instead of averaging it into mush.
-

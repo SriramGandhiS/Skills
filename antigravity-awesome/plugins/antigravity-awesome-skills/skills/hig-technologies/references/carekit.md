@@ -181,9 +181,6 @@ Using SF Symbols in your app gives you:
 
   * Support for creating custom symbols to represent the unique content in your app
 
-
-
-
 **Design a relevant care symbol.** If you need to customize a symbol, be sure the design is closely related to your app or the general concept of health and wellness. Avoid creating a purely decorative symbol or using a corporate logo as a custom symbol.
 
 **Incorporate refined, unobtrusive branding.** People use CareKit apps to help them achieve their health and wellness goals; they don’t want to see advertising. To avoid distracting people from their care plan, subtly incorporate your brand through your app’s use of color and communication style.

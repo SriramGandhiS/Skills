@@ -374,4 +374,3 @@ Before merging any code that touches error handling:
 - [ ] Async functions surface errors to callers â€” no fire-and-forget without fallback
 - [ ] Retry logic only retries retriable errors (not 4xx client errors)
 - [ ] React components are wrapped in `ErrorBoundary` for rendering errors
-

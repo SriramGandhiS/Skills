@@ -260,7 +260,6 @@ nonisolated struct PhotoProcessor {
 processedPhotos[item.id] = await PhotoProcessor().process(data: data)
 ```
 
-
 ## Summary
 
 These language changes work together to make concurrency more approachable.

@@ -98,4 +98,3 @@ Pick route rules per route group, not globally. Marketing pages, catalogs, dashb
 - Non-critical data is lazy and has explicit loading UI
 - Route rules match the page's SEO and freshness requirements
 - Heavy interactive islands are lazy-loaded or lazily hydrated
-

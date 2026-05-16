@@ -42,4 +42,3 @@ Hydration is the process of making server-rendered HTML interactive in the brows
 | **SEO + Dynamic Content**       | SSR                  |
 | **No SEO + High Interactivity** | CSR                  |
 | **Mixed**                       | Hybrid (Route-based) |
-

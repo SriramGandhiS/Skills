@@ -497,4 +497,3 @@ async fn bad_async() {
 ```
 
 **Remember**: If it compiles, it's probably correct â€” but only if you avoid `unwrap()`, minimize `unsafe`, and let the type system work for you.
-

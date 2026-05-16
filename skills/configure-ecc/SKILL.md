@@ -382,4 +382,3 @@ Then print a summary report:
 ### "Path reference errors after project-level install"
 - Some skills assume `~/.claude/` paths. Run Step 4 verification to find and fix these.
 - For `continuous-learning-v2`, the `~/.claude/homunculus/` directory is always user-level â€” this is expected and not an error.
-

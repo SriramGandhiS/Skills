@@ -417,4 +417,3 @@ Multiple presentations in one project:
 [name].html
 [name]-assets/
 ```
-

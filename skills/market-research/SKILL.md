@@ -73,4 +73,3 @@ Before delivering:
 - the recommendation follows from the evidence
 - risks and counterarguments are included
 - the output makes a decision easier
-

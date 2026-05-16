@@ -254,4 +254,3 @@ Audits should produce structured reports following this shape:
 - `security-review` â€” Security audit for code and configuration
 - `autonomous-agent-harness` â€” Set up autonomous agent operations
 - `agent-harness-construction` â€” Build agent harnesses from scratch
-

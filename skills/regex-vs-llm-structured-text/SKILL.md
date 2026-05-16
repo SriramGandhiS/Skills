@@ -218,4 +218,3 @@ From a production quiz parsing pipeline (410 items):
 - Invoice/receipt processing
 - Document structure parsing (headers, sections, tables)
 - Any structured text with repeating patterns where cost matters
-

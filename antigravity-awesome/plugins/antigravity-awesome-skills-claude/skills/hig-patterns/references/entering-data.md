@@ -14,9 +14,6 @@ Entering information can be a tedious process regardless of the interaction meth
 
   * Supporting all available input methods so people can choose the method that works for them
 
-
-
-
 ## [Best practices](https://developer.apple.com/design/human-interface-guidelines/entering-data#Best-practices)
 
 **Get information from the system whenever possible.** Don’t ask people to enter information that you can gather automatically — such as from settings — or by getting their permission, such as their location or calendar information.

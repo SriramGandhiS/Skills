@@ -94,8 +94,6 @@ When your shared activity runs in a Full Space, the system helps your app mainta
   * Selected 
   * Shared 
 
-
-
 ![An image of a private TV window in visionOS, with a translucent button above the window labeled Not Shared.](https://docs-assets.developer.apple.com/published/4d6d10f5b53dbe935c61cadf9a4c400c/visionos-shareplay-status-idle%402x.png)Content in a TV window is private by default.
 
 ![An image of a private TV window in visionOS, with the button above the window selected. A menu emerges downward from the button with options for sharing the window.](https://docs-assets.developer.apple.com/published/04fc57f305c864a6162e1ac4f470b551/visionos-shareplay-status-selected%402x.png)People can select the Share button to choose whether, and with whom, to share the viewing experience.

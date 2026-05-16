@@ -172,8 +172,6 @@ const pipe = await pipeline('sentiment-analysis', 'model-id', {
 - Only applies when `env.useFSCache = true` (Node.js)
 - Browser cache uses Cache API (configured via `env.cacheKey`)
 
-
-
 ### Local Files Only
 
 Prevent any network requests:
@@ -194,8 +192,6 @@ const pipe = await pipeline('sentiment-analysis', 'model-id', {
 - Model must already be cached or available locally
 - Throws error if model not found locally
 - Requires `env.allowLocalModels = true`
-
-
 
 ### Model Revision
 
@@ -247,8 +243,6 @@ const pipe = await pipeline('sentiment-analysis', 'model-id', {
 - Multiple model variants in same repo
 - Organizational preferences
 
-
-
 ### Model File Name
 
 Specify a custom model file name (without `.onnx` extension):
@@ -266,8 +260,6 @@ const pipe = await pipeline('text-generation', 'model-id', {
 - Encoder-decoder models with separate files
 
 **Note:** Currently only valid for encoder-only or decoder-only models.
-
-
 
 ## Device and Performance Options
 
@@ -313,8 +305,6 @@ const pipe = await pipeline('automatic-speech-recognition', 'model-id', {
 - Chrome/Edge 113+
 - Enable chrome://flags/#enable-unsafe-webgpu (if needed)
 - Adequate GPU memory
-
-
 
 ### Data Type (Quantization)
 
@@ -372,8 +362,6 @@ const pipe = await pipeline('automatic-speech-recognition', 'model-id', {
 | `q8` | Small | Fast | Good | Production, CPU inference |
 | `q4` | Smallest | Fastest | Acceptable | Edge devices, real-time apps |
 
-
-
 ### External Data Format
 
 For models >= 2GB, ONNX uses external data format:
@@ -413,8 +401,6 @@ const pipe = await pipeline('text-generation', 'large-model-id', {
 });
 ```
 
-
-
 ### Session Options
 
 Advanced ONNX Runtime configuration:
@@ -450,8 +436,6 @@ const pipe = await pipeline('sentiment-analysis', 'model-id', {
 - Debug model execution issues
 - Override dynamic shapes
 - Control memory usage
-
-
 
 ## Common Configuration Patterns
 

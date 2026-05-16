@@ -1752,7 +1752,6 @@ A huge shoutout to our community contributors for making this release possible:
 
 ---
 
-
 - **pipecat-friday-agent** — Iron Man-inspired tactical voice assistant (F.R.I.D.A.Y.) with Pipecat, Gemini, and OpenAI.
 
 ---

@@ -720,4 +720,3 @@ public class CamelHealthCheck implements HealthCheck {
 - Use Quarkus dev mode for hot reload
 - Add health checks for production readiness
 - Test native compilation compatibility periodically
-

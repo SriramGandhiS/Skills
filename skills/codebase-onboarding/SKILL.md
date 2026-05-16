@@ -231,4 +231,3 @@ Generate or update a project-specific CLAUDE.md based on detected conventions. I
 **User**: "Update the CLAUDE.md with current project conventions"
 **Action**: Read existing CLAUDE.md, run Phases 1-3, merge new findings
 **Output**: Updated `CLAUDE.md` with additions clearly marked
-

@@ -157,4 +157,3 @@ Encounter #E-2024-0891 signed by Dr. Shah at 14:30
   â†’ New record E-2024-0891-A1 linked to original
   â†’ Timeline shows both: original encounter + addendum with timestamps
 ```
-

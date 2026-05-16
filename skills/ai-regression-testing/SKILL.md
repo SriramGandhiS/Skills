@@ -383,4 +383,3 @@ No bug in /api/user/notifications  â†’ Don't write test (yet)
 - Skip sandbox path testing because "it's just mock data"
 - Write integration tests when unit tests suffice
 - Aim for coverage percentage â€” aim for regression prevention
-

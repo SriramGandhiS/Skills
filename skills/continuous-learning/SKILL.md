@@ -129,4 +129,3 @@ Homunculus v2 takes a more sophisticated approach:
 5. **Evolution path** - Cluster related instincts into skills/commands
 
 See: `docs/continuous-learning-v2-spec.md` for full spec.
-

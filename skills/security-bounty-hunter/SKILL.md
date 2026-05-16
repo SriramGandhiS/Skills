@@ -97,4 +97,3 @@ Before submitting:
 - The PoC works
 - The issue is not already covered by an advisory, CVE, or open ticket
 - The target is actually in scope for the bounty program
-

@@ -114,9 +114,6 @@ Symbol variants support a range of design goals. For example:
 
   * The solid areas in a fill variant tend to give a symbol more visual emphasis, making it a good choice for iOS tab bars and swipe actions and places where you use an accent color to communicate selection.
 
-
-
-
 In many cases, the view that displays a symbol determines whether to use outline or fill, so you don’t have to specify a variant. For example, an iOS tab bar prefers the fill variant, whereas a toolbar takes the outline variant.
 
 ## [Animations](https://developer.apple.com/design/human-interface-guidelines/sf-symbols#Animations)
@@ -182,9 +179,6 @@ Play
   * Up-up, where both the outgoing and incoming symbols scale up. This configuration communicates a change in state that includes a sense of forward progression.
 
   * Off-up, where the outgoing symbol hides immediately and the incoming symbol scales up. This configuration communicates a state change that emphasizes the next available state or action.
-
-
-
 
 Video with custom controls. 
 
@@ -255,9 +249,6 @@ Using a process called _annotating_ , you can assign a specific color — or a s
   * Inclusive
 
   * Directly related to the action or content it represents
-
-
-
 
 For guidance, see [Icons](https://developer.apple.com/design/human-interface-guidelines/icons).
 

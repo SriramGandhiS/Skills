@@ -56,4 +56,3 @@ import { staticFile } from "remotion";
 
 const duration = await getVideoDuration(staticFile("video.mp4"));
 ```
-

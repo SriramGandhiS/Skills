@@ -48,9 +48,6 @@ Some merchants may be unfamiliar with Tap to Pay on iPhone, so it’s important 
 
   * Making it easy to find in a consistent place like your app’s help content or settings area
 
-
-
-
 You can build your app’s tutorial using Apple-approved assets from the [Tap to Pay on iPhone marketing guidelines](https://developer.apple.com/tap-to-pay/marketing-guidelines/), or you can use the [`ProximityReaderDiscovery`](https://developer.apple.com/documentation/ProximityReader/ProximityReaderDiscovery) API to provide a pre-built merchant education experience. Apple ensures that the API is up to date and is localized for the merchant’s region.
 
 ![An illustration of an app's Tutorials screen in Settings, with a link to open the merchant education tutorial experience.](https://docs-assets.developer.apple.com/published/6e4f01e90092b71a1a173c0bdf4c9726/tap-to-pay-merchant-settings-tutorials%402x.png)
@@ -69,9 +66,6 @@ If you design your own tutorial, make sure it shows how to:
 
   * Handle PIN entry for a card, including accessibility mode
 
-
-
-
 Finally, provide an opportunity at the end of the tutorial for merchants who haven’t accepted the Tap to Pay on iPhone terms and conditions yet to do so.
 
 ## [Checking out](https://developer.apple.com/design/human-interface-guidelines/tap-to-pay-on-iphone#Checking-out)
@@ -85,9 +79,6 @@ Checking out is a time-sensitive action, and merchants need the process to work 
   * Help merchants perform checkout even if device configuration is still in progress
 
   * Present pre-payment actions that affect the final total before checkout completes
-
-
-
 
 **Provide Tap to Pay on iPhone as a checkout option whether the feature is enabled or not.** Including a Tap to Pay on iPhone button gives merchants the flexibility to use the feature without exiting the checkout flow. When merchants tap the button, present the terms and conditions if necessary and automatically display the Tap to Pay on iPhone screen when configuration completes.
 
@@ -147,9 +138,6 @@ Customers pay by _tapping_ — that is, bringing a contactless card or digital w
 
   * Relaunch Tap to Pay on iPhone, if a customer has another card they want to try
 
-
-
-
 ![An illustration of an app's checkout screen showing a red X in a red circle above the text 'Payment not completed' followed by a purchase total. Below the total is the text 'Select payment option' followed by four buttons, including Tap to Pay on iPhone.](https://docs-assets.developer.apple.com/published/4e43882f08c5c4e7203d0ef0dcf25415/tap-to-pay-unsuccessful-transaction%402x.png)
 
 After you receive payment card data, you might also encounter scenarios like the ones listed below. If such scenarios occur, contact your PSP for guidance on addressing them.
@@ -157,9 +145,6 @@ After you receive payment card data, you might also encounter scenarios like the
   * Some regions require Strong Customer Authentication (SCA) support, which means that although the payment card might not require a card PIN during a tap, the bank that issues the card can request a PIN after receiving the transaction processing request. In this scenario, your app may need to display the PIN entry screen instead of the transaction result.
 
   * In some regions your app may need to meet additional requirements to address the limitations of some cards, such as those in Offline PIN markets. Some PSPs support additional PIN fallback functionality to collect partial data from a tap, letting merchants continue the payment with another method such as a payment link.
-
-
-
 
 **If the system returns an error that the merchant must address, display a clear description of the problem and recommend an appropriate resolution.** For example, if the device’s version of iOS doesn’t support Tap to Pay on iPhone, present an [alert](https://developer.apple.com/design/human-interface-guidelines/alerts) that recommends updating to the latest version. For developer guidance, see [`PaymentCardReaderSession.ReadError`](https://developer.apple.com/documentation/ProximityReader/PaymentCardReaderSession/ReadError).
 

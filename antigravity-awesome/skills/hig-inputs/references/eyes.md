@@ -76,9 +76,6 @@ As an example that shows what a custom hover effect can and can’t do, consider
 
   * **Long delay.** If your custom hover effect shows additional information, like when a tooltip appears below a button, a slightly longer delay can work well because most people won’t need to view the additional information every time.
 
-
-
-
 **Aim to keep one or more of the element’s primary views unchanged in both states of a custom hover effect.** When at least one primary view remains constant during a hover effect’s animation, it provides visual stability that can help people follow the element’s transition. If all of an element’s views move or change during a custom hover effect, it can disorient people and make them lose track of what’s happening.
 
 **Thoroughly test custom hover effects.** Testing is the only way to determine whether a custom hover effect looks good, responds appropriately, and makes your experience feel alive without distracting people. Aim to test your custom hover effects while wearing Apple Vision Pro so you can develop intuition about how to use them to enhance your experience.

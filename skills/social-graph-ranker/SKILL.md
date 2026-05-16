@@ -152,4 +152,3 @@ No Warm Path
 - `connections-optimizer` uses the same bridge logic when deciding who to keep, prune, or add
 - `brand-voice` should run before drafting any intro request or direct outreach
 - `x-api` provides X graph access and optional execution paths
-

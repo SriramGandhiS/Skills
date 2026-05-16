@@ -227,4 +227,3 @@ try {
   console.error("Frame extraction was aborted or failed:", error);
 }
 ```
-

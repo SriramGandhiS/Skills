@@ -68,8 +68,6 @@ An app icon’s shape varies based on a platform’s visual language. In iOS, iP
   * tvOS 
   * visionOS, watchOS 
 
-
-
 ![An image of the Settings icon for iOS. The iOS, iPadOS, and macOS icon grid is overlaid on the icon to show how the icon's shape and its elements map to the grid.](https://docs-assets.developer.apple.com/published/a116649a6bdc5124779475fcd769caac/app-icons-settings-app-grid-square%402x.png)
 
 ![An image of the Settings icon for tvOS. The tvOS icon grid is overlaid on the icon to show how the icon's shape and its elements map to the grid.](https://docs-assets.developer.apple.com/published/770ec58a9f9985410cdff8c38b8166ab/app-icons-settings-app-grid-rectangle%402x.png)
@@ -168,9 +166,6 @@ App icons support the following color spaces:
   * Gray Gamma 2.2 (grayscale)
 
   * Display P3 (wide-gamut color in iOS, iPadOS, macOS, tvOS, and watchOS only)
-
-
-
 
 ## [Resources](https://developer.apple.com/design/human-interface-guidelines/app-icons#Resources)
 

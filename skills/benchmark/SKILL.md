@@ -91,4 +91,3 @@ Stores baselines in `.ecc/benchmarks/` as JSON. Git-tracked so the team shares b
 - CI: run `/benchmark compare` on every PR
 - Pair with `/canary-watch` for post-deploy monitoring
 - Pair with `/browser-qa` for full pre-ship checklist
-

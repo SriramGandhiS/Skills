@@ -177,4 +177,3 @@ proposed â†’ accepted â†’ [deprecated | superseded by ADR-NNNN]
 
 - **Planner agent**: when the planner proposes architecture changes, suggest creating an ADR
 - **Code reviewer agent**: flag PRs that introduce architectural changes without a corresponding ADR
-

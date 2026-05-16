@@ -18,9 +18,6 @@ The term _label_ refers to uneditable text that can appear in various places. Fo
 
   * Within a view, a label might provide additional context by introducing a control or describing a common action or task that people can perform in the view.
 
-
-
-
 Developer note
 
 To display uneditable text, SwiftUI defines two components: [`Label`](https://developer.apple.com/documentation/SwiftUI/Label) and [`Text`](https://developer.apple.com/documentation/SwiftUI/Text).

@@ -62,4 +62,3 @@ public String upload(Request<?, ?> req, Response<?, ?> res) throws ApplicationEx
 
 ### Path Matching Priority
 If two methods share the same path, the framework uses the first match in the `ActionRegistry`. Use explicit `Mode` values to disambiguate (e.g., separating a GET for a form and a POST for submission).
-

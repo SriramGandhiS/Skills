@@ -30,9 +30,6 @@ Follow these guidelines to offer Sign in with Apple when it’s most convenient 
 
   * If people used an existing user name and password to sign in, you can display an account-linking suggestion in their account’s settings view or another logical place.
 
-
-
-
 **In a commerce app, wait until after people make a purchase before asking them to create an account.** If you support a guest checkout system, give people a quick way to create an account after the transaction completes. For example, if you support Apple Pay, let people create an account on the order confirmation page. In cases where people have already provided their name and email address during the Apple Pay transaction, you don’t need to ask for this information.
 
 ![An illustration representing an order confirmation screen on iPhone. The screen includes buttons titled 'Create Account' and 'Sign up with Apple'.](https://docs-assets.developer.apple.com/published/0a8fc114b12c4ad6fdc4a0c1835957ec/create-account-after-purchase%402x.png)
@@ -57,9 +54,6 @@ People appreciate Sign in with Apple for its privacy and convenience. Although s
 
   * Use other identifying values, like an order number or phone number collected as part of a purchase
 
-
-
-
 **Give people a chance to engage with your app before asking for optional data.** As people use your app, you can help them discover places where they can benefit from sharing more information with you. For example, you might suggest that they provide a contact phone number if they want real-time text updates, or social network information if they want to play games with friends. If people choose not to provide optional information, don’t prevent them from accessing their account or using all the features of your app.
 
 **Be transparent about the data you collect.** People value knowing how you use the data that they share with you. One way you can be transparent is to welcome people by using the name or email address they shared. Doing this helps establish how you use this information and, for a relay address, shows people where to find it in the future. If you don’t display all the data that people provide, they are likely to wonder why you asked for it.
@@ -83,9 +77,6 @@ When you use the system-provided APIs to create a Sign in with Apple button, you
   * Support for configuring the button’s corner radius to match the style of your UI (iOS, macOS, and web)
 
   * A system-provided alternative text label that lets VoiceOver describe the button
-
-
-
 
 For developer guidance, see [`ASAuthorizationAppleIDButton`](https://developer.apple.com/documentation/AuthenticationServices/ASAuthorizationAppleIDButton) (iOS, macOS, and tvOS), [`WKInterfaceAuthorizationAppleIDButton`](https://developer.apple.com/documentation/WatchKit/WKInterfaceAuthorizationAppleIDButton) (watchOS), and [Displaying Sign in with Apple buttons on the web](https://developer.apple.com/documentation/signinwithapple/displaying-sign-in-with-apple-buttons-on-the-web). You can also visit [Sign in with Apple button](https://appleid.apple.com/signinwithapple/button) to view and adjust live previews of web-based buttons and get the code.
 
@@ -187,9 +178,6 @@ Use only the logo artwork downloaded from [Apple Design Resources](https://devel
 
   * Don’t add vertical padding.
 
-
-
-
 To make sure that your custom button is visually consistent with the system-provided Sign in with Apple button, don’t change the following attributes.
 
   * Titles. Use only _Sign in with Apple_ , _Sign up with Apple_ , or _Continue with Apple_.
@@ -197,9 +185,6 @@ To make sure that your custom button is visually consistent with the system-prov
   * General shape. Buttons that combine the logo with text are always rectangular; logo-only buttons can be circular or rectangular.
 
   * Logo and title colors. Within a button, both items must be either black or white; don’t use custom colors.
-
-
-
 
 To coordinate with your app design, you can change:
 
@@ -212,9 +197,6 @@ To coordinate with your app design, you can change:
   * Button corner radius. You can use a corner radius value that matches the other buttons in your UI.
 
   * Button bezel and shadow. For example, you can use a stroke to emphasize the button bezel or add a drop shadow.
-
-
-
 
 #### [Custom buttons with a logo and text](https://developer.apple.com/design/human-interface-guidelines/sign-in-with-apple#Custom-buttons-with-a-logo-and-text)
 

@@ -10,7 +10,6 @@ curl -s -o /dev/null -w "%{http_code}" https://integrations.getmontecarlo.com/mc
 
 **Legacy (header-based auth, for MCP clients without HTTP transport):** Check that `x-mcd-id` and `x-mcd-token` are set correctly in your MCP config. The key format is `<KEY_ID>:<KEY_SECRET>` — these are split across two separate headers.
 
-
 ### Monitor creation errors:
 
 **`montecarlo monitors apply` fails with "Unknown field":**

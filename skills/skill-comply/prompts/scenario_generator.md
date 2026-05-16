@@ -60,4 +60,3 @@ Expected behavioral sequence:
 ---
 {spec_yaml}
 ---
-

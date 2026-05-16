@@ -145,4 +145,3 @@ unsaved sessions, git activity since last save, and goal mismatches vs CLAUDE.md
 - If a script exits with code 1, display its stdout as an error message.
 - Never edit `context.json` or `CONTEXT.md` directly â€” always use the scripts.
 - If `projects.json` is malformed, tell the user and offer to reset it to `{}`.
-

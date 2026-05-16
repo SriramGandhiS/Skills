@@ -33,9 +33,6 @@ Live Activities appear across the system in various locations like the _Dynamic 
 
   * [Lock Screen](https://developer.apple.com/design/human-interface-guidelines/live-activities#Lock-Screen)
 
-
-
-
 In iOS and iPadOS, your Live Activity appears throughout the system using these presentations. Additionally, the system uses them to create default appearances for other contexts. For example, the compact presentation appears in the Dynamic Island on iPhone and consists of two elements that the system combines into a single view for Apple Watch and in CarPlay.
 
 ### [Compact](https://developer.apple.com/design/human-interface-guidelines/live-activities#Compact)
@@ -309,9 +306,6 @@ If you offer a watchOS app and someone taps the Live Activity in the Smart Stack
   * Interactive elements, like stopwatch or timer controls
 
   * Significant updates, like sports score changes
-
-
-
 
 ## [Specifications](https://developer.apple.com/design/human-interface-guidelines/live-activities#Specifications)
 

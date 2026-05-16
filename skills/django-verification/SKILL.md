@@ -467,4 +467,3 @@ jobs:
 | Diff stats | `git diff --stat` |
 
 Remember: Automated verification catches common issues but doesn't replace manual code review and testing in staging environment.
-

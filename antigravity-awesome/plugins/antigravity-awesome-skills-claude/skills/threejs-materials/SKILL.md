@@ -543,7 +543,6 @@ As of r183, `MeshLambertMaterial` and `MeshPhongMaterial` support image-based li
 - `threejs-shaders` - Custom shader development
 - `threejs-lighting` - Light interaction with materials
 
-
 ## When to Use
 Use this skill when tackling tasks related to its primary domain or functionality as described above.
 

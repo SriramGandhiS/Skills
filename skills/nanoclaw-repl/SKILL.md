@@ -31,4 +31,3 @@ Use this skill when running or extending `scripts/claw.js`.
 - keep zero external runtime dependencies
 - preserve markdown-as-database compatibility
 - keep command handlers deterministic and local
-

@@ -20,9 +20,6 @@ Edit menus can look and behave slightly differently in different platforms.
 
   * In visionOS, people use the standard [pinch and hold](https://developer.apple.com/design/human-interface-guidelines/gestures#Standard-gestures) gesture to open the edit menu as a horizontal bar, or they can open it in a context menu.
 
-
-
-
 Editing content is rare in tvOS and watchOS experiences, so the system doesn’t provide an edit menu in these platforms.
 
 ## [Best practices](https://developer.apple.com/design/human-interface-guidelines/edit-menus#Best-practices)

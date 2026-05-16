@@ -48,7 +48,6 @@ communication tools, clear documentation standards, and
 timezone-aware sprint planning. Teams that nail these three
 areas ship consistently regardless of where members are located.
 
-
 ### Example: FAQ Section
 Q: What is the biggest challenge of remote engineering teams?
 A: Async communication. Without shared hours, decisions slow down

@@ -54,4 +54,3 @@ test('redirects to dashboard on valid credentials', async ({page}) => {
 - Avoid selectors that depend on CSS classes, DOM depth, or incidental text.
 - Wait for specific UI states, routes, or network responses instead of arbitrary sleeps.
 - Keep smoke tests short and reserve full workflow coverage for the highest-value paths.
-

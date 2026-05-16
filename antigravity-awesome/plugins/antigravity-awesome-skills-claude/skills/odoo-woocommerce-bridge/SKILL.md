@@ -60,7 +60,6 @@ uid = int(os.getenv("ODOO_UID", "2"))
 pwd = os.getenv("ODOO_PASSWORD")
 models = xmlrpc.client.ServerProxy(f"{odoo_url}/xmlrpc/2/object")
 
-
 def sync_orders():
     # Get unprocessed WooCommerce orders
     orders = wcapi.get("orders", params={"status": "processing", "per_page": 50}).json()

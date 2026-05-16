@@ -276,4 +276,3 @@ Based on Anthropic's published results:
 - [Epsilla: The GAN-Style Agent Loop](https://www.epsilla.com/blogs/anthropic-harness-engineering-multi-agent-gan-architecture) â€” Architecture deconstruction
 - [Martin Fowler: Harness Engineering](https://martinfowler.com/articles/exploring-gen-ai/harness-engineering.html) â€” Broader industry context
 - [OpenAI: Harness Engineering](https://openai.com/index/harness-engineering/) â€” OpenAI's parallel work
-

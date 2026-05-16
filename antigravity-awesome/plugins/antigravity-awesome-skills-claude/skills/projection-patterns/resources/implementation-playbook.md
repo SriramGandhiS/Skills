@@ -69,7 +69,6 @@ class Event:
     version: int
     global_position: int
 
-
 class Projection(ABC):
     """Base class for projections."""
 
@@ -88,7 +87,6 @@ class Projection(ABC):
     async def apply(self, event: Event) -> None:
         """Apply event to the read model."""
         pass
-
 
 class Projector:
     """Runs projections from event store."""

@@ -66,4 +66,3 @@ You can pass contextual data to the routed component using the `routerOutletData
 // In Routed Component
 outletData = inject(ROUTER_OUTLET_DATA) as Signal<{ theme: string }>;
 ```
-

@@ -38,8 +38,6 @@ In macOS, you can arrange the panes of a split view vertically, horizontally, or
   * Horizontal 
   * Multiple 
 
-
-
 ![An illustration of a laptop screen that shows two panes stacked vertically.](https://docs-assets.developer.apple.com/published/8c23f101a012db47a8e2350e50432617/vertical-split-view%402x.png)
 
 ![An illustration of a laptop screen that shows two panes arranged side by side, with a narrower pane on the left and a wider pane on the right.](https://docs-assets.developer.apple.com/published/713be8f9e61a9578b26087ad71ca6b23/horizontal-split-view%402x.png)

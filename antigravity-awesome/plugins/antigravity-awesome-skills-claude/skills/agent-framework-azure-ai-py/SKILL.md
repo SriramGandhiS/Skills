@@ -255,19 +255,16 @@ from agent_framework import (
 from agent_framework.azure import AzureAIAgentsProvider
 from azure.identity.aio import AzureCliCredential
 
-
 def get_weather(
     location: Annotated[str, Field(description="City name")],
 ) -> str:
     """Get weather for a location."""
     return f"Weather in {location}: 72°F, sunny"
 
-
 class AnalysisResult(BaseModel):
     summary: str
     key_findings: list[str]
     confidence: float
-
 
 async def main():
     async with (
@@ -313,7 +310,6 @@ async def main():
         )
         analysis = AnalysisResult.model_validate_json(result.text)
         print(f"\nConfidence: {analysis.confidence}")
-
 
 if __name__ == "__main__":
     asyncio.run(main())

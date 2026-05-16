@@ -253,4 +253,3 @@ $HOME/opensource-staging/
 ## Related Skills
 
 See `security-review` for secret detection patterns used by the sanitizer.
-

@@ -16,9 +16,6 @@ When you design for accessibility, you reach a larger audience and create a more
 
   * **Adaptable.** Your interface adapts to how people want to use their device, whether by supporting system accessibility features or letting people personalize settings.
 
-
-
-
 As you design your app, audit the accessibility of your interface. Use [Accessibility Inspector](https://developer.apple.com/documentation/Accessibility/accessibility-inspector) to highlight accessibility issues with your interface and to understand how your app represents itself to people using system accessibility features. You can also communicate how accessible your app is on the App Store using Accessibility Nutrition Labels. To learn more about how to evaluate and indicate accessibility feature support, see [Accessibility Nutrition Labels](https://developer.apple.com/help/app-store-connect/manage-app-accessibility/overview-of-accessibility-nutrition-labels) in App Store Connect help.
 
 ## [Vision](https://developer.apple.com/design/human-interface-guidelines/accessibility#Vision)
@@ -96,9 +93,6 @@ The people who use your interface may be deaf or hard of hearing. They may also 
   * **Audio descriptions** are interspersed between natural pauses in the main audio of a video and supply spoken narration of important information that’s presented only visually.
 
   * **Transcripts** provide a complete textual description of a video, covering both audible and visual information. Transcripts are great for longer-form media like podcasts and audiobooks where people may want to review content as a whole or highlight the transcript as media is playing.
-
-
-
 
 For developer guidance, see [Selecting subtitles and alternative audio tracks](https://developer.apple.com/documentation/AVFoundation/selecting-subtitles-and-alternative-audio-tracks).
 
@@ -186,9 +180,6 @@ When you minimize complexity in your app or game, all people benefit.
 
   * Avoiding animating into and out of blurs
 
-
-
-
 **Optimize your app’s UI for Assistive Access.** Assistive Access is an accessibility feature in iOS and iPadOS that allows people with cognitive disabilities to use a streamlined version of your app. Assistive Access sets a default layout and control presentation for apps that reduces cognitive load, such as the following layout of the Camera app.
 
 ![A screenshot of the Camera app in Assistive Access, showing an interface with three large buttons: Photo, Video, and Back.](https://docs-assets.developer.apple.com/published/186637e83d4ec29d3d20a8249be8a538/accessibility-assistive-access-camera%402x.png)
@@ -203,9 +194,6 @@ To optimize your app for this mode, use the following guidelines when Assistive 
 
   * Always ask for confirmation twice whenever people perform an action that’s difficult to recover from, such a deleting a file.
 
-
-
-
 For developer guidance, see [Assistive Access](https://developer.apple.com/documentation/Accessibility/assistive-access).
 
 ## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/accessibility#Platform-considerations)
@@ -219,8 +207,6 @@ visionOS offers a variety of accessibility features people can use to interact w
   * Pointer Control (hand) 
   * Pointer Control (head) 
   * Zoom 
-
-
 
 Video with custom controls. 
 
@@ -247,9 +233,6 @@ Play
   * Avoid anchoring content to the wearer’s head, which may make them feel stuck and confined, and also prevent them from using assistive technologies like Pointer Control.
 
   * Minimize the need for large and repetitive gestures, as these can become tiresome and may be difficult depending on a person’s surroundings.
-
-
-
 
 For additional guidance, see [Create accessible spatial experiences](https://developer.apple.com/videos/play/wwdc2023/10034) and [Design considerations for vision and motion](https://developer.apple.com/videos/play/wwdc2023/10078).
 

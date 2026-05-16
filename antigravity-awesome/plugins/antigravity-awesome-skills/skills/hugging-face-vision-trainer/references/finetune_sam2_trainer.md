@@ -38,7 +38,6 @@ json.loads(train_ds["prompt"][0])["bbox"]
 import matplotlib.pyplot as plt
 import numpy as np
 
-
 def show_mask(mask, ax, bbox):
     color = np.array([0.12, 0.56, 1.0, 0.6])
     mask = np.array(mask)
@@ -51,7 +50,6 @@ def show_mask(mask, ax, bbox):
             (x0, y0), x1 - x0, y1 - y0, fill=False, edgecolor="lime", linewidth=2
         )
     )
-
 
 example = train_ds[0]
 image = np.array(example["image"])
@@ -76,7 +74,6 @@ from torch.utils.data import Dataset
 import torch
 import torch.nn.functional as F
 
-
 class SAMDataset(Dataset):
     def __init__(self, dataset, processor):
         self.dataset = dataset
@@ -93,7 +90,6 @@ class SAMDataset(Dataset):
         inputs["labels"] = (np.array(item["mask"]) > 0).astype(np.float32)
         inputs["original_image_size"] = torch.tensor(image.size[::-1])
         return inputs
-
 
 def collate_fn(batch):
     pixel_values = torch.cat([item["pixel_values"] for item in batch], dim=0)
@@ -183,7 +179,6 @@ from transformers import Trainer, TrainingArguments
 import trackio
 
 seg_loss = monai.losses.DiceCELoss(sigmoid=True, squared_pred=True, reduction="mean")
-
 
 def compute_loss(outputs, labels, num_items_in_batch=None):
     predicted_masks = outputs.pred_masks.squeeze(1)

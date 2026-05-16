@@ -222,13 +222,11 @@ const MyScreen = () => (
 // CORRECT - Design tokens
 <Box padding="$4" backgroundColor="$backgroundPrimary">
 
-
 // WRONG - Raw platform components
 import { View, Text } from 'react-native';
 
 // CORRECT - Core components
 import { Box, Text } from 'components/core';
-
 
 // WRONG - Inline styles
 <Text style={{ fontSize: 18, fontWeight: '600' }}>

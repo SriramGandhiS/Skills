@@ -150,4 +150,3 @@ export const Title: React.FC<{ text: string }> = ({ text }) => {
   );
 };
 ```
-

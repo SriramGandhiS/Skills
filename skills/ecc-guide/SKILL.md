@@ -187,4 +187,3 @@ Needs approval before apply: <yes/no>
 - `/skill-health`: skill quality review
 - `/skill-create`: generate a new skill from local git history
 - `/security-scan`: inspect Claude/OpenCode configuration security
-

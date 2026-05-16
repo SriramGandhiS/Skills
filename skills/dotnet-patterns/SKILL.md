@@ -319,4 +319,3 @@ public async Task<ProcessResult> ProcessPaymentAsync(
 | `dynamic` in business logic | Use generics or explicit types |
 | Mutable `static` state | Use DI scoping or `ConcurrentDictionary` |
 | `string.Format` in loops | Use `StringBuilder` or interpolated string handlers |
-

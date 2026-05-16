@@ -64,14 +64,12 @@ class Command:
         self.command_id = self.command_id or str(uuid.uuid4())
         self.timestamp = self.timestamp or datetime.utcnow()
 
-
 # Concrete commands
 @dataclass
 class CreateOrder(Command):
     customer_id: str
     items: list
     shipping_address: dict
-
 
 @dataclass
 class AddOrderItem(Command):
@@ -80,12 +78,10 @@ class AddOrderItem(Command):
     quantity: int
     price: float
 
-
 @dataclass
 class CancelOrder(Command):
     order_id: str
     reason: str
-
 
 # Command handler base
 T = TypeVar('T', bound=Command)
@@ -94,7 +90,6 @@ class CommandHandler(ABC, Generic[T]):
     @abstractmethod
     async def handle(self, command: T) -> Any:
         pass
-
 
 # Command bus
 class CommandBus:
@@ -109,7 +104,6 @@ class CommandBus:
         if not handler:
             raise ValueError(f"No handler for {type(command).__name__}")
         return await handler.handle(command)
-
 
 # Command handler implementation
 class CreateOrderHandler(CommandHandler[CreateOrder]):
@@ -151,12 +145,10 @@ from typing import TypeVar, Generic, List, Optional
 class Query:
     pass
 
-
 # Concrete queries
 @dataclass
 class GetOrderById(Query):
     order_id: str
-
 
 @dataclass
 class GetCustomerOrders(Query):
@@ -165,14 +157,12 @@ class GetCustomerOrders(Query):
     page: int = 1
     page_size: int = 20
 
-
 @dataclass
 class SearchOrders(Query):
     query: str
     filters: dict = None
     sort_by: str = "created_at"
     sort_order: str = "desc"
-
 
 # Query result types
 @dataclass
@@ -185,7 +175,6 @@ class OrderView:
     created_at: datetime
     shipped_at: Optional[datetime] = None
 
-
 @dataclass
 class PaginatedResult(Generic[T]):
     items: List[T]
@@ -197,7 +186,6 @@ class PaginatedResult(Generic[T]):
     def total_pages(self) -> int:
         return (self.total + self.page_size - 1) // self.page_size
 
-
 # Query handler base
 T = TypeVar('T', bound=Query)
 R = TypeVar('R')
@@ -206,7 +194,6 @@ class QueryHandler(ABC, Generic[T, R]):
     @abstractmethod
     async def handle(self, query: T) -> R:
         pass
-
 
 # Query bus
 class QueryBus:
@@ -221,7 +208,6 @@ class QueryBus:
         if not handler:
             raise ValueError(f"No handler for {type(query).__name__}")
         return await handler.handle(query)
-
 
 # Query handler implementation
 class GetOrderByIdHandler(QueryHandler[GetOrderById, Optional[OrderView]]):
@@ -242,7 +228,6 @@ class GetOrderByIdHandler(QueryHandler[GetOrderById, Optional[OrderView]]):
             if row:
                 return OrderView(**dict(row))
             return None
-
 
 class GetCustomerOrdersHandler(QueryHandler[GetCustomerOrders, PaginatedResult[OrderView]]):
     def __init__(self, read_db):
@@ -301,7 +286,6 @@ class CreateOrderRequest(BaseModel):
     items: List[dict]
     shipping_address: dict
 
-
 class OrderResponse(BaseModel):
     order_id: str
     customer_id: str
@@ -310,15 +294,12 @@ class OrderResponse(BaseModel):
     item_count: int
     created_at: datetime
 
-
 # Dependency injection
 def get_command_bus() -> CommandBus:
     return app.state.command_bus
 
-
 def get_query_bus() -> QueryBus:
     return app.state.query_bus
-
 
 # Command endpoints (POST, PUT, DELETE)
 @app.post("/orders", response_model=dict)
@@ -333,7 +314,6 @@ async def create_order(
     )
     order_id = await command_bus.dispatch(command)
     return {"order_id": order_id}
-
 
 @app.post("/orders/{order_id}/items")
 async def add_item(
@@ -352,7 +332,6 @@ async def add_item(
     await command_bus.dispatch(command)
     return {"status": "item_added"}
 
-
 @app.delete("/orders/{order_id}")
 async def cancel_order(
     order_id: str,
@@ -362,7 +341,6 @@ async def cancel_order(
     command = CancelOrder(order_id=order_id, reason=reason)
     await command_bus.dispatch(command)
     return {"status": "cancelled"}
-
 
 # Query endpoints (GET)
 @app.get("/orders/{order_id}", response_model=OrderResponse)
@@ -375,7 +353,6 @@ async def get_order(
     if not result:
         raise HTTPException(status_code=404, detail="Order not found")
     return result
-
 
 @app.get("/customers/{customer_id}/orders")
 async def get_customer_orders(
@@ -392,7 +369,6 @@ async def get_customer_orders(
         page_size=page_size
     )
     return await query_bus.dispatch(query)
-
 
 @app.get("/orders/search")
 async def search_orders(

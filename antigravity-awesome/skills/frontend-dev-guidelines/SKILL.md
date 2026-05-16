@@ -6,7 +6,6 @@ source: community
 date_added: "2026-02-27"
 ---
 
-
 # Frontend Development Guidelines
 
 **(React · TypeScript · Suspense-First · Production-Grade)**
@@ -358,7 +357,6 @@ Before finalizing code:
 
 **Status:** Stable, opinionated, and enforceable
 **Intended Use:** Production React codebases with long-term maintenance horizons
-
 
 ### When to Use
 This skill is applicable to execute the workflow or actions described in the overview.

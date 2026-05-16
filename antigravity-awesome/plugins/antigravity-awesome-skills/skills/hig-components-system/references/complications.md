@@ -42,17 +42,11 @@ Prefer using [WidgetKit](https://developer.apple.com/documentation/WidgetKit) to
 
   * Similar to the open style, the segmented style also displays values within an app-defined range, and can convey rapid value changes, such as in the Noise complication.
 
-
-
-
 **Make sure images look good in tinted mode.** In tinted mode, the system applies a solid color to a complication’s text, gauges, and images, and desaturates full-color images unless you provide tinted versions of them. For developer guidance, see [`WidgetRenderingMode`](https://developer.apple.com/documentation/WidgetKit/WidgetRenderingMode). (If you’re using legacy templates, tinted mode applies only to graphic complications.) To help your complications perform well in tinted mode:
 
   * Avoid using color as the only way to communicate important information. You want people to get the same information in tinted mode as they do in nontinted mode.
 
   * When necessary, provide an alternative tinted-mode version of a full-color image. If your full-color image doesn’t look good when it’s desaturated, you can supply a different version of the image for the system to use in tinted mode.
-
-
-
 
 **Recognize that people might prefer to use tinted mode for complications, instead of viewing them in full color.** When people choose tinted mode, the system automatically desaturates your complication, converting it to grayscale and tinting its images, gauges, and text using a single color that’s based on the wearer’s selected color.
 
@@ -105,9 +99,6 @@ A SwiftUI view that implements a regular-size circular complication uses the fol
 
   * Text size: 12 pt (40mm), 12.5 pt (41mm), 13 pt (44mm), 14.5 pt (45mm/49mm)
 
-
-
-
 If you want to design an oversized treatment of important information that can appear on the X-Large watch face — for example, the Contacts complication, which features a contact photo — use the extra-large versions of the circular family’s layouts. The following layouts let you display full-color images, text, and gauges in a large circular region that fills most of the X-Large watch face. Some of the text fields can support multicolor text.
 
 ![A white musical notes icon displayed within a red circle. The circle’s outline is bright red for about sixty-six percent of the circumference and dull red for about ten percent, showing current progress.](https://docs-assets.developer.apple.com/published/6e62e84e78d7206a561aaadff4f7bf9d/complication-graphic-xl-circular-closed-gauge-image%402x.png)Closed gauge image
@@ -155,9 +146,6 @@ A SwiftUI view that implements an extra-large circular layout uses the following
 
   * Text size: 34.5 pt (40mm), 36.5 pt (41mm), 36.5 pt (44mm), 41 pt (45mm/49mm)
 
-
-
-
 ## [Corner](https://developer.apple.com/design/human-interface-guidelines/complications#Corner)
 
 Corner layouts let you display full-color images, text, and gauges in the corners of the watch face, like Infograph. Some of the templates also support multicolor text.
@@ -197,9 +185,6 @@ A SwiftUI view that implements a corner layout uses the following default text v
   * Weight: Semibold
 
   * Text size: 10 pt (40mm), 10.5 pt (41mm), 11 pt (44mm), 12 pt (45mm/49mm)
-
-
-
 
 ## [Inline](https://developer.apple.com/design/human-interface-guidelines/complications#Inline)
 
@@ -247,9 +232,6 @@ Starting with watchOS 10, if you have created a rectangular layout for your watc
 
   * By creating a custom layout of your information that is optimized for the Smart Stack
 
-
-
-
 For developer guidance, see [`WidgetFamily.accessoryRectangular`](https://developer.apple.com/documentation/WidgetKit/WidgetFamily/accessoryRectangular). See [Widgets](https://developer.apple.com/design/human-interface-guidelines/widgets) for additional guidance on designing widgets for the Smart Stack.
 
 ![Three lines of left-aligned text. The first line uses blue text to display the words water reminders. The second line uses white text to display the words thirty-two ounces consumed. The third line uses gray text to display the words four day streak, woo hoo.](https://docs-assets.developer.apple.com/published/eacc51c96f809a72dc4e293e1ce12231/rectangular-standard-body%402x.png)Standard body
@@ -278,9 +260,6 @@ A SwiftUI view that implements a rectangular layout uses the following default t
   * Weight: Medium
 
   * Text size: 16.5 pt (40mm), 17.5 pt (41mm), 18 pt (44mm), 19.5 pt (45mm/49mm)
-
-
-
 
 ## [Legacy templates](https://developer.apple.com/design/human-interface-guidelines/complications#Legacy-templates)
 

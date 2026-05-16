@@ -201,4 +201,3 @@ Detailed guides are available in the `references/` directory:
 - `src/main/java/org/tinystruct/http/SSEPushManager.java` â€” SSE connection management
 - `src/test/java/org/tinystruct/application/ActionRegistryTest.java` â€” Registry test examples
 - `src/test/java/org/tinystruct/system/HttpServerHttpModeTest.java` â€” HTTP integration test patterns
-

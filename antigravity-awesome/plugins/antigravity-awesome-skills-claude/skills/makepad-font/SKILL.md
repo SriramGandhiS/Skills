@@ -224,7 +224,6 @@ pub struct rasterizer::Settings {
 5. Default font cache size is 4096 glyphs
 6. Atlas sizes: 4096x4096 for grayscale, 2048x2048 for color (emoji)
 
-
 ## When to Use
 Use this skill when tackling tasks related to its primary domain or functionality as described above.
 

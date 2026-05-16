@@ -77,7 +77,6 @@ class SagaState(Enum):
     COMPLETED = "completed"
     FAILED = "failed"
 
-
 @dataclass
 class SagaStep:
     name: str
@@ -89,7 +88,6 @@ class SagaStep:
     executed_at: Optional[datetime] = None
     compensated_at: Optional[datetime] = None
 
-
 @dataclass
 class Saga:
     saga_id: str
@@ -100,7 +98,6 @@ class Saga:
     current_step: int = 0
     created_at: datetime = field(default_factory=datetime.utcnow)
     updated_at: datetime = field(default_factory=datetime.utcnow)
-
 
 class SagaOrchestrator(ABC):
     """Base class for saga orchestrators."""
@@ -285,7 +282,6 @@ class OrderFulfillmentSaga(SagaOrchestrator):
             )
         ]
 
-
 # Usage
 async def create_order(order_data: Dict):
     saga = OrderFulfillmentSaga(saga_store, event_publisher)
@@ -296,7 +292,6 @@ async def create_order(order_data: Dict):
         "payment_method": order_data["payment_method"],
         "shipping_address": order_data["shipping_address"]
     })
-
 
 # Event handlers in each service
 class InventoryService:
@@ -354,7 +349,6 @@ class SagaContext:
     step: int
     data: Dict[str, Any]
     completed_steps: list
-
 
 class OrderChoreographySaga:
     """Choreography-based saga using events."""

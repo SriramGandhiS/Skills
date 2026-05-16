@@ -116,4 +116,3 @@ Every operation produces playable stream URLs. Embed in web players, share direc
 | Monitor live streams | Connect RTSP â†’ Index scenes â†’ Create alerts |
 | Reformat for social | Reframe to target aspect ratio |
 | Combine clips | Build timeline with multiple assets â†’ Generate stream |
-

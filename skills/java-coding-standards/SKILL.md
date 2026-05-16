@@ -381,4 +381,3 @@ class MarketServiceTest {
 ```
 
 **Remember**: Keep code intentional, typed, and observable. Optimize for maintainability over micro-optimizations unless proven necessary.
-

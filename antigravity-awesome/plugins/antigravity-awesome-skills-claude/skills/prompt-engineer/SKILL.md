@@ -52,7 +52,6 @@ Invoke this skill when:
 - **Ambiguous tasks:** Generic verbs ("help", "improve"), missing object/context
 - **Structured tasks:** Mentions steps, phases, deliverables, stakeholders
 
-
 ### Step 2: Ask Clarifying Questions (Conditional)
 
 **Objective:** Gather missing information only when it is critical to framework selection or prompt quality.
@@ -79,7 +78,6 @@ Step 2 (triggered — task type ambiguous):
 ```
 
 **Critical Rule:** When in doubt, skip clarification and generate the best prompt with available context. Over-asking breaks the "magic mode" experience.
-
 
 ### Step 3: Select Framework(s)
 
@@ -148,7 +146,6 @@ Before finalizing, verify:
 - [ ] No ambiguous language
 - [ ] Appropriate level of detail for task complexity
 
-
 ## Critical Rules
 
 ### **NEVER:**
@@ -174,7 +171,6 @@ Before finalizing, verify:
 - ✅ Make prompts self-contained (no dependency on external context)
 - ✅ Use examples in complex prompts to illustrate expected output
 - ✅ Validate prompt completeness before presenting (quality checks in Step 4.6)
-
 
 ### **Example 2: Complex Clear Prompt → RODES + Chain of Thought (No Clarification)**
 
@@ -221,7 +217,6 @@ Output format: Technical design document with architecture diagrams, algorithm j
 ```
 ````
 
-
 ### **Example 4: Code Debugging → Chain of Thought**
 
 **User Input:**
@@ -264,7 +259,6 @@ Output format:
 Include a working example to verify the fix.
 ```
 ````
-
 
 ## Notes
 

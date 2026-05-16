@@ -455,4 +455,3 @@ def charge_and_fulfill(order_id):
 - `django-patterns` â€” ORM, service layer, and project structure
 - `django-tdd` â€” Testing Django models, views, and services
 - `python-testing` â€” pytest configuration and fixtures
-

@@ -34,9 +34,6 @@ In watchOS, the Activity ring element always contains three rings, whose colors 
 
   * When necessary, design the surrounding interface to blend with the rings; never change the rings to blend with the surrounding interface.
 
-
-
-
 **To display a label or value that’s directly associated with an Activity ring, use the colors that match it.** To display the ring-specific labels _Move_ , _Exercise_ , and _Stand_ , or to display a person’s current and goal values for each ring, use the following colors, specified as RGB values.
 
 Move| Exercise| Stand  
@@ -64,9 +61,6 @@ Activity rings are available in iOS with [`HKActivityRingView`](https://develope
   * With an Apple Watch paired, iOS shows all three Activity rings.
 
   * Without an Apple Watch paired, iOS shows the Move ring only, which represents an approximation of a person’s activity based on their steps and workout information from other apps.
-
-
-
 
 ![A screenshot of the Activity summary in the iOS Fitness app with Apple Watch paired. All three Activity rings are displayed.](https://docs-assets.developer.apple.com/published/eab44acde68216f8cbace4a59594b7b6/activity-rings-watch-paired%402x.png)
 

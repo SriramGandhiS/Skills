@@ -222,7 +222,6 @@ Use these biases when scoring:
 * **programmatic-seo** – Scale SEO ideas
 * **ab-test-setup** – Test ideas rigorously
 
-
 ## When to Use
 This skill is applicable to execute the workflow or actions described in the overview.
 

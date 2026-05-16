@@ -115,4 +115,3 @@ The skill will:
    - Page 2: Professional English translation
 
 Perfect for visa applications to Australia, USA, Canada, UK, and other countries requiring translated documents.
-

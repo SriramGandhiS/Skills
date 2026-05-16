@@ -172,7 +172,6 @@ See workflow.md for detailed workflow and troubleshooting.
 | Dump AST | `semgrep --dump-ast -l <lang> <file>` |
 | Debug taint flow | `semgrep --dataflow-traces -f rule.yaml file` |
 
-
 ## Key Differences from Rule Creation
 
 | Aspect | semgrep-rule-creator | This skill |

@@ -164,4 +164,3 @@ Also record:
 - [gget updates](https://pachterlab.github.io/gget/en/updates.html)
 - [gget GitHub repository](https://github.com/pachterlab/gget)
 - [gget Bioinformatics paper](https://doi.org/10.1093/bioinformatics/btac836)
-

@@ -385,4 +385,3 @@ Keep routing declarative in `CLAUDE.md` markdown tables. It is inspectable, edit
 - [ ] Scheduled tasks use external cron (LaunchAgent, systemd, pm2), not Claude Code's session cron
 - [ ] Cost tracking: log API spend per session in `data/logs/<date>-costs.json`
 - [ ] One project = one Agentic OS. Do not share a single `CLAUDE.md` across unrelated projects.
-

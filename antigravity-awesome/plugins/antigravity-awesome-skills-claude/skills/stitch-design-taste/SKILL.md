@@ -25,7 +25,6 @@ tools: [claude, cursor, codex, antigravity]
 - Generated `DESIGN.md` files still require review against the actual product brief, brand constraints, accessibility needs, and screen content.
 - Motion sections document implementation intent for later coding agents because Stitch itself may generate static screens.
 
-
 ## Overview
 This skill generates `DESIGN.md` files optimized for Google Stitch screen generation. It translates the battle-tested anti-slop frontend engineering directives into Stitch's native semantic design language — descriptive, natural-language rules paired with precise values that Stitch's AI agent can interpret to produce premium, non-generic interfaces.
 

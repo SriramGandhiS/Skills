@@ -112,4 +112,3 @@ The upstream repository at https://github.com/mturac/recsys-pipeline-architect s
 - MIT license; pattern attributed to xAI X For You algorithm (Apache 2.0)
 
 Install via skills.sh: `npx skills add mturac/recsys-pipeline-architect`
-

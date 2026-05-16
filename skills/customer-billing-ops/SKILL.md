@@ -138,4 +138,3 @@ PRODUCT GAP
 - "The right fix is a billing portal, not a custom dashboard yet"
 - "This looks like duplicate personal checkout, not a real team-seat purchase"
 - "Refund one duplicate charge, keep the remaining active subscription, then convert the customer to org billing later if needed"
-

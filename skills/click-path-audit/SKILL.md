@@ -242,4 +242,3 @@ selectThread: (thread) => set({
 - Step 1 maps `selectThread` resets `composeMode`
 - Step 2 traces the handler: call 1 sets true, call 2 resets false
 - Verdict: Sequential Undo â€” final state contradicts button intent
-

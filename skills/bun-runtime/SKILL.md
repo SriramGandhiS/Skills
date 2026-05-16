@@ -82,4 +82,3 @@ Bun.serve({
 - Commit the lockfile (`bun.lock` or `bun.lockb`) for reproducible installs.
 - Prefer `bun run` for scripts. For TypeScript, Bun runs `.ts` natively.
 - Keep dependencies up to date; Bun and the ecosystem evolve quickly.
-

@@ -61,4 +61,3 @@ export function injectNativeElement<T extends Element>(): T {
   return inject(ElementRef).nativeElement;
 }
 ```
-

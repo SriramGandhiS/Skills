@@ -143,7 +143,6 @@ class Event:
     global_position: Optional[int] = None
     created_at: datetime = field(default_factory=datetime.utcnow)
 
-
 class EventStore:
     def __init__(self, pool: asyncpg.Pool):
         self.pool = pool
@@ -294,7 +293,6 @@ class EventStore:
             global_position=row['global_position'],
             created_at=row['created_at']
         )
-
 
 class ConcurrencyError(Exception):
     """Raised when optimistic concurrency check fails."""

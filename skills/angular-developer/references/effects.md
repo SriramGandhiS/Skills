@@ -81,4 +81,3 @@ export class Chart {
 4. `read` (Never write here)
 
 _Note: `afterRenderEffect` only runs on the client, never during Server-Side Rendering (SSR)._
-

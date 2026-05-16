@@ -120,4 +120,3 @@ this.profileForm.events.subscribe((event) => {
 - `markAsDirty()` / `markAsPristine()`: Tracks if the value has been modified.
 - `updateValueAndValidity()`: Manually triggers recalculation of value and status.
 - Options `{ emitEvent: false }` or `{ onlySelf: true }` can be passed to most methods to control propagation.
-

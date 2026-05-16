@@ -125,4 +125,3 @@ PRODUCT GAP
 - the answer includes a live-data statement or snapshot timestamp
 - product-truth claims are code-backed
 - customer-impact and broader pricing/product conclusions are separated cleanly
-

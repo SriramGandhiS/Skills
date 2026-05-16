@@ -142,4 +142,3 @@ Before completing any GitHub operations task:
 - CI failures have been investigated (not just re-run)
 - releases include accurate changelogs
 - security alerts are acknowledged and tracked
-

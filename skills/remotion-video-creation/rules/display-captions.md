@@ -124,4 +124,3 @@ const CaptionPage: React.FC<{page: TikTokPage}> = ({page}) => {
   );
 };
 ```
-

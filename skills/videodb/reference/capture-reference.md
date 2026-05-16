@@ -405,4 +405,3 @@ For RTStream methods (indexing, transcription, alerts, batch config), see [rtstr
   â”‚   exported     â”‚ â”€â”€> Access video_id, stream_url, player_url
   â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
 ```
-

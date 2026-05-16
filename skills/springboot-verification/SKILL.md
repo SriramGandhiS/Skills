@@ -229,4 +229,3 @@ Issues to Fix:
 - Keep a short loop: `mvn -T 4 test` + spotbugs for quick feedback
 
 **Remember**: Fast feedback beats late surprises. Keep the gate strictâ€”treat warnings as defects in production systems.
-

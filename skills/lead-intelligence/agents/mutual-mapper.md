@@ -73,4 +73,3 @@ MUTUAL LEADERBOARD
 - Only report connections you can verify from API data or public profiles.
 - Do not assume connections exist based on similar bios or locations alone.
 - Flag uncertain connections with a confidence level.
-

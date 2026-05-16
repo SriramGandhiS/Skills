@@ -214,4 +214,3 @@ To use `@concurrent`:
 - Resolving data-race safety compiler errors during Xcode 26 adoption
 - Building MainActor-centric app architectures (most UI apps)
 - Performance optimization â€” offloading specific heavy computations to background
-

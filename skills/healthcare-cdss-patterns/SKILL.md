@@ -243,4 +243,3 @@ const result = calculateNEWS2({
 });
 // { total: 13, risk: 'high', escalation: 'Urgent clinical review. Consider ICU.' }
 ```
-

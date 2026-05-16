@@ -44,9 +44,6 @@ Although each person’s perspective comprises a unique intersection of human qu
 
   * Social and economic context
 
-
-
-
 As you examine your app or game through different perspectives, avoid framing the work as merely a search for content that might give offense. Although no design should contain offensive material or experiences, an inoffensive app or game isn’t necessarily an inclusive one. Focusing on inclusion can help you avoid potentially offensive content while also helping you create a welcoming experience that everyone can enjoy.
 
 ## [Welcoming language](https://developer.apple.com/design/human-interface-guidelines/inclusion#Welcoming-language)
@@ -70,9 +67,6 @@ An approachable app or game doesn’t require people to have particular skills o
   * Present a clear, straightforward interface. To help you design a simple interface that fits in with other experiences on each platform, see [Designing for iOS](https://developer.apple.com/design/human-interface-guidelines/designing-for-ios), [Designing for iPadOS](https://developer.apple.com/design/human-interface-guidelines/designing-for-ipados), [Designing for macOS](https://developer.apple.com/design/human-interface-guidelines/designing-for-macos), [Designing for tvOS](https://developer.apple.com/design/human-interface-guidelines/designing-for-tvos), [Designing for visionOS](https://developer.apple.com/design/human-interface-guidelines/designing-for-visionos), [Designing for watchOS](https://developer.apple.com/design/human-interface-guidelines/designing-for-watchos), and [Designing for games](https://developer.apple.com/design/human-interface-guidelines/designing-for-games).
 
   * Build in ways to learn how to use your app or game. Consider designing an onboarding flow that helps people who are new to your experience take a step-by-step approach while letting others skip straight to the content they want. For guidance, see [Onboarding](https://developer.apple.com/design/human-interface-guidelines/onboarding).
-
-
-
 
 ## [Gender identity](https://developer.apple.com/design/human-interface-guidelines/inclusion#Gender-identity)
 
@@ -114,9 +108,6 @@ Although the assumption made in the account-access app might seem like an obviou
 
   * How did you feel when you first saw a rainbow?
 
-
-
-
 From some perspectives these questions refer to commonplace events, but all are based on experiences that not everyone has. Using a context-specific experience to communicate something is useless for everyone who doesn’t share that context and effectively excludes them. To create alternatives to the culture- and capability-specific questions above, you might reference more universal human experiences like:
 
   * What’s your favorite activity?
@@ -124,9 +115,6 @@ From some perspectives these questions refer to commonplace events, but all are 
   * What was the name of your first friend?
 
   * What quality describes you best?
-
-
-
 
 Basing design decisions on stereotypes or assumptions inevitably leads to exclusion because generalizations can’t reflect the diversity of human perspectives. Avoiding assumptions and instead concentrating on inclusion can help you craft experiences that benefit everyone.
 
@@ -141,9 +129,6 @@ To help you design an app or game that everyone can enjoy, remember that:
   * Each disability is a spectrum. For example, visual disabilities range from low vision to complete blindness, and include things like color blindness, blurry vision, light sensitivity, and peripheral vision loss.
 
   * Everyone can experience disabilities. In addition to disabilities that most people experience as they age, there are _temporary disabilities_ — like short-term hearing loss due to an infection — and _situational disabilities_ — like being unable to hear while on a noisy train — that can affect everyone at various times.
-
-
-
 
 As you design content that welcomes people of all abilities, consider the following tips.
 

@@ -38,9 +38,6 @@ For optimal contrast and legibility, determine whether to add a dimming layer be
 
   * If the underlying content is sufficiently dark, or if you use standard media playback controls from AVKit that provide their own dimming layer, you don’t need to apply a dimming layer.
 
-
-
-
 For guidance about the use of color, see [Liquid Glass color](https://developer.apple.com/design/human-interface-guidelines/color#Liquid-Glass-color).
 
 ## [Standard materials](https://developer.apple.com/design/human-interface-guidelines/materials#Standard-materials)
@@ -64,9 +61,6 @@ Use standard materials and effects — such as [blur](https://developer.apple.co
   * Thicker materials, which are more opaque, can provide better contrast for text and other elements with fine features.
 
   * Thinner materials, which are more translucent, can help people retain their context by providing a visible reminder of the content that’s in the background.
-
-
-
 
 For developer guidance, see [`Material`](https://developer.apple.com/documentation/SwiftUI/Material).
 
@@ -96,9 +90,6 @@ Except for quaternary, you can use the following vibrancy values for labels on a
 
   * [`UIVibrancyEffectStyle.quaternaryLabel`](https://developer.apple.com/documentation/UIKit/UIVibrancyEffectStyle/quaternaryLabel)
 
-
-
-
 You can use the following vibrancy values for fills on all materials.
 
   * [`UIVibrancyEffectStyle.fill`](https://developer.apple.com/documentation/UIKit/UIVibrancyEffectStyle/fill) (default)
@@ -106,9 +97,6 @@ You can use the following vibrancy values for fills on all materials.
   * [`UIVibrancyEffectStyle.secondaryFill`](https://developer.apple.com/documentation/UIKit/UIVibrancyEffectStyle/secondaryFill)
 
   * [`UIVibrancyEffectStyle.tertiaryFill`](https://developer.apple.com/documentation/UIKit/UIVibrancyEffectStyle/tertiaryFill)
-
-
-
 
 The system provides a single, default vibrancy value for a [separator](https://developer.apple.com/documentation/UIKit/UIVibrancyEffectStyle/separator), which works well on all materials.
 
@@ -167,9 +155,6 @@ visionOS doesn’t have a distinct Dark Mode setting. Instead, glass automatical
 
   * The [`thick`](https://developer.apple.com/documentation/SwiftUI/Material/thick) material lets you create a dark element that remains visually distinct when it’s on top of an area that uses a `regular` background.
 
-
-
-
 ![An illustration of a field of view in visionOS with a window in the center. The window is composed of a sidebar on the left and a content area on the right, with a text field at the top and a button in the lower-right corner. The sidebar uses regular material, while the text field uses thick material and the button uses thin material.](https://docs-assets.developer.apple.com/published/c3577aa1e00689431e49973173a151f9/visionos-materials-window-example%402x.png)
 
 To ensure foreground content remains legible when it displays on top of a material, visionOS applies vibrancy to text, symbols, and fills. Vibrancy enhances the sense of depth by pulling light and color forward from both virtual and physical surroundings.
@@ -181,9 +166,6 @@ visionOS defines three vibrancy values that help you communicate a hierarchy of 
   * Use [`UIVibrancyEffectStyle.secondaryLabel`](https://developer.apple.com/documentation/UIKit/UIVibrancyEffectStyle/secondaryLabel) for descriptive text like footnotes and subtitles.
 
   * Use [`UIVibrancyEffectStyle.tertiaryLabel`](https://developer.apple.com/documentation/UIKit/UIVibrancyEffectStyle/tertiaryLabel) for inactive elements, and only when text doesn’t need high legibility.
-
-
-
 
 ![An illustration of a Share button with a translucent background material and a symbol. The symbol uses the default vibrant label color and has very high contrast against the background material.](https://docs-assets.developer.apple.com/published/8f850521ecc2e3953e8e693fe7b4887b/materials-visionos-label-vibrant-primary%402x.png)`label`
 

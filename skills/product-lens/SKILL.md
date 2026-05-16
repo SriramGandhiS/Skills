@@ -90,4 +90,3 @@ Pair with:
 - `/design-system audit` for visual polish assessment
 - `/canary-watch` for post-launch monitoring
 - `product-capability` when the product brief needs to become an implementation-ready capability plan
-

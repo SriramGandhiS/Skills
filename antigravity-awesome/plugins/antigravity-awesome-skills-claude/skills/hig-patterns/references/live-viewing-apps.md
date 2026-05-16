@@ -32,9 +32,6 @@ Live-viewing apps need to elevate and prioritize live content. In every screen, 
 
   * Design a simple, predictable way for people to invoke and dismiss the content footer — for example, if swiping up invokes the footer, people would expect swiping down to dismiss it.
 
-
-
-
 **Provide instant visual feedback when people change channels.** This is essential for two reasons: people need confirmation that they’ve arrived at the channel they want, and providing feedback can give the streaming content some time to load.
 
 **Match audio to the current context.** When people start playing live content, they expect the audio to match even if they switch to browsing while the content plays in the background. However, when people navigate away from the live tab in your app, they leave the live-viewing context, so audio needs to stop.

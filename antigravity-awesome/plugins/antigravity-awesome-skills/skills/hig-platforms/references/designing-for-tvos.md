@@ -28,9 +28,6 @@ As you begin designing your app or game for tvOS, start by understanding the fol
 
   * [TV provider accounts](https://developer.apple.com/design/human-interface-guidelines/managing-accounts#TV-provider-accounts)
 
-
-
-
 ## [Best practices](https://developer.apple.com/design/human-interface-guidelines/designing-for-tvos#Best-practices)
 
 Great tvOS experiences integrate the platform and device capabilities that people value most. To help your experience feel at home in tvOS, prioritize the following ways to incorporate these features and capabilities.
@@ -42,9 +39,6 @@ Great tvOS experiences integrate the platform and device capabilities that peopl
   * Deliver beautiful, edge-to-edge artwork, subtle and fluid animations, and engaging audio, wrapping people in a rich, cinematic experience that’s clear, legible, and captivating from across the room.
 
   * Enhance multiuser support by making sign-in easy and infrequent, handling shared sign-in, and automatically switching profiles when people change the current viewer.
-
-
-
 
 ## [Resources](https://developer.apple.com/design/human-interface-guidelines/designing-for-tvos#Resources)
 

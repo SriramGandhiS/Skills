@@ -158,4 +158,3 @@ If the system can spend tokens and then fail on PR creation, file update, or bra
 - fixes are ordered by burn impact, not code neatness
 - proving commands are named
 - final status distinguishes local change, verification, push, and deployment
-

@@ -16,9 +16,6 @@ You can use ShazamKit to provide features like:
 
   * Synchronizing in-app experiences with virtual content in contexts like online learning and retail
 
-
-
-
 If you need the device microphone to get audio samples for your app to recognize, you must request access to it. As with all types of permission requests, it’s important to help people understand why you’re asking for access. For guidance, see [Privacy](https://developer.apple.com/design/human-interface-guidelines/privacy).
 
 ![A screenshot of the Math School app’s permission alert on iPhone. The alert reads 'Math School would like to access your microphone. Synchronize reading and math exercises with videos played by your teacher.' There are two buttons available: Not Now and Allow.](https://docs-assets.developer.apple.com/published/b79bf93e025e4493d87cb274a21a8c97/shazamkit-mic-permission%402x.png)

@@ -36,9 +36,6 @@ If an app can still work without the feature that machine learning supports, mac
 
   * Face ID relies on machine learning to perform accurate face recognition. Without machine learning, Face ID would not work.
 
-
-
-
 In general, the more critical an app feature is, the more people need accurate and reliable results. On the other hand, if a complementary feature delivers results that aren’t always of the highest quality, people might be more forgiving.
 
 ### [Private or public](https://developer.apple.com/design/human-interface-guidelines/machine-learning#Private-or-public)
@@ -49,9 +46,6 @@ Machine learning results depend on data. To make good design decisions, you need
 
   * If a music app misinterprets data and recommends an artist that people don’t like, they’re likely to view the result as an inconsequential mistake.
 
-
-
-
 As with critical app features, features that use sensitive data must prioritize accuracy and reliability. Regardless of the sensitivity of the data, all apps must protect user privacy at all times.
 
 ### [Proactive or reactive](https://developer.apple.com/design/human-interface-guidelines/machine-learning#Proactive-or-reactive)
@@ -61,9 +55,6 @@ A _proactive_ app feature provides results without people requesting it to do so
   * QuickType suggests words in reaction to what people type.
 
   * Siri Suggestions can proactively suggest a shortcut based on people’s recent routines.
-
-
-
 
 Because people don’t ask for the results that a proactive feature provides, they may have less tolerance for low-quality information. To reduce the possibility that people will find proactive results intrusive or irrelevant, you may need to use additional data for the feature.
 
@@ -82,9 +73,6 @@ All machine learning models can improve, but some improve dynamically, as people
   * Face ID improves dynamically as people’s faces gradually change over time.
 
   * Photos improves its object recognition capabilities with every new iOS release.
-
-
-
 
 In addition to the frequency of app updates, static or dynamic improvements can affect other parts of the user experience, too. For example, dynamic features often incorporate forms of [calibration](https://developer.apple.com/design/human-interface-guidelines/machine-learning#Calibration) and feedback (either [implicit](https://developer.apple.com/design/human-interface-guidelines/machine-learning#Implicit-feedback) or [explicit](https://developer.apple.com/design/human-interface-guidelines/machine-learning#Explicit-feedback)), whereas static features might not.
 
@@ -107,9 +95,6 @@ _Favoriting_ — marking an item for quick access in the future — and _social 
   * Suggest more thrillers
 
   * Mute politics for a week
-
-
-
 
 **Add icons to an option description if it helps people understand it.** Icons can help clarify or emphasize part of an option description. Avoid using an icon by itself, because it might not be clear enough to communicate granularity or consequences.
 
@@ -167,9 +152,6 @@ In general, only use calibration when your feature can’t function without that
 
   * Avoid asking people to perform actions that might be difficult.
 
-
-
-
 **Make sure people know how to perform calibration successfully.** After people decide to participate in calibration, give them an explicit goal and show their progress towards it. For example, Face ID calibration briefly describes what people need to do and changes the appearance of the tick marks encircling the face as people progress through scanning.
 
 **Immediately provide assistance if progress stalls.** When progress stalls, people can feel stuck or powerless, and they may lose trust in your app. In this situation, it’s crucial to give people actionable recommendations that quickly get them back on track. As you provide this guidance, never imply that something’s wrong or that people are at fault, and never leave people without a clear next step.
@@ -210,9 +192,6 @@ It’s inevitable that your app will make mistakes. Although people may not expe
 
   * Learn from mistakes when doing so improves your app. In some cases, learning from a mistake might have undesirable effects, such as causing unpredictability in the user experience. When it makes sense, use each mistake as a data point that can refine your machine learning models and improve your app.
 
-
-
-
 There are several machine learning patterns that can help you address mistakes:
 
   * [Limitations](https://developer.apple.com/design/human-interface-guidelines/machine-learning#Limitations) help you set people’s expectations about the accuracy of your suggestions.
@@ -224,9 +203,6 @@ There are several machine learning patterns that can help you address mistakes:
   * [Confidence](https://developer.apple.com/design/human-interface-guidelines/machine-learning#Confidence) helps you gauge the quality of your results, which can impact how you present them.
 
   * Feedback — both [explicit](https://developer.apple.com/design/human-interface-guidelines/machine-learning#Explicit-feedback) and [implicit](https://developer.apple.com/design/human-interface-guidelines/machine-learning#Implicit-feedback) — lets people tell you about mistakes that you might not be aware of.
-
-
-
 
 **Understand the significance of a mistake’s consequences.** For example, incorrect keyboard suggestions might annoy people, but suggesting a travel route that results in a missed flight is a serious inconvenience. Show empathy by providing corrective actions or tools that match the seriousness of the mistake.
 
@@ -253,9 +229,6 @@ You might present multiple options to people in the following contexts:
   * Requested options, a reactive feature that suggests potential next steps to people based on their recent actions. For example, Quick Type suggestions.
 
   * Corrections, which are actions people take to fix mistakes your app has made when it’s acting on their behalf. For example, the Photos Auto-Crop feature.
-
-
-
 
 **Prefer diverse options.** When possible, balance the accuracy of a response with the diversity of multiple options. For example, Apple Maps generally suggests more than one route to a destination, such as a route without tolls, a scenic route, or a route that uses highways. Providing different types of options helps people choose the one that they prefer and can also suggest new items that might interest them.
 
@@ -305,9 +278,6 @@ To help you decide whether to include attributions in your app, consider how you
 
   * Promote trust in your app over time
 
-
-
-
 **Consider using attributions to help people distinguish among results.** For example, if you present a set of results as [multiple options](https://developer.apple.com/design/human-interface-guidelines/machine-learning#Multiple-options), including attributions can help people choose an option based on their understanding of the premise that led to it, such as “New books by authors you’ve read.”
 
 **Avoid being too specific or too general.** Overly specific attributions can make people feel like they have to do additional work to interpret the results, whereas overly general attributions typically don’t provide useful information. In apps that make content recommendations, general attributions can make people feel like your app is not treating them as individuals, but overly specific attributions can make people think that your app is watching them too closely. The best attributions strike a balance between these extremes.
@@ -326,9 +296,6 @@ Every feature — whether it’s based on machine learning or not — has certai
 
   * FaceID to work from every angle
 
-
-
-
 An important part of the design process is to identify the scenarios where limitations impact the user experience and design ways to help people work with them. For example:
 
   * Set people’s expectations before they use the feature.
@@ -336,9 +303,6 @@ An important part of the design process is to identify the scenarios where limit
   * Show people how to get the best results while they’re using the feature.
 
   * When inferior results occur, explain why so that people can understand the feature better.
-
-
-
 
 ![A screenshot of the Memoji recording sheet on iPhone. The app shows a person's Memoji, above a message that reads 'Low light', which helps convey that additional light is required for a high-quality recording.](https://docs-assets.developer.apple.com/published/fca31a41168248b160fde791dc573041/machine-learning-limitations%402x.png)
 
@@ -351,9 +315,6 @@ An important part of the design process is to identify the scenarios where limit
   * As people interact with the feature, provide feedback on their actions to guide them towards a result without overwhelming them. For example, while people are interacting with Animoji, the feature responds to current conditions and suggests how people can improve their results by adjusting the lighting or moving closer to the camera.
 
   * Suggest alternative ways to accomplish the goal instead of showing no results. To do this successfully, you need to understand the goal well enough to suggest alternatives that make sense. For example, if people ask Siri to set a timer on a Mac, Siri suggests setting a reminder instead, because timers aren’t available in macOS. This suggestion makes sense because people’s goal is to receive an alert at a certain time.
-
-
-
 
 **Explain how limitations can cause unsatisfactory results.** People can get frustrated when it seems that your feature works intermittently. Ideally, your feature can recognize and describe the reasons for poor results to make people aware of the limitations and help them to adjust their expectations. For example, Animoji tells people that it doesn’t work well in the dark.
 

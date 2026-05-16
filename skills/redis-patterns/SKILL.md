@@ -401,4 +401,3 @@ Use Pub/Sub for fire-and-forget. Switch to Streams if you need guaranteed delive
 - Skill: `database-migrations` â€” schema versioning
 - Skill: `django-patterns` â€” Django cache framework integration
 - Agent: `database-reviewer` â€” full database review workflow
-

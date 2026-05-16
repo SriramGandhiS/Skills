@@ -25,7 +25,6 @@ tools: [claude, cursor, codex, antigravity]
 - Split long outputs into clearly labeled continuation chunks when necessary, and verify that each chunk connects cleanly to the previous one.
 - Do not invent unavailable code, credentials, private APIs, or project files to satisfy a request for complete output.
 
-
 ## Baseline
 
 Treat every task as production-critical. A partial output is a broken output. Do not optimize for brevity — optimize for completeness. If the user asks for a full file, deliver the full file. If the user asks for 5 components, deliver 5 components. No exceptions.

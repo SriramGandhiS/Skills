@@ -23,8 +23,6 @@ The system doesn’t provide information about a person’s field of view.
   * Upright viewing 
   * Angled viewing 
 
-
-
 Video with custom controls. 
 
 Content description: An animation of a person wearing Apple Vision Pro and sitting upright in a chair. The person is directly facing a square that represents an app window in visionOS that's centered in the person's field of view. A dotted line animates from the person's eyes to the center of the window. 

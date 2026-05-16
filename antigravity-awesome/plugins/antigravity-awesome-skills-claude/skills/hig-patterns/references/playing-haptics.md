@@ -16,9 +16,6 @@ In addition to built-in haptic capabilities, some external input devices can als
 
   * [Apple Pencil Pro](https://developer.apple.com/design/human-interface-guidelines/apple-pencil-and-scribble) and some trackpads can provide haptic feedback when connected to certain iPad models. (For details on Apple Pencil features and compatibility, see [Apple Pencil](https://www.apple.com/apple-pencil/).)
 
-
-
-
 ## [Best practices](https://developer.apple.com/design/human-interface-guidelines/playing-haptics#Best-practices)
 
 **Use system-provided haptic patterns according to their documented meanings.** People recognize standard haptics because the system plays them consistently on interactions with standard controls. If the documented use case for a pattern doesn’t make sense in your app or game, avoid using the pattern to mean something else. Instead, use a generic pattern or create your own, where supported. For guidance, see [Custom haptics](https://developer.apple.com/design/human-interface-guidelines/playing-haptics#Custom-haptics).
@@ -47,9 +44,6 @@ There are two basic building blocks you can use to generate custom haptic patter
 
   * _Continuous_ events feel like sustained vibrations, such as the experience of the lasers effect in a message.
 
-
-
-
 Regardless of the type of haptic event you use to generate a custom haptic, you can also control its _sharpness_ and _intensity_. You can think of sharpness as a way to abstract a haptic experience into the waveform that produces the corresponding physical sensations. Specifying sharpness lets you relay to the system your intent for the experience. For example, you might use sharpness values to convey an experience that’s soft, rounded, or organic, or one that’s crisp, precise, or mechanical. As the term implies, intensity means the strength of the haptic.
 
 By combining transient and continuous events, varying sharpness and intensity, and including optional audio content, you can create a wide range of different haptic experiences. For developer guidance, see [Core Haptics](https://developer.apple.com/documentation/CoreHaptics).
@@ -63,9 +57,6 @@ On supported iPhone models, you can add haptics to your experience in the follow
   * Use standard UI components — like [toggles](https://developer.apple.com/design/human-interface-guidelines/toggles), [sliders](https://developer.apple.com/design/human-interface-guidelines/sliders), and [pickers](https://developer.apple.com/design/human-interface-guidelines/pickers) — that play Apple-designed system haptics by default.
 
   * When it makes sense, use a feedback generator to play one of several predefined haptic patterns in the categories of [notification](https://developer.apple.com/design/human-interface-guidelines/playing-haptics#Notification), [impact](https://developer.apple.com/design/human-interface-guidelines/playing-haptics#Impact), and [selection](https://developer.apple.com/design/human-interface-guidelines/playing-haptics#Selection) (for developer guidance, see [`UIFeedbackGenerator`](https://developer.apple.com/documentation/UIKit/UIFeedbackGenerator)).
-
-
-
 
 #### [Notification](https://developer.apple.com/design/human-interface-guidelines/playing-haptics#Notification)
 
@@ -178,8 +169,6 @@ watchOS defines the following set of haptics, each of which conveys a specific m
   * Start 
   * Stop 
   * Click 
-
-
 
 Video with custom controls. 
 

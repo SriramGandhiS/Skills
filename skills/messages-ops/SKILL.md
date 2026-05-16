@@ -102,4 +102,3 @@ STATUS
 - the response names the message source
 - the response includes a sender, service, thread, or clear blocker
 - the final state is explicit and bounded
-

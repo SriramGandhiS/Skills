@@ -473,4 +473,3 @@ Mock the *dependency*, not the code under test. If your test only verifies that 
 Use `my` variables inside subtests â€” never `our` â€” to prevent state leaking between tests.
 
 **Remember**: Tests are your safety net. Keep them fast, focused, and independent. Use Test2::V0 for new projects, prove for running, and Devel::Cover for accountability.
-

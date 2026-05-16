@@ -102,4 +102,3 @@ All fields are optional. Returned values override the `<Composition>` props:
 - `props`: Transformed props passed to the component
 - `defaultOutName`: Default output filename
 - `defaultCodec`: Default codec for rendering
-

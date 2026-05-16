@@ -16,9 +16,6 @@ An effective chart highlights a few key pieces of information in a dataset, help
 
   * Review fitness data to monitor their progress and set new goals.
 
-
-
-
 To learn about designing charts to enhance your experience, see [Charting data](https://developer.apple.com/design/human-interface-guidelines/charting-data); for developer guidance, see [Creating a chart using Swift Charts](https://developer.apple.com/documentation/Charts/Creating-a-chart-using-Swift-Charts).
 
 ## [Anatomy](https://developer.apple.com/design/human-interface-guidelines/charts#Anatomy)
@@ -140,9 +137,6 @@ The following guidelines can help you write useful accessibility labels for char
   * **Describe what the chart’s details represent, not what they look like.** Consider a chart that uses red and blue colors to help people visually distinguish two different data series. It’s crucial to create accessibility labels that identify what each series represents, but describing the colors that visually represent them can add unnecessary information and be distracting.
 
   * **Be consistent throughout your app when referring to a specific axis.** For example, if you always mention the X axis first, people can spend less time figuring out which axis is relevant in a description.
-
-
-
 
 **Hide visible text labels for axes and ticks from assistive technologies.** Axis and tick labels help people visually assess trends in a chart and estimate mark values. VoiceOver users can get mark values and trend information through accessibility labels and Audio Graphs, so they don’t generally need the content in the visible labels.
 

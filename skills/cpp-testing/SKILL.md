@@ -322,4 +322,3 @@ extern "C" int LLVMFuzzerTestOneInput(const uint8_t *data, size_t size) {
 
 - **Catch2**: header-only, expressive matchers
 - **doctest**: lightweight, minimal compile overhead
-

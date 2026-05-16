@@ -132,4 +132,3 @@ If a local config file is required, keep it out of version control:
 ## References
 
 - npm package: `ui-to-vue-converter`
-

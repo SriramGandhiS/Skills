@@ -14,9 +14,6 @@ On Apple platforms, a game can support input from physical game controllers or d
 
   * Players appreciate games that let them use the platform interaction method they’re most familiar with.
 
-
-
-
 To reach the widest audience and provide the best experience for each platform, keep these factors in mind when choosing the input methods to support.
 
 ## [Touch controls](https://developer.apple.com/design/human-interface-guidelines/game-controls#Touch-controls)
@@ -45,8 +42,6 @@ Placing virtual controls within reach of people’s thumbs can make your game mo
 
   * Visible control 
   * Hidden control 
-
-
 
 ![A graphic that shows gameplay with a virtual control to move the character that's more visible while the character is moving.](https://docs-assets.developer.apple.com/published/2c9a0444ff10b37e8e5b54a9036d482e/game-controls-thumbstick-in-motion%402x.png)
 

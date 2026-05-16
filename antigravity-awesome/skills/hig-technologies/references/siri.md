@@ -20,9 +20,6 @@ When you use [SiriKit](https://developer.apple.com/documentation/SiriKit) to def
 
   * Use Siri to control an accessory that integrates with your app.
 
-
-
-
 Siri works with your products on iPhone, iPad, Mac, Apple Watch, HomePod, and AirPods, so people can use it almost everywhere.
 
 When you make your app’s tasks available through Siri, you have several opportunities to customize the user experience. At a fundamental level, you customize the flow and functionality of the everyday tasks and actions you support to implement your business requirements. To reinforce this functionality throughout the user experience, you can write dialogue that reflects the style and tone of your company’s communications and design custom UI that incorporates your app’s visual style into the Siri interface.
@@ -36,9 +33,6 @@ As you approach the job of integrating your app with Siri, assess the actions yo
   * For actions that people can perform through voice interaction, design functional conversational flows that feel natural.
 
   * Explore the various ways people might perform your app’s tasks — such as in a hands-free situation — and the devices they might be using, such as Apple Watch or iPad.
-
-
-
 
 ## [Integrating your app with Siri](https://developer.apple.com/design/human-interface-guidelines/siri#Integrating-your-app-with-Siri)
 
@@ -75,9 +69,6 @@ Siri can use signals like location, time of day, and type of motion (such as wal
   * Siri might suggest an automation that starts a workout in a person’s favorite workout app and plays their favorite workout playlist as they enter their usual gym.
 
   * When people enter the airport after a home-bound flight, Siri might suggest they request a ride home from their favorite ride-sharing app.
-
-
-
 
 When you provide information about your actions to the system, people can also use the Shortcuts app to create shortcuts for the system and custom intents you support. For guidance, see [Shortcuts and suggestions](https://developer.apple.com/design/human-interface-guidelines/siri#Shortcuts-and-suggestions).
 
@@ -200,9 +191,6 @@ SiriKit also defines three response types:
 
   * Error. Tells people that the action can’t be completed.
 
-
-
-
 In several custom intent categories, SiriKit defines default dialogue for each response type. For example, the default confirmation dialogue for the order category is, “Ready to order?” and the default success dialogue for the share category is, “OK. Shared.”
 
 To customize a response, you create a template that combines dialogue you write with placeholders for relevant information your app can supply while it’s working on the intent. For example, a coffee app might enhance the default order confirmation dialogue by providing custom content that includes a placeholder for the total cost of the order.
@@ -257,9 +245,6 @@ People supply parameter values to personalize an intent by responding to your fo
 
   * You can present a comprehensive list of parameter values. When people set up a shortcut, having an extensive list of parameter values can help them create the shortcut they want. In contrast, when people use a shortcut to accelerate an action, they generally prefer the convenience of having a shorter list of choices.
 
-
-
-
 For developer guidance, see the `storeLocation` parameter in the intent definition file of the [Soup Chef: Accelerating App Interactions with Shortcuts](https://developer.apple.com/documentation/SiriKit/soup-chef-accelerating-app-interactions-with-shortcuts) sample code project.
 
 ### [Enhance the voice experience for custom intents](https://developer.apple.com/design/human-interface-guidelines/siri#Enhance-the-voice-experience-for-custom-intents)
@@ -302,9 +287,6 @@ When you support shortcuts, people have a variety of ways to discover and intera
 
   * People can also use the Shortcuts app to automate a shortcut by defining the conditions that can run it, like time of day or current location.
 
-
-
-
 The Shortcuts app is also available in macOS 12 and later and in watchOS 7 and later. For developer guidance, see [SiriKit](https://developer.apple.com/documentation/SiriKit).
 
 Developer note
@@ -324,9 +306,6 @@ The Add to Siri method for adding shortcuts is no longer supported. See [App Sho
   * Within the Now Playing view (for recently played media content)
 
   * During Wind Down
-
-
-
 
 Donations also power Automation Suggestions in the Shortcut app’s Gallery, making it easy for people to set up automations for hands-free interactions with your app.
 
@@ -380,9 +359,6 @@ Shortcut titles and subtitles appear when the system suggests them. In Siri Sugg
   * 60x60 pt (180x180 px @ 3x) to display in an iOS app
 
   * 34x34 pt (68x68 px @2x) to display on the Siri watch face on the 44mm Apple Watch (watchOS scales down the image for smaller watches)
-
-
-
 
 ### [Provide default phrases for shortcuts](https://developer.apple.com/design/human-interface-guidelines/siri#Provide-default-phrases-for-shortcuts)
 
@@ -486,9 +462,6 @@ Use translations of your app name and the word _Shortcuts_ — but not _Siri_ �
   * Attribute Apple, Siri, and all other Apple trademarks with the correct credit lines wherever legal information appears within your app.
 
   * Refer to Apple devices and operating systems only in technical specifications or compatibility descriptions.
-
-
-
 
 See [Guidelines for Using Apple Trademarks](https://www.apple.com/legal/intellectual-property/guidelinesfor3rdparties.html).
 

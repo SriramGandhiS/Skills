@@ -149,4 +149,3 @@ Omit principles that you checked but did not change.
 - Buttons have tactile active states without exaggerated motion.
 - `transition: all` and `will-change: all` are absent.
 - Small controls still have usable hit areas.
-

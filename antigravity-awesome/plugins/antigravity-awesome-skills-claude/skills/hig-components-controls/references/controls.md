@@ -26,9 +26,6 @@ Controls display their information differently depending on where they appear:
 
   * On iPhone devices with a control assigned to the Action button, pressing and holding it displays the control’s symbol in the Dynamic Island, as well as its value (if present).
 
-
-
-
 ![A partial screenshot of Control Center on iPhone, highlighting that the Silent mode control is active, with a symbol of a bell with a line drawn through it and red tint.](https://docs-assets.developer.apple.com/published/01a84972ab485b0b33d4342bd1b1a42a/control-control-center%402x.png)
 
 Control toggle in Control Center

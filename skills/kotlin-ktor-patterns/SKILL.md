@@ -687,4 +687,3 @@ fun Application.configureDI() {
 | `testApplication { }` | Integration testing |
 
 **Remember**: Ktor is designed around Kotlin coroutines and DSLs. Keep routes thin, push logic to services, and use Koin for dependency injection. Test with `testApplication` for full integration coverage.
-

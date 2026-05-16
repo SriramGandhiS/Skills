@@ -29,8 +29,6 @@ When it makes sense in your app, you can replace the system-provided keyboard wi
   * URL 
   * Web search 
 
-
-
 ![A partial screenshot of a keyboard on iPhone that displays all 26 letter keys in addition to the Shift, Delete, Numbers, Space, and Return keys. Typing suggestions appear above the keyboard and the Dictation button appears below it.](https://docs-assets.developer.apple.com/published/1aeba403a2942689ee8efbfed71a7943/virtual-keyboard-ascii-capable%402x.png)
 
 ![A partial screenshot of a keyboard on iPhone that displays all 10 number keys in addition to the Delete key. Keys for the numbers 2 through 9 each include the 3 or 4 letters associated with the number on a phone.](https://docs-assets.developer.apple.com/published/1da579d09964a9bd81a0823d52fa18e5/virtual-keyboard-ascii-capable-number-pad%402x.png)

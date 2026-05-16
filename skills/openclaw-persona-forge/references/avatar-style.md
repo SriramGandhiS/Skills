@@ -122,4 +122,3 @@ The key silhouette recognition points at small size are:
 
 > æ»¡æ„å—ï¼Ÿä¸æ»¡æ„æˆ‘å¯ä»¥è°ƒæ•´ [å…·ä½“å¯è°ƒé¡¹] åŽé‡æ–°ç”Ÿæˆã€‚
 ```
-

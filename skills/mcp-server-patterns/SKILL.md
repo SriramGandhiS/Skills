@@ -67,4 +67,3 @@ Use **Zod** (or the SDKâ€™s preferred schema format) for input validation.
 - **JavaScript/TypeScript**: `@modelcontextprotocol/sdk` (npm). Use Context7 with library name "MCP" for current registration and transport patterns.
 - **Go**: Official Go SDK on GitHub (`modelcontextprotocol/go-sdk`).
 - **C#**: Official C# SDK for .NET.
-

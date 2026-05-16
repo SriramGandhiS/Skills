@@ -70,4 +70,3 @@ export function provideAnalytics(config: AnalyticsConfig): Provider[] {
   return [{provide: ANALYTICS_CONFIG, useValue: config}, AnalyticsService];
 }
 ```
-

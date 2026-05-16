@@ -208,7 +208,6 @@ def launch_handler(handler_input: HandlerInput) -> Response:
     return (handler_input.response_builder
             .speak(greeting).ask("Em que posso ajudar?").response)
 
-
 @sb.request_handler(can_handle_func=is_intent_name("ChatIntent"))
 def chat_handler(handler_input: HandlerInput) -> Response:
     try:

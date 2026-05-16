@@ -89,4 +89,3 @@ Before delivering:
 - the proof point is concrete
 - filler praise and softener language are gone
 - word count stays tight
-

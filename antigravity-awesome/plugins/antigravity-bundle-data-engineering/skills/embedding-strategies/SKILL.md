@@ -86,11 +86,9 @@ def get_embeddings(
 
     return all_embeddings
 
-
 def get_embedding(text: str, **kwargs) -> List[float]:
     """Get single embedding."""
     return get_embeddings([text], **kwargs)[0]
-
 
 # Dimension reduction with OpenAI
 def get_reduced_embedding(text: str, dimensions: int = 512) -> List[float]:
@@ -145,7 +143,6 @@ class LocalEmbedder:
         """Embed documents for indexing."""
         return self.embed(documents)
 
-
 # E5 model with instructions
 class E5Embedder:
     def __init__(self, model_name: str = "intfloat/multilingual-e5-large"):
@@ -187,7 +184,6 @@ def chunk_by_tokens(
 
     return chunks
 
-
 def chunk_by_sentences(
     text: str,
     max_chunk_size: int = 1000,
@@ -217,7 +213,6 @@ def chunk_by_sentences(
 
     return chunks
 
-
 def chunk_by_semantic_sections(
     text: str,
     headers_pattern: str = r'^#{1,3}\s+.+$'
@@ -241,7 +236,6 @@ def chunk_by_semantic_sections(
         chunks.append((current_header, '\n'.join(current_content)))
 
     return chunks
-
 
 def recursive_character_splitter(
     text: str,
@@ -376,7 +370,6 @@ class DomainEmbeddingPipeline:
 
         return processed
 
-
 # Code-specific pipeline
 class CodeEmbeddingPipeline:
     """Specialized pipeline for code embeddings."""
@@ -452,7 +445,6 @@ def evaluate_retrieval_quality(
         metrics[f"ndcg@{k}"].append(ndcg_at_k(relevant_set, retrieved, k))
 
     return {name: np.mean(values) for name, values in metrics.items()}
-
 
 def compute_embedding_similarity(
     embeddings1: np.ndarray,

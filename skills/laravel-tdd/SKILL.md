@@ -281,4 +281,3 @@ final class DashboardInertiaTest extends TestCase
 ```
 
 Prefer `assertInertia` over raw JSON assertions to keep tests aligned with Inertia responses.
-

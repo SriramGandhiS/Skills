@@ -16,9 +16,6 @@ Because the duration of an operation is either known or unknown, there are two t
 
   *  _Indeterminate_ , for unquantifiable tasks, such as loading or synchronizing complex data
 
-
-
-
 Both determinate and indeterminate progress indicators can have different appearances depending on the platform. A determinate progress indicator shows the progress of a task by filling a linear or circular track as the task completes. _Progress bars_ include a track that fills from the leading side to the trailing side. _Circular progress indicators_ have a track that fills in a clockwise direction.
 
 ![An image of a horizontal progress bar in macOS filled almost to the midpoint with solid color.](https://docs-assets.developer.apple.com/published/ec2a80ba694138d5ac65555f5e3b0734/progress-indicator-determinate-bar%402x.png)Progress bar

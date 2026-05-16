@@ -37,7 +37,6 @@ This report lists all security-related skills found in the `antigravity-awesome-
 - "Execute a DCSync attack to extract the krbtgt hash for a Golden Ticket generation."
 - "Test this Domain Controller for the ZeroLogon vulnerability and document findings."
 
-
 ---
 
 ## angular-migration (`angular-migration`)
@@ -953,7 +952,6 @@ This skill is applicable to execute the workflow or actions described in the ove
 ### Example Prompts
 Full workflow fails -> Simplified workflow -> Decompose to subtasks -> Human escalation
 
-
 ---
 
 ## malware-analyst (`malware-analyst`)
@@ -1362,7 +1360,6 @@ Not specified
 
 **Description:** Design, validate, and optimize schema.org structured data for eligibility, correctness, and measurable SEO impact. Use when the user wants to add, fix, audit, or scale schema markup (JSON-LD) for rich results. This skill evaluates whether schema should be implemented, what types are valid, and how to deploy safely according to Google guidelines.
 
-
 ### Use Cases
 This skill is applicable to execute the workflow or actions described in the overview.
 
@@ -1471,7 +1468,6 @@ Not specified
 Not specified
 
 ---
-
 
 ## service-mesh-expert (`service-mesh-expert`)
 

@@ -413,4 +413,3 @@ return response()->json([
 
 - Keep secrets in `.env` and config in `config/*.php`
 - Use per-environment config overrides and `config:cache` in production
-

@@ -18,9 +18,6 @@ Toolbars act on content in the view, facilitate navigation, and help orient peop
 
   * Actions, or bar items, like [buttons](https://developer.apple.com/design/human-interface-guidelines/buttons) and [menus](https://developer.apple.com/design/human-interface-guidelines/menus)
 
-
-
-
 In contrast to a toolbar, a [tab bar](https://developer.apple.com/design/human-interface-guidelines/tab-bars) is specifically for navigating between areas of an app.
 
 ## [Best practices](https://developer.apple.com/design/human-interface-guidelines/toolbars#Best-practices)
@@ -35,8 +32,6 @@ The system automatically adds an overflow menu in macOS or iPadOS when items no 
 
   * Standard 
   * Compact 
-
-
 
 ![A screenshot of the Notes app on Mac, with the window wide enough for the toolbar to include all of the available toolbar items. A More menu button appears on the trailing side of the toolbar, with the menu open beneath it.](https://docs-assets.developer.apple.com/published/38a70b5303c70f442fdf6e60c1caf000/toolbars-notes-app-expanded-icons%402x.png)The standard toolbar in macOS Notes includes a More menu with extra commands.
 
@@ -111,9 +106,6 @@ You can position toolbar items in three locations: the leading edge, center area
   * **Center area.** Common, useful controls appear in the center area, and the view title can appear here if it’s not on the leading edge. In macOS and iPadOS, people can add, remove, and rearrange items here if you let them customize the toolbar, and items in this section automatically collapse into the system-managed overflow menu when the window shrinks enough in size.
 
   * **Trailing edge.** The trailing edge contains important items that need to remain available, buttons that open nearby inspectors, an optional search field, and the More menu that contains additional items and supports toolbar customization. It also includes a primary action like Done when one exists. Items on the trailing edge remain visible at all window sizes.
-
-
-
 
 ![A diagram of the top toolbar in the Freeform app on iPad. Callouts indicate the location of item groupings on the leading edge, center area, and trailing edge of the toolbar.](https://docs-assets.developer.apple.com/published/882504f8e992b3ce0e373f47523adf5e/toolbars-ipad-anatomy%402x.png)
 

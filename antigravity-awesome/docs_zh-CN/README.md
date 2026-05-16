@@ -294,7 +294,6 @@ Codex 插件通过仓库本地插件入口指向相同的精选 `skills/` 树，
 - `@frontend-design` 用于 UI 和交互质量。
 - `@security-auditor` 用于安全重点的审查。
 
-
 ### 社区贡献的技能
 
 - [Overnight Worker](https://github.com/fullstackcrew-alpha/skill-overnight-worker) - 自主隔夜工作代理。睡前分配任务，早上获得结构化结果。

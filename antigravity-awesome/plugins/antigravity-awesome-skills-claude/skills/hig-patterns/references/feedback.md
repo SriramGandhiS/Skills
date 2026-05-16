@@ -18,9 +18,6 @@ Providing clear, consistent feedback as people interact with your app or game ca
 
   * An opportunity to correct a mistake or problematic situation
 
-
-
-
 The most effective feedback tends to match the significance of the information to the way it’s delivered. For example, it often works well to display status information in a passive way so that people can view it when they need it. In contrast, a warning about possible data loss needs to interrupt people so they have a chance to avoid the problem.
 
 ## [Best practices](https://developer.apple.com/design/human-interface-guidelines/feedback#Best-practices)

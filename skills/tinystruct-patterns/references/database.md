@@ -97,4 +97,3 @@ Table filtered = user.find(
 2. **Naming**: Table names are singularized for class names (`users` â†’ `User`). Underscored columns become camelCase fields (`created_at` â†’ `createdAt`).
 3. **Setters**: Use `setFieldAsXxx` methods (e.g., `setFieldAsString`) in setters to sync state with the internal field map.
 4. **Id Field**: The primary key field in Java is always named `Id` (inherited from `AbstractData`).
-

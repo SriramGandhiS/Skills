@@ -76,4 +76,3 @@ Response pattern:
 - `healthcare-emr-patterns`
 - `healthcare-eval-harness`
 - `security-review`
-

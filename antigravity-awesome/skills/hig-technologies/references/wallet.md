@@ -92,8 +92,6 @@ A boarding pass can display logo and footer images, and it can have up to two pr
   * Example 
   * Layout 
 
-
-
 ![An illustration representing a boarding pass that includes a square QR code. The boarding pass is for a flight from SFO in San Francisco to LGA in New York.](https://docs-assets.developer.apple.com/published/1656e78a2371c7828d25a5c5ffcddad6/boarding%402x.png)
 
 ![A diagram that shows the layout of a boarding pass. A top row contains a logo, logo text, and header field areas. A second row contains primary field areas and an airplane icon. A third row contains an auxiliary fields area. The fourth row contains a secondary fields area. The fifth row contains a footer area. The bottom of the pass contains a barcode area.](https://docs-assets.developer.apple.com/published/d9c8d4f88fd387194d5349d1de1f8ede/boarding-pass-layout%402x.png)
@@ -104,8 +102,6 @@ Use the coupon style for coupons, special offers, and other discounts. A coupon 
 
   * Example 
   * Layout 
-
-
 
 ![An illustration representing a coupon pass. The pass includes a company name and icon, glyphs of clothing items, a discount offer of 15% off, and an expiration of June 5, 2023.](https://docs-assets.developer.apple.com/published/69bfb27a52f67ad10eb88d66276d0fa8/coupon%402x.png)
 
@@ -120,8 +116,6 @@ A store card can display logo and strip images, and it can have up to four secon
   * Example 
   * Layout 
 
-
-
 ![An illustration representing a store card pass. The pass includes a company name and icon, a reward point value, an illustration of a coffee cup, a reward value amount, and an updated date.](https://docs-assets.developer.apple.com/published/f81fefc86a3b46a8052c2164131d2583/store-card%402x.png)
 
 ![A diagram that shows the layout of a store card pass. A top row contains a logo, logo text, and header field areas. A second row contains a primary field area with a callout labeled 'Strip image'. A third row contains a secondary and auxiliary fields area. The fourth row contains a barcode area.](https://docs-assets.developer.apple.com/published/7b648e914e0e99562fcf512efb115175/store-card-layout%402x.png)
@@ -135,8 +129,6 @@ An event ticket can display logo, strip, background, or thumbnail images. Howeve
   * Example 
   * Layout 1 
   * Layout 2 
-
-
 
 ![An illustration representing an event ticket pass. The pass includes a company name and icon, a date and time, an illustration of a person bowling, a bowling alley name, and a lane number.](https://docs-assets.developer.apple.com/published/a0a42a2d3a332050cdcaba0eefa6d0ec/event-ticket%402x.png)
 
@@ -154,8 +146,6 @@ A poster event ticket displays an event logo and background image, and can optio
 
   * Example 
   * Layout 
-
-
 
 ![An illustration representing a poster event ticket pass. The pass includes an event name, a date and time, a background image, seat information, a venue name, and a secondary logo.](https://docs-assets.developer.apple.com/published/5545e8e95a5b5e9a8c29a25a05e49001/poster-event-ticket%402x.png)
 
@@ -197,8 +187,6 @@ Use the generic style for a type of pass that doesn’t fit into the other categ
   * Layout 1 
   * Layout 2 
 
-
-
 ![An illustration representing a generic pass. The pass is a membership card for a gym, and includes a company name and icon, a membership level, an illustration of a person lifting weights, a policy holder name, a member ID, and a barcode.](https://docs-assets.developer.apple.com/published/2f8c9366433d611399132b3075659cba/generic%402x.png)
 
 ![A diagram that shows one layout style for a generic pass. A top row contains a logo, logo text, and header field areas. A second row contains areas for a primary field and a thumbnail. A third row contains a secondary fields area. A fourth row contains an auxiliary fields area. The fifth row contains a rectangular barcode area.](https://docs-assets.developer.apple.com/published/0ea8eaf5a48417f07aed39a2e317710e/generic-pass-layout-1%402x.png)
@@ -230,8 +218,6 @@ In every style, watchOS crops the strip image to fit the aspect ratio of the car
   * Store 
   * Event 
   * Generic 
-
-
 
 ![A diagram that shows the layout of a boarding pass on Apple Watch. The first row contains a logo image and departure or boarding time information. The second row contains origin and destination information. The third row contains the passenger name and seat.](https://docs-assets.developer.apple.com/published/70059954f5ceacc74c7fa523ca38459d/watch-layout-boarding-pass%402x.png)
 
@@ -300,9 +286,6 @@ An order gives people ways to contact the merchant and displays details about th
   * A scannable barcode when one is required to pick up the order in a pickup fulfillment. It’s convenient when people can offer the barcode from within Wallet instead of finding it in an email or webpage.
 
   * Clear, detailed instructions that can help people receive or pick up their order.
-
-
-
 
 ![A screenshot of an order fulfillment screen for a food truck app on iPhone. The top of the screen displays information about an order placed, and denotes that the order arrives tomorrow. The screen includes the shipping address, a link to track the shipment, a list of items ordered, and additional order details. The bottom of the screen displays another order placed, which is ready for pickup. In place of the shipping address is a Barcode button and a pickup address.](https://docs-assets.developer.apple.com/published/bd11abab3cc21427dc4d20a123cbebfa/wallet-ot-status-pickup-details%402x.png)
 

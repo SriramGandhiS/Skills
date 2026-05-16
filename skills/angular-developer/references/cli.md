@@ -84,4 +84,3 @@ To deploy an application, you must first add a deployment builder, then run the 
 ng add @angular/fire
 ng deploy
 ```
-

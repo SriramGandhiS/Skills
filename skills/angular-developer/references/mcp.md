@@ -106,4 +106,3 @@ Example for read-only mode with experimental tools enabled:
 ```json
 "args": ["-y", "@angular/cli", "mcp", "--read-only", "-E", "build", "-E", "modernize"]
 ```
-

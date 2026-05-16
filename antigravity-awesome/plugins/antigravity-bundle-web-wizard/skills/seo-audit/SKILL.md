@@ -482,7 +482,6 @@ Use these skills **only after the audit is complete** and findings are accepted.
 * **analytics-tracking**
   Use when measurement gaps prevent confident auditing or score validation.
 
-
 ## When to Use
 This skill is applicable to execute the workflow or actions described in the overview.
 

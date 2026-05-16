@@ -122,9 +122,6 @@ In iOS and iPadOS, a menu can display items in one of the following three layout
 
   * **Large (the default).** The menu displays all items in a list.
 
-
-
-
 For developer guidance, see [`preferredElementSize`](https://developer.apple.com/documentation/UIKit/UIMenu/preferredElementSize).
 
 **Choose a small or medium menu layout when it can help streamline people’s choices.** Consider using the medium layout if your app has three important actions that people often want to perform. For example, Notes uses the medium layout to give people a quick way to perform the Scan, Lock, and Pin actions. Use the small layout only for closely related actions that typically appear as a group, such as Bold, Italic, Underline, and Strikethrough. For each action, use a recognizable symbol that helps people identify the action without a label.

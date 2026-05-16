@@ -92,4 +92,3 @@ effect(async () => {
   console.log(currentTheme);
 });
 ```
-

@@ -152,4 +152,3 @@ When working with Angular tooling, consult the following references:
 - `tdd-workflow` â€” test-driven development workflow applicable to Angular components and services
 - `security-review` â€” security checklist for web applications including Angular-specific concerns
 - `frontend-patterns` â€” general frontend patterns for context on React/Next.js approaches
-

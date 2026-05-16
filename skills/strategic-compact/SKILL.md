@@ -129,4 +129,3 @@ Common sources of duplicate context:
 - [The Longform Guide](https://x.com/affaanmustafa/status/2014040193557471352) â€” Token optimization section
 - Memory persistence hooks â€” For state that survives compaction
 - `continuous-learning` skill â€” Extracts patterns before session ends
-

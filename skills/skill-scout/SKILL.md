@@ -138,4 +138,3 @@ release-note variant, or create a fresh skill.
 - `search-first` - General search-before-building workflow.
 - `skill-stocktake` - Audit installed skills for health, duplicates, and gaps.
 - `agent-sort` - Categorize and organize existing agents and skills.
-

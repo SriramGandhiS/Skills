@@ -164,4 +164,3 @@ echidna-test . --contract YourAMM --config echidna.yaml
 
 forge test --fuzz-runs 10000
 ```
-

@@ -115,4 +115,3 @@ state like 'standby' is added }
 - **Standalone**: By default, components are standalone (since Angular 19, `standalone: true` is default). For older versions, `standalone: true` must be explicit or the component must be part of an `NgModule`.
 - **Component Tree**: Angular applications are structured as a tree of components, where each component can host child components.
 - **Component Naming**: Do not add suffixes the `Component` suffix for Component classes (e.g., AppComponent) unless the project has been configured to use that naming configuration.
-

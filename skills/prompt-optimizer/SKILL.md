@@ -396,4 +396,3 @@ Recommended: Opus 4.6 for blueprint planning, Sonnet 4.6 for phase execution.
 | `blueprint` | EPIC-scope optimized prompts (invoke as skill, not command) |
 | `strategic-compact` | Long session context management |
 | `cost-aware-llm-pipeline` | Token optimization recommendations |
-

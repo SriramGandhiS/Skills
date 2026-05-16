@@ -234,4 +234,3 @@ The tour should feel like a path, not an inventory.
 - `coding-standards`
 - `council`
 - official upstream format: `microsoft/codetour`
-

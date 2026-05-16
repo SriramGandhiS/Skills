@@ -732,7 +732,6 @@ jurisdiction if not resolved within the regulatory timeframe.
 
 Respectfully,
 
-
 {{our_contact_name}}
 {{our_contact_title}}
 {{our_company}}

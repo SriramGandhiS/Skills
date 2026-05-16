@@ -42,4 +42,3 @@ Run `next dev` for local development with Turbopack. Use the Bundle Analyzer (se
 - Stay on a recent Next.js 16.x for stable Turbopack and caching behavior.
 - If dev is slow, ensure you're on Turbopack (default) and that the cache isn't being cleared unnecessarily.
 - For production bundle size issues, use the official Next.js bundle analysis tooling for your version.
-

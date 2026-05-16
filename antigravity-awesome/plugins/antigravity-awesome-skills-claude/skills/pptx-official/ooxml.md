@@ -401,7 +401,6 @@ Example:
 
 Note: Don't renumber remaining slides - keep their original IDs and filenames.
 
-
 ## Common Errors to Avoid
 
 - **Encodings**: Escape unicode characters in ASCII content: `"` becomes `&#8220;`

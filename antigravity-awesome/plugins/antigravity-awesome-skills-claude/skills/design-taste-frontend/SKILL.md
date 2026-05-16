@@ -25,7 +25,6 @@ tools: [claude, cursor, codex, antigravity]
 - Verify framework versions, installed dependencies, responsive behavior, and build output in the target repository before treating generated UI as production-ready.
 - Do not force these design rules when the existing product, brand system, or platform conventions require a different visual direction.
 
-
 ## 1. ACTIVE BASELINE CONFIGURATION
 * DESIGN_VARIANCE: 8 (1=Perfect Symmetry, 10=Artsy Chaos)
 * MOTION_INTENSITY: 6 (1=Static/No movement, 10=Cinematic/Magic Physics)
@@ -51,7 +50,6 @@ Unless the user explicitly specifies a different stack, adhere to these structur
   * **Viewport Stability [CRITICAL]:** NEVER use `h-screen` for full-height Hero sections. ALWAYS use `min-h-[100dvh]` to prevent catastrophic layout jumping on mobile browsers (iOS Safari).
   * **Grid over Flex-Math:** NEVER use complex flexbox percentage math (`w-[calc(33%-1rem)]`). ALWAYS use CSS Grid (`grid grid-cols-1 md:grid-cols-3 gap-6`) for reliable structures.
 * **Icons:** You MUST use exactly `@phosphor-icons/react` or `@radix-ui/react-icons` as the import paths (check installed version). Standardize `strokeWidth` globally (e.g., exclusively use `1.5` or `2.0`).
-
 
 ## 3. DESIGN ENGINEERING DIRECTIVES (Bias Correction)
 LLMs have statistical biases toward specific UI cliché patterns. Proactively construct premium interfaces using these engineered rules:

@@ -15,7 +15,6 @@ metadata:
   license_source: "https://github.com/pravin-python/antigravity-awesome-skills/blob/main/LICENSE"
 ---
 
-
 # Multi-Agent Architect & Updater Skill
 
 ## Overview

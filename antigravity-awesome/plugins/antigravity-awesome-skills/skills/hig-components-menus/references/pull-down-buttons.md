@@ -20,9 +20,6 @@ After people choose an item in a pull-down button’s menu, the menu closes, and
 
   * A Back button could let people choose a specific location to revisit instead of opening the previous one.
 
-
-
-
 If you need to provide a list of mutually exclusive choices that aren’t commands, use a [pop-up button](https://developer.apple.com/design/human-interface-guidelines/pop-up-buttons) instead.
 
 **Avoid putting all of a view’s actions in one pull-down button.** A view’s primary actions need to be easily discoverable, so you don’t want to hide them in a pull-down button that people have to open before they can do anything.

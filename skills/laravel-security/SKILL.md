@@ -283,4 +283,3 @@ Route::get('/invoices/{invoice}/download', [InvoiceController::class, 'download'
     ->name('downloads.invoice')
     ->middleware('signed');
 ```
-

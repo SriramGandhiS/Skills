@@ -278,4 +278,3 @@ dotnet test --filter "FullyQualifiedName~OrderService"
 # Watch mode during development
 dotnet watch test --project tests/MyApp.Tests/
 ```
-

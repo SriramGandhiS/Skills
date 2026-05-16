@@ -110,4 +110,3 @@ RECOMMENDATION
 - important claims are labeled by evidence type
 - freshness-sensitive outputs include dates
 - the final recommendation matches the actual research mode used
-

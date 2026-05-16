@@ -42,9 +42,6 @@ As a person engages with an App Shortcut, your app can respond in a variety of w
 
   * [Live Activities](https://developer.apple.com/design/human-interface-guidelines/live-activities) offer continuous access to information that’s likely to remain relevant and change over a period of time, and are great for timers and countdowns that appear until an event is complete. For developer guidance, see [`LiveActivityIntent`](https://developer.apple.com/documentation/AppIntents/LiveActivityIntent).
 
-
-
-
 ![A screenshot of the iPhone Home Screen with a custom snippet occupying the top half of the screen. The snippet includes buttons to confirm or cancel a delivery order from a coffee shop, along with the items in the order and the total price.](https://docs-assets.developer.apple.com/published/05c70d4c5b6a1d65a1ea0a1662b5aa83/app-shortcuts-siri-dialogue%402x.png)
 
 ![A screenshot of the iPhone Home Screen with a Live Activity occupying the top quarter of the screen. The Live Activity shows the estimated time for the arrival of a delivery of an order from a coffee shop, along with the number of items in the order and a button to contact the delivery driver.](https://docs-assets.developer.apple.com/published/62d4ff80b64dba56a083468c467fdb64/app-shortcuts-live-activity%402x.png)

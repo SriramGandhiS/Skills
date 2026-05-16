@@ -44,9 +44,6 @@ Dynamic Top Shelf images can appear in several ways:
 
   * A set of scrolling banners
 
-
-
-
 ### [Carousel actions](https://developer.apple.com/design/human-interface-guidelines/top-shelf#Carousel-actions)
 
 The carousel actions layout style focuses on full-screen video and images and includes a few unobtrusive controls that help people see more. This layout style works especially well to showcase content that people already know something about. For example, it’s great for displaying user-generated content, like photos, or new content from a franchise or show that people are likely to enjoy.

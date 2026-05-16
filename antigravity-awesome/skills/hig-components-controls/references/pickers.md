@@ -38,9 +38,6 @@ A date picker is an efficient interface for selecting a specific date, time, or 
 
   * Automatic — A system-determined style based on the current platform and date picker mode.
 
-
-
-
 A date picker has four modes, each of which presents a different set of selectable values.
 
   * Date — Displays months, days of the month, and years.
@@ -51,9 +48,6 @@ A date picker has four modes, each of which presents a different set of selectab
 
   * Countdown timer — Displays hours and minutes, up to a maximum of 23 hours and 59 minutes. This mode isn’t available in the inline or compact styles.
 
-
-
-
 The exact values shown in a date picker, and their order, depend on the device location.
 
 Here are several examples of date pickers showing different combinations of style and mode.
@@ -61,8 +55,6 @@ Here are several examples of date pickers showing different combinations of styl
   * Compact 
   * Inline 
   * Wheels 
-
-
 
 ![An illustration of a compact date picker, with a single inline row showing the currently selected date. The picker opens as a popover extending down from the row, and includes a full calendar month for choosing the date.](https://docs-assets.developer.apple.com/published/65d6693bf614da95dde6a82006037c86/pickers-date-picker-compact-expanded%402x.png)In a compact layout, a picker opens as a popover over your content.
 

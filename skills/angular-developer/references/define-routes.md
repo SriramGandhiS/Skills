@@ -65,4 +65,3 @@ Define sub-views using the `children` property. Parent components must include a
   ],
 }
 ```
-

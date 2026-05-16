@@ -24,9 +24,6 @@ The Camera Control offers two types of controls for adjusting values or changing
 
   * A _picker_ offers discrete options, such as turning a grid on and off in the viewfinder.
 
-
-
-
 ![A partial screenshot of the Camera Control overlay displaying a slider control.](https://docs-assets.developer.apple.com/published/3bb2ecfcd292742f087c064e5dfd1ec5/camera-control-slider-control%402x.png)Slider control
 
 ![A partial screenshot of the Camera Control overlay displaying a picker control.](https://docs-assets.developer.apple.com/published/27e6bc8836d9265133dd150098c3865d/camera-control-picker-control%402x.png)Picker control

@@ -26,13 +26,8 @@ visionOS offers several ways to immerse people in your content in the Shared Spa
 
   * **Use dimmed passthrough to bring attention to your content.** You can subtly dim or tint passthrough and other visible content to bring attention to your app in the Shared Space without hiding other apps and games, or create a more focused experience in a Full Space. While passthrough is tinted black by default, you can apply a custom tint color to create a dynamic experience in your app. For developer guidance, see [`SurroundingsEffect`](https://developer.apple.com/documentation/SwiftUI/SurroundingsEffect).
 
-
-
-
   * Without dimmed passthrough 
   * With dimmed passthrough 
-
-
 
 ![A screenshot of a window in the Shared Space.](https://docs-assets.developer.apple.com/published/3aa6d97e5947c39a73cfd8dd7e9c4dff/immersive-spaces-shared-space-regular-content%402x.png)
 
@@ -42,9 +37,6 @@ visionOS offers several ways to immerse people in your content in the Shared Spa
 
   * **Use`progressive` immersion to blend your custom environment with a person’s surroundings.** You can use the `progressive` style in a Full Space to display a custom environment that partially replaces passthrough. You can also define a specific range of immersion that works best with your app or game, and display content in portrait or landscape orientation. While in your immersive experience, people can use the Digital Crown to adjust the amount of immersion within either the default range of 120- to 360-degrees or a custom range, if you specify one. The system automatically defines an approximately 1.5-meter boundary when an experience transitions to the `progressive` style. For developer guidance, see [`progressive`](https://developer.apple.com/documentation/SwiftUI/ImmersionStyle/progressive).
 
-
-
-
 Video with custom controls. 
 
 Content description: A recording of a fully immersive experience in which a video player window appears on top of an Environment. As the viewer adjusts the Digital Crown, passthrough increases to reveal more of the person's physical surroundings. 
@@ -53,14 +45,9 @@ Play
 
   * **Use`full` immersion to create a fully immersive experience.** You can use the `full` style in a Full Space to display a 360-degree custom environment that completely replaces passthrough and transports people to a new place. As with the `progressive` style, the system defines an approximately 1.5-meter boundary when a fully immersive experience starts. For developer guidance, see [`full`](https://developer.apple.com/documentation/SwiftUI/ImmersionStyle/full).
 
-
-
-
   * Full Space (Mixed) 
   * Full Space (Progressive) 
   * Full Space (Immersive) 
-
-
 
 ![A screenshot of an app running in a Full Space using the mixed immersion style in visionOS.](https://docs-assets.developer.apple.com/published/bb7e4d2d5f14673af8223f16b8ef8367/immersive-spaces-full-space-mixed-style%402x.png)Mixed immersion style in a Full Space blending in-app objects with real-world surroundings
 

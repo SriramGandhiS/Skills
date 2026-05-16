@@ -201,4 +201,3 @@ Likely council shape:
 - Critic focuses on support burden, expectation debt, and rollout confusion
 
 The value is not unanimity. The value is making the disagreement legible before choosing.
-

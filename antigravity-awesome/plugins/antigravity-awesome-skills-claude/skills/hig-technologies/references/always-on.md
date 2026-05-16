@@ -14,9 +14,6 @@ In the Always On state, a device can continue to give people useful, glanceable 
 
   * When people drop their wrist while wearing Apple Watch, the system dims the watch face, continuing to display the interface of the app as long as it’s either frontmost or running a background session.
 
-
-
-
 On both devices, the system displays notifications while in Always On, and people can tap the display to exit Always On and resume interactions.
 
 ## [Best practices](https://developer.apple.com/design/human-interface-guidelines/always-on#Best-practices)

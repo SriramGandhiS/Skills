@@ -182,4 +182,3 @@ no generic placeholder names, no broken image links.)
 - Being too vague in atmosphere descriptions
 - Ignoring the anti-pattern list â€” these are what make the output premium
 - Defaulting to generic "safe" designs instead of enforcing the curated aesthetic
-

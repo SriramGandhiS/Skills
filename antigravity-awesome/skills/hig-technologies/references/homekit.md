@@ -22,9 +22,6 @@ Your iOS, tvOS, or watchOS app can integrate with HomeKit (and by extension the 
 
   * Provide support
 
-
-
-
 For developer guidance, see [HomeKit](https://developer.apple.com/documentation/HomeKit). If you’re an MFi licensee, visit the [MFi portal](https://mfi.apple.com) for guidance on naming and messaging for accessory packaging.
 
 ## [Terminology and layout](https://developer.apple.com/design/human-interface-guidelines/homekit#Terminology-and-layout)
@@ -102,9 +99,6 @@ A _zone_ represents an area in the home that contains multiple rooms, such as _u
   * Start and end with an alphabetic or numeric character.
 
   * Don’t include emojis.
-
-
-
 
 | Example service names  
 ---|---  
@@ -264,9 +258,6 @@ Use a custom color when other technology icons appear in the same color.
   * Attribute Apple, HomeKit, and all other Apple trademarks with the correct credit lines wherever legal information appears within your app.
 
   * Refer to Apple devices and operating systems only in technical specifications or compatibility descriptions.
-
-
-
 
 | Example text  
 ---|---  

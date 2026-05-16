@@ -67,4 +67,3 @@ this.router.navigateByUrl('/login', {replaceUrl: true});
 - **Route Params**: Part of the path (e.g., `/user/123`).
 - **Query Params**: After the `?` (e.g., `/search?q=query`).
 - **Matrix Params**: Scoped to a segment (e.g., `/products;category=books`).
-

@@ -32,9 +32,6 @@ Scope controls and tokens are components you can use to let someone narrow the p
 
   * A _token_ is a visual representation of a search term that someone can select and edit, and acts as a filter for any additional terms in the search.
 
-
-
-
 ![A diagram of the Mail app on iPhone with the search field open above the keyboard and the word Design entered in the field. Callouts indicate a scope control at the top of the screen to switch between searching all mailboxes and the current mailbox, and a list of tokens in a Suggestions area beneath the control that represent different filters for the search.](https://docs-assets.developer.apple.com/published/c39602d60041fae736e46f91641d8373/search-fields-scope-control-tokens%402x.png)
 
 **Use a scope control to filter among clearly defined search categories.** A scope control can help someone move from a broader scope to a narrower one. For example, in Mail on iPhone, a scope control helps people move from searching their entire mailbox to just the specific mailbox they’re viewing. For developer guidance, see [Scoping a search operation](https://developer.apple.com/documentation/SwiftUI/Scoping-a-search-operation).
@@ -58,9 +55,6 @@ There are three main places you can position the entry point for search:
   * In a toolbar at the bottom or top of the screen
 
   * Directly inline with content
-
-
-
 
 Where search makes the most sense depends on the layout, content, and navigation of your app.
 
@@ -91,9 +85,6 @@ As an alternative to search in a tab bar, you can also place search in a toolbar
   * You can include search in a bottom toolbar either as an expanded field or as a toolbar button, depending on how much space is available and how important search is to your app. When someone taps it, it animates into a search field above the keyboard so they can begin typing.
 
   * You can include search in a top toolbar, also called a navigation bar, where it appears as a toolbar button. When someone taps it, it animates into a search field that appears either above the keyboard or inline at the top if there isn’t space at the bottom.
-
-
-
 
 ![An illustration of an iPhone screen with search in a bottom toolbar. The search field is positioned in an isolated group between a Filter button on the leading edge and a Compose button on the trailing edge.](https://docs-assets.developer.apple.com/published/face9eed2f9c99f2c12ca3a400919e03/search-fields-ios-toolbar-with-items%402x.png)
 

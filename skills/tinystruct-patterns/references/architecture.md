@@ -88,4 +88,3 @@ Located at `src/main/resources/application.properties`:
 ```java
 String port = this.getConfiguration("server.port");
 ```
-

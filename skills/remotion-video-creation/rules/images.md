@@ -128,4 +128,3 @@ const calculateMetadata: CalculateMetadataFunction = async () => {
   };
 };
 ```
-

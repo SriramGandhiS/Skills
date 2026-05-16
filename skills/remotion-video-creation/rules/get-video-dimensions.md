@@ -66,4 +66,3 @@ import { staticFile } from "remotion";
 
 const dimensions = await getVideoDimensions(staticFile("video.mp4"));
 ```
-

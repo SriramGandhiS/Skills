@@ -86,7 +86,6 @@ class Calculator:
             raise ValueError("Cannot divide by zero")
         return a / b
 
-
 def test_addition():
     """Test addition."""
     calc = Calculator()
@@ -94,13 +93,11 @@ def test_addition():
     assert calc.add(-1, 1) == 0
     assert calc.add(0, 0) == 0
 
-
 def test_subtraction():
     """Test subtraction."""
     calc = Calculator()
     assert calc.subtract(5, 3) == 2
     assert calc.subtract(0, 5) == -5
-
 
 def test_multiplication():
     """Test multiplication."""
@@ -108,13 +105,11 @@ def test_multiplication():
     assert calc.multiply(3, 4) == 12
     assert calc.multiply(0, 5) == 0
 
-
 def test_division():
     """Test division."""
     calc = Calculator()
     assert calc.divide(6, 3) == 2
     assert calc.divide(5, 2) == 2.5
-
 
 def test_division_by_zero():
     """Test division by zero raises error."""
@@ -151,7 +146,6 @@ class Database:
             raise RuntimeError("Not connected")
         return [{"id": 1, "name": "Test"}]
 
-
 @pytest.fixture
 def db() -> Generator[Database, None, None]:
     """Fixture that provides connected database."""
@@ -165,13 +159,11 @@ def db() -> Generator[Database, None, None]:
     # Teardown
     database.disconnect()
 
-
 def test_database_query(db):
     """Test database query with fixture."""
     results = db.query("SELECT * FROM users")
     assert len(results) == 1
     assert results[0]["name"] == "Test"
-
 
 @pytest.fixture(scope="session")
 def app_config():
@@ -182,7 +174,6 @@ def app_config():
         "debug": True
     }
 
-
 @pytest.fixture(scope="module")
 def api_client(app_config):
     """Module-scoped fixture - created once per test module."""
@@ -191,7 +182,6 @@ def api_client(app_config):
     yield client
     # Cleanup
     client["session"] = "closed"
-
 
 def test_api_client(api_client):
     """Test using api client fixture."""
@@ -209,7 +199,6 @@ def is_valid_email(email: str) -> bool:
     """Check if email is valid."""
     return "@" in email and "." in email.split("@")[1]
 
-
 @pytest.mark.parametrize("email,expected", [
     ("user@example.com", True),
     ("test.user@domain.co.uk", True),
@@ -221,7 +210,6 @@ def is_valid_email(email: str) -> bool:
 def test_email_validation(email, expected):
     """Test email validation with various inputs."""
     assert is_valid_email(email) == expected
-
 
 @pytest.mark.parametrize("a,b,expected", [
     (2, 3, 5),
@@ -235,7 +223,6 @@ def test_addition_parameterized(a, b, expected):
     from test_calculator import Calculator
     calc = Calculator()
     assert calc.add(a, b) == expected
-
 
 # Using pytest.param for special cases
 @pytest.mark.parametrize("value,expected", [
@@ -274,7 +261,6 @@ class APIClient:
         response.raise_for_status()
         return response.json()
 
-
 def test_get_user_success():
     """Test successful API call with mock."""
     client = APIClient("https://api.example.com")
@@ -290,7 +276,6 @@ def test_get_user_success():
         assert user["name"] == "John Doe"
         mock_get.assert_called_once_with("https://api.example.com/users/1")
 
-
 def test_get_user_not_found():
     """Test API call with 404 error."""
     client = APIClient("https://api.example.com")
@@ -301,7 +286,6 @@ def test_get_user_not_found():
     with patch("requests.get", return_value=mock_response):
         with pytest.raises(requests.HTTPError):
             client.get_user(999)
-
 
 @patch("requests.post")
 def test_create_user(mock_post):
@@ -334,24 +318,20 @@ def divide(a: float, b: float) -> float:
         raise TypeError("Arguments must be numbers")
     return a / b
 
-
 def test_zero_division():
     """Test exception is raised for division by zero."""
     with pytest.raises(ZeroDivisionError):
         divide(10, 0)
-
 
 def test_zero_division_with_message():
     """Test exception message."""
     with pytest.raises(ZeroDivisionError, match="Division by zero"):
         divide(5, 0)
 
-
 def test_type_error():
     """Test type error exception."""
     with pytest.raises(TypeError, match="must be numbers"):
         divide("10", 5)
-
 
 def test_exception_info():
     """Test accessing exception info."""
@@ -375,14 +355,12 @@ async def fetch_data(url: str) -> dict:
     await asyncio.sleep(0.1)
     return {"url": url, "data": "result"}
 
-
 @pytest.mark.asyncio
 async def test_fetch_data():
     """Test async function."""
     result = await fetch_data("https://api.example.com")
     assert result["url"] == "https://api.example.com"
     assert "data" in result
-
 
 @pytest.mark.asyncio
 async def test_concurrent_fetches():
@@ -394,14 +372,12 @@ async def test_concurrent_fetches():
     assert len(results) == 3
     assert all("data" in r for r in results)
 
-
 @pytest.fixture
 async def async_client():
     """Async fixture."""
     client = {"connected": True}
     yield client
     client["connected"] = False
-
 
 @pytest.mark.asyncio
 async def test_with_async_fixture(async_client):
@@ -420,25 +396,21 @@ def get_database_url() -> str:
     """Get database URL from environment."""
     return os.environ.get("DATABASE_URL", "sqlite:///:memory:")
 
-
 def test_database_url_default():
     """Test default database URL."""
     # Will use actual environment variable if set
     url = get_database_url()
     assert url
 
-
 def test_database_url_custom(monkeypatch):
     """Test custom database URL with monkeypatch."""
     monkeypatch.setenv("DATABASE_URL", "postgresql://localhost/test")
     assert get_database_url() == "postgresql://localhost/test"
 
-
 def test_database_url_not_set(monkeypatch):
     """Test when env var is not set."""
     monkeypatch.delenv("DATABASE_URL", raising=False)
     assert get_database_url() == "sqlite:///:memory:"
-
 
 class Config:
     """Configuration class."""
@@ -448,7 +420,6 @@ class Config:
 
     def get_api_key(self):
         return self.api_key
-
 
 def test_monkeypatch_attribute(monkeypatch):
     """Test monkeypatching object attributes."""
@@ -468,11 +439,9 @@ def save_data(filepath: Path, data: str):
     """Save data to file."""
     filepath.write_text(data)
 
-
 def load_data(filepath: Path) -> str:
     """Load data from file."""
     return filepath.read_text()
-
 
 def test_file_operations(tmp_path):
     """Test file operations with temporary directory."""
@@ -488,7 +457,6 @@ def test_file_operations(tmp_path):
     # Load and verify data
     data = load_data(test_file)
     assert data == "Hello, World!"
-
 
 def test_multiple_files(tmp_path):
     """Test with multiple temporary files."""
@@ -523,7 +491,6 @@ def database_url():
     """Provide database URL for all tests."""
     return "postgresql://localhost/test_db"
 
-
 @pytest.fixture(autouse=True)
 def reset_database(database_url):
     """Auto-use fixture that runs before each test."""
@@ -532,7 +499,6 @@ def reset_database(database_url):
     yield
     # Teardown: Clean up
     print("Test completed")
-
 
 @pytest.fixture
 def sample_user():
@@ -543,7 +509,6 @@ def sample_user():
         "email": "test@example.com"
     }
 
-
 @pytest.fixture
 def sample_users():
     """Provide list of sample users."""
@@ -553,13 +518,11 @@ def sample_users():
         {"id": 3, "name": "User 3"},
     ]
 
-
 # Parametrized fixture
 @pytest.fixture(params=["sqlite", "postgresql", "mysql"])
 def db_backend(request):
     """Fixture that runs tests with different database backends."""
     return request.param
-
 
 def test_with_db_backend(db_backend):
     """This test will run 3 times with different backends."""
@@ -578,24 +541,20 @@ def reverse_string(s: str) -> str:
     """Reverse a string."""
     return s[::-1]
 
-
 @given(st.text())
 def test_reverse_twice_is_original(s):
     """Property: reversing twice returns original."""
     assert reverse_string(reverse_string(s)) == s
-
 
 @given(st.text())
 def test_reverse_length(s):
     """Property: reversed string has same length."""
     assert len(reverse_string(s)) == len(s)
 
-
 @given(st.integers(), st.integers())
 def test_addition_commutative(a, b):
     """Property: addition is commutative."""
     assert a + b == b + a
-
 
 @given(st.lists(st.integers()))
 def test_sorted_list_properties(lst):
@@ -639,25 +598,20 @@ def test_user_creation_with_valid_data():
     """Clear name describes what is being tested."""
     pass
 
-
 def test_login_fails_with_invalid_password():
     """Name describes expected behavior."""
     pass
-
 
 def test_api_returns_404_for_missing_resource():
     """Specific about inputs and expected outcomes."""
     pass
 
-
 # Bad test names
 def test_1():  # Not descriptive
     pass
 
-
 def test_user():  # Too vague
     pass
-
 
 def test_function():  # Doesn't explain what's tested
     pass
@@ -675,30 +629,25 @@ def test_slow_operation():
     import time
     time.sleep(2)
 
-
 @pytest.mark.integration
 def test_database_integration():
     """Mark integration tests."""
     pass
-
 
 @pytest.mark.skip(reason="Feature not implemented yet")
 def test_future_feature():
     """Skip tests temporarily."""
     pass
 
-
 @pytest.mark.skipif(os.name == "nt", reason="Unix only test")
 def test_unix_specific():
     """Conditional skip."""
     pass
 
-
 @pytest.mark.xfail(reason="Known bug #123")
 def test_known_bug():
     """Mark expected failures."""
     assert False
-
 
 # Run with:
 # pytest -m slow          # Run only slow tests
@@ -736,7 +685,6 @@ from sqlalchemy.orm import sessionmaker, Session
 
 Base = declarative_base()
 
-
 class User(Base):
     """User model."""
     __tablename__ = "users"
@@ -744,7 +692,6 @@ class User(Base):
     id = Column(Integer, primary_key=True)
     name = Column(String(50))
     email = Column(String(100), unique=True)
-
 
 @pytest.fixture(scope="function")
 def db_session() -> Session:
@@ -759,7 +706,6 @@ def db_session() -> Session:
 
     session.close()
 
-
 def test_create_user(db_session):
     """Test creating a user."""
     user = User(name="Test User", email="test@example.com")
@@ -768,7 +714,6 @@ def test_create_user(db_session):
 
     assert user.id is not None
     assert user.name == "Test User"
-
 
 def test_query_user(db_session):
     """Test querying users."""
@@ -780,7 +725,6 @@ def test_query_user(db_session):
 
     users = db_session.query(User).all()
     assert len(users) == 2
-
 
 def test_unique_email_constraint(db_session):
     """Test unique email constraint."""

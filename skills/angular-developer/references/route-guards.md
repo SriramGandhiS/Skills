@@ -50,4 +50,3 @@ Add them to the route configuration as an array. They execute in order.
 ## Security Note
 
 **Client-side guards are NOT a substitute for server-side security.** Always verify permissions on the server.
-

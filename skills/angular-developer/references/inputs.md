@@ -99,4 +99,3 @@ export class Legacy {
 - **Required Inputs**: Use `input.required()` for mandatory data to get build-time errors.
 - **Pure Transforms**: Ensure input transform functions are pure and statically analyzable.
 - **Avoid Collisions**: Do not use input names that collide with standard DOM properties (e.g., `id`, `title`).
-

@@ -494,4 +494,3 @@ The following skills are available as part of the [Flox Claude Code plugin](http
 - **flox-cuda** â€” CUDA and GPU development environments
 
 Learn more and install at [flox.dev/docs](https://flox.dev/docs/install-flox/install/)
-

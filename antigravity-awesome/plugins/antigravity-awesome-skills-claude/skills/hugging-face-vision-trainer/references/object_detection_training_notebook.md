@@ -585,7 +585,6 @@ Key observations:
 
 <!-- Full per-epoch training metrics table omitted for brevity. -->
 
-
 If you have set `push_to_hub` to `True` in the `training_args`, the training checkpoints are pushed to the
 Hugging Face Hub. Upon training completion, push the final model to the Hub as well by calling the [push_to_hub()](/docs/transformers/v5.1.0/en/main_classes/trainer#transformers.Trainer.push_to_hub) method.
 

@@ -119,4 +119,3 @@ Every screen must work flawlessly across all viewports. **Responsive is not opti
 - No `z-index` spam â€” use only for Navbar, Modal, Overlay layer contexts
 - No `h-screen` â€” always `min-h-[100dvh]`
 - No circular loading spinners â€” skeletal shimmer only
-

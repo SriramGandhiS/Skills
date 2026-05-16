@@ -116,9 +116,6 @@ With both sets of background colors, you generally use the variants to indicate 
 
   * Tertiary for grouping content or elements within secondary elements
 
-
-
-
 For foreground content, iOS defines the following dynamic colors:
 
 Color| Use for…| UIKit API  

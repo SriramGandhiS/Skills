@@ -28,9 +28,6 @@ On Apple Vision Pro, people use the Digital Crown to:
 
   * Exit an app and return to the Home View
 
-
-
-
 ## [Apple Watch](https://developer.apple.com/design/human-interface-guidelines/digital-crown#Apple-Watch)
 
 As people turn the Digital Crown, it generates information you can use to enhance or facilitate interactions with your app, like scrolling or operating standard or custom controls.

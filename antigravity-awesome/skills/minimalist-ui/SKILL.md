@@ -25,7 +25,6 @@ tools: [claude, cursor, codex, antigravity]
 - This skill assumes the product can support restrained palettes and typography-led layouts; do not override an established brand system without cause.
 - Subtle motion and flat surfaces still need responsive, keyboard, and screen-reader verification in the target project.
 
-
 ## 1. Protocol Overview
 Name: Premium Utilitarian Minimalism & Editorial UI
 Description: An advanced frontend engineering directive for generating highly refined, ultra-minimalist, "document-style" web interfaces analogous to top-tier workspace platforms. This protocol strictly enforces a high-contrast warm monochrome palette, bespoke typographic hierarchies, meticulous structural macro-whitespace, bento-grid layouts, and an ultra-flat component architecture with deliberate muted pastel accents. It actively rejects standard generic SaaS design trends.

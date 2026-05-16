@@ -43,4 +43,3 @@ Recommended production stack:
 - run `/harness-audit`
 - reduce scope to failing unit
 - replay with explicit acceptance criteria
-

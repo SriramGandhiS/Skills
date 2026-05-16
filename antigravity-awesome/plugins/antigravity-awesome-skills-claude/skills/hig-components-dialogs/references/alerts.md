@@ -30,8 +30,6 @@ An alert is a modal view that can look different in different platforms and devi
   * visionOS 
   * watchOS 
 
-
-
 ![An illustration of an alert in the middle of the screen on iPhone.](https://docs-assets.developer.apple.com/published/ec9df875e228750105a393c96279bea5/alert-ios%402x.png)
 
 ![An illustration of an alert in the middle of the screen on a Mac.](https://docs-assets.developer.apple.com/published/0dfc6fd9de495ce3b7201169d829d760/alert-macos%402x.png)
@@ -51,9 +49,6 @@ In all platforms, alerts display a title, optional informative text, and up to t
   * Alerts in macOS and visionOS can include an icon and an accessory view.
 
   * macOS alerts can add a suppression [checkbox](https://developer.apple.com/design/human-interface-guidelines/toggles#Checkboxes) and a [Help button](https://developer.apple.com/design/human-interface-guidelines/buttons#Help-buttons).
-
-
-
 
 **In all alert copy, be direct, and use a neutral, approachable tone.** Alerts often describe problems and serious situations, so avoid being oblique or accusatory, or masking the severity of the issue.
 
@@ -104,9 +99,6 @@ macOS automatically displays your app icon in an alert, but you can supply an al
   * Append a custom view if it’s necessary to provide additional information (for developer guidance, see [`accessoryView`](https://developer.apple.com/documentation/AppKit/NSAlert/accessoryView)).
 
   * Include a Help button that opens your help documentation (see [Help buttons](https://developer.apple.com/design/human-interface-guidelines/buttons#Help-buttons)).
-
-
-
 
 **Use a caution symbol sparingly.** Using a caution symbol like `exclamationmark.triangle` too frequently in your alerts diminishes its significance. Use the symbol only when extra attention is really needed, as when confirming an action that might result in unexpected loss of data. Don’t use the symbol for tasks whose only purpose is to overwrite or remove data, such as a save or empty trash.
 

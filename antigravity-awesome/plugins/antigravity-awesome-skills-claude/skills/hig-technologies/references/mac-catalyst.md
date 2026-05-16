@@ -38,9 +38,6 @@ Creating a Mac version of your iPad app with Mac Catalyst gives the app automati
 
   * App-specific settings in the system-provided Settings app
 
-
-
-
 System-provided UI elements take on a more Mac-like appearance, too; for example:
 
   * Split view
@@ -54,9 +51,6 @@ System-provided UI elements take on a more Mac-like appearance, too; for example
   * Contextual actions
 
   * Color picker
-
-
-
 
 To learn more about the characteristics that distinguish the Mac experience, see [Designing for macOS](https://developer.apple.com/design/human-interface-guidelines/designing-for-macos). For developer guidance, see [Mac Catalyst](https://developer.apple.com/documentation/UIKit/mac-catalyst).
 
@@ -80,8 +74,6 @@ You’re most likely to benefit from the Mac idiom if your app displays a lot of
 
   * iPad idiom 
   * Mac idiom 
-
-
 
 ![Zoomed icon for the California Academy of Sciences point-of-interest in Maps to show how the system renders it with less details if you choose the iPad idiom.](https://docs-assets.developer.apple.com/published/584dcc4acfee462c4e401bf375efeab0/ipad-idiom%402x.png)
 
@@ -111,17 +103,11 @@ Typically, iPad apps use the following components to organize their content and 
 
   * [Page controls](https://developer.apple.com/design/human-interface-guidelines/page-controls). A page control displays dots at the bottom of the screen that indicate the position of the current page in a flat list of pages.
 
-
-
-
 If you use a tab bar in your iPad app, consider using a split view with a sidebar or a segmented control. Both items are similar to macOS navigation conventions. To choose between a split view or a segmented control, consider the following:
 
   * A split view with a sidebar displays a list of top-level items, each of which can disclose a list of child items. Using a sidebar streamlines navigation, because each tab’s contents are available within the sidebar. By using a sidebar on both iPad and Mac, you create a consistent layout that makes it easy for iPad users to start using the Mac version of your app.
 
   * A segmented control and a tab bar both accommodate similar interactions, such as mutually exclusive selection. In general, using a split view instead of a tab bar works better than using a segmented control. However, a segmented control can work well on the Mac if your app uses a flat navigation hierarchy.
-
-
-
 
 **Make sure people retain access to important tab-bar items in the Mac version of your app.** Regardless of whether you use a split view or a segmented control instead of a tab bar in your iPad app, be sure to give people quick access to top-level items by listing them in the macOS View menu.
 
@@ -164,9 +150,6 @@ To take advantage of the wider Mac screen in ways that give Mac users a great ex
   * Use the regular-width and regular-height size classes, and consider reflowing elements in the content area to a side-by-side arrangement as people resize the window.
 
   * Present an inspector UI next to the main content instead of using a popover.
-
-
-
 
 **Consider moving controls from the main UI of your iPad app to your Mac app’s toolbar.** Be sure to list the commands associated with these controls in the menus of your Mac app’s menu bar.
 

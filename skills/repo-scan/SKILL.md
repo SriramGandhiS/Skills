@@ -76,4 +76,3 @@ On a 50,000-file C++ monorepo:
 ## Links
 
 - [GitHub Repository](https://github.com/haibindev/repo-scan)
-

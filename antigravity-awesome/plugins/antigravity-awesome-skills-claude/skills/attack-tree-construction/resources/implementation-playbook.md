@@ -52,14 +52,12 @@ class NodeType(Enum):
     AND = "and"
     LEAF = "leaf"
 
-
 class Difficulty(Enum):
     TRIVIAL = 1
     LOW = 2
     MEDIUM = 3
     HIGH = 4
     EXPERT = 5
-
 
 class Cost(Enum):
     FREE = 0
@@ -68,14 +66,12 @@ class Cost(Enum):
     HIGH = 3
     VERY_HIGH = 4
 
-
 class DetectionRisk(Enum):
     NONE = 0
     LOW = 1
     MEDIUM = 2
     HIGH = 3
     CERTAIN = 4
-
 
 @dataclass
 class AttackAttributes:
@@ -85,7 +81,6 @@ class AttackAttributes:
     time_hours: float = 8.0
     requires_insider: bool = False
     requires_physical: bool = False
-
 
 @dataclass
 class AttackNode:
@@ -147,7 +142,6 @@ class AttackNode:
             "mitigations": self.mitigations,
             "children": [c.to_dict() for c in self.children]
         }
-
 
 @dataclass
 class AttackTree:
@@ -332,7 +326,6 @@ class AttackTreeBuilder:
             raise ValueError("No current node")
         return self._node_stack[-1]
 
-
 # Example usage
 def build_account_takeover_tree() -> AttackTree:
     """Build attack tree for account takeover scenario."""
@@ -458,7 +451,6 @@ class MermaidExporter:
         }
         color = colors.get(node.attributes.difficulty, "fill:#gray")
         return color
-
 
 class PlantUMLExporter:
     """Export attack trees to PlantUML format."""

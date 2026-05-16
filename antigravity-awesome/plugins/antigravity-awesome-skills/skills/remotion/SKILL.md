@@ -394,7 +394,6 @@ that shows a walkthrough of the screens.
 - **Remotion MCP**: https://www.remotion.dev/docs/ai/mcp
 - **Remotion Transitions**: https://www.remotion.dev/docs/transitions
 
-
 ## When to Use
 Use this skill when tackling tasks related to its primary domain or functionality as described above.
 

@@ -128,8 +128,6 @@ trackio.init(project="hyperparam-sweep", run_name="lr-0.01-run", group="lr_0.01"
 
 You can configure trackio using environment variables instead of passing parameters to `trackio.init()`. This is useful for managing configuration across multiple jobs.
 
-
-
 **`HF_TOKEN`**
 Required for creating Spaces and writing to datasets (passed via `secrets`):
 ```python

@@ -689,7 +689,6 @@ TOOL_HANDLERS = {
     "search_orders": lambda args: search_order_db(args["query"]),
 }
 
-
 def run_tool_call(user_message: str, history: list) -> str:
     """Run Claude with tools and return the final text response."""
     messages = [{"role": "user", "content": user_message}]
@@ -720,7 +719,6 @@ def run_tool_call(user_message: str, history: list) -> str:
             return " ".join(b.text for b in response.content if hasattr(b, "text"))
 
     return "Sorry, I'm having trouble processing that."
-
 
 @app.post("/webhook")
 def webhook():

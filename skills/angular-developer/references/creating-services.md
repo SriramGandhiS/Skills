@@ -95,4 +95,3 @@ While `providedIn: 'root'` covers most scenarios, you may sometimes need:
 - **Component-specific instances**: If a component needs its own isolated instance of a service, provide it directly in the component's `@Component({ providers: [MyService] })` array.
 - **Factory providers**: For dynamic creation.
 - **Value providers**: For injecting configuration objects.
-

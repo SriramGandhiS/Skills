@@ -40,9 +40,6 @@ The iPadOS and tvOS focus systems are similar. People perform actions by moving 
 
   * Pressing an arrow key supports a directional focus interaction that’s similar to tvOS, but limited to navigation among items in the same focus group. For example, people can use an arrow key to move through the items in a list or a sidebar.
 
-
-
-
 Onscreen components can indicate focus by using the halo effect or the highlighted appearance.
 
 The _halo_ focus effect — also known as the _focus ring_ — displays a customizable outline around the component. You can apply the halo effect to custom views and to fully opaque content within a collection or list cell, such as an image.

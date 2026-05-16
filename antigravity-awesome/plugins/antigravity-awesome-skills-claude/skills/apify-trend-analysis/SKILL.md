@@ -114,7 +114,6 @@ After completion, report:
 - Key trend insights
 - Suggested next steps (deeper analysis, content opportunities)
 
-
 ## Error Handling
 
 `APIFY_TOKEN not found` - Ask user to create `.env` with `APIFY_TOKEN=your_token`
@@ -122,7 +121,6 @@ After completion, report:
 `Actor not found` - Check Actor ID spelling
 `Run FAILED` - Ask user to check Apify console link in error output
 `Timeout` - Reduce input size or increase `--timeout`
-
 
 ## When to Use
 Use this skill when tackling tasks related to its primary domain or functionality as described above.

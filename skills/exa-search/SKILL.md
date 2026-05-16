@@ -105,4 +105,3 @@ get_code_context_exa(query: "WebAssembly component model examples", tokensNum: 4
 
 - `deep-research` â€” Full research workflow using firecrawl + exa together
 - `market-research` â€” Business-oriented research with decision frameworks
-

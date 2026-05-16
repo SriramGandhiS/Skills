@@ -608,4 +608,3 @@ These patterns compose well:
 | Continuous Claude | AnandChowdhary | credit: @AnandChowdhary |
 | NanoClaw | ECC | `/claw` command in this repo |
 | Verification Loop | ECC | `skills/verification-loop/` in this repo |
-

@@ -660,7 +660,6 @@ import hmac
 import requests
 from typing import Any, Optional
 
-
 class ComfyUIGatewayError(Exception):
     """Base exception for gateway errors."""
 
@@ -668,7 +667,6 @@ class ComfyUIGatewayError(Exception):
         super().__init__(message)
         self.status_code = status_code
         self.details = details
-
 
 class ComfyUIGateway:
     """Client for the ComfyUI Gateway REST API."""
@@ -905,7 +903,6 @@ class ComfyUIGateway:
             time.sleep(poll_interval)
 
         raise ComfyUIGatewayError(f"Job {job_id} timed out after {max_wait}s")
-
 
 # ── Usage Example ──────────────────────────────────────────────────────────
 

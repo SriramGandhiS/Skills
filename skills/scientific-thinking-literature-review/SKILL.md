@@ -190,4 +190,3 @@ Databases: <list>
 - Do not claim systematic-review rigor without a reproducible protocol.
 - Do not use a single database for a broad claim unless the scope is explicitly
   limited to that database.
-

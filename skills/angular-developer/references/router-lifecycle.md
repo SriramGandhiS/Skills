@@ -43,4 +43,3 @@ provideRouter(routes, withDebugTracing());
 - **Loading Indicators**: Show a spinner when `NavigationStart` fires and hide it on `NavigationEnd`/`Cancel`/`Error`.
 - **Analytics**: Track page views by listening for `NavigationEnd`.
 - **Scroll Management**: Respond to `Scroll` events for custom scroll behavior.
-

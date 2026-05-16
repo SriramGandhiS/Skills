@@ -70,7 +70,6 @@ If web browsing is restricted or unavailable:
 - Forbid claiming a specific source count.
 - Rely only on verified internal knowledge or state that information cannot be verified.
 
-
 WRITING RULES
 Use simple, natural, human language
 Avoid robotic or AI-like tone
@@ -117,7 +116,6 @@ Main Title
 Introduction
 
 Truth Box
-
 
 [Core Topic Section 1]
 

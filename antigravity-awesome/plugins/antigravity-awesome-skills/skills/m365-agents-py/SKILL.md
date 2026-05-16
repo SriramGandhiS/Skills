@@ -93,28 +93,23 @@ AUTHORIZATION = Authorization(STORAGE, CONNECTION_MANAGER, **agents_sdk_config)
 # Create AgentApplication
 AGENT_APP = AgentApplicationTurnState
 
-
 @AGENT_APP.conversation_update("membersAdded")
 async def on_members_added(context: TurnContext, _state: TurnState):
     await context.send_activity("Welcome to the agent!")
-
 
 @AGENT_APP.activity("message")
 async def on_message(context: TurnContext, _state: TurnState):
     await context.send_activity(f"You said: {context.activity.text}")
 
-
 @AGENT_APP.error
 async def on_error(context: TurnContext, error: Exception):
     await context.send_activity("The agent encountered an error.")
-
 
 # Server setup
 async def entry_point(req: Request) -> Response:
     agent: AgentApplication = req.app["agent_app"]
     adapter: CloudAdapter = req.app["adapter"]
     return await start_agent_process(req, agent, adapter)
-
 
 APP = Application(middlewares=[jwt_authorization_middleware])
 APP.router.add_post("/api/messages", entry_point)
@@ -233,7 +228,6 @@ async def logout(context: TurnContext, state: TurnState):
     await AGENT_APP.auth.sign_out(context, "GRAPH")
     await context.send_activity(MessageFactory.text("You have been logged out."))
 
-
 @AGENT_APP.message("/me", auth_handlers=["GRAPH"])
 async def profile_request(context: TurnContext, state: TurnState):
     user_token_response = await AGENT_APP.auth.get_token(context, "GRAPH")
@@ -284,7 +278,6 @@ def acquire_token(settings, app_client_id, tenant_id):
         response = pca.acquire_token_interactive(**token_request)
         return response.get("access_token")
 
-
 async def main():
     settings = ConnectionSettings(
         environment_id=environ.get("COPILOTSTUDIOAGENT__ENVIRONMENTID"),
@@ -310,7 +303,6 @@ async def main():
     async for reply in replies:
         if reply.type == ActivityTypes.message:
             print(reply.text)
-
 
 asyncio.run(main())
 ```

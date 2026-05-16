@@ -291,4 +291,3 @@ Coverage: XX%
 - Use @mentions if you need input from others
 - Check linked issues to understand full feature scope before starting
 - If acceptance criteria are vague, ask for clarification before writing code
-

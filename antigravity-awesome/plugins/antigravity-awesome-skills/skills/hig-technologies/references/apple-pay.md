@@ -97,8 +97,6 @@ For app developer guidance, see [Apple Pay](https://developer.apple.com/document
   * iOS 
   * Web 
 
-
-
 ![A screenshot of an in-app payment sheet that includes an additional charge for gift wrap and a credit applied for a coupon.](https://docs-assets.developer.apple.com/published/b3d9d7f7a3968b37723a73f7332a3ec8/payment-sheet-ios%402x.png)
 
 ![A screenshot of a webpage payment sheet that includes an additional charge for gift wrap and a credit applied for a coupon.](https://docs-assets.developer.apple.com/published/ff1b8604f18eb85fb8b6cf4662399b5b/payment-sheet-web%402x.png)
@@ -135,8 +133,6 @@ Your app or website can respond to user input when the payment sheet appears, wh
 
   * iOS 
   * Web 
-
-
 
 ![A screenshot of an in-app Apple Pay payment sheet on iPhone that shows an error with the shipping address.](https://docs-assets.developer.apple.com/published/057eb557e82a7dc0d59ff9d65470088d/pay-sheet-error-ios%402x.png)
 
@@ -175,8 +171,6 @@ Your app or website can use Apple Pay to request authorization for recurring fee
   * iOS 
   * Web 
 
-
-
 ![A screenshot of an in-app Apple Pay payment sheet for a fixed subscription, which includes a monthly amount.](https://docs-assets.developer.apple.com/published/598121af8dc2f5d00ce80d355d6d2729/fixed-subscription-ios%402x.png)
 
 Fixed subscription
@@ -195,8 +189,6 @@ Variable subscription (where local regulations allow)
 
   * iOS 
   * Web 
-
-
 
 ![A screenshot of an in-app Apple Pay payment sheet for a fixed subscription that doesn’t require payment until after the first month. The total shows a zero dollar amount.](https://docs-assets.developer.apple.com/published/8ed56d3b421d47c4a69fbcfc1bdfade1/no-payment-required-ios%402x.png)
 
@@ -239,9 +231,6 @@ Use the Apple-provided APIs to create Apple Pay buttons. When you use the system
   * Support for configuring the button’s corner radius to match the style of your UI
 
   * A system-provided alternative text label that lets VoiceOver describe the button
-
-
-
 
 Payment button type| Example usage  
 ---|---  

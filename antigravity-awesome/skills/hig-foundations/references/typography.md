@@ -187,8 +187,6 @@ You can display emphasized variants of system text styles using symbolic traits.
   * xxLarge 
   * xxxLarge 
 
-
-
 #### [xSmall](https://developer.apple.com/design/human-interface-guidelines/typography#xSmall)
 
 Style| Weight| Size (points)| Leading (points)| Emphasized weight  
@@ -323,8 +321,6 @@ Point size based on image resolution of 144 ppi for @2x and 216 ppi for @3x desi
   * AX4 
   * AX5 
 
-
-
 #### [AX1](https://developer.apple.com/design/human-interface-guidelines/typography#AX1)
 
 Style| Weight| Size (points)| Leading (points)| Emphasized weight  
@@ -458,8 +454,6 @@ Point size based on image resolution of 72 ppi for @1x and 144 ppi for @2x desig
   * xxLarge 
   * xxxLarge 
 
-
-
 #### [xSmall](https://developer.apple.com/design/human-interface-guidelines/typography#xSmall)
 
 Style| Weight| Size (points)| Leading (points)| Emphasized weight  
@@ -556,8 +550,6 @@ Footnote 2| Regular| 15| 17.5| Semibold
   * AX2 
   * AX3 
 
-
-
 #### [AX1](https://developer.apple.com/design/human-interface-guidelines/typography#AX1)
 
 Style| Weight| Size (points)| Leading (points)| Emphasized weight  
@@ -610,8 +602,6 @@ Footnote 2| Regular| 17| 19.5| Semibold
   * SF Pro 
   * SF Pro Rounded 
   * New York 
-
-
 
 #### [SF Pro](https://developer.apple.com/design/human-interface-guidelines/typography#SF-Pro)
 
@@ -965,8 +955,6 @@ Not all apps express tracking values as 1/1000 em. Point size based on image res
 
   * SF Compact 
   * SF Compact Rounded 
-
-
 
 #### [SF Compact](https://developer.apple.com/design/human-interface-guidelines/typography#SF-Compact)
 

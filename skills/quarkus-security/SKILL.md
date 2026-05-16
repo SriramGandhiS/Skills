@@ -465,4 +465,3 @@ quarkus extension list --installable
 - Use SecurityIdentity for programmatic checks
 - Set appropriate CORS policies
 - Test authentication and authorization paths
-

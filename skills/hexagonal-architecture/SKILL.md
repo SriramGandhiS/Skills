@@ -274,4 +274,3 @@ Use the same boundary rules across ecosystems; only syntax and wiring style chan
 - Use cases are testable with simple in-memory fakes for ports.
 - Refactoring starts from one vertical slice with behavior-preserving tests.
 - Language/framework specifics stay in adapters, never in domain rules.
-

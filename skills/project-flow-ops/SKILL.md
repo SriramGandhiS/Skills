@@ -109,4 +109,3 @@ NEXT OPERATOR ACTION
 - "Audit the open PR backlog and tell me what to merge vs rebuild"
 - "Map GitHub issues into our ECC 1.x and ECC 2.0 program lanes"
 - "Check whether this needs a Linear issue or should stay GitHub-only"
-

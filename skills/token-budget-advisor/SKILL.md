@@ -131,4 +131,3 @@ This skill uses heuristic estimation â€” no real tokenizer. Accuracy ~85-90
 
 Standalone skill from [TBA â€” Token Budget Advisor for Claude Code](https://github.com/Xabilimon1/Token-Budget-Advisor-Claude-Code-).
 Original project also ships a Python estimator script, but this repository keeps the skill self-contained and heuristic-only.
-

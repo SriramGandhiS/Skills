@@ -18,9 +18,6 @@ Presenting content modally can:
 
   * Give people an immersive experience or help them concentrate on a complex task
 
-
-
-
 Depending on the platform, you might use different components to present these types of modal experiences. For example, all platforms can present an _alert_ , which is a modal view that delivers important information related to your app or game. In addition, each platform may define various types of modal views for presenting context-specific options, such as _activity views,_ _sheets_ , and _confirmation dialogs_ or _action sheets_. To help people perform a distinct task, iOS, iPadOS, and macOS apps tend to use sheets or popovers, but iPadOS, macOS, and visionOS apps might also just use a separate window.
 
 To provide a temporary experience, like viewing media, or to help people perform a distinct, multistep task, like editing content, apps can offer a full-screen modal experience. In contrast, apps may also offer nonmodal types of full-screen experiences; for guidance, see [Going full screen](https://developer.apple.com/design/human-interface-guidelines/going-full-screen). visionOS apps can offer a range of immersive experiences; for guidance, see [Immersive experiences](https://developer.apple.com/design/human-interface-guidelines/immersive-experiences).

@@ -181,7 +181,6 @@ If scripts fail, use `gh` CLI directly:
 - `gh run view <run-id> --log-failed`
 - `gh api repos/{owner}/{repo}/pulls/{number}/comments`
 
-
 ## When to Use
 Use this skill when tackling tasks related to its primary domain or functionality as described above.
 

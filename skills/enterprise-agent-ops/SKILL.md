@@ -48,4 +48,3 @@ This skill pairs with:
 - systemd services
 - container orchestrators
 - CI/CD gates
-

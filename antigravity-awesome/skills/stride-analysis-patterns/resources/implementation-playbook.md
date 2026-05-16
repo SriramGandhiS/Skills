@@ -213,20 +213,17 @@ class StrideCategory(Enum):
     DENIAL_OF_SERVICE = "D"
     ELEVATION_OF_PRIVILEGE = "E"
 
-
 class Impact(Enum):
     LOW = 1
     MEDIUM = 2
     HIGH = 3
     CRITICAL = 4
 
-
 class Likelihood(Enum):
     LOW = 1
     MEDIUM = 2
     HIGH = 3
     CRITICAL = 4
-
 
 @dataclass
 class Threat:
@@ -255,7 +252,6 @@ class Threat:
             return "Medium"
         return "Low"
 
-
 @dataclass
 class Asset:
     name: str
@@ -263,14 +259,12 @@ class Asset:
     description: str
     data_classification: str
 
-
 @dataclass
 class TrustBoundary:
     name: str
     description: str
     from_zone: str
     to_zone: str
-
 
 @dataclass
 class ThreatModel:
@@ -314,7 +308,6 @@ class ThreatModel:
                 for t in sorted(self.threats, key=lambda x: x.risk_score, reverse=True)[:10]
             ]
         }
-
 
 class StrideAnalyzer:
     """Automated STRIDE analysis helper."""
@@ -434,7 +427,6 @@ class ElementType(Enum):
     DATA_STORE = "datastore"
     DATA_FLOW = "dataflow"
 
-
 @dataclass
 class DFDElement:
     id: str
@@ -442,7 +434,6 @@ class DFDElement:
     type: ElementType
     trust_level: int  # 0 = untrusted, higher = more trusted
     description: str = ""
-
 
 @dataclass
 class DataFlow:
@@ -453,7 +444,6 @@ class DataFlow:
     data_type: str
     protocol: str
     encrypted: bool = False
-
 
 class DFDAnalyzer:
     """Analyze Data Flow Diagrams for STRIDE threats."""
@@ -558,7 +548,6 @@ class Interaction:
     action: str
     data: str
     protocol: str
-
 
 class StridePerInteraction:
     """Apply STRIDE to each interaction in the system."""

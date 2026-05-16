@@ -84,4 +84,3 @@ pip install pytesseract
 ## License
 
 MIT
-

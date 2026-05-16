@@ -49,4 +49,3 @@ Raise testing bar for generated code:
 - required regression coverage for touched domains
 - explicit edge-case assertions
 - integration checks for interface boundaries
-

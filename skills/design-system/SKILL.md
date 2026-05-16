@@ -80,4 +80,3 @@ Identifies generic AI-generated design patterns:
 ```
 /design-system slop-check
 ```
-

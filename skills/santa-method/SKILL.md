@@ -304,4 +304,3 @@ Cost of NOT Santa = (reputation damage) + (correction effort) + (trust erosion)
 ```
 
 For batch operations, the sampling pattern reduces cost to ~15-20% of full verification while catching >90% of systematic issues.
-

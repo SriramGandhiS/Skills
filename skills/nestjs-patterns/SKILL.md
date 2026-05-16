@@ -228,4 +228,3 @@ describe('UsersController', () => {
 - Prefer async provider initialization for DB/cache clients with explicit health checks.
 - Keep background jobs and event consumers in their own modules, not inside HTTP controllers.
 - Make rate limiting, auth, and audit logging explicit for public endpoints.
-

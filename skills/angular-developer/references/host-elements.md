@@ -78,4 +78,3 @@ Usage:
 ```html
 <app-btn type="primary">Click Me</app-btn>
 ```
-

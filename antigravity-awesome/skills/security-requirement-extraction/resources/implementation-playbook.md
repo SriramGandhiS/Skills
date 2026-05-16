@@ -58,13 +58,11 @@ class RequirementType(Enum):
     NON_FUNCTIONAL = "non_functional"
     CONSTRAINT = "constraint"
 
-
 class Priority(Enum):
     CRITICAL = 1
     HIGH = 2
     MEDIUM = 3
     LOW = 4
-
 
 class SecurityDomain(Enum):
     AUTHENTICATION = "authentication"
@@ -78,7 +76,6 @@ class SecurityDomain(Enum):
     NETWORK_SECURITY = "network_security"
     AVAILABILITY = "availability"
 
-
 class ComplianceFramework(Enum):
     PCI_DSS = "pci_dss"
     HIPAA = "hipaa"
@@ -87,7 +84,6 @@ class ComplianceFramework(Enum):
     NIST_CSF = "nist_csf"
     ISO_27001 = "iso_27001"
     OWASP = "owasp"
-
 
 @dataclass
 class SecurityRequirement:
@@ -138,7 +134,6 @@ So that {self.rationale.lower()}.
 ### Acceptance Criteria Verification
 {chr(10).join(f'- {ac}' for ac in self.acceptance_criteria)}
 """
-
 
 @dataclass
 class RequirementSet:
@@ -201,7 +196,6 @@ class ThreatInput:
     target: str
     impact: str
     likelihood: str
-
 
 class RequirementExtractor:
     """Extract security requirements from threats."""

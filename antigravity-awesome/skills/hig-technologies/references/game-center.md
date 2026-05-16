@@ -16,9 +16,6 @@ Supporting Game Center in your game allows players to:
 
   * See the latest activity from their games across the system, in the Apple Games app, the App Store, notifications, and more.
 
-
-
-
 By enabling the player activities listed above, supporting Game Center also helps surface your game to more players across Apple platforms.
 
 You can add Game Center into your game using the GameKit framework, which provides a full-featured UI that makes it easy for players to access and view their Game Center data within your game. Alternatively, you can also use GameKit to present this data within your own custom UI. For developer guidance, see [GameKit](https://developer.apple.com/documentation/GameKit).
@@ -99,8 +96,6 @@ Achievement detail
   * iOS, iPadOS, macOS, visionOS 
   * tvOS 
 
-
-
 ![A diagram of the layout for an achievement image in iOS, iPadOS, macOS, and visionOS, with callouts indicating the image size and mask diameter.](https://docs-assets.developer.apple.com/published/ba7aed683c8f0f112ce7024ce5a9a34f/ios-achievement-image-layout%402x.png)
 
 Attribute| Value  
@@ -151,9 +146,6 @@ Leaderboard detail
 
     * Weekly leaderboards for different battle modes
 
-
-
-
 **Take advantage of leaderboard sets for multiple leaderboards.** Leaderboard sets are an organization system that can make it easier for players to find the board they’re looking for. Consider grouping leaderboard sets by themes or gameplay experiences, such as:
 
   * Difficulty modes (Easy, Standard, Hard)
@@ -162,17 +154,12 @@ Leaderboard detail
 
   * Genres and themes (Disco, Pop, Rock)
 
-
-
-
 **Add leaderboard images.** Leaderboard artwork gives you another opportunity to reinforce your game’s visual aesthetic. Aim to create a unique image for each leaderboard in your game that reflects and showcases the gameplay involved in leaderboard ranking. Leaderboards appear across the system, promoting ways for players to engage and compete with friends, and having compelling images helps attract players and gives them a sense of the experience.
 
 For games that run in iOS, iPadOS, and macOS, use a single image for your leaderboard image. For games that run in tvOS, provide a set of images that animate when the artwork is in focus. To learn more about focus effects, see [Focus and selection](https://developer.apple.com/design/human-interface-guidelines/focus-and-selection). For help creating focusable images, download the tvOS template from [Apple Design Resources](https://developer.apple.com/design/resources/#tvos-apps). Use the following specifications to create leaderboard artwork.
 
   * iOS, iPadOS, macOS 
   * tvOS 
-
-
 
 ![A diagram of the layout for a leaderboard image in iOS, iPadOS, and macOS, with callouts indicating the image size and mask diameter.](https://docs-assets.developer.apple.com/published/a41db2a595bec653175fcfb13b50b9ed/leaderboard-image-layout-general%402x.png)
 
@@ -219,9 +206,6 @@ Challenge detail
 
   * Solve a daily puzzle with the fewest mistakes.
 
-
-
-
 **Avoid creating challenges that track overall progress or personal best scores.** These can give regular players an unfair advantage. Instead, track players’ most recent score after each attempt at your challenge. This helps keep your challenge motivating by placing all players on a level playing field.
 
 **Make it easy to jump into your challenge.** Players can access challenges through invitation links, the Game Overlay, or in the Games app in iOS, iPadOS, and macOS. Always deep-link to the exact mode or level where your challenge begins, and help first-time players complete any initial onboarding before beginning the challenge. For example, if your game requires a tutorial level to understand basic controls, launch the player into the tutorial first and present UI that lets them know your game automatically jumps into the challenge afterward.
@@ -259,9 +243,6 @@ Multiplayer level detail
   * Provide a way for players to view the current party code in your game.
 
   * Allow players to enter a party code manually.
-
-
-
 
 ![An iPhone screenshot of the game The Coast with the Game Overlay open, showing the in-game UI for setting up or joining a multiplayer activity using a custom code.](https://docs-assets.developer.apple.com/published/21aa655690fc4f5ec113e47e587774ab/games-multiplayer-custom-code%402x.png)
 

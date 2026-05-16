@@ -19,8 +19,6 @@ A disclosure triangle shows and hides information and functionality associated w
   * Collapsed 
   * Expanded 
 
-
-
 ![An illustration of three folders in a Finder list view. The folders are collapsed, with disclosure triangles on their leading edges pointing inward to indicate that they can be expanded to reveal their contents.](https://docs-assets.developer.apple.com/published/f2f0f58d9777abfc3a92f782963fbba6/disclosure-triangle-before%402x.png)
 
 ![An illustration of three folders in a Finder list view. The first and third folders are collapsed, with disclosure triangles on their leading edges pointing inward to indicate that they can be expanded to reveal their contents. The second folder is expanded, with its disclosure triangle pointing down, revealing three subfolders inside.](https://docs-assets.developer.apple.com/published/88c62732eba28e9f3233e0dedf6d0946/disclosure-triangle-after%402x.png)
@@ -39,8 +37,6 @@ A disclosure button points down when its content is hidden and up when its conte
 
   * Collapsed 
   * Expanded 
-
-
 
 ![A screenshot of a collapsed save dialog in macOS. The dialog includes a closed disclosure button that expands the dialog to reveal additional options.](https://docs-assets.developer.apple.com/published/6d405bc1e4bd3743e610bf3dd4e17161/disclosure-button-before%402x.png)
 

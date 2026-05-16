@@ -157,4 +157,3 @@ Each agent searches, reads sources, and returns findings. The main session synth
 "What's happening with the US housing market right now?"
 "Investigate the competitive landscape for AI code editors"
 ```
-

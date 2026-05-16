@@ -227,4 +227,3 @@ The detailed response includes:
 - `laravel-tdd` â€” Test-driven development for Laravel
 - `laravel-security` â€” Laravel security best practices
 - `documentation-lookup` â€” General library documentation lookup (Context7)
-

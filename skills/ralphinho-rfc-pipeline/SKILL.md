@@ -65,4 +65,3 @@ If a unit stalls:
 - unit scorecards
 - dependency graph snapshot
 - integration risk summary
-

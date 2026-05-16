@@ -48,7 +48,6 @@ _For everyone. Install these first._
 - [`kaizen`](../../skills/kaizen/): Continuous improvement mindset.
 - [`systematic-debugging`](../../skills/systematic-debugging/): Debug like a pro.
 
-
 ---
 
 ## Security & Compliance
@@ -79,7 +78,6 @@ _For building secure applications._
 - [`frontend-security-coder`](../../skills/frontend-security-coder/): XSS prevention and client-side security.
 - [`cc-skill-security-review`](../../skills/cc-skill-security-review/): Security checklist for features.
 - [`pci-compliance`](../../skills/pci-compliance/): Payment card security standards.
-
 
 ---
 
@@ -125,7 +123,6 @@ _For end-to-end web application development._
 - [`database-design`](../../skills/database-design/): Schema design and ORM selection.
 - [`stripe-integration`](../../skills/stripe-integration/): Payments and subscriptions.
 
-
 ---
 
 ## 🤖 AI & Agents
@@ -155,7 +152,6 @@ _For building production LLM applications._
 - [`context-window-management`](../../skills/context-window-management/): Manage LLM context efficiently.
 - [`langfuse`](../../skills/langfuse/): LLM observability and tracing.
 
-
 ---
 
 ## 🎮 Game Development
@@ -172,7 +168,6 @@ _For building games with AI assistants._
 - [`unity-developer`](../../skills/unity-developer/): Unity 6 LTS development.
 - [`godot-gdscript-patterns`](../../skills/godot-gdscript-patterns/): Godot 4 GDScript patterns.
 - [`algorithmic-art`](../../skills/algorithmic-art/): Generate assets with code.
-
 
 ---
 
@@ -216,7 +211,6 @@ _For low-level and performance-critical code._
 - [`memory-safety-patterns`](../../skills/memory-safety-patterns/): Memory-safe programming.
 - [`cpp-pro`](../../skills/cpp-pro/): Modern C++ development.
 
-
 ---
 
 ## 🦄 Product & Business
@@ -259,7 +253,6 @@ _For driving user acquisition and retention._
 - [`ab-test-setup`](../../skills/ab-test-setup/): Validated learning experiments.
 - [`email-sequence`](../../skills/email-sequence/): Automated email campaigns.
 
-
 ---
 
 ## DevOps & Infrastructure
@@ -291,7 +284,6 @@ _For production reliability._
 - [`postmortem-writing`](../../skills/postmortem-writing/): Blameless postmortems.
 - [`performance-engineer`](../../skills/performance-engineer/): Application performance optimization.
 
-
 ---
 
 ## 📊 Data & Analytics
@@ -321,7 +313,6 @@ _For building data pipelines._
 - [`vector-database-engineer`](../../skills/vector-database-engineer/): Vector databases for RAG.
 - [`embedding-strategies`](../../skills/embedding-strategies/): Embedding model selection.
 
-
 ---
 
 ## 🎨 Creative & Content
@@ -338,7 +329,6 @@ _For visuals, content, and branding._
 - [`copy-editing`](../../skills/copy-editing/): Polish your prose.
 - [`algorithmic-art`](../../skills/algorithmic-art/): Code-generated masterpieces.
 - [`interactive-portfolio`](../../skills/interactive-portfolio/): Portfolios that land jobs.
-
 
 ---
 
@@ -357,7 +347,6 @@ _For breaking things before users do._
 - [`ab-test-setup`](../../skills/ab-test-setup/): Validated experiments.
 - [`code-review-checklist`](../../skills/code-review-checklist/): Catch bugs in PRs.
 - [`test-fixing`](../../skills/test-fixing/): Fix failing tests systematically.
-
 
 ---
 
@@ -549,7 +538,6 @@ _For document-heavy workflows, spreadsheets, PDFs, and presentations._
 - [`pdf-official`](../../skills/pdf-official/): Extract, generate, and manipulate PDFs programmatically.
 - [`google-slides-automation`](../../skills/google-slides-automation/): Automate presentation updates in Google Slides.
 - [`google-sheets-automation`](../../skills/google-sheets-automation/): Automate reads and writes in Google Sheets.
-
 
 ---
 

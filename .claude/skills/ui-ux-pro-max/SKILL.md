@@ -576,7 +576,6 @@ Scope notice: The rules below are for App UI (iOS/Android/React Native/Flutter),
 | **Icon Alignment** | Align icons to text baseline and maintain consistent padding. | Misaligned icons or inconsistent spacing around them. | Prevents subtle visual imbalance that reduces perceived quality. |
 | **Icon Contrast** | Follow WCAG contrast standards: 4.5:1 for small elements, 3:1 minimum for larger UI glyphs. | Low-contrast icons that blend into the background. | Ensures accessibility in both light and dark modes. |
 
-
 ### Interaction (App)
 
 | Rule | Do | Don't |

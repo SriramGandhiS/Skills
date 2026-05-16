@@ -28,9 +28,6 @@ As you begin designing your app for Apple Watch, start by understanding the foll
 
   * [Watch faces](https://developer.apple.com/design/human-interface-guidelines/watch-faces)
 
-
-
-
 ## [Best practices](https://developer.apple.com/design/human-interface-guidelines/designing-for-watchos#Best-practices)
 
 Great Apple Watch experiences are streamlined and specialized, and integrate the platform and device capabilities that people value most. To help your experience feel at home in watchOS, prioritize the following ways to incorporate these features and capabilities.
@@ -48,9 +45,6 @@ Great Apple Watch experiences are streamlined and specialized, and integrate the
   * Use background content such as [color](https://developer.apple.com/design/human-interface-guidelines/color) to convey useful supporting information, and use [materials](https://developer.apple.com/design/human-interface-guidelines/materials) to illustrate hierarchy and a sense of place.
 
   * Design your app to function independently, complementing your notifications and complications by providing additional details and functionality.
-
-
-
 
 ## [Resources](https://developer.apple.com/design/human-interface-guidelines/designing-for-watchos#Resources)
 

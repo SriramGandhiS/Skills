@@ -66,7 +66,6 @@ Landing page → "remote project management software"
 Pillar blog → "complete guide to remote project management"
 Cluster article → "how to manage remote engineering teams"
 
-
 ### Example 2: Fintech App
 Input: topic = "automated budgeting app"
 audience = "millennials managing personal finances"
@@ -83,7 +82,6 @@ AEO Keywords:
 → Answer format: Comparison table
 "How does automated budgeting work?"
 → Answer format: Numbered steps
-
 
 ## Best Practices
 

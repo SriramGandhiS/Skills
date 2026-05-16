@@ -501,4 +501,3 @@ print $cgi->redirect($user_url);         # Open redirect
 ```
 
 **Remember**: Perl's flexibility is powerful but requires discipline. Use taint mode for web-facing code, validate all input with allowlists, use DBI placeholders for every query, and encode all output for its context. Defense in depth â€” never rely on a single layer.
-

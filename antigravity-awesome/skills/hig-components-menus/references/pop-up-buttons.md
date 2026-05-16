@@ -24,9 +24,6 @@ After people choose an item from a pop-up button’s menu, the menu closes, and 
 
   * Include a submenu
 
-
-
-
 **Provide a useful default selection.** A pop-up button can update its content to identify the current selection, but if people haven’t made a selection yet, it shows the default item you specify. When possible, make the default selection an item that most people are likely to want.
 
 **Give people a way to predict a pop-up button’s options without opening it.** For example, you can use an introductory label or a button label that describes the button’s effect, giving context to the options.

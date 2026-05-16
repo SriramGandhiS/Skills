@@ -30,9 +30,6 @@ Consider creating an App Clip if your app provides an in-the-moment experience t
 
   * A museum could have visitors scan App Clip Codes or QR codes on labels next to displayed works to launch an App Clip that reveals augmented reality content or provides audio commentary.
 
-
-
-
 Consider creating an App Clip to let people experience your app or game before committing to a purchase or subscription. Focus on providing people with an opportunity to experience and understand your app or game. For example:
 
   * A game might offer an App Clip that lets people play a demo version of the game, including a tutorial and the first level of the game.
@@ -40,9 +37,6 @@ Consider creating an App Clip to let people experience your app or game before c
   * A fitness app might offer an App Clip with a free workout and a guided meditation.
 
   * A text editor might allow people to create and save a document using the demo App Clip.
-
-
-
 
 For developer guidance, see [App Clips](https://developer.apple.com/documentation/AppClip).
 
@@ -91,9 +85,6 @@ Because apps remain the best way to keep people engaged over time, the system he
   * On the App Clip card, people can either launch the App Clip or visit the full app’s page on the App Store.
 
   * When people first launch the App Clip, the system displays an app banner at the top of the screen. Like the App Clip card, the banner allows people to visit the app’s page on the App Store.
-
-
-
 
 In addition, you can display an overlay in your App Clip that allows people to download the full app from within the App Clip.
 
@@ -169,9 +160,6 @@ The scan-only variant uses a camera icon in its center to let people know to use
 
   * A video game creator could hand out marketing material at an industry event that includes an App Clip Code. An event attendee could scan the code to launch an App Clip that’s a playable demo of their latest video game.
 
-
-
-
 ![An illustration that shows how a person uses an App Clip Code on a table at a coffee shop. The left side of the illustration shows two people sitting at a table. A placard in the middle of the table contains an App Clip Code. The person on the left is using their camera to scan the App Clip Code. The right side of the illustration shows a zoomed-in version of the person's phone screen and the placard on the table.](https://docs-assets.developer.apple.com/published/331753285f06bb59ab3bae929756a505/interacting-coffee-shop-example%402x.png)
 
 ### [Displaying App Clip Codes](https://developer.apple.com/design/human-interface-guidelines/app-clips#Displaying-App-Clip-Codes)
@@ -188,9 +176,6 @@ When you start designing your App Clip Codes, choose the variant that works best
 
   * On a gift card or coupon
 
-
-
-
 If you need to place your App Clip Code in an area that’s physically inaccessible or you need to display it digitally, use a scan-only App Clip Code. For example:
 
   * On posters or printed advertising
@@ -198,9 +183,6 @@ If you need to place your App Clip Code in an area that’s physically inaccessi
   * On signage behind a counter or unreachable in a storefront
 
   * On digital materials such as digital displays, in emails, or on images you post to social media
-
-
-
 
 No matter which of the two variants you use, it’s important you carefully consider where you place your App Clip Code to ensure a reliable scanning experience.
 
@@ -264,17 +246,11 @@ For a scan-only App Clip Code, you can use the following call to action:
 
   * Scan using the camera on your iPhone or iPad to [describe what people can do with your App Clip].
 
-
-
-
 For an NFC-integrated App Clip Code, you can use the following call to action:
 
   * Scan to [_describe what people can do with your App Clip_].
 
   * Hold your iPhone near the [_object name_] to launch an App Clip that [_describe what a person can do with your App Clip_].
-
-
-
 
 For more information, see [NFC](https://developer.apple.com/design/human-interface-guidelines/nfc).
 

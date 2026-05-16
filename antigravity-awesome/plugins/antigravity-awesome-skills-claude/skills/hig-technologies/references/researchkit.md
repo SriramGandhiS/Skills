@@ -70,9 +70,6 @@ To get input from participants, your study might use surveys, active tasks, or a
 
   * Tell participants when the survey is complete.
 
-
-
-
 ![A screenshot that shows a ResearchKit app's survey screen on iPhone. This particular screen asks someone to specify Parkinson's disease symptoms from a list and tap a 'Next' button to continue the survey. The top of the screen includes a 'Close' button.](https://docs-assets.developer.apple.com/published/ee125d1de4ec07f41856c9bab67ee0c3/survey-question-type1-screen%402x.png)
 
 **Make active tasks easy to understand.** An active task requires the participant to engage in an activity, such as speaking into the microphone, tapping fingers on the screen, walking, or performing a memory test. Follow these guidelines to encourage participants to perform an active task and give them the best chance of success:
@@ -82,9 +79,6 @@ To get input from participants, your study might use surveys, active tasks, or a
   * Explain any requirements, such as if the task must be performed at a particular time or under specific circumstances.
 
   * Make sure participants can tell when the task is complete.
-
-
-
 
 ![A screenshot that shows a ResearchKit app's active task screen on iPhone. This particular screen shows an illustration of a person walking, and instructions that explain how to perform a Walk and Balance active task. A list of requirements is shown, along with a 'Get started' button. The top of the screen includes a 'Close' button.](https://docs-assets.developer.apple.com/published/efdeed00e3196a8eaea5155ff78b0015/active-tasks-screen%402x.png)
 

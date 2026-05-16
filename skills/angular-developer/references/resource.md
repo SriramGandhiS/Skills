@@ -75,4 +75,3 @@ this.userResource.value.set({name: 'Optimistic Update'});
 ## Reactive Data Fetching with `httpResource`
 
 If you are using Angular's `HttpClient`, prefer using `httpResource`. It is a specialized wrapper that leverages the Angular HTTP stack (including interceptors) while providing the same signal-based resource API.
-
