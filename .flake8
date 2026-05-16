@@ -1,0 +1,15 @@
+[flake8]
+ignore = E501, W503, F821, F824
+exclude =
+    .git,
+    __pycache__,
+    docs/source/conf.py,
+    old,
+    build,
+    dist,
+    *.test.py,
+    benchmarks/*,
+    results/*,
+    humaneval-loki-solutions/*,
+    node_modules/*
+max-complexity = 10
