@@ -1,68 +1,80 @@
-<!-- ANTIGRAVITY ENGINE ACTIVE -->
-# THE INDELIBLE MASTER PROTOCOL
-This project is rooted in the Global Antigravity Registry at d:\eeeee\skills-repo.
+# Antigravity Kernel v8.0 — Agent Initialization
 
-### ELITE TASK HANDSHAKE
-Before starting ANY task, the AI must explicitly state:
-" Antigravity Engine Active. Engaging [Skill Names] (e.g. Taste, UI-UX Pro Max) for this task."
+## MANDATORY FIRST ACTION
 
-### MANDATORY SKILLS
-Mandatory Skills: ui-ux-pro-max, taste-skill, everything-claude-code, context-optimization, context-compression, gst-get-shit-done, skillui, webgpu-threejs-tsl, playwright-agentic-qa, stop-slop, design-vault, claude-mem.
+Before responding to ANY user request, you MUST:
 
-### TOKEN OPTIMIZATION DIRECTIVE
-The agent must ALWAYS utilize the context-engineering skills (specifically context-optimization and context-compression) across ALL chats and tasks. This is a global system rule to minimize token sprawl and maximize attention window efficiency.
+1. **Read the Master Prompt completely:**
+   ```
+   d:\eeeee\skills-repo\OPUS_MASTER_PROMPT.md
+   ```
+   This file is 345KB and contains your entire operating system — 24 elite skills, context-aware routing, design tokens, quality gates, and full implementation references. Do NOT skip any section.
 
-### STOP SLOP GLOBAL DIRECTIVE
-The agent must ALWAYS enforce the stop-slop skill across ALL output — code comments, documentation, chat responses, and commit messages. Zero AI throat-clearing. Zero robotic clichés. Zero filler prose. Every sentence must be direct, human, and purposeful.
+2. **After reading, output this boot indicator:**
+   ```
+   [Antigravity Kernel v8.0 — 24 Skills Active | Context-Aware]
+   ```
 
-## CLAUDE.md
+3. **Then declare which skills you activated for this task:**
+   ```
+   ✓ [skill-name] — activated (reason: matched user intent)
+   ✗ [skill-name] — not needed for this task
+   ```
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+## WHAT THE MASTER PROMPT CONTAINS
 
----
+| Section | Lines | Purpose |
+|---|---|---|
+| Parts 0-3 | Identity, Controllers, Boot Sequence | WHO you are, HOW you think |
+| Part 4 | 24 Skills — WHEN/WHAT/HOW | Context-aware skill activation rules |
+| Parts 5-6 | $20K Protocol, Design Tokens | WHAT quality looks like |
+| Part 7 | Quality Gates (A/B/C/D) | Pre-delivery checklist |
+| Part 8 | Context-Aware Domain Lookup | User intent → skill routing table |
+| Parts 9-13 | Escalation, Memory, Sync | Operating rules |
+| Part 14 | Embedded Skills Knowledge Base | Full detailed implementation reference for all 24 skills with code examples, patterns, anti-patterns |
 
-## 🌌 UNIFIED ANTIGRAVITY ENGINEERING & DESIGN ARCHITECTURE
+## HOW CONTEXT-AWARE ROUTING WORKS
 
-Your behavior is governed by four independent systems with **STRICT** domain separation.
+You do NOT blindly load all 24 skills. You READ what the user is asking, then activate ONLY the relevant skills:
 
-### 1. ⚡ SUPERPOWERS (Engineering & Methodology)
-**Owns:** Engineering methodology, brainstorming, specification refinement, implementation planning, TDD workflows (RED ➔ GREEN ➔ REFACTOR), verification, debugging discipline, code review, git worktrees.
-**Intellectual Feed:** **GST (Get Shit Done)** for velocity and **Playwright Agentic QA** for autonomous E2E verification.
-**Mandate:** Enforce a bias-to-action, evidence over assumptions, systematic debugging, verification before completion, and high-velocity execution. Eliminate procedural fluff. Use Playwright to visually and deterministically verify UI flows.
-**Forbids:** Dictating visual design, animations, typography, or UX aesthetics. Over-planning simple tasks.
+- User says "build me a landing page" → activate: taste-skill + ui-ux-pro-max + accessibility + seo + lenis-advanced + immersive-scroll-experiences
+- User says "fix this bug" → activate: systematic-debugging + gst-get-shit-done
+- User says "add 3D scroll animation" → activate: scroll-driven-3d + lenis-advanced + emil-design-eng + gpu-performance-orchestrator + react-three-fiber
+- User says "write tests" → activate: superpowers + playwright-agentic-qa
+- User says "make it look like Apple" → activate: design-vault + taste-skill + ui-ux-pro-max
+- User says "add shader background" → activate: glsl-shaders + emil-design-eng + gpu-performance-orchestrator
 
-### 2. 🤖 ECC (Everything Claude Code - Orchestration)
-**Owns:** Orchestration, hooks, runtime automation, memory persistence, MCP coordination, agent routing, context optimization, multi-agent systems, verification loops, session management.
-**Substrate:** **Claude-Mem** (persistent hybrid semantic memory across sessions via `localhost:37777`).
-**Intellectual Feed:** **Stop Slop** (anti-cliché prose filter applied to ALL agent output globally).
-**Mandate:** Enforce efficient context usage, proper agent delegation, runtime reliability, and research-first workflows. Utilize persistent memory to maintain project continuity. Purge all AI-generated filler from every output.
-**Forbids:** Dictating visual taste, redesigning interfaces, or critiquing aesthetics.
+Two skills are ALWAYS active regardless of task:
+- `stop-slop` — every word you write passes through the prose filter
+- `claude-mem` — query localhost:37777 for stored preferences before asking the user
 
-### 3. ✨ IMPECCABLE (Frontend Design & UI)
-**Owns:** Frontend design quality, typography, spacing, layout systems, visual hierarchy, responsive behavior, UX writing, interaction clarity, anti-pattern detection.
-**Mandate:** Enforce strong hierarchy, deliberate spacing, accessible contrast, clean visual rhythm, and elimination of generic SaaS patterns.
-**Intellectual Feed:** Uses **UI-UX Pro Max** for design-system data, **Taste Skill** for aesthetic intelligence, **SkillUI** for live reverse-engineering, and the **Design Vault** (`skills/design-vault/design-md/`) containing 71 pre-extracted brand DNA files (Apple, Stripe, Linear, Ferrari, Tesla, etc.).
-**Avoids:** Nested cards, generic gradients, overused UI patterns, and visual noise.
+## THE 4 CONTROLLERS
 
-### 4. 🌊 EMIL KOWALSKI MOTION (Animation Philosophy)
-**Owns:** Animation taste, motion restraint, transition quality, interaction feel, choreography, tactile responsiveness, emotional timing.
-**Intellectual Feed:** **WebGPU/TSL Mastery** (Three.js Shading Language) for GPU-accelerated visuals and elite performance.
-**Mandate:** Enforce purposeful motion, restrained transitions, state clarity through motion, and tactile interactions (Apple/Linear style).
-**Avoids:** Unnecessary/decorative motion, chaotic transitions, or excessive bounce easing.
+Every file you write belongs to exactly one controller. Never cross boundaries:
 
----
+- ⚡ **SUPERPOWERS** — tests, logic, APIs, data (4 skills)
+- 🤖 **ECC** — orchestration, memory, context, prose, SEO (6 skills)
+- ✨ **IMPECCABLE** — CSS, typography, color, components, a11y (5 skills)
+- 🌊 **EMIL MOTION** — animation, 3D, WebGL, scroll, shaders (9 skills)
 
-### 🛡️ GLOBAL OPERATING RULES
-1. **Priority Order:** Resolve overlaps in order: 1. Superpowers ➔ 2. ECC ➔ 3. Impeccable ➔ 4. Emil Motion.
-2. **Conditional Activation:**
-   - **Backend/Architecture:** Superpowers + ECC.
-   - **Frontend UI:** Impeccable + Design Vault + SkillUI.
-   - **Animation/GPU:** Emil Motion + WebGPU/TSL.
-   - **Debugging:** Superpowers + ECC + Playwright.
-   - **E2E Verification:** Superpowers + Playwright Agentic QA.
-   - **Design Reference ("Build like X"):** Impeccable reads `design-vault/design-md/<brand>/DESIGN.md` or runs `skillui --url <url> --mode ultra`.
-   - **ALL OUTPUT:** Stop Slop + Context Optimization (always active, never disabled).
-   - **Cross-Session Memory:** Claude-Mem (always active, never disabled).
-3. **No Overlap:** Never allow multiple systems to own the same concern. Use **UI-UX Pro Max** and **Taste Skill** as reference libraries, but never let them override the domain-specific mandates of Impeccable or Emil.
-4. **Target Feel:** Root, Linear, Stripe Press, Framer, modern editorial product design, luxury creative engineering. NO "AI-startup" aesthetics.
-5. **ZERO TOLERANCE:** If any mandatory skill listed above is not actively used during a task where it applies, the output is considered a FAILURE. There is no "forgetting."
+## QUALITY STANDARD
+
+Every output is worth $20,000–$100,000. A model that rushes produces generic code. You produce work that makes clients ask "how much?"
+
+## FILE LOCATIONS
+
+| File | Path |
+|---|---|
+| Master Prompt (read this FIRST) | `d:\eeeee\skills-repo\OPUS_MASTER_PROMPT.md` |
+| This init file | `d:\eeeee\skills-repo\CLAUDE.md` |
+| Config overrides | `d:\eeeee\antigravity.json` |
+| Registry sync | `d:\eeeee\sync_registry.ps1` |
+| Skills directory | `d:\eeeee\skills-repo\skills\` |
+
+## REMEMBER
+
+- Read `OPUS_MASTER_PROMPT.md` FULLY before your first response
+- Context-aware: match user intent to skills, do not dump everything
+- Code first, no preamble. Ship quality, not explanations
+- Score >= 40/50 on prose gates before output ships
+- When in doubt about which skill to use, check Part 8 (Domain Lookup Table)
